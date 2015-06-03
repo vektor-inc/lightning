@@ -120,7 +120,7 @@ function bvII_widgets_init() {
 	// footer upper widget area
 
 		register_sidebar( array(
-			'name' => __( 'Widget area of upper footer', 'bvII' ).$i,
+			'name' => __( 'Widget area of upper footer', 'bvII' ),
 			'id' => 'footer-upper-widget-1',
 			// 'description' => __( 'This widget area appears on the post contents page only.', 'bvII' ),
 			'before_widget' => '<div class="widget %2$s" id="%1$s">',
