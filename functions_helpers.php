@@ -6,8 +6,6 @@
 /*-------------------------------------------*/
 /*	Chack post type info
 /*-------------------------------------------*/
-/*	Head title
-/*-------------------------------------------*/
 /*	Archive title
 /*-------------------------------------------*/
 /*	Pagination
@@ -85,53 +83,6 @@ function bvII_get_post_type(){
 	return $postType;
 }
 
-/*-------------------------------------------*/
-/*	Head title
-/*-------------------------------------------*/
-function bvII_wp_head_title($title){
-	global $wp_query;
-	$post = $wp_query->get_queried_object();
-	$sep = ' | ';
-	$sep = apply_filters( 'bvII_wp_head_title', $sep );
-
-	if (is_front_page()) {
-		$title = get_bloginfo('name');
-	} else if ( is_home() && !is_front_page()) {
-		$title = bvII_get_the_archive_title().$sep.get_bloginfo('name');
-	} else if ( is_archive() ) {
-		$title = bvII_get_the_archive_title().$sep.get_bloginfo('name');
-	// Page
-	} else if (is_page()) {
-		// Sub Pages
-		if ( $post->post_parent ) {
-			if($post->ancestors){
-				foreach($post->ancestors as $post_anc_id){
-					$post_id = $post_anc_id;
-				}
-			} else {
-				$post_id = $post->ID;
-			}
-			$title = get_the_title()." | ".get_the_title($post_id)." | ".get_bloginfo('name');
-		// Not Sub Pages
-		} else {
-			$title = get_the_title()." | ".get_bloginfo('name');
-		}
-	} else if ( is_single() ){
-		$title = get_the_title().$sep.get_bloginfo('name');
-	}
-
-	// Add Page numner.
-	global $paged;
-	if ( $paged >= 2 ){
-		$title = '['.sprintf(__('Page of %s', 'bvII' ),$paged).'] '.$title;
-	}
-
-	$title = apply_filters( 'bvII_wp_head_title', $title );
-
-	// Remove Tags(ex:<i>) & return
-	return strip_tags($title);
-}
-add_filter('wp_title','bvII_wp_head_title');
 
 /*-------------------------------------------*/
 /*	Archive title
