@@ -12,6 +12,7 @@ $color_key : #c00;
 body { font-family: "メイリオ",Meiryo,"ＭＳ Ｐゴシック","Hiragino Kaku Gothic Pro","ヒラギノ角ゴ Pro W3",sans-serif; }
 img { max-width: 100%;height:auto; }
 .btn { border-radius: 0; }
+.btn-default { background: none; }
 
 /*-------------------------------------------*/
 /* .siteHeader
@@ -103,9 +104,8 @@ ul.gMenu li:hover ul.sub-menu { display: block;background-color: #fff;box-shadow
 /*-------------------------------------------*/
 /* .page-header 
 /*-------------------------------------------*/
-.page-header { margin-top:0;margin-bottom:0;padding-bottom:0;
-  .page-header__pageTitle { margin:30px 0 25px;font-size:32px;line-height: 1.1;color: #fff; }
-}
+.page-header { margin-top:0;margin-bottom:0;padding-bottom:0; }
+.page-header__pageTitle { margin:30px 0 25px;font-size:32px;line-height: 1.1;color: #fff; }
 
 /*-------------------------------------------*/
 /* .breadSection
@@ -117,7 +117,7 @@ ul.gMenu li:hover ul.sub-menu { display: block;background-color: #fff;box-shadow
 /*-------------------------------------------*/
 /* .siteContent
 /*-------------------------------------------*/
-.siteContent { padding:4em 0 4em;}
+.siteContent { padding:3em 0 4em;}
 .site-main { padding-bottom:3em;
   p { font-size:16px;line-height: 1.8em; }
   h2:first-child,
@@ -147,7 +147,9 @@ article header { border-bottom:$border_primary; }
 }
 }// @media (max-width: 767px){
 
-
+@media (max-width: 767px){
+h1.entry-title { font-size:26px; }
+}
 .entry-body { display:block; overflow:hidden;padding:2.5em 0; }
 .page .entry-body {padding-top:0; }
 .entry-tag {
@@ -168,9 +170,7 @@ article header { border-bottom:$border_primary; }
 .media { border-bottom:$border_primary;padding:2em 0;
   &:first-child { border-top:$border_primary; }
   .postList__thumbnail { width:160px;margin-bottom:0.5em;padding-right:30px; display:block; overflow:hidden;float:left;
-    a { position: relative;display:block; overflow:hidden;
-
-    }
+    a { position: relative;display:block; overflow:hidden; }
     img { width: 100%;height:auto; }
     .postList__cateLabel {
       position: absolute;
@@ -194,6 +194,12 @@ article header { border-bottom:$border_primary; }
     } // .media-body
   } // .media
 } // @media (max-width: 767px){
+@media (max-width: 500px){
+.media {
+  .postList__thumbnail { width:100px; }
+  } // .media
+} // @media (max-width: 767px){
+
 
 /*      images
 /*-------------------------------------------*/
@@ -280,18 +286,22 @@ footer {
 /*-------------------------------------------*/
 /* single
 /*-------------------------------------------*/
-.pager ul { margin-top:0; }
-.pager li {
+.pager ul { margin-top:0;}
+.pager li { margin-bottom:10px;display: inline-block;
   & > a { border-radius:0;padding:7px 15px 5px; }
 }
 @media (max-width: 767px){
-.pager li { display: block; display:block; overflow:hidden; margin-bottom:10px;
+.pager li { display: block; overflow:hidden;float:none;
   a { display:block; overflow:hidden;float:none;width: 100%; text-align: left; }
   &.previous a:before{ content:"«";margin-right:0.8em; }
   &.next a:before{ content:"»";margin-right:0.8em; }
-}
+} // .pager li
 } // @media (min-width: 768px){
 @media (min-width: 768px){
-.pager li.previous a:before{ content:"«";margin-right:0.8em; }
-.pager li.next a:after{ content:"»";margin-left:0.8em; }
+.pager li.previous { float:left;
+  a:before{ content:"«";margin-right:0.8em; }
+}
+.pager li.next { float:right;
+  a:after{ content:"»";margin-left:0.8em; }
+}
 } // @media (min-width: 768px){

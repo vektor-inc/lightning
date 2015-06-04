@@ -26,7 +26,7 @@
 	</dl>
 	</div><!-- [ /.entry-tag ] -->
 	<?php endif; ?>
-
+	<?php comments_template( '', true ); ?>
 	<?php wp_link_pages( array( 'before' => '<div class="page-link">' . 'Pages:', 'after' => '</div>' ) ); ?>
 
 	</div><!-- [ /.col-md-12 ] -->

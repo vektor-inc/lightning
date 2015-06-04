@@ -20,7 +20,7 @@
 		-->
 		<?php
 		$attr = array('class'	=> "media-object");
-		the_post_thumbnail('medium',$attr); ?>
+		the_post_thumbnail('thumbnail',$attr); ?>
 		</a>
 	</div>
 	<div class="media-body">

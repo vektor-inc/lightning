@@ -54,32 +54,5 @@ if ($top_slide_count) : ?>
     <a class="right carousel-control" href="#top__fullcarousel" data-slide="next"><i class="icon-next fa fa-angle-right"></i></a>
 <?php endif; ?>
 
-            <div class="carousel-overfixTxt hidden-xs hidden-sm">
-            <h2>スコアって何？</h2>
-                    <p class="lead-small">ゴルフは遊び！！！&nbsp;
-                    <br>ナイスショットのときは全身で喜んで&nbsp;
-                    <br>ミスしたときは少しふてくされるくらいがちょうどいい
-                    <br>青空の下、寝ころびたくなるようなフェアウェイ
-                    <br>そんな雄大な大自然の中で&nbsp;
-                    <br>のびのびと、華麗に、自由に、&nbsp;
-                    <br>ゴルフをできる喜びを今一度思い出しませんか？&nbsp;
-                    <br>大切な遊び心を“grandeur”とともに・・・</p>
-            </div>
-
 </div><!-- [ /#top__fullcarousel ] -->
 <?php endif; ?>
-
-<div class="section sectionBox hidden-md hidden-lg topConcept">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-            <h2 class="text-center">スコアって何？</h2>
-                    <p class="lead-small text-center">ゴルフは遊び！！！&nbsp;
-                    <br>ナイスショットのときは全身で喜んで&nbsp;
-                    <br>ミスしたときは少しふてくされるくらいがちょうどいい
-                    <br>青空の下、寝ころびたくなるようなフェアウェイ
-                    <br>そんな雄大な大自然の中で&nbsp;
-                    <br>のびのびと、華麗に、自由に、&nbsp;
-                    <br>ゴルフをできる喜びを今一度思い出しませんか？&nbsp;
-                    <br>大切な遊び心を“grandeur”とともに・・・</p>
-</div></div></div></div>

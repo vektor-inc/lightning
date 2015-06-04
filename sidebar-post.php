@@ -16,7 +16,7 @@ $post_loop = new WP_Query( array(
 ) ); ?>
 <?php if ($post_loop->have_posts()) : ?>
 <div class="widget">
-<h4 class="localNav__title"><?php echo __('Recent posts', 'bvII');?></h4>
+<h4 class="subSection-title"><?php echo __('Recent posts', 'bvII');?></h4>
 <?php while ( $post_loop->have_posts() ) : $post_loop->the_post();?>
 <?php get_template_part('module_post__subLoop_item'); ?>
 <?php endwhile;?>
@@ -25,7 +25,7 @@ $post_loop = new WP_Query( array(
 
 <div class="widget">
 <nav class="localNav">
-<h4 class="localNav__title subSection-title">カテゴリー</h4>
+<h4 class="subSection-title">カテゴリー</h4>
 <ul class="nav nav-pills nav-stacked">
   <?php wp_list_categories('title_li='); ?> 
 </ul>
@@ -34,7 +34,7 @@ $post_loop = new WP_Query( array(
 
 <div class="widget">
 <nav class="localNav">
-<h4 class="localNav__title subSection-title">アーカイブ</h4>
+<h4 class="subSection-title">アーカイブ</h4>
 <ul class="nav nav-pills nav-stacked">
   <?php
   $args = array(
