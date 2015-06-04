@@ -73,6 +73,12 @@ function head_high(){
 		"max-height":"50px",
 	},100);
 }
+/*----------------------------------------------------------*/
+/*	add bootstrap class
+/*----------------------------------------------------------*/
+jQuery('textarea').addClass("form-control");
+jQuery('input[type=text]').addClass("form-control");
+jQuery('input[type=submit]').addClass("btn btn-primary");
 
 // function addClass_dropdown(){
 // 	jQuery('.navbar-collapse ul.sub-menu').parent().addClass('dropdown');

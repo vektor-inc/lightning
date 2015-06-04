@@ -69,7 +69,7 @@ ul.gMenu ul.sub-menu li li li a { padding-left: 4em; }
 /*-------------------------------------------*/
 /* .page-header 
 /*-------------------------------------------*/
-.page-header { margin-top: 0; margin-bottom: 0; padding-bottom: 0; }
+.page-header { margin-top: 0; margin-bottom: 0; padding-bottom: 0; background-color: #c00; }
 
 .page-header__pageTitle { margin: 30px 0 25px; font-size: 32px; line-height: 1.1; color: #fff; }
 
@@ -86,18 +86,14 @@ ul.gMenu ul.sub-menu li li li a { padding-left: 4em; }
 
 .site-main { padding-bottom: 3em; }
 .site-main p { font-size: 16px; line-height: 1.8em; }
+.site-main h2, .site-main h3, .site-main h4, .site-main h5 { margin: 1.4em 0 1.2em; }
 .site-main h2:first-child, .site-main h3:first-child, .site-main h4:first-child, .site-main h5:first-child { margin-top: 0; }
-.site-main h2, .site-main h3, .site-main h4, .site-main h5 { margin-bottom: 1.2em; }
-
-.archive-title { margin-bottom: 1.5em; margin-top: 0; margin-bottom: 15px; }
-
-.archive-meta { margin-bottom: 2em; }
 
 /*      site-main
 /*-------------------------------------------*/
 article header { border-bottom: 1px solid #e5e5e5; }
 
-.entry-meta { margin-bottom: 1.2em; padding-left: 3px; }
+.entry-meta { margin-bottom: 1em; padding-left: 3px; }
 .entry-meta .entry-meta-items { margin-right: 1em; }
 .entry-meta .entry-meta-items-term { float: right; margin-right: 0; }
 .entry-meta i { margin-right: 5px; }
@@ -125,7 +121,7 @@ article header { border-bottom: 1px solid #e5e5e5; }
 .media .postList__thumbnail a { position: relative; display: block; overflow: hidden; }
 .media .postList__thumbnail img { width: 100%; height: auto; }
 .media .postList__thumbnail .postList__cateLabel { position: absolute; bottom: 0; left: 0; }
-.media .media-body .media-heading { font-size: 1.8em; line-height: 1.3em; margin-bottom: 0.5em; }
+.media .media-body .media-heading { font-size: 1.8em; line-height: 1.3em; margin-top: 0; margin-bottom: 0.5em; }
 .media .media-body .media-heading a { color: #464646; }
 .media .media-body .media-heading a:hover { text-decoration: none; }
 
@@ -201,6 +197,13 @@ footer .copySection { border-top: 1px solid #e5e5e5; }
 .topConcept { background-color: #f5f5f5; }
 
 .lead-small { line-height: 2em; }
+
+/*-------------------------------------------*/
+/* .archive
+/*-------------------------------------------*/
+.archive-title { margin-bottom: 1.5em; margin-top: 0; margin-bottom: 15px; }
+
+.archive-meta { margin-bottom: 2em; }
 
 /*-------------------------------------------*/
 /* single

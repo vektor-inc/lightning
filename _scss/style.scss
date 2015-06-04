@@ -104,7 +104,7 @@ ul.gMenu li:hover ul.sub-menu { display: block;background-color: #fff;box-shadow
 /*-------------------------------------------*/
 /* .page-header 
 /*-------------------------------------------*/
-.page-header { margin-top:0;margin-bottom:0;padding-bottom:0; }
+.page-header { margin-top:0;margin-bottom:0;padding-bottom:0; background-color: $color_key; }
 .page-header__pageTitle { margin:30px 0 25px;font-size:32px;line-height: 1.1;color: #fff; }
 
 /*-------------------------------------------*/
@@ -120,23 +120,21 @@ ul.gMenu li:hover ul.sub-menu { display: block;background-color: #fff;box-shadow
 .siteContent { padding:3em 0 4em;}
 .site-main { padding-bottom:3em;
   p { font-size:16px;line-height: 1.8em; }
+  h2,
+  h3,
+  h4,
+  h5 { margin:1.4em 0 1.2em; }
   h2:first-child,
   h3:first-child,
   h4:first-child,
   h5:first-child { margin-top:0; }
-  h2,
-  h3,
-  h4,
-  h5 { margin-bottom:1.2em; }
 }
 
-.archive-title { margin-bottom:1.5em;margin-top:0;margin-bottom:15px; }
-.archive-meta { margin-bottom:2em; }
 
 /*      site-main
 /*-------------------------------------------*/
 article header { border-bottom:$border_primary; }
-.entry-meta { margin-bottom:1.2em;padding-left:3px;
+.entry-meta { margin-bottom:1em;padding-left:3px;
   .entry-meta-items { margin-right:1em; }
   .entry-meta-items-term { float:right;margin-right:0; }
   i { margin-right:5px; }
@@ -179,7 +177,7 @@ h1.entry-title { font-size:26px; }
     }
   }
   .media-body { 
-    .media-heading { font-size:1.8em;line-height:1.3em; margin-bottom:0.5em;
+    .media-heading { font-size:1.8em;line-height:1.3em;margin-top:0; margin-bottom:0.5em;
       a { color:$color_font_default;
         &:hover { text-decoration: none; }
       }
@@ -283,6 +281,12 @@ footer {
 .lead-small {
   line-height: 2em;
 }
+/*-------------------------------------------*/
+/* .archive
+/*-------------------------------------------*/
+.archive-title { margin-bottom:1.5em;margin-top:0;margin-bottom:15px; }
+.archive-meta { margin-bottom:2em; }
+
 /*-------------------------------------------*/
 /* single
 /*-------------------------------------------*/
