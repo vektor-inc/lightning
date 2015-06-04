@@ -86,6 +86,10 @@ function head_high(){
 jQuery('textarea').addClass("form-control");
 jQuery('input[type=text]').addClass("form-control");
 jQuery('input[type=submit]').addClass("btn btn-primary");
+jQuery('#respond p').each(function(i){
+	jQuery(this).children('input').appendTo(jQuery(this));
+	});
+// jQuery('#respond p label').prependTo()
 
 // function addClass_dropdown(){
 // 	jQuery('.navbar-collapse ul.sub-menu').parent().addClass('dropdown');
