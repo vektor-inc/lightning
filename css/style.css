@@ -88,6 +88,7 @@ ul.gMenu ul.sub-menu li li li a { padding-left: 4em; }
 .site-main p { font-size: 16px; line-height: 1.8em; }
 .site-main h2, .site-main h3, .site-main h4, .site-main h5 { margin: 1.4em 0 1.2em; }
 .site-main h2:first-child, .site-main h3:first-child, .site-main h4:first-child, .site-main h5:first-child { margin-top: 0; }
+.site-main h3 { border-bottom: 1px dotted #666; padding-bottom: 8px; }
 
 /*      site-main
 /*-------------------------------------------*/
