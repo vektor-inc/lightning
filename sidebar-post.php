@@ -12,30 +12,30 @@ if ( is_active_sidebar( $widdget_area_name ) ){
 $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 $post_loop = new WP_Query( array(
     'post_type' => 'post',
-    'posts_per_page' => 5,
+    'posts_per_page' => 10,
 ) ); ?>
 <?php if ($post_loop->have_posts()) : ?>
-<div class="widget">
-<h4 class="subSection-title"><?php echo __('Recent posts', 'bvII');?></h4>
+<aside class="widget">
+<h1 class="subSection-title"><?php echo __('Recent posts', 'bvII');?></h1>
 <?php while ( $post_loop->have_posts() ) : $post_loop->the_post();?>
 <?php get_template_part('module_post__subLoop_item'); ?>
 <?php endwhile;?>
-</div>
+</aside>
 <?php endif; ?>
 
-<div class="widget">
+<aside class="widget widget_categories">
 <nav class="localNav">
-<h4 class="subSection-title">カテゴリー</h4>
-<ul class="nav nav-pills nav-stacked">
+<h1 class="subSection-title">カテゴリー</h1>
+<ul>
   <?php wp_list_categories('title_li='); ?> 
 </ul>
 </nav>
-</div>
+</aside>
 
-<div class="widget">
+<aside class="widget widget_archive">
 <nav class="localNav">
-<h4 class="subSection-title">アーカイブ</h4>
-<ul class="nav nav-pills nav-stacked">
+<h1 class="subSection-title">アーカイブ</h1>
+<ul>
   <?php
   $args = array(
     'type' => 'monthly',
@@ -44,7 +44,7 @@ $post_loop = new WP_Query( array(
   wp_get_archives($args); ?>
 </ul>
 </nav>
-</div>
+</aside>
 
 <?php 
 }

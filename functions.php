@@ -94,27 +94,27 @@ function bvII_widgets_init() {
 		register_sidebar( array(
 			'name' => 'Sidebar('.__( 'Common top', 'bvII' ).')',
 			'id' => 'common-side-top-widget-area',
-			'before_widget' => '<div class="widget %2$s" id="%1$s">',
-			'after_widget' => '</div>',
-			'before_title' => '<h3 class="widget-title subSection-title">',
-			'after_title' => '</h3>',
+			'before_widget' => '<aside class="widget %2$s" id="%1$s">',
+			'after_widget' => '</aside>',
+			'before_title' => '<h1 class="widget-title subSection-title">',
+			'after_title' => '</h1>',
 		) );
 		register_sidebar( array(
 			'name' => 'Sidebar('.__( 'Common bottom', 'bvII' ).')',
 			'id' => 'common-side-bottom-widget-area',
-			'before_widget' => '<div class="widget %2$s" id="%1$s">',
-			'after_widget' => '</div>',
-			'before_title' => '<h3 class="widget-title subSection-title">',
-			'after_title' => '</h3>',
+			'before_widget' => '<aside class="widget %2$s" id="%1$s">',
+			'after_widget' => '</aside>',
+			'before_title' => '<h1 class="widget-title subSection-title">',
+			'after_title' => '</h1>',
 		) );
 		register_sidebar( array(
 			'name' => 'Sidebar('.__( 'Post contents', 'bvII' ).')',
 			'id' => 'post-side-widget-area',
 			'description' => __( 'This widget area appears on the post contents page only.', 'bvII' ),
-			'before_widget' => '<div class="widget %2$s" id="%1$s">',
-			'after_widget' => '</div>',
-			'before_title' => '<h3 class="widget-title subSection-title">',
-			'after_title' => '</h3>',
+			'before_widget' => '<aside class="widget %2$s" id="%1$s">',
+			'after_widget' => '</aside>',
+			'before_title' => '<h1 class="widget-title subSection-title">',
+			'after_title' => '</h1>',
 		) );
 
 	// footer upper widget area
@@ -123,8 +123,8 @@ function bvII_widgets_init() {
 			'name' => __( 'Widget area of upper footer', 'bvII' ),
 			'id' => 'footer-upper-widget-1',
 			// 'description' => __( 'This widget area appears on the post contents page only.', 'bvII' ),
-			'before_widget' => '<div class="widget %2$s" id="%1$s">',
-			'after_widget' => '</div>',
+			'before_widget' => '<aside class="widget %2$s" id="%1$s">',
+			'after_widget' => '</aside>',
 			'before_title' => '<h3>',
 			'after_title' => '</h3>',
 		) );
@@ -135,8 +135,8 @@ function bvII_widgets_init() {
 			'name' => __( 'Footer widget area ', 'bvII' ).$i,
 			'id' => 'footer-widget-'.$i,
 			// 'description' => __( 'This widget area appears on the post contents page only.', 'bvII' ),
-			'before_widget' => '<div class="widget %2$s" id="%1$s">',
-			'after_widget' => '</div>',
+			'before_widget' => '<aside class="widget %2$s" id="%1$s">',
+			'after_widget' => '</aside>',
 			'before_title' => '<h3>',
 			'after_title' => '</h3>',
 		) );
