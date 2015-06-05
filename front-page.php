@@ -14,7 +14,7 @@
 $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 $post_loop = new WP_Query( array(
 'post_type' => 'post',
-'posts_per_page' => 5,
+'posts_per_page' => 10,
 ) ); ?>
 <?php if ($post_loop->have_posts()) : while ( $post_loop->have_posts() ) : $post_loop->the_post();?>
 <?php get_template_part('module_post__loop_item'); ?>
