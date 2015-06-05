@@ -8,7 +8,7 @@
 
 .shopBox { border-top: 1px solid #e5e5e5; background-color: #f9f9f9; }
 
-body { font-family: "メイリオ",Meiryo,"ＭＳ Ｐゴシック","Hiragino Kaku Gothic Pro","ヒラギノ角ゴ Pro W3",sans-serif; }
+body { font-family: "ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",Osaka,"ＭＳ Ｐゴシック","MS PGothic",sans-serif; }
 
 img { max-width: 100%; height: auto; }
 
@@ -84,15 +84,18 @@ ul.gMenu ul.sub-menu li li li a { padding-left: 4em; }
 /*-------------------------------------------*/
 .siteContent { padding: 3em 0 4em; }
 
-.site-main { padding-bottom: 3em; }
-.site-main p { font-size: 16px; line-height: 1.8em; }
-.site-main h2, .site-main h3, .site-main h4, .site-main h5 { margin: 1.4em 0 1.2em; }
-.site-main h2:first-child, .site-main h3:first-child, .site-main h4:first-child, .site-main h5:first-child { margin-top: 0; }
-.site-main h3 { border-bottom: 1px dotted #666; padding-bottom: 8px; }
-
 /*      site-main
 /*-------------------------------------------*/
-article header { border-bottom: 1px solid #e5e5e5; }
+.site-main { padding-bottom: 3em; }
+.site-main header { position: relative; border-bottom: 1px solid #e5e5e5; }
+.site-main h1:first-letter { color: #23877d; }
+.site-main p { font-size: 16px; line-height: 1.8em; }
+.site-main h1, .site-main h2, .site-main h3, .site-main h4, .site-main h5, .site-main h6 { font-family: "メイリオ",Meiryo,"ＭＳ Ｐゴシック","Hiragino Kaku Gothic Pro","ヒラギノ角ゴ Pro W3",sans-serif; }
+.site-main h2, .site-main h3, .site-main h4, .site-main h5, .site-main h6 { margin: 1.4em 0 1.2em; }
+.site-main h2:first-child, .site-main h3:first-child, .site-main h4:first-child, .site-main h5:first-child { margin-top: 0; }
+.site-main h3 { border-bottom: 1px dotted #666; padding-bottom: 8px; }
+.site-main ul { margin-top: 2em; margin-bottom: 1.5em; }
+.site-main li { margin-bottom: 0.5em; }
 
 .entry-meta { margin-bottom: 1em; padding-left: 3px; }
 .entry-meta .entry-meta-items { margin-right: 1em; }
@@ -105,6 +108,7 @@ article header { border-bottom: 1px solid #e5e5e5; }
 
 .page .entry-body { padding-top: 0; }
 
+.entry-tag { display: block; overflow: hidden; margin-bottom: 2em; }
 .entry-tag dl { margin-bottom: 0; }
 .entry-tag dt { display: block; overflow: hidden; float: left; background-color: #666; color: #fff; font-size: 10px; line-height: 1.1em; padding: 5px 10px; font-weight: lighter; margin-right: 10px; }
 .entry-tag dd { display: block; overflow: hidden; font-size: 12px; }
@@ -222,3 +226,4 @@ footer .copySection { border-top: 1px solid #e5e5e5; }
   .pager li.previous a:before { content: "«"; margin-right: 0.8em; }
   .pager li.next { float: right; }
   .pager li.next a:after { content: "»"; margin-left: 0.8em; } }
+#respond label { font-weight: lighter; }

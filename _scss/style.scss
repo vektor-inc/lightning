@@ -9,7 +9,7 @@ $border_primary : 1px solid #e5e5e5;
 $color_font_default : #464646;
 $color_key : #c00;
 
-body { font-family: "メイリオ",Meiryo,"ＭＳ Ｐゴシック","Hiragino Kaku Gothic Pro","ヒラギノ角ゴ Pro W3",sans-serif; }
+body { font-family:"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",Osaka,"ＭＳ Ｐゴシック","MS PGothic",sans-serif; }
 img { max-width: 100%;height:auto; }
 .btn { border-radius: 0; }
 .btn-default { background: none; }
@@ -118,23 +118,34 @@ ul.gMenu li:hover ul.sub-menu { display: block;background-color: #fff;box-shadow
 /* .siteContent
 /*-------------------------------------------*/
 .siteContent { padding:3em 0 4em;}
+
+/*      site-main
+/*-------------------------------------------*/
 .site-main { padding-bottom:3em;
+  header { position: relative;border-bottom:$border_primary; }
+  // header h1 { display: inline; }
+  // header:before { content:"";height:100%;display:block; overflow:hidden;border-left:1px solid #23877d ; position: absolute;left:-20px; }
+  h1:first-letter { color:#23877d; }
   p { font-size:16px;line-height: 1.8em; }
+  h1,
   h2,
   h3,
   h4,
-  h5 { margin:1.4em 0 1.2em; }
+  h5,
+  h6 { font-family: "メイリオ",Meiryo,"ＭＳ Ｐゴシック","Hiragino Kaku Gothic Pro","ヒラギノ角ゴ Pro W3",sans-serif; }
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 { margin:1.4em 0 1.2em; }
   h2:first-child,
   h3:first-child,
   h4:first-child,
   h5:first-child { margin-top:0; }
   h3 { border-bottom:1px dotted #666;padding-bottom:8px; }
+  ul { margin-top:2em;margin-bottom:1.5em;}
+  li { margin-bottom:0.5em; }
 }
-
-
-/*      site-main
-/*-------------------------------------------*/
-article header { border-bottom:$border_primary; }
 .entry-meta { margin-bottom:1em;padding-left:3px;
   .entry-meta-items { margin-right:1em; }
   .entry-meta-items-term { float:right;margin-right:0; }
@@ -151,7 +162,7 @@ h1.entry-title { font-size:26px; }
 }
 .entry-body { display:block; overflow:hidden;padding:2.5em 0; }
 .page .entry-body {padding-top:0; }
-.entry-tag {
+.entry-tag { display:block; overflow:hidden;margin-bottom:2em;
   dl { margin-bottom:0; }
   dt { display:block; overflow:hidden;float:left;background-color: #666;color:#fff; font-size:10px; line-height: 1.1em;padding: 5px 10px;font-weight:lighter;margin-right:10px; }
   dd { display:block; overflow:hidden;font-size:12px;
@@ -310,3 +321,5 @@ footer {
   a:after{ content:"»";margin-left:0.8em; }
 }
 } // @media (min-width: 768px){
+
+#respond label { font-weight: lighter; }
