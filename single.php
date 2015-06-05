@@ -11,8 +11,7 @@
 	<?php get_template_part('module_post__loop_item_postMeta');?>
 	<h1 class="entry-title"><?php the_title(); ?></h1>
 	</header>
-	<div class="row">
-	<div class="col-md-12">
+
 	<div class="entry-body">
 	<?php the_content();?>
 	</div><!-- [ /.entry-body ] -->
@@ -29,8 +28,6 @@
 	<?php comments_template( '', true ); ?>
 	<?php wp_link_pages( array( 'before' => '<div class="page-link">' . 'Pages:', 'after' => '</div>' ) ); ?>
 
-	</div><!-- [ /.col-md-12 ] -->
-	</div><!-- [ /.row ] -->
 </article>
 <?php endwhile;endif; ?>
 
