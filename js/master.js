@@ -25,7 +25,7 @@ jQuery('.carousel').carousel({
 /*	Offset header for admin bar
 /*----------------------------------------------------------*/
 function offset_header(){
-	var headerHeight = jQuery('header').height();
+	var headerHeight = jQuery('header.siteHeader').height();
 	jQuery('body').css("padding-top",headerHeight+"px");
 	if ( jQuery('body').hasClass('admin-bar') ){
 		var adminBarHeight = jQuery('#wpadminbar').height();
