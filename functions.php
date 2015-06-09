@@ -1,37 +1,4 @@
 <?php
-add_action( 'init', 'add_post_type_event', 0 );
-function add_post_type_event() {
-	register_post_type( 'event', // カスタム投稿タイプのスラッグ
-		array(
-			'labels' => array(
-				'name' => 'イベント情報',
-				'singular_name' => 'イベント情報'
-			),
-		'public' => true,
-		'menu_position' =>5,
-		'has_archive' => true,
-		'supports' => array('title','editor','excerpt','thumbnail','author')
-		)
-	);
-}
-add_action( 'init', 'add_custom_taxonomy_event', 0 );
-function add_custom_taxonomy_event() {
-	register_taxonomy(
-		'event-cat', // カテゴリーの識別子
-		'event', // 対象の投稿タイプ
-		array(
-			'hierarchical' => true,
-			'update_count_callback' => '_update_post_term_count',
-			'label' => 'イベントカテゴリー',
-			'singular_label' => 'イベント情報カテゴリー',
-			'public' => true,
-			'show_ui' => true,
-		)
-	);
-}
-
-
-
 /*-------------------------------------------*/
 /*	Theme setup
 /*-------------------------------------------*/
@@ -61,6 +28,9 @@ function bvII_theme_setup() {
 	register_nav_menus( array( 'Footer' => 'Footer Navigation', ) );
 
 	load_theme_textdomain('bvII', get_template_directory() . '/languages');
+
+	// Need .org themes
+	if ( ! isset( $content_width ) ) $content_width = 780;
 }
 
 add_action('wp_head','bvII_addJs');

@@ -17,7 +17,7 @@ body { font-family: "メイリオ",Meiryo,"ＭＳ Ｐゴシック","Hiragino Kak
 img { max-width: 100%;height:auto; }
 .sectionBox { padding-top:2em;padding-bottom:2em;display:block; overflow:hidden; }
 .nav li a { color:$color_font_default; }
-.btn { border-radius: 0; }
+// .btn { border-radius: 0; }
 .btn-default { background: none; }
 .screen-reader-text { display: none; }
 
@@ -106,8 +106,10 @@ ul.gMenu li:hover ul.sub-menu { display: block;background-color: #fff;box-shadow
 /* .page-header 
 /*-------------------------------------------*/
 .page-header { margin-top:0;margin-bottom:0;padding-bottom:0; background-color: $color_key; }
-.page-header__pageTitle { margin:30px 0 25px;font-size:32px;line-height: 1.1;color: #fff; }
-
+.page-header__pageTitle { margin:15px 0 10px;font-size:22px;line-height: 1.1;color: #fff; }
+@media (min-width: 768px){
+  .page-header__pageTitle { margin:30px 0 25px;font-size:32px; }
+}
 /*-------------------------------------------*/
 /* .breadSection
 /*-------------------------------------------*/
@@ -138,14 +140,16 @@ ul.gMenu li:hover ul.sub-menu { display: block;background-color: #fff;box-shadow
   p { font-size:16px;line-height: 1.8em;margin-bottom:1.2em; }
   ul,ol,dl { margin-top:2em;margin-bottom:1.5em;}
   li { margin-bottom:0.5em; }
+  .postList { margin-bottom:1.5em; }
 }
 h2 { background-color: #f5f5f5; padding:10px 15px 7px;border-radius: 3px;border-left:3px solid $color_key}
 h3,
 .subSection-title { padding-bottom:8px;position: relative;border-bottom:1px solid #ccc; }
 h3:after,
 .subSection-title:after { content:".";line-height: 0;display:block; overflow:hidden;position: absolute;bottom:-1px;width:30%;border-bottom:1px solid $color_key; }
-.entry-body h4 { background-color: #f5f5f5;padding:15px 15px 12px;border-radius: 3px;box-shadow:inset 1px 1px 0px 0px rgba(0,0,0,0.05); }
-h5 { color:$color_key;font-size:18px;border-bottom:$border_primary;padding-bottom:8px; }
+// .entry-body h4 { background-color: #f5f5f5;padding:15px 15px 12px;border-radius: 3px;box-shadow:inset 1px 1px 0px 0px rgba(0,0,0,0.05); }
+.entry-body h4 { color:$color_key; }
+h5 { color:$color_key;font-size:18px;padding:10px 0px 8px;border-top:$border_primary;border-bottom:$border_primary; }
 
 .entry-meta { margin-bottom:1em;padding-left:3px;
   .entry-meta-items { margin-right:1em; }
@@ -179,7 +183,7 @@ h1.entry-title { font-size:26px; }
 
 /*      .media(bootstrap)
 /*-------------------------------------------*/
-.media { border-bottom:$border_primary;padding:2em 0;
+.media { border-bottom:$border_primary;padding:2em 0;margin-top:0;
   // &:first-child { border-top:$border_primary; }
   .postList__thumbnail { width:160px;margin-bottom:0.5em;padding-right:30px; display:block; overflow:hidden;float:left;
     a { position: relative;display:block; overflow:hidden; }
@@ -299,7 +303,7 @@ footer {
 /*-------------------------------------------*/
 /* .archive
 /*-------------------------------------------*/
-.archive-title { margin-bottom:1.5em;margin-top:0;margin-bottom:15px; }
+.archive-header { margin-bottom:1em }
 .archive-meta { margin-bottom:2em; }
 
 /*-------------------------------------------*/

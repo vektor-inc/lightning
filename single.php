@@ -8,8 +8,8 @@
 <?php if (have_posts()) : while ( have_posts() ) : the_post();?>
 <article>
 	<header>
-	<h1 class="entry-title"><?php the_title(); ?></h1>
 	<?php get_template_part('module_post__loop_item_postMeta');?>
+	<h1 class="entry-title"><?php the_title(); ?></h1>
 	</header>
 
 	<div class="entry-body">

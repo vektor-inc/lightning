@@ -21,6 +21,7 @@ if ($top_slide_count) : ?>
 
             // Reset $top_slide_image_src
             $top_slide_image_src = '';
+            $top_slide_url = '';
 
             // If 1st slide no set, set default image.
             if ( $i <= 3 ){
@@ -37,7 +38,18 @@ if ($top_slide_count) : ?>
             $top_slide_title = ( isset($bvII_theme_options['top_slide_title_'.$i])) ? $bvII_theme_options['top_slide_title_'.$i] : '';
             if ( $top_slide_image_src ) { ?>
             <div class="item<?php if ($i == 1) echo ' active';?>">
+
+            <?php
+            if ( isset( $bvII_theme_options['top_slide_url_'.$i] ) && $bvII_theme_options['top_slide_url_'.$i] ): ?>
+                <a href="<?php echo esc_url( $bvII_theme_options['top_slide_url_'.$i] ); ?>">
+            <?php endif; ?>
+
             <img src="<?php echo esc_attr($top_slide_image_src); ?>" alt="<?php echo esc_attr($top_slide_title); ?>">
+
+            <?php
+            if ( isset( $bvII_theme_options['top_slide_url_'.$i] ) && $bvII_theme_options['top_slide_url_'.$i] ): ?></a><?php endif; 
+            ?>
+
             <!-- <div class="carousel-caption">
                 <h2>Title</h2>
                 <p>Description</p>

@@ -19,8 +19,6 @@ img { max-width: 100%; height: auto; }
 
 .nav li a { color: #464646; }
 
-.btn { border-radius: 0; }
-
 .btn-default { background: none; }
 
 .screen-reader-text { display: none; }
@@ -73,8 +71,9 @@ ul.gMenu ul.sub-menu li li li a { padding-left: 4em; }
 /*-------------------------------------------*/
 .page-header { margin-top: 0; margin-bottom: 0; padding-bottom: 0; background-color: #337ab7; }
 
-.page-header__pageTitle { margin: 30px 0 25px; font-size: 32px; line-height: 1.1; color: #fff; }
+.page-header__pageTitle { margin: 15px 0 10px; font-size: 22px; line-height: 1.1; color: #fff; }
 
+@media (min-width: 768px) { .page-header__pageTitle { margin: 30px 0 25px; font-size: 32px; } }
 /*-------------------------------------------*/
 /* .breadSection
 /*-------------------------------------------*/
@@ -97,6 +96,7 @@ ul.gMenu ul.sub-menu li li li a { padding-left: 4em; }
 .site-main p { font-size: 16px; line-height: 1.8em; margin-bottom: 1.2em; }
 .site-main ul, .site-main ol, .site-main dl { margin-top: 2em; margin-bottom: 1.5em; }
 .site-main li { margin-bottom: 0.5em; }
+.site-main .postList { margin-bottom: 1.5em; }
 
 h2 { background-color: #f5f5f5; padding: 10px 15px 7px; border-radius: 3px; border-left: 3px solid #337ab7; }
 
@@ -104,9 +104,9 @@ h3, .subSection-title { padding-bottom: 8px; position: relative; border-bottom: 
 
 h3:after, .subSection-title:after { content: "."; line-height: 0; display: block; overflow: hidden; position: absolute; bottom: -1px; width: 30%; border-bottom: 1px solid #337ab7; }
 
-.entry-body h4 { background-color: #f5f5f5; padding: 15px 15px 12px; border-radius: 3px; box-shadow: inset 1px 1px 0px 0px rgba(0, 0, 0, 0.05); }
+.entry-body h4 { color: #337ab7; }
 
-h5 { color: #337ab7; font-size: 18px; border-bottom: 1px solid #e5e5e5; padding-bottom: 8px; }
+h5 { color: #337ab7; font-size: 18px; padding: 10px 0px 8px; border-top: 1px solid #e5e5e5; border-bottom: 1px solid #e5e5e5; }
 
 .entry-meta { margin-bottom: 1em; padding-left: 3px; }
 .entry-meta .entry-meta-items { margin-right: 1em; }
@@ -131,7 +131,7 @@ h5 { color: #337ab7; font-size: 18px; border-bottom: 1px solid #e5e5e5; padding-
 
 /*      .media(bootstrap)
 /*-------------------------------------------*/
-.media { border-bottom: 1px solid #e5e5e5; padding: 2em 0; }
+.media { border-bottom: 1px solid #e5e5e5; padding: 2em 0; margin-top: 0; }
 .media .postList__thumbnail { width: 160px; margin-bottom: 0.5em; padding-right: 30px; display: block; overflow: hidden; float: left; }
 .media .postList__thumbnail a { position: relative; display: block; overflow: hidden; }
 .media .postList__thumbnail img { width: 100%; height: auto; }
@@ -216,7 +216,7 @@ footer .copySection { border-top: 1px solid #e5e5e5; }
 /*-------------------------------------------*/
 /* .archive
 /*-------------------------------------------*/
-.archive-title { margin-bottom: 1.5em; margin-top: 0; margin-bottom: 15px; }
+.archive-header { margin-bottom: 1.5em; }
 
 .archive-meta { margin-bottom: 2em; }
 

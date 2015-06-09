@@ -13,6 +13,7 @@
 ?>
 
 <div class="media">
+	<?php if ( has_post_thumbnail()) :?>
 	<div class="media-left postList__thumbnail">
 		<a href="<?php the_permalink(); ?>">
 		<!--
@@ -23,6 +24,7 @@
 		the_post_thumbnail('thumbnail',$attr); ?>
 		</a>
 	</div>
+	<?php endif; ?>
 	<div class="media-body">
 		<?php get_template_part('module_post__loop_item_postMeta');?>
 		<h4 class="media-heading"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>

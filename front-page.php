@@ -8,8 +8,8 @@
             </div>
         </div>
     -->
-        <div class="row sectionBox">
-            <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-12 postList">
             <?php
 $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 $post_loop = new WP_Query( array(
@@ -20,8 +20,6 @@ $post_loop = new WP_Query( array(
 <?php get_template_part('module_post__loop_item'); ?>
 <?php endwhile;endif; ?>
             </div>
-        </div>
-        <div class="row ">
             <div class="col-md-12">
                 <a href="/blog" class="pull-right btn btn-default">More</a>
             </div>

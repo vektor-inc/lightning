@@ -13,7 +13,7 @@
 <?php
 
 $page_for_posts = bvII_get_page_for_posts();
-if ( $page_for_posts['post_top_use'] ) {
+// if ( $page_for_posts['post_top_use'] ) {
 	$taxonomies = get_the_taxonomies();
 	if ($taxonomies):
 		// get $taxonomy name
@@ -23,7 +23,7 @@ if ( $page_for_posts['post_top_use'] ) {
 		$term_name	= esc_html($terms[0]->name);
 		echo '<span class="entry-meta-items entry-meta-items-term"><a href="'.$term_url.'" class="btn btn-xs btn-primary">'.$term_name.'</a></span>';
 	endif;
-} // if ( $page_for_posts['post_top_use'] ) {
+//} // if ( $page_for_posts['post_top_use'] ) {
 
 ?>
 </div>

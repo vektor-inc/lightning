@@ -49,7 +49,7 @@
     </div>
     <div class="sectionBox copySection">
         <div class="row">
-            <div class="col-md-12 text-center">Copyright © <?php echo get_bloginfo('name'); ?> All Rights Reserved.</div>
+            <div class="col-md-12 text-center">Copyright &copy; <?php echo get_bloginfo('name'); ?> All Rights Reserved.</div>
         </div>
     </div>
 </footer>

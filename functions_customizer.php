@@ -88,7 +88,7 @@ function bvII_customize_register($wp_customize) {
 		'settings' => 'bvII_theme_options[top_slide_count]',
 		'type' => 'text',
 		'priority' => 601,
-		'description' => __('If you change this count,please save & reload this page.'),
+		'description' => __('If you change this count,please save & reload this page.', 'bvII'),
 		) ) );
 
 	// slide image
@@ -115,6 +115,11 @@ function bvII_customize_register($wp_customize) {
 	        'type'           => 'option',
 	        'capability'     => 'edit_theme_options',
 	    	) );
+		$wp_customize->add_setting( 'bvII_theme_options[top_slide_url_'.$i.']',	array(
+			'default' => '',
+			'type'=> 'option',
+			'capability' => 'edit_theme_options'
+			) );
 
 	    // Add control
 		$priority = $priority + 1;
@@ -122,6 +127,15 @@ function bvII_customize_register($wp_customize) {
 			'label'     => __('Slide image title', 'bvII theme-customizer', 'bvII').' '.$i,
 			'section'  => 'bvII_slide',
 			'settings' => 'bvII_theme_options[top_slide_title_'.$i.']',
+			'type' => 'text',
+			'priority' => $priority,
+			) );
+
+		$priority = $priority + 1;
+		$wp_customize->add_control( 'top_slide_url_'.$i, array(
+			'label'     => __('Slide image url', 'bvII theme-customizer', 'bvII').' '.$i,
+			'section'  => 'bvII_slide',
+			'settings' => 'bvII_theme_options[top_slide_url_'.$i.']',
 			'type' => 'text',
 			'priority' => $priority,
 			) );
@@ -137,6 +151,8 @@ function bvII_customize_register($wp_customize) {
 				'priority'  => $priority,
 			)
 		) );
+
+
 		// Slide title
 
         $i++;
