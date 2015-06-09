@@ -25,7 +25,7 @@ $post_loop = new WP_Query( array(
 
 <aside class="widget widget_categories">
 <nav class="localNav">
-<h1 class="subSection-title">カテゴリー</h1>
+<h1 class="subSection-title"><?php _e('Category', 'bvII');?></h1>
 <ul>
   <?php wp_list_categories('title_li='); ?> 
 </ul>
@@ -34,7 +34,7 @@ $post_loop = new WP_Query( array(
 
 <aside class="widget widget_archive">
 <nav class="localNav">
-<h1 class="subSection-title">アーカイブ</h1>
+<h1 class="subSection-title"><?php _e('Archive', 'bvII');?></h1>
 <ul>
   <?php
   $args = array(

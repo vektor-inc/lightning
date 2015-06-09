@@ -6,7 +6,7 @@
 <div class="col-md-8">
 <main class="site-main" id="main" role="main">
 <?php if (have_posts()) : while ( have_posts() ) : the_post();?>
-<article>
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header>
 	<?php get_template_part('module_post__loop_item_postMeta');?>
 	<h1 class="entry-title"><?php the_title(); ?></h1>
