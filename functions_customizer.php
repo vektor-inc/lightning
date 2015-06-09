@@ -18,6 +18,7 @@ function bvII_customize_register($wp_customize) {
         }
     }
 
+    /*-------------------------------------------*/
 	/*	Design setting
 	/*-------------------------------------------*/
     $wp_customize->add_section( 'bvII_design', array(
@@ -28,19 +29,22 @@ function bvII_customize_register($wp_customize) {
     // Add setting
 
     $wp_customize->add_setting( 'bvII_theme_options[head_logo]', array(
-        'default'		=> '',
-        'type'			=> 'option',
-        'capability'	=> 'edit_theme_options',
+        'default'			=> '',
+        'type'				=> 'option',
+        'capability'		=> 'edit_theme_options',
+        'sanitize_callback' => 'esc_url_raw',
     ) );
 	$wp_customize->add_setting( 'bvII_theme_options[color_key]', array(
-		'default'		=> '#337ab7',
-		'type'			=> 'option',
-		'capability'	=> 'edit_theme_options',
+		'default'			=> '#337ab7',
+		'type'				=> 'option',
+		'capability'		=> 'edit_theme_options',
+		'sanitize_callback' => 'sanitize_hex_color',
 	) );
 	$wp_customize->add_setting( 'bvII_theme_options[color_key_dark]', array(
-		'default'		=> '#2e6da4',
-		'type'			=> 'option',
-		'capability'	=> 'edit_theme_options',
+		'default'			=> '#2e6da4',
+		'type'				=> 'option',
+		'capability'		=> 'edit_theme_options',
+		'sanitize_callback' => 'sanitize_hex_color',
 	) );
 
 	// Create section UI
@@ -69,6 +73,7 @@ function bvII_customize_register($wp_customize) {
 		'priority' => 503,
 	)));
 
+	/*-------------------------------------------*/
 	/*	Top slide show
 	/*-------------------------------------------*/
     $wp_customize->add_section( 'bvII_slide', array(
@@ -78,9 +83,10 @@ function bvII_customize_register($wp_customize) {
 
     // slide count
 	$wp_customize->add_setting( 'bvII_theme_options[top_slide_count]',	array(
-		'default' => 3,
-		'type'=> 'option',
-		'capability' => 'edit_theme_options'
+		'default' 			=> 3,
+		'type'				=> 'option',
+		'capability' 		=> 'edit_theme_options',
+		'sanitize_callback' => 'sanitize_text_field',
 		) );
 	$wp_customize->add_control( new Custom_Text_Control( $wp_customize, 'slide_count',array(
 		'label'     => __('Slide image count', 'bvII theme-customizer', 'bvII'),
@@ -106,19 +112,22 @@ function bvII_customize_register($wp_customize) {
 
     	// Add setting
 		$wp_customize->add_setting( 'bvII_theme_options[top_slide_title_'.$i.']',	array(
-			'default' => '',
-			'type'=> 'option',
-			'capability' => 'edit_theme_options'
+			'default' 			=> '',
+			'type'				=> 'option',
+			'capability' 		=> 'edit_theme_options',
+			'sanitize_callback' => 'sanitize_text_field',
 			) );
 	    $wp_customize->add_setting( 'bvII_theme_options[top_slide_image_'.$i.']',  array(
-	        'default'        => $default_image,
-	        'type'           => 'option',
-	        'capability'     => 'edit_theme_options',
+	        'default'        	=> $default_image,
+	        'type'           	=> 'option',
+	        'capability'    	=> 'edit_theme_options',
+	        'sanitize_callback' => 'esc_url_raw',
 	    	) );
 		$wp_customize->add_setting( 'bvII_theme_options[top_slide_url_'.$i.']',	array(
-			'default' => '',
-			'type'=> 'option',
-			'capability' => 'edit_theme_options'
+			'default' 			=> '',
+			'type'				=> 'option',
+			'capability' 		=> 'edit_theme_options',
+			'sanitize_callback' => 'esc_url_raw',
 			) );
 
 	    // Add control
@@ -151,7 +160,6 @@ function bvII_customize_register($wp_customize) {
 				'priority'  => $priority,
 			)
 		) );
-
 
 		// Slide title
 
