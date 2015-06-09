@@ -39,7 +39,15 @@ if ( $page_for_posts['post_top_use'] || get_post_type() != 'post' ) {
 <?php get_template_part('module_post__loop_item'); ?>
 <?php endwhile;?>
 </div>
-<?php bvII_pagination(); ?>
+<?php
+the_posts_pagination(array (
+                        'mid_size'  => 1,
+                        'prev_text' => __ ( '&laquo;', 'bvII' ),
+                        'next_text' => __ ( '&raquo;', 'bvII' ),
+                        'type'      => 'list',
+                        'before_page_number' => '<span class="meta-nav screen-reader-text">' . __ ( 'Page', 'bvII' ) . ' </span>'
+                    ) ); 
+?>
 <?php else: ?>
 <div class="well"><p><?php _e('No posts.','bvII');?></p></div>
 <?php endif; // have_post() ?>
