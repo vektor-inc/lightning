@@ -30,7 +30,8 @@ function bvII_theme_setup() {
 	load_theme_textdomain('bvII', get_template_directory() . '/languages');
 
 	/*-------------------------------------------*/
-	// Need .org themes
+	/*	Set content width
+	/* 	(Auto set up to media max with.)
 	/*-------------------------------------------*/
 	if ( ! isset( $content_width ) ) $content_width = 780;
 

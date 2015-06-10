@@ -29,9 +29,11 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand headLogo" href="<?php echo home_url(); ?>"><span>
+            <h1 class="navbar-brand headLogo">
+            <a href="<?php echo home_url(); ?>"><span>
             <?php bvII_print_headlogo(); ?>
             </span></a>
+            </h1>
         </div>
 
         <div class="collapse navbar-collapse" id="navbar-ex-collapse">
