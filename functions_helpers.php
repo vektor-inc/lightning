@@ -42,6 +42,7 @@ function bvII_get_page_for_posts(){
 /*	Chack post type info
 /*-------------------------------------------*/
 function bvII_get_post_type(){
+	// Check use post top page
 	$page_for_posts = bvII_get_page_for_posts();
 
 	// Get post type slug
@@ -55,6 +56,9 @@ function bvII_get_post_type(){
 	  	// Case of tax archive and no posts
 		$taxonomy = get_queried_object()->taxonomy;
 		$postType['slug'] = get_taxonomy( $taxonomy )->object_type[0];	  	
+	  } elseif( is_home() && $page_for_posts['post_top_use'] ){
+	  	// This is necessary that when no posts.
+	  	$postType['slug'] = 'post';
 	  }
 	}
 

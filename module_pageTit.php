@@ -32,16 +32,16 @@ $pageTitHtml_after .= '</div></div></div></div><!-- [ /.page-header ] -->'."\n";
 /*-------------------------------------------*/
 $pageTitle = '';
 if ( is_category() || is_tag() || is_tax() || is_home() || is_author() || is_archive() || is_single() ) {
-	$bvII_page_for_posts = bvII_get_page_for_posts();
+	$page_for_posts = bvII_get_page_for_posts();
 
 	// Case of use post top page
-	if ( $bvII_page_for_posts['post_top_use'] ) {
+	if ( $page_for_posts['post_top_use'] ) {
 		// get post type
 		$postType = get_post_type();
 		// Case of post content
-		// It is nesessary to is_category() & is_tag() when no posts.
-		if ( $postType == 'post' || is_category() || is_tag() ) {
-			$pageTitle = $bvII_page_for_posts['post_top_name'];
+		// It is nesessary to is_category() & is_tag() & is_home() when no posts.
+		if ( $postType == 'post' || is_category() || is_tag() || is_home() ) {
+			$pageTitle = $page_for_posts['post_top_name'];
 		// If post type isn't post,  get post type name.
 		} else {
 			// Can get post_type sucusessfully
