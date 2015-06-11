@@ -35,6 +35,11 @@ function bvII_theme_setup() {
 	/*-------------------------------------------*/
 	if ( ! isset( $content_width ) ) $content_width = 780;
 
+	/*-------------------------------------------*/
+	/*	Admin page _ Add editor css
+	/*-------------------------------------------*/
+	add_editor_style('/css/editor.css');
+
 	add_theme_support( 'automatic-feed-links' );
 }
 

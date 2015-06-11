@@ -9,9 +9,83 @@
 /*-------------------------------------------*/
 /* common style
 /*-------------------------------------------*/
+/* headding
+/*-------------------------------------------*/
+/* images
+/*-------------------------------------------*/
+/* other class
+/*-------------------------------------------*/
+/*-------------------------------------------*/
+/* common style
+/*-------------------------------------------*/
 body { font-family: "メイリオ",Meiryo,"ＭＳ Ｐゴシック","Hiragino Kaku Gothic Pro","ヒラギノ角ゴ Pro W3",sans-serif; }
 
 img { max-width: 100%; height: auto; }
+
+p { font-size: 16px; line-height: 1.8em; margin-bottom: 1.2em; }
+
+ul, ol, dl { margin-top: 2em; margin-bottom: 1.5em; }
+
+li { margin-bottom: 0.5em; }
+
+/*-------------------------------------------*/
+/* headding
+/*-------------------------------------------*/
+h2, h3, h4, h5, h6 { margin: 1.4em 0 1.2em; }
+
+h2:first-child, h3:first-child, h4:first-child, h5:first-child { margin-top: 0; }
+
+h2 { background-color: #f5f5f5; padding: 10px 15px 7px; border-radius: 3px; border-left: 3px solid #337ab7; }
+
+h3, .subSection-title { padding-bottom: 8px; position: relative; border-bottom: 1px solid #ccc; }
+
+h3:after, .subSection-title:after { content: "."; line-height: 0; display: block; overflow: hidden; position: absolute; bottom: -1px; width: 30%; border-bottom: 1px solid #337ab7; }
+
+.entry-body h4 { color: #337ab7; }
+
+h5 { color: #337ab7; font-size: 18px; padding: 10px 0px 8px; border-top: 1px solid #e5e5e5; border-bottom: 1px solid #e5e5e5; }
+
+/*-------------------------------------------*/
+/* images
+/*-------------------------------------------*/
+.attachment img { max-width: 100%; }
+
+.alignleft, img.alignleft { display: inline; float: left; margin-right: 20px; margin-top: 4px; }
+
+.alignright, img.alignright { display: inline; float: right; margin-left: 20px; margin-top: 4px; }
+
+.aligncenter, img.aligncenter { clear: both; display: block; margin-left: auto; margin-right: auto; }
+
+img.alignleft, img.alignright, img.aligncenter { margin-bottom: 12px; }
+
+.wp-caption { background: #f1f1f1; line-height: 18px; margin-bottom: 20px; padding: 0 0 5px; text-align: center; border: 1px solid #e5e5e5; max-width: 100% !important; }
+
+.wp-caption img { margin: 5px 0 2px; max-width: 95% !important; height: auto !important; }
+
+.wp-caption p.wp-caption-text { color: #888; font-size: 12px; margin: 5px; }
+
+.wp-smiley { margin: 0; }
+
+.gallery { margin: 0 auto 18px; }
+
+.gallery .gallery-item { float: left; margin-top: 0; text-align: center; width: 33%; }
+
+.gallery img { border: 2px solid #cfcfcf; }
+
+.gallery .gallery-caption { color: #888; font-size: 12px; margin: 0 0 12px; }
+
+.gallery dl { margin: 0; }
+
+.gallery img { border: 10px solid #f1f1f1; }
+
+.gallery br + br { display: none; }
+
+.attachment img { /* single attachment images should be centered */ display: block; margin: 0 auto; }
+
+/*-------------------------------------------*/
+/* other class
+/*-------------------------------------------*/
+.well p:last-child { margin-bottom: 0; }
 
 .sectionBox { padding-top: 2em; padding-bottom: 2em; display: block; overflow: hidden; }
 
@@ -90,22 +164,7 @@ ul.gMenu ul.sub-menu li li li a { padding-left: 4em; }
 .site-main header { position: relative; border-bottom: 1px solid #e5e5e5; }
 .site-main header h1 { margin-top: 0; }
 .site-main header h1.entry-title:first-letter { color: #337ab7; }
-.site-main h2, .site-main h3, .site-main h4, .site-main h5, .site-main h6 { margin: 1.4em 0 1.2em; }
-.site-main h2:first-child, .site-main h3:first-child, .site-main h4:first-child, .site-main h5:first-child { margin-top: 0; }
-.site-main p { font-size: 16px; line-height: 1.8em; margin-bottom: 1.2em; }
-.site-main ul, .site-main ol, .site-main dl { margin-top: 2em; margin-bottom: 1.5em; }
-.site-main li { margin-bottom: 0.5em; }
 .site-main .postList { margin-bottom: 1.5em; }
-
-h2 { background-color: #f5f5f5; padding: 10px 15px 7px; border-radius: 3px; border-left: 3px solid #337ab7; }
-
-h3, .subSection-title { padding-bottom: 8px; position: relative; border-bottom: 1px solid #ccc; }
-
-h3:after, .subSection-title:after { content: "."; line-height: 0; display: block; overflow: hidden; position: absolute; bottom: -1px; width: 30%; border-bottom: 1px solid #337ab7; }
-
-.entry-body h4 { color: #337ab7; }
-
-h5 { color: #337ab7; font-size: 18px; padding: 10px 0px 8px; border-top: 1px solid #e5e5e5; border-bottom: 1px solid #e5e5e5; }
 
 .entry-meta { margin-bottom: 1em; padding-left: 3px; }
 .entry-meta .entry-meta-items { margin-right: 1em; }
@@ -126,8 +185,6 @@ h5 { color: #337ab7; font-size: 18px; padding: 10px 0px 8px; border-top: 1px sol
 .entry-tag dd a:before { font-family: FontAwesome; content: "\f02b"; margin-right: 5px; }
 .entry-tag dd a:hover { text-decoration: none; }
 
-.well p:last-child { margin-bottom: 0; }
-
 /*      .media(bootstrap)
 /*-------------------------------------------*/
 .media { border-bottom: 1px solid #e5e5e5; padding: 2em 0; margin-top: 0; }
@@ -142,42 +199,6 @@ h5 { color: #337ab7; font-size: 18px; padding: 10px 0px 8px; border-top: 1px sol
 @media (max-width: 767px) { .media .postList__thumbnail { padding-right: 20px; }
   .media .media-body .media-heading { font-size: 1.2em; line-height: 1.3em; margin-bottom: 0.5em; } }
 @media (max-width: 500px) { .media .postList__thumbnail { width: 100px; } }
-/*      images
-/*-------------------------------------------*/
-.attachment img { max-width: 100%; }
-
-.alignleft, img.alignleft { display: inline; float: left; margin-right: 20px; margin-top: 4px; }
-
-.alignright, img.alignright { display: inline; float: right; margin-left: 20px; margin-top: 4px; }
-
-.aligncenter, img.aligncenter { clear: both; display: block; margin-left: auto; margin-right: auto; }
-
-img.alignleft, img.alignright, img.aligncenter { margin-bottom: 12px; }
-
-.wp-caption { background: #f1f1f1; line-height: 18px; margin-bottom: 20px; padding: 0 0 5px; text-align: center; border: 1px solid #e5e5e5; max-width: 100% !important; }
-
-.wp-caption img { margin: 5px 0 2px; max-width: 95% !important; height: auto !important; }
-
-.wp-caption p.wp-caption-text { color: #888; font-size: 12px; margin: 5px; }
-
-.wp-smiley { margin: 0; }
-
-.gallery { margin: 0 auto 18px; }
-
-.gallery .gallery-item { float: left; margin-top: 0; text-align: center; width: 33%; }
-
-.gallery img { border: 2px solid #cfcfcf; }
-
-.gallery .gallery-caption { color: #888; font-size: 12px; margin: 0 0 12px; }
-
-.gallery dl { margin: 0; }
-
-.gallery img { border: 10px solid #f1f1f1; }
-
-.gallery br + br { display: none; }
-
-.attachment img { /* single attachment images should be centered */ display: block; margin: 0 auto; }
-
 /*-------------------------------------------*/
 /* .page-numbers
 /*-------------------------------------------*/
