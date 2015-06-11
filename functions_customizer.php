@@ -179,13 +179,13 @@ function bvII_print_css(){
 	$color_key_dark = esc_html($options['color_key_dark']);
 	?>
 <style type="text/css">
-a { color: <?php echo $color_key_dark;?> ; }
-a:hover { color: <?php echo $color_key;?> ; }
-h1:first-letter { color:$color_key; }
-h2 { border-left-color:$color_key}
+a { color:<?php echo $color_key_dark;?> ; }
+a:hover { color:<?php echo $color_key;?> ; }
+h1.entry-title:first-letter { color:<?php echo $color_key;?>; }
+h2 { border-left-color:<?php echo $color_key;?>}
 h3:after,
 .subSection-title:after { border-bottom-color:1px solid $color_key; }
-h5 { color:$color_key; }
+h5 { color:<?php echo $color_key;?>; }
 
 .gMenu a:hover,
 .gMenu .current-menu-item a {  }
