@@ -2624,6 +2624,7 @@ img.alignleft, img.alignright, img.aligncenter { margin-bottom: 12px; }
 /*-------------------------------------------*/
 .siteHeader { background-color: #fff; box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1); }
 .siteHeader .headLogo.navbar-brand { height: auto; padding: 0; margin: 0; }
+.siteHeader .headLogo.navbar-brand a { color: #333; }
 .siteHeader .headLogo.navbar-brand img { max-height: 45px; }
 .siteHeader .navbar-toggle { border: 1px solid #999; }
 .siteHeader .navbar-toggle .icon-bar { border: 1px solid #666; }
@@ -2690,8 +2691,9 @@ ul.gMenu ul.sub-menu li li li a { padding-left: 4em; }
 .site-main { padding-bottom: 3em; }
 .site-main header { position: relative; border-bottom: 1px solid #e5e5e5; }
 .site-main header h1 { margin-top: 0; }
-.site-main header h1.entry-title:first-letter { color: #337ab7; }
 .site-main .postList { margin-bottom: 1.5em; }
+
+h1.entry-title:first-letter { color: #337ab7; }
 
 .entry-meta { margin-bottom: 1em; padding-left: 3px; }
 .entry-meta .entry-meta-items { margin-right: 1em; }
