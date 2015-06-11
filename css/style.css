@@ -2675,7 +2675,8 @@ ul.gMenu ul.sub-menu li li li a { padding-left: 4em; }
 /* .breadSection
 /*-------------------------------------------*/
 .breadSection { border-bottom: 1px solid #e5e5e5; }
-.breadSection .breadcrumb { margin-bottom: 0; }
+.breadSection .breadcrumb { margin-top: 0; margin-bottom: 0; }
+.breadSection .breadcrumb li { margin-bottom: 0; }
 
 /*-------------------------------------------*/
 /* .siteContent

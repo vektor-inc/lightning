@@ -110,7 +110,9 @@ ul.gMenu li:hover ul.sub-menu { display: block;background-color: #fff;box-shadow
 /* .breadSection
 /*-------------------------------------------*/
 .breadSection { border-bottom:$border_primary;
-  .breadcrumb { margin-bottom:0; }
+  .breadcrumb { margin-top:0;margin-bottom:0;
+    li { margin-bottom:0; }
+  }
 }
 
 /*-------------------------------------------*/
