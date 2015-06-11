@@ -2639,6 +2639,8 @@ img.alignleft, img.alignright, img.aligncenter { margin-bottom: 12px; }
 /*-------------------------------------------*/
 /* nav
 /*-------------------------------------------*/
+nav ul { margin-top: 0; }
+nav li { margin-bottom: 0; }
 nav i { margin-right: 0.5rem; }
 
 ul.gMenu a { display: block; overflow: hidden; border-bottom: 1px solid #e5e5e5; color: #666; text-decoration: none; }
@@ -2651,7 +2653,7 @@ ul.gMenu ul.sub-menu li li li a { padding-left: 4em; }
 @media (max-width: 767px) { ul.gMenu { border-top: 1px solid #e5e5e5; margin-bottom: 0; }
   ul.gMenu a:hover, ul.gMenu a:active, ul.gMenu .current-menu-item a { background-color: #fcfcfc; } }
 @media (min-width: 768px) { ul.gMenu { margin-top: 5px; }
-  ul.gMenu a:hover, ul.gMenu a:active, ul.gMenu .current-menu-item a { background-color: #fff; color: #337ab7; }
+  ul.gMenu a:hover, ul.gMenu a:active { background-color: #fff; color: #337ab7; }
   ul.gMenu > li:first-child { border-left: 1px dotted #ccc; }
   ul.gMenu > li > a { padding: 10px 2.5em 5px; border-bottom: none; border-right: 1px dotted #ccc; }
   ul.gMenu > li > a:hover:after, ul.gMenu > li.current-menu-item > a:after, ul.gMenu > li.current_page_parent > a:after, ul.gMenu > li.current-menu-ancestor > a:after, ul.gMenu > li.current_page_ancestor > a:after { content: "."; line-height: 0; border-bottom: 1px solid #337ab7; bottom: -1px; display: block; overflow: hidden; }

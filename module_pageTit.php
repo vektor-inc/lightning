@@ -86,7 +86,7 @@ $pageTitle = apply_filters( 'bvII_pageTitCustom', $pageTitle );
 /*	print
 /*-------------------------------------------*/
 $pageTitHtml = $pageTitHtml_before;
-// 特定のダグのみ許可
+// allow tags
 $allowed_html = array(
     'i' => array(
     		'class' => array (),
