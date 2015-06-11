@@ -187,8 +187,7 @@ h3:after,
 .subSection-title:after { border-bottom-color:1px solid $color_key; }
 h5 { color:<?php echo $color_key;?>; }
 
-.gMenu a:hover,
-.gMenu .current-menu-item a {  }
+ul.gMenu a:hover { color:<?php echo $color_key;?>; }
 .page-header { background-color:<?php echo $color_key;?>; }
 .btn-default { border-color:<?php echo $color_key;?>;color:<?php echo $color_key;?>;}
 .btn-default:hover { border-color:<?php echo $color_key;?>;background-color: <?php echo $color_key;?>; color:#fff; }
@@ -199,5 +198,9 @@ ul.page-numbers li span.page-numbers.current { background-color:<?php echo $colo
 .pager li > a { border-color:<?php echo $color_key;?>;color:<?php echo $color_key;?>;}
 .pager li > a:hover { background-color:<?php echo $color_key;?>;color:#fff;}
 footer { border-top-color:<?php echo $color_key	;?> }
+
+@media (min-width: 768px){
+  ul.gMenu > li > a:hover:after, ul.gMenu > li.current-menu-item > a:after, ul.gMenu > li.current_page_parent > a:after, ul.gMenu > li.current-menu-ancestor > a:after, ul.gMenu > li.current_page_ancestor > a:after { border-bottom-color: <?php echo $color_key ;?> }
+} /* @media (min-width: 768px) */
 </style>
 <?php }

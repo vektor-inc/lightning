@@ -3,7 +3,6 @@
 // @import "../bootstrap/css/bootstrap";
 @import "reset_bootstrap";
 @import "nav_base";
-@import "gd";
 
 $border_primary : 1px solid #e5e5e5; 
 $color_font_default : #464646;
@@ -37,6 +36,7 @@ img { max-width: 100%;height:auto; }
 */
 @media (max-width: 767px){
 .siteHeader {
+  .headLogo.navbar-brand { padding:0 15px; }
   .container { padding-top:5px;padding-bottom:5px; }
 }
 }// @media (max-width: 767px){
@@ -76,7 +76,7 @@ ul.gMenu {
 ul.gMenu { margin-top:5px;
   a:hover,
   a:active,
-  .current-menu-item a { background-color:#fff; }
+  .current-menu-item a { background-color:#fff;color: $color_key; }
   & >li { 
     &:first-child { border-left:1px dotted #ccc; }
     & > a { padding:10px 2.5em 5px;border-bottom:none;border-right:1px dotted #ccc;; }
@@ -85,7 +85,7 @@ ul.gMenu { margin-top:5px;
   & > li.current-menu-item > a:after,
   & > li.current_page_parent > a:after,
   & > li.current-menu-ancestor > a:after,
-  & > li.current_page_ancestor > a:after { content:".";line-height:0;border-bottom:1px solid #c00; bottom:-1px;display:block; overflow:hidden; }
+  & > li.current_page_ancestor > a:after { content:".";line-height:0;border-bottom:1px solid $color_key; bottom:-1px;display:block; overflow:hidden; }
 }
 ul.gMenu ul.sub-menu { position: absolute;display:none; }
 ul.gMenu li:hover ul.sub-menu { display: block;background-color: #fff;box-shadow:1px 1px 3px rgba(0,0,0,0.2);
