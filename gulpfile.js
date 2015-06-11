@@ -8,7 +8,7 @@ var concat = require('gulp-concat');
 // js最小化
 var jsmin = require('gulp-jsmin');
 // エラーでも監視を続行させる
-var plumber = require("gulp-plumber");
+var plumber = require('gulp-plumber');
 // sudo npm install gulp.spritesmith --save-dev
 var spritesmith = require('gulp.spritesmith');
 // http://blog.e-riverstyle.com/2014/02/gulpspritesmithcss-spritegulp.html
@@ -21,6 +21,12 @@ var spritesmith = require('gulp.spritesmith');
 //   .pipe(rename({suffix: '.min'}))
 //   .pipe(gulp.dest('css'));
 // });
+
+gulp.task( 'copy', function() {
+    gulp.src( './bootstrap/css/bootstrap.min.css'  )
+    .pipe(rename({prefix: "_",extname: ".scss"})) // 拡張子をscssに
+    .pipe( gulp.dest( './_scss/' ) ); // _scss ディレクトリに保存
+} );
 
 // ファイル結合
 gulp.task('scripts', function() {
@@ -61,6 +67,7 @@ gulp.task('watch', function() {
     // gulp.watch('js/*.js', ['scripts']);
     gulp.watch('js/master.js', ['scripts']);
     gulp.watch('js/all.js', ['jsmin']);
+    gulp.watch('_scss/style.scss', ['copy']);
 });
 
 // gulp.task('default', ['scripts','watch','sprite']);
