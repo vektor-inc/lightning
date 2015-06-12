@@ -12,7 +12,7 @@
 
             <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
             <div class="entry-body">
-            <?php the_content(); ?>
+                <?php the_content(); ?>
             </div>
             <?php wp_link_pages( array( 'before' => '<div class="page-link">' . 'Pages:', 'after' => '</div>' ) ); ?>
              </article><!-- [ /#post-<?php the_ID(); ?> ] -->

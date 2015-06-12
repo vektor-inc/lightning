@@ -2771,9 +2771,7 @@ footer .copySection { border-top: 1px solid #e5e5e5; }
 /*-------------------------------------------*/
 .carousel-inner > .item > a > img, .carousel-inner > .item > img { width: 100%; height: auto; }
 
-.topConcept { background-color: #f5f5f5; }
-
-.lead-small { line-height: 2em; }
+.sticky { display: block; overflow: hidden; padding: 1em; background-color: #f5f5f5; }
 
 /*-------------------------------------------*/
 /* .archive
