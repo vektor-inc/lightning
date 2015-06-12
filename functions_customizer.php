@@ -184,7 +184,6 @@ h1.entry-title:first-letter { color:<?php echo $color_key;?>; }
 h2 { border-left-color:<?php echo $color_key;?>}
 h3:after,
 .subSection-title:after { border-bottom-color:<?php echo $color_key; ?>; }
-h5 { color:<?php echo $color_key;?>; }
 
 ul.gMenu a:hover { color:<?php echo $color_key;?>; }
 .page-header { background-color:<?php echo $color_key;?>; }

@@ -2548,9 +2548,19 @@ img { max-width: 100%; height: auto; }
 
 p { font-size: 16px; line-height: 1.8em; margin-bottom: 1.2em; }
 
-ul, ol, dl { margin-top: 2em; margin-bottom: 1.5em; }
+em { font-weight: bold; }
 
-li { margin-bottom: 0.5em; }
+ul, ol, dl { margin-top: 1.5em; margin-bottom: 1.2em; }
+
+li { margin-bottom: 0.8em; }
+
+dt, dd { padding-left: 10px; border-left-width: 2px; border-left-style: solid; margin-bottom: 10px; }
+
+dt { border-left-color: #337ab7; }
+
+dd { border-left-color: #e5e5e5; }
+
+ol ol, ul ul, ol ul, ul ol { margin-top: 10px; margin-bottom: 10px; }
 
 /*-------------------------------------------*/
 /* headding
@@ -2565,9 +2575,22 @@ h3, .subSection-title { padding-bottom: 8px; position: relative; border-bottom: 
 
 h3:after, .subSection-title:after { content: "."; line-height: 0; display: block; overflow: hidden; position: absolute; bottom: -1px; width: 30%; border-bottom: 1px solid #337ab7; }
 
-.entry-body h4 { color: #337ab7; }
+.entry-body h4 { color: #337ab7; font-weight: bold; font-size: 20px; }
 
-h5 { color: #337ab7; font-size: 18px; padding: 10px 0px 8px; border-top: 1px solid #e5e5e5; border-bottom: 1px solid #e5e5e5; }
+h5 { font-size: 18px; padding: 10px 15px 8px; border-top: 1px solid #e5e5e5; border-bottom: 1px solid #e5e5e5; background-color: #f5f5f5; }
+
+h6 { font-size: 16px; font-weight: bold; }
+
+blockquote { border: 5px solid #eee; background-color: #fcfcfc; position: relative; padding: 35px 20px 30px; }
+
+blockquote:before, blockquote:after { color: #ccc; font-family: FontAwesome; position: absolute; }
+
+blockquote:before { content: "\f10d"; top: 10px; }
+
+blockquote:after { content: "\f10e"; bottom: 10px; right: 20px; }
+
+table { border-collapse: collapse; border-spacing: 0; width: 100%; }
+table th, table td { padding: 8px; border: 1px solid #e5e5e5; }
 
 /*-------------------------------------------*/
 /* images
