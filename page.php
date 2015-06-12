@@ -10,8 +10,16 @@
     <div class="entry-body">
     <?php the_content(); ?>
     </div>
+	<?php
+	$args = array(
+		'before'           => '<nav class="page-link"><dl><dt>Pages :</dt><dd>',
+		'after'            => '</dd></dl></nav>',
+		'link_before'      => '<span class="page-numbers">',
+		'link_after'       => '</span>',
+		'echo'             => 1 );
+	wp_link_pages( $args ); ?>
     </div><!-- [ /#post-<?php the_ID(); ?> ] -->
-    <?php wp_link_pages( array( 'before' => '<div class="page-link">' . 'Pages:', 'after' => '</div>' ) ); ?>
+
 </main>
 <?php endwhile; ?>
 </div>

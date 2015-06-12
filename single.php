@@ -16,6 +16,15 @@
 	<?php the_content();?>
 	</div><!-- [ /.entry-body ] -->
 
+	<?php
+	$args = array(
+		'before'           => '<nav class="page-link"><dl><dt>Pages :</dt><dd>',
+		'after'            => '</dd></dl></nav>',
+		'link_before'      => '<span class="page-numbers">',
+		'link_after'       => '</span>',
+		'echo'             => 1 );
+	wp_link_pages( $args ); ?>
+
 	<?php $tags_list = get_the_tag_list();
 	if ( $tags_list ): ?>
 	<div class="entry-tag">
@@ -26,8 +35,6 @@
 	</div><!-- [ /.entry-tag ] -->
 	<?php endif; ?>
 	<?php comments_template( '', true ); ?>
-	<?php wp_link_pages( array( 'before' => '<div class="page-link">' . 'Pages:', 'after' => '</div>' ) ); ?>
-
 </article>
 <?php endwhile;endif; ?>
 

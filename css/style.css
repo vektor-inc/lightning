@@ -2548,7 +2548,7 @@ img { max-width: 100%; height: auto; }
 
 p { font-size: 16px; line-height: 1.8em; margin-bottom: 1.2em; }
 
-em { font-weight: bold; }
+em { font-weight: bold; font-style: italic !important; font-family: "ＭＳ Ｐゴシック","Hiragino Kaku Gothic Pro","ヒラギノ角ゴ Pro W3",sans-serif; }
 
 ul, ol, dl { margin-top: 1.5em; margin-bottom: 1.2em; }
 
@@ -2605,11 +2605,11 @@ table th, table td { padding: 8px; border: 1px solid #e5e5e5; }
 
 img.alignleft, img.alignright, img.aligncenter { margin-bottom: 12px; }
 
-.wp-caption { background: #f1f1f1; line-height: 18px; margin-bottom: 20px; padding: 0 0 5px; text-align: center; border: 1px solid #e5e5e5; max-width: 100% !important; }
+.wp-caption { background: #fcfcfc; line-height: 18px; margin-bottom: 20px; padding: 0 0 5px; text-align: center; border: 1px solid #e5e5e5; max-width: 100% !important; }
 
-.wp-caption img { margin: 5px 0 2px; max-width: 95% !important; height: auto !important; }
+.wp-caption img { margin: 5px 0 4px; max-width: 95% !important; height: auto !important; }
 
-.wp-caption p.wp-caption-text { color: #888; font-size: 12px; margin: 5px; }
+.wp-caption p.wp-caption-text { color: #888; font-size: 12px; margin: 0px; }
 
 .wp-smiley { margin: 0; }
 
@@ -2765,6 +2765,27 @@ ul.page-numbers li:first-child > a { border-top-left-radius: 4px; border-bottom-
 ul.page-numbers li:last-child > a { border-top-right-radius: 4px; border-bottom-right-radius: 4px; }
 
 /*-------------------------------------------*/
+/* .page-link
+/*-------------------------------------------*/
+.page-link dl { display: block; overflow: hidden; margin-bottom: 0; }
+.page-link dt, .page-link dd { border: none; padding: 0; margin-bottom: 0; }
+.page-link dt { padding: 6px 10px 6px 0; float: left; }
+.page-link span.page-numbers { padding: 6px 12px; display: block; float: left; }
+
+/*-------------------------------------------*/
+/* .pager
+/*-------------------------------------------*/
+.pager ul { margin-top: 0; }
+
+.pager li { margin-bottom: 10px; display: inline-block; }
+.pager li > a { border-radius: 0; padding: 7px 15px 5px; }
+
+.pager li { display: block; overflow: hidden; float: none; }
+.pager li a { display: block; overflow: hidden; float: none; width: 100%; text-align: left; }
+.pager li.previous a:before { content: "«"; margin-right: 0.8em; }
+.pager li.next a:before { content: "»"; margin-right: 0.8em; }
+
+/*-------------------------------------------*/
 /* .site-sub
 /*-------------------------------------------*/
 .subSection .subSection-title { font-size: 18px; }
@@ -2806,17 +2827,16 @@ footer .copySection { border-top: 1px solid #e5e5e5; }
 /*-------------------------------------------*/
 /* single
 /*-------------------------------------------*/
-.pager ul { margin-top: 0; }
-
-.pager li { margin-bottom: 10px; display: inline-block; }
-.pager li > a { border-radius: 0; padding: 7px 15px 5px; }
-
-@media (max-width: 767px) { .pager li { display: block; overflow: hidden; float: none; }
-  .pager li a { display: block; overflow: hidden; float: none; width: 100%; text-align: left; }
-  .pager li.previous a:before { content: "«"; margin-right: 0.8em; }
-  .pager li.next a:before { content: "»"; margin-right: 0.8em; } }
-@media (min-width: 768px) { .pager li.previous { float: left; }
-  .pager li.previous a:before { content: "«"; margin-right: 0.8em; }
-  .pager li.next { float: right; }
-  .pager li.next a:after { content: "»"; margin-left: 0.8em; } }
 #respond label { font-weight: lighter; }
+
+/*-------------------------------------------*/
+/* .comments-area
+/*-------------------------------------------*/
+ol.comment-list { padding: 0; }
+
+li.comment { border: 4px solid #eee; padding: 1em; margin: 0 0 1em; list-style: none; }
+li.comment ol.children { padding-left: 1em; }
+
+.comment-author { display: block; overflow: hidden; margin-bottom: 10px; padding: 7px; background-color: #f5f5f5; border: 4px solid #eee; }
+
+.comment-meta { display: block; overflow: hidden; border-bottom: 1px solid #e5e5e5; margin-bottom: 10px; }

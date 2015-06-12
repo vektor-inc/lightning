@@ -2548,7 +2548,7 @@ img { max-width: 100%; height: auto; }
 
 p { font-size: 16px; line-height: 1.8em; margin-bottom: 1.2em; }
 
-em { font-weight: bold; }
+em { font-weight: bold; font-style: italic !important; font-family: "ＭＳ Ｐゴシック","Hiragino Kaku Gothic Pro","ヒラギノ角ゴ Pro W3",sans-serif; }
 
 ul, ol, dl { margin-top: 1.5em; margin-bottom: 1.2em; }
 
@@ -2605,11 +2605,11 @@ table th, table td { padding: 8px; border: 1px solid #e5e5e5; }
 
 img.alignleft, img.alignright, img.aligncenter { margin-bottom: 12px; }
 
-.wp-caption { background: #f1f1f1; line-height: 18px; margin-bottom: 20px; padding: 0 0 5px; text-align: center; border: 1px solid #e5e5e5; max-width: 100% !important; }
+.wp-caption { background: #fcfcfc; line-height: 18px; margin-bottom: 20px; padding: 0 0 5px; text-align: center; border: 1px solid #e5e5e5; max-width: 100% !important; }
 
-.wp-caption img { margin: 5px 0 2px; max-width: 95% !important; height: auto !important; }
+.wp-caption img { margin: 5px 0 4px; max-width: 95% !important; height: auto !important; }
 
-.wp-caption p.wp-caption-text { color: #888; font-size: 12px; margin: 5px; }
+.wp-caption p.wp-caption-text { color: #888; font-size: 12px; margin: 0px; }
 
 .wp-smiley { margin: 0; }
 
