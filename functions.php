@@ -39,6 +39,7 @@ function bvII_theme_setup() {
 	/*	Admin page _ Add editor css
 	/*-------------------------------------------*/
 	add_editor_style('/css/editor.css');
+	add_editor_style('//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css');
 
 	add_theme_support( 'automatic-feed-links' );
 }
@@ -56,11 +57,11 @@ function bvII_commentJs(){
 	}
 }
 
-function biz_vektor_wp_css(){
+function bvII_css(){
 	echo '<link rel="stylesheet" href="'.get_stylesheet_uri().'" type="text/css" media="all" />'."\n";
-//	wp_enqueue_style('Biz_Vektor_style', get_stylesheet_uri(), array(), false);
+//	wp_enqueue_style('bvII_style', get_stylesheet_uri(), array(), false);
 }
-add_action('wp_head', 'biz_vektor_wp_css', 190);
+add_action('wp_head', 'bvII_css', 190);
 
 /*-------------------------------------------*/
 /*	Load Theme customizer
