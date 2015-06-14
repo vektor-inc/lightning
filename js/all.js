@@ -35,9 +35,11 @@ function offset_header(){
 	var headerHeight = jQuery('header.siteHeader').height();
 	jQuery('body').css("padding-top",headerHeight+"px");
 	if ( jQuery('body').hasClass('admin-bar') ){
+		// Get adminbar height
 		var adminBarHeight = jQuery('#wpadminbar').height();
-		
-		var allHead_height = adminBarHeight + headerHeight;
+		// Math hight of siteHeader + adminbar
+		// var allHead_height = adminBarHeight + headerHeight;
+		// Add padding
 		jQuery('.admin-bar .navbar-fixed-top').css("top",adminBarHeight+"px");
 		
 	}
@@ -49,7 +51,6 @@ function offset_header(){
 jQuery(document).ready(function(){
 	jQuery(window).scroll(function () {
 		var bodyWidth = jQuery(window).width();
-		// ウィンドウサイズが768より大きい場合
 		if ( bodyWidth >= 768 ) {
 	    	var scroll = jQuery(this).scrollTop();
 	        if (jQuery(this).scrollTop() > 10) {
