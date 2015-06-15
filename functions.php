@@ -5,7 +5,11 @@
 /*	Head logo
 /*-------------------------------------------*/
 /*	WidgetArea initiate
-
+/*-------------------------------------------*/
+/*	Year Artchive list 'year' and count insert to inner </a>
+/*-------------------------------------------*/
+/*	Category list 'count insert to inner </a>
+/*-------------------------------------------*/
 
 
 /*-------------------------------------------*/
@@ -132,3 +136,21 @@ function bvII_widgets_init() {
 	}
 }
 add_action( 'widgets_init', 'bvII_widgets_init' );
+
+
+/*-------------------------------------------*/
+/*	Year Artchive list 'year' and count insert to inner </a>
+/*-------------------------------------------*/
+function bvII_archives_link($html){
+  return preg_replace('@</a>(.+?)</li>@', '\1</a></li>', $html);
+}
+add_filter('get_archives_link', 'bvII_archives_link');
+
+/*-------------------------------------------*/
+/*	Category list 'count insert to inner </a>
+/*-------------------------------------------*/
+function bvII_list_categories( $output, $args ) {
+	$output = preg_replace('/<\/a>\s*\((\d+)\)/',' ($1)</a>',$output);
+	return $output;
+}
+add_filter( 'wp_list_categories', 'bvII_list_categories', 10, 2 );
