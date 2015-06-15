@@ -2542,11 +2542,11 @@ button.close { -webkit-appearance: none; padding: 0; cursor: pointer; background
 /*-------------------------------------------*/
 /* common style
 /*-------------------------------------------*/
-body { font-family: "メイリオ",Meiryo,"ＭＳ Ｐゴシック","Hiragino Kaku Gothic Pro","ヒラギノ角ゴ Pro W3",sans-serif; -ms-word-wrap: break-word; word-wrap: break-word; }
+body { font-family: "メイリオ",Meiryo,"ＭＳ Ｐゴシック","Hiragino Kaku Gothic Pro","ヒラギノ角ゴ Pro W3",sans-serif; -ms-word-wrap: break-word; word-wrap: break-word; font-size: 16px; }
 
 img { max-width: 100%; height: auto; }
 
-p { font-size: 16px; line-height: 1.8em; margin-bottom: 1.2em; }
+p { line-height: 1.8em; margin-bottom: 1.2em; }
 
 em { font-weight: bold; font-style: italic !important; font-family: "ＭＳ Ｐゴシック","Hiragino Kaku Gothic Pro","ヒラギノ角ゴ Pro W3",sans-serif; }
 

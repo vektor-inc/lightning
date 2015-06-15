@@ -48,7 +48,7 @@ $color_key : #337ab7;
 /*-------------------------------------------*/
 /* nav
 /*-------------------------------------------*/
-nav {
+nav { font-size:14px;
   ul { margin-top:0; }
   li { margin-bottom:0; }
   i { margin-right:0.5rem; }
@@ -269,7 +269,7 @@ ul.page-numbers { margin:0;padding: 0;
 .widget_recent_entries {
   h3,
   .subSection-title { margin-bottom:10px; }
-  ul { padding-left:0;margin:0 0.3em;
+  ul { padding-left:0;margin:0 0.3em;font-size:14px
     // li { display:block; overflow:hidden; list-style: none;
     //   a { position: relative;padding: 10px 15px;border-bottom:$border_primary; }
     // }
