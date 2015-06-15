@@ -77,16 +77,17 @@ function head_high(){
 /*----------------------------------------------------------*/
 /*	add bootstrap class
 /*----------------------------------------------------------*/
-jQuery('textarea').addClass("form-control");
-jQuery('input[type=text]').addClass("form-control");
-jQuery('input[type=submit]').addClass("btn btn-primary");
-jQuery('#respond p').each(function(i){
-	jQuery(this).children('input').appendTo(jQuery(this));
-	});
-
-jQuery('form#searchform').addClass('form-inline');
-jQuery('form#searchform input[type=text]').addClass('form-group');
-
+jQuery(document).ready(function(){
+	jQuery('textarea').addClass("form-control");
+	jQuery('select').addClass("form-control");
+	jQuery('input[type=text]').addClass("form-control");
+	jQuery('input[type=submit]').addClass("btn btn-primary");
+	jQuery('#respond p').each(function(i){
+		jQuery(this).children('input').appendTo(jQuery(this));
+		});
+	jQuery('form#searchform').addClass('form-inline');
+	jQuery('form#searchform input[type=text]').addClass('form-group');
+});
 // jQuery('#respond p label').prependTo()
 
 // function addClass_dropdown(){
