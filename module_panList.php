@@ -26,7 +26,7 @@ $panListHtml .= '<li id="panHome"><a href="' . home_url() . '"><span><i class="f
 /* Post type
 /*-------------------------------*/
 
-if ( is_archive() || is_single() ) {
+if ( is_archive() || ( is_single() && !is_attachment()) ) {
 
 	if ( $postType['slug'] == 'post' || is_category() || is_tag() ){ /* including single-post */
 		if ( $page_for_posts['post_top_use'] ) {

@@ -31,9 +31,10 @@ $pageTitHtml_after .= '</div></div></div></div><!-- [ /.page-header ] -->'."\n";
 /*	Set display title name
 /*-------------------------------------------*/
 $pageTitle = '';
-if ( is_category() || is_tag() || is_tax() || is_home() || is_author() || is_archive() || is_single() ) {
+if (is_page() || is_attachment()) {
+	$pageTitle = get_the_title();
+} else if ( is_category() || is_tag() || is_tax() || is_home() || is_author() || is_archive() || is_single() ) {
 	$page_for_posts = bvII_get_page_for_posts();
-
 	// Case of use post top page
 	if ( $page_for_posts['post_top_use'] ) {
 		// get post type
@@ -72,9 +73,6 @@ if ( is_category() || is_tag() || is_tax() || is_home() || is_author() || is_arc
 			$pageTitle = bvII_get_the_archive_title();
 		}
 	}
-
-} else if (is_page() || is_attachment()) {
-	$pageTitle = get_the_title();
 } else if (is_search()) {
 	$pageTitle = sprintf(__('Search Results for : %s', 'bvII'),get_search_query());
 } else if (is_404()){
