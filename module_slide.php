@@ -1,6 +1,14 @@
 <?php
 $bvII_theme_options = get_option('bvII_theme_options');
-$top_slide_count = ( isset( $bvII_theme_options['top_slide_count'] ) ) ? $bvII_theme_options['top_slide_count'] : 3 ;
+
+$top_slide_count = 0;
+for ( $i = 1; $i <= 5; ) {
+    if ( isset( $bvII_theme_options['top_slide_image_'.$i] ) && $bvII_theme_options['top_slide_image_'.$i] ) {
+        $top_slide_count ++;
+    }
+    $i++;
+}
+
 if ($top_slide_count) : ?>
 <div id="top__fullcarousel" data-interval="false" class="carousel slide" data-ride="carousel">
 <div class="carousel-inner">

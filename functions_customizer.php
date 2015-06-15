@@ -82,26 +82,26 @@ function bvII_customize_register($wp_customize) {
     ) );
 
     // slide count
-	$wp_customize->add_setting( 'bvII_theme_options[top_slide_count]',	array(
-		'default' 			=> 3,
-		'type'				=> 'option',
-		'capability' 		=> 'edit_theme_options',
-		'sanitize_callback' => 'sanitize_text_field',
-		) );
-	$wp_customize->add_control( new Custom_Text_Control( $wp_customize, 'slide_count',array(
-		'label'     => __('Slide image count', 'bvII theme-customizer', 'bvII'),
-		'section'  => 'bvII_slide',
-		'settings' => 'bvII_theme_options[top_slide_count]',
-		'type' => 'text',
-		'priority' => 601,
-		'description' => __('If you change this count,please save & reload this page.', 'bvII'),
-		) ) );
+	// $wp_customize->add_setting( 'bvII_theme_options[top_slide_count]',	array(
+	// 	'default' 			=> 3,
+	// 	'type'				=> 'option',
+	// 	'capability' 		=> 'edit_theme_options',
+	// 	'sanitize_callback' => 'sanitize_text_field',
+	// 	) );
+	// $wp_customize->add_control( new Custom_Text_Control( $wp_customize, 'slide_count',array(
+	// 	'label'     => __('Slide image count', 'bvII theme-customizer', 'bvII'),
+	// 	'section'  => 'bvII_slide',
+	// 	'settings' => 'bvII_theme_options[top_slide_count]',
+	// 	'type' => 'text',
+	// 	'priority' => 601,
+	// 	'description' => __('If you change this count,please save & reload this page.', 'bvII'),
+	// 	) ) );
 
 	// slide image
 	$priority = 610;
 	$bvII_theme_options = get_option('bvII_theme_options');
-	$top_slide_count = ( isset( $bvII_theme_options['top_slide_count'] ) ) ? $bvII_theme_options['top_slide_count'] : 3 ;
-    for ( $i = 1; $i <= $top_slide_count; ) {
+	// $top_slide_count = ( isset( $bvII_theme_options['top_slide_count'] ) ) ? $bvII_theme_options['top_slide_count'] : 3 ;
+    for ( $i = 1; $i <= 5; ) {
 
     	// Default images
     	if ($i <= 3) {
