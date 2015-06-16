@@ -2,7 +2,13 @@
 <div class="section siteContent">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+
+<?php
+$bvII_theme_options = get_option('bvII_theme_options');
+$main_col = ( $bvII_theme_options['top_sidebar_hidden'] ) ? 'col-md-12' : 'col-md-8' ;
+?>
+
+            <div class="<?php echo $main_col; ?>">
 
 <?php if (have_posts()) : ?>
 
@@ -46,7 +52,15 @@
 
 <?php endif; // have_post() ?>
 
-            </div>
+            </div><!-- [ /.col-md-8 of .col-md-12 ] -->
+
+<?php if ( !$bvII_theme_options['top_sidebar_hidden'] ) :?>
+<div class="col-md-3 col-md-offset-1 site-sub subSection">
+<?php get_sidebar(); ?>
+</div><!-- [ /.site-sub ] -->
+
+<?php endif; ?>
+
         </div><!-- [ /.row ] -->
     </div><!-- [ /.container ] -->
 </div><!-- [ /.siteContent ] -->

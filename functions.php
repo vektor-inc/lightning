@@ -84,6 +84,14 @@ require( get_template_directory() . '/functions_helpers.php' );
 function bvII_widgets_init() {
 	// sidebar widget area
 		register_sidebar( array(
+			'name' => 'Sidebar('.__( 'Home', 'bvII' ).')',
+			'id' => 'front-side-top-widget-area',
+			'before_widget' => '<aside class="widget %2$s" id="%1$s">',
+			'after_widget' => '</aside>',
+			'before_title' => '<h1 class="widget-title subSection-title">',
+			'after_title' => '</h1>',
+		) );
+		register_sidebar( array(
 			'name' => 'Sidebar('.__( 'Common top', 'bvII' ).')',
 			'id' => 'common-side-top-widget-area',
 			'before_widget' => '<aside class="widget %2$s" id="%1$s">',

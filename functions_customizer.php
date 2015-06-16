@@ -18,6 +18,16 @@ function bvII_customize_register($wp_customize) {
         }
     }
 
+	/*	Add sanitize checkbox
+	/*-------------------------------------------*/
+	function bvII_sanitize_checkbox($input){
+		if($input==true){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
     /*-------------------------------------------*/
 	/*	Design setting
 	/*-------------------------------------------*/
@@ -46,6 +56,12 @@ function bvII_customize_register($wp_customize) {
 		'capability'		=> 'edit_theme_options',
 		'sanitize_callback' => 'sanitize_hex_color',
 	) );
+	$wp_customize->add_setting('bvII_theme_options[top_sidebar_hidden]', array(
+    	'default'			=> false,
+    	'type'				=> 'option',
+    	'capability'		=> 'edit_theme_options',
+		'sanitize_callback' => 'bvII_sanitize_checkbox',
+	));
 
 	// Create section UI
 
@@ -59,19 +75,26 @@ function bvII_customize_register($wp_customize) {
 			'priority'  => 501,
 		)
 	) );
-
 	$wp_customize->add_control( new WP_Customize_Color_Control($wp_customize, 'color_key', array(
-		'label'    => __('Key color', 'bvII'),
+		'label'    => __('Key color', 'bvII theme-customizer', 'bvII'),
 		'section'  => 'bvII_design',
 		'settings' => 'bvII_theme_options[color_key]',
 		'priority' => 502,
 	)));
 	$wp_customize->add_control( new WP_Customize_Color_Control($wp_customize, 'color_key_dark', array(
-		'label'    => __('Key color(dark)', 'bvII'),
+		'label'    => __('Key color(dark)', 'bvII theme-customizer', 'bvII'),
 		'section'  => 'bvII_design',
 		'settings' => 'bvII_theme_options[color_key_dark]',
 		'priority' => 503,
 	)));
+	$wp_customize->add_control( 'bvII_theme_options[top_sidebar_hidden]', array(
+		'label'		=> _x( 'Don\'t show sidebar on home page' , 'bvII' ),
+		'section'	=> 'bvII_design',
+		'settings'  => 'bvII_theme_options[top_sidebar_hidden]',
+		'type'		=> 'checkbox',
+		'priority'	=> 504, 
+	));
+
 
 	/*-------------------------------------------*/
 	/*	Top slide show
