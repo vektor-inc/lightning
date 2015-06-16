@@ -73,21 +73,20 @@ ul.gMenu {
   }
 }
 @media (min-width: 768px){
-
 ul.gMenu { margin-top:5px;
   a:hover,
   a:active { background-color:#fff;color: $color_key; }
-  & >li { 
-    &:first-child { border-left:1px dotted #ccc; }
-    & > a { padding:10px 1.5em 5px;border-bottom:none;border-right:1px dotted #ccc;; }
+  & >li { position: relative;
+    & > a { padding:10px 1em 10px;border-bottom:none; }
   }
   & > li > a:hover:after,
   & > li.current-menu-item > a:after,
+  & > li.current-menu-parent > a:after,
   & > li.current_page_parent > a:after,
   & > li.current-menu-ancestor > a:after,
-  & > li.current_page_ancestor > a:after { content:".";line-height:0;border-bottom:1px solid $color_key; bottom:-1px;display:block; overflow:hidden; }
+  & > li.current_page_ancestor > a:after { content:".";line-height:0;border-bottom:1px solid $color_key; bottom:0px;display:block; overflow:hidden;position: absolute;width:100%;left:0; }
 }
-
+// sub-menu
 ul.gMenu > li > ul.sub-menu { display:none;position: absolute;background-color: #fff;box-shadow:1px 1px 3px rgba(0,0,0,0.2);
   li { width:240px;margin:0;
     ul { margin-bottom:0; }
@@ -102,6 +101,15 @@ ul.gMenu > li > ul.sub-menu { display:none;position: absolute;background-color: 
 ul.gMenu li:hover > ul.sub-menu { display: block; }
 } //@media (min-width: 700px){
 
+@media (min-width: 970px){
+ul.gMenu { margin-top:5px;float:right;
+  & >li {
+    // &:last-child { border-right:1px dotted #ccc; }
+    & > a { padding:10px 1.5em 10px; }
+    // & > a { border-left:1px dotted #ccc; }
+  }
+} // ul.gMenu
+} // @media (min-width: 970px){
 
 /*-------------------------------------------*/
 /* .page-header 

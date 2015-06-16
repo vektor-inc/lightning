@@ -39,7 +39,7 @@
         <?php wp_nav_menu( array(
             'theme_location'    => 'Header',
             'container'         => 'nav',
-            'items_wrap'        => '<ul id="%1$s" class="%2$s nav navbar-nav navbar-right gMenu">%3$s</ul>',
+            'items_wrap'        => '<ul id="%1$s" class="%2$s nav navbar-nav gMenu">%3$s</ul>',
             'fallback_cb'       => ''
         ) ); ?>
         </div>
