@@ -271,14 +271,14 @@ ul.page-numbers { margin:0;padding: 0;
 /*-------------------------------------------*/
 .widget { margin-bottom:30px;display:block; overflow:hidden;
   .widget-title { margin-top:0; }
+  h3,
+  .subSection-title { margin-bottom:10px; }
 }
 
 .widget_nav_menu,
 .widget_archive,
 .widget_categories,
 .widget_recent_entries {
-  h3,
-  .subSection-title { margin-bottom:10px; }
   ul { padding-left:0;margin:0 0.3em;font-size:14px;
     // li { display:block; overflow:hidden; list-style: none;
     //   a { position: relative;padding: 10px 15px;border-bottom:$border_primary; }
