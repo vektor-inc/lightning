@@ -2670,10 +2670,10 @@ nav i { margin-right: 0.5rem; }
 
 ul.gMenu a { display: block; overflow: hidden; border-bottom: 1px solid #e5e5e5; color: #666; text-decoration: none; }
 ul.gMenu a:hover { color: #337ab7; }
-ul.gMenu ul.sub-menu { padding-left: 0; width: auto; display: block; }
-ul.gMenu ul.sub-menu li a { display: block; overflow: hidden; padding: 1em 1em 1em 2em; width: auto; }
-ul.gMenu ul.sub-menu li li a { padding-left: 3em; }
-ul.gMenu ul.sub-menu li li li a { padding-left: 4em; }
+ul.gMenu ul { padding-left: 0; width: auto; display: block; }
+ul.gMenu ul li a { display: block; overflow: hidden; padding: 1em 1em 1em 2em; width: auto; }
+ul.gMenu ul li li a { padding-left: 3em; }
+ul.gMenu ul li li li a { padding-left: 4em; }
 
 @media (max-width: 767px) { ul.gMenu { border-top: 1px solid #e5e5e5; margin-bottom: 0; }
   ul.gMenu a:hover, ul.gMenu a:active, ul.gMenu .current-menu-item a { background-color: #fcfcfc; } }
@@ -2682,14 +2682,15 @@ ul.gMenu ul.sub-menu li li li a { padding-left: 4em; }
   ul.gMenu > li:first-child { border-left: 1px dotted #ccc; }
   ul.gMenu > li > a { padding: 10px 1.5em 5px; border-bottom: none; border-right: 1px dotted #ccc; }
   ul.gMenu > li > a:hover:after, ul.gMenu > li.current-menu-item > a:after, ul.gMenu > li.current_page_parent > a:after, ul.gMenu > li.current-menu-ancestor > a:after, ul.gMenu > li.current_page_ancestor > a:after { content: "."; line-height: 0; border-bottom: 1px solid #337ab7; bottom: -1px; display: block; overflow: hidden; }
-  ul.gMenu ul.sub-menu { position: absolute; display: none; }
-  ul.gMenu li:hover ul.sub-menu { display: block; background-color: #fff; box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); }
-  ul.gMenu li:hover ul.sub-menu li { width: 220px; }
-  ul.gMenu li:hover ul.sub-menu li a { padding-left: 1em; }
-  ul.gMenu li:hover ul.sub-menu li a:hover { background-color: #f5f5f5; }
-  ul.gMenu li:hover ul.sub-menu li li a { padding-left: 2em; }
-  ul.gMenu li:hover ul.sub-menu li li li a { padding-left: 3em; }
-  ul.gMenu li:hover ul.sub-menu li li li li a { padding-left: 4em; } }
+  ul.gMenu > li > ul.sub-menu { display: none; position: absolute; background-color: #fff; box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); }
+  ul.gMenu > li > ul.sub-menu li { width: 240px; margin: 0; }
+  ul.gMenu > li > ul.sub-menu li ul { margin-bottom: 0; }
+  ul.gMenu > li > ul.sub-menu li a { padding-left: 1.5em; }
+  ul.gMenu > li > ul.sub-menu li a:hover { background-color: #f5f5f5; }
+  ul.gMenu > li > ul.sub-menu li li a { padding-left: 2.5em; }
+  ul.gMenu > li > ul.sub-menu li li li a { padding-left: 3.5em; }
+  ul.gMenu > li > ul.sub-menu li li li li a { padding-left: 4.5em; }
+  ul.gMenu li:hover > ul.sub-menu { display: block; } }
 /*-------------------------------------------*/
 /* .page-header 
 /*-------------------------------------------*/
@@ -2801,7 +2802,8 @@ ul.page-numbers li:last-child > a { border-top-right-radius: 4px; border-bottom-
 .widget .widget-title { margin-top: 0; }
 
 .widget_nav_menu h3, .widget_nav_menu .subSection-title, .widget_archive h3, .widget_archive .subSection-title, .widget_categories h3, .widget_categories .subSection-title, .widget_recent_entries h3, .widget_recent_entries .subSection-title { margin-bottom: 10px; }
-.widget_nav_menu ul, .widget_archive ul, .widget_categories ul, .widget_recent_entries ul { padding-left: 0; margin: 0 0.3em; font-size: 14px li; font-size-margin-bottom: 0; }
+.widget_nav_menu ul, .widget_archive ul, .widget_categories ul, .widget_recent_entries ul { padding-left: 0; margin: 0 0.3em; font-size: 14px; }
+.widget_nav_menu ul li, .widget_archive ul li, .widget_categories ul li, .widget_recent_entries ul li { margin-bottom: 0; }
 .widget_nav_menu ul li a, .widget_archive ul li a, .widget_categories ul li a, .widget_recent_entries ul li a { display: block; overflow: hidden; padding: 10px 0 8px; border-bottom: 1px solid #e5e5e5; box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.9); }
 .widget_nav_menu ul li li a, .widget_archive ul li li a, .widget_categories ul li li a, .widget_recent_entries ul li li a { padding-left: 1em; }
 .widget_nav_menu ul li li li a, .widget_archive ul li li li a, .widget_categories ul li li li a, .widget_recent_entries ul li li li a { padding-left: 2em; }
@@ -2856,3 +2858,9 @@ li.comment ol.children { padding-left: 1em; }
 li.pingback { margin: 0 0 1em; list-style: none; border-bottom: 1px dotted #999; }
 
 p.no-comments { background-color: #f3f3f3; border: 1px solid #e5e5e5; text-align: center; padding: 2em; }
+
+/*-------------------------------------------*/
+/* search
+/*-------------------------------------------*/
+@media (max-width: 1170px) { input#s.form-group { margin-bottom: 10px; width: 100%; }
+  input#searchsubmit { vertical-align: top; width: 100%; } }
