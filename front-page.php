@@ -58,7 +58,7 @@
 
             </div><!-- [ /.col-md-8 of .col-md-12 ] -->
 
-            <?php if ( !$bvII_theme_options['top_sidebar_hidden'] ) :?>
+            <?php if ( !isset($bvII_theme_options['top_sidebar_hidden']) || !$bvII_theme_options['top_sidebar_hidden'] ) :?>
                 <div class="col-md-3 col-md-offset-1 site-sub subSection">
                     <?php get_sidebar(); ?>
                 </div><!-- [ /.site-sub ] -->

@@ -174,7 +174,7 @@ h1.entry-title { font-size:26px; }
 /*      .media(bootstrap)
 /*-------------------------------------------*/
 .media { border-bottom:$border_primary;padding:2em 0;margin-top:0;
-  // &:first-child { border-top:$border_primary; }
+  &:first-child { border-top:$border_primary; }
   .postList__thumbnail { width:160px;margin-bottom:0.5em;padding-right:30px; display:block; overflow:hidden;float:left;
     a { position: relative;display:block; overflow:hidden; }
     img { width: 100%;height:auto; }
@@ -284,7 +284,7 @@ ul.page-numbers { margin:0;padding: 0;
     //   a { position: relative;padding: 10px 15px;border-bottom:$border_primary; }
     // }
     li { margin-bottom:0; }
-    li a { display:block; overflow:hidden;padding:10px 0 8px;border-bottom:$border_primary;
+    li a { display:block; overflow:hidden;padding:10px 0 8px;border-bottom:$border_primary;color:$color_font_default;
       box-shadow:0px 1px 0px rgba(255,255,255,0.9); }
     li li a { padding-left:1em; }
     li li li a { padding-left:2em; }

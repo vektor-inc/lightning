@@ -2745,6 +2745,7 @@ h1.entry-title:first-letter { color: #337ab7; }
 /*      .media(bootstrap)
 /*-------------------------------------------*/
 .media { border-bottom: 1px solid #e5e5e5; padding: 2em 0; margin-top: 0; }
+.media:first-child { border-top: 1px solid #e5e5e5; }
 .media .postList__thumbnail { width: 160px; margin-bottom: 0.5em; padding-right: 30px; display: block; overflow: hidden; float: left; }
 .media .postList__thumbnail a { position: relative; display: block; overflow: hidden; }
 .media .postList__thumbnail img { width: 100%; height: auto; }
@@ -2808,7 +2809,7 @@ ul.page-numbers li:last-child > a { border-top-right-radius: 4px; border-bottom-
 .widget_nav_menu h3, .widget_nav_menu .subSection-title, .widget_archive h3, .widget_archive .subSection-title, .widget_categories h3, .widget_categories .subSection-title, .widget_recent_entries h3, .widget_recent_entries .subSection-title { margin-bottom: 10px; }
 .widget_nav_menu ul, .widget_archive ul, .widget_categories ul, .widget_recent_entries ul { padding-left: 0; margin: 0 0.3em; font-size: 14px; }
 .widget_nav_menu ul li, .widget_archive ul li, .widget_categories ul li, .widget_recent_entries ul li { margin-bottom: 0; }
-.widget_nav_menu ul li a, .widget_archive ul li a, .widget_categories ul li a, .widget_recent_entries ul li a { display: block; overflow: hidden; padding: 10px 0 8px; border-bottom: 1px solid #e5e5e5; box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.9); }
+.widget_nav_menu ul li a, .widget_archive ul li a, .widget_categories ul li a, .widget_recent_entries ul li a { display: block; overflow: hidden; padding: 10px 0 8px; border-bottom: 1px solid #e5e5e5; color: #464646; box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.9); }
 .widget_nav_menu ul li li a, .widget_archive ul li li a, .widget_categories ul li li a, .widget_recent_entries ul li li a { padding-left: 1em; }
 .widget_nav_menu ul li li li a, .widget_archive ul li li li a, .widget_categories ul li li li a, .widget_recent_entries ul li li li a { padding-left: 2em; }
 .widget_nav_menu ul li li li li a, .widget_archive ul li li li li a, .widget_categories ul li li li li a, .widget_recent_entries ul li li li li a { padding-left: 3em; }
