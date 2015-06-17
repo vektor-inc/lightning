@@ -2,7 +2,7 @@
 == Description ==
 Lightning is a very simple theme that built by Bootstrap.
 Official site : http://bizvektor.com ( Sorry, english version is under construction. ) 
-Sample site : http://demo.vs1.biz/ligntning/
+Sample site : http://demo.vs1.biz/lightning/
 
 === Tags ===
 white, red, blue, black, green, orange, purple, two-columns, right-sidebar, one-columns, responsive, custom-colors, custom-menu, editor-style,theme-options
