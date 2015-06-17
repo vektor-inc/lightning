@@ -2655,8 +2655,8 @@ img.alignleft, img.alignright, img.aligncenter { margin-bottom: 12px; }
 .containerでpaddingを調整しているのは headerはjsで高さを取得するのでpaddingが指定されていると都合が悪いため
 */
 @media (max-width: 767px) { .siteHeader .headLogo.navbar-brand { padding: 0 15px; }
-  .siteHeader .container { padding-top: 5px; padding-bottom: 5px; } }
-@media (min-width: 768px) { .siteHeader .container { padding-top: 20px; padding-bottom: 20px; }
+  .siteHeader .container { padding-top: 6px; padding-bottom: 5px; } }
+@media (min-width: 768px) { .siteHeader .container { padding-top: 22px; padding-bottom: 20px; }
   .siteHeader .headLogo.navbar-brand { padding-top: 0; }
   .siteHeader .headLogo.navbar-brand img { max-height: 50px; } }
 /*-------------------------------------------*/

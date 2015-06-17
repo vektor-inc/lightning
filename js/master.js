@@ -58,7 +58,7 @@ jQuery(document).ready(function(){
 });
 function head_low(){
 	jQuery('.siteHeader .container').stop().animate({
-		"padding-top":"5px",
+		"padding-top":"6px",
 		"padding-bottom":"5px",
 	},100);
 	jQuery('.navbar-brand img').stop().animate({
@@ -67,7 +67,7 @@ function head_low(){
 }
 function head_high(){
 	jQuery('.siteHeader .container').stop().animate({
-		"padding-top":"20px",
+		"padding-top":"22px",
 		"padding-bottom":"20px",
 	},100);
 	jQuery('.navbar-brand img').stop().animate({

@@ -32,12 +32,12 @@ $color_key : #337ab7;
 @media (max-width: 767px){
 .siteHeader {
   .headLogo.navbar-brand { padding:0 15px; }
-  .container { padding-top:5px;padding-bottom:5px; }
+  .container { padding-top:6px;padding-bottom:5px; }
 }
 }// @media (max-width: 767px){
 @media (min-width: 768px){
   .siteHeader { 
-    .container { padding-top:20px;padding-bottom:20px; }
+    .container { padding-top:22px;padding-bottom:20px; }
     .headLogo.navbar-brand { padding-top:0;
       img { max-height: 50px; }
     }
