@@ -2866,6 +2866,8 @@ li.pingback { margin: 0 0 1em; list-style: none; border-bottom: 1px dotted #999;
 
 p.no-comments { background-color: #f3f3f3; border: 1px solid #e5e5e5; text-align: center; padding: 2em; }
 
+.bypostauthor { color: #464646; }
+
 /*-------------------------------------------*/
 /* search
 /*-------------------------------------------*/
