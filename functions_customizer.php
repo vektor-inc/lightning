@@ -197,6 +197,7 @@ function lightning_customize_register($wp_customize) {
 add_action( 'wp_head','lightning_print_css', 150);
 function lightning_print_css(){
 	$options = get_option('lightning_theme_options');
+	if ( isset($options['color_key']) && isset($options['color_key_dark']) ) {
 	$color_key = esc_html($options['color_key']);
 	$color_key_dark = esc_html($options['color_key_dark']);
 	?>
@@ -229,4 +230,5 @@ footer { border-top-color:<?php echo $color_key	;?> }
   ul.gMenu > li.current_page_ancestor > a:after { border-bottom-color: <?php echo $color_key ;?> }
 } /* @media (min-width: 768px) */
 </style>
-<?php }
+<?php } // if ( isset($options['color_key'] && isset($options['color_key_dark'] ) {
+}

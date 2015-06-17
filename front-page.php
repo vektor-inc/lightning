@@ -5,10 +5,12 @@
 
             <?php
             $lightning_theme_options = get_option('lightning_theme_options');
-            if ( isset($lightning_theme_options['top_sidebar_hidden']) && !$lightning_theme_options['top_sidebar_hidden'] ){
-                $main_col = 'col-md-8';
-            } else {
+            if ( 
+                isset($lightning_theme_options['top_sidebar_hidden']) &&
+                $lightning_theme_options['top_sidebar_hidden'] ){
                 $main_col = 'col-md-12';
+            } else {
+                $main_col = 'col-md-8';
             } ?>
 
             <div class="<?php echo $main_col; ?>">
