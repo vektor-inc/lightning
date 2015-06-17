@@ -312,6 +312,7 @@ footer {
 /*-------------------------------------------*/
 /* front-page
 /*-------------------------------------------*/
+.carousel { border-bottom:$border_primary; }
 .carousel-inner>.item>a>img,
 .carousel-inner>.item>img { width:100%; height:auto;}
 
@@ -344,7 +345,7 @@ p.no-comments { background-color: #f3f3f3;border:1px solid #e5e5e5; text-align: 
 /*-------------------------------------------*/
 /* search
 /*-------------------------------------------*/
-@media (max-width: 1170px){
+// @media (max-width: 1170px){
 input#s.form-group { margin-bottom:10px;width:100%; }
 input#searchsubmit { vertical-align: top;width:100%; }
-}
+// }

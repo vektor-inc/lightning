@@ -2832,6 +2832,8 @@ footer .copySection { border-top: 1px solid #e5e5e5; }
 /*-------------------------------------------*/
 /* front-page
 /*-------------------------------------------*/
+.carousel { border-bottom: 1px solid #e5e5e5; }
+
 .carousel-inner > .item > a > img, .carousel-inner > .item > img { width: 100%; height: auto; }
 
 .sticky { display: block; overflow: hidden; padding: 1em; background-color: #f5f5f5; }
@@ -2867,5 +2869,6 @@ p.no-comments { background-color: #f3f3f3; border: 1px solid #e5e5e5; text-align
 /*-------------------------------------------*/
 /* search
 /*-------------------------------------------*/
-@media (max-width: 1170px) { input#s.form-group { margin-bottom: 10px; width: 100%; }
-  input#searchsubmit { vertical-align: top; width: 100%; } }
+input#s.form-group { margin-bottom: 10px; width: 100%; }
+
+input#searchsubmit { vertical-align: top; width: 100%; }
