@@ -2524,13 +2524,6 @@ button.close { -webkit-appearance: none; padding: 0; cursor: pointer; background
 @media print { .visible-print-inline-block { display: inline-block !important; } }
 @media print { .hidden-print { display: none !important; } }
 /*-------------------------------------------*/
-/*
-/*-------------------------------------------*/
-.navbar { margin-bottom: 0; }
-
-.breadcrumb { background: none; }
-
-/*-------------------------------------------*/
 /* common style
 /*-------------------------------------------*/
 /* headding
@@ -2581,6 +2574,12 @@ h5 { font-size: 18px; padding: 10px 15px 8px; border-top: 1px solid #e5e5e5; bor
 
 h6 { font-size: 16px; font-weight: bold; }
 
+@media (max-width: 767px) { h1 { font-size: 24px; }
+  h2 { font-size: 21px; }
+  h3 { font-size: 18px; }
+  h4 { font-size: 16px; }
+  h5 { font-size: 16px; }
+  h6 { font-size: 16px; } }
 blockquote { border: 5px solid #eee; background-color: #fcfcfc; position: relative; padding: 35px 20px 30px; }
 
 blockquote:before, blockquote:after { color: #ccc; font-family: FontAwesome; position: absolute; }
@@ -2645,8 +2644,8 @@ img.alignleft, img.alignright, img.aligncenter { margin-bottom: 12px; }
 /*-------------------------------------------*/
 /* .siteHeader
 /*-------------------------------------------*/
-.siteHeader { background-color: #fff; box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1); }
-.siteHeader .headLogo.navbar-brand { height: auto; padding: 0; margin: 0; }
+.siteHeader { background-color: #fff; box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1); margin-bottom: 0; }
+.siteHeader .headLogo.navbar-brand { height: auto; padding: 0; margin: 0; font-size: 32px; line-height: 1.5em; }
 .siteHeader .headLogo.navbar-brand a { color: #333; }
 .siteHeader .headLogo.navbar-brand img { max-height: 45px; }
 .siteHeader .navbar-toggle { border: 1px solid #999; }
@@ -2705,8 +2704,9 @@ ul.gMenu ul li li li a { padding-left: 4em; }
 /* .breadSection
 /*-------------------------------------------*/
 .breadSection { border-bottom: 1px solid #e5e5e5; }
-.breadSection .breadcrumb { margin-top: 0; margin-bottom: 0; }
-.breadSection .breadcrumb li { margin-bottom: 0; }
+.breadSection .breadcrumb { margin-top: 0; margin-bottom: 0; background: none; }
+.breadSection .breadcrumb > li + li:before { content: ">"; }
+.breadSection .breadcrumb li { margin-bottom: 0; list-style: none; }
 
 /*-------------------------------------------*/
 /* .siteContent

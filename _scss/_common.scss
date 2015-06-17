@@ -49,7 +49,6 @@ h2 { background-color: #f5f5f5; padding:10px 15px 7px;border-radius: 3px;border-
 
 h3,
 .subSection-title { padding-bottom:8px;position: relative;border-bottom:1px solid #ccc;box-shadow:0px 1px 2px rgba(255,255,255,0.9); }
-
 h3:after,
 .subSection-title:after { content:".";line-height: 0;display:block; overflow:hidden;position: absolute;bottom:-1px;width:30%;border-bottom:1px solid $color_key; }
 
@@ -57,6 +56,15 @@ h3:after,
 h5 { font-size:18px;padding:10px 15px 8px;border-top:$border_primary;border-bottom:$border_primary;background-color: #f5f5f5; }
 
 h6 { font-size:16px; font-weight: bold; }
+
+@media (max-width: 767px){
+	h1 { font-size:24px;}
+	h2 { font-size:21px;}
+	h3 { font-size:18px;}
+	h4 { font-size:16px;}
+	h5 { font-size:16px;}
+	h6 { font-size:16px;}
+}// @media (max-width: 767px){
 
 blockquote { border:5px solid #eee; background-color: #fcfcfc;position:relative;padding:35px 20px 30px; }
 blockquote:before,
