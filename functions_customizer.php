@@ -76,19 +76,19 @@ function bvII_customize_register($wp_customize) {
 		)
 	) );
 	$wp_customize->add_control( new WP_Customize_Color_Control($wp_customize, 'color_key', array(
-		'label'    => __('Key color', 'bvII theme-customizer', 'bvII'),
+		'label'    => _x('Key color', 'bvII theme-customizer', 'bvII'),
 		'section'  => 'bvII_design',
 		'settings' => 'bvII_theme_options[color_key]',
 		'priority' => 502,
 	)));
 	$wp_customize->add_control( new WP_Customize_Color_Control($wp_customize, 'color_key_dark', array(
-		'label'    => __('Key color(dark)', 'bvII theme-customizer', 'bvII'),
+		'label'    => _x('Key color(dark)', 'bvII theme-customizer', 'bvII'),
 		'section'  => 'bvII_design',
 		'settings' => 'bvII_theme_options[color_key_dark]',
 		'priority' => 503,
 	)));
 	$wp_customize->add_control( 'bvII_theme_options[top_sidebar_hidden]', array(
-		'label'		=> _x( 'Don\'t show sidebar on home page' , 'bvII' ),
+		'label'		=> _x( 'Don\'t show sidebar on home page' ,'bvII theme-customizer', 'bvII' ),
 		'section'	=> 'bvII_design',
 		'settings'  => 'bvII_theme_options[top_sidebar_hidden]',
 		'type'		=> 'checkbox',
@@ -100,7 +100,7 @@ function bvII_customize_register($wp_customize) {
 	/*	Top slide show
 	/*-------------------------------------------*/
     $wp_customize->add_section( 'bvII_slide', array(
-        'title'          => _x('Slide show', 'bvII theme-customizer', 'bvII'),
+        'title'          => _x('Home page slide show', 'bvII theme-customizer', 'bvII'),
         'priority'       => 600,
     ) );
 
@@ -156,7 +156,7 @@ function bvII_customize_register($wp_customize) {
 	    // Add control
 		$priority = $priority + 1;
 		$wp_customize->add_control( 'top_slide_title_'.$i, array(
-			'label'     => __('Slide image title', 'bvII theme-customizer', 'bvII').' '.$i,
+			'label'     => _x('Slide image title', 'bvII theme-customizer', 'bvII').' '.$i,
 			'section'  => 'bvII_slide',
 			'settings' => 'bvII_theme_options[top_slide_title_'.$i.']',
 			'type' => 'text',
@@ -165,7 +165,7 @@ function bvII_customize_register($wp_customize) {
 
 		$priority = $priority + 1;
 		$wp_customize->add_control( 'top_slide_url_'.$i, array(
-			'label'     => __('Slide image url', 'bvII theme-customizer', 'bvII').' '.$i,
+			'label'     => _x('Slide image url', 'bvII theme-customizer', 'bvII').' '.$i,
 			'section'  => 'bvII_slide',
 			'settings' => 'bvII_theme_options[top_slide_url_'.$i.']',
 			'type' => 'text',

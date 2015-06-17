@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BizVektorII v0.0.0\n"
 "Report-Msgid-Bugs-To: Translator Name <translations@example.com>\n"
-"POT-Creation-Date: 2015-05-14 17:51+0900\n"
+"POT-Creation-Date: 2015-06-17 13:09+0900\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Kurudrive <kurudrive@gmail.com>\n"
 "Language-Team: \n"
@@ -22,48 +22,191 @@ msgstr ""
 "X-Generator: Poedit 1.5.7\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: functions.php:69 module_panList.php:163
+#: comments.php:28
+#, php-format
+msgctxt "comments title"
+msgid "One thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] "&ldquo;%2$s&rdquo; に対して１件のコメントがあります。"
+msgstr[1] "&ldquo;%2$s&rdquo; に対して %1$s 件のコメントがあります"
+
+#: comments.php:35 comments.php:56
+msgid "Comment navigation"
+msgstr "コメントナビゲーション"
+
+#: comments.php:38 comments.php:59
+msgid "Older Comments"
+msgstr "古いコメント"
+
+#: comments.php:39 comments.php:60
+msgid "Newer Comments"
+msgstr "新しいコメント"
+
+#: comments.php:72
+msgid "Comments are closed."
+msgstr "この投稿はコメントできません。"
+
+#: front-page.php:50 index.php:48
+msgid "Page"
+msgstr "ページ"
+
+#: front-page.php:59 index.php:52
+msgid "No posts."
+msgstr "投稿はありません。"
+
+#: functions.php:87
+msgid "Sidebar(Home)"
+msgstr "サイドバー（トップページ）"
+
+#: functions.php:95
+msgid "Sidebar(Common top)"
+msgstr "サイドバー（共通上部）"
+
+#: functions.php:103
+msgid "Sidebar(Common bottom)"
+msgstr "サイドバー（共通下部）"
+
+#: functions.php:111
+msgid "Sidebar(Post contents)"
+msgstr "サイドバー（投稿コンテンツ）"
+
+#: functions.php:113
+msgid "This widget area appears on the post contents page only."
+msgstr "このウィジェットは投稿コンテンツでのみ表示されます。"
+
+#: functions.php:123
+msgid "Home content top"
+msgstr "トップページコンテンツエリア上部"
+
+#: functions.php:135
+msgid "Widget area of upper footer"
+msgstr "フッター上部"
+
+#: functions.php:147
+msgid "Footer widget area "
+msgstr "フッターウィジェットエリア"
+
+#: functions_customizer.php:35
+msgctxt "bvII theme-customizer"
+msgid "Design settings"
+msgstr "デザイン設定"
+
+#: functions_customizer.php:72
+msgctxt "bvII theme-customizer"
+msgid "Header logo image"
+msgstr "ヘッダーロゴ画像"
+
+#: functions_customizer.php:79
+msgctxt "bvII theme-customizer"
+msgid "Key color"
+msgstr "キーカラー"
+
+#: functions_customizer.php:85
+msgctxt "bvII theme-customizer"
+msgid "Key color(dark)"
+msgstr "キーカラー（暗）"
+
+#: functions_customizer.php:91
+msgctxt "bvII theme-customizer"
+msgid "Don't show sidebar on home page"
+msgstr "トップページを1カラムにする"
+
+#: functions_customizer.php:103
+msgctxt "bvII theme-customizer"
+msgid "Home page slide show"
+msgstr "トップページスライドショー"
+
+#: functions_customizer.php:159
+msgctxt "bvII theme-customizer"
+msgid "Slide image title"
+msgstr "スライド画像タイトル"
+
+#: functions_customizer.php:168
+msgctxt "bvII theme-customizer"
+msgid "Slide image url"
+msgstr "スライド画像"
+
+#: functions_customizer.php:180
+msgctxt "bvII theme-customizer"
+msgid "Slide image"
+msgstr "スライド画像"
+
+#: functions_helpers.php:99
+#, php-format
+msgid "Author: %s"
+msgstr "投稿者: %s"
+
+#: functions_helpers.php:101 module_panList.php:126
 msgctxt "yearly archives date format"
 msgid "Y"
-msgstr ""
+msgstr "Y年"
 
-#: functions.php:71 module_panList.php:166
+#: functions_helpers.php:103 module_panList.php:129
 msgctxt "monthly archives date format"
 msgid "F Y"
 msgstr "Y年n月"
 
-#: functions.php:73 module_panList.php:183
+#: functions_helpers.php:105
 msgctxt "daily archives date format"
-msgid "F jS, Y"
-msgstr "Y年n月j日"
+msgid "F j, Y"
+msgstr "Y年F月j日"
 
-#: module_pageTit.php:79 module_panList.php:234
+#: functions_helpers.php:120
+msgid "Archives"
+msgstr "アーカイブ"
+
+#: module_pageTit.php:77 module_panList.php:226
 #, php-format
 msgid "Search Results for : %s"
 msgstr "\"%s\" の検索結果"
 
-#: module_pageTit.php:81 module_panList.php:227
+#: module_pageTit.php:79 module_panList.php:219
 msgid "Not found"
 msgstr "ページが見つかりません"
 
-#: module_panList.php:163
+#: module_panList.php:126
 #, php-format
 msgid "Yearly Archives: %s"
 msgstr "%s年"
 
-#: module_panList.php:166
+#: module_panList.php:129
 #, php-format
 msgid "Monthly Archives: %s"
 msgstr "%s"
 
-#: module_panList.php:183
+#: module_panList.php:131
 #, php-format
 msgid "Daily Archives: %s"
 msgstr "%s"
 
+#: module_panList.php:131
+msgctxt "daily archives date format"
+msgid "F jS, Y"
+msgstr "Y年n月j日"
+
+#: module_post__loop_item.php:17
+msgid "Read more"
+msgstr "続きを読む"
+
 #: module_post__loop_item_postMeta.php:5
 msgid "Last updated"
 msgstr "最終更新日"
+
+#: sidebar-post.php:19
+msgid "Recent posts"
+msgstr "最近の投稿"
+
+#: sidebar-post.php:28
+msgid "Category"
+msgstr "カテゴリー"
+
+#: sidebar-post.php:37
+msgid "Archive"
+msgstr "アーカイブ"
+
+#: single.php:32
+msgid "Tags"
+msgstr "タグ"
 
 #, fuzzy
 #~ msgctxt "dayly archives date format"

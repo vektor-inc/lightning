@@ -84,7 +84,7 @@ require( get_template_directory() . '/functions_helpers.php' );
 function bvII_widgets_init() {
 	// sidebar widget area
 		register_sidebar( array(
-			'name' => 'Sidebar('.__( 'Home', 'bvII' ).')',
+			'name' => __('Sidebar(Home)', 'bvII' ),
 			'id' => 'front-side-top-widget-area',
 			'before_widget' => '<aside class="widget %2$s" id="%1$s">',
 			'after_widget' => '</aside>',
@@ -92,7 +92,7 @@ function bvII_widgets_init() {
 			'after_title' => '</h1>',
 		) );
 		register_sidebar( array(
-			'name' => 'Sidebar('.__( 'Common top', 'bvII' ).')',
+			'name' => __( 'Sidebar(Common top)', 'bvII' ),
 			'id' => 'common-side-top-widget-area',
 			'before_widget' => '<aside class="widget %2$s" id="%1$s">',
 			'after_widget' => '</aside>',
@@ -100,7 +100,7 @@ function bvII_widgets_init() {
 			'after_title' => '</h1>',
 		) );
 		register_sidebar( array(
-			'name' => 'Sidebar('.__( 'Common bottom', 'bvII' ).')',
+			'name' => __( 'Sidebar(Common bottom)', 'bvII' ),
 			'id' => 'common-side-bottom-widget-area',
 			'before_widget' => '<aside class="widget %2$s" id="%1$s">',
 			'after_widget' => '</aside>',
@@ -108,7 +108,7 @@ function bvII_widgets_init() {
 			'after_title' => '</h1>',
 		) );
 		register_sidebar( array(
-			'name' => 'Sidebar('.__( 'Post contents', 'bvII' ).')',
+			'name' => __( 'Sidebar(Post contents)', 'bvII' ),
 			'id' => 'post-side-widget-area',
 			'description' => __( 'This widget area appears on the post contents page only.', 'bvII' ),
 			'before_widget' => '<aside class="widget %2$s" id="%1$s">',

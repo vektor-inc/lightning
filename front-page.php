@@ -44,8 +44,8 @@
 
                         <?php the_posts_pagination(array (
                                                 'mid_size'  => 1,
-                                                'prev_text' => __ ( '&laquo;', 'bvII' ),
-                                                'next_text' => __ ( '&raquo;', 'bvII' ),
+                                                'prev_text' => '&laquo;',
+                                                'next_text' => '&raquo;',
                                                 'type'      => 'list',
                                                 'before_page_number' => '<span class="meta-nav screen-reader-text">' . __ ( 'Page', 'bvII' ) . ' </span>'
                                             ) ); ?>
