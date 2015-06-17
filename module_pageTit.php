@@ -2,7 +2,7 @@
 /*-------------------------------------------*/
 /*	Set tag weight
 /*-------------------------------------------*/
-$page_for_posts = bvII_get_page_for_posts();
+$page_for_posts = lightning_get_page_for_posts();
 // Use post top page（ Archive title wrap to div ）
 if ( $page_for_posts['post_top_use'] ) {
 	if ( is_home() || is_page() || is_attachment() || is_search() || is_404() ) {
@@ -34,7 +34,7 @@ $pageTitle = '';
 if (is_page() || is_attachment()) {
 	$pageTitle = get_the_title();
 } else if ( is_category() || is_tag() || is_tax() || is_home() || is_author() || is_archive() || is_single() ) {
-	$page_for_posts = bvII_get_page_for_posts();
+	$page_for_posts = lightning_get_page_for_posts();
 	// Case of use post top page
 	if ( $page_for_posts['post_top_use'] ) {
 		// get post type
@@ -70,15 +70,15 @@ if (is_page() || is_attachment()) {
 			}
 
 		} else {
-			$pageTitle = bvII_get_the_archive_title();
+			$pageTitle = lightning_get_the_archive_title();
 		}
 	}
 } else if (is_search()) {
-	$pageTitle = sprintf(__('Search Results for : %s', 'bvII'),get_search_query());
+	$pageTitle = sprintf(__('Search Results for : %s', 'lightning'),get_search_query());
 } else if (is_404()){
-	$pageTitle = __('Not found', 'bvII');
+	$pageTitle = __('Not found', 'lightning');
 }
-$pageTitle = apply_filters( 'bvII_pageTitCustom', $pageTitle );
+$pageTitle = apply_filters( 'lightning_pageTitCustom', $pageTitle );
 
 /*-------------------------------------------*/
 /*	print

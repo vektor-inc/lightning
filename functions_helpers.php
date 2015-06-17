@@ -12,8 +12,8 @@
 /*-------------------------------------------*/
 /*	Head logo
 /*-------------------------------------------*/
-function bvII_print_headlogo() {
-	$options = get_option('bvII_theme_options');
+function lightning_print_headlogo() {
+	$options = get_option('lightning_theme_options');
 	if (isset($options['head_logo']) && $options['head_logo']){
 		print '<img src="'.$options['head_logo'].'" alt="'.get_bloginfo('name').'" />';
 	} else {
@@ -24,7 +24,7 @@ function bvII_print_headlogo() {
 /*-------------------------------------------*/
 /*	Chack use post top page
 /*-------------------------------------------*/
-function bvII_get_page_for_posts(){
+function lightning_get_page_for_posts(){
 	// Get post top page by setting display page.
 	$page_for_posts['post_top_id'] = get_option('page_for_posts');
 
@@ -41,9 +41,9 @@ function bvII_get_page_for_posts(){
 /*-------------------------------------------*/
 /*	Chack post type info
 /*-------------------------------------------*/
-function bvII_get_post_type(){
+function lightning_get_post_type(){
 	// Check use post top page
-	$page_for_posts = bvII_get_page_for_posts();
+	$page_for_posts = lightning_get_page_for_posts();
 
 	// Get post type slug
 	/*-------------------------------------------*/
@@ -81,7 +81,7 @@ function bvII_get_post_type(){
 		$postType['url'] = home_url().'/?post_type='.$postType['slug'];
 	}
 
-	$postType = apply_filters('bvII_postType_custom',$postType);
+	$postType = apply_filters('lightning_postType_custom',$postType);
 	return $postType;
 }
 
@@ -90,26 +90,26 @@ function bvII_get_post_type(){
 /*	Archive title
 /*-------------------------------------------*/
 
-function bvII_get_the_archive_title(){
+function lightning_get_the_archive_title(){
    if ( is_category() ) {
         $title = single_cat_title( '', false );
     } elseif ( is_tag() ) {
         $title = single_tag_title( '', false );
     } elseif ( is_author() ) {
-        $title = sprintf( __( 'Author: %s', 'bvII' ), '<span class="vcard">' . get_the_author() . '</span>' );
+        $title = sprintf( __( 'Author: %s', 'lightning' ), '<span class="vcard">' . get_the_author() . '</span>' );
     } elseif ( is_year() ) {
-        $title = get_the_date( _x( 'Y', 'yearly archives date format', 'bvII' ) );
+        $title = get_the_date( _x( 'Y', 'yearly archives date format', 'lightning' ) );
     } elseif ( is_month() ) {
-        $title = get_the_date( _x( 'F Y', 'monthly archives date format', 'bvII' ) );
+        $title = get_the_date( _x( 'F Y', 'monthly archives date format', 'lightning' ) );
     } elseif ( is_day() ) {
-        $title = get_the_date( _x( 'F j, Y', 'daily archives date format', 'bvII' ) );
+        $title = get_the_date( _x( 'F j, Y', 'daily archives date format', 'lightning' ) );
     } elseif ( is_post_type_archive() ) {
         $title = post_type_archive_title( '', false );
     } elseif ( is_tax() ) {
         $title = single_term_title( '', false );
     } elseif ( is_home() && !is_front_page() ){
-    	$bvII_page_for_posts = bvII_get_page_for_posts();
-    	$title = $bvII_page_for_posts['post_top_name'];
+    	$lightning_page_for_posts = lightning_get_page_for_posts();
+    	$title = $lightning_page_for_posts['post_top_name'];
     } else {
         global $wp_query;
 		// get post type
@@ -117,9 +117,9 @@ function bvII_get_the_archive_title(){
 		if ( $postType ) {
 			$pageTitle = get_post_type_object($postType)->labels->name;
 		} else {
-			$title = __( 'Archives', 'bvII' );
+			$title = __( 'Archives', 'lightning' );
 		}
     }
 
-    return apply_filters( 'bvII_get_the_archive_title', $title );
+    return apply_filters( 'lightning_get_the_archive_title', $title );
 }

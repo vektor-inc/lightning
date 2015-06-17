@@ -18,7 +18,7 @@
 
 </head>
 <body <?php body_class(); ?>>
-<?php // do_action('bvII_sns_body'); ?>
+<?php // do_action('lightning_sns_body'); ?>
 <header class="navbar navbar-fixed-top siteHeader">
     <div class="container">
         <div class="navbar-header">
@@ -30,7 +30,7 @@
             </button>
             <h1 class="navbar-brand headLogo">
             <a href="<?php echo home_url(); ?>"><span>
-            <?php bvII_print_headlogo(); ?>
+            <?php lightning_print_headlogo(); ?>
             </span></a>
             </h1>
         </div>

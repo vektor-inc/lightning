@@ -7,11 +7,11 @@ global $wp_query;
 
 // Get Post type info
 /*-------------------------------------------*/
-$postType = bvII_get_post_type();
+$postType = lightning_get_post_type();
 
 // Get Post top page info
 /*-------------------------------------------*/
-$page_for_posts = bvII_get_page_for_posts();
+$page_for_posts = lightning_get_page_for_posts();
 
 
 $panListHtml = '<!-- [ .breadSection ] -->
@@ -123,12 +123,12 @@ if ( is_home() ){
 		}
 
 		if (is_year()){
-			$panListHtml .= '<li><span>' . sprintf( __( 'Yearly Archives: %s', 'bvII' ), date( _x( 'Y', 'yearly archives date format', 'bvII' ), strtotime( $query['year'] .'-01-01' ) ) ) . '</span></li>';
+			$panListHtml .= '<li><span>' . sprintf( __( 'Yearly Archives: %s', 'lightning' ), date( _x( 'Y', 'yearly archives date format', 'lightning' ), strtotime( $query['year'] .'-01-01' ) ) ) . '</span></li>';
 		} else if (is_month()){ 
 			$month = ( $query['monthnum'] < 10 ) ? '0' . $query['monthnum'] : $query['monthnum'];
-			$panListHtml .= '<li><span>' . sprintf( __( 'Monthly Archives: %s', 'bvII' ), date( _x( 'F Y', 'monthly archives date format', 'bvII' ), strtotime( $query['year'] . '-' . $month . '-01' ) ) ) . '</span></li>';
+			$panListHtml .= '<li><span>' . sprintf( __( 'Monthly Archives: %s', 'lightning' ), date( _x( 'F Y', 'monthly archives date format', 'lightning' ), strtotime( $query['year'] . '-' . $month . '-01' ) ) ) . '</span></li>';
 		} elseif(is_day()) {
-			$panListHtml .= '<li><span>' . sprintf( __( 'Daily Archives: %s', 'bvII' ), date( _x( 'F jS, Y', 'daily archives date format', 'bvII' ), strtotime( $query['year'] . '-' . $query['monthnum'] . '-' . $query['day'] ) ) ) . '</span></li>';
+			$panListHtml .= '<li><span>' . sprintf( __( 'Daily Archives: %s', 'lightning' ), date( _x( 'F jS, Y', 'daily archives date format', 'lightning' ), strtotime( $query['year'] . '-' . $query['monthnum'] . '-' . $query['day'] ) ) ) . '</span></li>';
 		}
 
 	} 
@@ -216,14 +216,14 @@ if ( is_home() ){
 	/* 404
 	/*-------------------------------*/
 
-	$panListHtml .= '<li><span>' . __( 'Not found', 'bvII' ) . '</span></li>';
+	$panListHtml .= '<li><span>' . __( 'Not found', 'lightning' ) . '</span></li>';
 
 } else if ( is_search() ) {
 
 	/* Search result
 	/*-------------------------------*/
 
-	$panListHtml .= '<li><span>' . sprintf(__('Search Results for : %s', 'bvII'), get_search_query() ) . '</span></li>';
+	$panListHtml .= '<li><span>' . sprintf(__('Search Results for : %s', 'lightning'), get_search_query() ) . '</span></li>';
 
 
 } elseif ( is_attachment() ) {
@@ -240,5 +240,5 @@ $panListHtml .= '</ol>
 </div>
 <!-- [ /.breadSection ] -->';
 
-$panListHtml = apply_filters( 'bvII_panListHtml', $panListHtml );
+$panListHtml = apply_filters( 'lightning_panListHtml', $panListHtml );
 echo $panListHtml;

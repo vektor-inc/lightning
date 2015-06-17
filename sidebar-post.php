@@ -16,7 +16,7 @@ $post_loop = new WP_Query( array(
 ) ); ?>
 <?php if ($post_loop->have_posts()) : ?>
 <aside class="widget">
-<h1 class="subSection-title"><?php echo __('Recent posts', 'bvII');?></h1>
+<h1 class="subSection-title"><?php echo __('Recent posts', 'lightning');?></h1>
 <?php while ( $post_loop->have_posts() ) : $post_loop->the_post();?>
 <?php get_template_part('module_post__subLoop_item'); ?>
 <?php endwhile;?>
@@ -25,7 +25,7 @@ $post_loop = new WP_Query( array(
 
 <aside class="widget widget_categories">
 <nav class="localNav">
-<h1 class="subSection-title"><?php _e('Category', 'bvII');?></h1>
+<h1 class="subSection-title"><?php _e('Category', 'lightning');?></h1>
 <ul>
   <?php wp_list_categories('title_li='); ?> 
 </ul>
@@ -34,7 +34,7 @@ $post_loop = new WP_Query( array(
 
 <aside class="widget widget_archive">
 <nav class="localNav">
-<h1 class="subSection-title"><?php _e('Archive', 'bvII');?></h1>
+<h1 class="subSection-title"><?php _e('Archive', 'lightning');?></h1>
 <ul>
   <?php
   $args = array(

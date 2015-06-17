@@ -3,9 +3,9 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: BizVektorII v0.0.0\n"
+"Project-Id-Version: Lightning v0.0.0\n"
 "Report-Msgid-Bugs-To: Translator Name <translations@example.com>\n"
-"POT-Creation-Date: 2015-06-17 13:09+0900\n"
+"POT-Creation-Date: 2015-06-17 14:23+0900\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Kurudrive <kurudrive@gmail.com>\n"
 "Language-Team: \n"
@@ -87,47 +87,47 @@ msgid "Footer widget area "
 msgstr "フッターウィジェットエリア"
 
 #: functions_customizer.php:35
-msgctxt "bvII theme-customizer"
+msgctxt "lightning theme-customizer"
 msgid "Design settings"
 msgstr "デザイン設定"
 
 #: functions_customizer.php:72
-msgctxt "bvII theme-customizer"
+msgctxt "lightning theme-customizer"
 msgid "Header logo image"
 msgstr "ヘッダーロゴ画像"
 
 #: functions_customizer.php:79
-msgctxt "bvII theme-customizer"
+msgctxt "lightning theme-customizer"
 msgid "Key color"
 msgstr "キーカラー"
 
 #: functions_customizer.php:85
-msgctxt "bvII theme-customizer"
+msgctxt "lightning theme-customizer"
 msgid "Key color(dark)"
 msgstr "キーカラー（暗）"
 
 #: functions_customizer.php:91
-msgctxt "bvII theme-customizer"
+msgctxt "lightning theme-customizer"
 msgid "Don't show sidebar on home page"
 msgstr "トップページを1カラムにする"
 
 #: functions_customizer.php:103
-msgctxt "bvII theme-customizer"
+msgctxt "lightning theme-customizer"
 msgid "Home page slide show"
 msgstr "トップページスライドショー"
 
 #: functions_customizer.php:159
-msgctxt "bvII theme-customizer"
+msgctxt "lightning theme-customizer"
 msgid "Slide image title"
 msgstr "スライド画像タイトル"
 
 #: functions_customizer.php:168
-msgctxt "bvII theme-customizer"
+msgctxt "lightning theme-customizer"
 msgid "Slide image url"
 msgstr "スライド画像"
 
 #: functions_customizer.php:180
-msgctxt "bvII theme-customizer"
+msgctxt "lightning theme-customizer"
 msgid "Slide image"
 msgstr "スライド画像"
 

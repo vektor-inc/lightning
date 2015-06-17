@@ -14,7 +14,7 @@
 		<h4 class="media-heading"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
 		<?php the_excerpt(); ?>
 		<!--
-		<div><a href="<?php the_permalink(); ?>" class="btn btn-default btn-sm"><?php _e('Read more', 'bvII'); ?></a></div>
+		<div><a href="<?php the_permalink(); ?>" class="btn btn-default btn-sm"><?php _e('Read more', 'lightning'); ?></a></div>
 		-->   
 	</div>
 </div>

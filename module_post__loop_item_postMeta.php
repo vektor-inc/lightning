@@ -2,7 +2,7 @@
 <div class="entry-meta">
 <span class="published entry-meta-items"><i class="fa fa-calendar"></i><?php echo esc_html( get_the_date() ); ?></span>
 <!--
-<span class="updated entry-meta-items"><?php _e('Last updated','bvII'); ?> : <?php the_modified_date('') ?></span>
+<span class="updated entry-meta-items"><?php _e('Last updated','lightning'); ?> : <?php the_modified_date('') ?></span>
 <span class="vcard author entry-meta-items"><i class="fa fa-pencil"></i><span class="fn"><?php echo esc_html(get_the_author_meta( 'display_name' ));?></span></span>
 -->
 
@@ -12,7 +12,7 @@
 
 <?php
 
-$page_for_posts = bvII_get_page_for_posts();
+$page_for_posts = lightning_get_page_for_posts();
 // if ( $page_for_posts['post_top_use'] ) {
 	$taxonomies = get_the_taxonomies();
 	if ($taxonomies):

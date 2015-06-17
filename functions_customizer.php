@@ -1,6 +1,6 @@
 <?php
-add_action( 'customize_register', 'bvII_customize_register' );
-function bvII_customize_register($wp_customize) {
+add_action( 'customize_register', 'lightning_customize_register' );
+function lightning_customize_register($wp_customize) {
 
 	/*	Add text control description
 	/*-------------------------------------------*/
@@ -20,7 +20,7 @@ function bvII_customize_register($wp_customize) {
 
 	/*	Add sanitize checkbox
 	/*-------------------------------------------*/
-	function bvII_sanitize_checkbox($input){
+	function lightning_sanitize_checkbox($input){
 		if($input==true){
 			return true;
 		}else{
@@ -31,36 +31,36 @@ function bvII_customize_register($wp_customize) {
     /*-------------------------------------------*/
 	/*	Design setting
 	/*-------------------------------------------*/
-    $wp_customize->add_section( 'bvII_design', array(
-        'title'          => _x('Design settings', 'bvII theme-customizer', 'bvII'),
+    $wp_customize->add_section( 'lightning_design', array(
+        'title'          => _x('Design settings', 'lightning theme-customizer', 'lightning'),
         'priority'       => 500,
     ) );
 
     // Add setting
 
-    $wp_customize->add_setting( 'bvII_theme_options[head_logo]', array(
+    $wp_customize->add_setting( 'lightning_theme_options[head_logo]', array(
         'default'			=> '',
         'type'				=> 'option',
         'capability'		=> 'edit_theme_options',
         'sanitize_callback' => 'esc_url_raw',
     ) );
-	$wp_customize->add_setting( 'bvII_theme_options[color_key]', array(
+	$wp_customize->add_setting( 'lightning_theme_options[color_key]', array(
 		'default'			=> '#337ab7',
 		'type'				=> 'option',
 		'capability'		=> 'edit_theme_options',
 		'sanitize_callback' => 'sanitize_hex_color',
 	) );
-	$wp_customize->add_setting( 'bvII_theme_options[color_key_dark]', array(
+	$wp_customize->add_setting( 'lightning_theme_options[color_key_dark]', array(
 		'default'			=> '#2e6da4',
 		'type'				=> 'option',
 		'capability'		=> 'edit_theme_options',
 		'sanitize_callback' => 'sanitize_hex_color',
 	) );
-	$wp_customize->add_setting('bvII_theme_options[top_sidebar_hidden]', array(
+	$wp_customize->add_setting('lightning_theme_options[top_sidebar_hidden]', array(
     	'default'			=> false,
     	'type'				=> 'option',
     	'capability'		=> 'edit_theme_options',
-		'sanitize_callback' => 'bvII_sanitize_checkbox',
+		'sanitize_callback' => 'lightning_sanitize_checkbox',
 	));
 
 	// Create section UI
@@ -69,28 +69,28 @@ function bvII_customize_register($wp_customize) {
 		$wp_customize,
 		'head_logo',
 		array(
-			'label'     => _x('Header logo image', 'bvII theme-customizer', 'bvII'),
-			'section'   => 'bvII_design',
-			'settings'  => 'bvII_theme_options[head_logo]',
+			'label'     => _x('Header logo image', 'lightning theme-customizer', 'lightning'),
+			'section'   => 'lightning_design',
+			'settings'  => 'lightning_theme_options[head_logo]',
 			'priority'  => 501,
 		)
 	) );
 	$wp_customize->add_control( new WP_Customize_Color_Control($wp_customize, 'color_key', array(
-		'label'    => _x('Key color', 'bvII theme-customizer', 'bvII'),
-		'section'  => 'bvII_design',
-		'settings' => 'bvII_theme_options[color_key]',
+		'label'    => _x('Key color', 'lightning theme-customizer', 'lightning'),
+		'section'  => 'lightning_design',
+		'settings' => 'lightning_theme_options[color_key]',
 		'priority' => 502,
 	)));
 	$wp_customize->add_control( new WP_Customize_Color_Control($wp_customize, 'color_key_dark', array(
-		'label'    => _x('Key color(dark)', 'bvII theme-customizer', 'bvII'),
-		'section'  => 'bvII_design',
-		'settings' => 'bvII_theme_options[color_key_dark]',
+		'label'    => _x('Key color(dark)', 'lightning theme-customizer', 'lightning'),
+		'section'  => 'lightning_design',
+		'settings' => 'lightning_theme_options[color_key_dark]',
 		'priority' => 503,
 	)));
-	$wp_customize->add_control( 'bvII_theme_options[top_sidebar_hidden]', array(
-		'label'		=> _x( 'Don\'t show sidebar on home page' ,'bvII theme-customizer', 'bvII' ),
-		'section'	=> 'bvII_design',
-		'settings'  => 'bvII_theme_options[top_sidebar_hidden]',
+	$wp_customize->add_control( 'lightning_theme_options[top_sidebar_hidden]', array(
+		'label'		=> _x( 'Don\'t show sidebar on home page' ,'lightning theme-customizer', 'lightning' ),
+		'section'	=> 'lightning_design',
+		'settings'  => 'lightning_theme_options[top_sidebar_hidden]',
 		'type'		=> 'checkbox',
 		'priority'	=> 504, 
 	));
@@ -99,31 +99,31 @@ function bvII_customize_register($wp_customize) {
 	/*-------------------------------------------*/
 	/*	Top slide show
 	/*-------------------------------------------*/
-    $wp_customize->add_section( 'bvII_slide', array(
-        'title'          => _x('Home page slide show', 'bvII theme-customizer', 'bvII'),
+    $wp_customize->add_section( 'lightning_slide', array(
+        'title'          => _x('Home page slide show', 'lightning theme-customizer', 'lightning'),
         'priority'       => 600,
     ) );
 
     // slide count
-	// $wp_customize->add_setting( 'bvII_theme_options[top_slide_count]',	array(
+	// $wp_customize->add_setting( 'lightning_theme_options[top_slide_count]',	array(
 	// 	'default' 			=> 3,
 	// 	'type'				=> 'option',
 	// 	'capability' 		=> 'edit_theme_options',
 	// 	'sanitize_callback' => 'sanitize_text_field',
 	// 	) );
 	// $wp_customize->add_control( new Custom_Text_Control( $wp_customize, 'slide_count',array(
-	// 	'label'     => __('Slide image count', 'bvII theme-customizer', 'bvII'),
-	// 	'section'  => 'bvII_slide',
-	// 	'settings' => 'bvII_theme_options[top_slide_count]',
+	// 	'label'     => __('Slide image count', 'lightning theme-customizer', 'lightning'),
+	// 	'section'  => 'lightning_slide',
+	// 	'settings' => 'lightning_theme_options[top_slide_count]',
 	// 	'type' => 'text',
 	// 	'priority' => 601,
-	// 	'description' => __('If you change this count,please save & reload this page.', 'bvII'),
+	// 	'description' => __('If you change this count,please save & reload this page.', 'lightning'),
 	// 	) ) );
 
 	// slide image
 	$priority = 610;
-	$bvII_theme_options = get_option('bvII_theme_options');
-	// $top_slide_count = ( isset( $bvII_theme_options['top_slide_count'] ) ) ? $bvII_theme_options['top_slide_count'] : 3 ;
+	$lightning_theme_options = get_option('lightning_theme_options');
+	// $top_slide_count = ( isset( $lightning_theme_options['top_slide_count'] ) ) ? $lightning_theme_options['top_slide_count'] : 3 ;
     for ( $i = 1; $i <= 5; ) {
 
     	// Default images
@@ -134,19 +134,19 @@ function bvII_customize_register($wp_customize) {
     	}
 
     	// Add setting
-		$wp_customize->add_setting( 'bvII_theme_options[top_slide_title_'.$i.']',	array(
+		$wp_customize->add_setting( 'lightning_theme_options[top_slide_title_'.$i.']',	array(
 			'default' 			=> '',
 			'type'				=> 'option',
 			'capability' 		=> 'edit_theme_options',
 			'sanitize_callback' => 'sanitize_text_field',
 			) );
-	    $wp_customize->add_setting( 'bvII_theme_options[top_slide_image_'.$i.']',  array(
+	    $wp_customize->add_setting( 'lightning_theme_options[top_slide_image_'.$i.']',  array(
 	        'default'        	=> $default_image,
 	        'type'           	=> 'option',
 	        'capability'    	=> 'edit_theme_options',
 	        'sanitize_callback' => 'esc_url_raw',
 	    	) );
-		$wp_customize->add_setting( 'bvII_theme_options[top_slide_url_'.$i.']',	array(
+		$wp_customize->add_setting( 'lightning_theme_options[top_slide_url_'.$i.']',	array(
 			'default' 			=> '',
 			'type'				=> 'option',
 			'capability' 		=> 'edit_theme_options',
@@ -156,18 +156,18 @@ function bvII_customize_register($wp_customize) {
 	    // Add control
 		$priority = $priority + 1;
 		$wp_customize->add_control( 'top_slide_title_'.$i, array(
-			'label'     => _x('Slide image title', 'bvII theme-customizer', 'bvII').' '.$i,
-			'section'  => 'bvII_slide',
-			'settings' => 'bvII_theme_options[top_slide_title_'.$i.']',
+			'label'     => _x('Slide image title', 'lightning theme-customizer', 'lightning').' '.$i,
+			'section'  => 'lightning_slide',
+			'settings' => 'lightning_theme_options[top_slide_title_'.$i.']',
 			'type' => 'text',
 			'priority' => $priority,
 			) );
 
 		$priority = $priority + 1;
 		$wp_customize->add_control( 'top_slide_url_'.$i, array(
-			'label'     => _x('Slide image url', 'bvII theme-customizer', 'bvII').' '.$i,
-			'section'  => 'bvII_slide',
-			'settings' => 'bvII_theme_options[top_slide_url_'.$i.']',
+			'label'     => _x('Slide image url', 'lightning theme-customizer', 'lightning').' '.$i,
+			'section'  => 'lightning_slide',
+			'settings' => 'lightning_theme_options[top_slide_url_'.$i.']',
 			'type' => 'text',
 			'priority' => $priority,
 			) );
@@ -177,9 +177,9 @@ function bvII_customize_register($wp_customize) {
 			$wp_customize,
 			'top_slide_image_'.$i,
 			array(
-				'label'     => _x('Slide image', 'bvII theme-customizer', 'bvII').' '.$i,
-				'section'   => 'bvII_slide',
-				'settings'  => 'bvII_theme_options[top_slide_image_'.$i.']',
+				'label'     => _x('Slide image', 'lightning theme-customizer', 'lightning').' '.$i,
+				'section'   => 'lightning_slide',
+				'settings'  => 'lightning_theme_options[top_slide_image_'.$i.']',
 				'priority'  => $priority,
 			)
 		) );
@@ -194,9 +194,9 @@ function bvII_customize_register($wp_customize) {
 /*-------------------------------------------*/
 /*	Print head
 /*-------------------------------------------*/
-add_action( 'wp_head','bvII_print_css', 150);
-function bvII_print_css(){
-	$options = get_option('bvII_theme_options');
+add_action( 'wp_head','lightning_print_css', 150);
+function lightning_print_css(){
+	$options = get_option('lightning_theme_options');
 	$color_key = esc_html($options['color_key']);
 	$color_key_dark = esc_html($options['color_key_dark']);
 	?>

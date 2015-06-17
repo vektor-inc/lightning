@@ -1,9 +1,9 @@
 <?php
-$bvII_theme_options = get_option('bvII_theme_options');
+$lightning_theme_options = get_option('lightning_theme_options');
 
 $top_slide_count = 0;
 for ( $i = 1; $i <= 5; ) {
-    if ( isset( $bvII_theme_options['top_slide_image_'.$i] ) && $bvII_theme_options['top_slide_image_'.$i] ) {
+    if ( isset( $lightning_theme_options['top_slide_image_'.$i] ) && $lightning_theme_options['top_slide_image_'.$i] ) {
         $top_slide_count ++;
     }
     $i++;
@@ -33,29 +33,29 @@ if ($top_slide_count) : ?>
 
             // If 1st slide no set, set default image.
             if ( $i <= 3 ){
-                if ( isset( $bvII_theme_options['top_slide_image_'.$i] )) {
-                    $top_slide_image_src = $bvII_theme_options['top_slide_image_'.$i];
+                if ( isset( $lightning_theme_options['top_slide_image_'.$i] )) {
+                    $top_slide_image_src = $lightning_theme_options['top_slide_image_'.$i];
                 } else {
                     $top_slide_image_src = get_template_directory_uri().'/images/top_image_'.$i.'.jpg';
                 }
             } else {
-                if ( isset( $bvII_theme_options['top_slide_image_'.$i] ))
-                    $top_slide_image_src = $bvII_theme_options['top_slide_image_'.$i];
+                if ( isset( $lightning_theme_options['top_slide_image_'.$i] ))
+                    $top_slide_image_src = $lightning_theme_options['top_slide_image_'.$i];
             }
             $top_slide_title = '';
-            $top_slide_title = ( isset($bvII_theme_options['top_slide_title_'.$i])) ? $bvII_theme_options['top_slide_title_'.$i] : '';
+            $top_slide_title = ( isset($lightning_theme_options['top_slide_title_'.$i])) ? $lightning_theme_options['top_slide_title_'.$i] : '';
             if ( $top_slide_image_src ) { ?>
             <div class="item<?php if ($i == 1) echo ' active';?>">
 
             <?php
-            if ( isset( $bvII_theme_options['top_slide_url_'.$i] ) && $bvII_theme_options['top_slide_url_'.$i] ): ?>
-                <a href="<?php echo esc_url( $bvII_theme_options['top_slide_url_'.$i] ); ?>">
+            if ( isset( $lightning_theme_options['top_slide_url_'.$i] ) && $lightning_theme_options['top_slide_url_'.$i] ): ?>
+                <a href="<?php echo esc_url( $lightning_theme_options['top_slide_url_'.$i] ); ?>">
             <?php endif; ?>
 
             <img src="<?php echo esc_attr($top_slide_image_src); ?>" alt="<?php echo esc_attr($top_slide_title); ?>">
 
             <?php
-            if ( isset( $bvII_theme_options['top_slide_url_'.$i] ) && $bvII_theme_options['top_slide_url_'.$i] ): ?></a><?php endif; 
+            if ( isset( $lightning_theme_options['top_slide_url_'.$i] ) && $lightning_theme_options['top_slide_url_'.$i] ): ?></a><?php endif; 
             ?>
 
             <!-- <div class="carousel-caption">

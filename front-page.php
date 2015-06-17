@@ -4,8 +4,8 @@
         <div class="row">
 
             <?php
-            $bvII_theme_options = get_option('bvII_theme_options');
-            if ( isset($bvII_theme_options['top_sidebar_hidden']) && !$bvII_theme_options['top_sidebar_hidden'] ){
+            $lightning_theme_options = get_option('lightning_theme_options');
+            if ( isset($lightning_theme_options['top_sidebar_hidden']) && !$lightning_theme_options['top_sidebar_hidden'] ){
                 $main_col = 'col-md-8';
             } else {
                 $main_col = 'col-md-12';
@@ -47,7 +47,7 @@
                                                 'prev_text' => '&laquo;',
                                                 'next_text' => '&raquo;',
                                                 'type'      => 'list',
-                                                'before_page_number' => '<span class="meta-nav screen-reader-text">' . __ ( 'Page', 'bvII' ) . ' </span>'
+                                                'before_page_number' => '<span class="meta-nav screen-reader-text">' . __ ( 'Page', 'lightning' ) . ' </span>'
                                             ) ); ?>
 
                     </div><!-- [ /.postList ] -->
@@ -56,13 +56,13 @@
 
             <?php else: ?>
 
-                <div class="well"><p><?php _e('No posts.','bvII');?></p></div>
+                <div class="well"><p><?php _e('No posts.','lightning');?></p></div>
 
             <?php endif; // have_post() ?>
 
             </div><!-- [ /.col-md-8 of .col-md-12 ] -->
 
-            <?php if ( !isset($bvII_theme_options['top_sidebar_hidden']) || !$bvII_theme_options['top_sidebar_hidden'] ) :?>
+            <?php if ( !isset($lightning_theme_options['top_sidebar_hidden']) || !$lightning_theme_options['top_sidebar_hidden'] ) :?>
                 <div class="col-md-3 col-md-offset-1 site-sub subSection">
                     <?php get_sidebar(); ?>
                 </div><!-- [ /.site-sub ] -->

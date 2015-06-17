@@ -10,11 +10,11 @@
 /*-------------------------------------------*/
 /*  Archive title
 /*-------------------------------------------*/
-$page_for_posts = bvII_get_page_for_posts();
+$page_for_posts = lightning_get_page_for_posts();
 // Use post top page（ Archive title wrap to div ）
 if ( $page_for_posts['post_top_use'] || get_post_type() != 'post' ) {
   if ( is_year() || is_month() || is_day() || is_tag() || is_author() || is_tax() || is_category() ) {
-      $archiveTitle = bvII_get_the_archive_title();
+      $archiveTitle = lightning_get_the_archive_title();
       echo '<header class="archive-header"><h1>'.esc_html( $archiveTitle ).'</h1></header>';
   }
 }
@@ -45,11 +45,11 @@ the_posts_pagination(array (
                         'prev_text' => '&laquo;',
                         'next_text' => '&raquo;',
                         'type'      => 'list',
-                        'before_page_number' => '<span class="meta-nav screen-reader-text">' . __ ( 'Page', 'bvII' ) . ' </span>'
+                        'before_page_number' => '<span class="meta-nav screen-reader-text">' . __ ( 'Page', 'lightning' ) . ' </span>'
                     ) ); 
 ?>
 <?php else: ?>
-<div class="well"><p><?php _e('No posts.','bvII');?></p></div>
+<div class="well"><p><?php _e('No posts.','lightning');?></p></div>
 <?php endif; // have_post() ?>
 </main>
 </div>

@@ -29,7 +29,7 @@
 	if ( $tags_list ): ?>
 	<div class="entry-tag">
 	<dl>
-	<dt><?php _e('Tags','bvII') ;?></dt>
+	<dt><?php _e('Tags','lightning') ;?></dt>
 	<dd><?php echo $tags_list; ?></dd>
 	</dl>
 	</div><!-- [ /.entry-tag ] -->
