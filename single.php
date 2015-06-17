@@ -8,7 +8,7 @@
 <?php if (have_posts()) : while ( have_posts() ) : the_post();?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header>
-	<?php get_template_part('module_post__loop_item_postMeta');?>
+	<?php get_template_part('module_loop_post_meta');?>
 	<h1 class="entry-title"><?php the_title(); ?></h1>
 	</header>
 

@@ -10,7 +10,7 @@
 	</div>
 	<?php endif; ?>
 	<div class="media-body">
-		<?php get_template_part('module_post__loop_item_postMeta');?>
+		<?php get_template_part('module_loop_post_meta');?>
 		<h4 class="media-heading"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
 		<?php the_excerpt(); ?>
 		<!--
