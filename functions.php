@@ -120,6 +120,18 @@ function bvII_widgets_init() {
 	// footer upper widget area
 
 		register_sidebar( array(
+			'name' => __( 'Home content top', 'bvII' ),
+			'id' => 'home-content-top-widget-area',
+			// 'description' => __( 'This widget area appears on the post contents page only.', 'bvII' ),
+			'before_widget' => '<div class="widget %2$s" id="%1$s">',
+			'after_widget' => '</div>',
+			'before_title' => '<h3>',
+			'after_title' => '</h3>',
+		) );
+
+	// footer upper widget area
+
+		register_sidebar( array(
 			'name' => __( 'Widget area of upper footer', 'bvII' ),
 			'id' => 'footer-upper-widget-1',
 			// 'description' => __( 'This widget area appears on the post contents page only.', 'bvII' ),

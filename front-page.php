@@ -13,6 +13,10 @@
 
             <div class="<?php echo $main_col; ?>">
 
+            <?php if ( is_active_sidebar( 'home-content-top-widget-area' ) ) : ?>
+                <?php dynamic_sidebar( 'home-content-top-widget-area' ); ?>
+            <?php endif; ?>
+
             <?php if (have_posts()) : ?>
 
                 <?php if ( 'page' == get_option('show_on_front') ) : ?>
