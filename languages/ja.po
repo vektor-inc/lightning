@@ -22,6 +22,12 @@ msgstr ""
 "X-Generator: Poedit 1.5.7\n"
 "X-Poedit-SearchPath-0: .\n"
 
+# Theme presentation (no text domain)
+msgid "Lightning is a very simple theme that built by Bootstrap."
+msgstr ""
+"Lightning（ライトニング）はBootstrapベースのシンプルでカスタマイズしやすい"
+"テーマです。"
+
 #: comments.php:28
 #, php-format
 msgctxt "comments title"
