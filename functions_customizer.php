@@ -127,7 +127,7 @@ function lightning_customize_register($wp_customize) {
     for ( $i = 1; $i <= 5; ) {
 
     	// Default images
-    	if ($i <= 3) {
+    	if ($i <= 2) {
     		$default_image = get_template_directory_uri().'/images/top_image_'.$i.'.jpg';
     	} else {
     		$default_image = '';
