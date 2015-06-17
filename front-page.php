@@ -40,7 +40,7 @@
 
                         <?php while ( have_posts() ) : the_post();?>
 
-                            <?php get_template_part('module_post__loop_item'); ?>
+                            <?php get_template_part('module_loop_post'); ?>
 
                         <?php endwhile;?>
 
