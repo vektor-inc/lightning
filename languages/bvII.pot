@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lightning v0.0.0\n"
 "Report-Msgid-Bugs-To: Translator Name <translations@example.com>\n"
-"POT-Creation-Date: 2015-06-17 13:10+0900\n"
+"POT-Creation-Date: 2015-06-17 20:10+0900\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Kurudrive <kurudrive@gmail.com>\n"
 "Language-Team: Vektor,Inc. <kurudrive@gmail.com>\n"
@@ -47,11 +47,11 @@ msgstr ""
 msgid "Comments are closed."
 msgstr ""
 
-#: front-page.php:50 index.php:48
+#: front-page.php:52 index.php:48
 msgid "Page"
 msgstr ""
 
-#: front-page.php:59 index.php:52
+#: front-page.php:61 index.php:52
 msgid "No posts."
 msgstr ""
 
@@ -156,6 +156,14 @@ msgstr ""
 msgid "Archives"
 msgstr ""
 
+#: module_loop_post.php:17
+msgid "Read more"
+msgstr ""
+
+#: module_loop_post_meta.php:5
+msgid "Last updated"
+msgstr ""
+
 #: module_pageTit.php:77 module_panList.php:226
 #, php-format
 msgid "Search Results for : %s"
@@ -183,14 +191,6 @@ msgstr ""
 #: module_panList.php:131
 msgctxt "daily archives date format"
 msgid "F jS, Y"
-msgstr ""
-
-#: module_post__loop_item.php:17
-msgid "Read more"
-msgstr ""
-
-#: module_post__loop_item_postMeta.php:5
-msgid "Last updated"
 msgstr ""
 
 #: sidebar-post.php:19
