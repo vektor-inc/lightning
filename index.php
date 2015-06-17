@@ -36,7 +36,7 @@ if ( $page_for_posts['post_top_use'] || get_post_type() != 'post' ) {
 <?php if (have_posts()) : ?>
 <div class="postList">
 <?php while ( have_posts() ) : the_post();?>
-<?php get_template_part('module_post__loop_item'); ?>
+<?php get_template_part('module_loop_post'); ?>
 <?php endwhile;?>
 </div>
 <?php
