@@ -18,7 +18,7 @@ $post_loop = new WP_Query( array(
 <aside class="widget">
 <h1 class="subSection-title"><?php echo __('Recent posts', 'lightning');?></h1>
 <?php while ( $post_loop->have_posts() ) : $post_loop->the_post();?>
-<?php get_template_part('module_post__subLoop_item'); ?>
+<?php get_template_part('module_subLoop_post'); ?>
 <?php endwhile;?>
 </aside>
 <?php endif; ?>
