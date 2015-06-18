@@ -2632,3 +2632,5 @@ img.alignleft, img.alignright, img.aligncenter { margin-bottom: 12px; }
 /* other class
 /*-------------------------------------------*/
 .well p:last-child { margin-bottom: 0; }
+
+body.wp-autoresize { padding: 15px !important; }
