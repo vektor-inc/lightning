@@ -3,4 +3,7 @@
 @import "bootstrap.min";
 @import "common";
 
+$color_key : #337ab7;
+
 body.wp-autoresize { padding:15px !important; }
+h4 { color:$color_key;font-weight: bold;font-size:20px; }
