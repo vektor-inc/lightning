@@ -1,9 +1,12 @@
 <?php
 $lightning_theme_options = get_option('lightning_theme_options');
 
+// count top slide
 $top_slide_count = 0;
 for ( $i = 1; $i <= 5; ) {
-    if ( isset( $lightning_theme_options['top_slide_image_'.$i] ) && $lightning_theme_options['top_slide_image_'.$i] ) {
+    if ( $i <= 2 && !isset( $lightning_theme_options['top_slide_image_'.$i] ) ){
+        $top_slide_count ++;
+    } else if ( isset( $lightning_theme_options['top_slide_image_'.$i] ) && $lightning_theme_options['top_slide_image_'.$i] ) {
         $top_slide_count ++;
     }
     $i++;
@@ -32,7 +35,7 @@ if ($top_slide_count) : ?>
             $top_slide_url = '';
 
             // If 1st slide no set, set default image.
-            if ( $i <= 3 ){
+            if ( $i <= 2 ){
                 if ( isset( $lightning_theme_options['top_slide_image_'.$i] )) {
                     $top_slide_image_src = $lightning_theme_options['top_slide_image_'.$i];
                 } else {
