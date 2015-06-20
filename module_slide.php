@@ -58,11 +58,6 @@ if ($top_slide_count) : ?>
             if ( isset( $lightning_theme_options['top_slide_url_'.$i] ) && $lightning_theme_options['top_slide_url_'.$i] ): ?></a><?php endif; 
             ?>
 
-            <!-- <div class="carousel-caption">
-                <h2>Title</h2>
-                <p>Description</p>
-            </div>
-            -->
             </div><!-- [ /.item ] -->
             <?php } ?>
         <?php $i++;
