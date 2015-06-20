@@ -69,7 +69,11 @@ if ( post_password_required() ) {
 		// If comments are closed and there are comments, let's leave a little note, shall we?
 		if ( ! comments_open() && '0' != get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) :
 	?>
+		<?php
+		// Don't display to Page
+		if (is_single()) :?>
 		<p class="no-comments"><?php _e( 'Comments are closed.', 'lightning' ); ?></p>
+		<?php endif; ?>
 	<?php endif; ?>
 
 	<?php comment_form(); ?>
