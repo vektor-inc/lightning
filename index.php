@@ -14,7 +14,7 @@ $page_for_posts = lightning_get_page_for_posts();
 // Use post top page（ Archive title wrap to div ）
 if ( $page_for_posts['post_top_use'] || get_post_type() != 'post' ) {
   if ( is_year() || is_month() || is_day() || is_tag() || is_author() || is_tax() || is_category() ) {
-      $archiveTitle = lightning_get_the_archive_title();
+      $archiveTitle = get_the_archive_title();
       echo '<header class="archive-header"><h1>'.esc_html( $archiveTitle ).'</h1></header>';
   }
 }

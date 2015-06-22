@@ -70,7 +70,7 @@ if (is_page() || is_attachment()) {
 			}
 
 		} else {
-			$pageTitle = lightning_get_the_archive_title();
+			$pageTitle = get_the_archive_title();
 		}
 	}
 } else if (is_search()) {
