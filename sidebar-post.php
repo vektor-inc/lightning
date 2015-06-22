@@ -12,6 +12,9 @@ if ( is_active_sidebar( $widdget_area_name ) ){
 $post_loop = new WP_Query( array(
     'post_type' => 'post',
     'posts_per_page' => 10,
+    'no_found_rows'  => true,
+    'update_post_meta_cache' => false,
+    'update_post_term_cache' => false,
 ) ); ?>
 
 <?php if ($post_loop->have_posts()) : ?>
