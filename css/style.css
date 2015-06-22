@@ -2725,7 +2725,7 @@ h1.entry-title:first-letter { color: #337ab7; }
 
 .entry-meta { margin-bottom: 1em; padding-left: 3px; }
 .entry-meta .entry-meta-items { font-size: 14px; }
-.entry-meta .entry-meta-items.updated { margin-right: 1em; }
+.entry-meta .entry-meta-items.updated { margin-right: 0.8em; }
 .entry-meta .entry-meta-items-term { float: right; margin-right: 0; }
 .entry-meta i { margin-right: 5px; }
 
