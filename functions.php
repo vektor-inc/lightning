@@ -50,7 +50,7 @@ function lightning_theme_setup() {
 
 add_action('wp_head','lightning_addJs');
 function lightning_addJs(){
-	wp_register_script( 'lightning-js' , get_template_directory_uri().'/js/all.min.js', array('jquery'), '20150603a' );
+	wp_register_script( 'lightning-js' , get_template_directory_uri().'/js/all.min.js', array('jquery'), '20150619' );
 	wp_enqueue_script( 'lightning-js' );
 }
 

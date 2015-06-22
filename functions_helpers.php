@@ -123,3 +123,36 @@ function lightning_get_the_archive_title(){
 
     return apply_filters( 'lightning_get_the_archive_title', $title );
 }
+
+/*-------------------------------------------*/
+/*	CopyRight
+/*-------------------------------------------*/
+function lightning_footerCopyRight(){
+
+	// copyright
+	/*------------------*/
+	$lightning_footerCopyRight = '<p>Copyright &copy; '.get_bloginfo('name').' All Rights Reserved.</p>';
+
+	echo $lightning_footerCopyRight;
+
+	// Powered
+	/*------------------*/
+	// links for japanese version
+	$wordpressUrl = 'https://ja.wordpress.org/';
+	$lightningUrl = 'http://ligntning.bizvektor.com';
+
+	//links for Global version
+	if ( 'ja' != get_locale() ) {
+		$wordpressUrl = 'https://wordpress.org/';
+		$lightningUrl = 'http://ligntning.bizvektor.com';
+	}
+
+	// **** Don't change id name!
+	$footerPowered = '<p>Powered by <a href="' . $wordpressUrl .'">WordPress</a> &amp; ';
+	$footerPowered .= '<a href="' . $lightningUrl . '" target="_blank" title="' . __( 'Free WordPress Theme Lightning', 'biz-vektor' ) . '">';
+	$footerPowered .= ' Lightning Theme</a>.</p>';
+
+	// $footerPowerd = apply_filters( 'lightning_footerPowerdCustom', $footerPowered );
+	echo apply_filters( 'lightning_footerPowerdCustom', $footerPowered );
+
+}

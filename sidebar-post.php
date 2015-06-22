@@ -9,11 +9,11 @@ if ( is_active_sidebar( $widdget_area_name ) ){
 } else { ?>
 
 <?php
-$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 $post_loop = new WP_Query( array(
     'post_type' => 'post',
     'posts_per_page' => 10,
 ) ); ?>
+
 <?php if ($post_loop->have_posts()) : ?>
 <aside class="widget">
 <h1 class="subSection-title"><?php echo __('Recent posts', 'lightning');?></h1>

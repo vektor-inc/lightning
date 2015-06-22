@@ -1,6 +1,6 @@
 <?php
 /*-------------------------------------------*/
-/*	BizVektorII BreadCrumb
+/*	Lightning BreadCrumb
 /*-------------------------------------------*/
 
 global $wp_query;
