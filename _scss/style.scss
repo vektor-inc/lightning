@@ -143,13 +143,15 @@ h1.page-header__pageTitle:first-child { margin:15px 0 10px;font-size:22px;line-h
 }
 h1.entry-title:first-letter { color:$color_key; }
 .entry-meta { margin-bottom:1em;padding-left:3px;
-  .entry-meta-items { margin-right:1em; }
+  .entry-meta-items { font-size:14px; }
+  .entry-meta-items.updated { margin-right:1em; }
   .entry-meta-items-term { float:right;margin-right:0; }
   i { margin-right:5px; }
 }
 
 @media (max-width: 767px){
-.entry-meta { 
+.entry-meta {
+  .entry-meta-items.author { display: block; }
   .entry-meta-items-term { float:none;display: block;margin-top:0.5em; }
 }
 }// @media (max-width: 767px){
