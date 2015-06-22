@@ -2,6 +2,8 @@
 /*-------------------------------------------*/
 /*	Theme setup
 /*-------------------------------------------*/
+/*	Load JS and CSS
+/*-------------------------------------------*/
 /*	Head logo
 /*-------------------------------------------*/
 /*	WidgetArea initiate
@@ -48,7 +50,11 @@ function lightning_theme_setup() {
 	add_theme_support( 'automatic-feed-links' );
 }
 
-add_action('wp_head','lightning_addJs');
+/*-------------------------------------------*/
+/*	Load JS and CSS
+/*-------------------------------------------*/
+
+add_action('wp_enqueue_scripts','lightning_addJs');
 function lightning_addJs(){
 	wp_register_script( 'lightning-js' , get_template_directory_uri().'/js/all.min.js', array('jquery'), '20150619' );
 	wp_enqueue_script( 'lightning-js' );
@@ -61,11 +67,11 @@ function lightning_commentJs(){
 	}
 }
 
+add_action('wp_enqueue_scripts', 'lightning_css' );
 function lightning_css(){
-	echo '<link rel="stylesheet" href="'.get_stylesheet_uri().'" type="text/css" media="all" />'."\n";
-//	wp_enqueue_style('lightning_style', get_stylesheet_uri(), array(), false);
+	wp_enqueue_style( 'lightning-design-style', get_template_directory_uri().'/css/style.css', array(), '20150622' );
+	wp_enqueue_style( 'lightning-theme-style', get_stylesheet_uri(), array('lightning-design-style'), '20150622');
 }
-add_action('wp_head', 'lightning_css', 190);
 
 /*-------------------------------------------*/
 /*	Load Theme customizer
