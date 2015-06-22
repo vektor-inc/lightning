@@ -109,6 +109,8 @@ jQuery(document).ready(function(){
 	jQuery('textarea').addClass("form-control");
 	jQuery('select').addClass("form-control");
 	jQuery('input[type=text]').addClass("form-control");
+	jQuery('input[type=email]').addClass("form-control");
+	jQuery('input[type=tel]').addClass("form-control");
 	jQuery('input[type=submit]').addClass("btn btn-primary");
 	jQuery('#respond p').each(function(i){
 		jQuery(this).children('input').appendTo(jQuery(this));
