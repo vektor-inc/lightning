@@ -23,7 +23,7 @@ function lightning_customize_register($wp_customize) {
 	function lightning_sanitize_checkbox($input){
 		if($input==true){
 			return true;
-		}else{
+		} else {
 			return false;
 		}
 	}
@@ -62,6 +62,18 @@ function lightning_customize_register($wp_customize) {
     	'capability'		=> 'edit_theme_options',
 		'sanitize_callback' => 'lightning_sanitize_checkbox',
 	));
+	$wp_customize->add_setting('lightning_theme_options[postUpdate_hidden]', array(
+    	'default'			=> false,
+    	'type'				=> 'option',
+    	'capability'		=> 'edit_theme_options',
+		'sanitize_callback' => 'lightning_sanitize_checkbox',
+	));
+	$wp_customize->add_setting('lightning_theme_options[postAuthor_hidden]', array(
+    	'default'			=> false,
+    	'type'				=> 'option',
+    	'capability'		=> 'edit_theme_options',
+		'sanitize_callback' => 'lightning_sanitize_checkbox',
+	));
 
 	// Create section UI
 
@@ -94,6 +106,20 @@ function lightning_customize_register($wp_customize) {
 		'type'		=> 'checkbox',
 		'priority'	=> 504, 
 	));
+	$wp_customize->add_control( 'lightning_theme_options[postUpdate_hidden]', array(
+		'label'		=> _x( 'Don\'t show post update' ,'lightning theme-customizer', 'lightning' ),
+		'section'	=> 'lightning_design',
+		'settings'  => 'lightning_theme_options[postUpdate_hidden]',
+		'type'		=> 'checkbox',
+		'priority'	=> 505, 
+	));
+	$wp_customize->add_control( 'lightning_theme_options[postAuthor_hidden]', array(
+		'label'		=> _x( 'Don\'t show post author' ,'lightning theme-customizer', 'lightning' ),
+		'section'	=> 'lightning_design',
+		'settings'  => 'lightning_theme_options[postAuthor_hidden]',
+		'type'		=> 'checkbox',
+		'priority'	=> 506, 
+	));
 
 
 	/*-------------------------------------------*/
@@ -104,26 +130,10 @@ function lightning_customize_register($wp_customize) {
         'priority'       => 600,
     ) );
 
-    // slide count
-	// $wp_customize->add_setting( 'lightning_theme_options[top_slide_count]',	array(
-	// 	'default' 			=> 3,
-	// 	'type'				=> 'option',
-	// 	'capability' 		=> 'edit_theme_options',
-	// 	'sanitize_callback' => 'sanitize_text_field',
-	// 	) );
-	// $wp_customize->add_control( new Custom_Text_Control( $wp_customize, 'slide_count',array(
-	// 	'label'     => __('Slide image count', 'lightning theme-customizer', 'lightning'),
-	// 	'section'  => 'lightning_slide',
-	// 	'settings' => 'lightning_theme_options[top_slide_count]',
-	// 	'type' => 'text',
-	// 	'priority' => 601,
-	// 	'description' => __('If you change this count,please save & reload this page.', 'lightning'),
-	// 	) ) );
-
 	// slide image
 	$priority = 610;
 	$lightning_theme_options = get_option('lightning_theme_options');
-	// $top_slide_count = ( isset( $lightning_theme_options['top_slide_count'] ) ) ? $lightning_theme_options['top_slide_count'] : 3 ;
+
     for ( $i = 1; $i <= 5; ) {
 
     	// Default images
@@ -155,13 +165,14 @@ function lightning_customize_register($wp_customize) {
 
 	    // Add control
 		$priority = $priority + 1;
-		$wp_customize->add_control( 'top_slide_title_'.$i, array(
+		$wp_customize->add_control( new Custom_Text_Control( $wp_customize, 'top_slide_title_'.$i, array(
 			'label'     => _x('Slide image title', 'lightning theme-customizer', 'lightning').' '.$i,
 			'section'  => 'lightning_slide',
 			'settings' => 'lightning_theme_options[top_slide_title_'.$i.']',
 			'type' => 'text',
 			'priority' => $priority,
-			) );
+			'description' => __('This title text is print to alt tag.', 'lightning'),
+			) ) );
 
 		$priority = $priority + 1;
 		$wp_customize->add_control( 'top_slide_url_'.$i, array(
@@ -183,8 +194,6 @@ function lightning_customize_register($wp_customize) {
 				'priority'  => $priority,
 			)
 		) );
-
-		// Slide title
 
         $i++;
     }
