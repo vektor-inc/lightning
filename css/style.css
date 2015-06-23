@@ -2643,6 +2643,8 @@ img.alignleft, img.alignright, img.aligncenter { margin-bottom: 12px; }
 
 input.form-control { margin-bottom: 3px; }
 
+input.form-control.input_widthAuto { width: auto; }
+
 /*-------------------------------------------*/
 /* .siteHeader
 /*-------------------------------------------*/
