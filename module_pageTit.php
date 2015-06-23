@@ -23,7 +23,7 @@ if ( $page_for_posts['post_top_use'] ) {
 /*	Set wrap tags
 /*-------------------------------------------*/
 $pageTitHtml_before = '<div class="section page-header"><div class="container"><div class="row"><div class="col-md-12">'."\n";
-$pageTitHtml_before .= '<'.$pageTitTag.' class="page-header__pageTitle">'."\n";
+$pageTitHtml_before .= '<'.$pageTitTag.' class="page-header_pageTitle">'."\n";
 $pageTitHtml_after = '</'.$pageTitTag.'>'."\n";
 $pageTitHtml_after .= '</div></div></div></div><!-- [ /.page-header ] -->'."\n";
 

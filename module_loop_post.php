@@ -1,7 +1,7 @@
 <div class="media">
 <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<?php if ( has_post_thumbnail()) :?>
-	<div class="media-left postList__thumbnail">
+	<div class="media-left postList_thumbnail">
 		<a href="<?php the_permalink(); ?>">
 		<?php
 		$attr = array('class'	=> "media-object");

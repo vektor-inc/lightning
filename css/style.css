@@ -2697,9 +2697,9 @@ ul.gMenu ul li li li a { padding-left: 4em; }
 /*-------------------------------------------*/
 .page-header { margin-top: 0; margin-bottom: 0; padding-bottom: 0; background-color: #337ab7; }
 
-.page-header__pageTitle, h1.page-header__pageTitle:first-child { margin: 15px 0 10px; font-size: 22px; line-height: 1.1; color: #fff; }
+.page-header_pageTitle, h1.page-header_pageTitle:first-child { margin: 15px 0 10px; font-size: 22px; line-height: 1.1; color: #fff; }
 
-@media (min-width: 768px) { .page-header__pageTitle, h1.page-header__pageTitle:first-child { margin: 30px 0 25px; font-size: 32px; } }
+@media (min-width: 768px) { .page-header_pageTitle, h1.page-header_pageTitle:first-child { margin: 30px 0 25px; font-size: 32px; } }
 /*-------------------------------------------*/
 /* .breadSection
 /*-------------------------------------------*/
@@ -2724,9 +2724,9 @@ ul.gMenu ul li li li a { padding-left: 4em; }
 h1.entry-title:first-letter { color: #337ab7; }
 
 .entry-meta { margin-bottom: 1em; padding-left: 3px; }
-.entry-meta .entry-meta-items { font-size: 14px; }
-.entry-meta .entry-meta-items.author { margin-left: 0.8em; }
-.entry-meta .entry-meta-items-term { float: right; margin-right: 0; }
+.entry-meta .entry-meta_items { font-size: 14px; }
+.entry-meta .entry-meta_items_author { margin-left: 0.8em; }
+.entry-meta .entry-meta_items_term { float: right; margin-right: 0; }
 .entry-meta i { margin-right: 5px; }
 
 .entry-meta-dataList { display: block; overflow: hidden; }
@@ -2735,8 +2735,8 @@ h1.entry-title:first-letter { color: #337ab7; }
 .entry-meta-dataList dd { display: block; overflow: hidden; font-size: 12px; border: none; padding-left: 0; }
 .entry-meta-dataList dd a { display: inline-block; padding: 3px 2px 1px; }
 
-@media (max-width: 767px) { .entry-meta .entry-meta-items.author { display: block; margin-left: 0; }
-  .entry-meta .entry-meta-items-term { float: none; display: block; margin-top: 0.5em; } }
+@media (max-width: 767px) { .entry-meta .entry-meta_items_author { display: block; margin-left: 0; }
+  .entry-meta .entry-meta_items_term { float: none; display: block; margin-top: 0.5em; } }
 @media (max-width: 767px) { h1.entry-title { font-size: 26px; } }
 .entry-body { display: block; overflow: hidden; padding: 2.5em 0; }
 
@@ -2753,18 +2753,18 @@ h1.entry-title:first-letter { color: #337ab7; }
 /*-------------------------------------------*/
 .media { border-bottom: 1px solid #e5e5e5; padding: 2em 0; margin-top: 0; }
 .media:first-child { border-top: 1px solid #e5e5e5; }
-.media .postList__thumbnail { width: 160px; margin-bottom: 0.5em; padding-right: 30px; display: block; overflow: hidden; float: left; }
-.media .postList__thumbnail a { position: relative; display: block; overflow: hidden; }
-.media .postList__thumbnail img { width: 100%; height: auto; }
-.media .postList__thumbnail .postList__cateLabel { position: absolute; bottom: 0; left: 0; }
+.media .postList_thumbnail { width: 160px; margin-bottom: 0.5em; padding-right: 30px; display: block; overflow: hidden; float: left; }
+.media .postList_thumbnail a { position: relative; display: block; overflow: hidden; }
+.media .postList_thumbnail img { width: 100%; height: auto; }
+.media .postList_thumbnail .postList_cateLabel { position: absolute; bottom: 0; left: 0; }
 .media .media-body .media-heading { font-size: 1.8em; line-height: 1.3em; margin-top: 0; margin-bottom: 0.5em; }
 .media .media-body .media-heading a { color: #464646; }
 .media .media-body .media-heading a:hover { text-decoration: none; }
 .media .media-body p { margin-bottom: 0; }
 
-@media (max-width: 767px) { .media .postList__thumbnail { padding-right: 20px; }
+@media (max-width: 767px) { .media .postList_thumbnail { padding-right: 20px; }
   .media .media-body .media-heading { font-size: 1.2em; line-height: 1.3em; margin-bottom: 0.5em; } }
-@media (max-width: 500px) { .media .postList__thumbnail { width: 100px; } }
+@media (max-width: 500px) { .media .postList_thumbnail { width: 100px; } }
 /*-------------------------------------------*/
 /* .page-numbers
 /*-------------------------------------------*/
@@ -2804,7 +2804,7 @@ ul.page-numbers li:last-child > a { border-top-right-radius: 4px; border-bottom-
 /*-------------------------------------------*/
 .subSection .subSection-title { font-size: 18px; }
 .subSection .media { padding: 1em 0 0.8em; margin-top: 0; }
-.subSection .media .postList__thumbnail { width: 80px; padding-right: 15px; }
+.subSection .media .postList_thumbnail { width: 80px; padding-right: 15px; }
 .subSection .media .media-heading { font-size: 14px; }
 
 /*-------------------------------------------*/
