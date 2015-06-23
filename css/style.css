@@ -2641,6 +2641,8 @@ img.alignleft, img.alignright, img.aligncenter { margin-bottom: 12px; }
 
 .screen-reader-text { display: none; }
 
+input.form-control { margin-bottom: 3px; }
+
 /*-------------------------------------------*/
 /* .siteHeader
 /*-------------------------------------------*/
