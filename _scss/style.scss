@@ -142,7 +142,7 @@ h1.page-header_pageTitle:first-child { margin:15px 0 10px;font-size:22px;line-he
   .postList { margin-bottom:1.5em; }
 }
 h1.entry-title:first-letter { color:$color_key; }
-.entry-meta { margin-bottom:1em;padding-left:3px;
+.entry-meta { margin-bottom:0.8em;padding-left:3px;
   .entry-meta_items { font-size:14px; }
   .entry-meta_items_author { margin-left:0.8em; }
   .entry-meta_items_term { float:right;margin-right:0; }
@@ -193,7 +193,7 @@ h1.entry-title { font-size:26px; }
     }
   }
   .media-body { 
-    .media-heading { font-size:1.8em;line-height:1.3em;margin-top:0; margin-bottom:0.5em;
+    .media-heading { font-size:1.8em;line-height:1.3em;margin-top:0; margin-bottom:0.5em;font-weight: normal;
       a { color:$color_font_default;
         &:hover { text-decoration: none; }
       }

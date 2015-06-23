@@ -217,7 +217,8 @@ h1.entry-title:first-letter { color:<?php echo $color_key;?>; }
 h2 { border-left-color:<?php echo $color_key;?>}
 h3:after,
 .subSection-title:after { border-bottom-color:<?php echo $color_key; ?>; }
-.entry-body h4 { color:<?php echo $color_key; ?>; }
+h4,
+.media .media-body .media-heading a:hover { color:<?php echo $color_key; ?>; }
 ul.gMenu a:hover { color:<?php echo $color_key;?>; }
 .page-header { background-color:<?php echo $color_key;?>; }
 .btn-default { border-color:<?php echo $color_key;?>;color:<?php echo $color_key;?>;}
