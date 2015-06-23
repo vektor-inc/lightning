@@ -2725,11 +2725,11 @@ h1.entry-title:first-letter { color: #337ab7; }
 
 .entry-meta { margin-bottom: 1em; padding-left: 3px; }
 .entry-meta .entry-meta-items { font-size: 14px; }
-.entry-meta .entry-meta-items.updated { margin-right: 0.8em; }
+.entry-meta .entry-meta-items.author { margin-left: 0.8em; }
 .entry-meta .entry-meta-items-term { float: right; margin-right: 0; }
 .entry-meta i { margin-right: 5px; }
 
-@media (max-width: 767px) { .entry-meta .entry-meta-items.author { display: block; }
+@media (max-width: 767px) { .entry-meta .entry-meta-items.author { display: block; margin-left: 0; }
   .entry-meta .entry-meta-items-term { float: none; display: block; margin-top: 0.5em; } }
 @media (max-width: 767px) { h1.entry-title { font-size: 26px; } }
 .entry-body { display: block; overflow: hidden; padding: 2.5em 0; }

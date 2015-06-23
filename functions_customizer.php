@@ -107,14 +107,14 @@ function lightning_customize_register($wp_customize) {
 		'priority'	=> 504, 
 	));
 	$wp_customize->add_control( 'lightning_theme_options[postUpdate_hidden]', array(
-		'label'		=> _x( 'Don\'t show post update' ,'lightning theme-customizer', 'lightning' ),
+		'label'		=> _x( 'Don\'t display post updated on a single page.' ,'lightning theme-customizer', 'lightning' ),
 		'section'	=> 'lightning_design',
 		'settings'  => 'lightning_theme_options[postUpdate_hidden]',
 		'type'		=> 'checkbox',
 		'priority'	=> 505, 
 	));
 	$wp_customize->add_control( 'lightning_theme_options[postAuthor_hidden]', array(
-		'label'		=> _x( 'Don\'t show post author' ,'lightning theme-customizer', 'lightning' ),
+		'label'		=> _x( 'Don\'t display post author on a single page' ,'lightning theme-customizer', 'lightning' ),
 		'section'	=> 'lightning_design',
 		'settings'  => 'lightning_theme_options[postAuthor_hidden]',
 		'type'		=> 'checkbox',

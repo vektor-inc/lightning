@@ -2,16 +2,16 @@
 <div class="entry-meta">
 <span class="published entry-meta-items"><i class="fa fa-calendar"></i><?php echo esc_html( get_the_date() ); ?></span>
 
-<?php
-// Post update
-$lightning_theme_options = get_option('lightning_theme_options');
-if ( 
-	!isset($lightning_theme_options['postUpdate_hidden']) or 
-	( isset($lightning_theme_options['postUpdate_hidden']) && !$lightning_theme_options['postUpdate_hidden'] )
-) : ?>
-<span class="updated entry-meta-items">/ <?php _e('Last updated','lightning'); ?> : <?php the_modified_date('') ?></span>
+<?php // Post update ?>
 
-<?php endif; ?>
+<?php if ( is_single() ) : ?>
+<?php global $lightning_theme_options;
+	if ( 
+		!isset($lightning_theme_options['postUpdate_hidden']) or 
+		( isset($lightning_theme_options['postUpdate_hidden']) && !$lightning_theme_options['postUpdate_hidden'] )
+	) : ?>
+	<span class="updated entry-meta-items">/ <?php _e('Last updated','lightning'); ?> : <?php the_modified_date('') ?></span>
+	<?php endif; ?>
 
 <?php
 // Post author
@@ -21,6 +21,8 @@ if (
 ) : ?>
 <span class="vcard author entry-meta-items"><span class="fn"><i class="fa fa-pencil"></i><?php echo esc_html(get_the_author_meta( 'display_name' ));?></span></span>
 <?php endif; ?>
+
+<?php endif; // is_archive() ?>
 
 <?php
 $page_for_posts = lightning_get_page_for_posts();
