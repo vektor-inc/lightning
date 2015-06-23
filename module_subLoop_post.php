@@ -2,7 +2,7 @@
 
 	<?php if ( has_post_thumbnail()) :?>
 
-		<div class="media-left postList__thumbnail">
+		<div class="media-left postList_thumbnail">
 			<a href="<?php the_permalink(); ?>">
 			<?php the_post_thumbnail('thumbnail'); ?>
 			</a>

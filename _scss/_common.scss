@@ -52,7 +52,7 @@ h3,
 h3:after,
 .subSection-title:after { content:".";line-height: 0;display:block; overflow:hidden;position: absolute;bottom:-1px;width:30%;border-bottom:1px solid $color_key; }
 
-.entry-body h4 { color:$color_key;font-weight: bold;font-size:20px; }
+h4 { color:$color_key;font-weight: bold;font-size:20px; }
 h5 { font-size:18px;padding:10px 15px 8px;border-top:$border_primary;border-bottom:$border_primary;background-color: #f5f5f5; }
 
 h6 { font-size:16px; font-weight: bold; }

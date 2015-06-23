@@ -1,27 +1,23 @@
-# WordPress Blank Pot
-# Copyright (C) 2014 ...
-# This file is distributed under the GNU General Public License v2 or later.
+# Theme presentation (no text domain)
 msgid ""
 msgstr ""
-"Project-Id-Version: Lightning v0.0.0\n"
-"Report-Msgid-Bugs-To: Translator Name <translations@example.com>\n"
-"POT-Creation-Date: 2015-06-17 20:10+0900\n"
+"Project-Id-Version: 0.0.1\n"
+"POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
 "Last-Translator: Kurudrive <kurudrive@gmail.com>\n"
 "Language-Team: Vektor,Inc. <kurudrive@gmail.com>\n"
-"Language: japanese\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Textdomain-Support: yesX-Generator: Poedit 1.6.4\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;esc_html_e;esc_html_x:1,2c;esc_html__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;"
-"_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext:1,2;__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
-"X-Poedit-Basepath: ../\n"
 "X-Generator: Poedit 1.5.7\n"
-"X-Poedit-SearchPath-0: .\n"
+
+# Theme presentation (no text domain)
+msgid ""
+"Lightning is a very simple & customized easy theme that built by Bootstrap. "
+"If you added a custom post type, such as breadcrumbs is adjusted "
+"automatically. You do not need to add or create for a template file for the "
+"custom post type in the new."
+msgstr ""
 
 #: comments.php:28
 #, php-format
@@ -43,7 +39,7 @@ msgstr ""
 msgid "Newer Comments"
 msgstr ""
 
-#: comments.php:72
+#: comments.php:75
 msgid "Comments are closed."
 msgstr ""
 
@@ -55,35 +51,35 @@ msgstr ""
 msgid "No posts."
 msgstr ""
 
-#: functions.php:87
+#: functions.php:94
 msgid "Sidebar(Home)"
 msgstr ""
 
-#: functions.php:95
+#: functions.php:102
 msgid "Sidebar(Common top)"
 msgstr ""
 
-#: functions.php:103
+#: functions.php:110
 msgid "Sidebar(Common bottom)"
 msgstr ""
 
-#: functions.php:111
+#: functions.php:118
 msgid "Sidebar(Post contents)"
 msgstr ""
 
-#: functions.php:113
+#: functions.php:120
 msgid "This widget area appears on the post contents page only."
 msgstr ""
 
-#: functions.php:123
+#: functions.php:130
 msgid "Home content top"
 msgstr ""
 
-#: functions.php:135
+#: functions.php:142
 msgid "Widget area of upper footer"
 msgstr ""
 
-#: functions.php:147
+#: functions.php:154
 msgid "Footer widget area "
 msgstr ""
 
@@ -92,42 +88,56 @@ msgctxt "lightning theme-customizer"
 msgid "Design settings"
 msgstr ""
 
-#: functions_customizer.php:72
+#: functions_customizer.php:84
 msgctxt "lightning theme-customizer"
 msgid "Header logo image"
 msgstr ""
 
-#: functions_customizer.php:79
+#: functions_customizer.php:91
 msgctxt "lightning theme-customizer"
 msgid "Key color"
 msgstr ""
 
-#: functions_customizer.php:85
+#: functions_customizer.php:97
 msgctxt "lightning theme-customizer"
 msgid "Key color(dark)"
 msgstr ""
 
-#: functions_customizer.php:91
+#: functions_customizer.php:103
 msgctxt "lightning theme-customizer"
 msgid "Don't show sidebar on home page"
 msgstr ""
 
-#: functions_customizer.php:103
+#: functions_customizer.php:110
+msgctxt "lightning theme-customizer"
+msgid "Don't display post updated on a single page."
+msgstr ""
+
+#: functions_customizer.php:117
+msgctxt "lightning theme-customizer"
+msgid "Don't display post author on a single page"
+msgstr ""
+
+#: functions_customizer.php:129
 msgctxt "lightning theme-customizer"
 msgid "Home page slide show"
 msgstr ""
 
-#: functions_customizer.php:159
+#: functions_customizer.php:169
 msgctxt "lightning theme-customizer"
 msgid "Slide image title"
 msgstr ""
 
-#: functions_customizer.php:168
+#: functions_customizer.php:174
+msgid "This title text is print to alt tag."
+msgstr ""
+
+#: functions_customizer.php:179
 msgctxt "lightning theme-customizer"
 msgid "Slide image url"
 msgstr ""
 
-#: functions_customizer.php:180
+#: functions_customizer.php:191
 msgctxt "lightning theme-customizer"
 msgid "Slide image"
 msgstr ""
@@ -156,11 +166,15 @@ msgstr ""
 msgid "Archives"
 msgstr ""
 
+#: functions_helpers.php:151
+msgid "Free WordPress Theme Lightning"
+msgstr ""
+
 #: module_loop_post.php:17
 msgid "Read more"
 msgstr ""
 
-#: module_loop_post_meta.php:5
+#: module_loop_post_meta.php:13
 msgid "Last updated"
 msgstr ""
 
@@ -193,15 +207,15 @@ msgctxt "daily archives date format"
 msgid "F jS, Y"
 msgstr ""
 
-#: sidebar-post.php:19
+#: sidebar-post.php:22
 msgid "Recent posts"
 msgstr ""
 
-#: sidebar-post.php:28
+#: sidebar-post.php:31
 msgid "Category"
 msgstr ""
 
-#: sidebar-post.php:37
+#: sidebar-post.php:40
 msgid "Archive"
 msgstr ""
 

@@ -25,12 +25,33 @@
 		'echo'             => 1 );
 	wp_link_pages( $args ); ?>
 
+	<?php
+	/*-------------------------------------------*/
+	/*  Category and tax data
+	/*-------------------------------------------*/
+    $args = array(
+        'template' => __( '<dl><dt>%s</dt><dd>%l.</dd></dl>' ),
+        'term_template' => '<a href="%1$s">%2$s</a>',
+    );
+    $taxonomies = get_the_taxonomies($post->ID,$args);
+    $taxnomiesHtml = '';
+    if ($taxonomies) {
+		foreach ($taxonomies as $key => $value) {
+			if ( $key != 'post_tag' ) {
+				$taxnomiesHtml .= '<div class="entry-meta-dataList">'.$value.'</div>';
+			}
+    	} // foreach
+	} // if ($taxonomies)
+	$taxnomiesHtml = apply_filters( 'lightning_taxnomiesHtml', $taxnomiesHtml );
+	echo $taxnomiesHtml;
+	?>
+
 	<?php $tags_list = get_the_tag_list();
 	if ( $tags_list ): ?>
-	<div class="entry-tag">
+	<div class="entry-meta-dataList entry-tag">
 	<dl>
 	<dt><?php _e('Tags','lightning') ;?></dt>
-	<dd><?php echo $tags_list; ?></dd>
+	<dd class="tagCloud"><?php echo $tags_list; ?></dd>
 	</dl>
 	</div><!-- [ /.entry-tag ] -->
 	<?php endif; ?>

@@ -66,7 +66,7 @@ if ( is_home() ){
 		$ancestors = array_reverse(get_ancestors( $cat->cat_ID, 'category' ));
 		// 祖先階層の配列回数分ループ
 		foreach($ancestors as $ancestor):
-			$panListHtml .= '<li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="'.get_category_link($ancestor).'" itemprop="url"><span itemprop="title">'.get_cat_name($ancestor).'</span></a></li>';
+			$panListHtml .= '<li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="'.get_category_link($ancestor).'" itemprop="url"><span itemprop="title">'.esc_html(get_cat_name($ancestor)).'</span></a></li>';
 		endforeach;
 	endif;
 	$panListHtml .= '<li><span>'. $cat->cat_name. '</span></li>';
@@ -96,11 +96,11 @@ if ( is_home() ){
 		// 祖先階層の配列回数分ループ
 		foreach($ancestors as $ancestor):
 			$pan_term = get_term($ancestor,$now_taxonomy);
-			$panListHtml .= '<li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="'.get_term_link($ancestor,$now_taxonomy).'">'.$pan_term->name.'</a></li>';
+			$panListHtml .= '<li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="'.get_term_link($ancestor,$now_taxonomy).'">'.esc_html($pan_term->name).'</a></li>';
 		endforeach;
 	endif;
 
-	$panListHtml .= '<li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><span itemprop="title">'.single_cat_title('','', FALSE).'</span></li>';
+	$panListHtml .= '<li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><span itemprop="title">'.esc_html(single_cat_title('','', FALSE)).'</span></li>';
 
 } elseif ( is_archive() && (!is_category() || !is_tax()) ) {
 
@@ -158,7 +158,7 @@ if ( is_home() ){
 			if ( ! empty( $parent_name ) ) {
 				$parent_obj 	= get_term_by( 'name', $parent_name, $category[0]->taxonomy );
 				$term_url		= get_term_link( $parent_obj->term_id,$parent_obj->taxonomy );
-				$panListHtml 	.= '<li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="' . $term_url . '" itemprop="url"><span itemprop="title">' . $parent_obj->name . '</span></a></li>';
+				$panListHtml 	.= '<li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="' . $term_url . '" itemprop="url"><span itemprop="title">' . esc_html($parent_obj->name) . '</span></a></li>';
 			}
 		}
 
@@ -180,11 +180,11 @@ if ( is_home() ){
 				// Print loop term ancestors
 				foreach($ancestors as $ancestor):
 					$pan_term = get_term($ancestor,$taxonomy);
-					$panListHtml .= '<li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="'.get_term_link($ancestor,$taxonomy).'">'.$pan_term->name.'</a></li>';
+					$panListHtml .= '<li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="'.get_term_link($ancestor,$taxonomy).'">'.esc_html($pan_term->name).'</a></li>';
 				endforeach;
 			}
 			$term_url		= get_term_link($term->term_id,$taxonomy);
-			$panListHtml .= '<li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="' . $term_url . '" itemprop="url"><span itemprop="title">' . $term->name . '</span></a></li>';
+			$panListHtml .= '<li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="' . $term_url . '" itemprop="url"><span itemprop="title">' . esc_html($term->name) . '</span></a></li>';
 		endif;
 
 	}

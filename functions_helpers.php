@@ -89,7 +89,7 @@ function lightning_get_post_type(){
 /*-------------------------------------------*/
 /*	Archive title
 /*-------------------------------------------*/
-
+add_filter('get_the_archive_title','lightning_get_the_archive_title');
 function lightning_get_the_archive_title(){
    if ( is_category() ) {
         $title = single_cat_title( '', false );
@@ -120,7 +120,6 @@ function lightning_get_the_archive_title(){
 			$title = __( 'Archives', 'lightning' );
 		}
     }
-
     return apply_filters( 'lightning_get_the_archive_title', $title );
 }
 

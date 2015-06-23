@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lightning v0.0.0\n"
 "Report-Msgid-Bugs-To: Translator Name <translations@example.com>\n"
-"POT-Creation-Date: 2015-06-17 14:23+0900\n"
+"POT-Creation-Date: 2015-06-23 11:33+0900\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Kurudrive <kurudrive@gmail.com>\n"
 "Language-Team: \n"
@@ -23,10 +23,16 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 
 # Theme presentation (no text domain)
-msgid "Lightning is a very simple theme that built by Bootstrap."
+msgid ""
+"Lightning is a very simple & customized easy theme that built by Bootstrap. "
+"If you added a custom post type, such as breadcrumbs is adjusted "
+"automatically. You do not need to add or create for a template file for the "
+"custom post type in the new."
 msgstr ""
 "Lightning（ライトニング）はBootstrapベースのシンプルでカスタマイズしやすい"
-"テーマです。"
+"テーマです。カスタム投稿タイプを追加してもパンくずリストなどが自動で調整され"
+"るので、カスタム投稿タイプ用のテンプレートファイルを新規で追加・作成する必要"
+"はありません。"
 
 #: comments.php:28
 #, php-format
@@ -48,47 +54,47 @@ msgstr "古いコメント"
 msgid "Newer Comments"
 msgstr "新しいコメント"
 
-#: comments.php:72
+#: comments.php:75
 msgid "Comments are closed."
 msgstr "この投稿はコメントできません。"
 
-#: front-page.php:50 index.php:48
+#: front-page.php:52 index.php:48
 msgid "Page"
 msgstr "ページ"
 
-#: front-page.php:59 index.php:52
+#: front-page.php:61 index.php:52
 msgid "No posts."
 msgstr "投稿はありません。"
 
-#: functions.php:87
+#: functions.php:94
 msgid "Sidebar(Home)"
 msgstr "サイドバー（トップページ）"
 
-#: functions.php:95
+#: functions.php:102
 msgid "Sidebar(Common top)"
 msgstr "サイドバー（共通上部）"
 
-#: functions.php:103
+#: functions.php:110
 msgid "Sidebar(Common bottom)"
 msgstr "サイドバー（共通下部）"
 
-#: functions.php:111
+#: functions.php:118
 msgid "Sidebar(Post contents)"
 msgstr "サイドバー（投稿コンテンツ）"
 
-#: functions.php:113
+#: functions.php:120
 msgid "This widget area appears on the post contents page only."
 msgstr "このウィジェットは投稿コンテンツでのみ表示されます。"
 
-#: functions.php:123
+#: functions.php:130
 msgid "Home content top"
 msgstr "トップページコンテンツエリア上部"
 
-#: functions.php:135
+#: functions.php:142
 msgid "Widget area of upper footer"
 msgstr "フッター上部"
 
-#: functions.php:147
+#: functions.php:154
 msgid "Footer widget area "
 msgstr "フッターウィジェットエリア"
 
@@ -97,42 +103,56 @@ msgctxt "lightning theme-customizer"
 msgid "Design settings"
 msgstr "デザイン設定"
 
-#: functions_customizer.php:72
+#: functions_customizer.php:84
 msgctxt "lightning theme-customizer"
 msgid "Header logo image"
 msgstr "ヘッダーロゴ画像"
 
-#: functions_customizer.php:79
+#: functions_customizer.php:91
 msgctxt "lightning theme-customizer"
 msgid "Key color"
 msgstr "キーカラー"
 
-#: functions_customizer.php:85
+#: functions_customizer.php:97
 msgctxt "lightning theme-customizer"
 msgid "Key color(dark)"
 msgstr "キーカラー（暗）"
 
-#: functions_customizer.php:91
+#: functions_customizer.php:103
 msgctxt "lightning theme-customizer"
 msgid "Don't show sidebar on home page"
 msgstr "トップページを1カラムにする"
 
-#: functions_customizer.php:103
+#: functions_customizer.php:110
+msgctxt "lightning theme-customizer"
+msgid "Don't display post updated on a single page."
+msgstr "投稿詳細ページで最終更新日を表示しない"
+
+#: functions_customizer.php:117
+msgctxt "lightning theme-customizer"
+msgid "Don't display post author on a single page"
+msgstr "投稿詳細ページで投稿者名を表示しない"
+
+#: functions_customizer.php:129
 msgctxt "lightning theme-customizer"
 msgid "Home page slide show"
 msgstr "トップページスライドショー"
 
-#: functions_customizer.php:159
+#: functions_customizer.php:169
 msgctxt "lightning theme-customizer"
 msgid "Slide image title"
 msgstr "スライド画像タイトル"
 
-#: functions_customizer.php:168
+#: functions_customizer.php:174
+msgid "This title text is print to alt tag."
+msgstr "このテキストはaltに反映されます。"
+
+#: functions_customizer.php:179
 msgctxt "lightning theme-customizer"
 msgid "Slide image url"
 msgstr "スライド画像"
 
-#: functions_customizer.php:180
+#: functions_customizer.php:191
 msgctxt "lightning theme-customizer"
 msgid "Slide image"
 msgstr "スライド画像"
@@ -160,6 +180,18 @@ msgstr "Y年F月j日"
 #: functions_helpers.php:120
 msgid "Archives"
 msgstr "アーカイブ"
+
+#: functions_helpers.php:151
+msgid "Free WordPress Theme Lightning"
+msgstr "Free WordPress Theme Lightning"
+
+#: module_loop_post.php:17
+msgid "Read more"
+msgstr "続きを読む"
+
+#: module_loop_post_meta.php:13
+msgid "Last updated"
+msgstr "最終更新日"
 
 #: module_pageTit.php:77 module_panList.php:226
 #, php-format
@@ -190,29 +222,35 @@ msgctxt "daily archives date format"
 msgid "F jS, Y"
 msgstr "Y年n月j日"
 
-#: module_post__loop_item.php:17
-msgid "Read more"
-msgstr "続きを読む"
-
-#: module_post__loop_item_postMeta.php:5
-msgid "Last updated"
-msgstr "最終更新日"
-
-#: sidebar-post.php:19
+#: sidebar-post.php:22
 msgid "Recent posts"
 msgstr "最近の投稿"
 
-#: sidebar-post.php:28
+#: sidebar-post.php:31
 msgid "Category"
 msgstr "カテゴリー"
 
-#: sidebar-post.php:37
+#: sidebar-post.php:40
 msgid "Archive"
 msgstr "アーカイブ"
 
 #: single.php:32
 msgid "Tags"
 msgstr "タグ"
+
+#~ msgctxt "lightning theme-customizer"
+#~ msgid "Don't show post update"
+#~ msgstr "投稿の更新日を非表示にする"
+
+#~ msgctxt "lightning theme-customizer"
+#~ msgid "Don't show post author"
+#~ msgstr "投稿者を非表示にする"
+
+# Theme presentation (no text domain)
+#~ msgid "Lightning is a very simple theme that built by Bootstrap."
+#~ msgstr ""
+#~ "Lightning（ライトニング）はBootstrapベースのシンプルでカスタマイズしやすい"
+#~ "テーマです。"
 
 #, fuzzy
 #~ msgctxt "dayly archives date format"
