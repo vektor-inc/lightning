@@ -80,10 +80,11 @@ ul.gMenu { margin-top:5px;
     & > a { padding:10px 1em 10px;border-bottom:none; }
   }
   & > li > a:hover:after,
+  & > li.current-post-ancestor > a:after,
   & > li.current-menu-item > a:after,
   & > li.current-menu-parent > a:after,
-  & > li.current_page_parent > a:after,
   & > li.current-menu-ancestor > a:after,
+  & > li.current_page_parent > a:after,
   & > li.current_page_ancestor > a:after { content:".";line-height:0;border-bottom:1px solid $color_key; bottom:0px;display:block; overflow:hidden;position: absolute;width:100%;left:0; }
 }
 // sub-menu
