@@ -2684,7 +2684,7 @@ ul.gMenu ul li li li a { padding-left: 4em; }
   ul.gMenu a:hover, ul.gMenu a:active { background-color: #fff; color: #337ab7; }
   ul.gMenu > li { position: relative; }
   ul.gMenu > li > a { padding: 10px 1em 10px; border-bottom: none; }
-  ul.gMenu > li > a:hover:after, ul.gMenu > li.current-menu-item > a:after, ul.gMenu > li.current-menu-parent > a:after, ul.gMenu > li.current_page_parent > a:after, ul.gMenu > li.current-menu-ancestor > a:after, ul.gMenu > li.current_page_ancestor > a:after { content: "."; line-height: 0; border-bottom: 1px solid #337ab7; bottom: 0px; display: block; overflow: hidden; position: absolute; width: 100%; left: 0; }
+  ul.gMenu > li > a:hover:after, ul.gMenu > li.current-post-ancestor > a:after, ul.gMenu > li.current-menu-item > a:after, ul.gMenu > li.current-menu-parent > a:after, ul.gMenu > li.current-menu-ancestor > a:after, ul.gMenu > li.current_page_parent > a:after, ul.gMenu > li.current_page_ancestor > a:after { content: "."; line-height: 0; border-bottom: 1px solid #337ab7; bottom: 0px; display: block; overflow: hidden; position: absolute; width: 100%; left: 0; }
   ul.gMenu > li > ul.sub-menu { display: none; position: absolute; background-color: #fff; box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); z-index: 1000; }
   ul.gMenu > li > ul.sub-menu li { width: 240px; margin: 0; list-style: none; }
   ul.gMenu > li > ul.sub-menu li ul { margin-bottom: 0; }

@@ -233,10 +233,11 @@ footer { border-top-color:<?php echo $color_key	;?> }
 
 @media (min-width: 768px){
   ul.gMenu > li > a:hover:after,
+  ul.gMenu > li.current-post-ancestor > a:after,
   ul.gMenu > li.current-menu-item > a:after,
   ul.gMenu > li.current-menu-parent > a:after,
-  ul.gMenu > li.current_page_parent > a:after,
   ul.gMenu > li.current-menu-ancestor > a:after,
+  ul.gMenu > li.current_page_parent > a:after,
   ul.gMenu > li.current_page_ancestor > a:after { border-bottom-color: <?php echo $color_key ;?> }
 } /* @media (min-width: 768px) */
 </style>
