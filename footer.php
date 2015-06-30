@@ -50,7 +50,7 @@
     <div class="sectionBox copySection">
         <div class="row">
             <div class="col-md-12 text-center">
-            <?php lightning_footerCopyRight(); ?>
+            <?php lightning_the_footerCopyRight(); ?>
             </div>
         </div>
     </div>
