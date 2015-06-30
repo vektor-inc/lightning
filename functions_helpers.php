@@ -130,28 +130,17 @@ function lightning_footerCopyRight(){
 
 	// copyright
 	/*------------------*/
-	$lightning_footerCopyRight = '<p>Copyright &copy; '.get_bloginfo('name').' All Rights Reserved.</p>';
+	$lightning_footerCopyRight = '<p>';
 
-	echo $lightning_footerCopyRight;
+	$lightning_footerCopyRight .= sprintf( __( 'Copyright &copy; %s All Rights Reserved.', 'lightning' ), get_bloginfo('name') );
+	$lightning_footerCopyRight .= '</p>';
 
-	// Powered
-	/*------------------*/
-	// links for japanese version
-	$wordpressUrl = 'https://ja.wordpress.org/';
-	$lightningUrl = 'http://ligntning.bizvektor.com';
+	echo apply_filters( 'lightning_footerCopyRightCustom', $lightning_footerCopyRight );
 
-	//links for Global version
-	if ( 'ja' != get_locale() ) {
-		$wordpressUrl = 'https://wordpress.org/';
-		$lightningUrl = 'http://ligntning.bizvektor.com';
-	}
+	$footerPowered = '<p>';
+	$footerPowered .= __( 'Powered by <a href="https://wordpress.org/">WordPress</a> &amp; <a href="//lightning.bizvektor.com" target="_blank" title="Free WordPress Theme Lightning"> Lightning Theme</a> by Vektor,Inc. technology.');
+	$footerPowered .= '</p>';
 
-	// **** Don't change id name!
-	$footerPowered = '<p>Powered by <a href="' . $wordpressUrl .'">WordPress</a> &amp; ';
-	$footerPowered .= '<a href="' . $lightningUrl . '" target="_blank" title="' . __( 'Free WordPress Theme Lightning', 'biz-vektor' ) . '">';
-	$footerPowered .= ' Lightning Theme</a>.</p>';
-
-	// $footerPowerd = apply_filters( 'lightning_footerPowerdCustom', $footerPowered );
-	echo apply_filters( 'lightning_footerPowerdCustom', $footerPowered );
+	echo apply_filters( 'lightning_footerPoweredCustom', $footerPowered );
 
 }

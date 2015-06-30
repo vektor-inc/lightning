@@ -30,7 +30,7 @@
 	/*  Category and tax data
 	/*-------------------------------------------*/
     $args = array(
-        'template' => __( '<dl><dt>%s</dt><dd>%l.</dd></dl>' ),
+        'template' => __( '<dl><dt>%s</dt><dd>%l</dd></dl>','lightning' ),
         'term_template' => '<a href="%1$s">%2$s</a>',
     );
     $taxonomies = get_the_taxonomies($post->ID,$args);
