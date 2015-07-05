@@ -280,11 +280,19 @@ ul.page-numbers { margin:0;padding: 0;
   .subSection-title { margin-bottom:10px; }
 }
 
+.widget_recent_comments,
 .widget_nav_menu,
 .widget_archive,
 .widget_categories,
 .widget_recent_entries {
-  ul { padding-left:0;margin:0 0.3em;font-size:14px;
+  ul { padding-left:0;margin:0 0.3em;font-size:14px; }
+}
+
+.widget_nav_menu,
+.widget_archive,
+.widget_categories,
+.widget_recent_entries {
+  ul {
     // li { display:block; overflow:hidden; list-style: none;
     //   a { position: relative;padding: 10px 15px;border-bottom:$border_primary; }
     // }
