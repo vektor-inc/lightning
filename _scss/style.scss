@@ -267,6 +267,8 @@ ul.page-numbers { margin:0;padding: 0;
     .postList_thumbnail { width:80px;padding-right:15px; }
     .media-heading { font-size:14px; }
   }
+  li.current-cat > a,
+  li.current_page_item > a { background-color: rgba(0,0,0,0.05); }
 }
 
 /*-------------------------------------------*/
@@ -287,18 +289,18 @@ ul.page-numbers { margin:0;padding: 0;
     //   a { position: relative;padding: 10px 15px;border-bottom:$border_primary; }
     // }
     li { margin-bottom:0; }
-    li a { display:block; overflow:hidden;padding:10px 0 8px;border-bottom:$border_primary;color:$color_font_default;
+    li a { display:block; overflow:hidden;padding:10px 0.5em 8px;border-bottom:$border_primary;color:$color_font_default;
       box-shadow:0px 1px 0px rgba(255,255,255,0.9); }
-    li li a { padding-left:1em; }
-    li li li a { padding-left:2em; }
-    li li li li a { padding-left:3em; }
-    li li li li li a { padding-left:4em; }
-    li li li li li li a { padding-left:5em; }
-    li li li li li li li a { padding-left:6em; }
-    li li li li li li li li a { padding-left:7em; }
-    li li li li li li li li li a { padding-left:8em; }
-    li li li li li li li li li li a { padding-left:9em; }
-    li li li li li li li li li li li a { padding-left:10em; }
+    li li a { padding-left:2em; }
+    li li li a { padding-left:3em; }
+    li li li li a { padding-left:4em; }
+    li li li li li a { padding-left:5em; }
+    li li li li li li a { padding-left:6em; }
+    li li li li li li li a { padding-left:7em; }
+    li li li li li li li li a { padding-left:8em; }
+    li li li li li li li li li a { padding-left:9em; }
+    li li li li li li li li li li a { padding-left:10em; }
+    li li li li li li li li li li li a { padding-left:11em; }
     ul { margin:0;padding-left:0; }
   }
 }

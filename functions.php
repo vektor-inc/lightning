@@ -123,13 +123,21 @@ function lightning_widgets_init() {
 			'before_title' => '<h1 class="widget-title subSection-title">',
 			'after_title' => '</h1>',
 		) );
+		register_sidebar( array(
+			'name' => __( 'Sidebar(Page contents)', 'lightning' ),
+			'id' => 'page-side-widget-area',
+			'description' => __( 'This widget area appears on the page contents only.', 'lightning' ),
+			'before_widget' => '<aside class="widget %2$s" id="%1$s">',
+			'after_widget' => '</aside>',
+			'before_title' => '<h1 class="widget-title subSection-title">',
+			'after_title' => '</h1>',
+		) );
 
 	// footer upper widget area
 
 		register_sidebar( array(
 			'name' => __( 'Home content top', 'lightning' ),
 			'id' => 'home-content-top-widget-area',
-			// 'description' => __( 'This widget area appears on the post contents page only.', 'lightning' ),
 			'before_widget' => '<div class="widget %2$s" id="%1$s">',
 			'after_widget' => '</div>',
 			'before_title' => '<h3>',
@@ -141,7 +149,6 @@ function lightning_widgets_init() {
 		register_sidebar( array(
 			'name' => __( 'Widget area of upper footer', 'lightning' ),
 			'id' => 'footer-upper-widget-1',
-			// 'description' => __( 'This widget area appears on the post contents page only.', 'lightning' ),
 			'before_widget' => '<aside class="widget %2$s" id="%1$s">',
 			'after_widget' => '</aside>',
 			'before_title' => '<h3>',
@@ -153,7 +160,6 @@ function lightning_widgets_init() {
 		register_sidebar( array(
 			'name' => __( 'Footer widget area ', 'lightning' ).$i,
 			'id' => 'footer-widget-'.$i,
-			// 'description' => __( 'This widget area appears on the post contents page only.', 'lightning' ),
 			'before_widget' => '<aside class="widget %2$s" id="%1$s">',
 			'after_widget' => '</aside>',
 			'before_title' => '<h3>',

@@ -2811,6 +2811,7 @@ ul.page-numbers li:last-child > a { border-top-right-radius: 4px; border-bottom-
 .subSection .media { padding: 1em 0 0.8em; margin-top: 0; }
 .subSection .media .postList_thumbnail { width: 80px; padding-right: 15px; }
 .subSection .media .media-heading { font-size: 14px; }
+.subSection li.current-cat > a, .subSection li.current_page_item > a { background-color: rgba(0, 0, 0, 0.05); }
 
 /*-------------------------------------------*/
 /* Widget
@@ -2821,17 +2822,17 @@ ul.page-numbers li:last-child > a { border-top-right-radius: 4px; border-bottom-
 
 .widget_nav_menu ul, .widget_archive ul, .widget_categories ul, .widget_recent_entries ul { padding-left: 0; margin: 0 0.3em; font-size: 14px; }
 .widget_nav_menu ul li, .widget_archive ul li, .widget_categories ul li, .widget_recent_entries ul li { margin-bottom: 0; }
-.widget_nav_menu ul li a, .widget_archive ul li a, .widget_categories ul li a, .widget_recent_entries ul li a { display: block; overflow: hidden; padding: 10px 0 8px; border-bottom: 1px solid #e5e5e5; color: #464646; box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.9); }
-.widget_nav_menu ul li li a, .widget_archive ul li li a, .widget_categories ul li li a, .widget_recent_entries ul li li a { padding-left: 1em; }
-.widget_nav_menu ul li li li a, .widget_archive ul li li li a, .widget_categories ul li li li a, .widget_recent_entries ul li li li a { padding-left: 2em; }
-.widget_nav_menu ul li li li li a, .widget_archive ul li li li li a, .widget_categories ul li li li li a, .widget_recent_entries ul li li li li a { padding-left: 3em; }
-.widget_nav_menu ul li li li li li a, .widget_archive ul li li li li li a, .widget_categories ul li li li li li a, .widget_recent_entries ul li li li li li a { padding-left: 4em; }
-.widget_nav_menu ul li li li li li li a, .widget_archive ul li li li li li li a, .widget_categories ul li li li li li li a, .widget_recent_entries ul li li li li li li a { padding-left: 5em; }
-.widget_nav_menu ul li li li li li li li a, .widget_archive ul li li li li li li li a, .widget_categories ul li li li li li li li a, .widget_recent_entries ul li li li li li li li a { padding-left: 6em; }
-.widget_nav_menu ul li li li li li li li li a, .widget_archive ul li li li li li li li li a, .widget_categories ul li li li li li li li li a, .widget_recent_entries ul li li li li li li li li a { padding-left: 7em; }
-.widget_nav_menu ul li li li li li li li li li a, .widget_archive ul li li li li li li li li li a, .widget_categories ul li li li li li li li li li a, .widget_recent_entries ul li li li li li li li li li a { padding-left: 8em; }
-.widget_nav_menu ul li li li li li li li li li li a, .widget_archive ul li li li li li li li li li li a, .widget_categories ul li li li li li li li li li li a, .widget_recent_entries ul li li li li li li li li li li a { padding-left: 9em; }
-.widget_nav_menu ul li li li li li li li li li li li a, .widget_archive ul li li li li li li li li li li li a, .widget_categories ul li li li li li li li li li li li a, .widget_recent_entries ul li li li li li li li li li li li a { padding-left: 10em; }
+.widget_nav_menu ul li a, .widget_archive ul li a, .widget_categories ul li a, .widget_recent_entries ul li a { display: block; overflow: hidden; padding: 10px 0.5em 8px; border-bottom: 1px solid #e5e5e5; color: #464646; box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.9); }
+.widget_nav_menu ul li li a, .widget_archive ul li li a, .widget_categories ul li li a, .widget_recent_entries ul li li a { padding-left: 2em; }
+.widget_nav_menu ul li li li a, .widget_archive ul li li li a, .widget_categories ul li li li a, .widget_recent_entries ul li li li a { padding-left: 3em; }
+.widget_nav_menu ul li li li li a, .widget_archive ul li li li li a, .widget_categories ul li li li li a, .widget_recent_entries ul li li li li a { padding-left: 4em; }
+.widget_nav_menu ul li li li li li a, .widget_archive ul li li li li li a, .widget_categories ul li li li li li a, .widget_recent_entries ul li li li li li a { padding-left: 5em; }
+.widget_nav_menu ul li li li li li li a, .widget_archive ul li li li li li li a, .widget_categories ul li li li li li li a, .widget_recent_entries ul li li li li li li a { padding-left: 6em; }
+.widget_nav_menu ul li li li li li li li a, .widget_archive ul li li li li li li li a, .widget_categories ul li li li li li li li a, .widget_recent_entries ul li li li li li li li a { padding-left: 7em; }
+.widget_nav_menu ul li li li li li li li li a, .widget_archive ul li li li li li li li li a, .widget_categories ul li li li li li li li li a, .widget_recent_entries ul li li li li li li li li a { padding-left: 8em; }
+.widget_nav_menu ul li li li li li li li li li a, .widget_archive ul li li li li li li li li li a, .widget_categories ul li li li li li li li li li a, .widget_recent_entries ul li li li li li li li li li a { padding-left: 9em; }
+.widget_nav_menu ul li li li li li li li li li li a, .widget_archive ul li li li li li li li li li li a, .widget_categories ul li li li li li li li li li li a, .widget_recent_entries ul li li li li li li li li li li a { padding-left: 10em; }
+.widget_nav_menu ul li li li li li li li li li li li a, .widget_archive ul li li li li li li li li li li li a, .widget_categories ul li li li li li li li li li li li a, .widget_recent_entries ul li li li li li li li li li li li a { padding-left: 11em; }
 .widget_nav_menu ul ul, .widget_archive ul ul, .widget_categories ul ul, .widget_recent_entries ul ul { margin: 0; padding-left: 0; }
 
 /*-------------------------------------------*/

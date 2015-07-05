@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lightning v0.0.0\n"
 "Report-Msgid-Bugs-To: Translator Name <translations@example.com>\n"
-"POT-Creation-Date: 2015-06-23 11:33+0900\n"
+"POT-Creation-Date: 2015-07-05 13:57+0900\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Kurudrive <kurudrive@gmail.com>\n"
 "Language-Team: \n"
@@ -20,7 +20,6 @@ msgstr ""
 "_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext:1,2;__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
 "X-Poedit-Basepath: ../\n"
 "X-Generator: Poedit 1.5.7\n"
-"X-Poedit-SearchPath-0: .\n"
 
 # Theme presentation (no text domain)
 msgid ""
@@ -86,15 +85,23 @@ msgstr "サイドバー（投稿コンテンツ）"
 msgid "This widget area appears on the post contents page only."
 msgstr "このウィジェットは投稿コンテンツでのみ表示されます。"
 
-#: functions.php:130
+#: functions.php:127
+msgid "Sidebar(Page contents)"
+msgstr "サイドバー（固定ページ）"
+
+#: functions.php:129
+msgid "This widget area appears on the page contents only."
+msgstr "このウィジェットは固定ページでのみ表示されます。"
+
+#: functions.php:139
 msgid "Home content top"
 msgstr "トップページコンテンツエリア上部"
 
-#: functions.php:142
+#: functions.php:150
 msgid "Widget area of upper footer"
 msgstr "フッター上部"
 
-#: functions.php:154
+#: functions.php:161
 msgid "Footer widget area "
 msgstr "フッターウィジェットエリア"
 
@@ -181,9 +188,17 @@ msgstr "Y年F月j日"
 msgid "Archives"
 msgstr "アーカイブ"
 
-#: functions_helpers.php:151
-msgid "Free WordPress Theme Lightning"
-msgstr "Free WordPress Theme Lightning"
+#: functions_helpers.php:133
+#, php-format
+msgid "Copyright &copy; %s All Rights Reserved."
+msgstr ""
+
+#: functions_helpers.php:141
+msgid ""
+"Powered by <a href=\"https://wordpress.org/\">WordPress</a> &amp; <a href="
+"\"//lightning.bizvektor.com\" target=\"_blank\" title=\"Free WordPress Theme "
+"Lightning\"> Lightning Theme</a> by Vektor,Inc. technology."
+msgstr ""
 
 #: module_loop_post.php:17
 msgid "Read more"
@@ -234,29 +249,10 @@ msgstr "カテゴリー"
 msgid "Archive"
 msgstr "アーカイブ"
 
-#: single.php:32
+#: single.php:33
+msgid "<dl><dt>%s</dt><dd>%l</dd></dl>"
+msgstr ""
+
+#: single.php:53
 msgid "Tags"
 msgstr "タグ"
-
-#~ msgctxt "lightning theme-customizer"
-#~ msgid "Don't show post update"
-#~ msgstr "投稿の更新日を非表示にする"
-
-#~ msgctxt "lightning theme-customizer"
-#~ msgid "Don't show post author"
-#~ msgstr "投稿者を非表示にする"
-
-# Theme presentation (no text domain)
-#~ msgid "Lightning is a very simple theme that built by Bootstrap."
-#~ msgstr ""
-#~ "Lightning（ライトニング）はBootstrapベースのシンプルでカスタマイズしやすい"
-#~ "テーマです。"
-
-#, fuzzy
-#~ msgctxt "dayly archives date format"
-#~ msgid "F jS, Y"
-#~ msgstr "Y年n月j日"
-
-#~ msgctxt "dayly archives date format"
-#~ msgid "j F Y"
-#~ msgstr "Y年n月j日"
