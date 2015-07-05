@@ -222,7 +222,7 @@ h4,
 ul.gMenu a:hover { color:<?php echo $color_key;?>; }
 .page-header { background-color:<?php echo $color_key;?>; }
 .btn-default { border-color:<?php echo $color_key;?>;color:<?php echo $color_key;?>;}
-.btn-default:hover { border-color:<?php echo $color_key;?>;background-color: <?php echo $color_key;?>; color:#fff; }
+.btn-default:hover { border-color:<?php echo $color_key;?>;background-color: <?php echo $color_key;?>; }
 .btn-primary { background-color:<?php echo $color_key;?>;border-color:<?php echo $color_key_dark;?>; }
 .btn-primary:hover { background-color:<?php echo $color_key_dark;?>;border-color:<?php echo $color_key;?>; }
 .media .media-body .media-heading a:hover { color: <?php echo $color_key;?>;}
