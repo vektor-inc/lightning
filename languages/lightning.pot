@@ -1,187 +1,154 @@
-# WordPress Blank Pot
-# Copyright (C) 2014 ...
-# This file is distributed under the GNU General Public License v2 or later.
+# Theme presentation (no text domain)
 msgid ""
 msgstr ""
-"Project-Id-Version: Lightning v0.1.0\n"
-"Report-Msgid-Bugs-To: Translator Name <translations@example.com>\n"
-"POT-Creation-Date: 2015-07-07 02:37+0900\n"
+"Project-Id-Version: lightning v0.1.0\n"
+"POT-Creation-Date: 2015-07-07 02:35+0900\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Kurudrive <kurudrive@gmail.com>\n"
-"Language-Team: Vektor,Inc. <info@vektor-inc.co.jp>\n"
+"Language-Team: Vektor,Inc. <kurudrive@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Textdomain-Support: yesX-Generator: Poedit 1.6.4\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;esc_html_e;esc_html_x:1,2c;esc_html__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;"
-"_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext:1,2;__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
-"X-Poedit-Basepath: .\n"
 "X-Generator: Poedit 1.5.7\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_x\n"
+"X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ..\n"
 
 # Theme presentation (no text domain)
-msgid ""
-"Lightning is a very simple & customized easy theme that built by Bootstrap. "
-"If you added a custom post type, such as breadcrumbs is adjusted "
-"automatically. You do not need to add or create for a template file for the "
-"custom post type in the new."
+msgid "Lightning is a very simple & easy to customize theme which is based on the Bootstrap. It is also very friendly with custom post types and custom taxonomies. When you add a new one, the breadcrumbs will be adjusted and posts will look beautifully without editing or adding a template files."
 msgstr ""
 "Lightning（ライトニング）はBootstrapベースのシンプルでカスタマイズしやすい"
 "テーマです。カスタム投稿タイプを追加してもパンくずリストなどが自動で調整され"
 "るので、カスタム投稿タイプ用のテンプレートファイルを新規で追加・作成する必要"
 "はありません。"
 
-#: ../comments.php:28
-#, php-format
-msgctxt "comments title"
-msgid "One thought on &ldquo;%2$s&rdquo;"
-msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
-msgstr[0] "&ldquo;%2$s&rdquo; に対して１件のコメントがあります。"
-msgstr[1] "&ldquo;%2$s&rdquo; に対して %1$s 件のコメントがあります"
-
 #: ../comments.php:35 ../comments.php:56
 msgid "Comment navigation"
-msgstr "コメントナビゲーション"
+msgstr ""
 
 #: ../comments.php:38 ../comments.php:59
 msgid "Older Comments"
-msgstr "古いコメント"
+msgstr ""
 
 #: ../comments.php:39 ../comments.php:60
 msgid "Newer Comments"
-msgstr "新しいコメント"
+msgstr ""
 
 #: ../comments.php:75
 msgid "Comments are closed."
-msgstr "この投稿はコメントできません。"
+msgstr ""
 
 #: ../front-page.php:52 ../index.php:48
 msgid "Page"
-msgstr "ページ"
+msgstr ""
 
 #: ../front-page.php:61 ../index.php:52
 msgid "No posts."
-msgstr "投稿はありません。"
+msgstr ""
 
 #: ../functions.php:94
 msgid "Sidebar(Home)"
-msgstr "サイドバー（トップページ）"
+msgstr ""
 
 #: ../functions.php:102
 msgid "Sidebar(Common top)"
-msgstr "サイドバー（共通上部）"
+msgstr ""
 
 #: ../functions.php:110
 msgid "Sidebar(Common bottom)"
-msgstr "サイドバー（共通下部）"
+msgstr ""
 
 #: ../functions.php:134
 #, php-format
 msgid "Sidebar(%s)"
-msgstr "サイドバー（%s）"
+msgstr ""
 
 #: ../functions.php:136
 #, php-format
 msgid "This widget area appears on the %s contents page only."
-msgstr "このウィジェットは%sコンテンツでのみ表示されます。"
+msgstr ""
 
 #: ../functions.php:149
 msgid "Home content top"
-msgstr "トップページコンテンツエリア上部"
+msgstr ""
 
 #: ../functions.php:160
 msgid "Widget area of upper footer"
-msgstr "フッター上部"
+msgstr ""
 
 #: ../functions.php:171
 msgid "Footer widget area "
-msgstr "フッターウィジェットエリア"
+msgstr ""
 
 #: ../functions_customizer.php:52
-msgctxt "lightning theme-customizer"
 msgid "Design settings"
-msgstr "デザイン設定"
+msgstr ""
 
 #: ../functions_customizer.php:101
-msgctxt "lightning theme-customizer"
 msgid "Header logo image"
-msgstr "ヘッダーロゴ画像"
+msgstr ""
 
 #: ../functions_customizer.php:108
-msgctxt "lightning theme-customizer"
 msgid "Key color"
-msgstr "キーカラー"
+msgstr ""
 
 #: ../functions_customizer.php:114
-msgctxt "lightning theme-customizer"
 msgid "Key color(dark)"
-msgstr "キーカラー（暗）"
+msgstr ""
 
 #: ../functions_customizer.php:120
-msgctxt "lightning theme-customizer"
 msgid "Don't show sidebar on home page"
-msgstr "トップページを1カラムにする"
+msgstr ""
 
 #: ../functions_customizer.php:127
-msgctxt "lightning theme-customizer"
 msgid "Don't display post updated on a single page."
-msgstr "投稿詳細ページで最終更新日を表示しない"
+msgstr ""
 
 #: ../functions_customizer.php:134
-msgctxt "lightning theme-customizer"
 msgid "Don't display post author on a single page"
-msgstr "投稿詳細ページで投稿者名を表示しない"
+msgstr ""
 
 #: ../functions_customizer.php:146
-msgctxt "lightning theme-customizer"
 msgid "Home page slide show"
-msgstr "トップページスライドショー"
+msgstr ""
 
 #: ../functions_customizer.php:186
-msgctxt "lightning theme-customizer"
 msgid "Slide image title"
-msgstr "スライド画像タイトル"
+msgstr ""
 
 #: ../functions_customizer.php:191
 msgid "This title text is print to alt tag."
-msgstr "このテキストはaltに反映されます。"
+msgstr ""
 
 #: ../functions_customizer.php:196
-msgctxt "lightning theme-customizer"
 msgid "Slide image url"
-msgstr "スライド画像"
+msgstr ""
 
 #: ../functions_customizer.php:208
-msgctxt "lightning theme-customizer"
 msgid "Slide image"
-msgstr "スライド画像"
+msgstr ""
 
 #: ../functions_helpers.php:99
 #, php-format
 msgid "Author: %s"
-msgstr "投稿者: %s"
+msgstr ""
 
 #: ../functions_helpers.php:101 ../module_panList.php:126
-msgctxt "yearly archives date format"
 msgid "Y"
-msgstr "Y年"
+msgstr ""
 
 #: ../functions_helpers.php:103 ../module_panList.php:129
-msgctxt "monthly archives date format"
 msgid "F Y"
-msgstr "Y年n月"
+msgstr ""
 
 #: ../functions_helpers.php:105
-msgctxt "daily archives date format"
 msgid "F j, Y"
-msgstr "Y年F月j日"
+msgstr ""
 
 #: ../functions_helpers.php:120
 msgid "Archives"
-msgstr "アーカイブ"
+msgstr ""
 
 #: ../functions_helpers.php:133
 #, php-format
@@ -197,52 +164,51 @@ msgstr ""
 
 #: ../module_loop_post.php:17
 msgid "Read more"
-msgstr "続きを読む"
+msgstr ""
 
 #: ../module_loop_post_meta.php:13
 msgid "Last updated"
-msgstr "最終更新日"
+msgstr ""
 
 #: ../module_pageTit.php:77 ../module_panList.php:226
 #, php-format
 msgid "Search Results for : %s"
-msgstr "\"%s\" の検索結果"
+msgstr ""
 
 #: ../module_pageTit.php:79 ../module_panList.php:219
 msgid "Not found"
-msgstr "ページが見つかりません"
+msgstr ""
 
 #: ../module_panList.php:126
 #, php-format
 msgid "Yearly Archives: %s"
-msgstr "%s年"
+msgstr ""
 
 #: ../module_panList.php:129
 #, php-format
 msgid "Monthly Archives: %s"
-msgstr "%s"
+msgstr ""
 
 #: ../module_panList.php:131
 #, php-format
 msgid "Daily Archives: %s"
-msgstr "%s"
+msgstr ""
 
 #: ../module_panList.php:131
-msgctxt "daily archives date format"
 msgid "F jS, Y"
-msgstr "Y年n月j日"
+msgstr ""
 
 #: ../sidebar-post.php:22
 msgid "Recent posts"
-msgstr "最近の投稿"
+msgstr ""
 
 #: ../sidebar-post.php:31
 msgid "Category"
-msgstr "カテゴリー"
+msgstr ""
 
 #: ../sidebar-post.php:40
 msgid "Archive"
-msgstr "アーカイブ"
+msgstr ""
 
 #: ../single.php:33
 msgid "<dl><dt>%s</dt><dd>%l</dd></dl>"
@@ -250,4 +216,4 @@ msgstr ""
 
 #: ../single.php:53
 msgid "Tags"
-msgstr "タグ"
+msgstr ""

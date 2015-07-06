@@ -25,10 +25,12 @@ jQuery(window).resize(function(){
 /*	Top slide control
 /*----------------------------------------------------------*/
 // add active class to first item
-jQuery('#top__fullcarousel .carousel-indicators li:first-child').addClass("active");
-jQuery('#top__fullcarousel .item:first-child').addClass("active");
-jQuery('.carousel').carousel({
-  interval: 4000
+jQuery(document).ready(function(){
+	jQuery('#top__fullcarousel .carousel-indicators li:first-child').addClass("active");
+	jQuery('#top__fullcarousel .item:first-child').addClass("active");
+	jQuery('.carousel').carousel({
+	  interval: 4000
+	});
 });
 
 /*----------------------------------------------------------*/
