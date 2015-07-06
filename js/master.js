@@ -1,13 +1,16 @@
 jQuery(function(){
 	offset_header();
+	youtube_responsive();
 	// addClass_dropdown();
 });
 jQuery(document).ready(function(){
 	offset_header();
+	youtube_responsive();
 	// addClass_dropdown();
 });
 jQuery(window).resize(function(){
 	offset_header();
+	youtube_responsive();
 	// addClass_dropdown();
 });
 
@@ -78,23 +81,25 @@ function head_high(){
 /*-------------------------------------------*/
 /*	YOUTUBEのレスポンシブ対応
 /*-------------------------------------------*/
-jQuery('iframe').each(function(i){
-	var iframeUrl = jQuery(this).attr("src");
-	if(!iframeUrl){return;}
-	// iframeのURLの中に youtube が存在する位置を検索する
-	idx = iframeUrl.indexOf("youtube");
-	// 見つからなかった場合には -1 が返される
-	if(idx != -1) {
-	    // youtube が含まれていたらそのクラスを返す
-	    jQuery(this).addClass('iframeYoutube').css({"max-width":"100%"});
-	    var iframeWidth = jQuery(this).attr("width");
-	    var iframeHeight = jQuery(this).attr("height");
-	    var iframeRate = iframeHeight / iframeWidth;
-	    var nowIframeWidth = jQuery(this).width();
-	    var newIframeHeight = nowIframeWidth * iframeRate;
-	    jQuery(this).css({"max-width":"100%","height":newIframeHeight});
-	}
-});
+function youtube_responsive(){
+	jQuery('iframe').each(function(i){
+		var iframeUrl = jQuery(this).attr("src");
+		if(!iframeUrl){return;}
+		// iframeのURLの中に youtube が存在する位置を検索する
+		idx = iframeUrl.indexOf("youtube");
+		// 見つからなかった場合には -1 が返される
+		if(idx != -1) {
+		    // youtube が含まれていたらそのクラスを返す
+		    jQuery(this).addClass('iframeYoutube').css({"max-width":"100%"});
+		    var iframeWidth = jQuery(this).attr("width");
+		    var iframeHeight = jQuery(this).attr("height");
+		    var iframeRate = iframeHeight / iframeWidth;
+		    var nowIframeWidth = jQuery(this).width();
+		    var newIframeHeight = nowIframeWidth * iframeRate;
+		    jQuery(this).css({"max-width":"100%","height":newIframeHeight});
+		}
+	});
+}
 /*----------------------------------------------------------*/
 /*	add bootstrap class
 /*----------------------------------------------------------*/
