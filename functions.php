@@ -170,6 +170,7 @@ function lightning_widgets_init() {
 }
 add_action( 'widgets_init', 'lightning_widgets_init' );
 
+$postTypes = get_post_types(Array('public' => true));
 
 /*-------------------------------------------*/
 /*	Year Artchive list 'year' and count insert to inner </a>
