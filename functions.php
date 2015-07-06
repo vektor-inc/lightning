@@ -114,26 +114,36 @@ function lightning_widgets_init() {
 			'before_title' => '<h1 class="widget-title subSection-title">',
 			'after_title' => '</h1>',
 		) );
-		register_sidebar( array(
-			'name' => __( 'Sidebar(Post contents)', 'lightning' ),
-			'id' => 'post-side-widget-area',
-			'description' => __( 'This widget area appears on the post contents page only.', 'lightning' ),
-			'before_widget' => '<aside class="widget %2$s" id="%1$s">',
-			'after_widget' => '</aside>',
-			'before_title' => '<h1 class="widget-title subSection-title">',
-			'after_title' => '</h1>',
-		) );
-		register_sidebar( array(
-			'name' => __( 'Sidebar(Page contents)', 'lightning' ),
-			'id' => 'page-side-widget-area',
-			'description' => __( 'This widget area appears on the page contents only.', 'lightning' ),
-			'before_widget' => '<aside class="widget %2$s" id="%1$s">',
-			'after_widget' => '</aside>',
-			'before_title' => '<h1 class="widget-title subSection-title">',
-			'after_title' => '</h1>',
-		) );
 
-	// footer upper widget area
+
+	// Sidebar( post_type )
+
+		$postTypes = get_post_types(Array('public' => true));
+		
+		foreach ($postTypes as $postType) {
+
+			// Get post type name
+			/*-------------------------------------------*/
+			$post_type_object = get_post_type_object($postType);
+			if($post_type_object){
+				// Set post type name
+				$postType_name = esc_html($post_type_object->labels->name);
+
+				// Set post type widget area
+				register_sidebar( array(
+					'name' => sprintf( __( 'Sidebar(%s)', 'lightning' ), $postType_name ),
+					'id' => $postType.'-side-widget-area',
+					'description' => sprintf( __( 'This widget area appears on the %s contents page only.', 'lightning' ), $postType_name ),
+					'before_widget' => '<aside class="widget %2$s" id="%1$s">',
+					'after_widget' => '</aside>',
+					'before_title' => '<h1 class="widget-title subSection-title">',
+					'after_title' => '</h1>',
+				) );
+			} // if($post_type_object){
+
+		} // foreach ($postTypes as $postType) {
+
+	// Home content top widget area
 
 		register_sidebar( array(
 			'name' => __( 'Home content top', 'lightning' ),
@@ -169,8 +179,6 @@ function lightning_widgets_init() {
 	}
 }
 add_action( 'widgets_init', 'lightning_widgets_init' );
-
-$postTypes = get_post_types(Array('public' => true));
 
 /*-------------------------------------------*/
 /*	Year Artchive list 'year' and count insert to inner </a>
