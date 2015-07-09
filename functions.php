@@ -39,7 +39,7 @@ function lightning_theme_setup() {
 	/*	Set content width
 	/* 	(Auto set up to media max with.)
 	/*-------------------------------------------*/
-	if ( ! isset( $content_width ) ) $content_width = 780;
+	if ( ! isset( $content_width ) ) $content_width = 750;
 
 	/*-------------------------------------------*/
 	/*	Admin page _ Add editor css
