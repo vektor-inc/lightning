@@ -1,19 +1,5 @@
 <?php
 /*-------------------------------------------*/
-/*	Add Links to customizer
-/*-------------------------------------------*/
-add_action( 'customize_controls_enqueue_scripts', 'lightning_customizer_registers_scripts' );
-function lightning_customizer_registers_scripts() {
-	wp_register_script( 'lightning-customizer-js' , get_template_directory_uri().'/js/customizer.js', array('jquery'), '20150706' );
-	wp_enqueue_script( 'lightning-customizer-js' );
-}
-
-add_action( 'customize_controls_print_styles', 'lightning_customizer_registers_style' );
-function lightning_customizer_registers_style() {
-	wp_enqueue_style( 'lightning-design-style', get_template_directory_uri().'/css/customizer.css', array(), '20150706' );
-}
-
-/*-------------------------------------------*/
 /*	customize_register
 /*-------------------------------------------*/
 add_action( 'customize_register', 'lightning_customize_register' );
@@ -124,7 +110,7 @@ function lightning_customize_register($wp_customize) {
 		'priority'	=> 504, 
 	));
 	$wp_customize->add_control( 'lightning_theme_options[postUpdate_hidden]', array(
-		'label'		=> _x( 'Don\'t display post updated on a single page.' ,'lightning theme-customizer', 'lightning' ),
+		'label'		=> _x( 'Hide modified date on single pages.' ,'lightning theme-customizer', 'lightning' ),
 		'section'	=> 'lightning_design',
 		'settings'  => 'lightning_theme_options[postUpdate_hidden]',
 		'type'		=> 'checkbox',

@@ -1,6 +1,6 @@
 
 <div class="entry-meta">
-<span class="published entry-meta_items"><i class="fa fa-calendar"></i><?php echo esc_html( get_the_date() ); ?></span>
+<span class="published entry-meta_items"><i class="fa fa-calendar"></i><a href="<?php the_permalink(); ?>"><?php echo esc_html( get_the_date() ); ?></a></span>
 
 <?php // Post update ?>
 

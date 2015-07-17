@@ -134,9 +134,9 @@ h1.page-header_pageTitle:first-child { margin:15px 0 10px;font-size:22px;line-he
 /*-------------------------------------------*/
 /* .siteContent
 /*-------------------------------------------*/
-.siteContent { padding:3em 0 4em;}
+.siteContent { padding:3em 0 4em; }
 @media (max-width: 767px){
-  .siteContent { padding:2em 0 3em;}
+  .siteContent { padding:2em 0 3em; }
 }
 /*      site-main
 /*-------------------------------------------*/
@@ -148,6 +148,7 @@ h1.page-header_pageTitle:first-child { margin:15px 0 10px;font-size:22px;line-he
 h1.entry-title:first-letter { color:$color_key; }
 .entry-meta { margin-bottom:0.8em;padding-left:3px;
   .entry-meta_items { font-size:14px; }
+  .entry-meta_items.published a { color:$color_font_default; }
   .entry-meta_items_author { margin-left:0.8em; }
   .entry-meta_items_term { float:right;margin-right:0; }
   i { margin-right:5px; }
