@@ -84,6 +84,10 @@ require( get_template_directory() . '/functions_customizer.php' );
 /*-------------------------------------------*/
 require( get_template_directory() . '/functions_helpers.php' );
 
+/*-------------------------------------------*/
+/*	Load tga(Plugin install)
+/*-------------------------------------------*/
+require( get_template_directory() . '/functions_plugin_install.php' );
 
 /*-------------------------------------------*/
 /*	WidgetArea initiate
@@ -196,3 +200,14 @@ function lightning_list_categories( $output, $args ) {
 	return $output;
 }
 add_filter( 'wp_list_categories', 'lightning_list_categories', 10, 2 );
+
+/*-------------------------------------------*/
+/*	Head title
+/*-------------------------------------------*/
+add_filter('wp_title','lightning_wp_head_frontPage_title');
+function lightning_wp_head_frontPage_title($title){
+	if (is_front_page()) {
+		$title = get_bloginfo('name');
+	}
+	return $title;
+}
