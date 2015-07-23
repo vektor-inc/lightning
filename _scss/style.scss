@@ -301,16 +301,16 @@ ul.page-numbers { margin:0;padding: 0;
     li { margin-bottom:0; }
     li a { display:block; overflow:hidden;padding:10px 0.5em 8px;border-bottom:$border_primary;color:$color_font_default;
       box-shadow:0px 1px 0px rgba(255,255,255,0.9); }
-    li li a { padding-left:2em; }
-    li li li a { padding-left:3em; }
-    li li li li a { padding-left:4em; }
-    li li li li li a { padding-left:5em; }
-    li li li li li li a { padding-left:6em; }
-    li li li li li li li a { padding-left:7em; }
-    li li li li li li li li a { padding-left:8em; }
-    li li li li li li li li li a { padding-left:9em; }
-    li li li li li li li li li li a { padding-left:10em; }
-    li li li li li li li li li li li a { padding-left:11em; }
+    li li a { padding-left:1.5em; }
+    li li li a { padding-left:2.5em; }
+    li li li li a { padding-left:3.5em; }
+    li li li li li a { padding-left:4.5em; }
+    li li li li li li a { padding-left:5.5em; }
+    li li li li li li li a { padding-left:6.5em; }
+    li li li li li li li li a { padding-left:7.5em; }
+    li li li li li li li li li a { padding-left:8.5em; }
+    li li li li li li li li li li a { padding-left:9.5em; }
+    li li li li li li li li li li li a { padding-left:10.5em; }
     ul { margin:0;padding-left:0; }
   }
 }
@@ -331,6 +331,7 @@ footer {
 /* front-page
 /*-------------------------------------------*/
 .carousel { border-bottom:$border_primary; }
+.carousel-indicators { margin-bottom:0;bottom:5px; }
 .carousel-inner>.item>a>img,
 .carousel-inner>.item>img { width:100%; height:auto;}
 
