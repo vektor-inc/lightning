@@ -46,8 +46,9 @@ $lightning_theme_options = get_option('lightning_theme_options'); ?>
 
     </div>
 </header>
+<?php if (is_front_page()) :?>
 <?php get_template_part('module_slide'); ?>
-<?php if (!is_front_page()) :?>
+<?php else : ?>
 <?php get_template_part('module_pageTit'); ?>
 <?php get_template_part('module_panList'); ?>
 <?php endif;?>
