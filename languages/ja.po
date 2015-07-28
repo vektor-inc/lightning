@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lightning v0.1.0\n"
 "Report-Msgid-Bugs-To: Translator Name <translations@example.com>\n"
-"POT-Creation-Date: 2015-07-17 15:35+0900\n"
+"POT-Creation-Date: 2015-07-28 12:45+0900\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Kurudrive <kurudrive@gmail.com>\n"
 "Language-Team: Vektor,Inc. <info@vektor-inc.co.jp>\n"
@@ -485,7 +485,7 @@ msgstr "%1$s のインストールに成功しました。"
 
 #: ../class-tgm-plugin-activation.php:3377
 msgid "All installations have been completed."
-msgstr ""
+msgstr "インストールが完了しました。"
 
 #: ../class-tgm-plugin-activation.php:3378
 #, php-format
@@ -558,61 +558,66 @@ msgstr "フッター上部"
 msgid "Footer widget area "
 msgstr "フッターウィジェットエリア"
 
-#: ../functions_customizer.php:52
+#: ../functions_customizer.php:38
 msgctxt "lightning theme-customizer"
 msgid "Design settings"
 msgstr "デザイン設定"
 
-#: ../functions_customizer.php:101
+#: ../functions_customizer.php:87
 msgctxt "lightning theme-customizer"
 msgid "Header logo image"
 msgstr "ヘッダーロゴ画像"
 
-#: ../functions_customizer.php:108
+#: ../functions_customizer.php:94
 msgctxt "lightning theme-customizer"
 msgid "Key color"
 msgstr "キーカラー"
 
-#: ../functions_customizer.php:114
+#: ../functions_customizer.php:100
 msgctxt "lightning theme-customizer"
 msgid "Key color(dark)"
 msgstr "キーカラー（暗）"
 
-#: ../functions_customizer.php:120
+#: ../functions_customizer.php:106
 msgctxt "lightning theme-customizer"
 msgid "Don't show sidebar on home page"
 msgstr "トップページを1カラムにする"
 
-#: ../functions_customizer.php:127
+#: ../functions_customizer.php:113
 msgctxt "lightning theme-customizer"
 msgid "Hide modified date on single pages."
 msgstr "投稿詳細ページで最終更新日を表示しない"
 
-#: ../functions_customizer.php:134
+#: ../functions_customizer.php:120
 msgctxt "lightning theme-customizer"
 msgid "Don't display post author on a single page"
 msgstr "投稿詳細ページで投稿者名を表示しない"
 
-#: ../functions_customizer.php:146
+#: ../functions_customizer.php:132
 msgctxt "lightning theme-customizer"
 msgid "Home page slide show"
 msgstr "トップページスライドショー"
 
-#: ../functions_customizer.php:186
+#: ../functions_customizer.php:178
 msgctxt "lightning theme-customizer"
 msgid "Slide image title"
 msgstr "スライド画像タイトル"
 
-#: ../functions_customizer.php:191
+#: ../functions_customizer.php:183
 msgid "This title text is print to alt tag."
 msgstr "このテキストはaltに反映されます。"
 
-#: ../functions_customizer.php:196
+#: ../functions_customizer.php:188
 msgctxt "lightning theme-customizer"
-msgid "Slide image url"
-msgstr "スライド画像"
+msgid "Slide image link url"
+msgstr "スライド画像リンク先URL"
 
-#: ../functions_customizer.php:208
+#: ../functions_customizer.php:197
+msgctxt "lightning theme-customizer"
+msgid "Open in new window."
+msgstr "リンク先を別ウィンドウで開く"
+
+#: ../functions_customizer.php:209
 msgctxt "lightning theme-customizer"
 msgid "Slide image"
 msgstr "スライド画像"
@@ -646,12 +651,16 @@ msgstr "アーカイブ"
 msgid "Copyright &copy; %s All Rights Reserved."
 msgstr ""
 
-#: ../functions_helpers.php:141
+#: ../functions_helpers.php:138
 msgid ""
-"Powered by <a href=\"https://wordpress.org/\">WordPress</a> &amp; <a href="
+"<p>Powered by <a href=\"https://wordpress.org/\">WordPress</a> &amp; <a href="
 "\"//lightning.bizvektor.com\" target=\"_blank\" title=\"Free WordPress Theme "
-"Lightning\"> Lightning Theme</a> by Vektor,Inc. technology."
+"Lightning\"> Lightning Theme</a> by Vektor,Inc. technology.</p>"
 msgstr ""
+"<p>Powered by <a href=\"https://ja.wordpress.org/\">WordPress</a> &amp; <a "
+"href=\"//lightning.bizvektor.com/ja/\" target=\"_blank\" title=\"Free "
+"WordPress Theme Lightning\"> Lightning Theme</a> by Vektor,Inc. technology.</"
+"p>"
 
 #: ../functions_plugin_install.php:88
 #, php-format

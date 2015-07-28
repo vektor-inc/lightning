@@ -1,7 +1,7 @@
 
 == Description ==
 Lightning is a very simple theme that built by Bootstrap.
-Official site : http://lightning.bizvektor.com ( Sorry, english version is under construction. ) 
+Official site : http://lightning.bizvektor.com.
 Sample site : http://demo.vs1.biz/lightning/
 
 === Tags ===
@@ -31,5 +31,9 @@ http://bizvektor.com/contact/
 
 
 == Changelog ==
+
+v0.1.3
+* Add function to Home Page slide banner.
+
 v0.1.2
 * Hello, world!
