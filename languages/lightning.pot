@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lightning v0.1.0\n"
-"POT-Creation-Date: 2015-07-17 16:05+0900\n"
+"POT-Creation-Date: 2015-07-28 12:44+0900\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Kurudrive <kurudrive@gmail.com>\n"
 "Language-Team: Vektor,Inc. <kurudrive@gmail.com>\n"
@@ -326,51 +326,55 @@ msgstr ""
 msgid "Footer widget area "
 msgstr ""
 
-#: ../functions_customizer.php:52
+#: ../functions_customizer.php:38
 msgid "Design settings"
 msgstr ""
 
-#: ../functions_customizer.php:101
+#: ../functions_customizer.php:87
 msgid "Header logo image"
 msgstr ""
 
-#: ../functions_customizer.php:108
+#: ../functions_customizer.php:94
 msgid "Key color"
 msgstr ""
 
-#: ../functions_customizer.php:114
+#: ../functions_customizer.php:100
 msgid "Key color(dark)"
 msgstr ""
 
-#: ../functions_customizer.php:120
+#: ../functions_customizer.php:106
 msgid "Don't show sidebar on home page"
 msgstr ""
 
-#: ../functions_customizer.php:127
+#: ../functions_customizer.php:113
 msgid "Hide modified date on single pages."
 msgstr ""
 
-#: ../functions_customizer.php:134
+#: ../functions_customizer.php:120
 msgid "Don't display post author on a single page"
 msgstr ""
 
-#: ../functions_customizer.php:146
+#: ../functions_customizer.php:132
 msgid "Home page slide show"
 msgstr ""
 
-#: ../functions_customizer.php:186
+#: ../functions_customizer.php:178
 msgid "Slide image title"
 msgstr ""
 
-#: ../functions_customizer.php:191
+#: ../functions_customizer.php:183
 msgid "This title text is print to alt tag."
 msgstr ""
 
-#: ../functions_customizer.php:196
-msgid "Slide image url"
+#: ../functions_customizer.php:188
+msgid "Slide image link url"
 msgstr ""
 
-#: ../functions_customizer.php:208
+#: ../functions_customizer.php:197
+msgid "Open in new window."
+msgstr ""
+
+#: ../functions_customizer.php:209
 msgid "Slide image"
 msgstr ""
 
@@ -400,11 +404,11 @@ msgstr ""
 msgid "Copyright &copy; %s All Rights Reserved."
 msgstr ""
 
-#: ../functions_helpers.php:141
+#: ../functions_helpers.php:138
 msgid ""
-"Powered by <a href=\"https://wordpress.org/\">WordPress</a> &amp; <a href="
+"<p>Powered by <a href=\"https://wordpress.org/\">WordPress</a> &amp; <a href="
 "\"//lightning.bizvektor.com\" target=\"_blank\" title=\"Free WordPress Theme "
-"Lightning\"> Lightning Theme</a> by Vektor,Inc. technology."
+"Lightning\"> Lightning Theme</a> by Vektor,Inc. technology.</p>"
 msgstr ""
 
 #: ../module_loop_post.php:17

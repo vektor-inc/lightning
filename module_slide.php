@@ -51,15 +51,22 @@ if ($top_slide_count) : ?>
             <div class="item<?php if ($i == 1) echo ' active';?>">
 
             <?php
-            if ( isset( $lightning_theme_options['top_slide_url_'.$i] ) && $lightning_theme_options['top_slide_url_'.$i] ): ?>
-                <a href="<?php echo esc_url( $lightning_theme_options['top_slide_url_'.$i] ); ?>">
+            // If link url exist
+            if ( isset( $lightning_theme_options['top_slide_url_'.$i] ) && $lightning_theme_options['top_slide_url_'.$i] ):
+
+                // Link target window
+                $link_target = ( isset( $lightning_theme_options['top_slide_link_blank_'.$i] ) && $lightning_theme_options['top_slide_link_blank_'.$i] ) ? ' target="_blank"' : '';
+                ?>
+                <a href="<?php echo esc_url( $lightning_theme_options['top_slide_url_'.$i] ); ?>"<?php echo $link_target; ?>>
             <?php endif; ?>
 
             <img src="<?php echo esc_attr($top_slide_image_src); ?>" alt="<?php echo esc_attr($top_slide_title); ?>">
 
             <?php
-            if ( isset( $lightning_theme_options['top_slide_url_'.$i] ) && $lightning_theme_options['top_slide_url_'.$i] ): ?></a><?php endif; 
-            ?>
+            // If link url exist
+            if ( isset( $lightning_theme_options['top_slide_url_'.$i] ) && $lightning_theme_options['top_slide_url_'.$i] ): ?>
+                </a>
+            <?php endif; ?>
 
             </div><!-- [ /.item ] -->
             <?php } ?>

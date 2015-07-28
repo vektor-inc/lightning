@@ -165,6 +165,12 @@ function lightning_customize_register($wp_customize) {
 			'capability' 		=> 'edit_theme_options',
 			'sanitize_callback' => 'esc_url_raw',
 			) );
+		$wp_customize->add_setting('lightning_theme_options[top_slide_link_blank_'.$i.']', array(
+	    	'default'			=> false,
+	    	'type'				=> 'option',
+	    	'capability'		=> 'edit_theme_options',
+			'sanitize_callback' => 'lightning_sanitize_checkbox',
+		));
 
 	    // Add control
 		$priority = $priority + 1;
@@ -179,12 +185,21 @@ function lightning_customize_register($wp_customize) {
 
 		$priority = $priority + 1;
 		$wp_customize->add_control( 'top_slide_url_'.$i, array(
-			'label'     => _x('Slide image url', 'lightning theme-customizer', 'lightning').' '.$i,
+			'label'     => _x('Slide image link url', 'lightning theme-customizer', 'lightning').' '.$i,
 			'section'  => 'lightning_slide',
 			'settings' => 'lightning_theme_options[top_slide_url_'.$i.']',
 			'type' => 'text',
 			'priority' => $priority,
 			) );
+
+		$priority = $priority + 1;
+		$wp_customize->add_control( 'lightning_theme_options[top_slide_link_blank_'.$i.']', array(
+			'label'		=> _x( 'Open in new window.' ,'lightning theme-customizer', 'lightning' ),
+			'section'	=> 'lightning_slide',
+			'settings'  => 'lightning_theme_options[top_slide_link_blank_'.$i.']',
+			'type'		=> 'checkbox',
+			'priority'	=> $priority,
+		));
 
 	    $priority = $priority + 1;
 		$wp_customize->add_control( new WP_Customize_Image_Control(
