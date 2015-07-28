@@ -12,7 +12,10 @@ for ( $i = 1; $i <= 5; ) {
     $i++;
 }
 
-if ($top_slide_count) : ?>
+if ($top_slide_count) :
+
+if ( is_front_page() || ( isset( $lightning_theme_options['top_slide_all']) && $lightning_theme_options['top_slide_all'] ) ) : ?>
+
 <div id="top__fullcarousel" data-interval="false" class="carousel slide" data-ride="carousel">
 <div class="carousel-inner">
 
@@ -80,4 +83,5 @@ if ($top_slide_count) : ?>
 <?php endif; ?>
 
 </div><!-- [ /#top__fullcarousel ] -->
-<?php endif; ?>
+<?php endif; //if ( is_front_page() || ( isset( $lightning_theme_options['top_slide_all'] && ... ?>
+<?php endif; //if ($top_slide_count) : ?>

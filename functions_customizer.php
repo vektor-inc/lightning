@@ -135,7 +135,22 @@ function lightning_customize_register($wp_customize) {
 
 	// slide image
 	$priority = 610;
+
 	$lightning_theme_options = get_option('lightning_theme_options');
+
+	$wp_customize->add_setting('lightning_theme_options[top_slide_all]', array(
+    	'default'			=> false,
+    	'type'				=> 'option',
+    	'capability'		=> 'edit_theme_options',
+		'sanitize_callback' => 'lightning_sanitize_checkbox',
+	));
+	$wp_customize->add_control( 'lightning_theme_options[top_slide_all]', array(
+		'label'		=> _x( 'Show all pages.' ,'lightning theme-customizer', 'lightning' ),
+		'section'	=> 'lightning_slide',
+		'settings'  => 'lightning_theme_options[top_slide_all]',
+		'type'		=> 'checkbox',
+		'priority'	=> 605,
+	));
 
     for ( $i = 1; $i <= 5; ) {
 
