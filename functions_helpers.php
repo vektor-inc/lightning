@@ -130,18 +130,12 @@ function lightning_the_footerCopyRight(){
 
 	// copyright
 	/*------------------*/
-	$lightning_footerCopyRight = sprintf( __( 'Copyright &copy; %s All Rights Reserved.', 'lightning' ), get_bloginfo('name') );
-	$lightning_footerCopyRight = apply_filters( 'lightning_footerCopyRightCustom', $lightning_footerCopyRight );
-	$lightning_footerCopyRight_html = '<p>'.$lightning_footerCopyRight .'</p>';
-
-	echo $lightning_footerCopyRight_html;
+	$lightning_footerCopyRight = '<p>'.sprintf( __( 'Copyright &copy; %s All Rights Reserved.', 'lightning' ), get_bloginfo('name') ).'</p>';
+	echo apply_filters( 'lightning_footerCopyRightCustom', $lightning_footerCopyRight );
 
 	// Powered
 	/*------------------*/
-	$footerPowered = __( 'Powered by <a href="https://wordpress.org/">WordPress</a> &amp; <a href="//lightning.bizvektor.com" target="_blank" title="Free WordPress Theme Lightning"> Lightning Theme</a> by Vektor,Inc. technology.');
-	$footerPowered = apply_filters( 'lightning_footerPoweredCustom', $footerPowered );
-	$footerPowered_html = '<p>'.$footerPowered.'</p>';
-
-	echo $footerPowered_html;
+	$lightning_footerPowered = __( '<p>Powered by <a href="https://wordpress.org/">WordPress</a> &amp; <a href="//lightning.bizvektor.com" target="_blank" title="Free WordPress Theme Lightning"> Lightning Theme</a> by Vektor,Inc. technology.</p>');
+	echo apply_filters( 'lightning_footerPoweredCustom', $lightning_footerPowered );
 
 }
