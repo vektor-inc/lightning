@@ -54,36 +54,38 @@ function offset_header(){
 /*	Header height changer
 /*-------------------------------------------*/
 jQuery(document).ready(function(){
+	var defaultHeight = jQuery('.navbar-brand img').height();
 	jQuery(window).scroll(function () {
 		var bodyWidth = jQuery(window).width();
 		if ( bodyWidth >= 768 ) {
 	    	var scroll = jQuery(this).scrollTop();
 	        if (jQuery(this).scrollTop() > 10) {
-	            head_low();
+	            head_low(defaultHeight);
 	        } else {
-				head_high();
+				head_high(defaultHeight);
 	        }
 	    } else {
-	    	head_low();
+	    	head_low(defaultHeight);
 	    }
 	});
 });
-function head_low(){
+function head_low(defaultHeight){
+	changeHeight = defaultHeight*0.8;
 	jQuery('.siteHeader .container').stop().animate({
-		"padding-top":"6px",
-		"padding-bottom":"5px",
+		"padding-top":"7px",
+		"padding-bottom":"6px",
 	},100);
 	jQuery('.navbar-brand img').stop().animate({
-		"max-height":"45px",
+		"max-height":changeHeight+"px",
 	},100);
 }
-function head_high(){
+function head_high(defaultHeight){
 	jQuery('.siteHeader .container').stop().animate({
 		"padding-top":"22px",
 		"padding-bottom":"20px",
 	},100);
 	jQuery('.navbar-brand img').stop().animate({
-		"max-height":"50px",
+		"max-height":defaultHeight+"px",
 	},100);
 }
 
