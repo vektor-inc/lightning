@@ -27,10 +27,13 @@ Header Images are photo by theme author and are released under GPL license.
 == Author ==
 The theme built by Hidekazu Ishikawa (kurudrive) at Vektor,Inc.
 You can contact me at inquiry form.
-http://bizvektor.com/contact/
+http://www.vektor-inc.co.jp/inquiry/
 
 
 == Changelog ==
+
+v0.1.4
+* [ Design tuning ] When user change head logo size from css, Javascript animation of head logo image is auto size fit.
 
 v0.1.3
 * Add function to Home Page slide banner.
