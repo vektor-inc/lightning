@@ -22,7 +22,7 @@ input.form-control.input_widthAuto { width: auto; }
 .siteHeader { background-color: #fff;box-shadow:0px 1px 3px rgba(0,0,0,0.1);margin-bottom:0;
   .headLogo.navbar-brand { height:auto;padding:0;margin:0;font-size: 32px;line-height: 1.5em;
     a { color:#333; }
-    img { max-height: 45px; }
+    img { max-height: 48px; }
   }
   .navbar-toggle { border:1px solid #999;
     .icon-bar { border:1px solid #666; }
@@ -42,7 +42,7 @@ input.form-control.input_widthAuto { width: auto; }
   .siteHeader { 
     .container { padding-top:22px;padding-bottom:20px; }
     .headLogo.navbar-brand { padding-top:0;
-      img { max-height: 50px; }
+      img { max-height: 60px; }
     }
   }
 } // @media (min-width: 768px){
@@ -74,7 +74,7 @@ ul.gMenu {
   }
 }
 @media (min-width: 768px){
-ul.gMenu { margin-top:5px;
+ul.gMenu { margin-top:10px;
   a:hover,
   a:active { background-color:#fff;color: $color_key; }
   & >li { position: relative;
