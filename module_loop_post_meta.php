@@ -2,27 +2,19 @@
 <div class="entry-meta">
 <span class="published entry-meta_items"><i class="fa fa-calendar"></i><a href="<?php the_permalink(); ?>"><?php echo esc_html( get_the_date() ); ?></a></span>
 
-<?php // Post update ?>
+<?php global $lightning_theme_options; ?>
 
-<?php if ( is_single() ) : ?>
-<?php global $lightning_theme_options;
-	if ( 
-		!isset($lightning_theme_options['postUpdate_hidden']) or 
-		( isset($lightning_theme_options['postUpdate_hidden']) && !$lightning_theme_options['postUpdate_hidden'] )
-	) : ?>
-	<span class="updated entry-meta_items">/ <?php _e('Last updated','lightning'); ?> : <?php the_modified_date('') ?></span>
-	<?php endif; ?>
+<?php
+// Post update
+$meta_hidden_update = ( isset($lightning_theme_options['postUpdate_hidden']) && $lightning_theme_options['postUpdate_hidden'] ) ? ' entry-meta_hidden' : ''; ?>
+
+<span class="entry-meta_items entry-meta_updated<?php echo $meta_hidden_update;?>">/ <?php _e('Last updated','lightning'); ?> : <span class="updated"><?php the_modified_date('') ?></span></span>
 
 <?php
 // Post author
-if ( 
-	!isset($lightning_theme_options['postAuthor_hidden']) or 
-	( isset($lightning_theme_options['postAuthor_hidden']) && !$lightning_theme_options['postAuthor_hidden'] )
-) : ?>
-<span class="vcard author entry-meta_items entry-meta_items_author"><span class="fn"><i class="fa fa-pencil"></i><?php echo esc_html(get_the_author_meta( 'display_name' ));?></span></span>
-<?php endif; ?>
+$meta_hidden_author = ( isset($lightning_theme_options['postAuthor_hidden']) && $lightning_theme_options['postAuthor_hidden'] ) ? ' entry-meta_hidden' : ''; ?>
 
-<?php endif; // is_archive() ?>
+<span class="vcard author entry-meta_items entry-meta_items_author<?php echo $meta_hidden_author;?>"><span class="fn"><i class="fa fa-pencil"></i><?php echo esc_html(get_the_author_meta( 'display_name' ));?></span></span>
 
 <?php
 $page_for_posts = lightning_get_page_for_posts();

@@ -7,6 +7,44 @@ $border_primary : 1px solid #e5e5e5;
 $color_font_default : #464646;
 $color_key : #337ab7;
 
+/*-------------------------------------------*/
+/* .siteHeader
+/*-------------------------------------------*/
+/* nav
+/*-------------------------------------------*/
+/* .page-header 
+/*-------------------------------------------*/
+/* .breadSection
+/*-------------------------------------------*/
+/* .siteContent
+/*      site-main
+/*      .media(bootstrap)
+/*-------------------------------------------*/
+/* .page-numbers
+/*-------------------------------------------*/
+/* .page-link
+/*-------------------------------------------*/
+/* .pager
+/*-------------------------------------------*/
+/* .site-sub
+/*-------------------------------------------*/
+/* Widget
+/*-------------------------------------------*/
+/* footer
+/*-------------------------------------------*/
+
+/*-------------------------------------------*/
+/* front-page
+/*-------------------------------------------*/
+/* .archive
+/*-------------------------------------------*/
+/* single
+/*-------------------------------------------*/
+/* .comments-area
+/*-------------------------------------------*/
+/* search
+/*-------------------------------------------*/
+
 .sectionBox { padding-top:2em;padding-bottom:2em;display:block; overflow:hidden; }
 .nav li a { color:$color_font_default; }
 // .btn { border-radius: 0; }
@@ -15,6 +53,7 @@ $color_key : #337ab7;
 .screen-reader-text { display: none; }
 input.form-control { margin-bottom:3px; }
 input.form-control.input_widthAuto { width: auto; }
+
 
 /*-------------------------------------------*/
 /* .siteHeader
@@ -145,7 +184,6 @@ h1.page-header_pageTitle:first-child { margin:15px 0 10px;font-size:22px;line-he
   header h1 { margin-top:0; }
   .postList { margin-bottom:1.5em; }
 }
-h1.entry-title:first-letter { color:$color_key; }
 .entry-meta { margin-bottom:0.8em;padding-left:3px;
   .entry-meta_items { font-size:14px; }
   .entry-meta_items.published a { color:$color_font_default; }
@@ -153,6 +191,7 @@ h1.entry-title:first-letter { color:$color_key; }
   .entry-meta_items_term { float:right;margin-right:0; }
   i { margin-right:5px; }
 }
+.entry-meta_hidden { display: none; }
 .entry-meta-dataList { display:block; overflow:hidden;
   dl { margin:0 0 4px; }
   dt { display:block; overflow:hidden;float:left;background-color: #666;color:#fff; font-size:10px; line-height: 1.1em;padding: 5px 10px;font-weight:lighter;margin-right:10px;border:none; }
@@ -204,6 +243,8 @@ h1.entry-title { font-size:26px; }
       }
     }
     p { margin-bottom:0; }
+    .entry-meta_updated { display: none; }
+    .entry-meta_items_author { display: none; }
     a.media-body_excerpt { color:$color_font_default; }
   }
 }
@@ -347,6 +388,7 @@ footer {
 /*-------------------------------------------*/
 /* single
 /*-------------------------------------------*/
+.single h1.entry-title:first-letter { color:$color_key; }
 #respond label { font-weight: lighter; }
 
 /*-------------------------------------------*/
