@@ -32,6 +32,9 @@ http://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v0.1.5
+* [ Specification change ] hentry（microformats.org) support.
+
 v0.1.4
 * [ Design tuning ] When user change head logo size from css, Javascript animation of head logo image is auto size fit.
 
