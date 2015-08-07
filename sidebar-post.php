@@ -21,7 +21,25 @@ $post_loop = new WP_Query( array(
 <aside class="widget">
 <h1 class="subSection-title"><?php echo __('Recent posts', 'lightning');?></h1>
 <?php while ( $post_loop->have_posts() ) : $post_loop->the_post();?>
-<?php get_template_part('module_subLoop_post'); ?>
+
+  <div class="media">
+
+    <?php if ( has_post_thumbnail()) :?>
+
+      <div class="media-left postList_thumbnail">
+        <a href="<?php the_permalink(); ?>">
+        <?php the_post_thumbnail('thumbnail'); ?>
+        </a>
+      </div>
+
+    <?php endif; ?>
+
+    <div class="media-body">
+      <h4 class="media-heading"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+      <div><i class="fa fa-calendar"></i><?php echo get_the_date(); ?></div>          
+    </div>
+  </div>
+
 <?php endwhile;?>
 </aside>
 <?php endif; ?>
