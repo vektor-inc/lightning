@@ -318,8 +318,9 @@ ul.page-numbers { margin:0;padding: 0;
 /* Widget
 /*-------------------------------------------*/
 .widget { margin-bottom:30px;display:block; overflow:hidden;
-  .subSection-title { margin-top:0;margin-bottom: 0; }
+  .subSection-title { margin-top:0;margin-bottom: 0;font-size:18px; }
 }
+
 .widget_text .subSection-title,
 .widget_tag_cloud .subSection-title,
 .widget_recent_comments .subSection-title { margin-bottom:10px; }
