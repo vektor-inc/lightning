@@ -185,12 +185,14 @@ h1.page-header_pageTitle:first-child { margin:15px 0 10px;font-size:22px;line-he
   .postList { margin-bottom:1.5em; }
 }
 .entry-meta { margin-bottom:0.8em;padding-left:3px;
-  .entry-meta_items { font-size:14px; }
-  .entry-meta_items.published a { color:$color_font_default; }
-  .entry-meta_items_author { margin-left:0.8em; }
-  .entry-meta_items_term { float:right;margin-right:0; }
   i { margin-right:5px; }
 }
+.entry-meta_items { font-size:14px; }
+.entry-meta_items.published:before { font-family:FontAwesome;content:"\f073";margin-right:5px; }
+.entry-meta_items.published a { color:$color_font_default; }
+.entry-meta_items_author:before { font-family:FontAwesome;content:"\f040";margin-right:5px; }
+.entry-meta_items_author { margin-left:0.8em; }
+.entry-meta_items_term { float:right;margin-right:0; }
 .entry-meta_hidden { display: none; }
 .entry-meta-dataList { display:block; overflow:hidden;
   dl { margin:0 0 4px; }

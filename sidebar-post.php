@@ -36,7 +36,7 @@ $post_loop = new WP_Query( array(
 
     <div class="media-body">
       <h4 class="media-heading"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
-      <div><i class="fa fa-calendar"></i><?php echo get_the_date(); ?></div>          
+      <div class="published entry-meta_items"><?php echo get_the_date(); ?></div>          
     </div>
   </div>
 

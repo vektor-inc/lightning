@@ -2764,11 +2764,19 @@ ul.gMenu ul li li li a { padding-left: 4em; }
 .site-main .postList { margin-bottom: 1.5em; }
 
 .entry-meta { margin-bottom: 0.8em; padding-left: 3px; }
-.entry-meta .entry-meta_items { font-size: 14px; }
-.entry-meta .entry-meta_items.published a { color: #464646; }
-.entry-meta .entry-meta_items_author { margin-left: 0.8em; }
-.entry-meta .entry-meta_items_term { float: right; margin-right: 0; }
 .entry-meta i { margin-right: 5px; }
+
+.entry-meta_items { font-size: 14px; }
+
+.entry-meta_items.published:before { font-family: FontAwesome; content: "\f073"; margin-right: 5px; }
+
+.entry-meta_items.published a { color: #464646; }
+
+.entry-meta_items_author:before { font-family: FontAwesome; content: "\f040"; margin-right: 5px; }
+
+.entry-meta_items_author { margin-left: 0.8em; }
+
+.entry-meta_items_term { float: right; margin-right: 0; }
 
 .entry-meta_hidden { display: none; }
 
