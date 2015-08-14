@@ -48,6 +48,16 @@ function offset_header(){
 /*-------------------------------------------*/
 jQuery(document).ready(function(){
 	var defaultHeight = jQuery('.navbar-brand img').height();
+	var bodyWidth = jQuery(window).width();
+	// When missed the get height
+	if ( defaultHeight < 38 ) {
+		if ( bodyWidth >= 768 ) {
+			defaultHeight = 60;
+		} else {
+			defaultHeight = 48;
+		}
+	} 
+	// Scroll function
 	jQuery(window).scroll(function () {
 		var bodyWidth = jQuery(window).width();
 		if ( bodyWidth >= 768 ) {
