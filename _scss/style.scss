@@ -194,14 +194,6 @@ h1.page-header_pageTitle:first-child { margin:15px 0 10px;font-size:22px;line-he
 .entry-meta_items_author { margin-left:0.8em; }
 .entry-meta_items_term { float:right;margin-right:0; }
 .entry-meta_hidden { display: none; }
-.entry-meta-dataList { display:block; overflow:hidden;
-  dl { margin:0 0 4px; }
-  dt { display:block; overflow:hidden;float:left;background-color: #666;color:#fff; font-size:10px; line-height: 1.1em;padding: 5px 10px;font-weight:lighter;margin-right:10px;border:none; }
-  dd { display:block; overflow:hidden;font-size:12px;border:none;padding-left:0;
-    a {  display:inline-block;padding: 3px 2px 1px; }
-  }
-
-} // .entry-meta-dataList
 
 @media (max-width: 767px){
 .entry-meta {
@@ -215,7 +207,19 @@ h1.entry-title { font-size:26px; }
 }
 .entry-body { display:block; overflow:hidden;padding:2.5em 0; }
 .page .entry-body {padding-top:0; }
-.entry-tag { display:block; overflow:hidden;margin-bottom:2em;
+
+/*      .entry-footer
+/*-------------------------------------------*/
+.entry-footer { display:block; overflow:hidden;margin-bottom:2em; }
+.entry-meta-dataList { display:block; overflow:hidden;
+  dl { margin:0 0 4px; }
+  dt { display:block; overflow:hidden;float:left;background-color: #666;color:#fff; font-size:10px; line-height: 1.1em;padding: 5px 10px;font-weight:lighter;margin-right:10px;border:none; }
+  dd { display:block; overflow:hidden;font-size:12px;border:none;padding-left:0;
+    a {  display:inline-block;padding: 3px 2px 1px; }
+  }
+} // .entry-meta-dataList
+
+.entry-tag { display:block; overflow:hidden;
   dl { margin-bottom:0; }
 }
 .tagCloud {
