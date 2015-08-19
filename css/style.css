@@ -2812,7 +2812,7 @@ ul.gMenu ul li li li a { padding-left: 4em; }
 .media .postList_thumbnail a { position: relative; display: block; overflow: hidden; }
 .media .postList_thumbnail img { width: 100%; height: auto; }
 .media .postList_thumbnail .postList_cateLabel { position: absolute; bottom: 0; left: 0; }
-.media .media-body .media-heading { font-size: 1.8em; line-height: 1.3em; margin-top: 0; margin-bottom: 0.5em; font-weight: normal; }
+.media .media-body .media-heading { font-size: 1.8em; line-height: 1.3em; margin-top: 0; margin-bottom: 0.5em; font-weight: normal; /* Begin heading style reset */ background: none; box-shadow: none; padding: 0; /* End heading style reset */ }
 .media .media-body .media-heading a { color: #464646; }
 .media .media-body .media-heading a:hover { text-decoration: none; }
 .media .media-body p { margin-bottom: 0; }
