@@ -229,6 +229,9 @@ function lightning_print_css(){
 	$color_key_dark = esc_html($options['color_key_dark']);
 	?>
 <style type="text/css">
+.veu_color_txt_key { color:<?php echo $color_key_dark;?> ; }
+.veu_color_bg_key { background-color:<?php echo $color_key_dark;?> ; }
+.veu_color_border_key { border-color:<?php echo $color_key_dark;?> ; }
 a { color:<?php echo $color_key_dark;?> ; }
 a:hover { color:<?php echo $color_key;?> ; }
 h1.entry-title:first-letter { color:<?php echo $color_key;?>; }
