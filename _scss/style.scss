@@ -389,8 +389,8 @@ footer {
 footer {
   .footerMenu {
     ul { margin:10px 0;}
-    li a { border-left:$border_primary;padding-top:4px;padding-bottom:4px;  }
-    li:last-child a { border-right:$border_primary; }
+    li a { border-left:1px solid #ccc;padding-top:4px;padding-bottom:4px;  }
+    li:last-child a { border-right:1px solid #ccc; }
   }
 }
 }
