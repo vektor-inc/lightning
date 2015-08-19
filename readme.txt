@@ -32,6 +32,14 @@ http://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v0.1.6
+* [ Design tuning ] subSection-title font size setting.
+* [ Design tuning ] Content bottom tag area margin fix.
+* [ Design tuning ] h2 tag and footer menu design tuning.
+* [ Design tuning ] Change icon-fonts use by style and delete icon tags.
+* [ Specification change ] Change fill location of Page title section and Breadcrumb section.
+* [ Bug fix ] Fixed a bug that header logo disappears depending on the situation.
+
 v0.1.5
 * [ Specification change ] hentry（microformats.org) support.
 

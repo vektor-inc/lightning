@@ -1,4 +1,8 @@
 <?php get_header(); ?>
+
+<?php get_template_part('module_pageTit'); ?>
+<?php get_template_part('module_panList'); ?>
+
 <div class="section siteContent">
 <div class="container">
 <div class="row">
@@ -16,6 +20,7 @@
 	<?php the_content();?>
 	</div><!-- [ /.entry-body ] -->
 
+	<div class="entry-footer">
 	<?php
 	$args = array(
 		'before'           => '<nav class="page-link"><dl><dt>Pages :</dt><dd>',
@@ -55,6 +60,8 @@
 	</dl>
 	</div><!-- [ /.entry-tag ] -->
 	<?php endif; ?>
+	</div><!-- [ /.entry-footer ] -->
+
 	<?php comments_template( '', true ); ?>
 </article>
 <?php endwhile;endif; ?>
