@@ -234,7 +234,8 @@ function lightning_print_css(){
 .veu_color_border_key { border-color:<?php echo $color_key_dark;?> ; }
 a { color:<?php echo $color_key_dark;?> ; }
 a:hover { color:<?php echo $color_key;?> ; }
-h1.entry-title:first-letter { color:<?php echo $color_key;?>; }
+h1.entry-title:first-letter,
+.single h1.entry-title:first-letter { color:<?php echo $color_key;?>; }
 h2 { border-top-color:<?php echo $color_key;?>}
 h3:after,
 .subSection-title:after { border-bottom-color:<?php echo $color_key; ?>; }
