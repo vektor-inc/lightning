@@ -113,7 +113,7 @@ ul.gMenu {
   }
 }
 @media (min-width: 768px){
-ul.gMenu { margin-top:10px;
+ul.gMenu { margin-top:10px;float:right;
   a:hover,
   a:active { background-color:#fff;color: $color_key; }
   & >li { position: relative;
@@ -143,7 +143,7 @@ ul.gMenu li:hover > ul.sub-menu { display: block; }
 } //@media (min-width: 700px){
 
 @media (min-width: 970px){
-ul.gMenu { float:right;
+ul.gMenu {
   & >li {
     & > a { padding:10px 1.5em 10px; }
   }
