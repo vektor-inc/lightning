@@ -2558,7 +2558,7 @@ ol ol, ul ul, ol ul, ul ol { margin-top: 10px; margin-bottom: 10px; }
 /*-------------------------------------------*/
 /* headding
 /*-------------------------------------------*/
-h2, h3, h4, h5, h6 { margin: 2em 0 1.2em; }
+h2, h3, h4, h5, h6 { margin: 2em 0 1.2em; clear: both; }
 
 h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child { margin-top: 0; }
 
