@@ -7,9 +7,10 @@
 <div class="container">
 <div class="row">
 
-<div class="col-md-8">
-<main class="site-main" id="main" role="main">
+<main class="col-md-8 mainSection" id="main" role="main">
+
     <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
+
     <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <div class="entry-body">
     <?php the_content(); ?>
@@ -24,11 +25,11 @@
 	wp_link_pages( $args ); ?>
     </div><!-- [ /#post-<?php the_ID(); ?> ] -->
 
-</main>
-<?php endwhile; ?>
-</div><!-- [ /.col-md-8 ] -->
+	<?php endwhile; ?>
 
-<div class="col-md-3 col-md-offset-1 site-sub subSection">
+</main><!-- [ /.mainSection ] -->
+
+<div class="col-md-3 col-md-offset-1 subSection">
 <?php
 if ( is_active_sidebar( 'common-side-top-widget-area' ) )
   dynamic_sidebar( 'common-side-top-widget-area' );
@@ -66,7 +67,7 @@ if ( is_active_sidebar( $widdget_area_name ) ){
 if ( is_active_sidebar( 'common-side-bottom-widget-area' ) )
   dynamic_sidebar( 'common-side-bottom-widget-area' );
 ?>
-</div><!-- [ /.site-sub ] -->
+</div><!-- [ /.subSection ] -->
 
 </div><!-- [ /.row ] -->
 </div><!-- [ /.container ] -->

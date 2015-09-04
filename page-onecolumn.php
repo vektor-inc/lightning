@@ -11,9 +11,10 @@ get_header(); ?>
 <div class="container">
 <div class="row">
 
-<div class="col-md-12">
-<main class="site-main" id="main" role="main">
+<main class="col-md-12 mainSection" id="main" role="main">
+
     <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
+
     <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <div class="entry-body">
     <?php the_content(); ?>
@@ -28,9 +29,10 @@ get_header(); ?>
 	wp_link_pages( $args ); ?>
     </div><!-- [ /#post-<?php the_ID(); ?> ] -->
 
-</main>
-<?php endwhile; ?>
-</div>
+	<?php endwhile; ?>
+
+</main><!-- [ /.mainSection ] -->
+
 </div><!-- [ /.row ] -->
 </div><!-- [ /.container ] -->
 </div><!-- [ /.siteContent ] -->

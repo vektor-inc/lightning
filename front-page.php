@@ -16,7 +16,7 @@
                 $main_col = 'col-md-8';
             } ?>
 
-            <div class="<?php echo $main_col; ?>">
+            <main class="<?php echo $main_col; ?> mainSection">
 
             <?php if ( is_active_sidebar( 'home-content-top-widget-area' ) ) : ?>
                 <?php dynamic_sidebar( 'home-content-top-widget-area' ); ?>
@@ -65,12 +65,14 @@
 
             <?php endif; // have_post() ?>
 
-            </div><!-- [ /.col-md-8 of .col-md-12 ] -->
+            </main><!-- [ /.mainSection ] -->
 
             <?php if ( !isset($lightning_theme_options['top_sidebar_hidden']) || !$lightning_theme_options['top_sidebar_hidden'] ) :?>
-                <div class="col-md-3 col-md-offset-1 site-sub subSection">
+
+                <div class="col-md-3 col-md-offset-1 subSection">
                     <?php get_sidebar(); ?>
-                </div><!-- [ /.site-sub ] -->
+                </div><!-- [ /.subSection ] -->
+
             <?php endif; ?>
 
         </div><!-- [ /.row ] -->

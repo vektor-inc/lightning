@@ -7,8 +7,7 @@
 <div class="container">
 <div class="row">
 
-<div class="col-md-8">
-<main class="site-main" id="main" role="main">
+<main class="col-md-8 mainSection" id="main" role="main">
 
  <?php
 /*-------------------------------------------*/
@@ -55,8 +54,7 @@ the_posts_pagination(array (
 <?php else: ?>
 <div class="well"><p><?php _e('No posts.','lightning');?></p></div>
 <?php endif; // have_post() ?>
-</main>
-</div>
+</main><!-- [ /.mainSection ] -->
 
 <div class="col-md-3 col-md-offset-1 subSection">
 <?php get_sidebar(get_post_type()); ?>

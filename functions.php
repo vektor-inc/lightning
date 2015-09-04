@@ -154,7 +154,7 @@ function lightning_widgets_init() {
 			'id' => 'home-content-top-widget-area',
 			'before_widget' => '<section class="widget %2$s" id="%1$s">',
 			'after_widget' => '</section>',
-			'before_title' => '<h1>',
+			'before_title' => '<h1 class="mainSection-title">',
 			'after_title' => '</h1>',
 		) );
 

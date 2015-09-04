@@ -17,7 +17,7 @@ $color_key : #337ab7;
 /* .breadSection
 /*-------------------------------------------*/
 /* .siteContent
-/*      site-main
+/*      .mainSection
 /*      .media(bootstrap)
 /*-------------------------------------------*/
 /* .page-numbers
@@ -177,9 +177,9 @@ h1.page-header_pageTitle:first-child { margin:15px 0 10px;font-size:22px;line-he
 @media (max-width: 767px){
   .siteContent { padding:2em 0 3em; }
 }
-/*      site-main
+/*      .mainSection
 /*-------------------------------------------*/
-.site-main { padding-bottom:3em;
+.mainSection { padding-bottom:3em;
   header { position: relative;border-bottom:$border_primary; }
   header h1 { margin-top:0; }
   .postList { margin-bottom:1.5em; }
