@@ -240,15 +240,13 @@ h2,
 .mainSection-title { border-top-color:<?php echo $color_key;?>}
 h3:after,
 .subSection-title:after { border-bottom-color:<?php echo $color_key; ?>; }
-h4,
-.media .media-body .media-heading a:hover { color:<?php echo $color_key; ?>; }
 ul.gMenu a:hover { color:<?php echo $color_key;?>; }
 .page-header { background-color:<?php echo $color_key;?>; }
 .btn-default { border-color:<?php echo $color_key;?>;color:<?php echo $color_key;?>;}
 .btn-default:hover { border-color:<?php echo $color_key;?>;background-color: <?php echo $color_key;?>; }
 .btn-primary { background-color:<?php echo $color_key;?>;border-color:<?php echo $color_key_dark;?>; }
 .btn-primary:hover { background-color:<?php echo $color_key_dark;?>;border-color:<?php echo $color_key;?>; }
-.media .media-body .media-heading a:hover { color: <?php echo $color_key;?>;}
+.media .media-body .media-heading a:hover { color:<?php echo $color_key; ?>; }
 ul.page-numbers li span.page-numbers.current { background-color:<?php echo $color_key;?>; }
 .pager li > a { border-color:<?php echo $color_key;?>;color:<?php echo $color_key;?>;}
 .pager li > a:hover { background-color:<?php echo $color_key;?>;color:#fff;}
