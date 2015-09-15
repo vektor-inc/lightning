@@ -9,7 +9,11 @@
 
 <main class="col-md-8 mainSection" id="main" role="main">
 
-<?php if (have_posts()) : while ( have_posts() ) : the_post();?>
+<?php
+if( apply_filters( 'is_lightning_extend_single' , false ) ):
+    do_action( 'lightning_extend_single' );
+else:
+if (have_posts()) : while ( have_posts() ) : the_post();?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header>
 	<?php get_template_part('module_loop_post_meta');?>
@@ -64,7 +68,9 @@
 
 	<?php comments_template( '', true ); ?>
 </article>
-<?php endwhile;endif; ?>
+<?php endwhile;endif;
+endif;
+?>
 
 <nav>
   <ul class="pager">
