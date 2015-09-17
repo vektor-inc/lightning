@@ -409,6 +409,8 @@ footer {
 .carousel-indicators { margin-bottom:0;bottom:5px; }
 .carousel-inner>.item>a>img,
 .carousel-inner>.item>img { width:100%; height:auto;}
+.carousel-control.right { @include background(linear-gradient(to right, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.2) 100%)); }
+.carousel-control.left { @include background(linear-gradient(to left, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.2) 100%)); }
 
 .sticky { display:block; overflow:hidden;padding:1em;background-color: #f5f5f5; }
 
