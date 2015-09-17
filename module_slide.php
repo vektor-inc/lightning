@@ -12,7 +12,7 @@ for ( $i = 1; $i <= 5; ) {
     $i++;
 }
 
-$top_slide_count = add_filter('lightning_top_slide_count',$top_slide_count);
+$top_slide_count = apply_filters('lightning_top_slide_count',$top_slide_count);
 
 if ($top_slide_count) : ?>
 <div id="top__fullcarousel" data-interval="false" class="carousel slide" data-ride="carousel">
