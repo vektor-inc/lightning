@@ -131,6 +131,7 @@ ul.gMenu { float:right;
   & > li.current_page_parent > a:after,
   & > li.current_page_ancestor > a:after { content:".";line-height:0;border-bottom:1px solid $color_key; bottom:0px;display:block; overflow:hidden;position: absolute;width:100%;left:0; }
 }
+.gMenu_name { text-align: center;display: block; }
 .gMenu_description { text-align: center; }
 // sub-menu
 ul.gMenu > li > ul.sub-menu { display:none;position: absolute;background-color: #fff;box-shadow:1px 1px 3px rgba(0,0,0,0.2);z-index: 1000;
