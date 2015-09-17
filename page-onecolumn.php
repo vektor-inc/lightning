@@ -25,7 +25,8 @@ get_header(); ?>
 		'after'            => '</dd></dl></nav>',
 		'link_before'      => '<span class="page-numbers">',
 		'link_after'       => '</span>',
-		'echo'             => 1 );
+		'echo'             => 1
+		);
 	wp_link_pages( $args ); ?>
     </div><!-- [ /#post-<?php the_ID(); ?> ] -->
 
