@@ -40,7 +40,8 @@ $lightning_theme_options = get_option('lightning_theme_options'); ?>
             'theme_location'    => 'Header',
             'container'         => 'nav',
             'items_wrap'        => '<ul id="%1$s" class="%2$s nav navbar-nav gMenu">%3$s</ul>',
-            'fallback_cb'       => ''
+            'fallback_cb'       => '',
+            'walker' => new description_walker()
         ) ); ?>
         </div>
 

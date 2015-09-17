@@ -83,7 +83,7 @@ function head_low(defaultHeight){
 	changeHeight = defaultHeight*0.8;
 	jQuery('.siteHeader .container').stop().animate({
 		"padding-top":"7px",
-		"padding-bottom":"6px",
+		"padding-bottom":"0px",
 	},100);
 	jQuery('.navbar-brand img').stop().animate({
 		"max-height":changeHeight+"px",
@@ -92,7 +92,7 @@ function head_low(defaultHeight){
 function head_high(defaultHeight){
 	jQuery('.siteHeader .container').stop().animate({
 		"padding-top":"22px",
-		"padding-bottom":"20px",
+		"padding-bottom":"18px",
 	},100);
 	jQuery('.navbar-brand img').stop().animate({
 		"max-height":defaultHeight+"px",

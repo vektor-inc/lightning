@@ -79,7 +79,7 @@ input.form-control.input_widthAuto { width: auto; }
 }// @media (max-width: 767px){
 @media (min-width: 768px){
   .siteHeader { 
-    .container { padding-top:22px;padding-bottom:20px; }
+    .container { padding-top:22px;padding-bottom:18px; }
     .headLogo.navbar-brand { padding-top:0;
       img { max-height: 60px; }
     }
@@ -105,6 +105,10 @@ ul.gMenu {
     } // li
   } // ul.sub-menu {
 } // ul.gMenu
+
+.gMenu_name { font-weight: normal;color:$color_font_default; }
+.gMenu_description { display:block; overflow:hidden;font-size:10px; line-height: 14px; }
+
 @media (max-width: 767px){
   ul.gMenu { border-top:1px solid #e5e5e5;margin-bottom:0;
     a:hover,
@@ -113,7 +117,7 @@ ul.gMenu {
   }
 }
 @media (min-width: 768px){
-ul.gMenu { margin-top:10px;float:right;
+ul.gMenu { float:right;
   a:hover,
   a:active { background-color:#fff;color: $color_key; }
   & >li { position: relative;
@@ -127,6 +131,7 @@ ul.gMenu { margin-top:10px;float:right;
   & > li.current_page_parent > a:after,
   & > li.current_page_ancestor > a:after { content:".";line-height:0;border-bottom:1px solid $color_key; bottom:0px;display:block; overflow:hidden;position: absolute;width:100%;left:0; }
 }
+.gMenu_description { text-align: center; }
 // sub-menu
 ul.gMenu > li > ul.sub-menu { display:none;position: absolute;background-color: #fff;box-shadow:1px 1px 3px rgba(0,0,0,0.2);z-index: 1000;
   li { width:240px;margin:0;list-style: none;
