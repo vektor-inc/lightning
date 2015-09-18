@@ -234,6 +234,7 @@ function lightning_print_css(){
 .veu_color_border_key { border-color:<?php echo $color_key_dark;?> ; }
 a { color:<?php echo $color_key_dark;?> ; }
 a:hover { color:<?php echo $color_key;?> ; }
+.siteHeader_logo.navbar-brand a:hover,
 h1.entry-title:first-letter,
 .single h1.entry-title:first-letter { color:<?php echo $color_key;?>; }
 h2,
@@ -251,7 +252,6 @@ ul.page-numbers li span.page-numbers.current { background-color:<?php echo $colo
 .pager li > a { border-color:<?php echo $color_key;?>;color:<?php echo $color_key;?>;}
 .pager li > a:hover { background-color:<?php echo $color_key;?>;color:#fff;}
 footer { border-top-color:<?php echo $color_key	;?> }
-
 @media (min-width: 768px){
   ul.gMenu > li > a:hover:after,
   ul.gMenu > li.current-post-ancestor > a:after,

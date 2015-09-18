@@ -2692,6 +2692,7 @@ input.form-control.input_widthAuto { width: auto; }
 
 .siteHeader_logo.navbar-brand { height: auto; padding: 5px 0; margin: 0; font-size: 32px; line-height: 1.5em; }
 .siteHeader_logo.navbar-brand a { color: #333; }
+.siteHeader_logo.navbar-brand a:hover { text-decoration: none; color: #337ab7; }
 .siteHeader_logo.navbar-brand img { max-height: 40px; }
 
 .navbar-toggle { border: 1px solid #999; }
