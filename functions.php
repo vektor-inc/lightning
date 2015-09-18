@@ -12,6 +12,10 @@
 /*-------------------------------------------*/
 /*	Category list 'count insert to inner </a>
 /*-------------------------------------------*/
+/*	Head title
+/*-------------------------------------------*/
+/*	Global navigation add cptions
+/*-------------------------------------------*/
 
 
 /*-------------------------------------------*/
@@ -56,7 +60,7 @@ function lightning_theme_setup() {
 
 add_action('wp_enqueue_scripts','lightning_addJs');
 function lightning_addJs(){
-	wp_register_script( 'lightning-js' , get_template_directory_uri().'/js/all.min.js', array('jquery'), '20150814' );
+	wp_register_script( 'lightning-js' , get_template_directory_uri().'/js/all.min.js', array('jquery'), '20150918a' );
 	wp_enqueue_script( 'lightning-js' );
 }
 
@@ -70,7 +74,7 @@ function lightning_commentJs(){
 add_action('wp_enqueue_scripts', 'lightning_css' );
 function lightning_css(){
 	wp_enqueue_style( 'lightning-font-awesome-style', get_template_directory_uri().'/css/font-awesome/4.3.0/css/font-awesome.min.css', array(), '20150622' );
-	wp_enqueue_style( 'lightning-design-style', get_template_directory_uri().'/css/style.css', array(), '20150622' );
+	wp_enqueue_style( 'lightning-design-style', get_template_directory_uri().'/css/style.css', array(), '20150918a' );
 	wp_enqueue_style( 'lightning-theme-style', get_stylesheet_uri(), array('lightning-design-style'), '20150814');
 }
 
@@ -154,7 +158,7 @@ function lightning_widgets_init() {
 			'id' => 'home-content-top-widget-area',
 			'before_widget' => '<section class="widget %2$s" id="%1$s">',
 			'after_widget' => '</section>',
-			'before_title' => '<h1>',
+			'before_title' => '<h1 class="mainSection-title">',
 			'after_title' => '</h1>',
 		) );
 
@@ -210,4 +214,43 @@ function lightning_wp_head_frontPage_title($title){
 		$title = get_bloginfo('name');
 	}
 	return $title;
+}
+/*-------------------------------------------*/
+/*	Global navigation add cptions
+/*-------------------------------------------*/
+class description_walker extends Walker_Nav_Menu {
+	function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0) {
+		global $wp_query;
+		$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
+
+		$class_names = $value = '';
+
+		$classes = empty( $item->classes ) ? array() : (array) $item->classes;
+
+		$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) );
+		$class_names = ' class="'. esc_attr( $class_names ) . '"';
+		$output .= $indent . '<li id="menu-item-'. $item->ID . '"' . $value . $class_names .'>';
+
+		$attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
+		$attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
+		$attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
+		$attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
+
+		$prepend = '<strong class="gMenu_name">';
+		$append = '</strong>';
+		$description  = ! empty( $item->description ) ? '<span class="gMenu_description">'.esc_attr( $item->description ).'</span>' : '';
+
+		if($depth != 0) {
+			$description = $append = $prepend = "";
+		}
+
+		$item_output = $args->before;
+		$item_output .= '<a'. $attributes .'>';
+		$item_output .= $args->link_before .$prepend.apply_filters( 'the_title', $item->title, $item->ID ).$append;
+		$item_output .= $description.$args->link_after;
+		$item_output .= '</a>';
+		$item_output .= $args->after;
+
+		$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
+	}
 }

@@ -18,8 +18,9 @@ $lightning_theme_options = get_option('lightning_theme_options'); ?>
 
 </head>
 <body <?php body_class(); ?>>
-<?php // do_action('lightning_sns_body'); ?>
+<?php do_action('lightning_header_before'); ?>
 <header class="navbar navbar-fixed-top siteHeader">
+    <?php do_action('lightning_header_prepend'); ?>
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
@@ -28,7 +29,7 @@ $lightning_theme_options = get_option('lightning_theme_options'); ?>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <h1 class="navbar-brand headLogo">
+            <h1 class="navbar-brand siteHeader_logo">
             <a href="<?php echo home_url(); ?>"><span>
             <?php lightning_print_headlogo(); ?>
             </span></a>
@@ -40,9 +41,11 @@ $lightning_theme_options = get_option('lightning_theme_options'); ?>
             'theme_location'    => 'Header',
             'container'         => 'nav',
             'items_wrap'        => '<ul id="%1$s" class="%2$s nav navbar-nav gMenu">%3$s</ul>',
-            'fallback_cb'       => ''
+            'fallback_cb'       => '',
+            'walker' => new description_walker()
         ) ); ?>
         </div>
-
     </div>
+    <?php do_action('lightning_header_append'); ?>
 </header>
+<?php do_action('lightning_header_after'); ?>

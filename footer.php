@@ -14,7 +14,7 @@
 </div>
 <?php endif; ?>
 
-<footer class="section">
+<footer class="section siteFooter">
     <div class="footerMenu">
        <div class="container">
             <?php wp_nav_menu( array(

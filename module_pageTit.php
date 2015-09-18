@@ -94,5 +94,5 @@ $allowed_html = array(
 );
 $pageTitHtml .= wp_kses($pageTitle,$allowed_html);
 $pageTitHtml .= $pageTitHtml_after;
-$pageTitHtml = apply_filters( 'bizvektor_pageTitHtml', $pageTitHtml );
+$pageTitHtml = apply_filters( 'lightning_pageTitHtml', $pageTitHtml );
 echo $pageTitHtml;

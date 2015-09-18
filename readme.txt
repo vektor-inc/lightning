@@ -1,7 +1,7 @@
 
 == Description ==
 Lightning is a very simple theme that built by Bootstrap.
-Official site : http://lightning.bizvektor.com.
+Official site : http://lightning.vektor-inc.co.jp
 Sample site : http://demo.vs1.biz/lightning/
 
 === Tags ===
@@ -31,6 +31,12 @@ http://www.vektor-inc.co.jp/inquiry/
 
 
 == Changelog ==
+
+v0.1.7
+* [ Add function ] Add some filter hook.
+* [ Add function ] Add header menu description.
+* [ Specification change ] HTML mark up modification
+* [ bug fix ] Fix filter name in module_pageTit.php
 
 v0.1.6
 * [ Design tuning ] subSection-title font size setting.

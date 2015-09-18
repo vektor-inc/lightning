@@ -58,32 +58,30 @@ jQuery(document).ready(function(){
 	var bodyWidth = jQuery(window).width();
 	// When missed the get height
 	if ( defaultHeight < 38 ) {
-		if ( bodyWidth >= 768 ) {
+		if ( bodyWidth >= 991 ) {
 			defaultHeight = 60;
 		} else {
-			defaultHeight = 48;
+			defaultHeight = 40;
 		}
 	} 
 	// Scroll function
 	jQuery(window).scroll(function () {
 		var bodyWidth = jQuery(window).width();
-		if ( bodyWidth >= 768 ) {
+		if ( bodyWidth >= 991 ) {
 	    	var scroll = jQuery(this).scrollTop();
 	        if (jQuery(this).scrollTop() > 10) {
 	            head_low(defaultHeight);
 	        } else {
 				head_high(defaultHeight);
 	        }
-	    } else {
-	    	head_low(defaultHeight);
 	    }
 	});
 });
 function head_low(defaultHeight){
 	changeHeight = defaultHeight*0.8;
 	jQuery('.siteHeader .container').stop().animate({
-		"padding-top":"7px",
-		"padding-bottom":"6px",
+		"padding-top":"5px",
+		"padding-bottom":"0px",
 	},100);
 	jQuery('.navbar-brand img').stop().animate({
 		"max-height":changeHeight+"px",
@@ -91,8 +89,8 @@ function head_low(defaultHeight){
 }
 function head_high(defaultHeight){
 	jQuery('.siteHeader .container').stop().animate({
-		"padding-top":"22px",
-		"padding-bottom":"20px",
+		"padding-top":"20px",
+		"padding-bottom":"18px",
 	},100);
 	jQuery('.navbar-brand img').stop().animate({
 		"max-height":defaultHeight+"px",

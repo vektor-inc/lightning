@@ -17,7 +17,7 @@ $color_key : #337ab7;
 /* .breadSection
 /*-------------------------------------------*/
 /* .siteContent
-/*      site-main
+/*      .mainSection
 /*      .media(bootstrap)
 /*-------------------------------------------*/
 /* .page-numbers
@@ -58,33 +58,31 @@ input.form-control.input_widthAuto { width: auto; }
 /*-------------------------------------------*/
 /* .siteHeader
 /*-------------------------------------------*/
-.siteHeader { background-color: #fff;box-shadow:0px 1px 3px rgba(0,0,0,0.1);margin-bottom:0;
-  .headLogo.navbar-brand { height:auto;padding:0;margin:0;font-size: 32px;line-height: 1.5em;
-    a { color:#333; }
-    img { max-height: 48px; }
-  }
-  .navbar-toggle { border:1px solid #999;
-    .icon-bar { border:1px solid #666; }
-  }
+.siteHeader { background-color: #fff;box-shadow:0px 1px 3px rgba(0,0,0,0.1);margin-bottom:0; }
+.siteHeader .container { padding-top:5px;padding-bottom:4px; }
+.siteHeader_logo.navbar-brand { height:auto;padding:5px 0;margin:0;font-size: 32px;line-height: 1.5em;
+  a { color:#333; }
+  a:hover { text-decoration: none; color:$color_key; }
+  img { max-height: 40px; }
 }
-
+.navbar-toggle { border:1px solid #999;
+  .icon-bar { border:1px solid #666; }
+}
 /*
 .containerでpaddingを調整しているのは headerはjsで高さを取得するのでpaddingが指定されていると都合が悪いため
 */
 @media (max-width: 767px){
-.siteHeader {
-  .headLogo.navbar-brand { padding:0 15px; }
-  .container { padding-top:6px;padding-bottom:5px; }
-}
+
+.siteHeader_logo.navbar-brand { padding:0 15px; }
 }// @media (max-width: 767px){
 @media (min-width: 768px){
-  .siteHeader { 
-    .container { padding-top:22px;padding-bottom:20px; }
-    .headLogo.navbar-brand { padding-top:0;
-      img { max-height: 60px; }
-    }
-  }
+
+.siteHeader_logo.navbar-brand { text-align: center; }
 } // @media (min-width: 768px){
+@media (min-width: 992px) {
+.siteHeader .container { padding-top:20px;padding-bottom:18px; }
+.siteHeader_logo.navbar-brand img { max-height: 60px; }
+} // @media (min-width: 992px) {
 /*-------------------------------------------*/
 /* nav
 /*-------------------------------------------*/
@@ -99,12 +97,18 @@ ul.gMenu {
   a:hover { color:$color_key; }
   ul { padding-left:0;width:auto;display: block;
     li {
-        a { display:block; overflow:hidden;padding: 1em 1em 1em 2em;width:auto; }
+        a { display:block; overflow:hidden;padding: 10px 1em 10px 2em;width:auto; }
         li a { padding-left:3em; }  
         li li a { padding-left:4em; }
+        li li li a { padding-left:5em; }
     } // li
   } // ul.sub-menu {
 } // ul.gMenu
+
+.gMenu_name { font-weight: normal;color:$color_font_default; }
+.gMenu_description { display:block; overflow:hidden;font-size:10px; line-height: 14px; }
+
+
 @media (max-width: 767px){
   ul.gMenu { border-top:1px solid #e5e5e5;margin-bottom:0;
     a:hover,
@@ -113,11 +117,13 @@ ul.gMenu {
   }
 }
 @media (min-width: 768px){
-ul.gMenu { margin-top:10px;
+.gMenu_name { text-align: center;display: block; }
+.gMenu_description { text-align: center; }
+ul.gMenu { float: right;
   a:hover,
   a:active { background-color:#fff;color: $color_key; }
   & >li { position: relative;
-    & > a { padding:10px 1em 10px;border-bottom:none; }
+    & > a { border-bottom:none; }
   }
   & > li > a:hover:after,
   & > li.current-post-ancestor > a:after,
@@ -126,29 +132,19 @@ ul.gMenu { margin-top:10px;
   & > li.current-menu-ancestor > a:after,
   & > li.current_page_parent > a:after,
   & > li.current_page_ancestor > a:after { content:".";line-height:0;border-bottom:1px solid $color_key; bottom:0px;display:block; overflow:hidden;position: absolute;width:100%;left:0; }
-}
+} // ul.gMenu
 // sub-menu
-ul.gMenu > li > ul.sub-menu { display:none;position: absolute;background-color: #fff;box-shadow:1px 1px 3px rgba(0,0,0,0.2);z-index: 1000;
-  li { width:240px;margin:0;list-style: none;
-    ul { margin-bottom:0; }
+ul.gMenu > li > ul.sub-menu { display:none;position: absolute;box-shadow:1px 1px 3px rgba(0,0,0,0.2);z-index: 1000;
+  li { width:240px;margin:0;list-style: none;background-color: #fff;display:block; overflow:visible; position: relative;
+    ul { margin-bottom:0;display:none;position: absolute;left:240px;top:0.8em;  }
     a { padding-left:1.5em;
       &:hover { background-color: #f5f5f5; }
     }
-    li a { padding-left:2.5em; }
-    li li a { padding-left:3.5em; }
-    li li li a { padding-left:4.5em }
   }
 }
 ul.gMenu li:hover > ul.sub-menu { display: block; }
-} //@media (min-width: 700px){
-
-@media (min-width: 970px){
-ul.gMenu { float:right;
-  & >li {
-    & > a { padding:10px 1.5em 10px; }
-  }
-} // ul.gMenu
-} // @media (min-width: 970px){
+ul.gMenu ul.sub-menu li:hover ul { display: block; }
+} // @media (min-width: 768px){
 
 /*-------------------------------------------*/
 /* .page-header 
@@ -177,9 +173,9 @@ h1.page-header_pageTitle:first-child { margin:15px 0 10px;font-size:22px;line-he
 @media (max-width: 767px){
   .siteContent { padding:2em 0 3em; }
 }
-/*      site-main
+/*      .mainSection
 /*-------------------------------------------*/
-.site-main { padding-bottom:3em;
+.mainSection { padding-bottom:3em;
   header { position: relative;border-bottom:$border_primary; }
   header h1 { margin-top:0; }
   .postList { margin-bottom:1.5em; }
@@ -244,6 +240,9 @@ h1.entry-title { font-size:26px; }
   }
   .media-body { 
     .media-heading { font-size:1.8em;line-height:1.3em;margin-top:0; margin-bottom:0.5em;font-weight: normal;
+      /* Begin heading style reset */
+      background: none;box-shadow: none;padding: 0;
+      /* End heading style reset */
       a { color:$color_font_default;
         &:hover { text-decoration: none; }
       }
@@ -389,8 +388,8 @@ footer {
 footer {
   .footerMenu {
     ul { margin:10px 0;}
-    li a { border-left:$border_primary;padding-top:4px;padding-bottom:4px;  }
-    li:last-child a { border-right:$border_primary; }
+    li a { border-left:1px solid #ccc;padding-top:4px;padding-bottom:4px;  }
+    li:last-child a { border-right:1px solid #ccc; }
   }
 }
 }
@@ -401,6 +400,8 @@ footer {
 .carousel-indicators { margin-bottom:0;bottom:5px; }
 .carousel-inner>.item>a>img,
 .carousel-inner>.item>img { width:100%; height:auto;}
+.carousel-control.right { @include background(linear-gradient(to right, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.2) 100%)); }
+.carousel-control.left { @include background(linear-gradient(to left, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.2) 100%)); }
 
 .sticky { display:block; overflow:hidden;padding:1em;background-color: #f5f5f5; }
 

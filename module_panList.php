@@ -45,12 +45,15 @@ if ( is_archive() || ( is_single() && !is_attachment()) ) {
 	}
 }
 
-
 if ( is_home() ){
 
-	/////// When use to post top page
-
-	$panListHtml .= '<li><span>' . $postType['name'] . '</span></li>';
+	/*
+	When use to post top page
+	When "is_page()" that post top is don't display.
+	*/
+	if ( isset($postType['name']) && $postType['name'] ) {
+		$panListHtml .= '<li><span>' . $postType['name'] . '</span></li>';
+	}
 
 } else if ( is_category() ) {
 

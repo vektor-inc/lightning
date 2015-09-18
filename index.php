@@ -7,8 +7,7 @@
 <div class="container">
 <div class="row">
 
-<div class="col-md-8">
-<main class="site-main" id="main" role="main">
+<main class="col-md-8 mainSection" id="main" role="main">
 
  <?php
 /*-------------------------------------------*/
@@ -37,7 +36,11 @@ if ( $page_for_posts['post_top_use'] || get_post_type() != 'post' ) {
   }
   ?>
 
-<?php if (have_posts()) : ?>
+<?php
+if( apply_filters( 'is_lightning_extend_loop' , false ) ):
+    do_action( 'lightning_extend_loop' );
+else:
+if (have_posts()) : ?>
 <div class="postList">
 <?php while ( have_posts() ) : the_post();?>
 <?php get_template_part('module_loop_post'); ?>
@@ -50,13 +53,13 @@ the_posts_pagination(array (
                         'next_text' => '&raquo;',
                         'type'      => 'list',
                         'before_page_number' => '<span class="meta-nav screen-reader-text">' . __ ( 'Page', 'lightning' ) . ' </span>'
-                    ) ); 
+                    ) );
 ?>
 <?php else: ?>
 <div class="well"><p><?php _e('No posts.','lightning');?></p></div>
 <?php endif; // have_post() ?>
-</main>
-</div>
+<?php endif; // extend loop() ?>
+</main><!-- [ /.mainSection ] -->
 
 <div class="col-md-3 col-md-offset-1 subSection">
 <?php get_sidebar(get_post_type()); ?>

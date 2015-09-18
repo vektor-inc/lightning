@@ -7,9 +7,13 @@
 <div class="container">
 <div class="row">
 
-<div class="col-md-8">
-<main class="site-main" id="main" role="main">
-<?php if (have_posts()) : while ( have_posts() ) : the_post();?>
+<main class="col-md-8 mainSection" id="main" role="main">
+
+<?php
+if( apply_filters( 'is_lightning_extend_single' , false ) ):
+    do_action( 'lightning_extend_single' );
+else:
+if (have_posts()) : while ( have_posts() ) : the_post();?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header>
 	<?php get_template_part('module_loop_post_meta');?>
@@ -64,7 +68,9 @@
 
 	<?php comments_template( '', true ); ?>
 </article>
-<?php endwhile;endif; ?>
+<?php endwhile;endif;
+endif;
+?>
 
 <nav>
   <ul class="pager">
@@ -72,12 +78,12 @@
     <li class="next"><?php next_post_link( '%link', '%title' ); ?></li>
   </ul>
 </nav>
-</main>
-</div><!-- [ /.col-md-8 ] -->
 
-<div class="col-md-3 col-md-offset-1 site-sub subSection">
+</main><!-- [ /.mainSection ] -->
+
+<div class="col-md-3 col-md-offset-1 subSection">
 <?php get_sidebar(get_post_type()); ?>
-</div><!-- [ /.site-sub ] -->
+</div><!-- [ /.subSection ] -->
 
 </div><!-- [ /.row ] -->
 </div><!-- [ /.container ] -->

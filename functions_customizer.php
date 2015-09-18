@@ -229,26 +229,29 @@ function lightning_print_css(){
 	$color_key_dark = esc_html($options['color_key_dark']);
 	?>
 <style type="text/css">
+.veu_color_txt_key { color:<?php echo $color_key_dark;?> ; }
+.veu_color_bg_key { background-color:<?php echo $color_key_dark;?> ; }
+.veu_color_border_key { border-color:<?php echo $color_key_dark;?> ; }
 a { color:<?php echo $color_key_dark;?> ; }
 a:hover { color:<?php echo $color_key;?> ; }
-h1.entry-title:first-letter { color:<?php echo $color_key;?>; }
-h2 { border-top-color:<?php echo $color_key;?>}
+.siteHeader_logo.navbar-brand a:hover,
+h1.entry-title:first-letter,
+.single h1.entry-title:first-letter { color:<?php echo $color_key;?>; }
+h2,
+.mainSection-title { border-top-color:<?php echo $color_key;?>}
 h3:after,
 .subSection-title:after { border-bottom-color:<?php echo $color_key; ?>; }
-h4,
-.media .media-body .media-heading a:hover { color:<?php echo $color_key; ?>; }
 ul.gMenu a:hover { color:<?php echo $color_key;?>; }
 .page-header { background-color:<?php echo $color_key;?>; }
 .btn-default { border-color:<?php echo $color_key;?>;color:<?php echo $color_key;?>;}
 .btn-default:hover { border-color:<?php echo $color_key;?>;background-color: <?php echo $color_key;?>; }
 .btn-primary { background-color:<?php echo $color_key;?>;border-color:<?php echo $color_key_dark;?>; }
 .btn-primary:hover { background-color:<?php echo $color_key_dark;?>;border-color:<?php echo $color_key;?>; }
-.media .media-body .media-heading a:hover { color: <?php echo $color_key;?>;}
+.media .media-body .media-heading a:hover { color:<?php echo $color_key; ?>; }
 ul.page-numbers li span.page-numbers.current { background-color:<?php echo $color_key;?>; }
 .pager li > a { border-color:<?php echo $color_key;?>;color:<?php echo $color_key;?>;}
 .pager li > a:hover { background-color:<?php echo $color_key;?>;color:#fff;}
 footer { border-top-color:<?php echo $color_key	;?> }
-
 @media (min-width: 768px){
   ul.gMenu > li > a:hover:after,
   ul.gMenu > li.current-post-ancestor > a:after,
