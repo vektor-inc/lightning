@@ -25,6 +25,8 @@ add_action('after_setup_theme', 'lightning_theme_setup');
 
 function lightning_theme_setup() {
 
+	global $content_width;
+
 	/*-------------------------------------------*/
 	/*	Admin page _ Eye catch
 	/*-------------------------------------------*/
