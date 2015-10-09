@@ -45,7 +45,7 @@ if ( $page_for_posts['post_top_use'] || get_post_type() != 'post' ) {
     <?php get_template_part('module_loop_post'); ?>
     <?php endwhile;?>
     </div>
-  <?php endif: // extend loop() ?>
+  <?php endif; // extend loop() ?>
   <?php
   the_posts_pagination(array (
                           'mid_size'  => 1,
