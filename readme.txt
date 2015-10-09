@@ -2,7 +2,7 @@
 == Description ==
 Lightning is a very simple theme that built by Bootstrap.
 Official site : http://lightning.vektor-inc.co.jp
-Sample site : http://demo.vs1.biz/lightning/
+Sample site : http://demo.lightning.vektor-inc.co.jp/
 
 === Tags ===
 white, red, blue, black, green, orange, purple, two-columns, right-sidebar, one-columns, responsive, custom-colors, custom-menu, editor-style,theme-options
@@ -31,6 +31,10 @@ http://www.vektor-inc.co.jp/inquiry/
 
 
 == Changelog ==
+
+v0.1.8
+* [ bug fix ] Pagenation & Extend_loop position fixed in index.php
+* [ bug fix ] $content_width is global var.
 
 v0.1.7
 * [ Add function ] Add some filter hook.
