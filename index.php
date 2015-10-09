@@ -36,29 +36,29 @@ if ( $page_for_posts['post_top_use'] || get_post_type() != 'post' ) {
   }
   ?>
 
-<?php
-if( apply_filters( 'is_lightning_extend_loop' , false ) ):
-    do_action( 'lightning_extend_loop' );
-else:
-if (have_posts()) : ?>
-<div class="postList">
-<?php while ( have_posts() ) : the_post();?>
-<?php get_template_part('module_loop_post'); ?>
-<?php endwhile;?>
-</div>
-<?php
-the_posts_pagination(array (
-                        'mid_size'  => 1,
-                        'prev_text' => '&laquo;',
-                        'next_text' => '&raquo;',
-                        'type'      => 'list',
-                        'before_page_number' => '<span class="meta-nav screen-reader-text">' . __ ( 'Page', 'lightning' ) . ' </span>'
-                    ) );
-?>
+<?php if (have_posts()) : ?>
+  <?php if( apply_filters( 'is_lightning_extend_loop' , false ) ): ?>
+    <?php do_action( 'lightning_extend_loop' ); ?>
+  <?php else: // extend loop() ?>
+    <div class="postList">
+    <?php while ( have_posts() ) : the_post();?>
+    <?php get_template_part('module_loop_post'); ?>
+    <?php endwhile;?>
+    </div>
+  <?php endif: // extend loop() ?>
+  <?php
+  the_posts_pagination(array (
+                          'mid_size'  => 1,
+                          'prev_text' => '&laquo;',
+                          'next_text' => '&raquo;',
+                          'type'      => 'list',
+                          'before_page_number' => '<span class="meta-nav screen-reader-text">' . __ ( 'Page', 'lightning' ) . ' </span>'
+                      ) );
+  ?>
 <?php else: ?>
-<div class="well"><p><?php _e('No posts.','lightning');?></p></div>
+  <div class="well"><p><?php _e('No posts.','lightning');?></p></div>
 <?php endif; // have_post() ?>
-<?php endif; // extend loop() ?>
+
 </main><!-- [ /.mainSection ] -->
 
 <div class="col-md-3 col-md-offset-1 subSection">
