@@ -32,6 +32,10 @@ http://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v0.1.9
+* [ bug fix ] Page title logic fix.
+* [ Design tuning ] Header logo position fix.
+
 v0.1.8
 * [ bug fix ] Pagenation & Extend_loop position fixed in index.php
 * [ bug fix ] $content_width is global var.
