@@ -2688,6 +2688,9 @@ input.form-control.input_widthAuto { width: auto; }
 /*-------------------------------------------*/
 .siteHeader { background-color: #fff; box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1); margin-bottom: 0; }
 
+/*
+.containerでpaddingを調整しているのは headerはjsで高さを取得するのでpaddingが指定されていると都合が悪いため
+*/
 .siteHeader .container { padding-top: 5px; padding-bottom: 4px; }
 
 .siteHeader_logo.navbar-brand { height: auto; padding: 5px 0; margin: 0; font-size: 32px; line-height: 1.5em; }
@@ -2698,10 +2701,8 @@ input.form-control.input_widthAuto { width: auto; }
 .navbar-toggle { border: 1px solid #999; }
 .navbar-toggle .icon-bar { border: 1px solid #666; }
 
-/*
-.containerでpaddingを調整しているのは headerはjsで高さを取得するのでpaddingが指定されていると都合が悪いため
-*/
-@media (max-width: 767px) { .siteHeader_logo.navbar-brand { padding: 0 15px; } }
+.siteHeader_logo.navbar-brand { padding: 0 15px; }
+
 @media (min-width: 768px) { .siteHeader_logo.navbar-brand { text-align: center; } }
 @media (min-width: 992px) { .siteHeader .container { padding-top: 20px; padding-bottom: 18px; }
   .siteHeader_logo.navbar-brand img { max-height: 60px; } }
