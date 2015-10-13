@@ -32,6 +32,9 @@ http://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v0.1.10
+* [ Change comment ] Change comment language.
+
 v0.1.9
 * [ bug fix ] Page title logic fix.
 * [ Design tuning ] Header logo position fix.
