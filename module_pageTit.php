@@ -60,13 +60,12 @@ if (is_page() || is_attachment()) {
 		if ( is_single() ){
 
 			$taxonomies = get_the_taxonomies();
+
 			if ($taxonomies){
 				$taxonomy = key( $taxonomies );
 				$taxo_cates  = get_the_terms( get_the_ID(),$taxonomy );
-				foreach ($taxo_cates as $key => $taxo_cate) {
 
-				}
-				$pageTitle	= esc_html($taxo_cate->name);
+				$pageTitle	= esc_html($taxo_cates[0]->name);
 			}
 
 		} else {
