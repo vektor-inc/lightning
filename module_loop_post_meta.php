@@ -1,6 +1,6 @@
 
 <div class="entry-meta">
-<span class="published entry-meta_items"><a href="<?php the_permalink(); ?>"><?php echo esc_html( get_the_date() ); ?></a></span>
+<span class="published entry-meta_items"><?php echo esc_html( get_the_date() ); ?></span>
 
 <?php global $lightning_theme_options; ?>
 
