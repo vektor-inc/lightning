@@ -14,7 +14,7 @@ $meta_hidden_update = ( isset($lightning_theme_options['postUpdate_hidden']) && 
 // Post author
 $meta_hidden_author = ( isset($lightning_theme_options['postAuthor_hidden']) && $lightning_theme_options['postAuthor_hidden'] ) ? ' entry-meta_hidden' : ''; ?>
 
-<span class="vcard author entry-meta_items entry-meta_items_author<?php echo $meta_hidden_author;?>"><span class="fn"><?php echo esc_html(get_the_author_meta( 'display_name' ));?></span></span>
+<span class="vcard author entry-meta_items entry-meta_items_author<?php echo $meta_hidden_author;?>"><span class="fn"><?php the_author(); ?></span></span>
 
 <?php
 $page_for_posts = lightning_get_page_for_posts();
