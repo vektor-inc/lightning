@@ -41,14 +41,30 @@ if ( is_page() || is_attachment() ) {
 	$pageTitle = __( 'Not found', 'lightning' );
 } else if ( is_category() || is_tag() || is_tax() || is_home() || is_author() || is_archive() || is_single() ) {
 
-	// Case of use post top page
-	if ( $page_for_posts['post_top_use'] && $postType['slug'] == 'post') {
-		$pageTitle = $page_for_posts['post_top_name'];
+	// Case of post type == 'post'
+	if ( $postType['slug'] == 'post') {
+		// Case of use post top page
+		if ( $page_for_posts['post_top_use'] ) {
+			$pageTitle = $page_for_posts['post_top_name'];
 
-	// Case of don't use post top page
-	} else if ( !$page_for_posts['post_top_use'] && $postType['slug'] == 'post') {
-		$pageTitle = get_the_archive_title();
+		// Case of don't use post top page
+		} else {
 
+			if ( is_single() ){
+
+				$taxonomies = get_the_taxonomies();
+				if ($taxonomies){
+					$taxonomy = key( $taxonomies );
+					$taxo_cates  = get_the_terms( get_the_ID(),$taxonomy );
+					$pageTitle	= esc_html($taxo_cates[0]->name);
+				} else {
+					// Case of no category
+					$pageTitle = $postType['name'];
+				}
+			} else {
+				$pageTitle = get_the_archive_title();
+			}
+		} // if ( $page_for_posts['post_top_use'] ) {
 	// Case of custom post type
 	} else {
 		$pageTitle = $postType['name'];
