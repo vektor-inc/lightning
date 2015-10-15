@@ -32,6 +32,13 @@ http://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v0.1.11
+* [ Specification change ] echo esc_html(get_the_author_meta( 'display_name' )) → the_author()
+* [ Specification change ] Delete link of post permalink from post meta "get_the_date".
+* [ Design bug fix ] Add margin to select tag in widget.
+* [ bug fix ] Fix the get custom post type name error.
+* [ bug fix ] Delete esc_html at archive_title. ( When author archive , get_the_archive_title() output <span class="vcard"></span> tag. )
+
 v0.1.10
 * [ Change comment ] Change comment language.
 
