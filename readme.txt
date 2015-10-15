@@ -32,6 +32,9 @@ http://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v0.1.12
+* [ bug fix ] Can't get category name of the single page title.
+
 v0.1.11
 * [ Specification change ] echo esc_html(get_the_author_meta( 'display_name' )) → the_author()
 * [ Specification change ] Delete link of post permalink from post meta "get_the_date".
