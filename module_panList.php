@@ -105,6 +105,14 @@ if ( is_home() ){
 
 	$panListHtml .= '<li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><span itemprop="title">'.esc_html(single_cat_title('','', FALSE)).'</span></li>';
 
+} else if ( is_author() ) {
+
+	/* Author
+	/*-------------------------------*/
+
+	$userObj = get_queried_object();
+	$panListHtml .= '<li><span>' . esc_html( $userObj->display_name ) . '</span></li>';
+
 } elseif ( is_archive() && (!is_category() || !is_tax()) ) {
 
 	$query = $wp_query->query_vars;
@@ -135,14 +143,6 @@ if ( is_home() ){
 		}
 
 	} 
-
-} else if ( is_author() ) {
-
-	/* Author
-	/*-------------------------------*/
-
-	$userObj = get_queried_object();
-	$panListHtml .= '<li><span>' . esc_html( $userObj->display_name ) . '</span></li>';
 
 } elseif ( is_single() ) {
 
