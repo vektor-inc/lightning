@@ -50,14 +50,14 @@ function lightning_get_post_type(){
 	$postType['slug'] = get_post_type();
 	if ( !$postType['slug'] ) {
 	  global $wp_query;
-	  if ($wp_query->query_vars['post_type']) {
+	  if ( $wp_query->query_vars['post_type'] ) {
 	      $postType['slug'] = $wp_query->query_vars['post_type'];
-	  } elseif(is_tax()) {
+	  } elseif ( is_tax() ) {
 	  	// Case of tax archive and no posts
 		$taxonomy = get_queried_object()->taxonomy;
-		$postType['slug'] = get_taxonomy( $taxonomy )->object_type[0];	  	
-	  } elseif( is_home() && $page_for_posts['post_top_use'] ){
-	  	// This is necessary that when no posts.
+		$postType['slug'] = get_taxonomy( $taxonomy )->object_type[0];
+	  // This is necessary that when no posts.
+	  } else {
 	  	$postType['slug'] = 'post';
 	  }
 	}
