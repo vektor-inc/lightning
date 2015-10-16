@@ -29,6 +29,9 @@ dd { padding-left:10px;border-left-width:2px;border-left-style:solid;margin-bott
 dt { border-left-color:$color_key; }
 dd { border-left-color:#e5e5e5;}
 
+dt.wp-caption-dt,
+dd.wp-caption-dd { border-left:none;}
+
 ol ol,ul ul,ol ul,ul ol { margin-top:10px;margin-bottom:10px; }
 /*-------------------------------------------*/
 /* headding

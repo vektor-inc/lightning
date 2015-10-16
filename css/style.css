@@ -2553,6 +2553,8 @@ dt { border-left-color: #337ab7; }
 
 dd { border-left-color: #e5e5e5; }
 
+dt.wp-caption-dt, dd.wp-caption-dd { border-left: none; }
+
 ol ol, ul ul, ol ul, ul ol { margin-top: 10px; margin-bottom: 10px; }
 
 /*-------------------------------------------*/
