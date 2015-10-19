@@ -122,17 +122,6 @@ if ( is_home() ){
 
 	if ( is_year() || is_month() || is_day() ){
 
-		if ( !empty( $query['post_type'] ) ) {
-			$current_post_type = get_post_type_object( $query['post_type']);
-			$panListHtml .= '<li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="' . home_url() . '/?post_type=' . $post_type . '/" itemprop="url"><span itemprop="title">' . $current_post_type->label . '</span></a></li>';
-		}
-
-		if ($postType['slug'] != 'post') {
-			$post_type         = $wp_query->query_vars['post_type'];
-			$current_post_type = get_post_type_object( $post_type );
-			$panListHtml .= '<li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="' . home_url() . '/' . $post_type . '/" itemprop="url"><span itemprop="title">' . $current_post_type->label . '</span></a></li>';
-		}
-
 		if (is_year()){
 			$panListHtml .= '<li><span>' . sprintf( __( 'Yearly Archives: %s', 'lightning' ), date( _x( 'Y', 'yearly archives date format', 'lightning' ), strtotime( $query['year'] .'-01-01' ) ) ) . '</span></li>';
 		} else if (is_month()){ 
