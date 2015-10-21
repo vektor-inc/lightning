@@ -14,6 +14,8 @@
 /*-------------------------------------------*/
 /*	Head title
 /*-------------------------------------------*/
+/*	Render title compat
+/*-------------------------------------------*/
 /*	Global navigation add cptions
 /*-------------------------------------------*/
 
@@ -26,6 +28,11 @@ add_action('after_setup_theme', 'lightning_theme_setup');
 function lightning_theme_setup() {
 
 	global $content_width;
+
+	/*-------------------------------------------*/
+	/*  Title tag
+	/*-------------------------------------------*/
+	add_theme_support( 'title-tag' );
 
 	/*-------------------------------------------*/
 	/*	Admin page _ Eye catch
@@ -129,7 +136,7 @@ function lightning_widgets_init() {
 	// Sidebar( post_type )
 
 		$postTypes = get_post_types(Array('public' => true));
-		
+
 		foreach ($postTypes as $postType) {
 
 			// Get post type name
@@ -217,6 +224,20 @@ function lightning_wp_head_frontPage_title($title){
 	}
 	return $title;
 }
+
+/*-------------------------------------------*/
+/*	Render title compat
+/*-------------------------------------------*/
+if ( ! function_exists( '_wp_render_title_tag' ) ) :
+function lightning_render_title() {
+?>
+<title><?php wp_title( '-', true, 'right' ); ?></title>
+<?php
+}
+add_action( 'wp_head', 'lightning_render_title' );
+endif;
+
+
 /*-------------------------------------------*/
 /*	Global navigation add cptions
 /*-------------------------------------------*/
