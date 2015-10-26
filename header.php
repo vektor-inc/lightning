@@ -4,7 +4,6 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title><?php wp_title(); ?></title>
 <?php global $lightning_theme_options;
 $lightning_theme_options = get_option('lightning_theme_options'); ?>
 <!-- Bootstrap -->

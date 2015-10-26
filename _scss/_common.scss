@@ -29,6 +29,9 @@ dd { padding-left:10px;border-left-width:2px;border-left-style:solid;margin-bott
 dt { border-left-color:$color_key; }
 dd { border-left-color:#e5e5e5;}
 
+dt.wp-caption-dt,
+dd.wp-caption-dd { border-left:none;}
+
 ol ol,ul ul,ol ul,ul ol { margin-top:10px;margin-bottom:10px; }
 /*-------------------------------------------*/
 /* headding
@@ -76,7 +79,7 @@ blockquote:after { content: "\f10e";bottom:10px;right:20px; }
 
 table { border-collapse: collapse; border-spacing: 0;width:100%;
 	th,
-	td { padding: 8px; border:$border_primary;}
+	td { padding: 8px; border-bottom:$border_primary; }
 }
 
 /*-------------------------------------------*/

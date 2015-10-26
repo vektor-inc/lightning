@@ -2553,6 +2553,8 @@ dt { border-left-color: #337ab7; }
 
 dd { border-left-color: #e5e5e5; }
 
+dt.wp-caption-dt, dd.wp-caption-dd { border-left: none; }
+
 ol ol, ul ul, ol ul, ul ol { margin-top: 10px; margin-bottom: 10px; }
 
 /*-------------------------------------------*/
@@ -2589,7 +2591,7 @@ blockquote:before { content: "\f10d"; top: 10px; }
 blockquote:after { content: "\f10e"; bottom: 10px; right: 20px; }
 
 table { border-collapse: collapse; border-spacing: 0; width: 100%; }
-table th, table td { padding: 8px; border: 1px solid #e5e5e5; }
+table th, table td { padding: 8px; border-bottom: 1px solid #e5e5e5; }
 
 /*-------------------------------------------*/
 /* images
@@ -2790,7 +2792,7 @@ ul.gMenu ul li li li li a { padding-left: 5em; }
 @media (max-width: 767px) { .entry-meta .entry-meta_items_author { display: block; margin-left: 0; }
   .entry-meta .entry-meta_items_term { float: none; display: block; margin-top: 0.5em; } }
 @media (max-width: 767px) { h1.entry-title { font-size: 26px; } }
-.entry-body { display: block; overflow: hidden; padding: 2.5em 0; }
+.entry-body { display: block; overflow: hidden; padding: 2em 0 2.5em; }
 
 .page .entry-body { padding-top: 0; }
 
@@ -2798,10 +2800,11 @@ ul.gMenu ul li li li li a { padding-left: 5em; }
 /*-------------------------------------------*/
 .entry-footer { display: block; overflow: hidden; margin-bottom: 2em; }
 
-.entry-meta-dataList { display: block; overflow: hidden; }
-.entry-meta-dataList dl { margin: 0 0 4px; }
-.entry-meta-dataList dt { display: block; overflow: hidden; float: left; background-color: #666; color: #fff; font-size: 10px; line-height: 1.1em; padding: 5px 10px; font-weight: lighter; margin-right: 10px; border: none; }
-.entry-meta-dataList dd { display: block; overflow: hidden; font-size: 12px; border: none; padding-left: 0; }
+.entry-meta-dataList { display: block; overflow: hidden; border-top: 1px solid #e5e5e5; padding-top: 3px; }
+.entry-meta-dataList dl { margin: 0 0 2px; }
+.entry-meta-dataList dt, .entry-meta-dataList dd { display: block; overflow: hidden; margin-bottom: 0; }
+.entry-meta-dataList dt { float: left; background-color: #666; color: #fff; font-size: 10px; line-height: 1.1em; padding: 4px 8px; font-weight: lighter; margin-right: 10px; border: none; }
+.entry-meta-dataList dd { font-size: 12px; border: none; padding-left: 0; }
 .entry-meta-dataList dd a { display: inline-block; padding: 3px 2px 1px; }
 
 .entry-tag { display: block; overflow: hidden; }
