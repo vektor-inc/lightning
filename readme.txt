@@ -32,6 +32,12 @@ http://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v0.1.13
+* [ Design tuning ] Padding of the entry body and entry meta taxonomy.
+* [ bug fix ] Breadcrumb bug fix ( When custom post type archives )
+* [ Design tuning ] Modifed Table border.
+* [ Design bug fix ] Dt and Dd and H4 Design at editor.
+
 v0.1.12
 * [ bug fix ] Can't get category name of the single page title.
 
