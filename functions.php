@@ -12,10 +12,6 @@
 /*-------------------------------------------*/
 /*	Category list 'count insert to inner </a>
 /*-------------------------------------------*/
-/*	Head title
-/*-------------------------------------------*/
-/*	Render title compat
-/*-------------------------------------------*/
 /*	Global navigation add cptions
 /*-------------------------------------------*/
 
@@ -213,30 +209,6 @@ function lightning_list_categories( $output, $args ) {
 	return $output;
 }
 add_filter( 'wp_list_categories', 'lightning_list_categories', 10, 2 );
-
-/*-------------------------------------------*/
-/*	Head title
-/*-------------------------------------------*/
-add_filter('wp_title','lightning_wp_head_frontPage_title');
-function lightning_wp_head_frontPage_title($title){
-	if (is_front_page()) {
-		$title = get_bloginfo('name');
-	}
-	return $title;
-}
-
-/*-------------------------------------------*/
-/*	Render title compat
-/*-------------------------------------------*/
-if ( ! function_exists( '_wp_render_title_tag' ) ) :
-function lightning_render_title() {
-?>
-<title><?php wp_title( '-', true, 'right' ); ?></title>
-<?php
-}
-add_action( 'wp_head', 'lightning_render_title' );
-endif;
-
 
 /*-------------------------------------------*/
 /*	Global navigation add cptions
