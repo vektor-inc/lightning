@@ -2635,4 +2635,6 @@ img.alignleft, img.alignright, img.aligncenter { margin-bottom: 12px; }
 /*-------------------------------------------*/
 .well p:last-child { margin-bottom: 0; }
 
+.row { border: 1px dashed #ccc; margin: 0 2px; }
+
 body.wp-autoresize { padding: 15px !important; }
