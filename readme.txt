@@ -32,6 +32,12 @@ http://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v0.2.0
+* [ Add function ] Archive loop extend custom post type loop.
+* [ Add function ] Add footer widget area filter.
+* [ Delete ][ Head title ] Didn't need.
+* [ Specification change ][ Editor style ] Add border to .row
+
 v0.1.13
 * [ Design tuning ] Padding of the entry body and entry meta taxonomy.
 * [ bug fix ] Breadcrumb bug fix ( When custom post type archives )
