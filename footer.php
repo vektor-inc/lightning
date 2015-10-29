@@ -30,12 +30,18 @@
             <?php
             // Area setting
             $footer_widget_area = array(
+                // Use 1 widget area
+                1 => array('class' => 'col-md-12'),
+                // Use 2 widget area
+                2 => array('class' => 'col-md-6'),
                 // Use 3 widget area
                 3 => array('class' => 'col-md-4'),
                 // Use 4 widget area
                 4 => array('class' => 'col-md-3'),
                 );
+
             $footer_widget_area_count = 3;
+            $footer_widget_area_count = apply_filters( 'lightning_footer_widget_area_count', $footer_widget_area_count );
 
             // Print widget area
             for ( $i = 1; $i <= $footer_widget_area_count; ) {
