@@ -179,17 +179,21 @@ function lightning_widgets_init() {
 		) );
 
 	// footer widget area
-	for ( $i = 1; $i <= 3 ;) {
-		register_sidebar( array(
-			'name' => __( 'Footer widget area ', 'lightning' ).$i,
-			'id' => 'footer-widget-'.$i,
-			'before_widget' => '<aside class="widget %2$s" id="%1$s">',
-			'after_widget' => '</aside>',
-			'before_title' => '<h1 class="widget-title subSection-title">',
-			'after_title' => '</h1>',
-		) );
-		$i++;
-	}
+
+	    $footer_widget_area_count = 3;
+	    $footer_widget_area_count = apply_filters( 'lightning_footer_widget_area_count', $footer_widget_area_count );
+
+		for ( $i = 1; $i <= $footer_widget_area_count ;) {
+			register_sidebar( array(
+				'name' => __( 'Footer widget area ', 'lightning' ).$i,
+				'id' => 'footer-widget-'.$i,
+				'before_widget' => '<aside class="widget %2$s" id="%1$s">',
+				'after_widget' => '</aside>',
+				'before_title' => '<h1 class="widget-title subSection-title">',
+				'after_title' => '</h1>',
+			) );
+			$i++;
+		}
 }
 add_action( 'widgets_init', 'lightning_widgets_init' );
 
