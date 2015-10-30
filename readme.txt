@@ -32,6 +32,9 @@ http://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v0.2.1
+* [ Add function ] Add footer widget area filter.
+
 v0.2.0
 * [ Add function ] Archive loop extend custom post type loop.
 * [ Add function ] Add footer widget area filter.
