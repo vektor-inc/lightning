@@ -64,9 +64,13 @@ function lightning_theme_setup() {
 /*-------------------------------------------*/
 
 add_action('wp_enqueue_scripts','lightning_addJs');
-function lightning_addJs(){
-	wp_register_script( 'lightning-js' , get_template_directory_uri().'/js/all.min.js', array('jquery'), '20150918a' );
-	wp_enqueue_script( 'lightning-js' );
+function lightning_addJs() {
+	wp_enqueue_script( 'html5shiv', 'https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js' );
+	wp_script_add_data( 'html5shiv', 'conditional', 'lt IE 9' );
+	wp_enqueue_script( 'respond', 'https://oss.maxcdn.com/respond/1.4.2/respond.min.js' );
+	wp_script_add_data( 'respond', 'conditional', 'lt IE 9' );
+	wp_enqueue_script( 'lightning-js', get_template_directory_uri().'/js/all.min.js', array( 'jquery' ), '20150918a' );
+
 }
 
 add_action( 'wp_enqueue_scripts', 'lightning_commentJs' );
