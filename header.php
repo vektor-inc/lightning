@@ -6,13 +6,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <?php global $lightning_theme_options;
 $lightning_theme_options = get_option('lightning_theme_options'); ?>
-<!-- Bootstrap -->
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
 <?php wp_head();?>
 
 </head>
@@ -29,7 +22,7 @@ $lightning_theme_options = get_option('lightning_theme_options'); ?>
                 <span class="icon-bar"></span>
             </button>
             <h1 class="navbar-brand siteHeader_logo">
-            <a href="<?php echo home_url(); ?>"><span>
+            <a href="<?php echo esc_url(home_url()); ?>"><span>
             <?php lightning_print_headlogo(); ?>
             </span></a>
             </h1>
