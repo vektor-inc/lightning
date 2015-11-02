@@ -29,7 +29,7 @@ $lightning_theme_options = get_option('lightning_theme_options'); ?>
                 <span class="icon-bar"></span>
             </button>
             <h1 class="navbar-brand siteHeader_logo">
-            <a href="<?php echo home_url(); ?>"><span>
+            <a href="<?php echo esc_url(home_url()); ?>"><span>
             <?php lightning_print_headlogo(); ?>
             </span></a>
             </h1>
