@@ -1,7 +1,3 @@
-</div><!-- [ /.row ] -->
-</div><!-- [ /.container ] -->
-</div><!-- [ /.siteContent ] -->
-
 <?php if ( is_active_sidebar( 'footer-upper-widget-1' ) ) : ?>
 <div class="section sectionBox shopBox">
     <div class="container ">
