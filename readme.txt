@@ -32,6 +32,10 @@ http://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v0.2.2
+* [ bug fix ] move script tag wrapped ie conditional-tag to functions.php
+* [ bug fix ] Resolve the overlap with main loop.
+
 v0.2.1
 * [ Add function ] Add footer widget area filter.
 
