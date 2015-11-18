@@ -32,6 +32,9 @@ http://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v0.2.3
+* [ Specification change ] Change CSS Load system.
+
 v0.2.2
 * [ Security Update ] Header Logo Link
 * [ bug fix ] move script tag wrapped ie conditional-tag to functions.php
