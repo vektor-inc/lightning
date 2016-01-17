@@ -38,6 +38,8 @@ if ( $page_for_posts['post_top_use'] || get_post_type() != 'post' ) {
 
 <?php $postType = lightning_get_post_type(); ?>
 
+<?php do_action('lightning_loop_before'); ?>
+
 <?php if (have_posts()) : ?>
 
   <?php if( apply_filters( 'is_lightning_extend_loop' , false ) ): ?>
@@ -71,6 +73,8 @@ if ( $page_for_posts['post_top_use'] || get_post_type() != 'post' ) {
 <?php else: ?>
   <div class="well"><p><?php _e('No posts.','lightning');?></p></div>
 <?php endif; // have_post() ?>
+
+<?php do_action('lightning_loop_after'); ?>
 
 </main><!-- [ /.mainSection ] -->
 
