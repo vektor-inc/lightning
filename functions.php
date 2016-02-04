@@ -219,7 +219,7 @@ function lightning_archives_link($html){
 add_filter('get_archives_link', 'lightning_archives_link');
 
 /*-------------------------------------------*/
-/*	Category list 'count insert to inner </a>
+/*	Category list count insert to inner </a>
 /*-------------------------------------------*/
 function lightning_list_categories( $output, $args ) {
 	$output = preg_replace('/<\/a>\s*\((\d+)\)/',' ($1)</a>',$output);
