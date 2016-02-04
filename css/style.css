@@ -2685,6 +2685,8 @@ input.form-control { margin-bottom: 3px; }
 
 input.form-control.input_widthAuto { width: auto; }
 
+#wpadminbar { position: fixed; }
+
 /*-------------------------------------------*/
 /* .siteHeader
 /*-------------------------------------------*/
