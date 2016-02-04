@@ -72,6 +72,7 @@ jQuery(document).ready(function(){
 });
 function head_low(defaultHeight){
 	changeHeight = defaultHeight*0.8;
+	jQuery('body').addClass('scrolled');
 	jQuery('.siteHeader .container').stop().animate({
 		"padding-top":"5px",
 		"padding-bottom":"0px",
@@ -81,6 +82,7 @@ function head_low(defaultHeight){
 	},100);
 }
 function head_high(defaultHeight){
+	jQuery('body').removeClass('scrolled');
 	jQuery('.siteHeader .container').stop().animate({
 		"padding-top":"20px",
 		"padding-bottom":"18px",
