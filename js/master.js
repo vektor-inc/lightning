@@ -39,7 +39,6 @@ function offset_header(){
 		// var allHead_height = adminBarHeight + headerHeight;
 		// Add padding
 		jQuery('.admin-bar .navbar-fixed-top').css("top",adminBarHeight+"px");
-		
 	}
 }
 
@@ -47,14 +46,14 @@ function offset_header(){
 /*	Header height changer
 /*-------------------------------------------*/
 jQuery(document).ready(function(){
-	var defaultHeight = jQuery('.navbar-brand img').height();
+	var head_logo_image_defaultHeight = jQuery('.navbar-brand img').height();
 	var bodyWidth = jQuery(window).width();
 	// When missed the get height
-	if ( defaultHeight < 38 ) {
+	if ( head_logo_image_defaultHeight < 38 ) {
 		if ( bodyWidth >= 991 ) {
-			defaultHeight = 60;
+			head_logo_image_defaultHeight = 60;
 		} else {
-			defaultHeight = 40;
+			head_logo_image_defaultHeight = 40;
 		}
 	} 
 	// Scroll function
@@ -63,15 +62,15 @@ jQuery(document).ready(function(){
 		if ( bodyWidth >= 991 ) {
 	    	var scroll = jQuery(this).scrollTop();
 	        if (jQuery(this).scrollTop() > 10) {
-	            head_low(defaultHeight);
+	            head_low( head_logo_image_defaultHeight );
 	        } else {
-				head_high(defaultHeight);
+				head_high( head_logo_image_defaultHeight );
 	        }
 	    }
 	});
 });
-function head_low(defaultHeight){
-	changeHeight = defaultHeight*0.8;
+function head_low( head_logo_image_defaultHeight ){
+	changeHeight = head_logo_image_defaultHeight*0.8;
 	jQuery('body').addClass('scrolled');
 	jQuery('.siteHeader .container').stop().animate({
 		"padding-top":"5px",
@@ -81,14 +80,16 @@ function head_low(defaultHeight){
 		"max-height":changeHeight+"px",
 	},100);
 }
-function head_high(defaultHeight){
+function head_high( head_logo_image_defaultHeight ){
 	jQuery('body').removeClass('scrolled');
 	jQuery('.siteHeader .container').stop().animate({
 		"padding-top":"20px",
 		"padding-bottom":"18px",
-	},100);
+	},100,function(){
+		offset_header();
+	});
 	jQuery('.navbar-brand img').stop().animate({
-		"max-height":defaultHeight+"px",
+		"max-height":head_logo_image_defaultHeight+"px",
 	},100);
 }
 
