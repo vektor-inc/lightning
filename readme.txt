@@ -32,6 +32,13 @@ http://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v0.2.4
+* [ bug fix ] Post Type Name variable name wrong fix
+* [ Bug fix ] header scroll js
+* [ Design tuning ]
+* add scrolled class to body tag
+* add action to loop before and loop after
+
 v0.2.3
 * [ Specification change ] Change CSS Load system.
 
