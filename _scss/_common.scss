@@ -104,6 +104,8 @@ img.aligncenter { margin-bottom: 12px; }
 .gallery img { border: 2px solid #cfcfcf; }
 .gallery .gallery-caption { color: #888; font-size: 12px; margin: 0 0 12px; }
 .gallery dl { margin: 0; }
+.gallery dl dt,
+.gallery dl dd { border-left:none; }
 .gallery img { border: 10px solid #f1f1f1; }
 .gallery br+br { display: none; }
 .attachment img { /* single attachment images should be centered */

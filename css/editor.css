@@ -2624,6 +2624,8 @@ img.alignleft, img.alignright, img.aligncenter { margin-bottom: 12px; }
 
 .gallery dl { margin: 0; }
 
+.gallery dl dt, .gallery dl dd { border-left: none; }
+
 .gallery img { border: 10px solid #f1f1f1; }
 
 .gallery br + br { display: none; }
