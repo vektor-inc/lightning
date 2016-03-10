@@ -115,7 +115,7 @@ function lightning_get_the_archive_title(){
 		// get post type
 		$postType = $wp_query->query_vars['post_type'];
 		if ( $postType ) {
-			$pageTitle = get_post_type_object($postType)->labels->name;
+			$title = get_post_type_object($postType)->labels->name;
 		} else {
 			$title = __( 'Archives', 'lightning' );
 		}
