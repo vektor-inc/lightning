@@ -21,7 +21,7 @@ $panListHtml = '<!-- [ .breadSection ] -->
 <ol class="breadcrumb">
 ';
 
-$panListHtml .= '<li id="panHome"><a href="' . home_url() . '"><span><i class="fa fa-home"></i> HOME</span></a></li>';
+$panListHtml .= '<li id="panHome"><a href="' . home_url('/') . '"><span><i class="fa fa-home"></i> HOME</span></a></li>';
 
 /* Post type
 /*-------------------------------*/
