@@ -32,6 +32,9 @@ http://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v0.2.5
+* [ Specification change ] Separating sidebar code to sidebar.php
+
 v0.2.4
 * [ bug fix ] Post Type Name variable name wrong fix
 * [ Bug fix ] header scroll js
