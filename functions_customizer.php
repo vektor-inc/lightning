@@ -218,6 +218,27 @@ function lightning_customize_register($wp_customize) {
 
 }
 
+
+add_action( 'wp_head', 'lightning_output_keycolorcss', 5);
+function lightning_output_keycolorcss(){
+	echo '<style type="text/css">';
+	$options = get_option('lightning_theme_options');
+	$corlors_default = array(
+		'keyColor'       => isset($options['color_key_dark'])? $options['color_key']: '#337ab7',
+	);
+	$types = array('BG'=>'background-color','Cl'=>'color','Bd'=>'border-color');
+	$corlors = apply_filters('lightning_keycolors', $corlors_default);
+	reset($corlors);
+	while(list($k,$v) = each($corlors)){
+		reset($types);
+		while(list($kk,$vv) = each($types)){
+			echo ".{$k}{$kk},.{$k}{$kk}h:hover{{$vv}: {$v};}";
+		}
+	}
+	echo "</style>\n";
+}
+
+
 /*-------------------------------------------*/
 /*	Print head
 /*-------------------------------------------*/
