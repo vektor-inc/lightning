@@ -55,6 +55,8 @@ input.form-control { margin-bottom:3px; }
 input.form-control.input_widthAuto { width: auto; }
 
 
+#wpadminbar { position: fixed; }
+
 /*-------------------------------------------*/
 /* .siteHeader
 /*-------------------------------------------*/
@@ -197,16 +199,17 @@ h1.page-header_pageTitle:first-child { margin:15px 0 10px;font-size:22px;line-he
 @media (max-width: 767px){
 h1.entry-title { font-size:26px; }
 }
-.entry-body { display:block; overflow:hidden;padding:2.5em 0; }
+.entry-body { display:block; overflow:hidden;padding:2em 0 2.5em; }
 .page .entry-body {padding-top:0; }
 
 /*      .entry-footer
 /*-------------------------------------------*/
 .entry-footer { display:block; overflow:hidden;margin-bottom:2em; }
-.entry-meta-dataList { display:block; overflow:hidden;
-  dl { margin:0 0 4px; }
-  dt { display:block; overflow:hidden;float:left;background-color: #666;color:#fff; font-size:10px; line-height: 1.1em;padding: 5px 10px;font-weight:lighter;margin-right:10px;border:none; }
-  dd { display:block; overflow:hidden;font-size:12px;border:none;padding-left:0;
+.entry-meta-dataList { display:block; overflow:hidden;border-top:$border_primary;padding-top:3px;
+  dl { margin:0 0 2px; }
+  dt,dd { display:block; overflow:hidden;margin-bottom:0; }
+  dt { float:left;background-color: #666;color:#fff; font-size:10px; line-height: 1.1em;padding: 4px 8px;font-weight:lighter;margin-right:10px;border:none; }
+  dd { font-size:12px;border:none;padding-left:0;
     a {  display:inline-block;padding: 3px 2px 1px; }
   }
 } // .entry-meta-dataList

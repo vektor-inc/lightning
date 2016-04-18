@@ -2553,6 +2553,8 @@ dt { border-left-color: #337ab7; }
 
 dd { border-left-color: #e5e5e5; }
 
+dt.wp-caption-dt, dd.wp-caption-dd { border-left: none; }
+
 ol ol, ul ul, ol ul, ul ol { margin-top: 10px; margin-bottom: 10px; }
 
 /*-------------------------------------------*/
@@ -2589,7 +2591,7 @@ blockquote:before { content: "\f10d"; top: 10px; }
 blockquote:after { content: "\f10e"; bottom: 10px; right: 20px; }
 
 table { border-collapse: collapse; border-spacing: 0; width: 100%; }
-table th, table td { padding: 8px; border: 1px solid #e5e5e5; }
+table th, table td { padding: 8px; border-bottom: 1px solid #e5e5e5; }
 
 /*-------------------------------------------*/
 /* images
@@ -2622,6 +2624,8 @@ img.alignleft, img.alignright, img.aligncenter { margin-bottom: 12px; }
 
 .gallery dl { margin: 0; }
 
+.gallery dl dt, .gallery dl dd { border-left: none; }
+
 .gallery img { border: 10px solid #f1f1f1; }
 
 .gallery br + br { display: none; }
@@ -2633,6 +2637,6 @@ img.alignleft, img.alignright, img.aligncenter { margin-bottom: 12px; }
 /*-------------------------------------------*/
 .well p:last-child { margin-bottom: 0; }
 
-body.wp-autoresize { padding: 15px !important; }
+.row { border: 1px dashed #ccc; margin: 0 2px; }
 
-h4 { color: #337ab7; font-weight: bold; font-size: 20px; }
+body.wp-autoresize { padding: 15px !important; }

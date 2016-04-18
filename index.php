@@ -36,16 +36,31 @@ if ( $page_for_posts['post_top_use'] || get_post_type() != 'post' ) {
   }
   ?>
 
+<?php $postType = lightning_get_post_type(); ?>
+
+<?php do_action('lightning_loop_before'); ?>
+
 <?php if (have_posts()) : ?>
+
   <?php if( apply_filters( 'is_lightning_extend_loop' , false ) ): ?>
     <?php do_action( 'lightning_extend_loop' ); ?>
-  <?php else: // extend loop() ?>
+
+  <?php elseif (file_exists(get_stylesheet_directory( ).'/module_loop_'.$postType['slug'].'.php') && $postType != 'post' ): ?>
+    <div class="postList">
+    <?php while ( have_posts() ) : the_post(); ?>
+    <?php get_template_part('module_loop_'.$postType['slug']); ?>
+    <?php endwhile; ?>
+    </div>
+
+  <?php else: ?>
     <div class="postList">
     <?php while ( have_posts() ) : the_post();?>
     <?php get_template_part('module_loop_post'); ?>
     <?php endwhile;?>
     </div>
-  <?php endif; // extend loop() ?>
+
+  <?php endif; // loop() ?>
+
   <?php
   the_posts_pagination(array (
                           'mid_size'  => 1,
@@ -58,6 +73,8 @@ if ( $page_for_posts['post_top_use'] || get_post_type() != 'post' ) {
 <?php else: ?>
   <div class="well"><p><?php _e('No posts.','lightning');?></p></div>
 <?php endif; // have_post() ?>
+
+<?php do_action('lightning_loop_after'); ?>
 
 </main><!-- [ /.mainSection ] -->
 

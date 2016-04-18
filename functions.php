@@ -2,7 +2,9 @@
 /*-------------------------------------------*/
 /*	Theme setup
 /*-------------------------------------------*/
-/*	Load JS and CSS
+/*	Load JS
+/*-------------------------------------------*/
+/*	Load CSS
 /*-------------------------------------------*/
 /*	Head logo
 /*-------------------------------------------*/
@@ -11,8 +13,6 @@
 /*	Year Artchive list 'year' and count insert to inner </a>
 /*-------------------------------------------*/
 /*	Category list 'count insert to inner </a>
-/*-------------------------------------------*/
-/*	Head title
 /*-------------------------------------------*/
 /*	Global navigation add cptions
 /*-------------------------------------------*/
@@ -26,6 +26,11 @@ add_action('after_setup_theme', 'lightning_theme_setup');
 function lightning_theme_setup() {
 
 	global $content_width;
+
+	/*-------------------------------------------*/
+	/*  Title tag
+	/*-------------------------------------------*/
+	add_theme_support( 'title-tag' );
 
 	/*-------------------------------------------*/
 	/*	Admin page _ Eye catch
@@ -57,13 +62,17 @@ function lightning_theme_setup() {
 }
 
 /*-------------------------------------------*/
-/*	Load JS and CSS
+/*	Load JS
 /*-------------------------------------------*/
 
 add_action('wp_enqueue_scripts','lightning_addJs');
-function lightning_addJs(){
-	wp_register_script( 'lightning-js' , get_template_directory_uri().'/js/all.min.js', array('jquery'), '20150918a' );
-	wp_enqueue_script( 'lightning-js' );
+function lightning_addJs() {
+	wp_enqueue_script( 'html5shiv', 'https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js' );
+	wp_script_add_data( 'html5shiv', 'conditional', 'lt IE 9' );
+	wp_enqueue_script( 'respond', 'https://oss.maxcdn.com/respond/1.4.2/respond.min.js' );
+	wp_script_add_data( 'respond', 'conditional', 'lt IE 9' );
+	wp_enqueue_script( 'lightning-js', get_template_directory_uri().'/js/all.min.js', array( 'jquery' ), '20150918a' );
+
 }
 
 add_action( 'wp_enqueue_scripts', 'lightning_commentJs' );
@@ -73,11 +82,18 @@ function lightning_commentJs(){
 	}
 }
 
+/*-------------------------------------------*/
+/*	Load CSS
+/*-------------------------------------------*/
 add_action('wp_enqueue_scripts', 'lightning_css' );
 function lightning_css(){
 	wp_enqueue_style( 'lightning-font-awesome-style', get_template_directory_uri().'/css/font-awesome/4.3.0/css/font-awesome.min.css', array(), '20150622' );
-	wp_enqueue_style( 'lightning-design-style', get_template_directory_uri().'/css/style.css', array(), '20150918a' );
 	wp_enqueue_style( 'lightning-theme-style', get_stylesheet_uri(), array('lightning-design-style'), '20150814');
+}
+// Load design skin
+add_action('wp_enqueue_scripts', 'lightning_design_css' );
+function lightning_design_css(){
+	wp_enqueue_style( 'lightning-design-style', get_template_directory_uri().'/css/style.css', array(), '20150918a' );
 }
 
 /*-------------------------------------------*/
@@ -129,7 +145,7 @@ function lightning_widgets_init() {
 	// Sidebar( post_type )
 
 		$postTypes = get_post_types(Array('public' => true));
-		
+
 		foreach ($postTypes as $postType) {
 
 			// Get post type name
@@ -176,17 +192,21 @@ function lightning_widgets_init() {
 		) );
 
 	// footer widget area
-	for ( $i = 1; $i <= 3 ;) {
-		register_sidebar( array(
-			'name' => __( 'Footer widget area ', 'lightning' ).$i,
-			'id' => 'footer-widget-'.$i,
-			'before_widget' => '<aside class="widget %2$s" id="%1$s">',
-			'after_widget' => '</aside>',
-			'before_title' => '<h1 class="widget-title subSection-title">',
-			'after_title' => '</h1>',
-		) );
-		$i++;
-	}
+
+	    $footer_widget_area_count = 3;
+	    $footer_widget_area_count = apply_filters( 'lightning_footer_widget_area_count', $footer_widget_area_count );
+
+		for ( $i = 1; $i <= $footer_widget_area_count ;) {
+			register_sidebar( array(
+				'name' => __( 'Footer widget area ', 'lightning' ).$i,
+				'id' => 'footer-widget-'.$i,
+				'before_widget' => '<aside class="widget %2$s" id="%1$s">',
+				'after_widget' => '</aside>',
+				'before_title' => '<h1 class="widget-title subSection-title">',
+				'after_title' => '</h1>',
+			) );
+			$i++;
+		}
 }
 add_action( 'widgets_init', 'lightning_widgets_init' );
 
@@ -199,7 +219,7 @@ function lightning_archives_link($html){
 add_filter('get_archives_link', 'lightning_archives_link');
 
 /*-------------------------------------------*/
-/*	Category list 'count insert to inner </a>
+/*	Category list count insert to inner </a>
 /*-------------------------------------------*/
 function lightning_list_categories( $output, $args ) {
 	$output = preg_replace('/<\/a>\s*\((\d+)\)/',' ($1)</a>',$output);
@@ -207,16 +227,6 @@ function lightning_list_categories( $output, $args ) {
 }
 add_filter( 'wp_list_categories', 'lightning_list_categories', 10, 2 );
 
-/*-------------------------------------------*/
-/*	Head title
-/*-------------------------------------------*/
-add_filter('wp_title','lightning_wp_head_frontPage_title');
-function lightning_wp_head_frontPage_title($title){
-	if (is_front_page()) {
-		$title = get_bloginfo('name');
-	}
-	return $title;
-}
 /*-------------------------------------------*/
 /*	Global navigation add cptions
 /*-------------------------------------------*/

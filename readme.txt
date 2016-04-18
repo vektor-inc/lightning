@@ -32,6 +32,49 @@ http://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v0.2.5
+* [ Specification change ] Separating sidebar code to sidebar.php
+
+v0.2.4
+* [ bug fix ] Post Type Name variable name wrong fix
+* [ Bug fix ] header scroll js
+* [ Design tuning ]
+* add scrolled class to body tag
+* add action to loop before and loop after
+
+v0.2.3
+* [ Specification change ] Change CSS Load system.
+
+v0.2.2
+* [ Security Update ] Header Logo Link
+* [ bug fix ] move script tag wrapped ie conditional-tag to functions.php
+* [ bug fix ] Resolve the overlap with main loop.
+
+v0.2.1
+* [ Add function ] Add footer widget area filter.
+
+v0.2.0
+* [ Add function ] Archive loop extend custom post type loop.
+* [ Add function ] Add footer widget area filter.
+* [ Delete ][ Head title ] Didn't need.
+* [ Specification change ][ Editor style ] Add border to .row
+
+v0.1.13
+* [ Design tuning ] Padding of the entry body and entry meta taxonomy.
+* [ bug fix ] Breadcrumb bug fix ( When custom post type archives )
+* [ Design tuning ] Modifed Table border.
+* [ Design bug fix ] Dt and Dd and H4 Design at editor.
+
+v0.1.12
+* [ bug fix ] Can't get category name of the single page title.
+
+v0.1.11
+* [ Specification change ] echo esc_html(get_the_author_meta( 'display_name' )) → the_author()
+* [ Specification change ] Delete link of post permalink from post meta "get_the_date".
+* [ Design bug fix ] Add margin to select tag in widget.
+* [ bug fix ] Fix the get custom post type name error.
+* [ bug fix ] Delete esc_html at archive_title. ( When author archive , get_the_archive_title() output <span class="vcard"></span> tag. )
+
 v0.1.10
 * [ Change comment ] Change comment language.
 

@@ -78,7 +78,7 @@ function lightning_get_post_type(){
 	if ( $page_for_posts['post_top_use'] && $postType['slug'] == 'post' ){
 		$postType['url'] = get_the_permalink($page_for_posts['post_top_id']);
 	} else {
-		$postType['url'] = home_url().'/?post_type='.$postType['slug'];
+		$postType['url'] = home_url('/').'/?post_type='.$postType['slug'];
 	}
 
 	$postType = apply_filters('lightning_postType_custom',$postType);
@@ -115,7 +115,7 @@ function lightning_get_the_archive_title(){
 		// get post type
 		$postType = $wp_query->query_vars['post_type'];
 		if ( $postType ) {
-			$pageTitle = get_post_type_object($postType)->labels->name;
+			$title = get_post_type_object($postType)->labels->name;
 		} else {
 			$title = __( 'Archives', 'lightning' );
 		}
