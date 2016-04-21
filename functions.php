@@ -23,7 +23,6 @@ define('Lightning_Theme_Version', $theme_opt->Version);
 /*-------------------------------------------*/
 /*	Theme setup
 /*-------------------------------------------*/
-include get_template_directory() . '/class-design-manager.php';
 
 add_action('after_setup_theme', 'lightning_theme_setup');
 
@@ -75,8 +74,7 @@ function lightning_addJs() {
 	wp_script_add_data( 'html5shiv', 'conditional', 'lt IE 9' );
 	wp_enqueue_script( 'respond', '//oss.maxcdn.com/respond/1.4.2/respond.min.js' );
 	wp_script_add_data( 'respond', 'conditional', 'lt IE 9' );
-	wp_enqueue_script( 'lightning-js', get_template_directory_uri().'/js/all.min.js', array( 'jquery' ), Lightning_Theme_Version );
-
+	wp_enqueue_script( 'lightning-js', get_template_directory_uri().'/js/all.js', array( 'jquery' ), Lightning_Theme_Version );
 }
 
 add_action( 'wp_enqueue_scripts', 'lightning_commentJs' );
@@ -114,6 +112,8 @@ require( get_template_directory() . '/functions_helpers.php' );
 /*	Load tga(Plugin install)
 /*-------------------------------------------*/
 require( get_template_directory() . '/functions_plugin_install.php' );
+
+require( get_template_directory() . '/class-design-manager.php' );
 
 /*-------------------------------------------*/
 /*	WidgetArea initiate
@@ -269,4 +269,10 @@ class description_walker extends Walker_Nav_Menu {
 
 		$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
 	}
+}
+
+add_filter( 'body_class', 'lightning_body_class' );
+function lightning_body_class( $class ){
+	$class[] = 'headfix';
+	return $class;
 }
