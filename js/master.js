@@ -55,7 +55,7 @@ jQuery(document).ready(function(){
 		} else {
 			head_logo_image_defaultHeight = 40;
 		}
-	} 
+	}
 	// Scroll function
 	jQuery(window).scroll(function () {
 		var bodyWidth = jQuery(window).width();
