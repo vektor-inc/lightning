@@ -1,4 +1,6 @@
 <?php
+$theme_opt = wp_get_theme(get_template());
+define('Lightning_Theme_Version', $theme_opt->Version);
 /*-------------------------------------------*/
 /*	Theme setup
 /*-------------------------------------------*/
@@ -21,6 +23,8 @@
 /*-------------------------------------------*/
 /*	Theme setup
 /*-------------------------------------------*/
+include get_template_directory() . '/class-design-manager.php';
+
 add_action('after_setup_theme', 'lightning_theme_setup');
 
 function lightning_theme_setup() {
@@ -71,7 +75,7 @@ function lightning_addJs() {
 	wp_script_add_data( 'html5shiv', 'conditional', 'lt IE 9' );
 	wp_enqueue_script( 'respond', '//oss.maxcdn.com/respond/1.4.2/respond.min.js' );
 	wp_script_add_data( 'respond', 'conditional', 'lt IE 9' );
-	wp_enqueue_script( 'lightning-js', get_template_directory_uri().'/js/all.min.js', array( 'jquery' ), '20150918a' );
+	wp_enqueue_script( 'lightning-js', get_template_directory_uri().'/js/all.min.js', array( 'jquery' ), Lightning_Theme_Version );
 
 }
 
@@ -88,12 +92,12 @@ function lightning_commentJs(){
 add_action('wp_enqueue_scripts', 'lightning_css' );
 function lightning_css(){
 	wp_enqueue_style( 'lightning-font-awesome-style', get_template_directory_uri().'/css/font-awesome/4.6.1/css/font-awesome.min.css', array(), '4.6.1' );
-	wp_enqueue_style( 'lightning-theme-style', get_stylesheet_uri(), array('lightning-design-style'), '20150814');
+	wp_enqueue_style( 'lightning-theme-style', get_stylesheet_uri(), array('lightning-design-style'), Lightning_Theme_Version );
 }
 // Load design skin
 add_action('wp_enqueue_scripts', 'lightning_design_css' );
 function lightning_design_css(){
-	wp_enqueue_style( 'lightning-design-style', get_template_directory_uri().'/css/style.css', array(), '20150918a' );
+	wp_enqueue_style( 'lightning-design-style', get_template_directory_uri().'/css/style.css', array(), Lightning_Theme_Version );
 }
 
 /*-------------------------------------------*/
