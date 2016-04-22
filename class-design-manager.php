@@ -5,6 +5,7 @@ class Lightning_Design_Manager{
 	static function init(){
 		add_action( 'customize_register', array( __CLASS__, 'customize_register' ) );
 		add_action( 'wp_loaded', array( __CLASS__, 'ignite_Design' ) );
+		add_filter('lightning-disable-theme_style', array( __CLASS__, 'css_disable') );
 	}
 
 	static function customize_register( $wp_customize ){
@@ -64,6 +65,13 @@ class Lightning_Design_Manager{
 		if( isset($skins[self::get_current_skin()]['callback']) and $skins[self::get_current_skin()]['callback'] )
 			call_user_func_array( $skins[self::get_current_skin()]['callback'], array() );
 	}
+
+	static function css_disable( $flag ){
+		$skins = self::get_skins();
+		if( isset($skins[self::get_current_skin()]['disable_css']) and $skins[self::get_current_skin()]['disable_css'] )
+			$flag = true;
+		return $flag;
+	}
 }
 
 Lightning_Design_Manager::init();
@@ -72,8 +80,9 @@ Lightning_Design_Manager::init();
 // add_filter( 'lightning_Design_skins', 'lightning_Register_skin' );
 // function lightning_Register_skin( $array ){
 // 	$array['test'] = array(
-// 		'name'     => 'テスト',
+// 		'name'     => 'テストスキン',
 // 		'callback' => 'callback_function',
+// 		'disable_css' => true,
 // 	);
 // 	return $array;
 // }

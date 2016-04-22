@@ -91,12 +91,14 @@ function lightning_commentJs(){
 add_action('wp_enqueue_scripts', 'lightning_css' );
 function lightning_css(){
 	wp_enqueue_style( 'lightning-font-awesome-style', get_template_directory_uri().'/css/font-awesome/4.6.1/css/font-awesome.min.css', array(), '4.6.1' );
-	wp_enqueue_style( 'lightning-theme-style', get_stylesheet_uri(), array('lightning-design-style'), Lightning_Theme_Version );
+		wp_enqueue_style( 'lightning-theme-style', get_stylesheet_uri(), array('lightning-design-style'), Lightning_Theme_Version );
 }
+
 // Load design skin
 add_action('wp_enqueue_scripts', 'lightning_design_css' );
 function lightning_design_css(){
-	wp_enqueue_style( 'lightning-design-style', get_template_directory_uri().'/css/style.css', array(), Lightning_Theme_Version );
+	if( ! apply_filters('lightning-disable-theme_style', false) )
+		wp_enqueue_style( 'lightning-design-style', get_template_directory_uri().'/css/style.css', array(), Lightning_Theme_Version );
 }
 
 /*-------------------------------------------*/
