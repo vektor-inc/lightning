@@ -224,7 +224,7 @@ function lightning_output_keycolorcss(){
 	echo '<style type="text/css">';
 	$options = get_option('lightning_theme_options');
 	$corlors_default = array(
-		'keyColor'       => isset($options['color_key_dark'])? $options['color_key']: '#337ab7',
+		'keyColor'       => isset($options['color_key'])? $options['color_key']: '#337ab7',
 	);
 	$types = array('BG'=>'background-color','Cl'=>'color','Bd'=>'border-color');
 	$corlors = apply_filters('lightning_keycolors', $corlors_default);
