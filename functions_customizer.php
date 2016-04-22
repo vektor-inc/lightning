@@ -218,26 +218,29 @@ function lightning_customize_register($wp_customize) {
 
 }
 
-
+/*-------------------------------------------*/
+/*	Lightning custom color Print head
+/*	* This is used for Contents and Plugins and others
+/*-------------------------------------------*/
 add_action( 'wp_head', 'lightning_output_keycolorcss', 5);
 function lightning_output_keycolorcss(){
-	echo '<style type="text/css">';
 	$options = get_option('lightning_theme_options');
 	$corlors_default = array(
-		'keyColor'       => isset($options['color_key'])? $options['color_key']: '#337ab7',
+		'color_key'       => isset($options['color_key'])? $options['color_key']: '#337ab7',
+		'color_key_dark'  => isset($options['color_key_dark'])? $options['color_key_dark']: '#2e6da4',
 	);
-	$types = array('BG'=>'background-color','Cl'=>'color','Bd'=>'border-color');
 	$corlors = apply_filters('lightning_keycolors', $corlors_default);
-	reset($corlors);
-	while(list($k,$v) = each($corlors)){
-		reset($types);
-		while(list($kk,$vv) = each($types)){
-			echo ".{$k}{$kk},.{$k}{$kk}h:hover{{$vv}: {$v};}";
+	$types = array('_bg'=>'background-color','_txt'=>'color','_border'=>'border-color');
+	reset( $corlors );
+	echo '<style type="text/css">'."\n";
+	while( list( $k,$v ) = each( $corlors ) ){
+		reset( $types );
+		while( list( $kk,$vv ) = each( $types ) ){
+			echo ".{$k}{$kk},.{$k}{$kk}_hover:hover{{$vv}: {$v};}\n";
 		}
 	}
 	echo "</style>\n";
 }
-
 
 /*-------------------------------------------*/
 /*	Print head
