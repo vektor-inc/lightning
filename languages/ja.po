@@ -5,10 +5,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lightning v0.1.0\n"
 "Report-Msgid-Bugs-To: Translator Name <translations@example.com>\n"
-"POT-Creation-Date: 2015-10-19 11:37+0900\n"
+"POT-Creation-Date: 2016-04-26 14:30+0900\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Kurudrive <kurudrive@gmail.com>\n"
 "Language-Team: Vektor,Inc. <info@vektor-inc.co.jp>\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,8 +20,31 @@ msgstr ""
 "esc_attr_e;esc_attr_x:1,2c;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;"
 "_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext:1,2;__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
 "X-Poedit-Basepath: .\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 1.8.7\n"
 "X-Poedit-SearchPath-0: ..\n"
+
+#: ../class-design-manager.php:15
+msgid "Design_skin"
+msgstr "デザインスキン"
+
+#: ../class-design-manager.php:32
+msgid "Design skin"
+msgstr "デザインスキン"
+
+#: ../class-design-manager.php:35
+msgid "Please save Once you change the skin."
+msgstr "スキンを変更したら一度保存してください。"
+
+#: ../class-design-manager.php:36
+msgid ""
+"If you reload after the saving, it will be displayed skin-specific "
+"configuration items."
+msgstr "保存した後で再読み込みをすると、スキン固有の設定項目が表示されます。"
+
+#: ../class-design-manager.php:37
+msgid ""
+"*There is also a case where there is no skin-specific installation item."
+msgstr "※スキンによっては固有の設置項目がない場合もあります。"
 
 #: ../class-tgm-plugin-activation.php:333 ../functions_plugin_install.php:78
 msgid "Install Required Plugins"
@@ -158,7 +182,7 @@ msgstr[1] "次のプラグインの有効化に成功しました。"
 #: ../class-tgm-plugin-activation.php:401 ../functions_plugin_install.php:145
 #, php-format
 msgid "No action taken. Plugin %1$s was already active."
-msgstr ""
+msgstr "%1$s　は既に有効化されています。"
 
 #: ../class-tgm-plugin-activation.php:402 ../functions_plugin_install.php:146
 #, php-format
@@ -166,6 +190,7 @@ msgid ""
 "Plugin not activated. A higher version of %s is needed for this theme. "
 "Please update the plugin."
 msgstr ""
+"有効化できませんでした。　%s　を使用するにはテーマのアップデートが必要です。"
 
 #: ../class-tgm-plugin-activation.php:403 ../functions_plugin_install.php:147
 #, php-format
@@ -178,11 +203,11 @@ msgstr "このお知らせを表示しない"
 
 #: ../class-tgm-plugin-activation.php:405 ../functions_plugin_install.php:148
 msgid "Please contact the administrator of this site for help."
-msgstr ""
+msgstr "サイトの管理人に連絡をとってください。"
 
 #: ../class-tgm-plugin-activation.php:520
 msgid "This plugin needs to be updated to be compatible with your theme."
-msgstr ""
+msgstr "このプラグインを使用するにはアップデートが必要です。"
 
 #: ../class-tgm-plugin-activation.php:521
 msgid "Update Required"
@@ -242,7 +267,7 @@ msgstr "WordPress 公式リポジトリー"
 
 #: ../class-tgm-plugin-activation.php:2187
 msgid "External Source"
-msgstr ""
+msgstr "外部ソース"
 
 #: ../class-tgm-plugin-activation.php:2190
 msgid "Pre-Packaged"
@@ -428,7 +453,7 @@ msgstr ""
 #: ../class-tgm-plugin-activation.php:3363
 #, php-format
 msgid "The installation of %1$s failed."
-msgstr ""
+msgstr "%1$s　のインストールに失敗しました。"
 
 #: ../class-tgm-plugin-activation.php:3367
 msgid ""
@@ -465,6 +490,8 @@ msgid ""
 "The installation process is starting. This process may take a while on some "
 "hosts, so please be patient."
 msgstr ""
+"インストールを開始しました。　この作業には時間がかかる可能性があります。しば"
+"らくの間そのままお待ちください。"
 
 #: ../class-tgm-plugin-activation.php:3374
 #, php-format
@@ -478,7 +505,7 @@ msgstr "インストールが完了しました。"
 #: ../class-tgm-plugin-activation.php:3376
 #, php-format
 msgid "Installing Plugin %1$s (%2$d/%3$d)"
-msgstr ""
+msgstr "プラグインをインストール %1$s (%2$d/%3$d)"
 
 #: ../comments.php:28
 #, php-format
@@ -504,45 +531,45 @@ msgstr "新しいコメント"
 msgid "Comments are closed."
 msgstr "この投稿はコメントできません。"
 
-#: ../front-page.php:55 ../index.php:55
+#: ../front-page.php:56 ../index.php:70
 msgid "Page"
 msgstr "ページ"
 
-#: ../front-page.php:64 ../index.php:59
+#: ../front-page.php:65 ../index.php:74
 msgid "No posts."
 msgstr "投稿はありません。"
 
-#: ../functions.php:104
+#: ../functions.php:130
 msgid "Sidebar(Home)"
 msgstr "サイドバー（トップページ）"
 
-#: ../functions.php:112
+#: ../functions.php:138
 msgid "Sidebar(Common top)"
 msgstr "サイドバー（共通上部）"
 
-#: ../functions.php:120
+#: ../functions.php:146
 msgid "Sidebar(Common bottom)"
 msgstr "サイドバー（共通下部）"
 
-#: ../functions.php:144
+#: ../functions.php:170
 #, php-format
 msgid "Sidebar(%s)"
 msgstr "サイドバー（%s）"
 
-#: ../functions.php:146
+#: ../functions.php:172
 #, php-format
 msgid "This widget area appears on the %s contents page only."
 msgstr "このウィジェットは%sコンテンツでのみ表示されます。"
 
-#: ../functions.php:159
+#: ../functions.php:185
 msgid "Home content top"
 msgstr "トップページコンテンツエリア上部"
 
-#: ../functions.php:170
+#: ../functions.php:196
 msgid "Widget area of upper footer"
 msgstr "フッター上部"
 
-#: ../functions.php:181
+#: ../functions.php:211
 msgid "Footer widget area "
 msgstr "フッターウィジェットエリア"
 
@@ -637,7 +664,7 @@ msgstr "アーカイブ"
 #: ../functions_helpers.php:133
 #, php-format
 msgid "Copyright &copy; %s All Rights Reserved."
-msgstr ""
+msgstr "Copyright &copy; %s All Rights Reserved."
 
 #: ../functions_helpers.php:138
 msgid ""
@@ -716,7 +743,7 @@ msgstr "アーカイブ"
 
 #: ../single.php:42
 msgid "<dl><dt>%s</dt><dd>%l</dd></dl>"
-msgstr ""
+msgstr "<dl><dt>%s</dt><dd>%l</dd></dl>"
 
 #: ../single.php:62
 msgid "Tags"

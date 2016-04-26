@@ -1,19 +1,43 @@
 # Theme presentation (no text domain)
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: lightning v0.1.0\n"
-"POT-Creation-Date: 2015-07-28 12:44+0900\n"
+"POT-Creation-Date: 2016-04-26 14:29+0900\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Kurudrive <kurudrive@gmail.com>\n"
 "Language-Team: Vektor,Inc. <kurudrive@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 1.8.7\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_x\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ..\n"
+
+#: ../class-design-manager.php:15
+msgid "Design_skin"
+msgstr ""
+
+#: ../class-design-manager.php:32
+msgid "Design skin"
+msgstr ""
+
+#: ../class-design-manager.php:35
+msgid "Please save Once you change the skin."
+msgstr ""
+
+#: ../class-design-manager.php:36
+msgid ""
+"If you reload after the saving, it will be displayed skin-specific "
+"configuration items."
+msgstr ""
+
+#: ../class-design-manager.php:37
+msgid ""
+"*There is also a case where there is no skin-specific installation item."
+msgstr ""
 
 #: ../class-tgm-plugin-activation.php:333 ../functions_plugin_install.php:78
 msgid "Install Required Plugins"
@@ -41,7 +65,7 @@ msgid "Return to the dashboard"
 msgstr ""
 
 #: ../class-tgm-plugin-activation.php:399
-#: ../class-tgm-plugin-activation.php:3029 ../functions_plugin_install.php:143
+#: ../class-tgm-plugin-activation.php:3027 ../functions_plugin_install.php:143
 msgid "Plugin activated successfully."
 msgstr ""
 
@@ -74,196 +98,196 @@ msgstr ""
 msgid "Please contact the administrator of this site for help."
 msgstr ""
 
-#: ../class-tgm-plugin-activation.php:1881
+#: ../class-tgm-plugin-activation.php:1879
 #, php-format
 msgid "TGMPA v%s"
 msgstr ""
 
-#: ../class-tgm-plugin-activation.php:2167
+#: ../class-tgm-plugin-activation.php:2165
 msgid "Required"
 msgstr ""
 
-#: ../class-tgm-plugin-activation.php:2170
+#: ../class-tgm-plugin-activation.php:2168
 msgid "Recommended"
 msgstr ""
 
-#: ../class-tgm-plugin-activation.php:2186
+#: ../class-tgm-plugin-activation.php:2184
 msgid "WordPress Repository"
 msgstr ""
 
-#: ../class-tgm-plugin-activation.php:2189
+#: ../class-tgm-plugin-activation.php:2187
 msgid "External Source"
 msgstr ""
 
-#: ../class-tgm-plugin-activation.php:2192
+#: ../class-tgm-plugin-activation.php:2190
 msgid "Pre-Packaged"
 msgstr ""
 
-#: ../class-tgm-plugin-activation.php:2209
+#: ../class-tgm-plugin-activation.php:2207
 msgid "Not Installed"
 msgstr ""
 
-#: ../class-tgm-plugin-activation.php:2213
+#: ../class-tgm-plugin-activation.php:2211
 msgid "Installed But Not Activated"
 msgstr ""
 
-#: ../class-tgm-plugin-activation.php:2215
+#: ../class-tgm-plugin-activation.php:2213
 msgid "Active"
 msgstr ""
 
-#: ../class-tgm-plugin-activation.php:2221
+#: ../class-tgm-plugin-activation.php:2219
 msgid "Required Update not Available"
 msgstr ""
 
-#: ../class-tgm-plugin-activation.php:2224
+#: ../class-tgm-plugin-activation.php:2222
 msgid "Requires Update"
 msgstr ""
 
-#: ../class-tgm-plugin-activation.php:2227
+#: ../class-tgm-plugin-activation.php:2225
 msgid "Update recommended"
 msgstr ""
 
-#: ../class-tgm-plugin-activation.php:2235
+#: ../class-tgm-plugin-activation.php:2233
 #, php-format
 msgid "%1$s, %2$s"
 msgstr ""
 
-#: ../class-tgm-plugin-activation.php:2371
+#: ../class-tgm-plugin-activation.php:2369
 msgid "unknown"
 msgstr ""
 
-#: ../class-tgm-plugin-activation.php:2379
+#: ../class-tgm-plugin-activation.php:2377
 msgid "Installed version:"
 msgstr ""
 
-#: ../class-tgm-plugin-activation.php:2387
+#: ../class-tgm-plugin-activation.php:2385
 msgid "Minimum required version:"
 msgstr ""
 
-#: ../class-tgm-plugin-activation.php:2399
+#: ../class-tgm-plugin-activation.php:2397
 msgid "Available version:"
 msgstr ""
 
-#: ../class-tgm-plugin-activation.php:2422
+#: ../class-tgm-plugin-activation.php:2420
 #, php-format
 msgid ""
 "No plugins to install, update or activate. <a href=\"%1$s\">Return to the "
 "Dashboard</a>"
 msgstr ""
 
-#: ../class-tgm-plugin-activation.php:2436
+#: ../class-tgm-plugin-activation.php:2434
 msgid "Plugin"
 msgstr ""
 
-#: ../class-tgm-plugin-activation.php:2437
+#: ../class-tgm-plugin-activation.php:2435
 msgid "Source"
 msgstr ""
 
-#: ../class-tgm-plugin-activation.php:2438
+#: ../class-tgm-plugin-activation.php:2436
 msgid "Type"
 msgstr ""
 
-#: ../class-tgm-plugin-activation.php:2442
+#: ../class-tgm-plugin-activation.php:2440
 msgid "Version"
 msgstr ""
 
-#: ../class-tgm-plugin-activation.php:2443
+#: ../class-tgm-plugin-activation.php:2441
 msgid "Status"
 msgstr ""
 
-#: ../class-tgm-plugin-activation.php:2491
+#: ../class-tgm-plugin-activation.php:2489
 #, php-format
 msgid "Install %2$s"
 msgstr ""
 
-#: ../class-tgm-plugin-activation.php:2495
+#: ../class-tgm-plugin-activation.php:2493
 #, php-format
 msgid "Update %2$s"
 msgstr ""
 
-#: ../class-tgm-plugin-activation.php:2500
+#: ../class-tgm-plugin-activation.php:2498
 #, php-format
 msgid "Activate %2$s"
 msgstr ""
 
-#: ../class-tgm-plugin-activation.php:2603
+#: ../class-tgm-plugin-activation.php:2601
 msgid "Install"
 msgstr ""
 
-#: ../class-tgm-plugin-activation.php:2609
+#: ../class-tgm-plugin-activation.php:2607
 msgid "Update"
 msgstr ""
 
-#: ../class-tgm-plugin-activation.php:2612
+#: ../class-tgm-plugin-activation.php:2610
 msgid "Activate"
 msgstr ""
 
-#: ../class-tgm-plugin-activation.php:2643
+#: ../class-tgm-plugin-activation.php:2641
 msgid "No plugins were selected to be installed. No action taken."
 msgstr ""
 
-#: ../class-tgm-plugin-activation.php:2645
+#: ../class-tgm-plugin-activation.php:2643
 msgid "No plugins were selected to be updated. No action taken."
 msgstr ""
 
-#: ../class-tgm-plugin-activation.php:2681
+#: ../class-tgm-plugin-activation.php:2679
 msgid "No plugins are available to be installed at this time."
 msgstr ""
 
-#: ../class-tgm-plugin-activation.php:2683
+#: ../class-tgm-plugin-activation.php:2681
 msgid "No plugins are available to be updated at this time."
 msgstr ""
 
-#: ../class-tgm-plugin-activation.php:3028
+#: ../class-tgm-plugin-activation.php:3026
 msgid "Plugin activation failed."
 msgstr ""
 
-#: ../class-tgm-plugin-activation.php:3362
+#: ../class-tgm-plugin-activation.php:3360
 #, php-format
 msgid "Updating Plugin %1$s (%2$d/%3$d)"
 msgstr ""
 
-#: ../class-tgm-plugin-activation.php:3364
+#: ../class-tgm-plugin-activation.php:3362
 #, php-format
 msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
 msgstr ""
 
-#: ../class-tgm-plugin-activation.php:3365
+#: ../class-tgm-plugin-activation.php:3363
 #, php-format
 msgid "The installation of %1$s failed."
 msgstr ""
 
-#: ../class-tgm-plugin-activation.php:3369
+#: ../class-tgm-plugin-activation.php:3367
 msgid ""
 "The installation and activation process is starting. This process may take a "
 "while on some hosts, so please be patient."
 msgstr ""
 
-#: ../class-tgm-plugin-activation.php:3370
+#: ../class-tgm-plugin-activation.php:3368
 #, php-format
 msgid "%1$s installed and activated successfully."
 msgstr ""
 
-#: ../class-tgm-plugin-activation.php:3371
+#: ../class-tgm-plugin-activation.php:3369
 msgid "All installations and activations have been completed."
 msgstr ""
 
-#: ../class-tgm-plugin-activation.php:3372
+#: ../class-tgm-plugin-activation.php:3370
 #, php-format
 msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
 msgstr ""
 
-#: ../class-tgm-plugin-activation.php:3375
+#: ../class-tgm-plugin-activation.php:3373
 msgid ""
 "The installation process is starting. This process may take a while on some "
 "hosts, so please be patient."
 msgstr ""
 
-#: ../class-tgm-plugin-activation.php:3377
+#: ../class-tgm-plugin-activation.php:3375
 msgid "All installations have been completed."
 msgstr ""
 
-#: ../class-tgm-plugin-activation.php:3378
+#: ../class-tgm-plugin-activation.php:3376
 #, php-format
 msgid "Installing Plugin %1$s (%2$d/%3$d)"
 msgstr ""
@@ -284,45 +308,45 @@ msgstr ""
 msgid "Comments are closed."
 msgstr ""
 
-#: ../front-page.php:52 ../index.php:48
+#: ../front-page.php:56 ../index.php:70
 msgid "Page"
 msgstr ""
 
-#: ../front-page.php:61 ../index.php:52
+#: ../front-page.php:65 ../index.php:74
 msgid "No posts."
 msgstr ""
 
-#: ../functions.php:98
+#: ../functions.php:130
 msgid "Sidebar(Home)"
 msgstr ""
 
-#: ../functions.php:106
+#: ../functions.php:138
 msgid "Sidebar(Common top)"
 msgstr ""
 
-#: ../functions.php:114
+#: ../functions.php:146
 msgid "Sidebar(Common bottom)"
 msgstr ""
 
-#: ../functions.php:138
+#: ../functions.php:170
 #, php-format
 msgid "Sidebar(%s)"
 msgstr ""
 
-#: ../functions.php:140
+#: ../functions.php:172
 #, php-format
 msgid "This widget area appears on the %s contents page only."
 msgstr ""
 
-#: ../functions.php:153
+#: ../functions.php:185
 msgid "Home content top"
 msgstr ""
 
-#: ../functions.php:164
+#: ../functions.php:196
 msgid "Widget area of upper footer"
 msgstr ""
 
-#: ../functions.php:175
+#: ../functions.php:211
 msgid "Footer widget area "
 msgstr ""
 
@@ -415,16 +439,16 @@ msgstr ""
 msgid "Read more"
 msgstr ""
 
-#: ../module_loop_post_meta.php:13
+#: ../module_loop_post_meta.php:11
 msgid "Last updated"
 msgstr ""
 
-#: ../module_pageTit.php:77 ../module_panList.php:226
+#: ../module_pageTit.php:39 ../module_panList.php:218
 #, php-format
 msgid "Search Results for : %s"
 msgstr ""
 
-#: ../module_pageTit.php:79 ../module_panList.php:219
+#: ../module_pageTit.php:41 ../module_panList.php:211
 msgid "Not found"
 msgstr ""
 
@@ -451,18 +475,18 @@ msgstr ""
 msgid "Recent posts"
 msgstr ""
 
-#: ../sidebar-post.php:31
+#: ../sidebar-post.php:49
 msgid "Category"
 msgstr ""
 
-#: ../sidebar-post.php:40
+#: ../sidebar-post.php:58
 msgid "Archive"
 msgstr ""
 
-#: ../single.php:33
+#: ../single.php:42
 msgid "<dl><dt>%s</dt><dd>%l</dd></dl>"
 msgstr ""
 
-#: ../single.php:53
+#: ../single.php:62
 msgid "Tags"
 msgstr ""
