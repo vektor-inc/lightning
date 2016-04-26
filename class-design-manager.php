@@ -29,9 +29,12 @@ class Lightning_Design_Manager{
 		while(list($k,$v) = each($skins)){ $skins[$k] = isset( $v['name'] )? $v['name'] : $k ; }
 
 		$wp_customize->add_control( 'lightning_design_skin', array(
-			'label'		=> __( 'design skin' , 'lightning' ),
+			'label'		=> __( 'Design skin' , 'lightning' ),
 			'section'	=> 'lightning_design_skin',
 			'settings'  => 'lightning_design_skin',
+			'description' => __( 'Please save Once you change the skin.', 'lightning' ) . '<br/>' .
+				__( 'If you reload after the saving, it will be displayed skin-specific configuration items.', 'lightning') . '<br/> '.
+				__( '*There is also a case where there is no skin-specific installation item.', 'lightning' ),
 			'type'		=> 'select',
 			'priority'	=> 504,
 			'choices'   => $skins,
@@ -42,7 +45,7 @@ class Lightning_Design_Manager{
 	static function get_skins(){
 		$ex_skins = apply_filters( 'lightning_Design_skins', array() );
 		ksort( $ex_skins );
-		$skins['default'] = array( 'name' => 'default skin' );
+		$skins['default'] = array( 'name' => 'Lightning Origin' );
 		return $skins + $ex_skins;
 	}
 
