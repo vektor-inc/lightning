@@ -13,7 +13,7 @@ class Lightning_Design_Manager{
 			'lightning_design_skin',
 			array(
 				'title'       => __( 'Design_skin', 'lightning' ),
-				'priority'    => 500
+				'priority'    => 450
 			)
 		);
 
@@ -36,7 +36,7 @@ class Lightning_Design_Manager{
 				__( 'If you reload after the saving, it will be displayed skin-specific configuration items.', 'lightning') . '<br/> '.
 				__( '*There is also a case where there is no skin-specific installation item.', 'lightning' ),
 			'type'		=> 'select',
-			'priority'	=> 504,
+			'priority'	=> 100,
 			'choices'   => $skins,
 		));
 
