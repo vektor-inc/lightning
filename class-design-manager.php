@@ -40,6 +40,7 @@ class Lightning_Design_Manager{
 			'choices'   => $skins,
 		));
 
+		if( self::get_current_skin() != 'default' ) self::set_customizer_callback( $wp_customize );
 	}
 
 	static function get_skins(){
@@ -69,6 +70,12 @@ class Lightning_Design_Manager{
 			call_user_func_array( $skins[self::get_current_skin()]['callback'], array() );
 	}
 
+	static function set_customizer_callback( $wp_customize ){
+		$skins = self::get_skins();
+		if( isset($skins[self::get_current_skin()]['customizer']) and $skins[self::get_current_skin()]['customizer'] )
+			call_user_func_array( $skins[self::get_current_skin()]['customizer'], array( $wp_customize ) );
+	}
+
 	static function css_disable( $flag ){
 		$skins = self::get_skins();
 		if( isset($skins[self::get_current_skin()]['disable_css']) and $skins[self::get_current_skin()]['disable_css'] )
@@ -85,11 +92,29 @@ Lightning_Design_Manager::init();
 // 	$array['test'] = array(
 // 		'name'     => 'テストスキン',
 // 		'callback' => 'callback_function',
-// 		'disable_css' => true,
+// 		'disable_css' => false,
+// 		'customizer' => 'customizer_function'
 // 	);
 // 	return $array;
 // }
 
 // function callback_function(){
 // 	echo "i'm current";
+// }
+
+// function customizer_function( $wp_customize ){
+// 		$wp_customize->add_setting( 'lightning_design_test_sumple', array(
+// 			'default'           => null,
+// 			'type'              => 'option',
+// 			'capability'        => 'edit_theme_options',
+// 		) );
+
+// 		$wp_customize->add_control('lightning_design_test_sumple',array(
+// 			'label' => 'its test button',
+// 			'section' => 'lightning_design_skin',
+// 			'description' => 'test checkbox',
+// 			'type' => 'checkbox'
+// 		));
+
+// 	return;
 // }
