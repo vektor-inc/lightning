@@ -13,15 +13,20 @@ $postType = lightning_get_post_type();
 /*-------------------------------------------*/
 $page_for_posts = lightning_get_page_for_posts();
 
+// Microdata
+// http://schema.org/BreadcrumbList
+/*-------------------------------------------*/
+$microdata_li = ' itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"';
+$microdata_li_a = ' itemprop="item"';
+$microdata_li_a_span = ' itemprop="name"';
 
 $panListHtml = '<!-- [ .breadSection ] -->
 <div class="section breadSection">
 <div class="container">
 <div class="row">
-<ol class="breadcrumb">
-';
+<ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList">';
 
-$panListHtml .= '<li id="panHome"><a href="' . home_url('/') . '"><span><i class="fa fa-home"></i> HOME</span></a></li>';
+$panListHtml .= '<li id="panHome"'.$microdata_li.'><a'.$microdata_li_a.' href="' . home_url('/') . '"><span'.$microdata_li_a_span.'><i class="fa fa-home"></i> HOME</span></a></li>';
 
 /* Post type
 /*-------------------------------*/
@@ -31,16 +36,16 @@ if ( is_archive() || ( is_single() && !is_attachment()) ) {
 	if ( $postType['slug'] == 'post' || is_category() || is_tag() ){ /* including single-post */
 		if ( $page_for_posts['post_top_use'] ) {
 			if ( !is_home() ) {
-				$panListHtml .= '<li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="'.esc_url($postType['url']).'" itemprop="url"><span itemprop="title">'.$postType['name'].'</span></a></li>';
+				$panListHtml .= '<li'.$microdata_li.'><a'.$microdata_li_a.' href="'.esc_url($postType['url']).'"><span'.$microdata_li_a_span.'>'.$postType['name'].'</span></a></li>';
 			} else {
 				$panListHtml .= '<li><span>'.the_title('','', FALSE).'</span></li>';
 			}
 		}
 	} else {
 		if ( is_single() || is_year() || is_month() || is_day() || is_tax() || is_author() ) {
-			$panListHtml .= '<li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="'.esc_url($postType['url']).'" itemprop="url"><span itemprop="title">'.$postType['name'].'</span></a></li>';
+			$panListHtml .= '<li'.$microdata_li.'><a'.$microdata_li_a.' href="'.esc_url($postType['url']).'"><span'.$microdata_li_a_span.'>'.$postType['name'].'</span></a></li>';
 		} else {
-			$panListHtml .= '<li><span>'.$postType['name'].'</span></a></li>';
+			$panListHtml .= '<li><span>'.$postType['name'].'</span></li>';
 		}
 	}
 }
@@ -69,7 +74,7 @@ if ( is_home() ){
 		$ancestors = array_reverse(get_ancestors( $cat->cat_ID, 'category' ));
 		// 祖先階層の配列回数分ループ
 		foreach($ancestors as $ancestor):
-			$panListHtml .= '<li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="'.get_category_link($ancestor).'" itemprop="url"><span itemprop="title">'.esc_html(get_cat_name($ancestor)).'</span></a></li>';
+			$panListHtml .= '<li'.$microdata_li.'><a'.$microdata_li_a.' href="'.get_category_link($ancestor).'"><span'.$microdata_li_a_span.'>'.esc_html(get_cat_name($ancestor)).'</span></a></li>';
 		endforeach;
 	endif;
 	$panListHtml .= '<li><span>'. $cat->cat_name. '</span></li>';
@@ -99,11 +104,11 @@ if ( is_home() ){
 		// 祖先階層の配列回数分ループ
 		foreach($ancestors as $ancestor):
 			$pan_term = get_term($ancestor,$now_taxonomy);
-			$panListHtml .= '<li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="'.get_term_link($ancestor,$now_taxonomy).'">'.esc_html($pan_term->name).'</a></li>';
+			$panListHtml .= '<li'.$microdata_li.'><a'.$microdata_li_a.' href="'.get_term_link($ancestor,$now_taxonomy).'"><span'.$microdata_li_a_span.'>'.esc_html($pan_term->name).'</a></li>';
 		endforeach;
 	endif;
 
-	$panListHtml .= '<li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><span itemprop="title">'.esc_html(single_cat_title('','', FALSE)).'</span></li>';
+	$panListHtml .= '<li><span>'.esc_html(single_cat_title('','', FALSE)).'</span></li>';
 
 } else if ( is_author() ) {
 
@@ -150,7 +155,7 @@ if ( is_home() ){
 			if ( ! empty( $parent_name ) ) {
 				$parent_obj 	= get_term_by( 'name', $parent_name, $category[0]->taxonomy );
 				$term_url		= get_term_link( $parent_obj->term_id,$parent_obj->taxonomy );
-				$panListHtml 	.= '<li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="' . $term_url . '" itemprop="url"><span itemprop="title">' . esc_html($parent_obj->name) . '</span></a></li>';
+				$panListHtml 	.= '<li'.$microdata_li.'><a'.$microdata_li_a.' href="' . $term_url . '"><span'.$microdata_li_a_span.'>' . esc_html($parent_obj->name) . '</span></a></li>';
 			}
 		}
 
@@ -172,11 +177,11 @@ if ( is_home() ){
 				// Print loop term ancestors
 				foreach($ancestors as $ancestor):
 					$pan_term = get_term($ancestor,$taxonomy);
-					$panListHtml .= '<li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="'.get_term_link($ancestor,$taxonomy).'">'.esc_html($pan_term->name).'</a></li>';
+					$panListHtml .= '<li'.$microdata_li.'><a'.$microdata_li_a.' href="'.get_term_link($ancestor,$taxonomy).'"><span'.$microdata_li_a_span.'>'.esc_html($pan_term->name).'</span></a></li>';
 				endforeach;
 			}
 			$term_url		= get_term_link($term->term_id,$taxonomy);
-			$panListHtml .= '<li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="' . $term_url . '" itemprop="url"><span itemprop="title">' . esc_html($term->name) . '</span></a></li>';
+			$panListHtml .= '<li'.$microdata_li.'><a'.$microdata_li_a.' href="' . $term_url . '"><span'.$microdata_li_a_span.'>' . esc_html($term->name) . '</span></a></li>';
 		endif;
 
 	}
@@ -196,7 +201,7 @@ if ( is_home() ){
 		array_push( $ancestors, $post->ID );
 		foreach ( $ancestors as $ancestor ) {
 			if( $ancestor != end( $ancestors ) ) {
-				$panListHtml .= '<li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="'. get_permalink($ancestor) .'" itemprop="url"><span itemprop="title">'. strip_tags( apply_filters( 'single_post_title', get_the_title( $ancestor ) ) ) .'</span></a></li>';
+				$panListHtml .= '<li'.$microdata_li.'><a'.$microdata_li_a.' href="'. get_permalink($ancestor) .'"><span'.$microdata_li_a_span.'>'. strip_tags( apply_filters( 'single_post_title', get_the_title( $ancestor ) ) ) .'</span></a></li>';
 			} else {
 				$panListHtml .= '<li><span>' . strip_tags( apply_filters( 'single_post_title', get_the_title( $ancestor ) ) ) . '</span></li>';
 			}
