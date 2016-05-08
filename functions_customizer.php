@@ -32,11 +32,22 @@ function lightning_customize_register($wp_customize) {
 	}
 
 	/*-------------------------------------------*/
+	/*	Lightning Panel
+	/*-------------------------------------------*/
+	// $wp_customize->add_panel( 'lightning_setting', array(
+	//    	'priority'       => 25,
+	//    	'capability'     => 'edit_theme_options',
+	//    	'theme_supports' => '',
+	//    	'title'          => __( 'Lightning settings', 'lightning' ),
+	// ));
+
+	/*-------------------------------------------*/
 	/*	Design setting
 	/*-------------------------------------------*/
 	$wp_customize->add_section( 'lightning_design', array(
-		'title'          => _x('Design settings', 'lightning theme-customizer', 'lightning'),
-		'priority'       => 500,
+		'title'				=> _x('Lightning Design settings', 'lightning theme-customizer', 'lightning'),
+		'priority'			=> 500,
+		// 'panel'				=> 'lightning_setting',
 	) );
 
 	// Add setting
@@ -133,8 +144,9 @@ function lightning_customize_register($wp_customize) {
 	/*	Top slide show
 	/*-------------------------------------------*/
 	$wp_customize->add_section( 'lightning_slide', array(
-		'title'          => _x('Home page slide show', 'lightning theme-customizer', 'lightning'),
-		'priority'       => 600,
+		'title'			=> _x('Lightning Home page slide show', 'lightning theme-customizer', 'lightning'),
+		'priority'		=> 600,
+		// 'panel'			=> 'lightning_setting',
 	) );
 
 	// slide image

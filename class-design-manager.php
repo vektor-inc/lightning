@@ -12,7 +12,7 @@ class Lightning_Design_Manager{
 		$wp_customize->add_section(
 			'lightning_design_skin',
 			array(
-				'title'       => __( 'Design_skin', 'lightning' ),
+				'title'       => __( 'Lightning Design skin', 'lightning' ),
 				'priority'    => 450
 			)
 		);
@@ -23,7 +23,6 @@ class Lightning_Design_Manager{
 			'capability'        => 'edit_theme_options',
 			'sanitize_callback' => array( __CLASS__, 'sanitize_design_skins' ),
 		) );
-
 
 		$skins = self::get_skins();
 		while(list($k,$v) = each($skins)){ $skins[$k] = isset( $v['name'] )? $v['name'] : $k ; }

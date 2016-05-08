@@ -1,40 +1,39 @@
 # Theme presentation (no text domain)
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: lightning v0.1.0\n"
-"POT-Creation-Date: 2016-04-26 14:29+0900\n"
+"POT-Creation-Date: 2016-05-08 19:11+0900\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Kurudrive <kurudrive@gmail.com>\n"
 "Language-Team: Vektor,Inc. <kurudrive@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.7\n"
+"X-Generator: Poedit 1.5.7\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_x\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ..\n"
 
 #: ../class-design-manager.php:15
-msgid "Design_skin"
+msgid "Lightning Design skin"
 msgstr ""
 
-#: ../class-design-manager.php:32
+#: ../class-design-manager.php:31
 msgid "Design skin"
 msgstr ""
 
-#: ../class-design-manager.php:35
+#: ../class-design-manager.php:34
 msgid "Please save Once you change the skin."
 msgstr ""
 
-#: ../class-design-manager.php:36
+#: ../class-design-manager.php:35
 msgid ""
 "If you reload after the saving, it will be displayed skin-specific "
 "configuration items."
 msgstr ""
 
-#: ../class-design-manager.php:37
+#: ../class-design-manager.php:36
 msgid ""
 "*There is also a case where there is no skin-specific installation item."
 msgstr ""
@@ -350,55 +349,55 @@ msgstr ""
 msgid "Footer widget area "
 msgstr ""
 
-#: ../functions_customizer.php:38
-msgid "Design settings"
+#: ../functions_customizer.php:48
+msgid "Lightning Design settings"
 msgstr ""
 
-#: ../functions_customizer.php:87
+#: ../functions_customizer.php:98
 msgid "Header logo image"
 msgstr ""
 
-#: ../functions_customizer.php:94
+#: ../functions_customizer.php:107
 msgid "Key color"
 msgstr ""
 
-#: ../functions_customizer.php:100
+#: ../functions_customizer.php:113
 msgid "Key color(dark)"
 msgstr ""
 
-#: ../functions_customizer.php:106
+#: ../functions_customizer.php:121
 msgid "Don't show sidebar on home page"
 msgstr ""
 
-#: ../functions_customizer.php:113
+#: ../functions_customizer.php:128
 msgid "Hide modified date on single pages."
 msgstr ""
 
-#: ../functions_customizer.php:120
+#: ../functions_customizer.php:135
 msgid "Don't display post author on a single page"
 msgstr ""
 
-#: ../functions_customizer.php:132
-msgid "Home page slide show"
+#: ../functions_customizer.php:147
+msgid "Lightning Home page slide show"
 msgstr ""
 
-#: ../functions_customizer.php:178
+#: ../functions_customizer.php:194
 msgid "Slide image title"
 msgstr ""
 
-#: ../functions_customizer.php:183
+#: ../functions_customizer.php:199
 msgid "This title text is print to alt tag."
 msgstr ""
 
-#: ../functions_customizer.php:188
+#: ../functions_customizer.php:204
 msgid "Slide image link url"
 msgstr ""
 
-#: ../functions_customizer.php:197
+#: ../functions_customizer.php:213
 msgid "Open in new window."
 msgstr ""
 
-#: ../functions_customizer.php:209
+#: ../functions_customizer.php:225
 msgid "Slide image"
 msgstr ""
 
@@ -407,11 +406,11 @@ msgstr ""
 msgid "Author: %s"
 msgstr ""
 
-#: ../functions_helpers.php:101 ../module_panList.php:126
+#: ../functions_helpers.php:101 ../module_panList.php:131
 msgid "Y"
 msgstr ""
 
-#: ../functions_helpers.php:103 ../module_panList.php:129
+#: ../functions_helpers.php:103 ../module_panList.php:134
 msgid "F Y"
 msgstr ""
 
@@ -443,31 +442,31 @@ msgstr ""
 msgid "Last updated"
 msgstr ""
 
-#: ../module_pageTit.php:39 ../module_panList.php:218
+#: ../module_pageTit.php:39 ../module_panList.php:223
 #, php-format
 msgid "Search Results for : %s"
 msgstr ""
 
-#: ../module_pageTit.php:41 ../module_panList.php:211
+#: ../module_pageTit.php:41 ../module_panList.php:216
 msgid "Not found"
 msgstr ""
 
-#: ../module_panList.php:126
+#: ../module_panList.php:131
 #, php-format
 msgid "Yearly Archives: %s"
 msgstr ""
 
-#: ../module_panList.php:129
+#: ../module_panList.php:134
 #, php-format
 msgid "Monthly Archives: %s"
 msgstr ""
 
-#: ../module_panList.php:131
+#: ../module_panList.php:136
 #, php-format
 msgid "Daily Archives: %s"
 msgstr ""
 
-#: ../module_panList.php:131
+#: ../module_panList.php:136
 msgid "F jS, Y"
 msgstr ""
 

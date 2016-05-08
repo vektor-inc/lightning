@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lightning v0.1.0\n"
 "Report-Msgid-Bugs-To: Translator Name <translations@example.com>\n"
-"POT-Creation-Date: 2016-04-26 14:30+0900\n"
+"POT-Creation-Date: 2016-05-08 19:13+0900\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Kurudrive <kurudrive@gmail.com>\n"
 "Language-Team: Vektor,Inc. <info@vektor-inc.co.jp>\n"
@@ -20,28 +20,28 @@ msgstr ""
 "esc_attr_e;esc_attr_x:1,2c;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;"
 "_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext:1,2;__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
 "X-Poedit-Basepath: .\n"
-"X-Generator: Poedit 1.8.7\n"
+"X-Generator: Poedit 1.5.7\n"
 "X-Poedit-SearchPath-0: ..\n"
 
 #: ../class-design-manager.php:15
-msgid "Design_skin"
-msgstr "デザインスキン"
+msgid "Lightning Design skin"
+msgstr "Lightning デザインスキン"
 
-#: ../class-design-manager.php:32
+#: ../class-design-manager.php:31
 msgid "Design skin"
 msgstr "デザインスキン"
 
-#: ../class-design-manager.php:35
+#: ../class-design-manager.php:34
 msgid "Please save Once you change the skin."
 msgstr "スキンを変更したら一度保存してください。"
 
-#: ../class-design-manager.php:36
+#: ../class-design-manager.php:35
 msgid ""
 "If you reload after the saving, it will be displayed skin-specific "
 "configuration items."
 msgstr "保存した後で再読み込みをすると、スキン固有の設定項目が表示されます。"
 
-#: ../class-design-manager.php:37
+#: ../class-design-manager.php:36
 msgid ""
 "*There is also a case where there is no skin-specific installation item."
 msgstr "※スキンによっては固有の設置項目がない場合もあります。"
@@ -478,7 +478,7 @@ msgstr "詳細を隠す"
 
 #: ../class-tgm-plugin-activation.php:3369
 msgid "All installations and activations have been completed."
-msgstr ""
+msgstr "全てのインストールと有効化に成功しました。"
 
 #: ../class-tgm-plugin-activation.php:3370
 #, php-format
@@ -573,66 +573,66 @@ msgstr "フッター上部"
 msgid "Footer widget area "
 msgstr "フッターウィジェットエリア"
 
-#: ../functions_customizer.php:38
+#: ../functions_customizer.php:48
 msgctxt "lightning theme-customizer"
-msgid "Design settings"
-msgstr "デザイン設定"
+msgid "Lightning Design settings"
+msgstr "Lightning デザイン設定"
 
-#: ../functions_customizer.php:87
+#: ../functions_customizer.php:98
 msgctxt "lightning theme-customizer"
 msgid "Header logo image"
 msgstr "ヘッダーロゴ画像"
 
-#: ../functions_customizer.php:94
+#: ../functions_customizer.php:107
 msgctxt "lightning theme-customizer"
 msgid "Key color"
 msgstr "キーカラー"
 
-#: ../functions_customizer.php:100
+#: ../functions_customizer.php:113
 msgctxt "lightning theme-customizer"
 msgid "Key color(dark)"
 msgstr "キーカラー（暗）"
 
-#: ../functions_customizer.php:106
+#: ../functions_customizer.php:121
 msgctxt "lightning theme-customizer"
 msgid "Don't show sidebar on home page"
 msgstr "トップページを1カラムにする"
 
-#: ../functions_customizer.php:113
+#: ../functions_customizer.php:128
 msgctxt "lightning theme-customizer"
 msgid "Hide modified date on single pages."
 msgstr "投稿詳細ページで最終更新日を表示しない"
 
-#: ../functions_customizer.php:120
+#: ../functions_customizer.php:135
 msgctxt "lightning theme-customizer"
 msgid "Don't display post author on a single page"
 msgstr "投稿詳細ページで投稿者名を表示しない"
 
-#: ../functions_customizer.php:132
+#: ../functions_customizer.php:147
 msgctxt "lightning theme-customizer"
-msgid "Home page slide show"
-msgstr "トップページスライドショー"
+msgid "Lightning Home page slide show"
+msgstr "Lightning トップページスライドショー"
 
-#: ../functions_customizer.php:178
+#: ../functions_customizer.php:194
 msgctxt "lightning theme-customizer"
 msgid "Slide image title"
 msgstr "スライド画像タイトル"
 
-#: ../functions_customizer.php:183
+#: ../functions_customizer.php:199
 msgid "This title text is print to alt tag."
 msgstr "このテキストはaltに反映されます。"
 
-#: ../functions_customizer.php:188
+#: ../functions_customizer.php:204
 msgctxt "lightning theme-customizer"
 msgid "Slide image link url"
 msgstr "スライド画像リンク先URL"
 
-#: ../functions_customizer.php:197
+#: ../functions_customizer.php:213
 msgctxt "lightning theme-customizer"
 msgid "Open in new window."
 msgstr "リンク先を別ウィンドウで開く"
 
-#: ../functions_customizer.php:209
+#: ../functions_customizer.php:225
 msgctxt "lightning theme-customizer"
 msgid "Slide image"
 msgstr "スライド画像"
@@ -642,12 +642,12 @@ msgstr "スライド画像"
 msgid "Author: %s"
 msgstr "投稿者: %s"
 
-#: ../functions_helpers.php:101 ../module_panList.php:126
+#: ../functions_helpers.php:101 ../module_panList.php:131
 msgctxt "yearly archives date format"
 msgid "Y"
 msgstr "Y年"
 
-#: ../functions_helpers.php:103 ../module_panList.php:129
+#: ../functions_helpers.php:103 ../module_panList.php:134
 msgctxt "monthly archives date format"
 msgid "F Y"
 msgstr "Y年n月"
@@ -700,31 +700,31 @@ msgstr "続きを読む"
 msgid "Last updated"
 msgstr "最終更新日"
 
-#: ../module_pageTit.php:39 ../module_panList.php:218
+#: ../module_pageTit.php:39 ../module_panList.php:223
 #, php-format
 msgid "Search Results for : %s"
 msgstr "\"%s\" の検索結果"
 
-#: ../module_pageTit.php:41 ../module_panList.php:211
+#: ../module_pageTit.php:41 ../module_panList.php:216
 msgid "Not found"
 msgstr "ページが見つかりません"
 
-#: ../module_panList.php:126
+#: ../module_panList.php:131
 #, php-format
 msgid "Yearly Archives: %s"
 msgstr "%s"
 
-#: ../module_panList.php:129
+#: ../module_panList.php:134
 #, php-format
 msgid "Monthly Archives: %s"
 msgstr "%s"
 
-#: ../module_panList.php:131
+#: ../module_panList.php:136
 #, php-format
 msgid "Daily Archives: %s"
 msgstr "%s"
 
-#: ../module_panList.php:131
+#: ../module_panList.php:136
 msgctxt "daily archives date format"
 msgid "F jS, Y"
 msgstr "Y年n月j日"
@@ -748,3 +748,6 @@ msgstr "<dl><dt>%s</dt><dd>%l</dd></dl>"
 #: ../single.php:62
 msgid "Tags"
 msgstr "タグ"
+
+#~ msgid "Design_skin"
+#~ msgstr "デザインスキン"
