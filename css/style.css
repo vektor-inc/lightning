@@ -2918,6 +2918,7 @@ footer .copySection p { font-size: 12px; margin-bottom: 5px; }
   footer .footerMenu li { float: none; border-bottom: 1px solid #e5e5e5; display: block; overflow: hidden; }
   footer .footerMenu li:last-child { border-bottom: none; } }
 @media (min-width: 768px) { footer .footerMenu ul { margin: 10px 0; }
+  footer .footerMenu li { float: left; }
   footer .footerMenu li a { border-left: 1px solid #ccc; padding-top: 4px; padding-bottom: 4px; }
   footer .footerMenu li:last-child a { border-right: 1px solid #ccc; } }
 /*-------------------------------------------*/

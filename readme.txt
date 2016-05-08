@@ -32,6 +32,10 @@ http://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v0.3.0
+* [ Specification change ] Update font-awesome to 4.6.1
+* [ Bug fix ] js bug fix
+
 v0.2.5
 * [ Specification change ] Separating sidebar code to sidebar.php
 

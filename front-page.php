@@ -2,6 +2,7 @@
 
 <?php get_template_part('module_slide'); ?>
 
+
 <div class="section siteContent">
     <div class="container">
         <div class="row">

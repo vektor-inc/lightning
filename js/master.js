@@ -1,3 +1,4 @@
+;(function($){
 jQuery(function(){
 	offset_header();
 	youtube_responsive();
@@ -46,6 +47,7 @@ function offset_header(){
 /*	Header height changer
 /*-------------------------------------------*/
 jQuery(document).ready(function(){
+    if(!$('body').hasClass('headfix')){ return; }
 	var head_logo_image_defaultHeight = jQuery('.navbar-brand img').height();
 	var bodyWidth = jQuery(window).width();
 	// When missed the get height
@@ -55,7 +57,7 @@ jQuery(document).ready(function(){
 		} else {
 			head_logo_image_defaultHeight = 40;
 		}
-	} 
+	}
 	// Scroll function
 	jQuery(window).scroll(function () {
 		var bodyWidth = jQuery(window).width();
@@ -138,3 +140,5 @@ jQuery(document).ready(function(){
 // 	jQuery('.navbar-collapse ul.sub-menu').parent().append('<i class="fa fa-home dropdown-toggle" data-doggle="dropdown"></i>');
 // 	jQuery('.navbar-collapse ul.sub-menu').addClass('dropdown-menu');
 // }
+
+})(jQuery);
