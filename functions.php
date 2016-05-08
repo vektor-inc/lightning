@@ -117,11 +117,6 @@ require( get_template_directory() . '/functions_helpers.php' );
 require( get_template_directory() . '/functions_plugin_install.php' );
 
 /*-------------------------------------------*/
-/*	Load designskin manager
-/*-------------------------------------------*/
-require( get_template_directory() . '/class-design-manager.php' );
-
-/*-------------------------------------------*/
 /*	WidgetArea initiate
 /*-------------------------------------------*/
 function lightning_widgets_init() {
