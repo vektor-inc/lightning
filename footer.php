@@ -16,7 +16,7 @@
             <?php wp_nav_menu( array(
                 'theme_location'    => 'Footer',
                 'container'         => 'nav',
-                'items_wrap'        => '<ul id="%1$s" class="%2$s nav nav-pills">%3$s</ul>',
+                'items_wrap'        => '<ul id="%1$s" class="%2$s nav">%3$s</ul>',
                 'fallback_cb'       => '',
                 'depth'             => 1
             ) ); ?>
