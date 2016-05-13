@@ -9,13 +9,13 @@ class Lightning_Design_Manager{
 	}
 
 	static function customize_register( $wp_customize ){
-		$wp_customize->add_section(
-			'lightning_design_skin',
-			array(
-				'title'       => __( 'Lightning Design skin', 'lightning' ),
-				'priority'    => 450
-			)
-		);
+		// $wp_customize->add_section(
+		// 	'lightning_design_skin',
+		// 	array(
+		// 		'title'       => __( 'Lightning Design skin', 'lightning' ),
+		// 		'priority'    => 450
+		// 	)
+		// );
 
 		$wp_customize->add_setting( 'lightning_design_skin', array(
 			'origin'            => 'origin',
@@ -29,7 +29,7 @@ class Lightning_Design_Manager{
 
 		$wp_customize->add_control( 'lightning_design_skin', array(
 			'label'		=> __( 'Design skin' , 'lightning' ),
-			'section'	=> 'lightning_design_skin',
+			'section'	=> 'lightning_design',
 			'settings'  => 'lightning_design_skin',
 			'description' => __( 'Please save Once you change the skin.', 'lightning' ) . '<br/>' .
 				__( 'If you reload after the saving, it will be displayed skin-specific configuration items.', 'lightning') . '<br/> '.
