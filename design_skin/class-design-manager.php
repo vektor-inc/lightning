@@ -90,15 +90,15 @@ if ( Lightning_Design_Manager::get_current_skin() == 'origin' )
 	require( get_template_directory() . '/design_skin/origin/origin.php' );
 
 
-// add_filter( 'lightning_Design_skins', 'lightning_Register_skin' );
-// function lightning_Register_skin( $array ){
-// 	$array['test'] = array(
-// 		'name'     => 'テストスキン',
-// 		'callback' => 'callback_function',
-// 		'disable_css' => false,
-// 		'customizer' => 'customizer_function'
-// 	);
-// 	return $array;
+// add_filter( 'lightning_design_skins', 'lightning_register_skin' );
+// function lightning_register_skin( $array ){
+//  $array['sample'] = array(
+// 	 'name'     => 'Sample Skin',                            // Skin Name
+// 	 'callback' => 'lightning_skin_current_function_sample', // Require skins function name
+// 	 'disable_css' => true,                                  // kill default design(origin) style
+// 	 // 'customizer' => 'customizer_function_sample'
+//  );
+//  return $array;
 // }
 
 // function callback_function(){
@@ -106,13 +106,13 @@ if ( Lightning_Design_Manager::get_current_skin() == 'origin' )
 // }
 
 // function customizer_function( $wp_customize ){
-// 		$wp_customize->add_setting( 'lightning_design_test_sumple', array(
+// 		$wp_customize->add_setting( 'lightning_design_test_sample', array(
 // 			'origin'            => null,
 // 			'type'              => 'option',
 // 			'capability'        => 'edit_theme_options',
 // 		) );
 
-// 		$wp_customize->add_control('lightning_design_test_sumple',array(
+// 		$wp_customize->add_control('lightning_design_test_sample',array(
 // 			'label' => 'its test button',
 // 			'section' => 'lightning_design_skin',
 // 			'description' => 'test checkbox',
