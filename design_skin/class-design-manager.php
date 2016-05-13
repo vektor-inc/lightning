@@ -18,7 +18,7 @@ class Lightning_Design_Manager{
 		);
 
 		$wp_customize->add_setting( 'lightning_design_skin', array(
-			'default'           => 'default',
+			'origin'            => 'origin',
 			'type'              => 'option',
 			'capability'        => 'edit_theme_options',
 			'sanitize_callback' => array( __CLASS__, 'sanitize_design_skins' ),
@@ -39,20 +39,20 @@ class Lightning_Design_Manager{
 			'choices'   => $skins,
 		));
 
-		if ( self::get_current_skin() != 'default' ) self::set_customizer_callback( $wp_customize );
+		if ( self::get_current_skin() != 'origin' ) self::set_customizer_callback( $wp_customize );
 	}
 
 	static function get_skins(){
 		$ex_skins = apply_filters( 'lightning_design_skins', array() );
 		ksort( $ex_skins );
-		$skins['default'] = array( 'name' => 'Lightning Origin' );
+		$skins['origin'] = array( 'name' => 'Lightning Origin' );
 		return $skins + $ex_skins;
 	}
 
 	static function get_current_skin(){
 		$current_skin = get_option( 'lightning_design_skin' );
 		if ( in_array( $current_skin, array_keys( self::get_skins() ) ) ) return $current_skin;
-		return 'default';
+		return 'origin';
 	}
 
 	///
@@ -104,7 +104,7 @@ Lightning_Design_Manager::init();
 
 // function customizer_function( $wp_customize ){
 // 		$wp_customize->add_setting( 'lightning_design_test_sumple', array(
-// 			'default'           => null,
+// 			'origin'            => null,
 // 			'type'              => 'option',
 // 			'capability'        => 'edit_theme_options',
 // 		) );
