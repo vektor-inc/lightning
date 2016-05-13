@@ -26,6 +26,8 @@ gulp.task( 'copy', function() {
     gulp.src( './library/bootstrap/css/bootstrap.min.css'  )
     .pipe(rename({prefix: "_",extname: ".scss"})) // 拡張子をscssに
     .pipe( gulp.dest( './design_skin/origin/_scss/' ) ); // _scss ディレクトリに保存
+    gulp.src( './library/bootstrap/fonts/**'  )
+    .pipe( gulp.dest( './design_skin/origin/fonts/' ) ); // _scss ディレクトリに保存
 } );
 
 // ファイル結合
@@ -71,4 +73,4 @@ gulp.task('watch', function() {
 });
 
 // gulp.task('default', ['scripts','watch','sprite']);
-gulp.task('default', ['scripts','jsmin','watch']);
+gulp.task('default', ['copy','scripts','jsmin','watch']);
