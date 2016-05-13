@@ -32,6 +32,9 @@ http://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v1.0.1
+* [ Bug fix ] Editor style error
+
 v1.0.0
 * [ Add function ] Add design skin manager
 
