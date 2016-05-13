@@ -122,21 +122,21 @@ function lightning_customize_register($wp_customize) {
 		'section'	=> 'lightning_design',
 		'settings'  => 'lightning_theme_options[top_sidebar_hidden]',
 		'type'		=> 'checkbox',
-		'priority'	=> 504, 
+		'priority'	=> 504,
 	));
 	$wp_customize->add_control( 'lightning_theme_options[postUpdate_hidden]', array(
 		'label'		=> _x( 'Hide modified date on single pages.' ,'lightning theme-customizer', 'lightning' ),
 		'section'	=> 'lightning_design',
 		'settings'  => 'lightning_theme_options[postUpdate_hidden]',
 		'type'		=> 'checkbox',
-		'priority'	=> 505, 
+		'priority'	=> 505,
 	));
 	$wp_customize->add_control( 'lightning_theme_options[postAuthor_hidden]', array(
 		'label'		=> _x( 'Don\'t display post author on a single page' ,'lightning theme-customizer', 'lightning' ),
 		'section'	=> 'lightning_design',
 		'settings'  => 'lightning_theme_options[postAuthor_hidden]',
 		'type'		=> 'checkbox',
-		'priority'	=> 506, 
+		'priority'	=> 506,
 	));
 
 
@@ -238,8 +238,8 @@ function lightning_customize_register($wp_customize) {
 /*	Lightning custom color Print head
 /*	* This is used for Contents and Plugins and others
 /*-------------------------------------------*/
-add_action( 'wp_head', 'lightning_output_keycolorcss', 5);
-function lightning_output_keycolorcss(){
+add_action( 'wp_head', 'lightning_output_keyColorCss', 5);
+function lightning_output_keyColorCss(){
 	$options = get_option('lightning_theme_options');
 	$corlors_default = array(
 		'color_key'       => isset($options['color_key'])? $options['color_key']: '#337ab7',
@@ -261,8 +261,8 @@ function lightning_output_keycolorcss(){
 /*-------------------------------------------*/
 /*	Print head
 /*-------------------------------------------*/
-add_action( 'wp_head','lightning_print_css', 150);
-function lightning_print_css(){
+add_action( 'wp_head','lightning_print_css_common', 150);
+function lightning_print_css_common(){
 	$options = get_option('lightning_theme_options');
 	if ( isset($options['color_key']) && isset($options['color_key_dark']) ) {
 	$color_key = esc_html($options['color_key']);
@@ -274,33 +274,12 @@ function lightning_print_css(){
 .veu_color_border_key { border-color:<?php echo $color_key_dark;?> ; }
 a { color:<?php echo $color_key_dark;?> ; }
 a:hover { color:<?php echo $color_key;?> ; }
-.siteHeader_logo.navbar-brand a:hover,
-h1.entry-title:first-letter,
-.single h1.entry-title:first-letter { color:<?php echo $color_key;?>; }
-h2,
-.mainSection-title { border-top-color:<?php echo $color_key;?>}
-h3:after,
-.subSection-title:after { border-bottom-color:<?php echo $color_key; ?>; }
+.siteHeader_logo.navbar-brand a:hover { color:<?php echo $color_key;?>; }
 ul.gMenu a:hover { color:<?php echo $color_key;?>; }
-.page-header { background-color:<?php echo $color_key;?>; }
 .btn-default { border-color:<?php echo $color_key;?>;color:<?php echo $color_key;?>;}
 .btn-default:hover { border-color:<?php echo $color_key;?>;background-color: <?php echo $color_key;?>; }
 .btn-primary { background-color:<?php echo $color_key;?>;border-color:<?php echo $color_key_dark;?>; }
 .btn-primary:hover { background-color:<?php echo $color_key_dark;?>;border-color:<?php echo $color_key;?>; }
-.media .media-body .media-heading a:hover { color:<?php echo $color_key; ?>; }
-ul.page-numbers li span.page-numbers.current { background-color:<?php echo $color_key;?>; }
-.pager li > a { border-color:<?php echo $color_key;?>;color:<?php echo $color_key;?>;}
-.pager li > a:hover { background-color:<?php echo $color_key;?>;color:#fff;}
-footer { border-top-color:<?php echo $color_key	;?> }
-@media (min-width: 768px){
-  ul.gMenu > li > a:hover:after,
-  ul.gMenu > li.current-post-ancestor > a:after,
-  ul.gMenu > li.current-menu-item > a:after,
-  ul.gMenu > li.current-menu-parent > a:after,
-  ul.gMenu > li.current-menu-ancestor > a:after,
-  ul.gMenu > li.current_page_parent > a:after,
-  ul.gMenu > li.current_page_ancestor > a:after { border-bottom-color: <?php echo $color_key ;?> }
-} /* @media (min-width: 768px) */
 </style>
 <?php } // if ( isset($options['color_key'] && isset($options['color_key_dark'] ) {
 }

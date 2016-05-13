@@ -1,36 +1,36 @@
 <?php
-/*
-Plugin Name: Lightning Skin Sample
-Plugin URI: http://lightning.vektor-inc.co.jp
-Description:
-Version: 1.0.0
-Author: Vektor,Inc.
-Author URI: http://vektor-inc.co.jp
-License: GPL2
-Domain Path: /languages
-*/
-/*
-Copyright 2015 Vektor,Inc. ( email : info@vektor-inc.co.jp )
-
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License, version 2, as
-published by the Free Software Foundation.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-*/
-load_plugin_textdomain( 'lightning_skin_sample', false, dirname( plugin_basename( __FILE__ ) ). '/languages' );
-
-add_action('init', 'ltg_sk_sample_delete_default_css');
-function ltg_sk_sample_delete_default_css(){
-    // remove default design
-    remove_action( 'wp_enqueue_scripts', 'lightning_design_css' );
-    // add new design
-    wp_enqueue_style( 'lightning-sample-style', plugins_url( '/css/style.css', __FILE__ ), array(), '20150918a' );
+/*-------------------------------------------*/
+/*	Print head
+/*-------------------------------------------*/
+add_action( 'wp_head','lightning_print_css_origin', 160);
+function lightning_print_css_origin(){
+	$options = get_option('lightning_theme_options');
+	if ( isset($options['color_key']) && isset($options['color_key_dark']) ) {
+	$color_key = esc_html($options['color_key']);
+	$color_key_dark = esc_html($options['color_key_dark']);
+	?>
+<style type="text/css">
+.page-header { background-color:<?php echo $color_key;?>; }
+h1.entry-title:first-letter,
+.single h1.entry-title:first-letter { color:<?php echo $color_key;?>; }
+h2,
+.mainSection-title { border-top-color:<?php echo $color_key;?> }
+h3:after,
+.subSection-title:after { border-bottom-color:<?php echo $color_key; ?>; }
+.media .media-body .media-heading a:hover { color:<?php echo $color_key; ?>; }
+ul.page-numbers li span.page-numbers.current { background-color:<?php echo $color_key;?>; }
+.pager li > a { border-color:<?php echo $color_key;?>;color:<?php echo $color_key;?>;}
+.pager li > a:hover { background-color:<?php echo $color_key;?>;color:#fff;}
+footer { border-top-color:<?php echo $color_key	;?> }
+@media (min-width: 768px){
+  ul.gMenu > li > a:hover:after,
+  ul.gMenu > li.current-post-ancestor > a:after,
+  ul.gMenu > li.current-menu-item > a:after,
+  ul.gMenu > li.current-menu-parent > a:after,
+  ul.gMenu > li.current-menu-ancestor > a:after,
+  ul.gMenu > li.current_page_parent > a:after,
+  ul.gMenu > li.current_page_ancestor > a:after { border-bottom-color: <?php echo $color_key ;?> }
+} /* @media (min-width: 768px) */
+</style>
+<?php } // if ( isset($options['color_key'] && isset($options['color_key_dark'] ) {
 }
