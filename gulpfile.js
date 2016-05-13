@@ -23,14 +23,14 @@ var spritesmith = require('gulp.spritesmith');
 // });
 
 gulp.task( 'copy', function() {
-    gulp.src( './bootstrap/css/bootstrap.min.css'  )
+    gulp.src( './library/bootstrap/css/bootstrap.min.css'  )
     .pipe(rename({prefix: "_",extname: ".scss"})) // 拡張子をscssに
-    .pipe( gulp.dest( './_scss/' ) ); // _scss ディレクトリに保存
+    .pipe( gulp.dest( './design_skin/origin/_scss/' ) ); // _scss ディレクトリに保存
 } );
 
 // ファイル結合
 gulp.task('scripts', function() {
-  return gulp.src(['./bootstrap/js/bootstrap.min.js','./js/master.js'])
+  return gulp.src(['./library/bootstrap/js/bootstrap.min.js','./js/master.js'])
     .pipe(concat('all.js'))
     .pipe(gulp.dest('./js/'));
 });
@@ -47,7 +47,7 @@ gulp.task('jsmin', function () {
 // // 画像のCSSスプライト
 // gulp.task('sprite', function () {
 //   //スプライトにする愉快な画像達
-//   var spriteData = gulp.src('./images/_sprite/*.png') 
+//   var spriteData = gulp.src('./images/_sprite/*.png')
 //   .pipe(spritesmith({
 //     imgName: 'sprite.png', //スプライトの画像
 //     cssName: '_sprite.scss', //生成されるscss

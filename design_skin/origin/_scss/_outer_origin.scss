@@ -1,0 +1,33 @@
+@charset "utf-8";
+@import "compass";
+
+@media (min-width: 768px){
+ul.gMenu { 
+  a:hover,
+  a:active { background-color:#fff;color: $color_key; }
+  & >li { 
+    & > a { border-bottom:none; }
+  }
+  & > li > a:hover:after,
+  & > li.current-post-ancestor > a:after,
+  & > li.current-menu-item > a:after,
+  & > li.current-menu-parent > a:after,
+  & > li.current-menu-ancestor > a:after,
+  & > li.current_page_parent > a:after,
+  & > li.current_page_ancestor > a:after { content:".";line-height:0;border-bottom:1px solid $color_key; bottom:0px;display:block; overflow:hidden;position: absolute;width:100%;left:0; }
+} // ul.gMenu
+// sub-menu
+ul.gMenu > li > ul.sub-menu li a:hover { background-color: #f5f5f5; }
+} // @media (min-width: 768px){
+
+/*-------------------------------------------*/
+/* .page-header 
+/*-------------------------------------------*/
+.page-header { background-color: $color_key; }
+.page-header_pageTitle,
+h1.page-header_pageTitle:first-child { color: #fff; }
+
+/*-------------------------------------------*/
+/* footer
+/*-------------------------------------------*/
+footer { border-top:3px solid #337ab7; }
