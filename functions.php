@@ -56,6 +56,16 @@ function lightning_theme_setup() {
 	/*-------------------------------------------*/
 	if ( ! isset( $content_width ) ) $content_width = 750;
 
+	/*-------------------------------------------*/
+	/*	Admin page _ Add editor css
+	/*-------------------------------------------*/
+	add_editor_style('//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.1/css/font-awesome.min.css');
+	if( ! apply_filters('lightning-disable-theme_style', false) )
+		add_editor_style('/css/editor.css');
+
+	/*-------------------------------------------*/
+	/*	Feed Links
+	/*-------------------------------------------*/
 	add_theme_support( 'automatic-feed-links' );
 }
 
@@ -94,14 +104,6 @@ function lightning_design_css(){
 	if( ! apply_filters('lightning-disable-theme_style', false) )
 		wp_enqueue_style( 'lightning-design-style', get_template_directory_uri().'/design_skin/origin/css/style.css', array(), LIGHTNING_THEME_VERSION );
 }
-
-/*-------------------------------------------*/
-/*	Admin page _ Add editor css
-/*-------------------------------------------*/
-add_editor_style('/css/editor.css');
-add_editor_style('//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.1/css/font-awesome.min.css');
-
-
 
 /*-------------------------------------------*/
 /*	Load Theme customizer
