@@ -1,7 +1,8 @@
-﻿@charset "utf-8";
+@charset "utf-8";
 @import "compass";
 @import "bootstrap.min";
 @import "common";
+@import "common_origin";
 
 $color_key : #337ab7;
 .row { border:1px dashed #ccc;margin:0 2px; }
