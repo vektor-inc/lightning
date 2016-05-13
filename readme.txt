@@ -32,6 +32,9 @@ http://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v1.0.0
+* [ Add function ] Add design skin manager
+
 v0.3.0
 * [ Specification change ] Update font-awesome to 4.6.1
 * [ Bug fix ] js bug fix
