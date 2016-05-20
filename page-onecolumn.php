@@ -11,7 +11,7 @@ get_header(); ?>
 <div class="container">
 <div class="row">
 
-<main class="col-md-12 mainSection" id="main" role="main">
+<div class="col-md-12 mainSection" id="main" role="main">
 
     <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 
@@ -32,7 +32,7 @@ get_header(); ?>
 
 	<?php endwhile; ?>
 
-</main><!-- [ /.mainSection ] -->
+</div><!-- [ /.mainSection ] -->
 
 </div><!-- [ /.row ] -->
 </div><!-- [ /.container ] -->

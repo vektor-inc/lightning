@@ -7,7 +7,7 @@
 <div class="container">
 <div class="row">
 
-<main class="col-md-8 mainSection" id="main" role="main">
+<div class="col-md-8 mainSection" id="main" role="main">
 
  <?php
 /*-------------------------------------------*/
@@ -76,7 +76,7 @@ if ( $page_for_posts['post_top_use'] || get_post_type() != 'post' ) {
 
 <?php do_action('lightning_loop_after'); ?>
 
-</main><!-- [ /.mainSection ] -->
+</div><!-- [ /.mainSection ] -->
 
 <div class="col-md-3 col-md-offset-1 subSection">
 <?php get_sidebar(get_post_type()); ?>

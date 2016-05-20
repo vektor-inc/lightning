@@ -7,7 +7,7 @@
 <div class="container">
 <div class="row">
 
-<main class="col-md-8 mainSection" id="main" role="main">
+<div class="col-md-8 mainSection" id="main" role="main">
 
 <?php
 if( apply_filters( 'is_lightning_extend_single' , false ) ):
@@ -79,7 +79,7 @@ endif;
   </ul>
 </nav>
 
-</main><!-- [ /.mainSection ] -->
+</div><!-- [ /.mainSection ] -->
 
 <div class="col-md-3 col-md-offset-1 subSection">
 <?php get_sidebar(get_post_type()); ?>
