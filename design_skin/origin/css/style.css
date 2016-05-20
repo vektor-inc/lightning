@@ -2771,12 +2771,11 @@ ul.gMenu ul li li li li a { padding-left: 5em; }
 /*-------------------------------------------*/
 /* .siteContent
 /*-------------------------------------------*/
-.siteContent { padding: 3em 0 4em; }
+.siteContent { padding: 3em 0 3em; }
 
 @media (max-width: 767px) { .siteContent { padding: 2em 0 3em; } }
 /*      .mainSection
 /*-------------------------------------------*/
-.mainSection { padding-bottom: 3em; }
 .mainSection header { position: relative; border-bottom: 1px solid #e5e5e5; }
 .mainSection header h1 { margin-top: 0; }
 .mainSection .postList { margin-bottom: 1.5em; }
