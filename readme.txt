@@ -32,6 +32,10 @@ http://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v1.1.0
+* [ Design tuning ] delete .mainSection padding bottom.
+* [ Specification change ] main tag -> div tag
+
 v1.0.1
 * [ Bug fix ] Editor style error
 
