@@ -1,5 +1,5 @@
 <?php if ( is_active_sidebar( 'footer-upper-widget-1' ) ) : ?>
-<div class="section sectionBox shopBox">
+<div class="section sectionBox siteContent_after">
     <div class="container ">
         <div class="row ">
             <div class="col-md-12 ">

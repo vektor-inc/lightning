@@ -9,7 +9,7 @@
 
             <?php
             $lightning_theme_options = get_option('lightning_theme_options');
-            if ( 
+            if (
                 isset($lightning_theme_options['top_sidebar_hidden']) &&
                 $lightning_theme_options['top_sidebar_hidden'] ){
                 $main_col = 'col-md-12';
@@ -17,7 +17,7 @@
                 $main_col = 'col-md-8';
             } ?>
 
-            <main class="<?php echo $main_col; ?> mainSection">
+            <div class="<?php echo $main_col; ?> mainSection">
 
             <?php if ( is_active_sidebar( 'home-content-top-widget-area' ) ) : ?>
                 <?php dynamic_sidebar( 'home-content-top-widget-area' ); ?>
@@ -66,7 +66,7 @@
 
             <?php endif; // have_post() ?>
 
-            </main><!-- [ /.mainSection ] -->
+            </div><!-- [ /.mainSection ] -->
 
             <?php if ( !isset($lightning_theme_options['top_sidebar_hidden']) || !$lightning_theme_options['top_sidebar_hidden'] ) :?>
 

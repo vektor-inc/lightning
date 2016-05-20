@@ -156,13 +156,13 @@ h1.page-header_pageTitle:first-child { margin:15px 0 10px;font-size:22px;line-he
 /*-------------------------------------------*/
 /* .siteContent
 /*-------------------------------------------*/
-.siteContent { padding:3em 0 4em; }
+.siteContent { padding:3em 0 3em; }
 @media (max-width: 767px){
   .siteContent { padding:2em 0 3em; }
 }
 /*      .mainSection
 /*-------------------------------------------*/
-.mainSection { padding-bottom:3em;
+.mainSection {
   header { position: relative;border-bottom:$border_primary; }
   header h1 { margin-top:0; }
   .postList { margin-bottom:1.5em; }
