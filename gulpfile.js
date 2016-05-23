@@ -35,40 +35,31 @@ gulp.task('scripts', function() {
   return gulp.src(['./library/bootstrap/js/bootstrap.min.js','./js/master.js'])
     .pipe(concat('all.js'))
     .pipe(gulp.dest('./js/'));
+
+});
+gulp.task('scripts_header_fixed', function() {
+  return gulp.src(['./library/bootstrap/js/bootstrap.min.js','./js/master.js','./js/header_fixed.js'])
+    .pipe(concat('all_in_header_fixed.js'))
+    .pipe(gulp.dest('./js/'));
 });
 
 // js最小化
 gulp.task('jsmin', function () {
-  gulp.src('./js/all.js')
+  gulp.src(['./js/all.js','./js/all_in_header_fixed.js'])
   .pipe(plumber()) // エラーでも監視を続行
   .pipe(jsmin())
   .pipe(rename({suffix: '.min'}))
   .pipe(gulp.dest('./js'));
 });
 
-// // 画像のCSSスプライト
-// gulp.task('sprite', function () {
-//   //スプライトにする愉快な画像達
-//   var spriteData = gulp.src('./images/_sprite/*.png')
-//   .pipe(spritesmith({
-//     imgName: 'sprite.png', //スプライトの画像
-//     cssName: '_sprite.scss', //生成されるscss
-//     imgPath: '../images/sprite.png', //生成されるscssに記載されるパス
-//     cssFormat: 'scss', //フォーマット
-//     cssVarMap: function (sprite) {
-//       sprite.name = 'sprite-' + sprite.name; //VarMap(生成されるScssにいろいろな変数の一覧を生成)
-//     }
-//   }));
-//   spriteData.img.pipe(gulp.dest('./images/')); //imgNameで指定したスプライト画像の保存先
-//   spriteData.css.pipe(gulp.dest('./_scss/')); //cssNameで指定したcssの保存先
-// });
-
 // Watch
 gulp.task('watch', function() {
     // gulp.watch('css/*.css', ['cssmin'])
     // gulp.watch('js/*.js', ['scripts']);
-    gulp.watch('js/master.js', ['scripts']);
+    gulp.watch('js/master.js', ['scripts','scripts_header_fixed']);
+    gulp.watch('js/header_fixed.js', ['scripts','scripts_header_fixed']);
     gulp.watch('js/all.js', ['jsmin']);
+    gulp.watch('js/all_in_header_fixed.js', ['jsmin']);
     gulp.watch('_scss/style.scss', ['copy']);
 });
 
