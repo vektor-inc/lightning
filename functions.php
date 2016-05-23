@@ -79,7 +79,7 @@ function lightning_addJs() {
 	wp_script_add_data( 'html5shiv', 'conditional', 'lt IE 9' );
 	wp_enqueue_script( 'respond', '//oss.maxcdn.com/respond/1.4.2/respond.min.js' );
 	wp_script_add_data( 'respond', 'conditional', 'lt IE 9' );
-	wp_enqueue_script( 'lightning-js', get_template_directory_uri().'/js/all.min.js', array( 'jquery' ), LIGHTNING_THEME_VERSION );
+	wp_enqueue_script( 'lightning-js', get_template_directory_uri().'/js/all_in_header_fixed.min.js', array( 'jquery' ), LIGHTNING_THEME_VERSION );
 }
 
 add_action( 'wp_enqueue_scripts', 'lightning_commentJs' );

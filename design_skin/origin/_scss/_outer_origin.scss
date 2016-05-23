@@ -1,11 +1,13 @@
 @charset "utf-8";
 @import "compass";
 
+.siteHeader { width:100%;z-index:1000;top:0;}
+
 @media (min-width: 768px){
-ul.gMenu { 
+ul.gMenu {
   a:hover,
   a:active { background-color:#fff;color: $color_key; }
-  & >li { 
+  & >li {
     & > a { border-bottom:none; }
   }
   & > li > a:hover:after,
@@ -21,7 +23,7 @@ ul.gMenu > li > ul.sub-menu li a:hover { background-color: #f5f5f5; }
 } // @media (min-width: 768px){
 
 /*-------------------------------------------*/
-/* .page-header 
+/* .page-header
 /*-------------------------------------------*/
 .page-header { background-color: $color_key; }
 .page-header_pageTitle,
