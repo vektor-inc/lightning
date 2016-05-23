@@ -32,6 +32,9 @@ http://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v1.2.0
+* [ Specification change ] Changes easier to release the header.
+
 v1.1.0
 * [ Design tuning ] delete .mainSection padding bottom.
 * [ Specification change ] main tag -> div tag
