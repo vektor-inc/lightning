@@ -14,7 +14,7 @@ jQuery(window).resize(function(){
 /*----------------------------------------------------------*/
 function offset_header(){
 	var headerHeight = jQuery('header.siteHeader').height();
-	jQuery('body').css("padding-top",headerHeight+"px");
+	jQuery('#wrap').css("padding-top",headerHeight+"px");
 	if ( jQuery('body').hasClass('admin-bar') ){
 		// Get adminbar height
 		var adminBarHeight = jQuery('#wpadminbar').height();

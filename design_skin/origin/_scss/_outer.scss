@@ -2,13 +2,15 @@
 @import "compass";
 
 /****************************************************************/
-/* Lightning Outer Area All Skin common style
+/* Lightning Outer Area All Skin outer style
 /****************************************************************/
 
 $border_primary : 1px solid #e5e5e5;
 $color_font_default : #464646;
 $color_key : #337ab7;
 
+/*-------------------------------------------*/
+/* .navSection
 /*-------------------------------------------*/
 /* .siteHeader
 /*-------------------------------------------*/
@@ -56,6 +58,26 @@ $color_key : #337ab7;
 input.form-control { margin-bottom:3px; }
 input.form-control.input_widthAuto { width: auto; }
 
+body { overflow-x:hidden;}
+#wrap { z-index: auto; }
+
+/*-------------------------------------------*/
+/* .navSection
+/*-------------------------------------------*/
+@media (max-width: 767px){
+  .menuBtn { position: fixed; z-index: 2000;margin:10px;
+    &.btn-default { border-color: #999;color:#999; }
+    &.btn-default:hover { border-color: #fff;color:#fff; }
+  }
+  .navSection { overflow:scroll; display: none;position: fixed;height:100%;border-right:$border_primary;
+    .searchform { margin:10px 10px 10px 4em; }
+  }
+} // @media (max-width: 767px){
+@media (min-width: 768px){
+  .menuBtn,
+  .navSection,
+  .searchform { display: none; }
+}
 
 /*-------------------------------------------*/
 /* .siteHeader
@@ -69,13 +91,12 @@ If set padding to header that js can't correct height. */
   a:hover { text-decoration: none; color:$color_key; }
   img { max-height: 40px; }
 }
-.navbar-toggle { border:1px solid #999;
-  .icon-bar { border:1px solid #666; }
-}
 
-.siteHeader_logo.navbar-brand { padding:0 15px; }
+@media (max-width: 767px){
+  .siteHeader_logo.navbar-brand { float:inherit; text-align: center;padding:0 40px; }
+}
 @media (min-width: 768px){
-.siteHeader_logo.navbar-brand { text-align: center; }
+
 } // @media (min-width: 768px){
 @media (min-width: 992px) {
 .siteHeader .container { padding-top:20px;padding-bottom:18px; }
@@ -93,7 +114,7 @@ nav { font-size:14px;
 ul.gMenu {
   a { display:block; overflow:hidden;border-bottom:$border_primary;color:#666;text-decoration: none; }
   a:hover { color:$color_key; }
-  ul { padding-left:0;width:auto;display: block;
+  ul { padding-left:0;width:auto;display: block;margin-bottom:0;
     li {
         a { display:block; overflow:hidden;padding: 10px 1em 10px 2em;width:auto; }
         li a { padding-left:3em; }
@@ -106,8 +127,11 @@ ul.gMenu {
 .gMenu_name { font-weight: normal;color:$color_font_default; }
 .gMenu_description { display:block; overflow:hidden;font-size:10px; line-height: 14px; }
 
-
 @media (max-width: 767px){
+  .gMenu_outer { overflow:hidden;display: none; }
+  .gMenu_outer.itemOpen { display: block; }
+  .gMenu_outer.itemClose { display: none; }
+  .gMenu_description { display: none; }
   ul.gMenu { border-top:1px solid #e5e5e5;margin-bottom:0;
     a:hover,
     a:active,
@@ -115,10 +139,12 @@ ul.gMenu {
   }
 }
 @media (min-width: 768px){
+.gMenu_outer.itemOpen,
+.gMenu_outer.itemClose { display: block; }
 .gMenu_name { text-align: center;display: block; }
 .gMenu_description { text-align: center; }
 ul.gMenu { float: right;
-  & >li { position: relative;
+  & >li { position: relative;float:left;
     & > a { border-bottom:none; }
   }
 } // ul.gMenu
@@ -430,7 +456,5 @@ p.no-comments { background-color: #f3f3f3;border:1px solid #e5e5e5; text-align: 
 /*-------------------------------------------*/
 /* search
 /*-------------------------------------------*/
-// @media (max-width: 1170px){
-input#s.form-group { margin-bottom:10px;width:100%; }
-input#searchsubmit { vertical-align: top;width:100%; }
-// }
+input#s.form-group { margin-bottom:10px;width:auto;display: inline-block; }
+input#searchsubmit { vertical-align: top; }

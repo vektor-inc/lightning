@@ -59,7 +59,7 @@
     </div>
 </footer>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-
+</div><!-- [ /#wrap ] -->
 <?php wp_footer();?>
 </body>
 </html>

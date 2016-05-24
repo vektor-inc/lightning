@@ -32,13 +32,13 @@ gulp.task( 'copy', function() {
 
 // ファイル結合
 gulp.task('scripts', function() {
-  return gulp.src(['./library/bootstrap/js/bootstrap.min.js','./js/master.js'])
+  return gulp.src(['./library/bootstrap/js/bootstrap.min.js','./js/_vk_menu.js','./js/_master.js'])
     .pipe(concat('all.js'))
     .pipe(gulp.dest('./js/'));
 
 });
 gulp.task('scripts_header_fixed', function() {
-  return gulp.src(['./library/bootstrap/js/bootstrap.min.js','./js/master.js','./js/header_fixed.js'])
+  return gulp.src(['./library/bootstrap/js/bootstrap.min.js','./js/_vk_menu.js','./js/_master.js','./js/_header_fixed.js'])
     .pipe(concat('all_in_header_fixed.js'))
     .pipe(gulp.dest('./js/'));
 });
@@ -56,8 +56,9 @@ gulp.task('jsmin', function () {
 gulp.task('watch', function() {
     // gulp.watch('css/*.css', ['cssmin'])
     // gulp.watch('js/*.js', ['scripts']);
-    gulp.watch('js/master.js', ['scripts','scripts_header_fixed']);
-    gulp.watch('js/header_fixed.js', ['scripts','scripts_header_fixed']);
+    gulp.watch('js/_master.js', ['scripts','scripts_header_fixed']);
+    gulp.watch('js/_header_fixed.js', ['scripts','scripts_header_fixed']);
+    gulp.watch('js/_vk_menu.js', ['scripts','scripts_header_fixed']);
     gulp.watch('js/all.js', ['jsmin']);
     gulp.watch('js/all_in_header_fixed.js', ['jsmin']);
     gulp.watch('_scss/style.scss', ['copy']);
