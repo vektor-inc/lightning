@@ -68,10 +68,15 @@ body { overflow-x:hidden;}
   .menuBtn { position: fixed; z-index: 2000;margin:10px;
     &.btn-default { border-color: #999;color:#999; }
     &.btn-default:hover { border-color: #fff;color:#fff; }
+    &.menuBtn_right { right:0px; }
   }
-  .navSection { overflow:scroll; display: none;position: fixed;height:100%;border-right:$border_primary;
-    .searchform { margin:10px 10px 10px 4em; }
+  .navSection { overflow:scroll; display: none;position: fixed;height:100%;
+    .searchform { margin:10px; }
   }
+  .navSection_open_left { border-right:$border_primary; }
+  .navSection_open_left .searchform { margin-left:4em }
+  .navSection_open_right { border-left:$border_primary; }
+  .navSection_open_right .searchform { margin-right:4em }
 } // @media (max-width: 767px){
 @media (min-width: 768px){
   .menuBtn,

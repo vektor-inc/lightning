@@ -2711,8 +2711,13 @@ body { overflow-x: hidden; }
 @media (max-width: 767px) { .menuBtn { position: fixed; z-index: 2000; margin: 10px; }
   .menuBtn.btn-default { border-color: #999; color: #999; }
   .menuBtn.btn-default:hover { border-color: #fff; color: #fff; }
-  .navSection { overflow: scroll; display: none; position: fixed; height: 100%; border-right: 1px solid #e5e5e5; }
-  .navSection .searchform { margin: 10px 10px 10px 4em; } }
+  .menuBtn.menuBtn_right { right: 0px; }
+  .navSection { overflow: scroll; display: none; position: fixed; height: 100%; }
+  .navSection .searchform { margin: 10px; }
+  .navSection_open_left { border-right: 1px solid #e5e5e5; }
+  .navSection_open_left .searchform { margin-left: 4em; }
+  .navSection_open_right { border-left: 1px solid #e5e5e5; }
+  .navSection_open_right .searchform { margin-right: 4em; } }
 @media (min-width: 768px) { .menuBtn, .navSection, .searchform { display: none; } }
 /*-------------------------------------------*/
 /* .siteHeader

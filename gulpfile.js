@@ -60,7 +60,6 @@ gulp.task('watch', function() {
     gulp.watch('js/_header_fixed.js', ['scripts','scripts_header_fixed']);
     gulp.watch('js/_vk_menu.js', ['scripts','scripts_header_fixed']);
     gulp.watch('js/all.js', ['jsmin']);
-    gulp.watch('js/all_in_header_fixed.js', ['jsmin']);
     gulp.watch('_scss/style.scss', ['copy']);
 });
 

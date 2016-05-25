@@ -22,11 +22,12 @@ $args = array(
 $gMenu = wp_nav_menu( $args ) ;
 // メニューがセットされていたら実行
 if ( $gMenu ) { ?>
-    <a href="#" class="btn btn-default menuBtn" id="menuBtn" onclick="showHide('gMenu_outer');"><i class="fa fa-bars" aria-hidden="true"></i></a>
+    <a href="#" class="btn btn-default menuBtn menuBtn_left" id="menuBtn"><i class="fa fa-bars" aria-hidden="true"></i></a>
+    <a href="#" class="btn btn-default menuBtn menuBtn_right" id="menuBtn"><i class="fa fa-bars" aria-hidden="true"></i></a>
+    <section id="navSection" class="navSection">
+    <?php get_search_form(); ?>
+    </section>
 <?php } ?>
-<section id="navSection" class="navSection">
-<?php get_search_form(); ?>
-</section>
 <div id="wrap">
 <?php do_action('lightning_header_before'); ?>
 <header class="navbar siteHeader">
