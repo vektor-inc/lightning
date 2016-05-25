@@ -58,7 +58,8 @@ $color_key : #337ab7;
 input.form-control { margin-bottom:3px; }
 input.form-control.input_widthAuto { width: auto; }
 
-body { overflow-x:hidden;}
+body { overflow-x:hidden; }
+#bodyInner { display:block; overflow:hidden; }
 #wrap { z-index: auto; }
 
 /*-------------------------------------------*/
@@ -71,17 +72,20 @@ body { overflow-x:hidden;}
     &.menuBtn_right { right:0px; }
   }
   .navSection { overflow:scroll; display: none;position: fixed;height:100%;
-    .searchform { margin:10px; }
+    .searchform { margin:10px;display:block; overflow:hidden;padding: 0 3em;
+      input#s { width:65%; }
+      input[type=submit] { width:30%; }
+    }
   }
   .navSection_open_left { border-right:$border_primary; }
-  .navSection_open_left .searchform { margin-left:4em }
+  // .navSection_open_left .searchform { padding-left:4em }
   .navSection_open_right { border-left:$border_primary; }
-  .navSection_open_right .searchform { margin-right:4em }
+  // .navSection_open_right .searchform { padding-right:4em }
 } // @media (max-width: 767px){
 @media (min-width: 768px){
   .menuBtn,
   .navSection,
-  .searchform { display: none; }
+  .navSection .searchform { display: none; }
 }
 
 /*-------------------------------------------*/
@@ -94,11 +98,12 @@ If set padding to header that js can't correct height. */
 .siteHeader_logo.navbar-brand { height:auto;padding:5px 0;margin:0;font-size: 32px;line-height: 1.5em;
   a { color:#333; }
   a:hover { text-decoration: none; color:$color_key; }
-  img { max-height: 40px; }
+  img { max-height: 40px;display: block; }
 }
 
 @media (max-width: 767px){
   .siteHeader_logo.navbar-brand { float:inherit; text-align: center;padding:0 40px; }
+  .siteHeader_logo.navbar-brand img { display: block ; margin:0 auto; }
 }
 @media (min-width: 768px){
 

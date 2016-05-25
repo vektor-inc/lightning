@@ -60,6 +60,7 @@
 </footer>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 </div><!-- [ /#wrap ] -->
+</div><!-- [ /#bodyInner ] -->
 <?php wp_footer();?>
 </body>
 </html>

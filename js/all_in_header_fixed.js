@@ -43,6 +43,7 @@ function menuOpen(menuPosition){
 	jQuery('#menuBtn i').removeClass('fa-bars').addClass('fa-times');
 
 	var wrap_width = jQuery('body').width();
+	jQuery('#bodyInner').css({"width":wrap_width});
 	jQuery('#wrap').css({"width":wrap_width});
 
 	jQuery('#gMenu_outer').appendTo('#navSection');
@@ -75,8 +76,8 @@ function menuClose(menuPosition){
 		}
 	}
 
-	console.log(menuPosition);
 	var wrap_width = jQuery('body').width();
+	jQuery('#bodyInner').css({"width":wrap_width});
 	jQuery('#wrap').css({"width":wrap_width});
 	jQuery('#wrap').stop().animate({ "margin-left":"0" },200);
 

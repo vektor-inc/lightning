@@ -2703,6 +2703,8 @@ input.form-control.input_widthAuto { width: auto; }
 
 body { overflow-x: hidden; }
 
+#bodyInner { display: block; overflow: hidden; }
+
 #wrap { z-index: auto; }
 
 /*-------------------------------------------*/
@@ -2713,12 +2715,12 @@ body { overflow-x: hidden; }
   .menuBtn.btn-default:hover { border-color: #fff; color: #fff; }
   .menuBtn.menuBtn_right { right: 0px; }
   .navSection { overflow: scroll; display: none; position: fixed; height: 100%; }
-  .navSection .searchform { margin: 10px; }
+  .navSection .searchform { margin: 10px; display: block; overflow: hidden; padding: 0 3em; }
+  .navSection .searchform input#s { width: 65%; }
+  .navSection .searchform input[type=submit] { width: 30%; }
   .navSection_open_left { border-right: 1px solid #e5e5e5; }
-  .navSection_open_left .searchform { margin-left: 4em; }
-  .navSection_open_right { border-left: 1px solid #e5e5e5; }
-  .navSection_open_right .searchform { margin-right: 4em; } }
-@media (min-width: 768px) { .menuBtn, .navSection, .searchform { display: none; } }
+  .navSection_open_right { border-left: 1px solid #e5e5e5; } }
+@media (min-width: 768px) { .menuBtn, .navSection, .navSection .searchform { display: none; } }
 /*-------------------------------------------*/
 /* .siteHeader
 /*-------------------------------------------*/
@@ -2731,9 +2733,10 @@ If set padding to header that js can't correct height. */
 .siteHeader_logo.navbar-brand { height: auto; padding: 5px 0; margin: 0; font-size: 32px; line-height: 1.5em; }
 .siteHeader_logo.navbar-brand a { color: #333; }
 .siteHeader_logo.navbar-brand a:hover { text-decoration: none; color: #337ab7; }
-.siteHeader_logo.navbar-brand img { max-height: 40px; }
+.siteHeader_logo.navbar-brand img { max-height: 40px; display: block; }
 
-@media (max-width: 767px) { .siteHeader_logo.navbar-brand { float: inherit; text-align: center; padding: 0 40px; } }
+@media (max-width: 767px) { .siteHeader_logo.navbar-brand { float: inherit; text-align: center; padding: 0 40px; }
+  .siteHeader_logo.navbar-brand img { display: block; margin: 0 auto; } }
 @media (min-width: 992px) { .siteHeader .container { padding-top: 20px; padding-bottom: 18px; }
   .siteHeader_logo.navbar-brand img { max-height: 60px; } }
 /*-------------------------------------------*/
