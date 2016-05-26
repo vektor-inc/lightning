@@ -2,7 +2,7 @@ jQuery(document).ready(function(){
 	run_menuControl();
 });
 jQuery(window).resize(function(){
-	menuClose();
+	run_menuResize();
 });
 /*-------------------------------------------*/
 /*	メニューの開閉
@@ -11,6 +11,10 @@ jQuery(window).resize(function(){
 var menu_width = '360px';
 
 function run_menuControl(){
+	// 入力欄にフォーカスした時に文字キーがポップアップしてくると .resize(function()) が動作してしまうので、識別用クラス追加
+	jQuery( '#searchform input' ).focus(function(){
+		jQuery('#navSection').addClass('navLock');
+	});
 	jQuery('.menuBtn').each(function(){
 		jQuery(this).click(function(){
 			if ( jQuery(this).hasClass('menuBtn_left') ){
@@ -60,7 +64,7 @@ function menuOpen(menuPosition){
 	}
 }
 function menuClose(menuPosition){
-	// ウィンドウサイズが変更された時も実行するのでアニメーション終了を待たずにすぐ実行する
+
 	if ( !menuPosition ){
 		if ( jQuery('#navSection').hasClass('navSection_open_right') ){
 			menuPosition = 'right';
@@ -95,4 +99,9 @@ function menuClose_common(){
 	jQuery('#menuBtn i').removeClass('fa-times').addClass('fa-bars');
 			jQuery('#navSection').css({"right":""});
 			jQuery('#navSection').css({"left":""});
+}
+function run_menuResize(){
+	var wrap_width = jQuery('body').width();
+	jQuery('#bodyInner').css({"width":wrap_width});
+	jQuery('#wrap').css({"width":wrap_width});
 }
