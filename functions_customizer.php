@@ -266,8 +266,8 @@ add_action( 'wp_head','lightning_print_css_common', 150);
 function lightning_print_css_common(){
 	$options = get_option('lightning_theme_options');
 	if ( isset($options['color_key']) && isset($options['color_key_dark']) ) {
-	$color_key = esc_html($options['color_key']);
-	$color_key_dark = esc_html($options['color_key_dark']);
+	$color_key = ( !empty($options['color_key']) )? esc_html($options['color_key']) : '#337ab7';
+	$color_key_dark = ( !empty($options['color_key_dark'] ) )? esc_html($options['color_key_dark']) : '#2e6da4';
 	?>
 <style type="text/css">
 .veu_color_txt_key { color:<?php echo $color_key_dark;?> ; }
