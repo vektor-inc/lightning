@@ -32,13 +32,13 @@ gulp.task( 'copy', function() {
 
 // ファイル結合
 gulp.task('scripts', function() {
-  return gulp.src(['./library/bootstrap/js/bootstrap.min.js','./js/_vk_menu.js','./js/_master.js'])
+  return gulp.src(['./library/bootstrap/js/bootstrap.min.js','./js/_master.js'])
     .pipe(concat('all.js'))
     .pipe(gulp.dest('./js/'));
 
 });
 gulp.task('scripts_header_fixed', function() {
-  return gulp.src(['./library/bootstrap/js/bootstrap.min.js','./js/_vk_menu.js','./js/_master.js','./js/_header_fixed.js'])
+  return gulp.src(['./library/bootstrap/js/bootstrap.min.js','./js/_master.js','./js/_header_fixed.js'])
     .pipe(concat('all_in_header_fixed.js'))
     .pipe(gulp.dest('./js/'));
 });
@@ -64,4 +64,4 @@ gulp.task('watch', function() {
 });
 
 // gulp.task('default', ['scripts','watch','sprite']);
-gulp.task('default', ['copy','scripts','jsmin','watch']);
+// gulp.task('default', ['copy','scripts','jsmin','watch']);

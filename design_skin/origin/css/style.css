@@ -2701,25 +2701,13 @@ input.form-control { margin-bottom: 3px; }
 
 input.form-control.input_widthAuto { width: auto; }
 
-body { overflow-x: hidden; }
-
-#bodyInner { display: block; overflow: hidden; }
-
-#wrap { z-index: auto; }
-
 /*-------------------------------------------*/
 /* .navSection
 /*-------------------------------------------*/
-@media (max-width: 767px) { .menuBtn { position: fixed; z-index: 2000; margin: 10px; }
+@media (max-width: 767px) { .menuBtn { position: absolute; top: 0; z-index: 2000; margin: 10px; }
   .menuBtn.btn-default { border-color: #999; color: #999; }
   .menuBtn.btn-default:hover { border-color: #fff; color: #fff; }
-  .menuBtn.menuBtn_right { right: 0px; }
-  .navSection { overflow: scroll; display: none; position: fixed; height: 100%; }
-  .navSection .searchform { margin: 10px; display: block; overflow: hidden; padding: 0 3em; }
-  .navSection .searchform input#s { width: 65%; }
-  .navSection .searchform input[type=submit] { width: 30%; }
-  .navSection_open_left { border-right: 1px solid #e5e5e5; }
-  .navSection_open_right { border-left: 1px solid #e5e5e5; } }
+  .menuBtn.menuBtn_right { right: 0px; } }
 @media (min-width: 768px) { .menuBtn, .navSection, .navSection .searchform { display: none; } }
 /*-------------------------------------------*/
 /* .siteHeader

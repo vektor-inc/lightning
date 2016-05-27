@@ -10,30 +10,6 @@ $lightning_theme_options = get_option('lightning_theme_options'); ?>
 
 </head>
 <body <?php body_class(); ?>>
-<?php
-$args = array(
-    'theme_location' => 'Header',
-    'container'      => 'nav',
-    'items_wrap'     => '<ul id="%1$s" class="%2$s nav gMenu">%3$s</ul>',
-    'fallback_cb'    => '',
-    'echo'           => false,
-    'walker'         => new description_walker()
-);
-$gMenu = wp_nav_menu( $args ) ; ?>
-<div id="bodyInner">
-<?php // メニューがセットされていたら実行
-if ( $gMenu ) { ?>
-    <a href="#" class="btn btn-default menuBtn menuBtn_left" id="menuBtn" onClick="ga('send', 'event', 'menu_btn', 'tap_left', 'label', 1, {'nonInteraction': 1});"><i class="fa fa-bars" aria-hidden="true"></i></a>
-    <a href="#" class="btn btn-default menuBtn menuBtn_right" id="menuBtn" onClick="ga('send', 'event', 'menu_btn', 'tap_right', 'label', 1, {'nonInteraction': 1});"><i class="fa fa-bars" aria-hidden="true"></i></a>
-<!--
-    <a href="#" class="btn btn-default menuBtn menuBtn_left" id="menuBtn"><i class="fa fa-bars" aria-hidden="true"></i></a>
-    <a href="#" class="btn btn-default menuBtn menuBtn_right" id="menuBtn"><i class="fa fa-bars" aria-hidden="true"></i></a>
-        -->
-    <section id="navSection" class="navSection">
-    <?php get_search_form(); ?>
-    </section>
-<?php } ?>
-<div id="wrap">
 <?php do_action('lightning_header_before'); ?>
 <header class="navbar siteHeader">
     <?php do_action('lightning_header_prepend'); ?>
@@ -44,11 +20,25 @@ if ( $gMenu ) { ?>
             <?php lightning_print_headlogo(); ?>
             </span></a>
             </h1>
+            <?php
+            $args = array(
+                'theme_location' => 'Header',
+                'container'      => 'nav',
+                'items_wrap'     => '<ul id="%1$s" class="%2$s nav gMenu">%3$s</ul>',
+                'fallback_cb'    => '',
+                'echo'           => false,
+                'walker'         => new description_walker()
+            );
+            $gMenu = wp_nav_menu( $args ) ;
+            // メニューがセットされていたら実行
+            if ( $gMenu ) { ?>
+              <a href="#" class="btn btn-default menuBtn menuClose menuBtn_left" id="menuBtn"><i class="fa fa-bars" aria-hidden="true"></i></a>
+              <a href="#" class="btn btn-default menuBtn menuClose menuBtn_right" id="menuBtn"><i class="fa fa-bars" aria-hidden="true"></i></a>
+            <?php } ?>
         </div>
+
         <?php
-        // メニューがセットされていたら実行
-        if ( $gMenu ) { ?>
-            <?php 
+        if ( $gMenu ) {
             echo '<div id="gMenu_outer" class="gMenu_outer">';
             echo $gMenu;
             echo '</div>';
