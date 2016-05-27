@@ -1,11 +1,10 @@
 ;(function($){
 jQuery(function(){
-	// run_menu_control();
+	run_menu_control();
 	youtube_responsive();
 	// addClass_dropdown();
 });
 jQuery(document).ready(function(){
-	run_menu_control();
 	youtube_responsive();
 	// addClass_dropdown();
 });
@@ -32,13 +31,6 @@ function run_menu_control(){
 		});
 	// });
 }
-// function menu_open(){
-//
-// }
-// function menu_close(){
-//
-// }
-
 
 /*----------------------------------------------------------*/
 /*	Top slide control
