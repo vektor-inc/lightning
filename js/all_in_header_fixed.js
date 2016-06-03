@@ -17,6 +17,7 @@ jQuery(document).ready(function(){
 });
 jQuery(window).resize(function(){
 	youtube_responsive();
+	menu_close();
 	// addClass_dropdown();
 });
 
@@ -37,6 +38,11 @@ function run_menu_control(){
 			}
 		});
 	// });
+}
+function menu_close(){
+	jQuery('.menuBtn').removeClass('menuOpen').addClass('menuClose');
+	jQuery('#gMenu_outer').removeClass('itemOpen').addClass('itemClose');
+	jQuery('#menuBtn i').removeClass('fa-times').addClass('fa-bars');
 }
 
 /*----------------------------------------------------------*/
