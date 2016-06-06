@@ -186,7 +186,7 @@ h1.page-header_pageTitle:first-child { margin:15px 0 10px;font-size:22px;line-he
 /*      .mainSection
 /*-------------------------------------------*/
 .mainSection {
-  header { position: relative;border-bottom:$border_primary; }
+  header { position: relative;border-bottom:$border_primary;margin-bottom:2em; }
   header h1 { margin-top:0; }
   .postList { margin-bottom:1.5em; }
 }
@@ -211,8 +211,7 @@ h1.page-header_pageTitle:first-child { margin:15px 0 10px;font-size:22px;line-he
 @media (max-width: 767px){
 h1.entry-title { font-size:26px; }
 }
-.entry-body { display:block; overflow:hidden;padding:2em 0 2.5em; }
-.page .entry-body {padding-top:0; }
+.entry-body { display:block; overflow:hidden;padding:0 0 2.5em; }
 
 /*      .entry-footer
 /*-------------------------------------------*/
