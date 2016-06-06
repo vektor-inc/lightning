@@ -340,6 +340,9 @@ ul.page-numbers { margin:0;padding: 0;
 .widget_tag_cloud .subSection-title,
 .widget_recent_comments .subSection-title { margin-bottom:10px; }
 
+/* .widget_link_list はプラグインなどの外部ウィジェットからの指定用。
+.widget と同列で書かれる時もあれば下階層に書かれる事もある。ExUnitの固定ページリストウィジェットなどで使用 */
+.widget_link_list, 
 .widget_recent_comments,
 .widget_nav_menu,
 .widget_archive,
@@ -348,6 +351,7 @@ ul.page-numbers { margin:0;padding: 0;
   ul { padding-left:0;margin:0;font-size:14px; }
 }
 
+.widget_link_list,
 .widget_nav_menu,
 .widget_archive,
 .widget_categories,
