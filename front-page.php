@@ -23,6 +23,8 @@
                 <?php dynamic_sidebar( 'home-content-top-widget-area' ); ?>
             <?php endif; ?>
 
+            <?php do_action('lightning_home_content_top_widget_area_after'); ?>
+
             <?php if (have_posts()) : ?>
 
                 <?php if ( 'page' == get_option('show_on_front') ) : ?>

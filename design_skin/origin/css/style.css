@@ -2647,8 +2647,10 @@ h4 { padding: 10px 15px 8px; background-color: #efefef; border-radius: 4px; }
 h5 { padding: 7px 7px 3px; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; background-color: #f5f5f5; }
 
 /****************************************************************/
-/* Lightning Outer Area All Skin common style
+/* Lightning Outer Area All Skin outer style
 /****************************************************************/
+/*-------------------------------------------*/
+/* .navSection
 /*-------------------------------------------*/
 /* .siteHeader
 /*-------------------------------------------*/
@@ -2700,9 +2702,17 @@ input.form-control { margin-bottom: 3px; }
 input.form-control.input_widthAuto { width: auto; }
 
 /*-------------------------------------------*/
+/* .navSection
+/*-------------------------------------------*/
+@media (max-width: 767px) { .menuBtn { position: absolute; top: 0; z-index: 2000; margin: 10px; }
+  .menuBtn.btn-default { border-color: #999; color: #999; }
+  .menuBtn.btn-default:hover { border-color: #fff; color: #fff; }
+  .menuBtn.menuBtn_right { right: 0px; } }
+@media (min-width: 768px) { .menuBtn, .navSection, .navSection .searchform { display: none; } }
+/*-------------------------------------------*/
 /* .siteHeader
 /*-------------------------------------------*/
-.siteHeader { background-color: #fff; box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1); margin-bottom: 0; }
+.siteHeader { background-color: #fff; z-index: 1000; top: 0; box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1); margin-bottom: 0; width: 100%; }
 
 /* Padding setting in ".container" because that header was get height js.
 If set padding to header that js can't correct height. */
@@ -2711,14 +2721,10 @@ If set padding to header that js can't correct height. */
 .siteHeader_logo.navbar-brand { height: auto; padding: 5px 0; margin: 0; font-size: 32px; line-height: 1.5em; }
 .siteHeader_logo.navbar-brand a { color: #333; }
 .siteHeader_logo.navbar-brand a:hover { text-decoration: none; color: #337ab7; }
-.siteHeader_logo.navbar-brand img { max-height: 40px; }
+.siteHeader_logo.navbar-brand img { max-height: 40px; display: block; }
 
-.navbar-toggle { border: 1px solid #999; }
-.navbar-toggle .icon-bar { border: 1px solid #666; }
-
-.siteHeader_logo.navbar-brand { padding: 0 15px; }
-
-@media (min-width: 768px) { .siteHeader_logo.navbar-brand { text-align: center; } }
+@media (max-width: 767px) { .siteHeader_logo.navbar-brand { float: inherit; text-align: center; padding: 0 40px; }
+  .siteHeader_logo.navbar-brand img { display: block; margin: 0 auto; } }
 @media (min-width: 992px) { .siteHeader .container { padding-top: 20px; padding-bottom: 18px; }
   .siteHeader_logo.navbar-brand img { max-height: 60px; } }
 /*-------------------------------------------*/
@@ -2731,7 +2737,7 @@ nav i { margin-right: 0.5rem; }
 
 ul.gMenu a { display: block; overflow: hidden; border-bottom: 1px solid #e5e5e5; color: #666; text-decoration: none; }
 ul.gMenu a:hover { color: #337ab7; }
-ul.gMenu ul { padding-left: 0; width: auto; display: block; }
+ul.gMenu ul { padding-left: 0; width: auto; display: block; margin-bottom: 0; }
 ul.gMenu ul li a { display: block; overflow: hidden; padding: 10px 1em 10px 2em; width: auto; }
 ul.gMenu ul li li a { padding-left: 3em; }
 ul.gMenu ul li li li a { padding-left: 4em; }
@@ -2741,12 +2747,17 @@ ul.gMenu ul li li li li a { padding-left: 5em; }
 
 .gMenu_description { display: block; overflow: hidden; font-size: 10px; line-height: 14px; }
 
-@media (max-width: 767px) { ul.gMenu { border-top: 1px solid #e5e5e5; margin-bottom: 0; }
+@media (max-width: 767px) { .gMenu_outer { overflow: hidden; display: none; }
+  .gMenu_outer.itemOpen { display: block; }
+  .gMenu_outer.itemClose { display: none; }
+  .gMenu_description { display: none; }
+  ul.gMenu { border-top: 1px solid #e5e5e5; margin-bottom: 0; }
   ul.gMenu a:hover, ul.gMenu a:active, ul.gMenu .current-menu-item a { background-color: #fcfcfc; } }
-@media (min-width: 768px) { .gMenu_name { text-align: center; display: block; }
+@media (min-width: 768px) { .gMenu_outer.itemOpen, .gMenu_outer.itemClose { display: block; }
+  .gMenu_name { text-align: center; display: block; }
   .gMenu_description { text-align: center; }
   ul.gMenu { float: right; }
-  ul.gMenu > li { position: relative; }
+  ul.gMenu > li { position: relative; float: left; }
   ul.gMenu > li > a { border-bottom: none; }
   ul.gMenu > li > ul.sub-menu { display: none; position: absolute; box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); z-index: 1000; }
   ul.gMenu > li > ul.sub-menu li { width: 240px; margin: 0; list-style: none; background-color: #fff; display: block; overflow: visible; position: relative; }
@@ -2778,7 +2789,7 @@ ul.gMenu ul li li li li a { padding-left: 5em; }
 @media (max-width: 767px) { .siteContent { padding: 2em 0 3em; } }
 /*      .mainSection
 /*-------------------------------------------*/
-.mainSection header { position: relative; border-bottom: 1px solid #e5e5e5; }
+.mainSection header { position: relative; border-bottom: 1px solid #e5e5e5; margin-bottom: 2em; }
 .mainSection header h1 { margin-top: 0; }
 .mainSection .postList { margin-bottom: 1.5em; }
 
@@ -2802,9 +2813,7 @@ ul.gMenu ul li li li li a { padding-left: 5em; }
 @media (max-width: 767px) { .entry-meta .entry-meta_items_author { display: block; margin-left: 0; }
   .entry-meta .entry-meta_items_term { float: none; display: block; margin-top: 0.5em; } }
 @media (max-width: 767px) { h1.entry-title { font-size: 26px; } }
-.entry-body { display: block; overflow: hidden; padding: 2em 0 2.5em; }
-
-.page .entry-body { padding-top: 0; }
+.entry-body { display: block; overflow: hidden; padding: 0 0 2.5em; }
 
 /*      .entry-footer
 /*-------------------------------------------*/
@@ -2894,21 +2903,23 @@ ul.page-numbers li:last-child > a { border-top-right-radius: 4px; border-bottom-
 
 .widget_text .subSection-title, .widget_tag_cloud .subSection-title, .widget_recent_comments .subSection-title { margin-bottom: 10px; }
 
-.widget_recent_comments ul, .widget_nav_menu ul, .widget_archive ul, .widget_categories ul, .widget_recent_entries ul { padding-left: 0; margin: 0; font-size: 14px; }
+/* .widget_link_list はプラグインなどの外部ウィジェットからの指定用。
+.widget と同列で書かれる時もあれば下階層に書かれる事もある。ExUnitの固定ページリストウィジェットなどで使用 */
+.widget_link_list ul, .widget_recent_comments ul, .widget_nav_menu ul, .widget_archive ul, .widget_categories ul, .widget_recent_entries ul { padding-left: 0; margin: 0; font-size: 14px; }
 
-.widget_nav_menu ul li, .widget_archive ul li, .widget_categories ul li, .widget_recent_entries ul li { margin-bottom: 0; }
-.widget_nav_menu ul li a, .widget_archive ul li a, .widget_categories ul li a, .widget_recent_entries ul li a { display: block; overflow: hidden; padding: 10px 0.5em 8px; border-bottom: 1px solid #e5e5e5; color: #464646; box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.9); }
-.widget_nav_menu ul li li a, .widget_archive ul li li a, .widget_categories ul li li a, .widget_recent_entries ul li li a { padding-left: 1.5em; }
-.widget_nav_menu ul li li li a, .widget_archive ul li li li a, .widget_categories ul li li li a, .widget_recent_entries ul li li li a { padding-left: 2.5em; }
-.widget_nav_menu ul li li li li a, .widget_archive ul li li li li a, .widget_categories ul li li li li a, .widget_recent_entries ul li li li li a { padding-left: 3.5em; }
-.widget_nav_menu ul li li li li li a, .widget_archive ul li li li li li a, .widget_categories ul li li li li li a, .widget_recent_entries ul li li li li li a { padding-left: 4.5em; }
-.widget_nav_menu ul li li li li li li a, .widget_archive ul li li li li li li a, .widget_categories ul li li li li li li a, .widget_recent_entries ul li li li li li li a { padding-left: 5.5em; }
-.widget_nav_menu ul li li li li li li li a, .widget_archive ul li li li li li li li a, .widget_categories ul li li li li li li li a, .widget_recent_entries ul li li li li li li li a { padding-left: 6.5em; }
-.widget_nav_menu ul li li li li li li li li a, .widget_archive ul li li li li li li li li a, .widget_categories ul li li li li li li li li a, .widget_recent_entries ul li li li li li li li li a { padding-left: 7.5em; }
-.widget_nav_menu ul li li li li li li li li li a, .widget_archive ul li li li li li li li li li a, .widget_categories ul li li li li li li li li li a, .widget_recent_entries ul li li li li li li li li li a { padding-left: 8.5em; }
-.widget_nav_menu ul li li li li li li li li li li a, .widget_archive ul li li li li li li li li li li a, .widget_categories ul li li li li li li li li li li a, .widget_recent_entries ul li li li li li li li li li li a { padding-left: 9.5em; }
-.widget_nav_menu ul li li li li li li li li li li li a, .widget_archive ul li li li li li li li li li li li a, .widget_categories ul li li li li li li li li li li li a, .widget_recent_entries ul li li li li li li li li li li li a { padding-left: 10.5em; }
-.widget_nav_menu ul ul, .widget_archive ul ul, .widget_categories ul ul, .widget_recent_entries ul ul { margin: 0; padding-left: 0; }
+.widget_link_list ul li, .widget_nav_menu ul li, .widget_archive ul li, .widget_categories ul li, .widget_recent_entries ul li { margin-bottom: 0; }
+.widget_link_list ul li a, .widget_nav_menu ul li a, .widget_archive ul li a, .widget_categories ul li a, .widget_recent_entries ul li a { display: block; padding: 10px 0.5em 8px; border-bottom: 1px solid #e5e5e5; color: #464646; box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.9); }
+.widget_link_list ul li li a, .widget_nav_menu ul li li a, .widget_archive ul li li a, .widget_categories ul li li a, .widget_recent_entries ul li li a { padding-left: 1.5em; }
+.widget_link_list ul li li li a, .widget_nav_menu ul li li li a, .widget_archive ul li li li a, .widget_categories ul li li li a, .widget_recent_entries ul li li li a { padding-left: 2.5em; }
+.widget_link_list ul li li li li a, .widget_nav_menu ul li li li li a, .widget_archive ul li li li li a, .widget_categories ul li li li li a, .widget_recent_entries ul li li li li a { padding-left: 3.5em; }
+.widget_link_list ul li li li li li a, .widget_nav_menu ul li li li li li a, .widget_archive ul li li li li li a, .widget_categories ul li li li li li a, .widget_recent_entries ul li li li li li a { padding-left: 4.5em; }
+.widget_link_list ul li li li li li li a, .widget_nav_menu ul li li li li li li a, .widget_archive ul li li li li li li a, .widget_categories ul li li li li li li a, .widget_recent_entries ul li li li li li li a { padding-left: 5.5em; }
+.widget_link_list ul li li li li li li li a, .widget_nav_menu ul li li li li li li li a, .widget_archive ul li li li li li li li a, .widget_categories ul li li li li li li li a, .widget_recent_entries ul li li li li li li li a { padding-left: 6.5em; }
+.widget_link_list ul li li li li li li li li a, .widget_nav_menu ul li li li li li li li li a, .widget_archive ul li li li li li li li li a, .widget_categories ul li li li li li li li li a, .widget_recent_entries ul li li li li li li li li a { padding-left: 7.5em; }
+.widget_link_list ul li li li li li li li li li a, .widget_nav_menu ul li li li li li li li li li a, .widget_archive ul li li li li li li li li li a, .widget_categories ul li li li li li li li li li a, .widget_recent_entries ul li li li li li li li li li a { padding-left: 8.5em; }
+.widget_link_list ul li li li li li li li li li li a, .widget_nav_menu ul li li li li li li li li li li a, .widget_archive ul li li li li li li li li li li a, .widget_categories ul li li li li li li li li li li a, .widget_recent_entries ul li li li li li li li li li li a { padding-left: 9.5em; }
+.widget_link_list ul li li li li li li li li li li li a, .widget_nav_menu ul li li li li li li li li li li li a, .widget_archive ul li li li li li li li li li li li a, .widget_categories ul li li li li li li li li li li li a, .widget_recent_entries ul li li li li li li li li li li li a { padding-left: 10.5em; }
+.widget_link_list ul ul, .widget_nav_menu ul ul, .widget_archive ul ul, .widget_categories ul ul, .widget_recent_entries ul ul { margin: 0; padding-left: 0; }
 
 .widget_archive select, .widget_categories select { margin-top: 10px; }
 
@@ -2978,11 +2989,9 @@ p.no-comments { background-color: #f3f3f3; border: 1px solid #e5e5e5; text-align
 /*-------------------------------------------*/
 /* search
 /*-------------------------------------------*/
-input#s.form-group { margin-bottom: 10px; width: 100%; }
+input#s.form-group { margin-bottom: 10px; width: auto; display: inline-block; }
 
-input#searchsubmit { vertical-align: top; width: 100%; }
-
-.siteHeader { width: 100%; z-index: 1000; top: 0; }
+input#searchsubmit { vertical-align: top; }
 
 @media (min-width: 768px) { ul.gMenu a:hover, ul.gMenu a:active { background-color: #fff; color: #337ab7; }
   ul.gMenu > li > a { border-bottom: none; }

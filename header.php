@@ -15,28 +15,36 @@ $lightning_theme_options = get_option('lightning_theme_options'); ?>
     <?php do_action('lightning_header_prepend'); ?>
     <div class="container">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
             <h1 class="navbar-brand siteHeader_logo">
             <a href="<?php echo esc_url(home_url('/')); ?>"><span>
             <?php lightning_print_headlogo(); ?>
             </span></a>
             </h1>
+            <?php
+            $args = array(
+                'theme_location' => 'Header',
+                'container'      => 'nav',
+                'items_wrap'     => '<ul id="%1$s" class="%2$s nav gMenu">%3$s</ul>',
+                'fallback_cb'    => '',
+                'echo'           => false,
+                'walker'         => new description_walker()
+            );
+            $gMenu = wp_nav_menu( $args ) ;
+            // メニューがセットされていたら実行
+            if ( $gMenu ) {
+                $menu_btn_position = 'left';
+                $menu_btn_position = apply_filters( 'lightning_menu_btn_position', $menu_btn_position );
+                ?>
+              <a href="#" class="btn btn-default menuBtn menuClose menuBtn_<?php echo esc_attr( $menu_btn_position ); ?>" id="menuBtn"><i class="fa fa-bars" aria-hidden="true"></i></a>
+            <?php } ?>
         </div>
 
-        <div class="collapse navbar-collapse" id="navbar-ex-collapse">
-        <?php wp_nav_menu( array(
-            'theme_location'    => 'Header',
-            'container'         => 'nav',
-            'items_wrap'        => '<ul id="%1$s" class="%2$s nav navbar-nav gMenu">%3$s</ul>',
-            'fallback_cb'       => '',
-            'walker' => new description_walker()
-        ) ); ?>
-        </div>
+        <?php
+        if ( $gMenu ) {
+            echo '<div id="gMenu_outer" class="gMenu_outer">';
+            echo $gMenu;
+            echo '</div>';
+        } ?>
     </div>
     <?php do_action('lightning_header_append'); ?>
 </header>

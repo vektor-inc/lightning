@@ -44,7 +44,7 @@ $post_loop = new WP_Query( array(
 </aside>
 <?php endif; ?>
 
-<aside class="widget widget_categories">
+<aside class="widget widget_categories widget_link_list">
 <nav class="localNav">
 <h1 class="subSection-title"><?php _e('Category', 'lightning');?></h1>
 <ul>
@@ -53,7 +53,7 @@ $post_loop = new WP_Query( array(
 </nav>
 </aside>
 
-<aside class="widget widget_archive">
+<aside class="widget widget_archive widget_link_list">
 <nav class="localNav">
 <h1 class="subSection-title"><?php _e('Archive', 'lightning');?></h1>
 <ul>
