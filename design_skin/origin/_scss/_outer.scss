@@ -71,8 +71,7 @@ input.form-control.input_widthAuto { width: auto; }
 } // @media (max-width: 767px){
 @media (min-width: 768px){
   .menuBtn,
-  .navSection,
-  .navSection .searchform { display: none; }
+  .navSection { display: none; }
 }
 
 /*-------------------------------------------*/
