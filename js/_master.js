@@ -10,7 +10,11 @@ jQuery(document).ready(function(){
 });
 jQuery(window).resize(function(){
 	youtube_responsive();
-	menu_close();
+	var wrap_width = jQuery('body').width();
+	if ( wrap_width > 767 ) {
+		menu_close();
+	}
+	// menu_close();
 	// addClass_dropdown();
 });
 

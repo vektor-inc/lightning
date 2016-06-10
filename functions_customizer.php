@@ -31,6 +31,10 @@ function lightning_customize_register($wp_customize) {
 		}
 	}
 
+	function lightning_sanitize_radio($input){
+		return esc_attr( $input );
+	}
+
 	/*-------------------------------------------*/
 	/*	Lightning Panel
 	/*-------------------------------------------*/
