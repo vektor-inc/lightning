@@ -46,8 +46,13 @@ function lightning_register_required_plugins() {
 
 		// This is an example of how to include a plugin bundled with a theme.
 		array(
-			'name'               => 'VK All in One Expansion Unit', // The plugin name.
+			'name'               => 'VK All in One Expansion Unit (Free)', // The plugin name.
 			'slug'               => 'vk-all-in-one-expansion-unit', // The plugin slug (typically the folder name).
+			'required'           => false, // If false, the plugin is only 'recommended' instead of required.
+		),
+		array(
+			'name'               => 'Ligthning Advanced Unit (Free)', // The plugin name.
+			'slug'               => 'lightning-advanced-unit', // The plugin slug (typically the folder name).
 			'required'           => false, // If false, the plugin is only 'recommended' instead of required.
 		),
 	);
