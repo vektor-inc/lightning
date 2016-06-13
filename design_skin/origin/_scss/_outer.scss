@@ -10,6 +10,8 @@ $color_font_default : #464646;
 $color_key : #337ab7;
 
 /*-------------------------------------------*/
+/* search
+/*-------------------------------------------*/
 /* .navSection
 /*-------------------------------------------*/
 /* .siteHeader
@@ -46,8 +48,7 @@ $color_key : #337ab7;
 /*-------------------------------------------*/
 /* .comments-area
 /*-------------------------------------------*/
-/* search
-/*-------------------------------------------*/
+
 
 .sectionBox { padding-top:2em;padding-bottom:2em;display:block; overflow:hidden; }
 .nav li a { color:$color_font_default; }
@@ -57,6 +58,12 @@ $color_key : #337ab7;
 .screen-reader-text { display: none; }
 input.form-control { margin-bottom:3px; }
 input.form-control.input_widthAuto { width: auto; }
+
+/*-------------------------------------------*/
+/* search
+/*-------------------------------------------*/
+input#s.form-group { margin-bottom:10px;width:auto;display: inline-block; }
+input#searchsubmit { vertical-align: top; }
 
 
 /*-------------------------------------------*/
@@ -80,8 +87,10 @@ input.form-control.input_widthAuto { width: auto; }
 .siteHeader { background-color: #fff;z-index:1000;top:0;box-shadow:0px 1px 3px rgba(0,0,0,0.1);margin-bottom:0;width:100%; }
 /* Padding setting in ".container" because that header was get height js.
 If set padding to header that js can't correct height. */
-.siteHeader .container { padding-top:5px;padding-bottom:4px; }
-.siteHeader_logo.navbar-brand { height:auto;padding:5px 0;margin:0;font-size: 32px;line-height: 1.5em;
+.siteHeader .container { padding-top:5px;padding-bottom:4px;
+  .siteHeader_logo.navbar-brand { margin:0; }
+}
+.siteHeader_logo.navbar-brand { height:auto;padding:5px 0;font-size: 32px;line-height: 1.5em;
   a { color:#333; }
   a:hover { text-decoration: none; color:$color_key; }
   img { max-height: 40px;display: block; }
@@ -248,7 +257,7 @@ h1.entry-title { font-size:26px; }
     }
   }
   .media-body {
-    .media-heading { font-size:1.8em;line-height:1.3em;margin-top:0; margin-bottom:0.5em;font-weight: normal;
+    .media-heading { font-size:1.6em;line-height:1.3em;margin-top:0; margin-bottom:0.4em;font-weight: normal;
       /* Begin heading style reset */
       background: none;box-shadow: none;padding: 0;
       /* End heading style reset */
@@ -326,6 +335,10 @@ ul.page-numbers { margin:0;padding: 0;
   }
   li.current-cat > a,
   li.current_page_item > a { background-color: rgba(0,0,0,0.05); }
+}
+
+@media (min-width: 768px){
+  .subSection .widget input#s.form-group { width:70%; }
 }
 
 /*-------------------------------------------*/
@@ -452,8 +465,3 @@ p.no-comments { background-color: #f3f3f3;border:1px solid #e5e5e5; text-align: 
 
 // theme check pass
 .bypostauthor { color: $color_font_default; }
-/*-------------------------------------------*/
-/* search
-/*-------------------------------------------*/
-input#s.form-group { margin-bottom:10px;width:auto;display: inline-block; }
-input#searchsubmit { vertical-align: top; }
