@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lightning v0.1.0\n"
 "Report-Msgid-Bugs-To: Translator Name <translations@example.com>\n"
-"POT-Creation-Date: 2016-05-08 19:13+0900\n"
+"POT-Creation-Date: 2016-06-13 15:34+0900\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Kurudrive <kurudrive@gmail.com>\n"
 "Language-Team: Vektor,Inc. <info@vektor-inc.co.jp>\n"
@@ -23,47 +23,24 @@ msgstr ""
 "X-Generator: Poedit 1.5.7\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../class-design-manager.php:15
-msgid "Lightning Design skin"
-msgstr "Lightning デザインスキン"
-
-#: ../class-design-manager.php:31
-msgid "Design skin"
-msgstr "デザインスキン"
-
-#: ../class-design-manager.php:34
-msgid "Please save Once you change the skin."
-msgstr "スキンを変更したら一度保存してください。"
-
-#: ../class-design-manager.php:35
-msgid ""
-"If you reload after the saving, it will be displayed skin-specific "
-"configuration items."
-msgstr "保存した後で再読み込みをすると、スキン固有の設定項目が表示されます。"
-
-#: ../class-design-manager.php:36
-msgid ""
-"*There is also a case where there is no skin-specific installation item."
-msgstr "※スキンによっては固有の設置項目がない場合もあります。"
-
-#: ../class-tgm-plugin-activation.php:333 ../functions_plugin_install.php:78
+#: ../class-tgm-plugin-activation.php:333 ../functions_plugin_install.php:83
 msgid "Install Required Plugins"
 msgstr "インストール推奨プラグイン"
 
-#: ../class-tgm-plugin-activation.php:334 ../functions_plugin_install.php:79
+#: ../class-tgm-plugin-activation.php:334 ../functions_plugin_install.php:84
 msgid "Install Plugins"
 msgstr "プラグインをインストール"
 
-#: ../class-tgm-plugin-activation.php:335 ../functions_plugin_install.php:80
+#: ../class-tgm-plugin-activation.php:335 ../functions_plugin_install.php:85
 #, php-format
 msgid "Installing Plugin: %s"
 msgstr "プラグインをインストールしています : %s"
 
-#: ../class-tgm-plugin-activation.php:336 ../functions_plugin_install.php:81
+#: ../class-tgm-plugin-activation.php:336 ../functions_plugin_install.php:86
 msgid "Something went wrong with the plugin API."
 msgstr ""
 
-#: ../class-tgm-plugin-activation.php:338 ../functions_plugin_install.php:83
+#: ../class-tgm-plugin-activation.php:338 ../functions_plugin_install.php:88
 #, php-format
 msgid "This theme requires the following plugin: %1$s."
 msgid_plural "This theme requires the following plugins: %1$s."
@@ -77,7 +54,7 @@ msgid_plural "This theme recommends the following plugins: %1$s."
 msgstr[0] "このテーマは次のプラグインを利用する事をお勧めしています : %1$s"
 msgstr[1] "このテーマは次のプラグインを利用する事をお勧めしています : %1$s"
 
-#: ../class-tgm-plugin-activation.php:348 ../functions_plugin_install.php:93
+#: ../class-tgm-plugin-activation.php:348 ../functions_plugin_install.php:98
 #, php-format
 msgid ""
 "Sorry, but you do not have the correct permissions to install the %1$s "
@@ -88,7 +65,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../class-tgm-plugin-activation.php:353 ../functions_plugin_install.php:98
+#: ../class-tgm-plugin-activation.php:353 ../functions_plugin_install.php:103
 #, php-format
 msgid ""
 "The following plugin needs to be updated to its latest version to ensure "
@@ -99,14 +76,14 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../class-tgm-plugin-activation.php:358 ../functions_plugin_install.php:103
+#: ../class-tgm-plugin-activation.php:358 ../functions_plugin_install.php:108
 #, php-format
 msgid "There is an update available for: %1$s."
 msgid_plural "There are updates available for the following plugins: %1$s."
 msgstr[0] "次のプラグインの更新が入手可能です: %1$s."
 msgstr[1] "次のプラグインの更新が入手可能です: %1$s."
 
-#: ../class-tgm-plugin-activation.php:363 ../functions_plugin_install.php:108
+#: ../class-tgm-plugin-activation.php:363 ../functions_plugin_install.php:113
 #, php-format
 msgid ""
 "Sorry, but you do not have the correct permissions to update the %1$s plugin."
@@ -116,21 +93,21 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../class-tgm-plugin-activation.php:368 ../functions_plugin_install.php:113
+#: ../class-tgm-plugin-activation.php:368 ../functions_plugin_install.php:118
 #, php-format
 msgid "The following required plugin is currently inactive: %1$s."
 msgid_plural "The following required plugins are currently inactive: %1$s."
 msgstr[0] "次の必須プラグインが有効化されていません: %1$s."
 msgstr[1] "次の必須プラグインが有効化されていません: %1$s."
 
-#: ../class-tgm-plugin-activation.php:373 ../functions_plugin_install.php:118
+#: ../class-tgm-plugin-activation.php:373 ../functions_plugin_install.php:123
 #, php-format
 msgid "The following recommended plugin is currently inactive: %1$s."
 msgid_plural "The following recommended plugins are currently inactive: %1$s."
 msgstr[0] "次の推奨プラグインが有効化されていません: %1$s."
 msgstr[1] "次の推奨プラグインが有効化されていません: %1$s."
 
-#: ../class-tgm-plugin-activation.php:378 ../functions_plugin_install.php:123
+#: ../class-tgm-plugin-activation.php:378 ../functions_plugin_install.php:128
 #, php-format
 msgid ""
 "Sorry, but you do not have the correct permissions to activate the %1$s "
@@ -141,25 +118,25 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../class-tgm-plugin-activation.php:383 ../functions_plugin_install.php:128
+#: ../class-tgm-plugin-activation.php:383 ../functions_plugin_install.php:133
 msgid "Begin installing plugin"
 msgid_plural "Begin installing plugins"
 msgstr[0] "プラグインをインストール"
 msgstr[1] "プラグインをインストール"
 
-#: ../class-tgm-plugin-activation.php:388 ../functions_plugin_install.php:133
+#: ../class-tgm-plugin-activation.php:388 ../functions_plugin_install.php:138
 msgid "Begin updating plugin"
 msgid_plural "Begin updating plugins"
 msgstr[0] "プラグインの更新を開始する"
 msgstr[1] "プラグインの更新を開始する"
 
-#: ../class-tgm-plugin-activation.php:393 ../functions_plugin_install.php:138
+#: ../class-tgm-plugin-activation.php:393 ../functions_plugin_install.php:143
 msgid "Begin activating plugin"
 msgid_plural "Begin activating plugins"
 msgstr[0] "プラグインを有効化する"
 msgstr[1] "プラグインを有効化する"
 
-#: ../class-tgm-plugin-activation.php:397 ../functions_plugin_install.php:142
+#: ../class-tgm-plugin-activation.php:397 ../functions_plugin_install.php:147
 msgid "Return to Required Plugins Installer"
 msgstr "プラグインのインストールに戻る"
 
@@ -168,23 +145,23 @@ msgid "Return to the dashboard"
 msgstr "ダッシュボードに戻る"
 
 #: ../class-tgm-plugin-activation.php:399
-#: ../class-tgm-plugin-activation.php:3027 ../functions_plugin_install.php:143
+#: ../class-tgm-plugin-activation.php:3027 ../functions_plugin_install.php:148
 msgid "Plugin activated successfully."
 msgstr "プラグインの有効化に成功しました。"
 
 #: ../class-tgm-plugin-activation.php:400
-#: ../class-tgm-plugin-activation.php:2830 ../functions_plugin_install.php:144
+#: ../class-tgm-plugin-activation.php:2830 ../functions_plugin_install.php:149
 msgid "The following plugin was activated successfully:"
 msgid_plural "The following plugins were activated successfully:"
 msgstr[0] "次のプラグインの有効化に成功しました。"
 msgstr[1] "次のプラグインの有効化に成功しました。"
 
-#: ../class-tgm-plugin-activation.php:401 ../functions_plugin_install.php:145
+#: ../class-tgm-plugin-activation.php:401 ../functions_plugin_install.php:150
 #, php-format
 msgid "No action taken. Plugin %1$s was already active."
 msgstr "%1$s　は既に有効化されています。"
 
-#: ../class-tgm-plugin-activation.php:402 ../functions_plugin_install.php:146
+#: ../class-tgm-plugin-activation.php:402 ../functions_plugin_install.php:151
 #, php-format
 msgid ""
 "Plugin not activated. A higher version of %s is needed for this theme. "
@@ -192,7 +169,7 @@ msgid ""
 msgstr ""
 "有効化できませんでした。　%s　を使用するにはテーマのアップデートが必要です。"
 
-#: ../class-tgm-plugin-activation.php:403 ../functions_plugin_install.php:147
+#: ../class-tgm-plugin-activation.php:403 ../functions_plugin_install.php:152
 #, php-format
 msgid "All plugins installed and activated successfully. %1$s"
 msgstr "全てのプラグインのインストールと有効化に成功しました。%1$s"
@@ -201,7 +178,7 @@ msgstr "全てのプラグインのインストールと有効化に成功しま
 msgid "Dismiss this notice"
 msgstr "このお知らせを表示しない"
 
-#: ../class-tgm-plugin-activation.php:405 ../functions_plugin_install.php:148
+#: ../class-tgm-plugin-activation.php:405 ../functions_plugin_install.php:153
 msgid "Please contact the administrator of this site for help."
 msgstr "サイトの管理人に連絡をとってください。"
 
@@ -347,7 +324,7 @@ msgstr ""
 
 #: ../class-tgm-plugin-activation.php:2397
 msgid "Available version:"
-msgstr ""
+msgstr "入手可能バージョン:"
 
 #: ../class-tgm-plugin-activation.php:2420
 #, php-format
@@ -531,108 +508,108 @@ msgstr "新しいコメント"
 msgid "Comments are closed."
 msgstr "この投稿はコメントできません。"
 
-#: ../front-page.php:56 ../index.php:70
+#: ../front-page.php:58 ../index.php:70
 msgid "Page"
 msgstr "ページ"
 
-#: ../front-page.php:65 ../index.php:74
+#: ../front-page.php:67 ../index.php:74
 msgid "No posts."
 msgstr "投稿はありません。"
 
-#: ../functions.php:130
+#: ../functions.php:143
 msgid "Sidebar(Home)"
 msgstr "サイドバー（トップページ）"
 
-#: ../functions.php:138
+#: ../functions.php:151
 msgid "Sidebar(Common top)"
 msgstr "サイドバー（共通上部）"
 
-#: ../functions.php:146
+#: ../functions.php:159
 msgid "Sidebar(Common bottom)"
 msgstr "サイドバー（共通下部）"
 
-#: ../functions.php:170
+#: ../functions.php:183
 #, php-format
 msgid "Sidebar(%s)"
 msgstr "サイドバー（%s）"
 
-#: ../functions.php:172
+#: ../functions.php:185
 #, php-format
 msgid "This widget area appears on the %s contents page only."
 msgstr "このウィジェットは%sコンテンツでのみ表示されます。"
 
-#: ../functions.php:185
+#: ../functions.php:198
 msgid "Home content top"
 msgstr "トップページコンテンツエリア上部"
 
-#: ../functions.php:196
+#: ../functions.php:209
 msgid "Widget area of upper footer"
 msgstr "フッター上部"
 
-#: ../functions.php:211
+#: ../functions.php:224
 msgid "Footer widget area "
 msgstr "フッターウィジェットエリア"
 
-#: ../functions_customizer.php:48
+#: ../functions_customizer.php:52
 msgctxt "lightning theme-customizer"
 msgid "Lightning Design settings"
 msgstr "Lightning デザイン設定"
 
-#: ../functions_customizer.php:98
+#: ../functions_customizer.php:102
 msgctxt "lightning theme-customizer"
 msgid "Header logo image"
 msgstr "ヘッダーロゴ画像"
 
-#: ../functions_customizer.php:107
+#: ../functions_customizer.php:111
 msgctxt "lightning theme-customizer"
 msgid "Key color"
 msgstr "キーカラー"
 
-#: ../functions_customizer.php:113
+#: ../functions_customizer.php:117
 msgctxt "lightning theme-customizer"
 msgid "Key color(dark)"
 msgstr "キーカラー（暗）"
 
-#: ../functions_customizer.php:121
+#: ../functions_customizer.php:125
 msgctxt "lightning theme-customizer"
 msgid "Don't show sidebar on home page"
 msgstr "トップページを1カラムにする"
 
-#: ../functions_customizer.php:128
+#: ../functions_customizer.php:132
 msgctxt "lightning theme-customizer"
 msgid "Hide modified date on single pages."
 msgstr "投稿詳細ページで最終更新日を表示しない"
 
-#: ../functions_customizer.php:135
+#: ../functions_customizer.php:139
 msgctxt "lightning theme-customizer"
 msgid "Don't display post author on a single page"
 msgstr "投稿詳細ページで投稿者名を表示しない"
 
-#: ../functions_customizer.php:147
+#: ../functions_customizer.php:151
 msgctxt "lightning theme-customizer"
 msgid "Lightning Home page slide show"
 msgstr "Lightning トップページスライドショー"
 
-#: ../functions_customizer.php:194
+#: ../functions_customizer.php:198
 msgctxt "lightning theme-customizer"
 msgid "Slide image title"
 msgstr "スライド画像タイトル"
 
-#: ../functions_customizer.php:199
+#: ../functions_customizer.php:203
 msgid "This title text is print to alt tag."
 msgstr "このテキストはaltに反映されます。"
 
-#: ../functions_customizer.php:204
+#: ../functions_customizer.php:208
 msgctxt "lightning theme-customizer"
 msgid "Slide image link url"
 msgstr "スライド画像リンク先URL"
 
-#: ../functions_customizer.php:213
+#: ../functions_customizer.php:217
 msgctxt "lightning theme-customizer"
 msgid "Open in new window."
 msgstr "リンク先を別ウィンドウで開く"
 
-#: ../functions_customizer.php:225
+#: ../functions_customizer.php:229
 msgctxt "lightning theme-customizer"
 msgid "Slide image"
 msgstr "スライド画像"
@@ -677,7 +654,7 @@ msgstr ""
 "WordPress Theme Lightning\"> Lightning Theme</a> by Vektor,Inc. technology.</"
 "p>"
 
-#: ../functions_plugin_install.php:88
+#: ../functions_plugin_install.php:93
 #, php-format
 msgid ""
 "This theme recommends the following plugin: %1$s.<br>Many additional "
@@ -748,6 +725,28 @@ msgstr "<dl><dt>%s</dt><dd>%l</dd></dl>"
 #: ../single.php:62
 msgid "Tags"
 msgstr "タグ"
+
+#: ../design_skin/class-design-manager.php:31
+msgid "Design skin"
+msgstr "デザインスキン"
+
+#: ../design_skin/class-design-manager.php:34
+msgid "Please save Once you change the skin."
+msgstr "スキンを変更したら一度保存してください。"
+
+#: ../design_skin/class-design-manager.php:35
+msgid ""
+"If you reload after the saving, it will be displayed skin-specific "
+"configuration items."
+msgstr "保存した後で再読み込みをすると、スキン固有の設定項目が表示されます。"
+
+#: ../design_skin/class-design-manager.php:36
+msgid ""
+"*There is also a case where there is no skin-specific installation item."
+msgstr "※スキンによっては固有の設置項目がない場合もあります。"
+
+#~ msgid "Lightning Design skin"
+#~ msgstr "Lightning デザインスキン"
 
 #~ msgid "Design_skin"
 #~ msgstr "デザインスキン"

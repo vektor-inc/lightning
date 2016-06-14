@@ -2,13 +2,17 @@
 @import "compass";
 
 /****************************************************************/
-/* Lightning Outer Area All Skin common style
+/* Lightning Outer Area All Skin outer style
 /****************************************************************/
 
 $border_primary : 1px solid #e5e5e5;
 $color_font_default : #464646;
 $color_key : #337ab7;
 
+/*-------------------------------------------*/
+/* search
+/*-------------------------------------------*/
+/* .navSection
 /*-------------------------------------------*/
 /* .siteHeader
 /*-------------------------------------------*/
@@ -44,8 +48,7 @@ $color_key : #337ab7;
 /*-------------------------------------------*/
 /* .comments-area
 /*-------------------------------------------*/
-/* search
-/*-------------------------------------------*/
+
 
 .sectionBox { padding-top:2em;padding-bottom:2em;display:block; overflow:hidden; }
 .nav li a { color:$color_font_default; }
@@ -56,26 +59,49 @@ $color_key : #337ab7;
 input.form-control { margin-bottom:3px; }
 input.form-control.input_widthAuto { width: auto; }
 
+/*-------------------------------------------*/
+/* search
+/*-------------------------------------------*/
+input#s.form-group { margin-bottom:10px;width:auto;display: inline-block; }
+input#searchsubmit { vertical-align: top; }
+
+
+/*-------------------------------------------*/
+/* .navSection
+/*-------------------------------------------*/
+@media (max-width: 767px){
+  .menuBtn { position:absolute;top:0; z-index: 2000;margin:10px;
+    &.btn-default { border-color: #999;color:#999; }
+    &.btn-default:hover { border-color: #fff;color:#fff; }
+    &.menuBtn_right { right:0px; }
+  }
+} // @media (max-width: 767px){
+@media (min-width: 768px){
+  .menuBtn,
+  .navSection { display: none; }
+}
 
 /*-------------------------------------------*/
 /* .siteHeader
 /*-------------------------------------------*/
-.siteHeader { background-color: #fff;box-shadow:0px 1px 3px rgba(0,0,0,0.1);margin-bottom:0; }
+.siteHeader { background-color: #fff;z-index:1000;top:0;box-shadow:0px 1px 3px rgba(0,0,0,0.1);margin-bottom:0;width:100%; }
 /* Padding setting in ".container" because that header was get height js.
 If set padding to header that js can't correct height. */
-.siteHeader .container { padding-top:5px;padding-bottom:4px; }
-.siteHeader_logo.navbar-brand { height:auto;padding:5px 0;margin:0;font-size: 32px;line-height: 1.5em;
+.siteHeader .container { padding-top:5px;padding-bottom:4px;
+  .siteHeader_logo.navbar-brand { margin:0; }
+}
+.siteHeader_logo.navbar-brand { height:auto;padding:5px 0;font-size: 32px;line-height: 1.5em;
   a { color:#333; }
   a:hover { text-decoration: none; color:$color_key; }
-  img { max-height: 40px; }
-}
-.navbar-toggle { border:1px solid #999;
-  .icon-bar { border:1px solid #666; }
+  img { max-height: 40px;display: block; }
 }
 
-.siteHeader_logo.navbar-brand { padding:0 15px; }
+@media (max-width: 767px){
+  .siteHeader_logo.navbar-brand { float:inherit; text-align: center;padding:0 40px; }
+  .siteHeader_logo.navbar-brand img { display: block ; margin:0 auto; }
+}
 @media (min-width: 768px){
-.siteHeader_logo.navbar-brand { text-align: center; }
+
 } // @media (min-width: 768px){
 @media (min-width: 992px) {
 .siteHeader .container { padding-top:20px;padding-bottom:18px; }
@@ -93,7 +119,7 @@ nav { font-size:14px;
 ul.gMenu {
   a { display:block; overflow:hidden;border-bottom:$border_primary;color:#666;text-decoration: none; }
   a:hover { color:$color_key; }
-  ul { padding-left:0;width:auto;display: block;
+  ul { padding-left:0;width:auto;display: block;margin-bottom:0;
     li {
         a { display:block; overflow:hidden;padding: 10px 1em 10px 2em;width:auto; }
         li a { padding-left:3em; }
@@ -106,8 +132,11 @@ ul.gMenu {
 .gMenu_name { font-weight: normal;color:$color_font_default; }
 .gMenu_description { display:block; overflow:hidden;font-size:10px; line-height: 14px; }
 
-
 @media (max-width: 767px){
+  .gMenu_outer { overflow:hidden;display: none; }
+  .gMenu_outer.itemOpen { display: block; }
+  .gMenu_outer.itemClose { display: none; }
+  .gMenu_description { display: none; }
   ul.gMenu { border-top:1px solid #e5e5e5;margin-bottom:0;
     a:hover,
     a:active,
@@ -115,10 +144,12 @@ ul.gMenu {
   }
 }
 @media (min-width: 768px){
+.gMenu_outer.itemOpen,
+.gMenu_outer.itemClose { display: block; }
 .gMenu_name { text-align: center;display: block; }
 .gMenu_description { text-align: center; }
 ul.gMenu { float: right;
-  & >li { position: relative;
+  & >li { position: relative;float:left;
     & > a { border-bottom:none; }
   }
 } // ul.gMenu
@@ -163,7 +194,7 @@ h1.page-header_pageTitle:first-child { margin:15px 0 10px;font-size:22px;line-he
 /*      .mainSection
 /*-------------------------------------------*/
 .mainSection {
-  header { position: relative;border-bottom:$border_primary; }
+  header { position: relative;border-bottom:$border_primary;margin-bottom:2em; }
   header h1 { margin-top:0; }
   .postList { margin-bottom:1.5em; }
 }
@@ -188,8 +219,7 @@ h1.page-header_pageTitle:first-child { margin:15px 0 10px;font-size:22px;line-he
 @media (max-width: 767px){
 h1.entry-title { font-size:26px; }
 }
-.entry-body { display:block; overflow:hidden;padding:2em 0 2.5em; }
-.page .entry-body {padding-top:0; }
+.entry-body { display:block; overflow:hidden;padding:0 0 2.5em; }
 
 /*      .entry-footer
 /*-------------------------------------------*/
@@ -227,7 +257,7 @@ h1.entry-title { font-size:26px; }
     }
   }
   .media-body {
-    .media-heading { font-size:1.8em;line-height:1.3em;margin-top:0; margin-bottom:0.5em;font-weight: normal;
+    .media-heading { font-size:1.6em;line-height:1.3em;margin-top:0; margin-bottom:0.4em;font-weight: normal;
       /* Begin heading style reset */
       background: none;box-shadow: none;padding: 0;
       /* End heading style reset */
@@ -307,6 +337,10 @@ ul.page-numbers { margin:0;padding: 0;
   li.current_page_item > a { background-color: rgba(0,0,0,0.05); }
 }
 
+@media (min-width: 768px){
+  .subSection .widget input#s.form-group { width:70%; }
+}
+
 /*-------------------------------------------*/
 /* Widget
 /*-------------------------------------------*/
@@ -318,6 +352,9 @@ ul.page-numbers { margin:0;padding: 0;
 .widget_tag_cloud .subSection-title,
 .widget_recent_comments .subSection-title { margin-bottom:10px; }
 
+/* .widget_link_list はプラグインなどの外部ウィジェットからの指定用。
+.widget と同列で書かれる時もあれば下階層に書かれる事もある。ExUnitの固定ページリストウィジェットなどで使用 */
+.widget_link_list, 
 .widget_recent_comments,
 .widget_nav_menu,
 .widget_archive,
@@ -326,6 +363,7 @@ ul.page-numbers { margin:0;padding: 0;
   ul { padding-left:0;margin:0;font-size:14px; }
 }
 
+.widget_link_list,
 .widget_nav_menu,
 .widget_archive,
 .widget_categories,
@@ -427,10 +465,3 @@ p.no-comments { background-color: #f3f3f3;border:1px solid #e5e5e5; text-align: 
 
 // theme check pass
 .bypostauthor { color: $color_font_default; }
-/*-------------------------------------------*/
-/* search
-/*-------------------------------------------*/
-// @media (max-width: 1170px){
-input#s.form-group { margin-bottom:10px;width:100%; }
-input#searchsubmit { vertical-align: top;width:100%; }
-// }

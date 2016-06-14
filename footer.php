@@ -44,7 +44,7 @@
             for ( $i = 1; $i <= $footer_widget_area_count; ) {
                 echo '<div class="'.$footer_widget_area[$footer_widget_area_count]['class'].'">';
                     if ( is_active_sidebar( 'footer-widget-'.$i ) ) dynamic_sidebar( 'footer-widget-'.$i );
-                echo '</div>'; 
+                echo '</div>';
                 $i++;
             }
             ?>
@@ -58,8 +58,7 @@
         </div>
     </div>
 </footer>
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-
+<?php do_action('lightning_footer_after'); ?>
 <?php wp_footer();?>
 </body>
 </html>

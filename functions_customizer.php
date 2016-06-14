@@ -31,6 +31,10 @@ function lightning_customize_register($wp_customize) {
 		}
 	}
 
+	function lightning_sanitize_radio($input){
+		return esc_attr( $input );
+	}
+
 	/*-------------------------------------------*/
 	/*	Lightning Panel
 	/*-------------------------------------------*/
@@ -239,24 +243,25 @@ function lightning_customize_register($wp_customize) {
 /*	* This is used for Contents and Plugins and others
 /*-------------------------------------------*/
 add_action( 'wp_head', 'lightning_output_keyColorCss', 5);
-function lightning_output_keyColorCss(){
+function lightning_output_keycolorcss(){
 	$options = get_option('lightning_theme_options');
 	$corlors_default = array(
-		'color_key'       => isset($options['color_key'])? $options['color_key']: '#337ab7',
-		'color_key_dark'  => isset($options['color_key_dark'])? $options['color_key_dark']: '#2e6da4',
+		'color_key'       => empty($options['color_key'])? '#337ab7' : $options['color_key'],
+		'color_key_dark'  => empty($options['color_key_dark'])? '#2e6da4' : $options['color_key_dark'],
 	);
 	$corlors = apply_filters('lightning_keycolors', $corlors_default);
 	$types = array('_bg'=>'background-color','_txt'=>'color','_border'=>'border-color');
 	reset( $corlors );
-	echo '<style type="text/css">'."\n";
+	echo '<style type="text/css">';
 	while( list( $k,$v ) = each( $corlors ) ){
 		reset( $types );
 		while( list( $kk,$vv ) = each( $types ) ){
-			echo ".{$k}{$kk},.{$k}{$kk}_hover:hover{{$vv}: {$v};}\n";
+			echo ".{$k}{$kk},.{$k}{$kk}_hover:hover{{$vv}: {$v};}";
 		}
 	}
 	echo "</style>\n";
 }
+
 
 /*-------------------------------------------*/
 /*	Print head
@@ -265,8 +270,8 @@ add_action( 'wp_head','lightning_print_css_common', 150);
 function lightning_print_css_common(){
 	$options = get_option('lightning_theme_options');
 	if ( isset($options['color_key']) && isset($options['color_key_dark']) ) {
-	$color_key = esc_html($options['color_key']);
-	$color_key_dark = esc_html($options['color_key_dark']);
+	$color_key = ( !empty($options['color_key']) )? esc_html($options['color_key']) : '#337ab7';
+	$color_key_dark = ( !empty($options['color_key_dark'] ) )? esc_html($options['color_key_dark']) : '#2e6da4';
 	?>
 <style type="text/css">
 .veu_color_txt_key { color:<?php echo $color_key_dark;?> ; }

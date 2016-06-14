@@ -42,6 +42,7 @@ ol ol,ul ul,ol ul,ul ol { margin-top:10px;margin-bottom:10px; }
 /*-------------------------------------------*/
 /* headding
 /*-------------------------------------------*/
+h1,.h1 { font-size:32px; }
 h2,
 h3,
 h4,
@@ -116,4 +117,5 @@ img.aligncenter { margin-bottom: 12px; }
 /*-------------------------------------------*/
 /* other class
 /*-------------------------------------------*/
+.btn { white-space: inherit; }
 .well p:last-child { margin-bottom:0; }
