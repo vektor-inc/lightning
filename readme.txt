@@ -32,6 +32,9 @@ http://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v2.1.0
+* [ Specification change ] [ Slide ] In mobile mode, change to hide the edges of the image.
+
 v2.0.0
 * [ Specification change ] Header logo position and menu position
 * [ Specification change ] Add action hook to header.php / footer.php / front-page.php
