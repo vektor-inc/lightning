@@ -23,22 +23,22 @@ var spritesmith = require('gulp.spritesmith');
 // });
 
 gulp.task( 'copy', function() {
-    gulp.src( './library/bootstrap/css/bootstrap.min.css'  )
+    gulp.src( './libraries/bootstrap/css/bootstrap.min.css'  )
     .pipe(rename({prefix: "_",extname: ".scss"})) // 拡張子をscssに
     .pipe( gulp.dest( './design_skin/origin/_scss/' ) ); // _scss ディレクトリに保存
-    gulp.src( './library/bootstrap/fonts/**'  )
+    gulp.src( './libraries/bootstrap/fonts/**'  )
     .pipe( gulp.dest( './design_skin/origin/fonts/' ) ); // _scss ディレクトリに保存
 } );
 
 // ファイル結合
 gulp.task('scripts', function() {
-  return gulp.src(['./library/bootstrap/js/bootstrap.min.js','./js/_master.js'])
+  return gulp.src(['./libraries/bootstrap/js/bootstrap.min.js','./js/_master.js'])
     .pipe(concat('all.js'))
     .pipe(gulp.dest('./js/'));
 
 });
 gulp.task('scripts_header_fixed', function() {
-  return gulp.src(['./library/bootstrap/js/bootstrap.min.js','./js/_master.js','./js/_header_fixed.js'])
+  return gulp.src(['./libraries/bootstrap/js/bootstrap.min.js','./js/_master.js','./js/_header_fixed.js'])
     .pipe(concat('all_in_header_fixed.js'))
     .pipe(gulp.dest('./js/'));
 });
