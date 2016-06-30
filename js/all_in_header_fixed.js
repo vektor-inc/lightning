@@ -109,23 +109,30 @@ jQuery(document).ready(function(){
 
 })(jQuery);
 
-;(function($){
-jQuery(function(){
-	offset_header();
-});
+;(function($,document,window){
+
+var timer = false;
 jQuery(document).ready(function(){
-	offset_header();
+    offset_header();
 });
 jQuery(window).resize(function(){
-	offset_header();
+    if (timer !== false){
+        clearTimeout(timer);
+    }
+    timer = setTimeout(offset_header, 300);
 });
+
+
 
 /*----------------------------------------------------------*/
 /*	Offset header for admin bar
 /*----------------------------------------------------------*/
 function offset_header(){
-	var headerHeight = jQuery('header.siteHeader').height();
-	// jQuery('body').css("padding-top",headerHeight+"px");
+    // jQuery('body').css("padding-top",headerHeight+"px");
+    if(jQuery('body').hasClass('offset_header')){
+        var headerHeight = jQuery('header.siteHeader').height();
+        jQuery('header.siteHeader').next().css("margin-top",headerHeight+"px");
+    }
 	jQuery('header.siteHeader').next().css("margin-top",headerHeight+"px");
 	if ( jQuery('body').hasClass('admin-bar') ){
 		// Get adminbar height
@@ -141,8 +148,8 @@ function offset_header(){
 /*	Header height changer
 /*-------------------------------------------*/
 jQuery(document).ready(function(){
-  if(!$('body').hasClass('headfix')){ return; }
-  $('body').addClass('headfix');
+  if(!jQuery('body').hasClass('headfix')){ return; }
+  jQuery('body').addClass('headfix');
   jQuery('.siteHeader').css({"position":"fixed"});
 	var head_logo_image_defaultHeight = jQuery('.navbar-brand img').height();
 	var bodyWidth = jQuery(window).width();
@@ -191,4 +198,4 @@ function head_high( head_logo_image_defaultHeight ){
 	},100);
 }
 
-})(jQuery);
+})(jQuery,document,window);
