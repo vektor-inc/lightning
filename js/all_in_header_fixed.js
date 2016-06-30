@@ -142,6 +142,7 @@ function offset_header(){
 /*-------------------------------------------*/
 jQuery(document).ready(function(){
   if(!$('body').hasClass('headfix')){ return; }
+  $('body').addClass('headfix');
   jQuery('.siteHeader').css({"position":"fixed"});
 	var head_logo_image_defaultHeight = jQuery('.navbar-brand img').height();
 	var bodyWidth = jQuery(window).width();
