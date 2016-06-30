@@ -9,8 +9,6 @@ var concat = require('gulp-concat');
 var jsmin = require('gulp-jsmin');
 // エラーでも監視を続行させる
 var plumber = require('gulp-plumber');
-// sudo npm install gulp.spritesmith --save-dev
-var spritesmith = require('gulp.spritesmith');
 // http://blog.e-riverstyle.com/2014/02/gulpspritesmithcss-spritegulp.html
 
 // // Task
@@ -58,10 +56,7 @@ gulp.task('watch', function() {
     // gulp.watch('js/*.js', ['scripts']);
     gulp.watch('js/_master.js', ['scripts','scripts_header_fixed']);
     gulp.watch('js/_header_fixed.js', ['scripts','scripts_header_fixed']);
-    gulp.watch('js/_vk_menu.js', ['scripts','scripts_header_fixed']);
     gulp.watch('js/all.js', ['jsmin']);
-    gulp.watch('_scss/style.scss', ['copy']);
 });
 
-// gulp.task('default', ['scripts','watch','sprite']);
-// gulp.task('default', ['copy','scripts','jsmin','watch']);
+gulp.task('default', ['copy','scripts','jsmin','watch']);

@@ -1,0 +1,15 @@
+{
+  "name": "lightning",
+  "version": "1.0.0",
+  "description": "wordpress theme",
+  "dependencies": {
+    "gulp": "^3.9.1"
+  },
+  "devDependencies": {
+    "gulp-concat": "^2.6.0",
+    "gulp-cssmin": "^0.1.7",
+    "gulp-jsmin": "^0.1.5",
+    "gulp-plumber": "^1.1.0",
+    "gulp.spritesmith": "^6.2.1"
+  }
+}
