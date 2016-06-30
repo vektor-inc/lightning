@@ -18,11 +18,10 @@
 	/*----------------------------------------------------------*/
 	function offset_header(){
 		// $('body').css("padding-top",headerHeight+"px");
-		if($('body').hasClass('offset_header')){
+		if ( $('body').hasClass('offset_header') ){
 			var headerHeight = $('header.siteHeader').height();
 			$('header.siteHeader').next().css("margin-top",headerHeight+"px");
 		}
-		$('header.siteHeader').next().css("margin-top",headerHeight+"px");
 		if ( $('body').hasClass('admin-bar') ){
 			// Get adminbar height
 			var adminBarHeight = $('#wpadminbar').height();
