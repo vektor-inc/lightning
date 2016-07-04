@@ -198,6 +198,11 @@ h1.page-header_pageTitle:first-child { margin:15px 0 10px;font-size:22px;line-he
   header h1 { margin-top:0; }
   .postList { margin-bottom:1.5em; }
 }
+h1.mainSection-title { font-size:24px; }
+@media (min-width: 768px){
+.mainSection .widget { margin-bottom:40px; }
+}
+
 .entry-meta { margin-bottom:0.8em;padding-left:3px;
   i { margin-right:5px; }
 }
@@ -344,10 +349,10 @@ ul.page-numbers { margin:0;padding: 0;
 /*-------------------------------------------*/
 /* Widget
 /*-------------------------------------------*/
-.widget { margin-bottom:30px;display:block; overflow:hidden;
+.widget { margin-bottom:30px;display:block;
   .subSection-title { margin-top:0;margin-bottom: 0;font-size:18px; }
 }
-
+.widget:after{ content: "";clear: both;display: block; }
 .widget_text .subSection-title,
 .widget_tag_cloud .subSection-title,
 .widget_recent_comments .subSection-title { margin-bottom:10px; }
