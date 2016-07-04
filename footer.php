@@ -10,6 +10,8 @@
 </div>
 <?php endif; ?>
 
+<?php do_action('lightning_footer_before'); ?>
+
 <footer class="section siteFooter">
     <div class="footerMenu">
        <div class="container">

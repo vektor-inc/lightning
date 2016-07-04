@@ -1,4 +1,6 @@
 <?php
+
+function lightning_bread_crumb(){
 /*-------------------------------------------*/
 /*	Lightning BreadCrumb
 /*-------------------------------------------*/
@@ -236,6 +238,8 @@ $panListHtml .= '</ol>
 </div>
 </div>
 <!-- [ /.breadSection ] -->';
-
+	return $panListHtml;
+}
+$panListHtml = lightning_bread_crumb();
 $panListHtml = apply_filters( 'lightning_panListHtml', $panListHtml );
 echo $panListHtml;
