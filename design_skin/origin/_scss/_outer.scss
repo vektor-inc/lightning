@@ -434,6 +434,7 @@ footer {
 /*-------------------------------------------*/
 .carousel { border-bottom:$border_primary;display:block; overflow:hidden; }
 .carousel-indicators { margin-bottom:0;bottom:5px; }
+.carousel-inner>.item>a:after { content: "";clear: both;display: block; }
 .carousel-inner>.item>a>img,
 .carousel-inner>.item>img { width:100%; height:auto;}
 .carousel-control.right { @include background(linear-gradient(to right, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.2) 100%)); }
