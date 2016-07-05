@@ -32,6 +32,10 @@ http://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v2.2.1
+
+* [ Design bug fix ] Modification of link failure of the slide show in the mobile mode.
+
 v2.2.0
 
 * [ Design bug fix ] Modification of link failure of the slide show in the mobile mode.
