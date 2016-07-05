@@ -279,7 +279,6 @@ function lightning_print_css_common(){
 .veu_color_border_key { border-color:<?php echo $color_key_dark;?> ; }
 a { color:<?php echo $color_key_dark;?> ; }
 a:hover { color:<?php echo $color_key;?> ; }
-.siteHeader_logo.navbar-brand a:hover { color:<?php echo $color_key;?>; }
 ul.gMenu a:hover { color:<?php echo $color_key;?>; }
 .btn-default { border-color:<?php echo $color_key;?>;color:<?php echo $color_key;?>;}
 .btn-default:hover { border-color:<?php echo $color_key;?>;background-color: <?php echo $color_key;?>; }
