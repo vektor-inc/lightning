@@ -2916,6 +2916,7 @@ ul.page-numbers li:last-child > a { border-top-right-radius: 4px; border-bottom-
 /*-------------------------------------------*/
 .widget { margin-bottom: 30px; display: block; }
 .widget .subSection-title { margin-top: 0; margin-bottom: 0; font-size: 18px; }
+.widget li { list-style: none; }
 
 .widget:after { content: ""; clear: both; display: block; }
 
@@ -2962,6 +2963,8 @@ footer .copySection p { font-size: 12px; margin-bottom: 5px; }
 .carousel { border-bottom: 1px solid #e5e5e5; display: block; overflow: hidden; }
 
 .carousel-indicators { margin-bottom: 0; bottom: 5px; }
+
+.carousel-inner > .item > a:after { content: ""; clear: both; display: block; }
 
 .carousel-inner > .item > a > img, .carousel-inner > .item > img { width: 100%; height: auto; }
 

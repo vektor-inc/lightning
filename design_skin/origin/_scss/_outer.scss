@@ -351,6 +351,7 @@ ul.page-numbers { margin:0;padding: 0;
 /*-------------------------------------------*/
 .widget { margin-bottom:30px;display:block;
   .subSection-title { margin-top:0;margin-bottom: 0;font-size:18px; }
+  li { list-style: none; }
 }
 .widget:after{ content: "";clear: both;display: block; }
 .widget_text .subSection-title,
