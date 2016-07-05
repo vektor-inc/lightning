@@ -296,7 +296,14 @@ class description_walker extends Walker_Nav_Menu {
 /*-------------------------------------------*/
 add_filter( 'body_class', 'lightning_body_class' );
 function lightning_body_class( $class ){
-	if( apply_filters( 'lightning_enable_headfix', true ) )
+	// header fix
+	if( apply_filters( 'lightning_enable_headfix', true ) ) {
 		$class[] = 'headfix';
+	}
+	// offset_headerimage
+	if( apply_filters( 'lightning_enable_offset_header', true ) ) {
+		$class[] = 'offset_header';
+	}
 	return $class;
 }
+

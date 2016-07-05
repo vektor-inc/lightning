@@ -2805,6 +2805,9 @@ ul.gMenu ul li li li li a { padding-left: 5em; }
 .mainSection header h1 { margin-top: 0; }
 .mainSection .postList { margin-bottom: 1.5em; }
 
+h1.mainSection-title { font-size: 24px; }
+
+@media (min-width: 768px) { .mainSection .widget { margin-bottom: 40px; } }
 .entry-meta { margin-bottom: 0.8em; padding-left: 3px; }
 .entry-meta i { margin-right: 5px; }
 
@@ -2911,8 +2914,11 @@ ul.page-numbers li:last-child > a { border-top-right-radius: 4px; border-bottom-
 /*-------------------------------------------*/
 /* Widget
 /*-------------------------------------------*/
-.widget { margin-bottom: 30px; display: block; overflow: hidden; }
+.widget { margin-bottom: 30px; display: block; }
 .widget .subSection-title { margin-top: 0; margin-bottom: 0; font-size: 18px; }
+.widget li { list-style: none; }
+
+.widget:after { content: ""; clear: both; display: block; }
 
 .widget_text .subSection-title, .widget_tag_cloud .subSection-title, .widget_recent_comments .subSection-title { margin-bottom: 10px; }
 
@@ -2957,6 +2963,8 @@ footer .copySection p { font-size: 12px; margin-bottom: 5px; }
 .carousel { border-bottom: 1px solid #e5e5e5; display: block; overflow: hidden; }
 
 .carousel-indicators { margin-bottom: 0; bottom: 5px; }
+
+.carousel-inner > .item > a:after { content: ""; clear: both; display: block; }
 
 .carousel-inner > .item > a > img, .carousel-inner > .item > img { width: 100%; height: auto; }
 

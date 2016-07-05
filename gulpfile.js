@@ -9,8 +9,6 @@ var concat = require('gulp-concat');
 var jsmin = require('gulp-jsmin');
 // エラーでも監視を続行させる
 var plumber = require('gulp-plumber');
-// sudo npm install gulp.spritesmith --save-dev
-var spritesmith = require('gulp.spritesmith');
 // http://blog.e-riverstyle.com/2014/02/gulpspritesmithcss-spritegulp.html
 
 // // Task
@@ -23,22 +21,22 @@ var spritesmith = require('gulp.spritesmith');
 // });
 
 gulp.task( 'copy', function() {
-    gulp.src( './libraries/bootstrap/css/bootstrap.min.css'  )
+    gulp.src( './library/bootstrap/css/bootstrap.min.css'  )
     .pipe(rename({prefix: "_",extname: ".scss"})) // 拡張子をscssに
     .pipe( gulp.dest( './design_skin/origin/_scss/' ) ); // _scss ディレクトリに保存
-    gulp.src( './libraries/bootstrap/fonts/**'  )
+    gulp.src( './library/bootstrap/fonts/**'  )
     .pipe( gulp.dest( './design_skin/origin/fonts/' ) ); // _scss ディレクトリに保存
 } );
 
 // ファイル結合
 gulp.task('scripts', function() {
-  return gulp.src(['./libraries/bootstrap/js/bootstrap.min.js','./js/_master.js'])
+  return gulp.src(['./library/bootstrap/js/bootstrap.min.js','./js/_master.js'])
     .pipe(concat('all.js'))
     .pipe(gulp.dest('./js/'));
 
 });
 gulp.task('scripts_header_fixed', function() {
-  return gulp.src(['./libraries/bootstrap/js/bootstrap.min.js','./js/_master.js','./js/_header_fixed.js'])
+  return gulp.src(['./library/bootstrap/js/bootstrap.min.js','./js/_master.js','./js/_header_fixed.js'])
     .pipe(concat('all_in_header_fixed.js'))
     .pipe(gulp.dest('./js/'));
 });
@@ -58,10 +56,7 @@ gulp.task('watch', function() {
     // gulp.watch('js/*.js', ['scripts']);
     gulp.watch('js/_master.js', ['scripts','scripts_header_fixed']);
     gulp.watch('js/_header_fixed.js', ['scripts','scripts_header_fixed']);
-    gulp.watch('js/_vk_menu.js', ['scripts','scripts_header_fixed']);
     gulp.watch('js/all.js', ['jsmin']);
-    gulp.watch('_scss/style.scss', ['copy']);
 });
 
-// gulp.task('default', ['scripts','watch','sprite']);
-// gulp.task('default', ['copy','scripts','jsmin','watch']);
+gulp.task('default', ['copy','scripts','jsmin','watch']);
