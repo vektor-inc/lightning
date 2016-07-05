@@ -32,6 +32,12 @@ http://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v2.2.0
+
+* [ Design bug fix ] Modification of link failure of the slide show in the mobile mode.
+* [ Specification change ][ BreadCrumb ] Breadcrumbs easier output to another location.
+* [ bug fix ][ home slide ] Empty tag has been output when there is no image #73
+
 v2.1.0
 * [ Specification change ] [ Slide ] In mobile mode, change to hide the edges of the image.
 
