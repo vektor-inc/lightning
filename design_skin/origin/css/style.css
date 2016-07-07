@@ -2834,7 +2834,7 @@ h1.mainSection-title { font-size: 24px; }
 /*-------------------------------------------*/
 .entry-footer { display: block; overflow: hidden; margin-bottom: 2em; }
 
-.entry-meta-dataList { display: block; overflow: hidden; border-top: 1px solid #e5e5e5; padding-top: 3px; }
+.entry-meta-dataList { display: block; overflow: hidden; padding-top: 3px; }
 .entry-meta-dataList dl { margin: 0 0 2px; }
 .entry-meta-dataList dt, .entry-meta-dataList dd { display: block; overflow: hidden; margin-bottom: 0; }
 .entry-meta-dataList dt { float: left; background-color: #666; color: #fff; font-size: 10px; line-height: 1.1em; padding: 4px 8px; font-weight: lighter; margin-right: 10px; border: none; }
@@ -2844,9 +2844,13 @@ h1.mainSection-title { font-size: 24px; }
 .entry-tag { display: block; overflow: hidden; }
 .entry-tag dl { margin-bottom: 0; }
 
-.tagCloud a { border: 1px solid #e5e5e5; border-radius: 4px; padding: 3px 8px 1px; background-color: #f5f5f5; margin-right: 0.6em; color: #464646; margin-bottom: 4px; }
-.tagCloud a:before { font-family: FontAwesome; content: "\f02b"; margin-right: 5px; }
-.tagCloud a:hover { text-decoration: none; }
+/*      .tagcloud
+/*-------------------------------------------*/
+.tagcloud a { color: #464646; margin-bottom: 4px; white-space: nowrap; }
+.tagcloud a:before { font-family: FontAwesome; content: "\f02b"; margin-right: 5px; }
+.tagcloud a:hover { text-decoration: none; }
+
+.entry-meta-dataList .tagcloud a { margin-right: 8px; }
 
 /*      .media(bootstrap)
 /*-------------------------------------------*/
@@ -2942,6 +2946,10 @@ ul.page-numbers li:last-child > a { border-top-right-radius: 4px; border-bottom-
 
 .widget_archive select, .widget_categories select { margin-top: 10px; }
 
+/*      .tagcloud
+/*-------------------------------------------*/
+.widget .tagcloud a { border-radius: 4px; padding: 3px 10px 1px; line-height: 2.4em; }
+
 /*-------------------------------------------*/
 /* footer
 /*-------------------------------------------*/
@@ -2983,8 +2991,6 @@ footer .copySection p { font-size: 12px; margin-bottom: 5px; }
 /*-------------------------------------------*/
 /* single
 /*-------------------------------------------*/
-.single h1.entry-title:first-letter { color: #337ab7; }
-
 #respond label { font-weight: lighter; }
 
 /*-------------------------------------------*/
@@ -3021,3 +3027,12 @@ p.no-comments { background-color: #f3f3f3; border: 1px solid #e5e5e5; text-align
 /* footer
 /*-------------------------------------------*/
 footer { border-top: 3px solid #337ab7; }
+
+.single h1.entry-title:first-letter { color: #337ab7; }
+
+/*-------------------------------------------*/
+/*      .tagcloud
+/*-------------------------------------------*/
+.widget .tagcloud a { border: 1px solid rgba(0, 0, 0, 0.1); background-color: rgba(255, 255, 255, 0.9); }
+
+footer.siteFooter .widget .tagcloud a { border: 1px solid rgba(0, 0, 0, 0.1); background-color: rgba(255, 255, 255, 0.8); }

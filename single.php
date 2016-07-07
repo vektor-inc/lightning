@@ -19,7 +19,6 @@ if (have_posts()) : while ( have_posts() ) : the_post();?>
 	<?php get_template_part('module_loop_post_meta');?>
 	<h1 class="entry-title"><?php the_title(); ?></h1>
 	</header>
-
 	<div class="entry-body">
 	<?php the_content();?>
 	</div><!-- [ /.entry-body ] -->
@@ -60,7 +59,7 @@ if (have_posts()) : while ( have_posts() ) : the_post();?>
 	<div class="entry-meta-dataList entry-tag">
 	<dl>
 	<dt><?php _e('Tags','lightning') ;?></dt>
-	<dd class="tagCloud"><?php echo $tags_list; ?></dd>
+	<dd class="tagcloud"><?php echo $tags_list; ?></dd>
 	</dl>
 	</div><!-- [ /.entry-tag ] -->
 	<?php endif; ?>

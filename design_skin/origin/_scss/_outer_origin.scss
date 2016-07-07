@@ -33,3 +33,15 @@ h1.page-header_pageTitle:first-child { color: #fff; }
 footer { border-top:3px solid #337ab7; }
 
 .single h1.entry-title:first-letter { color:$color_key; }
+
+/*-------------------------------------------*/
+/*      .tagcloud
+/*-------------------------------------------*/
+.widget .tagcloud a {
+  border:1px solid rgba( 0,0,0,0.1 );
+  background-color: rgba( 255,255,255,0.9 );
+}
+footer.siteFooter .widget .tagcloud a { 
+  border:1px solid rgba( 0,0,0,0.1 );
+  background-color: rgba( 255,255,255,0.8 );
+}
