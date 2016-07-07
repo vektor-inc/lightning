@@ -20,6 +20,8 @@ define('LIGHTNING_THEME_VERSION', $theme_opt->Version);
 /*-------------------------------------------*/
 /*	headfix enable
 /*-------------------------------------------*/
+/*	Tag Cloud _ Change font size 
+/*-------------------------------------------*/
 
 /*-------------------------------------------*/
 /*	Theme setup
@@ -307,3 +309,12 @@ function lightning_body_class( $class ){
 	return $class;
 }
 
+/*-------------------------------------------*/
+/*	Tag Cloud _ Change font size 
+/*-------------------------------------------*/
+function lightning_tag_cloud_filter($args) {
+	$args['smallest'] = 10;
+	$args['largest'] = 10;
+	return $args;
+}
+add_filter('widget_tag_cloud_args', 'lightning_tag_cloud_filter');
