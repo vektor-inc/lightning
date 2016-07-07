@@ -16,6 +16,7 @@ get_header(); ?>
     <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 
     <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+    <?php do_action( 'ligthning_entry_body_before' ); ?>
     <div class="entry-body">
     <?php the_content(); ?>
     </div>
