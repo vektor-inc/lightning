@@ -2531,6 +2531,8 @@ button.close { -webkit-appearance: none; padding: 0; cursor: pointer; background
 /*-------------------------------------------*/
 /* headding
 /*-------------------------------------------*/
+/* .btn
+/*-------------------------------------------*/
 /* images
 /*-------------------------------------------*/
 /* other class
@@ -2595,6 +2597,11 @@ table { border-collapse: collapse; border-spacing: 0; width: 100%; }
 table th, table td { padding: 8px; border-bottom: 1px solid #e5e5e5; }
 table th .form-control, table td .form-control { max-width: 90%; }
 table th { font-weight: lighter; }
+
+/*-------------------------------------------*/
+/* .btn
+/*-------------------------------------------*/
+.btn-xs { padding-left: 10px; padding-right: 10px; }
 
 /*-------------------------------------------*/
 /* images
