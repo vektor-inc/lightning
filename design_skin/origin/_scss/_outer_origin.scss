@@ -31,3 +31,5 @@ h1.page-header_pageTitle:first-child { color: #fff; }
 /* footer
 /*-------------------------------------------*/
 footer { border-top:3px solid #337ab7; }
+
+.single h1.entry-title:first-letter { color:$color_key; }
