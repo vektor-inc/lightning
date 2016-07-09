@@ -32,6 +32,12 @@ http://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v2.3.0
+* [ Design tuning ] button
+* [ Add action hook ][ page ] entry_body_before
+* [ Specification change ][ Design ][ Tag cloud ] Change font size
+* [ Design bug fix ] widget list style
+
 v2.2.1
 
 * [ Design bug fix ] Modification of link failure of the slide show in the mobile mode.

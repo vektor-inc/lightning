@@ -9,7 +9,9 @@ function lightning_print_css_origin(){
 	$color_key = esc_html($options['color_key']);
 	$color_key_dark = esc_html($options['color_key_dark']);
 	?>
+<!-- [ Ligthning Origin ] -->
 <style type="text/css">
+ul.gMenu a:hover { color:<?php echo $color_key;?>; }
 .page-header { background-color:<?php echo $color_key;?>; }
 h1.entry-title:first-letter,
 .single h1.entry-title:first-letter { color:<?php echo $color_key;?>; }
@@ -32,5 +34,6 @@ footer { border-top-color:<?php echo $color_key	;?> }
   ul.gMenu > li.current_page_ancestor > a:after { border-bottom-color: <?php echo $color_key ;?> }
 } /* @media (min-width: 768px) */
 </style>
+<!-- [ / Ligthning Origin ] -->
 <?php } // if ( isset($options['color_key'] && isset($options['color_key_dark'] ) {
 }

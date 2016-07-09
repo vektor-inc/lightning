@@ -13,7 +13,7 @@ $lightning_theme_options = get_option('lightning_theme_options'); ?>
 <?php do_action('lightning_header_before'); ?>
 <header class="navbar siteHeader">
     <?php do_action('lightning_header_prepend'); ?>
-    <div class="container">
+    <div class="container siteHeadContainer">
         <div class="navbar-header">
             <h1 class="navbar-brand siteHeader_logo">
             <a href="<?php echo esc_url(home_url('/')); ?>"><span>

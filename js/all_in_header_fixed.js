@@ -32,10 +32,12 @@ var e=c.find(".active:last a"),f=a.Event("hide.bs.tab",{relatedTarget:b[0]}),g=a
 		// jQuery('.menuBtn').each(function(){
 			jQuery('.menuBtn').click(function(){
 				if ( !jQuery('.menuBtn').hasClass('menuOpen') ) {
+					jQuery('body').removeClass('headerMenuClose').addClass('headerMenuOpen');
 					jQuery('.menuBtn').removeClass('menuClose').addClass('menuOpen');
 					jQuery('#gMenu_outer').removeClass('itemClose').addClass('itemOpen');
 					jQuery('#menuBtn i').removeClass('fa-bars').addClass('fa-times');
 				} else {
+					jQuery('body').removeClass('headerMenuOpen');
 					jQuery('.menuBtn').removeClass('menuOpen').addClass('menuClose');
 					jQuery('#gMenu_outer').removeClass('itemOpen').addClass('itemClose');
 					jQuery('#menuBtn i').removeClass('fa-times').addClass('fa-bars');
@@ -128,12 +130,12 @@ var e=c.find(".active:last a"),f=a.Event("hide.bs.tab",{relatedTarget:b[0]}),g=a
 	/*	Offset header for admin bar
 	/*----------------------------------------------------------*/
 	function offset_header(){
+		if(!$('body').hasClass('offset_header')){ return; }
 		// $('body').css("padding-top",headerHeight+"px");
-		if($('body').hasClass('offset_header')){
+		if ( $('body').hasClass('offset_header') ){
 			var headerHeight = $('header.siteHeader').height();
 			$('header.siteHeader').next().css("margin-top",headerHeight+"px");
 		}
-		$('header.siteHeader').next().css("margin-top",headerHeight+"px");
 		if ( $('body').hasClass('admin-bar') ){
 			// Get adminbar height
 			var adminBarHeight = $('#wpadminbar').height();
@@ -177,7 +179,7 @@ var e=c.find(".active:last a"),f=a.Event("hide.bs.tab",{relatedTarget:b[0]}),g=a
 	function head_low( head_logo_image_defaultHeight ){
 		changeHeight = head_logo_image_defaultHeight*0.8;
 		$('body').addClass('scrolled');
-		$('.siteHeader .container').stop().animate({
+		$('.siteHeader .siteHeadContainer').stop().animate({
 			"padding-top":"5px",
 			"padding-bottom":"0px",
 		},100);
@@ -187,7 +189,7 @@ var e=c.find(".active:last a"),f=a.Event("hide.bs.tab",{relatedTarget:b[0]}),g=a
 	}
 	function head_high( head_logo_image_defaultHeight ){
 		$('body').removeClass('scrolled');
-		$('.siteHeader .container').stop().animate({
+		$('.siteHeader .siteHeadContainer').stop().animate({
 			"padding-top":"20px",
 			"padding-bottom":"18px",
 		},100,function(){
