@@ -2927,7 +2927,6 @@ ul.page-numbers li:last-child > a { border-top-right-radius: 4px; border-bottom-
 /*-------------------------------------------*/
 .widget { margin-bottom: 30px; display: block; }
 .widget .subSection-title { margin-top: 0; font-size: 18px; }
-.widget li { list-style: none; }
 
 .widget:after { content: ""; clear: both; display: block; }
 
@@ -2936,6 +2935,7 @@ ul.page-numbers li:last-child > a { border-top-right-radius: 4px; border-bottom-
 /* .widget_link_list はプラグインなどの外部ウィジェットからの指定用。
 .widget と同列で書かれる時もあれば下階層に書かれる事もある。ExUnitの固定ページリストウィジェットなどで使用 */
 .widget_link_list ul, .widget_recent_comments ul, .widget_nav_menu ul, .widget_archive ul, .widget_categories ul, .widget_recent_entries ul { padding-left: 0; margin: 0; font-size: 14px; }
+.widget_link_list li, .widget_recent_comments li, .widget_nav_menu li, .widget_archive li, .widget_categories li, .widget_recent_entries li { list-style: none; }
 
 .widget_link_list ul li, .widget_nav_menu ul li, .widget_archive ul li, .widget_categories ul li, .widget_recent_entries ul li { margin-bottom: 0; }
 .widget_link_list ul li a, .widget_nav_menu ul li a, .widget_archive ul li a, .widget_categories ul li a, .widget_recent_entries ul li a { display: block; padding: 10px 0.5em 8px; border-bottom: 1px solid #e5e5e5; color: #464646; box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.9); }

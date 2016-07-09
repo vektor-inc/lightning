@@ -357,7 +357,6 @@ ul.page-numbers { margin:0;padding: 0;
 /*-------------------------------------------*/
 .widget { margin-bottom:30px;display:block;
   .subSection-title { margin-top:0;font-size:18px; }
-  li { list-style: none; }
 }
 .widget:after{ content: "";clear: both;display: block; }
 .widget_text .subSection-title,
@@ -373,6 +372,7 @@ ul.page-numbers { margin:0;padding: 0;
 .widget_categories,
 .widget_recent_entries {
   ul { padding-left:0;margin:0;font-size:14px; }
+  li { list-style: none; }
 }
 
 .widget_link_list,
