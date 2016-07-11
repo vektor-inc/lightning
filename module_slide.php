@@ -7,7 +7,10 @@ $top_slide_count_max = 5;
 $top_slide_count_max = apply_filters('lightning_top_slide_count_max',$top_slide_count_max);
 
 for ( $i = 1; $i <= $top_slide_count_max; ) {
-    if ( isset( $lightning_theme_options['top_slide_image_'.$i] ) && $lightning_theme_options['top_slide_image_'.$i] ) {
+    if ( !isset( $lightning_theme_options['top_slide_image_'.$i] ) ){
+        if ( $i <= 3  ) 
+            $top_slide_count ++;
+    } else if ( $lightning_theme_options['top_slide_image_'.$i] ) {
         $top_slide_count ++;
     }
     $i++;
@@ -39,10 +42,10 @@ if ($top_slide_count) : ?>
 
             // If 1st slide no set, set default image.
             if ( $i <= 3 ){
-                if ( isset( $lightning_theme_options['top_slide_image_'.$i] )) {
-                    $top_slide_image_src = $lightning_theme_options['top_slide_image_'.$i];
-                } else {
+                if ( !isset( $lightning_theme_options['top_slide_image_'.$i] ) ) {
                     $top_slide_image_src = get_template_directory_uri().'/images/top_image_'.$i.'.jpg';
+                } else {
+                    $top_slide_image_src = $lightning_theme_options['top_slide_image_'.$i];
                 }
             } else {
                 if ( isset( $lightning_theme_options['top_slide_image_'.$i] ))
