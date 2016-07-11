@@ -50,6 +50,10 @@ $color_key : #337ab7;
 /*-------------------------------------------*/
 
 
+@media screen and (max-width: 600px){
+#wpadminbar { position: fixed; }
+}
+
 .sectionBox { padding-top:2em;padding-bottom:2em;display:block; overflow:hidden; }
 .nav li a { color:$color_font_default; }
 // .btn { border-radius: 0; }
