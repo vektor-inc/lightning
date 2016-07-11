@@ -32,6 +32,9 @@ http://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v2.3.1
+* [ Bug fix ][ Slide show ] When used for the first install, the default of the slide show does not appear. #78
+
 v2.3.0
 * [ Design tuning ] button
 * [ Add action hook ][ page ] entry_body_before
