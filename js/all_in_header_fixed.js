@@ -46,6 +46,7 @@ var e=c.find(".active:last a"),f=a.Event("hide.bs.tab",{relatedTarget:b[0]}),g=a
 		// });
 	}
 	function menu_close(){
+		jQuery('body').removeClass('headerMenuOpen');
 		jQuery('.menuBtn').removeClass('menuOpen').addClass('menuClose');
 		jQuery('#gMenu_outer').removeClass('itemOpen').addClass('itemClose');
 		jQuery('#menuBtn i').removeClass('fa-times').addClass('fa-bars');
