@@ -18,12 +18,11 @@ $page_for_posts = lightning_get_page_for_posts();
 if ( $page_for_posts['post_top_use'] || get_post_type() != 'post' ) {
   if ( is_year() || is_month() || is_day() || is_tag() || is_author() || is_tax() || is_category() ) {
       $archiveTitle = get_the_archive_title();
-      echo '<header class="archive-header"><h1>'. $archiveTitle .'</h1></header>';
+      $archiveTitle_html = '<header class="archive-header"><h1>'. $archiveTitle .'</h1></header>';
+      echo apply_filters( 'lightning_mainSection_archiveTitle' , $archiveTitle_html );
   }
 }
-?>
 
-<?php
 /*-------------------------------------------*/
 /*  Archive description
 /*-------------------------------------------*/
@@ -31,14 +30,14 @@ if ( $page_for_posts['post_top_use'] || get_post_type() != 'post' ) {
     $category_description = term_description();
     $page = get_query_var( 'paged', 0 );
     if ( ! empty( $category_description ) && $page == 0 ) {
-      echo '<div class="archive-meta">' . $category_description . '</div>';
+      $archiveDescription_html = '<div class="archive-meta">' . $category_description . '</div>';
+      echo apply_filters( 'lightning_mainSection_archiveDescription' , $archiveDescription_html );
     }
   }
-  ?>
 
-<?php $postType = lightning_get_post_type(); ?>
+$postType = lightning_get_post_type();
 
-<?php do_action('lightning_loop_before'); ?>
+do_action('lightning_loop_before'); ?>
 
 <?php if (have_posts()) : ?>
 
