@@ -22,6 +22,8 @@ define('LIGHTNING_THEME_VERSION', $theme_opt->Version);
 /*-------------------------------------------*/
 /*	Tag Cloud _ Change font size 
 /*-------------------------------------------*/
+/*	HOME _ Default content hidden
+/*-------------------------------------------*/
 
 /*-------------------------------------------*/
 /*	Theme setup
@@ -318,3 +320,15 @@ function lightning_tag_cloud_filter($args) {
 	return $args;
 }
 add_filter('widget_tag_cloud_args', 'lightning_tag_cloud_filter');
+
+/*-------------------------------------------*/
+/*	HOME _ Default content hidden
+/*-------------------------------------------*/
+add_filter( 'is_lightning_home_content_display', 'lightning_home_content_hidden' );
+function lightning_home_content_hidden( $flag ){
+ 	global $lightning_theme_options;
+ 	if ( isset($lightning_theme_options['top_default_content_hidden']) && $lightning_theme_options['top_default_content_hidden'] ) {
+ 		$flag = false;
+ 	}
+ 	return $flag;
+}
