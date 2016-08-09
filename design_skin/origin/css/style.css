@@ -2698,7 +2698,6 @@ h5 { padding: 7px 7px 3px; border-top: 1px solid #ccc; border-bottom: 1px solid 
 /*-------------------------------------------*/
 /* .comments-area
 /*-------------------------------------------*/
-@media screen and (max-width: 600px) { #wpadminbar { position: fixed; } }
 .sectionBox { padding-top: 2em; padding-bottom: 2em; display: block; overflow: hidden; }
 
 .nav li a { color: #464646; }
