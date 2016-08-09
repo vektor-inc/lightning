@@ -20,6 +20,7 @@ $lightning_theme_options = get_option('lightning_theme_options'); ?>
             <?php lightning_print_headlogo(); ?>
             </span></a>
             </h1>
+            <?php do_action('lightning_header_logo_after'); ?>
             <?php
             $args = array(
                 'theme_location' => 'Header',
