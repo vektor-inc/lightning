@@ -1,15 +1,15 @@
 ;(function($){
 	jQuery(function(){
 		run_menu_control();
-		youtube_responsive();
+		iframe_responsive();
 		// addClass_dropdown();
 	});
 	jQuery(document).ready(function(){
-		youtube_responsive();
+		iframe_responsive();
 		// addClass_dropdown();
 	});
 	jQuery(window).resize(function(){
-		youtube_responsive();
+		iframe_responsive();
 		var wrap_width = jQuery('body').width();
 		if ( wrap_width > 767 ) {
 			menu_close();
@@ -39,6 +39,7 @@
 		// });
 	}
 	function menu_close(){
+		jQuery('body').removeClass('headerMenuOpen');
 		jQuery('.menuBtn').removeClass('menuOpen').addClass('menuClose');
 		jQuery('#gMenu_outer').removeClass('itemOpen').addClass('itemClose');
 		jQuery('#menuBtn i').removeClass('fa-times').addClass('fa-bars');
@@ -57,18 +58,18 @@
 	});
 
 	/*-------------------------------------------*/
-	/*	YOUTUBEのレスポンシブ対応
+	/*	iframeのレスポンシブ対応
 	/*-------------------------------------------*/
-	function youtube_responsive(){
+	function iframe_responsive(){
 		jQuery('iframe').each(function(i){
 			var iframeUrl = jQuery(this).attr("src");
 			if(!iframeUrl){return;}
-			// iframeのURLの中に youtube が存在する位置を検索する
-			idx = iframeUrl.indexOf("youtube");
+			// iframeのURLの中に youtube か map が存在する位置を検索する
 			// 見つからなかった場合には -1 が返される
-			if(idx != -1) {
-				// youtube が含まれていたらそのクラスを返す
-				jQuery(this).addClass('iframeYoutube').css({"max-width":"100%"});
+			if ( 
+				( iframeUrl.indexOf("youtube") != -1 )  || 
+				( iframeUrl.indexOf("maps") != -1 )  
+				) {
 				var iframeWidth = jQuery(this).attr("width");
 				var iframeHeight = jQuery(this).attr("height");
 				var iframeRate = iframeHeight / iframeWidth;

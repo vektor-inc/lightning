@@ -8,6 +8,7 @@
         <div class="row">
 
             <?php
+            global $lightning_theme_options;
             $lightning_theme_options = get_option('lightning_theme_options');
             if (
                 isset($lightning_theme_options['top_sidebar_hidden']) &&
@@ -24,6 +25,8 @@
             <?php endif; ?>
 
             <?php do_action('lightning_home_content_top_widget_area_after'); ?>
+
+            <?php if ( apply_filters( 'is_lightning_home_content_display', true ) ) : ?>
 
             <?php if (have_posts()) : ?>
 
@@ -67,6 +70,8 @@
                 <div class="well"><p><?php _e('No posts.','lightning');?></p></div>
 
             <?php endif; // have_post() ?>
+
+            <?php endif; // if ( apply_filters( 'is_lightning_home_top_posts_display', true ) ) : ?>
 
             </div><!-- [ /.mainSection ] -->
 

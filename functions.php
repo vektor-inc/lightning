@@ -22,6 +22,8 @@ define('LIGHTNING_THEME_VERSION', $theme_opt->Version);
 /*-------------------------------------------*/
 /*	Tag Cloud _ Change font size 
 /*-------------------------------------------*/
+/*	HOME _ Default content hidden
+/*-------------------------------------------*/
 
 /*-------------------------------------------*/
 /*	Theme setup
@@ -105,7 +107,7 @@ function lightning_commentJs(){
 /*-------------------------------------------*/
 add_action('wp_enqueue_scripts', 'lightning_css' );
 function lightning_css(){
-	wp_enqueue_style( 'lightning-font-awesome-style', get_template_directory_uri().'/library/font-awesome/4.6.1/css/font-awesome.min.css', array(), '4.6.1' );
+	wp_enqueue_style( 'font-awesome', get_template_directory_uri().'/library/font-awesome/4.6.1/css/font-awesome.min.css', array(), '4.6.1' );
 	wp_enqueue_style( 'lightning-theme-style', get_stylesheet_uri(), array('lightning-design-style'), LIGHTNING_THEME_VERSION );
 }
 
@@ -292,24 +294,39 @@ class description_walker extends Walker_Nav_Menu {
 	}
 }
 
-
 /*-------------------------------------------*/
 /*	headfix enable
 /*-------------------------------------------*/
 add_filter( 'body_class', 'lightning_body_class' );
 function lightning_body_class( $class ){
 	// header fix
-	if( apply_filters( 'lightning_enable_headfix', true ) ) {
+	if( apply_filters( 'lightning_headfix_enable', true ) ) {
 		$class[] = 'headfix';
 	}
-	// offset_headerimage
-	if( apply_filters( 'lightning_enable_offset_header', true ) ) {
-		$class[] = 'offset_header';
+	// header height changer
+	if( apply_filters( 'lightning_header_height_changer_enable', true ) ) {
+		$class[] = 'header_height_changer';
 	}
 	return $class;
 }
 
-/*-------------------------------------------*/
+// lightning headfix disabel sample
+/*
+add_filter( 'lightning_headfix_enable', 'lightning_headfix_disabel');
+function lightning_headfix_disabel(){
+	return false;
+}
+*/
+
+// lightning header height changer disabel sample
+/*
+add_filter( 'lightning_header_height_changer_enable', 'lightning_header_height_changer_disabel');
+function lightning_header_height_changer_disabel(){
+	return false;
+}
+*/
+
+/*-------------------------------------------
 /*	Tag Cloud _ Change font size 
 /*-------------------------------------------*/
 function lightning_tag_cloud_filter($args) {
@@ -318,3 +335,15 @@ function lightning_tag_cloud_filter($args) {
 	return $args;
 }
 add_filter('widget_tag_cloud_args', 'lightning_tag_cloud_filter');
+
+/*-------------------------------------------*/
+/*	HOME _ Default content hidden
+/*-------------------------------------------*/
+add_filter( 'is_lightning_home_content_display', 'lightning_home_content_hidden' );
+function lightning_home_content_hidden( $flag ){
+ 	global $lightning_theme_options;
+ 	if ( isset($lightning_theme_options['top_default_content_hidden']) && $lightning_theme_options['top_default_content_hidden'] ) {
+ 		$flag = false;
+ 	}
+ 	return $flag;
+}

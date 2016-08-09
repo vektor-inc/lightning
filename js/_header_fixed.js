@@ -11,18 +11,18 @@
 		timer = setTimeout(offset_header, 300);
 	});
 
-
-
 	/*----------------------------------------------------------*/
-	/*	Offset header for admin bar
+	/*	Offset header
 	/*----------------------------------------------------------*/
 	function offset_header(){
-		if(!$('body').hasClass('offset_header')){ return; }
-		// $('body').css("padding-top",headerHeight+"px");
-		if ( $('body').hasClass('offset_header') ){
-			var headerHeight = $('header.siteHeader').height();
-			$('header.siteHeader').next().css("margin-top",headerHeight+"px");
-		}
+
+		if(!$('body').hasClass('headfix')){ return; }
+
+		$('.siteHeader').css({"position":"fixed"});
+
+		var headerHeight = $('header.siteHeader').height();
+		$('header.siteHeader').next().css("margin-top",headerHeight+"px");
+
 		if ( $('body').hasClass('admin-bar') ){
 			// Get adminbar height
 			var adminBarHeight = $('#wpadminbar').height();
@@ -37,9 +37,9 @@
 	/*	Header height changer
 	/*-------------------------------------------*/
 	$(document).ready(function(){
-		if(!$('body').hasClass('headfix')){ return; }
-		$('body').addClass('headfix');
-		$('.siteHeader').css({"position":"fixed"});
+
+		if( !$('body').hasClass('header_height_changer') ){ return; }
+
 		var head_logo_image_defaultHeight = $('.navbar-brand img').height();
 		var bodyWidth = $(window).width();
 		// When missed the get height
