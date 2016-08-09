@@ -32,6 +32,15 @@ http://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v2.4.0
+* [ Specification change ] Easily have been changed to be able to disable the Header fixed & Header height changer.
+* [ Add action hook ] lightning_header_logo_after
+* [ Design tuning ] navber radius 0
+* [ Add function( filer hook ) ][ front-page ] Add function of hidden default content.
+* [ Specification change ] change font-awesome enqueue handle
+* [ Add filer hook ][ archive ] archive title & description html
+* [ Add function ] Google My Maps also responsive support
+
 v2.3.1
 * [ Bug fix ][ Slide show ] When used for the first install, the default of the slide show does not appear. #78
 
