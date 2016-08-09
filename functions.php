@@ -294,24 +294,39 @@ class description_walker extends Walker_Nav_Menu {
 	}
 }
 
-
 /*-------------------------------------------*/
 /*	headfix enable
 /*-------------------------------------------*/
 add_filter( 'body_class', 'lightning_body_class' );
 function lightning_body_class( $class ){
 	// header fix
-	if( apply_filters( 'lightning_enable_headfix', true ) ) {
+	if( apply_filters( 'lightning_headfix_enable', true ) ) {
 		$class[] = 'headfix';
 	}
-	// offset_headerimage
-	if( apply_filters( 'lightning_enable_offset_header', true ) ) {
-		$class[] = 'offset_header';
+	// header height changer
+	if( apply_filters( 'lightning_header_height_changer_enable', true ) ) {
+		$class[] = 'header_height_changer';
 	}
 	return $class;
 }
 
-/*-------------------------------------------*/
+// lightning headfix disabel sample
+/*
+add_filter( 'lightning_headfix_enable', 'lightning_headfix_disabel');
+function lightning_headfix_disabel(){
+	return false;
+}
+*/
+
+// lightning header height changer disabel sample
+/*
+add_filter( 'lightning_header_height_changer_enable', 'lightning_header_height_changer_disabel');
+function lightning_header_height_changer_disabel(){
+	return false;
+}
+*/
+
+/*-------------------------------------------
 /*	Tag Cloud _ Change font size 
 /*-------------------------------------------*/
 function lightning_tag_cloud_filter($args) {
