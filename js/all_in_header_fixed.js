@@ -26,6 +26,19 @@ var e=c.find(".active:last a"),f=a.Event("hide.bs.tab",{relatedTarget:b[0]}),g=a
 	});
 
 	/*----------------------------------------------------------*/
+	/*	scroll
+	/*----------------------------------------------------------*/
+	// Scroll function
+	$(window).scroll(function () {
+		var scroll = $(this).scrollTop();
+		if ($(this).scrollTop() > 10) {
+			$('body').addClass('scrolled');
+		} else {
+			$('body').removeClass('scrolled');
+		}
+	});
+
+	/*----------------------------------------------------------*/
 	/*	gMenu control
 	/*----------------------------------------------------------*/
 	function run_menu_control(){
@@ -179,7 +192,6 @@ var e=c.find(".active:last a"),f=a.Event("hide.bs.tab",{relatedTarget:b[0]}),g=a
 	});
 	function head_low( head_logo_image_defaultHeight ){
 		changeHeight = head_logo_image_defaultHeight*0.8;
-		$('body').addClass('scrolled');
 		$('.siteHeader .siteHeadContainer').stop().animate({
 			"padding-top":"5px",
 			"padding-bottom":"0px",
@@ -189,7 +201,6 @@ var e=c.find(".active:last a"),f=a.Event("hide.bs.tab",{relatedTarget:b[0]}),g=a
 		},100);
 	}
 	function head_high( head_logo_image_defaultHeight ){
-		$('body').removeClass('scrolled');
 		$('.siteHeader .siteHeadContainer').stop().animate({
 			"padding-top":"20px",
 			"padding-bottom":"18px",

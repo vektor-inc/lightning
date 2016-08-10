@@ -26,6 +26,19 @@ var e=c.find(".active:last a"),f=a.Event("hide.bs.tab",{relatedTarget:b[0]}),g=a
 	});
 
 	/*----------------------------------------------------------*/
+	/*	scroll
+	/*----------------------------------------------------------*/
+	// Scroll function
+	$(window).scroll(function () {
+		var scroll = $(this).scrollTop();
+		if ($(this).scrollTop() > 10) {
+			$('body').addClass('scrolled');
+		} else {
+			$('body').removeClass('scrolled');
+		}
+	});
+
+	/*----------------------------------------------------------*/
 	/*	gMenu control
 	/*----------------------------------------------------------*/
 	function run_menu_control(){
