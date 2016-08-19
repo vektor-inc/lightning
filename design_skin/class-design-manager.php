@@ -31,7 +31,7 @@ class Lightning_Design_Manager{
 			'label'		=> __( 'Design skin' , 'lightning' ),
 			'section'	=> 'lightning_design',
 			'settings'  => 'lightning_design_skin',
-			'description' => __( 'Please save Once you change the skin.', 'lightning' ) . '<br/>' .
+			'description' => '<span style="color:red;font-weight:bold;">'.__( 'If you change the skin, please save once and reload the page.', 'lightning' ) . '</span><br/>' .
 				__( 'If you reload after the saving, it will be displayed skin-specific configuration items.', 'lightning') . '<br/> '.
 				__( '*There is also a case where there is no skin-specific installation item.', 'lightning' ),
 			'type'		=> 'select',

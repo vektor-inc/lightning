@@ -10,8 +10,6 @@ $color_font_default : #464646;
 $color_key : #337ab7;
 
 /*-------------------------------------------*/
-/* search
-/*-------------------------------------------*/
 /* .navSection
 /*-------------------------------------------*/
 /* .siteHeader
@@ -48,6 +46,8 @@ $color_key : #337ab7;
 /*-------------------------------------------*/
 /* .comments-area
 /*-------------------------------------------*/
+/* search
+/*-------------------------------------------*/
 
 // Not allowed Theme check
 // @media screen and (max-width: 600px){
@@ -64,13 +64,6 @@ input.form-control { margin-bottom:3px; }
 input.form-control.input_widthAuto { width: auto; }
 
 /*-------------------------------------------*/
-/* search
-/*-------------------------------------------*/
-input#s.form-group { margin-bottom:10px;width:auto;display: inline-block; }
-input#searchsubmit { vertical-align: top; }
-
-
-/*-------------------------------------------*/
 /* .navSection
 /*-------------------------------------------*/
 @media (max-width: 767px){
@@ -82,36 +75,38 @@ input#searchsubmit { vertical-align: top; }
 } // @media (max-width: 767px){
 @media (min-width: 768px){
   .menuBtn,
-  .navSection { display: none; }
+  .navSection,
+  .navSection .searchform { display: none; }
 }
 
 /*-------------------------------------------*/
 /* .siteHeader
 /*-------------------------------------------*/
-.siteHeader { background-color: #fff;z-index:1000;top:0;box-shadow:0px 1px 3px rgba(0,0,0,0.1);margin-bottom:0;width:100%;
+.siteHeader { width:100%;z-index:1000;top:0;background-color: #fff;box-shadow:0px 1px 3px rgba(0,0,0,0.1);margin-bottom:0;
   &.navbar { border-radius: 0; }
 }
 /* Padding setting in ".container" because that header was get height js.
 If set padding to header that js can't correct height. */
-.siteHeader .container { padding-top:5px;padding-bottom:4px;
-  .siteHeader_logo.navbar-brand { margin:0; }
-}
-.siteHeader_logo.navbar-brand { height:auto;padding:5px 0;font-size: 32px;line-height: 1.5em;
+.siteHeader .container { padding-top:5px;padding-bottom:4px; }
+.siteHeader_logo { height:auto;padding:5px 0;margin:0;font-size: 32px;line-height: 1.5em;
   a { color:#333; }
   a:hover { text-decoration: none; color:$color_key; }
   img { max-height: 40px;display: block; }
 }
 
 @media (max-width: 767px){
-  .siteHeader_logo.navbar-brand { float:inherit; text-align: center;padding:0 40px; }
-  .siteHeader_logo.navbar-brand img { display: block ; margin:0 auto; }
+  .siteHeader_logo { float:inherit; text-align: center;padding:0 40px; }
+  .siteHeader_logo img { display: block ; margin:0 auto; }
 }
 @media (min-width: 768px){
-
+  .navbar > .container .navbar-brand,
+  .navbar > .container-fluid .navbar-brand {
+    margin-left:0;
+  }
 } // @media (min-width: 768px){
 @media (min-width: 992px) {
 .siteHeader .container { padding-top:20px;padding-bottom:18px; }
-.siteHeader_logo.navbar-brand img { max-height: 60px; }
+.siteHeader_logo img { max-height: 60px; }
 } // @media (min-width: 992px) {
 /*-------------------------------------------*/
 /* nav
@@ -122,9 +117,8 @@ nav { font-size:14px;
   i { margin-right:0.5rem; }
 }
 
-ul.gMenu {
-  a { display:block; overflow:hidden;border-bottom:$border_primary;color:#666;text-decoration: none; }
-  a:hover { color:$color_key; }
+ul.gMenu { 
+  a { display:block; overflow:hidden;text-decoration: none; }
   ul { padding-left:0;width:auto;display: block;margin-bottom:0;
     li {
         a { display:block; overflow:hidden;padding: 10px 1em 10px 2em;width:auto; }
@@ -135,7 +129,7 @@ ul.gMenu {
   } // ul.sub-menu {
 } // ul.gMenu
 
-.gMenu_name { font-weight: normal;color:$color_font_default; }
+.gMenu_name { font-weight: normal; }
 .gMenu_description { display:block; overflow:hidden;font-size:10px; line-height: 14px; }
 
 @media (max-width: 767px){
@@ -143,10 +137,10 @@ ul.gMenu {
   .gMenu_outer.itemOpen { display: block; }
   .gMenu_outer.itemClose { display: none; }
   .gMenu_description { display: none; }
-  ul.gMenu { border-top:1px solid #e5e5e5;margin-bottom:0;
+  ul.gMenu { margin-bottom:0;
     a:hover,
     a:active,
-    .current-menu-item a { background-color:#fcfcfc; }
+    .current-menu-item > a { background-color:rgba(255,255,255,0.1); }
   }
 }
 @media (min-width: 768px){
@@ -154,20 +148,21 @@ ul.gMenu {
 .gMenu_outer.itemClose { display: block; }
 .gMenu_name { text-align: center;display: block; }
 .gMenu_description { text-align: center; }
-ul.gMenu { float: right;
+ul.gMenu { 
   & >li { position: relative;float:left;
     & > a { border-bottom:none; }
   }
 } // ul.gMenu
 // sub-menu
-ul.gMenu > li > ul.sub-menu { display:none;position: absolute;box-shadow:1px 1px 3px rgba(0,0,0,0.2);z-index: 1000;
-  li { width:240px;margin:0;list-style: none;background-color: #fff;display:block; overflow:visible; position: relative;
+ul.gMenu > li > ul.sub-menu { display:none;position: absolute;z-index: 1000;left:50%;
+  & > li { left:-120px; }
+  li { width:240px;margin:0;list-style: none;display:block; overflow:visible; position: relative;box-shadow:1px 1px 3px rgba(0,0,0,0.2);
     ul { margin-bottom:0;display:none;position: absolute;left:240px;top:0.8em;  }
     a { padding-left:1.5em; }
   }
 }
-ul.gMenu li:hover > ul.sub-menu { display: block; }
-ul.gMenu ul.sub-menu li:hover ul { display: block; }
+ul.gMenu > li:hover > ul.sub-menu { display: block; }
+ul.gMenu > li li:hover > ul.sub-menu { display: block; }
 } // @media (min-width: 768px){
 
 /*-------------------------------------------*/
@@ -195,24 +190,23 @@ h1.page-header_pageTitle:first-child { margin:15px 0 10px;font-size:22px;line-he
 /*-------------------------------------------*/
 .siteContent { padding:3em 0 3em; }
 @media (max-width: 767px){
-  .siteContent { padding:2em 0 3em; }
+  .siteContent { padding:1em 0 1.5em; }
 }
 /*      .mainSection
 /*-------------------------------------------*/
-.mainSection {
-  header { position: relative;border-bottom:$border_primary;margin-bottom:2em; }
+.mainSection { 
+  header { position: relative;border-bottom:$border_primary; }
   header h1 { margin-top:0; }
   .postList { margin-bottom:1.5em; }
 }
 h1.mainSection-title { font-size:24px; }
 @media (min-width: 768px){
-.mainSection .widget { margin-bottom:40px; }
+.mainSection .widget { margin-bottom:25px; }
 }
-
 .entry-meta { margin-bottom:0.8em;padding-left:3px;
   i { margin-right:5px; }
 }
-.entry-meta_items { font-size:14px; }
+.entry-meta_items { font-size:12px; }
 .entry-meta_items.published:before { font-family:FontAwesome;content:"\f073";margin-right:5px; }
 .entry-meta_items.published a { color:$color_font_default; }
 .entry-meta_items_author:before { font-family:FontAwesome;content:"\f040";margin-right:5px; }
@@ -220,17 +214,23 @@ h1.mainSection-title { font-size:24px; }
 .entry-meta_items_term { float:right;margin-right:0; }
 .entry-meta_hidden { display: none; }
 
-@media (max-width: 767px){
-.entry-meta {
-  .entry-meta_items_author { display: block;margin-left:0; }
-  .entry-meta_items_term { float:none;display: block;margin-top:0.5em; }
-}
-}// @media (max-width: 767px){
+.entry-body { padding:1em 0 1.5em; }
+
+.entry-body::after { content: "";clear: both;display: block; }
+.page .entry-body {padding-top:0; }
 
 @media (max-width: 767px){
-h1.entry-title { font-size:26px; }
+.entry-meta {
+  .entry-meta_items_term { float:none;display: block;margin-top:0.5em; }
 }
-.entry-body { display:block; overflow:hidden;padding:0 0 2.5em; }
+h1.entry-title { font-size:26px; }
+}// @media (max-width: 767px){
+@media (min-width: 768px){
+  .entry-meta_items { font-size:14px; }
+  .entry-body { padding:2em 0 2.5em; }
+} // @media (min-width: 768px){
+
+
 
 /*      .entry-footer
 /*-------------------------------------------*/
@@ -253,7 +253,7 @@ h1.entry-title { font-size:26px; }
 .tagcloud {
   a { color:$color_font_default;margin-bottom:4px; white-space: nowrap;
       &:before { font-family:FontAwesome;content:"\f02b";margin-right:5px; }
-      &:hover { text-decoration: none; }
+      &:hover { text-decoration: none; opacity: 0.6; }
     }
 }
 .entry-meta-dataList .tagcloud {
@@ -265,8 +265,8 @@ h1.entry-title { font-size:26px; }
 .media { border-bottom:$border_primary;padding:2em 0;margin-top:0;
   &:first-child { border-top:$border_primary; }
   .postList_thumbnail { width:160px;margin-bottom:0.5em;padding-right:30px; display:block; overflow:hidden;float:left;
-    a { position: relative;display:block; overflow:hidden; }
-    img { width: 100%;height:auto; }
+    a { position: relative;display:block; overflow:hidden;border:1px solid #e5e5e5; }
+    img { width: 100%;height:auto;border:1px solid #fff; }
     .postList_cateLabel {
       position: absolute;
       bottom: 0;
@@ -342,43 +342,46 @@ ul.page-numbers { margin:0;padding: 0;
 } // .pager li
 
 /*-------------------------------------------*/
-/* .site-sub
+/* .subSection
 /*-------------------------------------------*/
 .subSection {
-  .subSection-title { font-size:18px; }
+  .widget { margin-bottom:25px; }
   .media { padding:1em 0 0.8em;margin-top:0;
     .postList_thumbnail { width:80px;padding-right:15px; }
     .media-heading { font-size:14px; }
   }
+  li > a:hover { text-decoration: underline; }
   li.current-cat > a,
   li.current_page_item > a { background-color: rgba(0,0,0,0.05); }
 }
-
-@media (min-width: 768px){
-  .subSection .widget input#s.form-group { width:70%; }
-}
+.subSection-title { font-size:18px;margin-bottom:15px; }
 
 /*-------------------------------------------*/
 /* Widget
 /*-------------------------------------------*/
-.widget { margin-bottom:30px;display:block;
+.widget { display:block;
   .subSection-title { margin-top:0;font-size:18px; }
+  ul { margin-top:0; }
 }
-.widget:after{ content: "";clear: both;display: block; }
-.widget_text .subSection-title,
-.widget_tag_cloud .subSection-title,
-.widget_recent_comments .subSection-title { margin-bottom:10px; }
+.widget:after {
+    content: "";
+    clear: both;
+    display: block;
+  }
+
+// .widget_text .subSection-title,
+// .widget_tag_cloud .subSection-title,
+// .widget_recent_comments .subSection-title { margin-bottom:15px; }
 
 /* .widget_link_list はプラグインなどの外部ウィジェットからの指定用。
 .widget と同列で書かれる時もあれば下階層に書かれる事もある。ExUnitの固定ページリストウィジェットなどで使用 */
-.widget_link_list, 
+.widget_link_list,
 .widget_recent_comments,
 .widget_nav_menu,
 .widget_archive,
 .widget_categories,
 .widget_recent_entries {
-  ul { padding-left:0;margin:0;font-size:14px; }
-  li { list-style: none; }
+  ul { padding-left:0;margin:0;font-size:14px;list-style: none; }
 }
 
 .widget_link_list,
@@ -386,6 +389,7 @@ ul.page-numbers { margin:0;padding: 0;
 .widget_archive,
 .widget_categories,
 .widget_recent_entries {
+  .subSection-title { margin-bottom:0; }
   ul {
     // li { display:block; overflow:hidden; list-style: none;
     //   a { position: relative;padding: 10px 15px;border-bottom:$border_primary; }
@@ -426,7 +430,7 @@ footer {
   background-color: #f5f5f5;
   .footerMenu { border-top:$border_primary;border-bottom:$border_primary; }
   .copySection { border-top:$border_primary;
-    p { font-size:12px;margin-bottom:5px; }
+    p { font-size:12px;margin:0 15px 5px; }
   }
 }
 @media (max-width: 767px){
@@ -496,3 +500,13 @@ p.no-comments { background-color: #f3f3f3;border:1px solid #e5e5e5; text-align: 
 
 // theme check pass
 .bypostauthor { color: $color_font_default; }
+/*-------------------------------------------*/
+/* search
+/*-------------------------------------------*/
+form.searchform { margin:1em 0;
+  div { display: flex;
+    input[type=text]#s { width:65%;margin-right:5%; }
+    input[type=submit]#searchsubmit { float:right;width:30%; text-align: center; }
+  }
+}
+input#searchsubmit { vertical-align: top; }

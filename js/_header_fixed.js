@@ -65,7 +65,6 @@
 	});
 	function head_low( head_logo_image_defaultHeight ){
 		changeHeight = head_logo_image_defaultHeight*0.8;
-		$('body').addClass('scrolled');
 		$('.siteHeader .siteHeadContainer').stop().animate({
 			"padding-top":"5px",
 			"padding-bottom":"0px",
@@ -75,7 +74,6 @@
 		},100);
 	}
 	function head_high( head_logo_image_defaultHeight ){
-		$('body').removeClass('scrolled');
 		$('.siteHeader .siteHeadContainer').stop().animate({
 			"padding-top":"20px",
 			"padding-bottom":"18px",
