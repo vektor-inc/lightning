@@ -32,6 +32,10 @@ http://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v2.5.0
+* [ Design tuning ]
+* [ Specification change ][ Move script ] Add "scrolled" body class script from "header_fixed.js" to "master.js".
+
 v2.4.0
 * [ Specification change ] Easily have been changed to be able to disable the Header fixed & Header height changer.
 * [ Add action hook ] lightning_header_logo_after
