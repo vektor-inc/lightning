@@ -2,10 +2,11 @@
 @import "compass";
 
 @media (min-width: 768px){
-ul.gMenu {
-  a:hover,
-  a:active { background-color:#fff;color: $color_key; }
-  & >li {
+ul.gMenu { float:right;
+  a { background-color:#fff; }
+  & > li {
+    a:hover { background: none; }
+    a:hover .gMenu_description { color: $color_key; }
     & > a { border-bottom:none; }
   }
   & > li > a:hover:after,
