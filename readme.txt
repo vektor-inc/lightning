@@ -32,6 +32,9 @@ http://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v2.5.1
+* [ Design bug fix ] Global menu & dt key color
+
 v2.5.0
 * [ Design tuning ]
 * [ Specification change ][ Move script ] Add "scrolled" body class script from "header_fixed.js" to "master.js".

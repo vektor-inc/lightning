@@ -24,6 +24,7 @@ ul.page-numbers li span.page-numbers.current { background-color:<?php echo $colo
 .pager li > a { border-color:<?php echo $color_key;?>;color:<?php echo $color_key;?>;}
 .pager li > a:hover { background-color:<?php echo $color_key;?>;color:#fff;}
 footer { border-top-color:<?php echo $color_key	;?> }
+dt { border-left-color:<?php echo $color_key  ;?>; }
 @media (min-width: 768px){
   ul.gMenu > li > a:hover:after,
   ul.gMenu > li.current-post-ancestor > a:after,
@@ -32,6 +33,7 @@ footer { border-top-color:<?php echo $color_key	;?> }
   ul.gMenu > li.current-menu-ancestor > a:after,
   ul.gMenu > li.current_page_parent > a:after,
   ul.gMenu > li.current_page_ancestor > a:after { border-bottom-color: <?php echo $color_key ;?> }
+  ul.gMenu > li > a:hover .gMenu_description { color: <?php echo $color_key ;?>; }
 } /* @media (min-width: 768px) */
 </style>
 <!-- [ / Ligthning Origin ] -->
