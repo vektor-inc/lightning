@@ -43,7 +43,8 @@ $post_loop = new WP_Query( array(
 <?php endwhile;?>
 </aside>
 <?php endif; ?>
-
+<?php wp_reset_query(); ?>
+  
 <aside class="widget widget_categories widget_link_list">
 <nav class="localNav">
 <h1 class="subSection-title"><?php _e('Category', 'lightning');?></h1>
