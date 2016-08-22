@@ -234,6 +234,30 @@ function lightning_widgets_init() {
 			) );
 			$i++;
 		}
+
+	// LP widget area
+
+		$args = Array(
+					'post_type' => 'page',
+					'posts_per_page' => -1,
+					'meta_key' => '_wp_page_template',
+					'meta_value' => 'page-lp.php'
+		        );
+		$posts = get_posts($args);
+
+		if ( $posts ){
+			foreach ($posts as $key => $post) {
+				register_sidebar( array(
+					'name' => __( 'LP widget "', 'lightning' ).esc_html($post->post_title).'"',
+					'id' => 'lp-widget-'.$post->ID,
+					'before_widget' => '<section class="widget %2$s" id="%1$s">',
+					'after_widget' => '</section>',
+					'before_title' => '<h1 class="mainSection-title">',
+					'after_title' => '</h1>',
+				) );
+			}	
+		}
+		wp_reset_postdata();
 }
 add_action( 'widgets_init', 'lightning_widgets_init' );
 
