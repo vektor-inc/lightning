@@ -32,6 +32,13 @@ http://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v2.6.1
+* [ Desing tuning ] add widget margin-bottom on mobile mode
+
+v2.6.0
+* [ Add function ][ Add New Template ] Add Landing Page Template
+* [ Bug fix ] Reset post data
+
 v2.5.1
 * [ Design bug fix ] Global menu & dt key color
 
