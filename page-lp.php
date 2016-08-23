@@ -1,11 +1,8 @@
 <?php
 /*
- * Template Name: Landing page
+ * Template Name: Landing Page
  */
 get_header(); ?>
-
-<?php get_template_part('module_pageTit'); ?>
-<?php // get_template_part('module_panList'); ?>
 
 <div class="section siteContent">
 <div class="container">
