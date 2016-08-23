@@ -2807,7 +2807,8 @@ ul.gMenu ul li li li li a { padding-left: 5em; }
 
 h1.mainSection-title { font-size: 24px; }
 
-@media (min-width: 768px) { .mainSection .widget { margin-bottom: 25px; } }
+.mainSection .widget { margin-bottom: 25px; }
+
 .entry-meta { margin-bottom: 0.8em; padding-left: 3px; }
 .entry-meta i { margin-right: 5px; }
 
