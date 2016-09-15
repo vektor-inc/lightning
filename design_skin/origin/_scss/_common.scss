@@ -15,8 +15,6 @@ $margin_bottom : 1.2em;
 /*-------------------------------------------*/
 /* headding
 /*-------------------------------------------*/
-/* .btn
-/*-------------------------------------------*/
 /* images
 /*-------------------------------------------*/
 /* other class
@@ -44,12 +42,12 @@ ol ol,ul ul,ol ul,ul ol { margin-top:10px;margin-bottom:10px; }
 /*-------------------------------------------*/
 /* headding
 /*-------------------------------------------*/
-h1,.h1 { font-size:32px; }
-h2,
-h3,
-h4,
-h5,
-h6,
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 { line-height: 1.7em; }
+h2,.h2,
+h3,.h3,
+h4,.h4,
+h5,.h5,
+h6,.h6,
 .mainSection-title { margin:1.5em 0 $margin_bottom;clear: both; }
 
 h1:first-child,
@@ -58,13 +56,13 @@ h3:first-child,
 h4:first-child,
 h5:first-child { margin-top:0; }
 
-h3,
+h3,.h3,
 .subSection-title { padding-bottom:8px;position: relative; }
 
-h4 { font-size:20px;position: relative; }
-h5 { font-size:18px; }
+h4,.h4 { font-size:20px;position: relative; }
+h5,.h5 { font-size:18px; }
 
-h6 { font-size:16px; font-weight: bold; }
+h6.h6 { font-size:16px; font-weight: bold; }
 
 @media (max-width: 767px){
 	h1 { font-size:24px;}
@@ -92,7 +90,8 @@ table { border-collapse: collapse; border-spacing: 0;width:100%;
 /*-------------------------------------------*/
 /* .btn
 /*-------------------------------------------*/
-.btn-xs { padding-left:10px;padding-right:10px; }
+.btn { white-space: inherit; }
+.btn-xs { padding-left:15px;padding-right:15px; }
 
 /*-------------------------------------------*/
 /* images
@@ -107,8 +106,8 @@ img.aligncenter { clear: both; display: block; margin-left: auto; margin-right: 
 img.alignleft,
 img.alignright,
 img.aligncenter { margin-bottom: 12px; }
-.wp-caption { background: #fcfcfc; line-height: 18px; margin-bottom: 20px; padding: 0 0 5px; text-align: center;border:1px solid #e5e5e5;max-width:100% !important; }
-.wp-caption img { margin:5px 0 4px;max-width:95% !important;height:auto !important; }
+.wp-caption { background: #fcfcfc; line-height: 18px; margin-top:2.5em;margin-bottom: 2.5em; padding: 0 0 5px; text-align: center;border:1px solid #e5e5e5;max-width:100% !important; }
+.wp-caption img { margin:10px 0 9px;max-width:95% !important;height:auto !important; }
 .wp-caption p.wp-caption-text { color: #888; font-size: 12px; margin: 0px; }
 .wp-smiley { margin: 0; }
 .gallery { margin: 0 auto 18px; }
@@ -124,5 +123,4 @@ img.aligncenter { margin-bottom: 12px; }
 /*-------------------------------------------*/
 /* other class
 /*-------------------------------------------*/
-.btn { white-space: inherit; }
 .well p:last-child { margin-bottom:0; }

@@ -168,7 +168,6 @@ function lightning_widgets_init() {
 			'after_title' => '</h1>',
 		) );
 
-
 	// Sidebar( post_type )
 
 		$postTypes = get_post_types(Array('public' => true));
