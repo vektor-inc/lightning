@@ -32,6 +32,9 @@ http://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v2.6.2
+* [ Desing tuning ]
+
 v2.6.1
 * [ Desing tuning ] add widget margin-bottom on mobile mode
 
