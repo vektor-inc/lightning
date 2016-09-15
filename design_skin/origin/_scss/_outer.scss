@@ -225,7 +225,8 @@ h1.entry-title { font-size:26px; }
 }// @media (max-width: 767px){
 @media (min-width: 768px){
   .entry-meta_items { font-size:14px; }
-  .entry-body { padding:2em 0 2.5em; }
+  .entry-body,
+  .widget .entry-body { padding:2em 0 2.5em; }
 } // @media (min-width: 768px){
 
 
@@ -342,7 +343,7 @@ ul.page-numbers { margin:0;padding: 0;
 /*-------------------------------------------*/
 /* .subSection
 /*-------------------------------------------*/
-.subSection {
+.subSection { display:block; overflow:hidden;
   .widget { margin-bottom:25px; }
   .media { padding:1em 0 0.8em;margin-top:0;
     .postList_thumbnail { width:80px;padding-right:15px; }
@@ -378,6 +379,7 @@ ul.page-numbers { margin:0;padding: 0;
 .widget_nav_menu,
 .widget_archive,
 .widget_categories,
+.widget_pages,
 .widget_recent_entries {
   ul { padding-left:0;margin:0;font-size:14px;list-style: none; }
 }
@@ -386,6 +388,7 @@ ul.page-numbers { margin:0;padding: 0;
 .widget_nav_menu,
 .widget_archive,
 .widget_categories,
+.widget_pages,
 .widget_recent_entries {
   .subSection-title { margin-bottom:0; }
   ul {
