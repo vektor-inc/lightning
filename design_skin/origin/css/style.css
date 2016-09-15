@@ -2704,7 +2704,7 @@ h5 { padding: 7px 7px 3px; border-top: 1px solid #ccc; border-bottom: 1px solid 
 
 .btn-default { background: none; color: #337ab7; border-color: #337ab7; }
 
-.btn-default:hover { background-color: #337ab7; color: #fff; border-color: #337ab7; }
+.btn-default:focus, .btn-default:hover { background-color: #337ab7; color: #fff; border-color: #337ab7; }
 
 .screen-reader-text { display: none; }
 

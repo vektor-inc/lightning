@@ -294,8 +294,10 @@ function lightning_print_css_common(){
 a { color:<?php echo $color_key_dark;?> ; }
 a:hover { color:<?php echo $color_key;?> ; }
 .btn-default { border-color:<?php echo $color_key;?>;color:<?php echo $color_key;?>;}
+.btn-default:focus,
 .btn-default:hover { border-color:<?php echo $color_key;?>;background-color: <?php echo $color_key;?>; }
 .btn-primary { background-color:<?php echo $color_key;?>;border-color:<?php echo $color_key_dark;?>; }
+.btn-primary:focus,
 .btn-primary:hover { background-color:<?php echo $color_key_dark;?>;border-color:<?php echo $color_key;?>; }
 </style>
 <!-- [ / Lightning Common ] -->
