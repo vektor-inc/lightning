@@ -139,6 +139,11 @@ require( get_template_directory() . '/functions_plugin_install.php' );
 require( get_template_directory() . '/design_skin/class-design-manager.php' );
 
 /*-------------------------------------------*/
+/*	Font Awesome Selector
+/*-------------------------------------------*/
+require( get_template_directory() . '/library/font-awesome-selector-config.php' );
+
+/*-------------------------------------------*/
 /*	WidgetArea initiate
 /*-------------------------------------------*/
 function lightning_widgets_init() {

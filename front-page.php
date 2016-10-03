@@ -20,6 +20,8 @@
 
             <div class="<?php echo $main_col; ?> mainSection">
 
+            <?php get_template_part( 'module_front_pr_blocks' );?>
+
             <?php if ( is_active_sidebar( 'home-content-top-widget-area' ) ) : ?>
                 <?php dynamic_sidebar( 'home-content-top-widget-area' ); ?>
             <?php endif; ?>
