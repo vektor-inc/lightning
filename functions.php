@@ -8,7 +8,6 @@ define('LIGHTNING_THEME_VERSION', $theme_opt->Version);
 /*-------------------------------------------*/
 /*	Load CSS
 /*-------------------------------------------*/
-/*	Head logo
 /*-------------------------------------------*/
 /*	WidgetArea initiate
 /*-------------------------------------------*/
@@ -139,9 +138,10 @@ require( get_template_directory() . '/functions_plugin_install.php' );
 require( get_template_directory() . '/design_skin/class-design-manager.php' );
 
 /*-------------------------------------------*/
-/*	Font Awesome Selector
+/*	Load Front PR Blocks
 /*-------------------------------------------*/
-require( get_template_directory() . '/library/font-awesome-selector-config.php' );
+get_template_part( '/inc/front-page-pr' );
+get_template_part( '/library/font-awesome-selector-config.php' );
 
 /*-------------------------------------------*/
 /*	WidgetArea initiate
