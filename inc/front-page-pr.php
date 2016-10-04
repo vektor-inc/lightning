@@ -5,18 +5,6 @@
 add_action( 'customize_register', 'lightning_top_pr_customize_register' );
 function lightning_top_pr_customize_register($wp_customize) {
 
-	/*	Add font awesome control
-	/*-------------------------------------------*/
-   class Custom_Fontawesome_Control extends WP_Customize_Control {
-		public $type = 'fontawesome';
-		public function render_content() {
-			echo '<span class="customize-control-title">'.esc_html( $this->label ).'</span>';
-			$name = esc_attr( $this->id );
-			$current = esc_attr( $this->value() );
-			Vk_Font_Awesome_Selector::selectors( $name, $current );
-		}
-	}
-
 	/*-------------------------------------------*/
 	/*	Front PR
 	/*-------------------------------------------*/
@@ -35,7 +23,7 @@ function lightning_top_pr_customize_register($wp_customize) {
 
 	// Add control
 	$wp_customize->add_control( 'front_pr_hidden', array(
-		'label'     => _x('Hide front page PR Block', 'lightning theme-customizer', 'lightning'),
+		'label'     => _x('Hide Front Page PR Block', 'lightning theme-customizer', 'lightning'),
 		'section'  => 'lightning_front_pr',
 		'settings' => 'lightning_theme_options[front_pr_hidden]',
 		'type' => 'checkbox',
@@ -108,18 +96,6 @@ function lightning_top_pr_customize_register($wp_customize) {
 				'priority' => $priority,
 			)
 		) );
-
-		// $wp_customize->add_control( new Custom_Fontawesome_Control( 
-		// 	$wp_customize, 
-		// 	'lightning_theme_options[front_pr_icon_'.$i.']', 
-		// 	array(
-		// 		'label'    => _x('Icon ', 'lightning theme-customizer', 'lightning').' '.$i,
-		// 		'section'  => 'lightning_front_pr',
-		// 		'settings' => 'lightning_theme_options[front_pr_icon_'.$i.']',
-		// 		'type' => 'radio',
-		// 		'priority' => $priority,
-		// 	)
-		// ) );
 
 		$wp_customize->add_control(  
 			'front_pr_title_'.$i, 

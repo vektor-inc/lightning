@@ -141,7 +141,6 @@ require( get_template_directory() . '/design_skin/class-design-manager.php' );
 /*	Load Front PR Blocks
 /*-------------------------------------------*/
 get_template_part( '/inc/front-page-pr' );
-get_template_part( '/library/font-awesome-selector-config.php' );
 
 /*-------------------------------------------*/
 /*	WidgetArea initiate
