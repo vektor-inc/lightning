@@ -20,6 +20,8 @@
 
             <div class="<?php echo $main_col; ?> mainSection">
 
+            <?php do_action('lightning_home_content_top_widget_area_before'); ?>
+
             <?php if ( is_active_sidebar( 'home-content-top-widget-area' ) ) : ?>
                 <?php dynamic_sidebar( 'home-content-top-widget-area' ); ?>
             <?php endif; ?>

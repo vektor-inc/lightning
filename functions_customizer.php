@@ -15,7 +15,7 @@ function lightning_customize_register($wp_customize) {
 		<label>
 			<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
 			<input type="text" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?> />
-			<span><?php echo esc_html( $this->description ); ?></span>
+			<span><?php echo $this->description; ?></span>
 		</label>
 		<?php
 		}

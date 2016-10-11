@@ -8,7 +8,6 @@ define('LIGHTNING_THEME_VERSION', $theme_opt->Version);
 /*-------------------------------------------*/
 /*	Load CSS
 /*-------------------------------------------*/
-/*	Head logo
 /*-------------------------------------------*/
 /*	WidgetArea initiate
 /*-------------------------------------------*/
@@ -137,6 +136,11 @@ require( get_template_directory() . '/functions_plugin_install.php' );
 /*	Load designskin manager
 /*-------------------------------------------*/
 require( get_template_directory() . '/design_skin/class-design-manager.php' );
+
+/*-------------------------------------------*/
+/*	Load Front PR Blocks
+/*-------------------------------------------*/
+get_template_part( '/inc/front-page-pr' );
 
 /*-------------------------------------------*/
 /*	WidgetArea initiate
