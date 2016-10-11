@@ -32,6 +32,9 @@ http://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v2.7.0
+* [ Add function ] Add Front PR Blocks.
+
 v2.6.2
 * [ Desing tuning ]
 
