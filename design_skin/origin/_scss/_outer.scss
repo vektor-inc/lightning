@@ -489,7 +489,6 @@ footer {
 /*-------------------------------------------*/
 /* .comments-area
 /*-------------------------------------------*/
-
 ol.comment-list { padding: 0;margin-top:0;}
 li.comment { border:4px solid #eee; padding: 1em; margin:0 0 1em;list-style: none;
   ol.children { padding-left:1em;
@@ -503,6 +502,7 @@ p.no-comments { background-color: #f3f3f3;border:1px solid #e5e5e5; text-align: 
 
 // theme check pass
 .bypostauthor { color: $color_font_default; }
+
 /*-------------------------------------------*/
 /* search
 /*-------------------------------------------*/
@@ -517,25 +517,21 @@ input#searchsubmit { vertical-align: top; }
 /*-------------------------------------------*/
 /* Widget .veu_prBlocks
 /*-------------------------------------------*/
+.prBlock {
+  a{ color: #333;
+    &:hover{ color: #333; text-decoration: none; }
+  } 
+}
+.prBlock_icon{ display: table; margin: 0 auto ; width: 80px; height: 80px; border-radius: 50%;
+  .font_icon{ display: table-cell;  vertical-align: middle; text-align: center; font-size: 36px;  }
+}
 
-  .prBlock {
-    a{ color: #333;
-      &:hover{ color: #333; text-decoration: none; }
-    } 
-  }
-  .prBlock_icon{ display: table; margin: 0 auto ; width: 80px; height: 80px; border-radius: 50%;
-    .font_icon{ display: table-cell;  vertical-align: middle; text-align: center; font-size: 36px;  }
-  }
-
-  .prBlock_title{ margin-top:0.8em;margin-bottom: 0.7em; text-align: center; font-size: 18px; }
-  .prBlock_image{ display: table; margin: 0 auto;
-    img{ display: table-cell; overflow: hidden; width: 120px; height: 120px; border-radius: 50%; vertical-align: middle; text-align: center; }
-  }
-  .prBlock_summary{ margin-bottom: 0.5em; text-align: center; font-size: 14px; line-height: 1.6em; }
-
+.prBlock_title{ margin-top:0.8em;margin-bottom: 0.7em; text-align: center; font-size: 18px; }
+.prBlock_image{ display: table; margin: 0 auto;
+  img{ display: table-cell; overflow: hidden; width: 120px; height: 120px; border-radius: 50%; vertical-align: middle; text-align: center; }
+}
+.prBlock_summary{ margin-bottom: 0.5em; text-align: center; font-size: 14px; line-height: 1.6em; }
 
 @media screen and (max-width:992px){
-
   .prBlock{ margin-bottom: 1.5em; }
-
 }
