@@ -92,7 +92,7 @@ function lightning_front_pr_blocks_customize_register($wp_customize) {
 				'section'  => 'lightning_front_pr',
 				'settings' => 'lightning_theme_options[front_pr_icon_'.$i.']',
 				'type' => 'text',
-				'description' => 'Ex : fa-file-text-o [ <a href="http://fontawesome.io/icons/" target="_blank">Icon list</a> ]',
+				'description' => 'Ex : fa-file-text-o [ <a href="//fontawesome.io/icons/" target="_blank">Icon list</a> ]',
 				'priority' => $priority,
 			)
 		) );
