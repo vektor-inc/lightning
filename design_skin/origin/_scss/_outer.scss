@@ -189,7 +189,7 @@ h1.page-header_pageTitle:first-child { margin:15px 0 10px;font-size:22px;line-he
 /*-------------------------------------------*/
 /* .siteContent
 /*-------------------------------------------*/
-.siteContent { padding:3em 0 3em; }
+.siteContent { padding:3.5em 0 3.5em; }
 @media (max-width: 767px){
   .siteContent { padding:1em 0 1.5em; }
 }
@@ -527,7 +527,7 @@ input#searchsubmit { vertical-align: top; }
     .font_icon{ display: table-cell;  vertical-align: middle; text-align: center; font-size: 36px;  }
   }
 
-  .prBlock_title{ margin-bottom: 1em; text-align: center; font-size: 18px; }
+  .prBlock_title{ margin-top:0.8em;margin-bottom: 0.7em; text-align: center; font-size: 18px; }
   .prBlock_image{ display: table; margin: 0 auto;
     img{ display: table-cell; overflow: hidden; width: 120px; height: 120px; border-radius: 50%; vertical-align: middle; text-align: center; }
   }
@@ -536,6 +536,6 @@ input#searchsubmit { vertical-align: top; }
 
 @media screen and (max-width:992px){
 
-  .prBlock{ margin-bottom: 1em; }
+  .prBlock{ margin-bottom: 1.5em; }
 
 }

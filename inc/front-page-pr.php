@@ -14,18 +14,18 @@ function lightning_front_pr_blocks_customize_register($wp_customize) {
 		// 'panel'				=> 'lightning_setting',
 	) );
 
-	$wp_customize->add_setting('lightning_theme_options[front_pr_hidden]', array(
-		'default'			=> false,
+	$wp_customize->add_setting('lightning_theme_options[front_pr_display]', array(
+		'default'			=> true,
 		'type'				=> 'option',
 		'capability'		=> 'edit_theme_options',
 		'sanitize_callback' => 'lightning_sanitize_checkbox',
 	) );
 
 	// Add control
-	$wp_customize->add_control( 'front_pr_hidden', array(
-		'label'     => _x('Hide Front Page PR Block', 'lightning theme-customizer', 'lightning'),
+	$wp_customize->add_control( 'front_pr_display', array(
+		'label'     => _x('Display Front Page PR Block', 'lightning theme-customizer', 'lightning'),
 		'section'  => 'lightning_front_pr',
-		'settings' => 'lightning_theme_options[front_pr_hidden]',
+		'settings' => 'lightning_theme_options[front_pr_display]',
 		'type' => 'checkbox',
 		'priority' => 1,
 		'description' => __('* If you want to use the more advanced features and set a PR Block anywhere, please Install the WordPress official directory registration plug-in "VK All in One Expansion Unit (Free)" and use the "VK PR Blocks widgets". ', 'lightning'),
@@ -44,7 +44,7 @@ function lightning_front_pr_blocks_customize_register($wp_customize) {
 			3 => __( 'Surprisingly easy', 'lightning' )
 			),
 		'description' => array(
-			1 => __( 'Lightning is a simple and customize easy WordPress theme.It corresponds by the outstanding versatility to the all-round also in business sites and blogs.', 'lightning' ),
+			1 => __( 'Lightning is a simple and customize easy theme. It corresponds by the outstanding versatility to the all-round also in business sites and blogs.', 'lightning' ),
 			2 => __( 'By using the plug-in "VK All in One Expansion Unit (free)", you can use the various functions and rich widgets.', 'lightning' ),
 			3 => __( 'Lightning is includes to a variety of ideas for making it easier to business site. Please experience the ease of use of the Lightning.', 'lightning' )
 			),
@@ -69,7 +69,7 @@ function lightning_front_pr_blocks_customize_register($wp_customize) {
 			'capability'		=> 'edit_theme_options',
 			'sanitize_callback' => 'sanitize_text_field',
 		) );
-		$wp_customize->add_setting('lightning_theme_options[front_pr_description_'.$i.']', array(
+		$wp_customize->add_setting('lightning_theme_options[front_pr_summary_'.$i.']', array(
 			'default'			=> $front_pr_default['description'][$i],
 			'type'				=> 'option',
 			'capability'		=> 'edit_theme_options',
@@ -109,11 +109,11 @@ function lightning_front_pr_blocks_customize_register($wp_customize) {
 		);
 
 		$wp_customize->add_control(  
-			'front_pr_description_'.$i, 
+			'front_pr_summary_'.$i, 
 			array(
 				'label'    => _x('Text', 'lightning theme-customizer', 'lightning').' '.$i,
 				'section'  => 'lightning_front_pr',
-				'settings' => 'lightning_theme_options[front_pr_description_'.$i.']',
+				'settings' => 'lightning_theme_options[front_pr_summary_'.$i.']',
 				'type' => 'textarea',
 				'priority' => $priority,
 			)
@@ -138,7 +138,7 @@ function lightning_front_pr_blocks_styles() {
 	
     global $lightning_theme_options;
 	$options = $lightning_theme_options;
-	if ( !isset( $options['front_pr_hidden'] ) || !$options['front_pr_hidden'] ){
+	if ( isset( $options['front_pr_display'] ) && $options['front_pr_display'] ){
 		if ( isset( $options['color_key'] ) && $options['color_key'] ){
 			$color_key = $options['color_key'];
 		} else {
@@ -160,10 +160,10 @@ function lightning_front_pr_blocks_add(){
 	global $lightning_theme_options;
 	$options = $lightning_theme_options;
 	/*
-	isset( $options['front_pr_hidden'] ) ... Users from conventional
-	$options['front_pr_hidden'] ... User setted hidden
+	!isset( $options['front_pr_display'] ) ... Users from conventional / New install
+	$options['front_pr_display'] ... User setted hidden
 	*/
-	if ( !isset( $options['front_pr_hidden'] ) || !$options['front_pr_hidden'] ){
+	if ( isset( $options['front_pr_display'] ) && $options['front_pr_display'] ){
 		echo '<section class="widget">';
 		echo '<div class="prBlocks row">';
 		for ( $i = 1; $i <= 3; ) {
@@ -185,7 +185,7 @@ function lightning_front_pr_blocks_add(){
 			}
 			
 			echo '<h1 class="prBlock_title">'.esc_html( $options['front_pr_title_'.$i] ).'</h1>';
-			echo '<p class="prBlock_summary">'.esc_html( $options['front_pr_description_'.$i] ).'</p>';
+			echo '<p class="prBlock_summary">'.esc_html( $options['front_pr_summary_'.$i] ).'</p>';
 
 			if ( $options['front_pr_link_'.$i] ) echo '</a>';
 			echo '</article><!--//.prBlock -->'."\n";
