@@ -34,6 +34,8 @@ http://www.vektor-inc.co.jp/inquiry/
 
 v2.7.0
 * [ Add function ] Add Front PR Blocks.
+* [ Specification change ] Change file hierarchy.
+* [ Change screen shot ]
 
 v2.6.2
 * [ Desing tuning ]
