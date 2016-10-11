@@ -128,14 +128,14 @@ require( get_template_directory() . '/functions_customizer.php' );
 require( get_template_directory() . '/functions_helpers.php' );
 
 /*-------------------------------------------*/
-/*	Load tga(Plugin install)
-/*-------------------------------------------*/
-require( get_template_directory() . '/functions_plugin_install.php' );
-
-/*-------------------------------------------*/
 /*	Load designskin manager
 /*-------------------------------------------*/
 require( get_template_directory() . '/design_skin/class-design-manager.php' );
+
+/*-------------------------------------------*/
+/*	Load tga(Plugin install)
+/*-------------------------------------------*/
+get_template_part( '/inc/tgm-plugin-activation/tgm-config' );
 
 /*-------------------------------------------*/
 /*	Load Front PR Blocks
