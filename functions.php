@@ -120,27 +120,27 @@ function lightning_design_css(){
 /*-------------------------------------------*/
 /*	Load Theme customizer
 /*-------------------------------------------*/
-require( get_template_directory() . '/functions_customizer.php' );
+get_template_part( 'functions_customizer' );
 
 /*-------------------------------------------*/
 /*	Load helpers
 /*-------------------------------------------*/
-require( get_template_directory() . '/functions_helpers.php' );
+get_template_part( 'functions_helpers' );
 
 /*-------------------------------------------*/
 /*	Load designskin manager
 /*-------------------------------------------*/
-require( get_template_directory() . '/design_skin/class-design-manager.php' );
+get_template_part( 'inc/class-design-manager' );
 
 /*-------------------------------------------*/
 /*	Load tga(Plugin install)
 /*-------------------------------------------*/
-get_template_part( '/inc/tgm-plugin-activation/tgm-config' );
+get_template_part( 'inc/tgm-plugin-activation/tgm-config' );
 
 /*-------------------------------------------*/
 /*	Load Front PR Blocks
 /*-------------------------------------------*/
-get_template_part( '/inc/front-page-pr' );
+get_template_part( 'inc/front-page-pr' );
 
 /*-------------------------------------------*/
 /*	WidgetArea initiate
