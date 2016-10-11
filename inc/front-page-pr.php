@@ -135,17 +135,23 @@ function lightning_front_pr_blocks_customize_register($wp_customize) {
 }
 
 function lightning_front_pr_blocks_styles() {
+	
     global $lightning_theme_options;
 	$options = $lightning_theme_options;
-	if ( isset( $options['color_key'] ) && $options['color_key'] ){
-        $custom_css = "
-        	.prBlock_icon { border:1px solid {$options['color_key']}; }
-        	.prBlock_icon .font_icon { color:{$options['color_key']}; }
-        	a:hover .prBlock_icon { background-color:{$options['color_key']}; }
-        	a:hover .prBlock_icon .font_icon { color:#fff; }
-			";
+	if ( !isset( $options['front_pr_hidden'] ) || !$options['front_pr_hidden'] ){
+		if ( isset( $options['color_key'] ) && $options['color_key'] ){
+			$color_key = $options['color_key'];
+		} else {
+			$color_key = '#337ab7';
+		}
+		$custom_css = "
+			.prBlock_icon { border:1px solid {$color_key}; }
+			.prBlock_icon .font_icon { color:{$color_key}; }
+			a:hover .prBlock_icon { background-color:{$color_key}; }
+			a:hover .prBlock_icon .font_icon { color:#fff; }
+		";
+	    wp_add_inline_style( 'lightning-theme-style', $custom_css );
 	}
-    wp_add_inline_style( 'lightning-theme-style', $custom_css );
 }
 add_action( 'wp_enqueue_scripts', 'lightning_front_pr_blocks_styles' );
 
@@ -153,6 +159,10 @@ add_action( 'lightning_home_content_top_widget_area_before', 'lightning_front_pr
 function lightning_front_pr_blocks_add(){
 	global $lightning_theme_options;
 	$options = $lightning_theme_options;
+	/*
+	isset( $options['front_pr_hidden'] ) ... Users from conventional
+	$options['front_pr_hidden'] ... User setted hidden
+	*/
 	if ( !isset( $options['front_pr_hidden'] ) || !$options['front_pr_hidden'] ){
 		echo '<section class="widget">';
 		echo '<div class="prBlocks row">';
