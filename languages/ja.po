@@ -658,7 +658,7 @@ msgstr "Y年n月"
 #: functions_helpers.php:105
 msgctxt "daily archives date format"
 msgid "F j, Y"
-msgstr "Y年F月j日"
+msgstr "Y年Fj日"
 
 #: functions_helpers.php:120
 msgid "Archives"
