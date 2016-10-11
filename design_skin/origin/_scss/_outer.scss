@@ -189,7 +189,7 @@ h1.page-header_pageTitle:first-child { margin:15px 0 10px;font-size:22px;line-he
 /*-------------------------------------------*/
 /* .siteContent
 /*-------------------------------------------*/
-.siteContent { padding:3em 0 3em; }
+.siteContent { padding:3.5em 0 3.5em; }
 @media (max-width: 767px){
   .siteContent { padding:1em 0 1.5em; }
 }
@@ -225,6 +225,7 @@ h1.mainSection-title { font-size:24px; }
 h1.entry-title { font-size:26px; }
 }// @media (max-width: 767px){
 @media (min-width: 768px){
+.mainSection .widget { margin-bottom:35px; }
   .entry-meta_items { font-size:14px; }
   .entry-body,
   .widget .entry-body { padding:2em 0 2.5em; }
@@ -512,3 +513,29 @@ form.searchform { margin:1em 0;
   }
 }
 input#searchsubmit { vertical-align: top; }
+
+/*-------------------------------------------*/
+/* Widget .veu_prBlocks
+/*-------------------------------------------*/
+
+  .prBlock {
+    a{ color: #333;
+      &:hover{ color: #333; text-decoration: none; }
+    } 
+  }
+  .prBlock_icon{ display: table; margin: 0 auto ; width: 80px; height: 80px; border-radius: 50%;
+    .font_icon{ display: table-cell;  vertical-align: middle; text-align: center; font-size: 36px;  }
+  }
+
+  .prBlock_title{ margin-top:0.8em;margin-bottom: 0.7em; text-align: center; font-size: 18px; }
+  .prBlock_image{ display: table; margin: 0 auto;
+    img{ display: table-cell; overflow: hidden; width: 120px; height: 120px; border-radius: 50%; vertical-align: middle; text-align: center; }
+  }
+  .prBlock_summary{ margin-bottom: 0.5em; text-align: center; font-size: 14px; line-height: 1.6em; }
+
+
+@media screen and (max-width:992px){
+
+  .prBlock{ margin-bottom: 1.5em; }
+
+}
