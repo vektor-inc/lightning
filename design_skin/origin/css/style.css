@@ -3032,6 +3032,7 @@ input#searchsubmit { vertical-align: top; }
 /*-------------------------------------------*/
 /* Widget .veu_prBlocks
 /*-------------------------------------------*/
+/* htmlに直接styleを書き込むので継承を弱くするために入れ子で書かない */
 .prBlock a { color: #333; }
 .prBlock a:hover { color: #333; text-decoration: none; }
 
