@@ -3035,10 +3035,11 @@ input#searchsubmit { vertical-align: top; }
 .prBlock a { color: #333; }
 .prBlock a:hover { color: #333; text-decoration: none; }
 
-.prBlock_icon { display: table; margin: 0 auto; width: 80px; height: 80px; border-radius: 50%; }
-.prBlock_icon .font_icon { display: table-cell; vertical-align: middle; text-align: center; font-size: 36px; }
+.prBlock_icon_outer { display: table; margin: 0 auto; width: 80px; height: 80px; border-radius: 50%; }
 
-.prBlock_title { margin-top: 0.8em; margin-bottom: 0.7em; text-align: center; font-size: 18px; }
+.prBlock_icon { display: table-cell; vertical-align: middle; text-align: center; font-size: 36px; }
+
+.prBlock_title { margin-top: 0.8em; margin-bottom: 0.7em; text-align: center; font-size: 18px; line-height: 1.4em; }
 
 .prBlock_image { display: table; margin: 0 auto; }
 .prBlock_image img { display: table-cell; overflow: hidden; width: 120px; height: 120px; border-radius: 50%; vertical-align: middle; text-align: center; }

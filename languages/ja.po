@@ -240,7 +240,7 @@ msgid ""
 "All in One Expansion Unit (Free)\" and use the \"VK PR Blocks widgets\". "
 msgstr ""
 "*PR Blockを好きな場所に設定したり、より高度な機能を使いたい場合は、WordPress"
-"公式ディレクトリ登録プラグイン「VK All in One Expantion Unit（無料）」をイン"
+"公式ディレクトリ登録プラグイン「VK All in One Expansion Unit（無料）」をイン"
 "ストール・有効化して、ウィジェット「VK PR Blocks」をご利用ください。"
 
 #: inc/front-page-pr.php:42
