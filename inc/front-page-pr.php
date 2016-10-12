@@ -145,10 +145,8 @@ function lightning_front_pr_blocks_styles() {
 			$color_key = '#337ab7';
 		}
 		$custom_css = "
-			.prBlock_icon { border:1px solid {$color_key}; }
-			.prBlock_icon .font_icon { color:{$color_key}; }
-			a:hover .prBlock_icon { background-color:{$color_key}; }
-			a:hover .prBlock_icon .font_icon { color:#fff; }
+			.prBlock_icon_outer { border:1px solid {$color_key}; }
+			.prBlock_icon { color:{$color_key}; }
 		";
 	    wp_add_inline_style( 'lightning-theme-style', $custom_css );
 	}
@@ -179,8 +177,8 @@ function lightning_front_pr_blocks_add(){
 
 			if ( $options['front_pr_icon_'.$i] ) {
 				// echo '<div class="prBlock_icon" style="background-color:'.esc_attr( $options['color_key'] ).'">';
-				echo '<div class="prBlock_icon">';
-				echo '<i class="fa '.$options['front_pr_icon_'.$i].' font_icon"></i>';
+				echo '<div class="prBlock_icon_outer">';
+				echo '<i class="fa '.$options['front_pr_icon_'.$i].' font_icon prBlock_icon"></i>';
 				echo '</div>';
 			}
 			

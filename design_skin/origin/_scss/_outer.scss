@@ -517,21 +517,20 @@ input#searchsubmit { vertical-align: top; }
 /*-------------------------------------------*/
 /* Widget .veu_prBlocks
 /*-------------------------------------------*/
+/* htmlに直接styleを書き込むので継承を弱くするために入れ子で書かない */
 .prBlock {
   a{ color: #333;
     &:hover{ color: #333; text-decoration: none; }
   } 
 }
-.prBlock_icon{ display: table; margin: 0 auto ; width: 80px; height: 80px; border-radius: 50%;
-  .font_icon{ display: table-cell;  vertical-align: middle; text-align: center; font-size: 36px;  }
-}
-
-.prBlock_title{ margin-top:0.8em;margin-bottom: 0.7em; text-align: center; font-size: 18px; }
+.prBlock_icon_outer { display: table; margin: 0 auto ; width: 80px; height: 80px; border-radius: 50%; }
+.prBlock_icon { display: table-cell;  vertical-align: middle; text-align: center; font-size: 36px;  }
+.prBlock_title{ margin-top:0.8em;margin-bottom: 0.7em; text-align: center; font-size: 18px; line-height: 1.4em; }
 .prBlock_image{ display: table; margin: 0 auto;
   img{ display: table-cell; overflow: hidden; width: 120px; height: 120px; border-radius: 50%; vertical-align: middle; text-align: center; }
 }
 .prBlock_summary{ margin-bottom: 0.5em; text-align: center; font-size: 14px; line-height: 1.6em; }
 
 @media screen and (max-width:992px){
-  .prBlock{ margin-bottom: 1.5em; }
+.prBlock{ margin-bottom: 1.5em; }
 }
