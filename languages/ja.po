@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lightning v0.1.0\n"
 "Report-Msgid-Bugs-To: Translator Name <translations@example.com>\n"
-"POT-Creation-Date: 2016-10-11 21:06+0900\n"
+"POT-Creation-Date: 2016-10-13 18:03+0900\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Kurudrive <kurudrive@gmail.com>\n"
 "Language-Team: Vektor,Inc. <info@vektor-inc.co.jp>\n"
@@ -104,64 +104,72 @@ msgctxt "lightning theme-customizer"
 msgid "Header logo image"
 msgstr "ヘッダーロゴ画像"
 
-#: functions_customizer.php:117
+#: functions_customizer.php:112
+msgid "Recommended image size : 280*60px"
+msgstr "推奨画像サイズ : 280×60px"
+
+#: functions_customizer.php:118
 msgctxt "lightning theme-customizer"
 msgid "Key color"
 msgstr "キーカラー"
 
-#: functions_customizer.php:123
+#: functions_customizer.php:124
 msgctxt "lightning theme-customizer"
 msgid "Key color(dark)"
 msgstr "キーカラー（暗）"
 
-#: functions_customizer.php:131
+#: functions_customizer.php:132
 msgctxt "lightning theme-customizer"
 msgid "Don't show sidebar on home page"
 msgstr "トップページを1カラムにする"
 
-#: functions_customizer.php:138
+#: functions_customizer.php:139
 msgctxt "lightning theme-customizer"
 msgid "Don't show default content(Post list or Front page) at home page"
 msgstr "トップページでデフォルトの投稿リストや固定ページを表示しない"
 
-#: functions_customizer.php:145
+#: functions_customizer.php:146
 msgctxt "lightning theme-customizer"
 msgid "Hide modified date on single pages."
 msgstr "投稿詳細ページで最終更新日を表示しない"
 
-#: functions_customizer.php:152
+#: functions_customizer.php:153
 msgctxt "lightning theme-customizer"
 msgid "Don't display post author on a single page"
 msgstr "投稿詳細ページで投稿者名を表示しない"
 
-#: functions_customizer.php:164
+#: functions_customizer.php:165
 msgctxt "lightning theme-customizer"
 msgid "Lightning Home page slide show"
 msgstr "Lightning トップページスライドショー"
 
-#: functions_customizer.php:211
+#: functions_customizer.php:212
 msgctxt "lightning theme-customizer"
 msgid "Slide image title"
 msgstr "スライド画像タイトル"
 
-#: functions_customizer.php:216
+#: functions_customizer.php:217
 msgid "This title text is print to alt tag."
 msgstr "このテキストはaltに反映されます。"
 
-#: functions_customizer.php:221
+#: functions_customizer.php:222
 msgctxt "lightning theme-customizer"
 msgid "Slide image link url"
 msgstr "スライド画像リンク先URL"
 
-#: functions_customizer.php:230
+#: functions_customizer.php:231
 msgctxt "lightning theme-customizer"
 msgid "Open in new window."
 msgstr "リンク先を別ウィンドウで開く"
 
-#: functions_customizer.php:242
+#: functions_customizer.php:243
 msgctxt "lightning theme-customizer"
 msgid "Slide image"
 msgstr "スライド画像"
+
+#: functions_customizer.php:247
+msgid "Recommended image size : 1900*500px"
+msgstr "推奨画像サイズ : 1900×500px"
 
 #: functions_helpers.php:99
 #, php-format
@@ -243,19 +251,40 @@ msgstr ""
 "公式ディレクトリ登録プラグイン「VK All in One Expansion Unit（無料）」をイン"
 "ストール・有効化して、ウィジェット「VK PR Blocks」をご利用ください。"
 
-#: inc/front-page-pr.php:42
+#: inc/front-page-pr.php:69
+msgctxt "lightning theme-customizer"
+msgid "Icon "
+msgstr "アイコン"
+
+#: inc/front-page-pr.php:81
+msgctxt "lightning theme-customizer"
+msgid "Title"
+msgstr "タイトル"
+
+#: inc/front-page-pr.php:92
+#, fuzzy
+msgctxt "lightning theme-customizer"
+msgid "Text"
+msgstr "お問い合わせボタンに表示するテキスト"
+
+#: inc/front-page-pr.php:103
+msgctxt "lightning theme-customizer"
+msgid "Link URL"
+msgstr "リンク URL"
+
+#: inc/front-page-pr.php:142
 msgid "For all purposes"
 msgstr "シンプル & 高汎用"
 
-#: inc/front-page-pr.php:43
+#: inc/front-page-pr.php:143
 msgid "Powerful features"
 msgstr "豊富で強力な機能"
 
-#: inc/front-page-pr.php:44
+#: inc/front-page-pr.php:144
 msgid "Surprisingly easy"
 msgstr "驚くほど簡単"
 
-#: inc/front-page-pr.php:47
+#: inc/front-page-pr.php:147
 msgid ""
 "Lightning is a simple and customize easy theme. It corresponds by the "
 "outstanding versatility to the all-round also in business sites and blogs."
@@ -263,7 +292,7 @@ msgstr ""
 "ライトニングはシンプルでカスタマイズしやすいWordPressテーマです。抜群の拡張性"
 "でビジネスサイトにもブログにもオールラウンドに対応します。"
 
-#: inc/front-page-pr.php:48
+#: inc/front-page-pr.php:148
 msgid ""
 "By using the plug-in \"VK All in One Expansion Unit (free)\", you can use "
 "the various functions and rich widgets."
@@ -271,33 +300,13 @@ msgstr ""
 "同時開発されたプラグイン「VK All in One Expansion Unit（無料）」を使用する事"
 "により、様々な機能や豊富なウィジェットを利用する事ができます。"
 
-#: inc/front-page-pr.php:49
+#: inc/front-page-pr.php:149
 msgid ""
 "Lightning is includes to a variety of ideas for making it easier to business "
 "site. Please experience the ease of use of the Lightning."
 msgstr ""
 "Lightningにはビジネスサイトを簡単に作るための様々な工夫がしてあります。"
 "Lightningの使い易さを是非体験してください。"
-
-#: inc/front-page-pr.php:91
-msgctxt "lightning theme-customizer"
-msgid "Icon "
-msgstr ""
-
-#: inc/front-page-pr.php:103
-msgctxt "lightning theme-customizer"
-msgid "Title"
-msgstr "タイトル"
-
-#: inc/front-page-pr.php:114
-msgctxt "lightning theme-customizer"
-msgid "Text"
-msgstr ""
-
-#: inc/front-page-pr.php:125
-msgctxt "lightning theme-customizer"
-msgid "Link URL"
-msgstr "リンク URL"
 
 #: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:333
 #: inc/tgm-plugin-activation/tgm-config.php:83
