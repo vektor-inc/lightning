@@ -109,6 +109,7 @@ function lightning_customize_register($wp_customize) {
 			'section'   => 'lightning_design',
 			'settings'  => 'lightning_theme_options[head_logo]',
 			'priority'  => 501,
+			'description' => __('Recommended image size : 280*60px', 'lightning'),
 		)
 	) );
 
@@ -243,6 +244,7 @@ function lightning_customize_register($wp_customize) {
 				'section'   => 'lightning_slide',
 				'settings'  => 'lightning_theme_options[top_slide_image_'.$i.']',
 				'priority'  => $priority,
+				'description' => __('Recommended image size : 1900*500px', 'lightning'),
 			)
 		) );
 
