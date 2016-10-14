@@ -32,6 +32,11 @@ http://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v2.7.3
+* [ Customizer ] Add recommended image size.
+* [ PR Block ] Default setting tuning.
+* [ PR Block ][ Bug fix ] Color setting tuning.
+
 v2.7.0
 * [ Add function ] Add Front PR Blocks.
 * [ Specification change ] Change file hierarchy.
