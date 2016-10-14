@@ -87,8 +87,7 @@ class Lightning_Design_Manager{
 Lightning_Design_Manager::init();
 
 if ( Lightning_Design_Manager::get_current_skin() == 'origin' )
-	require( get_template_directory() . '/design_skin/origin/origin.php' );
-
+	get_template_part('/design_skin/origin/origin');
 
 // add_filter( 'lightning_design_skins', 'lightning_register_skin' );
 // function lightning_register_skin( $array ){
