@@ -24,7 +24,7 @@ $color_key : #337ab7;
 /*      .mainSection
 /*      .media(bootstrap)
 /*-------------------------------------------*/
-/* .page-numbers
+/* .pagination
 /*-------------------------------------------*/
 /* .page-link
 /*-------------------------------------------*/
@@ -195,13 +195,14 @@ h1.page-header_pageTitle:first-child { margin:15px 0 10px;font-size:22px;line-he
 }
 /*      .mainSection
 /*-------------------------------------------*/
+$section_margin_bottom:25px;
 .mainSection { 
   header { position: relative;border-bottom:$border_primary; }
   header h1 { margin-top:0; }
-  .postList { margin-bottom:1.5em; }
+  .postList { margin-bottom:$section_margin_bottom; }
 }
 h1.mainSection-title { font-size:24px; }
-.mainSection .widget { margin-bottom:25px; }
+.mainSection .widget { margin-bottom:$section_margin_bottom; }
 .entry-meta { margin-bottom:0.8em;padding-left:3px;
   i { margin-right:5px; }
 }
@@ -275,7 +276,7 @@ h1.entry-title { font-size:26px; }
     }
   }
   .media-body {
-    .media-heading { font-size:1.6em;line-height:1.3em;margin-top:0; margin-bottom:0.4em;font-weight: normal;
+    .media-heading { font-size:20px;line-height:1.4em;margin-top:0; margin-bottom:0.4em;font-weight: normal;
       /* Begin heading style reset */
       background: none;box-shadow: none;padding: 0;
       /* End heading style reset */
@@ -283,7 +284,7 @@ h1.entry-title { font-size:26px; }
         &:hover { text-decoration: none; }
       }
     }
-    p { margin-bottom:0; }
+    p { margin-bottom:0;font-size:14px; line-height:150%; }
     .entry-meta_updated { display: none; }
     .entry-meta_items_author { display: none; }
     a.media-body_excerpt { color:$color_font_default; }
@@ -304,8 +305,9 @@ h1.entry-title { font-size:26px; }
 } // @media (max-width: 767px){
 
 /*-------------------------------------------*/
-/* .page-numbers
+/* .pagination
 /*-------------------------------------------*/
+.pagination { margin-bottom:0; }
 ul.page-numbers { margin:0;padding: 0;
   li { margin:0;list-style: none; display:block; overflow:hidden;float:left;
     a,

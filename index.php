@@ -39,24 +39,25 @@ $postType = lightning_get_post_type();
 
 do_action('lightning_loop_before'); ?>
 
+<div class="postList">
+
 <?php if (have_posts()) : ?>
 
   <?php if( apply_filters( 'is_lightning_extend_loop' , false ) ): ?>
+
     <?php do_action( 'lightning_extend_loop' ); ?>
 
   <?php elseif (file_exists(get_stylesheet_directory( ).'/module_loop_'.$postType['slug'].'.php') && $postType != 'post' ): ?>
-    <div class="postList">
+
     <?php while ( have_posts() ) : the_post(); ?>
     <?php get_template_part('module_loop_'.$postType['slug']); ?>
     <?php endwhile; ?>
-    </div>
 
   <?php else: ?>
-    <div class="postList">
+
     <?php while ( have_posts() ) : the_post();?>
     <?php get_template_part('module_loop_post'); ?>
     <?php endwhile;?>
-    </div>
 
   <?php endif; // loop() ?>
 
@@ -69,9 +70,14 @@ do_action('lightning_loop_before'); ?>
                           'before_page_number' => '<span class="meta-nav screen-reader-text">' . __ ( 'Page', 'lightning' ) . ' </span>'
                       ) );
   ?>
-<?php else: ?>
+
+  <?php else: // hove_posts() ?>
+
   <div class="well"><p><?php _e('No posts.','lightning');?></p></div>
+
 <?php endif; // have_post() ?>
+
+</div><!-- [ /.postList ] -->
 
 <?php do_action('lightning_loop_after'); ?>
 
