@@ -2673,7 +2673,7 @@ h5 { padding: 7px 7px 3px; border-top: 1px solid #ccc; border-bottom: 1px solid 
 /*      .mainSection
 /*      .media(bootstrap)
 /*-------------------------------------------*/
-/* .page-numbers
+/* .pagination
 /*-------------------------------------------*/
 /* .page-link
 /*-------------------------------------------*/
@@ -2800,8 +2800,8 @@ ul.gMenu ul li li li li a { padding-left: 5em; }
 /*      .mainSection
 /*-------------------------------------------*/
 .mainSection header { position: relative; border-bottom: 1px solid #e5e5e5; }
-.mainSection header h1 { margin-top: 0; }
-.mainSection .postList { margin-bottom: 1.5em; }
+.mainSection header h1 { margin-top: 0; line-height: 1.4em; font-size: 32px; }
+.mainSection .postList { margin-bottom: 25px; }
 
 h1.mainSection-title { font-size: 24px; }
 
@@ -2865,10 +2865,10 @@ h1.mainSection-title { font-size: 24px; }
 .media .postList_thumbnail a { position: relative; display: block; overflow: hidden; border: 1px solid #e5e5e5; }
 .media .postList_thumbnail img { width: 100%; height: auto; border: 1px solid #fff; }
 .media .postList_thumbnail .postList_cateLabel { position: absolute; bottom: 0; left: 0; }
-.media .media-body .media-heading { font-size: 1.6em; line-height: 1.3em; margin-top: 0; margin-bottom: 0.4em; font-weight: normal; /* Begin heading style reset */ background: none; box-shadow: none; padding: 0; /* End heading style reset */ }
+.media .media-body .media-heading { font-size: 20px; line-height: 1.4em; margin-top: 0; margin-bottom: 0.4em; font-weight: normal; /* Begin heading style reset */ background: none; box-shadow: none; padding: 0; /* End heading style reset */ }
 .media .media-body .media-heading a { color: #464646; }
 .media .media-body .media-heading a:hover { text-decoration: none; }
-.media .media-body p { margin-bottom: 0; }
+.media .media-body p { margin-bottom: 0; font-size: 14px; line-height: 150%; }
 .media .media-body .entry-meta_updated { display: none; }
 .media .media-body .entry-meta_items_author { display: none; }
 .media .media-body a.media-body_excerpt { color: #464646; }
@@ -2877,8 +2877,10 @@ h1.mainSection-title { font-size: 24px; }
   .media .media-body .media-heading { font-size: 1.2em; line-height: 1.3em; margin-bottom: 0.5em; } }
 @media (max-width: 500px) { .media .postList_thumbnail { width: 100px; } }
 /*-------------------------------------------*/
-/* .page-numbers
+/* .pagination
 /*-------------------------------------------*/
+.pagination { margin-bottom: 0; }
+
 ul.page-numbers { margin: 0; padding: 0; }
 ul.page-numbers li { margin: 0; list-style: none; display: block; overflow: hidden; float: left; }
 ul.page-numbers li a, ul.page-numbers li span.page-numbers { padding: 6px 12px; display: block; border: 1px solid #ddd; margin-left: -1px; }
@@ -3003,6 +3005,8 @@ footer .copySection p { font-size: 12px; margin: 0 15px 5px; }
 /*-------------------------------------------*/
 /* .comments-area
 /*-------------------------------------------*/
+.comments-title { line-height: 1.4em; font-size: 24px; }
+
 ol.comment-list { padding: 0; margin-top: 0; }
 
 li.comment { border: 4px solid #eee; padding: 1em; margin: 0 0 1em; list-style: none; }
