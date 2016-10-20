@@ -2647,6 +2647,8 @@ img.alignleft, img.alignright, img.aligncenter { margin-bottom: 12px; }
 
 h2, .mainSection-title { background-color: #f5f5f5; padding: 14px 10px 10px; border-top: 2px solid #337ab7; border-bottom: 1px solid #e9e9e9; }
 
+h2, .h2 { font-size: 24px; }
+
 h3, .subSection-title { border-bottom: 1px solid #ccc; box-shadow: 0px 1px 2px rgba(255, 255, 255, 0.9); }
 
 h3:after, .subSection-title:after { content: "."; line-height: 0; display: block; overflow: hidden; position: absolute; bottom: -1px; width: 30%; border-bottom: 1px solid #337ab7; }
@@ -2800,10 +2802,12 @@ ul.gMenu ul li li li li a { padding-left: 5em; }
 /*      .mainSection
 /*-------------------------------------------*/
 .mainSection header { position: relative; border-bottom: 1px solid #e5e5e5; }
-.mainSection header h1 { margin-top: 0; line-height: 1.4em; font-size: 32px; }
+.mainSection header h1 { margin-top: 0; line-height: 1.4em; }
 .mainSection .postList { margin-bottom: 25px; }
 
 h1.mainSection-title { font-size: 24px; }
+
+h1.entry-title { font-size: 32px; }
 
 .mainSection .widget { margin-bottom: 25px; }
 
