@@ -198,10 +198,11 @@ h1.page-header_pageTitle:first-child { margin:15px 0 10px;font-size:22px;line-he
 $section_margin_bottom:25px;
 .mainSection { 
   header { position: relative;border-bottom:$border_primary; }
-  header h1 { margin-top:0; line-height: 1.4em;font-size:32px; }
+  header h1 { margin-top:0; line-height: 1.4em; }
   .postList { margin-bottom:$section_margin_bottom; }
 }
 h1.mainSection-title { font-size:24px; }
+h1.entry-title { font-size:32px; }
 .mainSection .widget { margin-bottom:$section_margin_bottom; }
 .entry-meta { margin-bottom:0.8em;padding-left:3px;
   i { margin-right:5px; }

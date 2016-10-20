@@ -2800,10 +2800,12 @@ ul.gMenu ul li li li li a { padding-left: 5em; }
 /*      .mainSection
 /*-------------------------------------------*/
 .mainSection header { position: relative; border-bottom: 1px solid #e5e5e5; }
-.mainSection header h1 { margin-top: 0; line-height: 1.4em; font-size: 32px; }
+.mainSection header h1 { margin-top: 0; line-height: 1.4em; }
 .mainSection .postList { margin-bottom: 25px; }
 
 h1.mainSection-title { font-size: 24px; }
+
+h1.entry-title { font-size: 32px; }
 
 .mainSection .widget { margin-bottom: 25px; }
 
