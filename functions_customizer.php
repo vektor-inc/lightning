@@ -133,28 +133,28 @@ function lightning_customize_register($wp_customize) {
 		'section'	=> 'lightning_design',
 		'settings'  => 'lightning_theme_options[top_sidebar_hidden]',
 		'type'		=> 'checkbox',
-		'priority'	=> 504,
+		'priority'	=> 520,
 	));
 	$wp_customize->add_control( 'lightning_theme_options[top_default_content_hidden]', array(
 		'label'		=> _x( 'Don\'t show default content(Post list or Front page) at home page' ,'lightning theme-customizer', 'lightning' ),
 		'section'	=> 'lightning_design',
 		'settings'  => 'lightning_theme_options[top_default_content_hidden]',
 		'type'		=> 'checkbox',
-		'priority'	=> 505,
+		'priority'	=> 521,
 	));
 	$wp_customize->add_control( 'lightning_theme_options[postUpdate_hidden]', array(
 		'label'		=> _x( 'Hide modified date on single pages.' ,'lightning theme-customizer', 'lightning' ),
 		'section'	=> 'lightning_design',
 		'settings'  => 'lightning_theme_options[postUpdate_hidden]',
 		'type'		=> 'checkbox',
-		'priority'	=> 506,
+		'priority'	=> 522,
 	));
 	$wp_customize->add_control( 'lightning_theme_options[postAuthor_hidden]', array(
 		'label'		=> _x( 'Don\'t display post author on a single page' ,'lightning theme-customizer', 'lightning' ),
 		'section'	=> 'lightning_design',
 		'settings'  => 'lightning_theme_options[postAuthor_hidden]',
 		'type'		=> 'checkbox',
-		'priority'	=> 507,
+		'priority'	=> 523,
 	));
 
 
