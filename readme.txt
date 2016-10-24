@@ -32,6 +32,9 @@ http://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v2.7.6
+* [ File Add ] Add Travis CI yml.
+
 v2.7.3
 * [ Customizer ] Add recommended image size.
 * [ PR Block ] Default setting tuning.
