@@ -1,0 +1,34 @@
+language: php
+
+php:
+  - 5.6
+  - 7
+
+branches:
+  - master
+  - develop
+
+cache:
+  directories:
+    - node_modules
+    - .sass_cache
+
+before_install:
+  - gem install sass
+  - gem install compass
+
+node_js:
+  - '0.8'
+  - '0.10'
+
+before_script:
+  - npm install -g gulp gulp-concat gulp-cssmin gulp-jsmin gulp-plumber gulp-rename
+  - npm install
+
+script:
+  - find ./ -name '*.php'|xargs -I {} php -l {}
+  - cd design_skin/origin
+  - compass compile
+  - cd ../../
+  - gulp compile
+

@@ -11,15 +11,6 @@ var jsmin = require('gulp-jsmin');
 var plumber = require('gulp-plumber');
 // http://blog.e-riverstyle.com/2014/02/gulpspritesmithcss-spritegulp.html
 
-// // Task
-// gulp.task('cssmin', function () {
-//   gulp.src('css/**/*.css')
-//   .pipe(plumber()) // エラーでも監視を続行
-//   .pipe(cssmin())
-//   .pipe(rename({suffix: '.min'}))
-//   .pipe(gulp.dest('css'));
-// });
-
 gulp.task( 'copy', function() {
     gulp.src( './library/bootstrap/css/bootstrap.min.css'  )
     .pipe(rename({prefix: "_",extname: ".scss"})) // 拡張子をscssに
@@ -52,11 +43,10 @@ gulp.task('jsmin', function () {
 
 // Watch
 gulp.task('watch', function() {
-    // gulp.watch('css/*.css', ['cssmin'])
-    // gulp.watch('js/*.js', ['scripts']);
     gulp.watch('js/_master.js', ['scripts','scripts_header_fixed']);
     gulp.watch('js/_header_fixed.js', ['scripts','scripts_header_fixed']);
     gulp.watch('js/all.js', ['jsmin']);
 });
 
 gulp.task('default', ['copy','scripts','jsmin','watch']);
+gulp.task('compile', ['copy','scripts','jsmin']);
