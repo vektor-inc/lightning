@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/vektor-inc/Lightning.svg?branch=master)](https://travis-ci.org/vektor-inc/Lightning)
+
 
 # WordPress Theme "Lightning"
 
