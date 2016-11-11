@@ -79,7 +79,7 @@ blockquote:after { color:#ccc;font-family:FontAwesome;position: absolute; }
 blockquote:before { content: "\f10d";top:10px;}
 blockquote:after { content: "\f10e";bottom:10px;right:20px; }
 
-table { border-collapse: collapse; border-spacing: 0;width:100%;
+table { border-collapse: collapse; border-spacing: 0;width:100%; border-top:$border_primary;
 	th,
 	td { padding: 8px; border-bottom:$border_primary;
 		.form-control { max-width:90%; }
