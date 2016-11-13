@@ -2624,7 +2624,7 @@ img.alignleft, img.alignright, img.aligncenter { margin-bottom: 12px; }
 
 .wp-smiley { margin: 0; }
 
-.gallery { margin: 0 auto 18px; }
+.gallery { margin: 0 auto 25px; }
 
 .gallery .gallery-item { float: left; margin-top: 0; text-align: center; width: 33%; }
 
@@ -2633,6 +2633,8 @@ img.alignleft, img.alignright, img.aligncenter { margin-bottom: 12px; }
 .gallery .gallery-caption { color: #888; font-size: 12px; margin: 0 0 12px; }
 
 .gallery dl { margin: 0; }
+
+.gallery dt, .gallery dd { border: none; }
 
 .gallery img { border: 10px solid #f1f1f1; }
 

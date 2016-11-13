@@ -110,11 +110,13 @@ img.aligncenter { margin-bottom: 12px; }
 .wp-caption img { margin:10px 0 9px;max-width:95% !important;height:auto !important; }
 .wp-caption p.wp-caption-text { color: #888; font-size: 12px; margin: 0px; }
 .wp-smiley { margin: 0; }
-.gallery { margin: 0 auto 18px; }
+.gallery { margin: 0 auto 25px; }
 .gallery .gallery-item { float: left; margin-top: 0; text-align: center; width: 33%; }
 .gallery img { border: 2px solid #cfcfcf; }
 .gallery .gallery-caption { color: #888; font-size: 12px; margin: 0 0 12px; }
 .gallery dl { margin: 0; }
+.gallery dt,
+.gallery dd { border:none; }
 .gallery img { border: 10px solid #f1f1f1; }
 .gallery br+br { display: none; }
 .attachment img { /* single attachment images should be centered */
