@@ -50,7 +50,7 @@ function lightning_get_post_type(){
 	$postType['slug'] = get_post_type();
 	if ( !$postType['slug'] ) {
 	  global $wp_query;
-	  if ( $wp_query->query_vars['post_type'] ) {
+	  if ( isset( $wp_query->query_vars['post_type'] ) && $wp_query->query_vars['post_type'] ) {
 	      $postType['slug'] = $wp_query->query_vars['post_type'];
 	  } elseif ( is_tax() ) {
 	  	// Case of tax archive and no posts

@@ -2591,7 +2591,7 @@ blockquote:before { content: "\f10d"; top: 10px; }
 
 blockquote:after { content: "\f10e"; bottom: 10px; right: 20px; }
 
-table { border-collapse: collapse; border-spacing: 0; width: 100%; }
+table { border-collapse: collapse; border-spacing: 0; width: 100%; border-top: 1px solid #e5e5e5; }
 table th, table td { padding: 8px; border-bottom: 1px solid #e5e5e5; }
 table th .form-control, table td .form-control { max-width: 90%; }
 table th { font-weight: lighter; }
@@ -2624,7 +2624,7 @@ img.alignleft, img.alignright, img.aligncenter { margin-bottom: 12px; }
 
 .wp-smiley { margin: 0; }
 
-.gallery { margin: 0 auto 18px; }
+.gallery { margin: 0 auto 25px; }
 
 .gallery .gallery-item { float: left; margin-top: 0; text-align: center; width: 33%; }
 
@@ -2633,6 +2633,8 @@ img.alignleft, img.alignright, img.aligncenter { margin-bottom: 12px; }
 .gallery .gallery-caption { color: #888; font-size: 12px; margin: 0 0 12px; }
 
 .gallery dl { margin: 0; }
+
+.gallery dt, .gallery dd { border: none; }
 
 .gallery img { border: 10px solid #f1f1f1; }
 
@@ -2959,6 +2961,8 @@ ul.page-numbers li:last-child > a { border-top-right-radius: 4px; border-bottom-
 
 .widget_archive select, .widget_categories select { margin-top: 10px; }
 
+.widget_ltg_adv_post_list .pt_0 .mainSection-title { margin-bottom: 0; }
+
 /*      .tagcloud
 /*-------------------------------------------*/
 .widget .tagcloud a { border-radius: 4px; padding: 3px 10px 1px; line-height: 2.4em; }
@@ -3032,8 +3036,8 @@ p.no-comments { background-color: #f3f3f3; border: 1px solid #e5e5e5; text-align
 /*-------------------------------------------*/
 form.searchform { margin: 1em 0; }
 form.searchform div { display: flex; }
-form.searchform div input[type=text]#s { width: 65%; margin-right: 5%; }
-form.searchform div input[type=submit]#searchsubmit { float: right; width: 30%; text-align: center; }
+form.searchform div input[type=text]#s { width: 64%; margin-right: 5%; }
+form.searchform div input[type=submit]#searchsubmit { float: right; width: 34%; text-align: center; padding-left: 2px; padding-right: 2px; }
 
 input#searchsubmit { vertical-align: top; }
 

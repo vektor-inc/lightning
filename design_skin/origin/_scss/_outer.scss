@@ -364,6 +364,7 @@ ul.page-numbers { margin:0;padding: 0;
 /* Widget
 /*-------------------------------------------*/
 .widget { display:block;
+
   .subSection-title { margin-top:0;font-size:18px; }
   ul { margin-top:0; }
 }
@@ -421,6 +422,8 @@ ul.page-numbers { margin:0;padding: 0;
 .widget_categories {
    select { margin-top:10px; }
 }
+
+.widget_ltg_adv_post_list .pt_0 .mainSection-title { margin-bottom:0; }
 
 /*      .tagcloud
 /*-------------------------------------------*/
@@ -512,8 +515,8 @@ p.no-comments { background-color: #f3f3f3;border:1px solid #e5e5e5; text-align: 
 /*-------------------------------------------*/
 form.searchform { margin:1em 0;
   div { display: flex;
-    input[type=text]#s { width:65%;margin-right:5%; }
-    input[type=submit]#searchsubmit { float:right;width:30%; text-align: center; }
+    input[type=text]#s { width:64%;margin-right:5%; }
+    input[type=submit]#searchsubmit { float:right;width:34%; text-align: center;padding-left:2px;padding-right:2px; }
   }
 }
 input#searchsubmit { vertical-align: top; }
