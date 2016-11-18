@@ -29,7 +29,6 @@ define('LIGHTNING_THEME_VERSION', $theme_opt->Version);
 /*-------------------------------------------*/
 
 add_action('after_setup_theme', 'lightning_theme_setup');
-
 function lightning_theme_setup() {
 
 	global $content_width;
@@ -145,6 +144,7 @@ get_template_part( 'inc/front-page-pr' );
 /*-------------------------------------------*/
 /*	WidgetArea initiate
 /*-------------------------------------------*/
+if ( ! function_exists( 'lightning_widgets_init' ) ) {
 function lightning_widgets_init() {
 	// sidebar widget area
 		register_sidebar( array(
@@ -262,6 +262,7 @@ function lightning_widgets_init() {
 		}
 		wp_reset_postdata();
 }
+} // if ( ! function_exists( 'lightning_widgets_init' ) ) {
 add_action( 'widgets_init', 'lightning_widgets_init' );
 
 /*-------------------------------------------*/
