@@ -2809,6 +2809,8 @@ ul.gMenu ul li li li li a { padding-left: 5em; }
 
 h1.mainSection-title { font-size: 24px; }
 
+h1.mainSection-title i { margin-right: 8px; }
+
 h1.entry-title { font-size: 32px; }
 
 .mainSection .widget { margin-bottom: 25px; }
@@ -2930,6 +2932,8 @@ ul.page-numbers li:last-child > a { border-top-right-radius: 4px; border-bottom-
 .subSection li.current-cat > a, .subSection li.current_page_item > a { background-color: rgba(0, 0, 0, 0.05); }
 
 .subSection-title { font-size: 18px; margin-bottom: 15px; }
+
+.subSection-title i { margin-right: 8px; }
 
 /*-------------------------------------------*/
 /* Widget
