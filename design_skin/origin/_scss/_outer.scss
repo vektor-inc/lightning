@@ -202,6 +202,7 @@ $section_margin_bottom:25px;
   .postList { margin-bottom:$section_margin_bottom; }
 }
 h1.mainSection-title { font-size:24px; }
+h1.mainSection-title i { margin-right:8px; }
 h1.entry-title { font-size:32px; }
 .mainSection .widget { margin-bottom:$section_margin_bottom; }
 .entry-meta { margin-bottom:0.8em;padding-left:3px;
@@ -359,6 +360,7 @@ ul.page-numbers { margin:0;padding: 0;
   li.current_page_item > a { background-color: rgba(0,0,0,0.05); }
 }
 .subSection-title { font-size:18px;margin-bottom:15px; }
+.subSection-title i { margin-right:8px; }
 
 /*-------------------------------------------*/
 /* Widget

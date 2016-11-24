@@ -32,6 +32,9 @@ http://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v2.7.8
+* [ Design tuning ]
+
 v2.7.6
 * [ File Add ] Add Travis CI yml.
 

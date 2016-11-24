@@ -113,7 +113,7 @@ function lightning_css(){
 add_action('wp_enqueue_scripts', 'lightning_design_css' );
 function lightning_design_css(){
 	if( ! apply_filters('lightning-disable-theme_style', false) )
-		wp_enqueue_style( 'lightning-design-style', get_template_directory_uri().'/design_skin/origin/css/style.css', array(), LIGHTNING_THEME_VERSION );
+		wp_enqueue_style( 'lightning-design-style', get_template_directory_uri().'/design_skin/origin/css/style.css', array('font-awesome'), LIGHTNING_THEME_VERSION );
 }
 
 /*-------------------------------------------*/

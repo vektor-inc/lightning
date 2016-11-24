@@ -2809,6 +2809,8 @@ ul.gMenu ul li li li li a { padding-left: 5em; }
 
 h1.mainSection-title { font-size: 24px; }
 
+h1.mainSection-title i { margin-right: 8px; }
+
 h1.entry-title { font-size: 32px; }
 
 .mainSection .widget { margin-bottom: 25px; }
@@ -2930,6 +2932,8 @@ ul.page-numbers li:last-child > a { border-top-right-radius: 4px; border-bottom-
 .subSection li.current-cat > a, .subSection li.current_page_item > a { background-color: rgba(0, 0, 0, 0.05); }
 
 .subSection-title { font-size: 18px; margin-bottom: 15px; }
+
+.subSection-title i { margin-right: 8px; }
 
 /*-------------------------------------------*/
 /* Widget
@@ -3060,6 +3064,11 @@ input#searchsubmit { vertical-align: top; }
 .prBlock_summary { margin-bottom: 0.5em; text-align: center; font-size: 14px; line-height: 1.6em; }
 
 @media screen and (max-width: 992px) { .prBlock { margin-bottom: 1.5em; } }
+@media (max-width: 767px) { .headerTop .headerTop .headerTop_tel_wrap { color: #464646; }
+  .headerTop ul { border-top: 1px solid rgba(0, 0, 0, 0.15); }
+  .headerTop ul a { color: #464646; border-bottom: 1px solid rgba(0, 0, 0, 0.15); }
+  .navSection ul.gMenu { border-top: 1px solid rgba(0, 0, 0, 0.15); }
+  .navSection ul.gMenu a { border-bottom: 1px solid rgba(0, 0, 0, 0.15); } }
 @media (min-width: 768px) { ul.gMenu { float: right; }
   ul.gMenu a { background-color: #fff; }
   ul.gMenu > li a:hover { background: none; }
