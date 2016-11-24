@@ -1,6 +1,23 @@
 @charset "utf-8";
 @import "compass";
 
+$border_horizontal : 1px solid rgba(0, 0, 0, 0.15);
+
+@media (max-width: 767px){
+.headerTop {
+  .headerTop .headerTop_tel_wrap { color:#464646; }
+  ul { border-top: $border_horizontal; }
+  ul a {
+    color: #464646;
+    border-bottom: $border_horizontal;
+  }
+}
+.navSection {
+  ul.gMenu { border-top:$border_horizontal }
+  ul.gMenu a { border-bottom:$border_horizontal; }
+} // .navSection
+} // @media (max-width: 767px){
+
 @media (min-width: 768px){
 ul.gMenu { float:right;
   a { background-color:#fff; }
