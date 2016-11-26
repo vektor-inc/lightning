@@ -3067,8 +3067,8 @@ input#searchsubmit { vertical-align: top; }
 @media (max-width: 767px) { .headerTop .headerTop .headerTop_tel_wrap { color: #464646; }
   .headerTop ul { border-top: 1px solid rgba(0, 0, 0, 0.15); }
   .headerTop ul a { color: #464646; border-bottom: 1px solid rgba(0, 0, 0, 0.15); }
-  .navSection ul.gMenu { border-top: 1px solid rgba(0, 0, 0, 0.15); }
-  .navSection ul.gMenu a { border-bottom: 1px solid rgba(0, 0, 0, 0.15); } }
+  ul.gMenu { border-top: 1px solid rgba(0, 0, 0, 0.15); }
+  ul.gMenu a { border-bottom: 1px solid rgba(0, 0, 0, 0.15); } }
 @media (min-width: 768px) { ul.gMenu { float: right; }
   ul.gMenu a { background-color: #fff; }
   ul.gMenu > li a:hover { background: none; }

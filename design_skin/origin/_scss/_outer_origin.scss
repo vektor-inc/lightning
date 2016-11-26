@@ -12,10 +12,10 @@ $border_horizontal : 1px solid rgba(0, 0, 0, 0.15);
     border-bottom: $border_horizontal;
   }
 }
-.navSection {
-  ul.gMenu { border-top:$border_horizontal }
-  ul.gMenu a { border-bottom:$border_horizontal; }
-} // .navSection
+
+ul.gMenu { border-top:$border_horizontal }
+ul.gMenu a { border-bottom:$border_horizontal; }
+
 } // @media (max-width: 767px){
 
 @media (min-width: 768px){
