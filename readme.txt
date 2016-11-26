@@ -32,6 +32,9 @@ http://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v2.7.9
+* [ Design tuning ] mobile menu design tuning
+
 v2.7.8
 * [ Design tuning ]
 
