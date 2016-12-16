@@ -32,6 +32,9 @@ http://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v3.0.0
+* [ Specification change ] Change Global menu break point
+
 v2.7.9
 * [ Design tuning ] mobile menu design tuning
 
