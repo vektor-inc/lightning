@@ -2717,31 +2717,31 @@ input.form-control.input_widthAuto { width: auto; }
 /*-------------------------------------------*/
 /* .navSection
 /*-------------------------------------------*/
-@media (max-width: 767px) { .menuBtn { position: absolute; top: 0; z-index: 2000; margin: 10px; }
+@media (max-width: 991px) { .menuBtn { position: absolute; top: 0; z-index: 2000; margin: 10px; }
   .menuBtn.btn-default { border-color: #999; color: #999; }
   .menuBtn.btn-default:hover { border-color: #fff; color: #fff; }
   .menuBtn.menuBtn_right { right: 0px; } }
-@media (min-width: 768px) { .menuBtn, .navSection, .navSection .searchform { display: none; } }
+@media (min-width: 992px) { .menuBtn, .navSection, .navSection .searchform { display: none; } }
 /*-------------------------------------------*/
 /* .siteHeader
 /*-------------------------------------------*/
 .siteHeader { width: 100%; z-index: 1000; top: 0; background-color: #fff; box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1); margin-bottom: 0; }
-.siteHeader.navbar { border-radius: 0; }
-
-/* Padding setting in ".container" because that header was get height js.
-If set padding to header that js can't correct height. */
+.siteHeader .navbar { border-radius: 0; }
 .siteHeader .container { padding-top: 5px; padding-bottom: 4px; }
 
-.siteHeader_logo { height: auto; padding: 5px 0; margin: 0; font-size: 32px; line-height: 1.5em; }
-.siteHeader_logo a { color: #333; }
-.siteHeader_logo a:hover { text-decoration: none; color: #337ab7; }
-.siteHeader_logo img { max-height: 40px; display: block; }
+.navbar-header { float: none; }
 
-@media (max-width: 767px) { .siteHeader_logo { float: inherit; text-align: center; padding: 0 40px; }
-  .siteHeader_logo img { display: block; margin: 0 auto; } }
-@media (min-width: 768px) { .navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand { margin-left: 0; } }
+.navbar-brand { height: auto; padding: 5px 0; margin: 0; font-size: 32px; line-height: 1.5em; }
+.navbar-brand a { color: #333; }
+.navbar-brand a:hover { text-decoration: none; color: #337ab7; }
+.navbar-brand img { max-height: 40px; display: block; }
+
+@media (max-width: 991px) { .navbar-brand { float: inherit; text-align: center; padding: 0 40px; }
+  .navbar-brand img { display: block; margin: 0 auto; } }
 @media (min-width: 992px) { .siteHeader .container { padding-top: 20px; padding-bottom: 18px; }
-  .siteHeader_logo img { max-height: 60px; } }
+  .navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand { margin-left: 0; }
+  .navbar-header { float: left; }
+  .navbar-brand img { max-height: 60px; } }
 /*-------------------------------------------*/
 /* nav
 /*-------------------------------------------*/
@@ -2761,13 +2761,13 @@ ul.gMenu ul li li li li a { padding-left: 5em; }
 
 .gMenu_description { display: block; overflow: hidden; font-size: 10px; line-height: 14px; }
 
-@media (max-width: 767px) { .gMenu_outer { overflow: hidden; display: none; }
+@media (max-width: 991px) { .gMenu_outer { overflow: hidden; display: none; }
   .gMenu_outer.itemOpen { display: block; }
   .gMenu_outer.itemClose { display: none; }
   .gMenu_description { display: none; }
   ul.gMenu { margin-bottom: 0; }
   ul.gMenu a:hover, ul.gMenu a:active, ul.gMenu .current-menu-item > a { background-color: rgba(255, 255, 255, 0.1); } }
-@media (min-width: 768px) { .gMenu_outer.itemOpen, .gMenu_outer.itemClose { display: block; }
+@media (min-width: 992px) { .gMenu_outer.itemOpen, .gMenu_outer.itemClose { display: block; }
   .gMenu_name { text-align: center; display: block; }
   .gMenu_description { text-align: center; }
   ul.gMenu > li { position: relative; float: left; }
@@ -2786,7 +2786,7 @@ ul.gMenu ul li li li li a { padding-left: 5em; }
 
 .page-header_pageTitle, h1.page-header_pageTitle:first-child { margin: 15px 0 10px; font-size: 22px; line-height: 1.1; }
 
-@media (min-width: 768px) { .page-header_pageTitle, h1.page-header_pageTitle:first-child { margin: 30px 0 25px; font-size: 32px; } }
+@media (min-width: 992px) { .page-header_pageTitle, h1.page-header_pageTitle:first-child { margin: 30px 0 25px; font-size: 32px; } }
 /*-------------------------------------------*/
 /* .breadSection
 /*-------------------------------------------*/
@@ -2795,12 +2795,6 @@ ul.gMenu ul li li li li a { padding-left: 5em; }
 .breadSection .breadcrumb > li + li:before { content: ">"; }
 .breadSection .breadcrumb li { margin-bottom: 0; list-style: none; }
 
-/*-------------------------------------------*/
-/* .siteContent
-/*-------------------------------------------*/
-.siteContent { padding: 3.5em 0 3.5em; }
-
-@media (max-width: 767px) { .siteContent { padding: 1em 0 1.5em; } }
 /*      .mainSection
 /*-------------------------------------------*/
 .mainSection header { position: relative; border-bottom: 1px solid #e5e5e5; }
@@ -3064,12 +3058,12 @@ input#searchsubmit { vertical-align: top; }
 .prBlock_summary { margin-bottom: 0.5em; text-align: center; font-size: 14px; line-height: 1.6em; }
 
 @media screen and (max-width: 992px) { .prBlock { margin-bottom: 1.5em; } }
-@media (max-width: 767px) { .headerTop .headerTop .headerTop_tel_wrap { color: #464646; }
+@media (max-width: 991px) { .headerTop .headerTop .headerTop_tel_wrap { color: #464646; }
   .headerTop ul { border-top: 1px solid rgba(0, 0, 0, 0.15); }
   .headerTop ul a { color: #464646; border-bottom: 1px solid rgba(0, 0, 0, 0.15); }
   ul.gMenu { border-top: 1px solid rgba(0, 0, 0, 0.15); }
   ul.gMenu a { border-bottom: 1px solid rgba(0, 0, 0, 0.15); } }
-@media (min-width: 768px) { ul.gMenu { float: right; }
+@media (min-width: 992px) { ul.gMenu { float: right; }
   ul.gMenu a { background-color: #fff; }
   ul.gMenu > li a:hover { background: none; }
   ul.gMenu > li a:hover .gMenu_description { color: #337ab7; }
@@ -3083,6 +3077,12 @@ input#searchsubmit { vertical-align: top; }
 
 .page-header_pageTitle, h1.page-header_pageTitle:first-child { color: #fff; }
 
+/*-------------------------------------------*/
+/* .siteContent
+/*-------------------------------------------*/
+.siteContent { padding: 1em 0 1.5em; }
+
+@media (min-width: 768px) { .siteContent { padding: 3.5em 0 3.5em; } }
 /*-------------------------------------------*/
 /* footer
 /*-------------------------------------------*/

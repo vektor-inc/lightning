@@ -67,14 +67,14 @@ input.form-control.input_widthAuto { width: auto; }
 /*-------------------------------------------*/
 /* .navSection
 /*-------------------------------------------*/
-@media (max-width: 767px){
+@media (max-width: 991px){
   .menuBtn { position:absolute;top:0; z-index: 2000;margin:10px;
     &.btn-default { border-color: #999;color:#999; }
     &.btn-default:hover { border-color: #fff;color:#fff; }
     &.menuBtn_right { right:0px; }
   }
-} // @media (max-width: 767px){
-@media (min-width: 768px){
+} // @media (max-width: 991px){
+@media (min-width: 992px){
   .menuBtn,
   .navSection,
   .navSection .searchform { display: none; }
@@ -84,31 +84,28 @@ input.form-control.input_widthAuto { width: auto; }
 /* .siteHeader
 /*-------------------------------------------*/
 .siteHeader { width:100%;z-index:1000;top:0;background-color: #fff;box-shadow:0px 1px 3px rgba(0,0,0,0.1);margin-bottom:0;
-  &.navbar { border-radius: 0; }
+  .navbar { border-radius: 0; }
+  .container { padding-top:5px;padding-bottom:4px; }
 }
-/* Padding setting in ".container" because that header was get height js.
-If set padding to header that js can't correct height. */
-.siteHeader .container { padding-top:5px;padding-bottom:4px; }
-.siteHeader_logo { height:auto;padding:5px 0;margin:0;font-size: 32px;line-height: 1.5em;
+.navbar-header { float:none; }
+.navbar-brand { height:auto;padding:5px 0;margin:0;font-size: 32px;line-height: 1.5em;
   a { color:#333; }
   a:hover { text-decoration: none; color:$color_key; }
   img { max-height: 40px;display: block; }
 }
 
-@media (max-width: 767px){
-  .siteHeader_logo { float:inherit; text-align: center;padding:0 40px; }
-  .siteHeader_logo img { display: block ; margin:0 auto; }
+@media (max-width: 991px){
+.navbar-brand { float:inherit; text-align: center;padding:0 40px; }
+.navbar-brand img { display: block ; margin:0 auto; }
 }
-@media (min-width: 768px){
-  .navbar > .container .navbar-brand,
-  .navbar > .container-fluid .navbar-brand {
-    margin-left:0;
-  }
-} // @media (min-width: 768px){
-@media (min-width: 992px) {
+@media (min-width: 992px){
 .siteHeader .container { padding-top:20px;padding-bottom:18px; }
-.siteHeader_logo img { max-height: 60px; }
+.navbar > .container .navbar-brand,
+.navbar > .container-fluid .navbar-brand { margin-left:0; }
+.navbar-header { float:left; }
+.navbar-brand img { max-height: 60px; }
 } // @media (min-width: 992px) {
+
 /*-------------------------------------------*/
 /* nav
 /*-------------------------------------------*/
@@ -133,7 +130,7 @@ ul.gMenu {
 .gMenu_name { font-weight: normal; }
 .gMenu_description { display:block; overflow:hidden;font-size:10px; line-height: 14px; }
 
-@media (max-width: 767px){
+@media (max-width: 991px){
   .gMenu_outer { overflow:hidden;display: none; }
   .gMenu_outer.itemOpen { display: block; }
   .gMenu_outer.itemClose { display: none; }
@@ -144,7 +141,7 @@ ul.gMenu {
     .current-menu-item > a { background-color:rgba(255,255,255,0.1); }
   }
 }
-@media (min-width: 768px){
+@media (min-width: 992px){
 .gMenu_outer.itemOpen,
 .gMenu_outer.itemClose { display: block; }
 .gMenu_name { text-align: center;display: block; }
@@ -172,7 +169,7 @@ ul.gMenu > li li:hover > ul.sub-menu { display: block; }
 .page-header { margin-top:0;margin-bottom:0;padding-bottom:0; }
 .page-header_pageTitle,
 h1.page-header_pageTitle:first-child { margin:15px 0 10px;font-size:22px;line-height: 1.1; }
-@media (min-width: 768px){
+@media (min-width: 992px){
   .page-header_pageTitle,
   h1.page-header_pageTitle:first-child { margin:30px 0 25px;font-size:32px; }
 }
@@ -186,13 +183,6 @@ h1.page-header_pageTitle:first-child { margin:15px 0 10px;font-size:22px;line-he
   }
 }
 
-/*-------------------------------------------*/
-/* .siteContent
-/*-------------------------------------------*/
-.siteContent { padding:3.5em 0 3.5em; }
-@media (max-width: 767px){
-  .siteContent { padding:1em 0 1.5em; }
-}
 /*      .mainSection
 /*-------------------------------------------*/
 $section_margin_bottom:25px;
