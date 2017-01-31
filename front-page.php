@@ -30,7 +30,7 @@
 
             <?php if ( apply_filters( 'is_lightning_home_content_display', true ) ) : ?>
 
-            <?php if (have_posts()) : ?>
+            <?php if ( have_posts()) : ?>
 
                 <?php if ( 'page' == get_option('show_on_front') ) : ?>
 
@@ -56,12 +56,12 @@
                         <?php endwhile;?>
 
                         <?php the_posts_pagination(array (
-                                                'mid_size'  => 1,
-                                                'prev_text' => '&laquo;',
-                                                'next_text' => '&raquo;',
-                                                'type'      => 'list',
-                                                'before_page_number' => '<span class="meta-nav screen-reader-text">' . __ ( 'Page', 'lightning' ) . ' </span>'
-                                            ) ); ?>
+                                'mid_size'  => 1,
+                                'prev_text' => '&laquo;',
+                                'next_text' => '&raquo;',
+                                'type'      => 'list',
+                                'before_page_number' => '<span class="meta-nav screen-reader-text">' . __ ( 'Page', 'lightning' ) . ' </span>'
+                            ) ); ?>
 
                     </div><!-- [ /.postList ] -->
 
