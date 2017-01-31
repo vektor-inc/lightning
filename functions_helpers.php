@@ -135,7 +135,7 @@ function lightning_the_footerCopyRight(){
 
 	// Powered
 	/*------------------*/
-	$lightning_footerPowered = __( '<p>Powered by <a href="https://wordpress.org/">WordPress</a> &amp; <a href="//lightning.bizvektor.com" target="_blank" title="Free WordPress Theme Lightning"> Lightning Theme</a> by Vektor,Inc. technology.</p>', 'lightning');
+	$lightning_footerPowered = __( '<p>Powered by <a href="https://wordpress.org/">WordPress</a> &amp; <a href="https://lightning.nagoya" target="_blank" title="Free WordPress Theme Lightning"> Lightning Theme</a> by Vektor,Inc. technology.</p>', 'lightning');
 	echo apply_filters( 'lightning_footerPoweredCustom', $lightning_footerPowered );
 
 }
