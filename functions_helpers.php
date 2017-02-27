@@ -17,7 +17,7 @@ function lightning_print_headlogo() {
 	if (isset($options['head_logo']) && $options['head_logo']){
 		print '<img src="'.$options['head_logo'].'" alt="'.get_bloginfo('name').'" />';
 	} else {
-		echo bloginfo('name');
+		bloginfo('name');
 	}
 }
 
