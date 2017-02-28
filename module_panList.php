@@ -150,15 +150,12 @@ if ( is_home() ){
 	if ( $postType['slug'] == 'post' ) {
 		$category = get_the_category();
 		// get parent category info
-		$parents_str = get_category_parents( $category[0]->term_id, false, ',' );
-		// Set to Array that to loop parent category
-		$parents_name = explode( ',', $parents_str );
-		foreach ( $parents_name as $parent_name ) {
-			if ( ! empty( $parent_name ) ) {
-				$parent_obj 	= get_term_by( 'name', $parent_name, $category[0]->taxonomy );
-				$term_url		= get_term_link( $parent_obj->term_id,$parent_obj->taxonomy );
-				$panListHtml 	.= '<li'.$microdata_li.'><a'.$microdata_li_a.' href="' . $term_url . '"><span'.$microdata_li_a_span.'>' . esc_html($parent_obj->name) . '</span></a></li>';
-			}
+		$parents = array_reverse( get_ancestors( $category[0]->term_id, 'category', 'taxonomy' ) );
+		array_push( $parents, $category[0]->term_id );
+		foreach ( $parents as $parent_term_id ) {
+			$parent_obj = get_term( $parent_term_id, 'category' );
+			$term_url		= get_term_link( $parent_obj->term_id, $parent_obj->taxonomy );
+			$panListHtml 	.= '<li' . $microdata_li . '><a' . $microdata_li_a . ' href="' . $term_url . '"><span' . $microdata_li_a_span . '>' . esc_html( $parent_obj->name ) . '</span></a></li>';
 		}
 
 	// Case of custom post type
