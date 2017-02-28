@@ -1,7 +1,7 @@
 
 == Description ==
 Lightning is a very simple theme that built by Bootstrap.
-Official site : http://lightning.vektor-inc.co.jp
+Official site : https://lightning.nagoya
 Sample site : http://demo.lightning.vektor-inc.co.jp/
 
 === Tags ===
