@@ -88,6 +88,7 @@ var e=c.find(".active:last a"),f=a.Event("hide.bs.tab",{relatedTarget:b[0]}),g=a
 			// 見つからなかった場合には -1 が返される
 			if ( 
 				( iframeUrl.indexOf("youtube") != -1 )  || 
+				( iframeUrl.indexOf("vimeo") != -1 )  || 
 				( iframeUrl.indexOf("maps") != -1 )  
 				) {
 				var iframeWidth = jQuery(this).attr("width");
@@ -99,6 +100,23 @@ var e=c.find(".active:last a"),f=a.Event("hide.bs.tab",{relatedTarget:b[0]}),g=a
 			}
 		});
 	}
+
+	/*----------------------------------------------------------*/
+	/*	add bootstrap class
+	/*----------------------------------------------------------*/
+	// ホバーしたら
+	// 	focusクラスを付ける
+	// 	focusクラスが付いている時にマウスアウトしたら
+	// 		focusクラスを取る
+	// タップしたら
+	// 	focusクラスを付ける
+
+	// focusクラスがついていなかったら
+	// 	リンクを無効にする
+
+	// focusクラスがついていたら
+	// 	リンク出来るようにする
+
 	/*----------------------------------------------------------*/
 	/*	add bootstrap class
 	/*----------------------------------------------------------*/
@@ -122,6 +140,11 @@ var e=c.find(".active:last a"),f=a.Event("hide.bs.tab",{relatedTarget:b[0]}),g=a
 	// 	jQuery('.navbar-collapse ul.sub-menu').parent().append('<i class="fa fa-home dropdown-toggle" data-doggle="dropdown"></i>');
 	// 	jQuery('.navbar-collapse ul.sub-menu').addClass('dropdown-menu');
 	// }
+
+
+
+
+
 
 })(jQuery);
 

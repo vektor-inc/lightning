@@ -81,6 +81,7 @@
 			// 見つからなかった場合には -1 が返される
 			if ( 
 				( iframeUrl.indexOf("youtube") != -1 )  || 
+				( iframeUrl.indexOf("vimeo") != -1 )  || 
 				( iframeUrl.indexOf("maps") != -1 )  
 				) {
 				var iframeWidth = jQuery(this).attr("width");
