@@ -32,6 +32,9 @@ http://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v3.0.3
+* Vimeo iframe responsive
+
 v3.0.0
 * [ Specification change ] Change Global menu break point
 
