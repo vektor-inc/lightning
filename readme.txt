@@ -32,6 +32,9 @@ http://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v3.0.4
+* [ Bug fix ][ breadcrumb ]
+
 v3.0.3
 * Vimeo iframe responsive
 
