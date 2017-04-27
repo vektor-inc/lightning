@@ -122,22 +122,11 @@ if ( is_home() ){
 
 } elseif ( is_archive() && (!is_category() || !is_tax()) ) {
 
-	$query = $wp_query->query_vars;
-
 	/* Year / Monthly / Dayly
 	/*-------------------------------*/
 
 	if ( is_year() || is_month() || is_day() ){
-
-		if (is_year()){
-			$panListHtml .= '<li><span>' . sprintf( __( 'Yearly Archives: %s', 'lightning' ), date( _x( 'Y', 'yearly archives date format', 'lightning' ), strtotime( $query['year'] .'-01-01' ) ) ) . '</span></li>';
-		} else if (is_month()){ 
-			$month = ( $query['monthnum'] < 10 ) ? '0' . $query['monthnum'] : $query['monthnum'];
-			$panListHtml .= '<li><span>' . sprintf( __( 'Monthly Archives: %s', 'lightning' ), date( _x( 'F Y', 'monthly archives date format', 'lightning' ), strtotime( $query['year'] . '-' . $month . '-01' ) ) ) . '</span></li>';
-		} elseif(is_day()) {
-			$panListHtml .= '<li><span>' . sprintf( __( 'Daily Archives: %s', 'lightning' ), date( _x( 'F jS, Y', 'daily archives date format', 'lightning' ), strtotime( $query['year'] . '-' . $query['monthnum'] . '-' . $query['day'] ) ) ) . '</span></li>';
-		}
-
+		$panListHtml .= '<li><span>' . esc_html( get_the_archive_title() ) . '</span></li>';
 	} 
 
 } elseif ( is_single() ) {
