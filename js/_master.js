@@ -38,12 +38,14 @@
 		// jQuery('.menuBtn').each(function(){
 			jQuery('.menuBtn').click(function(){
 				if ( !jQuery('.menuBtn').hasClass('menuOpen') ) {
-					jQuery('body').removeClass('headerMenuClose').addClass('headerMenuOpen');
+					jQuery('body').removeClass('headerMenuClose').addClass('headerMenuOpen'); // 今後廃止
+					jQuery('body').removeClass('header-menu-close').addClass('header-menu-open');
 					jQuery('.menuBtn').removeClass('menuClose').addClass('menuOpen');
 					jQuery('#gMenu_outer').removeClass('itemClose').addClass('itemOpen');
 					jQuery('#menuBtn i').removeClass('fa-bars').addClass('fa-times');
 				} else {
-					jQuery('body').removeClass('headerMenuOpen');
+					jQuery('body').removeClass('headerMenuOpen'); // 今後廃止
+					jQuery('body').removeClass('header-menu-open');
 					jQuery('.menuBtn').removeClass('menuOpen').addClass('menuClose');
 					jQuery('#gMenu_outer').removeClass('itemOpen').addClass('itemClose');
 					jQuery('#menuBtn i').removeClass('fa-times').addClass('fa-bars');
