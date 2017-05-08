@@ -2761,7 +2761,7 @@ ul.gMenu ul li li li li a { padding-left: 5em; }
 
 .gMenu_description { display: block; overflow: hidden; font-size: 10px; line-height: 14px; }
 
-@media (max-width: 991px) { .gMenu_outer { overflow: hidden; display: none; }
+@media (max-width: 991px) { .gMenu_outer { overflow: scroll; display: none; height: 20em; }
   .gMenu_outer.itemOpen { display: block; }
   .gMenu_outer.itemClose { display: none; }
   .gMenu_description { display: none; }
