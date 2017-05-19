@@ -1,12 +1,21 @@
 language: php
 
-php:
-  - 5.6
-  - 7
-
 branches:
-  - master
-  - develop
+  - ci_test
+  # - develop
+
+matrix:
+  include:
+    - php: 7
+      env: 
+        - WP_VERSION=latest WP_MULTISITE=0
+    # - php: 5.6
+    #   env:
+    #     - WP_VERSION=latest WP_MULTISITE=0
+    #     - WP_VERSION=latest WP_MULTISITE=1
+    #     - WP_VERSION=4.4 WP_MULTISITE=0
+    # - php: 5.4
+    #   env: WP_VERSION=latest WP_MULTISITE=0
 
 cache:
   directories:
@@ -24,9 +33,19 @@ node_js:
 before_script:
   - npm install -g gulp gulp-concat gulp-cssmin gulp-jsmin gulp-plumber gulp-rename
   - npm install
+  - bash bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
+  - export PATH="$HOME/.composer/vendor/bin:$PATH"
+  - |
+    if [[ ${TRAVIS_PHP_VERSION:0:3} == "7.0" ]]; then
+      composer global require "phpunit/phpunit=5.6.*"
+    else
+      composer global require "phpunit/phpunit=4.8.*"
+    fi
+  - nvm install 4.2
 
 script:
   - find ./ -name '*.php'|xargs -I {} php -l {}
+  - phpunit
   - cd design_skin/origin
   - compass compile
   - cd ../../
