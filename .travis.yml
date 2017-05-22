@@ -51,3 +51,6 @@ script:
   - cd ../../
   - gulp compile
 
+  after_success:
+  - bash ./bin/deploy.sh
+
