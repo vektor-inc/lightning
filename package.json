@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "wordpress theme",
   "dependencies": {
-    "gulp": "^3.9.1"
+    "gulp": "^3.9.1",
+    "run-sequence": "^1.2.2"
   },
   "devDependencies": {
     "gulp-concat": "^2.6.0",
@@ -12,5 +13,8 @@
     "gulp-plumber": "^1.1.0",
     "gulp-rename": "^1.2.2",
     "gulp.spritesmith": "^6.2.1"
+  },
+  "scripts": {
+    "dist": "gulp dist"
   }
 }

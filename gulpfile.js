@@ -10,6 +10,8 @@ var jsmin = require('gulp-jsmin');
 // エラーでも監視を続行させる
 var plumber = require('gulp-plumber');
 // http://blog.e-riverstyle.com/2014/02/gulpspritesmithcss-spritegulp.html
+// 同期的に処理してくれる
+var runSequence = require('run-sequence');
 
 gulp.task( 'copy', function() {
     gulp.src( './library/bootstrap/css/bootstrap.min.css'  )
@@ -50,3 +52,36 @@ gulp.task('watch', function() {
 
 gulp.task('default', ['copy','scripts','jsmin','watch']);
 gulp.task('compile', ['copy','scripts','jsmin']);
+
+// copy dist ////////////////////////////////////////////////
+
+gulp.task('copy_dist', function() {
+    return gulp.src(
+            [
+                './**/*.php',
+                './**/*.txt',
+                './**/*.css',
+                './design_skin/**',
+                './images/**',
+                './inc/**',
+                './js/**',
+                './languages/**',
+                './library/**',
+                './template-parts/**',
+                "!./tests/**",
+                "!./dist/**",
+                "!./node_modules/**/*.*"
+            ],
+            { base: './' }
+        )
+        .pipe( gulp.dest( 'dist' ) ); // distディレクトリに出力
+} );
+// gulp.task('build:dist',function(){
+//     /* ここで、CSS とか JS をコンパイルする */
+// });
+
+gulp.task('dist', function(cb){
+    // return runSequence( 'build:dist', 'copy', cb );
+    // return runSequence( 'build:dist', 'copy_dist', cb );
+    return runSequence( 'copy_dist', cb );
+});

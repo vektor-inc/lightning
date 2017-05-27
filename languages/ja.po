@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lightning v0.1.0\n"
 "Report-Msgid-Bugs-To: Translator Name <translations@example.com>\n"
-"POT-Creation-Date: 2016-10-13 18:03+0900\n"
+"POT-Creation-Date: 2017-05-25 14:01+0900\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Kurudrive <kurudrive@gmail.com>\n"
 "Language-Team: Vektor,Inc. <info@vektor-inc.co.jp>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "esc_attr_e;esc_attr_x:1,2c;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;"
 "_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext:1,2;__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
 "X-Poedit-Basepath: ..\n"
-"X-Generator: Poedit 1.8.9\n"
+"X-Generator: Poedit 1.8.11\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: node_modules\n"
 
@@ -48,11 +48,11 @@ msgstr "新しいコメント"
 msgid "Comments are closed."
 msgstr "この投稿はコメントできません。"
 
-#: front-page.php:63 index.php:69
+#: front-page.php:63 index.php:70
 msgid "Page"
 msgstr "ページ"
 
-#: front-page.php:72 index.php:73
+#: front-page.php:72 index.php:76
 msgid "No posts."
 msgstr "投稿はありません。"
 
@@ -143,67 +143,73 @@ msgctxt "lightning theme-customizer"
 msgid "Lightning Home page slide show"
 msgstr "Lightning トップページスライドショー"
 
-#: functions_customizer.php:212
+#: functions_customizer.php:218
 msgctxt "lightning theme-customizer"
 msgid "Slide image title"
 msgstr "スライド画像タイトル"
 
-#: functions_customizer.php:217
+#: functions_customizer.php:223
 msgid "This title text is print to alt tag."
 msgstr "このテキストはaltに反映されます。"
 
-#: functions_customizer.php:222
+#: functions_customizer.php:228
 msgctxt "lightning theme-customizer"
 msgid "Slide image link url"
 msgstr "スライド画像リンク先URL"
 
-#: functions_customizer.php:231
+#: functions_customizer.php:237
 msgctxt "lightning theme-customizer"
 msgid "Open in new window."
 msgstr "リンク先を別ウィンドウで開く"
 
-#: functions_customizer.php:243
+#: functions_customizer.php:249
 msgctxt "lightning theme-customizer"
 msgid "Slide image"
 msgstr "スライド画像"
 
-#: functions_customizer.php:247
+#: functions_customizer.php:253
 msgid "Recommended image size : 1900*500px"
 msgstr "推奨画像サイズ : 1900×500px"
 
-#: functions_helpers.php:99
+#: functions_customizer.php:262
+msgctxt "lightning theme-customizer"
+msgid "Slide image for mobile (optional)"
+msgstr "モバイル用スライド画像（オプション）"
+
+#: functions_helpers.php:123
 #, php-format
 msgid "Author: %s"
 msgstr "投稿者: %s"
 
-#: functions_helpers.php:101 module_panList.php:133
+#: functions_helpers.php:125
 msgctxt "yearly archives date format"
 msgid "Y"
 msgstr "Y年"
 
-#: functions_helpers.php:103 module_panList.php:136
+#: functions_helpers.php:127
 msgctxt "monthly archives date format"
 msgid "F Y"
 msgstr "Y年n月"
 
-#: functions_helpers.php:105
+#: functions_helpers.php:129
 msgctxt "daily archives date format"
 msgid "F j, Y"
 msgstr "Y年Fj日"
 
-#: functions_helpers.php:120
+#: functions_helpers.php:144
 msgid "Archives"
 msgstr "アーカイブ"
 
-#: functions_helpers.php:133
+#: functions_helpers.php:157
 #, php-format
 msgid "Copyright &copy; %s All Rights Reserved."
 msgstr "Copyright &copy; %s All Rights Reserved."
 
-#: functions_helpers.php:138
+#: functions_helpers.php:162
+#, fuzzy
 msgid ""
 "<p>Powered by <a href=\"https://wordpress.org/\">WordPress</a> &amp; <a href="
-"\"//lightning.bizvektor.com\" target=\"_blank\" title=\"Free WordPress Theme "
+"\"https://lightning.nagoya\" target=\"_blank\" title=\"Free WordPress Theme "
 "Lightning\"> Lightning Theme</a> by Vektor,Inc. technology.</p>"
 msgstr ""
 "<p>Powered by <a href=\"https://ja.wordpress.org/\">WordPress</a> &amp; <a "
@@ -814,34 +820,14 @@ msgstr "続きを読む"
 msgid "Last updated"
 msgstr "最終更新日"
 
-#: module_pageTit.php:39 module_panList.php:225
+#: module_pageTit.php:39 module_panList.php:211
 #, php-format
 msgid "Search Results for : %s"
 msgstr "\"%s\" の検索結果"
 
-#: module_pageTit.php:41 module_panList.php:218
+#: module_pageTit.php:41 module_panList.php:204
 msgid "Not found"
 msgstr "ページが見つかりません"
-
-#: module_panList.php:133
-#, php-format
-msgid "Yearly Archives: %s"
-msgstr "%s"
-
-#: module_panList.php:136
-#, php-format
-msgid "Monthly Archives: %s"
-msgstr "%s"
-
-#: module_panList.php:138
-#, php-format
-msgid "Daily Archives: %s"
-msgstr "%s"
-
-#: module_panList.php:138
-msgctxt "daily archives date format"
-msgid "F jS, Y"
-msgstr "Y年n月j日"
 
 #: sidebar-post.php:22
 msgid "Recent posts"
@@ -862,6 +848,19 @@ msgstr "<dl><dt>%s</dt><dd>%l</dd></dl>"
 #: single.php:61
 msgid "Tags"
 msgstr "タグ"
+
+#~ msgid "Yearly Archives: %s"
+#~ msgstr "%s"
+
+#~ msgid "Monthly Archives: %s"
+#~ msgstr "%s"
+
+#~ msgid "Daily Archives: %s"
+#~ msgstr "%s"
+
+#~ msgctxt "daily archives date format"
+#~ msgid "F jS, Y"
+#~ msgstr "Y年n月j日"
 
 #~ msgid "Please save Once you change the skin."
 #~ msgstr "スキンを変更したら一度保存してください。"
