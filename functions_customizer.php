@@ -193,6 +193,12 @@ function lightning_customize_register($wp_customize) {
 			'capability'    	=> 'edit_theme_options',
 			'sanitize_callback' => 'esc_url_raw',
 			) );
+		$wp_customize->add_setting( 'lightning_theme_options[top_slide_image_mobile_'.$i.']',  array(
+			'default'        	=> '',
+			'type'           	=> 'option',
+			'capability'    	=> 'edit_theme_options',
+			'sanitize_callback' => 'esc_url_raw',
+			) );
 		$wp_customize->add_setting( 'lightning_theme_options[top_slide_url_'.$i.']',	array(
 			'default' 			=> '',
 			'type'				=> 'option',
@@ -245,6 +251,19 @@ function lightning_customize_register($wp_customize) {
 				'settings'  => 'lightning_theme_options[top_slide_image_'.$i.']',
 				'priority'  => $priority,
 				'description' => __('Recommended image size : 1900*500px', 'lightning'),
+			)
+		) );
+
+		$priority = $priority + 1;
+		$wp_customize->add_control( new WP_Customize_Image_Control(
+			$wp_customize,
+			'top_slide_image_mobile_'.$i,
+			array(
+				'label'     => _x('Slide image for mobile (optional)', 'lightning theme-customizer', 'lightning').' '.$i,
+				'section'   => 'lightning_slide',
+				'settings'  => 'lightning_theme_options[top_slide_image_mobile_'.$i.']',
+				'priority'  => $priority,
+				'description' => '',
 			)
 		) );
 

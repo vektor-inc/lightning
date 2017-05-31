@@ -3,14 +3,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lightning v0.1.0\n"
-"POT-Creation-Date: 2016-10-13 18:03+0900\n"
+"POT-Creation-Date: 2017-05-25 14:00+0900\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Kurudrive <kurudrive@gmail.com>\n"
 "Language-Team: Vektor,Inc. <kurudrive@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.9\n"
+"X-Generator: Poedit 1.8.11\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_x\n"
 "X-Poedit-Basepath: ..\n"
@@ -33,11 +33,11 @@ msgstr ""
 msgid "Comments are closed."
 msgstr ""
 
-#: front-page.php:63 index.php:69
+#: front-page.php:63 index.php:70
 msgid "Page"
 msgstr ""
 
-#: front-page.php:72 index.php:73
+#: front-page.php:72 index.php:76
 msgid "No posts."
 msgstr ""
 
@@ -119,60 +119,64 @@ msgstr ""
 msgid "Lightning Home page slide show"
 msgstr ""
 
-#: functions_customizer.php:212
+#: functions_customizer.php:218
 msgid "Slide image title"
 msgstr ""
 
-#: functions_customizer.php:217
+#: functions_customizer.php:223
 msgid "This title text is print to alt tag."
 msgstr ""
 
-#: functions_customizer.php:222
+#: functions_customizer.php:228
 msgid "Slide image link url"
 msgstr ""
 
-#: functions_customizer.php:231
+#: functions_customizer.php:237
 msgid "Open in new window."
 msgstr ""
 
-#: functions_customizer.php:243
+#: functions_customizer.php:249
 msgid "Slide image"
 msgstr ""
 
-#: functions_customizer.php:247
+#: functions_customizer.php:253
 msgid "Recommended image size : 1900*500px"
 msgstr ""
 
-#: functions_helpers.php:99
+#: functions_customizer.php:262
+msgid "Slide image for mobile (optional)"
+msgstr ""
+
+#: functions_helpers.php:123
 #, php-format
 msgid "Author: %s"
 msgstr ""
 
-#: functions_helpers.php:101 module_panList.php:133
+#: functions_helpers.php:125
 msgid "Y"
 msgstr ""
 
-#: functions_helpers.php:103 module_panList.php:136
+#: functions_helpers.php:127
 msgid "F Y"
 msgstr ""
 
-#: functions_helpers.php:105
+#: functions_helpers.php:129
 msgid "F j, Y"
 msgstr ""
 
-#: functions_helpers.php:120
+#: functions_helpers.php:144
 msgid "Archives"
 msgstr ""
 
-#: functions_helpers.php:133
+#: functions_helpers.php:157
 #, php-format
 msgid "Copyright &copy; %s All Rights Reserved."
 msgstr ""
 
-#: functions_helpers.php:138
+#: functions_helpers.php:162
 msgid ""
 "<p>Powered by <a href=\"https://wordpress.org/\">WordPress</a> &amp; <a href="
-"\"//lightning.bizvektor.com\" target=\"_blank\" title=\"Free WordPress Theme "
+"\"https://lightning.nagoya\" target=\"_blank\" title=\"Free WordPress Theme "
 "Lightning\"> Lightning Theme</a> by Vektor,Inc. technology.</p>"
 msgstr ""
 
@@ -528,32 +532,13 @@ msgstr ""
 msgid "Last updated"
 msgstr ""
 
-#: module_pageTit.php:39 module_panList.php:225
+#: module_pageTit.php:39 module_panList.php:211
 #, php-format
 msgid "Search Results for : %s"
 msgstr ""
 
-#: module_pageTit.php:41 module_panList.php:218
+#: module_pageTit.php:41 module_panList.php:204
 msgid "Not found"
-msgstr ""
-
-#: module_panList.php:133
-#, php-format
-msgid "Yearly Archives: %s"
-msgstr ""
-
-#: module_panList.php:136
-#, php-format
-msgid "Monthly Archives: %s"
-msgstr ""
-
-#: module_panList.php:138
-#, php-format
-msgid "Daily Archives: %s"
-msgstr ""
-
-#: module_panList.php:138
-msgid "F jS, Y"
 msgstr ""
 
 #: sidebar-post.php:22

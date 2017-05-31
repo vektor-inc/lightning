@@ -1,12 +1,29 @@
 language: php
 
-php:
-  - 5.6
-  - 7
-
 branches:
-  - master
   - develop
+  - master
+
+env: 
+  global:
+    - GIT_COMMITTER_NAME=travis-ci
+    - GIT_COMMITTER_EMAIL=kurudrive@gmail.com
+    - GIT_AUTHOR_NAME=travis-ci
+    - GIT_AUTHOR_EMAIL=kurudrive@gmail.com
+    - secure: "dr02Vmh5hQ9xlQZKWVF6eMt3mM2aXkXIW5LRhNB8UcFtUasrJnINZEJty3CEAGu94d8HSEhs2cQLdoYvxvs+6DAMoXrc+LaVFXoDmoTg1ogdCoF0cyWHLYn5tul4toOCg4mzjD2y/umDcrp/p5ezq2BmhEb5eHBz+Oqp9eZyhgXm5hf3hcb5I9c0ztUMNn1tVzhab/X7i4MMvYP36ojVekJqLY4YOOwlmoaikDPfVeK8P6nvuJJtUnVPuOwlgdQXL5iNIrGpVb6WFKDtLZcIfaEjX5zCLMynpPB+HWcALBySlkLwc03JwKcBoUKah7JdgyIebcP2D/9Q6F2U8ZmZpSx1eLpPXXwI3SMcvx7T/ac7UeTguf1f6NAokCdzxccApxJk6NxdnHMlAcK54RiXvpMiOG7BTM8C9RqSGs7BNC3g29NAKutG9qn3HlTZDlx2s9iBI+IFvxX/IZmMnI2rho2l1hVSgFORl4rArAEF5LTRZgUbhdz1RCq/f0vvKHyJ1fl40kMNYKMLcTafBx44wBL9Ep4Siwg3zmILyfEOARyC32mwpSGM0ts91QjJEOitRikHKa1f27FLX6vZW0S4Qf8L7wdaqZnReIyrqO9B/BOhInJMFjVAFwMdGpMoVha4rAQ4cfT3EEVaDBVVCaLfaADRO8uwRLhyDKkOlbeGjpc="
+
+matrix:
+  include:
+    - php: 7
+      env: 
+        - WP_VERSION=latest WP_MULTISITE=0
+    - php: 5.6
+      env:
+        - WP_VERSION=latest WP_MULTISITE=0
+        - WP_VERSION=latest WP_MULTISITE=1
+        - WP_VERSION=4.4 WP_MULTISITE=0
+    - php: 5.4
+      env: WP_VERSION=latest WP_MULTISITE=0
 
 cache:
   directories:
@@ -24,11 +41,24 @@ node_js:
 before_script:
   - npm install -g gulp gulp-concat gulp-cssmin gulp-jsmin gulp-plumber gulp-rename
   - npm install
+  - bash bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
+  - export PATH="$HOME/.composer/vendor/bin:$PATH"
+  - |
+    if [[ ${TRAVIS_PHP_VERSION:0:3} == "7.0" ]]; then
+      composer global require "phpunit/phpunit=5.6.*"
+    else
+      composer global require "phpunit/phpunit=4.8.*"
+    fi
+  - nvm install 4.2
 
 script:
   - find ./ -name '*.php'|xargs -I {} php -l {}
+  # - phpunit
   - cd design_skin/origin
   - compass compile
   - cd ../../
   - gulp compile
+
+after_success:
+  - bash ./bin/deploy.sh
 

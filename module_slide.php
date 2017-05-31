@@ -36,21 +36,9 @@ if ($top_slide_count) : ?>
     <?php
     for ( $i = 1; $i <= $top_slide_count_max; ) {
 
-            // Reset $top_slide_image_src
-            $top_slide_image_src = '';
             $top_slide_url = '';
+            $top_slide_image_src = lightning_top_slide_image_src($i);
 
-            // If 1st slide no set, set default image.
-            if ( $i <= 3 ){
-                if ( !isset( $lightning_theme_options['top_slide_image_'.$i] ) ) {
-                    $top_slide_image_src = get_template_directory_uri().'/images/top_image_'.$i.'.jpg';
-                } else {
-                    $top_slide_image_src = $lightning_theme_options['top_slide_image_'.$i];
-                }
-            } else {
-                if ( isset( $lightning_theme_options['top_slide_image_'.$i] ))
-                    $top_slide_image_src = $lightning_theme_options['top_slide_image_'.$i];
-            }
             $top_slide_title = '';
             $top_slide_title = ( isset($lightning_theme_options['top_slide_title_'.$i])) ? $lightning_theme_options['top_slide_title_'.$i] : '';
             if ( $top_slide_image_src ) { ?>
