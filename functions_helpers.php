@@ -8,6 +8,8 @@
 /*-------------------------------------------*/
 /*	lightning_is_mobile
 /*-------------------------------------------*/
+/*	lightning_top_slide_image_src
+/*-------------------------------------------*/
 /*	Archive title
 /*-------------------------------------------*/
 
@@ -117,6 +119,9 @@ function lightning_is_mobile() {
     return apply_filters('lightning_is_mobile',$is_mobile);
 }
 
+/*-------------------------------------------*/
+/*	lightning_top_slide_image_src
+/*-------------------------------------------*/
 function lightning_top_slide_image_src($i){
 	$top_slide_image_src = '';
 	$lightning_theme_options = get_option('lightning_theme_options');
