@@ -12,6 +12,7 @@ require_once $_tests_dir . '/includes/functions.php';
 function _manually_load_plugin() {
 	register_theme_directory( dirname( __FILE__ ) . '/../../' );
 	switch_theme('lightning');
+	search_theme_directories();
 }
 
 tests_add_filter( 'muplugins_loaded', '_manually_load_plugin' );
