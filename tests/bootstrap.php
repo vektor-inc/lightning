@@ -2,7 +2,7 @@
 /**
  * PHPUnit bootstrap file
  *
- * @package Bill_Vektor
+ * @package Lightning
  */
 
 $_tests_dir = getenv('WP_TESTS_DIR');
