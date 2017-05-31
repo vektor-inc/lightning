@@ -464,13 +464,6 @@ footer {
 .carousel-control.right { @include background(linear-gradient(to right, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.2) 100%)); }
 .carousel-control.left { @include background(linear-gradient(to left, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.2) 100%)); }
 
-@media (max-width: 767px){
-  .carousel-inner { width:130%;margin-left:-15%;
-    // リンクが反応しなくなるため
-    // z-index: -10;position: relative;
-  }
-}
-
 .sticky { display:block; overflow:hidden;padding:1em;background-color: #f5f5f5; }
 
 /*-------------------------------------------*/
