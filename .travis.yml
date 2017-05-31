@@ -53,11 +53,11 @@ before_script:
 
 script:
   - find ./ -name '*.php'|xargs -I {} php -l {}
+  - phpunit
   - cd design_skin/origin
   - compass compile
   - cd ../../
   - gulp compile
-  - phpunit
 
 after_success:
   - bash ./bin/deploy.sh
