@@ -6,6 +6,10 @@
 /*-------------------------------------------*/
 /*	Chack post type info
 /*-------------------------------------------*/
+/*	lightning_is_mobile
+/*-------------------------------------------*/
+/*	lightning_top_slide_image_src
+/*-------------------------------------------*/
 /*	Archive title
 /*-------------------------------------------*/
 
@@ -85,6 +89,61 @@ function lightning_get_post_type(){
 	return $postType;
 }
 
+
+/*-------------------------------------------*/
+/*	lightning_is_mobile
+/*-------------------------------------------*/
+function lightning_is_mobile() {
+    $useragents = array(
+        'iPhone', // iPhone
+        'iPod', // iPod touch
+        'Android.*Mobile', // 1.5+ Android *** Only mobile
+        'Windows.*Phone', // *** Windows Phone
+        'dream', // Pre 1.5 Android
+        'CUPCAKE', // 1.5+ Android
+        'blackberry9500', // Storm
+        'blackberry9530', // Storm
+        'blackberry9520', // Storm v2
+        'blackberry9550', // Storm v2
+        'blackberry9800', // Torch
+        'webOS', // Palm Pre Experimental
+        'incognito', // Other iPhone browser
+        'webmate' // Other iPhone browser
+    );
+    $pattern = '/'.implode('|', $useragents).'/i';
+    if ( isset( $_SERVER['HTTP_USER_AGENT'] ) ){
+    	$is_mobile = preg_match($pattern, $_SERVER['HTTP_USER_AGENT']);
+    } else {
+    	$is_mobile = false;
+    }
+    return apply_filters('lightning_is_mobile',$is_mobile);
+}
+
+/*-------------------------------------------*/
+/*	lightning_top_slide_image_src
+/*-------------------------------------------*/
+function lightning_top_slide_image_src($i){
+	$top_slide_image_src = '';
+	$lightning_theme_options = get_option('lightning_theme_options');
+	
+    // If 1st slide no set, set default image.
+    if ( $i <= 3 ){
+        if ( !isset( $lightning_theme_options['top_slide_image_'.$i] ) ) {
+            $top_slide_image_src = get_template_directory_uri().'/images/top_image_'.$i.'.jpg';
+        } else {
+            $top_slide_image_src = $lightning_theme_options['top_slide_image_'.$i];
+        }
+    } else {
+        if ( isset( $lightning_theme_options['top_slide_image_'.$i] ))
+            $top_slide_image_src = $lightning_theme_options['top_slide_image_'.$i];
+    }
+
+    // Mobile image
+    if ( lightning_is_mobile() && isset( $lightning_theme_options['top_slide_image_mobile_'.$i] ) ){
+        $top_slide_image_src = $lightning_theme_options['top_slide_image_mobile_'.$i];
+    }
+    return $top_slide_image_src;
+}
 
 /*-------------------------------------------*/
 /*	Archive title
