@@ -5,7 +5,7 @@
 #     exit
 # fi
  
-if [[ "ci_test" != "$TRAVIS_BRANCH" ]]; then
+if [[ "master" != "$TRAVIS_BRANCH" ]]; then
     echo "Not on the 'master' branch."
     exit
 fi
