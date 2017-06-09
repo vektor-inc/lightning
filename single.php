@@ -15,12 +15,16 @@ if( apply_filters( 'is_lightning_extend_single' , false ) ):
 else:
 if (have_posts()) : while ( have_posts() ) : the_post();?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+	
 	<header>
 	<?php get_template_part('module_loop_post_meta');?>
 	<h1 class="entry-title"><?php the_title(); ?></h1>
 	</header>
+	
 	<div class="entry-body">
-	<?php the_content();?>
+	<?php do_action( 'lightning_single_content_before' ); ?>
+	<?php the_content(); ?>
+	<?php do_action( 'lightning_single_content_after' ); ?>
 	</div><!-- [ /.entry-body ] -->
 
 	<div class="entry-footer">

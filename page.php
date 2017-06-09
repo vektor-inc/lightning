@@ -14,7 +14,9 @@
     <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <?php do_action( 'ligthning_entry_body_before' ); ?>
     <div class="entry-body">
+    <?php do_action( 'lightning_page_content_before' ); ?>
     <?php the_content(); ?>
+    <?php do_action( 'lightning_page_content_after' ); ?>  
     </div>
 	<?php
 	$args = array(
