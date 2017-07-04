@@ -2838,6 +2838,8 @@ h1.entry-title { font-size: 32px; }
 @media (min-width: 768px) { .mainSection .widget { margin-bottom: 35px; }
   .entry-meta_items { font-size: 14px; }
   .entry-body, .widget .entry-body { padding: 2em 0 2.5em; } }
+.entry-body ul li { line-height: 1.65em; }
+
 /*      .entry-footer
 /*-------------------------------------------*/
 .entry-footer { display: block; overflow: hidden; margin-bottom: 2em; }
