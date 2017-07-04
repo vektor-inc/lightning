@@ -2766,7 +2766,8 @@ ul.gMenu ul li li li li a { padding-left: 5em; }
   .gMenu_outer.itemClose { display: none; }
   .gMenu_description { display: none; }
   ul.gMenu { margin-bottom: 0; }
-  ul.gMenu a:hover, ul.gMenu a:active, ul.gMenu .current-menu-item > a { background-color: rgba(255, 255, 255, 0.1); } }
+  ul.gMenu a:hover, ul.gMenu a:active, ul.gMenu .current-menu-item > a { background-color: rgba(255, 255, 255, 0.1); }
+  ul.gMenu li ul li { display: block; } }
 @media (min-width: 992px) { .gMenu_outer.itemOpen, .gMenu_outer.itemClose { display: block; }
   .gMenu_name { text-align: center; display: block; }
   .gMenu_description { text-align: center; }
