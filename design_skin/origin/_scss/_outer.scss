@@ -179,7 +179,8 @@ h1.page-header_pageTitle:first-child { margin:15px 0 10px;font-size:22px;line-he
 .breadSection { border-bottom:$border_primary;
   .breadcrumb { margin-top:0;margin-bottom:0;background:none;
     & > li + li:before { content:">" }
-    li { margin-bottom:0;list-style: none; }
+    li { margin-bottom:0;list-style: none;}
+	  span{font-size: 12px;}
   }
 }
 

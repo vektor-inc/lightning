@@ -2794,6 +2794,7 @@ ul.gMenu ul li li li li a { padding-left: 5em; }
 .breadSection .breadcrumb { margin-top: 0; margin-bottom: 0; background: none; }
 .breadSection .breadcrumb > li + li:before { content: ">"; }
 .breadSection .breadcrumb li { margin-bottom: 0; list-style: none; }
+.breadSection .breadcrumb span { font-size: 12px; }
 
 /*      .mainSection
 /*-------------------------------------------*/
