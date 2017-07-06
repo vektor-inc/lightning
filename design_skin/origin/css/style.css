@@ -2548,7 +2548,7 @@ em { font-weight: bold; font-style: italic !important; font-family: "ＭＳ Ｐ�
 
 ul, ol, dl { margin-top: 1.5em; margin-bottom: 1.2em; }
 
-li { margin-bottom: 0.8em; }
+li { margin-bottom: 0.8em; line-height: 1.65em; }
 
 dt, dd { padding-left: 10px; border-left-width: 2px; border-left-style: solid; margin-bottom: 10px; }
 
