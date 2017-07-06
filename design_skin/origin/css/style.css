@@ -2752,6 +2752,7 @@ nav i { margin-right: 0.5rem; }
 
 ul.gMenu a { display: block; overflow: hidden; text-decoration: none; }
 ul.gMenu ul { padding-left: 0; width: auto; display: block; margin-bottom: 0; }
+ul.gMenu ul li { list-style-type: none; }
 ul.gMenu ul li a { display: block; overflow: hidden; padding: 10px 1em 10px 2em; width: auto; }
 ul.gMenu ul li li a { padding-left: 3em; }
 ul.gMenu ul li li li a { padding-left: 4em; }
@@ -2766,8 +2767,7 @@ ul.gMenu ul li li li li a { padding-left: 5em; }
   .gMenu_outer.itemClose { display: none; }
   .gMenu_description { display: none; }
   ul.gMenu { margin-bottom: 0; }
-  ul.gMenu a:hover, ul.gMenu a:active, ul.gMenu .current-menu-item > a { background-color: rgba(255, 255, 255, 0.1); }
-  ul.gMenu li ul li { display: block; } }
+  ul.gMenu a:hover, ul.gMenu a:active, ul.gMenu .current-menu-item > a { background-color: rgba(255, 255, 255, 0.1); } }
 @media (min-width: 992px) { .gMenu_outer.itemOpen, .gMenu_outer.itemClose { display: block; }
   .gMenu_name { text-align: center; display: block; }
   .gMenu_description { text-align: center; }
