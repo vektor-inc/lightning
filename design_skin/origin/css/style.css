@@ -2752,6 +2752,7 @@ nav i { margin-right: 0.5rem; }
 
 ul.gMenu a { display: block; overflow: hidden; text-decoration: none; }
 ul.gMenu ul { padding-left: 0; width: auto; display: block; margin-bottom: 0; }
+ul.gMenu ul li { list-style-type: none; }
 ul.gMenu ul li a { display: block; overflow: hidden; padding: 10px 1em 10px 2em; width: auto; }
 ul.gMenu ul li li a { padding-left: 3em; }
 ul.gMenu ul li li li a { padding-left: 4em; }
@@ -2794,7 +2795,7 @@ ul.gMenu ul li li li li a { padding-left: 5em; }
 .breadSection .breadcrumb { margin-top: 0; margin-bottom: 0; background: none; }
 .breadSection .breadcrumb > li + li:before { content: ">"; }
 .breadSection .breadcrumb li { margin-bottom: 0; list-style: none; }
-.breadSection .breadcrumb span { font-size: 12px; }
+.breadSection .breadcrumb span { font-size: 0.75em; }
 
 /*      .mainSection
 /*-------------------------------------------*/
