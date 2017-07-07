@@ -61,6 +61,7 @@ gulp.task('copy_dist', function() {
                 './**/*.php',
                 './**/*.txt',
                 './**/*.css',
+                './**/*.png',
                 './design_skin/**',
                 './images/**',
                 './inc/**',
