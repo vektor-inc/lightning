@@ -1,8 +1,7 @@
 language: php
 
 branches:
-  - develop
-  - master
+  - ci_error_test
 
 env: 
   global:
