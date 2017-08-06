@@ -30,6 +30,7 @@ cache:
     - .sass_cache
 
 before_install:
+  - gem install ruby
   - gem install sass
   - gem install compass
 
