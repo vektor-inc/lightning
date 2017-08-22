@@ -1,4 +1,11 @@
 <?php
+
+/*
+$ vagrant ssh
+$ cd $(wp theme path --dir lightning)
+$ phpunit
+*/
+
 class LightningTest extends WP_UnitTestCase {
 
 	public static function lightning_is_mobile_true(){
