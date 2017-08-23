@@ -35,14 +35,14 @@ $pageTitHtml_after .= '</div></div></div></div><!-- [ /.page-header ] -->'."\n";
 $pageTitle = '';
 if ( is_page() || is_attachment() ) {
 	$pageTitle = get_the_title();
-} else if (is_search()) {
-	$pageTitle = sprintf(__( 'Search Results for : %s', 'lightning' ),get_search_query());
-} else if (is_404()){
+} else if ( is_search() ) {
+	$pageTitle = sprintf(__( 'Search Results for : %s', 'lightning' ), get_search_query() );
+} else if ( is_404() ){
 	$pageTitle = __( 'Not found', 'lightning' );
 } else if ( is_category() || is_tag() || is_tax() || is_home() || is_author() || is_archive() || is_single() ) {
 
 	// Case of post type == 'post'
-	if ( $postType['slug'] == 'post') {
+	if ( $postType['slug'] == 'post' ) {
 		// Case of use post top page
 		if ( $page_for_posts['post_top_use'] ) {
 			$pageTitle = $page_for_posts['post_top_name'];
@@ -84,7 +84,7 @@ $allowed_html = array(
     'br' => array(),
     'strong' => array()
 );
-$pageTitHtml .= wp_kses($pageTitle,$allowed_html);
+$pageTitHtml .= wp_kses( $pageTitle,$allowed_html );
 $pageTitHtml .= $pageTitHtml_after;
 $pageTitHtml = apply_filters( 'lightning_pageTitHtml', $pageTitHtml );
 echo $pageTitHtml;
