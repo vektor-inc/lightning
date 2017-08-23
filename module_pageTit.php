@@ -7,10 +7,10 @@ $postType = lightning_get_post_type();
 
 // Use post top page（ Archive title wrap to div ）
 if ( $page_for_posts['post_top_use'] ) {
-	if ( is_home() || is_page() || is_attachment() || is_search() || is_404() ) {
-		$pageTitTag = 'h1';
-	} else if ( is_category() || is_tag() || is_author() || is_tax() || is_archive() || is_single() ) {
+	if ( is_category() || is_tag() || is_author() || is_tax() || is_single() || is_date() ) {
 		$pageTitTag = 'div';
+	} else {
+		$pageTitTag = 'h1';
 	}
 // Don't use post top（　Archive title wrap to h1　）
 } else {
