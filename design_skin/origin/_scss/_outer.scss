@@ -68,7 +68,7 @@ input.form-control.input_widthAuto { width: auto; }
 /* .navSection
 /*-------------------------------------------*/
 @media (max-width: 991px){
-  .menuBtn { position:absolute;top:0; z-index: 2000;margin:10px;
+  .menuBtn { position:absolute;top:0; z-index: 2000;margin:8px; padding:4px 8px;
     &.btn-default { border-color: #999;color:#999; }
     &.btn-default:hover { border-color: #fff;color:#fff; }
     &.menuBtn_right { right:0px; }
@@ -83,7 +83,7 @@ input.form-control.input_widthAuto { width: auto; }
 /*-------------------------------------------*/
 /* .siteHeader
 /*-------------------------------------------*/
-.siteHeader { width:100%;z-index:1000;top:0;background-color: #fff;box-shadow:0px 1px 3px rgba(0,0,0,0.1);margin-bottom:0;
+.siteHeader { width:100%;z-index:1000;top:0;background-color: #fff;box-shadow:0px 1px 3px rgba(0,0,0,0.1);margin-bottom:0;min-height:46px;
   .navbar { border-radius: 0; }
   .container { padding-top:5px;padding-bottom:4px; }
 }
@@ -95,7 +95,7 @@ input.form-control.input_widthAuto { width: auto; }
 }
 
 @media (max-width: 991px){
-.navbar-brand { float:inherit; text-align: center;padding:0 40px; }
+.navbar-brand { float:inherit; text-align: center;padding:0 45px; }
 .navbar-brand img { display: block ; margin:0 auto; }
 }
 @media (min-width: 992px){
