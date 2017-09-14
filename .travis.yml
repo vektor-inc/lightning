@@ -60,7 +60,7 @@ script:
   - cd design_skin/origin
   - compass compile
   - cd ../../
-  # - gulp compile
+  - gulp compile
 
 after_success:
   - bash ./bin/deploy.sh
