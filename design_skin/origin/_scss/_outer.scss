@@ -115,7 +115,7 @@ nav { font-size:14px;
   i { margin-right:0.5rem; }
 }
 
-ul.gMenu { 
+ul.gMenu {
   a { display:block; overflow:hidden;text-decoration: none; }
   ul { padding-left:0;width:auto;display: block;margin-bottom:0;
     li { list-style-type: none;
@@ -147,7 +147,7 @@ ul.gMenu {
 .gMenu_outer.itemClose { display: block; }
 .gMenu_name { text-align: center;display: block; }
 .gMenu_description { text-align: center; }
-ul.gMenu { 
+ul.gMenu {
   & >li { position: relative;float:left;
     & > a { border-bottom:none; }
   }
@@ -188,7 +188,7 @@ h1.page-header_pageTitle:first-child { margin:15px 0 10px;font-size:22px;line-he
 /*      .mainSection
 /*-------------------------------------------*/
 $section_margin_bottom:25px;
-.mainSection { 
+.mainSection {
   header { position: relative;border-bottom:$border_primary; }
   header h1 { margin-top:0; line-height: 1.4em; }
   .postList { margin-bottom:$section_margin_bottom; }
@@ -420,6 +420,18 @@ ul.page-numbers { margin:0;padding: 0;
 
 .widget_ltg_adv_post_list .pt_0 .mainSection-title { margin-bottom:0; }
 
+.widget_ltg_full_wide_title_outer {
+	margin:4em calc(50% - 50vw) 3em;
+	padding:3em calc(50vw - 50%);
+	text-align: center;
+	background-size: cover;
+}
+
+.widget_ltg_full_wide_title_outer h1,
+.widget_ltg_full_wide_title_outer p {
+  margin-bottom: 0;
+}
+
 /*      .tagcloud
 /*-------------------------------------------*/
 .widget .tagcloud a {
@@ -516,7 +528,7 @@ input#searchsubmit { vertical-align: top; }
 .prBlock {
   a{ color: #333;
     &:hover{ color: #333; text-decoration: none; }
-  } 
+  }
 }
 .prBlock_icon_outer { display: table; margin: 0 auto ; width: 80px; height: 80px; border-radius: 50%; }
 .prBlock_icon { display: table-cell;  vertical-align: middle; text-align: center; font-size: 36px;  }
