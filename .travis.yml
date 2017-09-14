@@ -1,8 +1,8 @@
 language: php
 
 branches:
-  - develop
   - master
+  - develop
 
 env: 
   global:
@@ -14,6 +14,9 @@ env:
 
 matrix:
   include:
+    - php: 7.1.4
+      env: 
+        - WP_VERSION=latest WP_MULTISITE=0
     - php: 7
       env: 
         - WP_VERSION=latest WP_MULTISITE=0
@@ -31,6 +34,7 @@ cache:
     - .sass_cache
 
 before_install:
+  - gem install ruby
   - gem install sass
   - gem install compass
 
@@ -49,7 +53,7 @@ before_script:
     else
       composer global require "phpunit/phpunit=4.8.*"
     fi
-  - nvm install 4.2
+  # - nvm install 4.2
 
 script:
   - find ./ -name '*.php'|xargs -I {} php -l {}
