@@ -1,20 +1,31 @@
 {
   "name": "lightning",
-  "version": "1.0.0",
-  "description": "wordpress theme",
-  "dependencies": {
-    "gulp": "^3.9.1",
-    "run-sequence": "^1.2.2"
+  "version": "3.3.0",
+  "description": "[![Build Status](https://travis-ci.org/vektor-inc/Lightning.svg?branch=master)](https://travis-ci.org/vektor-inc/Lightning)",
+  "main": "gulpfile.js",
+  "directories": {
+    "test": "tests"
   },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vektor-inc/Lightning.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vektor-inc/Lightning/issues"
+  },
+  "homepage": "https://github.com/vektor-inc/Lightning#readme",
   "devDependencies": {
-    "gulp-concat": "^2.6.0",
-    "gulp-cssmin": "^0.1.7",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssmin": "^0.2.0",
     "gulp-jsmin": "^0.1.5",
     "gulp-plumber": "^1.1.0",
     "gulp-rename": "^1.2.2",
-    "gulp.spritesmith": "^6.2.1"
-  },
-  "scripts": {
-    "dist": "gulp dist"
+    "run-sequence": "^2.1.0"
   }
 }
