@@ -1,16 +1,18 @@
 ;(function($){
-	jQuery(function(){
+	$(function(){
 		run_menu_control();
-		iframe_responsive();
+        $('iframe').load(function(){
+            iframe_responsive();
+        });
 		// addClass_dropdown();
 	});
-	jQuery(document).ready(function(){
-		iframe_responsive();
+	$(document).ready(function(){
+        iframe_responsive();
 		// addClass_dropdown();
 	});
-	jQuery(window).resize(function(){
+	$(window).resize(function(){
 		iframe_responsive();
-		var wrap_width = jQuery('body').width();
+		var wrap_width = $('body').width();
 		if ( wrap_width > 767 ) {
 			menu_close();
 		}
