@@ -59,7 +59,7 @@ script:
   # - phpunit
   - cd design_skin/origin
   - compass compile
-  - cd ../../
+  # - cd ../../
   - gulp -v
   - gulp compile
 
