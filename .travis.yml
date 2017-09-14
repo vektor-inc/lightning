@@ -44,14 +44,14 @@ node_js:
 before_script:
   - npm install -g gulp gulp-concat gulp-cssmin gulp-jsmin gulp-plumber gulp-rename
   - npm install
-  # - bash bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
-  # - export PATH="$HOME/.composer/vendor/bin:$PATH"
-  # - |
-  #   if [[ ${TRAVIS_PHP_VERSION:0:3} == "7.0" ]]; then
-  #     composer global require "phpunit/phpunit=5.6.*"
-  #   else
-  #     composer global require "phpunit/phpunit=4.8.*"
-  #   fi
+  - bash bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
+  - export PATH="$HOME/.composer/vendor/bin:$PATH"
+  - |
+    if [[ ${TRAVIS_PHP_VERSION:0:3} == "7.0" ]]; then
+      composer global require "phpunit/phpunit=5.6.*"
+    else
+      composer global require "phpunit/phpunit=4.8.*"
+    fi
   # - nvm install 4.2
 
 script:
