@@ -32,6 +32,9 @@ http://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v3.4.0
+* [ Add function ] Add theme support for selective refresh for widgets.
+
 v3.0.5
 * [ Bug fix ][ Header menu vertical ]
 
