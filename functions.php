@@ -59,9 +59,14 @@ function lightning_theme_setup() {
 	if ( ! isset( $content_width ) ) $content_width = 750;
 
 	/*-------------------------------------------*/
+	/*	Add theme support for selective refresh for widgets.
+	/*-------------------------------------------*/
+	add_theme_support( 'customize-selective-refresh-widgets' );
+	
+	/*-------------------------------------------*/
 	/*	Admin page _ Add editor css
 	/*-------------------------------------------*/
-	add_editor_style('//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.1/css/font-awesome.min.css');
+	add_editor_style('//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 	if( ! apply_filters('lightning-disable-theme_style', false) )
 		add_editor_style('design_skin/origin/css/editor.css');
 
