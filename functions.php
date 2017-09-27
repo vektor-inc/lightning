@@ -1,6 +1,8 @@
 <?php
-$theme_opt = wp_get_theme(get_template());
-define('LIGHTNING_THEME_VERSION', $theme_opt->Version);
+
+$theme_opt = wp_get_theme( get_template() );
+
+define( 'LIGHTNING_THEME_VERSION', $theme_opt->Version );
 /*-------------------------------------------*/
 /*	Theme setup
 /*-------------------------------------------*/
@@ -19,7 +21,7 @@ define('LIGHTNING_THEME_VERSION', $theme_opt->Version);
 /*-------------------------------------------*/
 /*	headfix enable
 /*-------------------------------------------*/
-/*	Tag Cloud _ Change font size 
+/*	Tag Cloud _ Change font size
 /*-------------------------------------------*/
 /*	HOME _ Default content hidden
 /*-------------------------------------------*/
@@ -28,7 +30,7 @@ define('LIGHTNING_THEME_VERSION', $theme_opt->Version);
 /*	Theme setup
 /*-------------------------------------------*/
 
-add_action('after_setup_theme', 'lightning_theme_setup');
+add_action( 'after_setup_theme', 'lightning_theme_setup' );
 function lightning_theme_setup() {
 
 	global $content_width;
@@ -62,7 +64,7 @@ function lightning_theme_setup() {
 	/*	Add theme support for selective refresh for widgets.
 	/*-------------------------------------------*/
 	add_theme_support( 'customize-selective-refresh-widgets' );
-	
+
 	/*-------------------------------------------*/
 	/*	Admin page _ Add editor css
 	/*-------------------------------------------*/
@@ -179,7 +181,7 @@ function lightning_widgets_init() {
 
 	// Sidebar( post_type )
 
-		$postTypes = get_post_types(Array('public' => true));
+		$postTypes = get_post_types( Array( 'public' => true ) );
 
 		foreach ($postTypes as $postType) {
 
@@ -263,7 +265,7 @@ function lightning_widgets_init() {
 					'before_title' => '<h1 class="mainSection-title">',
 					'after_title' => '</h1>',
 				) );
-			}	
+			}
 		}
 		wp_reset_postdata();
 }
@@ -360,7 +362,7 @@ function lightning_header_height_changer_disabel(){
 */
 
 /*-------------------------------------------
-/*	Tag Cloud _ Change font size 
+/*	Tag Cloud _ Change font size
 /*-------------------------------------------*/
 function lightning_tag_cloud_filter($args) {
 	$args['smallest'] = 10;
