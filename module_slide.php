@@ -8,7 +8,7 @@ $top_slide_count_max = apply_filters('lightning_top_slide_count_max',$top_slide_
 
 for ( $i = 1; $i <= $top_slide_count_max; ) {
     if ( !isset( $lightning_theme_options['top_slide_image_'.$i] ) ){
-        if ( $i <= 3  ) 
+        if ( $i <= 3  )
             $top_slide_count ++;
     } else if ( $lightning_theme_options['top_slide_image_'.$i] ) {
         $top_slide_count ++;
@@ -39,8 +39,8 @@ if ($top_slide_count) : ?>
             $top_slide_url = '';
             $top_slide_image_src = lightning_top_slide_image_src($i);
 
-            $top_slide_title = '';
-            $top_slide_title = ( isset($lightning_theme_options['top_slide_title_'.$i])) ? $lightning_theme_options['top_slide_title_'.$i] : '';
+            $top_slide_alt = '';
+            $top_slide_alt = ( isset($lightning_theme_options['top_slide_alt_'.$i])) ? $lightning_theme_options['top_slide_alt_'.$i] : '';
             if ( $top_slide_image_src ) { ?>
             <div class="item<?php if ($i == 1) echo ' active';?>">
 
@@ -54,7 +54,8 @@ if ($top_slide_count) : ?>
                 <a href="<?php echo esc_url( $lightning_theme_options['top_slide_url_'.$i] ); ?>"<?php echo $link_target; ?>>
             <?php endif; ?>
 
-            <img src="<?php echo esc_attr($top_slide_image_src); ?>" alt="<?php echo esc_attr($top_slide_title); ?>">
+
+            <img src="<?php echo esc_attr($top_slide_image_src); ?>" alt="<?php echo esc_attr($top_slide_alt); ?>">
 
             <?php
             // If link url exist
@@ -62,8 +63,40 @@ if ($top_slide_count) : ?>
                 </a>
             <?php endif; ?>
 
+            <div class="carousel-caption">
+
+              <?php
+              // If Title
+              $top_slide_title = '';
+              $top_slide_title = ( isset($lightning_theme_options['top_slide_title_'.$i])) ? $lightning_theme_options['top_slide_title_'.$i] : '';
+              if ( isset( $lightning_theme_options['top_slide_title_'.$i] ) && $lightning_theme_options['top_slide_title_'.$i] ): ?>
+              <h3><?php echo esc_html($top_slide_title); ?></h3>
+              <?php endif; ?>
+
+              <?php
+              // If Text
+              $top_slide_text_area = '';
+              $top_slide_text_area = ( isset($lightning_theme_options['top_slide_text_area_'.$i])) ? $lightning_theme_options['top_slide_text_area_'.$i] : '';
+              if ( isset( $lightning_theme_options['top_slide_text_area_'.$i] ) && $lightning_theme_options['top_slide_text_area_'.$i] ): ?>
+              <p><?php echo esc_html($top_slide_text_area); ?></p>
+              <?php endif; ?>
+
+              <?php
+              // If Button
+              $top_slide_btn_ = '';
+              $top_slide_btn_ = ( isset($lightning_theme_options['top_slide_btn_'.$i])) ? $lightning_theme_options['top_slide_btn_'.$i] : '';
+              if ( isset( $lightning_theme_options['top_slide_btn_'.$i] ) && $lightning_theme_options['top_slide_btn_'.$i] ): ?>
+              <a href="<?php echo esc_url( $top_slide_url ); ?>" <?php echo $link_target; ?>><?php echo esc_attr($top_slide_btn_); ?></a>
+              <?php endif; ?>
+
+            </div><!-- .carousel-caption -->
+
+
+
             </div><!-- [ /.item ] -->
+
             <?php } ?>
+
         <?php $i++;
     } ?>
 </div><!-- [ /.carousel-inner ] -->
