@@ -185,65 +185,14 @@ function lightning_customize_register($wp_customize)
 			$default_image = '';
 		}
 
-		// Add setting
+		// alt
 		$wp_customize->add_setting( 'lightning_theme_options[top_slide_alt_'.$i.']',	array(
 			'default' 			=> '',
 			'type'				=> 'option',
 			'capability' 		=> 'edit_theme_options',
 			'sanitize_callback' => 'sanitize_text_field',
 			) );
-		$wp_customize->add_setting( 'lightning_theme_options[top_slide_image_'.$i.']',  array(
-			'default'        	=> $default_image,
-			'type'           	=> 'option',
-			'capability'    	=> 'edit_theme_options',
-			'sanitize_callback' => 'esc_url_raw',
-			) );
-		$wp_customize->add_setting( 'lightning_theme_options[top_slide_image_mobile_'.$i.']',  array(
-			'default'        	=> '',
-			'type'           	=> 'option',
-			'capability'    	=> 'edit_theme_options',
-			'sanitize_callback' => 'esc_url_raw',
-			) );
-		$wp_customize->add_setting( 'lightning_theme_options[top_slide_url_'.$i.']',	array(
-			'default' 			=> '',
-			'type'				=> 'option',
-			'capability' 		=> 'edit_theme_options',
-			'sanitize_callback' => 'esc_url_raw',
-			) );
-		$wp_customize->add_setting('lightning_theme_options[top_slide_link_blank_'.$i.']', array(
-			'default'			=> false,
-			'type'				=> 'option',
-			'capability'		=> 'edit_theme_options',
-			'sanitize_callback' => 'lightning_sanitize_checkbox',
-    ) );
-    $wp_customize->add_setting( 'lightning_theme_options[top_slide_text_title_'.$i.']',	array(
-			'default' 			=> '',
-			'type'				=> 'option',
-			'capability' 		=> 'edit_theme_options',
-			'sanitize_callback' => 'sanitize_text_field',
-		) );
-    $wp_customize->add_setting( 'lightning_theme_options[top_slide_text_caption_'.$i.']',	array(
-      'default' 			=> '',
-      'type'				=> 'option',
-      'capability' 		=> 'edit_theme_options',
-      // 'sanitize_callback' => 'sanitize_text_area',
-      'sanitize_callback' => 'sanitize_text_field',
-    ) );
-    $wp_customize->add_setting( 'lightning_theme_options[top_slide_btn_text_'.$i.']',	array(
-      'default' 			=> '',
-      'type'				=> 'option',
-      'capability' 		=> 'edit_theme_options',
-      'sanitize_callback' => 'sanitize_text_field',
-    ) );
-    $wp_customize->add_setting( 'lightning_theme_options[top_slide_position_'.$i.']',  array(
-      'default'           => 'center',
-      'type'              => 'option',
-      'capability'        => 'edit_theme_options',
-      'sanitize_callback' => 'lightning_sanitize_radio',
-    ) );
 
-
-		// Add control
 		$priority = $priority + 1;
 		$wp_customize->add_control( new Custom_Text_Control( $wp_customize, 'top_slide_alt_'.$i, array(
 			'label'     => _x('Slide image alt', 'lightning theme-customizer', 'lightning').' '.$i,
@@ -254,6 +203,15 @@ function lightning_customize_register($wp_customize)
 			'description' => __('This title text is print to alt tag.', 'lightning'),
 			) ) );
 
+
+		// url
+		$wp_customize->add_setting( 'lightning_theme_options[top_slide_url_'.$i.']',	array(
+			'default' 			=> '',
+			'type'				=> 'option',
+			'capability' 		=> 'edit_theme_options',
+			'sanitize_callback' => 'esc_url_raw',
+			) );
+
 		$priority = $priority + 1;
 		$wp_customize->add_control( 'top_slide_url_'.$i, array(
 			'label'     => _x('Slide image link url', 'lightning theme-customizer', 'lightning').' '.$i,
@@ -263,6 +221,15 @@ function lightning_customize_register($wp_customize)
 			'priority' => $priority,
 			) );
 
+
+		// link blank
+		$wp_customize->add_setting('lightning_theme_options[top_slide_link_blank_'.$i.']', array(
+			'default'			=> false,
+			'type'				=> 'option',
+			'capability'		=> 'edit_theme_options',
+			'sanitize_callback' => 'lightning_sanitize_checkbox',
+    ) );
+
 		$priority = $priority + 1;
 		$wp_customize->add_control( 'lightning_theme_options[top_slide_link_blank_'.$i.']', array(
 			'label'		=> _x( 'Open in new window.' ,'lightning theme-customizer', 'lightning' ),
@@ -270,6 +237,15 @@ function lightning_customize_register($wp_customize)
 			'settings'  => 'lightning_theme_options[top_slide_link_blank_'.$i.']',
 			'type'		=> 'checkbox',
 			'priority'	=> $priority,
+			) );
+
+
+		// image
+		$wp_customize->add_setting( 'lightning_theme_options[top_slide_image_'.$i.']',  array(
+			'default'        	=> $default_image,
+			'type'           	=> 'option',
+			'capability'    	=> 'edit_theme_options',
+			'sanitize_callback' => 'esc_url_raw',
 			) );
 
 		$priority = $priority + 1;
@@ -285,6 +261,15 @@ function lightning_customize_register($wp_customize)
 			)
 		) );
 
+
+		// image mobile
+		$wp_customize->add_setting( 'lightning_theme_options[top_slide_image_mobile_'.$i.']',  array(
+			'default'        	=> '',
+			'type'           	=> 'option',
+			'capability'    	=> 'edit_theme_options',
+			'sanitize_callback' => 'esc_url_raw',
+			) );
+
 		$priority = $priority + 1;
 		$wp_customize->add_control( new WP_Customize_Image_Control(
 			$wp_customize,
@@ -298,7 +283,16 @@ function lightning_customize_register($wp_customize)
 			)
 		) );
 
-    $priority = $priority + 1;
+
+		// text title
+    $wp_customize->add_setting( 'lightning_theme_options[top_slide_text_title_'.$i.']',	array(
+			'default' 			=> '',
+			'type'				=> 'option',
+			'capability' 		=> 'edit_theme_options',
+			'sanitize_callback' => 'sanitize_text_field',
+		) );
+
+		$priority = $priority + 1;
     $wp_customize->add_control( new Custom_Text_Control( $wp_customize, 'top_slide_text_title_'.$i, array(
       'label'     => _x('Title', 'lightning theme-customizer', 'lightning').' '.$i,
       'section'  => 'lightning_slide',
@@ -308,7 +302,17 @@ function lightning_customize_register($wp_customize)
       'description' => __('The title will be reflected on the slide.', 'lightning'),
     ) ) );
 
-    $priority = $priority + 1;
+
+		// text caption
+    $wp_customize->add_setting( 'lightning_theme_options[top_slide_text_caption_'.$i.']',	array(
+      'default' 			=> '',
+      'type'				=> 'option',
+      'capability' 		=> 'edit_theme_options',
+      // 'sanitize_callback' => 'sanitize_text_area',
+      'sanitize_callback' => 'sanitize_text_field',
+    ) );
+
+		$priority = $priority + 1;
     $wp_customize->add_control( 'top_slide_text_caption_'.$i, array(
       'label'     => _x('Text', 'lightning theme-customizer', 'lightning').' '.$i,
       'section'  => 'lightning_slide',
@@ -318,7 +322,16 @@ function lightning_customize_register($wp_customize)
       'description' => __('The text will be reflected on the slide.', 'lightning'),
     ) );
 
-    $priority = $priority + 1;
+
+		// btn text
+    $wp_customize->add_setting( 'lightning_theme_options[top_slide_btn_text_'.$i.']',	array(
+      'default' 			=> '',
+      'type'				=> 'option',
+      'capability' 		=> 'edit_theme_options',
+      'sanitize_callback' => 'sanitize_text_field',
+    ) );
+
+		$priority = $priority + 1;
     $wp_customize->add_control( new Custom_Text_Control( $wp_customize, 'top_slide_btn_text_'.$i, array(
       'label'     => _x('Button text', 'lightning theme-customizer', 'lightning').' '.$i,
       'section'  => 'lightning_slide',
@@ -327,6 +340,15 @@ function lightning_customize_register($wp_customize)
       'priority' => $priority,
       'description' => __('You can set the button for the link.', 'lightning'),
     ) ) );
+
+
+		// text position
+    $wp_customize->add_setting( 'lightning_theme_options[top_slide_position_'.$i.']',  array(
+      'default'           => 'center',
+      'type'              => 'option',
+      'capability'        => 'edit_theme_options',
+      'sanitize_callback' => 'lightning_sanitize_radio',
+    ) );
 
     $priority = $priority + 1;
     $wp_customize->add_control( 'top_slide_position_'.$i, array(
@@ -341,6 +363,7 @@ function lightning_customize_register($wp_customize)
   			'left' => __('Left', 'lightning'),
   			),
   	));
+
 
 		$i++;
 	}
