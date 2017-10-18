@@ -201,7 +201,7 @@ function lightning_customize_register($wp_customize)
 		// alt
 
 		$wp_customize->selective_refresh->add_partial( 'lightning_theme_options[top_slide_text_title_'.$i.']', array(
-			'selector' => '.item-'.$i.' .carousel-caption',
+			'selector' => '.item-'.$i.' .container',
 			'render_callback' => '',
 		) );
 
@@ -362,7 +362,7 @@ function lightning_customize_register($wp_customize)
 
 
 		// text position
-    $wp_customize->add_setting( 'lightning_theme_options[top_slide_text_position_'.$i.']',  array(
+    $wp_customize->add_setting( 'lightning_theme_options[top_slide_text_align_'.$i.']',  array(
       'default'           => 'center',
       'type'              => 'option',
       'capability'        => 'edit_theme_options',
@@ -370,31 +370,33 @@ function lightning_customize_register($wp_customize)
     ) );
 
     $priority = $priority + 1;
-    $wp_customize->add_control( 'top_slide_text_position_'.$i, array(
+    $wp_customize->add_control( 'top_slide_text_align_'.$i, array(
   		'label'     => '['.$i.'] '.__('Position to display text', 'lightning').' ( '.__('optional','lightning').' )',
   		'section'   => 'lightning_slide',
-  		'settings'  => 'lightning_theme_options[top_slide_text_position_'.$i.']',
+  		'settings'  => 'lightning_theme_options[top_slide_text_align_'.$i.']',
   		'type' => 'radio',
       'priority' => $priority,
   		'choices' => array(
-  			'right' => __('Right', 'lightning'),
+				'left' => __('Left', 'lightning'),
   			'center' => __('Center', 'lightning'),
-  			'left' => __('Left', 'lightning'),
+  			'right' => __('Right', 'lightning'),
   			),
   	));
 
-		$wp_customize->add_setting( 'lightning_theme_options[top_slide_text_color'.$i.']', array(
+
+		// color
+		$wp_customize->add_setting( 'lightning_theme_options[top_slide_text_color_'.$i.']', array(
 			'default'			=> '#ffffff',
 			'type'				=> 'option',
 			'capability'		=> 'edit_theme_options',
 			'sanitize_callback' => 'sanitize_hex_color',
 		) );
-
-		$wp_customize->add_control( new WP_Customize_Color_Control($wp_customize, 'top_slide_text_color'.$i.'', array(
+		$priority = $priority + 1;
+		$wp_customize->add_control( new WP_Customize_Color_Control($wp_customize, 'top_slide_text_color_'.$i.'', array(
 			'label'    => '['.$i.'] '.__('Slide text color', 'lightning').' ( '.__('optional','lightning').' )',
-			'section'  => 'lightning_design',
-			'settings' => 'lightning_theme_options[top_slide_text_color'.$i.']',
-			'priority' => 502,
+			'section'  => 'lightning_slide',
+			'settings' => 'lightning_theme_options[top_slide_text_color_'.$i.']',
+			'priority' => $priority,
 		)));
 
 
@@ -405,27 +407,28 @@ function lightning_customize_register($wp_customize)
 			'capability'		=> 'edit_theme_options',
 			'sanitize_callback' => 'lightning_sanitize_checkbox',
 		));
+		$priority = $priority + 1;
 		$wp_customize->add_control( 'lightning_theme_options[top_slide_text_shadow_use_'.$i.']', array(
 			'label'		=> __( 'Use text shadow' ,'lightning theme-customizer', 'lightning' ).' ( '.__('optional','lightning').' )',
-			'section'	=> 'lightning_design',
+			'section'	=> 'lightning_slide',
 			'settings'  => 'lightning_theme_options[top_slide_text_shadow_use_'.$i.']',
 			'type'		=> 'checkbox',
-			'priority'	=> 521,
+			'priority'	=> $priority,
 		));
 
-
-		$wp_customize->add_setting( 'lightning_theme_options[top_slide_text_shadow_color'.$i.']', array(
+		// top_slide_text_shadow_color_
+		$wp_customize->add_setting( 'lightning_theme_options[top_slide_text_shadow_color_'.$i.']', array(
 			'default'			=> '#ffffff',
 			'type'				=> 'option',
 			'capability'		=> 'edit_theme_options',
 			'sanitize_callback' => 'sanitize_hex_color',
 		) );
-
-		$wp_customize->add_control( new WP_Customize_Color_Control($wp_customize, 'top_slide_text_shadow_color'.$i.'', array(
+		$priority = $priority + 1;
+		$wp_customize->add_control( new WP_Customize_Color_Control($wp_customize, 'top_slide_text_shadow_color_'.$i.'', array(
 			'label'    => '['.$i.'] '.__('Text shadow color', 'lightning').' ( '.__('optional','lightning').' )',
-			'section'  => 'lightning_design',
-			'settings' => 'lightning_theme_options[top_slide_text_shadow_color'.$i.']',
-			'priority' => 502,
+			'section'  => 'lightning_slide',
+			'settings' => 'lightning_theme_options[top_slide_text_shadow_color_'.$i.']',
+			'priority' => $priority,
 		)));
 
 		$i++;

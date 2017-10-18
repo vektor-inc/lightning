@@ -26,9 +26,9 @@ if ($top_slide_count) : ?>
         <!-- Indicators -->
         <ol class="carousel-indicators">
         <?php for ( $i = 0; $i <= $top_slide_count - 1; ) { ?>
-        <li data-target="#top__fullcarousel" data-slide-to="<?php echo $i; ?>"></li>
-        <?php
-        $i++;
+	        <li data-target="#top__fullcarousel" data-slide-to="<?php echo $i; ?>"></li>
+	        <?php
+	        $i++;
         } ?>
         </ol>
     <?php endif; ?>
@@ -36,66 +36,90 @@ if ($top_slide_count) : ?>
     <?php
     for ( $i = 1; $i <= $top_slide_count_max; ) {
 
-            $top_slide_url = '';
-            $top_slide_image_src = lightning_top_slide_image_src($i);
+			$top_slide_url = '';
+			$top_slide_image_src = lightning_top_slide_image_src($i);
 
-            // If Alt exist
-            $top_slide_alt = '';
-            if ( ! empty( $lightning_theme_options['top_slide_alt_'.$i] ) ) {
-              $top_slide_alt = $lightning_theme_options['top_slide_alt_'.$i];
-            } else if ( ! empty( $lightning_theme_options['top_slide_title_'.$i] ) ) {
-              $top_slide_alt = $lightning_theme_options['top_slide_title_'.$i];
-            } else {
-              $top_slide_alt = "";
-            }
-            if ( $top_slide_image_src ) {
-							$link_target = ( isset( $lightning_theme_options['top_slide_link_blank_'.$i] ) && $lightning_theme_options['top_slide_link_blank_'.$i] ) ? ' target="_blank"' : '';
-							?>
-            <div class="item item-<?php echo $i ?><?php if ($i == 1) echo ' active';?>">
+			// If Alt exist
+			$top_slide_alt = '';
+			if ( ! empty( $lightning_theme_options['top_slide_alt_'.$i] ) ) {
+				$top_slide_alt = $lightning_theme_options['top_slide_alt_'.$i];
+			} else if ( ! empty( $lightning_theme_options['top_slide_title_'.$i] ) ) {
+				$top_slide_alt = $lightning_theme_options['top_slide_title_'.$i];
+			} else {
+				$top_slide_alt = "";
+			}
+			if ( $top_slide_image_src ) {
+				$link_target = ( isset( $lightning_theme_options['top_slide_link_blank_'.$i] ) && $lightning_theme_options['top_slide_link_blank_'.$i] ) ? ' target="_blank"' : '';
+				?>
+				<div class="item item-<?php echo $i ?><?php if ($i == 1) echo ' active';?>">
 
-            <?php
+					<?php if ( lightning_is_slide_outer_link( $lightning_theme_options, $i ) ) :?>
+						<a href="<?php echo esc_url( $lightning_theme_options['top_slide_url_'.$i] );?>"<?php echo $link_target; ?>>
+					<?php endif; ?>
 
-						?>
+					<img src="<?php echo esc_attr($top_slide_image_src); ?>" alt="<?php echo esc_attr($top_slide_alt); ?>">
 
-						<?php if ( lightning_is_slide_outer_link( $lightning_theme_options, $i ) ) :?>
-							<a href="<?php echo esc_url( $lightning_theme_options['top_slide_url_'.$i] );?>"<?php echo $link_target; ?>>
-						<?php endif; ?>
+					<?php if ( lightning_is_slide_outer_link( $lightning_theme_options, $i ) ) :?>
+						</a>
+					<?php endif; ?>
 
-							<img src="<?php echo esc_attr($top_slide_image_src); ?>" alt="<?php echo esc_attr($top_slide_alt); ?>">
+					<?php
+					$style = '';
+					if ( ! empty( $lightning_theme_options['top_slide_text_align_'.$i] ) ){
+						$style = ' style="text-align:'.esc_attr( $lightning_theme_options['top_slide_text_align_'.$i] ).'"';
+					}
+					 ?>
+					<div class="slide-text-set"<?php echo $style;?>>
+						<div class="container">
 
-            <?php if ( lightning_is_slide_outer_link( $lightning_theme_options, $i ) ) :?>
-							</a>
-            <?php endif; ?>
+	              <?php
+	              // If Text Title exist
+	              if ( isset($lightning_theme_options['top_slide_text_title_'.$i] ) && $lightning_theme_options['top_slide_text_title_'.$i] ):
+									$top_slide_font_style = lightning_top_slide_font_style( $lightning_theme_options, $i );
+								?>
+	              	<h3 class="slide-text-title" style="<?php echo esc_attr( $top_slide_font_style );?>"><?php echo esc_html( $lightning_theme_options['top_slide_text_title_'.$i] ); ?></h3>
+	              <?php endif; ?>
 
-            <div class="carousel-caption">
+	              <?php
+	              // If Text caption exist
+	              if ( isset( $lightning_theme_options['top_slide_text_caption_'.$i] ) && $lightning_theme_options['top_slide_text_caption_'.$i] ): ?>
+								<div class="slide-text-caption" style="<?php echo esc_attr( $top_slide_font_style );?>">
+									<?php echo nl2br( esc_textarea( $lightning_theme_options['top_slide_text_caption_'.$i] ) ); ?>
+								</div>
+	              <?php endif; ?>
 
-              <?php
-              // If Text Title exist
-              if ( isset($lightning_theme_options['top_slide_text_title_'.$i] ) && $lightning_theme_options['top_slide_text_title_'.$i] ): ?>
-              	<h3 class="slide-title"><?php echo esc_html( $lightning_theme_options['top_slide_text_title_'.$i] ); ?></h3>
-              <?php endif; ?>
+	              <?php
+	              // If Button exist
+	              if ( ! empty( $lightning_theme_options['top_slide_url_'.$i] ) && ! empty( $lightning_theme_options['top_slide_btn_text_'.$i] ) ) :
+									$text_color = ( ! empty( $lightning_theme_options['top_slide_text_color_'.$i] ) ) ? $lightning_theme_options['top_slide_text_color_'.$i] : '#fff';
+									$color_key = ( ! empty( $lightning_theme_options['color_key'] ) ) ? $lightning_theme_options['color_key'] : '#337ab7';
+									// Shadow
+									$box_shadow = '';
+									$text_shadow = '';
+									if ( isset( $lightning_theme_options[ 'top_slide_text_shadow_use_'.$i ] ) && $lightning_theme_options[ 'top_slide_text_shadow_use_'.$i ] ) {
+										if ( ! empty( $lightning_theme_options[ 'title_shadow_color'.$i ] ) ){
+											$box_shadow = 'box-shadow:0 0 0.3em '.$lightning_theme_options[ 'title_shadow_color'.$i ].';';
+											$text_shadow = 'text-shadow:0 0 0.3em '.$lightning_theme_options[ 'title_shadow_color'.$i ].';';
+										} else {
+											$box_shadow = 'box-shadow:0 0 0.3em #000;';
+											$text_shadow = 'text-shadow:0 0 0.3em #000;';
+										}
+									}
 
-              <?php
-              // If Text caption exist
-              if ( isset( $lightning_theme_options['top_slide_text_caption_'.$i] ) && $lightning_theme_options['top_slide_text_caption_'.$i] ): ?>
-							<div class="slide-caption">
-								<?php echo nl2br( esc_textarea( $lightning_theme_options['top_slide_text_caption_'.$i] ) ); ?>
-							</div>
-              <?php endif; ?>
+									echo '<style type="text/css">';
+									echo '.item-'.$i.' .btn-ghost { border-color:'.$text_color.';color:'.$text_color.';'.$box_shadow.$text_shadow.' }';
+									echo '.item-'.$i.' .btn-ghost:hover { border-color:'.$color_key.'; background-color:'.$color_key.'; color:#fff; }';
+									echo '</style>';
+									?>
+									<a class="btn btn-ghost" href="<?php echo esc_url( $top_slide_url ); ?>" <?php echo $link_target; ?>><?php echo wp_kses_post( $lightning_theme_options['top_slide_btn_text_'.$i] ); ?></a>
+								<?php endif; ?>
 
-              <?php
-              // If Button exist
-              if ( ! empty( $lightning_theme_options['top_slide_url_'.$i] ) && ! empty( $lightning_theme_options['top_slide_btn_text_'.$i] ) ) : ?>
-								<a class="btn btn-primary btn-ghost" href="<?php echo esc_url( $top_slide_url ); ?>" <?php echo $link_target; ?>><?php echo wp_kses_post( $lightning_theme_options['top_slide_btn_text_'.$i] ); ?></a>
-							<?php endif; ?>
+	            </div><!-- .container -->
+						</div><!-- [ /.slide-text-set ] -->
+	      </div><!-- [ /.item ] -->
 
-            </div><!-- .carousel-caption -->
-
-            </div><!-- [ /.item ] -->
-
-            <?php } ?>
-
-        <?php $i++;
+			<?php } // if ( $top_slide_image_src ) { ?>
+      <?php $i++;
     } ?>
 </div><!-- [ /.carousel-inner ] -->
 

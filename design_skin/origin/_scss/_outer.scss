@@ -499,6 +499,17 @@ footer {
 .carousel-control.right { @include background(linear-gradient(to right, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.2) 100%)); }
 .carousel-control.left { @include background(linear-gradient(to left, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.2) 100%)); }
 
+.slide-text-set {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateY(-50%) translateX(-50%);
+	width:100%;
+	.container{
+
+	}
+}
+
 .sticky { display:block; overflow:hidden;padding:1em;background-color: #f5f5f5; }
 
 /*-------------------------------------------*/
