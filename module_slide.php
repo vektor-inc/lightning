@@ -40,8 +40,13 @@ if ($top_slide_count) : ?>
             $top_slide_image_src = lightning_top_slide_image_src($i);
 
             $top_slide_alt = '';
-            $top_slide_alt = ( isset($lightning_theme_options['top_slide_alt_'.$i])) ? $lightning_theme_options['top_slide_alt_'.$i] : '';
-            $top_slide_alt = ( isset($lightning_theme_options['top_slide_title_'.$i])) ? $lightning_theme_options['top_slide_title_'.$i] : '';
+            if ( ! empty( $lightning_theme_options['top_slide_alt_'.$i] ) ) {
+              $top_slide_alt = $lightning_theme_options['top_slide_alt_'.$i];
+            } else if ( ! empty( $lightning_theme_options['top_slide_title_'.$i] ) ) {
+              $top_slide_alt = $lightning_theme_options['top_slide_title_'.$i];
+            } else {
+              $top_slide_alt = "";
+            }
             if ( $top_slide_image_src ) { ?>
             <div class="item<?php if ($i == 1) echo ' active';?>">
 
