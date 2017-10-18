@@ -57,12 +57,31 @@ function lightning_customize_register($wp_customize)
 
 	// Add setting
 
+	// head logo
 	$wp_customize->add_setting( 'lightning_theme_options[head_logo]', array(
 		'default'			=> '',
 		'type'				=> 'option',
 		'capability'		=> 'edit_theme_options',
 		'sanitize_callback' => 'esc_url_raw',
 	) );
+	$wp_customize->add_control( new WP_Customize_Image_Control(
+		$wp_customize,
+		'head_logo',
+		array(
+			'label'     => _x('Header logo image', 'lightning theme-customizer', 'lightning'),
+			'section'   => 'lightning_design',
+			'settings'  => 'lightning_theme_options[head_logo]',
+			'priority'  => 501,
+			'description' => __('Recommended image size : 280*60px', 'lightning'),
+		)
+	) );
+	$wp_customize->selective_refresh->add_partial( 'lightning_theme_options[head_logo]', array(
+		'selector' => '.siteHeader_logo',
+		'render_callback' => '',
+	) );
+
+
+	// color
 	$wp_customize->add_setting( 'lightning_theme_options[color_key]', array(
 		'default'			=> '#337ab7',
 		'type'				=> 'option',
@@ -74,44 +93,6 @@ function lightning_customize_register($wp_customize)
 		'type'				=> 'option',
 		'capability'		=> 'edit_theme_options',
 		'sanitize_callback' => 'sanitize_hex_color',
-	) );
-	$wp_customize->add_setting('lightning_theme_options[top_sidebar_hidden]', array(
-		'default'			=> false,
-		'type'				=> 'option',
-		'capability'		=> 'edit_theme_options',
-		'sanitize_callback' => 'lightning_sanitize_checkbox',
-	));
-	$wp_customize->add_setting('lightning_theme_options[top_default_content_hidden]', array(
-		'default'			=> false,
-		'type'				=> 'option',
-		'capability'		=> 'edit_theme_options',
-		'sanitize_callback' => 'lightning_sanitize_checkbox',
-	));
-	$wp_customize->add_setting('lightning_theme_options[postUpdate_hidden]', array(
-		'default'			=> false,
-		'type'				=> 'option',
-		'capability'		=> 'edit_theme_options',
-		'sanitize_callback' => 'lightning_sanitize_checkbox',
-	));
-	$wp_customize->add_setting('lightning_theme_options[postAuthor_hidden]', array(
-		'default'			=> false,
-		'type'				=> 'option',
-		'capability'		=> 'edit_theme_options',
-		'sanitize_callback' => 'lightning_sanitize_checkbox',
-	));
-
-	// Create section UI
-
-	$wp_customize->add_control( new WP_Customize_Image_Control(
-		$wp_customize,
-		'head_logo',
-		array(
-			'label'     => _x('Header logo image', 'lightning theme-customizer', 'lightning'),
-			'section'   => 'lightning_design',
-			'settings'  => 'lightning_theme_options[head_logo]',
-			'priority'  => 501,
-			'description' => __('Recommended image size : 280*60px', 'lightning'),
-		)
 	) );
 
 	if( apply_filters( 'lightning_show_default_keycolor_customizer', true ) ){
@@ -129,12 +110,29 @@ function lightning_customize_register($wp_customize)
 		)));
 	}
 
+
+	// top_sidebar_hidden
+	$wp_customize->add_setting('lightning_theme_options[top_sidebar_hidden]', array(
+		'default'			=> false,
+		'type'				=> 'option',
+		'capability'		=> 'edit_theme_options',
+		'sanitize_callback' => 'lightning_sanitize_checkbox',
+	));
 	$wp_customize->add_control( 'lightning_theme_options[top_sidebar_hidden]', array(
 		'label'		=> _x( 'Don\'t show sidebar on home page' ,'lightning theme-customizer', 'lightning' ),
 		'section'	=> 'lightning_design',
 		'settings'  => 'lightning_theme_options[top_sidebar_hidden]',
 		'type'		=> 'checkbox',
 		'priority'	=> 520,
+	));
+
+
+	// top_default_content_hidden
+	$wp_customize->add_setting('lightning_theme_options[top_default_content_hidden]', array(
+		'default'			=> false,
+		'type'				=> 'option',
+		'capability'		=> 'edit_theme_options',
+		'sanitize_callback' => 'lightning_sanitize_checkbox',
 	));
 	$wp_customize->add_control( 'lightning_theme_options[top_default_content_hidden]', array(
 		'label'		=> _x( 'Don\'t show default content(Post list or Front page) at home page' ,'lightning theme-customizer', 'lightning' ),
@@ -143,12 +141,30 @@ function lightning_customize_register($wp_customize)
 		'type'		=> 'checkbox',
 		'priority'	=> 521,
 	));
+
+
+	// postUpdate_hidden
+	$wp_customize->add_setting('lightning_theme_options[postUpdate_hidden]', array(
+		'default'			=> false,
+		'type'				=> 'option',
+		'capability'		=> 'edit_theme_options',
+		'sanitize_callback' => 'lightning_sanitize_checkbox',
+	));
 	$wp_customize->add_control( 'lightning_theme_options[postUpdate_hidden]', array(
 		'label'		=> _x( 'Hide modified date on single pages.' ,'lightning theme-customizer', 'lightning' ),
 		'section'	=> 'lightning_design',
 		'settings'  => 'lightning_theme_options[postUpdate_hidden]',
 		'type'		=> 'checkbox',
 		'priority'	=> 522,
+	));
+
+
+	// postAuthor_hidden
+	$wp_customize->add_setting('lightning_theme_options[postAuthor_hidden]', array(
+		'default'			=> false,
+		'type'				=> 'option',
+		'capability'		=> 'edit_theme_options',
+		'sanitize_callback' => 'lightning_sanitize_checkbox',
 	));
 	$wp_customize->add_control( 'lightning_theme_options[postAuthor_hidden]', array(
 		'label'		=> _x( 'Don\'t display post author on a single page' ,'lightning theme-customizer', 'lightning' ),
@@ -168,10 +184,7 @@ function lightning_customize_register($wp_customize)
 		// 'panel'			=> 'lightning_setting',
 	) );
 
-	$wp_customize->selective_refresh->add_partial( 'lightning_theme_options[top_slide_text_title_1]', array(
-		'selector' => '.carousel-caption',
-		'render_callback' => '',
-	) );
+
 	// slide image
 	$priority = 610;
 	$lightning_theme_options = get_option('lightning_theme_options');
@@ -186,6 +199,12 @@ function lightning_customize_register($wp_customize)
 		}
 
 		// alt
+
+		$wp_customize->selective_refresh->add_partial( 'lightning_theme_options[top_slide_text_title_1]', array(
+			'selector' => '.carousel-caption',
+			'render_callback' => '',
+		) );
+
 		$wp_customize->add_setting( 'lightning_theme_options[top_slide_alt_'.$i.']',	array(
 			'default' 			=> '',
 			'type'				=> 'option',
