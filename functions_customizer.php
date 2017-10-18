@@ -168,7 +168,7 @@ function lightning_customize_register($wp_customize)
 		// 'panel'			=> 'lightning_setting',
 	) );
 
-	$wp_customize->selective_refresh->add_partial( 'lightning_theme_options[top_slide_text_1]', array(
+	$wp_customize->selective_refresh->add_partial( 'lightning_theme_options[top_slide_text_title_1]', array(
 		'selector' => '.carousel-caption',
 		'render_callback' => '',
 	) );
@@ -229,7 +229,7 @@ function lightning_customize_register($wp_customize)
       // 'sanitize_callback' => 'sanitize_text_area',
       'sanitize_callback' => 'sanitize_text_field',
     ) );
-    $wp_customize->add_setting( 'lightning_theme_options[top_slide_btn_'.$i.']',	array(
+    $wp_customize->add_setting( 'lightning_theme_options[top_slide_btn_text_'.$i.']',	array(
       'default' 			=> '',
       'type'				=> 'option',
       'capability' 		=> 'edit_theme_options',
@@ -319,10 +319,10 @@ function lightning_customize_register($wp_customize)
     ) );
 
     $priority = $priority + 1;
-    $wp_customize->add_control( new Custom_Text_Control( $wp_customize, 'top_slide_btn_'.$i, array(
+    $wp_customize->add_control( new Custom_Text_Control( $wp_customize, 'top_slide_btn_text_'.$i, array(
       'label'     => _x('Button text', 'lightning theme-customizer', 'lightning').' '.$i,
       'section'  => 'lightning_slide',
-      'settings' => 'lightning_theme_options[top_slide_btn_'.$i.']',
+      'settings' => 'lightning_theme_options[top_slide_btn_text_'.$i.']',
       'type' => 'text',
       'priority' => $priority,
       'description' => __('You can set the button for the link.', 'lightning'),

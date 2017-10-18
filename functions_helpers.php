@@ -125,7 +125,7 @@ function lightning_is_mobile() {
 function lightning_top_slide_image_src($i){
 	$top_slide_image_src = '';
 	$lightning_theme_options = get_option('lightning_theme_options');
-	
+
     // If 1st slide no set, set default image.
     if ( $i <= 3 ){
         if ( !isset( $lightning_theme_options['top_slide_image_'.$i] ) ) {
@@ -145,6 +145,16 @@ function lightning_top_slide_image_src($i){
     return $top_slide_image_src;
 }
 
+/*-------------------------------------------*/
+/*	lightning_is_slide_outer_link
+/*-------------------------------------------*/
+function lightning_is_slide_outer_link( $lightning_theme_options, $i ){
+	if ( ! empty( $lightning_theme_options['top_slide_url_'.$i] ) && empty( $lightning_theme_options['top_slide_btn_text_'.$i] ) ){
+		return true;
+	} else {
+		return false;
+	}
+}
 /*-------------------------------------------*/
 /*	Archive title
 /*-------------------------------------------*/
