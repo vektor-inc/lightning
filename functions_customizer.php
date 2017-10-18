@@ -168,6 +168,10 @@ function lightning_customize_register($wp_customize)
 		// 'panel'			=> 'lightning_setting',
 	) );
 
+	$wp_customize->selective_refresh->add_partial( 'lightning_theme_options[top_slide_text_1]', array(
+		'selector' => '.carousel-caption',
+		'render_callback' => '',
+	) );
 	// slide image
 	$priority = 610;
 	$lightning_theme_options = get_option('lightning_theme_options');
