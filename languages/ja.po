@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lightning v0.1.0\n"
 "Report-Msgid-Bugs-To: Translator Name <translations@example.com>\n"
-"POT-Creation-Date: 2017-10-17 16:34+0900\n"
+"POT-Creation-Date: 2017-10-18 22:08+0900\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Kurudrive <kurudrive@gmail.com>\n"
 "Language-Team: Vektor,Inc. <info@vektor-inc.co.jp>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "esc_attr_e;esc_attr_x:1,2c;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;"
 "_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext:1,2;__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
 "X-Poedit-Basepath: ..\n"
-"X-Generator: Poedit 2.0.3\n"
+"X-Generator: Poedit 2.0.4\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: node_modules\n"
 
@@ -90,7 +90,7 @@ msgstr "フッター上部"
 msgid "Footer widget area "
 msgstr "フッターウィジェットエリア"
 
-#: functions.php:261
+#: functions.php:262
 msgid "LP widget \""
 msgstr "LP ウィジェット \""
 
@@ -99,158 +99,171 @@ msgctxt "lightning theme-customizer"
 msgid "Lightning Design settings"
 msgstr "Lightning デザイン設定"
 
-#: functions_customizer.php:109
+#: functions_customizer.php:71
 msgctxt "lightning theme-customizer"
 msgid "Header logo image"
 msgstr "ヘッダーロゴ画像"
 
-#: functions_customizer.php:113
+#: functions_customizer.php:75
 msgid "Recommended image size : 280*60px"
 msgstr "推奨画像サイズ : 280×60px"
 
-#: functions_customizer.php:119
+#: functions_customizer.php:100
 msgctxt "lightning theme-customizer"
 msgid "Key color"
 msgstr "キーカラー"
 
-#: functions_customizer.php:125
+#: functions_customizer.php:106
 msgctxt "lightning theme-customizer"
 msgid "Key color(dark)"
 msgstr "キーカラー（暗）"
 
-#: functions_customizer.php:133
+#: functions_customizer.php:122
 msgctxt "lightning theme-customizer"
 msgid "Don't show sidebar on home page"
 msgstr "トップページを1カラムにする"
 
-#: functions_customizer.php:140
+#: functions_customizer.php:138
 msgctxt "lightning theme-customizer"
 msgid "Don't show default content(Post list or Front page) at home page"
 msgstr "トップページでデフォルトの投稿リストや固定ページを表示しない"
 
-#: functions_customizer.php:147
+#: functions_customizer.php:154
 msgctxt "lightning theme-customizer"
 msgid "Hide modified date on single pages."
 msgstr "投稿詳細ページで最終更新日を表示しない"
 
-#: functions_customizer.php:154
+#: functions_customizer.php:170
 msgctxt "lightning theme-customizer"
 msgid "Don't display post author on a single page"
 msgstr "投稿詳細ページで投稿者名を表示しない"
 
-#: functions_customizer.php:166
+#: functions_customizer.php:182
 msgctxt "lightning theme-customizer"
 msgid "Lightning Home page slide show"
 msgstr "Lightning トップページスライドショー"
 
-#: functions_customizer.php:245
+#: functions_customizer.php:217
 msgctxt "lightning theme-customizer"
 msgid "Slide image alt"
 msgstr "スライド画像の代替テキスト"
 
-#: functions_customizer.php:250
+#: functions_customizer.php:222
 msgid "This title text is print to alt tag."
 msgstr "このテキストはaltに反映されます。"
 
-#: functions_customizer.php:255
+#: functions_customizer.php:236
 msgctxt "lightning theme-customizer"
 msgid "Slide image link url"
 msgstr "スライド画像リンク先URL"
 
-#: functions_customizer.php:264
+#: functions_customizer.php:254
 msgctxt "lightning theme-customizer"
 msgid "Open in new window."
 msgstr "リンク先を別ウィンドウで開く"
 
-#: functions_customizer.php:276
+#: functions_customizer.php:275
 msgctxt "lightning theme-customizer"
 msgid "Slide image"
 msgstr "スライド画像"
 
-#: functions_customizer.php:280
+#: functions_customizer.php:279
 msgid "Recommended image size : 1900*500px"
 msgstr "推奨画像サイズ : 1900×500px"
 
-#: functions_customizer.php:289
-msgctxt "lightning theme-customizer"
-msgid "Slide image for mobile (optional)"
-msgstr "モバイル用スライド画像（オプション）"
+#: functions_customizer.php:297
+msgid "Slide image for mobile"
+msgstr "モバイル用スライド画像"
 
-#: functions_customizer.php:299 inc/front-page-pr.php:81
-msgctxt "lightning theme-customizer"
-msgid "Title"
-msgstr "タイトル"
+#: functions_customizer.php:297 functions_customizer.php:316
+#: functions_customizer.php:336 functions_customizer.php:355
+#: functions_customizer.php:374 functions_customizer.php:394
+#: functions_customizer.php:409 functions_customizer.php:425
+msgid "optional"
+msgstr "任意"
 
-#: functions_customizer.php:304
+#: functions_customizer.php:316
+msgid "Slide title"
+msgstr "スライドタイトル"
+
+#: functions_customizer.php:321
 msgid "The title will be reflected on the slide."
 msgstr "スライド用タイトル"
 
-#: functions_customizer.php:309 inc/front-page-pr.php:92
-msgctxt "lightning theme-customizer"
-msgid "Text"
-msgstr "サブテキスト"
+#: functions_customizer.php:336
+msgid "Slide text"
+msgstr "スライドテキスト"
 
-#: functions_customizer.php:314
+#: functions_customizer.php:341
 msgid "The text will be reflected on the slide."
 msgstr "スライド用サブテキスト"
 
-#: functions_customizer.php:319
-msgctxt "lightning theme-customizer"
+#: functions_customizer.php:355
 msgid "Button text"
-msgstr "リンクボタンテキスト"
+msgstr "ボタンの文字"
 
-#: functions_customizer.php:324
+#: functions_customizer.php:360
 msgid "You can set the button for the link."
 msgstr "リンク用のボタンのテキストを設定"
 
-#: functions_customizer.php:329
-msgctxt "lightning theme-customizer"
+#: functions_customizer.php:374
 msgid "Position to display text"
 msgstr "位置"
 
-#: functions_customizer.php:335
+#: functions_customizer.php:380
 msgid "Right"
 msgstr "右"
 
-#: functions_customizer.php:336
+#: functions_customizer.php:381
 msgid "Center"
 msgstr "中央"
 
-#: functions_customizer.php:337
+#: functions_customizer.php:382
 msgid "Left"
 msgstr "左"
 
-#: functions_helpers.php:158
+#: functions_customizer.php:394
+msgid "Slide text color"
+msgstr "スライド上の文字色"
+
+#: functions_customizer.php:409
+msgid "Use text shadow"
+msgstr "文字に影をつける"
+
+#: functions_customizer.php:425
+msgid "Text shadow color"
+msgstr "文字の影の色"
+
+#: functions_helpers.php:168
 #, php-format
 msgid "Author: %s"
 msgstr "投稿者: %s"
 
-#: functions_helpers.php:160
+#: functions_helpers.php:170
 msgctxt "yearly archives date format"
 msgid "Y"
 msgstr "Y年"
 
-#: functions_helpers.php:162
+#: functions_helpers.php:172
 msgctxt "monthly archives date format"
 msgid "F Y"
 msgstr "Y年n月"
 
-#: functions_helpers.php:164
+#: functions_helpers.php:174
 msgctxt "daily archives date format"
 msgid "F j, Y"
 msgstr "Y年Fj日"
 
-#: functions_helpers.php:179
+#: functions_helpers.php:189
 msgid "Archives"
 msgstr "アーカイブ"
 
-#: functions_helpers.php:192
+#: functions_helpers.php:202
 #, php-format
 msgid "Copyright &copy; %s All Rights Reserved."
 msgstr "Copyright &copy; %s All Rights Reserved."
 
-#: functions_helpers.php:197
-#, fuzzy
+#: functions_helpers.php:207
 msgid ""
 "<p>Powered by <a href=\"https://wordpress.org/\">WordPress</a> &amp; <a href="
 "\"https://lightning.nagoya\" target=\"_blank\" title=\"Free WordPress Theme "
@@ -305,6 +318,16 @@ msgstr ""
 msgctxt "lightning theme-customizer"
 msgid "Icon "
 msgstr "アイコン"
+
+#: inc/front-page-pr.php:81
+msgctxt "lightning theme-customizer"
+msgid "Title"
+msgstr "タイトル"
+
+#: inc/front-page-pr.php:92
+msgctxt "lightning theme-customizer"
+msgid "Text"
+msgstr "サブテキスト"
 
 #: inc/front-page-pr.php:103
 msgctxt "lightning theme-customizer"
@@ -881,10 +904,6 @@ msgstr "<dl><dt>%s</dt><dd>%l</dd></dl>"
 #: single.php:61
 msgid "Tags"
 msgstr "タグ"
-
-#~ msgctxt "lightning theme-customizer"
-#~ msgid "Slide image title"
-#~ msgstr "スライド画像タイトル"
 
 #~ msgid "Yearly Archives: %s"
 #~ msgstr "%s"

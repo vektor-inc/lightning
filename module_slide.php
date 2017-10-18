@@ -51,7 +51,7 @@ if ($top_slide_count) : ?>
             if ( $top_slide_image_src ) {
 							$link_target = ( isset( $lightning_theme_options['top_slide_link_blank_'.$i] ) && $lightning_theme_options['top_slide_link_blank_'.$i] ) ? ' target="_blank"' : '';
 							?>
-            <div class="item<?php if ($i == 1) echo ' active';?>">
+            <div class="item item-<?php echo $i ?><?php if ($i == 1) echo ' active';?>">
 
             <?php
 
