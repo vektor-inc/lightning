@@ -212,13 +212,13 @@ function lightning_customize_register($wp_customize)
 			'capability'		=> 'edit_theme_options',
 			'sanitize_callback' => 'lightning_sanitize_checkbox',
     ) );
-    $wp_customize->add_setting( 'lightning_theme_options[top_slide_title_'.$i.']',	array(
+    $wp_customize->add_setting( 'lightning_theme_options[top_slide_text_title_'.$i.']',	array(
 			'default' 			=> '',
 			'type'				=> 'option',
 			'capability' 		=> 'edit_theme_options',
 			'sanitize_callback' => 'sanitize_text_field',
 		) );
-    $wp_customize->add_setting( 'lightning_theme_options[top_slide_text_area_'.$i.']',	array(
+    $wp_customize->add_setting( 'lightning_theme_options[top_slide_text_caption_'.$i.']',	array(
       'default' 			=> '',
       'type'				=> 'option',
       'capability' 		=> 'edit_theme_options',
@@ -295,20 +295,20 @@ function lightning_customize_register($wp_customize)
 		) );
 
     $priority = $priority + 1;
-    $wp_customize->add_control( new Custom_Text_Control( $wp_customize, 'top_slide_title_'.$i, array(
+    $wp_customize->add_control( new Custom_Text_Control( $wp_customize, 'top_slide_text_title_'.$i, array(
       'label'     => _x('Title', 'lightning theme-customizer', 'lightning').' '.$i,
       'section'  => 'lightning_slide',
-      'settings' => 'lightning_theme_options[top_slide_title_'.$i.']',
+      'settings' => 'lightning_theme_options[top_slide_text_title_'.$i.']',
       'type' => 'text',
       'priority' => $priority,
       'description' => __('The title will be reflected on the slide.', 'lightning'),
     ) ) );
 
     $priority = $priority + 1;
-    $wp_customize->add_control( 'top_slide_text_area_'.$i, array(
+    $wp_customize->add_control( 'top_slide_text_caption_'.$i, array(
       'label'     => _x('Text', 'lightning theme-customizer', 'lightning').' '.$i,
       'section'  => 'lightning_slide',
-      'settings' => 'lightning_theme_options[top_slide_text_area_'.$i.']',
+      'settings' => 'lightning_theme_options[top_slide_text_caption_'.$i.']',
       'type' => 'textarea',
       'priority' => $priority,
       'description' => __('The text will be reflected on the slide.', 'lightning'),

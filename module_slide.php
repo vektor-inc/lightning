@@ -41,6 +41,7 @@ if ($top_slide_count) : ?>
 
             $top_slide_alt = '';
             $top_slide_alt = ( isset($lightning_theme_options['top_slide_alt_'.$i])) ? $lightning_theme_options['top_slide_alt_'.$i] : '';
+            $top_slide_alt = ( isset($lightning_theme_options['top_slide_title_'.$i])) ? $lightning_theme_options['top_slide_title_'.$i] : '';
             if ( $top_slide_image_src ) { ?>
             <div class="item<?php if ($i == 1) echo ' active';?>">
 
@@ -67,18 +68,18 @@ if ($top_slide_count) : ?>
 
               <?php
               // If Title
-              $top_slide_title = '';
-              $top_slide_title = ( isset($lightning_theme_options['top_slide_title_'.$i])) ? $lightning_theme_options['top_slide_title_'.$i] : '';
-              if ( isset( $lightning_theme_options['top_slide_title_'.$i] ) && $lightning_theme_options['top_slide_title_'.$i] ): ?>
-              <h3><?php echo esc_html($top_slide_title); ?></h3>
+              $top_slide_text_title_ = '';
+              $top_slide_text_title_ = ( isset($lightning_theme_options['top_slide_text_title_'.$i])) ? $lightning_theme_options['top_slide_text_title_'.$i] : '';
+              if ( isset( $lightning_theme_options['top_slide_text_title_'.$i] ) && $lightning_theme_options['top_slide_text_title_'.$i] ): ?>
+              <h3><?php echo esc_html($top_slide_text_title_); ?></h3>
               <?php endif; ?>
 
               <?php
               // If Text
-              $top_slide_text_area = '';
-              $top_slide_text_area = ( isset($lightning_theme_options['top_slide_text_area_'.$i])) ? $lightning_theme_options['top_slide_text_area_'.$i] : '';
-              if ( isset( $lightning_theme_options['top_slide_text_area_'.$i] ) && $lightning_theme_options['top_slide_text_area_'.$i] ): ?>
-              <p><?php echo esc_html($top_slide_text_area); ?></p>
+              $top_slide_text_caption_ = '';
+              $top_slide_text_caption_ = ( isset($lightning_theme_options['top_slide_text_caption_'.$i])) ? $lightning_theme_options['top_slide_text_caption_'.$i] : '';
+              if ( isset( $lightning_theme_options['top_slide_text_caption_'.$i] ) && $lightning_theme_options['top_slide_text_caption_'.$i] ): ?>
+              <p><?php echo esc_html($top_slide_text_caption_); ?></p>
               <?php endif; ?>
 
               <?php
