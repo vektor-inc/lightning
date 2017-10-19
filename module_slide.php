@@ -112,7 +112,7 @@ if ($top_slide_count) : ?>
 
 									echo '<style type="text/css">';
 									echo '.item-'.$i.' .btn-ghost { border-color:'.$text_color.';color:'.$text_color.';'.$box_shadow.$text_shadow.' }';
-									echo '.item-'.$i.' .btn-ghost:hover { border-color:'.$color_key.'; background-color:'.$color_key.'; color:#fff; }';
+									echo '.item-'.$i.' .btn-ghost:hover { border-color:'.$color_key.'; background-color:'.$color_key.'; color:#fff; text-shadow:none; }';
 									echo '</style>';
 									?>
 									<a class="btn btn-ghost" href="<?php echo esc_url( $top_slide_url ); ?>" <?php echo $link_target; ?>><?php echo wp_kses_post( $lightning_theme_options['top_slide_btn_text_'.$i] ); ?></a>

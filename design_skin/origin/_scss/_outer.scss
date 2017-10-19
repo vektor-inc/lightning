@@ -529,6 +529,7 @@ footer {
 .btn-ghost {
 	margin-top:1.4em;
 	padding: 0.5em 2em;
+	transition: background-color 1s,border-color 0.5s;
 }
 
 @media (min-width: 768px){
