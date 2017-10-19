@@ -170,9 +170,9 @@ function lightning_top_slide_font_style( $lightning_theme_options, $i ){
 	// シャドウ
 	if ( isset( $lightning_theme_options[ 'top_slide_text_shadow_use_'.$i ] ) && $lightning_theme_options[ 'top_slide_text_shadow_use_'.$i ] ) {
 		if ( ! empty( $lightning_theme_options[ 'top_slide_text_shadow_color_'.$i ] ) ){
-			$top_slide_font_style .= 'text-shadow:0 0 0.3em '.$lightning_theme_options[ 'top_slide_text_shadow_color_'.$i ];
+			$top_slide_font_style .= 'text-shadow:0 0 2px '.$lightning_theme_options[ 'top_slide_text_shadow_color_'.$i ];
 		} else {
-			$top_slide_font_style .= 'text-shadow:0 0 0.3em #000';
+			$top_slide_font_style .= 'text-shadow:0 0 2px #000';
 		}
 	}
 

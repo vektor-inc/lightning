@@ -79,7 +79,11 @@ if ($top_slide_count) : ?>
 	              <?php
 	              // If Text Title exist
 	              if ( isset($lightning_theme_options['top_slide_text_title_'.$i] ) && $lightning_theme_options['top_slide_text_title_'.$i] ):
-									$top_slide_font_style = lightning_top_slide_font_style( $lightning_theme_options, $i );
+									if ( function_exists('lightning_top_slide_font_style') ) {
+										$top_slide_font_style = lightning_top_slide_font_style( $lightning_theme_options, $i );
+									} else {
+										$top_slide_font_style = '';
+									}
 								?>
 	              	<h3 class="slide-text-title" style="<?php echo esc_attr( $top_slide_font_style );?>"><?php echo nl2br( esc_textarea(  $lightning_theme_options['top_slide_text_title_'.$i] ) ); ?></h3>
 	              <?php endif; ?>
@@ -102,11 +106,11 @@ if ($top_slide_count) : ?>
 									$text_shadow = '';
 									if ( isset( $lightning_theme_options[ 'top_slide_text_shadow_use_'.$i ] ) && $lightning_theme_options[ 'top_slide_text_shadow_use_'.$i ] ) {
 										if ( ! empty( $lightning_theme_options[ 'top_slide_text_shadow_color_'.$i ] ) ){
-											$box_shadow = 'box-shadow:0 0 0.3em '.$lightning_theme_options[ 'top_slide_text_shadow_color_'.$i ].';';
-											$text_shadow = 'text-shadow:0 0 0.3em '.$lightning_theme_options[ 'top_slide_text_shadow_color_'.$i ].';';
+											$box_shadow = 'box-shadow:0 0 2px '.$lightning_theme_options[ 'top_slide_text_shadow_color_'.$i ].';';
+											$text_shadow = 'text-shadow:0 0 2px '.$lightning_theme_options[ 'top_slide_text_shadow_color_'.$i ].';';
 										} else {
-											$box_shadow = 'box-shadow:0 0 0.3em #000;';
-											$text_shadow = 'text-shadow:0 0 0.3em #000;';
+											$box_shadow = 'box-shadow:0 0 2px #000;';
+											$text_shadow = 'text-shadow:0 0 2px #000;';
 										}
 									}
 
