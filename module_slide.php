@@ -57,7 +57,7 @@ if ($top_slide_count) : ?>
 						<a href="<?php echo esc_url( $lightning_theme_options['top_slide_url_'.$i] );?>"<?php echo $link_target; ?>>
 					<?php endif; ?>
 
-					<img src="<?php echo esc_attr($top_slide_image_src); ?>" alt="<?php echo esc_attr($top_slide_alt); ?>">
+					<img src="<?php echo esc_attr( $top_slide_image_src); ?>" alt="<?php echo esc_attr($top_slide_alt); ?>">
 
 					<?php if ( lightning_is_slide_outer_link( $lightning_theme_options, $i ) ) :?>
 						</a>
@@ -77,7 +77,7 @@ if ($top_slide_count) : ?>
 	              if ( isset($lightning_theme_options['top_slide_text_title_'.$i] ) && $lightning_theme_options['top_slide_text_title_'.$i] ):
 									$top_slide_font_style = lightning_top_slide_font_style( $lightning_theme_options, $i );
 								?>
-	              	<h3 class="slide-text-title" style="<?php echo esc_attr( $top_slide_font_style );?>"><?php echo esc_html( $lightning_theme_options['top_slide_text_title_'.$i] ); ?></h3>
+	              	<h3 class="slide-text-title" style="<?php echo esc_attr( $top_slide_font_style );?>"><?php echo nl2br( esc_textarea(  $lightning_theme_options['top_slide_text_title_'.$i] ) ); ?></h3>
 	              <?php endif; ?>
 
 	              <?php
@@ -97,9 +97,9 @@ if ($top_slide_count) : ?>
 									$box_shadow = '';
 									$text_shadow = '';
 									if ( isset( $lightning_theme_options[ 'top_slide_text_shadow_use_'.$i ] ) && $lightning_theme_options[ 'top_slide_text_shadow_use_'.$i ] ) {
-										if ( ! empty( $lightning_theme_options[ 'title_shadow_color'.$i ] ) ){
-											$box_shadow = 'box-shadow:0 0 0.3em '.$lightning_theme_options[ 'title_shadow_color'.$i ].';';
-											$text_shadow = 'text-shadow:0 0 0.3em '.$lightning_theme_options[ 'title_shadow_color'.$i ].';';
+										if ( ! empty( $lightning_theme_options[ 'top_slide_text_shadow_color_'.$i ] ) ){
+											$box_shadow = 'box-shadow:0 0 0.3em '.$lightning_theme_options[ 'top_slide_text_shadow_color_'.$i ].';';
+											$text_shadow = 'text-shadow:0 0 0.3em '.$lightning_theme_options[ 'top_slide_text_shadow_color_'.$i ].';';
 										} else {
 											$box_shadow = 'box-shadow:0 0 0.3em #000;';
 											$text_shadow = 'text-shadow:0 0 0.3em #000;';

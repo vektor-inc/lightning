@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lightning v0.1.0\n"
 "Report-Msgid-Bugs-To: Translator Name <translations@example.com>\n"
-"POT-Creation-Date: 2017-10-18 22:08+0900\n"
+"POT-Creation-Date: 2017-10-19 11:26+0900\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Kurudrive <kurudrive@gmail.com>\n"
 "Language-Team: Vektor,Inc. <info@vektor-inc.co.jp>\n"
@@ -176,9 +176,9 @@ msgid "Slide image for mobile"
 msgstr "モバイル用スライド画像"
 
 #: functions_customizer.php:297 functions_customizer.php:316
-#: functions_customizer.php:336 functions_customizer.php:355
-#: functions_customizer.php:374 functions_customizer.php:394
-#: functions_customizer.php:409 functions_customizer.php:425
+#: functions_customizer.php:335 functions_customizer.php:354
+#: functions_customizer.php:373 functions_customizer.php:395
+#: functions_customizer.php:411 functions_customizer.php:427
 msgid "optional"
 msgstr "任意"
 
@@ -186,84 +186,78 @@ msgstr "任意"
 msgid "Slide title"
 msgstr "スライドタイトル"
 
-#: functions_customizer.php:321
-msgid "The title will be reflected on the slide."
-msgstr "スライド用タイトル"
-
-#: functions_customizer.php:336
+#: functions_customizer.php:335
 msgid "Slide text"
 msgstr "スライドテキスト"
 
-#: functions_customizer.php:341
-msgid "The text will be reflected on the slide."
-msgstr "スライド用サブテキスト"
-
-#: functions_customizer.php:355
+#: functions_customizer.php:354
 msgid "Button text"
 msgstr "ボタンの文字"
 
-#: functions_customizer.php:360
-msgid "You can set the button for the link."
-msgstr "リンク用のボタンのテキストを設定"
+#: functions_customizer.php:359
+msgid ""
+"If you do not fill in the link url and button text that, button is do not "
+"display."
+msgstr "リンクのURLとボタンのテキストを入力しないと、ボタンは表示されません。"
 
-#: functions_customizer.php:374
+#: functions_customizer.php:373
 msgid "Position to display text"
 msgstr "位置"
 
-#: functions_customizer.php:380
-msgid "Right"
-msgstr "右"
-
-#: functions_customizer.php:381
-msgid "Center"
-msgstr "中央"
-
-#: functions_customizer.php:382
+#: functions_customizer.php:379
 msgid "Left"
 msgstr "左"
 
-#: functions_customizer.php:394
+#: functions_customizer.php:380
+msgid "Center"
+msgstr "中央"
+
+#: functions_customizer.php:381
+msgid "Right"
+msgstr "右"
+
+#: functions_customizer.php:395
 msgid "Slide text color"
 msgstr "スライド上の文字色"
 
-#: functions_customizer.php:409
+#: functions_customizer.php:411
 msgid "Use text shadow"
 msgstr "文字に影をつける"
 
-#: functions_customizer.php:425
+#: functions_customizer.php:427
 msgid "Text shadow color"
 msgstr "文字の影の色"
 
-#: functions_helpers.php:168
+#: functions_helpers.php:192
 #, php-format
 msgid "Author: %s"
 msgstr "投稿者: %s"
 
-#: functions_helpers.php:170
+#: functions_helpers.php:194
 msgctxt "yearly archives date format"
 msgid "Y"
 msgstr "Y年"
 
-#: functions_helpers.php:172
+#: functions_helpers.php:196
 msgctxt "monthly archives date format"
 msgid "F Y"
 msgstr "Y年n月"
 
-#: functions_helpers.php:174
+#: functions_helpers.php:198
 msgctxt "daily archives date format"
 msgid "F j, Y"
 msgstr "Y年Fj日"
 
-#: functions_helpers.php:189
+#: functions_helpers.php:213
 msgid "Archives"
 msgstr "アーカイブ"
 
-#: functions_helpers.php:202
+#: functions_helpers.php:226
 #, php-format
 msgid "Copyright &copy; %s All Rights Reserved."
 msgstr "Copyright &copy; %s All Rights Reserved."
 
-#: functions_helpers.php:207
+#: functions_helpers.php:231
 msgid ""
 "<p>Powered by <a href=\"https://wordpress.org/\">WordPress</a> &amp; <a href="
 "\"https://lightning.nagoya\" target=\"_blank\" title=\"Free WordPress Theme "
@@ -904,6 +898,15 @@ msgstr "<dl><dt>%s</dt><dd>%l</dd></dl>"
 #: single.php:61
 msgid "Tags"
 msgstr "タグ"
+
+#~ msgid "The title will be reflected on the slide."
+#~ msgstr "スライド用タイトル"
+
+#~ msgid "The text will be reflected on the slide."
+#~ msgstr "スライド用サブテキスト"
+
+#~ msgid "You can set the button for the link."
+#~ msgstr "リンク用のボタンのテキストを設定"
 
 #~ msgid "Yearly Archives: %s"
 #~ msgstr "%s"

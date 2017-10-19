@@ -308,18 +308,18 @@ function lightning_customize_register($wp_customize)
 			'default' 			=> '',
 			'type'				=> 'option',
 			'capability' 		=> 'edit_theme_options',
-			'sanitize_callback' => 'sanitize_text_field',
+			'sanitize_callback' => 'wp_kses_data',
 		) );
 
 		$priority = $priority + 1;
-    $wp_customize->add_control( new Custom_Text_Control( $wp_customize, 'top_slide_text_title_'.$i, array(
+    $wp_customize->add_control( 'top_slide_text_title_'.$i, array(
       'label'     => '['.$i.'] '.__('Slide title', 'lightning').' ( '.__('optional','lightning').' )',
       'section'  => 'lightning_slide',
       'settings' => 'lightning_theme_options[top_slide_text_title_'.$i.']',
-      'type' => 'text',
+      'type' => 'textarea',
       'priority' => $priority,
-      'description' => __('The title will be reflected on the slide.', 'lightning'),
-    ) ) );
+      'description' => '',
+    ) );
 
 
 		// text caption
@@ -327,8 +327,7 @@ function lightning_customize_register($wp_customize)
       'default' 			=> '',
       'type'				=> 'option',
       'capability' 		=> 'edit_theme_options',
-      // 'sanitize_callback' => 'sanitize_text_area',
-      'sanitize_callback' => 'sanitize_text_field',
+      'sanitize_callback' => 'wp_kses_data',
     ) );
 
 		$priority = $priority + 1;
@@ -338,7 +337,7 @@ function lightning_customize_register($wp_customize)
       'settings' => 'lightning_theme_options[top_slide_text_caption_'.$i.']',
       'type' => 'textarea',
       'priority' => $priority,
-      'description' => __('The text will be reflected on the slide.', 'lightning'),
+      'description' => '',
     ) );
 
 
@@ -357,7 +356,7 @@ function lightning_customize_register($wp_customize)
       'settings' => 'lightning_theme_options[top_slide_btn_text_'.$i.']',
       'type' => 'text',
       'priority' => $priority,
-      'description' => __('You can set the button for the link.', 'lightning'),
+      'description' => __('If you do not fill in the link url and button text that, button is do not display.', 'lightning'),
     ) ) );
 
 
