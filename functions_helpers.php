@@ -122,6 +122,7 @@ function lightning_is_mobile() {
 /*-------------------------------------------*/
 /*	lightning_top_slide_image_src
 /*-------------------------------------------*/
+/* Although it is not used in the this theme, there is a possibility that it is used in Charm etc. */
 function lightning_top_slide_image_src($i){
 	$top_slide_image_src = '';
 	$lightning_theme_options = get_option('lightning_theme_options');

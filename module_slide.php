@@ -37,7 +37,6 @@ if ($top_slide_count) : ?>
     for ( $i = 1; $i <= $top_slide_count_max; ) {
 
 			$top_slide_url = '';
-			$top_slide_image_src = lightning_top_slide_image_src($i);
 
 			// If Alt exist
 			$top_slide_alt = '';
@@ -48,7 +47,7 @@ if ($top_slide_count) : ?>
 			} else {
 				$top_slide_alt = "";
 			}
-			if ( $top_slide_image_src ) {
+			if ( ! empty( $lightning_theme_options['top_slide_image_'.$i] ) ) {
 				$link_target = ( isset( $lightning_theme_options['top_slide_link_blank_'.$i] ) && $lightning_theme_options['top_slide_link_blank_'.$i] ) ? ' target="_blank"' : '';
 				?>
 				<div class="item item-<?php echo $i ?><?php if ($i == 1) echo ' active';?>">
@@ -57,7 +56,12 @@ if ($top_slide_count) : ?>
 						<a href="<?php echo esc_url( $lightning_theme_options['top_slide_url_'.$i] );?>"<?php echo $link_target; ?>>
 					<?php endif; ?>
 
-					<img src="<?php echo esc_attr( $top_slide_image_src); ?>" alt="<?php echo esc_attr($top_slide_alt); ?>">
+					<picture>
+						<?php if ( ! empty( $lightning_theme_options['top_slide_image_mobile_'.$i] ) ) : ?>
+					  	<source media="(max-width: 767px)" srcset="<?php echo esc_attr( $lightning_theme_options['top_slide_image_mobile_'.$i] )?>">
+						<?php endif; ?>
+					  <img src="<?php echo esc_attr( $lightning_theme_options['top_slide_image_'.$i] )?>" alt="<?php echo esc_attr($top_slide_alt); ?>">
+					</picture>
 
 					<?php if ( lightning_is_slide_outer_link( $lightning_theme_options, $i ) ) :?>
 						</a>
