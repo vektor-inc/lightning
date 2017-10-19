@@ -268,7 +268,7 @@ function lightning_customize_register($wp_customize)
 				'section'   => 'lightning_slide',
 				'settings'  => 'lightning_theme_options[top_slide_image_'.$i.']',
 				'priority'  => $priority,
-				'description' => __('Recommended image size : 1900*500px', 'lightning'),
+				'description' => __('Recommended image size : 1900*600px', 'lightning'),
 			)
 		) );
 
