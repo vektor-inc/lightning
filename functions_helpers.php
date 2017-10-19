@@ -1,5 +1,7 @@
 <?php
 /*-------------------------------------------*/
+/*	Theme default options
+/*-------------------------------------------*/
 /*	Head logo
 /*-------------------------------------------*/
 /*	Chack use post top page
@@ -12,6 +14,35 @@
 /*-------------------------------------------*/
 /*	Archive title
 /*-------------------------------------------*/
+
+/*-------------------------------------------*/
+/*	Theme default options
+/*-------------------------------------------*/
+function lightning_theme_options_default(){
+	$theme_options_default = array(
+		'top_slide_image_1' 							=> get_template_directory_uri().'/images/top_image_1.jpg',
+		'top_slide_url_1' 								=> __( 'https://lightning.nagoya/', 'lightning' ),
+		'top_slide_text_title_1'					=> __( 'Simple and Customize easy <br>WordPress theme.', 'lightning' ),
+		'top_slide_text_caption_1' 				=> __( '100% GPL Lisence  and adopting the bootstrap', 'lightning' ),
+		'top_slide_text_btn_1' 						=> __( 'READ MORE', 'lightning' ),
+		'top_slide_text_align_1'					=> 'left',
+		'top_slide_text_color_1' 					=> '#000',
+		'top_slide_text_shadow_use_1' 		=> true,
+		'top_slide_text_shadow_color_1'		=> '#fff',
+		'top_slide_image_2' 							=> get_template_directory_uri().'/images/top_image_2.jpg',
+		'top_slide_image_3' 							=> get_template_directory_uri().'/images/top_image_3.jpg',
+		'top_slide_url_3' 								=> esc_url( home_url() ),
+		'top_slide_text_title_3'					=> __( 'Johnijirou On Snow', 'lightning' ),
+		'top_slide_text_caption_3' 				=> __( 'Growing up everyday', 'lightning' ),
+		'top_slide_text_btn_3' 						=> __( 'READ MORE', 'lightning' ),
+		'top_slide_text_align_3'					=> 'left',
+		'top_slide_text_color_3' 					=> '#000',
+		'top_slide_text_shadow_use_3' 		=> true,
+		'top_slide_text_shadow_color_3'		=> '#fff',
+	);
+	return $theme_options_default;
+}
+
 
 /*-------------------------------------------*/
 /*	Head logo

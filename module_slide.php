@@ -1,5 +1,6 @@
 <?php
-$lightning_theme_options = get_option('lightning_theme_options');
+$theme_options_default = lightning_theme_options_default();
+$lightning_theme_options = get_option('lightning_theme_options', $theme_options_default );
 
 // count top slide
 $top_slide_count = 0;
@@ -7,22 +8,18 @@ $top_slide_count_max = 5;
 $top_slide_count_max = apply_filters('lightning_top_slide_count_max',$top_slide_count_max);
 
 for ( $i = 1; $i <= $top_slide_count_max; ) {
-    if ( !isset( $lightning_theme_options['top_slide_image_'.$i] ) ){
-        if ( $i <= 3  )
-            $top_slide_count ++;
-    } else if ( $lightning_theme_options['top_slide_image_'.$i] ) {
-        $top_slide_count ++;
+    if ( ! empty( $lightning_theme_options['top_slide_image_'.$i] ) ){
+			$top_slide_count ++;
     }
     $i++;
 }
 
 $top_slide_count = apply_filters('lightning_top_slide_count',$top_slide_count);
-
-if ($top_slide_count) : ?>
+if ( $top_slide_count ) : ?>
 <div id="top__fullcarousel" data-interval="false" class="carousel slide" data-ride="carousel">
 <div class="carousel-inner">
 
-    <?php if ($top_slide_count >= 2 ) :?>
+    <?php if ( $top_slide_count >= 2 ) :?>
         <!-- Indicators -->
         <ol class="carousel-indicators">
         <?php for ( $i = 0; $i <= $top_slide_count - 1; ) { ?>
@@ -77,23 +74,24 @@ if ($top_slide_count) : ?>
 						<div class="container">
 
 	              <?php
+
+								if ( function_exists('lightning_top_slide_font_style') ) {
+									$top_slide_font_style = lightning_top_slide_font_style( $lightning_theme_options, $i );
+								} else {
+									$top_slide_font_style = '';
+								}
+
 	              // If Text Title exist
-	              if ( isset($lightning_theme_options['top_slide_text_title_'.$i] ) && $lightning_theme_options['top_slide_text_title_'.$i] ):
-									if ( function_exists('lightning_top_slide_font_style') ) {
-										$top_slide_font_style = lightning_top_slide_font_style( $lightning_theme_options, $i );
-									} else {
-										$top_slide_font_style = '';
-									}
-								?>
+	              if ( isset($lightning_theme_options['top_slide_text_title_'.$i] ) && $lightning_theme_options['top_slide_text_title_'.$i] ) : ?>
 	              	<h3 class="slide-text-title" style="<?php echo esc_attr( $top_slide_font_style );?>"><?php echo wp_kses_post(  $lightning_theme_options['top_slide_text_title_'.$i] ); ?></h3>
 	              <?php endif; ?>
 
 	              <?php
 	              // If Text caption exist
 	              if ( isset( $lightning_theme_options['top_slide_text_caption_'.$i] ) && $lightning_theme_options['top_slide_text_caption_'.$i] ): ?>
-								<div class="slide-text-caption" style="<?php echo esc_attr( $top_slide_font_style );?>">
-									<?php echo nl2br( esc_textarea( $lightning_theme_options['top_slide_text_caption_'.$i] ) ); ?>
-								</div>
+									<div class="slide-text-caption" style="<?php echo esc_attr( $top_slide_font_style );?>">
+										<?php echo nl2br( esc_textarea( $lightning_theme_options['top_slide_text_caption_'.$i] ) ); ?>
+									</div>
 	              <?php endif; ?>
 
 	              <?php
