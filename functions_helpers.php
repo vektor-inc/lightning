@@ -1,5 +1,7 @@
 <?php
 /*-------------------------------------------*/
+/*	Theme default options
+/*-------------------------------------------*/
 /*	Head logo
 /*-------------------------------------------*/
 /*	Chack use post top page
@@ -12,6 +14,35 @@
 /*-------------------------------------------*/
 /*	Archive title
 /*-------------------------------------------*/
+
+/*-------------------------------------------*/
+/*	Theme default options
+/*-------------------------------------------*/
+function lightning_theme_options_default(){
+	$theme_options_default = array(
+		'top_slide_image_1' 							=> get_template_directory_uri().'/images/top_image_1.jpg',
+		'top_slide_url_1' 								=> __( 'https://lightning.nagoya/', 'lightning' ),
+		'top_slide_text_title_1'					=> __( 'Simple and Customize easy <br>WordPress theme.', 'lightning' ),
+		'top_slide_text_caption_1' 				=> __( '100% GPL Lisence  and adopting the bootstrap', 'lightning' ),
+		'top_slide_text_btn_1' 						=> __( 'READ MORE', 'lightning' ),
+		'top_slide_text_align_1'					=> 'left',
+		'top_slide_text_color_1' 					=> '#000',
+		'top_slide_text_shadow_use_1' 		=> true,
+		'top_slide_text_shadow_color_1'		=> '#fff',
+		'top_slide_image_2' 							=> get_template_directory_uri().'/images/top_image_2.jpg',
+		'top_slide_image_3' 							=> get_template_directory_uri().'/images/top_image_3.jpg',
+		'top_slide_url_3' 								=> esc_url( home_url() ),
+		'top_slide_text_title_3'					=> __( 'Johnijirou On Snow', 'lightning' ),
+		'top_slide_text_caption_3' 				=> __( 'Growing up everyday', 'lightning' ),
+		'top_slide_text_btn_3' 						=> __( 'READ MORE', 'lightning' ),
+		'top_slide_text_align_3'					=> 'left',
+		'top_slide_text_color_3' 					=> '#000',
+		'top_slide_text_shadow_use_3' 		=> true,
+		'top_slide_text_shadow_color_3'		=> '#fff',
+	);
+	return $theme_options_default;
+}
+
 
 /*-------------------------------------------*/
 /*	Head logo
@@ -122,10 +153,11 @@ function lightning_is_mobile() {
 /*-------------------------------------------*/
 /*	lightning_top_slide_image_src
 /*-------------------------------------------*/
+/* Although it is not used in the this theme, there is a possibility that it is used in Charm etc. */
 function lightning_top_slide_image_src($i){
 	$top_slide_image_src = '';
 	$lightning_theme_options = get_option('lightning_theme_options');
-	
+
     // If 1st slide no set, set default image.
     if ( $i <= 3 ){
         if ( !isset( $lightning_theme_options['top_slide_image_'.$i] ) ) {
@@ -144,6 +176,40 @@ function lightning_top_slide_image_src($i){
     }
     return $top_slide_image_src;
 }
+
+/*-------------------------------------------*/
+/*	lightning_is_slide_outer_link
+/*-------------------------------------------*/
+function lightning_is_slide_outer_link( $lightning_theme_options, $i ){
+	if ( ! empty( $lightning_theme_options['top_slide_url_'.$i] ) && empty( $lightning_theme_options['top_slide_btn_text_'.$i] ) ){
+		return true;
+	} else {
+		return false;
+	}
+}
+
+function lightning_top_slide_font_style( $lightning_theme_options, $i ){
+	$top_slide_font_style = '';
+	// 色が登録されている場合
+	if ( ! empty( $lightning_theme_options[ 'top_slide_text_color_'.$i ] ) ) {
+		$top_slide_font_style .= 'color:' .$lightning_theme_options[ 'top_slide_text_color_'.$i ].';';
+	} else {
+		// その他（色が登録されていない）
+		$top_slide_font_style .= '';
+	}
+
+	// シャドウ
+	if ( isset( $lightning_theme_options[ 'top_slide_text_shadow_use_'.$i ] ) && $lightning_theme_options[ 'top_slide_text_shadow_use_'.$i ] ) {
+		if ( ! empty( $lightning_theme_options[ 'top_slide_text_shadow_color_'.$i ] ) ){
+			$top_slide_font_style .= 'text-shadow:0 0 2px '.$lightning_theme_options[ 'top_slide_text_shadow_color_'.$i ];
+		} else {
+			$top_slide_font_style .= 'text-shadow:0 0 2px #000';
+		}
+	}
+
+	return $top_slide_font_style;
+}
+
 
 /*-------------------------------------------*/
 /*	Archive title

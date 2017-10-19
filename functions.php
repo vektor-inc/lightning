@@ -249,6 +249,7 @@ function lightning_widgets_init() {
 
 		$args = Array(
 					'post_type' => 'page',
+					'post_status' => 'publish,private,draft',
 					'posts_per_page' => -1,
 					'meta_key' => '_wp_page_template',
 					'meta_value' => 'page-lp.php'
