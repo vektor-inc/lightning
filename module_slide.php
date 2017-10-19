@@ -85,7 +85,7 @@ if ($top_slide_count) : ?>
 										$top_slide_font_style = '';
 									}
 								?>
-	              	<h3 class="slide-text-title" style="<?php echo esc_attr( $top_slide_font_style );?>"><?php echo nl2br( esc_textarea(  $lightning_theme_options['top_slide_text_title_'.$i] ) ); ?></h3>
+	              	<h3 class="slide-text-title" style="<?php echo esc_attr( $top_slide_font_style );?>"><?php echo wp_kses_post(  $lightning_theme_options['top_slide_text_title_'.$i] ); ?></h3>
 	              <?php endif; ?>
 
 	              <?php
@@ -98,7 +98,7 @@ if ($top_slide_count) : ?>
 
 	              <?php
 	              // If Button exist
-	              if ( ! empty( $lightning_theme_options['top_slide_url_'.$i] ) && ! empty( $lightning_theme_options['top_slide_btn_text_'.$i] ) ) :
+	              if ( ! empty( $lightning_theme_options['top_slide_url_'.$i] ) && ! empty( $lightning_theme_options['top_slide_text_btn_'.$i] ) ) :
 									$text_color = ( ! empty( $lightning_theme_options['top_slide_text_color_'.$i] ) ) ? $lightning_theme_options['top_slide_text_color_'.$i] : '#fff';
 									$color_key = ( ! empty( $lightning_theme_options['color_key'] ) ) ? $lightning_theme_options['color_key'] : '#337ab7';
 									// Shadow
@@ -119,7 +119,7 @@ if ($top_slide_count) : ?>
 									echo '.item-'.$i.' .btn-ghost:hover { border-color:'.$color_key.'; background-color:'.$color_key.'; color:#fff; text-shadow:none; }';
 									echo '</style>';
 									?>
-									<a class="btn btn-ghost" href="<?php echo esc_url( $top_slide_url ); ?>" <?php echo $link_target; ?>><?php echo wp_kses_post( $lightning_theme_options['top_slide_btn_text_'.$i] ); ?></a>
+									<a class="btn btn-ghost" href="<?php echo esc_url( $top_slide_url ); ?>" <?php echo $link_target; ?>><?php echo wp_kses_post( $lightning_theme_options['top_slide_text_btn_'.$i] ); ?></a>
 								<?php endif; ?>
 
 	            </div><!-- .container -->
