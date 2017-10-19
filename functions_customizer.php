@@ -189,11 +189,23 @@ function lightning_customize_register($wp_customize)
 	$priority = 610;
 
 	$theme_options_default = lightning_theme_options_default();
-	$lightning_theme_options = get_option('lightning_theme_options', $theme_options_default );
+	$lightning_theme_options = get_option( 'lightning_theme_options' );
+
+	/*
+	Save default option first time.
+	When only customize default that, Can't save default value.
+	 */
+	if ( ! $lightning_theme_options ){
+		add_option( 'lightning_theme_options', $theme_options_default );
+		$lightning_theme_options = $theme_options_default;
+	}
 
 	for ( $i = 1; $i <= 5; ) {
 
-		// Default images
+		/*
+		Set customize default option.
+		When first customize start that, option value was not saved yet.
+		 */
 		$theme_options_customize_default['top_slide_image'] = '';
 		$theme_options_customize_default['url'] = '';
 		$theme_options_customize_default['text_title'] = '';

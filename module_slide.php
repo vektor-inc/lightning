@@ -83,7 +83,7 @@ if ( $top_slide_count ) : ?>
 
 	              // If Text Title exist
 	              if ( isset($lightning_theme_options['top_slide_text_title_'.$i] ) && $lightning_theme_options['top_slide_text_title_'.$i] ) : ?>
-	              	<h3 class="slide-text-title" style="<?php echo esc_attr( $top_slide_font_style );?>"><?php echo wp_kses_post(  $lightning_theme_options['top_slide_text_title_'.$i] ); ?></h3>
+	              	<h3 class="slide-text-title" style="<?php echo esc_attr( $top_slide_font_style );?>"><?php echo nl2br( wp_kses_post(  $lightning_theme_options['top_slide_text_title_'.$i] ) ); ?></h3>
 	              <?php endif; ?>
 
 	              <?php
