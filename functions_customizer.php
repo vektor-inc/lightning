@@ -189,58 +189,19 @@ function lightning_customize_register($wp_customize)
 	$priority = 610;
 
 	$theme_options_default = lightning_theme_options_default();
-	$lightning_theme_options = get_option( 'lightning_theme_options' );
-
-	/*
-	Save default option first time.
-	When only customize default that, Can't save default value.
-	 */
-	if ( ! $lightning_theme_options ){
-		add_option( 'lightning_theme_options', $theme_options_default );
-		$lightning_theme_options = $theme_options_default;
-	}
 
 	for ( $i = 1; $i <= 5; ) {
 
-		/*
-		Set customize default option.
-		When first customize start that, option value was not saved yet.
-		 */
 		$theme_options_customize_default['top_slide_image'] = '';
-		$theme_options_customize_default['url'] = '';
-		$theme_options_customize_default['text_title'] = '';
-		$theme_options_customize_default['text_caption'] = '';
-		$theme_options_customize_default['text_btn'] = '';
-		$theme_options_customize_default['text_align'] = 'center';
-		$theme_options_customize_default['text_color'] = '#fff';
-		$theme_options_customize_default['text_shadow_use'] = true;
-		$theme_options_customize_default['text_shadow_color'] = '#000';
-
 		switch ($i){
 	    case 1:
 				$theme_options_customize_default['top_slide_image'] = $theme_options_default['top_slide_image_1'];
-				$theme_options_customize_default['url'] = $theme_options_default['top_slide_url_1'];
-				$theme_options_customize_default['text_title'] = $theme_options_default['top_slide_text_title_1'];
-				$theme_options_customize_default['text_caption'] = $theme_options_default['top_slide_text_caption_1'];
-				$theme_options_customize_default['text_btn'] = $theme_options_default['top_slide_text_btn_1'];
-				$theme_options_customize_default['text_align'] = $theme_options_default['top_slide_text_align_1'];
-				$theme_options_customize_default['text_color'] = $theme_options_default['top_slide_text_color_1'];
-				$theme_options_customize_default['text_shadow_use'] = $theme_options_default['top_slide_text_shadow_use_1'];
-				$theme_options_customize_default['text_shadow_color'] = $theme_options_default['top_slide_text_shadow_color_1'];
 				break;
 	    case 2:
 				$theme_options_customize_default['top_slide_image'] = $theme_options_default['top_slide_image_2'];
 				break;
 	    case 3:
 				$theme_options_customize_default['top_slide_image'] = $theme_options_default['top_slide_image_3'];
-				$theme_options_customize_default['url'] = $theme_options_default['top_slide_url_3'];
-				$theme_options_customize_default['text_title'] = $theme_options_default['top_slide_text_title_3'];
-				$theme_options_customize_default['text_caption'] = $theme_options_default['top_slide_text_caption_3'];
-				$theme_options_customize_default['text_btn'] = $theme_options_default['top_slide_text_btn_3'];
-				$theme_options_customize_default['text_align'] = $theme_options_default['top_slide_text_align_3'];
-				$theme_options_customize_default['text_color'] = $theme_options_default['top_slide_text_color_3'];
-				$theme_options_customize_default['text_shadow_use'] = $theme_options_default['top_slide_text_shadow_use_3'];
-				$theme_options_customize_default['text_shadow_color'] = $theme_options_default['top_slide_text_shadow_color_3'];
 				break;
 				}
 
@@ -315,7 +276,7 @@ function lightning_customize_register($wp_customize)
 
 			// url
 			$wp_customize->add_setting( 'lightning_theme_options[top_slide_url_'.$i.']',	array(
-				'default' 			=> $theme_options_customize_default['url'],
+				'default' 			=> '',
 				'type'				=> 'option',
 				'capability' 		=> 'edit_theme_options',
 				'sanitize_callback' => 'esc_url_raw',
@@ -351,7 +312,7 @@ function lightning_customize_register($wp_customize)
 
 		// text title
     $wp_customize->add_setting( 'lightning_theme_options[top_slide_text_title_'.$i.']',	array(
-			'default' 			=> $theme_options_customize_default['text_title'],
+			'default' 			=> '',
 			'type'				=> 'option',
 			'capability' 		=> 'edit_theme_options',
 			'sanitize_callback' => 'wp_kses_data',
@@ -370,7 +331,7 @@ function lightning_customize_register($wp_customize)
 
 		// text caption
     $wp_customize->add_setting( 'lightning_theme_options[top_slide_text_caption_'.$i.']',	array(
-      'default' 			=> $theme_options_customize_default['text_caption'],
+      'default' 			=> '',
       'type'				=> 'option',
       'capability' 		=> 'edit_theme_options',
       'sanitize_callback' => 'wp_kses_data',
@@ -389,7 +350,7 @@ function lightning_customize_register($wp_customize)
 
 		// btn text
     $wp_customize->add_setting( 'lightning_theme_options[top_slide_text_btn_'.$i.']',	array(
-      'default' 			=> $theme_options_customize_default['text_btn'],
+      'default' 			=> '',
       'type'				=> 'option',
       'capability' 		=> 'edit_theme_options',
       'sanitize_callback' => 'sanitize_text_field',
@@ -408,7 +369,7 @@ function lightning_customize_register($wp_customize)
 
 		// text position
     $wp_customize->add_setting( 'lightning_theme_options[top_slide_text_align_'.$i.']',  array(
-      'default'           => $theme_options_customize_default['text_align'],
+      'default'           => '',
       'type'              => 'option',
       'capability'        => 'edit_theme_options',
       'sanitize_callback' => 'lightning_sanitize_radio',
@@ -431,7 +392,7 @@ function lightning_customize_register($wp_customize)
 
 		// color
 		$wp_customize->add_setting( 'lightning_theme_options[top_slide_text_color_'.$i.']', array(
-			'default'			=> $theme_options_customize_default['text_color'],
+			'default'			=> '',
 			'type'				=> 'option',
 			'capability'		=> 'edit_theme_options',
 			'sanitize_callback' => 'sanitize_hex_color',
@@ -447,7 +408,7 @@ function lightning_customize_register($wp_customize)
 
 		// top_slide_text_shadow_use_
 		$wp_customize->add_setting('lightning_theme_options[top_slide_text_shadow_use_'.$i.']', array(
-			'default'			=> $theme_options_customize_default['text_shadow_use'],
+			'default'			=> '',
 			'type'				=> 'option',
 			'capability'		=> 'edit_theme_options',
 			'sanitize_callback' => 'lightning_sanitize_checkbox',
@@ -463,7 +424,7 @@ function lightning_customize_register($wp_customize)
 
 		// top_slide_text_shadow_color_
 		$wp_customize->add_setting( 'lightning_theme_options[top_slide_text_shadow_color_'.$i.']', array(
-			'default'			=> $theme_options_customize_default['text_shadow_color'],
+			'default'			=> '',
 			'type'				=> 'option',
 			'capability'		=> 'edit_theme_options',
 			'sanitize_callback' => 'sanitize_hex_color',

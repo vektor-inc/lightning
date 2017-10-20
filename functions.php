@@ -10,6 +10,7 @@ define( 'LIGHTNING_THEME_VERSION', $theme_opt->Version );
 /*-------------------------------------------*/
 /*	Load CSS
 /*-------------------------------------------*/
+
 /*-------------------------------------------*/
 /*	WidgetArea initiate
 /*-------------------------------------------*/
@@ -76,6 +77,20 @@ function lightning_theme_setup() {
 	/*	Feed Links
 	/*-------------------------------------------*/
 	add_theme_support( 'automatic-feed-links' );
+
+	/*-------------------------------------------*/
+	/*	Option init
+	/*-------------------------------------------*/
+	/*
+	Save default option first time.
+	When only customize default that, Can't save default value.
+	*/
+	$theme_options_default = lightning_theme_options_default();
+	if ( ! get_option( 'lightning_theme_options' ) ){
+		add_option( 'lightning_theme_options', $theme_options_default );
+		$lightning_theme_options = $theme_options_default;
+	}
+
 }
 
 /*-------------------------------------------*/
