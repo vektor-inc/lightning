@@ -11,30 +11,23 @@ function lightning_customize_register($wp_customize)
    class Custom_Text_Control extends WP_Customize_Control {
 		public $type = 'customtext';
 		public $description = ''; // we add this for the extra description
+		public $input_after = '';
 		public function render_content()
     { ?>
 		<label>
 			<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
-			<input type="text" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?> />
+			<?php $style = ( $this->input_after ) ? ' style="width:50%"' : '';?>
+			<div>
+			<input type="text" value="<?php echo esc_attr( $this->value() ); ?>"<?php echo $style;?> <?php $this->link(); ?> />
+			<?php echo $this->input_after; ?>
+			</div>
 			<span><?php echo $this->description; ?></span>
 		</label>
 		<?php
     } // public function render_content() {
 	} // class Custom_Text_Control extends WP_Customize_Control
 
-	/*	Add sanitize checkbox
-	/*-------------------------------------------*/
-	function lightning_sanitize_checkbox($input){
-		if($input==true){
-			return true;
-		} else {
-			return false;
-		}
-	}
 
-	function lightning_sanitize_radio($input){
-		return esc_attr( $input );
-	}
 
 	/*-------------------------------------------*/
 	/*	Lightning Panel
@@ -273,6 +266,38 @@ function lightning_customize_register($wp_customize)
 			'description' => __('This title text is print to alt tag.', 'lightning'),
 			) ) );
 
+		// color
+		$wp_customize->add_setting( 'lightning_theme_options[top_slide_cover_color_'.$i.']', array(
+			'default'			=> '',
+			'type'				=> 'option',
+			'capability'		=> 'edit_theme_options',
+			'sanitize_callback' => 'sanitize_hex_color',
+		) );
+		$priority = $priority + 1;
+		$wp_customize->add_control( new WP_Customize_Color_Control($wp_customize, 'top_slide_cover_color_'.$i.'', array(
+			'label'    => '['.$i.'] '.__('Slide cover color', 'lightning').' ( '.__('optional','lightning').' )',
+			'section'  => 'lightning_slide',
+			'settings' => 'lightning_theme_options[top_slide_cover_color_'.$i.']',
+			'priority' => $priority,
+		)));
+
+		// opacity
+		$wp_customize->add_setting( 'lightning_theme_options[top_slide_cover_opacity_'.$i.']',	array(
+			'default' 			=> '',
+			'type'				=> 'option',
+			'capability' 		=> 'edit_theme_options',
+			'sanitize_callback' => 'lightning_sanitize_number_percentage',
+			) );
+		$priority = $priority + 1;
+		$wp_customize->add_control( new Custom_Text_Control( $wp_customize, 'top_slide_cover_opacity_'.$i, array(
+			'label'     => '['.$i.'] '._x('Slide cover opacity', 'lightning theme-customizer', 'lightning'),
+			'section'  => 'lightning_slide',
+			'settings' => 'lightning_theme_options[top_slide_cover_opacity_'.$i.']',
+			'type' => 'text',
+			'priority' => $priority,
+			'description' => __('Please input 0 - 100 number', 'lightning'),
+			'input_after' => '%',
+			) ) );
 
 			// url
 			$wp_customize->add_setting( 'lightning_theme_options[top_slide_url_'.$i.']',	array(
@@ -469,27 +494,39 @@ function lightning_output_keycolorcss(){
 /*-------------------------------------------*/
 /*	Print head
 /*-------------------------------------------*/
-add_action( 'wp_head','lightning_print_css_common', 150);
+add_action( 'wp_head','lightning_print_css_common', 2);
 function lightning_print_css_common(){
 	$options = get_option('lightning_theme_options');
+	$skin_dynamic_css = '';
+
 	if ( isset($options['color_key']) && isset($options['color_key_dark']) ) {
-	$color_key = ( !empty($options['color_key']) )? esc_html($options['color_key']) : '#337ab7';
-	$color_key_dark = ( !empty($options['color_key_dark'] ) )? esc_html($options['color_key_dark']) : '#2e6da4';
-	?>
-<!-- [ Lightning Common ] -->
-<style type="text/css">
-.veu_color_txt_key { color:<?php echo $color_key_dark;?> ; }
-.veu_color_bg_key { background-color:<?php echo $color_key_dark;?> ; }
-.veu_color_border_key { border-color:<?php echo $color_key_dark;?> ; }
-a { color:<?php echo $color_key_dark;?> ; }
-a:hover { color:<?php echo $color_key;?> ; }
-.btn-default { border-color:<?php echo $color_key;?>;color:<?php echo $color_key;?>;}
-.btn-default:focus,
-.btn-default:hover { border-color:<?php echo $color_key;?>;background-color: <?php echo $color_key;?>; }
-.btn-primary { background-color:<?php echo $color_key;?>;border-color:<?php echo $color_key_dark;?>; }
-.btn-primary:focus,
-.btn-primary:hover { background-color:<?php echo $color_key_dark;?>;border-color:<?php echo $color_key;?>; }
-</style>
-<!-- [ / Lightning Common ] -->
-<?php } // if ( isset($options['color_key'] && isset($options['color_key_dark'] ) {
+		$color_key = ( !empty($options['color_key']) )? esc_html($options['color_key']) : '#337ab7';
+		$color_key_dark = ( !empty($options['color_key_dark'] ) )? esc_html($options['color_key_dark']) : '#2e6da4';
+		$skin_dynamic_css .= '
+		.veu_color_txt_key { color:'.$color_key_dark.' ; }
+		.veu_color_bg_key { background-color:'.$color_key_dark.' ; }
+		.veu_color_border_key { border-color:'.$color_key_dark.' ; }
+		a { color:'.$color_key_dark.' ; }
+		a:hover { color:'.$color_key.' ; }
+		.btn-default { border-color:'.$color_key.';color:'.$color_key.';}
+		.btn-default:focus,
+		.btn-default:hover { border-color:'.$color_key.';background-color: '.$color_key.'; }
+		.btn-primary { background-color:'.$color_key.';border-color:'.$color_key_dark.'; }
+		.btn-primary:focus,
+		.btn-primary:hover { background-color:'.$color_key_dark.';border-color:'.$color_key.'; }
+		';
+	} // if ( isset($options['color_key'] && isset($options['color_key_dark'] ) {
+
+	if ( $skin_dynamic_css ) {
+		// delete br
+		$skin_dynamic_css = str_replace(PHP_EOL, '', $skin_dynamic_css);
+		// delete tab
+		$skin_dynamic_css = preg_replace('/[\n\r\t]/', '', $skin_dynamic_css);
+		// multi space convert to single space
+		$skin_dynamic_css = preg_replace('/\s(?=\s)/', '', $skin_dynamic_css);
+
+		wp_add_inline_style( 'lightning-design-style', $skin_dynamic_css );
+
+	}
+
 }

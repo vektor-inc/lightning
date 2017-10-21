@@ -12,8 +12,48 @@
 /*-------------------------------------------*/
 /*	lightning_top_slide_image_src
 /*-------------------------------------------*/
+/*	lightning_top_slide_count
+/*-------------------------------------------*/
+/*	lightning_is_slide_outer_link
+/*-------------------------------------------*/
 /*	Archive title
 /*-------------------------------------------*/
+
+/*-------------------------------------------*/
+/*	Sanitize
+/*-------------------------------------------*/
+
+	/*	Add sanitize checkbox
+	/*-------------------------------------------*/
+	function lightning_sanitize_checkbox($input){
+		if( $input==true ){
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	function lightning_sanitize_number($input){
+		$input = mb_convert_kana( $input, 'a' );
+		if ( is_numeric( $input ) ){
+			return $input;
+		} else {
+			return 0;
+		}
+	}
+
+	function lightning_sanitize_number_percentage($input){
+		$input = lightning_sanitize_number( $input );
+		if ( 0 <=  $input && $input <= 100 ){
+			return $input;
+		} else {
+			return 0;
+		}
+	}
+
+	function lightning_sanitize_radio($input){
+		return esc_attr( $input );
+	}
 
 /*-------------------------------------------*/
 /*	Theme default options
@@ -178,6 +218,25 @@ function lightning_top_slide_image_src($i){
 }
 
 /*-------------------------------------------*/
+/*	lightning_top_slide_count
+/*-------------------------------------------*/
+function lightning_top_slide_count_max(){
+	$top_slide_count_max = 5;
+	$top_slide_count_max = apply_filters('lightning_top_slide_count_max',$top_slide_count_max);
+	return $top_slide_count_max;
+}
+function lightning_top_slide_count( $lightning_theme_options ){
+	$top_slide_count = 0;
+	$top_slide_count_max = lightning_top_slide_count_max();
+	for ( $i = 1; $i <= $top_slide_count_max; ) {
+	    if ( ! empty( $lightning_theme_options['top_slide_image_'.$i] ) ){
+				$top_slide_count ++;
+	    }
+	    $i++;
+	}
+	return $top_slide_count;
+}
+/*-------------------------------------------*/
 /*	lightning_is_slide_outer_link
 /*	link url exist but btn txt exixt? or not
 /*-------------------------------------------*/
@@ -188,29 +247,6 @@ function lightning_is_slide_outer_link( $lightning_theme_options, $i ){
 		return false;
 	}
 }
-
-function lightning_top_slide_font_style( $lightning_theme_options, $i ){
-	$top_slide_font_style = '';
-	// 色が登録されている場合
-	if ( ! empty( $lightning_theme_options[ 'top_slide_text_color_'.$i ] ) ) {
-		$top_slide_font_style .= 'color:' .$lightning_theme_options[ 'top_slide_text_color_'.$i ].';';
-	} else {
-		// その他（色が登録されていない）
-		$top_slide_font_style .= '';
-	}
-
-	// シャドウ
-	if ( isset( $lightning_theme_options[ 'top_slide_text_shadow_use_'.$i ] ) && $lightning_theme_options[ 'top_slide_text_shadow_use_'.$i ] ) {
-		if ( ! empty( $lightning_theme_options[ 'top_slide_text_shadow_color_'.$i ] ) ){
-			$top_slide_font_style .= 'text-shadow:0 0 2px '.$lightning_theme_options[ 'top_slide_text_shadow_color_'.$i ];
-		} else {
-			$top_slide_font_style .= 'text-shadow:0 0 2px #000';
-		}
-	}
-
-	return $top_slide_font_style;
-}
-
 
 /*-------------------------------------------*/
 /*	Archive title

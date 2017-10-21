@@ -3,18 +3,10 @@ $theme_options_default = lightning_theme_options_default();
 $lightning_theme_options = get_option('lightning_theme_options', $theme_options_default );
 
 // count top slide
-$top_slide_count = 0;
-$top_slide_count_max = 5;
-$top_slide_count_max = apply_filters('lightning_top_slide_count_max',$top_slide_count_max);
-
-for ( $i = 1; $i <= $top_slide_count_max; ) {
-    if ( ! empty( $lightning_theme_options['top_slide_image_'.$i] ) ){
-			$top_slide_count ++;
-    }
-    $i++;
-}
-
+$top_slide_count_max = lightning_top_slide_count_max();
+$top_slide_count = lightning_top_slide_count( $lightning_theme_options );
 $top_slide_count = apply_filters('lightning_top_slide_count',$top_slide_count);
+
 if ( $top_slide_count ) : ?>
 <div id="top__fullcarousel" data-interval="false" class="carousel slide" data-ride="carousel">
 <div class="carousel-inner">
@@ -31,6 +23,7 @@ if ( $top_slide_count ) : ?>
     <?php endif; ?>
 
     <?php
+		// Why end point is $top_slide_count_max that not $top_slide_count, image exist 1,2,5
     for ( $i = 1; $i <= $top_slide_count_max; ) {
 
 			$top_slide_url = '';
@@ -60,68 +53,117 @@ if ( $top_slide_count ) : ?>
 					  <img src="<?php echo esc_attr( $lightning_theme_options['top_slide_image_'.$i] )?>" alt="<?php echo esc_attr($top_slide_alt); ?>">
 					</picture>
 
+
+					<?php
+					/*-------------------------------------------*/
+					/*	slide-cover
+					/*-------------------------------------------*/
+					if ( ! empty( $lightning_theme_options['top_slide_cover_color_'.$i] ) ) {
+						$cover_style = 'background-color:'.$lightning_theme_options['top_slide_cover_color_'.$i];
+
+						if ( isset( $lightning_theme_options['top_slide_cover_opacity_'.$i] ) ) {
+							$opacity = test_lightning_sanitize_number_percentage( $lightning_theme_options['top_slide_cover_opacity_'.$i] ) / 100;
+							$cover_style = 'opacity:'.$opacity;
+						}
+						$cover_style = ( $cover_style ) ? ' style="'.esc_attr( $cover_style ).'"' : '';
+						echo '<div class="slide-cover"'.$cover_style.'></div>';
+					}
+
+ 					?>
+
 					<?php if ( lightning_is_slide_outer_link( $lightning_theme_options, $i ) ) :?>
 						</a>
 					<?php endif; ?>
 
 					<?php
+
+					/*-------------------------------------------*/
+					/*	mini_content
+					/*-------------------------------------------*/
+
+					$mini_content_args['style_class'] = 'mini-content-'.$i;
+					$mini_content_args['align'] = ( ! empty( $lightning_theme_options['top_slide_text_align_'.$i] ) ) ? $lightning_theme_options['top_slide_text_align_'.$i] : '';
+					$mini_content_args['title'] = ( ! empty( $lightning_theme_options['top_slide_text_title_'.$i] ) ) ? $lightning_theme_options['top_slide_text_title_'.$i] : '';
+					$mini_content_args['caption'] = ( ! empty( $lightning_theme_options['top_slide_text_caption_'.$i] ) ) ? $lightning_theme_options['top_slide_text_caption_'.$i] : '';
+					$mini_content_args['text_color'] = ( ! empty( $lightning_theme_options['top_slide_text_color_'.$i] ) ) ? $lightning_theme_options['top_slide_text_color_'.$i] : '#333';
+					$mini_content_args['link_url'] = ( ! empty( $lightning_theme_options['top_slide_url_'.$i] ) ) ? $lightning_theme_options['top_slide_url_'.$i] : '';
+					$mini_content_args['link_target'] = ( ! empty( $lightning_theme_options['top_slide_link_blank_'.$i] ) ) ? ' target="_blank"' : '';
+					$mini_content_args['btn_text'] = ( ! empty( $lightning_theme_options['top_slide_text_btn_'.$i] ) ) ? $lightning_theme_options['top_slide_text_btn_'.$i] : '';
+					$mini_content_args['btn_color'] = ( ! empty( $lightning_theme_options['top_slide_text_color_'.$i] ) ) ? $lightning_theme_options['top_slide_text_color_'.$i] : '#337ab7';
+					$mini_content_args['shadow_use'] = ( ! empty( $lightning_theme_options['top_slide_text_shadow_use_'.$i] ) ) ? $lightning_theme_options['top_slide_text_shadow_use_'.$i] : false;
+					$mini_content_args['shadow_color'] = ( ! empty( $lightning_theme_options['top_slide_text_shadow_color_'.$i] ) ) ? $lightning_theme_options['top_slide_text_shadow_color_'.$i] : '#fff';
+
+					// lightning_mini_content( $mini_content_args );
+
 					$style = '';
-					if ( ! empty( $lightning_theme_options['top_slide_text_align_'.$i] ) ){
-						$style = ' style="text-align:'.esc_attr( $lightning_theme_options['top_slide_text_align_'.$i] ).'"';
+					if ( $mini_content_args['align'] ){
+						$style = ' style="text-align:'.esc_attr( $mini_content_args['align'] ).'"';
 					}
 					 ?>
-					<div class="slide-text-set"<?php echo $style;?>>
+					<div class="slide-text-set mini-content <?php echo esc_attr( $mini_content_args['style_class'] ); ?>"<?php echo $style;?>>
 						<div class="container">
 
 	              <?php
 
-								if ( function_exists('lightning_top_slide_font_style') ) {
-									$top_slide_font_style = lightning_top_slide_font_style( $lightning_theme_options, $i );
+								$font_style = '';
+								if ( $mini_content_args['text_color'] ) {
+									$font_style .= 'color:' .$mini_content_args['text_color'].';';
 								} else {
-									$top_slide_font_style = '';
+									$font_style .= '';
 								}
 
+								if ( $mini_content_args['shadow_use'] ) {
+									if ( $mini_content_args['shadow_color'] ){
+										$font_style .= 'text-shadow:0 0 2px '.$mini_content_args['shadow_color'];
+									} else {
+										$font_style .= 'text-shadow:0 0 2px #000';
+									}
+								}
+
+								$font_style = ( $font_style ) ? ' style="'.esc_attr( $font_style ).'"' : '';
+
 	              // If Text Title exist
-	              if ( isset($lightning_theme_options['top_slide_text_title_'.$i] ) && $lightning_theme_options['top_slide_text_title_'.$i] ) : ?>
-	              	<h3 class="slide-text-title" style="<?php echo esc_attr( $top_slide_font_style );?>"><?php echo nl2br( wp_kses_post(  $lightning_theme_options['top_slide_text_title_'.$i] ) ); ?></h3>
+	              if ( $mini_content_args['title'] ) : ?>
+	              	<h3 class="slide-text-title"<?php echo $font_style;?>>
+										<?php echo nl2br( wp_kses_post(  $mini_content_args['title'] ) ); ?>
+									</h3>
 	              <?php endif; ?>
 
 	              <?php
 	              // If Text caption exist
-	              if ( isset( $lightning_theme_options['top_slide_text_caption_'.$i] ) && $lightning_theme_options['top_slide_text_caption_'.$i] ): ?>
-									<div class="slide-text-caption" style="<?php echo esc_attr( $top_slide_font_style );?>">
-										<?php echo nl2br( esc_textarea( $lightning_theme_options['top_slide_text_caption_'.$i] ) ); ?>
+	              if ( $mini_content_args['caption'] ): ?>
+									<div class="slide-text-caption"<?php echo $font_style ;?>>
+										<?php echo nl2br( esc_textarea( $mini_content_args['caption'] ) ); ?>
 									</div>
 	              <?php endif; ?>
 
 	              <?php
 	              // If Button exist
-	              if ( ! empty( $lightning_theme_options['top_slide_url_'.$i] ) && ! empty( $lightning_theme_options['top_slide_text_btn_'.$i] ) ) :
-									$text_color = ( ! empty( $lightning_theme_options['top_slide_text_color_'.$i] ) ) ? $lightning_theme_options['top_slide_text_color_'.$i] : '#fff';
-									$color_key = ( ! empty( $lightning_theme_options['color_key'] ) ) ? $lightning_theme_options['color_key'] : '#337ab7';
+	              if ( $mini_content_args['link_url'] && $mini_content_args['btn_text'] ) :
 									// Shadow
 									$box_shadow = '';
 									$text_shadow = '';
-									if ( isset( $lightning_theme_options[ 'top_slide_text_shadow_use_'.$i ] ) && $lightning_theme_options[ 'top_slide_text_shadow_use_'.$i ] ) {
-										if ( ! empty( $lightning_theme_options[ 'top_slide_text_shadow_color_'.$i ] ) ){
-											$box_shadow = 'box-shadow:0 0 2px '.$lightning_theme_options[ 'top_slide_text_shadow_color_'.$i ].';';
-											$text_shadow = 'text-shadow:0 0 2px '.$lightning_theme_options[ 'top_slide_text_shadow_color_'.$i ].';';
+									if ( $mini_content_args['shadow_use'] ) {
+										if ( $mini_content_args['shadow_color'] ){
+											$box_shadow = 'box-shadow:0 0 2px '.$mini_content_args['shadow_color'].';';
+											$text_shadow = 'text-shadow:0 0 2px '.$mini_content_args['shadow_color'].';';
 										} else {
 											$box_shadow = 'box-shadow:0 0 2px #000;';
 											$text_shadow = 'text-shadow:0 0 2px #000;';
 										}
 									}
 
+									$style_class = esc_attr( $mini_content_args['style_class'] );
 									echo '<style type="text/css">';
-									echo '.item-'.$i.' .btn-ghost { border-color:'.$text_color.';color:'.$text_color.';'.$box_shadow.$text_shadow.' }';
-									echo '.item-'.$i.' .btn-ghost:hover { border-color:'.$color_key.'; background-color:'.$color_key.'; color:#fff; text-shadow:none; }';
+									echo '.'.$style_class.' .btn-ghost { border-color:'.$mini_content_args['text_color'].';color:'.$mini_content_args['text_color'].';'.$box_shadow.$text_shadow.' }';
+									echo '.'.$style_class.' .btn-ghost:hover { border-color:'.$mini_content_args['btn_color'].'; background-color:'.$mini_content_args['btn_color'].'; color:#fff; text-shadow:none; }';
 									echo '</style>';
 									?>
-									<a class="btn btn-ghost" href="<?php echo esc_url( $top_slide_url ); ?>" <?php echo $link_target; ?>><?php echo wp_kses_post( $lightning_theme_options['top_slide_text_btn_'.$i] ); ?></a>
+									<a class="btn btn-ghost" href="<?php echo esc_url( $mini_content_args['link_url'] ); ?>"<?php echo $mini_content_args['link_target']; ?>><?php echo wp_kses_post( $mini_content_args['btn_text'] ); ?></a>
 								<?php endif; ?>
 
 	            </div><!-- .container -->
-						</div><!-- [ /.slide-text-set ] -->
+						</div><!-- [ /.slide-text-set.mini-content  ] -->
 	      </div><!-- [ /.item ] -->
 
 			<?php } // if ( $top_slide_image_src ) { ?>
