@@ -27,19 +27,7 @@ function lightning_customize_register($wp_customize)
     } // public function render_content() {
 	} // class Custom_Text_Control extends WP_Customize_Control
 
-	/*	Add sanitize checkbox
-	/*-------------------------------------------*/
-	function lightning_sanitize_checkbox($input){
-		if($input==true){
-			return true;
-		} else {
-			return false;
-		}
-	}
 
-	function lightning_sanitize_radio($input){
-		return esc_attr( $input );
-	}
 
 	/*-------------------------------------------*/
 	/*	Lightning Panel
@@ -298,7 +286,7 @@ function lightning_customize_register($wp_customize)
 			'default' 			=> '',
 			'type'				=> 'option',
 			'capability' 		=> 'edit_theme_options',
-			'sanitize_callback' => 'sanitize_text_field',
+			'sanitize_callback' => 'lightning_sanitize_number_percentage',
 			) );
 		$priority = $priority + 1;
 		$wp_customize->add_control( new Custom_Text_Control( $wp_customize, 'top_slide_cover_opacity_'.$i, array(
