@@ -11,11 +11,16 @@ function lightning_customize_register($wp_customize)
    class Custom_Text_Control extends WP_Customize_Control {
 		public $type = 'customtext';
 		public $description = ''; // we add this for the extra description
+		public $input_after = '';
 		public function render_content()
     { ?>
 		<label>
 			<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
-			<input type="text" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?> />
+			<?php $style = ( $this->input_after ) ? ' style="width:50%"' : '';?>
+			<div>
+			<input type="text" value="<?php echo esc_attr( $this->value() ); ?>"<?php echo $style;?> <?php $this->link(); ?> />
+			<?php echo $this->input_after; ?>
+			</div>
 			<span><?php echo $this->description; ?></span>
 		</label>
 		<?php
@@ -273,6 +278,38 @@ function lightning_customize_register($wp_customize)
 			'description' => __('This title text is print to alt tag.', 'lightning'),
 			) ) );
 
+		// color
+		$wp_customize->add_setting( 'lightning_theme_options[top_slide_cover_color_'.$i.']', array(
+			'default'			=> '',
+			'type'				=> 'option',
+			'capability'		=> 'edit_theme_options',
+			'sanitize_callback' => 'sanitize_hex_color',
+		) );
+		$priority = $priority + 1;
+		$wp_customize->add_control( new WP_Customize_Color_Control($wp_customize, 'top_slide_cover_color_'.$i.'', array(
+			'label'    => '['.$i.'] '.__('Slide cover color', 'lightning').' ( '.__('optional','lightning').' )',
+			'section'  => 'lightning_slide',
+			'settings' => 'lightning_theme_options[top_slide_cover_color_'.$i.']',
+			'priority' => $priority,
+		)));
+
+		// opacity
+		$wp_customize->add_setting( 'lightning_theme_options[top_slide_cover_opacity_'.$i.']',	array(
+			'default' 			=> '',
+			'type'				=> 'option',
+			'capability' 		=> 'edit_theme_options',
+			'sanitize_callback' => 'sanitize_text_field',
+			) );
+		$priority = $priority + 1;
+		$wp_customize->add_control( new Custom_Text_Control( $wp_customize, 'top_slide_cover_opacity_'.$i, array(
+			'label'     => '['.$i.'] '._x('Slide cover opacity', 'lightning theme-customizer', 'lightning'),
+			'section'  => 'lightning_slide',
+			'settings' => 'lightning_theme_options[top_slide_cover_opacity_'.$i.']',
+			'type' => 'text',
+			'priority' => $priority,
+			'description' => __('Please input 0 - 100 number', 'lightning'),
+			'input_after' => '%',
+			) ) );
 
 			// url
 			$wp_customize->add_setting( 'lightning_theme_options[top_slide_url_'.$i.']',	array(
