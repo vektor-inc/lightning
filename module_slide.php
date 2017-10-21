@@ -3,17 +3,8 @@ $theme_options_default = lightning_theme_options_default();
 $lightning_theme_options = get_option('lightning_theme_options', $theme_options_default );
 
 // count top slide
-$top_slide_count = 0;
-$top_slide_count_max = 5;
-$top_slide_count_max = apply_filters('lightning_top_slide_count_max',$top_slide_count_max);
-
-for ( $i = 1; $i <= $top_slide_count_max; ) {
-    if ( ! empty( $lightning_theme_options['top_slide_image_'.$i] ) ){
-			$top_slide_count ++;
-    }
-    $i++;
-}
-
+$top_slide_count_max = lightning_top_slide_count_max();
+$top_slide_count = lightning_top_slide_count( $lightning_theme_options );
 $top_slide_count = apply_filters('lightning_top_slide_count',$top_slide_count);
 if ( $top_slide_count ) : ?>
 <div id="top__fullcarousel" data-interval="false" class="carousel slide" data-ride="carousel">
@@ -31,6 +22,7 @@ if ( $top_slide_count ) : ?>
     <?php endif; ?>
 
     <?php
+		// Why end point is $top_slide_count_max that not $top_slide_count, image exist 1,2,5
     for ( $i = 1; $i <= $top_slide_count_max; ) {
 
 			$top_slide_url = '';

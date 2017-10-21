@@ -12,6 +12,10 @@
 /*-------------------------------------------*/
 /*	lightning_top_slide_image_src
 /*-------------------------------------------*/
+/*	lightning_top_slide_count
+/*-------------------------------------------*/
+/*	lightning_is_slide_outer_link
+/*-------------------------------------------*/
 /*	Archive title
 /*-------------------------------------------*/
 
@@ -177,6 +181,25 @@ function lightning_top_slide_image_src($i){
     return $top_slide_image_src;
 }
 
+/*-------------------------------------------*/
+/*	lightning_top_slide_count
+/*-------------------------------------------*/
+function lightning_top_slide_count_max(){
+	$top_slide_count_max = 5;
+	$top_slide_count_max = apply_filters('lightning_top_slide_count_max',$top_slide_count_max);
+	return $top_slide_count_max;
+}
+function lightning_top_slide_count( $lightning_theme_options ){
+	$top_slide_count = 0;
+	$top_slide_count_max = lightning_top_slide_count_max();
+	for ( $i = 1; $i <= $top_slide_count_max; ) {
+	    if ( ! empty( $lightning_theme_options['top_slide_image_'.$i] ) ){
+				$top_slide_count ++;
+	    }
+	    $i++;
+	}
+	return $i;
+}
 /*-------------------------------------------*/
 /*	lightning_is_slide_outer_link
 /*	link url exist but btn txt exixt? or not
