@@ -198,7 +198,7 @@ function lightning_top_slide_count( $lightning_theme_options ){
 	    }
 	    $i++;
 	}
-	return $i;
+	return $top_slide_count;
 }
 /*-------------------------------------------*/
 /*	lightning_is_slide_outer_link
