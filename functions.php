@@ -226,10 +226,10 @@ function lightning_widgets_init() {
 		register_sidebar( array(
 			'name' => __( 'Home content top', 'lightning' ),
 			'id' => 'home-content-top-widget-area',
-			'before_widget' => '<section class="widget %2$s" id="%1$s">',
-			'after_widget' => '</section>',
-			'before_title' => '<h1 class="mainSection-title">',
-			'after_title' => '</h1>',
+			'before_widget' => '<div class="widget %2$s" id="%1$s">',
+			'after_widget' => '</div>',
+			'before_title' => '<h2 class="mainSection-title">',
+			'after_title' => '</h2>',
 		) );
 
 	// footer upper widget area
@@ -276,10 +276,10 @@ function lightning_widgets_init() {
 				register_sidebar( array(
 					'name' => __( 'LP widget "', 'lightning' ).esc_html($post->post_title).'"',
 					'id' => 'lp-widget-'.$post->ID,
-					'before_widget' => '<section class="widget %2$s" id="%1$s">',
-					'after_widget' => '</section>',
-					'before_title' => '<h1 class="mainSection-title">',
-					'after_title' => '</h1>',
+					'before_widget' => '<div class="widget %2$s" id="%1$s">',
+					'after_widget' => '</div>',
+					'before_title' => '<h2 class="mainSection-title">',
+					'after_title' => '</h2>',
 				) );
 			}
 		}

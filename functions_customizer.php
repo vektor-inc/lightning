@@ -43,7 +43,7 @@ function lightning_customize_register($wp_customize)
 	/*	Design setting
 	/*-------------------------------------------*/
 	$wp_customize->add_section( 'lightning_design', array(
-		'title'				=> _x('Lightning Design settings', 'lightning theme-customizer', 'lightning'),
+		'title'				=> _x('Lightning Design settings', 'lightning theme-customizer', 'lightning' ),
 		'priority'			=> 500,
 		// 'panel'				=> 'lightning_setting',
 	) );
@@ -61,11 +61,11 @@ function lightning_customize_register($wp_customize)
 		$wp_customize,
 		'head_logo',
 		array(
-			'label'     => _x('Header logo image', 'lightning theme-customizer', 'lightning'),
+			'label'     => _x('Header logo image', 'lightning theme-customizer', 'lightning' ),
 			'section'   => 'lightning_design',
 			'settings'  => 'lightning_theme_options[head_logo]',
 			'priority'  => 501,
-			'description' => __('Recommended image size : 280*60px', 'lightning'),
+			'description' => __( 'Recommended image size : 280*60px', 'lightning' ),
 		)
 	) );
 	$wp_customize->selective_refresh->add_partial( 'lightning_theme_options[head_logo]', array(
@@ -90,13 +90,13 @@ function lightning_customize_register($wp_customize)
 
 	if( apply_filters( 'lightning_show_default_keycolor_customizer', true ) ){
 		$wp_customize->add_control( new WP_Customize_Color_Control($wp_customize, 'color_key', array(
-			'label'    => _x('Key color', 'lightning theme-customizer', 'lightning'),
+			'label'    => _x('Key color', 'lightning theme-customizer', 'lightning' ),
 			'section'  => 'lightning_design',
 			'settings' => 'lightning_theme_options[color_key]',
 			'priority' => 502,
 		)));
 		$wp_customize->add_control( new WP_Customize_Color_Control($wp_customize, 'color_key_dark', array(
-			'label'    => _x('Key color(dark)', 'lightning theme-customizer', 'lightning'),
+			'label'    => _x('Key color(dark)', 'lightning theme-customizer', 'lightning' ),
 			'section'  => 'lightning_design',
 			'settings' => 'lightning_theme_options[color_key_dark]',
 			'priority' => 503,
@@ -172,7 +172,7 @@ function lightning_customize_register($wp_customize)
 	/*	Top slide show
 	/*-------------------------------------------*/
 	$wp_customize->add_section( 'lightning_slide', array(
-		'title'			=> _x('Lightning Home page slide show', 'lightning theme-customizer', 'lightning'),
+		'title'			=> _x('Lightning Home page slide show', 'lightning theme-customizer', 'lightning' ),
 		'priority'		=> 600,
 		// 'panel'			=> 'lightning_setting',
 	) );
@@ -218,11 +218,11 @@ function lightning_customize_register($wp_customize)
 			$wp_customize,
 			'top_slide_image_'.$i,
 			array(
-				'label'     => '['.$i.'] '._x('Slide image', 'lightning theme-customizer', 'lightning'),
+				'label'     => '['.$i.'] '._x('Slide image', 'lightning theme-customizer', 'lightning' ),
 				'section'   => 'lightning_slide',
 				'settings'  => 'lightning_theme_options[top_slide_image_'.$i.']',
 				'priority'  => $priority,
-				'description' => __('Recommended image size : 1900*600px', 'lightning'),
+				'description' => __( 'Recommended image size : 1900*600px', 'lightning' ),
 			)
 		) );
 
@@ -240,7 +240,7 @@ function lightning_customize_register($wp_customize)
 			$wp_customize,
 			'top_slide_image_mobile_'.$i,
 			array(
-				'label'     => '['.$i.'] '.__('Slide image for mobile', 'lightning').' ( '.__('optional','lightning').' )',
+				'label'     => '['.$i.'] '.__( 'Slide image for mobile', 'lightning' ).' ( '.__( 'optional','lightning' ).' )',
 				'section'   => 'lightning_slide',
 				'settings'  => 'lightning_theme_options[top_slide_image_mobile_'.$i.']',
 				'priority'  => $priority,
@@ -258,12 +258,12 @@ function lightning_customize_register($wp_customize)
 
 		$priority = $priority + 1;
 		$wp_customize->add_control( new Custom_Text_Control( $wp_customize, 'top_slide_alt_'.$i, array(
-			'label'     => '['.$i.'] '._x('Slide image alt', 'lightning theme-customizer', 'lightning'),
+			'label'     => '['.$i.'] '.__( 'Slide image alt', 'lightning' ),
 			'section'  => 'lightning_slide',
 			'settings' => 'lightning_theme_options[top_slide_alt_'.$i.']',
 			'type' => 'text',
 			'priority' => $priority,
-			'description' => __('This title text is print to alt tag.', 'lightning'),
+			'description' => __( 'This title text is print to alt tag.', 'lightning' ),
 			) ) );
 
 		// color
@@ -275,7 +275,7 @@ function lightning_customize_register($wp_customize)
 		) );
 		$priority = $priority + 1;
 		$wp_customize->add_control( new WP_Customize_Color_Control($wp_customize, 'top_slide_cover_color_'.$i.'', array(
-			'label'    => '['.$i.'] '.__('Slide cover color', 'lightning').' ( '.__('optional','lightning').' )',
+			'label'    => '['.$i.'] '.__( 'Slide cover color', 'lightning' ).' ( '.__( 'optional','lightning' ).' )',
 			'section'  => 'lightning_slide',
 			'settings' => 'lightning_theme_options[top_slide_cover_color_'.$i.']',
 			'priority' => $priority,
@@ -290,12 +290,12 @@ function lightning_customize_register($wp_customize)
 			) );
 		$priority = $priority + 1;
 		$wp_customize->add_control( new Custom_Text_Control( $wp_customize, 'top_slide_cover_opacity_'.$i, array(
-			'label'     => '['.$i.'] '._x('Slide cover opacity', 'lightning theme-customizer', 'lightning'),
+			'label'     => '['.$i.'] '.__( 'Slide cover opacity', 'lightning' ),
 			'section'  => 'lightning_slide',
 			'settings' => 'lightning_theme_options[top_slide_cover_opacity_'.$i.']',
 			'type' => 'text',
 			'priority' => $priority,
-			'description' => __('Please input 0 - 100 number', 'lightning'),
+			'description' => __( 'Please input 0 - 100 number', 'lightning' ),
 			'input_after' => '%',
 			) ) );
 
@@ -309,7 +309,7 @@ function lightning_customize_register($wp_customize)
 
 			$priority = $priority + 1;
 			$wp_customize->add_control( 'top_slide_url_'.$i, array(
-				'label'     => '['.$i.'] '._x('Slide image link url', 'lightning theme-customizer', 'lightning'),
+				'label'     => '['.$i.'] '._x('Slide image link url', 'lightning theme-customizer', 'lightning' ),
 				'section'  => 'lightning_slide',
 				'settings' => 'lightning_theme_options[top_slide_url_'.$i.']',
 				'type' => 'text',
@@ -345,7 +345,7 @@ function lightning_customize_register($wp_customize)
 
 		$priority = $priority + 1;
     $wp_customize->add_control( 'top_slide_text_title_'.$i, array(
-      'label'     => '['.$i.'] '.__('Slide title', 'lightning').' ( '.__('optional','lightning').' )',
+      'label'     => '['.$i.'] '.__( 'Slide title', 'lightning' ).' ( '.__( 'optional','lightning' ).' )',
       'section'  => 'lightning_slide',
       'settings' => 'lightning_theme_options[top_slide_text_title_'.$i.']',
       'type' => 'textarea',
@@ -364,7 +364,7 @@ function lightning_customize_register($wp_customize)
 
 		$priority = $priority + 1;
     $wp_customize->add_control( 'top_slide_text_caption_'.$i, array(
-      'label'     => '['.$i.'] '.__('Slide text', 'lightning').' ( '.__('optional','lightning').' )',
+      'label'     => '['.$i.'] '.__( 'Slide text', 'lightning' ).' ( '.__( 'optional','lightning' ).' )',
       'section'  => 'lightning_slide',
       'settings' => 'lightning_theme_options[top_slide_text_caption_'.$i.']',
       'type' => 'textarea',
@@ -383,12 +383,12 @@ function lightning_customize_register($wp_customize)
 
 		$priority = $priority + 1;
     $wp_customize->add_control( new Custom_Text_Control( $wp_customize, 'top_slide_text_btn_'.$i, array(
-      'label'     => '['.$i.'] '.__('Button text', 'lightning').' ( '.__('optional','lightning').' )',
+      'label'     => '['.$i.'] '.__( 'Button text', 'lightning' ).' ( '.__( 'optional','lightning' ).' )',
       'section'  => 'lightning_slide',
       'settings' => 'lightning_theme_options[top_slide_text_btn_'.$i.']',
       'type' => 'text',
       'priority' => $priority,
-      'description' => __('If you do not fill in the link url and button text that, button is do not display.', 'lightning'),
+      'description' => __( 'If you do not fill in the link url and button text that, button is do not display.', 'lightning' ),
     ) ) );
 
 
@@ -402,15 +402,15 @@ function lightning_customize_register($wp_customize)
 
     $priority = $priority + 1;
     $wp_customize->add_control( 'top_slide_text_align_'.$i, array(
-  		'label'     => '['.$i.'] '.__('Position to display text', 'lightning').' ( '.__('optional','lightning').' )',
+  		'label'     => '['.$i.'] '.__( 'Position to display text', 'lightning' ).' ( '.__( 'optional','lightning' ).' )',
   		'section'   => 'lightning_slide',
   		'settings'  => 'lightning_theme_options[top_slide_text_align_'.$i.']',
   		'type' => 'radio',
       'priority' => $priority,
   		'choices' => array(
-				'left' => __('Left', 'lightning'),
-  			'center' => __('Center', 'lightning'),
-  			'right' => __('Right', 'lightning'),
+				'left' => __( 'Left', 'lightning' ),
+  			'center' => __( 'Center', 'lightning' ),
+  			'right' => __( 'Right', 'lightning' ),
   			),
   	));
 
@@ -424,7 +424,7 @@ function lightning_customize_register($wp_customize)
 		) );
 		$priority = $priority + 1;
 		$wp_customize->add_control( new WP_Customize_Color_Control($wp_customize, 'top_slide_text_color_'.$i.'', array(
-			'label'    => '['.$i.'] '.__('Slide text color', 'lightning').' ( '.__('optional','lightning').' )',
+			'label'    => '['.$i.'] '.__( 'Slide text color', 'lightning' ).' ( '.__( 'optional','lightning' ).' )',
 			'section'  => 'lightning_slide',
 			'settings' => 'lightning_theme_options[top_slide_text_color_'.$i.']',
 			'priority' => $priority,
@@ -440,7 +440,7 @@ function lightning_customize_register($wp_customize)
 		));
 		$priority = $priority + 1;
 		$wp_customize->add_control( 'lightning_theme_options[top_slide_text_shadow_use_'.$i.']', array(
-			'label'		=> __( 'Use text shadow' ,'lightning theme-customizer', 'lightning' ).' ( '.__('optional','lightning').' )',
+			'label'		=> __( 'Use text shadow' ,'lightning theme-customizer', 'lightning' ).' ( '.__( 'optional','lightning' ).' )',
 			'section'	=> 'lightning_slide',
 			'settings'  => 'lightning_theme_options[top_slide_text_shadow_use_'.$i.']',
 			'type'		=> 'checkbox',
@@ -456,7 +456,7 @@ function lightning_customize_register($wp_customize)
 		) );
 		$priority = $priority + 1;
 		$wp_customize->add_control( new WP_Customize_Color_Control($wp_customize, 'top_slide_text_shadow_color_'.$i.'', array(
-			'label'    => '['.$i.'] '.__('Text shadow color', 'lightning').' ( '.__('optional','lightning').' )',
+			'label'    => '['.$i.'] '.__( 'Text shadow color', 'lightning' ).' ( '.__( 'optional','lightning' ).' )',
 			'section'  => 'lightning_slide',
 			'settings' => 'lightning_theme_options[top_slide_text_shadow_color_'.$i.']',
 			'priority' => $priority,
