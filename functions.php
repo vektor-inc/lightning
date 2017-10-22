@@ -137,7 +137,7 @@ function lightning_commentJs(){
 /*-------------------------------------------*/
 add_action('wp_enqueue_scripts', 'lightning_css' );
 function lightning_css(){
-	wp_enqueue_style( 'font-awesome', get_template_directory_uri().'/library/font-awesome/4.6.1/css/font-awesome.min.css', array(), '4.6.1' );
+	wp_enqueue_style( 'font-awesome', get_template_directory_uri().'/library/font-awesome/4.7.0/css/font-awesome.min.css', array(), '4.7.0' );
 	wp_enqueue_style( 'lightning-theme-style', get_stylesheet_uri(), array('lightning-design-style'), LIGHTNING_THEME_VERSION );
 }
 
