@@ -10,6 +10,16 @@ define( 'LIGHTNING_THEME_VERSION', $theme_opt->Version );
 /*-------------------------------------------*/
 /*	Load CSS
 /*-------------------------------------------*/
+/*	Load Theme Customizer additions.
+/*-------------------------------------------*/
+/*	Load Custom template tags for this theme.
+/*-------------------------------------------*/
+/*	Load designskin manager
+/*-------------------------------------------*/
+/*	Load tga(Plugin install)
+/*-------------------------------------------*/
+/*	Load Front PR Blocks
+/*-------------------------------------------*/
 
 /*-------------------------------------------*/
 /*	WidgetArea initiate
@@ -139,24 +149,24 @@ function lightning_design_css(){
 }
 
 /*-------------------------------------------*/
-/*	Load Theme customizer
+/*	Load Theme Customizer additions.
 /*-------------------------------------------*/
-get_template_part( 'functions_customizer' );
+require get_parent_theme_file_path( '/inc/customizer.php' );
 
 /*-------------------------------------------*/
-/*	Load helpers
+/*	Load Custom template tags for this theme.
 /*-------------------------------------------*/
-get_template_part( 'functions_helpers' );
+require get_parent_theme_file_path( '/inc/template-tags.php' );
 
 /*-------------------------------------------*/
 /*	Load designskin manager
 /*-------------------------------------------*/
-get_template_part( 'inc/class-design-manager' );
+require get_parent_theme_file_path( '/inc/class-design-manager.php' );
 
 /*-------------------------------------------*/
 /*	Load tga(Plugin install)
 /*-------------------------------------------*/
-get_template_part( 'inc/tgm-plugin-activation/tgm-config' );
+require get_parent_theme_file_path( '/inc/tgm-plugin-activation/tgm-config.php' );
 
 /*-------------------------------------------*/
 /*	Load Front PR Blocks
