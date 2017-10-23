@@ -88,6 +88,7 @@ if ( $top_slide_count ) : ?>
 					$mini_content_args['link_target'] = ( ! empty( $lightning_theme_options['top_slide_link_blank_'.$i] ) ) ? ' target="_blank"' : '';
 					$mini_content_args['btn_text'] = ( ! empty( $lightning_theme_options['top_slide_text_btn_'.$i] ) ) ? $lightning_theme_options['top_slide_text_btn_'.$i] : '';
 					$mini_content_args['btn_color'] = ( ! empty( $lightning_theme_options['top_slide_text_color_'.$i] ) ) ? $lightning_theme_options['top_slide_text_color_'.$i] : '#337ab7';
+					$mini_content_args['btn_bg_color'] = ( ! empty( $lightning_theme_options['color_key'] ) ) ? $lightning_theme_options['color_key'] : '#337ab7';
 					$mini_content_args['shadow_use'] = ( ! empty( $lightning_theme_options['top_slide_text_shadow_use_'.$i] ) ) ? $lightning_theme_options['top_slide_text_shadow_use_'.$i] : false;
 					$mini_content_args['shadow_color'] = ( ! empty( $lightning_theme_options['top_slide_text_shadow_color_'.$i] ) ) ? $lightning_theme_options['top_slide_text_shadow_color_'.$i] : '#fff';
 
@@ -154,7 +155,7 @@ if ( $top_slide_count ) : ?>
 									$style_class = esc_attr( $mini_content_args['style_class'] );
 									echo '<style type="text/css">';
 									echo '.'.$style_class.' .btn-ghost { border-color:'.$mini_content_args['text_color'].';color:'.$mini_content_args['text_color'].';'.$box_shadow.$text_shadow.' }';
-									echo '.'.$style_class.' .btn-ghost:hover { border-color:'.$mini_content_args['btn_color'].'; background-color:'.$mini_content_args['btn_color'].'; color:#fff; text-shadow:none; }';
+									echo '.'.$style_class.' .btn-ghost:hover { border-color:'.$mini_content_args['btn_bg_color'].'; background-color:'.$mini_content_args['btn_bg_color'].'; color:#fff; text-shadow:none; }';
 									echo '</style>';
 									?>
 									<a class="btn btn-ghost" href="<?php echo esc_url( $mini_content_args['link_url'] ); ?>"<?php echo $mini_content_args['link_target']; ?>><?php echo wp_kses_post( $mini_content_args['btn_text'] ); ?></a>
