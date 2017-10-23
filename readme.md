@@ -5,7 +5,7 @@
 
 Lightning is a very simple & easy to customize theme which is based on the Bootstrap. It is also very friendly with custom post types and custom taxonomies. When you add a new one, the breadcrumbs will be adjusted and posts will look beautifully without editing or adding a template files.
 
-* [Official Web Site](http://lightning.vektor-inc.co.jp/)
+* [Official Web Site](http://lightning.nagoya/)
 * [wordpress.org](https://wordpress.org/themes/lightning/)
 
 ---
@@ -17,7 +17,7 @@ Lightningにはデザインスキンを外部から切り替える機能があ�
 
 https://github.com/kurudrive/lightning-skin-sample
 
---- 
+---
 
 ### クラスの命名ルールについて
 
