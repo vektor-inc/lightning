@@ -21,14 +21,6 @@ class LightningTest extends WP_UnitTestCase {
 		$lightning_theme_options['top_slide_image_3'] = 'https://lightning.nagoya/images/sample.jpg';
 		update_option( 'lightning_theme_options',  $lightning_theme_options );
 
-		// PC版スライド画像のURLが正しく返ってくるかどうか？
-		$top_slide_image_src = lightning_top_slide_image_src(1);
-		$this->assertEquals('https://lightning.nagoya/images/sample.jpg', $top_slide_image_src);
-
-		// PC版の登録がなくモバイル版だけ登録されたときにモバイル版のURLではなく空を返すか？
-		$top_slide_image_src = lightning_top_slide_image_src(2);
-		$this->assertEquals( '', $top_slide_image_src );
-
 		// ユーザーエージェントがとれない時は is_mobileはfalseを返す
 		$is_mobile_state = lightning_is_mobile();
 		$this->assertEquals( false, $is_mobile_state);
@@ -40,13 +32,54 @@ class LightningTest extends WP_UnitTestCase {
 		$is_mobile_state = lightning_is_mobile();
 		$this->assertEquals( true, $is_mobile_state );
 
-		// モバイル端末で閲覧時にモバイル画像を返すかどうか
-		$top_slide_image_src = lightning_top_slide_image_src(1);
-		$this->assertEquals('https://lightning.nagoya/images/sample_mobile.jpg', $top_slide_image_src);
-
-		// モバイルの時にPC版だけの画像が登録されておりモバイル画像が非登録の場合にPC画像のURLを返すかどうか
-		$top_slide_image_src = lightning_top_slide_image_src(3);
-		$this->assertEquals('https://lightning.nagoya/images/sample.jpg', $top_slide_image_src);
-
 	}
+
+	function test_sanitaize_number(){
+		$test_array = array(
+			array(
+				'input' => '１０',
+				'correct' => 10,
+			),
+			array(
+				'input' => 'test',
+				'correct' => 0
+			),
+			array(
+				'input' => '',
+				'correct' => 0
+			)
+		);
+
+		foreach ($test_array as $key => $value) {
+			$return = lightning_sanitize_number($value['input']);
+			$this->assertEquals( $value['correct'], $return );
+		}
+	}
+
+	function test_lightning_sanitize_number_percentage(){
+		$test_array = array(
+			array(
+				'input' => '100',
+				'correct' => 100,
+			),
+			array(
+				'input' => '0',
+				'correct' => 0,
+			),
+			array(
+				'input' => '10000',
+				'correct' => 0,
+			),
+			array(
+				'input' => '',
+				'correct' => 0
+			)
+		);
+
+		foreach ($test_array as $key => $value) {
+			$return = lightning_sanitize_number_percentage($value['input']);
+			$this->assertEquals( $value['correct'], $return );
+		}
+	}
+
 }

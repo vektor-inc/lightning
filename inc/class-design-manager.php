@@ -18,7 +18,7 @@ class Lightning_Design_Manager{
 		// );
 
 		$wp_customize->add_setting( 'lightning_design_skin', array(
-			'origin'            => 'origin',
+			'default'           => 'origin',
 			'type'              => 'option',
 			'capability'        => 'edit_theme_options',
 			'sanitize_callback' => array( __CLASS__, 'sanitize_design_skins' ),

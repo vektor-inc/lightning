@@ -32,6 +32,11 @@ http://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v4.0.0
+* [ Add function ] Add home page header slider text and button function.
+* [ Add function ] Add Customize shortcut link.
+* [ Specification change ][ LP template ] Can use widget area private page.
+
 v3.4.0
 * [ Add function ] Add theme support for selective refresh for widgets.
 

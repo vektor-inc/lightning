@@ -6,5 +6,5 @@ sass_dir = "_scss"
 # output_style = :compact
 output_style = :compressed
 line_comments = false
-# cache = false
+cache = false
 # sass_options = {:debug_info => false}

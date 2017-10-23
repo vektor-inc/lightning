@@ -5,7 +5,7 @@
 /* Lightning All Area All Skin common style
 /****************************************************************/
 
-$border_primary : 1px solid #e5e5e5; 
+$border_primary : 1px solid #e5e5e5;
 $color_font_default : #464646;
 $color_key : #337ab7;
 $margin_bottom : 1.2em;
@@ -90,7 +90,7 @@ table { border-collapse: collapse; border-spacing: 0;width:100%; border-top:$bor
 /*-------------------------------------------*/
 /* .btn
 /*-------------------------------------------*/
-.btn { white-space: inherit; }
+.btn { white-space: normal; }
 .btn-xs { padding-left:15px;padding-right:15px; }
 
 /*-------------------------------------------*/
