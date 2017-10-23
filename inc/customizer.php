@@ -118,6 +118,10 @@ function lightning_customize_register($wp_customize)
 		'type'		=> 'checkbox',
 		'priority'	=> 520,
 	));
+	$wp_customize->selective_refresh->add_partial( 'lightning_theme_options[top_sidebar_hidden]', array(
+		'selector' => '.home .mainSection',
+		'render_callback' => '',
+	) );
 
 
 	// top_default_content_hidden
