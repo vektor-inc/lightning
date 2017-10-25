@@ -43,7 +43,7 @@ function lightning_customize_register($wp_customize)
 	/*	Design setting
 	/*-------------------------------------------*/
 	$wp_customize->add_section( 'lightning_design', array(
-		'title'				=> _x('Lightning Design settings', 'lightning theme-customizer', 'lightning' ),
+		'title'				=> __('Lightning Design settings', 'lightning' ),
 		'priority'			=> 500,
 		// 'panel'				=> 'lightning_setting',
 	) );
@@ -61,7 +61,7 @@ function lightning_customize_register($wp_customize)
 		$wp_customize,
 		'head_logo',
 		array(
-			'label'     => _x('Header logo image', 'lightning theme-customizer', 'lightning' ),
+			'label'     => __('Header logo image', 'lightning' ),
 			'section'   => 'lightning_design',
 			'settings'  => 'lightning_theme_options[head_logo]',
 			'priority'  => 501,
@@ -90,13 +90,13 @@ function lightning_customize_register($wp_customize)
 
 	if( apply_filters( 'lightning_show_default_keycolor_customizer', true ) ){
 		$wp_customize->add_control( new WP_Customize_Color_Control($wp_customize, 'color_key', array(
-			'label'    => _x('Key color', 'lightning theme-customizer', 'lightning' ),
+			'label'    => __('Key color', 'lightning' ),
 			'section'  => 'lightning_design',
 			'settings' => 'lightning_theme_options[color_key]',
 			'priority' => 502,
 		)));
 		$wp_customize->add_control( new WP_Customize_Color_Control($wp_customize, 'color_key_dark', array(
-			'label'    => _x('Key color(dark)', 'lightning theme-customizer', 'lightning' ),
+			'label'    => __('Key color(dark)', 'lightning' ),
 			'section'  => 'lightning_design',
 			'settings' => 'lightning_theme_options[color_key_dark]',
 			'priority' => 503,
@@ -112,7 +112,7 @@ function lightning_customize_register($wp_customize)
 		'sanitize_callback' => 'lightning_sanitize_checkbox',
 	));
 	$wp_customize->add_control( 'lightning_theme_options[top_sidebar_hidden]', array(
-		'label'		=> _x( 'Don\'t show sidebar on home page' ,'lightning theme-customizer', 'lightning' ),
+		'label'		=> __( 'Don\'t show sidebar on home page' , 'lightning' ),
 		'section'	=> 'lightning_design',
 		'settings'  => 'lightning_theme_options[top_sidebar_hidden]',
 		'type'		=> 'checkbox',
@@ -132,7 +132,7 @@ function lightning_customize_register($wp_customize)
 		'sanitize_callback' => 'lightning_sanitize_checkbox',
 	));
 	$wp_customize->add_control( 'lightning_theme_options[top_default_content_hidden]', array(
-		'label'		=> _x( 'Don\'t show default content(Post list or Front page) at home page' ,'lightning theme-customizer', 'lightning' ),
+		'label'		=> __( 'Don\'t show default content(Post list or Front page) at home page' , 'lightning' ),
 		'section'	=> 'lightning_design',
 		'settings'  => 'lightning_theme_options[top_default_content_hidden]',
 		'type'		=> 'checkbox',
@@ -148,7 +148,7 @@ function lightning_customize_register($wp_customize)
 		'sanitize_callback' => 'lightning_sanitize_checkbox',
 	));
 	$wp_customize->add_control( 'lightning_theme_options[postUpdate_hidden]', array(
-		'label'		=> _x( 'Hide modified date on single pages.' ,'lightning theme-customizer', 'lightning' ),
+		'label'		=> __( 'Hide modified date on single pages.' , 'lightning' ),
 		'section'	=> 'lightning_design',
 		'settings'  => 'lightning_theme_options[postUpdate_hidden]',
 		'type'		=> 'checkbox',
@@ -164,7 +164,7 @@ function lightning_customize_register($wp_customize)
 		'sanitize_callback' => 'lightning_sanitize_checkbox',
 	));
 	$wp_customize->add_control( 'lightning_theme_options[postAuthor_hidden]', array(
-		'label'		=> _x( 'Don\'t display post author on a single page' ,'lightning theme-customizer', 'lightning' ),
+		'label'		=> __( 'Don\'t display post author on a single page' , 'lightning' ),
 		'section'	=> 'lightning_design',
 		'settings'  => 'lightning_theme_options[postAuthor_hidden]',
 		'type'		=> 'checkbox',
@@ -176,7 +176,7 @@ function lightning_customize_register($wp_customize)
 	/*	Top slide show
 	/*-------------------------------------------*/
 	$wp_customize->add_section( 'lightning_slide', array(
-		'title'			=> _x('Lightning Home page slide show', 'lightning theme-customizer', 'lightning' ),
+		'title'			=> __('Lightning Home page slide show', 'lightning' ),
 		'priority'		=> 600,
 		// 'panel'			=> 'lightning_setting',
 	) );
@@ -222,7 +222,7 @@ function lightning_customize_register($wp_customize)
 			$wp_customize,
 			'top_slide_image_'.$i,
 			array(
-				'label'     => '['.$i.'] '._x('Slide image', 'lightning theme-customizer', 'lightning' ),
+				'label'     => '['.$i.'] '.__('Slide image', 'lightning' ),
 				'section'   => 'lightning_slide',
 				'settings'  => 'lightning_theme_options[top_slide_image_'.$i.']',
 				'priority'  => $priority,
@@ -313,7 +313,7 @@ function lightning_customize_register($wp_customize)
 
 			$priority = $priority + 1;
 			$wp_customize->add_control( 'top_slide_url_'.$i, array(
-				'label'     => '['.$i.'] '._x('Slide image link url', 'lightning theme-customizer', 'lightning' ),
+				'label'     => '['.$i.'] '.__('Slide image link url', 'lightning' ),
 				'section'  => 'lightning_slide',
 				'settings' => 'lightning_theme_options[top_slide_url_'.$i.']',
 				'type' => 'text',
@@ -331,7 +331,7 @@ function lightning_customize_register($wp_customize)
 
 			$priority = $priority + 1;
 			$wp_customize->add_control( 'lightning_theme_options[top_slide_link_blank_'.$i.']', array(
-				'label'		=> _x( 'Open in new window.' ,'lightning theme-customizer', 'lightning' ),
+				'label'		=> __( 'Open in new window.', 'lightning' ),
 				'section'	=> 'lightning_slide',
 				'settings'  => 'lightning_theme_options[top_slide_link_blank_'.$i.']',
 				'type'		=> 'checkbox',
@@ -444,7 +444,7 @@ function lightning_customize_register($wp_customize)
 		));
 		$priority = $priority + 1;
 		$wp_customize->add_control( 'lightning_theme_options[top_slide_text_shadow_use_'.$i.']', array(
-			'label'		=> __( 'Use text shadow' ,'lightning theme-customizer', 'lightning' ).' ( '.__( 'optional','lightning' ).' )',
+			'label'		=> __( 'Use text shadow', 'lightning' ).' ( '.__( 'optional','lightning' ).' )',
 			'section'	=> 'lightning_slide',
 			'settings'  => 'lightning_theme_options[top_slide_text_shadow_use_'.$i.']',
 			'type'		=> 'checkbox',
