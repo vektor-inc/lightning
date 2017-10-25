@@ -2,7 +2,7 @@
 == Description ==
 Lightning is a very simple theme that built by Bootstrap.
 Official site : https://lightning.nagoya
-Sample site : http://demo.lightning.vektor-inc.co.jp/
+Sample site : https://demo.lightning.nagoya/
 
 === Tags ===
 white, red, blue, black, green, orange, purple, two-columns, right-sidebar, one-columns, responsive, custom-colors, custom-menu, editor-style,theme-options
@@ -31,6 +31,14 @@ http://www.vektor-inc.co.jp/inquiry/
 
 
 == Changelog ==
+
+v4.0.0
+* [ Add function ] Add home page header slider text and button function.
+* [ Add function ] Add Customize shortcut link.
+* [ Specification change ][ LP template ] Can use widget area private page.
+
+v3.4.0
+* [ Add function ] Add theme support for selective refresh for widgets.
 
 v3.0.5
 * [ Bug fix ][ Header menu vertical ]

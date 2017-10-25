@@ -15,7 +15,7 @@ function lightning_front_pr_blocks_customize_register($wp_customize) {
 	) );
 
 	$wp_customize->add_setting('lightning_theme_options[front_pr_display]', array(
-		'default'			=> false,
+		'default'			=> true,
 		'type'				=> 'option',
 		'capability'		=> 'edit_theme_options',
 		'sanitize_callback' => 'lightning_sanitize_checkbox',
@@ -29,6 +29,10 @@ function lightning_front_pr_blocks_customize_register($wp_customize) {
 		'type' => 'checkbox',
 		'priority' => 1,
 		'description' => __('* If you want to use the more advanced features and set a PR Block anywhere, please Install the WordPress official directory registration plug-in "VK All in One Expansion Unit (Free)" and use the "VK PR Blocks widgets". ', 'lightning'),
+	) );
+	$wp_customize->selective_refresh->add_partial( 'lightning_theme_options[front_pr_display]', array(
+		'selector' => '.home .prBlocks',
+		'render_callback' => '',
 	) );
 
 	$front_pr_default = lighting_front_pr_default_array();
@@ -62,9 +66,9 @@ function lightning_front_pr_blocks_customize_register($wp_customize) {
 		// Add control
 		$priority ++;
 
-		$wp_customize->add_control( new Custom_Text_Control( 
-			$wp_customize, 
-			'front_pr_icon_'.$i, 
+		$wp_customize->add_control( new Custom_Text_Control(
+			$wp_customize,
+			'front_pr_icon_'.$i,
 			array(
 				'label'    => _x('Icon ', 'lightning theme-customizer', 'lightning').' '.$i,
 				'section'  => 'lightning_front_pr',
@@ -75,8 +79,8 @@ function lightning_front_pr_blocks_customize_register($wp_customize) {
 			)
 		) );
 
-		$wp_customize->add_control(  
-			'front_pr_title_'.$i, 
+		$wp_customize->add_control(
+			'front_pr_title_'.$i,
 			array(
 				'label'    => _x('Title', 'lightning theme-customizer', 'lightning').' '.$i,
 				'section'  => 'lightning_front_pr',
@@ -86,8 +90,8 @@ function lightning_front_pr_blocks_customize_register($wp_customize) {
 			)
 		);
 
-		$wp_customize->add_control(  
-			'front_pr_summary_'.$i, 
+		$wp_customize->add_control(
+			'front_pr_summary_'.$i,
 			array(
 				'label'    => _x('Text', 'lightning theme-customizer', 'lightning').' '.$i,
 				'section'  => 'lightning_front_pr',
@@ -97,8 +101,8 @@ function lightning_front_pr_blocks_customize_register($wp_customize) {
 			)
 		);
 
-		$wp_customize->add_control(  
-			'front_pr_link_'.$i, 
+		$wp_customize->add_control(
+			'front_pr_link_'.$i,
 			array(
 				'label'    => _x('Link URL', 'lightning theme-customizer', 'lightning').' '.$i,
 				'section'  => 'lightning_front_pr',
@@ -113,7 +117,7 @@ function lightning_front_pr_blocks_customize_register($wp_customize) {
 }
 
 function lightning_front_pr_blocks_styles() {
-	
+
     global $lightning_theme_options;
 	$options = $lightning_theme_options;
 	if ( isset( $options['front_pr_display'] ) && $options['front_pr_display'] ){
@@ -190,15 +194,15 @@ function lightning_front_pr_blocks_add(){
 				echo '<i class="fa '.$options['front_pr_icon_'.$i].' font_icon prBlock_icon"></i>';
 				echo '</div>';
 			}
-			
+
 			if ( $options['front_pr_title_'.$i] ){
 				echo '<h1 class="prBlock_title">'.esc_html( $options['front_pr_title_'.$i] ).'</h1>';
 			}
-			
+
 			if ( $options['front_pr_summary_'.$i] ){
 				echo '<p class="prBlock_summary">'.esc_html( $options['front_pr_summary_'.$i] ).'</p>';
 			}
-			
+
 			if ( $options['front_pr_link_'.$i] ) {
 				echo '</a>';
 			}
@@ -209,5 +213,5 @@ function lightning_front_pr_blocks_add(){
 		}
 		echo '</div>';
 		echo '</section>';
-	}	
+	}
 }

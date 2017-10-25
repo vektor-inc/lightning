@@ -1,6 +1,8 @@
 <?php
-$theme_opt = wp_get_theme(get_template());
-define('LIGHTNING_THEME_VERSION', $theme_opt->Version);
+
+$theme_opt = wp_get_theme( get_template() );
+
+define( 'LIGHTNING_THEME_VERSION', $theme_opt->Version );
 /*-------------------------------------------*/
 /*	Theme setup
 /*-------------------------------------------*/
@@ -8,6 +10,17 @@ define('LIGHTNING_THEME_VERSION', $theme_opt->Version);
 /*-------------------------------------------*/
 /*	Load CSS
 /*-------------------------------------------*/
+/*	Load Theme Customizer additions.
+/*-------------------------------------------*/
+/*	Load Custom template tags for this theme.
+/*-------------------------------------------*/
+/*	Load designskin manager
+/*-------------------------------------------*/
+/*	Load tga(Plugin install)
+/*-------------------------------------------*/
+/*	Load Front PR Blocks
+/*-------------------------------------------*/
+
 /*-------------------------------------------*/
 /*	WidgetArea initiate
 /*-------------------------------------------*/
@@ -19,7 +32,7 @@ define('LIGHTNING_THEME_VERSION', $theme_opt->Version);
 /*-------------------------------------------*/
 /*	headfix enable
 /*-------------------------------------------*/
-/*	Tag Cloud _ Change font size 
+/*	Tag Cloud _ Change font size
 /*-------------------------------------------*/
 /*	HOME _ Default content hidden
 /*-------------------------------------------*/
@@ -28,7 +41,7 @@ define('LIGHTNING_THEME_VERSION', $theme_opt->Version);
 /*	Theme setup
 /*-------------------------------------------*/
 
-add_action('after_setup_theme', 'lightning_theme_setup');
+add_action( 'after_setup_theme', 'lightning_theme_setup' );
 function lightning_theme_setup() {
 
 	global $content_width;
@@ -59,9 +72,14 @@ function lightning_theme_setup() {
 	if ( ! isset( $content_width ) ) $content_width = 750;
 
 	/*-------------------------------------------*/
+	/*	Add theme support for selective refresh for widgets.
+	/*-------------------------------------------*/
+	add_theme_support( 'customize-selective-refresh-widgets' );
+
+	/*-------------------------------------------*/
 	/*	Admin page _ Add editor css
 	/*-------------------------------------------*/
-	add_editor_style('//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.1/css/font-awesome.min.css');
+	add_editor_style('//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 	if( ! apply_filters('lightning-disable-theme_style', false) )
 		add_editor_style('design_skin/origin/css/editor.css');
 
@@ -69,6 +87,20 @@ function lightning_theme_setup() {
 	/*	Feed Links
 	/*-------------------------------------------*/
 	add_theme_support( 'automatic-feed-links' );
+
+	/*-------------------------------------------*/
+	/*	Option init
+	/*-------------------------------------------*/
+	/*
+	Save default option first time.
+	When only customize default that, Can't save default value.
+	*/
+	$theme_options_default = lightning_theme_options_default();
+	if ( ! get_option( 'lightning_theme_options' ) ){
+		add_option( 'lightning_theme_options', $theme_options_default );
+		$lightning_theme_options = $theme_options_default;
+	}
+
 }
 
 /*-------------------------------------------*/
@@ -105,7 +137,7 @@ function lightning_commentJs(){
 /*-------------------------------------------*/
 add_action('wp_enqueue_scripts', 'lightning_css' );
 function lightning_css(){
-	wp_enqueue_style( 'font-awesome', get_template_directory_uri().'/library/font-awesome/4.6.1/css/font-awesome.min.css', array(), '4.6.1' );
+	wp_enqueue_style( 'font-awesome', get_template_directory_uri().'/library/font-awesome/4.7.0/css/font-awesome.min.css', array(), '4.7.0' );
 	wp_enqueue_style( 'lightning-theme-style', get_stylesheet_uri(), array('lightning-design-style'), LIGHTNING_THEME_VERSION );
 }
 
@@ -117,24 +149,24 @@ function lightning_design_css(){
 }
 
 /*-------------------------------------------*/
-/*	Load Theme customizer
+/*	Load Theme Customizer additions.
 /*-------------------------------------------*/
-get_template_part( 'functions_customizer' );
+require get_parent_theme_file_path( '/inc/customizer.php' );
 
 /*-------------------------------------------*/
-/*	Load helpers
+/*	Load Custom template tags for this theme.
 /*-------------------------------------------*/
-get_template_part( 'functions_helpers' );
+require get_parent_theme_file_path( '/inc/template-tags.php' );
 
 /*-------------------------------------------*/
 /*	Load designskin manager
 /*-------------------------------------------*/
-get_template_part( 'inc/class-design-manager' );
+require get_parent_theme_file_path( '/inc/class-design-manager.php' );
 
 /*-------------------------------------------*/
 /*	Load tga(Plugin install)
 /*-------------------------------------------*/
-get_template_part( 'inc/tgm-plugin-activation/tgm-config' );
+require get_parent_theme_file_path( '/inc/tgm-plugin-activation/tgm-config.php' );
 
 /*-------------------------------------------*/
 /*	Load Front PR Blocks
@@ -174,7 +206,7 @@ function lightning_widgets_init() {
 
 	// Sidebar( post_type )
 
-		$postTypes = get_post_types(Array('public' => true));
+		$postTypes = get_post_types( Array( 'public' => true ) );
 
 		foreach ($postTypes as $postType) {
 
@@ -204,10 +236,10 @@ function lightning_widgets_init() {
 		register_sidebar( array(
 			'name' => __( 'Home content top', 'lightning' ),
 			'id' => 'home-content-top-widget-area',
-			'before_widget' => '<section class="widget %2$s" id="%1$s">',
-			'after_widget' => '</section>',
-			'before_title' => '<h1 class="mainSection-title">',
-			'after_title' => '</h1>',
+			'before_widget' => '<div class="widget %2$s" id="%1$s">',
+			'after_widget' => '</div>',
+			'before_title' => '<h2 class="mainSection-title">',
+			'after_title' => '</h2>',
 		) );
 
 	// footer upper widget area
@@ -242,6 +274,7 @@ function lightning_widgets_init() {
 
 		$args = Array(
 					'post_type' => 'page',
+					'post_status' => 'publish,private,draft',
 					'posts_per_page' => -1,
 					'meta_key' => '_wp_page_template',
 					'meta_value' => 'page-lp.php'
@@ -253,12 +286,12 @@ function lightning_widgets_init() {
 				register_sidebar( array(
 					'name' => __( 'LP widget "', 'lightning' ).esc_html($post->post_title).'"',
 					'id' => 'lp-widget-'.$post->ID,
-					'before_widget' => '<section class="widget %2$s" id="%1$s">',
-					'after_widget' => '</section>',
-					'before_title' => '<h1 class="mainSection-title">',
-					'after_title' => '</h1>',
+					'before_widget' => '<div class="widget %2$s" id="%1$s">',
+					'after_widget' => '</div>',
+					'before_title' => '<h2 class="mainSection-title">',
+					'after_title' => '</h2>',
 				) );
-			}	
+			}
 		}
 		wp_reset_postdata();
 }
@@ -355,7 +388,7 @@ function lightning_header_height_changer_disabel(){
 */
 
 /*-------------------------------------------
-/*	Tag Cloud _ Change font size 
+/*	Tag Cloud _ Change font size
 /*-------------------------------------------*/
 function lightning_tag_cloud_filter($args) {
 	$args['smallest'] = 10;

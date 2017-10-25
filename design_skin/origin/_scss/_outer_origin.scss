@@ -54,6 +54,15 @@ h1.page-header_pageTitle:first-child { color: #fff; }
 }
 
 /*-------------------------------------------*/
+/* Widget
+/*-------------------------------------------*/
+
+.widget_ltg_adv_full_wide_title_outer {
+  margin:0 calc(50% - 50vw) 3em;
+  padding:3em calc(50vw - 50%);
+}
+
+/*-------------------------------------------*/
 /* footer
 /*-------------------------------------------*/
 footer { border-top:3px solid #337ab7; }

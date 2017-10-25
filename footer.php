@@ -52,12 +52,8 @@
             ?>
         </div>
     </div>
-    <div class="sectionBox copySection">
-        <div class="row">
-            <div class="col-md-12 text-center">
-            <?php lightning_the_footerCopyRight(); ?>
-            </div>
-        </div>
+    <div class="container sectionBox copySection text-center">
+          <?php lightning_the_footerCopyRight(); ?>
     </div>
 </footer>
 <?php do_action('lightning_footer_after'); ?>
