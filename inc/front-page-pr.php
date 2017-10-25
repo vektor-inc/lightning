@@ -9,7 +9,7 @@ function lightning_front_pr_blocks_customize_register($wp_customize) {
 	/*	Front PR
 	/*-------------------------------------------*/
 	$wp_customize->add_section( 'lightning_front_pr', array(
-		'title'				=> _x('Lightning Front Page PR Block', 'lightning theme-customizer', 'lightning'),
+		'title'				=> __('Lightning Front Page PR Block', 'lightning'),
 		'priority'			=> 700,
 		// 'panel'				=> 'lightning_setting',
 	) );
@@ -23,7 +23,7 @@ function lightning_front_pr_blocks_customize_register($wp_customize) {
 
 	// Add control
 	$wp_customize->add_control( 'front_pr_display', array(
-		'label'     => _x('Display Front Page PR Block', 'lightning theme-customizer', 'lightning'),
+		'label'     => __('Display Front Page PR Block', 'lightning'),
 		'section'  => 'lightning_front_pr',
 		'settings' => 'lightning_theme_options[front_pr_display]',
 		'type' => 'checkbox',
@@ -70,7 +70,7 @@ function lightning_front_pr_blocks_customize_register($wp_customize) {
 			$wp_customize,
 			'front_pr_icon_'.$i,
 			array(
-				'label'    => _x('Icon ', 'lightning theme-customizer', 'lightning').' '.$i,
+				'label'    => __('Icon ', 'lightning').' '.$i,
 				'section'  => 'lightning_front_pr',
 				'settings' => 'lightning_theme_options[front_pr_icon_'.$i.']',
 				'type' => 'text',
@@ -82,7 +82,7 @@ function lightning_front_pr_blocks_customize_register($wp_customize) {
 		$wp_customize->add_control(
 			'front_pr_title_'.$i,
 			array(
-				'label'    => _x('Title', 'lightning theme-customizer', 'lightning').' '.$i,
+				'label'    => __('PR Title', 'lightning').' '.$i,
 				'section'  => 'lightning_front_pr',
 				'settings' => 'lightning_theme_options[front_pr_title_'.$i.']',
 				'type' => 'text',
@@ -93,7 +93,7 @@ function lightning_front_pr_blocks_customize_register($wp_customize) {
 		$wp_customize->add_control(
 			'front_pr_summary_'.$i,
 			array(
-				'label'    => _x('Text', 'lightning theme-customizer', 'lightning').' '.$i,
+				'label'    => __('PR Text', 'lightning').' '.$i,
 				'section'  => 'lightning_front_pr',
 				'settings' => 'lightning_theme_options[front_pr_summary_'.$i.']',
 				'type' => 'textarea',
@@ -104,7 +104,7 @@ function lightning_front_pr_blocks_customize_register($wp_customize) {
 		$wp_customize->add_control(
 			'front_pr_link_'.$i,
 			array(
-				'label'    => _x('Link URL', 'lightning theme-customizer', 'lightning').' '.$i,
+				'label'    => __('PR Link URL', 'lightning').' '.$i,
 				'section'  => 'lightning_front_pr',
 				'settings' => 'lightning_theme_options[front_pr_link_'.$i.']',
 				'type' => 'text',
