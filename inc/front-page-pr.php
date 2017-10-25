@@ -31,7 +31,7 @@ function lightning_front_pr_blocks_customize_register($wp_customize) {
 		'description' => __('* If you want to use the more advanced features and set a PR Block anywhere, please Install the WordPress official directory registration plug-in "VK All in One Expansion Unit (Free)" and use the "VK PR Blocks widgets". ', 'lightning'),
 	) );
 	$wp_customize->selective_refresh->add_partial( 'lightning_theme_options[front_pr_display]', array(
-		'selector' => '.home .prBlocks',
+		'selector' => '.home .prBlocks-default',
 		'render_callback' => '',
 	) );
 
@@ -153,9 +153,9 @@ function lighting_front_pr_default_array(){
 			3 => __( 'Lightning is includes to a variety of ideas for making it easier to business site. Please experience the ease of use of the Lightning.', 'lightning' )
 			),
 		'link' => array(
-			1 => '',
-			2 => '',
-			3 => ''
+			1 => esc_url( home_url() ),
+			2 => esc_url( home_url() ),
+			3 => esc_url( home_url() ),
 			),
 		);
 	return $front_pr_default;
@@ -171,8 +171,8 @@ function lightning_front_pr_blocks_add(){
 	$options['front_pr_display'] ... User setted hidden
 	*/
 	if ( isset( $options['front_pr_display'] ) && $options['front_pr_display'] ){
-		echo '<section class="widget">';
-		echo '<div class="prBlocks row">';
+		echo '<div class="widget">';
+		echo '<div class="prBlocks prBlocks-default row">';
 		for ( $i = 1; $i <= 3; ) {
 
 			echo '<article class="prBlock prBlock_lighnt col-sm-4">';
@@ -212,6 +212,6 @@ function lightning_front_pr_blocks_add(){
 			$i++;
 		}
 		echo '</div>';
-		echo '</section>';
+		echo '</div>';
 	}
 }
