@@ -2,8 +2,12 @@
 
 .carousel { border-bottom:$border_primary;display:block; overflow:hidden; }
 .carousel-indicators { margin-bottom:0;bottom:5px; }
-.carousel-inner>.item>a>img,
-.carousel-inner>.item>img { width:100%; height:auto;}
+.carousel-inner>.item {
+	img,
+	picture > img,
+	a > img,
+	a > picture > img { width:100%; height:auto; }
+}
 .carousel-control { width:10%; }
 .carousel-control.right { @include background(linear-gradient(to right, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.2) 100%)); }
 .carousel-control.left { @include background(linear-gradient(to left, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.2) 100%)); }
