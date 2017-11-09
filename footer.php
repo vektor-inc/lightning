@@ -58,5 +58,11 @@
 </footer>
 <?php do_action('lightning_footer_after'); ?>
 <?php wp_footer();?>
+<?php
+/* ---------------------------------------------
+  footer add pagetop btn
+--------------------------------------------- */
+  echo '<button id="page_top" class="page_top_btn"><i class="fa fa-angle-up arrow" aria-hidden="true"></i></button>'.PHP_EOL;
+?>
 </body>
 </html>
