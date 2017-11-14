@@ -7,6 +7,7 @@
 <?php global $lightning_theme_options;
 $lightning_theme_options = get_option('lightning_theme_options'); ?>
 <?php wp_head();?>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 </head>
 <body <?php body_class(); ?>>

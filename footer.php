@@ -62,7 +62,26 @@
 /* ---------------------------------------------
   footer add pagetop btn
 --------------------------------------------- */
-  echo '<button id="page_top" class="page_top_btn"><i class="fa fa-angle-up arrow" aria-hidden="true"></i></button>'.PHP_EOL;
+  echo '<button id="page_top" class="page_top_btn"><i class="fa fa-angle-up arrow" aria-hidden="true"></i></button>';
 ?>
+
+<script type="text/javascript">
+$(function() {
+    var pageTop = $('#page_top');
+    pageTop.hide();
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 600) {
+            pageTop.fadeIn();
+        } else {
+            pageTop.fadeOut();
+        }
+    });
+    pageTop.click(function () {
+        $('body, html').animate({scrollTop:0}, 500, 'swing');
+        return false;
+    });
+});
+</script>
+
 </body>
 </html>
