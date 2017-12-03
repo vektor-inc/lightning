@@ -171,6 +171,11 @@ function lightning_customize_register($wp_customize)
 		'priority'	=> 523,
 	));
 
+	// sidebar_child_list_hidden
+	// lightning advanced unit 'priority'	=> 550,
+
+	// sidebar_fix
+	// lightning advanced unit 'priority'	=> 555,
 
 	/*-------------------------------------------*/
 	/*	Top slide show
