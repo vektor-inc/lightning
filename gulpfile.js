@@ -22,36 +22,30 @@ gulp.task( 'copy', function() {
 } );
 
 // ファイル結合
-gulp.task('scripts', function() {
-  return gulp.src(['./library/bootstrap/js/bootstrap.min.js','./js/_master.js'])
-    .pipe(concat('all.js'))
-    .pipe(gulp.dest('./js/'));
-
-});
-gulp.task('scripts_header_fixed', function() {
+gulp.task('concat', function() {
   return gulp.src(['./library/bootstrap/js/bootstrap.min.js','./js/_master.js','./js/_header_fixed.js'])
-    .pipe(concat('all_in_header_fixed.js'))
+    .pipe(concat('lightning.js'))
     .pipe(gulp.dest('./js/'));
 });
 
 // js最小化
 gulp.task('jsmin', function () {
-  gulp.src(['./js/all.js','./js/all_in_header_fixed.js'])
+  gulp.src(['./js/lightning.js'])
   .pipe(plumber()) // エラーでも監視を続行
   .pipe(jsmin())
   .pipe(rename({suffix: '.min'}))
-  .pipe(gulp.dest('./js'));
+  .pipe(gulp.dest('./js/'));
 });
 
 // Watch
 gulp.task('watch', function() {
-    gulp.watch('js/_master.js', ['scripts','scripts_header_fixed']);
-    gulp.watch('js/_header_fixed.js', ['scripts','scripts_header_fixed']);
-    gulp.watch('js/all.js', ['jsmin']);
+    gulp.watch('js/_master.js', ['concat']);
+    gulp.watch('js/_header_fixed.js', ['concat']);
+    gulp.watch('js/lightning.js', ['jsmin']);
 });
 
-gulp.task('default', ['copy','scripts','jsmin','watch']);
-gulp.task('compile', ['copy','scripts','jsmin']);
+gulp.task('default', ['copy','concat','jsmin','watch']);
+gulp.task('compile', ['copy','concat','jsmin']);
 
 // copy dist ////////////////////////////////////////////////
 

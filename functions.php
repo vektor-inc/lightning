@@ -113,16 +113,15 @@ function lightning_addJs() {
 	wp_script_add_data( 'html5shiv', 'conditional', 'lt IE 9' );
 	wp_enqueue_script( 'respond', '//oss.maxcdn.com/respond/1.4.2/respond.min.js' );
 	wp_script_add_data( 'respond', 'conditional', 'lt IE 9' );
-	wp_enqueue_script( 'lightning-js', get_template_directory_uri().'/js/all_in_header_fixed.min.js', array( 'jquery' ), LIGHTNING_THEME_VERSION );
+	wp_enqueue_script( 'lightning-js', get_template_directory_uri().'/js/lightning.min.js', array( 'jquery' ), LIGHTNING_THEME_VERSION );
 }
 
 /* If you want to remove the header fixed,
 /* you paste the bellow code to your child theme's functions.php or plugin file.
 /*-------------------------------------------*/
-// add_action('wp_enqueue_scripts','lightning_header_fixed_remove',100);
-// function lightning_header_fixed_remove(){
-//   wp_dequeue_script( 'lightning-js' );
-//   wp_enqueue_script( 'lightning-no-header-fixed-js', get_template_directory_uri().'/js/all.min.js', array( 'jquery' ), LIGHTNING_THEME_VERSION );
+// add_filter( 'lightning_headfix_enable', 'lightning_headfix_disabel');
+// function lightning_headfix_disabel(){
+//     return false;
 // }
 
 add_action( 'wp_enqueue_scripts', 'lightning_commentJs' );
