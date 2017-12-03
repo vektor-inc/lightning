@@ -79,7 +79,7 @@
 
             <?php if ( !isset($lightning_theme_options['top_sidebar_hidden']) || !$lightning_theme_options['top_sidebar_hidden'] ) :?>
 
-                <div class="col-md-3 col-md-offset-1 subSection">
+                <div class="col-md-3 col-md-offset-1 subSection sideSection">
                     <?php get_sidebar(); ?>
                 </div><!-- [ /.subSection ] -->
 

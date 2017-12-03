@@ -30,7 +30,7 @@
 
 </div><!-- [ /.mainSection ] -->
 
-<div class="col-md-3 col-md-offset-1 subSection">
+<div class="col-md-3 col-md-offset-1 subSection sideSection">
 <?php get_sidebar(get_post_type()); ?>
 </div><!-- [ /.subSection ] -->
 
