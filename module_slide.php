@@ -8,7 +8,15 @@ $top_slide_count = lightning_top_slide_count( $lightning_theme_options );
 $top_slide_count = apply_filters('lightning_top_slide_count',$top_slide_count);
 
 if ( $top_slide_count ) : ?>
-<div id="top__fullcarousel" data-interval="false" class="carousel slide" data-ride="carousel">
+<?php
+if ( empty( $lightning_theme_options['top_slide_time'] ) )
+{
+	$interval = 4000;
+} else {
+	$interval = esc_attr( $lightning_theme_options['top_slide_time'] );
+}
+?>
+<div id="top__fullcarousel" data-interval="<?php echo $interval;?>" class="carousel slide" data-ride="carousel">
 <div class="carousel-inner">
 
     <?php if ( $top_slide_count >= 2 ) :?>
