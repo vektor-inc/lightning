@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lightning v0.1.0\n"
 "Report-Msgid-Bugs-To: Translator Name <translations@example.com>\n"
-"POT-Creation-Date: 2017-10-25 13:00+0900\n"
+"POT-Creation-Date: 2017-12-04 00:38+0900\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Kurudrive <kurudrive@gmail.com>\n"
 "Language-Team: Vektor,Inc. <info@vektor-inc.co.jp>\n"
@@ -150,99 +150,107 @@ msgstr "投稿詳細ページで最終更新日を表示しない"
 msgid "Don't display post author on a single page"
 msgstr "投稿詳細ページで投稿者名を表示しない"
 
-#: inc/customizer.php:179
+#: inc/customizer.php:184
 msgid "Lightning Home page slide show"
 msgstr "Lightning トップページスライドショー"
 
-#: inc/customizer.php:225
+#: inc/customizer.php:198
+msgid "Slide interval time"
+msgstr "スライド切り替え間隔"
+
+#: inc/customizer.php:204
+msgid "millisecond"
+msgstr "ミリ秒"
+
+#: inc/customizer.php:247
 msgid "Slide image"
 msgstr "スライド画像"
 
-#: inc/customizer.php:229
+#: inc/customizer.php:251
 msgid "Recommended image size : 1900*600px"
 msgstr "推奨画像サイズ : 1900×600px"
 
-#: inc/customizer.php:247
+#: inc/customizer.php:269
 msgid "Slide image for mobile"
 msgstr "モバイル用スライド画像"
 
-#: inc/customizer.php:247 inc/customizer.php:282 inc/customizer.php:352
-#: inc/customizer.php:371 inc/customizer.php:390 inc/customizer.php:409
-#: inc/customizer.php:431 inc/customizer.php:447 inc/customizer.php:463
+#: inc/customizer.php:269 inc/customizer.php:304 inc/customizer.php:374
+#: inc/customizer.php:393 inc/customizer.php:412 inc/customizer.php:431
+#: inc/customizer.php:453 inc/customizer.php:469 inc/customizer.php:485
 msgid "optional"
 msgstr "任意"
 
-#: inc/customizer.php:265
+#: inc/customizer.php:287
 msgid "Slide image alt"
 msgstr "スライド画像の代替テキスト"
 
-#: inc/customizer.php:270
+#: inc/customizer.php:292
 msgid "This title text is print to alt tag."
 msgstr "このテキストはaltに反映されます。"
 
-#: inc/customizer.php:282
+#: inc/customizer.php:304
 msgid "Slide cover color"
 msgstr "スライドに被せる色"
 
-#: inc/customizer.php:297
+#: inc/customizer.php:319
 msgid "Slide cover opacity"
 msgstr "スライドに被せる色の濃さ"
 
-#: inc/customizer.php:302
+#: inc/customizer.php:324
 msgid "Please input 0 - 100 number"
-msgstr ""
+msgstr "0-100の数値で入力してください"
 
-#: inc/customizer.php:316
+#: inc/customizer.php:338
 msgid "Slide image link url"
 msgstr "スライド画像リンク先URL"
 
-#: inc/customizer.php:334
+#: inc/customizer.php:356
 msgid "Open in new window."
 msgstr "リンク先を別ウィンドウで開く"
 
-#: inc/customizer.php:352
+#: inc/customizer.php:374
 msgid "Slide title"
 msgstr "スライドタイトル"
 
-#: inc/customizer.php:371
+#: inc/customizer.php:393
 msgid "Slide text"
 msgstr "スライドテキスト"
 
-#: inc/customizer.php:390
+#: inc/customizer.php:412
 msgid "Button text"
 msgstr "ボタンの文字"
 
-#: inc/customizer.php:395
+#: inc/customizer.php:417
 msgid ""
 "If you do not fill in the link url and button text that, button is do not "
 "display."
 msgstr "リンクのURLとボタンのテキストを入力しないと、ボタンは表示されません。"
 
-#: inc/customizer.php:409
+#: inc/customizer.php:431
 msgid "Position to display text"
 msgstr "位置"
 
-#: inc/customizer.php:415
+#: inc/customizer.php:437
 msgid "Left"
 msgstr "左"
 
-#: inc/customizer.php:416
+#: inc/customizer.php:438
 msgid "Center"
 msgstr "中央"
 
-#: inc/customizer.php:417
+#: inc/customizer.php:439
 msgid "Right"
 msgstr "右"
 
-#: inc/customizer.php:431
+#: inc/customizer.php:453
 msgid "Slide text color"
 msgstr "スライド上の文字色"
 
-#: inc/customizer.php:447
+#: inc/customizer.php:469
 msgid "Use text shadow"
 msgstr "文字に影をつける"
 
-#: inc/customizer.php:463
+#: inc/customizer.php:485
 msgid "Text shadow color"
 msgstr "文字の影の色"
 
@@ -316,60 +324,60 @@ msgstr ""
 "Lightningにはビジネスサイトを簡単に作るための様々な工夫がしてあります。"
 "Lightningの使い易さを是非体験してください。"
 
-#: inc/template-tags.php:65
+#: inc/template-tags.php:66
 msgid "https://lightning.nagoya/"
 msgstr ""
 
-#: inc/template-tags.php:66
+#: inc/template-tags.php:67
 msgid "Simple and Customize easy <br>WordPress theme."
 msgstr "シンプルでカスタマイズしやすい <br>WordPressテーマ"
 
-#: inc/template-tags.php:67
+#: inc/template-tags.php:68
 msgid "100% GPL Lisence  and adopting the bootstrap"
 msgstr "100% GPL ライセンス / Bootstrapベース"
 
-#: inc/template-tags.php:68 inc/template-tags.php:78
+#: inc/template-tags.php:69 inc/template-tags.php:79
 msgid "READ MORE"
 msgstr ""
 
-#: inc/template-tags.php:76
+#: inc/template-tags.php:77
 msgid "Johnijirou On Snow"
 msgstr ""
 
-#: inc/template-tags.php:77
+#: inc/template-tags.php:78
 msgid "Growing up everyday"
 msgstr ""
 
-#: inc/template-tags.php:262
+#: inc/template-tags.php:263
 #, php-format
 msgid "Author: %s"
 msgstr "投稿者: %s"
 
-#: inc/template-tags.php:264
+#: inc/template-tags.php:265
 msgctxt "yearly archives date format"
 msgid "Y"
 msgstr "Y年"
 
-#: inc/template-tags.php:266
+#: inc/template-tags.php:267
 msgctxt "monthly archives date format"
 msgid "F Y"
 msgstr "Y年n月"
 
-#: inc/template-tags.php:268
+#: inc/template-tags.php:269
 msgctxt "daily archives date format"
 msgid "F j, Y"
 msgstr "Y年Fj日"
 
-#: inc/template-tags.php:283
+#: inc/template-tags.php:284
 msgid "Archives"
 msgstr "アーカイブ"
 
-#: inc/template-tags.php:296
+#: inc/template-tags.php:297
 #, php-format
 msgid "Copyright &copy; %s All Rights Reserved."
 msgstr "Copyright &copy; %s All Rights Reserved."
 
-#: inc/template-tags.php:301
+#: inc/template-tags.php:302
 msgid ""
 "<p>Powered by <a href=\"https://wordpress.org/\">WordPress</a> &amp; <a href="
 "\"https://lightning.nagoya\" target=\"_blank\" title=\"Free WordPress Theme "

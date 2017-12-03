@@ -12,6 +12,46 @@ class LightningTest extends WP_UnitTestCase {
 		return true;
 	}
 
+	function test_lightning_top_slide_count(){
+		$test_array = array(
+			// array(
+			// 	'options' => array(),
+			// 	'correct' => 3,
+			// ),
+			array(
+				'options' => array(
+					'top_slide_image_1' => 'https://lightning.nagoya/images/sample.jpg',
+					'top_slide_image_2' => 'https://lightning.nagoya/images/sample.jpg',
+				),
+				'correct' => 2,
+			),
+			array(
+				'options' => array(
+					'top_slide_image_1' => 'https://lightning.nagoya/images/sample.jpg',
+					'top_slide_image_5' => 'https://lightning.nagoya/images/sample.jpg',
+				),
+				'correct' => 2,
+			),
+			array(
+				'options' => array(
+					'top_slide_image_1' => 'https://lightning.nagoya/images/sample.jpg',
+					'top_slide_image_2' => '',
+					'top_slide_image_5' => 'https://lightning.nagoya/images/sample.jpg',
+				),
+				'correct' => 2,
+			),
+		);
+		foreach ($test_array as $key => $value) {
+			delete_option( 'lightning_theme_options' );
+			$lightning_theme_options = $value['options'];
+			add_option( 'lightning_theme_options',  $lightning_theme_options );
+			$lightning_theme_options = get_option('lightning_theme_options');
+			$result = lightning_top_slide_count( $lightning_theme_options );
+
+			$this->assertEquals( $value['correct'], $result);
+		}
+	}
+
 	function test_lightninig_top_slide_image(){
 		$lightning_theme_options = get_option('lightning_theme_options');
 		$lightning_theme_options['top_slide_image_1'] = 'https://lightning.nagoya/images/sample.jpg';

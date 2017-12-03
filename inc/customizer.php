@@ -171,6 +171,11 @@ function lightning_customize_register($wp_customize)
 		'priority'	=> 523,
 	));
 
+	// sidebar_child_list_hidden
+	// lightning advanced unit 'priority'	=> 550,
+
+	// sidebar_fix
+	// lightning advanced unit 'priority'	=> 555,
 
 	/*-------------------------------------------*/
 	/*	Top slide show
@@ -181,6 +186,23 @@ function lightning_customize_register($wp_customize)
 		// 'panel'			=> 'lightning_setting',
 	) );
 
+	// Slide interval time
+	$wp_customize->add_setting( 'lightning_theme_options[top_slide_time]',	array(
+		'default' 			=> 4000,
+		'type'				=> 'option',
+		'capability' 		=> 'edit_theme_options',
+		'sanitize_callback' => 'lightning_sanitize_number',
+		) );
+
+	$wp_customize->add_control( new Custom_Text_Control( $wp_customize, 'top_slide_time', array(
+		'label'     => __( 'Slide interval time', 'lightning' ),
+		'section'  => 'lightning_slide',
+		'settings' => 'lightning_theme_options[top_slide_time]',
+		'type' => 'text',
+		'priority' => 605,
+		'description' => '',
+		'input_after' => __( 'millisecond', 'lightning' )
+		) ) );
 
 	// slide image
 	$priority = 610;
