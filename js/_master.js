@@ -83,10 +83,10 @@
 			if(!iframeUrl){return;}
 			// iframeのURLの中に youtube か map が存在する位置を検索する
 			// 見つからなかった場合には -1 が返される
-			if ( 
-				( iframeUrl.indexOf("youtube") != -1 )  || 
-				( iframeUrl.indexOf("vimeo") != -1 )  || 
-				( iframeUrl.indexOf("maps") != -1 )  
+			if (
+				( iframeUrl.indexOf("youtube") != -1 )  ||
+				( iframeUrl.indexOf("vimeo") != -1 )  ||
+				( iframeUrl.indexOf("maps") != -1 )
 				) {
 				var iframeWidth = jQuery(this).attr("width");
 				var iframeHeight = jQuery(this).attr("height");
