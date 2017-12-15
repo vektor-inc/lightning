@@ -9,9 +9,38 @@ var concat = require('gulp-concat');
 var jsmin = require('gulp-jsmin');
 // エラーでも監視を続行させる
 var plumber = require('gulp-plumber');
+var sass = require('gulp-sass');
+var cmq = require('gulp-merge-media-queries');
+var cleanCss = require('gulp-clean-css');
+
 // http://blog.e-riverstyle.com/2014/02/gulpspritesmithcss-spritegulp.html
 // 同期的に処理してくれる
 var runSequence = require('run-sequence');
+
+gulp.task('sass',function(){
+    gulp.src(['design_skin/origin/_scss/**/*.scss'])
+        .pipe(plumber({
+            handleError: function (err) {
+                console.log(err);
+                this.emit('end');
+            }
+        }))
+        .pipe(sass())
+        .pipe(cmq({log:true}))
+        // .pipe(cleanCss())
+        .pipe(gulp.dest('./design_skin/origin/css'))
+        // .pipe(rename({
+        //     suffix: '.min'
+        // }))
+
+        // .pipe(cleanCss())
+        // .pipe(gulp.dest('design_skin/origin/css'))
+});
+
+
+
+
+
 
 gulp.task( 'copy', function() {
     gulp.src( './library/bootstrap/css/bootstrap.min.css'  )
@@ -42,6 +71,7 @@ gulp.task('watch', function() {
     gulp.watch('js/_master.js', ['concat']);
     gulp.watch('js/_header_fixed.js', ['concat']);
     gulp.watch('js/lightning.js', ['jsmin']);
+    gulp.watch('design_skin/origin/_scss/**/*.scss',['sass']);
 });
 
 gulp.task('default', ['copy','concat','jsmin','watch']);
