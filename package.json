@@ -21,6 +21,7 @@
   "homepage": "https://github.com/vektor-inc/Lightning#readme",
   "devDependencies": {
     "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.1.0",
     "gulp-clean-css": "^3.9.0",
     "gulp-concat": "^2.6.1",
     "gulp-cssmin": "^0.2.0",

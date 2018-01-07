@@ -11,6 +11,8 @@ var jsmin = require('gulp-jsmin');
 var plumber = require('gulp-plumber');
 var sass = require('gulp-sass');
 var cmq = require('gulp-merge-media-queries');
+// add vender prifix
+var autoprefixer = require('gulp-autoprefixer');
 var cleanCss = require('gulp-clean-css');
 
 // http://blog.e-riverstyle.com/2014/02/gulpspritesmithcss-spritegulp.html
@@ -25,9 +27,11 @@ gulp.task('sass',function(){
                 this.emit('end');
             }
         }))
+				.pipe(plumber())
         .pipe(sass())
-        .pipe(cmq({log:true}))
-        // .pipe(cleanCss())
+				.pipe(cmq({log:true}))
+        .pipe(autoprefixer())
+				.pipe(cleanCss())
         .pipe(gulp.dest('./design_skin/origin/css'))
         // .pipe(rename({
         //     suffix: '.min'
