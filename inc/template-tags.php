@@ -16,6 +16,8 @@
 /*-------------------------------------------*/
 /*	lightning_is_slide_outer_link
 /*-------------------------------------------*/
+/*	lightning_slide_cover_style
+/*-------------------------------------------*/
 /*	Archive title
 /*-------------------------------------------*/
 
@@ -248,6 +250,28 @@ function lightning_is_slide_outer_link( $lightning_theme_options, $i ){
 	} else {
 		return false;
 	}
+}
+
+/*-------------------------------------------*/
+/*	lightning_slide_cover_style
+/*-------------------------------------------*/
+function lightning_slide_cover_style( $lightning_theme_options, $i ){
+	$cover_style = '';
+
+	if (
+		! empty( $lightning_theme_options['top_slide_cover_color_'.$i] ) &&
+		! empty( $lightning_theme_options['top_slide_cover_opacity_'.$i] )
+	) {
+
+		// bgcolor
+		$cover_style = 'background-color:'.$lightning_theme_options['top_slide_cover_color_'.$i].';';
+
+		// opacity
+		$opacity = lightning_sanitize_number_percentage( $lightning_theme_options['top_slide_cover_opacity_'.$i] ) / 100;
+		$cover_style .= 'opacity:'.$opacity;
+
+	}
+	return $cover_style;
 }
 
 /*-------------------------------------------*/

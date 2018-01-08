@@ -52,6 +52,57 @@ class LightningTest extends WP_UnitTestCase {
 		}
 	}
 
+
+	function test_lightning_slide_cover_style(){
+		$test_array = array(
+			array(
+				'options' => array(
+					'top_slide_cover_color_1' => '#ff0000',
+					'top_slide_cover_opacity_1' => '80',
+				),
+				'correct' => 'background-color:#ff0000;opacity:0.8',
+			),
+			array(
+				'options' => array(
+					'top_slide_cover_color_1' => '#ff0000',
+					'top_slide_cover_opacity_1' => null,
+				),
+				'correct' => '',
+			),
+			array(
+				'options' => array(
+					'top_slide_cover_color_1' => '#ff0000',
+					'top_slide_cover_opacity_1' => 0,
+				),
+				'correct' => '',
+			),
+			array(
+				'options' => array(
+					'top_slide_cover_color_1' => '',
+					'top_slide_cover_opacity_1' => 50,
+				),
+				'correct' => '',
+			),
+			array(
+				'options' => array(
+					'top_slide_cover_color_1' => null,
+					'top_slide_cover_opacity_1' => 50,
+				),
+				'correct' => '',
+			),
+		);
+
+		foreach ($test_array as $key => $value) {
+			$lightning_theme_options = $value['options'];
+			$result = lightning_slide_cover_style($lightning_theme_options, 1);
+			$this->assertEquals( $value['correct'], $result);
+		}
+	}
+
+
+	/*
+	モバイル画像の表示仕様が変更になったので現在使用していない
+	 */
 	function test_lightninig_top_slide_image(){
 		$lightning_theme_options = get_option('lightning_theme_options');
 		$lightning_theme_options['top_slide_image_1'] = 'https://lightning.nagoya/images/sample.jpg';
@@ -63,7 +114,7 @@ class LightningTest extends WP_UnitTestCase {
 
 		// ユーザーエージェントがとれない時は is_mobileはfalseを返す
 		$is_mobile_state = lightning_is_mobile();
-		$this->assertEquals( false, $is_mobile_state);
+		$this->assertEquals( false, $is_mobile_state );
 
 		// モバイル時 //////////////////////////////////////////////////////////////////////////////
 
@@ -73,6 +124,7 @@ class LightningTest extends WP_UnitTestCase {
 		$this->assertEquals( true, $is_mobile_state );
 
 	}
+
 
 	function test_sanitaize_number(){
 		$test_array = array(
