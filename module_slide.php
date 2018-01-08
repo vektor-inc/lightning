@@ -45,6 +45,7 @@ if ( empty( $lightning_theme_options['top_slide_time'] ) )
 			} else {
 				$top_slide_alt = "";
 			}
+
 			if ( ! empty( $lightning_theme_options['top_slide_image_'.$i] ) ) {
 				$link_target = ( isset( $lightning_theme_options['top_slide_link_blank_'.$i] ) && $lightning_theme_options['top_slide_link_blank_'.$i] ) ? ' target="_blank"' : '';
 				?>
@@ -66,12 +67,15 @@ if ( empty( $lightning_theme_options['top_slide_time'] ) )
 					/*-------------------------------------------*/
 					/*	slide-cover
 					/*-------------------------------------------*/
-					if ( ! empty( $lightning_theme_options['top_slide_cover_color_'.$i] ) ) {
+					if ( ! empty( $lightning_theme_options['top_slide_cover_color_'.$i] ) && isset( $lightning_theme_options['top_slide_cover_opacity_'.$i] ) ) {
+
+						// bgcolor
 						$cover_style = 'background-color:'.$lightning_theme_options['top_slide_cover_color_'.$i].';';
-						if ( isset( $lightning_theme_options['top_slide_cover_opacity_'.$i] ) ) {
-							$opacity = lightning_sanitize_number_percentage( $lightning_theme_options['top_slide_cover_opacity_'.$i] ) / 100;
-							$cover_style .= 'opacity:'.$opacity;
-						}
+
+						// opacity
+						$opacity = lightning_sanitize_number_percentage( $lightning_theme_options['top_slide_cover_opacity_'.$i] ) / 100;
+						$cover_style .= 'opacity:'.$opacity;
+
 						$cover_style = ( $cover_style ) ? ' style="'.esc_attr( $cover_style ).'"' : '';
 						echo '<div class="slide-cover"'.$cover_style.'></div>';
 					}
