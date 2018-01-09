@@ -35,16 +35,15 @@
 		display: none;
 	}
 }
-.slide-text-caption,
-.btn-ghost {
-	font-size:1.7vw;
-}
+.slide-text-caption { font-size:12px }
+.btn-ghost { font-size:14px;}
+
 .slide-text-caption {
 	margin-top:0.8em;
 	line-height: 1.7;
 }
 .btn-ghost {
-	margin-top:1.3em;
+	margin-top:1em;
 	padding: 0.4em 2em;
 	transition: background-color 1s,border-color 0.5s;
 }
@@ -58,6 +57,11 @@
 @media (min-width: 768px){
 .slide-text-title {
 	font-size:2.5vw;
+}
+.slide-text-caption,
+.btn-ghost {
+	margin-top:1.3em;
+	font-size:1.7vw;
 }
 } // @media (min-width: 768px){
 @media (min-width: 992px){
