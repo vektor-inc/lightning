@@ -4,7 +4,7 @@ branches:
   - master
   - develop
 
-env: 
+env:
   global:
     - GIT_COMMITTER_NAME=travis-ci
     - GIT_COMMITTER_EMAIL=kurudrive@gmail.com
@@ -14,17 +14,20 @@ env:
 
 matrix:
   include:
-    - php: 7.1.4
+    - php: 7.2
       env: 
+        - WP_VERSION=latest WP_MULTISITE=0
+    - php: 7.1.4
+      env:
         - WP_VERSION=latest WP_MULTISITE=0
     - php: 7
-      env: 
-        - WP_VERSION=latest WP_MULTISITE=0
-    - php: 5.6
       env:
         - WP_VERSION=latest WP_MULTISITE=0
         - WP_VERSION=latest WP_MULTISITE=1
         - WP_VERSION=4.4 WP_MULTISITE=0
+    - php: 5.6
+      env:
+        - WP_VERSION=latest WP_MULTISITE=0
     - php: 5.4
       env: WP_VERSION=latest WP_MULTISITE=0
 
@@ -65,4 +68,3 @@ script:
 
 after_success:
   - bash ./bin/deploy.sh
-
