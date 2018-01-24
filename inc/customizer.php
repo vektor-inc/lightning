@@ -532,8 +532,6 @@ function lightning_print_css_common(){
 		.veu_color_txt_key { color:'.$color_key_dark.' ; }
 		.veu_color_bg_key { background-color:'.$color_key_dark.' ; }
 		.veu_color_border_key { border-color:'.$color_key_dark.' ; }
-		a { color:'.$color_key_dark.' ; }
-		a:hover { color:'.$color_key.' ; }
 		.btn-default { border-color:'.$color_key.';color:'.$color_key.';}
 		.btn-default:focus,
 		.btn-default:hover { border-color:'.$color_key.';background-color: '.$color_key.'; }
