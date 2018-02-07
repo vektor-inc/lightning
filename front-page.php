@@ -105,4 +105,4 @@
 		</div><!-- [ /.row ] -->
 	</div><!-- [ /.container ] -->
 </div><!-- [ /.siteContent ] -->
-	<?php get_footer(); ?>
+<?php get_footer(); ?>

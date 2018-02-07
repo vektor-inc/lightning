@@ -25,7 +25,10 @@ $margin_bottom : 1.2em;
 /*-------------------------------------------*/
 
 body { font-family: "メイリオ",Meiryo,"ＭＳ Ｐゴシック","Hiragino Kaku Gothic Pro","ヒラギノ角ゴ Pro W3",sans-serif;-ms-word-wrap: break-word;word-wrap: break-word;font-size:16px; }
-img { max-width: 100%;height:auto; }
+/* img が２行ないとgulpでcssに出力されないという謎のバグがあるため、原因がわかるまで２行書いておく */
+/* JPN STYLE で発生 */
+img { max-width: 100%; height:auto; }
+img { max-width: 100%; height:auto; }
 p { line-height: 1.8em;margin-bottom:$margin_bottom; }
 em { font-weight: bold;font-style: italic !important;font-family: "ＭＳ Ｐゴシック","Hiragino Kaku Gothic Pro","ヒラギノ角ゴ Pro W3",sans-serif; }
 ul,ol,dl { margin-top:1.5em;margin-bottom:$margin_bottom;}
@@ -92,6 +95,7 @@ table { border-collapse: collapse; border-spacing: 0;width:100%; border-top:$bor
 /*-------------------------------------------*/
 .btn { white-space: normal; }
 .btn-xs { padding-left:15px;padding-right:15px; }
+.btn.btn-block { padding-left:10px;padding-right:10px; }
 
 /*-------------------------------------------*/
 /* images
