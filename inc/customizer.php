@@ -595,8 +595,8 @@ function lightning_customize_register( $wp_customize ) {
 /*	Lightning custom color Print head
 /*	* This is used for Contents and Plugins and others
 /*-------------------------------------------*/
-add_action( 'wp_head', 'lightning_output_keyColorCss', 5 );
-function lightning_output_keycolorcss() {
+add_action( 'wp_head', 'lightning_output_keycolor_css', 1 );
+function lightning_output_keycolor_css() {
 	$options        = get_option( 'lightning_theme_options' );
 	$colors_default = array(
 		'color_key'      => empty( $options['color_key'] ) ? '#337ab7' : $options['color_key'],
@@ -609,14 +609,20 @@ function lightning_output_keycolorcss() {
 		'_border' => 'border-color',
 	);
 	reset( $colors );
-	echo '<style type="text/css">';
+	$dynamic_css = '/* ltg theme common*/';
 	foreach ( $colors as $k => $v ) {
 		reset( $types );
 		foreach ( $types as $kk => $vv ) {
-			echo ".{$k}{$kk},.{$k}{$kk}_hover:hover{{$vv}: {$v};}";
+			$dynamic_css .= ".{$k}{$kk},.{$k}{$kk}_hover:hover{{$vv}: {$v};}";
 		}
 	}
-	echo "</style>\n";
+	// delete before after space
+	$dynamic_css = trim( $dynamic_css );
+	// convert tab and br to space
+	$dynamic_css = preg_replace( '/[\n\r\t]/', '', $dynamic_css );
+	// Change multiple spaces to single space
+	$dynamic_css = preg_replace( '/\s(?=\s)/', '', $dynamic_css );
+	wp_add_inline_style( 'lightning-design-style', $dynamic_css );
 }
 
 /*-------------------------------------------*/
