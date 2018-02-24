@@ -597,22 +597,22 @@ function lightning_customize_register( $wp_customize ) {
 /*-------------------------------------------*/
 add_action( 'wp_head', 'lightning_output_keyColorCss', 5 );
 function lightning_output_keycolorcss() {
-	$options         = get_option( 'lightning_theme_options' );
-	$corlors_default = array(
+	$options        = get_option( 'lightning_theme_options' );
+	$colors_default = array(
 		'color_key'      => empty( $options['color_key'] ) ? '#337ab7' : $options['color_key'],
 		'color_key_dark' => empty( $options['color_key_dark'] ) ? '#2e6da4' : $options['color_key_dark'],
 	);
-	$corlors         = apply_filters( 'lightning_keycolors', $corlors_default );
-	$types           = array(
+	$colors         = apply_filters( 'lightning_keycolors', $colors_default );
+	$types          = array(
 		'_bg'     => 'background-color',
 		'_txt'    => 'color',
 		'_border' => 'border-color',
 	);
-	reset( $corlors );
+	reset( $colors );
 	echo '<style type="text/css">';
-	while ( list( $k,$v ) = each( $corlors ) ) {
+	foreach ( $colors as $k => $v ) {
 		reset( $types );
-		while ( list( $kk,$vv ) = each( $types ) ) {
+		foreach ( $types as $kk => $vv ) {
 			echo ".{$k}{$kk},.{$k}{$kk}_hover:hover{{$vv}: {$v};}";
 		}
 	}
