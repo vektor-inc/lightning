@@ -27,7 +27,8 @@ class Lightning_Design_Manager {
 		);
 
 		$skins = self::get_skins();
-		while ( list($k,$v) = each( $skins ) ) {
+		foreach ( $skins as $k => $v ) {
+
 			$skins[ $k ] = isset( $v['name'] ) ? $v['name'] : $k; }
 
 		$wp_customize->add_control(
