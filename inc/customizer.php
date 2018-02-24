@@ -595,28 +595,34 @@ function lightning_customize_register( $wp_customize ) {
 /*	Lightning custom color Print head
 /*	* This is used for Contents and Plugins and others
 /*-------------------------------------------*/
-add_action( 'wp_head', 'lightning_output_keyColorCss', 5 );
-function lightning_output_keycolorcss() {
-	$options         = get_option( 'lightning_theme_options' );
-	$corlors_default = array(
+add_action( 'wp_head', 'lightning_output_keycolor_css', 1 );
+function lightning_output_keycolor_css() {
+	$options        = get_option( 'lightning_theme_options' );
+	$colors_default = array(
 		'color_key'      => empty( $options['color_key'] ) ? '#337ab7' : $options['color_key'],
 		'color_key_dark' => empty( $options['color_key_dark'] ) ? '#2e6da4' : $options['color_key_dark'],
 	);
-	$corlors         = apply_filters( 'lightning_keycolors', $corlors_default );
-	$types           = array(
+	$colors         = apply_filters( 'lightning_keycolors', $colors_default );
+	$types          = array(
 		'_bg'     => 'background-color',
 		'_txt'    => 'color',
 		'_border' => 'border-color',
 	);
-	reset( $corlors );
-	echo '<style type="text/css">';
-	while ( list( $k,$v ) = each( $corlors ) ) {
+	reset( $colors );
+	$dynamic_css = '/* ltg theme common*/';
+	foreach ( $colors as $k => $v ) {
 		reset( $types );
-		while ( list( $kk,$vv ) = each( $types ) ) {
-			echo ".{$k}{$kk},.{$k}{$kk}_hover:hover{{$vv}: {$v};}";
+		foreach ( $types as $kk => $vv ) {
+			$dynamic_css .= ".{$k}{$kk},.{$k}{$kk}_hover:hover{{$vv}: {$v};}";
 		}
 	}
-	echo "</style>\n";
+	// delete before after space
+	$dynamic_css = trim( $dynamic_css );
+	// convert tab and br to space
+	$dynamic_css = preg_replace( '/[\n\r\t]/', '', $dynamic_css );
+	// Change multiple spaces to single space
+	$dynamic_css = preg_replace( '/\s(?=\s)/', '', $dynamic_css );
+	wp_add_inline_style( 'lightning-design-style', $dynamic_css );
 }
 
 /*-------------------------------------------*/
