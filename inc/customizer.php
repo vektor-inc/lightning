@@ -10,15 +10,17 @@ function lightning_customize_register( $wp_customize ) {
 	class Custom_Text_Control extends WP_Customize_Control {
 		public $type        = 'customtext';
 		public $description = ''; // we add this for the extra description
+		public $input_before = '';
 		public $input_after = '';
 		public function render_content() {
 		?>
 		<label>
 			<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
-			<?php $style = ( $this->input_after ) ? ' style="width:50%"' : ''; ?>
+			<?php $style = ( $this->input_before || $this->input_after ) ? ' style="width:50%"' : '';?>
 			<div>
+			<?php echo wp_kses_post( $this->input_before ); ?>
 			<input type="text" value="<?php echo esc_attr( $this->value() ); ?>"<?php echo $style; ?> <?php $this->link(); ?> />
-			<?php echo $this->input_after; ?>
+			<?php echo wp_kses_post( $this->input_after ); ?>
 			</div>
 			<span><?php echo $this->description; ?></span>
 		</label>
