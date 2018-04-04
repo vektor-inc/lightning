@@ -32,6 +32,12 @@ http://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v4.1.0
+* [ Add function ] Add slide interval setteing.
+
+v4.0.3
+* [ Specification change ] change page header text color selecter.
+
 v4.0.0
 * [ Add function ] Add home page header slider text and button function.
 * [ Add function ] Add Customize shortcut link.

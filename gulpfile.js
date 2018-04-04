@@ -9,9 +9,42 @@ var concat = require('gulp-concat');
 var jsmin = require('gulp-jsmin');
 // エラーでも監視を続行させる
 var plumber = require('gulp-plumber');
+var sass = require('gulp-sass');
+var cmq = require('gulp-merge-media-queries');
+// add vender prifix
+var autoprefixer = require('gulp-autoprefixer');
+var cleanCss = require('gulp-clean-css');
+
 // http://blog.e-riverstyle.com/2014/02/gulpspritesmithcss-spritegulp.html
 // 同期的に処理してくれる
 var runSequence = require('run-sequence');
+
+gulp.task('sass',function(){
+    gulp.src(['design_skin/origin/_scss/**/*.scss'])
+        .pipe(plumber({
+            handleError: function (err) {
+                console.log(err);
+                this.emit('end');
+            }
+        }))
+				.pipe(plumber())
+        .pipe(sass())
+				.pipe(cmq({log:true}))
+        .pipe(autoprefixer())
+				.pipe(cleanCss())
+        .pipe(gulp.dest('./design_skin/origin/css'))
+        // .pipe(rename({
+        //     suffix: '.min'
+        // }))
+
+        // .pipe(cleanCss())
+        // .pipe(gulp.dest('design_skin/origin/css'))
+});
+
+
+
+
+
 
 gulp.task( 'copy', function() {
     gulp.src( './library/bootstrap/css/bootstrap.min.css'  )
@@ -22,36 +55,31 @@ gulp.task( 'copy', function() {
 } );
 
 // ファイル結合
-gulp.task('scripts', function() {
-  return gulp.src(['./library/bootstrap/js/bootstrap.min.js','./js/_master.js'])
-    .pipe(concat('all.js'))
-    .pipe(gulp.dest('./js/'));
-
-});
-gulp.task('scripts_header_fixed', function() {
+gulp.task('concat', function() {
   return gulp.src(['./library/bootstrap/js/bootstrap.min.js','./js/_master.js','./js/_header_fixed.js'])
-    .pipe(concat('all_in_header_fixed.js'))
+    .pipe(concat('lightning.js'))
     .pipe(gulp.dest('./js/'));
 });
 
 // js最小化
 gulp.task('jsmin', function () {
-  gulp.src(['./js/all.js','./js/all_in_header_fixed.js'])
+  gulp.src(['./js/lightning.js'])
   .pipe(plumber()) // エラーでも監視を続行
   .pipe(jsmin())
   .pipe(rename({suffix: '.min'}))
-  .pipe(gulp.dest('./js'));
+  .pipe(gulp.dest('./js/'));
 });
 
 // Watch
 gulp.task('watch', function() {
-    gulp.watch('js/_master.js', ['scripts','scripts_header_fixed']);
-    gulp.watch('js/_header_fixed.js', ['scripts','scripts_header_fixed']);
-    gulp.watch('js/all.js', ['jsmin']);
+    gulp.watch('js/_master.js', ['concat']);
+    gulp.watch('js/_header_fixed.js', ['concat']);
+    gulp.watch('js/lightning.js', ['jsmin']);
+    gulp.watch('design_skin/origin/_scss/**/*.scss',['sass']);
 });
 
-gulp.task('default', ['copy','scripts','jsmin','watch']);
-gulp.task('compile', ['copy','scripts','jsmin']);
+gulp.task('default', ['copy','concat','jsmin','watch']);
+gulp.task('compile', ['copy','concat','jsmin']);
 
 // copy dist ////////////////////////////////////////////////
 

@@ -69,9 +69,6 @@
 	jQuery(document).ready(function(){
 		jQuery('#top__fullcarousel .carousel-indicators li:first-child').addClass("active");
 		jQuery('#top__fullcarousel .item:first-child').addClass("active");
-		jQuery('.carousel').carousel({
-		  interval: 4000
-		});
 	});
 
 	/*-------------------------------------------*/
@@ -83,10 +80,10 @@
 			if(!iframeUrl){return;}
 			// iframeのURLの中に youtube か map が存在する位置を検索する
 			// 見つからなかった場合には -1 が返される
-			if ( 
-				( iframeUrl.indexOf("youtube") != -1 )  || 
-				( iframeUrl.indexOf("vimeo") != -1 )  || 
-				( iframeUrl.indexOf("maps") != -1 )  
+			if (
+				( iframeUrl.indexOf("youtube") != -1 )  ||
+				( iframeUrl.indexOf("vimeo") != -1 )  ||
+				( iframeUrl.indexOf("maps") != -1 )
 				) {
 				var iframeWidth = jQuery(this).attr("width");
 				var iframeHeight = jQuery(this).attr("height");
@@ -137,10 +134,4 @@
 	// 	jQuery('.navbar-collapse ul.sub-menu').parent().append('<i class="fa fa-home dropdown-toggle" data-doggle="dropdown"></i>');
 	// 	jQuery('.navbar-collapse ul.sub-menu').addClass('dropdown-menu');
 	// }
-
-
-
-
-
-
 })(jQuery);

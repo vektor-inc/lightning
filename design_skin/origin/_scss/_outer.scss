@@ -1,5 +1,5 @@
 @charset "utf-8";
-@import "compass";
+// @import "compass";
 
 /****************************************************************/
 /* Lightning Outer Area All Skin outer style
@@ -90,7 +90,6 @@ input.form-control.input_widthAuto { width: auto; }
   &.navbar { border-radius: 0; }
   .container { padding-top:5px;padding-bottom:4px; }
 }
-.navbar-header { float:none; }
 .navbar-brand { height:auto;padding:5px 0;margin:0;font-size: 32px;line-height: 1.5em;
   a { color:#333; }
   a:hover { text-decoration: none; color:$color_key; }
@@ -98,6 +97,7 @@ input.form-control.input_widthAuto { width: auto; }
 }
 
 @media (max-width: 991px){
+.navbar-header { float:none; } /* (max-width: 991px) の外に出すと初期設定のfloat:leftに負ける */
 .navbar-brand { float:inherit; text-align: center;padding:0 45px; }
 .navbar-brand img { display: block ; margin:0 auto; }
 }
@@ -426,6 +426,7 @@ ul.page-numbers { margin:0;padding: 0;
    select { margin-top:10px; }
 }
 
+.widget_vkexunit_post_list .mainSection-title,
 .widget_ltg_adv_post_list .pt_0 .mainSection-title { margin-bottom:0; }
 
 .widget_ltg_adv_full_wide_title_outer {
