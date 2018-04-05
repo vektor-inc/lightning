@@ -491,9 +491,10 @@ footer {
 
 .sticky { display:block; overflow:hidden;padding:1em;background-color: #f5f5f5; }
 
+// page top btn
 .page_top_btn {position: fixed;right: 2%;bottom: 3%;z-index: 99999;display: none;width: 40px;height: 38px;border: none;background: rgba(0,0,0,0.8); outline: 1px solid rgba(0, 0, 0, 0.8); border: 1px solid rgba(255,255,255,0.8);transition: opacity 0.3s;
     &:hover { opacity: 0.8; transition: opacity 0.3s; }
-    .arrow { padding-left: 5px; color: #fff; vertical-align: bottom; text-align: center; line-height: 30px; }
+    .arrow { padding-bottom: 5px; color: #fff; vertical-align: bottom; text-align: center; line-height: 30px; }
 }
 
 /*-------------------------------------------*/
