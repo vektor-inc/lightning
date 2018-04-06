@@ -143,31 +143,6 @@ var e=c.find(".active:last a"),f=a.Event("hide.bs.tab",{relatedTarget:b[0]}),g=a
 	// }
 })(jQuery);
 
-
-/*----------------------------------------------------------*/
-/*	scroll btn
-/*----------------------------------------------------------*/
-(function($) {
-$(function(){
-
-	// スクロールボタン
-	var $page_top = $('#page_top');
-	$(window).on('scroll', function(){
-		if ($(this).scrollTop() > 100) {
-            $page_top.fadeIn();
-		} else {
-			$page_top.stop(true, true).fadeOut();
-		}
-	});
-	$page_top.click(function () {
-		$('body,html').animate({
-			scrollTop: 0
-		}, 800);
-		return false;
-	});
-});
-})(jQuery);
-
 ;(function($,document,window){
 
 	var timer = false;
