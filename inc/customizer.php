@@ -8,17 +8,19 @@ function lightning_customize_register( $wp_customize ) {
 	/*	Add text control description
 	/*-------------------------------------------*/
 	class Custom_Text_Control extends WP_Customize_Control {
-		public $type        = 'customtext';
-		public $description = ''; // we add this for the extra description
-		public $input_after = '';
+		public $type         = 'customtext';
+		public $description  = ''; // we add this for the extra description
+		public $input_before = '';
+		public $input_after  = '';
 		public function render_content() {
 		?>
 		<label>
 			<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
-			<?php $style = ( $this->input_after ) ? ' style="width:50%"' : ''; ?>
+			<?php $style = ( $this->input_before || $this->input_after ) ? ' style="width:50%"' : ''; ?>
 			<div>
+			<?php echo wp_kses_post( $this->input_before ); ?>
 			<input type="text" value="<?php echo esc_attr( $this->value() ); ?>"<?php echo $style; ?> <?php $this->link(); ?> />
-			<?php echo $this->input_after; ?>
+			<?php echo wp_kses_post( $this->input_after ); ?>
 			</div>
 			<span><?php echo $this->description; ?></span>
 		</label>
@@ -632,6 +634,8 @@ add_action( 'wp_head', 'lightning_print_css_common', 2 );
 function lightning_print_css_common() {
 	$options          = get_option( 'lightning_theme_options' );
 	$skin_dynamic_css = '';
+	// 全幅ウィジェット等を使用した際にWindowsで横スクロールバーが出る対策( Charm 2.2.2 / Variety 2.3.2 以降リリースしたら削除)
+	$skin_dynamic_css = 'html, body { overflow-x: hidden; }';
 
 	if ( isset( $options['color_key'] ) && isset( $options['color_key_dark'] ) ) {
 		$color_key         = ( ! empty( $options['color_key'] ) ) ? esc_html( $options['color_key'] ) : '#337ab7';

@@ -51,7 +51,7 @@ $color_key : #337ab7;
 // @media screen and (max-width: 600px){
 // #wpadminbar { position: fixed; }
 // }
-
+html, body { overflow-x: hidden; }
 .sectionBox { padding-top:2em;padding-bottom:2em;display:block; }
 .sectionBox:after {
     content: "";
