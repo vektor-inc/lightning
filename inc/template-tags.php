@@ -157,7 +157,7 @@ function lightning_get_post_type() {
 	if ( $page_for_posts['post_top_use'] && $postType['slug'] == 'post' ) {
 		$postType['url'] = get_the_permalink( $page_for_posts['post_top_id'] );
 	} else {
-		$postType['url'] = home_url( '/' ) . '?post_type=' . $postType['slug'];
+		$postType['url'] = get_post_type_archive_link( $postType['slug'] );
 	}
 
 	$postType = apply_filters( 'lightning_postType_custom', $postType );
