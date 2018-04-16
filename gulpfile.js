@@ -103,7 +103,7 @@ gulp.task('copy_dist', function() {
             ],
             { base: './' }
         )
-        .pipe( gulp.dest( 'dist' ) ); // distディレクトリに出力
+        .pipe( gulp.dest( 'dist/lightning' ) ); // dist/lightningディレクトリに出力
 } );
 // gulp.task('build:dist',function(){
 //     /* ここで、CSS とか JS をコンパイルする */
