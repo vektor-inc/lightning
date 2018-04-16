@@ -930,10 +930,20 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 					if ( true === $GLOBALS['wp_filesystem']->move( $from, $to ) ) {
 						return trailingslashit( $to );
 					} else {
-						return new WP_Error( 'rename_failed', esc_html__( 'The remote plugin package does not contain a folder with the desired slug and renaming did not work.', 'lightning' ) . ' ' . esc_html__( 'Please contact the plugin provider and ask them to package their plugin according to the WordPress guidelines.', 'lightning' ), array( 'found' => $subdir_name, 'expected' => $desired_slug ) );
+						return new WP_Error(
+							'rename_failed', esc_html__( 'The remote plugin package does not contain a folder with the desired slug and renaming did not work.', 'lightning' ) . ' ' . esc_html__( 'Please contact the plugin provider and ask them to package their plugin according to the WordPress guidelines.', 'lightning' ), array(
+								'found'    => $subdir_name,
+								'expected' => $desired_slug,
+							)
+						);
 					}
 				} elseif ( empty( $subdir_name ) ) {
-					return new WP_Error( 'packaged_wrong', esc_html__( 'The remote plugin package consists of more than one file, but the files are not packaged in a folder.', 'lightning' ) . ' ' . esc_html__( 'Please contact the plugin provider and ask them to package their plugin according to the WordPress guidelines.', 'lightning' ), array( 'found' => $subdir_name, 'expected' => $desired_slug ) );
+					return new WP_Error(
+						'packaged_wrong', esc_html__( 'The remote plugin package consists of more than one file, but the files are not packaged in a folder.', 'lightning' ) . ' ' . esc_html__( 'Please contact the plugin provider and ask them to package their plugin according to the WordPress guidelines.', 'lightning' ), array(
+							'found'    => $subdir_name,
+							'expected' => $desired_slug,
+						)
+					);
 				}
 			}
 
@@ -1513,7 +1523,12 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 					require_once ABSPATH . 'wp-admin/includes/plugin-install.php';
 				}
 
-				$response = plugins_api( 'plugin_information', array( 'slug' => $slug, 'fields' => array( 'sections' => false ) ) );
+				$response = plugins_api(
+					'plugin_information', array(
+						'slug'   => $slug,
+						'fields' => array( 'sections' => false ),
+					)
+				);
 
 				$api[ $slug ] = false;
 
@@ -3140,16 +3155,18 @@ if ( ! function_exists( 'tgmpa_load_bulk_installer' ) ) {
 							$this->skin->plugin_active = is_plugin_active($plugin);
 							*/
 
-							$result = $this->run( array(
-								'package'           => $plugin, // [TGMPA + ] adjusted.
-								'destination'       => WP_PLUGIN_DIR,
-								'clear_destination' => false, // [TGMPA + ] adjusted.
-								'clear_working'     => true,
-								'is_multi'          => true,
-								'hook_extra'        => array(
-									'plugin' => $plugin,
-								),
-							) );
+							$result = $this->run(
+								array(
+									'package'           => $plugin, // [TGMPA + ] adjusted.
+									'destination'       => WP_PLUGIN_DIR,
+									'clear_destination' => false, // [TGMPA + ] adjusted.
+									'clear_working'     => true,
+									'is_multi'          => true,
+									'hook_extra'        => array(
+										'plugin' => $plugin,
+									),
+								)
+							);
 
 							$results[ $plugin ] = $this->result;
 
@@ -3177,12 +3194,14 @@ if ( ! function_exists( 'tgmpa_load_bulk_installer' ) ) {
 						 *     @type array  $packages Array of plugin, theme, or core packages to update.
 						 * }
 						 */
-						do_action( 'upgrader_process_complete', $this, array(
-							'action'  => 'install', // [TGMPA + ] adjusted.
-							'type'    => 'plugin',
-							'bulk'    => true,
-							'plugins' => $plugins,
-						) );
+						do_action(
+							'upgrader_process_complete', $this, array(
+								'action'  => 'install', // [TGMPA + ] adjusted.
+								'type'    => 'plugin',
+								'bulk'    => true,
+								'plugins' => $plugins,
+							)
+						);
 
 						$this->skin->bulk_footer();
 
@@ -3595,15 +3614,15 @@ if ( ! class_exists( 'TGMPA_Utils' ) ) {
 
 			if ( is_bool( $value ) ) {
 				return $value;
-			} else if ( is_int( $value ) && ( 0 === $value || 1 === $value ) ) {
+			} elseif ( is_int( $value ) && ( 0 === $value || 1 === $value ) ) {
 				return (bool) $value;
-			} else if ( ( is_float( $value ) && ! is_nan( $value ) ) && ( (float) 0 === $value || (float) 1 === $value ) ) {
+			} elseif ( ( is_float( $value ) && ! is_nan( $value ) ) && ( (float) 0 === $value || (float) 1 === $value ) ) {
 				return (bool) $value;
-			} else if ( is_string( $value ) ) {
+			} elseif ( is_string( $value ) ) {
 				$value = trim( $value );
 				if ( in_array( $value, $true, true ) ) {
 					return true;
-				} else if ( in_array( $value, $false, true ) ) {
+				} elseif ( in_array( $value, $false, true ) ) {
 					return false;
 				} else {
 					return false;
