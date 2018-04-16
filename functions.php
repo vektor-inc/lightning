@@ -302,7 +302,8 @@ if ( ! function_exists( 'lightning_widgets_init' ) ) {
 			foreach ( $posts as $key => $post ) {
 				register_sidebar(
 					array(
-						'name'          => __( 'LP widget "', 'lightning' ) . esc_html( $post->post_title ) . '"',
+						/* Translators: %s: LP title */
+						'name'          => sprintf( __( 'LP widget "%s"', 'lightning' ), esc_html( $post->post_title ) ),
 						'id'            => 'lp-widget-' . $post->ID,
 						'before_widget' => '<div class="widget %2$s" id="%1$s">',
 						'after_widget'  => '</div>',
