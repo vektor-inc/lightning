@@ -112,7 +112,7 @@ function lightning_customize_register( $wp_customize ) {
 		$wp_customize->add_control(
 			new WP_Customize_Color_Control(
 				$wp_customize, 'color_key_dark', array(
-					'label'    => __( 'Key color(dark)', 'lightning' ),
+					'label'    => __( 'Key color (dark)', 'lightning' ),
 					'section'  => 'lightning_design',
 					'settings' => 'lightning_theme_options[color_key_dark]',
 					'priority' => 503,
