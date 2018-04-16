@@ -3384,15 +3384,20 @@ if ( ! function_exists( 'tgmpa_load_bulk_installer' ) ) {
 							if ( $this->tgmpa->is_automatic ) {
 								// Automatic activation strings.
 								$this->upgrader->strings['skin_upgrade_start']        = __( 'The installation and activation process is starting. This process may take a while on some hosts, so please be patient.', 'lightning' );
-								$this->upgrader->strings['skin_update_successful']    = __( '%1$s installed and activated successfully.', 'lightning' ) . ' <a href="#" class="hide-if-no-js" onclick="%2$s"><span>' . esc_html__( 'Show Details', 'lightning' ) . '</span><span class="hidden">' . esc_html__( 'Hide Details', 'lightning' ) . '</span>.</a>';
+								$this->upgrader->strings['skin_update_successful']    = __( '%1$s installed and activated successfully.', 'lightning' );
 								$this->upgrader->strings['skin_upgrade_end']          = __( 'All installations and activations have been completed.', 'lightning' );
 								$this->upgrader->strings['skin_before_update_header'] = __( 'Installing and Activating Plugin %1$s (%2$d/%3$d)', 'lightning' );
 							} else {
 								// Default installation strings.
 								$this->upgrader->strings['skin_upgrade_start']        = __( 'The installation process is starting. This process may take a while on some hosts, so please be patient.', 'lightning' );
-								$this->upgrader->strings['skin_update_successful']    = esc_html__( '%1$s installed successfully.', 'lightning' ) . ' <a href="#" class="hide-if-no-js" onclick="%2$s"><span>' . esc_html__( 'Show Details', 'lightning' ) . '</span><span class="hidden">' . esc_html__( 'Hide Details', 'lightning' ) . '</span>.</a>';
+								$this->upgrader->strings['skin_update_successful']    = esc_html__( '%1$s installed successfully.', 'lightning' );
 								$this->upgrader->strings['skin_upgrade_end']          = __( 'All installations have been completed.', 'lightning' );
 								$this->upgrader->strings['skin_before_update_header'] = __( 'Installing Plugin %1$s (%2$d/%3$d)', 'lightning' );
+							}
+
+							// Add "read more" link only for WP < 4.8.
+							if ( version_compare( $this->tgmpa->wp_version, '4.8', '<' ) ) {
+								$this->upgrader->strings['skin_update_successful'] .= ' <a href="#" class="hide-if-no-js" onclick="%2$s"><span>' . esc_html__( 'Show Details', 'lightning' ) . '</span><span class="hidden">' . esc_html__( 'Hide Details', 'lightning' ) . '</span>.</a>';
 							}
 						}
 					}
