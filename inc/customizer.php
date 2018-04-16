@@ -312,7 +312,7 @@ function lightning_customize_register( $wp_customize ) {
 				$wp_customize,
 				'top_slide_image_mobile_' . $i,
 				array(
-					'label'       => '[' . $i . '] ' . __( 'Slide image for mobile', 'lightning' ) . ' ( ' . __( 'optional', 'lightning' ) . ' )',
+					'label'       => '[' . $i . '] ' . __( 'Slide image for mobile', 'lightning' ) . ' (' . __( 'optional', 'lightning' ) . ')',
 					'section'     => 'lightning_slide',
 					'settings'    => 'lightning_theme_options[top_slide_image_mobile_' . $i . ']',
 					'priority'    => $priority,
@@ -358,7 +358,7 @@ function lightning_customize_register( $wp_customize ) {
 		$wp_customize->add_control(
 			new WP_Customize_Color_Control(
 				$wp_customize, 'top_slide_cover_color_' . $i . '', array(
-					'label'    => '[' . $i . '] ' . __( 'Slide cover color', 'lightning' ) . ' ( ' . __( 'optional', 'lightning' ) . ' )',
+					'label'    => '[' . $i . '] ' . __( 'Slide cover color', 'lightning' ) . ' (' . __( 'optional', 'lightning' ) . ')',
 					'section'  => 'lightning_slide',
 					'settings' => 'lightning_theme_options[top_slide_cover_color_' . $i . ']',
 					'priority' => $priority,
@@ -445,7 +445,7 @@ function lightning_customize_register( $wp_customize ) {
 		$priority = $priority + 1;
 		$wp_customize->add_control(
 			'top_slide_text_title_' . $i, array(
-				'label'       => '[' . $i . '] ' . __( 'Slide title', 'lightning' ) . ' ( ' . __( 'optional', 'lightning' ) . ' )',
+				'label'       => '[' . $i . '] ' . __( 'Slide title', 'lightning' ) . ' (' . __( 'optional', 'lightning' ) . ')',
 				'section'     => 'lightning_slide',
 				'settings'    => 'lightning_theme_options[top_slide_text_title_' . $i . ']',
 				'type'        => 'textarea',
@@ -467,7 +467,7 @@ function lightning_customize_register( $wp_customize ) {
 		$priority = $priority + 1;
 		$wp_customize->add_control(
 			'top_slide_text_caption_' . $i, array(
-				'label'       => '[' . $i . '] ' . __( 'Slide text', 'lightning' ) . ' ( ' . __( 'optional', 'lightning' ) . ' )',
+				'label'       => '[' . $i . '] ' . __( 'Slide text', 'lightning' ) . ' (' . __( 'optional', 'lightning' ) . ')',
 				'section'     => 'lightning_slide',
 				'settings'    => 'lightning_theme_options[top_slide_text_caption_' . $i . ']',
 				'type'        => 'textarea',
@@ -490,7 +490,7 @@ function lightning_customize_register( $wp_customize ) {
 		$wp_customize->add_control(
 			new Custom_Text_Control(
 				$wp_customize, 'top_slide_text_btn_' . $i, array(
-					'label'       => '[' . $i . '] ' . __( 'Button text', 'lightning' ) . ' ( ' . __( 'optional', 'lightning' ) . ' )',
+					'label'       => '[' . $i . '] ' . __( 'Button text', 'lightning' ) . ' (' . __( 'optional', 'lightning' ) . ')',
 					'section'     => 'lightning_slide',
 					'settings'    => 'lightning_theme_options[top_slide_text_btn_' . $i . ']',
 					'type'        => 'text',
@@ -513,7 +513,7 @@ function lightning_customize_register( $wp_customize ) {
 		$priority = $priority + 1;
 		$wp_customize->add_control(
 			'top_slide_text_align_' . $i, array(
-				'label'    => '[' . $i . '] ' . __( 'Position to display text', 'lightning' ) . ' ( ' . __( 'optional', 'lightning' ) . ' )',
+				'label'    => '[' . $i . '] ' . __( 'Position to display text', 'lightning' ) . ' (' . __( 'optional', 'lightning' ) . ')',
 				'section'  => 'lightning_slide',
 				'settings' => 'lightning_theme_options[top_slide_text_align_' . $i . ']',
 				'type'     => 'radio',
@@ -539,7 +539,7 @@ function lightning_customize_register( $wp_customize ) {
 		$wp_customize->add_control(
 			new WP_Customize_Color_Control(
 				$wp_customize, 'top_slide_text_color_' . $i . '', array(
-					'label'    => '[' . $i . '] ' . __( 'Slide text color', 'lightning' ) . ' ( ' . __( 'optional', 'lightning' ) . ' )',
+					'label'    => '[' . $i . '] ' . __( 'Slide text color', 'lightning' ) . ' (' . __( 'optional', 'lightning' ) . ')',
 					'section'  => 'lightning_slide',
 					'settings' => 'lightning_theme_options[top_slide_text_color_' . $i . ']',
 					'priority' => $priority,
@@ -559,7 +559,7 @@ function lightning_customize_register( $wp_customize ) {
 		$priority = $priority + 1;
 		$wp_customize->add_control(
 			'lightning_theme_options[top_slide_text_shadow_use_' . $i . ']', array(
-				'label'    => __( 'Use text shadow', 'lightning' ) . ' ( ' . __( 'optional', 'lightning' ) . ' )',
+				'label'    => __( 'Use text shadow', 'lightning' ) . ' (' . __( 'optional', 'lightning' ) . ')',
 				'section'  => 'lightning_slide',
 				'settings' => 'lightning_theme_options[top_slide_text_shadow_use_' . $i . ']',
 				'type'     => 'checkbox',
@@ -580,7 +580,7 @@ function lightning_customize_register( $wp_customize ) {
 		$wp_customize->add_control(
 			new WP_Customize_Color_Control(
 				$wp_customize, 'top_slide_text_shadow_color_' . $i . '', array(
-					'label'    => '[' . $i . '] ' . __( 'Text shadow color', 'lightning' ) . ' ( ' . __( 'optional', 'lightning' ) . ' )',
+					'label'    => '[' . $i . '] ' . __( 'Text shadow color', 'lightning' ) . ' (' . __( 'optional', 'lightning' ) . ')',
 					'section'  => 'lightning_slide',
 					'settings' => 'lightning_theme_options[top_slide_text_shadow_color_' . $i . ']',
 					'priority' => $priority,
