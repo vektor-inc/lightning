@@ -46,14 +46,14 @@ function lightning_register_required_plugins() {
 
 		// This is an example of how to include a plugin bundled with a theme.
 		array(
-			'name'               => 'VK All in One Expansion Unit (Free)', // The plugin name.
-			'slug'               => 'vk-all-in-one-expansion-unit', // The plugin slug (typically the folder name).
-			'required'           => false, // If false, the plugin is only 'recommended' instead of required.
+			'name'     => 'VK All in One Expansion Unit (Free)', // The plugin name.
+			'slug'     => 'vk-all-in-one-expansion-unit', // The plugin slug (typically the folder name).
+			'required' => false, // If false, the plugin is only 'recommended' instead of required.
 		),
 		array(
-			'name'               => 'Ligthning Advanced Unit (Free)', // The plugin name.
-			'slug'               => 'lightning-advanced-unit', // The plugin slug (typically the folder name).
-			'required'           => false, // If false, the plugin is only 'recommended' instead of required.
+			'name'     => 'Ligthning Advanced Unit (Free)', // The plugin name.
+			'slug'     => 'lightning-advanced-unit', // The plugin slug (typically the folder name).
+			'required' => false, // If false, the plugin is only 'recommended' instead of required.
 		),
 	);
 
@@ -77,7 +77,6 @@ function lightning_register_required_plugins() {
 		'dismiss_msg'  => '',                      // If 'dismissable' is false, this message will be output at top of nag.
 		'is_automatic' => false,                   // Automatically activate plugins after installation or not.
 		'message'      => '',                      // Message to output right before the plugins table.
-
 
 		'strings'      => array(
 			'page_title'                      => __( 'Install Required Plugins', 'lightning' ),
@@ -134,7 +133,7 @@ function lightning_register_required_plugins() {
 				'Begin installing plugins',
 				'lightning'
 			),
-			'update_link' 					  => _n_noop(
+			'update_link'                     => _n_noop(
 				'Begin updating plugin',
 				'Begin updating plugins',
 				'lightning'

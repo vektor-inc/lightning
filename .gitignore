@@ -1,4 +1,5 @@
 node_modules/
 .sass-cache/
+dist/
 sftp-config.json
 thumbs.db
