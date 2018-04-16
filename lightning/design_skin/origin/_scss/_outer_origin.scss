@@ -1,0 +1,80 @@
+@charset "utf-8";
+// @import "compass";
+
+$border_horizontal : 1px solid rgba(0, 0, 0, 0.15);
+
+@media (max-width: 991px){
+.headerTop {
+  .headerTop .headerTop_tel_wrap { color:#464646; }
+  ul { border-top: $border_horizontal; }
+  ul a {
+    color: #464646;
+    border-bottom: $border_horizontal;
+  }
+}
+
+ul.gMenu { border-top:$border_horizontal }
+ul.gMenu a { border-bottom:$border_horizontal; }
+
+} // @media (max-width: 991px){
+
+@media (min-width: 992px){
+ul.gMenu { float:right;
+  a { background-color:#fff; }
+  & > li {
+    a:hover { background: none; }
+    a:hover .gMenu_description { color: $color_key; }
+    & > a { border-bottom:none; }
+  }
+  & > li > a:hover:after,
+  & > li.current-post-ancestor > a:after,
+  & > li.current-menu-item > a:after,
+  & > li.current-menu-parent > a:after,
+  & > li.current-menu-ancestor > a:after,
+  & > li.current_page_parent > a:after,
+  & > li.current_page_ancestor > a:after { content:".";line-height:0;border-bottom:1px solid $color_key; bottom:0px;display:block; overflow:hidden;position: absolute;width:100%;left:0; }
+} // ul.gMenu
+// sub-menu
+ul.gMenu > li > ul.sub-menu li a:hover { background-color: #f5f5f5; }
+} // @media (min-width: 992px){
+
+/*-------------------------------------------*/
+/* .page-header
+/*-------------------------------------------*/
+.page-header { background-color: $color_key;color: #fff; }
+
+/*-------------------------------------------*/
+/* .siteContent
+/*-------------------------------------------*/
+.siteContent { padding:1em 0 1.5em; }
+@media (min-width: 768px){
+  .siteContent { padding:3.5em 0 3.5em; }
+}
+
+/*-------------------------------------------*/
+/* Widget
+/*-------------------------------------------*/
+
+.widget_ltg_adv_full_wide_title_outer {
+  margin:0 calc(50% - 50vw) 3em;
+  padding:3em calc(50vw - 50%);
+}
+
+/*-------------------------------------------*/
+/* footer
+/*-------------------------------------------*/
+footer { border-top:3px solid #337ab7; }
+
+.single h1.entry-title:first-letter { color:$color_key; }
+
+/*-------------------------------------------*/
+/*      .tagcloud
+/*-------------------------------------------*/
+.widget .tagcloud a {
+  border:1px solid rgba( 0,0,0,0.1 );
+  background-color: rgba( 255,255,255,0.9 );
+}
+footer.siteFooter .widget .tagcloud a {
+  border:1px solid rgba( 0,0,0,0.1 );
+  background-color: rgba( 255,255,255,0.8 );
+}
