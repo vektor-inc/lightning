@@ -19,26 +19,28 @@ var cleanCss = require('gulp-clean-css');
 // 同期的に処理してくれる
 var runSequence = require('run-sequence');
 
-gulp.task('sass',function(){
-    gulp.src(['design_skin/origin/_scss/**/*.scss'])
-        .pipe(plumber({
-            handleError: function (err) {
-                console.log(err);
-                this.emit('end');
-            }
-        }))
-				.pipe(plumber())
-        .pipe(sass())
-				.pipe(cmq({log:true}))
-        .pipe(autoprefixer())
-				.pipe(cleanCss())
-        .pipe(gulp.dest('./design_skin/origin/css'))
-        // .pipe(rename({
-        //     suffix: '.min'
-        // }))
+gulp.task('sass', function() {
+  gulp.src(['design_skin/origin/_scss/**/*.scss'])
+    .pipe(plumber({
+      handleError: function(err) {
+        console.log(err);
+        this.emit('end');
+      }
+    }))
+    .pipe(plumber())
+    .pipe(sass())
+    .pipe(cmq({
+      log: true
+    }))
+    .pipe(autoprefixer())
+    .pipe(cleanCss())
+    .pipe(gulp.dest('./design_skin/origin/css'))
+  // .pipe(rename({
+  //     suffix: '.min'
+  // }))
 
-        // .pipe(cleanCss())
-        // .pipe(gulp.dest('design_skin/origin/css'))
+  // .pipe(cleanCss())
+  // .pipe(gulp.dest('design_skin/origin/css'))
 });
 
 
@@ -46,71 +48,77 @@ gulp.task('sass',function(){
 
 
 
-gulp.task( 'copy', function() {
-    gulp.src( './library/bootstrap/css/bootstrap.min.css'  )
-    .pipe(rename({prefix: "_",extname: ".scss"})) // 拡張子をscssに
-    .pipe( gulp.dest( './design_skin/origin/_scss/' ) ); // _scss ディレクトリに保存
-    gulp.src( './library/bootstrap/fonts/**'  )
-    .pipe( gulp.dest( './design_skin/origin/fonts/' ) ); // _scss ディレクトリに保存
-} );
+gulp.task('copy', function() {
+  gulp.src('./library/bootstrap/css/bootstrap.min.css')
+    .pipe(rename({
+      prefix: "_",
+      extname: ".scss"
+    })) // 拡張子をscssに
+    .pipe(gulp.dest('./design_skin/origin/_scss/')); // _scss ディレクトリに保存
+  gulp.src('./library/bootstrap/fonts/**')
+    .pipe(gulp.dest('./design_skin/origin/fonts/')); // _scss ディレクトリに保存
+});
 
 // ファイル結合
 gulp.task('concat', function() {
-  return gulp.src(['./library/bootstrap/js/bootstrap.min.js','./js/_master.js','./js/_header_fixed.js'])
+  return gulp.src(['./library/bootstrap/js/bootstrap.min.js', './js/_master.js', './js/_header_fixed.js'])
     .pipe(concat('lightning.js'))
     .pipe(gulp.dest('./js/'));
 });
 
 // js最小化
-gulp.task('jsmin', function () {
+gulp.task('jsmin', function() {
   gulp.src(['./js/lightning.js'])
-  .pipe(plumber()) // エラーでも監視を続行
-  .pipe(jsmin())
-  .pipe(rename({suffix: '.min'}))
-  .pipe(gulp.dest('./js/'));
+    .pipe(plumber()) // エラーでも監視を続行
+    .pipe(jsmin())
+    .pipe(rename({
+      suffix: '.min'
+    }))
+    .pipe(gulp.dest('./js/'));
 });
 
 // Watch
 gulp.task('watch', function() {
-    gulp.watch('js/_master.js', ['concat']);
-    gulp.watch('js/_header_fixed.js', ['concat']);
-    gulp.watch('js/lightning.js', ['jsmin']);
-    gulp.watch('design_skin/origin/_scss/**/*.scss',['sass']);
+  gulp.watch('js/_master.js', ['concat']);
+  gulp.watch('js/_header_fixed.js', ['concat']);
+  gulp.watch('js/lightning.js', ['jsmin']);
+  gulp.watch('design_skin/origin/_scss/**/*.scss', ['sass']);
 });
 
-gulp.task('default', ['copy','concat','jsmin','watch']);
-gulp.task('compile', ['copy','concat','jsmin']);
+gulp.task('default', ['copy', 'concat', 'jsmin', 'watch']);
+gulp.task('compile', ['copy', 'concat', 'jsmin']);
 
 // copy dist ////////////////////////////////////////////////
 
 gulp.task('copy_dist', function() {
-    return gulp.src(
-            [
-                './**/*.php',
-                './**/*.txt',
-                './**/*.css',
-                './**/*.png',
-                './design_skin/**',
-                './images/**',
-                './inc/**',
-                './js/**',
-                './languages/**',
-                './library/**',
-                './template-parts/**',
-                "!./tests/**",
-                "!./dist/**",
-                "!./node_modules/**/*.*"
-            ],
-            { base: './' }
-        )
-        .pipe( gulp.dest( 'dist/lightning' ) ); // dist/lightningディレクトリに出力
-} );
+  return gulp.src(
+      [
+        './**/*.php',
+        './**/*.txt',
+        './**/*.css',
+        './**/*.png',
+        './design_skin/**',
+        './images/**',
+        './inc/**',
+        './js/**',
+        './languages/**',
+        './library/**',
+        './template-parts/**',
+        "!./tests/**",
+        "!./dist/**",
+        "!./node_modules/**/*.*"
+      ], {
+        base: './'
+      }
+    )
+    .pipe(gulp.dest('dist/lightning')); // dist/lightningディレクトリに出力
+});
 // gulp.task('build:dist',function(){
 //     /* ここで、CSS とか JS をコンパイルする */
 // });
 
-gulp.task('dist', function(cb){
-    // return runSequence( 'build:dist', 'copy', cb );
-    // return runSequence( 'build:dist', 'copy_dist', cb );
-    return runSequence( 'copy_dist', cb );
+gulp.task('dist', function(cb) {
+  // return runSequence( 'build:dist', 'copy', cb );
+  // return runSequence( 'build:dist', 'copy_dist', cb );
+  return runSequence('copy_dist', cb);
 });
