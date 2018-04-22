@@ -59,17 +59,31 @@ gulp.task('copy', function() {
     .pipe(gulp.dest('./design_skin/origin/fonts/')); // _scss ディレクトリに保存
 });
 
-// ファイル結合
-gulp.task('concat', function() {
-  return gulp.src(['./library/bootstrap/js/bootstrap.min.js', './js/_master.js', './js/_header_fixed.js'])
-    .pipe(concat('lightning.js'))
-    .pipe(gulp.dest('./js/'));
-});
+// // ファイル結合
+// gulp.task('concat', function() {
+//   return gulp.src(['./library/bootstrap/js/bootstrap.min.js', './js/_master.js', './js/_header_fixed.js', './js/vk-prlx.min.js'])
+//     .pipe(concat('lightning.js'))
+//     .pipe(gulp.dest('./js/'));
+// });
+//
+// // js最小化
+// gulp.task('jsmin', function() {
+//   gulp.src(['./js/lightning.js'])
+//     .pipe(plumber()) // エラーでも監視を続行
+//     .pipe(jsmin())
+//     .pipe(rename({
+//       suffix: '.min'
+//     }))
+//     .pipe(gulp.dest('./js/'));
+// });
 
-// js最小化
-gulp.task('jsmin', function() {
-  gulp.src(['./js/lightning.js'])
-    .pipe(plumber()) // エラーでも監視を続行
+
+// ファイル結合
+gulp.task('js_build', function() {
+  return gulp.src(['./library/bootstrap/js/bootstrap.min.js', './js/_master.js', './js/_header_fixed.js', './js/vk-prlx.min.js'])
+    // return gulp.src(['./library/bootstrap/js/bootstrap.min.js', './js/_master.js', './js/_header_fixed.js'])
+    .pipe(concat('lightning.js'))
+    .pipe(gulp.dest('./js/'))
     .pipe(jsmin())
     .pipe(rename({
       suffix: '.min'
@@ -79,14 +93,15 @@ gulp.task('jsmin', function() {
 
 // Watch
 gulp.task('watch', function() {
-  gulp.watch('js/_master.js', ['concat']);
-  gulp.watch('js/_header_fixed.js', ['concat']);
-  gulp.watch('js/lightning.js', ['jsmin']);
+  gulp.watch('js/_master.js', ['js_build']);
+  gulp.watch('js/_header_fixed.js', ['js_build']);
+  gulp.watch('js/vk-prlx.min.js', ['js_build']);
+  // gulp.watch('js/lightning.js', ['jsmin']);
   gulp.watch('design_skin/origin/_scss/**/*.scss', ['sass']);
 });
 
-gulp.task('default', ['copy', 'concat', 'jsmin', 'watch']);
-gulp.task('compile', ['copy', 'concat', 'jsmin']);
+gulp.task('default', ['copy', 'js_build', 'watch']);
+gulp.task('compile', ['copy', 'js_build']);
 
 // copy dist ////////////////////////////////////////////////
 
