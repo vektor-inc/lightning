@@ -7,6 +7,7 @@
 
 $border_primary : 1px solid #e5e5e5;
 $color_font_default : #464646;
+$color_font_light : #666;
 $color_key : #337ab7;
 $margin_bottom : 1.2em;
 
@@ -62,17 +63,16 @@ h5:first-child { margin-top:0; }
 h3,.h3,
 .subSection-title { padding-bottom:8px;position: relative; }
 
-h4,.h4 { font-size:20px;position: relative; }
+h4,.h4 { font-size:20px; position: relative; }
 h5,.h5 { font-size:18px; }
-
-h6.h6 { font-size:16px; font-weight: bold; }
+h6,.h6 { font-size:16px; font-weight: bold; }
 
 @media (max-width: 767px){
 	h1 { font-size:24px;}
 	h2 { font-size:21px;}
-	h3 { font-size:18px;}
-	h4 { font-size:16px;}
-	h5 { font-size:16px;}
+	h3 { font-size:20px;}
+	h4 { font-size:18px;}
+	h5 { font-size:18px;}
 	h6 { font-size:16px;}
 }// @media (max-width: 767px){
 
@@ -82,9 +82,14 @@ blockquote:after { color:#ccc;font-family:FontAwesome;position: absolute; }
 blockquote:before { content: "\f10d";top:10px;}
 blockquote:after { content: "\f10e";bottom:10px;right:20px; }
 
+.table,
 table { border-collapse: collapse; border-spacing: 0;width:100%; border-top:$border_primary;
 	th,
-	td { padding: 8px; border-bottom:$border_primary;
+	td,
+	thead tr th,
+	thead tr td,
+	tbody tr th,
+	tbody tr td { padding: 1em; border-bottom:$border_primary;
 		.form-control { max-width:90%; }
 	}
 	th { font-weight: lighter; }
