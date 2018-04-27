@@ -7,11 +7,7 @@
 		<div class="row">
 
 			<?php
-			global $lightning_theme_options;
-			$lightning_theme_options = get_option( 'lightning_theme_options' );
-			if (
-				isset( $lightning_theme_options['top_sidebar_hidden'] ) &&
-				$lightning_theme_options['top_sidebar_hidden'] ) {
+			if ( lightning_is_frontpage_onecolumn() ) {
 				$main_col = 'col-md-12';
 			} else {
 				$main_col = 'col-md-8';
@@ -94,7 +90,7 @@
 
 			</div><!-- [ /.mainSection ] -->
 
-			<?php if ( ! isset( $lightning_theme_options['top_sidebar_hidden'] ) || ! $lightning_theme_options['top_sidebar_hidden'] ) : ?>
+			<?php if ( ! lightning_is_frontpage_onecolumn() ) : ?>
 
 				<div class="col-md-3 col-md-offset-1 subSection sideSection">
 					<?php get_sidebar(); ?>
