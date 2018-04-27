@@ -1,5 +1,7 @@
 <?php
 /*-------------------------------------------*/
+/*	Sanitize
+/*-------------------------------------------*/
 /*	Theme default options
 /*-------------------------------------------*/
 /*	Head logo
@@ -108,7 +110,7 @@ function lightning_get_page_for_posts() {
 	$page_for_posts['post_top_id'] = get_option( 'page_for_posts' );
 
 	// Set use post top page flag.
-	$page_for_posts['post_top_use'] = ( isset( $page_for_posts['post_top_id'] ) && $page_for_posts['post_top_id'] ) ? true : false;
+	$page_for_posts['post_top_use'] = ( $page_for_posts['post_top_id'] ) ? true : false;
 
 	// When use post top page that get post top page name.
 	$page_for_posts['post_top_name'] = ( $page_for_posts['post_top_use'] ) ? get_the_title( $page_for_posts['post_top_id'] ) : '';
@@ -327,4 +329,23 @@ function lightning_the_footerCopyRight() {
 	$lightning_footerPowered = __( '<p>Powered by <a href="https://wordpress.org/">WordPress</a> &amp; <a href="https://lightning.nagoya" target="_blank" title="Free WordPress Theme Lightning"> Lightning Theme</a> by Vektor,Inc. technology.</p>', 'lightning' );
 	echo apply_filters( 'lightning_footerPoweredCustom', $lightning_footerPowered );
 
+}
+
+function lightning_is_frontpage_onecolumn() {
+	// ※ global変数だとテストが効かないため
+	// global $lightning_theme_options;
+	// $options          = $lightning_theme_options;
+	$options          = get_option( 'lightning_theme_options' );
+	$page_on_front_id = get_option( 'page_on_front' );
+
+	if ( isset( $options['top_sidebar_hidden'] ) && $options['top_sidebar_hidden'] ) {
+		return true;
+	}
+	if ( $page_on_front_id ) {
+		$template = get_post_meta( $page_on_front_id, '_wp_page_template', true );
+		if ( $template == 'page-onecolumn.php' ) {
+			return true;
+		}
+	}
+	return false;
 }

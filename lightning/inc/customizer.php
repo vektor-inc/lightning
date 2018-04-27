@@ -132,11 +132,12 @@ function lightning_customize_register( $wp_customize ) {
 	);
 	$wp_customize->add_control(
 		'lightning_theme_options[top_sidebar_hidden]', array(
-			'label'    => __( 'Don\'t show sidebar on home page', 'lightning' ),
-			'section'  => 'lightning_design',
-			'settings' => 'lightning_theme_options[top_sidebar_hidden]',
-			'type'     => 'checkbox',
-			'priority' => 520,
+			'label'       => __( 'Don\'t show sidebar on home page', 'lightning' ),
+			'section'     => 'lightning_design',
+			'settings'    => 'lightning_theme_options[top_sidebar_hidden]',
+			'type'        => 'checkbox',
+			'priority'    => 520,
+			'description' => __( '* Even if there is no check here, if the page template specified on the top page is "without sidebar", it will be 1 column.', 'lightning' ),
 		)
 	);
 	$wp_customize->selective_refresh->add_partial(
