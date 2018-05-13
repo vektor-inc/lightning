@@ -1,20 +1,22 @@
 <?php
-
 class Lightning_Design_Manager {
 
 	static function init() {
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'load_skin_css' ) );
 		add_action( 'after_setup_theme', array( __CLASS__, 'load_skin_php' ) );
+		add_action( 'after_setup_theme', array( __CLASS__, 'load_skin_callback' ) );
 		add_action( 'customize_register', array( __CLASS__, 'customize_register' ) );
 	}
 
 	static function get_skins() {
 		$skins = array(
 			'origin' => array(
-				'label'    => 'Lightning Origin',
-				'css_path' => get_template_directory_uri() . '/design_skin/origin/css/style.css',
-				'php_path' => get_parent_theme_file_path( '/design_skin/origin/origin.php' ),
-				'version'  => LIGHTNING_THEME_VERSION,
+				'label'           => 'Lightning Origin',
+				'css_path'        => get_template_directory_uri() . '/design_skin/origin/css/style.css',
+				'editor_css_path' => get_template_directory_uri() . '/design_skin/origin/css/editor.css',
+				'php_path'        => get_parent_theme_file_path( '/design_skin/origin/origin.php' ),
+				'callback'        => '',
+				'version'         => LIGHTNING_THEME_VERSION,
 			),
 		);
 		return apply_filters( 'lightning-design-skins', $skins );
@@ -23,8 +25,19 @@ class Lightning_Design_Manager {
 	static function load_skin_css() {
 		$skins        = self::get_skins();
 		$current_skin = get_option( 'lightning_design_skin' );
+
+		if ( ! empty( $skins[ $current_skin ]['version'] ) ) {
+			$version = $skins[ $current_skin ]['version'];
+		} else {
+			$version = '';
+		}
+
 		if ( ! empty( $skins[ $current_skin ]['css_path'] ) ) {
-			wp_enqueue_style( 'lightning-design-style', $skins[ $current_skin ]['css_path'], array( 'font-awesome' ), $skins[ $current_skin ]['version'] );
+			wp_enqueue_style( 'lightning-design-style', $skins[ $current_skin ]['css_path'], array( 'font-awesome' ), $version );
+		}
+		if ( ! empty( $skins[ $current_skin ]['editor_css_path'] ) ) {
+
+			add_editor_style( $skins[ $current_skin ]['editor_css_path'] . '?ver=' . $version );
 		}
 	}
 
@@ -33,6 +46,14 @@ class Lightning_Design_Manager {
 		$current_skin = get_option( 'lightning_design_skin' );
 		if ( ! empty( $skins[ $current_skin ]['php_path'] ) && file_exists( $skins[ $current_skin ]['php_path'] ) ) {
 			require $skins[ $current_skin ]['php_path'];
+		}
+	}
+
+	static function load_skin_callback() {
+		$skins        = self::get_skins();
+		$current_skin = get_option( 'lightning_design_skin' );
+		if ( ! empty( $skins[ $current_skin ]['callback'] ) and $skins[ $current_skin ]['callback'] ) {
+			call_user_func_array( $skins[ $current_skin ]['callback'], array() );
 		}
 	}
 
