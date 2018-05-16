@@ -119,13 +119,6 @@ function lightning_addJs() {
 	wp_enqueue_script( 'lightning-js', get_template_directory_uri() . '/js/lightning.min.js', array( 'jquery' ), LIGHTNING_THEME_VERSION );
 }
 
-/* If you want to remove the header fixed,
-/* you paste the bellow code to your child theme's functions.php or plugin file.
-/*-------------------------------------------*/
-// add_filter( 'lightning_headfix_enable', 'lightning_headfix_disabel');
-// function lightning_headfix_disabel(){
-//     return false;
-// }
 
 add_action( 'wp_enqueue_scripts', 'lightning_commentJs' );
 function lightning_commentJs() {
