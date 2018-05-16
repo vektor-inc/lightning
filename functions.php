@@ -151,7 +151,49 @@ require get_parent_theme_file_path( '/inc/template-tags.php' );
 /*-------------------------------------------*/
 /*	Load designskin manager
 /*-------------------------------------------*/
-require get_parent_theme_file_path( '/inc/class-design-manager.php' );
+
+function lightning_is_old_skin() {
+	$skin_current    = get_option( 'lightning_design_skin' );
+	$default_headers = array(
+		'Name'        => 'Plugin Name',
+		'PluginURI'   => 'Plugin URI',
+		'Version'     => 'Version',
+		'Description' => 'Description',
+		'Author'      => 'Author',
+		'AuthorURI'   => 'Author URI',
+		'TextDomain'  => 'Text Domain',
+		'DomainPath'  => 'Domain Path',
+		'Network'     => 'Network',
+		// Site Wide Only is deprecated in favor of Network.
+		'_sitewide'   => 'Site Wide Only',
+	);
+
+	$skins = array(
+		'charm' => array(
+			'plugin_path' => WP_PLUGIN_DIR . '/lightning-skin-charm/lightning_skin_charm.php',
+			'new_version' => '3.0.0',
+		),
+	);
+
+	if ( ! file_exists( $skins[ $skin_current ]['plugin_path'] ) ) {
+		// already file name changed = new version!
+		return false;
+	} else {
+		$plugin_data     = get_file_data( $skins[ $skin_current ]['plugin_path'], $default_headers );
+		$version_current = $plugin_data['Version'];
+		$version_limit   = $skins[ $skin_current ]['new_version'];
+		if ( version_compare( $version_current, $version_limit ) < 0 ) {
+			return true;
+		}
+	}
+};
+
+if ( lightning_is_old_skin() ) {
+	require get_parent_theme_file_path( '/inc/class-design-manager-old.php' );
+} else {
+	require get_parent_theme_file_path( '/inc/class-design-manager.php' );
+}
+
 
 /*-------------------------------------------*/
 /*	Load tga(Plugin install)
