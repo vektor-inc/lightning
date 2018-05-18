@@ -174,8 +174,9 @@ function lightning_is_old_skin() {
 			'new_version' => '3.0.0',
 		),
 	);
-
-	if ( ! file_exists( $skins[ $skin_current ]['plugin_path'] ) ) {
+	if ( $skin_current == 'origin' || ! $skin_current ) {
+		return false;
+	} elseif ( file_exists( $skins[ $skin_current ]['plugin_path'] ) ) {
 		// already file name changed = new version!
 		return false;
 	} else {
