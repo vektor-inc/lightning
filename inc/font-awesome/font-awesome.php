@@ -10,33 +10,55 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 			add_action( 'admin_init', array( __CLASS__, 'load_admin_font_awesome' ) );
 		}
 
-		static function version_info() {
+		static function versions() {
 			global $font_awesome_directory_uri;
 			$font_awesome_directory_uri = get_template_directory_uri() . '/inc/font-awesome/';
-			$vk_font_awesome_version    = get_option( 'vk_font_awesome_version', '4.7' );
-			$version_array              = array(
-				'5.0_SVG_JS' => $font_awesome_directory_uri . 'versions/5.0.13/svg-with-js/js/fontawesome-all.min.js',
-				'5.0'        => $font_awesome_directory_uri . 'versions/5.0.13/web-fonts-with-css/css/fontawesome-all.min.css',
-				'4.7'        => $font_awesome_directory_uri . 'versions/4.7.0/css/font-awesome.min.css',
+			$versions                   = array(
+				'5.0_SVG_JS'       => array(
+					'label'   => '5.0 SVG with JS',
+					'version' => '5.0',
+					'type'    => 'svg-with-js',
+					'url_css' => $font_awesome_directory_uri . 'versions/5.0.13/web-fonts-with-css/css/fontawesome-all.min.css',
+					'url_js'  => $font_awesome_directory_uri . 'versions/5.0.13/svg-with-js/js/fontawesome-all.min.js',
+				),
+				'5.0_WebFonts_CSS' => array(
+					'label'   => '5.0 Web Fonts with CSS (' . __( 'Recommended', 'lightning' ) . ')',
+					'version' => '5.0',
+					'type'    => 'web-fonts-with-css',
+					'url_css' => $font_awesome_directory_uri . 'versions/5.0.13/web-fonts-with-css/css/fontawesome-all.min.css',
+					'url_js'  => '',
+				),
+				'4.7'              => array(
+					'label'   => '4.7',
+					'version' => '4.7',
+					'type'    => 'web-fonts-with-css',
+					'url_css' => $font_awesome_directory_uri . 'versions/4.7.0/css/font-awesome.min.css',
+					'url_js'  => '',
+				),
 			);
-			$version_info['version']    = $vk_font_awesome_version;
-			$version_info['url']        = $version_array[ $vk_font_awesome_version ];
-			return $version_info;
+			return $versions;
+		}
+
+		static function current_info() {
+			$versions                = self::versions();
+			$vk_font_awesome_version = get_option( 'vk_font_awesome_version', '4.7' );
+			$current_info            = $versions[ $vk_font_awesome_version ];
+			return $current_info;
 		}
 
 		static function load_font_awesome() {
-			$version_info = self::version_info();
-			if ( $version_info['version'] === '5.0_SVG_JS' ) {
-				wp_enqueue_script( 'font-awesome-js', $version_info['url'], array(), $version_info['version'] );
+			$current = self::current_info();
+			if ( $current['type'] === 'svg-with-js' ) {
+				wp_enqueue_script( 'font-awesome-js', $current['url_js'], array(), $current['version'] );
 			} else {
-				wp_enqueue_style( 'font-awesome', $version_info['url'], array(), $version_info['version'] );
+				wp_enqueue_style( 'font-awesome', $current['url_css'], array(), $current['version'] );
 			}
 		}
 
 		static function load_admin_font_awesome() {
-			$version_info = self::version_info();
-			if ( ! $version_info['version'] === '5.0_SVG_JS' ) {
-				add_editor_style( $version_info['url'] );
+			$current = self::current_info();
+			if ( ! $current['type'] === 'web-fonts-with-css' ) {
+				add_editor_style( $current['css'] );
 			}
 		}
 
@@ -60,6 +82,11 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 				)
 			);
 
+			$versions = Vk_Font_Awesome_Versions::versions();
+			foreach ( $versions as $key => $value ) {
+				$choices[ $key ] = $value['label'];
+			}
+
 			$wp_customize->add_control(
 				'vk_font_awesome_version', array(
 					'label'       => __( 'Font Awesome Version', 'lightning' ),
@@ -68,11 +95,7 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 					'description' => __( '4.7 will be abolished in the near future.', 'lightning' ),
 					'type'        => 'select',
 					'priority'    => '',
-					'choices'     => array(
-						'5.0_SVG_JS' => '5.0 SVG with JS',
-						'5.0'        => '5.0 Web Fonts with CSS (' . __( 'Recommended', 'lightning' ) . ')',
-						'4.7'        => '4.7',
-					),
+					'choices'     => $choices,
 				)
 			);
 		} // static function customize_register( $wp_customize ) {
