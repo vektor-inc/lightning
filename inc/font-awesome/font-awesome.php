@@ -10,13 +10,14 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 			add_action( 'admin_init', array( __CLASS__, 'load_admin_font_awesome' ) );
 		}
 
-		static public function version_info() {
+		static function version_info() {
 			global $font_awesome_directory_uri;
 			$font_awesome_directory_uri = get_template_directory_uri() . '/inc/font-awesome/';
 			$vk_font_awesome_version    = get_option( 'vk_font_awesome_version', '4.7' );
 			$version_array              = array(
-				'5.0' => $font_awesome_directory_uri . 'versions/5.0.13/web-fonts-with-css/css/fontawesome-all.min.css',
-				'4.7' => $font_awesome_directory_uri . 'versions/4.7.0//css/font-awesome.min.css',
+				'5.0_SVG_JS' => $font_awesome_directory_uri . 'versions/5.0.13/svg-with-js/js/fontawesome-all.min.js',
+				'5.0'        => $font_awesome_directory_uri . 'versions/5.0.13/web-fonts-with-css/css/fontawesome-all.min.css',
+				'4.7'        => $font_awesome_directory_uri . 'versions/4.7.0/css/font-awesome.min.css',
 			);
 			$version_info['version']    = $vk_font_awesome_version;
 			$version_info['url']        = $version_array[ $vk_font_awesome_version ];
@@ -24,13 +25,19 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 		}
 
 		static function load_font_awesome() {
-			$version_info = $this->version_info();
-			wp_enqueue_style( 'font-awesome', $version_info['url'], array(), $version_info['version'] );
+			$version_info = self::version_info();
+			if ( $version_info['version'] === '5.0_SVG_JS' ) {
+				wp_enqueue_script( 'font-awesome-js', $version_info['url'], array(), $version_info['version'] );
+			} else {
+				wp_enqueue_style( 'font-awesome', $version_info['url'], array(), $version_info['version'] );
+			}
 		}
 
 		static function load_admin_font_awesome() {
-			$version_info = $this->version_info();
-			add_editor_style( $version_info['url'] );
+			$version_info = self::version_info();
+			if ( ! $version_info['version'] === '5.0_SVG_JS' ) {
+				add_editor_style( $version_info['url'] );
+			}
 		}
 
 		/*-------------------------------------------*/
@@ -62,8 +69,9 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 					'type'        => 'select',
 					'priority'    => '',
 					'choices'     => array(
-						'5.0' => '5.0 (' . __( 'Recommended', 'lightning' ) . ')',
-						'4.7' => '4.7',
+						'5.0_SVG_JS' => '5.0 SVG with JS',
+						'5.0'        => '5.0 Web Fonts with CSS (' . __( 'Recommended', 'lightning' ) . ')',
+						'4.7'        => '4.7',
 					),
 				)
 			);
