@@ -46,6 +46,29 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 			return $current_info;
 		}
 
+		static public function ex_and_link() {
+			$current = self::current_info();
+			if ( $current['version'] == '5.0' ) {
+				$ex_and_link = 'Font Awesome 5<br>' . __( 'Ex ) ', 'lightning' ) . 'far fa-file-alt [ <a href="//fontawesome.com/icons?d=gallery&m=free" target="_blank">Icon list</a> ]';
+			} else {
+				$ex_and_link = 'Font Awesome 4.7<br>' . __( 'Ex ) ', 'lightning' ) . 'fa-file-text-o [ <a href="//fontawesome.com/v4.7.0/icons/" target="_blank">Icon list</a> ]';
+			}
+			return $ex_and_link;
+		}
+
+		/**
+		 * When use Font Awesome 4,7 then print 'fa '.
+		 * @var strings;
+		 */
+		static public function print_fa() {
+			$fa                   = '';
+			$font_awesome_current = self::current_info();
+			if ( $font_awesome_current['version'] == '4.7' ) {
+				$fa = 'fa ';
+			}
+			return $fa;
+		}
+
 		static function load_font_awesome() {
 			$current = self::current_info();
 			if ( $current['type'] === 'svg-with-js' ) {
