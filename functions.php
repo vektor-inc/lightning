@@ -172,7 +172,7 @@ require get_parent_theme_file_path( '/inc/tgm-plugin-activation/tgm-config.php' 
 /*-------------------------------------------*/
 /*	Load Font Awesome
 /*-------------------------------------------*/
-require get_parent_theme_file_path( '/inc/font-awesome/font-awesome.php' );
+require get_parent_theme_file_path( '/inc/font-awesome-config.php' );
 
 /*-------------------------------------------*/
 /*	Load Front PR Blocks
