@@ -81,7 +81,6 @@ function lightning_theme_setup() {
 	/*-------------------------------------------*/
 	/*	Admin page _ Add editor css
 	/*-------------------------------------------*/
-	add_editor_style( '//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' );
 	if ( ! apply_filters( 'lightning-disable-theme_style', false ) ) {
 		add_editor_style( 'design_skin/origin/css/editor.css' );
 	}
@@ -139,7 +138,6 @@ function lightning_commentJs() {
 /*-------------------------------------------*/
 add_action( 'wp_enqueue_scripts', 'lightning_css' );
 function lightning_css() {
-	wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/library/font-awesome/4.7.0/css/font-awesome.min.css', array(), '4.7.0' );
 	wp_enqueue_style( 'lightning-theme-style', get_stylesheet_uri(), array( 'lightning-design-style' ), LIGHTNING_THEME_VERSION );
 }
 
@@ -147,7 +145,7 @@ function lightning_css() {
 add_action( 'wp_enqueue_scripts', 'lightning_design_css' );
 function lightning_design_css() {
 	if ( ! apply_filters( 'lightning-disable-theme_style', false ) ) {
-		wp_enqueue_style( 'lightning-design-style', get_template_directory_uri() . '/design_skin/origin/css/style.css', array( 'font-awesome' ), LIGHTNING_THEME_VERSION );
+		wp_enqueue_style( 'lightning-design-style', get_template_directory_uri() . '/design_skin/origin/css/style.css', array(), LIGHTNING_THEME_VERSION );
 	}
 }
 
@@ -170,6 +168,11 @@ require get_parent_theme_file_path( '/inc/class-design-manager.php' );
 /*	Load tga(Plugin install)
 /*-------------------------------------------*/
 require get_parent_theme_file_path( '/inc/tgm-plugin-activation/tgm-config.php' );
+
+/*-------------------------------------------*/
+/*	Load Font Awesome
+/*-------------------------------------------*/
+require get_parent_theme_file_path( '/inc/font-awesome-config.php' );
 
 /*-------------------------------------------*/
 /*	Load Front PR Blocks
