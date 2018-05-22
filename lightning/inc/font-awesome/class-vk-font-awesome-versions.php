@@ -49,9 +49,9 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 			global $vk_font_awesome_version_textdomain;
 			$current = self::current_info();
 			if ( $current['version'] == '5.0' ) {
-				$ex_and_link = '<strong>Font Awesome 5</strong><br>' . __( 'Ex ) ', $vk_font_awesome_version_textdomain ) . 'far fa-file-alt [ <a href="//fontawesome.com/icons?d=gallery&m=free" target="_blank">Icon list</a> ]';
+				$ex_and_link = '<strong>Font Awesome 5</strong><br>' . __( 'Ex ) ', 'lightning' ) . 'far fa-file-alt [ <a href="//fontawesome.com/icons?d=gallery&m=free" target="_blank">Icon list</a> ]';
 			} else {
-				$ex_and_link = '<strong>Font Awesome 4.7</strong><br>' . __( 'Ex ) ', $vk_font_awesome_version_textdomain ) . 'fa-file-text-o [ <a href="//fontawesome.com/v4.7.0/icons/" target="_blank">Icon list</a> ]';
+				$ex_and_link = '<strong>Font Awesome 4.7</strong><br>' . __( 'Ex ) ', 'lightning' ) . 'fa-file-text-o [ <a href="//fontawesome.com/v4.7.0/icons/" target="_blank">Icon list</a> ]';
 			}
 			return $ex_and_link;
 		}
@@ -120,7 +120,7 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 
 			$wp_customize->add_section(
 				'VK Font Awesome', array(
-					'title' => __( 'Font Awesome', $vk_font_awesome_version_textdomain ),
+					'title' => __( 'Font Awesome', 'lightning' ),
 				)
 			);
 
@@ -140,10 +140,10 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 
 			$wp_customize->add_control(
 				'vk_font_awesome_version', array(
-					'label'       => __( 'Font Awesome Version', $vk_font_awesome_version_textdomain ),
+					'label'       => __( 'Font Awesome Version', 'lightning' ),
 					'section'     => 'VK Font Awesome',
 					'settings'    => 'vk_font_awesome_version',
-					'description' => __( '4.7 will be abolished in the near future.', $vk_font_awesome_version_textdomain ),
+					'description' => __( '4.7 will be abolished in the near future.', 'lightning' ),
 					'type'        => 'select',
 					'priority'    => '',
 					'choices'     => $choices,
