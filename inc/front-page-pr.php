@@ -82,6 +82,11 @@ function lightning_front_pr_blocks_customize_register( $wp_customize ) {
 		// Add control
 		$priority ++;
 
+		$description = '';
+		if ( class_exists( 'Vk_Font_Awesome_Versions' ) ) {
+			$description = Vk_Font_Awesome_Versions::ex_and_link();
+		}
+
 		$wp_customize->add_control(
 			new Custom_Text_Control(
 				$wp_customize,
@@ -91,7 +96,7 @@ function lightning_front_pr_blocks_customize_register( $wp_customize ) {
 					'section'     => 'lightning_front_pr',
 					'settings'    => 'lightning_theme_options[front_pr_icon_' . $i . ']',
 					'type'        => 'text',
-					'description' => 'Ex : fa-file-text-o [ <a href="//fontawesome.io/icons/" target="_blank">Icon list</a> ]',
+					'description' => $description,
 					'priority'    => $priority,
 				)
 			)
@@ -191,6 +196,11 @@ function lightning_front_pr_blocks_add() {
 	if ( isset( $options['front_pr_display'] ) && $options['front_pr_display'] ) {
 		echo '<div class="widget">';
 		echo '<div class="prBlocks prBlocks-default row">';
+
+		if ( class_exists( 'Vk_Font_Awesome_Versions' ) ) {
+			$fa = Vk_Font_Awesome_Versions::print_fa();
+		}
+
 		for ( $i = 1; $i <= 3; ) {
 
 			echo '<article class="prBlock prBlock_lighnt col-sm-4">';
@@ -211,7 +221,7 @@ function lightning_front_pr_blocks_add() {
 			if ( $options[ 'front_pr_icon_' . $i ] ) {
 				// echo '<div class="prBlock_icon" style="background-color:'.esc_attr( $options['color_key'] ).'">';
 				echo '<div class="prBlock_icon_outer">';
-				echo '<i class="fa ' . $options[ 'front_pr_icon_' . $i ] . ' font_icon prBlock_icon"></i>';
+				echo '<i class="' . $fa . $options[ 'front_pr_icon_' . $i ] . ' font_icon prBlock_icon"></i>';
 				echo '</div>';
 			}
 
