@@ -11,4 +11,8 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 
 	global $vk_font_awesome_version_textdomain;
 	$vk_font_awesome_version_textdomain = 'lightning';
+
+	global $set_enqueue_handle_style;
+	$set_enqueue_handle_style = 'lightning-design-style';
+
 }

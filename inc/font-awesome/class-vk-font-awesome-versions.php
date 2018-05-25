@@ -3,11 +3,13 @@
 if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 
 	class Vk_Font_Awesome_Versions {
+
 		static function init() {
 			add_action( 'customize_register', array( __CLASS__, 'customize_register' ) );
 			add_action( 'wp_enqueue_scripts', array( __CLASS__, 'load_font_awesome' ) );
 			add_action( 'admin_init', array( __CLASS__, 'load_admin_font_awesome' ) );
-			// add_action( 'wp_head', array( __CLASS__, 'edit_icon_css_change' ), 3 );
+			add_action( 'wp_head', array( __CLASS__, 'dynamic_css' ), 3 );
+			// add_filter( 'body_class', array( __CLASS__, 'add_body_class_fa_version' ) );
 		}
 
 		static function versions() {
@@ -38,14 +40,14 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 			return $versions;
 		}
 
-		static function current_info() {
+		public static function current_info() {
 			$versions                = self::versions();
-			$vk_font_awesome_version = get_option( 'vk_font_awesome_version', '4.7' );
+			$vk_font_awesome_version = get_option( 'vk_font_awesome_version', '5.0_WebFonts_CSS' );
 			$current_info            = $versions[ $vk_font_awesome_version ];
 			return $current_info;
 		}
 
-		static public function ex_and_link() {
+		public static function ex_and_link() {
 			global $vk_font_awesome_version_textdomain;
 			$current = self::current_info();
 			if ( $current['version'] == '5.0' ) {
@@ -60,7 +62,7 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 		 * When use Font Awesome 4,7 then print 'fa '.
 		 * @var strings;
 		 */
-		static public function print_fa() {
+		public static function print_fa() {
 			$fa                   = '';
 			$font_awesome_current = self::current_info();
 			if ( $font_awesome_current['version'] == '4.7' ) {
@@ -85,21 +87,46 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 			}
 		}
 
-		static function edit_icon_css_change() {
-			// $current     = self::current_info();
-			// $dynamic_css = '/* font-awesome */';
-			// if ( $current['version'] == '5.0' ) {
-			// 	$dynamic_css .= '.veu_adminEdit a.btn:before{content:"\f044";font-family:Font Awesome\ 5 Free;}';
-			// } else {
-			// 	$dynamic_css .= '.veu_adminEdit a.btn:before{content:"\f040";font-family:FontAwesome;}';
-			// }
-			// // delete before after space
-			// $dynamic_css = trim( $dynamic_css );
-			// // convert tab and br to space
-			// $dynamic_css = preg_replace( '/[\n\r\t]/', '', $dynamic_css );
-			// // Change multiple spaces to single space
-			// $dynamic_css = preg_replace( '/\s(?=\s)/', '', $dynamic_css );
-			// wp_add_inline_style( 'vkExUnit_common_style', $dynamic_css );
+		/**
+	 * body class 端末識別クラス追加
+	 * @return [type] [description]
+	 */
+		// static function add_body_class_fa_version( $class ) {
+		// 	$current = get_option( 'vk_font_awesome_version', '5.0_WebFonts_CSS' );
+		// 	if ( $current == '4.7' ) {
+		// 		$class[] = 'fa_v4';
+		// 	} elseif ( $current == '5.0_WebFonts_CSS' ) {
+		// 		$class[] = 'fa_v5_css';
+		// 	} elseif ( $current == '5.0_SVG_JS' ) {
+		// 		$class[] = 'fa_v5_svg';
+		// 	}
+		// 	return $class;
+		// }
+
+
+		/**
+		 * Output dynbamic css according to Font Awesome versions
+		 * @return [type] [description]
+		 */
+		static function dynamic_css() {
+			$current     = get_option( 'vk_font_awesome_version', '5.0_WebFonts_CSS' );
+			$dynamic_css = '';
+			if ( $current == '4.7' ) {
+				$dynamic_css = '.tagcloud a:before { font-family:FontAwesome;content:"\f02b"; }';
+			} elseif ( $current == '5.0_WebFonts_CSS' ) {
+				$dynamic_css = '.tagcloud a:before { font-family: "Font Awesome 5 Free";content: "\f02b";font-weight: bold; }';
+			} elseif ( $current == '5.0_SVG_JS' ) {
+				$dynamic_css = '.tagcloud a:before { content:"" }';
+			}
+			// delete before after space
+			$dynamic_css = trim( $dynamic_css );
+			// convert tab and br to space
+			$dynamic_css = preg_replace( '/[\n\r\t]/', '', $dynamic_css );
+			// Change multiple spaces to single space
+			$dynamic_css = preg_replace( '/\s(?=\s)/', '', $dynamic_css );
+
+			global $set_enqueue_handle_style;
+			wp_add_inline_style( $set_enqueue_handle_style, $dynamic_css );
 		}
 
 		public static function class_switch( $class_v4 = '', $class_v5 = '' ) {
