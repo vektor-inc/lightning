@@ -123,17 +123,15 @@ footer.siteFooter .widget .tagcloud a {
 			padding-left:1.2em;
 			&:before {
 				display: block;
-				margin-right:0.5em;
 				position: absolute;
 				top:50%;
 				left:0.5em;
-				transform: translateY(-50%);
-
-				// text-align: center;
-				font-size:1em;
+				transform: translateY(-65%);
+				font-size:10px;
 				line-height: 1em;
-				font: normal normal normal 10px/1 FontAwesome;
-				content:"\f101";
+				font-family: "メイリオ", Meiryo, sans-serif;
+				content:"≫";
+				margin-right:0.5em;
 			}
 		}
 	}

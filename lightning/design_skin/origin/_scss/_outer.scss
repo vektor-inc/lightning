@@ -204,12 +204,19 @@ h1.entry-title { font-size:32px; }
   i { margin-right:5px; }
 }
 .entry-meta_items { font-size:12px; }
-.entry-meta_items.published:before { font-family:FontAwesome;content:"\f073";margin-right:5px; }
 .entry-meta_items.published a { color:$color_font_default; }
-.entry-meta_items_author:before { font-family:FontAwesome;content:"\f040";margin-right:5px; }
 .entry-meta_items_author { margin-left:0.8em; }
 .entry-meta_items_term { float:right;margin-right:0; }
 .entry-meta_hidden { display: none; }
+
+.fa_v4 {
+	.entry-meta_items.published::before { margin-right:5px;font-family:FontAwesome;content:"\f073"; }
+	.entry-meta_items_author::before { margin-right:5px;font-family:FontAwesome;content:"\f040"; }
+}
+.fa_v5_css {
+	.entry-meta_items.published::before { margin-right:5px;font-family:"Font Awesome 5 Free";content:"\f073";font-weight: 900;}
+	.entry-meta_items_author::before { margin-right:5px;font-family:"Font Awesome 5 Free";content:"\f303";font-weight: 900;}
+}
 
 .entry-body { padding:1em 0 1.5em; }
 
