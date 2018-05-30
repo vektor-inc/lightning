@@ -6,10 +6,10 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 
 		static function init() {
 			add_action( 'customize_register', array( __CLASS__, 'customize_register' ) );
-			add_action( 'wp_enqueue_scripts', array( __CLASS__, 'load_font_awesome' ) );
+			add_action( 'wp_enqueue_scripts', array( __CLASS__, 'load_font_awesome' ), 3 );
 			add_action( 'admin_init', array( __CLASS__, 'load_admin_font_awesome' ) );
 			add_action( 'wp_head', array( __CLASS__, 'dynamic_css' ), 3 );
-			// add_filter( 'body_class', array( __CLASS__, 'add_body_class_fa_version' ) );
+			add_filter( 'body_class', array( __CLASS__, 'add_body_class_fa_version' ) );
 		}
 
 		static function versions() {
@@ -48,7 +48,6 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 		}
 
 		public static function ex_and_link() {
-			global $vk_font_awesome_version_textdomain;
 			$current = self::current_info();
 			if ( $current['version'] == '5.0' ) {
 				$ex_and_link = '<strong>Font Awesome 5</strong><br>' . __( 'Ex ) ', 'lightning' ) . 'far fa-file-alt [ <a href="//fontawesome.com/icons?d=gallery&m=free" target="_blank">Icon list</a> ]';
@@ -75,6 +74,7 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 			$current = self::current_info();
 			if ( $current['type'] === 'svg-with-js' ) {
 				wp_enqueue_script( 'font-awesome-js', $current['url_js'], array(), $current['version'] );
+				wp_add_inline_script( 'font-awesome-js', 'FontAwesomeConfig = { searchPseudoElements: true };', 'before' );
 			} else {
 				wp_enqueue_style( 'font-awesome', $current['url_css'], array(), $current['version'] );
 			}
@@ -91,18 +91,17 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 	 * body class 端末識別クラス追加
 	 * @return [type] [description]
 	 */
-		// static function add_body_class_fa_version( $class ) {
-		// 	$current = get_option( 'vk_font_awesome_version', '5.0_WebFonts_CSS' );
-		// 	if ( $current == '4.7' ) {
-		// 		$class[] = 'fa_v4';
-		// 	} elseif ( $current == '5.0_WebFonts_CSS' ) {
-		// 		$class[] = 'fa_v5_css';
-		// 	} elseif ( $current == '5.0_SVG_JS' ) {
-		// 		$class[] = 'fa_v5_svg';
-		// 	}
-		// 	return $class;
-		// }
-
+		static function add_body_class_fa_version( $class ) {
+			$current = get_option( 'vk_font_awesome_version', '5.0_WebFonts_CSS' );
+			if ( $current == '4.7' ) {
+				$class[] = 'fa_v4';
+			} elseif ( $current == '5.0_WebFonts_CSS' ) {
+				$class[] = 'fa_v5_css';
+			} elseif ( $current == '5.0_SVG_JS' ) {
+				$class[] = 'fa_v5_svg';
+			}
+			return $class;
+		}
 
 		/**
 		 * Output dynbamic css according to Font Awesome versions
@@ -142,8 +141,6 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 		/*	customize_register
 		/*-------------------------------------------*/
 		static function customize_register( $wp_customize ) {
-
-			global $vk_font_awesome_version_textdomain;
 
 			$wp_customize->add_section(
 				'VK Font Awesome', array(
