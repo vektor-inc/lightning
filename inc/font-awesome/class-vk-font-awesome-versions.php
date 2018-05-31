@@ -14,9 +14,10 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 
 		static function versions() {
 			global $font_awesome_directory_uri;
+			global $vk_font_awesome_version_textdomain;
 			$versions = array(
 				'5.0_SVG_JS'       => array(
-					'label'   => '5.0 SVG with JS',
+					'label'   => '5.0 SVG with JS ( ' . __( 'Not recommended', 'lightning' ) . ' )',
 					'version' => '5.0',
 					'type'    => 'svg-with-js',
 					'url_css' => $font_awesome_directory_uri . 'versions/5.0.13/web-fonts-with-css/css/fontawesome-all.min.css',
