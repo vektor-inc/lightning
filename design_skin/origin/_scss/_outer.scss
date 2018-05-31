@@ -466,6 +466,9 @@ ul.page-numbers { margin:0;padding: 0;
   line-height: 2.4em;
 }
 
+/* パララックスやページタイトル固定の時に透けないように */
+.siteContent_after { position: relative; }
+
 /*-------------------------------------------*/
 /* footer
 /*-------------------------------------------*/
