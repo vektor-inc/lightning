@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-.carousel { border-bottom:$border_primary;display:block; overflow:hidden; }
+.carousel { border-bottom:$border_primary;display:block; overflow:hidden;width:100%; }
 .carousel-indicators { margin-bottom:0;bottom:5px; }
 .carousel-inner>.item {
 	img,
@@ -40,8 +40,9 @@
 }
 .slide-text-caption {
 	margin-top:0.6em;
-	font-size:1.7vw;
-	line-height: 1.7;
+	font-size:10px;
+	line-height: 1.5;
+	@media ( min-width: 576px){ font-size:12px;line-height: 1.7; }
 	@media ( min-width: 768px){ margin-top:1.2em; }
 	@media ( min-width: 992px){ font-size:1.3vw; }
 }
