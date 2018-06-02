@@ -43,7 +43,7 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 
 		public static function current_info() {
 			$versions                = self::versions();
-			$vk_font_awesome_version = get_option( 'vk_font_awesome_version', '5.0_WebFonts_CSS' );
+			$vk_font_awesome_version = get_option( 'vk_font_awesome_version', '4.7' );
 			$current_info            = $versions[ $vk_font_awesome_version ];
 			return $current_info;
 		}
