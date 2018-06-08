@@ -4,6 +4,8 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 
 	class Vk_Font_Awesome_Versions {
 
+		private static $version_default = '4.7';
+
 		static function init() {
 			add_action( 'customize_register', array( __CLASS__, 'customize_register' ) );
 			add_action( 'wp_enqueue_scripts', array( __CLASS__, 'load_font_awesome' ), 3 );
@@ -43,7 +45,7 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 
 		public static function current_info() {
 			$versions                = self::versions();
-			$vk_font_awesome_version = get_option( 'vk_font_awesome_version', '4.7' );
+			$vk_font_awesome_version = get_option( 'vk_font_awesome_version', self::$version_default );
 			$current_info            = $versions[ $vk_font_awesome_version ];
 			return $current_info;
 		}
@@ -95,7 +97,7 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 	 * @return [type] [description]
 	 */
 		static function add_body_class_fa_version( $class ) {
-			$current = get_option( 'vk_font_awesome_version', '5.0_WebFonts_CSS' );
+			$current = get_option( 'vk_font_awesome_version', self::$version_default );
 			if ( $current == '4.7' ) {
 				$class[] = 'fa_v4';
 			} elseif ( $current == '5.0_WebFonts_CSS' ) {
@@ -111,7 +113,7 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 		 * @return [type] [description]
 		 */
 		static function dynamic_css() {
-			$current     = get_option( 'vk_font_awesome_version', '5.0_WebFonts_CSS' );
+			$current     = get_option( 'vk_font_awesome_version', self::$version_default );
 			$dynamic_css = '';
 			if ( $current == '4.7' ) {
 				$dynamic_css = '.tagcloud a:before { font-family:FontAwesome;content:"\f02b"; }';
