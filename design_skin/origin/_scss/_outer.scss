@@ -156,9 +156,9 @@ ul.gMenu {
   }
 } // ul.gMenu
 // sub-menu
-ul.gMenu > li > ul.sub-menu { display:none;position: absolute;z-index: 1000;left:50%;
+ul.gMenu > li > ul.sub-menu { display:none;position: absolute;z-index: 1000;left: 0;
   & > li { left:-120px; }
-  li { width:240px;margin:0;list-style: none;display:block; overflow:visible; position: relative;box-shadow:1px 1px 3px rgba(0,0,0,0.2);
+  li { width:240px;margin:0;list-style: none;display:block; overflow:visible; box-shadow:1px 1px 3px rgba(0,0,0,0.2);
     ul { margin-bottom:0;display:none;position: absolute;left:240px;top:0.8em;  }
     a { padding-left:1.5em; }
   }
