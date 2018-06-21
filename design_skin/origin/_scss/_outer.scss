@@ -195,6 +195,8 @@ $section_margin_bottom:25px;
   header { position: relative;border-bottom:$border_primary; }
   header h1 { margin-top:0; line-height: 1.4em; }
   .postList { margin-bottom:$section_margin_bottom; }
+	// Media Posts 1st image Feature measures
+	.postList::after { content: "";clear: both;display: block; }
 }
 h1.mainSection-title { font-size:24px; }
 h1.mainSection-title i { margin-right:8px; }
