@@ -27,7 +27,7 @@ Header Images are photo by theme author and are released under GPL license.
 == Author ==
 The theme built by Hidekazu Ishikawa (kurudrive) at Vektor,Inc.
 You can contact me at inquiry form.
-http://www.vektor-inc.co.jp/inquiry/
+https://www.vektor-inc.co.jp/inquiry/
 
 
 == Changelog ==
