@@ -156,10 +156,22 @@ ul.gMenu {
   }
 } // ul.gMenu
 // sub-menu
-ul.gMenu > li > ul.sub-menu { display:none;position: absolute;z-index: 1000;left:0;
-  & > li { left:-120px; }
-  li { width:240px;margin:0;list-style: none;display:block; overflow:visible; box-shadow:1px 1px 3px rgba(0,0,0,0.2);
-    ul { margin-bottom:0;display:none;position: absolute;left:240px;top:0.8em;  }
+/*
+幅が異なる第一階層のメニューの中心にサブメニューを表示させる
+まずは第一階層のメニューの中心が left:50%; なので、ここを基準にサブメニューを配置
+サブメニューの幅は240px固定とした場合、その分 サブメニューの li に対して半分の 120px 左にずらす事で、サブメニューが中心になる。
+但し、この状態だと ul.sub-menu は第一階層の中心から右側に240pxなので、見えているサブメニューの右側に120px分存在しており、
+ここもhover対象となってしまうため、.sub-menu の幅は本来の240pxの半分の 120px が指定してある。
+このままだと、孫メニューも子メニューの中心からスタートしてしまうので、右側にずらすため240pxで指定している。
+ */
+ul.gMenu > li > ul.sub-menu { display:none;position: absolute;z-index: 1000;left:50%;width:120px;
+  li {
+		width:240px;left:-120px;margin:0;display:block; overflow:visible; position: relative;
+		list-style: none;
+		box-shadow:1px 1px 3px rgba(0,0,0,0.2);
+    ul { margin-bottom:0;display:none;position: absolute;left:240px;top:0.8em;
+			li { left:0; }
+		}
     a { padding-left:1.5em; }
   }
 }
