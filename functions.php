@@ -134,14 +134,6 @@ function lightning_css() {
 	wp_enqueue_style( 'lightning-theme-style', get_stylesheet_uri(), array( 'lightning-design-style' ), LIGHTNING_THEME_VERSION );
 }
 
-// Load design skin
-add_action( 'wp_enqueue_scripts', 'lightning_design_css' );
-function lightning_design_css() {
-	if ( ! apply_filters( 'lightning-disable-theme_style', false ) ) {
-		wp_enqueue_style( 'lightning-design-style', get_template_directory_uri() . '/design_skin/origin/css/style.css', array(), LIGHTNING_THEME_VERSION );
-	}
-}
-
 /*-------------------------------------------*/
 /*	Load Theme Customizer additions.
 /*-------------------------------------------*/
