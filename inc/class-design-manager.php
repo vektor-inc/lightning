@@ -16,6 +16,7 @@ class Lightning_Design_Manager {
 				'css_path'        => get_template_directory_uri() . '/design_skin/origin/css/style.css',
 				'editor_css_path' => get_template_directory_uri() . '/design_skin/origin/css/editor.css',
 				'php_path'        => get_parent_theme_file_path( '/design_skin/origin/origin.php' ),
+				'js_path'         => '',
 				'callback'        => '',
 				'version'         => LIGHTNING_THEME_VERSION,
 			),
@@ -36,10 +37,15 @@ class Lightning_Design_Manager {
 		if ( ! empty( $skins[ $current_skin ]['css_path'] ) ) {
 			wp_enqueue_style( 'lightning-design-style', $skins[ $current_skin ]['css_path'], array( 'font-awesome' ), $version );
 		}
-		if ( ! empty( $skins[ $current_skin ]['editor_css_path'] ) ) {
 
+		if ( ! empty( $skins[ $current_skin ]['editor_css_path'] ) ) {
 			add_editor_style( $skins[ $current_skin ]['editor_css_path'] . '?ver=' . $version );
 		}
+
+		if ( ! empty( $skins[ $current_skin ]['js_path'] ) ) {
+			wp_enqueue_script( 'lightning-design-js', $skins[ $current_skin ]['js_path'], array( 'jquery' ), $version, true );
+		}
+
 	}
 
 	static function load_skin_php() {
