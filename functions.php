@@ -118,13 +118,6 @@ function lightning_addJs() {
 	wp_enqueue_script( 'lightning-js', get_template_directory_uri() . '/js/lightning.min.js', array( 'jquery' ), LIGHTNING_THEME_VERSION );
 }
 
-/* If you want to remove the header fixed,
-/* you paste the bellow code to your child theme's functions.php or plugin file.
-/*-------------------------------------------*/
-// add_filter( 'lightning_headfix_enable', 'lightning_headfix_disabel');
-// function lightning_headfix_disabel(){
-//     return false;
-// }
 
 add_action( 'wp_enqueue_scripts', 'lightning_commentJs' );
 function lightning_commentJs() {
@@ -141,14 +134,6 @@ function lightning_css() {
 	wp_enqueue_style( 'lightning-theme-style', get_stylesheet_uri(), array( 'lightning-design-style' ), LIGHTNING_THEME_VERSION );
 }
 
-// Load design skin
-add_action( 'wp_enqueue_scripts', 'lightning_design_css' );
-function lightning_design_css() {
-	if ( ! apply_filters( 'lightning-disable-theme_style', false ) ) {
-		wp_enqueue_style( 'lightning-design-style', get_template_directory_uri() . '/design_skin/origin/css/style.css', array(), LIGHTNING_THEME_VERSION );
-	}
-}
-
 /*-------------------------------------------*/
 /*	Load Theme Customizer additions.
 /*-------------------------------------------*/
@@ -162,7 +147,30 @@ require get_parent_theme_file_path( '/inc/template-tags.php' );
 /*-------------------------------------------*/
 /*	Load designskin manager
 /*-------------------------------------------*/
-require get_parent_theme_file_path( '/inc/class-design-manager.php' );
+
+function lightning_is_new_skin() {
+	$skin_current = get_option( 'lightning_design_skin' );
+	if ( $skin_current == 'origin' || $skin_current == '' ) {
+		// New Skin System
+		return true;
+	} else {
+		$old_skin_system_functions_url = WP_PLUGIN_DIR . '/lightning-skin-' . $skin_current . '/old-functions/old-skin-system-functions.php';
+		if ( file_exists( $old_skin_system_functions_url ) ) {
+			// New Skin System
+			return true;
+		} else {
+			// Old Skin System
+			return false;
+		}
+	}
+}
+
+if ( lightning_is_new_skin() ) {
+	require get_parent_theme_file_path( '/inc/class-design-manager.php' );
+} else {
+	require get_parent_theme_file_path( '/inc/class-design-manager-old.php' );
+}
+
 
 /*-------------------------------------------*/
 /*	Load tga(Plugin install)
