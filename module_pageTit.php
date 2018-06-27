@@ -33,9 +33,7 @@ $pageTitHtml_after  .= '</div></div></div></div><!-- [ /.page-header ] -->' . "\
 /*	Set display title name
 /*-------------------------------------------*/
 $pageTitle = '';
-if ( is_page() || is_attachment() ) {
-	$pageTitle = get_the_title();
-} elseif ( is_search() ) {
+if ( is_search() ) {
 	$pageTitle = sprintf( __( 'Search Results for : %s', 'lightning' ), get_search_query() );
 } elseif ( is_404() ) {
 	$pageTitle = __( 'Not found', 'lightning' );
@@ -69,6 +67,8 @@ if ( is_page() || is_attachment() ) {
 	} else {
 		$pageTitle = $postType['name'];
 	}
+} elseif ( is_page() || is_attachment() ) {
+	$pageTitle = get_the_title();
 }
 $pageTitle = apply_filters( 'lightning_pageTitCustom', $pageTitle );
 
