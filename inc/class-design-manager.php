@@ -27,6 +27,9 @@ class Lightning_Design_Manager {
 	static function load_skin_css() {
 		$skins        = self::get_skins();
 		$current_skin = get_option( 'lightning_design_skin' );
+		if ( ! $current_skin ) {
+			$current_skin = 'origin';
+		}
 
 		if ( ! empty( $skins[ $current_skin ]['version'] ) ) {
 			$version = $skins[ $current_skin ]['version'];
