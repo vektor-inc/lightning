@@ -148,7 +148,14 @@ function lightning_bread_crumb() {
 
 		} else {
 			$taxonomies = get_the_taxonomies();
-			$taxonomy   = key( $taxonomies );
+
+			// To avoid WooCommerce default tax
+			foreach ( $taxonomies as $key => $value ) {
+				if ( $key != 'product_type' ) {
+					$taxonomy = $key;
+					break;
+				}
+			}
 
 			if ( $taxonomies ) :
 				$terms = get_the_terms( get_the_ID(), $taxonomy );
