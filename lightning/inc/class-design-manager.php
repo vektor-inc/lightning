@@ -54,6 +54,9 @@ class Lightning_Design_Manager {
 	static function load_skin_php() {
 		$skins        = self::get_skins();
 		$current_skin = get_option( 'lightning_design_skin' );
+		if ( ! $current_skin ) {
+			$current_skin = 'origin';
+		}
 		if ( ! empty( $skins[ $current_skin ]['php_path'] ) && file_exists( $skins[ $current_skin ]['php_path'] ) ) {
 			require $skins[ $current_skin ]['php_path'];
 		}
