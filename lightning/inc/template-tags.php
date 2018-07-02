@@ -128,19 +128,19 @@ function lightning_get_post_type() {
 
 	// Get post type slug
 	/*-------------------------------------------*/
-	$postType['slug'] = get_post_type();
-	if ( ! $postType['slug'] ) {
-		global $wp_query;
-		if ( isset( $wp_query->query_vars['post_type'] ) && $wp_query->query_vars['post_type'] ) {
-			$postType['slug'] = $wp_query->query_vars['post_type'];
-		} elseif ( is_tax() ) {
-			// Case of tax archive and no posts
-			$taxonomy         = get_queried_object()->taxonomy;
-			$postType['slug'] = get_taxonomy( $taxonomy )->object_type[0];
-		} else {
-			// This is necessary that when no posts.
-			$postType['slug'] = 'post';
-		}
+	// When WooCommerce taxonomy archive page , get_post_type() is does not work properly
+	// $postType['slug'] = get_post_type();
+
+	global $wp_query;
+	if ( isset( $wp_query->query_vars['post_type'] ) && $wp_query->query_vars['post_type'] ) {
+		$postType['slug'] = $wp_query->query_vars['post_type'];
+	} elseif ( is_tax() ) {
+		// Case of tax archive and no posts
+		$taxonomy         = get_queried_object()->taxonomy;
+		$postType['slug'] = get_taxonomy( $taxonomy )->object_type[0];
+	} else {
+		// This is necessary that when no posts.
+		$postType['slug'] = 'post';
 	}
 
 	// Get custom post type name
