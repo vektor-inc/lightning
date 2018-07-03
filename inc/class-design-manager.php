@@ -38,7 +38,7 @@ class Lightning_Design_Manager {
 		}
 
 		if ( ! empty( $skins[ $current_skin ]['css_path'] ) ) {
-			wp_enqueue_style( 'lightning-design-style', $skins[ $current_skin ]['css_path'], array( 'font-awesome' ), $version );
+			wp_enqueue_style( 'lightning-design-style', $skins[ $current_skin ]['css_path'], array(), $version );
 		}
 
 		if ( ! empty( $skins[ $current_skin ]['editor_css_path'] ) ) {
