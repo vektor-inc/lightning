@@ -38,7 +38,7 @@ class Lightning_Design_Manager {
 		}
 
 		if ( ! empty( $skins[ $current_skin ]['css_path'] ) ) {
-			wp_enqueue_style( 'lightning-design-style', $skins[ $current_skin ]['css_path'], array( 'font-awesome' ), $version );
+			wp_enqueue_style( 'lightning-design-style', $skins[ $current_skin ]['css_path'], array(), $version );
 		}
 
 		if ( ! empty( $skins[ $current_skin ]['editor_css_path'] ) ) {
@@ -54,6 +54,9 @@ class Lightning_Design_Manager {
 	static function load_skin_php() {
 		$skins        = self::get_skins();
 		$current_skin = get_option( 'lightning_design_skin' );
+		if ( ! $current_skin ) {
+			$current_skin = 'origin';
+		}
 		if ( ! empty( $skins[ $current_skin ]['php_path'] ) && file_exists( $skins[ $current_skin ]['php_path'] ) ) {
 			require $skins[ $current_skin ]['php_path'];
 		}
