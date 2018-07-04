@@ -249,8 +249,9 @@ function lightning_customize_register( $wp_customize ) {
 	$priority = 610;
 
 	$theme_options_default = lightning_theme_options_default();
-
-	for ( $i = 1; $i <= 5; ) {
+	$top_slide_count_max = lightning_top_slide_count_max();
+	
+	for ( $i = 1; $i <= $top_slide_count_max; ) {
 
 		$theme_options_customize_default['top_slide_image'] = '';
 		switch ( $i ) {

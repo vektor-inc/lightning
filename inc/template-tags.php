@@ -126,6 +126,8 @@ function lightning_get_post_type() {
 	// Check use post top page
 	$page_for_posts = lightning_get_page_for_posts();
 
+	$woocommerce_shop_page_id = get_option( 'woocommerce_shop_page_id' );
+
 	// Get post type slug
 	/*-------------------------------------------*/
 	// When WooCommerce taxonomy archive page , get_post_type() is does not work properly
@@ -149,6 +151,8 @@ function lightning_get_post_type() {
 	if ( $post_type_object ) {
 		if ( $page_for_posts['post_top_use'] && $postType['slug'] == 'post' ) {
 			$postType['name'] = esc_html( get_the_title( $page_for_posts['post_top_id'] ) );
+		} elseif ( $woocommerce_shop_page_id ) {
+			$postType['name'] = esc_html( get_the_title( $woocommerce_shop_page_id ) );
 		} else {
 			$postType['name'] = esc_html( $post_type_object->labels->name );
 		}
@@ -157,9 +161,11 @@ function lightning_get_post_type() {
 	// Get custom post type archive url
 	/*-------------------------------------------*/
 	if ( $page_for_posts['post_top_use'] && $postType['slug'] == 'post' ) {
-		$postType['url'] = get_the_permalink( $page_for_posts['post_top_id'] );
+		$postType['url'] = esc_url( get_the_permalink( $page_for_posts['post_top_id'] ) );
+	} elseif ( $woocommerce_shop_page_id ) {
+		$postType['url'] = esc_url( get_the_permalink( $woocommerce_shop_page_id ) );
 	} else {
-		$postType['url'] = get_post_type_archive_link( $postType['slug'] );
+		$postType['url'] = esc_url( get_post_type_archive_link( $postType['slug'] ) );
 	}
 
 	$postType = apply_filters( 'lightning_postType_custom', $postType );
