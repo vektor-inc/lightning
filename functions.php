@@ -126,6 +126,12 @@ function lightning_commentJs() {
 	}
 }
 
+add_action( 'wp_enqueue_scripts', 'lightning_unit_script', 100 );
+function lightning_unit_script() {
+	wp_register_script( 'lightning_unit_script', get_template_directory_uri() . '/js/sidebar-fix.js', array( 'jquery', 'lightning-js' ), LIGHTNING_THEME_VERSION );
+	wp_enqueue_script( 'lightning_unit_script' );
+}
+
 /*-------------------------------------------*/
 /*	Load CSS
 /*-------------------------------------------*/
@@ -140,6 +146,8 @@ function lightning_css() {
 require get_parent_theme_file_path( '/inc/customizer.php' );
 require get_parent_theme_file_path( '/inc/sidebar-position.php' );
 require get_parent_theme_file_path( '/inc/sidebar-child-list-hidden.php' );
+require get_parent_theme_file_path( '/inc/sidebar-fix.php' );
+
 
 
 /*-------------------------------------------*/

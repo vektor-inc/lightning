@@ -5,15 +5,13 @@
 /*-------------------------------------------*/
 
 $if_existed_in_plugins = array(
-	'customize_register' => 'lightning_unit_customize_register_sidebar_fix',
-	'wp_head' => 'lightning_unit_sidefix_admin_css',
+	'customize_register' => 'lightning_adv_unit_customize_register_sidebar_fix',
 	'body_class' => 'ltg_adv_add_body_class_sidefix',
+	'wp_head' => 'lightning_adv_unit_sidefix_admin_css'
 );
 
 foreach ($if_existed_in_plugins as $key => $val){
 	$priority = has_filter( $key, $val );
-	var_dump($priority);
-	var_dump("hello");
 	if ( $priority ){
 		remove_action( $key, $val, $priority);
 	}
@@ -31,7 +29,7 @@ function lightning_unit_customize_register_sidebar_fix($wp_customize) {
 		'sanitize_callback' => 'lightning_sanitize_checkbox',
 	));
 	$wp_customize->add_control( 'lightning_theme_options[sidebar_fix]',array(
-		'label'     => __('Don\'t fix the sidebar', LIGHTNING_ADVANCED_TEXTDOMAIN),
+		'label'     => __('Don\'t fix the sidebar', 'lightning'),
 		'section'   => 'lightning_design',
 		'settings'  => 'lightning_theme_options[sidebar_fix]',
 		'type' 		=> 'checkbox',
@@ -46,8 +44,8 @@ function lightning_unit_customize_register_sidebar_fix($wp_customize) {
 /*-------------------------------------------*/
 /*	add body class
 /*-------------------------------------------*/
-add_filter( 'body_class', 'ltg_adv_add_body_class_sidefix' );
-function ltg_adv_add_body_class_sidefix( $class ){
+add_filter( 'body_class', 'ltg_add_body_class_sidefix' );
+function ltg_add_body_class_sidefix( $class ){
 	$options = get_option('lightning_theme_options');
 	if ( !isset( $options['sidebar_fix'] ) || !$options['sidebar_fix'] ) {
 		if( apply_filters( 'lightning_sidefix_enable', true ) ) {
