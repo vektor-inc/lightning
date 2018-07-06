@@ -139,6 +139,8 @@ function lightning_css() {
 /*-------------------------------------------*/
 require get_parent_theme_file_path( '/inc/customizer.php' );
 require get_parent_theme_file_path( '/inc/sidebar-position.php' );
+require get_parent_theme_file_path( '/inc/sidebar-child-list-hidden.php' );
+
 
 /*-------------------------------------------*/
 /*	Load Custom template tags for this theme.
