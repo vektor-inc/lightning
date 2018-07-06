@@ -138,6 +138,7 @@ function lightning_css() {
 /*	Load Theme Customizer additions.
 /*-------------------------------------------*/
 require get_parent_theme_file_path( '/inc/customizer.php' );
+require get_parent_theme_file_path( '/inc/sidebar-position.php' );
 
 /*-------------------------------------------*/
 /*	Load Custom template tags for this theme.
