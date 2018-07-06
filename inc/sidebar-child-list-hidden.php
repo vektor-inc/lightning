@@ -8,14 +8,14 @@ $if_existed_in_plugins = array(
 	'customize_register' => 'lightning_adv_unit_customize_register_sidebar_child_list_hidden',
 	'wp_head' => 'lightning_adv_unit_sidebar_child_list_hidden_css'
 );
-//
-//foreach ($if_existed_in_plugins as $key => $val){
-//	$priority = has_filter( $key, $val );
-//	var_dump($priority);
-//	if ( $priority ){
-//		remove_action( $key, $val, $priority);
-//	}
-//}
+
+foreach ($if_existed_in_plugins as $key => $val){
+	$priority = has_filter( $key, $val );
+	var_dump($priority);
+	if ( $priority ){
+		remove_action( $key, $val, $priority);
+	}
+}
 
 /*-------------------------------------------*/
 /*  Customizer
