@@ -151,7 +151,7 @@ function lightning_get_post_type() {
 	if ( $post_type_object ) {
 		if ( $page_for_posts['post_top_use'] && $postType['slug'] == 'post' ) {
 			$postType['name'] = esc_html( get_the_title( $page_for_posts['post_top_id'] ) );
-		} elseif ( $woocommerce_shop_page_id ) {
+		} elseif ( $woocommerce_shop_page_id && $postType['slug'] == 'product' ) {
 			$postType['name'] = esc_html( get_the_title( $woocommerce_shop_page_id ) );
 		} else {
 			$postType['name'] = esc_html( $post_type_object->labels->name );
