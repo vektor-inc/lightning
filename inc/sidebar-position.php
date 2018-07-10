@@ -1,25 +1,10 @@
 <?php
 
 /*-------------------------------------------*/
-/*  Remove lightning-advanced-unit's function.
-/*-------------------------------------------*/
-
-$if_existed_in_plugins = array(
-	'customize_register' => 'lightning_adv_unit_customize_register_sidebar_position',
-	'wp_head' => 'lightning_adv_unit_sidebar_position_custom'
-);
-
-foreach ($if_existed_in_plugins as $key => $val){
-	$priority = has_filter( $key, $val );
-	if ( $priority ){
-		remove_action( $key, $val, $priority);
-	}
-}
-
-/*-------------------------------------------*/
 /*  Customizer
 /*-------------------------------------------*/
 add_action( 'customize_register', 'lightning_customize_register_sidebar_position' );
+//add_action( 'customize_register', 'lightning_customize_register_sidebar_position' );
 function lightning_customize_register_sidebar_position($wp_customize) {
 	$wp_customize->add_setting( 'lightning_theme_options[sidebar_position]',  array(
 		'default'           => 'right',
