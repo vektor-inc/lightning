@@ -11,7 +11,6 @@ $if_existed_in_plugins = array(
 
 foreach ($if_existed_in_plugins as $key => $val){
 	$priority = has_filter( $key, $val );
-	var_dump($priority);
 	if ( $priority ){
 		remove_action( $key, $val, $priority);
 	}
