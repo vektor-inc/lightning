@@ -1,22 +1,4 @@
 <?php
-
-/*-------------------------------------------*/
-/*  Remove lightning-advanced-unit's function.
-/*-------------------------------------------*/
-
-$if_existed_in_plugins = array(
-	'customize_register' => 'lightning_adv_unit_customize_register_sidebar_fix',
-	'body_class' => 'ltg_adv_add_body_class_sidefix',
-	'wp_head' => 'lightning_adv_unit_sidefix_admin_css'
-);
-
-foreach ($if_existed_in_plugins as $key => $val){
-	$priority = has_filter( $key, $val );
-	if ( $priority ){
-		remove_action( $key, $val, $priority);
-	}
-}
-
 /*-------------------------------------------*/
 /*  Customizer
 /*-------------------------------------------*/
