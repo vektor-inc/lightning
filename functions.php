@@ -3,6 +3,7 @@
 $theme_opt = wp_get_theme( get_template() );
 
 define( 'LIGHTNING_THEME_VERSION', $theme_opt->Version );
+define( 'LIGHTNING_SHORT_NAME', 'LTG THEME' );
 /*-------------------------------------------*/
 /*	Theme setup
 /*-------------------------------------------*/
@@ -35,6 +36,9 @@ define( 'LIGHTNING_THEME_VERSION', $theme_opt->Version );
 /*	Tag Cloud _ Change font size
 /*-------------------------------------------*/
 /*	HOME _ Default content hidden
+/*-------------------------------------------*/
+/*-------------------------------------------*/
+/*  Remove lightning-advanced-unit's function.
 /*-------------------------------------------*/
 
 /*-------------------------------------------*/
@@ -126,6 +130,12 @@ function lightning_commentJs() {
 	}
 }
 
+add_action( 'wp_enqueue_scripts', 'lightning_unit_script', 100 );
+function lightning_unit_script() {
+	wp_register_script( 'lightning_unit_script', get_template_directory_uri() . '/js/sidebar-fix.js', array( 'jquery', 'lightning-js' ), LIGHTNING_THEME_VERSION );
+	wp_enqueue_script( 'lightning_unit_script' );
+}
+
 /*-------------------------------------------*/
 /*	Load CSS
 /*-------------------------------------------*/
@@ -138,6 +148,11 @@ function lightning_css() {
 /*	Load Theme Customizer additions.
 /*-------------------------------------------*/
 require get_parent_theme_file_path( '/inc/customizer.php' );
+require get_parent_theme_file_path( '/inc/sidebar-position.php' );
+require get_parent_theme_file_path( '/inc/sidebar-child-list-hidden.php' );
+require get_parent_theme_file_path( '/inc/sidebar-fix.php' );
+require get_parent_theme_file_path( 'inc/widgets/widget-full-wide-title.php' );
+require get_parent_theme_file_path( 'inc/widgets/widget-new-posts.php' );
 
 /*-------------------------------------------*/
 /*	Load Custom template tags for this theme.
@@ -438,6 +453,26 @@ function lightning_home_content_hidden( $flag ) {
 		$flag = false;
 	}
 	return $flag;
+}
+
+/*-------------------------------------------*/
+/*  Remove lightning-advanced-unit's function.
+/*-------------------------------------------*/
+$if_existed_in_plugins = array(
+	'customize_register' => 'lightning_adv_unit_customize_register_sidebar_position',
+	'customize_register' => 'lightning_adv_unit_customize_register_sidebar_child_list_hidden',
+	'wp_head' => 'lightning_adv_unit_sidebar_position_custom',
+	'wp_head' => 'lightning_adv_unit_sidebar_child_list_hidden_css',
+	'widgets_init' => 'lightning_adv_unit_widget_register_full_wide_title',
+	'widgets_init' => 'lightning_adv_unit_widget_register_post_list',
+
+);
+foreach ($if_existed_in_plugins as $key => $val){
+	$priority = has_filter( $key, $val );
+	if ( $priority ){
+		remove_filter( $key, $val, $priority );
+		remove_action( $key, $val, $priority);
+	}
 }
 
 /*-------------------------------------------*/
