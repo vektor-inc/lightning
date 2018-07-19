@@ -111,11 +111,11 @@ function lightning_theme_setup() {
 
 add_action( 'wp_enqueue_scripts', 'lightning_addJs' );
 function lightning_addJs() {
-	wp_enqueue_script( 'html5shiv', '//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js', [],false,  true );
+	wp_enqueue_script( 'html5shiv', '//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js', [],false,true );
 	wp_script_add_data( 'html5shiv', 'conditional', 'lt IE 9' );
-	wp_enqueue_script( 'respond', '//oss.maxcdn.com/respond/1.4.2/respond.min.js', [],false,  true );
+	wp_enqueue_script( 'respond', '//oss.maxcdn.com/respond/1.4.2/respond.min.js', [],false,true );
 	wp_script_add_data( 'respond', 'conditional', 'lt IE 9' );
-	wp_enqueue_script( 'lightning-js', get_template_directory_uri() . '/js/lightning.min.js', array( 'jquery' ), LIGHTNING_THEME_VERSION, true );
+	wp_enqueue_script( 'lightning-js', get_template_directory_uri() . '/js/lightning.min.js', array( 'jquery' ), LIGHTNING_THEME_VERSION,true );
 }
 
 
@@ -443,8 +443,9 @@ function lightning_home_content_hidden( $flag ) {
 /*-------------------------------------------*/
 /*  Move jQuery to footer
 /*-------------------------------------------*/
-add_action( 'init', function() {
-	if ( is_admin() || is_login_page() ) {
+add_action( 'init', 'lightning_move_jquery_to_footer' );
+function lightning_move_jquery_to_footer() {
+	if ( is_admin() || lightning_is_login_page() ) {
 		return;
 	}
 
@@ -458,8 +459,8 @@ add_action( 'init', function() {
 
 	wp_register_script( 'jquery', false, ['jquery-core'], $jquery_ver, true );
 	wp_register_script( 'jquery-core', $jquery_src, [], $jquery_ver, true );
-} );
+}
 
-function is_login_page() {
+function lightning_is_login_page() {
 	return in_array($GLOBALS['pagenow'], array('wp-login.php', 'wp-register.php'));
 }
