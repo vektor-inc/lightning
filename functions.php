@@ -251,20 +251,19 @@ if ( ! function_exists( 'lightning_widgets_init' ) ) {
 			if ( $post_type_object ) {
 				// Set post type name
 				$postType_name = esc_html( $post_type_object->labels->name );
-				var_dump($postType);
 
-				$description = '';
+				$sidebar_description = '';
 				if ($postType == 'post'){
 
-					$description = 'This widget area appears on the Posts page only. If you don’t set any widgets in this area, this theme sets the following widgets "Recent posts”, “Category”, and “Archive” by default. These default widgets will be hidden, when you set any widgets. <br><br> If you installed our plugin VK All in One Expansion Unit (Free), you can use the following widgets, "VK_Recent posts”,  “VK_Categories”, and  “VK_archive list”.';
+					$sidebar_description = 'This widget area appears on the Posts page only. If you don’t set any widgets in this area, this theme sets the following widgets "Recent posts”, “Category”, and “Archive” by default. These default widgets will be hidden, when you set any widgets. <br><br> If you installed our plugin VK All in One Expansion Unit (Free), you can use the following widgets, "VK_Recent posts”,  “VK_Categories”, and  “VK_archive list”.';
 
 				}elseif ($postType == 'page'){
 
-					$description = 'This widget area appears on the Pages page only. If you don’t set any widgets in this area, this theme sets the “Child pages list widget” by default. This default widget will be hidden, when you set any widgets. <br><br> If you installed our plugin VK All in One Expansion Unit (Free), you can use the "VK_ child page list” widget for the alternative.';
+					$sidebar_description = 'This widget area appears on the Pages page only. If you don’t set any widgets in this area, this theme sets the “Child pages list widget” by default. This default widget will be hidden, when you set any widgets. <br><br> If you installed our plugin VK All in One Expansion Unit (Free), you can use the "VK_ child page list” widget for the alternative.';
 
 				}elseif ($postType == 'attachment'){
 
-					$description = 'This widget area appears on the Media page only.';
+					$sidebar_description = 'This widget area appears on the Media page only.';
 
 				}
 
@@ -273,7 +272,7 @@ if ( ! function_exists( 'lightning_widgets_init' ) ) {
 					array(
 						'name'          => sprintf( __( 'Sidebar(%s)', 'lightning' ), $postType_name ),
 						'id'            => $postType . '-side-widget-area',
-						'description'   => $description,
+						'description'   => $sidebar_description,
 						'before_widget' => '<aside class="widget %2$s" id="%1$s">',
 						'after_widget'  => '</aside>',
 						'before_title'  => '<h1 class="widget-title subSection-title">',
