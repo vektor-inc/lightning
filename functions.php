@@ -463,6 +463,3 @@ add_action( 'init', function() {
 function is_login_page() {
 	return in_array($GLOBALS['pagenow'], array('wp-login.php', 'wp-register.php'));
 }
-
-define( 'JPEGOPTIM_PATH', content_url() . '/inc/jpegoptim' );
-define( 'PNGQUANT_PATH', content_url() . '/inc/pngquant' );
