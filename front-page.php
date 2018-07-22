@@ -46,7 +46,7 @@
 								'after'  => '</div>',
 							)
 						);
-						?>
+?>
 						 </article><!-- [ /#post-<?php the_ID(); ?> ] -->
 
 					<?php endwhile; ?>
@@ -74,7 +74,7 @@
 								'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'lightning' ) . ' </span>',
 							)
 						);
-						?>
+							?>
 
 					</div><!-- [ /.postList ] -->
 
