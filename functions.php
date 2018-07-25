@@ -203,6 +203,11 @@ require get_parent_theme_file_path( '/inc/font-awesome-config.php' );
 get_template_part( 'inc/front-page-pr' );
 
 /*-------------------------------------------*/
+/*	Load Front vk-mobile-nav
+/*-------------------------------------------*/
+get_template_part( 'inc/vk-mobile-nav-config.php' );
+
+/*-------------------------------------------*/
 /*	WidgetArea initiate
 /*-------------------------------------------*/
 if ( ! function_exists( 'lightning_widgets_init' ) ) {
