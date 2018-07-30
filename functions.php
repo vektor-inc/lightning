@@ -268,6 +268,10 @@ if ( ! function_exists( 'lightning_widgets_init' ) ) {
 					$sidebar_description_text = 'This widget area appears on the Media page only.';
 					$sidebar_description = __( $sidebar_description_text, 'lightning');
 
+				} else {
+
+					$sidebar_description = sprintf( __( 'This widget area appears on the %s contents page only.', 'lightning' ), $postType_name );
+
 				}
 
 				// Set post type widget area
