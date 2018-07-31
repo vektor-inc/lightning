@@ -15,4 +15,9 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 	global $library_url;
 	$library_url = get_template_directory_uri() . '/inc/vk-mobile-nav/';
 
+	// Default Vk Mobile Nav HTML was exported to footer.
+	// But Originally it is desirable to output with a header
+	remove_action( 'wp_footer', array( 'Vk_Mobile_Nav', 'menu_set_html' ) );
+	add_action( 'lightning_header_before', array( 'Vk_Mobile_Nav', 'menu_set_html' ) );
+
 }
