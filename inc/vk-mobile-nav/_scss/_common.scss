@@ -68,6 +68,12 @@ body.device-mobile {
 	background:url('../images/vk-menu-close-black.svg') center 50% no-repeat;
 }
 
+/* 現状 .mobile-nav-btn-right は AdvUnit より body class に追加している */
+.mobile-nav-btn-right .vk-mobile-nav-menu-btn{
+	left:inherit;
+	right:$manu_btn_margin;
+}
+
 /*-------------------------------------------*/
 /* .vk-mobile-nav
 /*-------------------------------------------*/

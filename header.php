@@ -33,13 +33,7 @@ $lightning_theme_options = get_option( 'lightning_theme_options' );
 				'walker'         => new description_walker(),
 			);
 			$gMenu = wp_nav_menu( $args );
-			// メニューがセットされていたら実行
-			if ( $gMenu ) {
-				$menu_btn_position = 'left';
-				$menu_btn_position = apply_filters( 'lightning_menu_btn_position', $menu_btn_position );
-				?>
-			  <a href="#" class="btn btn-default menuBtn menuClose menuBtn_<?php echo esc_attr( $menu_btn_position ); ?>" id="menuBtn"><i class="fa fa-bars" aria-hidden="true"></i></a>
-			<?php } ?>
+		?>
 		</div>
 
 		<?php

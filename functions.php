@@ -115,11 +115,11 @@ function lightning_theme_setup() {
 
 add_action( 'wp_enqueue_scripts', 'lightning_addJs' );
 function lightning_addJs() {
-	wp_enqueue_script( 'html5shiv', '//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js', [],false,true );
+	wp_enqueue_script( 'html5shiv', '//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js', [], false, true );
 	wp_script_add_data( 'html5shiv', 'conditional', 'lt IE 9' );
-	wp_enqueue_script( 'respond', '//oss.maxcdn.com/respond/1.4.2/respond.min.js', [],false,true );
+	wp_enqueue_script( 'respond', '//oss.maxcdn.com/respond/1.4.2/respond.min.js', [], false, true );
 	wp_script_add_data( 'respond', 'conditional', 'lt IE 9' );
-	wp_enqueue_script( 'lightning-js', get_template_directory_uri() . '/js/lightning.min.js', array( 'jquery' ), LIGHTNING_THEME_VERSION,true );
+	wp_enqueue_script( 'lightning-js', get_template_directory_uri() . '/js/lightning.min.js', array( 'jquery' ), LIGHTNING_THEME_VERSION, true );
 }
 
 
@@ -205,7 +205,7 @@ get_template_part( 'inc/front-page-pr' );
 /*-------------------------------------------*/
 /*	Load Front vk-mobile-nav
 /*-------------------------------------------*/
-get_template_part( 'inc/vk-mobile-nav-config.php' );
+get_template_part( 'inc/vk-mobile-nav-config' );
 
 /*-------------------------------------------*/
 /*	WidgetArea initiate
@@ -258,17 +258,17 @@ if ( ! function_exists( 'lightning_widgets_init' ) ) {
 				$postType_name = esc_html( $post_type_object->labels->name );
 
 				$sidebar_description = '';
-				if ($postType == 'post'){
+				if ( $postType == 'post' ) {
 
-					$sidebar_description = __( 'This widget area appears on the Posts page only. If you don’t set any widgets in this area, this theme sets the following widgets "Recent posts”, “Category”, and “Archive” by default. These default widgets will be hidden, when you set any widgets. <br><br> If you installed our plugin VK All in One Expansion Unit (Free), you can use the following widgets, "VK_Recent posts”,  “VK_Categories”, and  “VK_archive list”.', 'lightning');
+					$sidebar_description = __( 'This widget area appears on the Posts page only. If you don’t set any widgets in this area, this theme sets the following widgets "Recent posts”, “Category”, and “Archive” by default. These default widgets will be hidden, when you set any widgets. <br><br> If you installed our plugin VK All in One Expansion Unit (Free), you can use the following widgets, "VK_Recent posts”,  “VK_Categories”, and  “VK_archive list”.', 'lightning' );
 
-				}elseif ($postType == 'page'){
+				} elseif ( $postType == 'page' ) {
 
-					$sidebar_description = __( 'This widget area appears on the Pages page only. If you don’t set any widgets in this area, this theme sets the “Child pages list widget” by default. This default widget will be hidden, when you set any widgets. <br><br> If you installed our plugin VK All in One Expansion Unit (Free), you can use the "VK_ child page list” widget for the alternative.', 'lightning');
+					$sidebar_description = __( 'This widget area appears on the Pages page only. If you don’t set any widgets in this area, this theme sets the “Child pages list widget” by default. This default widget will be hidden, when you set any widgets. <br><br> If you installed our plugin VK All in One Expansion Unit (Free), you can use the "VK_ child page list” widget for the alternative.', 'lightning' );
 
-				}elseif ($postType == 'attachment'){
+				} elseif ( $postType == 'attachment' ) {
 
-					$sidebar_description = __( 'This widget area appears on the Media page only.', 'lightning');
+					$sidebar_description = __( 'This widget area appears on the Media page only.', 'lightning' );
 
 				} else {
 
@@ -485,17 +485,17 @@ function lightning_home_content_hidden( $flag ) {
 $if_existed_in_plugins = array(
 	'customize_register' => 'lightning_adv_unit_customize_register_sidebar_position',
 	'customize_register' => 'lightning_adv_unit_customize_register_sidebar_child_list_hidden',
-	'wp_head' => 'lightning_adv_unit_sidebar_position_custom',
-	'wp_head' => 'lightning_adv_unit_sidebar_child_list_hidden_css',
-	'widgets_init' => 'lightning_adv_unit_widget_register_full_wide_title',
-	'widgets_init' => 'lightning_adv_unit_widget_register_post_list',
+	'wp_head'            => 'lightning_adv_unit_sidebar_position_custom',
+	'wp_head'            => 'lightning_adv_unit_sidebar_child_list_hidden_css',
+	'widgets_init'       => 'lightning_adv_unit_widget_register_full_wide_title',
+	'widgets_init'       => 'lightning_adv_unit_widget_register_post_list',
 
 );
-foreach ($if_existed_in_plugins as $key => $val){
+foreach ( $if_existed_in_plugins as $key => $val ) {
 	$priority = has_filter( $key, $val );
-	if ( $priority ){
+	if ( $priority ) {
 		remove_filter( $key, $val, $priority );
-		remove_action( $key, $val, $priority);
+		remove_action( $key, $val, $priority );
 	}
 }
 
@@ -509,17 +509,17 @@ function lightning_move_jquery_to_footer() {
 	}
 
 	global $wp_scripts;
-	$jquery = $wp_scripts->registered['jquery-core'];
+	$jquery     = $wp_scripts->registered['jquery-core'];
 	$jquery_ver = $jquery->ver;
 	$jquery_src = $jquery->src;
 
 	wp_deregister_script( 'jquery' );
 	wp_deregister_script( 'jquery-core' );
 
-	wp_register_script( 'jquery', false, ['jquery-core'], $jquery_ver, true );
+	wp_register_script( 'jquery', false, [ 'jquery-core' ], $jquery_ver, true );
 	wp_register_script( 'jquery-core', $jquery_src, [], $jquery_ver, true );
 }
 
 function lightning_is_login_page() {
-	return in_array($GLOBALS['pagenow'], array('wp-login.php', 'wp-register.php'));
+	return in_array( $GLOBALS['pagenow'], array( 'wp-login.php', 'wp-register.php' ) );
 }
