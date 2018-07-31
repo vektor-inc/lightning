@@ -56,7 +56,8 @@
 	}
 	ul.acc-child-open {
 		transition: max-height $time_transition ease-in;
-		max-height:500px;
+		max-height:1000px;
+		overflow-y: scroll;
 	}
 	ul.acc-child-close {
 		transition: max-height $time_transition ease-out;

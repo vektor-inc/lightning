@@ -5,15 +5,16 @@ https://github.com/vektor-inc/vektor-wp-libraries
 にあります。修正の際は上記リポジトリのデータを修正してください。
 */
 
+
 if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 	class Vk_Mobile_Nav {
 
-		public static $version = '0.0.0';
+		public static $version = '0.0.1';
 
 		public function __construct() {
 			add_action( 'after_setup_theme', array( $this, 'setup_menu' ) );
 			add_action( 'widgets_init', array( $this, 'setup_widget' ) );
-			// add_action( 'wp_footer', array( $this, 'menu_set_html' ) );
+			add_action( 'wp_footer', array( $this, 'menu_set_html' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'add_script' ) );
 			add_filter( 'body_class', array( $this, 'add_body_class_mobile_device' ) );
 		}
@@ -89,7 +90,7 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 				}
 			}
 
-			$menu = wp_nav_menu(
+			$menu_vk_mobile = wp_nav_menu(
 				array(
 					'theme_location' => 'vk-mobile-nav',
 					'container'      => '',
@@ -99,8 +100,21 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 					// 'depth'          => 1,
 				)
 			);
-			if ( $menu ) {
-				echo $menu;
+			global $default_nav;
+			$menu_theme_default = wp_nav_menu(
+				array(
+					'theme_location' => $default_nav,
+					'container'      => '',
+					'items_wrap'     => '<nav class="global-nav"><ul id="%1$s" class="vk-menu-acc  %2$s">%3$s</ul></nav>',
+					'fallback_cb'    => '',
+					'echo'           => false,
+					// 'depth'          => 1,
+				)
+			);
+			if ( $menu_vk_mobile ) {
+				echo $menu_vk_mobile;
+			} elseif ( $menu_theme_default ) {
+				echo $menu_theme_default;
 			} else {
 				if ( current_user_can( 'edit_theme_options' ) ) {
 					echo '<div class="veu_adminEdit alert alert-danger">';
@@ -129,9 +143,10 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 		/*-------------------------------------------*/
 
 		public static function add_script() {
-			wp_register_script( 'vk-mobile-nav-js', plugin_dir_url( __FILE__ ) . 'js/vk-mobile-nav.js', array( 'jquery' ), self::$version );
+			global $library_url;
+			wp_register_script( 'vk-mobile-nav-js', $library_url . 'js/vk-mobile-nav.min.js', array( 'jquery' ), self::$version );
 			wp_enqueue_script( 'vk-mobile-nav-js' );
-			wp_enqueue_style( 'vk-mobile-nav-css', plugin_dir_url( __FILE__ ) . 'css/vk-mobile-nav-bright.css', array(), self::$version, 'all' );
+			wp_enqueue_style( 'vk-mobile-nav-css', $library_url . 'css/vk-mobile-nav-bright.css', array(), self::$version, 'all' );
 		}
 
 	} // class Vk_Mobile_Nav
