@@ -19,5 +19,4 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 	// But Originally it is desirable to output with a header
 	remove_action( 'wp_footer', array( 'Vk_Mobile_Nav', 'menu_set_html' ) );
 	add_action( 'lightning_header_before', array( 'Vk_Mobile_Nav', 'menu_set_html' ) );
-
 }

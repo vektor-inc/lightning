@@ -14,7 +14,7 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 		public function __construct() {
 			add_action( 'after_setup_theme', array( $this, 'setup_menu' ) );
 			add_action( 'widgets_init', array( $this, 'setup_widget' ) );
-			add_action( 'wp_footer', array( $this, 'menu_set_html' ) );
+			add_action( 'wp_footer', array(  get_called_class(), 'menu_set_html' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'add_script' ) );
 			add_filter( 'body_class', array( $this, 'add_body_class_mobile_device' ) );
 		}
