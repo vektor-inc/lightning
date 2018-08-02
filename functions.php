@@ -37,8 +37,11 @@ define( 'LIGHTNING_SHORT_NAME', 'LTG THEME' );
 /*-------------------------------------------*/
 /*	HOME _ Default content hidden
 /*-------------------------------------------*/
-/*-------------------------------------------*/
 /*  Remove lightning-advanced-unit's function.
+/*-------------------------------------------*/
+/*  Move jQuery to footer
+/*-------------------------------------------*/
+/*  disable_tgm_notification_except_admin
 /*-------------------------------------------*/
 
 /*-------------------------------------------*/
@@ -522,4 +525,18 @@ function lightning_move_jquery_to_footer() {
 
 function lightning_is_login_page() {
 	return in_array( $GLOBALS['pagenow'], array( 'wp-login.php', 'wp-register.php' ) );
+}
+
+/*-------------------------------------------*/
+/*  disable_tgm_notification_except_admin
+/*-------------------------------------------*/
+add_action( 'init', 'lightning_disable_tgm_notification_except_admin' );
+function lightning_disable_tgm_notification_except_admin() {
+	if(!current_user_can( 'administrator' )){
+		$allowed_html = array(
+			'style' => array( 'type' => array ()),
+		);
+		$text = '<style>#setting-error-tgmpa { display:none; }</style>';
+		echo wp_kses( $text, $allowed_html );
+	}
 }
