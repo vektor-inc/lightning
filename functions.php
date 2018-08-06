@@ -532,11 +532,10 @@ function lightning_is_login_page() {
 /*-------------------------------------------*/
 add_action( 'init', 'lightning_disable_tgm_notification_except_admin' );
 function lightning_disable_tgm_notification_except_admin() {
-	if(!current_user_can( 'administrator' )){
+	if ( ! current_user_can( 'administrator' ) ) {
 		$allowed_html = array(
-			'style' => array( 'type' => array ()),
+			'style' => array( 'type' => array() ),
 		);
-		$text = '<style>#setting-error-tgmpa { display:none; }</style>';
+		$text         = '<style>#setting-error-tgmpa { display:none; }</style>';
 		echo wp_kses( $text, $allowed_html );
 	}
-}
