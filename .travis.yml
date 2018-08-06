@@ -3,6 +3,7 @@ language: php
 branches:
   - master
   - develop
+  - v6
 
 env:
   global:
@@ -15,7 +16,7 @@ env:
 matrix:
   include:
     - php: 7.2
-      env: 
+      env:
         - WP_VERSION=latest WP_MULTISITE=0
     - php: 7.1.4
       env:
