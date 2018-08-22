@@ -356,9 +356,9 @@ function lightning_is_frontpage_onecolumn() {
 	return false;
 }
 
-function lightning_the_theme_name() {
+function lightning_get_theme_name() {
 	return apply_filters( 'lightning_theme_name', 'Lightning' );
 }
-function lightning_the_theme_name_short() {
+function lightning_get_theme_name_short() {
 	return apply_filters( 'lightning_theme_name_short', 'LTG' );
 }
