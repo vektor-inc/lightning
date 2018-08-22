@@ -12,11 +12,11 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 		public static $version = '0.0.1';
 
 		public function __construct() {
-			add_action( 'after_setup_theme', array( $this, 'setup_menu' ) );
-			add_action( 'widgets_init', array( $this, 'setup_widget' ) );
-			add_action( 'wp_footer', array(  get_called_class(), 'menu_set_html' ) );
-			add_action( 'wp_enqueue_scripts', array( $this, 'add_script' ) );
-			add_filter( 'body_class', array( $this, 'add_body_class_mobile_device' ) );
+			add_action( 'after_setup_theme', array( get_called_class(), 'setup_menu' ) );
+			add_action( 'widgets_init', array( get_called_class(), 'setup_widget' ) );
+			add_action( 'wp_footer', array( get_called_class(), 'menu_set_html' ) );
+			add_action( 'wp_enqueue_scripts', array( get_called_class(), 'add_script' ) );
+			add_filter( 'body_class', array( get_called_class(), 'add_body_class_mobile_device' ) );
 		}
 		public static function init() {
 
@@ -151,5 +151,8 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 
 	} // class Vk_Mobile_Nav
 
+	// Store in global variable so that hook in class can be removed
+	global $vk_mobile_nav;
 	$vk_mobile_nav = new Vk_Mobile_Nav();
+
 }
