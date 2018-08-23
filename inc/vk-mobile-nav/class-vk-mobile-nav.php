@@ -5,7 +5,6 @@ https://github.com/vektor-inc/vektor-wp-libraries
 にあります。修正の際は上記リポジトリのデータを修正してください。
 */
 
-
 if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 	class Vk_Mobile_Nav {
 
@@ -76,7 +75,15 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 
 			global $vk_mobile_nav_textdomain;
 
-			echo '<div class="vk-mobile-nav-menu-btn">MENU</div>';
+			if ( class_exists( 'Vk_Mobile_Fix_Nav' ) ) {
+				$options = Vk_Mobile_Fix_Nav::get_options();
+				// fixナビにメニュー展開ボタンを表示しない || fixナビ自体を表示しない
+				if ( ! $options['add_menu_btn'] || $options['hidden'] ) {
+					echo '<div class="vk-mobile-nav-menu-btn">MENU</div>';
+				}
+			} else {
+				echo '<div class="vk-mobile-nav-menu-btn">MENU</div>';
+			}
 
 			echo '<div class="vk-mobile-nav">';
 			if ( is_active_sidebar( 'vk-mobile-nav-upper' ) ) {

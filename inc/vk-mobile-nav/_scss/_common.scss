@@ -11,7 +11,8 @@ $admin_bar_height_mobile:46px;
 
 $manu_btn_margin:10px;
 
-body.admin-bar {
+/* body.admin-bar にすると継承が強すぎて fix nav などで上書きしにくいため */
+.admin-bar {
 	.vk-mobile-nav-menu-btn {
 		top:calc( #{$admin_bar_height_pc} + #{$manu_btn_margin} );
 		@media screen and (max-width: 782px){
