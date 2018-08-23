@@ -48,10 +48,10 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 		 * @return [type] [description]
 		 */
 		static function setup_widget() {
-			global $lightning;
+
 			register_sidebar(
 				array(
-					'name'          => __( 'Mobile Nav Upper', $lightning ),
+					'name'          => __( 'Mobile Nav Upper', 'lightning' ),
 					'id'            => 'vk-mobile-nav-upper',
 					'before_widget' => '<aside class="widget vk-mobile-nav-widget %2$s" id="%1$s">',
 					'after_widget'  => '</aside>',
@@ -61,7 +61,7 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 			);
 			register_sidebar(
 				array(
-					'name'          => __( 'Mobile Nav Bottom', $lightning ),
+					'name'          => __( 'Mobile Nav Bottom', 'lightning' ),
 					'id'            => 'vk-mobile-nav-bottom',
 					'before_widget' => '<aside class="widget vk-mobile-nav-widget %2$s" id="%1$s">',
 					'after_widget'  => '</aside>',
@@ -72,8 +72,6 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 		}
 
 		public static function menu_set_html() {
-
-			global $lightning;
 
 			if ( class_exists( 'Vk_Mobile_Fix_Nav' ) ) {
 				$options = Vk_Mobile_Fix_Nav::get_options();
@@ -91,8 +89,8 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 			} else {
 				if ( current_user_can( 'edit_theme_options' ) ) {
 					echo '<div class="veu_adminEdit alert alert-info">';
-					echo '<p>' . sprintf( __( 'This is the widget area.<br>You can set widget item from [ <a href="%s">Appearance > Customize</a> ] Page -> "Widgets" panel -> "Mobile Nav Upper" Panel.', $lightning ), admin_url( 'customize.php' ) ) . '</p>';
-					echo '<p>' . __( '* This message is displayed only to users with editing authority.', $lightning ) . '</p>';
+					echo '<p>' . sprintf( __( 'This is the widget area.<br>You can set widget item from [ <a href="%s">Appearance > Customize</a> ] Page -> "Widgets" panel -> "Mobile Nav Upper" Panel.', 'lightning' ), admin_url( 'customize.php' ) ) . '</p>';
+					echo '<p>' . __( '* This message is displayed only to users with editing authority.', 'lightning' ) . '</p>';
 					echo '</div>';
 				}
 			}
@@ -125,8 +123,8 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 			} else {
 				if ( current_user_can( 'edit_theme_options' ) ) {
 					echo '<div class="veu_adminEdit alert alert-danger">';
-					echo '<p>' . sprintf( __( 'Menu is not set.<br>Please set menu from [ <a href="%s">Appearance > Customize</a> ] Page -> "Menus" panel -> Menu Locations "Mobile Navigation".', $lightning ), admin_url( 'customize.php' ) ) . '</p>';
-					echo '<p>' . __( '* This message is displayed only to users with editing authority.', $lightning ) . '</p>';
+					echo '<p>' . sprintf( __( 'Menu is not set.<br>Please set menu from [ <a href="%s">Appearance > Customize</a> ] Page -> "Menus" panel -> Menu Locations "Mobile Navigation".', 'lightning' ), admin_url( 'customize.php' ) ) . '</p>';
+					echo '<p>' . __( '* This message is displayed only to users with editing authority.', 'lightning' ) . '</p>';
 					echo '</div>';
 				}
 			}
@@ -136,8 +134,8 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 			} else {
 				if ( current_user_can( 'edit_theme_options' ) ) {
 					echo '<div class="veu_adminEdit alert alert-info">';
-					echo '<p>' . sprintf( __( 'This is the widget area.<br>You can set widget item from [ <a href="%s">Appearance > Customize</a> ] Page -> "Widgets" panel -> "Mobile Nav Bottom" Panel.', $lightning ), admin_url( 'customize.php' ) ) . '</p>';
-					echo '<p>' . __( '* This message is displayed only to users with editing authority.', $lightning ) . '</p>';
+					echo '<p>' . sprintf( __( 'This is the widget area.<br>You can set widget item from [ <a href="%s">Appearance > Customize</a> ] Page -> "Widgets" panel -> "Mobile Nav Bottom" Panel.', 'lightning' ), admin_url( 'customize.php' ) ) . '</p>';
+					echo '<p>' . __( '* This message is displayed only to users with editing authority.', 'lightning' ) . '</p>';
 					echo '</div>';
 				}
 			}
