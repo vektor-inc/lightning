@@ -15,11 +15,12 @@ var cmq = require('gulp-merge-media-queries');
 var autoprefixer = require('gulp-autoprefixer');
 var cleanCss = require('gulp-clean-css');
 
-var replace = require('gulp-replace');
-
 // http://blog.e-riverstyle.com/2014/02/gulpspritesmithcss-spritegulp.html
 // 同期的に処理してくれる
 var runSequence = require('run-sequence');
+
+
+var replace = require('gulp-replace');
 
 gulp.task('text-domain', function () {
 		gulp.src(['./inc/font-awesome/*'])
