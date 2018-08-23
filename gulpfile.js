@@ -83,8 +83,8 @@ gulp.task('watch', function() {
   gulp.watch('design_skin/origin/_scss/**/*.scss', ['sass']);
 });
 
-gulp.task('default', ['copy', 'js_build', 'replaceTextDomain', 'watch']);
-gulp.task('compile', ['copy', 'js_build', 'replaceTextDomain']);
+gulp.task('default', ['copy', 'js_build', 'text-domain', 'watch']);
+gulp.task('compile', ['copy', 'js_build', 'text-domain']);
 
 // copy dist ////////////////////////////////////////////////
 
