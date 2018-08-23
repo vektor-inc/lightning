@@ -46,17 +46,7 @@ gulp.task('sass', function() {
     .pipe(autoprefixer())
     .pipe(cleanCss())
     .pipe(gulp.dest('./design_skin/origin/css'))
-  // .pipe(rename({
-  //     suffix: '.min'
-  // }))
-
-  // .pipe(cleanCss())
-  // .pipe(gulp.dest('design_skin/origin/css'))
 });
-
-
-
-
 
 
 gulp.task('copy', function() {
@@ -69,24 +59,6 @@ gulp.task('copy', function() {
   gulp.src('./library/bootstrap/fonts/**')
     .pipe(gulp.dest('./design_skin/origin/fonts/')); // _scss ディレクトリに保存
 });
-
-// // ファイル結合
-// gulp.task('concat', function() {
-//   return gulp.src(['./library/bootstrap/js/bootstrap.min.js', './js/_master.js', './js/_header_fixed.js', './js/vk-prlx.min.js'])
-//     .pipe(concat('lightning.js'))
-//     .pipe(gulp.dest('./js/'));
-// });
-//
-// // js最小化
-// gulp.task('jsmin', function() {
-//   gulp.src(['./js/lightning.js'])
-//     .pipe(plumber()) // エラーでも監視を続行
-//     .pipe(jsmin())
-//     .pipe(rename({
-//       suffix: '.min'
-//     }))
-//     .pipe(gulp.dest('./js/'));
-// });
 
 
 // ファイル結合
