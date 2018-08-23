@@ -15,9 +15,20 @@ var cmq = require('gulp-merge-media-queries');
 var autoprefixer = require('gulp-autoprefixer');
 var cleanCss = require('gulp-clean-css');
 
+var replace = require('gulp-replace');
+
 // http://blog.e-riverstyle.com/2014/02/gulpspritesmithcss-spritegulp.html
 // 同期的に処理してくれる
 var runSequence = require('run-sequence');
+
+gulp.task('text-domain', function () {
+		gulp.src(['./inc/font-awesome/*'])
+				.pipe(replace('vk_font_awesome_version_textdomain', 'lightning'))
+				.pipe(gulp.dest('./inc/font-awesome/'));
+		gulp.src(['./inc/vk-mobile-nav/*'])
+				.pipe(replace('vk_mobile_nav_textdomain', 'lightning'))
+				.pipe(gulp.dest('./inc/vk-mobile-nav/'));
+});
 
 gulp.task('sass', function() {
   gulp.src(['design_skin/origin/_scss/**/*.scss'])
@@ -100,8 +111,8 @@ gulp.task('watch', function() {
   gulp.watch('design_skin/origin/_scss/**/*.scss', ['sass']);
 });
 
-gulp.task('default', ['copy', 'js_build', 'watch']);
-gulp.task('compile', ['copy', 'js_build']);
+gulp.task('default', ['copy', 'js_build', 'replaceTextDomain', 'watch']);
+gulp.task('compile', ['copy', 'js_build', 'replaceTextDomain']);
 
 // copy dist ////////////////////////////////////////////////
 
@@ -135,5 +146,6 @@ gulp.task('copy_dist', function() {
 gulp.task('dist', function(cb) {
   // return runSequence( 'build:dist', 'copy', cb );
   // return runSequence( 'build:dist', 'copy_dist', cb );
+  //
   return runSequence('copy_dist', cb);
 });

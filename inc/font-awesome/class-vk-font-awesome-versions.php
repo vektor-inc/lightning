@@ -16,7 +16,6 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 
 		static function versions() {
 			global $font_awesome_directory_uri;
-			global $vk_font_awesome_version_textdomain;
 			$versions = array(
 				'5.0_SVG_JS'       => array(
 					'label'   => '5.0 SVG with JS ( ' . __( 'Not recommended', 'lightning' ) . ' )',
@@ -51,7 +50,6 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 		}
 
 		public static function ex_and_link() {
-			global $vk_font_awesome_version_textdomain;
 			$current = self::current_info();
 			if ( $current['version'] == '5.0' ) {
 				$ex_and_link = '<strong>Font Awesome 5</strong><br>' . __( 'Ex ) ', 'lightning' ) . 'far fa-file-alt [ <a href="//fontawesome.com/icons?d=gallery&m=free" target="_blank">Icon list</a> ]';
@@ -146,8 +144,6 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 		/*	customize_register
 		/*-------------------------------------------*/
 		static function customize_register( $wp_customize ) {
-
-			global $vk_font_awesome_version_textdomain;
 
 			$wp_customize->add_section(
 				'VK Font Awesome', array(
