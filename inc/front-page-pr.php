@@ -161,9 +161,9 @@ add_action( 'wp_enqueue_scripts', 'lightning_front_pr_blocks_styles' );
 function lighting_front_pr_default_array() {
 	$front_pr_default = array(
 		'icon'    => array(
-			1 => 'fa-check',
-			2 => 'fa-cogs',
-			3 => 'fa-file-text-o',
+			1 => 'fas fa-check',
+			2 => 'fas fa-cogs',
+			3 => 'far fa-file-alt',
 		),
 		'title'   => array(
 			1 => __( 'For all purposes', 'lightning' ),
