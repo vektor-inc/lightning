@@ -3,34 +3,40 @@
 /*  Customizer
 /*-------------------------------------------*/
 add_action( 'customize_register', 'lightning_unit_customize_register_sidebar_fix' );
-function lightning_unit_customize_register_sidebar_fix($wp_customize) {
-	$wp_customize->add_setting( 'lightning_theme_options[sidebar_fix]',  array(
-		'default'           => false,
-		'type'              => 'option',
-		'capability'        => 'edit_theme_options',
-		'sanitize_callback' => 'lightning_sanitize_checkbox',
-	));
-	$wp_customize->add_control( 'lightning_theme_options[sidebar_fix]',array(
-		'label'     => __('Don\'t fix the sidebar', 'lightning'),
-		'section'   => 'lightning_design',
-		'settings'  => 'lightning_theme_options[sidebar_fix]',
-		'type' 		=> 'checkbox',
-		'priority' => 555,
-	));
-	$wp_customize->selective_refresh->add_partial( 'lightning_theme_options[sidebar_fix]', array(
-		'selector' => '.sideSection',
-		'render_callback' => '',
-	) );
+function lightning_unit_customize_register_sidebar_fix( $wp_customize ) {
+	$wp_customize->add_setting(
+		'lightning_theme_options[sidebar_fix]', array(
+			'default'           => false,
+			'type'              => 'option',
+			'capability'        => 'edit_theme_options',
+			'sanitize_callback' => 'lightning_sanitize_checkbox',
+		)
+	);
+	$wp_customize->add_control(
+		'lightning_theme_options[sidebar_fix]', array(
+			'label'    => __( 'Don\'t fix the sidebar', 'lightning' ),
+			'section'  => 'lightning_design',
+			'settings' => 'lightning_theme_options[sidebar_fix]',
+			'type'     => 'checkbox',
+			'priority' => 555,
+		)
+	);
+	$wp_customize->selective_refresh->add_partial(
+		'lightning_theme_options[sidebar_fix]', array(
+			'selector'        => '.sideSection',
+			'render_callback' => '',
+		)
+	);
 }
 
 /*-------------------------------------------*/
 /*	add body class
 /*-------------------------------------------*/
 add_filter( 'body_class', 'ltg_add_body_class_sidefix' );
-function ltg_add_body_class_sidefix( $class ){
-	$options = get_option('lightning_theme_options');
-	if ( !isset( $options['sidebar_fix'] ) || !$options['sidebar_fix'] ) {
-		if( apply_filters( 'lightning_sidefix_enable', true ) ) {
+function ltg_add_body_class_sidefix( $class ) {
+	$options = get_option( 'lightning_theme_options' );
+	if ( ! isset( $options['sidebar_fix'] ) || ! $options['sidebar_fix'] ) {
+		if ( apply_filters( 'lightning_sidefix_enable', true ) ) {
 			$class[] = 'sidebar-fix';
 		}
 	}
@@ -41,9 +47,9 @@ function ltg_add_body_class_sidefix( $class ){
 /*  編集ショートカットボタンの位置調整（ウィジェットのショートカットボタンと重なってしまうため）
 /*-------------------------------------------*/
 add_action( 'wp_head', 'lightning_unit_sidefix_admin_css', 2 );
-function lightning_unit_sidefix_admin_css(){
-	if ( is_customize_preview() ){
-		$custom_css = ".sideSection > .customize-partial-edit-shortcut-lightning_theme_options-sidebar_fix { left:0px; }";
+function lightning_unit_sidefix_admin_css() {
+	if ( is_customize_preview() ) {
+		$custom_css = '.sideSection > .customize-partial-edit-shortcut-lightning_theme_options-sidebar_fix { left:0px; }';
 		wp_add_inline_style( 'lightning-design-style', $custom_css );
 	}
 }
