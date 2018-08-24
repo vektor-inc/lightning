@@ -149,7 +149,8 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 
 			$wp_customize->add_section(
 				'VK Font Awesome', array(
-					'title' => $vk_font_awesome_version_prefix . __( 'Font Awesome', 'lightning' ),
+					'title'    => $vk_font_awesome_version_prefix . __( 'Font Awesome', 'lightning' ),
+					'priority' => 450,
 				)
 			);
 

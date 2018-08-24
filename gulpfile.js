@@ -120,5 +120,5 @@ gulp.task('dist', function(cb) {
   // return runSequence( 'build:dist', 'copy', cb );
   // return runSequence( 'build:dist', 'copy_dist', cb );
   //
-  return runSequence('copy_dist', cb);
+  return runSequence('text-domain','copy_dist', cb);
 });

@@ -43,7 +43,7 @@ function lightning_customize_register( $wp_customize ) {
 	/*-------------------------------------------*/
 	$wp_customize->add_section(
 		'lightning_design', array(
-			'title'    => __( 'Lightning Design settings', 'lightning' ),
+			'title'    => lightning_get_theme_name() . ' ' . __( 'Design settings', 'lightning' ),
 			'priority' => 500,
 		// 'panel'				=> 'lightning_setting',
 		)
@@ -215,7 +215,7 @@ function lightning_customize_register( $wp_customize ) {
 	/*-------------------------------------------*/
 	$wp_customize->add_section(
 		'lightning_slide', array(
-			'title'    => __( 'Lightning Home page slide show', 'lightning' ),
+			'title'    => lightning_get_theme_name() . ' ' . __( 'Home page slide show', 'lightning' ),
 			'priority' => 600,
 		// 'panel'			=> 'lightning_setting',
 		)
@@ -249,8 +249,8 @@ function lightning_customize_register( $wp_customize ) {
 	$priority = 610;
 
 	$theme_options_default = lightning_theme_options_default();
-	$top_slide_count_max = lightning_top_slide_count_max();
-	
+	$top_slide_count_max   = lightning_top_slide_count_max();
+
 	for ( $i = 1; $i <= $top_slide_count_max; ) {
 
 		$theme_options_customize_default['top_slide_image'] = '';
