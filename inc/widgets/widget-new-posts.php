@@ -9,12 +9,12 @@ class WP_Widget_ltg_post_list extends WP_Widget {
 
 	function __construct() {
 
-		$widget_name = LIGHTNING_SHORT_NAME . ' ' . __( 'Content Area Posts Widget', 'lightning' );
+		$widget_name = lightning_get_theme_name_short() . ' ' . __( 'Content Area Posts Widget', 'lightning' );
 
 		parent::__construct(
 			'ltg_post_list',
 			$widget_name,
-			array( 'description' => __( 'Displays a list of your most recent posts', 'lightning' ) )
+			array( 'description' => __( 'Displays a list of your most recent posts.', 'lightning' ) )
 		);
 	}
 
@@ -118,25 +118,25 @@ class WP_Widget_ltg_post_list extends WP_Widget {
 		global $post;
 		?>
 
-        <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-            <header>
+		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+			<header>
 				<?php get_template_part( 'module_loop_post_meta' ); ?>
-                <h1 class="entry-title"><?php the_title(); ?></h1>
-            </header>
+				<h1 class="entry-title"><?php the_title(); ?></h1>
+			</header>
 
-            <div class="entry-body">
+			<div class="entry-body">
 
 				<?php
 				$lightning_more_btn_txt = '<span class="btn btn-default btn-block">' . __( 'Read more', 'lightning' ) . '</span>';
-				$more_btn                   = apply_filters( 'lightning-adv-more-btn-txt', $lightning_more_btn_txt );
+				$more_btn               = apply_filters( 'lightning-adv-more-btn-txt', $lightning_more_btn_txt );
 				global $is_pagewidget;
 				$is_pagewidget = true;
 				the_content( $more_btn );
 				$is_pagewidget = false;
 				?>
-            </div><!-- [ /.entry-body ] -->
+			</div><!-- [ /.entry-body ] -->
 
-            <div class="entry-footer">
+			<div class="entry-footer">
 				<?php
 				$args          = array(
 					'before'      => '<nav class="page-link"><dl><dt>Pages :</dt><dd>',
@@ -173,16 +173,16 @@ class WP_Widget_ltg_post_list extends WP_Widget {
 				$tags_list = get_the_tag_list();
 				if ( $tags_list ) :
 					?>
-                    <div class="entry-meta-dataList entry-tag">
-                        <dl>
-                            <dt><?php _e( 'Tags', 'lightning' ); ?></dt>
-                            <dd class="tagCloud"><?php echo $tags_list; ?></dd>
-                        </dl>
-                    </div><!-- [ /.entry-tag ] -->
+					<div class="entry-meta-dataList entry-tag">
+						<dl>
+							<dt><?php _e( 'Tags', 'lightning' ); ?></dt>
+							<dd class="tagCloud"><?php echo $tags_list; ?></dd>
+						</dl>
+					</div><!-- [ /.entry-tag ] -->
 				<?php endif; ?>
-            </div><!-- [ /.entry-footer ] -->
+			</div><!-- [ /.entry-footer ] -->
 
-        </article>
+		</article>
 
 		<?php
 	}
@@ -224,43 +224,43 @@ class WP_Widget_ltg_post_list extends WP_Widget {
 		$instance = wp_parse_args( (array) $instance, $defaults );
 		//タイトル
 		?>
-        <br/>
+		<br/>
 		<?php echo _e( 'Display Format', 'lightning' ); ?>:<br/>
-        <ul>
-            <li><label><input type="radio" name="<?php echo $this->get_field_name( 'format' ); ?>" value="0"
+		<ul>
+			<li><label><input type="radio" name="<?php echo $this->get_field_name( 'format' ); ?>" value="0"
 						<?php
 						if ( $instance['format'] == 0 ) {
 							echo 'checked'; }
 						?>
-                    /><?php echo __( 'Thumbnail', 'lightning' ) . '/' . __( 'Date', 'lightning' ) . '/' . __( 'Category', 'lightning' ) . '/' . __( 'Title', 'lightning' ) . '/' . __( 'Excerpt', 'lightning' ); ?></label>
-            </li>
-            <li><label><input type="radio" name="<?php echo $this->get_field_name( 'format' ); ?>" value="1"
+					/><?php echo __( 'Thumbnail', 'lightning' ) . '/' . __( 'Date', 'lightning' ) . '/' . __( 'Category', 'lightning' ) . '/' . __( 'Title', 'lightning' ) . '/' . __( 'Excerpt', 'lightning' ); ?></label>
+			</li>
+			<li><label><input type="radio" name="<?php echo $this->get_field_name( 'format' ); ?>" value="1"
 						<?php
 						if ( $instance['format'] == 1 ) {
 							echo 'checked'; }
 						?>
-                    /><?php echo __( 'Thumbnail', 'lightning' ) . '/' . __( 'Date', 'lightning' ) . '/' . __( 'Category', 'lightning' ) . '/' . __( 'Title', 'lightning' ) . '/' . __( 'Content', 'lightning' ); ?></label>
-            </li>
-        </ul>
-        <br/>
+					/><?php echo __( 'Thumbnail', 'lightning' ) . '/' . __( 'Date', 'lightning' ) . '/' . __( 'Category', 'lightning' ) . '/' . __( 'Title', 'lightning' ) . '/' . __( 'Content', 'lightning' ); ?></label>
+			</li>
+		</ul>
+		<br/>
 		<?php //タイトル ?>
-        <label for="<?php echo $this->get_field_id( 'label' ); ?>"><?php _e( 'Title:' ); ?></label><br/>
-        <input type="text" id="<?php echo $this->get_field_id( 'label' ); ?>-title" name="<?php echo $this->get_field_name( 'label' ); ?>" value="<?php echo $instance['label']; ?>" />
-        <br/><br />
+		<label for="<?php echo $this->get_field_id( 'label' ); ?>"><?php _e( 'Title:' ); ?></label><br/>
+		<input type="text" id="<?php echo $this->get_field_id( 'label' ); ?>-title" name="<?php echo $this->get_field_name( 'label' ); ?>" value="<?php echo $instance['label']; ?>" />
+		<br/><br />
 
 		<?php //表示件数 ?>
-        <label for="<?php echo $this->get_field_id( 'count' ); ?>"><?php _e( 'Display count', 'lightning' ); ?>:</label><br/>
-        <input type="text" id="<?php echo $this->get_field_id( 'count' ); ?>" name="<?php echo $this->get_field_name( 'count' ); ?>" value="<?php echo $instance['count']; ?>" />
-        <br /><br />
+		<label for="<?php echo $this->get_field_id( 'count' ); ?>"><?php _e( 'Display count', 'lightning' ); ?>:</label><br/>
+		<input type="text" id="<?php echo $this->get_field_id( 'count' ); ?>" name="<?php echo $this->get_field_name( 'count' ); ?>" value="<?php echo $instance['count']; ?>" />
+		<br /><br />
 
 		<?php //投稿タイプ ?>
-        <label for="<?php echo $this->get_field_id( 'post_type' ); ?>"><?php _e( 'Slug for the custom type you want to display', 'lightning' ); ?>:</label><br />
-        <input type="text" id="<?php echo $this->get_field_id( 'post_type' ); ?>" name="<?php echo $this->get_field_name( 'post_type' ); ?>" value="<?php echo esc_attr( $instance['post_type'] ); ?>" />
-        <br/><br/>
+		<label for="<?php echo $this->get_field_id( 'post_type' ); ?>"><?php _e( 'Slug for the custom type you want to display', 'lightning' ); ?>:</label><br />
+		<input type="text" id="<?php echo $this->get_field_id( 'post_type' ); ?>" name="<?php echo $this->get_field_name( 'post_type' ); ?>" value="<?php echo esc_attr( $instance['post_type'] ); ?>" />
+		<br/><br/>
 
 		<?php // Terms ?>
-        <label for="<?php echo $this->get_field_id( 'terms' ); ?>"><?php _e( 'taxonomy ID', 'lightning' ); ?>:</label><br />
-        <input type="text" id="<?php echo $this->get_field_id( 'terms' ); ?>" name="<?php echo $this->get_field_name( 'terms' ); ?>" value="<?php echo esc_attr( $instance['terms'] ); ?>" /><br />
+		<label for="<?php echo $this->get_field_id( 'terms' ); ?>"><?php _e( 'taxonomy ID', 'lightning' ); ?>:</label><br />
+		<input type="text" id="<?php echo $this->get_field_id( 'terms' ); ?>" name="<?php echo $this->get_field_name( 'terms' ); ?>" value="<?php echo esc_attr( $instance['terms'] ); ?>" /><br />
 		<?php
 		_e( 'if you need filtering by term, add the term ID separate by ",".', 'lightning' );
 		echo '<br/>';
@@ -269,12 +269,12 @@ class WP_Widget_ltg_post_list extends WP_Widget {
 		?>
 
 		<?php // Read more ?>
-        <label for="<?php echo $this->get_field_id( 'more_url' ); ?>"><?php _e( 'Destination URL:', 'lightning' ); ?></label><br/>
-        <input type="text" id="<?php echo $this->get_field_id( 'more_url' ); ?>" name="<?php echo $this->get_field_name( 'more_url' ); ?>" value="<?php echo esc_attr( $instance['more_url'] ); ?>" />
-        <br /><br />
-        <label for="<?php echo $this->get_field_id( 'more_text' ); ?>"><?php _e( 'Notation text:', 'lightning' ); ?></label><br/>
-        <input type="text" placeholder="最新記事一覧 ≫" id="<?php echo $this->get_field_id( 'more_text' ); ?>" name="<?php echo $this->get_field_name( 'more_text' ); ?>" value="<?php echo esc_attr( $instance['more_text'] ); ?>" />
-        <br /><br />
+		<label for="<?php echo $this->get_field_id( 'more_url' ); ?>"><?php _e( 'Destination URL:', 'lightning' ); ?></label><br/>
+		<input type="text" id="<?php echo $this->get_field_id( 'more_url' ); ?>" name="<?php echo $this->get_field_name( 'more_url' ); ?>" value="<?php echo esc_attr( $instance['more_url'] ); ?>" />
+		<br /><br />
+		<label for="<?php echo $this->get_field_id( 'more_text' ); ?>"><?php _e( 'Notation text:', 'lightning' ); ?></label><br/>
+		<input type="text" placeholder="最新記事一覧 ≫" id="<?php echo $this->get_field_id( 'more_text' ); ?>" name="<?php echo $this->get_field_name( 'more_text' ); ?>" value="<?php echo esc_attr( $instance['more_text'] ); ?>" />
+		<br /><br />
 		<?php
 	}
 

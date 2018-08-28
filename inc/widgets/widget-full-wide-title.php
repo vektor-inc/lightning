@@ -6,7 +6,7 @@
 class LTG_Theme_Full_Wide_Title extends WP_Widget {
 	function __construct() {
 		$widget_id          = 'ltg_full_wide_title';
-		$widget_name        = LIGHTNING_SHORT_NAME . ' ' . __( 'Full Wide Title', 'lightning' );
+		$widget_name        = lightning_get_theme_name_short() . ' ' . __( 'Full Wide Title', 'lightning' );
 		$widget_description = array( 'description' => __( 'This widget is used for single column only.', 'lightning' ) );
 
 		parent::__construct(
@@ -64,8 +64,8 @@ class LTG_Theme_Full_Wide_Title extends WP_Widget {
 
 		// title font color
 		echo '<p class="color_picker_wrap">' .
-		     '<label for="' . $this->get_field_id( 'title_font_color' ) . '">' . __( 'Text color of the title:', 'lightning' ) . '</label><br/>' .
-		     '<input type="text" id="' . $this->get_field_id( 'title_font_color' ) . '" class="color_picker" name="' . $this->get_field_name( 'title_font_color' ) . '" value="' . esc_attr( $options['title_font_color'] ) . '" /></p>';
+			 '<label for="' . $this->get_field_id( 'title_font_color' ) . '">' . __( 'Text color of the title:', 'lightning' ) . '</label><br/>' .
+			 '<input type="text" id="' . $this->get_field_id( 'title_font_color' ) . '" class="color_picker" name="' . $this->get_field_name( 'title_font_color' ) . '" value="' . esc_attr( $options['title_font_color'] ) . '" /></p>';
 
 		// Shadow Use
 		$checked = ( $options['title_shadow_use'] ) ? ' checked' : '';
@@ -74,13 +74,13 @@ class LTG_Theme_Full_Wide_Title extends WP_Widget {
 
 		// Shadow color
 		echo '<p class="color_picker_wrap">' .
-		     '<label for="' . $this->get_field_id( 'title_shadow_color' ) . '">' . __( 'Text shadow color:', 'lightning' ) . '</label><br/>' .
-		     '<input type="text" id="' . $this->get_field_id( 'title_shadow_color' ) . '" class="color_picker" name="' . $this->get_field_name( 'title_shadow_color' ) . '" value="' . esc_attr( $options['title_shadow_color'] ) . '" /></p>';
+			 '<label for="' . $this->get_field_id( 'title_shadow_color' ) . '">' . __( 'Text shadow color:', 'lightning' ) . '</label><br/>' .
+			 '<input type="text" id="' . $this->get_field_id( 'title_shadow_color' ) . '" class="color_picker" name="' . $this->get_field_name( 'title_shadow_color' ) . '" value="' . esc_attr( $options['title_shadow_color'] ) . '" /></p>';
 
 		// bg color
 		echo '<p class="color_picker_wrap">' .
-		     '<label for="' . $this->get_field_id( 'title_bg_color' ) . '">' . __( 'Title background color:', 'lightning' ) . '</label><br/>' .
-		     '<input type="text" id="' . $this->get_field_id( 'title_bg_color' ) . '" class="color_picker" name="' . $this->get_field_name( 'title_bg_color' ) . '" value="' . esc_attr( $options['title_bg_color'] ) . '" /></p>';
+			 '<label for="' . $this->get_field_id( 'title_bg_color' ) . '">' . __( 'Title background color:', 'lightning' ) . '</label><br/>' .
+			 '<input type="text" id="' . $this->get_field_id( 'title_bg_color' ) . '" class="color_picker" name="' . $this->get_field_name( 'title_bg_color' ) . '" value="' . esc_attr( $options['title_bg_color'] ) . '" /></p>';
 
 		$image = null;
 		// ちゃんと数字が入っているかどうか？
@@ -90,55 +90,55 @@ class LTG_Theme_Full_Wide_Title extends WP_Widget {
 		}
 		?>
 
-        <div class="vkExUnit_banner_area" style="padding: 0.7em 0;">
-            <div class="_display" style="height:auto">
+		<div class="vkExUnit_banner_area" style="padding: 0.7em 0;">
+			<div class="_display" style="height:auto">
 				<?php if ( $image ) : ?>
-                    <img src="<?php echo esc_url( $image[0] ); ?>" style="width:100%;height:auto;" />
+					<img src="<?php echo esc_url( $image[0] ); ?>" style="width:100%;height:auto;" />
 				<?php endif; ?>
-            </div>
-            <button class="button button-default button-block" style="display:block;width:100%;text-align: center; margin:4px 0;" onclick="javascript:vk_title_bg_image_addiditional(this);return false;"><?php _e( 'Set image', 'lightning' ); ?></button>
-            <button class="button button-default button-block" style="display:block;width:100%;text-align: center; margin:4px 0;" onclick="javascript:vk_title_bg_image_delete(this);return false;"><?php _e( 'Delete image', 'lightning' ); ?></button>
-            <div class="_form" style="line-height: 2em">
-                <input type="hidden" class="__id" name="<?php echo $this->get_field_name( 'media_image_id' ); ?>" value="<?php echo esc_attr( $options['media_image_id'] ); ?>" />
-            </div>
-        </div>
-        <script type="text/javascript">
-            // 背景画像登録処理
-            if ( vk_title_bg_image_addiditional == undefined ){
-                var vk_title_bg_image_addiditional = function(e){
-                    // プレビュー画像を表示するdiv
-                    var d=jQuery(e).parent().children("._display");
-                    // 画像IDを保存するinputタグ
-                    var w=jQuery(e).parent().children("._form").children('.__id')[0];
-                    var u=wp.media({library:{type:'image'},multiple:false}).on('select', function(e){
-                        u.state().get('selection').each(function(f){
-                            d.children().remove();
-                            d.append(jQuery('<img style="width:100%;mheight:auto">').attr('src',f.toJSON().url));
-                            jQuery(w).val(f.toJSON().id).change();
-                        });
-                    });
-                    u.open();
-                };
-            }
-            // 背景画像削除処理
-            if ( vk_title_bg_image_delete == undefined ){
-                var vk_title_bg_image_delete = function(e){
-                    // プレビュー画像を表示するdiv
-                    var d=jQuery(e).parent().children("._display");
-                    // 画像IDを保存するinputタグ
-                    var w=jQuery(e).parent().children("._form").children('.__id')[0];
+			</div>
+			<button class="button button-default button-block" style="display:block;width:100%;text-align: center; margin:4px 0;" onclick="javascript:vk_title_bg_image_addiditional(this);return false;"><?php _e( 'Set image', 'lightning' ); ?></button>
+			<button class="button button-default button-block" style="display:block;width:100%;text-align: center; margin:4px 0;" onclick="javascript:vk_title_bg_image_delete(this);return false;"><?php _e( 'Delete image', 'lightning' ); ?></button>
+			<div class="_form" style="line-height: 2em">
+				<input type="hidden" class="__id" name="<?php echo $this->get_field_name( 'media_image_id' ); ?>" value="<?php echo esc_attr( $options['media_image_id'] ); ?>" />
+			</div>
+		</div>
+		<script type="text/javascript">
+			// 背景画像登録処理
+			if ( vk_title_bg_image_addiditional == undefined ){
+				var vk_title_bg_image_addiditional = function(e){
+					// プレビュー画像を表示するdiv
+					var d=jQuery(e).parent().children("._display");
+					// 画像IDを保存するinputタグ
+					var w=jQuery(e).parent().children("._form").children('.__id')[0];
+					var u=wp.media({library:{type:'image'},multiple:false}).on('select', function(e){
+						u.state().get('selection').each(function(f){
+							d.children().remove();
+							d.append(jQuery('<img style="width:100%;mheight:auto">').attr('src',f.toJSON().url));
+							jQuery(w).val(f.toJSON().id).change();
+						});
+					});
+					u.open();
+				};
+			}
+			// 背景画像削除処理
+			if ( vk_title_bg_image_delete == undefined ){
+				var vk_title_bg_image_delete = function(e){
+					// プレビュー画像を表示するdiv
+					var d=jQuery(e).parent().children("._display");
+					// 画像IDを保存するinputタグ
+					var w=jQuery(e).parent().children("._form").children('.__id')[0];
 
-                    // プレビュー画像のimgタグを削除
-                    d.children().remove();
-                    // w.attr("value","");
-                    jQuery(e).parent().children("._form").children('.__id').attr("value","").change();
-                };
-            }
-        </script>
+					// プレビュー画像のimgタグを削除
+					d.children().remove();
+					// w.attr("value","");
+					jQuery(e).parent().children("._form").children('.__id').attr("value","").change();
+				};
+			}
+		</script>
 
 		<?php
 
-// Shadow Use
+		// Shadow Use
 		$checked = ( $options['bg_parallax'] ) ? ' checked' : '';
 		echo '<p><input type="checkbox" id="' . $this->get_field_id( 'bg_parallax' ) . '" name="' . $this->get_field_name( 'bg_parallax' ) . '" value="true"' . $checked . ' >';
 		echo '<label for="' . $this->get_field_id( 'bg_parallax' ) . '">' . __( 'Set to parallax', 'lightning' ) . '</label><br/></p>';
