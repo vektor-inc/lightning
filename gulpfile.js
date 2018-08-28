@@ -32,7 +32,7 @@ gulp.task('text-domain', function () {
 });
 
 gulp.task('sass', function() {
-  gulp.src(['design_skin/origin/_scss/**/*.scss'])
+  gulp.src(['design-skin/origin/_scss/**/*.scss'])
     .pipe(plumber({
       handleError: function(err) {
         console.log(err);
@@ -46,7 +46,7 @@ gulp.task('sass', function() {
     }))
     .pipe(autoprefixer())
     .pipe(cleanCss())
-    .pipe(gulp.dest('./design_skin/origin/css'));
+    .pipe(gulp.dest('./design-skin/origin/css'));
 		gulp.src(['./assets/_scss/**/*.scss'])
 	    .pipe(plumber({
 	      handleError: function(err) {
@@ -71,9 +71,9 @@ gulp.task('copy', function() {
       prefix: "_",
       extname: ".scss"
     })) // 拡張子をscssに
-    .pipe(gulp.dest('./design_skin/origin/_scss/')); // _scss ディレクトリに保存
+    .pipe(gulp.dest('./design-skin/origin/_scss/')); // _scss ディレクトリに保存
   gulp.src('./library/bootstrap/fonts/**')
-    .pipe(gulp.dest('./design_skin/origin/fonts/')); // _scss ディレクトリに保存
+    .pipe(gulp.dest('./design-skin/origin/fonts/')); // _scss ディレクトリに保存
 });
 
 
@@ -99,8 +99,8 @@ gulp.task('js_build', function() {
 gulp.task('watch', function() {
   gulp.watch('./assets/js/**', ['js_build']);
   gulp.watch('./inc/vk-mobile-nav/js/**', ['js_build']);
-  gulp.watch('./design_skin/origin/_scss/**/*.scss', ['sass']);
-  gulp.watch('./assets//_scss/**', ['sass']);
+  gulp.watch('./design-skin/origin/_scss/**/*.scss', ['sass']);
+  gulp.watch('./assets/_scss/**', ['sass']);
 });
 
 gulp.task('default', ['copy', 'js_build', 'text-domain', 'watch']);
@@ -115,7 +115,7 @@ gulp.task('copy_dist', function() {
         './**/*.txt',
         './**/*.css',
         './**/*.png',
-        './design_skin/**',
+        './design-skin/**',
         './images/**',
         './inc/**',
         './js/**',
