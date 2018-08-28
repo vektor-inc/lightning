@@ -118,7 +118,7 @@ function lightning_theme_setup() {
 
 add_action( 'wp_enqueue_scripts', 'lightning_addJs' );
 function lightning_addJs() {
-	wp_enqueue_script( 'lightning-js', get_template_directory_uri() . '/js/lightning.min.js', array( 'jquery' ), LIGHTNING_THEME_VERSION, true );
+	wp_enqueue_script( 'lightning-js', get_template_directory_uri() . '/assets/js/lightning.min.js', array( 'jquery' ), LIGHTNING_THEME_VERSION, true );
 }
 
 
@@ -129,17 +129,12 @@ function lightning_commentJs() {
 	}
 }
 
-add_action( 'wp_enqueue_scripts', 'lightning_unit_script', 100 );
-function lightning_unit_script() {
-	wp_register_script( 'lightning_unit_script', get_template_directory_uri() . '/js/sidebar-fix.js', array( 'jquery', 'lightning-js' ), LIGHTNING_THEME_VERSION );
-	wp_enqueue_script( 'lightning_unit_script' );
-}
-
 /*-------------------------------------------*/
 /*	Load CSS
 /*-------------------------------------------*/
 add_action( 'wp_enqueue_scripts', 'lightning_css' );
 function lightning_css() {
+	wp_enqueue_style( 'lightning-common-style', get_template_directory_uri() . '/assets/css/common.css', array(), LIGHTNING_THEME_VERSION );
 	wp_enqueue_style( 'lightning-theme-style', get_stylesheet_uri(), array( 'lightning-design-style' ), LIGHTNING_THEME_VERSION );
 }
 
