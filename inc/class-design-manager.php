@@ -13,9 +13,9 @@ class Lightning_Design_Manager {
 		$skins = array(
 			'origin' => array(
 				'label'           => 'Origin',
-				'css_path'        => get_template_directory_uri() . '/design_skin/origin/css/style.css',
-				'editor_css_path' => get_template_directory_uri() . '/design_skin/origin/css/editor.css',
-				'php_path'        => get_parent_theme_file_path( '/design_skin/origin/origin.php' ),
+				'css_path'        => get_template_directory_uri() . '/design-skin/origin/css/style.css',
+				'editor_css_path' => get_template_directory_uri() . '/design-skin/origin/css/editor.css',
+				'php_path'        => get_parent_theme_file_path( '/design-skin/origin/origin.php' ),
 				'js_path'         => '',
 				'callback'        => '',
 				'version'         => LIGHTNING_THEME_VERSION,
