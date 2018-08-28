@@ -62,7 +62,7 @@ before_script:
 script:
   - find ./ -name '*.php'|xargs -I {} php -l {}
   # - phpunit
-  - cd design_skin/origin
+  - cd design-skin/origin
   - compass compile
   - cd ../../
   - gulp compile
