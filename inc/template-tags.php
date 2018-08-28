@@ -66,7 +66,7 @@ function lightning_theme_options_default() {
 	$theme_options_default = array(
 		'front_pr_display'              => true,
 		'top_slide_time'                => 40000,
-		'top_slide_image_1'             => get_template_directory_uri() . '/images/top_image_1.jpg',
+		'top_slide_image_1'             => get_template_directory_uri() . '/assets/images/top_image_1.jpg',
 		'top_slide_url_1'               => __( 'https://lightning.nagoya/', 'lightning' ),
 		'top_slide_text_title_1'        => __( 'Simple and Customize easy <br>WordPress theme.', 'lightning' ),
 		'top_slide_text_caption_1'      => __( '100% GPL Lisence  and adopting the bootstrap', 'lightning' ),
@@ -75,8 +75,8 @@ function lightning_theme_options_default() {
 		'top_slide_text_color_1'        => '#000',
 		'top_slide_text_shadow_use_1'   => true,
 		'top_slide_text_shadow_color_1' => '#fff',
-		'top_slide_image_2'             => get_template_directory_uri() . '/images/top_image_2.jpg',
-		'top_slide_image_3'             => get_template_directory_uri() . '/images/top_image_3.jpg',
+		'top_slide_image_2'             => get_template_directory_uri() . '/assets/images/top_image_2.jpg',
+		'top_slide_image_3'             => get_template_directory_uri() . '/assets/images/top_image_3.jpg',
 		'top_slide_url_3'               => esc_url( home_url() ),
 		'top_slide_text_title_3'        => __( 'Johnijirou On Snow', 'lightning' ),
 		'top_slide_text_caption_3'      => __( 'Growing up everyday', 'lightning' ),
@@ -213,7 +213,7 @@ function lightning_top_slide_image_src( $i ) {
 	// If 1st slide no set, set default image.
 	if ( $i <= 3 ) {
 		if ( ! isset( $lightning_theme_options[ 'top_slide_image_' . $i ] ) ) {
-			$top_slide_image_src = get_template_directory_uri() . '/images/top_image_' . $i . '.jpg';
+			$top_slide_image_src = get_template_directory_uri() . '/assets/images/top_image_' . $i . '.jpg';
 		} else {
 			$top_slide_image_src = $lightning_theme_options[ 'top_slide_image_' . $i ];
 		}
