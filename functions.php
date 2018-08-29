@@ -156,30 +156,7 @@ require get_parent_theme_file_path( '/inc/template-tags.php' );
 /*-------------------------------------------*/
 /*	Load designskin manager
 /*-------------------------------------------*/
-
-function lightning_is_new_skin() {
-	$skin_current = get_option( 'lightning_design_skin' );
-	if ( $skin_current == 'origin' || $skin_current == '' ) {
-		// New Skin System
-		return true;
-	} else {
-		$old_skin_system_functions_url = WP_PLUGIN_DIR . '/lightning-skin-' . $skin_current . '/old-functions/old-skin-system-functions.php';
-		if ( file_exists( $old_skin_system_functions_url ) ) {
-			// New Skin System
-			return true;
-		} else {
-			// Old Skin System
-			return false;
-		}
-	}
-}
-
-if ( lightning_is_new_skin() ) {
-	require get_parent_theme_file_path( '/inc/class-design-manager.php' );
-} else {
-	require get_parent_theme_file_path( '/inc/class-design-manager-old.php' );
-}
-
+require get_parent_theme_file_path( '/inc/class-design-manager.php' );
 
 /*-------------------------------------------*/
 /*	Load tga(Plugin install)
