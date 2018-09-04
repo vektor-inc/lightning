@@ -530,7 +530,7 @@ function lightning_is_login_page() {
 /*-------------------------------------------*/
 /*  disable_tgm_notification_except_admin
 /*-------------------------------------------*/
-add_action( 'admin_head', 'lightning_disable_tgm_notification_except_admin' );
+add_action( 'init', 'lightning_disable_tgm_notification_except_admin' );
 function lightning_disable_tgm_notification_except_admin() {
 	if(!current_user_can( 'administrator' )){
 		$allowed_html = array(
