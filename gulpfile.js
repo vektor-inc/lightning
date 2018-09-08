@@ -46,7 +46,8 @@ gulp.task('sass', function() {
     }))
     .pipe(autoprefixer())
     .pipe(cleanCss())
-    .pipe(gulp.dest('./design-skin/origin/css'));
+    .pipe(gulp.dest('./design-skin/origin/css'))
+    .pipe(gulp.dest('../lightning-pro/design-skin/origin/css'));
 		gulp.src(['./assets/_scss/**/*.scss'])
 	    .pipe(plumber({
 	      handleError: function(err) {
