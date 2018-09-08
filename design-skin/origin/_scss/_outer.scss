@@ -87,6 +87,7 @@ input.form-control.input_widthAuto { width: auto; }
 /* .siteHeader
 /*-------------------------------------------*/
 .siteHeader { width:100%;z-index:1000;top:0;background-color: #fff;box-shadow:0px 1px 3px rgba(0,0,0,0.1);margin-bottom:0;min-height:46px;
+	border:none;
   &.navbar { border-radius: 0; }
   .container { padding-top:5px;padding-bottom:4px; }
 }
