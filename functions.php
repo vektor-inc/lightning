@@ -86,13 +86,6 @@ function lightning_theme_setup() {
 	add_theme_support( 'customize-selective-refresh-widgets' );
 
 	/*-------------------------------------------*/
-	/*	Admin page _ Add editor css
-	/*-------------------------------------------*/
-	if ( ! apply_filters( 'lightning-disable-theme_style', false ) ) {
-		add_editor_style( 'design_skin/origin/css/editor.css' );
-	}
-
-	/*-------------------------------------------*/
 	/*	Feed Links
 	/*-------------------------------------------*/
 	add_theme_support( 'automatic-feed-links' );

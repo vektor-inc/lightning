@@ -3,6 +3,7 @@ class Lightning_Design_Manager {
 
 	static function init() {
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'load_skin_css' ) );
+		add_action( 'after_setup_theme', array( __CLASS__, 'load_skin_editor_css' ) );
 		add_action( 'after_setup_theme', array( __CLASS__, 'load_skin_php' ) );
 		add_action( 'after_setup_theme', array( __CLASS__, 'load_skin_callback' ) );
 		add_action( 'customize_register', array( __CLASS__, 'customize_register' ) );
@@ -41,12 +42,27 @@ class Lightning_Design_Manager {
 			wp_enqueue_style( 'lightning-design-style', $skins[ $current_skin ]['css_path'], array(), $version );
 		}
 
-		if ( ! empty( $skins[ $current_skin ]['editor_css_path'] ) ) {
-			add_editor_style( $skins[ $current_skin ]['editor_css_path'] . '?ver=' . $version );
-		}
-
 		if ( ! empty( $skins[ $current_skin ]['js_path'] ) ) {
 			wp_enqueue_script( 'lightning-design-js', $skins[ $current_skin ]['js_path'], array( 'jquery' ), $version, true );
+		}
+
+	}
+
+	static function load_skin_editor_css() {
+		$skins        = self::get_skins();
+		$current_skin = get_option( 'lightning_design_skin' );
+		if ( ! $current_skin ) {
+			$current_skin = 'origin';
+		}
+
+		if ( ! empty( $skins[ $current_skin ]['version'] ) ) {
+			$version = $skins[ $current_skin ]['version'];
+		} else {
+			$version = '';
+		}
+
+		if ( ! empty( $skins[ $current_skin ]['editor_css_path'] ) ) {
+			add_editor_style( $skins[ $current_skin ]['editor_css_path'] . '?ver=' . $version );
 		}
 
 	}
