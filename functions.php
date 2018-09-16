@@ -444,31 +444,6 @@ function lightning_home_content_hidden( $flag ) {
 }
 
 /*-------------------------------------------*/
-/*  Move jQuery to footer
-/*-------------------------------------------*/
-add_action( 'init', 'lightning_move_jquery_to_footer' );
-function lightning_move_jquery_to_footer() {
-	if ( is_admin() || lightning_is_login_page() ) {
-		return;
-	}
-
-	global $wp_scripts;
-	$jquery     = $wp_scripts->registered['jquery-core'];
-	$jquery_ver = $jquery->ver;
-	$jquery_src = $jquery->src;
-
-	wp_deregister_script( 'jquery' );
-	wp_deregister_script( 'jquery-core' );
-
-	wp_register_script( 'jquery', false, [ 'jquery-core' ], $jquery_ver, true );
-	wp_register_script( 'jquery-core', $jquery_src, [], $jquery_ver, true );
-}
-
-function lightning_is_login_page() {
-	return in_array( $GLOBALS['pagenow'], array( 'wp-login.php', 'wp-register.php' ) );
-}
-
-/*-------------------------------------------*/
 /*  disable_tgm_notification_except_admin
 /*-------------------------------------------*/
 add_action( 'admin_head', 'lightning_disable_tgm_notification_except_admin' );
