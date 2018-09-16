@@ -244,7 +244,7 @@ class WP_Widget_ltg_post_list extends WP_Widget {
 		</ul>
 		<br/>
 		<?php //タイトル ?>
-		<label for="<?php echo $this->get_field_id( 'label' ); ?>"><?php _e( 'Title:' ); ?></label><br/>
+		<label for="<?php echo $this->get_field_id( 'label' ); ?>"><?php _e( 'Title:', 'lightning' ); ?></label><br/>
 		<input type="text" id="<?php echo $this->get_field_id( 'label' ); ?>-title" name="<?php echo $this->get_field_name( 'label' ); ?>" value="<?php echo $instance['label']; ?>" />
 		<br/><br />
 
