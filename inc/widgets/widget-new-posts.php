@@ -19,7 +19,7 @@ class WP_Widget_ltg_post_list extends WP_Widget {
 	}
 
 	/*-------------------------------------------*/
-	/*  一覧へのリンクhtmlを出力する関数
+	/* More Link
 	/*-------------------------------------------*/
 	static public function more_link_html( $instance ) {
 		if ( ! empty( $instance['more_text'] ) && ! empty( $instance['more_url'] ) ) {
@@ -222,7 +222,6 @@ class WP_Widget_ltg_post_list extends WP_Widget {
 		);
 
 		$instance = wp_parse_args( (array) $instance, $defaults );
-		//タイトル
 		?>
 		<br/>
 		<?php echo _e( 'Display Format', 'lightning' ); ?>:<br/>
@@ -243,17 +242,17 @@ class WP_Widget_ltg_post_list extends WP_Widget {
 			</li>
 		</ul>
 		<br/>
-		<?php //タイトル ?>
+		<?php // Title ?>
 		<label for="<?php echo $this->get_field_id( 'label' ); ?>"><?php _e( 'Title:', 'lightning' ); ?></label><br/>
 		<input type="text" id="<?php echo $this->get_field_id( 'label' ); ?>-title" name="<?php echo $this->get_field_name( 'label' ); ?>" value="<?php echo $instance['label']; ?>" />
 		<br/><br />
 
-		<?php //表示件数 ?>
+		<?php // Post Cpunt ?>
 		<label for="<?php echo $this->get_field_id( 'count' ); ?>"><?php _e( 'Display count', 'lightning' ); ?>:</label><br/>
 		<input type="text" id="<?php echo $this->get_field_id( 'count' ); ?>" name="<?php echo $this->get_field_name( 'count' ); ?>" value="<?php echo $instance['count']; ?>" />
 		<br /><br />
 
-		<?php //投稿タイプ ?>
+		<?php // Post Type ?>
 		<label for="<?php echo $this->get_field_id( 'post_type' ); ?>"><?php _e( 'Slug for the custom type you want to display', 'lightning' ); ?>:</label><br />
 		<input type="text" id="<?php echo $this->get_field_id( 'post_type' ); ?>" name="<?php echo $this->get_field_name( 'post_type' ); ?>" value="<?php echo esc_attr( $instance['post_type'] ); ?>" />
 		<br/><br/>
@@ -273,7 +272,7 @@ class WP_Widget_ltg_post_list extends WP_Widget {
 		<input type="text" id="<?php echo $this->get_field_id( 'more_url' ); ?>" name="<?php echo $this->get_field_name( 'more_url' ); ?>" value="<?php echo esc_attr( $instance['more_url'] ); ?>" />
 		<br /><br />
 		<label for="<?php echo $this->get_field_id( 'more_text' ); ?>"><?php _e( 'Notation text:', 'lightning' ); ?></label><br/>
-		<input type="text" placeholder="最新記事一覧 ≫" id="<?php echo $this->get_field_id( 'more_text' ); ?>" name="<?php echo $this->get_field_name( 'more_text' ); ?>" value="<?php echo esc_attr( $instance['more_text'] ); ?>" />
+		<input type="text" placeholder="<?php _e( 'Latest post list', 'lightning' ); ?> ≫" id="<?php echo $this->get_field_id( 'more_text' ); ?>" name="<?php echo $this->get_field_name( 'more_text' ); ?>" value="<?php echo esc_attr( $instance['more_text'] ); ?>" />
 		<br /><br />
 		<?php
 	}

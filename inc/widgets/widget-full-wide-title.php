@@ -38,7 +38,7 @@ class LTG_Theme_Full_Wide_Title extends WP_Widget {
 	/*-------------------------------------------*/
 	public function form( $instance ) {
 		$options = self::default_options( $instance );
-		// ※ wp_parse_args()かけてるのでisset不要
+		// ※ Don't need isset that already do wp_parse_args().
 
 		echo '<p>';
 		echo  __( 'Title:', 'lightning' ) . '<br>';
@@ -83,9 +83,7 @@ class LTG_Theme_Full_Wide_Title extends WP_Widget {
 			 '<input type="text" id="' . $this->get_field_id( 'title_bg_color' ) . '" class="color_picker" name="' . $this->get_field_name( 'title_bg_color' ) . '" value="' . esc_attr( $options['title_bg_color'] ) . '" /></p>';
 
 		$image = null;
-		// ちゃんと数字が入っているかどうか？
 		if ( is_numeric( $options['media_image_id'] ) ) {
-			// 数字だったら、その数字の画像を full サイズで取得
 			$image = wp_get_attachment_image_src( $options['media_image_id'], 'full' );
 		}
 		?>
@@ -103,12 +101,12 @@ class LTG_Theme_Full_Wide_Title extends WP_Widget {
 			</div>
 		</div>
 		<script type="text/javascript">
-			// 背景画像登録処理
+			// Register background image
 			if ( vk_title_bg_image_addiditional == undefined ){
 				var vk_title_bg_image_addiditional = function(e){
-					// プレビュー画像を表示するdiv
+					// Preview area div
 					var d=jQuery(e).parent().children("._display");
-					// 画像IDを保存するinputタグ
+					// Input tag of save image id.
 					var w=jQuery(e).parent().children("._form").children('.__id')[0];
 					var u=wp.media({library:{type:'image'},multiple:false}).on('select', function(e){
 						u.state().get('selection').each(function(f){
@@ -120,15 +118,15 @@ class LTG_Theme_Full_Wide_Title extends WP_Widget {
 					u.open();
 				};
 			}
-			// 背景画像削除処理
+			// Function of Delete background image
 			if ( vk_title_bg_image_delete == undefined ){
 				var vk_title_bg_image_delete = function(e){
-					// プレビュー画像を表示するdiv
+					// Preview area div
 					var d=jQuery(e).parent().children("._display");
-					// 画像IDを保存するinputタグ
+						// Input tag of save image id.
 					var w=jQuery(e).parent().children("._form").children('.__id')[0];
 
-					// プレビュー画像のimgタグを削除
+					// Delete tag of preview img.
 					d.children().remove();
 					// w.attr("value","");
 					jQuery(e).parent().children("._form").children('.__id').attr("value","").change();
@@ -183,7 +181,7 @@ class LTG_Theme_Full_Wide_Title extends WP_Widget {
 	/*-------------------------------------------*/
 	public static function widget_outer_style( $instance ) {
 
-		// 画像IDから画像のURLを取得
+		// Get image url from image id
 		if ( ! empty( $instance['media_image_id'] ) ) {
 			$image = wp_get_attachment_image_src( $instance['media_image_id'], 'full' );
 			$image = $image[0];
@@ -191,16 +189,16 @@ class LTG_Theme_Full_Wide_Title extends WP_Widget {
 			$image = null;
 		}
 
-		// 画像が登録されている場合
+		// Image exist
 		if ( ! empty( $image ) && empty( $instance['title_bg_color'] ) ) {
 			$widget_outer_style = 'background-image: url(\'' . esc_url( $image ) . '\');';
-			// 背景色が登録されている場合（画像は登録されていない）
+			// When background color is registered（ Not set image ）
 		} elseif ( ! empty( $instance['title_bg_color'] ) && empty( $image ) ) {
 			$widget_outer_style = 'background: ' . sanitize_hex_color( $instance['title_bg_color'] ) . ';';
-			//  画像も背景色もどちらも登録されている場合
+			// When registered image and bgcolor.
 		} elseif ( ! empty( $image ) && ! empty( $instance['title_bg_color'] ) ) {
 			$widget_outer_style = 'background-image: url(\'' . esc_url( $image ) . '\');';
-			// その他（画像も背景色も登録されていない）
+			// Other（When not registered image and bgcolor.）
 		} elseif ( empty( $image ) && empty( $instance['title_bg_color'] ) ) {
 			$widget_outer_style = '';
 		}
@@ -217,15 +215,15 @@ class LTG_Theme_Full_Wide_Title extends WP_Widget {
 
 	public static function widget_font_style( $instance ) {
 		$widget_font_style = '';
-		// 色が登録されている場合
+		// When registerd color
 		if ( ! empty( $instance['title_font_color'] ) ) {
 			$widget_font_style .= 'color:' . $instance['title_font_color'] . ';';
 		} else {
-			// その他（色が登録されていない）
+			// Other（ not registered color）
 			$widget_font_style .= '';
 		}
 
-		// シャドウ
+		// Shadow
 		if ( isset( $instance['title_shadow_use'] ) && $instance['title_shadow_use'] ) {
 			if ( ! empty( $instance['title_shadow_color'] ) ) {
 				$widget_font_style .= 'text-shadow:0 0 0.3em ' . $instance['title_shadow_color'];
@@ -243,8 +241,8 @@ class LTG_Theme_Full_Wide_Title extends WP_Widget {
 	public function widget( $args, $instance ) {
 		$instance = self::default_options( $instance );
 
-		// テーマ側から .widget に対してmargin-bottomが付けられてしまっているので、
-		// ウィジェット個別で上下余白指定がある場合は .widgetの余白を打ち消す必要がある
+		// Margin-bottom is attached to A from the theme side.
+		// When registered margin from widget, then need to cancel margin.
 		$widget_outer_style = '';
 		if ( isset( $instance['margin_top'] ) && $instance['margin_top'] != '' ) {
 			$widget_outer_style .= 'margin-top:0;';
@@ -271,7 +269,7 @@ class LTG_Theme_Full_Wide_Title extends WP_Widget {
 		echo $args ['before_widget'];
 		echo '<div class="widget_ltg_full_wide_title_outer' . $add_class . '" style="' . esc_attr( $this->widget_outer_style( $instance ) ) . '">';
 		echo '<h2 class="widget_ltg_full_wide_title_title" style="' . esc_attr( $this->widget_font_style( $instance ) ) . '">' . wp_kses_post( $instance['title'] ) . '</h2>';
-		// サブテキストがある場合
+		// When has sub text
 		if ( ! empty( $instance['text'] ) ) {
 			echo '<p style="' . $this->widget_font_style( $instance ) . '" class="widget_ltg_full_wide_title_caption">' . wp_kses_post( $instance['text'] ) . '</p>';
 		}
