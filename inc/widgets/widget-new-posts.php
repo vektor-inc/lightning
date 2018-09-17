@@ -272,7 +272,7 @@ class WP_Widget_ltg_post_list extends WP_Widget {
 		<input type="text" id="<?php echo $this->get_field_id( 'more_url' ); ?>" name="<?php echo $this->get_field_name( 'more_url' ); ?>" value="<?php echo esc_attr( $instance['more_url'] ); ?>" />
 		<br /><br />
 		<label for="<?php echo $this->get_field_id( 'more_text' ); ?>"><?php _e( 'Notation text:', 'lightning' ); ?></label><br/>
-		<input type="text" placeholder="<?php _e( 'Latest post list', 'lightning' ); ?> ≫" id="<?php echo $this->get_field_id( 'more_text' ); ?>" name="<?php echo $this->get_field_name( 'more_text' ); ?>" value="<?php echo esc_attr( $instance['more_text'] ); ?>" />
+		<input type="text" placeholder="<?php _e( 'Latest post list', 'lightning' ); ?>" id="<?php echo $this->get_field_id( 'more_text' ); ?>" name="<?php echo $this->get_field_name( 'more_text' ); ?>" value="<?php echo esc_attr( $instance['more_text'] ); ?>" />
 		<br /><br />
 		<?php
 	}

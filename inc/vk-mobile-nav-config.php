@@ -4,7 +4,7 @@
 /*  Load modules
 /*-------------------------------------------*/
 if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
-	require( 'vk-mobile-nav/class-vk-mobile-nav.php' );
+	require get_parent_theme_file_path( '/inc/vk-mobile-nav/class-vk-mobile-nav.php' );
 
 	global $default_nav;
 	$default_nav = 'Header';
