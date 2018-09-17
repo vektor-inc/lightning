@@ -1,0 +1,155 @@
+@charset "utf-8";
+// @import "compass";
+
+/****************************************************************/
+/* Lightning All Area All Skin common style
+/****************************************************************/
+
+$border_primary : 1px solid #e5e5e5;
+$color_font_default : #464646;
+$color_font_light : #666;
+$color_key : #337ab7;
+$margin_bottom : 1.2em;
+
+/*-------------------------------------------*/
+/* common style
+/*-------------------------------------------*/
+/* headding
+/*-------------------------------------------*/
+/* images
+/*-------------------------------------------*/
+/* other class
+/*-------------------------------------------*/
+
+/*-------------------------------------------*/
+/* common style
+/*-------------------------------------------*/
+
+body { font-family: "メイリオ",Meiryo,"ＭＳ Ｐゴシック","Hiragino Kaku Gothic Pro","ヒラギノ角ゴ Pro W3",sans-serif;-ms-word-wrap: break-word;word-wrap: break-word;font-size:16px; }
+/* img が２行ないとgulpでcssに出力されないという謎のバグがあるため、原因がわかるまで２行書いておく */
+/* JPN STYLE で発生 */
+img { max-width: 100%; height:auto; }
+img { max-width: 100%; height:auto; }
+p { line-height: 1.8em;margin-bottom:$margin_bottom; }
+em { font-weight: bold;font-style: italic !important;font-family: "ＭＳ Ｐゴシック","Hiragino Kaku Gothic Pro","ヒラギノ角ゴ Pro W3",sans-serif; }
+ul,ol,dl { margin-top:1.5em;margin-bottom:$margin_bottom;}
+li { margin-bottom:0.8em; line-height: 1.65em; }
+dt,
+dd { padding-left:10px;border-left-width:2px;border-left-style:solid;margin-bottom:10px; }
+dt { border-left-color:$color_key; }
+dd { border-left-color:#e5e5e5;}
+
+dt.wp-caption-dt,
+dd.wp-caption-dd { border-left:none;}
+
+ol ol,ul ul,ol ul,ul ol { margin-top:10px;margin-bottom:10px; }
+/*-------------------------------------------*/
+/* headding
+/*-------------------------------------------*/
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 { line-height: 1.7em; }
+h2,.h2,
+h3,.h3,
+h4,.h4,
+h5,.h5,
+h6,.h6,
+.mainSection-title { margin:1.5em 0 $margin_bottom;clear: both; }
+
+h1:first-child,
+h2:first-child,
+h3:first-child,
+h4:first-child,
+h5:first-child { margin-top:0; }
+
+h3,.h3,
+.subSection-title { padding-bottom:8px;position: relative; }
+
+h4,.h4 { font-size:20px; position: relative; }
+h5,.h5 { font-size:18px; }
+h6,.h6 { font-size:16px; font-weight: bold; }
+
+@media (max-width: 767px){
+	h1 { font-size:24px;}
+	h2 { font-size:21px;}
+	h3 { font-size:20px;}
+	h4 { font-size:18px;}
+	h5 { font-size:18px;}
+	h6 { font-size:16px;}
+}// @media (max-width: 767px){
+
+	blockquote { border:5px solid #eee; background-color: #fcfcfc;position:relative;padding:20px;font-size:16px; }
+
+	.fa_v4,
+	.fa_v5_css {
+		blockquote {
+			padding:35px 20px 30px;
+			&:before,
+			&:after { color:#ccc;position: absolute; }
+			&:before { top:10px;}
+			&:after { bottom:10px;right:20px; }
+			&:before { content: "\f10d";}
+			&:after { content: "\f10e";}
+		}
+	}
+	.fa_v4 blockquote:before,
+	.fa_v4 blockquote:after {
+		font-family:FontAwesome;
+	}
+	.fa_v5_css blockquote:before,
+	.fa_v5_css blockquote:after {
+		font-family: "Font Awesome 5 Free";
+		font-weight: bold;
+	}
+
+.table,
+table { border-collapse: collapse; border-spacing: 0;width:100%; border-top:$border_primary;
+	th,
+	td,
+	thead tr th,
+	thead tr td,
+	tbody tr th,
+	tbody tr td { padding: 1em; border-bottom:$border_primary;
+		.form-control { max-width:90%; }
+	}
+	th { font-weight: lighter; }
+}
+
+/*-------------------------------------------*/
+/* .btn
+/*-------------------------------------------*/
+.btn { white-space: normal; }
+.btn-xs { padding-left:15px;padding-right:15px; }
+.btn.btn-block { padding-left:10px;padding-right:10px; }
+
+/*-------------------------------------------*/
+/* images
+/*-------------------------------------------*/
+.attachment img { max-width: 100%; }
+.alignleft,
+img.alignleft { display: inline; float: left; margin-right: 20px; margin-top: 4px; }
+.alignright,
+img.alignright { display: inline; float: right; margin-left: 20px; margin-top: 4px; }
+.aligncenter,
+img.aligncenter { clear: both; display: block; margin-left: auto; margin-right: auto; }
+img.alignleft,
+img.alignright,
+img.aligncenter { margin-bottom: 12px; }
+.wp-caption { background: #fcfcfc; line-height: 18px; margin-top:2.5em;margin-bottom: 2.5em; padding: 0 0 5px; text-align: center;border:1px solid #e5e5e5;max-width:100% !important; }
+.wp-caption img { margin:10px 0 9px;max-width:95% !important;height:auto !important; }
+.wp-caption p.wp-caption-text { color: #888; font-size: 12px; margin: 0px; }
+.wp-smiley { margin: 0; }
+.gallery { margin: 0 auto 25px; }
+.gallery .gallery-item { float: left; margin-top: 0; text-align: center; width: 33%; }
+.gallery img { border: 2px solid #cfcfcf; }
+.gallery .gallery-caption { color: #888; font-size: 12px; margin: 0 0 12px; }
+.gallery dl { margin: 0; }
+.gallery dt,
+.gallery dd { border:none; }
+.gallery img { border: 10px solid #f1f1f1; }
+.gallery br+br { display: none; }
+.attachment img { /* single attachment images should be centered */
+  display: block; margin: 0 auto; }
+
+/*-------------------------------------------*/
+/* other class
+/*-------------------------------------------*/
+.well p:last-child { margin-bottom:0; }

@@ -6,7 +6,7 @@
 class LTG_Theme_Full_Wide_Title extends WP_Widget {
 	function __construct() {
 		$widget_id          = 'ltg_full_wide_title';
-		$widget_name        = LIGHTNING_SHORT_NAME . ' ' . __( 'Full Wide Title', 'lightning' );
+		$widget_name        = lightning_get_theme_name_short() . ' ' . __( 'Full Wide Title', 'lightning' );
 		$widget_description = array( 'description' => __( 'This widget is used for single column only.', 'lightning' ) );
 
 		parent::__construct(
@@ -38,7 +38,7 @@ class LTG_Theme_Full_Wide_Title extends WP_Widget {
 	/*-------------------------------------------*/
 	public function form( $instance ) {
 		$options = self::default_options( $instance );
-		// ※ wp_parse_args()かけてるのでisset不要
+		// ※ Don't need isset that already do wp_parse_args().
 
 		echo '<p>';
 		echo  __( 'Title:', 'lightning' ) . '<br>';
@@ -64,8 +64,8 @@ class LTG_Theme_Full_Wide_Title extends WP_Widget {
 
 		// title font color
 		echo '<p class="color_picker_wrap">' .
-		     '<label for="' . $this->get_field_id( 'title_font_color' ) . '">' . __( 'Text color of the title:', 'lightning' ) . '</label><br/>' .
-		     '<input type="text" id="' . $this->get_field_id( 'title_font_color' ) . '" class="color_picker" name="' . $this->get_field_name( 'title_font_color' ) . '" value="' . esc_attr( $options['title_font_color'] ) . '" /></p>';
+			 '<label for="' . $this->get_field_id( 'title_font_color' ) . '">' . __( 'Text color of the title:', 'lightning' ) . '</label><br/>' .
+			 '<input type="text" id="' . $this->get_field_id( 'title_font_color' ) . '" class="color_picker" name="' . $this->get_field_name( 'title_font_color' ) . '" value="' . esc_attr( $options['title_font_color'] ) . '" /></p>';
 
 		// Shadow Use
 		$checked = ( $options['title_shadow_use'] ) ? ' checked' : '';
@@ -74,71 +74,69 @@ class LTG_Theme_Full_Wide_Title extends WP_Widget {
 
 		// Shadow color
 		echo '<p class="color_picker_wrap">' .
-		     '<label for="' . $this->get_field_id( 'title_shadow_color' ) . '">' . __( 'Text shadow color:', 'lightning' ) . '</label><br/>' .
-		     '<input type="text" id="' . $this->get_field_id( 'title_shadow_color' ) . '" class="color_picker" name="' . $this->get_field_name( 'title_shadow_color' ) . '" value="' . esc_attr( $options['title_shadow_color'] ) . '" /></p>';
+			 '<label for="' . $this->get_field_id( 'title_shadow_color' ) . '">' . __( 'Text shadow color:', 'lightning' ) . '</label><br/>' .
+			 '<input type="text" id="' . $this->get_field_id( 'title_shadow_color' ) . '" class="color_picker" name="' . $this->get_field_name( 'title_shadow_color' ) . '" value="' . esc_attr( $options['title_shadow_color'] ) . '" /></p>';
 
 		// bg color
 		echo '<p class="color_picker_wrap">' .
-		     '<label for="' . $this->get_field_id( 'title_bg_color' ) . '">' . __( 'Title background color:', 'lightning' ) . '</label><br/>' .
-		     '<input type="text" id="' . $this->get_field_id( 'title_bg_color' ) . '" class="color_picker" name="' . $this->get_field_name( 'title_bg_color' ) . '" value="' . esc_attr( $options['title_bg_color'] ) . '" /></p>';
+			 '<label for="' . $this->get_field_id( 'title_bg_color' ) . '">' . __( 'Title background color:', 'lightning' ) . '</label><br/>' .
+			 '<input type="text" id="' . $this->get_field_id( 'title_bg_color' ) . '" class="color_picker" name="' . $this->get_field_name( 'title_bg_color' ) . '" value="' . esc_attr( $options['title_bg_color'] ) . '" /></p>';
 
 		$image = null;
-		// ちゃんと数字が入っているかどうか？
 		if ( is_numeric( $options['media_image_id'] ) ) {
-			// 数字だったら、その数字の画像を full サイズで取得
 			$image = wp_get_attachment_image_src( $options['media_image_id'], 'full' );
 		}
 		?>
 
-        <div class="vkExUnit_banner_area" style="padding: 0.7em 0;">
-            <div class="_display" style="height:auto">
+		<div class="vkExUnit_banner_area" style="padding: 0.7em 0;">
+			<div class="_display" style="height:auto">
 				<?php if ( $image ) : ?>
-                    <img src="<?php echo esc_url( $image[0] ); ?>" style="width:100%;height:auto;" />
+					<img src="<?php echo esc_url( $image[0] ); ?>" style="width:100%;height:auto;" />
 				<?php endif; ?>
-            </div>
-            <button class="button button-default button-block" style="display:block;width:100%;text-align: center; margin:4px 0;" onclick="javascript:vk_title_bg_image_addiditional(this);return false;"><?php _e( 'Set image', 'lightning' ); ?></button>
-            <button class="button button-default button-block" style="display:block;width:100%;text-align: center; margin:4px 0;" onclick="javascript:vk_title_bg_image_delete(this);return false;"><?php _e( 'Delete image', 'lightning' ); ?></button>
-            <div class="_form" style="line-height: 2em">
-                <input type="hidden" class="__id" name="<?php echo $this->get_field_name( 'media_image_id' ); ?>" value="<?php echo esc_attr( $options['media_image_id'] ); ?>" />
-            </div>
-        </div>
-        <script type="text/javascript">
-            // 背景画像登録処理
-            if ( vk_title_bg_image_addiditional == undefined ){
-                var vk_title_bg_image_addiditional = function(e){
-                    // プレビュー画像を表示するdiv
-                    var d=jQuery(e).parent().children("._display");
-                    // 画像IDを保存するinputタグ
-                    var w=jQuery(e).parent().children("._form").children('.__id')[0];
-                    var u=wp.media({library:{type:'image'},multiple:false}).on('select', function(e){
-                        u.state().get('selection').each(function(f){
-                            d.children().remove();
-                            d.append(jQuery('<img style="width:100%;mheight:auto">').attr('src',f.toJSON().url));
-                            jQuery(w).val(f.toJSON().id).change();
-                        });
-                    });
-                    u.open();
-                };
-            }
-            // 背景画像削除処理
-            if ( vk_title_bg_image_delete == undefined ){
-                var vk_title_bg_image_delete = function(e){
-                    // プレビュー画像を表示するdiv
-                    var d=jQuery(e).parent().children("._display");
-                    // 画像IDを保存するinputタグ
-                    var w=jQuery(e).parent().children("._form").children('.__id')[0];
+			</div>
+			<button class="button button-default button-block" style="display:block;width:100%;text-align: center; margin:4px 0;" onclick="javascript:vk_title_bg_image_addiditional(this);return false;"><?php _e( 'Set image', 'lightning' ); ?></button>
+			<button class="button button-default button-block" style="display:block;width:100%;text-align: center; margin:4px 0;" onclick="javascript:vk_title_bg_image_delete(this);return false;"><?php _e( 'Delete image', 'lightning' ); ?></button>
+			<div class="_form" style="line-height: 2em">
+				<input type="hidden" class="__id" name="<?php echo $this->get_field_name( 'media_image_id' ); ?>" value="<?php echo esc_attr( $options['media_image_id'] ); ?>" />
+			</div>
+		</div>
+		<script type="text/javascript">
+			// Register background image
+			if ( vk_title_bg_image_addiditional == undefined ){
+				var vk_title_bg_image_addiditional = function(e){
+					// Preview area div
+					var d=jQuery(e).parent().children("._display");
+					// Input tag of save image id.
+					var w=jQuery(e).parent().children("._form").children('.__id')[0];
+					var u=wp.media({library:{type:'image'},multiple:false}).on('select', function(e){
+						u.state().get('selection').each(function(f){
+							d.children().remove();
+							d.append(jQuery('<img style="width:100%;mheight:auto">').attr('src',f.toJSON().url));
+							jQuery(w).val(f.toJSON().id).change();
+						});
+					});
+					u.open();
+				};
+			}
+			// Function of Delete background image
+			if ( vk_title_bg_image_delete == undefined ){
+				var vk_title_bg_image_delete = function(e){
+					// Preview area div
+					var d=jQuery(e).parent().children("._display");
+						// Input tag of save image id.
+					var w=jQuery(e).parent().children("._form").children('.__id')[0];
 
-                    // プレビュー画像のimgタグを削除
-                    d.children().remove();
-                    // w.attr("value","");
-                    jQuery(e).parent().children("._form").children('.__id').attr("value","").change();
-                };
-            }
-        </script>
+					// Delete tag of preview img.
+					d.children().remove();
+					// w.attr("value","");
+					jQuery(e).parent().children("._form").children('.__id').attr("value","").change();
+				};
+			}
+		</script>
 
 		<?php
 
-// Shadow Use
+		// Shadow Use
 		$checked = ( $options['bg_parallax'] ) ? ' checked' : '';
 		echo '<p><input type="checkbox" id="' . $this->get_field_id( 'bg_parallax' ) . '" name="' . $this->get_field_name( 'bg_parallax' ) . '" value="true"' . $checked . ' >';
 		echo '<label for="' . $this->get_field_id( 'bg_parallax' ) . '">' . __( 'Set to parallax', 'lightning' ) . '</label><br/></p>';
@@ -183,7 +181,7 @@ class LTG_Theme_Full_Wide_Title extends WP_Widget {
 	/*-------------------------------------------*/
 	public static function widget_outer_style( $instance ) {
 
-		// 画像IDから画像のURLを取得
+		// Get image url from image id
 		if ( ! empty( $instance['media_image_id'] ) ) {
 			$image = wp_get_attachment_image_src( $instance['media_image_id'], 'full' );
 			$image = $image[0];
@@ -191,16 +189,16 @@ class LTG_Theme_Full_Wide_Title extends WP_Widget {
 			$image = null;
 		}
 
-		// 画像が登録されている場合
+		// Image exist
 		if ( ! empty( $image ) && empty( $instance['title_bg_color'] ) ) {
 			$widget_outer_style = 'background-image: url(\'' . esc_url( $image ) . '\');';
-			// 背景色が登録されている場合（画像は登録されていない）
+			// When background color is registered（ Not set image ）
 		} elseif ( ! empty( $instance['title_bg_color'] ) && empty( $image ) ) {
 			$widget_outer_style = 'background: ' . sanitize_hex_color( $instance['title_bg_color'] ) . ';';
-			//  画像も背景色もどちらも登録されている場合
+			// When registered image and bgcolor.
 		} elseif ( ! empty( $image ) && ! empty( $instance['title_bg_color'] ) ) {
 			$widget_outer_style = 'background-image: url(\'' . esc_url( $image ) . '\');';
-			// その他（画像も背景色も登録されていない）
+			// Other（When not registered image and bgcolor.）
 		} elseif ( empty( $image ) && empty( $instance['title_bg_color'] ) ) {
 			$widget_outer_style = '';
 		}
@@ -217,15 +215,15 @@ class LTG_Theme_Full_Wide_Title extends WP_Widget {
 
 	public static function widget_font_style( $instance ) {
 		$widget_font_style = '';
-		// 色が登録されている場合
+		// When registerd color
 		if ( ! empty( $instance['title_font_color'] ) ) {
 			$widget_font_style .= 'color:' . $instance['title_font_color'] . ';';
 		} else {
-			// その他（色が登録されていない）
+			// Other（ not registered color）
 			$widget_font_style .= '';
 		}
 
-		// シャドウ
+		// Shadow
 		if ( isset( $instance['title_shadow_use'] ) && $instance['title_shadow_use'] ) {
 			if ( ! empty( $instance['title_shadow_color'] ) ) {
 				$widget_font_style .= 'text-shadow:0 0 0.3em ' . $instance['title_shadow_color'];
@@ -243,8 +241,8 @@ class LTG_Theme_Full_Wide_Title extends WP_Widget {
 	public function widget( $args, $instance ) {
 		$instance = self::default_options( $instance );
 
-		// テーマ側から .widget に対してmargin-bottomが付けられてしまっているので、
-		// ウィジェット個別で上下余白指定がある場合は .widgetの余白を打ち消す必要がある
+		// Margin-bottom is attached to A from the theme side.
+		// When registered margin from widget, then need to cancel margin.
 		$widget_outer_style = '';
 		if ( isset( $instance['margin_top'] ) && $instance['margin_top'] != '' ) {
 			$widget_outer_style .= 'margin-top:0;';
@@ -271,7 +269,7 @@ class LTG_Theme_Full_Wide_Title extends WP_Widget {
 		echo $args ['before_widget'];
 		echo '<div class="widget_ltg_full_wide_title_outer' . $add_class . '" style="' . esc_attr( $this->widget_outer_style( $instance ) ) . '">';
 		echo '<h2 class="widget_ltg_full_wide_title_title" style="' . esc_attr( $this->widget_font_style( $instance ) ) . '">' . wp_kses_post( $instance['title'] ) . '</h2>';
-		// サブテキストがある場合
+		// When has sub text
 		if ( ! empty( $instance['text'] ) ) {
 			echo '<p style="' . $this->widget_font_style( $instance ) . '" class="widget_ltg_full_wide_title_caption">' . wp_kses_post( $instance['text'] ) . '</p>';
 		}
