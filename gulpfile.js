@@ -19,8 +19,20 @@ var cleanCss = require('gulp-clean-css');
 // 同期的に処理してくれる
 var runSequence = require('run-sequence');
 
+
+var replace = require('gulp-replace');
+
+gulp.task('text-domain', function () {
+		gulp.src(['./inc/font-awesome/*'])
+				.pipe(replace('vk_font_awesome_version_textdomain', 'lightning'))
+				.pipe(gulp.dest('./inc/font-awesome/'));
+		gulp.src(['./inc/vk-mobile-nav/*'])
+				.pipe(replace('vk_mobile_nav_textdomain', 'lightning'))
+				.pipe(gulp.dest('./inc/vk-mobile-nav/'));
+});
+
 gulp.task('sass', function() {
-  gulp.src(['design_skin/origin/_scss/**/*.scss'])
+  gulp.src(['design-skin/origin/_scss/**/*.scss'])
     .pipe(plumber({
       handleError: function(err) {
         console.log(err);
@@ -34,18 +46,24 @@ gulp.task('sass', function() {
     }))
     .pipe(autoprefixer())
     .pipe(cleanCss())
-    .pipe(gulp.dest('./design_skin/origin/css'))
-  // .pipe(rename({
-  //     suffix: '.min'
-  // }))
-
-  // .pipe(cleanCss())
-  // .pipe(gulp.dest('design_skin/origin/css'))
+    .pipe(gulp.dest('./design-skin/origin/css'))
+    .pipe(gulp.dest('../lightning-pro/design-skin/origin/css'));
+		gulp.src(['./assets/_scss/**/*.scss'])
+	    .pipe(plumber({
+	      handleError: function(err) {
+	        console.log(err);
+	        this.emit('end');
+	      }
+	    }))
+	    .pipe(plumber())
+	    .pipe(sass())
+	    .pipe(cmq({
+	      log: true
+	    }))
+	    .pipe(autoprefixer())
+	    .pipe(cleanCss())
+	    .pipe(gulp.dest('./assets/css/'))
 });
-
-
-
-
 
 
 gulp.task('copy', function() {
@@ -54,54 +72,40 @@ gulp.task('copy', function() {
       prefix: "_",
       extname: ".scss"
     })) // 拡張子をscssに
-    .pipe(gulp.dest('./design_skin/origin/_scss/')); // _scss ディレクトリに保存
+    .pipe(gulp.dest('./design-skin/origin/_scss/')); // _scss ディレクトリに保存
   gulp.src('./library/bootstrap/fonts/**')
-    .pipe(gulp.dest('./design_skin/origin/fonts/')); // _scss ディレクトリに保存
+    .pipe(gulp.dest('./design-skin/origin/fonts/')); // _scss ディレクトリに保存
 });
-
-// // ファイル結合
-// gulp.task('concat', function() {
-//   return gulp.src(['./library/bootstrap/js/bootstrap.min.js', './js/_master.js', './js/_header_fixed.js', './js/vk-prlx.min.js'])
-//     .pipe(concat('lightning.js'))
-//     .pipe(gulp.dest('./js/'));
-// });
-//
-// // js最小化
-// gulp.task('jsmin', function() {
-//   gulp.src(['./js/lightning.js'])
-//     .pipe(plumber()) // エラーでも監視を続行
-//     .pipe(jsmin())
-//     .pipe(rename({
-//       suffix: '.min'
-//     }))
-//     .pipe(gulp.dest('./js/'));
-// });
 
 
 // ファイル結合
 gulp.task('js_build', function() {
-  return gulp.src(['./library/bootstrap/js/bootstrap.min.js', './js/_master.js', './js/_header_fixed.js', './js/vk-prlx.min.js'])
-    // return gulp.src(['./library/bootstrap/js/bootstrap.min.js', './js/_master.js', './js/_header_fixed.js'])
+  return gulp.src([
+		'./library/bootstrap/js/bootstrap.min.js',
+		'./assets/js/_master.js',
+		'./assets/js/_header_fixed.js',
+		'./assets/js/_sidebar-fixed.js',
+		'./assets/js/_vk-prlx.min.js',
+		'./inc/vk-mobile-nav/js/vk-mobile-nav.min.js',
+	])
     .pipe(concat('lightning.js'))
-    .pipe(gulp.dest('./js/'))
     .pipe(jsmin())
     .pipe(rename({
       suffix: '.min'
     }))
-    .pipe(gulp.dest('./js/'));
+    .pipe(gulp.dest('./assets/js/'));
 });
 
 // Watch
 gulp.task('watch', function() {
-  gulp.watch('js/_master.js', ['js_build']);
-  gulp.watch('js/_header_fixed.js', ['js_build']);
-  gulp.watch('js/vk-prlx.min.js', ['js_build']);
-  // gulp.watch('js/lightning.js', ['jsmin']);
-  gulp.watch('design_skin/origin/_scss/**/*.scss', ['sass']);
+  gulp.watch('./assets/js/**', ['js_build']);
+  gulp.watch('./inc/vk-mobile-nav/js/**', ['js_build']);
+  gulp.watch('./design-skin/origin/_scss/**/*.scss', ['sass']);
+  gulp.watch('./assets/_scss/**', ['sass']);
 });
 
-gulp.task('default', ['copy', 'js_build', 'watch']);
-gulp.task('compile', ['copy', 'js_build']);
+gulp.task('default', ['copy', 'js_build', 'text-domain', 'watch']);
+gulp.task('compile', ['copy', 'js_build', 'text-domain']);
 
 // copy dist ////////////////////////////////////////////////
 
@@ -112,10 +116,9 @@ gulp.task('copy_dist', function() {
         './**/*.txt',
         './**/*.css',
         './**/*.png',
-        './design_skin/**',
-        './images/**',
+        './design-skin/**',
+        './assets/**',
         './inc/**',
-        './js/**',
         './languages/**',
         './library/**',
         './template-parts/**',
@@ -135,5 +138,6 @@ gulp.task('copy_dist', function() {
 gulp.task('dist', function(cb) {
   // return runSequence( 'build:dist', 'copy', cb );
   // return runSequence( 'build:dist', 'copy_dist', cb );
-  return runSequence('copy_dist', cb);
+  //
+  return runSequence('text-domain','copy_dist', cb);
 });

@@ -37,16 +37,22 @@ define( 'LIGHTNING_SHORT_NAME', 'LTG THEME' );
 /*-------------------------------------------*/
 /*	HOME _ Default content hidden
 /*-------------------------------------------*/
-/*  Remove lightning-advanced-unit's function.
-/*-------------------------------------------*/
 /*  Move jQuery to footer
 /*-------------------------------------------*/
 /*  disable_tgm_notification_except_admin
 /*-------------------------------------------*/
 
+
+
 /*-------------------------------------------*/
 /*	Theme setup
 /*-------------------------------------------*/
+
+
+add_action( 'admin_init', 'editor_test' );
+function editor_test() {
+		add_editor_style( 'desin-skin/origin/css/editor.css' );
+}
 
 add_action( 'after_setup_theme', 'lightning_theme_setup' );
 function lightning_theme_setup() {
@@ -86,13 +92,6 @@ function lightning_theme_setup() {
 	add_theme_support( 'customize-selective-refresh-widgets' );
 
 	/*-------------------------------------------*/
-	/*	Admin page _ Add editor css
-	/*-------------------------------------------*/
-	if ( ! apply_filters( 'lightning-disable-theme_style', false ) ) {
-		add_editor_style( 'design_skin/origin/css/editor.css' );
-	}
-
-	/*-------------------------------------------*/
 	/*	Feed Links
 	/*-------------------------------------------*/
 	add_theme_support( 'automatic-feed-links' );
@@ -118,11 +117,7 @@ function lightning_theme_setup() {
 
 add_action( 'wp_enqueue_scripts', 'lightning_addJs' );
 function lightning_addJs() {
-	wp_enqueue_script( 'html5shiv', '//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js', [],false,true );
-	wp_script_add_data( 'html5shiv', 'conditional', 'lt IE 9' );
-	wp_enqueue_script( 'respond', '//oss.maxcdn.com/respond/1.4.2/respond.min.js', [],false,true );
-	wp_script_add_data( 'respond', 'conditional', 'lt IE 9' );
-	wp_enqueue_script( 'lightning-js', get_template_directory_uri() . '/js/lightning.min.js', array( 'jquery' ), LIGHTNING_THEME_VERSION,true );
+	wp_enqueue_script( 'lightning-js', get_template_directory_uri() . '/assets/js/lightning.min.js', array( 'jquery' ), LIGHTNING_THEME_VERSION, true );
 }
 
 
@@ -133,17 +128,12 @@ function lightning_commentJs() {
 	}
 }
 
-add_action( 'wp_enqueue_scripts', 'lightning_unit_script', 100 );
-function lightning_unit_script() {
-	wp_register_script( 'lightning_unit_script', get_template_directory_uri() . '/js/sidebar-fix.js', array( 'jquery', 'lightning-js' ), LIGHTNING_THEME_VERSION );
-	wp_enqueue_script( 'lightning_unit_script' );
-}
-
 /*-------------------------------------------*/
 /*	Load CSS
 /*-------------------------------------------*/
 add_action( 'wp_enqueue_scripts', 'lightning_css' );
 function lightning_css() {
+	wp_enqueue_style( 'lightning-common-style', get_template_directory_uri() . '/assets/css/common.css', array(), LIGHTNING_THEME_VERSION );
 	wp_enqueue_style( 'lightning-theme-style', get_stylesheet_uri(), array( 'lightning-design-style' ), LIGHTNING_THEME_VERSION );
 }
 
@@ -165,30 +155,7 @@ require get_parent_theme_file_path( '/inc/template-tags.php' );
 /*-------------------------------------------*/
 /*	Load designskin manager
 /*-------------------------------------------*/
-
-function lightning_is_new_skin() {
-	$skin_current = get_option( 'lightning_design_skin' );
-	if ( $skin_current == 'origin' || $skin_current == '' ) {
-		// New Skin System
-		return true;
-	} else {
-		$old_skin_system_functions_url = WP_PLUGIN_DIR . '/lightning-skin-' . $skin_current . '/old-functions/old-skin-system-functions.php';
-		if ( file_exists( $old_skin_system_functions_url ) ) {
-			// New Skin System
-			return true;
-		} else {
-			// Old Skin System
-			return false;
-		}
-	}
-}
-
-if ( lightning_is_new_skin() ) {
-	require get_parent_theme_file_path( '/inc/class-design-manager.php' );
-} else {
-	require get_parent_theme_file_path( '/inc/class-design-manager-old.php' );
-}
-
+require get_parent_theme_file_path( '/inc/class-design-manager.php' );
 
 /*-------------------------------------------*/
 /*	Load tga(Plugin install)
@@ -208,7 +175,7 @@ get_template_part( 'inc/front-page-pr' );
 /*-------------------------------------------*/
 /*	Load Front vk-mobile-nav
 /*-------------------------------------------*/
-get_template_part( 'inc/vk-mobile-nav-config.php' );
+get_template_part( 'inc/vk-mobile-nav-config' );
 
 /*-------------------------------------------*/
 /*	WidgetArea initiate
@@ -261,17 +228,17 @@ if ( ! function_exists( 'lightning_widgets_init' ) ) {
 				$postType_name = esc_html( $post_type_object->labels->name );
 
 				$sidebar_description = '';
-				if ($postType == 'post'){
+				if ( $postType == 'post' ) {
 
-					$sidebar_description = __( 'This widget area appears on the Posts page only. If you don’t set any widgets in this area, this theme sets the following widgets "Recent posts”, “Category”, and “Archive” by default. These default widgets will be hidden, when you set any widgets. <br><br> If you installed our plugin VK All in One Expansion Unit (Free), you can use the following widgets, "VK_Recent posts”,  “VK_Categories”, and  “VK_archive list”.', 'lightning');
+					$sidebar_description = __( 'This widget area appears on the Posts page only. If you do not set any widgets in this area, this theme sets the following widgets "Recent posts", "Category", and "Archive" by default. These default widgets will be hidden, when you set any widgets. <br><br> If you installed our plugin VK All in One Expansion Unit (Free), you can use the following widgets, "VK_Recent posts",  "VK_Categories", and  "VK_archive list".', 'lightning' );
 
-				}elseif ($postType == 'page'){
+				} elseif ( $postType == 'page' ) {
 
-					$sidebar_description = __( 'This widget area appears on the Pages page only. If you don’t set any widgets in this area, this theme sets the “Child pages list widget” by default. This default widget will be hidden, when you set any widgets. <br><br> If you installed our plugin VK All in One Expansion Unit (Free), you can use the "VK_ child page list” widget for the alternative.', 'lightning');
+					$sidebar_description = __( 'This widget area appears on the Pages page only. If you do not set any widgets in this area, this theme sets the "Child pages list widget" by default. This default widget will be hidden, when you set any widgets. <br><br> If you installed our plugin VK All in One Expansion Unit (Free), you can use the "VK_ child page list" widget for the alternative.', 'lightning' );
 
-				}elseif ($postType == 'attachment'){
+				} elseif ( $postType == 'attachment' ) {
 
-					$sidebar_description = __( 'This widget area appears on the Media page only.', 'lightning');
+					$sidebar_description = __( 'This widget area appears on the Media page only.', 'lightning' );
 
 				} else {
 
@@ -483,60 +450,35 @@ function lightning_home_content_hidden( $flag ) {
 }
 
 /*-------------------------------------------*/
-/*  Remove lightning-advanced-unit's function.
-/*-------------------------------------------*/
-$if_existed_in_plugins = array(
-	'customize_register' => 'lightning_adv_unit_customize_register_sidebar_position',
-	'customize_register' => 'lightning_adv_unit_customize_register_sidebar_child_list_hidden',
-	'wp_head' => 'lightning_adv_unit_sidebar_position_custom',
-	'wp_head' => 'lightning_adv_unit_sidebar_child_list_hidden_css',
-	'widgets_init' => 'lightning_adv_unit_widget_register_full_wide_title',
-	'widgets_init' => 'lightning_adv_unit_widget_register_post_list',
-
-);
-foreach ($if_existed_in_plugins as $key => $val){
-	$priority = has_filter( $key, $val );
-	if ( $priority ){
-		remove_filter( $key, $val, $priority );
-		remove_action( $key, $val, $priority);
-	}
-}
-
-/*-------------------------------------------*/
-/*  Move jQuery to footer
-/*-------------------------------------------*/
-add_action( 'init', 'lightning_move_jquery_to_footer' );
-function lightning_move_jquery_to_footer() {
-	if ( is_admin() || lightning_is_login_page() ) {
-		return;
-	}
-
-	global $wp_scripts;
-	$jquery = $wp_scripts->registered['jquery-core'];
-	$jquery_ver = $jquery->ver;
-	$jquery_src = $jquery->src;
-
-	wp_deregister_script( 'jquery' );
-	wp_deregister_script( 'jquery-core' );
-
-	wp_register_script( 'jquery', false, ['jquery-core'], $jquery_ver, true );
-	wp_register_script( 'jquery-core', $jquery_src, [], $jquery_ver, true );
-}
-
-function lightning_is_login_page() {
-	return in_array($GLOBALS['pagenow'], array('wp-login.php', 'wp-register.php'));
-}
-
-/*-------------------------------------------*/
 /*  disable_tgm_notification_except_admin
 /*-------------------------------------------*/
-add_action( 'init', 'lightning_disable_tgm_notification_except_admin' );
+add_action( 'admin_head', 'lightning_disable_tgm_notification_except_admin' );
 function lightning_disable_tgm_notification_except_admin() {
-	if(!current_user_can( 'administrator' )){
+	if ( ! current_user_can( 'administrator' ) ) {
 		$allowed_html = array(
-			'style' => array( 'type' => array ()),
+			'style' => array( 'type' => array() ),
 		);
-		$text = '<style>#setting-error-tgmpa { display:none; }</style>';
+		$text         = '<style>#setting-error-tgmpa { display:none; }</style>';
 		echo wp_kses( $text, $allowed_html );
+	}
+}
+
+/*-------------------------------------------*/
+/*	Deactive Lightning Advanced Unit
+/*-------------------------------------------*/
+add_action( 'init', 'lightning_deactive_adv_unit' );
+function lightning_deactive_adv_unit() {
+	$plugin_path = 'lightning-advanced-unit/lightning_advanced_unit.php';
+	lightning_deactivate_plugin( $plugin_path );
+}
+function lightning_deactivate_plugin( $plugin_path ) {
+	include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+	if ( is_plugin_active( $plugin_path ) ) {
+		$active_plugins = get_option( 'active_plugins' );
+		//delete item
+		$active_plugins = array_diff( $active_plugins, array( $plugin_path ) );
+		//re index
+		$active_plugins = array_values( $active_plugins );
+		update_option( 'active_plugins', $active_plugins );
 	}
 }
