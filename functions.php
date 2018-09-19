@@ -48,12 +48,6 @@ define( 'LIGHTNING_SHORT_NAME', 'LTG THEME' );
 /*	Theme setup
 /*-------------------------------------------*/
 
-
-add_action( 'admin_init', 'editor_test' );
-function editor_test() {
-		add_editor_style( 'desin-skin/origin/css/editor.css' );
-}
-
 add_action( 'after_setup_theme', 'lightning_theme_setup' );
 function lightning_theme_setup() {
 
