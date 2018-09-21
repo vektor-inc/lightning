@@ -49,6 +49,7 @@ gulp.task('sass', function() {
     .pipe(gulp.dest('./design-skin/origin/css'))
     .pipe(gulp.dest('../lightning-pro/design-skin/origin/css'));
 		gulp.src(['./assets/_scss/**/*.scss'])
+			.pipe(gulp.dest('../lightning-pro/assets/_scss'))
 	    .pipe(plumber({
 	      handleError: function(err) {
 	        console.log(err);
@@ -62,7 +63,7 @@ gulp.task('sass', function() {
 	    }))
 	    .pipe(autoprefixer())
 	    .pipe(cleanCss())
-	    .pipe(gulp.dest('./assets/css/'))
+	    .pipe(gulp.dest('./assets/css'))
 });
 
 
