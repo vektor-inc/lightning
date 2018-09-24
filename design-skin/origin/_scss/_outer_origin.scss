@@ -3,6 +3,25 @@
 
 $border_horizontal : 1px solid rgba(0, 0, 0, 0.15);
 
+/*-------------------------------------------*/
+/* search
+/*-------------------------------------------*/
+.widget_search form div,
+.widget_display_search form div,
+.widget_product_search form {
+	input#s,
+	input#bbp_search,
+	input.search-field {
+		border-radius: 4px;
+	}
+	input#searchsubmit,
+	input#bbp_search_submit,
+	button {
+		border-radius: 4px;
+	}
+}
+
+
 @media (max-width: 991px){
 .headerTop {
   .headerTop .headerTop_tel_wrap { color:#464646; }

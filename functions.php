@@ -47,7 +47,6 @@ define( 'LIGHTNING_SHORT_NAME', 'LTG THEME' );
 /*-------------------------------------------*/
 /*	Theme setup
 /*-------------------------------------------*/
-
 add_action( 'after_setup_theme', 'lightning_theme_setup' );
 function lightning_theme_setup() {
 
@@ -89,6 +88,11 @@ function lightning_theme_setup() {
 	/*	Feed Links
 	/*-------------------------------------------*/
 	add_theme_support( 'automatic-feed-links' );
+
+	/*-------------------------------------------*/
+	/*	WooCommerce
+	/*-------------------------------------------*/
+	add_theme_support( 'woocommerce' );
 
 	/*-------------------------------------------*/
 	/*	Option init
@@ -170,6 +174,11 @@ get_template_part( 'inc/front-page-pr' );
 /*	Load Front vk-mobile-nav
 /*-------------------------------------------*/
 get_template_part( 'inc/vk-mobile-nav-config' );
+
+/*-------------------------------------------*/
+/*	Load woocommerce modules
+/*-------------------------------------------*/
+require_once get_parent_theme_file_path( '/inc/woocommerce/functions-woo.php' );
 
 /*-------------------------------------------*/
 /*	WidgetArea initiate

@@ -33,8 +33,12 @@ $pageTitHtml_after  .= '</div></div></div></div><!-- [ /.page-header ] -->' . "\
 /*	Set display title name
 /*-------------------------------------------*/
 $pageTitle = '';
+
 if ( is_search() ) {
 	$pageTitle = sprintf( __( 'Search Results for : %s', 'lightning' ), get_search_query() );
+} elseif ( ! empty( $wp_query->query_vars['bbp_search'] ) ) {
+	$bbp_search = esc_html( $wp_query->query_vars['bbp_search'] );
+	$pageTitle  = sprintf( __( 'Search Results for : %s', 'lightning' ), $bbp_search );
 } elseif ( is_404() ) {
 	$pageTitle = __( 'Not found', 'lightning' );
 } elseif ( is_category() || is_tag() || is_tax() || is_home() || is_author() || is_archive() || is_single() ) {

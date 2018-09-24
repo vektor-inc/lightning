@@ -48,22 +48,37 @@ gulp.task('sass', function() {
     .pipe(cleanCss())
     .pipe(gulp.dest('./design-skin/origin/css'))
     .pipe(gulp.dest('../lightning-pro/design-skin/origin/css'));
-		gulp.src(['./assets/_scss/**/*.scss'])
-			.pipe(gulp.dest('../lightning-pro/assets/_scss'))
-	    .pipe(plumber({
-	      handleError: function(err) {
-	        console.log(err);
-	        this.emit('end');
-	      }
-	    }))
-	    .pipe(plumber())
-	    .pipe(sass())
-	    .pipe(cmq({
-	      log: true
-	    }))
-	    .pipe(autoprefixer())
-	    .pipe(cleanCss())
-	    .pipe(gulp.dest('./assets/css'))
+	gulp.src(['./assets/_scss/**/*.scss'])
+		.pipe(gulp.dest('../lightning-pro/assets/_scss'))
+    .pipe(plumber({
+      handleError: function(err) {
+        console.log(err);
+        this.emit('end');
+      }
+    }))
+    .pipe(plumber())
+    .pipe(sass())
+    .pipe(cmq({
+      log: true
+    }))
+    .pipe(autoprefixer())
+    .pipe(cleanCss())
+    .pipe(gulp.dest('./assets/css'))
+	gulp.src(['./inc/woocommerce/_scss/**.scss'])
+    .pipe(plumber({
+      handleError: function(err) {
+        console.log(err);
+        this.emit('end');
+      }
+    }))
+    .pipe(plumber())
+    .pipe(sass())
+    .pipe(cmq({
+      log: true
+    }))
+    .pipe(autoprefixer())
+    .pipe(cleanCss())
+    .pipe(gulp.dest('./inc/woocommerce/css/'))
 });
 
 
@@ -103,6 +118,7 @@ gulp.task('watch', function() {
   gulp.watch('./inc/vk-mobile-nav/js/**', ['js_build']);
   gulp.watch('./design-skin/origin/_scss/**/*.scss', ['sass']);
   gulp.watch('./assets/_scss/**', ['sass']);
+  gulp.watch('./inc/woocommerce/_scss/**', ['sass']);
 });
 
 gulp.task('default', ['copy', 'js_build', 'text-domain', 'watch']);
