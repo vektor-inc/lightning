@@ -3,6 +3,25 @@
 
 $border_horizontal : 1px solid rgba(0, 0, 0, 0.15);
 
+/*-------------------------------------------*/
+/* search
+/*-------------------------------------------*/
+.widget_search form div,
+.widget_display_search form div,
+.widget_product_search form {
+	input#s,
+	input#bbp_search,
+	input.search-field {
+		border-radius: 4px;
+	}
+	input#searchsubmit,
+	input#bbp_search_submit,
+	button {
+		border-radius: 4px;
+	}
+}
+
+
 @media (max-width: 991px){
 .headerTop {
   .headerTop .headerTop_tel_wrap { color:#464646; }
@@ -60,10 +79,13 @@ ul.gMenu > li > ul.sub-menu li a:hover { background-color: #f5f5f5; }
 /*-------------------------------------------*/
 /* .siteContent
 /*-------------------------------------------*/
-.siteContent { padding:1em 0 1.5em; }
-@media (min-width: 768px){
-  .siteContent { padding:3.5em 0 3.5em; }
+.siteContent {
+	padding:1.5em 0 1.5em;
 }
+// @media ( min-width: 576px ){ .siteContent { padding:1.5em 0 1.5em; } }
+@media ( min-width: 768px ){ .siteContent { padding:2.5em 0 2.5em; } }
+@media ( min-width: 992px ){ .siteContent { padding:3em 0 3em; } }
+@media ( min-width: 1200px){ .siteContent { padding:3.5em 0 3.5em; } }
 
 /*-------------------------------------------*/
 /* Widget

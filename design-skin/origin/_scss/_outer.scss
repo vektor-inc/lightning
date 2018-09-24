@@ -59,7 +59,6 @@ html, body { overflow-x: hidden; }
     display: block;
 }
 .nav li a { color:$color_font_default; }
-// .btn { border-radius: 0; }
 .btn-default { background: none;color:$color_key;border-color: $color_key; }
 .btn-default:focus,
 .btn-default:hover { background-color: $color_key;color:#fff;border-color: $color_key; }
@@ -548,13 +547,13 @@ p.no-comments { background-color: #f3f3f3;border:1px solid #e5e5e5; text-align: 
 /*-------------------------------------------*/
 /* search
 /*-------------------------------------------*/
-form.searchform { margin:1em 0;
-  div { display: flex;
-    input[type=text]#s { width:64%;margin-right:5%; }
-    input[type=submit]#searchsubmit { float:right;width:34%; text-align: center;padding-left:2px;padding-right:2px; }
-  }
-}
-input#searchsubmit { vertical-align: top; }
+// form.searchform { margin:1em 0;
+//   div { display: flex;
+//     input[type=text]#s { width:64%;margin-right:2%; }
+//     input[type=submit]#searchsubmit { float:right;width:34%; text-align: center;padding-left:2px;padding-right:2px; }
+//   }
+// }
+// input#searchsubmit { vertical-align: top; }
 
 /*-------------------------------------------*/
 /* Widget .veu_prBlocks

@@ -9,7 +9,7 @@ $btn_radius:2px;
 $admin_bar_height_pc:32px;
 $admin_bar_height_mobile:46px;
 
-$manu_btn_margin:10px;
+$manu_btn_margin:5px;
 
 /* body.admin-bar にすると継承が強すぎて fix nav などで上書きしにくいため */
 .admin-bar {
@@ -91,7 +91,7 @@ $margin-section-bottom:1.5em;
 	width:100%;
 	height:100%;
 	display:block;
-	padding:60px 10px;
+	padding:40px 10px;
 	overflow:scroll;
 	transition: top $time_transition ease-out;
 	box-shadow:1px 1px 4px rgba(0,0,0,0.1);
