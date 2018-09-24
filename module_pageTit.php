@@ -37,7 +37,7 @@ $pageTitle = '';
 if ( is_search() ) {
 	$pageTitle = sprintf( __( 'Search Results for : %s', 'lightning' ), get_search_query() );
 } elseif ( ! empty( $wp_query->query_vars['bbp_search'] ) ) {
-	$bbp_search = esc_html( $wp_query->query_vars['bbp_search'] );
+	$bbp_search = esc_html( urldecode( $wp_query->query_vars['bbp_search'] ) );
 	$pageTitle  = sprintf( __( 'Search Results for : %s', 'lightning' ), $bbp_search );
 } elseif ( is_404() ) {
 	$pageTitle = __( 'Not found', 'lightning' );

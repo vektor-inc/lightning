@@ -62,12 +62,15 @@ div.bbp-submit-wrapper {
 		border:none;
 	}
 }
-.bbp-forum-title h3 {
+.bbp-topic-title,
+.bbp-forum-title {
+	h3 {
 	border:none;
 	background: none;
 	box-shadow: none;
-	&:after {
-		display: none;
+		&:after {
+			display: none;
+		}
 	}
 }
 #bbpress-forums {
