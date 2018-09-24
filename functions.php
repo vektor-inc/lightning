@@ -178,7 +178,7 @@ get_template_part( 'inc/vk-mobile-nav-config' );
 /*-------------------------------------------*/
 /*	Load woocommerce modules
 /*-------------------------------------------*/
-require_once get_parent_theme_file_path( '/inc/woocommerce/functions-woo.php' );
+require get_parent_theme_file_path( '/inc/woocommerce/functions-woo.php' );
 
 /*-------------------------------------------*/
 /*	WidgetArea initiate
