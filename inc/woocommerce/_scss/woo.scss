@@ -4,6 +4,9 @@ $price_color:#e50000;
 
 .woocommerce {
 	margin-bottom:3em;
+	label {
+		font-weight: normal;
+	}
 }
 
 /*-------------------------------------------*/
@@ -201,4 +204,17 @@ button {
 }
 .woocommerce form .form-row input.input-text.woocommerce-Input--email {
 	margin-bottom:2em;
+}
+
+
+.woocommerce-table,
+.woocommerce-orders-table {
+	font-size:14px;
+}
+.woocommerce-orders-table__cell-order-status{
+	text-align: center;
+}
+.woocommerce a.woocommerce-MyAccount-downloads-file.button {
+	display: block;
+	text-align: center;
 }
