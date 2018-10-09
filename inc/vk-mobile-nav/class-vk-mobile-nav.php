@@ -11,14 +11,16 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 		public static $version = '0.0.1';
 
 		public function __construct() {
-			add_action( 'after_setup_theme', array( get_called_class(), 'setup_menu' ) );
-			add_action( 'widgets_init', array( get_called_class(), 'setup_widget' ) );
-			add_action( 'wp_footer', array( get_called_class(), 'menu_set_html' ) );
-			add_action( 'wp_enqueue_scripts', array( get_called_class(), 'add_script' ) );
+			/* Can not call get_called_class() on PHP5.2 */
+			if ( function_exists( 'get_called_class' ) ) {
+				add_action( 'after_setup_theme', array( get_called_class(), 'setup_menu' ) );
+				add_action( 'widgets_init', array( get_called_class(), 'setup_widget' ) );
+				add_action( 'wp_footer', array( get_called_class(), 'menu_set_html' ) );
+				add_action( 'wp_enqueue_scripts', array( get_called_class(), 'add_script' ) );
+			}
 			add_filter( 'body_class', array( $this, 'add_body_class_mobile_device' ) );
 		}
 		public static function init() {
-
 			// add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 		}
 
