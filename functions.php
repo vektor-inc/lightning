@@ -15,6 +15,8 @@ define( 'LIGHTNING_SHORT_NAME', 'LTG THEME' );
 /*-------------------------------------------*/
 /*	Load Custom template tags for this theme.
 /*-------------------------------------------*/
+/*	Load widgets
+/*-------------------------------------------*/
 /*	Load designskin manager
 /*-------------------------------------------*/
 /*	Load tga(Plugin install)
@@ -141,13 +143,17 @@ function lightning_css() {
 require get_parent_theme_file_path( '/inc/customize/customize.php' );
 require get_parent_theme_file_path( '/inc/customize/customize-design.php' );
 require get_parent_theme_file_path( '/inc/customize/customize-top-slide.php' );
-require get_parent_theme_file_path( 'inc/widgets/widget-full-wide-title.php' );
-require get_parent_theme_file_path( 'inc/widgets/widget-new-posts.php' );
 
 /*-------------------------------------------*/
 /*	Load Custom template tags for this theme.
 /*-------------------------------------------*/
 require get_parent_theme_file_path( '/inc/template-tags.php' );
+
+/*-------------------------------------------*/
+/*	Load widgets
+/*-------------------------------------------*/
+get_template_part( 'inc/widgets/widget-full-wide-title' );
+get_template_part( 'inc/widgets/widget-new-posts' );
 
 /*-------------------------------------------*/
 /*	Load designskin manager
