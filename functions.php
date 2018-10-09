@@ -138,10 +138,9 @@ function lightning_css() {
 /*-------------------------------------------*/
 /*	Load Theme Customizer additions.
 /*-------------------------------------------*/
-require get_parent_theme_file_path( '/inc/customizer.php' );
-require get_parent_theme_file_path( '/inc/sidebar-position.php' );
-require get_parent_theme_file_path( '/inc/sidebar-child-list-hidden.php' );
-require get_parent_theme_file_path( '/inc/sidebar-fix.php' );
+require get_parent_theme_file_path( '/inc/customize/customize.php' );
+require get_parent_theme_file_path( '/inc/customize/customize-design.php' );
+require get_parent_theme_file_path( '/inc/customize/customize-top-slide.php' );
 require get_parent_theme_file_path( 'inc/widgets/widget-full-wide-title.php' );
 require get_parent_theme_file_path( 'inc/widgets/widget-new-posts.php' );
 
