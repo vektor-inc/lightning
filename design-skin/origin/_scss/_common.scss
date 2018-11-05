@@ -20,6 +20,8 @@ $margin_bottom : 1.2em;
 /*-------------------------------------------*/
 /* other class
 /*-------------------------------------------*/
+/* gutenberg button
+/*-------------------------------------------*/
 
 /*-------------------------------------------*/
 /* common style
@@ -76,7 +78,9 @@ h6,.h6 { font-size:16px; font-weight: bold; }
 	h6 { font-size:16px;}
 }// @media (max-width: 767px){
 
-	blockquote { border:5px solid #eee; background-color: #fcfcfc;position:relative;padding:20px;font-size:16px; }
+	.wp-block-freeform.block-library-rich-text__tinymce blockquote,
+	blockquote.wp-block-quote:not(.is-large):not(.is-style-large),
+	blockquote { border:5px solid #eee; background-color:#fcfcfc;position:relative;padding:20px;font-size:16px; }
 
 	.fa_v4,
 	.fa_v5_css {
@@ -153,3 +157,10 @@ img.aligncenter { margin-bottom: 12px; }
 /* other class
 /*-------------------------------------------*/
 .well p:last-child { margin-bottom:0; }
+
+/*-------------------------------------------*/
+/* gutenberg button
+/*-------------------------------------------*/
+.wp-block-button .wp-block-button__link {
+	border-radius: 4px;
+}

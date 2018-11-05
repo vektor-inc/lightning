@@ -10,7 +10,6 @@ class Lightning_Design_Manager {
 		add_action( 'customize_register', array( __CLASS__, 'customize_register' ) );
 	}
 
-
 	// Set default skin
 	static function get_skins() {
 		$skins = array(
@@ -18,7 +17,7 @@ class Lightning_Design_Manager {
 				'label'              => 'Origin',
 				'css_path'           => get_template_directory_uri() . '/design-skin/origin/css/style.css',
 				'editor_css_path'    => get_template_directory_uri() . '/design-skin/origin/css/editor.css',
-				'gutenberg_css_path' => '',
+				'gutenberg_css_path' => get_template_directory_uri() . '/design-skin/origin/css/editor-gutenberg.css',
 				'php_path'           => get_parent_theme_file_path( '/design-skin/origin/origin.php' ),
 				'js_path'            => '',
 				'callback'           => '',
