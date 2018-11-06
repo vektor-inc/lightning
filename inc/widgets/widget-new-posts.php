@@ -82,7 +82,6 @@ class WP_Widget_ltg_post_list extends WP_Widget {
 
 		if ( $post_loop->have_posts() ) :
 			if ( ! $instance['format'] ) {
-
 				while ( $post_loop->have_posts() ) :
 					$post_loop->the_post();
 					if (
@@ -238,7 +237,7 @@ class WP_Widget_ltg_post_list extends WP_Widget {
 						if ( $instance['format'] == 1 ) {
 							echo 'checked'; }
 						?>
-					/><?php echo __( 'Thumbnail', 'lightning' ) . '/' . __( 'Date', 'lightning' ) . '/' . __( 'Category', 'lightning' ) . '/' . __( 'Title', 'lightning' ) . '/' . __( 'Content', 'lightning' ); ?></label>
+					/><?php echo __( 'Date', 'lightning' ) . '/' . __( 'Category', 'lightning' ) . '/' . __( 'Title', 'lightning' ) . '/' . __( 'Content', 'lightning' ); ?></label>
 			</li>
 		</ul>
 		<br/>

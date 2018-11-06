@@ -1,0 +1,34 @@
+@charset "utf-8";
+@import "bootstrap.min";
+
+$color_key : #337ab7;
+
+.edit-post-visual-editor {
+@import "common";
+@import "common_origin";
+
+.btn-primary,
+.btn-danger,
+.btn-information,
+.btn-warning {
+	color:#fff;
+	a {
+		color:#fff;
+	}
+}
+a.btn-primary,
+a.btn-danger,
+a.btn-information,
+a.btn-warning {
+	color:#fff;
+}
+
+table {
+	border-color: #e5e5e5;
+	th,
+	td {
+		border-color: #e5e5e5;
+	}
+}
+
+}
