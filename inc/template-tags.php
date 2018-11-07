@@ -4,6 +4,8 @@
 /*-------------------------------------------*/
 /*	Theme default options
 /*-------------------------------------------*/
+/*	lightning_get_theme_options()
+/*-------------------------------------------*/
 /*	Head logo
 /*-------------------------------------------*/
 /*	Chack use post top page
@@ -11,8 +13,6 @@
 /*	Chack post type info
 /*-------------------------------------------*/
 /*	lightning_is_mobile
-/*-------------------------------------------*/
-/*	lightning_top_slide_image_src
 /*-------------------------------------------*/
 /*	lightning_top_slide_count
 /*-------------------------------------------*/
@@ -62,7 +62,7 @@ function lightning_sanitize_radio( $input ) {
 /*-------------------------------------------*/
 /*	Theme default options
 /*-------------------------------------------*/
-function lightning_theme_options_default() {
+function lightning_get_theme_options_default() {
 	$theme_options_default = array(
 		'front_pr_display'              => true,
 		'top_slide_time'                => 40000,
@@ -76,19 +76,34 @@ function lightning_theme_options_default() {
 		'top_slide_text_shadow_use_1'   => true,
 		'top_slide_text_shadow_color_1' => '#fff',
 		'top_slide_image_2'             => get_template_directory_uri() . '/assets/images/top_image_2.jpg',
-		'top_slide_image_3'             => get_template_directory_uri() . '/assets/images/top_image_3.jpg',
-		'top_slide_url_3'               => esc_url( home_url() ),
-		'top_slide_text_title_3'        => __( 'Johnijirou On Snow', 'lightning' ),
-		'top_slide_text_caption_3'      => __( 'Growing up everyday', 'lightning' ),
-		'top_slide_text_btn_3'          => __( 'READ MORE', 'lightning' ),
-		'top_slide_text_align_3'        => 'left',
-		'top_slide_text_color_3'        => '#000',
-		'top_slide_text_shadow_use_3'   => true,
-		'top_slide_text_shadow_color_3' => '#fff',
+		'top_slide_url_2'               => esc_url( home_url() ),
+		'top_slide_text_title_2'        => __( 'Johnijirou On Snow', 'lightning' ),
+		'top_slide_text_caption_2'      => __( 'Growing up everyday', 'lightning' ),
+		'top_slide_text_btn_2'          => __( 'READ MORE', 'lightning' ),
+		'top_slide_text_align_2'        => 'left',
+		'top_slide_text_color_2'        => '#000',
+		'top_slide_text_shadow_use_2'   => true,
+		'top_slide_text_shadow_color_2' => '#fff',
 	);
 	return $theme_options_default;
 }
 
+// Old function name
+function lightning_theme_options_default() {
+	return lightning_get_theme_options_default();
+}
+
+/*-------------------------------------------*/
+/*	lightning_get_theme_options()
+/*-------------------------------------------*/
+function lightning_get_theme_options() {
+	$lightning_theme_options_default = lightning_get_theme_options_default();
+	$lightning_theme_options         = get_option( 'lightning_theme_options', $lightning_theme_options_default );
+	// $lightning_theme_options         = get_option( 'lightning_theme_options' );
+	$lightning_theme_options = wp_parse_args( $lightning_theme_options, $lightning_theme_options_default );
+
+	return $lightning_theme_options;
+}
 
 /*-------------------------------------------*/
 /*	Head logo
@@ -200,34 +215,6 @@ function lightning_is_mobile() {
 		$is_mobile = false;
 	}
 	return apply_filters( 'lightning_is_mobile', $is_mobile );
-}
-
-/*-------------------------------------------*/
-/*	lightning_top_slide_image_src
-/*-------------------------------------------*/
-/* Although it is not used in the this theme, there is a possibility that it is used in Charm etc. */
-function lightning_top_slide_image_src( $i ) {
-	$top_slide_image_src     = '';
-	$lightning_theme_options = get_option( 'lightning_theme_options' );
-
-	// If 1st slide no set, set default image.
-	if ( $i <= 3 ) {
-		if ( ! isset( $lightning_theme_options[ 'top_slide_image_' . $i ] ) ) {
-			$top_slide_image_src = get_template_directory_uri() . '/assets/images/top_image_' . $i . '.jpg';
-		} else {
-			$top_slide_image_src = $lightning_theme_options[ 'top_slide_image_' . $i ];
-		}
-	} else {
-		if ( isset( $lightning_theme_options[ 'top_slide_image_' . $i ] ) ) {
-			$top_slide_image_src = $lightning_theme_options[ 'top_slide_image_' . $i ];
-		}
-	}
-
-	// Mobile image
-	if ( lightning_is_mobile() && isset( $lightning_theme_options[ 'top_slide_image_mobile_' . $i ] ) ) {
-		$top_slide_image_src = $lightning_theme_options[ 'top_slide_image_mobile_' . $i ];
-	}
-	return $top_slide_image_src;
 }
 
 /*-------------------------------------------*/
