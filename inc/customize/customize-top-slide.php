@@ -53,9 +53,6 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 			case 2:
 				$theme_options_customize_default['top_slide_image'] = $theme_options_default['top_slide_image_2'];
 				break;
-			case 3:
-				$theme_options_customize_default['top_slide_image'] = $theme_options_default['top_slide_image_3'];
-				break;
 		}
 
 		$wp_customize->selective_refresh->add_partial(

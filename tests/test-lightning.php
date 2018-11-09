@@ -12,6 +12,61 @@ class LightningTest extends WP_UnitTestCase {
 		return true;
 	}
 
+	function test_lightning_get_theme_options() {
+		print PHP_EOL;
+		print '------------------------------------' . PHP_EOL;
+		print 'test_lightning_get_theme_options' . PHP_EOL;
+		print '------------------------------------' . PHP_EOL;
+		$test_array = array(
+			array(
+				'options'   => array(), // フィールド自体が存在しない場合にサンプル画像を返す
+				'check_key' => 'top_slide_image_1',
+				'correct'   => get_template_directory_uri() . '/assets/images/top_image_1.jpg',
+			),
+			array(
+				'options'   => array(
+					'top_slide_image_1' => null,
+				),
+				'check_key' => 'top_slide_image_1',
+				'correct'   => '',
+			),
+			array(
+				'options'   => array(
+					'top_slide_image_1' => '',
+				),
+				'check_key' => 'top_slide_image_1',
+				'correct'   => '',
+			),
+			array(
+				'options'   => array(
+					'top_slide_image_1' => 'http://aaa.com/sample.jpg',
+				),
+				'check_key' => 'top_slide_image_1',
+				'correct'   => 'http://aaa.com/sample.jpg',
+			),
+		);
+		// 操作前のオプション値を取得
+		$before_options = get_option( 'lightning_theme_options' );
+		foreach ( $test_array as $key => $value ) {
+			delete_option( 'lightning_theme_options' );
+			$lightning_theme_options = $value['options'];
+			add_option( 'lightning_theme_options', $lightning_theme_options );
+
+			$result    = lightning_get_theme_options();
+			$check_key = $value['check_key'];
+			print 'return  :' . $result[ $check_key ] . PHP_EOL;
+			print 'correct :' . $value['correct'] . PHP_EOL;
+			$this->assertEquals( $value['correct'], $result[ $check_key ] );
+
+		}
+		// テストで入れたオプションを削除
+		delete_option( 'lightning_theme_options' );
+		if ( $before_options ) {
+			// テスト前のオプション値に戻す
+			add_option( 'lightning_theme_options', $before_options );
+		}
+	}
+
 	function test_lightning_top_slide_count() {
 		$test_array = array(
 			// array(

@@ -1,6 +1,5 @@
 <?php
-$theme_options_default   = lightning_theme_options_default();
-$lightning_theme_options = get_option( 'lightning_theme_options', $theme_options_default );
+$lightning_theme_options = lightning_get_theme_options();
 
 // count top slide
 $top_slide_count_max = lightning_top_slide_count_max();
@@ -46,6 +45,7 @@ if ( empty( $lightning_theme_options['top_slide_time'] ) ) {
 			$top_slide_alt = '';
 		}
 
+		// Slide Display
 		if ( ! empty( $lightning_theme_options[ 'top_slide_image_' . $i ] ) ) {
 			$link_target = ( isset( $lightning_theme_options[ 'top_slide_link_blank_' . $i ] ) && $lightning_theme_options[ 'top_slide_link_blank_' . $i ] ) ? ' target="_blank"' : '';
 			?>
@@ -58,12 +58,15 @@ if ( empty( $lightning_theme_options['top_slide_time'] ) ) {
 
 				<?php if ( lightning_is_slide_outer_link( $lightning_theme_options, $i ) ) : ?>
 						<a href="<?php echo esc_url( $lightning_theme_options[ 'top_slide_url_' . $i ] ); ?>"<?php echo $link_target; ?>>
-					<?php endif; ?>
+				<?php endif; ?>
 
 				<picture>
-					<?php if ( ! empty( $lightning_theme_options[ 'top_slide_image_mobile_' . $i ] ) ) : ?>
+					<?php
+					// If Mobile Image exist
+					if ( ! empty( $lightning_theme_options[ 'top_slide_image_mobile_' . $i ] ) ) :
+					?>
 						  <source media="(max-width: 767px)" srcset="<?php echo esc_attr( $lightning_theme_options[ 'top_slide_image_mobile_' . $i ] ); ?>">
-						<?php endif; ?>
+					<?php endif; ?>
 				  <img src="<?php echo esc_attr( $lightning_theme_options[ 'top_slide_image_' . $i ] ); ?>" alt="<?php echo esc_attr( $top_slide_alt ); ?>" class="slide-item-img">
 				</picture>
 
