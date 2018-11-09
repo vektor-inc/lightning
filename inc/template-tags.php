@@ -175,7 +175,7 @@ function lightning_get_post_type() {
 	/*-------------------------------------------*/
 	if ( $page_for_posts['post_top_use'] && $postType['slug'] == 'post' ) {
 		$postType['url'] = esc_url( get_the_permalink( $page_for_posts['post_top_id'] ) );
-	} elseif ( $woocommerce_shop_page_id ) {
+	} elseif ( $woocommerce_shop_page_id && $postType['slug'] == 'product' ) {
 		$postType['url'] = esc_url( get_the_permalink( $woocommerce_shop_page_id ) );
 	} else {
 		$postType['url'] = esc_url( get_post_type_archive_link( $postType['slug'] ) );
