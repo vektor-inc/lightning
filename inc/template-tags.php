@@ -99,7 +99,8 @@ function lightning_theme_options_default() {
 function lightning_get_theme_options() {
 	$lightning_theme_options_default = lightning_get_theme_options_default();
 	$lightning_theme_options         = get_option( 'lightning_theme_options', $lightning_theme_options_default );
-	$lightning_theme_options         = wp_parse_args( $lightning_theme_options, $lightning_theme_options_default );
+	// It use then display default text to old user ... orz
+	// $lightning_theme_options         = wp_parse_args( $lightning_theme_options, $lightning_theme_options_default );
 	return $lightning_theme_options;
 }
 
