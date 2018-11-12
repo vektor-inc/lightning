@@ -148,6 +148,7 @@ require get_parent_theme_file_path( '/inc/customize/customize-top-slide.php' );
 /*	Load Custom template tags for this theme.
 /*-------------------------------------------*/
 require get_parent_theme_file_path( '/inc/template-tags.php' );
+require get_parent_theme_file_path( '/inc/template-tags-old.php' );
 
 /*-------------------------------------------*/
 /*	Load widgets
@@ -372,7 +373,7 @@ class description_walker extends Walker_Nav_Menu {
 		$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
 
 		$class_names = $value = '';
-		$classes = empty( $item->classes ) ? array() : (array) $item->classes;
+		$classes     = empty( $item->classes ) ? array() : (array) $item->classes;
 
 		//カスタム投稿タイプアーカイブを表示する時、投稿アーカイブのcurrent_page_parentクラスを削除。
 		if ( is_post_type_archive() ) {

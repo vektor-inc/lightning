@@ -7,7 +7,7 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 
 	$wp_customize->add_section(
 		'lightning_slide', array(
-			'title'    => lightning_get_theme_name_customize_panel() . ' ' . __( 'Home page slide show', 'lightning' ),
+			'title'    => lightning_get_prefix_customize_panel() . __( 'Home page slide show', 'lightning' ),
 			'priority' => 600,
 		// 'panel'			=> 'lightning_setting',
 		)

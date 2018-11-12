@@ -347,9 +347,19 @@ function lightning_get_theme_name() {
 	return apply_filters( 'lightning_theme_name', 'Lightning' );
 }
 function lightning_get_theme_name_short() {
-	return apply_filters( 'lightning_theme_name_short', 'LTG' );
+	return apply_filters( 'lightning_get_theme_name_short', 'LTG' );
 }
-function lightning_get_theme_name_customize_panel() {
-	$lightning_get_theme_name_customize_panel = lightning_get_theme_name();
-	return apply_filters( 'lightning_get_theme_name_customize_panel', $lightning_get_theme_name_customize_panel );
+function lightning_get_prefix() {
+	$prefix = apply_filters( 'lightning_get_prefix', 'LTG' );
+	if ( $prefix ) {
+		$prefix .= ' ';
+	}
+	return $prefix;
+}
+function lightning_get_prefix_customize_panel() {
+	$prefix_customize_panel = apply_filters( 'lightning_get_prefix_customize_panel', 'Lightning' );
+	if ( $prefix_customize_panel ) {
+		$prefix_customize_panel .= ' ';
+	}
+	return $prefix_customize_panel;
 }

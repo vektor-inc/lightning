@@ -9,7 +9,7 @@ class WP_Widget_ltg_post_list extends WP_Widget {
 
 	function __construct() {
 
-		$widget_name = lightning_get_theme_name_short() . ' ' . __( 'Content Area Posts Widget', 'lightning' );
+		$widget_name = lightning_get_prefix() . __( 'Content Area Posts Widget', 'lightning' );
 
 		parent::__construct(
 			'ltg_post_list',
