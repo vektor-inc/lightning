@@ -7,7 +7,7 @@ function lightning_customize_register_design( $wp_customize ) {
 
 	$wp_customize->add_section(
 		'lightning_design', array(
-			'title'    => lightning_get_theme_name_customize_panel() . ' ' . __( 'Design settings', 'lightning' ),
+			'title'    => lightning_get_prefix_customize_panel() . __( 'Design settings', 'lightning' ),
 			'priority' => 500,
 		// 'panel'				=> 'lightning_setting',
 		)

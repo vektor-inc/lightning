@@ -18,11 +18,11 @@ class LightningTest extends WP_UnitTestCase {
 		print 'test_lightning_get_theme_options' . PHP_EOL;
 		print '------------------------------------' . PHP_EOL;
 		$test_array = array(
-			array(
-				'options'   => array(), // フィールド自体が存在しない場合にサンプル画像を返す
-				'check_key' => 'top_slide_image_1',
-				'correct'   => get_template_directory_uri() . '/assets/images/top_image_1.jpg',
-			),
+			// array(
+			// 	'options'   => array(), // フィールド自体が存在しない場合にサンプル画像を返す
+			// 	'check_key' => 'top_slide_image_1',
+			// 	'correct'   => get_template_directory_uri() . '/assets/images/top_image_1.jpg',
+			// ),
 			array(
 				'options'   => array(
 					'top_slide_image_1' => null,
@@ -37,13 +37,32 @@ class LightningTest extends WP_UnitTestCase {
 				'check_key' => 'top_slide_image_1',
 				'correct'   => '',
 			),
-			array(
-				'options'   => array(
-					'top_slide_image_1' => 'http://aaa.com/sample.jpg',
-				),
-				'check_key' => 'top_slide_image_1',
-				'correct'   => 'http://aaa.com/sample.jpg',
-			),
+			// array(
+			// 	'options'   => array(
+			// 		'top_slide_image_1' => 'http://aaa.com/sample.jpg',
+			// 	),
+			// 	'check_key' => 'top_slide_image_1',
+			// 	'correct'   => 'http://aaa.com/sample.jpg',
+			// ),
+			// array(
+			// 	'options'   => array(),
+			// 	'check_key' => 'top_slide_text_title_1',
+			// 	'correct'   => __( 'Simple and Customize easy <br>WordPress theme.', 'lightning' ),
+			// ),
+			// array(
+			// 	'options'   => array(
+			// 		'top_slide_text_title_1' => null,
+			// 	),
+			// 	'check_key' => 'top_slide_text_title_1',
+			// 	'correct'   => '',
+			// ),
+			// array(
+			// 	'options'   => array(
+			// 		'top_slide_text_title_1' => '',
+			// 	),
+			// 	'check_key' => 'top_slide_text_title_1',
+			// 	'correct'   => '',
+			// ),
 		);
 		// 操作前のオプション値を取得
 		$before_options = get_option( 'lightning_theme_options' );

@@ -99,7 +99,8 @@ function lightning_theme_options_default() {
 function lightning_get_theme_options() {
 	$lightning_theme_options_default = lightning_get_theme_options_default();
 	$lightning_theme_options         = get_option( 'lightning_theme_options', $lightning_theme_options_default );
-	$lightning_theme_options         = wp_parse_args( $lightning_theme_options, $lightning_theme_options_default );
+	// It use then display default text to old user ... orz
+	// $lightning_theme_options         = wp_parse_args( $lightning_theme_options, $lightning_theme_options_default );
 	return $lightning_theme_options;
 }
 
@@ -346,9 +347,19 @@ function lightning_get_theme_name() {
 	return apply_filters( 'lightning_theme_name', 'Lightning' );
 }
 function lightning_get_theme_name_short() {
-	return apply_filters( 'lightning_theme_name_short', 'LTG' );
+	return apply_filters( 'lightning_get_theme_name_short', 'LTG' );
 }
-function lightning_get_theme_name_customize_panel() {
-	$lightning_get_theme_name_customize_panel = lightning_get_theme_name();
-	return apply_filters( 'lightning_get_theme_name_customize_panel', $lightning_get_theme_name_customize_panel );
+function lightning_get_prefix() {
+	$prefix = apply_filters( 'lightning_get_prefix', 'LTG' );
+	if ( $prefix ) {
+		$prefix .= ' ';
+	}
+	return $prefix;
+}
+function lightning_get_prefix_customize_panel() {
+	$prefix_customize_panel = apply_filters( 'lightning_get_prefix_customize_panel', 'Lightning' );
+	if ( $prefix_customize_panel ) {
+		$prefix_customize_panel .= ' ';
+	}
+	return $prefix_customize_panel;
 }

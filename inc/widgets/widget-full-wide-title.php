@@ -6,7 +6,7 @@
 class LTG_Theme_Full_Wide_Title extends WP_Widget {
 	function __construct() {
 		$widget_id          = 'ltg_full_wide_title';
-		$widget_name        = lightning_get_theme_name_short() . ' ' . __( 'Full Wide Title', 'lightning' );
+		$widget_name        = lightning_get_prefix() . __( 'Full Wide Title', 'lightning' );
 		$widget_description = array( 'description' => __( 'This widget is used for single column only.', 'lightning' ) );
 
 		parent::__construct(

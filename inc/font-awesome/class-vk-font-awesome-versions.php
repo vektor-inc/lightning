@@ -145,11 +145,11 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 		/*-------------------------------------------*/
 		static function customize_register( $wp_customize ) {
 
-			global $vk_font_awesome_version_prefix;
+			global $vk_font_awesome_version_prefix_customize_panel;
 
 			$wp_customize->add_section(
 				'VK Font Awesome', array(
-					'title'    => $vk_font_awesome_version_prefix . __( 'Font Awesome', 'lightning' ),
+					'title'    => $vk_font_awesome_version_prefix_customize_panel . __( 'Font Awesome', 'lightning' ),
 					'priority' => 450,
 				)
 			);
