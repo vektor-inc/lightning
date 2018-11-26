@@ -3,20 +3,25 @@
 	/*-------------------------------------*/
 	/*
 	/*-------------------------------------*/
+	// メニューを閉じる
+	function vk_mobile_nav_close(target){
+		// ※ fix nav の方を押される事もあるので each 処理している
+		jQuery(target).each(function(){
+			jQuery(this).removeClass('menu-open');
+		});
+		// メニュー本体から .vk-mobile-nav-open を削除
+		jQuery('.vk-mobile-nav').removeClass('vk-mobile-nav-open');
+		jQuery('.mobile-fix-nav .vk-mobile-nav-menu-btn i').removeClass('fa-times');
+		jQuery('.mobile-fix-nav .vk-mobile-nav-menu-btn i').addClass('fa-bars');
+	}
+
+	// 実行関数
 	function vk_mobile_nav_run(target){
 		// クリックされた時
 		jQuery(target).click(function() {
 			// メニューボタンに .menu-open クラスがついていたら
 			if (jQuery(this).hasClass('menu-open')) {
-				// .menu-open を外す
-				// ※ fix nav の方を押される事もあるので each 処理している
-				jQuery(target).each(function(){
-					jQuery(this).removeClass('menu-open');
-				});
-				// メニュー本体から .vk-mobile-nav-open を削除
-				jQuery('.vk-mobile-nav').removeClass('vk-mobile-nav-open');
-				jQuery('.mobile-fix-nav .vk-mobile-nav-menu-btn i').removeClass('fa-times');
-				jQuery('.mobile-fix-nav .vk-mobile-nav-menu-btn i').addClass('fa-bars');
+				vk_mobile_nav_close(target);
 			} else {
 				jQuery(target).each(function(){
 					jQuery(this).addClass('menu-open');
@@ -27,6 +32,13 @@
 			}
 		});
 	}
+
+	// ページ内リンクをクリックされた時に閉じるための処理
+	jQuery('.vk-mobile-nav li > a').click(function() {
+		vk_mobile_nav_close('.vk-mobile-nav-menu-btn');
+	});
+
+	// モバイルナビの実行
 	jQuery(document).ready(function() {
 		/* ※ vk-mobile-menu の読み込みが遅いので document).ready(function() しないと動作しない */
 		vk_mobile_nav_run('.vk-mobile-nav-menu-btn');
