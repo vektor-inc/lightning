@@ -78,9 +78,11 @@ h6,.h6 { font-size:16px; font-weight: bold; }
 	h6 { font-size:16px;}
 }// @media (max-width: 767px){
 
+
+	blockquote { padding:20px; } /* don't include .wp-block- -> can't fa padding over wright...*/
 	.wp-block-freeform.block-library-rich-text__tinymce blockquote,
 	blockquote.wp-block-quote:not(.is-large):not(.is-style-large),
-	blockquote { border:5px solid #eee; background-color:#fcfcfc;position:relative;padding:20px;font-size:16px; }
+	blockquote { border:5px solid #eee; background-color:#fcfcfc;position:relative;font-size:16px; }
 
 	.fa_v4,
 	.fa_v5_css {
