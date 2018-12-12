@@ -104,7 +104,7 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 
 		static function load_gutenberg_font_awesome() {
 			$current_info = self::current_info();
-			wp_enqueue_style( 'gutenberg_font-awesome', $current_info['url_css'], array(), $current_info['version'] );
+			wp_enqueue_style( 'gutenberg-font-awesome', $current_info['url_css'], array(), $current_info['version'] );
 		}
 
 		/**
