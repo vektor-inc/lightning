@@ -99,19 +99,12 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 
 		static function load_admin_font_awesome() {
 			$current = self::current_info();
-			// if ( ! $current['type'] === 'web-fonts-with-css' ) {
 			add_editor_style( $current['url_css'] );
-			// }
 		}
 
 		static function load_gutenberg_font_awesome() {
 			$current_info = self::current_info();
-			wp_enqueue_style(
-				'lightning-gutenberg-editor',
-				$current_info['url_css'],
-				array(),
-				$current_info['version'],
-			);
+			wp_enqueue_style( 'gutenberg_font-awesome', $current_info['url_css'], array(), $current_info['version'] );
 		}
 
 		/**
@@ -157,7 +150,7 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 
 		public static function class_switch( $class_v4 = '', $class_v5 = '' ) {
 			$current_option = self::get_option_fa();
-			if ( $current_option == '5_WebFonts_CSS' || $current_option == '5_SVG_JS' || ) {
+			if ( $current_option == '5_WebFonts_CSS' || $current_option == '5_SVG_JS' ) {
 				return $class_v5;
 			} else {
 				return $class_v4;
