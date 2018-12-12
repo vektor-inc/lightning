@@ -78,31 +78,33 @@ h6,.h6 { font-size:16px; font-weight: bold; }
 	h6 { font-size:16px;}
 }// @media (max-width: 767px){
 
-	.wp-block-freeform.block-library-rich-text__tinymce blockquote,
-	blockquote.wp-block-quote:not(.is-large):not(.is-style-large),
-	blockquote { border:5px solid #eee; background-color:#fcfcfc;position:relative;padding:20px;font-size:16px; }
 
-	.fa_v4,
-	.fa_v5_css {
-		blockquote {
-			padding:35px 20px 30px;
-			&:before,
-			&:after { color:#ccc;position: absolute; }
-			&:before { top:10px;}
-			&:after { bottom:10px;right:20px; }
-			&:before { content: "\f10d";}
-			&:after { content: "\f10e";}
-		}
+blockquote { padding:20px; } /* don't include .wp-block- -> can't fa padding over wright...*/
+.wp-block-freeform.block-library-rich-text__tinymce blockquote,
+blockquote.wp-block-quote:not(.is-large):not(.is-style-large),
+blockquote { border:5px solid #eee; background-color:#fcfcfc;position:relative;font-size:16px; }
+
+.fa_v4,
+.fa_v5_css {
+	blockquote {
+		padding:35px 20px 30px;
+		&:before,
+		&:after { color:#ccc;position: absolute; }
+		&:before { top:10px;}
+		&:after { bottom:10px;right:20px; }
+		&:before { content: "\f10d";}
+		&:after { content: "\f10e";}
 	}
-	.fa_v4 blockquote:before,
-	.fa_v4 blockquote:after {
-		font-family:FontAwesome;
-	}
-	.fa_v5_css blockquote:before,
-	.fa_v5_css blockquote:after {
-		font-family: "Font Awesome 5 Free";
-		font-weight: bold;
-	}
+}
+.fa_v4 blockquote:before,
+.fa_v4 blockquote:after {
+	font-family:FontAwesome;
+}
+.fa_v5_css blockquote:before,
+.fa_v5_css blockquote:after {
+	font-family: "Font Awesome 5 Free";
+	font-weight: bold;
+}
 
 .table,
 table { border-collapse: collapse; border-spacing: 0;width:100%; border-top:$border_primary;
