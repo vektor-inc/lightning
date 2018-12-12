@@ -4,7 +4,7 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 
 	class Vk_Font_Awesome_Versions {
 
-		private static $version_default = '5.0_WebFonts_CSS';
+		private static $version_default = '5_WebFonts_CSS';
 
 		static function init() {
 			add_action( 'customize_register', array( __CLASS__, 'customize_register' ) );
@@ -17,22 +17,23 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 		static function versions() {
 			global $font_awesome_directory_uri;
 			$versions = array(
-				'5.0_SVG_JS'       => array(
-					'label'   => '5.0 SVG with JS ( ' . __( 'Not recommended', 'lightning' ) . ' )',
-					'version' => '5.0',
+				'5_SVG_JS'       => array(
+					'label'   => '5 SVG with JS ( ' . __( 'Not recommended', 'vk_font_awesome_version_textdomain' ) . ' )',
+					'version' => '5',
 					'type'    => 'svg-with-js',
-					'url_css' => $font_awesome_directory_uri . 'versions/5.0.13/web-fonts-with-css/css/fontawesome-all.min.css',
-					'url_js'  => $font_awesome_directory_uri . 'versions/5.0.13/svg-with-js/js/fontawesome-all.min.js',
+					// 'url_css' => $font_awesome_directory_uri . 'versions/5.6.0/css/all.min.css',
+					'url_css' => '',
+					'url_js'  => $font_awesome_directory_uri . 'versions/5.6.0/js/all.min.js',
 				),
-				'5.0_WebFonts_CSS' => array(
-					'label'   => '5.0 Web Fonts with CSS',
-					'version' => '5.0',
+				'5_WebFonts_CSS' => array(
+					'label'   => '5 Web Fonts with CSS',
+					'version' => '5',
 					'type'    => 'web-fonts-with-css',
-					'url_css' => $font_awesome_directory_uri . 'versions/5.0.13/web-fonts-with-css/css/fontawesome-all.min.css',
+					'url_css' => $font_awesome_directory_uri . 'versions/5.6.0/css/all.min.css',
 					'url_js'  => '',
 				),
-				'4.7'              => array(
-					'label'   => '4.7',
+				'4.7'            => array(
+					'label'   => '4.7 ( ' . __( 'Not recommended', 'vk_font_awesome_version_textdomain' ) . ' )',
 					'version' => '4.7',
 					'type'    => 'web-fonts-with-css',
 					'url_css' => $font_awesome_directory_uri . 'versions/4.7.0/css/font-awesome.min.css',
@@ -42,19 +43,31 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 			return $versions;
 		}
 
+		public static function get_option_fa() {
+			$current = get_option( 'vk_font_awesome_version', self::$version_default );
+			if ( $current == '5.0_WebFonts_CSS' ) {
+				update_option( 'vk_font_awesome_version', '5_WebFonts_CSS' );
+				$current = '5_WebFonts_CSS';
+			} elseif ( $current == '5.0_SVG_JS' ) {
+				update_option( 'vk_font_awesome_version', '5_SVG_JS' );
+				$current = '5_SVG_JS';
+			}
+			return $current;
+		}
+
 		public static function current_info() {
 			$versions                = self::versions();
-			$vk_font_awesome_version = get_option( 'vk_font_awesome_version', self::$version_default );
+			$vk_font_awesome_version = self::get_option_fa();
 			$current_info            = $versions[ $vk_font_awesome_version ];
 			return $current_info;
 		}
 
 		public static function ex_and_link() {
 			$current = self::current_info();
-			if ( $current['version'] == '5.0' ) {
-				$ex_and_link = '<strong>Font Awesome 5</strong><br>' . __( 'Ex ) ', 'lightning' ) . 'far fa-file-alt [ <a href="//fontawesome.com/icons?d=gallery&m=free" target="_blank">Icon list</a> ]';
+			if ( $current['version'] == '5' ) {
+				$ex_and_link = '<strong>Font Awesome 5</strong><br>' . __( 'Ex ) ', 'vk_font_awesome_version_textdomain' ) . 'far fa-file-alt [ <a href="//fontawesome.com/icons?d=gallery&m=free" target="_blank">Icon list</a> ]';
 			} else {
-				$ex_and_link = '<strong>Font Awesome 4.7</strong><br>' . __( 'Ex ) ', 'lightning' ) . 'fa-file-text-o [ <a href="//fontawesome.com/v4.7.0/icons/" target="_blank">Icon list</a> ]';
+				$ex_and_link = '<strong>Font Awesome 4.7</strong><br>' . __( 'Ex ) ', 'vk_font_awesome_version_textdomain' ) . 'fa-file-text-o [ <a href="//fontawesome.com/v4.7.0/icons/" target="_blank">Icon list</a> ]';
 			}
 			return $ex_and_link;
 		}
@@ -95,12 +108,12 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 	 * @return [type] [description]
 	 */
 		static function add_body_class_fa_version( $class ) {
-			$current = get_option( 'vk_font_awesome_version', self::$version_default );
+			$current = self::get_option_fa();
 			if ( $current == '4.7' ) {
 				$class[] = 'fa_v4';
-			} elseif ( $current == '5.0_WebFonts_CSS' ) {
+			} elseif ( $current == '5_WebFonts_CSS' ) {
 				$class[] = 'fa_v5_css';
-			} elseif ( $current == '5.0_SVG_JS' ) {
+			} elseif ( $current == '5_SVG_JS' ) {
 				$class[] = 'fa_v5_svg';
 			}
 			return $class;
@@ -111,13 +124,13 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 		 * @return [type] [description]
 		 */
 		static function dynamic_css() {
-			$current     = get_option( 'vk_font_awesome_version', self::$version_default );
+			$current     = self::get_option_fa();
 			$dynamic_css = '';
 			if ( $current == '4.7' ) {
 				$dynamic_css = '.tagcloud a:before { font-family:FontAwesome;content:"\f02b"; }';
-			} elseif ( $current == '5.0_WebFonts_CSS' ) {
+			} elseif ( $current == '5_WebFonts_CSS' ) {
 				$dynamic_css = '.tagcloud a:before { font-family: "Font Awesome 5 Free";content: "\f02b";font-weight: bold; }';
-			} elseif ( $current == '5.0_SVG_JS' ) {
+			} elseif ( $current == '5_SVG_JS' ) {
 				$dynamic_css = '.tagcloud a:before { content:"" }';
 			}
 			// delete before after space
@@ -133,7 +146,7 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 
 		public static function class_switch( $class_v4 = '', $class_v5 = '' ) {
 			$current = self::current_info();
-			if ( $current['version'] == '5.0' ) {
+			if ( $current['version'] == '5' ) {
 				return $class_v5;
 			} else {
 				return $class_v4;
@@ -149,14 +162,14 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 
 			$wp_customize->add_section(
 				'VK Font Awesome', array(
-					'title'    => $vk_font_awesome_version_prefix_customize_panel . __( 'Font Awesome', 'lightning' ),
+					'title'    => $vk_font_awesome_version_prefix_customize_panel . __( 'Font Awesome', 'vk_font_awesome_version_textdomain' ),
 					'priority' => 450,
 				)
 			);
 
 			$wp_customize->add_setting(
 				'vk_font_awesome_version', array(
-					'default'           => '4.7',
+					'default'           => '5_WebFonts_CSS',
 					'type'              => 'option',
 					'capability'        => 'edit_theme_options',
 					'sanitize_callback' => 'sanitize_text_field',
@@ -170,10 +183,10 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 
 			$wp_customize->add_control(
 				'vk_font_awesome_version', array(
-					'label'       => __( 'Font Awesome Version', 'lightning' ),
+					'label'       => __( 'Font Awesome Version', 'vk_font_awesome_version_textdomain' ),
 					'section'     => 'VK Font Awesome',
 					'settings'    => 'vk_font_awesome_version',
-					'description' => __( '4.7 will be abolished in the near future.', 'lightning' ),
+					'description' => __( '4.7 will be abolished in the near future.', 'vk_font_awesome_version_textdomain' ),
 					'type'        => 'select',
 					'priority'    => '',
 					'choices'     => $choices,
