@@ -97,7 +97,6 @@ gulp.task('copy', function() {
 // ファイル結合
 gulp.task('js_build', function() {
   return gulp.src([
-		'./library/bootstrap/js/bootstrap.min.js',
 		'./assets/js/_master.js',
 		'./assets/js/_header_fixed.js',
 		'./assets/js/_sidebar-fixed.js',
