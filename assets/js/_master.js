@@ -105,26 +105,13 @@
   /*----------------------------------------------------------*/
   /*	add bootstrap class
   /*----------------------------------------------------------*/
-  // ホバーしたら
-  // 	focusクラスを付ける
-  // 	focusクラスが付いている時にマウスアウトしたら
-  // 		focusクラスを取る
-  // タップしたら
-  // 	focusクラスを付ける
-
-  // focusクラスがついていなかったら
-  // 	リンクを無効にする
-
-  // focusクラスがついていたら
-  // 	リンク出来るようにする
-
-  /*----------------------------------------------------------*/
-  /*	add bootstrap class
-  /*----------------------------------------------------------*/
   jQuery(document).ready(function() {
     jQuery('textarea').addClass("form-control");
     jQuery('select').addClass("form-control");
     jQuery('input[type=text]').addClass("form-control");
+    jQuery('input[type=number]').addClass("form-control");
+    jQuery('input[type=search]').addClass("form-control");
+    jQuery('input[type=password]').addClass("form-control");
     jQuery('input[type=email]').addClass("form-control");
     jQuery('input[type=tel]').addClass("form-control");
     jQuery('input[type=submit]').addClass("btn btn-primary");
