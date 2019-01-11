@@ -23,7 +23,7 @@ if ( $author ) {
 	$meta_hidden_author = ( isset( $lightning_theme_options['postAuthor_hidden'] ) && $lightning_theme_options['postAuthor_hidden'] ) ? ' entry-meta_hidden' : '';
 	?>
 
-	<span class="vcard author entry-meta_items entry-meta_items_author<?php echo $meta_hidden_author; ?>"><span class="fn"><?php esc_html( $author ); ?></span></span>
+	<span class="vcard author entry-meta_items entry-meta_items_author<?php echo $meta_hidden_author; ?>"><span class="fn"><?php echo esc_html( $author ); ?></span></span>
 
 <?php } // if ( $author ) { ?>
 
