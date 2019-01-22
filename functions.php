@@ -498,28 +498,3 @@ function lightning_deactivate_plugin( $plugin_path ) {
 		update_option( 'active_plugins', $active_plugins );
 	}
 }
-
-add_filter( 'nav_menu_css_class', 'lightning_special_nav_class', 10, 2 );
-function lightning_special_nav_class( $classes, $item ) {
-
-	$defalut_post_type = array( 'post', 'page', 'attachment', 'revision' );
-	$post_type         = get_post_type();
-	$result            = in_array( $post_type, $defalut_post_type );
-
-	// カスタム投稿タイプを表示中かつ、カスタムアーカイブでなければ、current_page_parentクラスをこのメニューのみに追加。
-	if ( ! $result && is_singular( $post_type ) && ! is_post_type_archive() ) {
-
-		$index = array_search( 'current_page_parent', $classes );
-
-		//$classesが1から始まる連想配列で、$indexの数は+1されている。
-		//array_spliceはのoffsetは、0からの指定なので、-1を追加しているので注意。
-		array_splice( $classes, $index - 1, 1 );
-
-		if ( $item->object == 'custom' && ! in_array( 'current_page_parent', $classes ) ) {
-
-			$classes[] = 'current_page_parent';
-		}
-	}
-
-	return $classes;
-}
