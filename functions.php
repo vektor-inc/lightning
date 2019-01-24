@@ -60,6 +60,11 @@ function lightning_theme_setup() {
 	add_theme_support( 'title-tag' );
 
 	/*-------------------------------------------*/
+	/*  editor-styles
+	/*-------------------------------------------*/
+	add_theme_support( 'editor-styles' );
+
+	/*-------------------------------------------*/
 	/*	Admin page _ Eye catch
 	/*-------------------------------------------*/
 	add_theme_support( 'post-thumbnails' );
