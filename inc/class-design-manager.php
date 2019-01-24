@@ -4,7 +4,10 @@ class Lightning_Design_Manager {
 	static function init() {
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'load_skin_css_and_js' ) );
 		add_action( 'after_setup_theme', array( __CLASS__, 'load_skin_editor_css' ) );
+
+		// This method is planned to be removed.
 		add_action( 'enqueue_block_editor_assets', array( __CLASS__, 'load_skin_gutenberg_css' ) );
+
 		add_action( 'after_setup_theme', array( __CLASS__, 'load_skin_php' ) );
 		add_action( 'after_setup_theme', array( __CLASS__, 'load_skin_callback' ) );
 		add_action( 'customize_register', array( __CLASS__, 'customize_register' ) );
@@ -63,6 +66,9 @@ class Lightning_Design_Manager {
 		}
 
 	}
+
+	// This method is planned to be removed.
+	// It's aleady don't need function that add_editor_style() become covered gutenberg more better.
 	static function load_skin_gutenberg_css() {
 		$skin_info = self::get_current_skin();
 		if ( ! empty( $skin_info['gutenberg_css_path'] ) ) {
