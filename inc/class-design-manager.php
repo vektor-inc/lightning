@@ -17,14 +17,14 @@ class Lightning_Design_Manager {
 	static function get_skins() {
 		$skins = array(
 			'origin' => array(
-				'label'              => 'Origin',
-				'css_path'           => get_template_directory_uri() . '/design-skin/origin/css/style.css',
-				'editor_css_path'    => get_template_directory_uri() . '/design-skin/origin/css/editor.css',
-				'gutenberg_css_path' => get_template_directory_uri() . '/design-skin/origin/css/editor-gutenberg.css',
-				'php_path'           => get_parent_theme_file_path( '/design-skin/origin/origin.php' ),
-				'js_path'            => '',
-				'callback'           => '',
-				'version'            => LIGHTNING_THEME_VERSION,
+				'label'           => 'Origin',
+				'css_path'        => get_template_directory_uri() . '/design-skin/origin/css/style.css',
+				'editor_css_path' => get_template_directory_uri() . '/design-skin/origin/css/editor.css',
+				// 'gutenberg_css_path' => get_template_directory_uri() . '/design-skin/origin/css/editor-gutenberg.css',
+				'php_path'        => get_parent_theme_file_path( '/design-skin/origin/origin.php' ),
+				'js_path'         => '',
+				'callback'        => '',
+				'version'         => LIGHTNING_THEME_VERSION,
 			),
 		);
 		return apply_filters( 'lightning-design-skins', $skins );
