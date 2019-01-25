@@ -142,6 +142,11 @@ function lightning_css() {
 	wp_enqueue_style( 'lightning-theme-style', get_stylesheet_uri(), array( 'lightning-design-style' ), LIGHTNING_THEME_VERSION );
 }
 
+add_action( 'after_setup_theme', 'lightning_load_common_editor_css' );
+function lightning_load_common_editor_css() {
+	add_editor_style( get_template_directory_uri() . '/assets/css/common_editor.css', LIGHTNING_THEME_VERSION );
+}
+
 /*-------------------------------------------*/
 /*	Load Theme Customizer additions.
 /*-------------------------------------------*/
