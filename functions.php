@@ -60,6 +60,11 @@ function lightning_theme_setup() {
 	add_theme_support( 'title-tag' );
 
 	/*-------------------------------------------*/
+	/*  editor-styles
+	/*-------------------------------------------*/
+	add_theme_support( 'editor-styles' );
+
+	/*-------------------------------------------*/
 	/*	Admin page _ Eye catch
 	/*-------------------------------------------*/
 	add_theme_support( 'post-thumbnails' );
@@ -135,6 +140,11 @@ add_action( 'wp_enqueue_scripts', 'lightning_css' );
 function lightning_css() {
 	wp_enqueue_style( 'lightning-common-style', get_template_directory_uri() . '/assets/css/common.css', array(), LIGHTNING_THEME_VERSION );
 	wp_enqueue_style( 'lightning-theme-style', get_stylesheet_uri(), array( 'lightning-design-style' ), LIGHTNING_THEME_VERSION );
+}
+
+add_action( 'after_setup_theme', 'lightning_load_common_editor_css' );
+function lightning_load_common_editor_css() {
+	add_editor_style( get_template_directory_uri() . '/assets/css/common_editor.css', LIGHTNING_THEME_VERSION );
 }
 
 /*-------------------------------------------*/
