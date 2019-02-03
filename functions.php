@@ -385,14 +385,6 @@ class description_walker extends Walker_Nav_Menu {
 		$class_names = $value = '';
 		$classes     = empty( $item->classes ) ? array() : (array) $item->classes;
 
-		//カスタム投稿タイプアーカイブを表示する時、投稿アーカイブのcurrent_page_parentクラスを削除。
-		if ( is_post_type_archive() ) {
-
-			$index = array_search( 'current_page_parent', $classes );
-			array_splice( $classes, $index, 1 );
-
-		}
-
 		$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) );
 		$class_names = ' class="' . esc_attr( $class_names ) . '"';
 		$output     .= $indent . '<li id="menu-item-' . $item->ID . '"' . $value . $class_names . '>';
