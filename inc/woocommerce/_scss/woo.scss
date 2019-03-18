@@ -87,7 +87,13 @@ $price_color:#e50000;
 		}
 	}
 }
-
+// for Subscription Product type
+.woocommerce ul.products li.product-type-subscription{
+	.price {
+		position: relative;
+		bottom: 10px;
+	}
+}
 /*-------------------------------------------*/
 /*	single
 /*-------------------------------------------*/
