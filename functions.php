@@ -194,7 +194,9 @@ get_template_part( 'inc/vk-mobile-nav-config' );
 /*-------------------------------------------*/
 /*	Load woocommerce modules
 /*-------------------------------------------*/
-require get_parent_theme_file_path( '/inc/woocommerce/functions-woo.php' );
+if ( class_exists( 'woocommerce' ) ) {
+	require get_parent_theme_file_path( '/inc/woocommerce/functions-woo.php' );
+}
 
 /*-------------------------------------------*/
 /*	WidgetArea initiate
