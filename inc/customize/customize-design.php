@@ -278,8 +278,6 @@ add_action( 'wp_head', 'lightning_print_css_common', 2 );
 function lightning_print_css_common() {
 	$options     = get_option( 'lightning_theme_options' );
 	$dynamic_css = '';
-	// 全幅ウィジェット等を使用した際にWindowsで横スクロールバーが出る対策( Charm 2.2.2 / Variety 2.3.2 以降リリースしたら削除)
-	$dynamic_css = 'html, body { overflow-x: hidden; }';
 
 	if ( isset( $options['color_key'] ) && isset( $options['color_key_dark'] ) ) {
 		$color_key      = ( ! empty( $options['color_key'] ) ) ? esc_html( $options['color_key'] ) : '#337ab7';

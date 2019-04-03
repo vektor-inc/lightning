@@ -122,7 +122,7 @@ function lightning_theme_setup() {
 
 add_action( 'wp_enqueue_scripts', 'lightning_addJs' );
 function lightning_addJs() {
-	wp_enqueue_script( 'bootstrap-js', get_template_directory_uri() . '/library/bootstrap/js/bootstrap.min.js', array( 'jquery' ), '3.3.4', true );
+	wp_enqueue_script( 'bootstrap-js', get_template_directory_uri() . '/library/bootstrap/js/bootstrap.min.js', array( 'jquery' ), '3.3.7', true );
 	wp_enqueue_script( 'lightning-js', get_template_directory_uri() . '/assets/js/lightning.min.js', array( 'jquery' ), LIGHTNING_THEME_VERSION, true );
 }
 
@@ -194,7 +194,9 @@ get_template_part( 'inc/vk-mobile-nav-config' );
 /*-------------------------------------------*/
 /*	Load woocommerce modules
 /*-------------------------------------------*/
-require get_parent_theme_file_path( '/inc/woocommerce/functions-woo.php' );
+if ( class_exists( 'woocommerce' ) ) {
+	require get_parent_theme_file_path( '/inc/woocommerce/functions-woo.php' );
+}
 
 /*-------------------------------------------*/
 /*	WidgetArea initiate

@@ -44,7 +44,7 @@ function lightning_bread_crumb() {
 				}
 			}
 		} else {
-			if ( is_single() || is_year() || is_month() || is_day() || is_tax() || is_author() ) {
+			if ( is_single() || is_date() || is_tax() || is_author() ) {
 				$panListHtml .= '<li' . $microdata_li . '><a' . $microdata_li_a . ' href="' . esc_url( $postType['url'] ) . '"><span' . $microdata_li_a_span . '>' . $postType['name'] . '</span></a></li>';
 			} else {
 				$panListHtml .= '<li><span>' . $postType['name'] . '</span></li>';
@@ -123,7 +123,7 @@ function lightning_bread_crumb() {
 		/* Year / Monthly / Dayly
 		/*-------------------------------*/
 
-		if ( is_year() || is_month() || is_day() ) {
+		if ( is_date() ) {
 			$panListHtml .= '<li><span>' . esc_html( get_the_archive_title() ) . '</span></li>';
 		}
 	} elseif ( is_single() ) {
