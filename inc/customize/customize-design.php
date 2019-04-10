@@ -309,7 +309,7 @@ function lightning_print_css_common() {
 	if ( isset( $options['sidebar_child_list_hidden'] ) && $options['sidebar_child_list_hidden'] ) {
 		$dynamic_css .= '/* sidebar child menu display */
 		.localNav ul ul.children	{ display:none; }
-		.localNav ul li.current_page_ancestor	ul.children,
+		.localNav ul li.current_page_ancestor ul.children,
 		.localNav ul li.current_page_item ul.children,
 		.localNav ul li.current-cat ul.children{ display:block; }';
 	}
