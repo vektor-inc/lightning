@@ -49,7 +49,7 @@ gulp.task('sass', function() {
     .pipe(gulp.dest('./design-skin/origin/css'))
     .pipe(gulp.dest('../lightning-pro/design-skin/origin/css'));
 	gulp.src(['./assets/_scss/**/*.scss'])
-		.pipe(gulp.dest('../lightning-pro/assets/_scss'))
+		.pipe(gulp.dest('../lightning/assets/_scss'))
     .pipe(plumber({
       handleError: function(err) {
         console.log(err);
