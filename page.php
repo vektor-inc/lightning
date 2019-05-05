@@ -9,13 +9,13 @@
 
 <div class="col-md-8 mainSection" id="main" role="main">
 
-	<?php
-	if ( have_posts() ) {
-		while ( have_posts() ) :
-			the_post();
-		?>
+<?php
+if ( have_posts() ) {
+	while ( have_posts() ) :
+		the_post();
+	?>
 
-			<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+	<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<?php do_action( 'ligthning_entry_body_before' ); ?>
 	<div class="entry-body">
 	<?php the_content(); ?>
@@ -28,13 +28,13 @@
 		'link_after'  => '</span>',
 		'echo'        => 1,
 	);
-			wp_link_pages( $args );
-			?>
-			</div><!-- [ /#post-<?php the_ID(); ?> ] -->
+	wp_link_pages( $args );
+	?>
+	</div><!-- [ /#post-<?php the_ID(); ?> ] -->
 
 	<?php
 	endwhile;
-	};
+};
 ?>
 
 </div><!-- [ /.mainSection ] -->
