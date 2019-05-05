@@ -19,7 +19,7 @@
 		if ( is_year() || is_month() || is_day() || is_tag() || is_author() || is_tax() || is_category() ) {
 			$archiveTitle      = get_the_archive_title();
 			$archiveTitle_html = '<header class="archive-header"><h1>' . $archiveTitle . '</h1></header>';
-			echo apply_filters( 'lightning_mainSection_archiveTitle', $archiveTitle_html );
+			echo wp_kses_post( apply_filters( 'lightning_mainSection_archiveTitle', $archiveTitle_html ) );
 		}
 	}
 
@@ -31,7 +31,7 @@
 		$page                 = get_query_var( 'paged', 0 );
 		if ( ! empty( $category_description ) && $page == 0 ) {
 			$archiveDescription_html = '<div class="archive-meta">' . $category_description . '</div>';
-			echo apply_filters( 'lightning_mainSection_archiveDescription', $archiveDescription_html );
+			echo wp_kses_post( apply_filters( 'lightning_mainSection_archiveDescription', $archiveDescription_html ) );
 		}
 	}
 

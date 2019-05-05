@@ -231,5 +231,5 @@ function lightning_bread_crumb() {
 	return $panListHtml;
 }
 $panListHtml = lightning_bread_crumb();
-$panListHtml = apply_filters( 'lightning_panListHtml', $panListHtml );
+$panListHtml = wp_kses_post( apply_filters( 'lightning_panListHtml', $panListHtml ) );
 echo $panListHtml;
