@@ -40,9 +40,9 @@
 	$postType = lightning_get_post_type();
 
 	do_action( 'lightning_loop_before' );
-	?>
+?>
 
-	<div class="postList">
+<div class="postList">
 
 <?php if ( have_posts() ) : ?>
 
