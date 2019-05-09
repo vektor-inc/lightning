@@ -29,10 +29,10 @@
 	/*-------------------------------------------*/
 	$archiveDescription_html = '';
 	if ( is_category() || is_tax() || is_tag() ) {
-		$category_description = term_description();
-		$page_number          = get_query_var( 'paged', 0 );
-		if ( ! empty( $category_description ) && $page_number == 0 ) {
-			$archiveDescription_html = '<div class="archive-meta">' . $category_description . '</div>';
+		$archiveDescription = term_description();
+		$page_number        = get_query_var( 'paged', 0 );
+		if ( ! empty( $archiveDescription ) && $page_number == 0 ) {
+			$archiveDescription_html = '<div class="archive-meta">' . $archiveDescription . '</div>';
 		}
 	}
 	echo wp_kses_post( apply_filters( 'lightning_mainSection_archiveDescription', $archiveDescription_html ) );
