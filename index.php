@@ -84,7 +84,7 @@
 
 	<?php else : // hove_posts() ?>
 
-  <div class="well"><p><?php _e( 'No posts.', 'lightning' ); ?></p></div>
+  <div class="well"><p><?php echo wp_kses_post( apply_filters( 'lightning_no_posts_text', __( 'No posts.', 'lightning' ) ) ); ?></p></div>
 
 <?php endif; // have_post() ?>
 
