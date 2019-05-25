@@ -55,7 +55,7 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 				break;
 		}
 
-		// nav_title
+		// slide_title
 		$wp_customize->add_setting(
 			'slide_title_' . $i, array(
 				'sanitize_callback' => 'sanitize_text_field',
