@@ -55,6 +55,26 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 				break;
 		}
 
+		// nav_title
+		$wp_customize->add_setting(
+			'slide_title_' . $i, array(
+				'sanitize_callback' => 'sanitize_text_field',
+			)
+		);
+		$priority = $priority + 1;
+		$wp_customize->add_control(
+			new Custom_Html_Control(
+				$wp_customize, 'slide_title_' . $i, array(
+					'label'            => __( 'Slide', 'lightning-pro' ) . ' [' . $i . ']',
+					'section'          => 'lightning_slide',
+					'type'             => 'text',
+					'custom_title_sub' => '',
+					'custom_html'      => '',
+					'priority'         => $priority,
+				)
+			)
+		);
+
 		$wp_customize->selective_refresh->add_partial(
 			'lightning_theme_options[top_slide_image_' . $i . ']', array(
 				'selector'        => '.item-' . $i . ' picture',

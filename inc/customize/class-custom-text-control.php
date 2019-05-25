@@ -1,15 +1,8 @@
 <?php
-
-
-
+/*	Add text control description
 /*-------------------------------------------*/
-/*	customize_register
-/*-------------------------------------------*/
-add_action( 'customize_register', 'lightning_customize_register' );
-function lightning_customize_register( $wp_customize ) {
 
-	/*	Add text control description
-	/*-------------------------------------------*/
+if ( ! class_exists( 'Custom_Text_Control' ) ) {
 	class Custom_Text_Control extends WP_Customize_Control {
 		public $type         = 'customtext';
 		public $description  = ''; // we add this for the extra description
@@ -30,14 +23,4 @@ function lightning_customize_register( $wp_customize ) {
 		<?php
 		} // public function render_content() {
 	} // class Custom_Text_Control extends WP_Customize_Control
-
-	/*-------------------------------------------*/
-	/*	Lightning Panel
-	/*-------------------------------------------*/
-	// $wp_customize->add_panel( 'lightning_setting', array(
-	//    	'priority'       => 25,
-	//    	'capability'     => 'edit_theme_options',
-	//    	'theme_supports' => '',
-	//    	'title'          => __( 'Lightning settings', 'lightning' ),
-	// ));
 }
