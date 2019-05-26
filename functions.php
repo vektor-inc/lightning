@@ -150,7 +150,8 @@ function lightning_load_common_editor_css() {
 /*-------------------------------------------*/
 /*	Load Theme Customizer additions.
 /*-------------------------------------------*/
-require get_parent_theme_file_path( '/inc/customize/customize.php' );
+require get_parent_theme_file_path( '/inc/customize/class-custom-text-control.php' );
+require get_parent_theme_file_path( '/inc/customize/class-custom-html-control.php' );
 require get_parent_theme_file_path( '/inc/customize/customize-design.php' );
 require get_parent_theme_file_path( '/inc/customize/customize-top-slide.php' );
 
