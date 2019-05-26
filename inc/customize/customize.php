@@ -5,8 +5,11 @@
 /*-------------------------------------------*/
 /*	customize_register
 /*-------------------------------------------*/
-add_action( 'customize_register', 'lightning_customize_register' );
-function lightning_customize_register( $wp_customize ) {
+/*
+When use class no load yet bring the error that add priority 1.
+ */
+add_action( 'customize_register', 'lightning_add_customize_class', 1 );
+function lightning_add_customize_class( $wp_customize ) {
 
 	/*	Add text control description
 	/*-------------------------------------------*/
