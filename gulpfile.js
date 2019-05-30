@@ -120,7 +120,7 @@ gulp.task('watch', function() {
   gulp.watch('./inc/woocommerce/_scss/**', ['sass']);
 });
 
-gulp.task('default', ['copy', 'js_build', 'text-domain', 'watch']);
+gulp.task('default', ['copy', 'text-domain', 'watch']);
 gulp.task('compile', ['copy', 'js_build', 'text-domain']);
 
 // copy dist ////////////////////////////////////////////////
