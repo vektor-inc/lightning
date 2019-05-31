@@ -163,10 +163,14 @@ function lightning_get_post_type() {
 	/*-------------------------------------------*/
 	$post_type_object = get_post_type_object( $postType['slug'] );
 	if ( $post_type_object ) {
+		$allowed_html = array(
+			'span' => array( 'class' => array() ),
+			'b'    => array(),
+		);
 		if ( $page_for_posts['post_top_use'] && $postType['slug'] == 'post' ) {
-			$postType['name'] = esc_html( get_the_title( $page_for_posts['post_top_id'] ) );
+			$postType['name'] = wp_kses( get_the_title( $page_for_posts['post_top_id'] ), $allowed_html );
 		} elseif ( $woocommerce_shop_page_id && $postType['slug'] == 'product' ) {
-			$postType['name'] = esc_html( get_the_title( $woocommerce_shop_page_id ) );
+			$postType['name'] = wp_kses( get_the_title( $woocommerce_shop_page_id ), $allowed_html );
 		} else {
 			$postType['name'] = esc_html( $post_type_object->labels->name );
 		}
