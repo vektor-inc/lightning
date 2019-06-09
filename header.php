@@ -12,7 +12,14 @@ $lightning_theme_options = get_option( 'lightning_theme_options' );
 
 </head>
 <body <?php body_class(); ?>>
-<?php do_action( 'lightning_header_before' ); ?>
+<?php
+if ( function_exists( 'wp_body_open' ) ) {
+	wp_body_open();
+} else {
+	do_action( 'wp_body_open' );
+}
+do_action( 'lightning_header_before' );
+?>
 <header class="navbar siteHeader">
 	<?php do_action( 'lightning_header_prepend' ); ?>
 	<div class="container siteHeadContainer">

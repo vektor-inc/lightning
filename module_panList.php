@@ -40,7 +40,7 @@ function lightning_bread_crumb() {
 				if ( ! is_home() ) {
 					$panListHtml .= '<li' . $microdata_li . '><a' . $microdata_li_a . ' href="' . esc_url( $postType['url'] ) . '"><span' . $microdata_li_a_span . '>' . $postType['name'] . '</span></a></li>';
 				} else {
-					$panListHtml .= '<li><span>' . the_title( '', '', false ) . '</span></li>';
+					$panListHtml .= '<li><span>' . get_the_title( '', '', false ) . '</span></li>';
 				}
 			}
 		} else {
@@ -220,7 +220,7 @@ function lightning_bread_crumb() {
 		/* Attachment
 		/*-------------------------------*/
 
-		$panListHtml .= '<li><span>' . the_title( '', '', false ) . '</span></li>';
+		$panListHtml .= '<li><span>' . get_the_title( '', '', false ) . '</span></li>';
 
 	}
 	$panListHtml .= '</ol>
