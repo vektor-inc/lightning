@@ -53,6 +53,18 @@ iframe {
 .wpdm-download-link {
 	margin-top:5px;
 }
+.w3eden .media{
+	flex-wrap: wrap;
+}
+.w3eden .package-title {
+	padding: 0;
+}
+.w3eden .package-title:after {
+	border:none;
+}
+.w3eden .media-body {
+	width:auto;
+}
 
 /*-------------------------------------------*/
 /*	Print
