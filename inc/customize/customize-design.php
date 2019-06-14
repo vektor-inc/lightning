@@ -179,7 +179,7 @@ function lightning_customize_register_design( $wp_customize ) {
 	);
 	$wp_customize->add_control(
 		'lightning_theme_options[sidebar_child_list_hidden]', array(
-			'label'    => __( 'Sidebar menu hide list children', 'lightning' ),
+			'label'    => __( 'Don\'t display grandchild page of deactive page at page sidebar.', 'lightning' ),
 			'section'  => 'lightning_design',
 			'settings' => 'lightning_theme_options[sidebar_child_list_hidden]',
 			'type'     => 'checkbox',
