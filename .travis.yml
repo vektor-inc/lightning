@@ -52,6 +52,7 @@ before_install:
   - gem install compass
 
 node_js:
+  - 'node'
   - '0.8'
   - '0.10'
 
