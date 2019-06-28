@@ -3,7 +3,6 @@ language: php
 branches:
   - master
   - develop
-  - v6
 
 env:
   global:
