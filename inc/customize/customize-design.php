@@ -46,7 +46,9 @@ function lightning_customize_register_design( $wp_customize ) {
 
 	if ( apply_filters( 'lightning_show_default_keycolor_customizer', true ) ) {
 
-		// Section Title _ Header ///////////////////////////////////////
+		/*-------------------------------------------*/
+		/*	Color Setting
+		/*-------------------------------------------*/
 		$wp_customize->add_setting(
 			'color_header', array(
 				'sanitize_callback' => 'sanitize_text_field',
@@ -105,7 +107,9 @@ function lightning_customize_register_design( $wp_customize ) {
 		);
 	} // if ( apply_filters( 'lightning_show_default_keycolor_customizer', true ) ) {
 
-	// Section Title _ Layout ///////////////////////////////////////
+	/*-------------------------------------------*/
+	/*	Layout
+	/*-------------------------------------------*/
 	$wp_customize->add_setting(
 		'layout', array(
 			'sanitize_callback' => 'sanitize_text_field',
@@ -171,6 +175,8 @@ function lightning_customize_register_design( $wp_customize ) {
 		)
 	);
 
+	/*	Layout _ homepage
+	/*-------------------------------------------*/
 	$wp_customize->add_setting(
 		'layout_toppage', array(
 			'sanitize_callback' => 'sanitize_text_field',
@@ -208,7 +214,9 @@ function lightning_customize_register_design( $wp_customize ) {
 		)
 	);
 
-	// Section Title _ Other ///////////////////////////////////////
+	/*-------------------------------------------*/
+	/*	Other Setting
+	/*-------------------------------------------*/
 	$wp_customize->add_setting(
 		'Others', array(
 			'sanitize_callback' => 'sanitize_text_field',
