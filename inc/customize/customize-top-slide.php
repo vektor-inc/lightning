@@ -65,7 +65,7 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 		$wp_customize->add_control(
 			new Custom_Html_Control(
 				$wp_customize, 'slide_title_' . $i, array(
-					'label'            => __( 'Slide', 'lightning-pro' ) . ' [' . $i . ']',
+					'label'            => __( 'Slide', 'lightning' ) . ' [' . $i . ']',
 					'section'          => 'lightning_slide',
 					'type'             => 'text',
 					'custom_title_sub' => '',

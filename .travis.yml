@@ -3,7 +3,6 @@ language: php
 branches:
   - master
   - develop
-  - v6
 
 env:
   global:
@@ -15,22 +14,31 @@ env:
 
 matrix:
   include:
+    - php: 7.3
+      dist: trusty
+      env:
+        - WP_VERSION=latest WP_MULTISITE=0
     - php: 7.2
-      env:
-        - WP_VERSION=latest WP_MULTISITE=0
-    - php: 7.1.4
-      env:
-        - WP_VERSION=latest WP_MULTISITE=0
-    - php: 7
+      dist: trusty
       env:
         - WP_VERSION=latest WP_MULTISITE=0
         - WP_VERSION=latest WP_MULTISITE=1
         - WP_VERSION=4.4 WP_MULTISITE=0
-    - php: 5.6
-      env:
-        - WP_VERSION=latest WP_MULTISITE=0
-    - php: 5.4
-      env: WP_VERSION=latest WP_MULTISITE=0
+    # - php: 7.1.4
+    #   dist: precise
+    #   env:
+    #     - WP_VERSION=latest WP_MULTISITE=0
+    # - php: 7
+    #   dist: precise
+    #   env:
+    #     - WP_VERSION=latest WP_MULTISITE=0
+    # - php: 5.6
+    #   dist: precise
+    #   env:
+    #     - WP_VERSION=latest WP_MULTISITE=0
+    # - php: 5.4
+    #   dist: precise
+    #   env: WP_VERSION=latest WP_MULTISITE=0
 
 cache:
   directories:
