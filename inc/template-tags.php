@@ -23,6 +23,32 @@
 /*	Archive title
 /*-------------------------------------------*/
 
+
+function lightning_get_the_class_name( $position = '' ) {
+	$skin_info = Lightning_Design_Manager::get_current_skin();
+	if ( empty( $skin_info['bootstrap'] ) ) {
+		$class_names = array(
+			'header'          => 'navbar siteHeader',
+			'nav_menu_header' => 'nav gMenu',
+		);
+	} elseif ( $skin_info['bootstrap'] === 'bs4' ) {
+		$class_names = array(
+			'header'          => 'siteHeader',
+			'nav_menu_header' => 'gMenu vk-menu-acc',
+		);
+	}
+	if ( empty( $class_names[ $position ] ) ) {
+		$return = '';
+	} else {
+		$return = esc_attr( $class_names[ $position ] );
+	}
+	return $return;
+}
+function lightning_the_class_name( $position = '' ) {
+	echo lightning_get_the_class_name( $position );
+}
+
+
 /*-------------------------------------------*/
 /*	Sanitize
 /*-------------------------------------------*/
