@@ -44,8 +44,9 @@
 	}
 	ul.sub-menu {
 		max-height:0;
+		opacity: 0;
 		overflow:hidden;
-		transition: max-height $time_transition ease-in;
+		transition: all $time_transition ease-in;
 		position: relative;
 		z-index: 1;
 		display:block;
@@ -56,12 +57,14 @@
 		}
 	}
 	ul.acc-child-open {
-		transition: max-height $time_transition ease-in;
+		transition: all $time_transition ease-in;
 		max-height:1000px;
+		opacity: 1;
 		overflow-y: scroll;
 	}
 	ul.acc-child-close {
-		transition: max-height $time_transition ease-out;
+		transition: all $time_transition ease-in;
 		max-height:0;
+		opacity: 0;
 	}
 }
