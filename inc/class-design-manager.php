@@ -14,7 +14,10 @@ class Lightning_Design_Manager {
 
 	}
 
-	// Set default skin
+	/**
+	 * Set default skin
+	 * @return array スキン固有で読み込むファイル情報の配列
+	 */
 	static function get_skins() {
 		$skins = array(
 			'origin' => array(
@@ -47,7 +50,6 @@ class Lightning_Design_Manager {
 		return $skins[ $current_skin ];
 	}
 
-
 	/**
 	 * Load skin CSS and JavaScript
 	 * @return [type] [description]
@@ -74,9 +76,13 @@ class Lightning_Design_Manager {
 
 		}
 
+		/// load CSS ///////////////////////
+
 		if ( ! empty( $skin_info['css_path'] ) ) {
 			wp_enqueue_style( 'lightning-design-style', $skin_info['css_path'], array(), $skin_info['version'] );
 		}
+
+		/// load JS ///////////////////////
 
 		if ( ! empty( $skin_info['js_path'] ) ) {
 			wp_enqueue_script( 'lightning-design-js', $skin_info['js_path'], array( 'jquery' ), $skin_info['version'], true );
