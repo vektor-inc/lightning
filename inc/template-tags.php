@@ -23,6 +23,22 @@
 /*	Archive title
 /*-------------------------------------------*/
 
+
+function lightning_check_color_mode( $color = '#ffffff' ) {
+		$color['input'] = $color;
+		//「#******」のような形でカラーコードがわたってきた場合「#」を削除する
+		$color['input'] = preg_replace( '/#/', '', $color['input'] );
+		//「******」という形になっているはずなので、2つずつ「**」に区切る
+		// そしてhexdec関数で変換して配列に格納する
+		$color_red           = hexdec( substr( $color['input'], 0, 2 ) );
+		$color_green         = hexdec( substr( $color['input'], 2, 2 ) );
+		$color_blue          = hexdec( substr( $color['input'], 4, 2 ) );
+		$color['number_sum'] = $btn_text_color_red + $btn_text_color_green + $btn_text_color_blue;
+		print '<pre style="text-align:left">';
+		print_r( $color );
+		print '</pre>';
+}
+
 /*-------------------------------------------*/
 /*	Sanitize
 /*-------------------------------------------*/

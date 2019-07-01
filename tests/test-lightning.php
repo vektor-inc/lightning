@@ -293,7 +293,7 @@ class LightningTest extends WP_UnitTestCase {
 			$return = lightning_is_frontpage_onecolumn();
 			print 'return  :' . $return . PHP_EOL;
 			print 'correct :' . $value['correct'] . PHP_EOL;
-			// $this->assertEquals( $value['correct'], $return );
+			$this->assertEquals( $value['correct'], $return );
 		}
 
 		/* テスト前の値に戻す
@@ -301,6 +301,28 @@ class LightningTest extends WP_UnitTestCase {
 		update_option( 'lightning_theme_options', $before_options );
 		update_option( 'page_on_front', $before_page_on_front );
 		update_post_meta( $before_page_on_front, '_wp_page_template', $before_template );
+	}
+
+	function test_lightning_check_color_mode() {
+		$test_array = array(
+			array(
+				'input'   => '#fff',
+				'correct' => 'light',
+			),
+			array(
+				'input'   => '#ffffff',
+				'correct' => 'light',
+			),
+			array(
+				'input'   => '#000',
+				'correct' => 'dark',
+			),
+		);
+
+		foreach ( $test_array as $key => $value ) {
+			$return = test_lightning_check_color_mode( $value['input'] );
+			$this->assertEquals( $value['correct'], $return );
+		}
 	}
 
 }
