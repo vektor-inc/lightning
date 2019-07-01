@@ -59,6 +59,8 @@ html, body { overflow-x: hidden; }
     display: block;
 }
 .nav li a { color:$color_font_default; }
+.nav>li>a:focus, 
+.nav>li>a:hover{ background-color: rgba(0,0,0,0.03);}
 .btn-default { background: none;color:$color_key;border-color: $color_key; }
 .btn-default:focus,
 .btn-default:hover { background-color: $color_key;color:#fff;border-color: $color_key; }
