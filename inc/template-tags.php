@@ -22,22 +22,9 @@
 /*-------------------------------------------*/
 /*	Archive title
 /*-------------------------------------------*/
+/*	lightning_check_color_mode
+/*-------------------------------------------*/
 
-
-function lightning_check_color_mode( $color = '#ffffff' ) {
-		$color['input'] = $color;
-		//「#******」のような形でカラーコードがわたってきた場合「#」を削除する
-		$color['input'] = preg_replace( '/#/', '', $color['input'] );
-		//「******」という形になっているはずなので、2つずつ「**」に区切る
-		// そしてhexdec関数で変換して配列に格納する
-		$color_red           = hexdec( substr( $color['input'], 0, 2 ) );
-		$color_green         = hexdec( substr( $color['input'], 2, 2 ) );
-		$color_blue          = hexdec( substr( $color['input'], 4, 2 ) );
-		$color['number_sum'] = $btn_text_color_red + $btn_text_color_green + $btn_text_color_blue;
-		print '<pre style="text-align:left">';
-		print_r( $color );
-		print '</pre>';
-}
 
 /*-------------------------------------------*/
 /*	Sanitize
@@ -382,4 +369,56 @@ function lightning_get_prefix_customize_panel() {
 		$prefix_customize_panel .= ' ';
 	}
 	return $prefix_customize_panel;
+}
+
+/*-------------------------------------------*/
+/*	lightning_check_color_mode
+/*-------------------------------------------*/
+/**
+ * [lightning_check_color_mode description]
+ * @param  string  $input         input color code
+ * @param  boolean $return_detail If false that return 'mode' only
+ * @return string                 If $return_detail == false that return light ot dark
+ */
+function lightning_check_color_mode( $input = '#ffffff', $return_detail = false ) {
+	$color['input'] = $input;
+	// delete #
+	$color['input'] = preg_replace( '/#/', '', $color['input'] );
+
+	$color_len = strlen( $color['input'] );
+
+	// Only 3 character
+	if ( $color_len === 3 ) {
+		$color_red   = substr( $color['input'], 0, 1 ) . substr( $color['input'], 0, 1 );
+		$color_green = substr( $color['input'], 1, 1 ) . substr( $color['input'], 1, 1 );
+		$color_blue  = substr( $color['input'], 2, 1 ) . substr( $color['input'], 2, 1 );
+	} elseif ( $color_len === 6 ) {
+		$color_red   = substr( $color['input'], 0, 2 );
+		$color_green = substr( $color['input'], 2, 2 );
+		$color_blue  = substr( $color['input'], 4, 2 );
+	} else {
+		$color_red   = 'ff';
+		$color_green = 'ff';
+		$color_blue  = 'ff';
+	}
+
+	// change 16 to 10 number
+	$color_red           = hexdec( $color_red );
+	$color_green         = hexdec( $color_green );
+	$color_blue          = hexdec( $color_blue );
+	$color['number_sum'] = $color_red + $color_green + $color_blue;
+
+	$color_change_point = 765 / 2;
+
+	if ( $color['number_sum'] > $color_change_point ) {
+		$color['mode'] = 'light';
+	} else {
+		$color['mode'] = 'dark';
+	}
+
+	if ( $return_detail ) {
+		return $color;
+	} else {
+		return $color['mode'];
+	}
 }

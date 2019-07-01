@@ -317,10 +317,35 @@ class LightningTest extends WP_UnitTestCase {
 				'input'   => '#000',
 				'correct' => 'dark',
 			),
+			array(
+				'input'   => '#f00',
+				'correct' => 'dark',
+			),
+			array(
+				'input'   => '#ff0',
+				'correct' => 'light',
+			),
+			array(
+				'input'   => '#0ff',
+				'correct' => 'light',
+			),
+			array(
+				'input'   => '#808080',
+				'correct' => 'light',
+			),
+			array(
+				'input'   => '#7f7f7f',
+				'correct' => 'dark',
+			),
 		);
-
+		print PHP_EOL;
+		print '------------------------------------' . PHP_EOL;
+		print 'test_lightning_check_color_mode' . PHP_EOL;
+		print '------------------------------------' . PHP_EOL;
 		foreach ( $test_array as $key => $value ) {
-			$return = test_lightning_check_color_mode( $value['input'] );
+			$return = lightning_check_color_mode( $value['input'] );
+			print 'return  :' . $return . PHP_EOL;
+			print 'correct :' . $value['correct'] . PHP_EOL;
 			$this->assertEquals( $value['correct'], $return );
 		}
 	}
