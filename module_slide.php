@@ -1,4 +1,7 @@
 <?php
+if ( ! apply_filters( 'lightning_default_slide_display', true ) ) {
+	return;
+}
 $lightning_theme_options = lightning_get_theme_options();
 
 // count top slide
