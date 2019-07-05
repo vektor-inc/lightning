@@ -62,6 +62,25 @@ function lightning_sanitize_radio( $input ) {
 	return esc_attr( $input );
 }
 
+function lightning_sanitize_textarea( $input ) {
+	$allowed_html = array(
+		'a'      => array(
+			'id'    => array(),
+			'href'  => array(),
+			'title' => array(),
+			'class' => array(),
+			'role'  => array(),
+		),
+		'br'     => array(),
+		'em'     => array(),
+		'strong' => array(),
+		'i'      => array(
+			'class' => array(),
+		),
+	);
+	return wp_kses( $input, $allowed_html );
+}
+
 /*-------------------------------------------*/
 /*	Theme default options
 /*-------------------------------------------*/
