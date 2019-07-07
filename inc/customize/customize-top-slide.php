@@ -293,7 +293,7 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 				'default'           => '',
 				'type'              => 'option',
 				'capability'        => 'edit_theme_options',
-				'sanitize_callback' => 'sanitize_text_field',
+				'sanitize_callback' => 'lightning_sanitize_textarea',
 			)
 		);
 
