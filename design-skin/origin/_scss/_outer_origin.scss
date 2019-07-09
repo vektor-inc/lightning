@@ -40,8 +40,6 @@ ul.gMenu a { border-bottom:$border_horizontal; }
 @media (min-width: 992px){
 ul.gMenu { float:right;
   & > li {
-    a:hover { background: none; }
-    a:hover .gMenu_description { color: $color_key; }
     & > a { border-bottom:none; }
   }
   & > li > a:hover:after,
@@ -52,8 +50,8 @@ ul.gMenu { float:right;
   & > li.current_page_parent > a:after,
   & > li.current_page_ancestor > a:after { content:".";line-height:0;border-bottom:1px solid $color_key; bottom:0px;display:block; overflow:hidden;position: absolute;width:100%;left:0; }
   // sub-menu
-  & > li > ul.sub-menu li a { 
-  	background-color:#fff; 
+  & > li > ul.sub-menu li a {
+  	background-color:#fff;
 	&:hover { background-color: #f5f5f5; }
   }
 } // ul.gMenu
