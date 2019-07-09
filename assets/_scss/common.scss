@@ -1,0 +1,80 @@
+@charset "utf-8";
+// Do not use sass that the path of the image shifts
+@import "../../inc/vk-mobile-nav/css/vk-mobile-nav-bright.css";
+
+/*-------------------------------------------*/
+/*	Search
+/*-------------------------------------------*/
+
+.widget_search,
+.widget_display_search,
+.widget_product_search{
+	.widget-title.subSection-title {
+		margin-bottom:15px;
+	}
+}
+.widget_search form div,
+.widget_display_search form div,
+.widget_product_search form {
+	display: flex;
+	flex-wrap:wrap;
+	width:100%;
+	justify-content: space-between;
+	input#s,
+	input#bbp_search,
+	input.search-field {
+		width:64%;
+		border:1px solid #ccc;
+		// border-radius: 3px;
+		padding: 6px 12px;
+    font-size: 14px;
+		margin-right:0;
+		margin-bottom:0;
+	}
+	input#searchsubmit,
+	input#bbp_search_submit,
+	button {
+		width:33%;
+		color: #fff;
+		border:none;
+		padding: 6px;
+		// border-radius: 4px;
+		font-size:16px;
+	}
+}
+
+iframe {
+	border:none;
+}
+
+/*-------------------------------------------*/
+/*	Download Manager
+/*-------------------------------------------*/
+.wpdm-download-link {
+	margin-top:5px;
+}
+.w3eden .media{
+	flex-wrap: wrap;
+}
+.w3eden .package-title {
+	padding: 0;
+}
+.w3eden .package-title:after {
+	border:none;
+}
+.w3eden .media-body {
+	width:auto;
+}
+
+/*-------------------------------------------*/
+/*	Print
+/*-------------------------------------------*/
+@media print {
+	#page_top { display: none !important; }
+	.vk-mobile-nav-menu-btn,
+	.vk-mobile-nav,
+	.mobile-fix-nav { display: none; }
+	a{ text-decoration: none !important; }
+	a[href]:after,
+	abbr[title]:after { content: "" !important; }
+}

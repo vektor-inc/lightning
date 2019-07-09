@@ -65,7 +65,7 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 		$wp_customize->add_control(
 			new Custom_Html_Control(
 				$wp_customize, 'slide_title_' . $i, array(
-					'label'            => __( 'Slide', 'lightning-pro' ) . ' [' . $i . ']',
+					'label'            => __( 'Slide', 'lightning' ) . ' [' . $i . ']',
 					'section'          => 'lightning_slide',
 					'type'             => 'text',
 					'custom_title_sub' => '',
@@ -249,7 +249,7 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 				'default'           => '',
 				'type'              => 'option',
 				'capability'        => 'edit_theme_options',
-				'sanitize_callback' => 'wp_kses_data',
+				'sanitize_callback' => 'lightning_sanitize_textarea',
 			)
 		);
 
@@ -271,7 +271,7 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 				'default'           => '',
 				'type'              => 'option',
 				'capability'        => 'edit_theme_options',
-				'sanitize_callback' => 'wp_kses_data',
+				'sanitize_callback' => 'lightning_sanitize_textarea',
 			)
 		);
 
@@ -293,7 +293,7 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 				'default'           => '',
 				'type'              => 'option',
 				'capability'        => 'edit_theme_options',
-				'sanitize_callback' => 'sanitize_text_field',
+				'sanitize_callback' => 'lightning_sanitize_textarea',
 			)
 		);
 
