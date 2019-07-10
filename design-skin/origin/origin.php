@@ -27,6 +27,20 @@ dt { border-left-color:' . $color_key . '; }
 @media (min-width: 768px){
   ul.gMenu > li > a:after { border-bottom-color: ' . $color_key . ' ; }
 } /* @media (min-width: 768px) */';
+
+	if ( ! empty( $options['color_header_bg'] ) ) {
+		$color_header_bg = esc_html( $options['color_header_bg'] );
+		if ( lightning_check_color_mode( $color_header_bg ) == 'dark' ) {
+			// Dark Color ///////////////////
+			$dynamic_css .= '
+			@media (min-width: 768px){
+				ul.gMenu > li > a:after { border-bottom-color: #fff;}
+			}';
+		} else {
+			// Light Color ///////////////////
+		}
+	}// if ( ! empty( $options['color_header_bg'] ) ) {
+
 		// delete before after space
 		$dynamic_css = trim( $dynamic_css );
 		// convert tab and br to space
