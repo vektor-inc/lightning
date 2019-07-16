@@ -49,9 +49,9 @@ ul.gMenu { float:right;
 		content:".";
 		line-height:0;
 		bottom:0px;display:block;
-		width:0;
 		border-bottom:1px solid $color_key;
-		transition: all 0.3s ease-in;
+		width:0;
+		// transition: all 0.3s ease-in;
 	}
   & > li > a:hover:after,
   & > li.current-post-ancestor > a:after,
@@ -59,8 +59,9 @@ ul.gMenu { float:right;
   & > li.current-menu-parent > a:after,
   & > li.current-menu-ancestor > a:after,
   & > li.current_page_parent > a:after,
-  & > li.current_page_ancestor > a:after {  width:100%;
-	transition: all 0.3s ease-in;
+  & > li.current_page_ancestor > a:after {
+		width:100%;
+		// transition: all 0.3s ease-in;
 	}
   // sub-menu
   & > li > ul.sub-menu li a {
