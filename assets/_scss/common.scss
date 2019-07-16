@@ -2,6 +2,10 @@
 // Do not use sass that the path of the image shifts
 @import "../../inc/vk-mobile-nav/css/vk-mobile-nav-bright.css";
 
+.slide-inner img {
+	width:100%;
+}
+
 /*-------------------------------------------*/
 /*	Search
 /*-------------------------------------------*/

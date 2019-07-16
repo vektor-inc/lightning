@@ -40,20 +40,32 @@ ul.gMenu a { border-bottom:$border_horizontal; }
 @media (min-width: 992px){
 ul.gMenu { float:right;
   & > li {
-    a:hover { background: none; }
-    a:hover .gMenu_description { color: $color_key; }
     & > a { border-bottom:none; }
   }
+	& > li > a:after{
+		position:absolute;
+		left:0;
+		overflow:hidden;
+		content:".";
+		line-height:0;
+		bottom:0px;display:block;
+		border-bottom:1px solid $color_key;
+		width:0;
+		// transition: all 0.3s ease-in;
+	}
   & > li > a:hover:after,
   & > li.current-post-ancestor > a:after,
   & > li.current-menu-item > a:after,
   & > li.current-menu-parent > a:after,
   & > li.current-menu-ancestor > a:after,
   & > li.current_page_parent > a:after,
-  & > li.current_page_ancestor > a:after { content:".";line-height:0;border-bottom:1px solid $color_key; bottom:0px;display:block; overflow:hidden;position: absolute;width:100%;left:0; }
+  & > li.current_page_ancestor > a:after {
+		width:100%;
+		// transition: all 0.3s ease-in;
+	}
   // sub-menu
-  & > li > ul.sub-menu li a { 
-  	background-color:#fff; 
+  & > li > ul.sub-menu li a {
+  	background-color:#fff;
 	&:hover { background-color: #f5f5f5; }
   }
 } // ul.gMenu

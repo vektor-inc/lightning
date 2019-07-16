@@ -11,7 +11,6 @@ function lightning_print_css_origin() {
 		$dynamic_css    = '
 a { color:' . $color_key_dark . ' ; }
 a:hover { color:' . $color_key . ' ; }
-ul.gMenu a:hover { color:' . $color_key . '; }
 .page-header { background-color:' . $color_key . '; }
 h1.entry-title:first-letter,
 .single h1.entry-title:first-letter { color:' . $color_key . '; }
@@ -26,15 +25,22 @@ ul.page-numbers li span.page-numbers.current { background-color:' . $color_key .
 footer { border-top-color:' . $color_key . '; }
 dt { border-left-color:' . $color_key . '; }
 @media (min-width: 768px){
-  ul.gMenu > li > a:hover:after,
-  ul.gMenu > li.current-post-ancestor > a:after,
-  ul.gMenu > li.current-menu-item > a:after,
-  ul.gMenu > li.current-menu-parent > a:after,
-  ul.gMenu > li.current-menu-ancestor > a:after,
-  ul.gMenu > li.current_page_parent > a:after,
-  ul.gMenu > li.current_page_ancestor > a:after { border-bottom-color: ' . $color_key . ' ; }
-  ul.gMenu > li > a:hover .gMenu_description { color: ' . $color_key . ' ; }
+  ul.gMenu > li > a:after { border-bottom-color: ' . $color_key . ' ; }
 } /* @media (min-width: 768px) */';
+
+		if ( ! empty( $options['color_header_bg'] ) ) {
+			$color_header_bg = esc_html( $options['color_header_bg'] );
+			if ( lightning_check_color_mode( $color_header_bg ) == 'dark' ) {
+				// Dark Color ///////////////////
+				$dynamic_css .= '
+			@media (min-width: 768px){
+				ul.gMenu > li > a:after { border-bottom-color: rgba(255,255,255,0.9 );}
+			}';
+			} else {
+				// Light Color ///////////////////
+			}
+		}// if ( ! empty( $options['color_header_bg'] ) ) {
+
 		// delete before after space
 		$dynamic_css = trim( $dynamic_css );
 		// convert tab and br to space
