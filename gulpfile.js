@@ -15,7 +15,6 @@ var cmq = require('gulp-merge-media-queries');
 var autoprefixer = require('gulp-autoprefixer');
 var cleanCss = require('gulp-clean-css');
 
-// http://blog.e-riverstyle.com/2014/02/gulpspritesmithcss-spritegulp.html
 // 同期的に処理してくれる
 var runSequence = require('run-sequence');
 
@@ -31,7 +30,7 @@ gulp.task('text-domain', function () {
 				.pipe(gulp.dest('./inc/vk-mobile-nav/'));
 });
 
-gulp.task('sass', function() {
+gulp.task('sass_skin', function() {
   gulp.src(['design-skin/origin/_scss/**/*.scss'])
     .pipe(plumber({
       handleError: function(err) {
@@ -48,6 +47,8 @@ gulp.task('sass', function() {
     .pipe(cleanCss())
     .pipe(gulp.dest('./design-skin/origin/css'))
     .pipe(gulp.dest('../lightning-pro/design-skin/origin/css'));
+});
+gulp.task('sass_common', function() {
 	gulp.src(['./assets/_scss/**/*.scss'])
 		.pipe(gulp.dest('../lightning/assets/_scss'))
     .pipe(plumber({
@@ -63,7 +64,9 @@ gulp.task('sass', function() {
     }))
     .pipe(autoprefixer())
     .pipe(cleanCss())
-    .pipe(gulp.dest('./assets/css'))
+    .pipe(gulp.dest('./assets/css'));
+});
+gulp.task('sass_woo', function() {
 	gulp.src(['./inc/woocommerce/_scss/**.scss'])
     .pipe(plumber({
       handleError: function(err) {
@@ -113,11 +116,10 @@ gulp.task('js_build', function() {
 
 // Watch
 gulp.task('watch', function() {
-  gulp.watch('./assets/js/**', ['js_build']);
-  gulp.watch('./inc/vk-mobile-nav/js/**', ['js_build']);
-  gulp.watch('./design-skin/origin/_scss/**/*.scss', ['sass']);
-  gulp.watch('./assets/_scss/**', ['sass']);
-  gulp.watch('./inc/woocommerce/_scss/**', ['sass']);
+  gulp.watch(['./assets/js/**','./inc/vk-mobile-nav/js/**'], ['js_build']);
+  gulp.watch(['./assets/_scss/**','./inc/woocommerce/_scss/**'], ['sass_common']);
+  gulp.watch(['./assets/_scss/**','./inc/woocommerce/_scss/**'], ['sass_woo']);
+  gulp.watch(['./design-skin/origin/_scss/**/*.scss'], ['sass_skin']);
 });
 
 gulp.task('default', ['text-domain', 'watch']);

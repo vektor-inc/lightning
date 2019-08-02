@@ -6,9 +6,6 @@
 $border_primary : 1px solid #ccc;
 $color_font_default : #333;
 
-.vk-mobile-nav-menu-btn {
-	background-color: rgba(255,255,255,0.8);
-}
 .vk-mobile-nav-menu-btn.menu-open {
 	border-color:$color_font_default;
 	background:url('../images/vk-menu-close-black.svg') center 50% no-repeat;
