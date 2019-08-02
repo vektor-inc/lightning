@@ -24,11 +24,18 @@ do_action( 'lightning_header_before' );
 	<?php do_action( 'lightning_header_prepend' ); ?>
 	<div class="container siteHeadContainer">
 		<div class="navbar-header">
-			<h1 class="navbar-brand siteHeader_logo">
-			<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><span>
-			<?php lightning_print_headlogo(); ?>
-			</span></a>
-			</h1>
+			<?php
+			if ( is_front_page() ) {
+				$title_tag = 'h1';
+			} else {
+				$title_tag = 'p';
+			}
+			?>
+			<<?php echo $title_tag; ?> class="navbar-brand siteHeader_logo">
+			<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
+				<span><?php lightning_print_headlogo(); ?></span>
+			</a>
+			</<?php echo $title_tag; ?>>
 			<?php do_action( 'lightning_header_logo_after' ); ?>
 			<?php
 			$args  = array(
