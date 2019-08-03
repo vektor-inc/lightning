@@ -83,7 +83,26 @@ gulp.task('sass_woo', function() {
     .pipe(cleanCss())
     .pipe(gulp.dest('./inc/woocommerce/css/'))
 });
-
+gulp.task('sass_bs4', function() {
+	gulp.src(['./library/bootstrap-4/scss/**.scss'])
+    .pipe(plumber({
+      handleError: function(err) {
+        console.log(err);
+        this.emit('end');
+      }
+    }))
+    .pipe(plumber())
+    .pipe(sass())
+    .pipe(cmq({
+      log: true
+    }))
+    .pipe(autoprefixer())
+    .pipe(cleanCss())
+		.pipe(rename({
+			suffix: '.min'
+		}))
+    .pipe(gulp.dest('./library/bootstrap-4/css/'))
+});
 
 // gulp.task('copy', function() {
 //   gulp.src('./library/bootstrap/css/bootstrap.min.css')
@@ -119,6 +138,7 @@ gulp.task('watch', function() {
   gulp.watch(['./assets/js/**','./inc/vk-mobile-nav/js/**'], ['js_build']);
   gulp.watch(['./assets/_scss/**','./inc/woocommerce/_scss/**'], ['sass_common']);
   gulp.watch(['./assets/_scss/**','./inc/woocommerce/_scss/**'], ['sass_woo']);
+  gulp.watch(['./library/bootstrap-4/scss/**.scss'], ['sass_bs4']);
   gulp.watch(['./design-skin/origin/_scss/**/*.scss'], ['sass_skin']);
 });
 
