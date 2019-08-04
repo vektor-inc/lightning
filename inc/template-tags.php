@@ -33,11 +33,15 @@ function lightning_get_the_class_name( $position = '' ) {
 		$class_names = array(
 			'header'          => 'navbar siteHeader',
 			'nav_menu_header' => 'nav gMenu',
+			'mainSection'     => 'col-md-8 mainSection',
+			'sideSection'     => 'col-md-3 col-md-offset-1 subSection sideSection',
 		);
 	} elseif ( $skin_info['bootstrap'] === 'bs4' ) {
 		$class_names = array(
 			'header'          => 'siteHeader',
 			'nav_menu_header' => 'gMenu vk-menu-acc',
+			'mainSection'     => 'col mainSection ',
+			'sideSection'     => 'col subSection sideSection',
 		);
 	}
 	if ( empty( $class_names[ $position ] ) ) {
