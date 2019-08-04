@@ -48,6 +48,24 @@ gulp.task('sass_skin', function() {
     .pipe(gulp.dest('./design-skin/origin/css'))
     .pipe(gulp.dest('../lightning-pro/design-skin/origin/css'));
 });
+gulp.task('sass_skin2', function() {
+  gulp.src(['design-skin/origin2/_scss/**/*.scss'])
+    .pipe(plumber({
+      handleError: function(err) {
+        console.log(err);
+        this.emit('end');
+      }
+    }))
+    .pipe(plumber())
+    .pipe(sass())
+    .pipe(cmq({
+      log: true
+    }))
+    .pipe(autoprefixer())
+    .pipe(cleanCss())
+    .pipe(gulp.dest('./design-skin/origin2/css'))
+    .pipe(gulp.dest('../lightning-pro/design-skin/origin2/css'));
+});
 gulp.task('sass_common', function() {
 	gulp.src(['./assets/_scss/**/*.scss'])
 		.pipe(gulp.dest('../lightning/assets/_scss'))
@@ -140,6 +158,7 @@ gulp.task('watch', function() {
   gulp.watch(['./assets/_scss/**','./inc/woocommerce/_scss/**'], ['sass_woo']);
   gulp.watch(['./library/bootstrap-4/scss/**.scss'], ['sass_bs4']);
   gulp.watch(['./design-skin/origin/_scss/**/*.scss'], ['sass_skin']);
+  gulp.watch(['./design-skin/origin2/_scss/**/*.scss'], ['sass_skin2']);
 });
 
 gulp.task('default', ['text-domain', 'watch']);

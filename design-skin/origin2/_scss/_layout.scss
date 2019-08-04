@@ -1,0 +1,28 @@
+@charset "utf-8";
+@import "variables";
+
+
+
+
+
+@media ( max-width: $md-max){
+	.page-template-default{
+		.mainSection,
+		.sideSection {
+			width:100%;
+			flex-basis:unset;
+		}
+	}
+}
+@media ( min-width: $lg-min){
+	.page-template-default{
+		.mainSection {
+			width:66.66667%;
+			flex: 0 0 66.66667%;
+		}
+		.sideSection {
+			margin-left: $margin_section;
+			width:auto;
+		}
+	}
+}

@@ -21,7 +21,7 @@ class Lightning_Design_Manager {
 	 */
 	static function get_skins() {
 		$skins = array(
-			'origin' => array(
+			'origin'  => array(
 				'label'           => 'Origin',
 				'css_path'        => get_template_directory_uri() . '/design-skin/origin/css/style.css',
 				'editor_css_path' => get_template_directory_uri() . '/design-skin/origin/css/editor.css',
@@ -30,6 +30,15 @@ class Lightning_Design_Manager {
 				'js_path'         => '',
 				'callback'        => '',
 				'version'         => LIGHTNING_THEME_VERSION,
+			),
+			'origin2' => array(
+				'label'           => __( 'Origin II ( Bootstrap4 / Experiment )', 'lightning' ),
+				'css_path'        => get_template_directory_uri() . '/design-skin/origin2/css/style.css',
+				'editor_css_path' => get_template_directory_uri() . '/design-skin/origin2/css/editor.css',
+				'php_path'        => get_parent_theme_file_path( '/design-skin/origin2/origin2.php' ),
+				'js_path'         => '',
+				'version'         => LIGHTNING_THEME_VERSION,
+				'bootstrap'       => 'bs4',
 			),
 		);
 		return apply_filters( 'lightning-design-skins', $skins );
