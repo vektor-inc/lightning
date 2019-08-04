@@ -5,6 +5,7 @@ class Lightning_Design_Manager {
 
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'load_skin_css_and_js' ) );
 		add_action( 'after_setup_theme', array( __CLASS__, 'load_skin_editor_css' ) );
+		add_action( 'admin_enqueue_scripts', array( __CLASS__, 'load_skin_editor_css' ) );
 		add_action( 'after_setup_theme', array( __CLASS__, 'load_skin_php' ) );
 		add_action( 'after_setup_theme', array( __CLASS__, 'load_skin_callback' ) );
 		add_action( 'customize_register', array( __CLASS__, 'customize_register' ) );
@@ -82,8 +83,6 @@ class Lightning_Design_Manager {
 
 			wp_enqueue_style( 'lightning-design-style', $skin_css_url, array( 'bootstrap-4-style' ), $skin_info['version'] );
 
-			add_editor_style( $bs4_css_url . $bs4_version );
-
 		}
 
 		/// load JS ///////////////////////
@@ -100,6 +99,16 @@ class Lightning_Design_Manager {
 	 */
 	static function load_skin_editor_css() {
 		$skin_info = self::get_current_skin();
+
+		if ( isset( $skin_info['bootstrap'] ) && $skin_info['bootstrap'] == 'bs4' ) {
+			// Bootstrap4 skin
+			$bs4_css_url = get_template_directory_uri() . '/library/bootstrap-4/css/bootstrap.min.css';
+			$bs4_version = '?ver=4.3.1';
+			add_editor_style( $bs4_css_url . $bs4_version );
+
+			wp_enqueue_style( 'bootstrap4-adjuster', get_template_directory_uri() . '/assets/css/bs4adjuster.css', array(), '', 'all' );
+		}
+
 		if ( ! empty( $skin_info['editor_css_path'] ) ) {
 			$version = '';
 			if ( $skin_info['version'] ) {
@@ -107,7 +116,6 @@ class Lightning_Design_Manager {
 			}
 			add_editor_style( $skin_info['editor_css_path'] . $version );
 		}
-
 	}
 
 	// This method is planned to be removed.

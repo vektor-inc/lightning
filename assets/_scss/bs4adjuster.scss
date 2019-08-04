@@ -1,0 +1,6 @@
+html.wp-toolbar,
+body { font-size:14px; }
+@media ( min-width:$lg-min ){
+	html.wp-toolbar,
+	body { font-size:16px; }
+}
