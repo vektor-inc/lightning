@@ -1,0 +1,15 @@
+/* Bootstrap Adjuster */
+
+.card {
+
+}
+
+.media {
+	&-img {
+		width:30%;
+	}
+	&-title {
+		font-size: 14px;
+		margin-bottom:0.5em;
+	}
+}

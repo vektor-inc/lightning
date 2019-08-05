@@ -118,7 +118,7 @@ class Lightning_Design_Manager {
 			$bs4_version = '?ver=4.3.1';
 			add_editor_style( $bs4_css_url . $bs4_version );
 
-			wp_enqueue_style( 'bootstrap4-adjuster', get_template_directory_uri() . '/assets/css/editor_bs4adjuster.css', array(), '', 'all' );
+			wp_enqueue_style( 'bootstrap4-adjuster', get_template_directory_uri() . '/assets/css/bs4adjuster_editor.css', array(), '', 'all' );
 		}
 
 		if ( ! empty( $skin_info['editor_css_path'] ) ) {

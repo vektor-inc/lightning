@@ -198,6 +198,11 @@ if ( class_exists( 'woocommerce' ) ) {
 }
 
 /*-------------------------------------------*/
+/*	Load other modules
+/*-------------------------------------------*/
+require get_parent_theme_file_path( '/inc/components/class-vk-post-components.php' );
+
+/*-------------------------------------------*/
 /*	WidgetArea initiate
 /*-------------------------------------------*/
 if ( ! function_exists( 'lightning_widgets_init' ) ) {

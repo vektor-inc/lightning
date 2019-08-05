@@ -156,6 +156,7 @@ h1.entry-title { font-size:32px; }
 .entry-meta_items.published a { color:$color_font_default; }
 .entry-meta_items_author { margin-left:0.8em; }
 .entry-meta_items_term { float:right;margin-right:0; }
+.entry-meta_items_term_button { font-size: 0.8rem; padding: 0.3em 1em 0.2em;  }
 .entry-meta_hidden { display: none; }
 
 .fa_v4 {
@@ -284,6 +285,31 @@ ul.page-numbers { margin:0;padding: 0;
   dt { padding: 6px 10px 6px 0; float:left; }
   span.page-numbers { padding: 6px 12px;display: block;float:left; }
 }
+
+.postNextPrev {
+	position: relative;
+	// .card {
+	// 	height: calc( 100% - 2em );
+	// }
+	&_title {
+		font-weight: 700;
+		margin-bottom:0.3em;
+		font-size:14px;
+		&_next {
+			text-align: right;
+		}
+	}
+	&_card{
+		&_title{
+			font-size:14px;
+			margin-bottom:0.4em;
+		}
+		&_meta {
+			font-size:10px;
+		}
+	}
+}
+
 /*-------------------------------------------*/
 /* .pager
 /*-------------------------------------------*/

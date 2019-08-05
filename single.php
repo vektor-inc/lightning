@@ -7,7 +7,7 @@
 <div class="container">
 <div class="row">
 
-<div class="col-md-8 mainSection" id="main" role="main">
+<div class="<?php lightning_the_class_name( 'mainSection' ); ?>" id="main" role="main">
 
 <?php
 if ( apply_filters( 'is_lightning_extend_single', false ) ) :
@@ -75,18 +75,61 @@ else :
 
 		<?php comments_template( '', true ); ?>
 	</article>
+
+
+	<?php if ( $bootstrap == '3' ) { ?>
+		<nav>
+		  <ul class="pager">
+			<li class="previous"><?php previous_post_link( '%link', '%title' ); ?></li>
+			<li class="next"><?php next_post_link( '%link', '%title' ); ?></li>
+		  </ul>
+		</nav>
+	<?php
+} else {
+?>
+	<div class="row postNextPrev">
+	  <div class="col-sm-6">
+			<?php
+			$post = get_previous_post();
+			if ( $post ) {
+				$options = array(
+					'layout'  => 'media',
+					'display' => array(
+						'image'       => true,
+						'excerpt'     => false,
+						'date'        => true,
+						'link_button' => false,
+						// 'link_text'   => __( 'Read more', 'lightning' ),
+						'overlay'     => __( 'Previous article', 'lightning' ),
+					),
+					'class'   => array(
+						'outer' => '',
+					),
+				);
+				VK_Post_Components::the_view( $post, $options );
+				// get_template_part( 'module_loop_post_card' );
+			}
+			wp_reset_postdata();
+			?>
+	  </div>
+	  <div class="col-sm-6">
+			<?php
+			$post = get_next_post();
+			if ( $post ) {
+				$options = VK_Post_Components::the_view( $post, $options );
+			}
+			wp_reset_postdata();
+			?>
+	  </div>
+	</div>
+	<?php } ?>
+
+
 	<?php
 	endwhile;
 endif;
 endif;
 ?>
-
-<nav>
-  <ul class="pager">
-	<li class="previous"><?php previous_post_link( '%link', '%title' ); ?></li>
-	<li class="next"><?php next_post_link( '%link', '%title' ); ?></li>
-  </ul>
-</nav>
 
 </div><!-- [ /.mainSection ] -->
 
