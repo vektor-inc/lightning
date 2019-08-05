@@ -74,6 +74,8 @@ class Lightning_Design_Manager {
 
 		/// load bootstrap ///////////////////////
 
+		global $bootstrap;
+		$bootstrap = '3';
 		if ( empty( $skin_info['bootstrap'] ) ) {
 			// Bootstrap3 skin
 			// load bootstrap3 js
@@ -82,6 +84,7 @@ class Lightning_Design_Manager {
 			wp_enqueue_style( 'lightning-design-style', $skin_css_url, array(), $skin_info['version'] );
 
 		} elseif ( $skin_info['bootstrap'] == 'bs4' ) {
+			$bootstrap = '4';
 			// Bootstrap4 skin
 			$bs4_css_url = get_template_directory_uri() . '/library/bootstrap-4/css/bootstrap.min.css';
 			$bs4_version = '4.3.1';
@@ -115,7 +118,7 @@ class Lightning_Design_Manager {
 			$bs4_version = '?ver=4.3.1';
 			add_editor_style( $bs4_css_url . $bs4_version );
 
-			wp_enqueue_style( 'bootstrap4-adjuster', get_template_directory_uri() . '/assets/css/bs4adjuster.css', array(), '', 'all' );
+			wp_enqueue_style( 'bootstrap4-adjuster', get_template_directory_uri() . '/assets/css/editor_bs4adjuster.css', array(), '', 'all' );
 		}
 
 		if ( ! empty( $skin_info['editor_css_path'] ) ) {
