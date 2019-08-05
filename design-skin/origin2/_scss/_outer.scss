@@ -219,7 +219,7 @@ h1.entry-title { font-size:26px; }
 
 /*      .media(bootstrap)
 /*-------------------------------------------*/
-.media { border-bottom:$border_primary;padding:2em 0;margin-top:0;
+.media { border-bottom:$border_primary;padding:1rem 0;margin-top:0;
   &:first-child { border-top:$border_primary; }
   .postList_thumbnail { width:160px;margin-bottom:0.5em;padding-right:30px; display:block; overflow:hidden;float:left;
     a { position: relative;display:block; overflow:hidden;border:1px solid #e5e5e5; }
@@ -288,14 +288,14 @@ ul.page-numbers { margin:0;padding: 0;
 
 .postNextPrev {
 	position: relative;
-	// .card {
-	// 	height: calc( 100% - 2em );
-	// }
+	.media {
+		border-top: $border_primary;
+	}
 	&_title {
 		font-weight: 700;
 		margin-bottom:0.3em;
 		font-size:14px;
-		&_next {
+		&-next {
 			text-align: right;
 		}
 	}

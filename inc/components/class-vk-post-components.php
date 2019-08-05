@@ -26,7 +26,9 @@ if ( ! class_exists( 'VK_Post_Components' ) ) {
 		static public function get_view( $post, $options ) {
 			$options = self::get_loop_post_view_options( $options );
 
-			if ( $options['layout'] == 'media' ) {
+			if ( $options['layout'] == 'card-holizontal' ) {
+				$html = self::get_view_card_holizontal( $post, $options );
+			} elseif ( $options['layout'] == 'media' ) {
 				$html = self::get_view_media( $post, $options );
 			} else {
 				$html = self::get_view_card( $post, $options );
@@ -60,6 +62,38 @@ if ( ! class_exists( 'VK_Post_Components' ) ) {
 			}
 
 			$html .= '</div><!-- [ /.card-body ] -->';
+			$html .= '</a>';
+			$html .= '</div><!-- [ /.card ] -->';
+			return $html;
+		}
+
+		static public function get_view_card_holizontal( $post, $options ) {
+			$html = '';
+			if ( ! empty( $options['class']['outer'] ) ) {
+				$class_outer = ' ' . esc_attr( $options['class']['outer'] );
+			}
+			$html .= '<div class="card' . $class_outer . '">';
+			$html .= '<a href="' . get_the_permalink() . '">';
+			$html .= '<div class="row no-gutters">';
+			$html .= '<div class="col-md-5 col-sm-5">';
+			if ( $options['display']['image'] ) {
+				$image_attr = array( 'class' => 'card-img' );
+				$html      .= get_the_post_thumbnail( $post->ID, 'medium', $image_attr );
+			}
+			$html .= '</div>';
+			$html .= '<div class="col-md-7 col-sm-7">';
+			$html .= '<div class="card-body">';
+			$html .= '<h5 class="card-title">' . get_the_title() . '</h5>';
+
+			if ( $options['display']['date'] ) {
+				$html .= '<p class="card-meta mb-0">';
+				$html .= '<span class="published">' . esc_html( get_the_date() ) . '</span>';
+				$html .= '</p>';
+			}
+
+			$html .= '</div><!-- [ /.card-body ] -->';
+			$html .= '</div>';
+			$html .= '</div>';
 			$html .= '</a>';
 			$html .= '</div><!-- [ /.card ] -->';
 			return $html;

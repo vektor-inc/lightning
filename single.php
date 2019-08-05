@@ -89,9 +89,13 @@ else :
 ?>
 	<div class="row postNextPrev">
 	  <div class="col-sm-6">
+
 			<?php
 			$post = get_previous_post();
 			if ( $post ) {
+			?>
+				<h5 class="postNextPrev_title"><?php _e( 'Previous article', 'lightning' ); ?></h5>
+				<?php
 				$options = array(
 					'layout'  => 'media',
 					'display' => array(
@@ -100,10 +104,10 @@ else :
 						'date'        => true,
 						'link_button' => false,
 						// 'link_text'   => __( 'Read more', 'lightning' ),
-						'overlay'     => __( 'Previous article', 'lightning' ),
+						'overlay'     => '',
 					),
 					'class'   => array(
-						'outer' => '',
+						'outer' => 'card-sm',
 					),
 				);
 				VK_Post_Components::the_view( $post, $options );
@@ -116,6 +120,9 @@ else :
 			<?php
 			$post = get_next_post();
 			if ( $post ) {
+			?>
+				<h5 class="postNextPrev_title postNextPrev_title-next"><?php _e( 'Next article', 'lightning' ); ?></h5>
+				<?php
 				$options = VK_Post_Components::the_view( $post, $options );
 			}
 			wp_reset_postdata();

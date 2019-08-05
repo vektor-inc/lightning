@@ -1,8 +1,27 @@
 /* Bootstrap Adjuster */
 
 .card {
+	&-title {
 
+		margin-bottom:0.8em;
+	}
+	&-meta {
+		font-size:12px;
+	}
 }
+.card-sm{
+	.card-body {
+		padding: 1rem 1.2rem;
+	}
+	.card-title {
+		font-size:0.9rem;
+	}
+	.card-meta {
+		font-size:0.8rem;
+		line-height: 1.1;
+	}
+}
+
 
 .media {
 	&-img {
