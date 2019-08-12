@@ -52,6 +52,33 @@ dt { border-left-color:' . $color_key . '; }
 /*	Your design skin Specific functions
 /*-------------------------------------------*/
 
+function lightning_origin2_header_scrolled_scripts() {
+	if ( function_exists( 'wp_add_inline_script' ) ) {
+		$script = "
+		;(function($,document,window){
+		$(document).ready(function($){
+			/* スクロール識別クラスを付与 */
+			$(window).scroll(function () {
+				var scroll = $(this).scrollTop();
+				if ($(this).scrollTop() > 160) {
+					$('body').addClass('header_scrolled');
+				} else {
+					$('body').removeClass('header_scrolled');
+				}
+			});
+		});
+		})(jQuery,document,window);
+		";
+		// delete br
+		$script = str_replace( PHP_EOL, '', $script );
+		// delete tab
+		$script = preg_replace( '/[\n\r\t]/', '', $script );
+		wp_add_inline_script( 'jquery-core', $script, 'after' );
+	}
+}
+add_action( 'wp_enqueue_scripts', 'lightning_origin2_header_scrolled_scripts' );
+
+
 // lightning headfix disabel
 
 /*スクロールに応じてヘッダーを一旦スクロールさせるため、標準のヘッダー固定は解除する必要がある */

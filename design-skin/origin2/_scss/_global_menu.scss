@@ -1,9 +1,6 @@
 @charset "utf-8";
 @import "variables";
 
-.siteHeadContainer {
-	// display: flex;
-}
 .siteHeadContainer::after {
 	content:"";
 	display: block;
@@ -16,7 +13,8 @@ $menu_bg_color:#333;
 $time_transition:0.1s;
 
 .gMenu_outer {
-	position: relative;
+	// position: relative; をここで指定してしまうと、スクロール時にすっと下がるモーションが付けられない
+	// position: relative;
 	width: 100%;
 }
 .gMenu {
@@ -188,72 +186,75 @@ $time_transition:0.1s;
 		}
 	}
 }
+
+// Lightning 全スキンBS4対応終了したら vk-mobile-nav　と一緒にこの記述を削除
+@media (min-width: $lg-min){
+	body.device-mobile {
+		.vk-mobile-nav-menu-btn {
+			display: none;
+		}
+	}
+}
+	// ↑Lightning 全スキンBS4対応終了したら vk-mobile-nav　と一緒にこの記述を削除
 /*-------------------------------------------*/
-/* nav
+/*	.gMenu_outer
 /*-------------------------------------------*/
-// nav { font-size:14px;
-//   ul { margin-top:0; }
-//   li { margin-bottom:0; }
-//   i { margin-right:0.5rem; }
-// }
-//
-// ul.gMenu {
-//   a { display:block; overflow:hidden;text-decoration: none; }
-//   ul { padding-left:0;width:auto;display: block;margin-bottom:0;
-//     li { list-style-type: none;
-//         a { display:block; overflow:hidden;padding: 10px 1em 10px 2em;width:auto; }
-//         li a { padding-left:3em; }
-//         li li a { padding-left:4em; }
-//         li li li a { padding-left:5em; }
-//     } // li
-//   } // ul.sub-menu {
-// } // ul.gMenu
-//
-// .gMenu_name { font-weight: normal; }
-// .gMenu_description { display:block; overflow:hidden;font-size:10px; line-height: 14px; }
-//
-// @media (max-width: 991px){
-//   .gMenu_outer { overflow:scroll;display: none; height: 20em;}
-//   .gMenu_outer.itemOpen { display: block; }
-//   .gMenu_outer.itemClose { display: none; }
-//   .gMenu_description { display: none; }
-//   ul.gMenu { margin-bottom:0;
-//     a:hover,
-//     a:active,
-//     .current-menu-item > a { background-color:rgba(255,255,255,0.1); }
-//   }
-//
-// }
-// @media (min-width: 992px){
-// .gMenu_outer.itemOpen,
-// .gMenu_outer.itemClose { display: block; }
-// .gMenu_name { text-align: center;display: block; }
-// .gMenu_description { text-align: center; }
-// ul.gMenu {
-//   & >li { position: relative;float:left;
-//     & > a { border-bottom:none; }
-//   }
-// } // ul.gMenu
-// // sub-menu
-// /*
-// 幅が異なる第一階層のメニューの中心にサブメニューを表示させる
-// まずは第一階層のメニューの中心が left:50%; なので、ここを基準にサブメニューを配置
-// サブメニューの幅は240px固定とした場合、その分 サブメニューの li に対して半分の 120px 左にずらす事で、サブメニューが中心になる。
-// 但し、この状態だと ul.sub-menu は第一階層の中心から右側に240pxなので、見えているサブメニューの右側に120px分存在しており、
-// ここもhover対象となってしまうため、.sub-menu の幅は本来の240pxの半分の 120px が指定してある。
-// このままだと、孫メニューも子メニューの中心からスタートしてしまうので、右側にずらすため240pxで指定している。
-//  */
-// ul.gMenu > li > ul.sub-menu { display:none;position: absolute;z-index: 1000;left:50%;width:120px;
-//   li {
-// 		width:240px;left:-120px;margin:0;display:block; overflow:visible; position: relative;
-// 		list-style: none;
-// 		box-shadow:1px 1px 3px rgba(0,0,0,0.2);
-//     ul { margin-bottom:0;display:none;position: absolute;left:240px;top:0.8em;
-// 			li { left:0; }
-// 		}
-//     a { padding-left:1.5em; }
-//   }
-// }
-// ul.gMenu > li:hover > ul.sub-menu { display: block; }
-// ul.gMenu > li li:hover > ul.sub-menu { display: block; }
-// } // @media (min-width: 992px){
+/*
+PCでのフローバルメニュー 表示・非表示処理
+ 一定量スクロールすると、jsでbody タグに .header_scrolled クラスが付与される
+ .header_scrolled の付与処理は skin_active.php にjsが書いてある
+ スクロールされた時にメニューがfixedになるが、メニューの高さ分 navbar-header の下にmargin-bottomを付与するので、ガクンとならない。
+ ■メニューのアニメーション
+ 初期状態でメニューの高さ分である 54px をtopににオフセットしているが、positionを指定していないので、最初は効かない。
+ つまりここは本来54pxでなくてもかまわない。
+ スクロール識別クラスがつくとfixedになって -54pxの位置指定が効く。
+ しかし、先述の通りmargin-bottomが追加されるので、ガクンとはならない。
+ この時メニューは一旦 -54px の位置に移動するが、scrolled では 0 に指定されているので、アニメーションで0の位置に移動する
+*/
+@media (min-width: $lg-min){
+	.gMenu_outer {
+		top:-54px;
+	}
+	.header_scrolled {
+		.gMenu_outer {
+			position: fixed;top:0px;width:100%;transition: top 1s;
+			background-color: #fff;
+			z-index: 1000;
+			left:0;
+			box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+			nav {
+				margin-left:auto;
+				margin-right: auto;
+			}
+		}
+		.gMenu {
+			float:none;
+			right:unset;
+			display: flex;
+			& > li {
+				width:50%;
+				white-space: nowrap;
+				// PC端末の場合
+				.device-pc & {
+					// 第一階層メニューのみ下階層展開ボタンを隠す
+					// a タグに対して余白をつける
+					& > a {
+						// PC端末時は下階層展開ボタンを表示しないので左右余白小さめ
+						padding: $menu_padding_vertical 1em;
+					}
+				}
+				.device-mobile & {
+					padding: $menu_padding_vertical 1em;
+				}
+			}
+		}
+		.navbar-header { margin-bottom:54px; }
+		&.admin-bar .gMenu_outer { top:32px;}
+		@media (min-width: $lg-min){
+			.gMenu_outer nav { width:$lg-container; }
+		}
+		@media (min-width: $xl-min){
+			.gMenu_outer nav { width:$xl-container; }
+		}
+	}
+} // @media (min-width: 768px){
