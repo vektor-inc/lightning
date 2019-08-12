@@ -7,7 +7,7 @@
 <div class="container">
 <div class="row">
 
-<div class="col-md-8 mainSection" id="main" role="main">
+<div class="<?php lightning_the_class_name( 'mainSection' ); ?>" id="main" role="main">
 
 	<?php
 	/*-------------------------------------------*/
@@ -94,7 +94,7 @@
 
 </div><!-- [ /.mainSection ] -->
 
-<div class="col-md-3 col-md-offset-1 subSection sideSection">
+<div class="<?php lightning_the_class_name( 'sideSection' ); ?>">
 <?php get_sidebar( get_post_type() ); ?>
 </div><!-- [ /.subSection ] -->
 

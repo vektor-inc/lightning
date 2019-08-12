@@ -2,9 +2,26 @@
 @import "variables";
 
 
-
 @media ( max-width: $md-max){
-	.page-template-default{
+	.mainSection,
+	.sideSection {
+		width:100%;
+		flex-basis:unset;
+	}
+}
+
+@media ( min-width: $lg-min){
+	.mainSection {
+		width:66.66667%;
+		flex: 0 0 66.66667%;
+	}
+	.sideSection {
+		margin-left: $margin_section;
+		width:auto;
+	}
+	.page-template-page-onecolumn,
+	.page-template-page-lp,
+	.page-template-page-lp-builder{
 		.mainSection,
 		.sideSection {
 			width:100%;
@@ -12,20 +29,6 @@
 		}
 	}
 }
-@media ( min-width: $lg-min){
-	.post-template-default,
-	.page-template-default{
-		.mainSection {
-			width:66.66667%;
-			flex: 0 0 66.66667%;
-		}
-		.sideSection {
-			margin-left: $margin_section;
-			width:auto;
-		}
-	}
-}
-
 
 .siteContent {
 	.page-template-page-lp-builder &,
