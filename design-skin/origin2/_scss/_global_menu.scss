@@ -12,7 +12,7 @@
 
 $menu_padding_vertical:14px;
 $menu_padding_holizontal:14px;
-$menu_bg_color:#666;
+$menu_bg_color:#333;
 $time_transition:0.1s;
 
 .gMenu_outer {
@@ -36,13 +36,39 @@ $time_transition:0.1s;
 	}
 	/* only first */
 	& > li {
-		padding: $menu_padding_vertical 1.8em;
 		text-align: center;
 		list-style: none;
 		position: relative;
-		/* PC端末の場合、第一階層メニューのみ下階層展開ボタンを隠す */
-		.device-pc & > .acc-btn {
-			display: none;
+		// PC端末の場合
+		.device-pc & {
+			// 第一階層メニューのみ下階層展開ボタンを隠す
+			& > .acc-btn {
+				display: none;
+			}
+			// a タグに対して余白をつける
+			& > a {
+				display:block; overflow:hidden;
+				// PC端末時は下階層展開ボタンを表示しないので左右余白小さめ
+				padding: $menu_padding_vertical 1.8em;
+			}
+		}
+		// モバイル端末の場合
+		// li タグに対して余白をつける
+		// モバイル端末の場合は下階層展開ボタンを表示するので、
+		// 展開ボタンの押し間違えですぐにページ遷移してしまうため、
+		// liに余白をつけて、リンク対象は文字部分だけにする
+		.device-mobile & {
+			padding: $menu_padding_vertical 2.1em;
+		}
+		&:hover,
+	  &.current-post-ancestor,
+	  &.current-menu-item,
+	  &.current-menu-parent,
+	  &.current-menu-ancestor,
+	  &.current_page_parent,
+	  &.current_page_ancestor {
+			transition: all 0.5s ease-out;
+			background-color: rgba(0,0,0,0.05);
 		}
 		&.menu-item-has-children::after{
 			transition: all $time_transition ease-out;
@@ -72,7 +98,9 @@ $time_transition:0.1s;
 		/* only second */
 		& > ul {
 			left:0;
-			margin-top:$menu_padding_vertical;
+			.device-mobile & {
+				margin-top:$menu_padding_vertical;
+			}
 		}
 	 }
 	 /* 2nd after */
@@ -89,8 +117,14 @@ $time_transition:0.1s;
 				 padding: $menu_padding_vertical 3em $menu_padding_vertical $menu_padding_holizontal;
 				 border-top:1px solid rgba(255,255,255,0.2);
 				 color:#fff;
+				 &:hover {
+					 background-color: $color_key;
+					 transition: all 0.5s ease-out;
+				 }
 			 }
+
 		 }
+
 	 }
 	 & > li {
 		 float:left;
@@ -111,7 +145,7 @@ $time_transition:0.1s;
 		.acc-btn{
 			width:18px;
 			height:18px;
-			right:3px;
+			right:8px;
 			top:$menu_padding_vertical;
 		}
 		.sub-menu {

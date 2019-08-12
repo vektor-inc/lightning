@@ -9,8 +9,7 @@ function lightning_print_css_origin() {
 		$color_key      = esc_html( $options['color_key'] );
 		$color_key_dark = esc_html( $options['color_key_dark'] );
 		$dynamic_css    = '
-a { color:' . $color_key_dark . ' ; }
-a:hover { color:' . $color_key . ' ; }
+ul.gMenu li li a:hover,
 .page-header { background-color:' . $color_key . '; }
 h2,
 .mainSection-title { border-top-color:' . $color_key . '; }
