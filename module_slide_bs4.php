@@ -17,7 +17,7 @@ if ( apply_filters( 'lightning_default_slide_display', true ) ) {
 	}
 	?>
 	<div id="top__fullcarousel" data-interval="<?php echo $interval; ?>" class="carousel slide" data-ride="carousel">
-<div class="carousel-inner">
+
 
 	<?php if ( $top_slide_count >= 2 ) : ?>
 		<!-- Indicators -->
@@ -30,7 +30,7 @@ if ( apply_filters( 'lightning_default_slide_display', true ) ) {
 		?>
 		</ol>
 	<?php endif; ?>
-
+	<div class="carousel-inner">
 		<?php
 		// Why end point is $top_slide_count_max that not $top_slide_count, image exist 1,2,5
 		for ( $i = 1; $i <= $top_slide_count_max; ) {
@@ -51,7 +51,7 @@ if ( apply_filters( 'lightning_default_slide_display', true ) ) {
 			if ( ! empty( $lightning_theme_options[ 'top_slide_image_' . $i ] ) ) {
 				$link_target = ( isset( $lightning_theme_options[ 'top_slide_link_blank_' . $i ] ) && $lightning_theme_options[ 'top_slide_link_blank_' . $i ] ) ? ' target="_blank"' : '';
 				?>
-				<div class="item item-<?php echo $i; ?>
+				<div class="carousel-item item item-<?php echo $i; ?>
 												<?php
 												if ( $i == 1 ) {
 													echo ' active';}
@@ -178,7 +178,7 @@ if ( apply_filters( 'lightning_default_slide_display', true ) ) {
 									<?php endif; ?>
 
 					</div><!-- .container -->
-							</div><!-- [ /.slide-text-set.mini-content  ] -->
+					</div><!-- [ /.slide-text-set.mini-content  ] -->
 			  </div><!-- [ /.item ] -->
 
 				<?php } // if ( $top_slide_image_src ) { ?>
@@ -189,8 +189,14 @@ if ( apply_filters( 'lightning_default_slide_display', true ) ) {
 	</div><!-- [ /.carousel-inner ] -->
 
 	<?php if ( $top_slide_count >= 2 ) : ?>
-	<a class="left carousel-control" href="#top__fullcarousel" data-slide="prev"><i class="icon-prev fa fa-angle-left"></i></a>
-	<a class="right carousel-control" href="#top__fullcarousel" data-slide="next"><i class="icon-next fa fa-angle-right"></i></a>
+		<a class="carousel-control-prev" href="#top__fullcarousel" role="button" data-slide="prev">
+		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		<span class="sr-only">Previous</span>
+	  </a>
+	  <a class="carousel-control-next" href="#top__fullcarousel" role="button" data-slide="next">
+		<span class="carousel-control-next-icon" aria-hidden="true"></span>
+		<span class="sr-only">Next</span>
+	  </a>
 	<?php endif; ?>
 
 	</div><!-- [ /#top__fullcarousel ] -->

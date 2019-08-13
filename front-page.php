@@ -1,6 +1,12 @@
 <?php get_header(); ?>
 
-<?php get_template_part( 'module_slide' ); ?>
+<?php
+if ( $bootstrap == '3' ) {
+	get_template_part( 'module_slide' );
+} else {
+	get_template_part( 'module_slide_bs4' );
+}
+?>
 
 <div class="section siteContent">
 	<div class="container">
