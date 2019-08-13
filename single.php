@@ -110,7 +110,7 @@ else :
 						'outer' => 'card-sm',
 					),
 				);
-				VK_Post_Components::the_view( $post, $options );
+				VK_Component_Posts::the_view( $post, $options );
 				// get_template_part( 'module_loop_post_card' );
 			}
 			wp_reset_postdata();
@@ -123,7 +123,7 @@ else :
 			?>
 				<h5 class="postNextPrev_title postNextPrev_title-next"><?php _e( 'Next article', 'lightning' ); ?></h5>
 				<?php
-				$options = VK_Post_Components::the_view( $post, $options );
+				$options = VK_Components_Posts::the_view( $post, $options );
 			}
 			wp_reset_postdata();
 			?>

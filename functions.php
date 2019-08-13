@@ -178,7 +178,7 @@ require get_parent_theme_file_path( '/inc/tgm-plugin-activation/tgm-config.php' 
 /*-------------------------------------------*/
 /*	Load Font Awesome
 /*-------------------------------------------*/
-require get_parent_theme_file_path( '/inc/font-awesome-config.php' );
+require get_parent_theme_file_path( '/inc/font-awesome/font-awesome-config.php' );
 
 /*-------------------------------------------*/
 /*	Load Front PR Blocks
@@ -188,7 +188,7 @@ get_template_part( 'inc/front-page-pr' );
 /*-------------------------------------------*/
 /*	Load Front vk-mobile-nav
 /*-------------------------------------------*/
-get_template_part( 'inc/vk-mobile-nav-config' );
+get_template_part( 'inc/vk-mobile-nav/vk-mobile-nav-config' );
 
 /*-------------------------------------------*/
 /*	Load woocommerce modules
@@ -200,7 +200,7 @@ if ( class_exists( 'woocommerce' ) ) {
 /*-------------------------------------------*/
 /*	Load other modules
 /*-------------------------------------------*/
-require get_parent_theme_file_path( '/inc/components/class-vk-post-components.php' );
+require get_parent_theme_file_path( '/inc/components/class-vk-component-posts.php' );
 
 /*-------------------------------------------*/
 /*	WidgetArea initiate
