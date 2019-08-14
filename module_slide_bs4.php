@@ -93,92 +93,59 @@ if ( apply_filters( 'lightning_default_slide_display', true ) ) {
 					/*	mini_content
 					/*-------------------------------------------*/
 
-					$mini_content_args['style_class']  = 'mini-content-' . $i;
-					$mini_content_args['align']        = ( ! empty( $lightning_theme_options[ 'top_slide_text_align_' . $i ] ) ) ? $lightning_theme_options[ 'top_slide_text_align_' . $i ] : '';
-					$mini_content_args['title']        = ( ! empty( $lightning_theme_options[ 'top_slide_text_title_' . $i ] ) ) ? $lightning_theme_options[ 'top_slide_text_title_' . $i ] : '';
-					$mini_content_args['caption']      = ( ! empty( $lightning_theme_options[ 'top_slide_text_caption_' . $i ] ) ) ? $lightning_theme_options[ 'top_slide_text_caption_' . $i ] : '';
-					$mini_content_args['text_color']   = ( ! empty( $lightning_theme_options[ 'top_slide_text_color_' . $i ] ) ) ? $lightning_theme_options[ 'top_slide_text_color_' . $i ] : '#333';
-					$mini_content_args['link_url']     = ( ! empty( $lightning_theme_options[ 'top_slide_url_' . $i ] ) ) ? $lightning_theme_options[ 'top_slide_url_' . $i ] : '';
-					$mini_content_args['link_target']  = ( ! empty( $lightning_theme_options[ 'top_slide_link_blank_' . $i ] ) ) ? ' target="_blank"' : '';
-					$mini_content_args['btn_text']     = ( ! empty( $lightning_theme_options[ 'top_slide_text_btn_' . $i ] ) ) ? $lightning_theme_options[ 'top_slide_text_btn_' . $i ] : '';
-					$mini_content_args['btn_color']    = ( ! empty( $lightning_theme_options[ 'top_slide_text_color_' . $i ] ) ) ? $lightning_theme_options[ 'top_slide_text_color_' . $i ] : '#337ab7';
-					$mini_content_args['btn_bg_color'] = ( ! empty( $lightning_theme_options['color_key'] ) ) ? $lightning_theme_options['color_key'] : '#337ab7';
-					$mini_content_args['shadow_use']   = ( ! empty( $lightning_theme_options[ 'top_slide_text_shadow_use_' . $i ] ) ) ? $lightning_theme_options[ 'top_slide_text_shadow_use_' . $i ] : false;
-					$mini_content_args['shadow_color'] = ( ! empty( $lightning_theme_options[ 'top_slide_text_shadow_color_' . $i ] ) ) ? $lightning_theme_options[ 'top_slide_text_shadow_color_' . $i ] : '#fff';
+					$mini_content_args = array(
+						'outer_class'    => 'mini-content-' . $i . ' mini-content slide-text-set',
+						'title_tag'      => 'h3',
+						'title_class'    => 'slide-text-title',
+						'caption_tag'    => 'div',
+						'caption_class'  => 'slide-text-caption',
+						'btn_class'      => 'btn btn-ghost',
+						'btn_ghost'      => true,
+						'btn_color_text' => '#333',
+						'btn_color_bg'   => '#337ab7',
+					);
 
-					// lightning_mini_content( $mini_content_args );
-
-					$style = '';
-					if ( $mini_content_args['align'] ) {
-						$style = ' style="text-align:' . esc_attr( $mini_content_args['align'] ) . '"';
+					if ( ! empty( $lightning_theme_options[ 'top_slide_text_color_' . $i ] ) ) {
+						$mini_content_args['text_color'] = $lightning_theme_options[ 'top_slide_text_color_' . $i ];
 					}
-					?>
-					<div class="slide-text-set mini-content <?php echo esc_attr( $mini_content_args['style_class'] ); ?>"<?php echo $style; ?>>
-						<div class="container">
-
-					<?php
-
-							$font_style = '';
-					if ( $mini_content_args['text_color'] ) {
-						$font_style .= 'color:' . $mini_content_args['text_color'] . ';';
-					} else {
-						$font_style .= '';
+					if ( ! empty( $lightning_theme_options[ 'top_slide_text_align_' . $i ] ) ) {
+						$mini_content_args['text_align'] = $lightning_theme_options[ 'top_slide_text_align_' . $i ];
+					}
+					if ( ! empty( $lightning_theme_options[ 'top_slide_shadow_use_' . $i ] ) ) {
+						$mini_content_args['shadow_use'] = $lightning_theme_options[ 'top_slide_shadow_use_' . $i ];
+					}
+					if ( ! empty( $lightning_theme_options[ 'top_slide_text_shadow_color_' . $i ] ) ) {
+						$mini_content_args['shadow_color'] = $lightning_theme_options[ 'top_slide_text_shadow_color_' . $i ];
 					}
 
-					if ( $mini_content_args['shadow_use'] ) {
-						if ( $mini_content_args['shadow_color'] ) {
-							$font_style .= 'text-shadow:0 0 2px ' . $mini_content_args['shadow_color'];
-						} else {
-							$font_style .= 'text-shadow:0 0 2px #000';
-						}
+					if ( ! empty( $lightning_theme_options[ 'top_slide_text_title_' . $i ] ) ) {
+						$mini_content_args['title_text'] = $lightning_theme_options[ 'top_slide_text_title_' . $i ];
+					}
+					if ( ! empty( $lightning_theme_options[ 'top_slide_text_caption_' . $i ] ) ) {
+						$mini_content_args['caption_text'] = $lightning_theme_options[ 'top_slide_text_caption_' . $i ];
+					}
+					if ( ! empty( $lightning_theme_options[ 'top_slide_text_btn_' . $i ] ) ) {
+						$mini_content_args['btn_text'] = $lightning_theme_options[ 'top_slide_text_btn_' . $i ];
+					}
+					if ( ! empty( $lightning_theme_options[ 'top_slide_url_' . $i ] ) ) {
+						$mini_content_args['btn_url'] = $lightning_theme_options[ 'top_slide_url_' . $i ];
+					}
+					if ( ! empty( $lightning_theme_options[ 'top_slide_link_blank_' . $i ] ) ) {
+						$mini_content_args['btn_target'] = '_blank';
+					}
+					if ( ! empty( $lightning_theme_options[ 'top_slide_text_color_' . $i ] ) ) {
+						$mini_content_args['btn_color_text'] = $lightning_theme_options[ 'top_slide_text_color_' . $i ];
+					}
+					if ( ! empty( $lightning_theme_options['color_key'] ) ) {
+						$mini_content_args['btn_color_bg'] = $lightning_theme_options['color_key'];
 					}
 
-							$font_style = ( $font_style ) ? ' style="' . esc_attr( $font_style ) . '"' : '';
+?>
+					<div class="container">
 
-							// If Text Title exist
-					if ( $mini_content_args['title'] ) :
-						?>
-					  <h3 class="slide-text-title"<?php echo $font_style; ?>>
-										<?php echo nl2br( wp_kses_post( $mini_content_args['title'] ) ); ?>
-								  </h3>
-					<?php endif; ?>
-
-					<?php
-					// If Text caption exist
-					if ( $mini_content_args['caption'] ) :
-					?>
-									  <div class="slide-text-caption"<?php echo $font_style; ?>>
-											<?php echo nl2br( esc_textarea( $mini_content_args['caption'] ) ); ?>
-									  </div>
-					<?php endif; ?>
-
-					<?php
-					// If Button exist
-					if ( $mini_content_args['link_url'] && $mini_content_args['btn_text'] ) :
-									// Shadow
-									$box_shadow  = '';
-									$text_shadow = '';
-						if ( $mini_content_args['shadow_use'] ) {
-							if ( $mini_content_args['shadow_color'] ) {
-								$box_shadow  = 'box-shadow:0 0 2px ' . $mini_content_args['shadow_color'] . ';';
-								$text_shadow = 'text-shadow:0 0 2px ' . $mini_content_args['shadow_color'] . ';';
-							} else {
-								$box_shadow  = 'box-shadow:0 0 2px #000;';
-								$text_shadow = 'text-shadow:0 0 2px #000;';
-							}
-						}
-
-									$style_class = esc_attr( $mini_content_args['style_class'] );
-									echo '<style type="text/css">';
-									echo '.' . $style_class . ' .btn-ghost { border-color:' . $mini_content_args['text_color'] . ';color:' . $mini_content_args['text_color'] . ';' . $box_shadow . $text_shadow . ' }';
-									echo '.' . $style_class . ' .btn-ghost:hover { border-color:' . $mini_content_args['btn_bg_color'] . '; background-color:' . $mini_content_args['btn_bg_color'] . '; color:#fff; text-shadow:none; }';
-									echo '</style>';
-									?>
-									<a class="btn btn-ghost" href="<?php echo esc_url( $mini_content_args['link_url'] ); ?>"<?php echo $mini_content_args['link_target']; ?>><?php echo wp_kses_post( $mini_content_args['btn_text'] ); ?></a>
-									<?php endif; ?>
+					<?php VK_Components_Mini_Contents::the_view( $mini_content_args ); ?>
 
 					</div><!-- .container -->
-					</div><!-- [ /.slide-text-set.mini-content  ] -->
 			  </div><!-- [ /.item ] -->
 
 				<?php } // if ( $top_slide_image_src ) { ?>
