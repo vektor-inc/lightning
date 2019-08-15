@@ -298,7 +298,7 @@ function lightning_top_slide_count( $lightning_theme_options ) {
 /*	link url exist but btn txt exixt? or not
 /*-------------------------------------------*/
 function lightning_is_slide_outer_link( $lightning_theme_options, $i ) {
-	if ( ! empty( $lightning_theme_options[ 'top_slide_url_' . $i ] ) && empty( $lightning_theme_options[ 'top_slide_btn_text_' . $i ] ) ) {
+	if ( ! empty( $lightning_theme_options[ 'top_slide_url_' . $i ] ) && empty( $lightning_theme_options[ 'top_slide_text_btn_' . $i ] ) ) {
 		return true;
 	} else {
 		return false;
