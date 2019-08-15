@@ -6,26 +6,25 @@ if ( ! class_exists( 'VK_Components_Mini_Contents' ) ) {
 
 		static public function get_options( $options ) {
 			$default = array(
-				'outer_id'         => '',
-				'outer_class'      => '',
-				'text_color'       => '#333',
-				'text_align'       => false,
-				'shadow_use'       => false,
-				'shadow_color'     => '',
-				'title_text'       => '',
-				'title_tag'        => 'h3',
-				'title_class'      => '',
-				'caption_text'     => '',
-				'caption_tag'      => 'div',
-				'caption_class'    => '',
-				'btn_text'         => '',
-				'btn_url'          => '',
-				'btn_class'        => 'btn btn-primary',
-				'btn_target'       => '',
-				'btn_ghost'        => true,
-				'btn_color_text'   => '#000',
-				'btn_color_bg'     => '#c00',
-				'btn_color_shadow' => '#fff',
+				'outer_id'       => '',
+				'outer_class'    => '',
+				'text_color'     => '#333',
+				'text_align'     => false,
+				'shadow_use'     => false,
+				'shadow_color'   => '',
+				'title_text'     => '',
+				'title_tag'      => 'h3',
+				'title_class'    => '',
+				'caption_text'   => '',
+				'caption_tag'    => 'div',
+				'caption_class'  => '',
+				'btn_text'       => '',
+				'btn_url'        => '',
+				'btn_class'      => 'btn btn-primary',
+				'btn_target'     => '',
+				'btn_ghost'      => true,
+				'btn_color_text' => '#000',
+				'btn_color_bg'   => '#c00',
 			);
 			$options = wp_parse_args( $options, $default );
 			return $options;
@@ -48,6 +47,7 @@ if ( ! class_exists( 'VK_Components_Mini_Contents' ) ) {
 				$font_style .= 'color:' . $options['text_color'] . ';';
 			}
 			if ( $options['shadow_use'] ) {
+
 				if ( $options['shadow_color'] ) {
 					$font_style .= 'text-shadow:0 0 2px ' . $options['shadow_color'];
 				} else {

@@ -111,9 +111,10 @@ if ( apply_filters( 'lightning_default_slide_display', true ) ) {
 					if ( ! empty( $lightning_theme_options[ 'top_slide_text_align_' . $i ] ) ) {
 						$mini_content_args['text_align'] = $lightning_theme_options[ 'top_slide_text_align_' . $i ];
 					}
-					if ( ! empty( $lightning_theme_options[ 'top_slide_shadow_use_' . $i ] ) ) {
-						$mini_content_args['shadow_use'] = $lightning_theme_options[ 'top_slide_shadow_use_' . $i ];
+					if ( ! empty( $lightning_theme_options[ 'top_slide_text_shadow_use_' . $i ] ) ) {
+						$mini_content_args['shadow_use'] = $lightning_theme_options[ 'top_slide_text_shadow_use_' . $i ];
 					}
+
 					if ( ! empty( $lightning_theme_options[ 'top_slide_text_shadow_color_' . $i ] ) ) {
 						$mini_content_args['shadow_color'] = $lightning_theme_options[ 'top_slide_text_shadow_color_' . $i ];
 					}

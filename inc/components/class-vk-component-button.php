@@ -6,16 +6,17 @@ if ( ! class_exists( 'VK_Components_Button' ) ) {
 
 		static public function get_options( $options ) {
 			$default = array(
-				'outer_id'         => '',
-				'outer_class'      => '',
-				'btn_text'         => '',
-				'btn_url'          => '',
-				'btn_class'        => 'btn btn-primary',
-				'btn_target'       => '',
-				'btn_ghost'        => false,
-				'btn_color_text'   => '',
-				'btn_color_bg'     => '',
-				'btn_color_shadow' => '',
+				'outer_id'       => '',
+				'outer_class'    => '',
+				'btn_text'       => '',
+				'btn_url'        => '',
+				'btn_class'      => 'btn btn-primary',
+				'btn_target'     => '',
+				'btn_ghost'      => false,
+				'btn_color_text' => '',
+				'btn_color_bg'   => '',
+				'shadow_use'     => false,
+				'shadow_color'   => '',
 			);
 			$options = wp_parse_args( $options, $default );
 			return $options;
@@ -114,8 +115,8 @@ if ( ! class_exists( 'VK_Components_Button' ) ) {
 				if ( $options['btn_color_text'] ) {
 					$style_text = 'color:' . $options['btn_color_text'] . ';';
 				}
-				if ( $options['btn_color_shadow'] ) {
-					$style_text .= 'text-shadow:0 0 2px ' . $options['btn_color_shadow'] . ';';
+				if ( $options['shadow_use'] && $options['shadow_color'] ) {
+					$style_text .= 'text-shadow:0 0 2px ' . $options['shadow_color'] . ';';
 				}
 			}
 
@@ -226,8 +227,8 @@ if ( ! class_exists( 'VK_Components_Button' ) ) {
 			$options          = self::get_options( $options );
 			$style_box_shadow = '';
 
-			if ( $options['btn_ghost'] && ( $options['btn_color_shadow'] ) ) {
-				$style_box_shadow = 'box-shadow:0 0 2px ' . $options['btn_color_shadow'] . ';';
+			if ( $options['btn_ghost'] && ( $options['shadow_color'] ) ) {
+				$style_box_shadow = 'box-shadow:0 0 2px ' . $options['shadow_color'] . ';';
 			}
 			return $style_box_shadow;
 		}

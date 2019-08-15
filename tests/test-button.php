@@ -31,11 +31,12 @@ class ButtonTest extends WP_UnitTestCase {
 				'correct'        => 'color:#333;',
 			),
 			array(
-				'btn_ghost'        => true,
-				'btn_color_text'   => '#333',
-				'btn_color_bg'     => '#efefef',
-				'btn_color_shadow' => '#fff',
-				'correct'          => 'color:#000;text-shadow:0 0 2px #fff;',
+				'btn_ghost'      => true,
+				'btn_color_text' => '#333',
+				'btn_color_bg'   => '#efefef',
+				'shadow_use'     => true,
+				'shadow_color'   => '#fff',
+				'correct'        => 'color:#333;text-shadow:0 0 2px #fff;',
 			),
 			array(
 				'btn_ghost'      => false,
@@ -43,6 +44,7 @@ class ButtonTest extends WP_UnitTestCase {
 				'btn_color_bg'   => '#f00',
 				'correct'        => 'color:#fff;',
 			),
+			// 塗りボタンだが背景が明るい時
 			array(
 				'btn_ghost'      => false,
 				'btn_color_text' => '#333',
@@ -66,8 +68,14 @@ class ButtonTest extends WP_UnitTestCase {
 	function test_get_style_text_hover() {
 		$test_array = array(
 			array(
-				'btn_ghost' => true,
-				'correct'   => 'color:#fff;',
+				'btn_ghost'    => true,
+				'btn_color_bg' => '#f00',
+				'correct'      => 'color:#fff;',
+			),
+			array(
+				'btn_ghost'    => true,
+				'btn_color_bg' => '',
+				'correct'      => 'color:#000;',
 			),
 			array(
 				'btn_ghost'    => false,
