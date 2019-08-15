@@ -10,7 +10,7 @@ if ( ! class_exists( 'VK_Helpers' ) ) {
 		 * @param  integer $change_rate 1 が 100%
 		 * @return [type]               string （#あり16進数）
 		 */
-		public static function auto_color_mod( $color, $change_rate = 1 ) {
+		public static function color_auto_modifi( $color, $change_rate = 1 ) {
 
 			$color = preg_replace( '/#/', '', $color );
 			// 16進数を10進数に変換
@@ -20,9 +20,9 @@ if ( ! class_exists( 'VK_Helpers' ) ) {
 
 			// 10進数の状態で変更レートを掛けて dechex で 16進数に戻す
 			$color_array      = array();
-			$color_array['r'] = dechex( self::auto_under_ff( $r * $change_rate ) );
-			$color_array['g'] = dechex( self::auto_under_ff( $g * $change_rate ) );
-			$color_array['b'] = dechex( self::auto_under_ff( $b * $change_rate ) );
+			$color_array['r'] = dechex( self::color_adjust_under_ff( $r * $change_rate ) );
+			$color_array['g'] = dechex( self::color_adjust_under_ff( $g * $change_rate ) );
+			$color_array['b'] = dechex( self::color_adjust_under_ff( $b * $change_rate ) );
 
 			$new_color = '#';
 
@@ -43,7 +43,7 @@ if ( ! class_exists( 'VK_Helpers' ) ) {
 		 * @param  [type] $num RGBの10進数の数値
 		 * @return [type]      [description]
 		 */
-		public static function auto_under_ff( $num ) {
+		public static function color_adjust_under_ff( $num ) {
 			if ( $num > 256 ) {
 				$num = 255;
 			}
@@ -56,7 +56,7 @@ if ( ! class_exists( 'VK_Helpers' ) ) {
 		 * @param  boolean $return_detail If false that return 'mode' only
 		 * @return string                 If $return_detail == false that return light ot dark
 		 */
-		public static function color_mode_check( $input = '#ffffff', $return_detail = false ) {
+		public static function color_mode_check( $input = '#ffffff' ) {
 			$color['input'] = $input;
 			// delete #
 			$color['input'] = preg_replace( '/#/', '', $color['input'] );
@@ -84,19 +84,10 @@ if ( ! class_exists( 'VK_Helpers' ) ) {
 			$color_blue          = hexdec( $color_blue );
 			$color['number_sum'] = $color_red + $color_green + $color_blue;
 
-			$color_change_point = 765 / 2;
+			$color['brightness'] = 0.00130718954 * $color['number_sum'];
 
-			if ( $color['number_sum'] > $color_change_point ) {
-				$color['mode'] = 'light';
-			} else {
-				$color['mode'] = 'dark';
-			}
+			return $color;
 
-			if ( $return_detail ) {
-				return $color;
-			} else {
-				return $color['mode'];
-			}
 		}
 
 	}

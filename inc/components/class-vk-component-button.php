@@ -105,9 +105,9 @@ if ( ! class_exists( 'VK_Components_Button' ) ) {
 				// ボタンの初期状態の文字色が白なので指定する必要がない
 				$style_text = 'color:#fff;';
 
-				$mode = VK_Helpers::color_mode_check( $options['btn_color_bg'] );
-				if ( $mode == 'light' ) {
-					$style_text = 'color:#000;';
+				$color = VK_Helpers::color_mode_check( $options['btn_color_bg'] );
+				if ( $color['brightness'] > 0.8 ) {
+					$style_text_hover = 'color:#000;';
 				}
 			} elseif ( $options['btn_ghost'] ) {
 				// ゴーストボタンの時 -------------------------------*/
@@ -134,8 +134,8 @@ if ( ! class_exists( 'VK_Components_Button' ) ) {
 
 			// ゴーストだろうが塗りだろうが、ホバー時は背景塗りにするのでゴーストかどうかの条件分岐は関係ない
 
-			$mode = VK_Helpers::color_mode_check( $options['btn_color_bg'] );
-			if ( $mode == 'light' ) {
+			$color = VK_Helpers::color_mode_check( $options['btn_color_bg'] );
+			if ( $color['brightness'] > 0.8 ) {
 				$style_text_hover = 'color:#000;';
 			} else {
 				$style_text_hover = 'color:#fff;';
@@ -180,7 +180,7 @@ if ( ! class_exists( 'VK_Components_Button' ) ) {
 
 			} elseif ( ! $options['btn_ghost'] ) {
 
-				$style_bg_hover = 'background-color:' . VK_Helpers::auto_color_mod( $options['btn_color_bg'], 1.2 ) . ';';
+				$style_bg_hover = 'background-color:' . VK_Helpers::color_auto_modifi( $options['btn_color_bg'], 1.2 ) . ';';
 			}
 			return $style_bg_hover;
 		}
@@ -213,7 +213,7 @@ if ( ! class_exists( 'VK_Components_Button' ) ) {
 			if ( $options['btn_ghost'] ) {
 				$style_border_hover = 'border-color:' . $options['btn_color_bg'] . ';';
 			} else {
-				$style_border_hover = 'border-color:' . VK_Helpers::auto_color_mod( $options['btn_color_bg'], 1.2 ) . ';';
+				$style_border_hover = 'border-color:' . VK_Helpers::color_auto_modifi( $options['btn_color_bg'], 1.2 ) . ';';
 			}
 			return $style_border_hover;
 		}
@@ -227,7 +227,7 @@ if ( ! class_exists( 'VK_Components_Button' ) ) {
 			$options          = self::get_options( $options );
 			$style_box_shadow = '';
 
-			if ( $options['btn_ghost'] && ( $options['shadow_color'] ) ) {
+			if ( $options['btn_ghost'] && ( $options['shadow_color'] ) && ( $options['shadow_use'] ) ) {
 				$style_box_shadow = 'box-shadow:0 0 2px ' . $options['shadow_color'] . ';';
 			}
 			return $style_box_shadow;
