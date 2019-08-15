@@ -14,10 +14,17 @@ $time_transition:0.1s;
 
 .gMenu_outer {
 	// position: relative; をここで指定してしまうと、スクロール時にすっと下がるモーションが付けられない
-	// position: relative;
 	width: 100%;
+	min-height:4em; /* キャプション無し用 */
+	display: table; /* キャプション無しの時に上下中央になるように */
+	nav {
+		display: table-cell;
+		vertical-align: middle;
+	}
+
 }
 .gMenu {
+
 	margin :0 auto;
 	padding:0;
 	list-style: none;
