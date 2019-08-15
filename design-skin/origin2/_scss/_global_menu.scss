@@ -222,18 +222,22 @@ PCでのフローバルメニュー 表示・非表示処理
 			z-index: 1000;
 			left:0;
 			box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-			nav {
-				margin-left:auto;
-				margin-right: auto;
-			}
 		}
 		.gMenu {
 			float:none;
 			right:unset;
+			margin-left:auto;
+			margin-right: auto;
+			padding-left:15px;
+			padding-right:15px;
 			display: flex;
 			& > li {
 				width:50%;
 				white-space: nowrap;
+				border-right: $border_primary;
+				&:first-child{
+					border-left: $border_primary;
+				}
 				// PC端末の場合
 				.device-pc & {
 					// 第一階層メニューのみ下階層展開ボタンを隠す
@@ -251,10 +255,12 @@ PCでのフローバルメニュー 表示・非表示処理
 		.navbar-header { margin-bottom:54px; }
 		&.admin-bar .gMenu_outer { top:32px;}
 		@media (min-width: $lg-min){
-			.gMenu_outer nav { width:$lg-container; }
+			.gMenu_outer .gMenu {
+				width:$lg-container;
+			 }
 		}
 		@media (min-width: $xl-min){
-			.gMenu_outer nav { width:$xl-container; }
+			.gMenu_outer .gMenu { width:$xl-container; }
 		}
 	}
 } // @media (min-width: 768px){
