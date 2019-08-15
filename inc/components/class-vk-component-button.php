@@ -107,7 +107,7 @@ if ( ! class_exists( 'VK_Components_Button' ) ) {
 
 				$color = VK_Helpers::color_mode_check( $options['btn_color_bg'] );
 				if ( $color['brightness'] > 0.8 ) {
-					$style_text_hover = 'color:#000;';
+					$style_text = 'color:#000;';
 				}
 			} elseif ( $options['btn_ghost'] ) {
 				// ゴーストボタンの時 -------------------------------*/
