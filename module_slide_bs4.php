@@ -15,8 +15,12 @@ if ( apply_filters( 'lightning_default_slide_display', true ) ) {
 	} else {
 		$interval = esc_attr( $lightning_theme_options['top_slide_time'] );
 	}
+	$effect = '';
+	if ( isset( $lightning_theme_options['top_slide_effect'] ) && $lightning_theme_options['top_slide_effect'] == 'fade' ) {
+		$effect = ' carousel-fade';
+	}
 	?>
-	<div id="top__fullcarousel" data-interval="<?php echo $interval; ?>" class="carousel slide" data-ride="carousel">
+	<div id="top__fullcarousel" data-interval="<?php echo $interval; ?>" class="carousel slide<?php echo $effect; ?>" data-ride="carousel">
 
 
 	<?php if ( $top_slide_count >= 2 ) : ?>
