@@ -87,14 +87,15 @@ if ( apply_filters( 'lightning_default_slide_display', true ) ) {
 						</a>
 					<?php endif; ?>
 
-					<?php
+					<div class="slide-text-set mini-content">
 
+					<?php
 					/*-------------------------------------------*/
 					/*	mini_content
 					/*-------------------------------------------*/
 
 					$mini_content_args = array(
-						'outer_class'    => 'mini-content-' . $i . ' mini-content slide-text-set',
+						'outer_class'    => 'mini-content-container-' . $i . ' container',
 						'title_tag'      => 'h3',
 						'title_class'    => 'slide-text-title',
 						'caption_tag'    => 'div',
@@ -142,11 +143,10 @@ if ( apply_filters( 'lightning_default_slide_display', true ) ) {
 					}
 
 ?>
-					<div class="container">
 
 					<?php VK_Components_Mini_Contents::the_view( $mini_content_args ); ?>
 
-					</div><!-- .container -->
+					</div><!-- .mini-content -->
 			  </div><!-- [ /.item ] -->
 
 				<?php } // if ( $top_slide_image_src ) { ?>
