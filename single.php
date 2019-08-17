@@ -123,7 +123,7 @@ else :
 			?>
 				<h5 class="postNextPrev_title postNextPrev_title-next"><?php _e( 'Next article', 'lightning' ); ?></h5>
 				<?php
-				$options = VK_Components_Posts::the_view( $post, $options );
+				$options = VK_Component_Posts::the_view( $post, $options );
 			}
 			wp_reset_postdata();
 			?>

@@ -1,8 +1,8 @@
 <?php
 
-if ( ! class_exists( 'VK_Components_Posts' ) ) {
+if ( ! class_exists( 'VK_Component_Posts' ) ) {
 
-	class VK_Components_Posts {
+	class VK_Component_Posts {
 
 		static public function get_loop_post_view_options( $options ) {
 			$default = array(

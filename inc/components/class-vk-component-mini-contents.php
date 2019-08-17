@@ -1,8 +1,8 @@
 <?php
 
-if ( ! class_exists( 'VK_Components_Mini_Contents' ) ) {
+if ( ! class_exists( 'VK_Component_Mini_Contents' ) ) {
 
-	class VK_Components_Mini_Contents {
+	class VK_Component_Mini_Contents {
 
 		static public function get_options( $options ) {
 			$default = array(

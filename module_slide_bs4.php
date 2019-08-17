@@ -148,7 +148,7 @@ if ( apply_filters( 'lightning_default_slide_display', true ) ) {
 
 ?>
 
-					<?php VK_Components_Mini_Contents::the_view( $mini_content_args ); ?>
+					<?php VK_Component_Mini_Contents::the_view( $mini_content_args ); ?>
 
 					</div><!-- .mini-content -->
 			  </div><!-- [ /.item ] -->
