@@ -98,7 +98,7 @@ if ( $bootstrap == '3' ) {
 
 			<?php if ( ! lightning_is_frontpage_onecolumn() ) : ?>
 
-				<div class="col-md-3 col-md-offset-1 subSection sideSection">
+				<div class="<?php lightning_the_class_name( 'sideSection' ); ?>">
 					<?php get_sidebar(); ?>
 				</div><!-- [ /.subSection ] -->
 
