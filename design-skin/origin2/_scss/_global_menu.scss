@@ -91,6 +91,7 @@ $time_transition:0.1s;
 		.device-pc &:hover > .sub-menu{
 			opacity: 1;
 			max-height:1000px;
+			z-index: 1100;
 		}
 		.device-pc &.menu-item-has-children:hover::after,
 		&.acc-parent-open::after{
@@ -137,6 +138,21 @@ $time_transition:0.1s;
 			 position: absolute;
 			 z-index: 1000;
 			 transition: all 0.3s ease-in;
+			 list-style-type: none;
+			 left:50%;
+			 overflow: unset;
+			 li{
+			 	left:-50%;
+			 	text-align: center;
+		 		&:first-child a{
+					border-top: none;
+		 		}
+			 	a{
+			 		padding: 14px 3em;
+
+			 	}
+			 }
+
 		 }
 	 }
 }
