@@ -4,7 +4,7 @@ class Lightning_Design_Manager {
 	static function init() {
 
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'load_skin_css_and_js' ) );
-		add_action( 'after_setup_theme', array( __CLASS__, 'load_skin_editor_css' ) );
+		add_action( 'login_enqueue_scripts', array( __CLASS__, 'load_skin_editor_css' ) );
 		add_action( 'admin_enqueue_scripts', array( __CLASS__, 'load_skin_editor_css' ) );
 		add_action( 'after_setup_theme', array( __CLASS__, 'load_skin_php' ) );
 		add_action( 'after_setup_theme', array( __CLASS__, 'load_skin_callback' ) );
