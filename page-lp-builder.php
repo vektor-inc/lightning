@@ -5,6 +5,7 @@
 get_header(); ?>
 
 <div class="section siteContent">
+<?php do_action( 'lightning_siteContent_prepend' ); ?>
 
 <?php
 if ( have_posts() ) {

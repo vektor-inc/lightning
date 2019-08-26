@@ -5,7 +5,9 @@
 get_header(); ?>
 
 <div class="section siteContent">
+<?php do_action( 'lightning_siteContent_prepend' ); ?>
 <div class="container">
+<?php do_action( 'lightning_siteContent_container_prepend' ); ?>
 <div class="row">
 
 <div class="col-md-12 mainSection" id="main" role="main">

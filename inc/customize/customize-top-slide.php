@@ -14,7 +14,7 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 	);
 
 	$skin_info = Lightning_Design_Manager::get_current_skin();
-	if ( $skin_info['bootstrap'] == 'bs4' ) {
+	if ( isset( $skin_info['bootstrap'] ) && $skin_info['bootstrap'] == 'bs4' ) {
 		// Slide Effect
 		$wp_customize->add_setting(
 			'lightning_theme_options[top_slide_effect]', array(

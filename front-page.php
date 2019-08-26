@@ -9,8 +9,10 @@ if ( $bootstrap == '3' ) {
 ?>
 
 <div class="section siteContent">
-	<div class="container">
-		<div class="row">
+<?php do_action( 'lightning_siteContent_prepend' ); ?>
+<div class="container">
+<?php do_action( 'lightning_siteContent_container_prepend' ); ?>
+<div class="row">
 
 			<?php
 			if ( lightning_is_frontpage_onecolumn() ) {
@@ -98,13 +100,13 @@ if ( $bootstrap == '3' ) {
 
 			<?php if ( ! lightning_is_frontpage_onecolumn() ) : ?>
 
-				<div class="col-md-3 col-md-offset-1 subSection sideSection">
+				<div class="<?php lightning_the_class_name( 'sideSection' ); ?>">
 					<?php get_sidebar(); ?>
 				</div><!-- [ /.subSection ] -->
 
 			<?php endif; ?>
 
-		</div><!-- [ /.row ] -->
-	</div><!-- [ /.container ] -->
+</div><!-- [ /.row ] -->
+</div><!-- [ /.container ] -->
 </div><!-- [ /.siteContent ] -->
 <?php get_footer(); ?>
