@@ -53,6 +53,59 @@ function lightning_get_the_class_name( $position = '' ) {
 	}
 	return $return;
 }
+
+/*-------------------------------------------*/
+/*	sidebar_position 20190829
+/*-------------------------------------------*/
+// function lightning_get_the_class_name( $position = '' ) {
+// 	$options   = get_option( 'lightning_theme_options' );
+// 	$skin_info = Lightning_Design_Manager::get_current_skin();
+// 	if ( empty( $skin_info['bootstrap'] ) ) {
+// 		if ( isset( $options['sidebar_position'] ) && $options['sidebar_position'] === 'left' ) {
+// 			$class_names = array(
+// 				'header'          => 'navbar siteHeader',
+// 				'nav_menu_header' => 'nav gMenu',
+// 				'mainSection'     => 'col-md-8 col-md-push-3 col-md-offset-1 mainSection',
+// 				'sideSection'     => 'col-md-3 col-md-pull-9 subSection sideSection',
+// 				// 'footerMenu_nav'  => 'nav',
+// 			);
+// 		}
+// 		else {
+// 			$class_names = array(
+// 				'header'          => 'navbar siteHeader',
+// 				'nav_menu_header' => 'nav gMenu',
+// 				'mainSection'     => 'col-md-8 mainSection',
+// 				'sideSection'     => 'col-md-3 col-md-offset-1 subSection sideSection',
+// 				// 'footerMenu_nav'  => 'nav',
+// 			);
+// 		}
+// 	} elseif ( $skin_info['bootstrap'] === 'bs4' ) {
+// 		if ( isset( $options['sidebar_position'] ) && $options['sidebar_position'] === 'left' ) {
+// 			$class_names = array(
+// 				'header'          => 'siteHeader',
+// 				'nav_menu_header' => 'gMenu vk-menu-acc',
+// 				'mainSection'     => 'col mainSection ',
+// 				'sideSection'     => 'col subSection sideSection',
+// 				// 'footerMenu_nav'  => 'nav footerMenu_nav',
+// 			);
+// 		}
+// 		else {
+// 			$class_names = array(
+// 				'header'          => 'siteHeader',
+// 				'nav_menu_header' => 'gMenu vk-menu-acc',
+// 				'mainSection'     => 'col mainSection ',
+// 				'sideSection'     => 'col subSection sideSection',
+// 				// 'footerMenu_nav'  => 'nav footerMenu_nav',
+// 			);
+// 		}
+// 	}
+// 	if ( empty( $class_names[ $position ] ) ) {
+// 		$return = '';
+// 	} else {
+// 		$return = esc_attr( $class_names[ $position ] );
+// 	}
+// 	return $return;
+// }
 function lightning_the_class_name( $position = '' ) {
 	echo lightning_get_the_class_name( $position );
 }
