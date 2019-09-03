@@ -38,11 +38,11 @@ $time_transition:0.1s;
 	li {
 		line-height: 1.2;
 		font-size:14px;
-		.device-pc &:hover > .sub-menu{
-			opacity: 1;
-			max-height:1000px;
-			z-index: 1100;
-		}
+		// .device-pc &:hover > .sub-menu{
+		// 	opacity: 1;
+		// 	max-height:1000px;
+		// 	z-index: 1100;
+		// }
 	}
 	/* only first */
 	& > li {
@@ -51,8 +51,8 @@ $time_transition:0.1s;
 		position: relative;
 		// PC端末の場合
 		.device-pc & {
-			// 下階層展開ボタンを隠す
-			.acc-btn {
+			// 第一階層メニューのみ下階層展開ボタンを隠す
+			& > .acc-btn {
 				display: none;
 			}
 			// a タグに対して余白をつける
@@ -93,7 +93,11 @@ $time_transition:0.1s;
 			z-index: 1000;
 			opacity: 0;
 		}
-
+		.device-pc &:hover > .sub-menu{
+			opacity: 1;
+			max-height:1000px;
+			z-index: 1100;
+		}
 		.device-pc &.menu-item-has-children:hover::after,
 		&.acc-parent-open::after{
 			opacity: 1;
@@ -129,9 +133,7 @@ $time_transition:0.1s;
 					 transition: all 0.5s ease-out;
 				 }
 			 }
-
 		 }
-
 	 }
 	 & > li {
 		 float:left;
@@ -142,30 +144,23 @@ $time_transition:0.1s;
 			 list-style-type: none;
 			 left:50%;
 			 overflow: unset;
+			 & > li {
+				 left:-50%;
+			 }
 			 li{
-			 	left:-50%;
 			 	text-align: center;
 			 	width: 240px;
 			 	white-space: normal;
-    			word-break: keep-all;
-			 	a{
+    		word-break: keep-all;
+			 	a {
 			 		padding: 14px 3em;
 
 			 	}
-			 }
-		ul.sub-menu{//孫メニュー
-			    left: 240px;
-			    margin-bottom: 0;
-			    position: absolute;
-			    top: .8em;
-			li{
-				left: 0;
-			}
-
-		 }
-		}//ul.sub-menu
-	 }
+			} //ul.sub-menu
+		}
+	}
 }
+
 .gMenu_description {
 	display:block; overflow:hidden;
 	font-size:10px;
