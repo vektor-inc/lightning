@@ -1,6 +1,10 @@
 @charset "utf-8";
 @import "variables";
 
+.vk-menu-acc ul.acc-child-close {
+	opacity: 0.5;
+}
+
 .siteHeadContainer::after {
 	content:"";
 	display: block;
@@ -24,7 +28,6 @@ $time_transition:0.1s;
 
 }
 .gMenu {
-
 	margin :0 auto;
 	padding:0;
 	list-style: none;
@@ -36,16 +39,12 @@ $time_transition:0.1s;
 		}
 	}
 	li {
-		line-height: 1.2;
+		line-height: 1.3;
 		font-size:14px;
-		// .device-pc &:hover > .sub-menu{
-		// 	opacity: 1;
-		// 	max-height:1000px;
-		// 	z-index: 1100;
-		// }
 	}
 	/* only first */
 	& > li {
+		float:left;
 		text-align: center;
 		list-style: none;
 		position: relative;
@@ -55,7 +54,7 @@ $time_transition:0.1s;
 			& > .acc-btn {
 				display: none;
 			}
-			// a タグに対して余白をつける
+			// a タグに対して展開メニューボタン分の余白をつける
 			& > a {
 				display:block; overflow:hidden;
 				// PC端末時は下階層展開ボタンを表示しないので左右余白小さめ
@@ -106,27 +105,26 @@ $time_transition:0.1s;
 		&.acc-parent-close::after{
 			opacity: 0;
 		}
-		/* only second */
-		& > ul {
-			left:0;
-			.device-mobile & {
-				margin-top:$menu_padding_vertical;
-			}
-		}
+		/* ./only first */
+
 	 }
 	 /* 2nd after */
 	 ul {
-		 min-width: 9em;
 		 padding: 0;
 		 margin:0;
+		 list-style-type: none;
+		 transition: all 0.3s ease-in;
 		 li {
-			 white-space: nowrap;
-			 font-size:14px;
-			 text-align: left;
-			 background-color: $menu_bg_color;
+				white-space: nowrap;
+				font-size:14px;
+				background-color: $menu_bg_color;
+				text-align: center;
+				width: 240px;
+				white-space: normal;
+				word-break: keep-all;
 			 & + li a{border-top:1px solid rgba(255,255,255,0.2);}
 			 a {
-				 padding: $menu_padding_vertical 3em $menu_padding_vertical $menu_padding_holizontal;
+				 padding: $menu_padding_vertical 3em;
 				 color:#fff;
 				 &:hover {
 					 background-color: $color_key;
@@ -135,31 +133,35 @@ $time_transition:0.1s;
 			 }
 		 }
 	 }
-	 & > li {
-		 float:left;
-		 & > ul.sub-menu {
-			 position: absolute;
-			 z-index: 1000;
-			 transition: all 0.3s ease-in;
-			 list-style-type: none;
-			 left:50%;
-			 overflow: unset;
-			 & > li {
-				 left:-50%;
-			 }
-			 li{
-			 	text-align: center;
-			 	width: 240px;
-			 	white-space: normal;
-    		word-break: keep-all;
-			 	a {
-			 		padding: 14px 3em;
-
-			 	}
-			} //ul.sub-menu
-		}
-	}
+	 /* only second */
+	 & > li > ul.sub-menu {
+		 position: absolute;
+		 z-index: 1000;
+		 left:50%;
+		 overflow: unset;
+		 // PCの場合はリンク範囲が広いが、モバイルでは文字部分だけにするので、
+		 // 第一階層文字下の余白分をmarginで確保しなくてはならない
+		 .device-mobile & {
+				margin-top:$menu_padding_vertical;
+			}
+		 & > li {
+			 margin-left:-50%;
+			 // border:1px solid #ff0000;
+		 }
+	} // / only second
 }
+.gMenu > li {
+	li {
+		max-height:0;
+		overflow: hidden;
+		border:1px solid #0000ff;
+	}
+	&:hover li {
+		max-height:1000px;
+	}
+
+}
+
 
 .gMenu_description {
 	display:block; overflow:hidden;
@@ -169,18 +171,20 @@ $time_transition:0.1s;
 .gMenu {
 	&.vk-menu-acc {
 		.acc-btn{
-			width:18px;
-			height:18px;
-			right:8px;
-			top:$menu_padding_vertical;
+			width:20px;
+			height:20px;
+			right:6px;
+			top:12px;
 		}
 		.sub-menu {
 			.acc-btn{
-				top:$menu_padding_vertical;
 				right:$menu_padding_holizontal;
 				border-color:#fff;
 				color:#fff;
 				background-image: url(../images/vk-menu-acc-icon-open-white.svg);
+				&.acc-btn-close {
+					background-image: url(../images/vk-menu-close-white.svg);
+				}
 			}
 		}
 	}
