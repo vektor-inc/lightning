@@ -1,10 +1,6 @@
 @charset "utf-8";
 @import "variables";
 
-.vk-menu-acc ul.acc-child-close {
-	opacity: 0.5;
-}
-
 .siteHeadContainer::after {
 	content:"";
 	display: block;
@@ -92,6 +88,10 @@ $time_transition:0.1s;
 			z-index: 1000;
 			opacity: 0;
 		}
+		& > .sub-menu{
+			max-height: 0;
+			display:block; overflow:hidden;
+		}
 		.device-pc &:hover > .sub-menu{
 			opacity: 1;
 			max-height:1000px;
@@ -137,9 +137,13 @@ $time_transition:0.1s;
 	 & > li > ul.sub-menu {
 		 position: absolute;
 		 z-index: 1000;
+
+		 // 親メニューに左右中央に寄せてからサブメニュー分を左にマイナスオフセット
+		 // ※ ul > li のpositionでleft:-50%指定すると ul は 本来 li がある横幅まで存在するので
+		 // 　余分なマウスオーバー反応エリアができてしまうため
 		 left:50%;
 		 margin-left:-120px;
-		 overflow: unset;
+
 		 // PCの場合はリンク範囲が広いが、モバイルでは文字部分だけにするので、
 		 // 第一階層文字下の余白分をmarginで確保しなくてはならない
 		 .device-mobile & {
@@ -147,23 +151,13 @@ $time_transition:0.1s;
 			}
 	} // / only second
 }
-.gMenu > li {
-	li {
-		max-height:0;
-		overflow: hidden;
-	}
-	&:hover li {
-		max-height:1000px;
-	}
-
-}
-
 
 .gMenu_description {
 	display:block; overflow:hidden;
 	font-size:10px;
 	line-height: 1.4;
 }
+
 .gMenu {
 	&.vk-menu-acc {
 		.acc-btn{
