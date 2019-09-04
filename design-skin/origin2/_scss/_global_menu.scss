@@ -138,16 +138,13 @@ $time_transition:0.1s;
 		 position: absolute;
 		 z-index: 1000;
 		 left:50%;
+		 margin-left:-120px;
 		 overflow: unset;
 		 // PCの場合はリンク範囲が広いが、モバイルでは文字部分だけにするので、
 		 // 第一階層文字下の余白分をmarginで確保しなくてはならない
 		 .device-mobile & {
 				margin-top:$menu_padding_vertical;
 			}
-		 & > li {
-			 margin-left:-50%;
-			 // border:1px solid #ff0000;
-		 }
 	} // / only second
 }
 .gMenu > li {
