@@ -1,6 +1,17 @@
 @charset "utf-8";
 @import "variables";
 
+/*-------------------------------------------*/
+/*	第二階層マウスホバー展開処理
+/*-------------------------------------------*/
+/*	PCとタッチデバイスでのプルダウンボタンなどの表示切り替え処理
+/*-------------------------------------------*/
+/*	下位展開ボタン
+/*-------------------------------------------*/
+/*	.gMenu_outer（フロート処理）
+/*-------------------------------------------*/
+
+
 .siteHeadContainer::after {
 	content:"";
 	display: block;
@@ -21,7 +32,6 @@ $time_transition:0.1s;
 		display: table-cell;
 		vertical-align: middle;
 	}
-
 }
 .gMenu {
 	margin :0 auto;
@@ -44,27 +54,6 @@ $time_transition:0.1s;
 		text-align: center;
 		list-style: none;
 		position: relative;
-		// PC端末の場合
-		.device-pc & {
-			// 第一階層メニューのみ下階層展開ボタンを隠す
-			& > .acc-btn {
-				display: none;
-			}
-			// a タグに対して展開メニューボタン分の余白をつける
-			& > a {
-				display:block; overflow:hidden;
-				// PC端末時は下階層展開ボタンを表示しないので左右余白小さめ
-				padding: $menu_padding_vertical 1.8em;
-			}
-		}
-		// モバイル端末の場合
-		// li タグに対して余白をつける
-		// モバイル端末の場合は下階層展開ボタンを表示するので、
-		// 展開ボタンの押し間違えですぐにページ遷移してしまうため、
-		// liに余白をつけて、リンク対象は文字部分だけにする
-		.device-mobile & {
-			padding: $menu_padding_vertical 2.1em;
-		}
 		&:hover,
 	  &.current-post-ancestor,
 	  &.current-menu-item,
@@ -87,15 +76,6 @@ $time_transition:0.1s;
 			border-bottom-color: $menu_bg_color;
 			z-index: 1000;
 			opacity: 0;
-		}
-		& > .sub-menu{
-			max-height: 0;
-			display:block; overflow:hidden;
-		}
-		.device-pc &:hover > .sub-menu{
-			opacity: 1;
-			max-height:1000px;
-			z-index: 1100;
 		}
 		.device-pc &.menu-item-has-children:hover::after,
 		&.acc-parent-open::after{
@@ -133,23 +113,6 @@ $time_transition:0.1s;
 			 }
 		 }
 	 }
-	 /* only second */
-	 & > li > ul.sub-menu {
-		 position: absolute;
-		 z-index: 1000;
-
-		 // 親メニューに左右中央に寄せてからサブメニュー分を左にマイナスオフセット
-		 // ※ ul > li のpositionでleft:-50%指定すると ul は 本来 li がある横幅まで存在するので
-		 // 　余分なマウスオーバー反応エリアができてしまうため
-		 left:50%;
-		 margin-left:-120px;
-
-		 // PCの場合はリンク範囲が広いが、モバイルでは文字部分だけにするので、
-		 // 第一階層文字下の余白分をmarginで確保しなくてはならない
-		 .device-mobile & {
-				margin-top:$menu_padding_vertical;
-			}
-	} // / only second
 }
 
 .gMenu_description {
@@ -158,6 +121,74 @@ $time_transition:0.1s;
 	line-height: 1.4;
 }
 
+/*-------------------------------------------*/
+/*	第二階層マウスホバー展開処理
+/*-------------------------------------------*/
+.gMenu > li {
+	& > .sub-menu {
+		position: absolute;
+		z-index: 1000;
+		display:block;
+		overflow:hidden;
+
+		// 横位置
+		// 親メニューに左右中央に寄せてからサブメニュー分を左にマイナスオフセット
+		// ※ ul > li のpositionでleft:-50%指定すると ul は 本来 li がある横幅まで存在するので
+		// 　余分なマウスオーバー反応エリアができてしまうため
+		left:50%;
+		margin-left:-120px;
+
+		// プルダウン展開
+		max-height: 0;
+	}
+	& > .sub-menu.acc-child-open,
+	.device-pc &:hover > .sub-menu{
+		opacity: 1;
+		max-height:1000px;
+	}
+}
+
+/*-------------------------------------------*/
+/*	PCとタッチデバイスでのプルダウンボタンなどの表示切り替え処理
+/*-------------------------------------------*/
+.gMenu {
+	& > li {
+
+		.device-pc & {
+			// 第一階層メニューのみ下階層展開ボタンを隠す
+			& > .acc-btn {
+				display: none;
+			}
+			// a タグに対して展開メニューボタン分の余白をつける
+			& > a {
+				display:block; overflow:hidden;
+				// PC端末時は下階層展開ボタンを表示しないので左右余白小さめ
+				padding: $menu_padding_vertical 1.8em;
+			}
+		}
+
+		// モバイル端末の場合
+		// li タグに対して余白をつける
+		// モバイル端末の場合は下階層展開ボタンを表示するので、
+		// 展開ボタンの押し間違えですぐにページ遷移してしまうため、
+		// liに余白をつけて、リンク対象は文字部分だけにする
+		.device-mobile & {
+			padding: $menu_padding_vertical 2.1em;
+		}
+	}
+	/* only second */
+	& > li > ul.sub-menu {
+		// PCの場合はリンク範囲が広いが、モバイルでは文字部分だけにするので、
+		// 第一階層文字下の余白分をmarginで確保しなくてはならない
+		.device-mobile & {
+			margin-top:$menu_padding_vertical;
+		}
+	} // / only second
+}
+
+/*-------------------------------------------*/
+/*	下位展開ボタン
+/*-------------------------------------------*/
 .gMenu {
 	&.vk-menu-acc {
 		.acc-btn{
@@ -216,7 +247,7 @@ $time_transition:0.1s;
 }
 	// ↑Lightning 全スキンBS4対応終了したら vk-mobile-nav　と一緒にこの記述を削除
 /*-------------------------------------------*/
-/*	.gMenu_outer
+/*	.gMenu_outer（フロート処理）
 /*-------------------------------------------*/
 /*
 PCでのフローバルメニュー 表示・非表示処理
