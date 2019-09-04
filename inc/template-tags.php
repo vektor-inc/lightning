@@ -35,7 +35,6 @@ function lightning_get_the_class_name( $position = '' ) {
 			'nav_menu_header' => 'nav gMenu',
 			'mainSection'     => 'col-md-8 mainSection',
 			'sideSection'     => 'col-md-3 col-md-offset-1 subSection sideSection',
-			// 'footerMenu_nav'  => 'nav',
 		);
 	} elseif ( $skin_info['bootstrap'] === 'bs4' ) {
 		$class_names = array(
@@ -43,7 +42,6 @@ function lightning_get_the_class_name( $position = '' ) {
 			'nav_menu_header' => 'gMenu vk-menu-acc',
 			'mainSection'     => 'col mainSection ',
 			'sideSection'     => 'col subSection sideSection',
-			// 'footerMenu_nav'  => 'nav footerMenu_nav',
 		);
 	}
 	if ( empty( $class_names[ $position ] ) ) {
@@ -51,7 +49,8 @@ function lightning_get_the_class_name( $position = '' ) {
 	} else {
 		$return = esc_attr( $class_names[ $position ] );
 	}
-	return $return;
+
+	return apply_filters( 'lightning_get_the_class_name', $return );
 }
 
 function lightning_the_class_name( $position = '' ) {
