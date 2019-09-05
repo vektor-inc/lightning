@@ -25,9 +25,11 @@ else :
 		<h1 class="entry-title"><?php the_title(); ?></h1>
 		</header>
 
+		<?php do_action( 'ligthning_entry_body_before' ); ?>
 		<div class="entry-body">
 		<?php the_content(); ?>
-		</div><!-- [ /.entry-body ] -->
+		</div>
+		<?php do_action( 'ligthning_entry_body_after' ); ?>
 
 		<div class="entry-footer">
 		<?php

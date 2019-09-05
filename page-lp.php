@@ -30,9 +30,13 @@ get_header(); ?>
 			?>
 
 			<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<div class="entry-body">
-	<?php the_content(); ?>
-	</div>
+
+			<?php do_action( 'ligthning_entry_body_before' ); ?>
+			<div class="entry-body">
+			<?php the_content(); ?>
+			</div>
+			<?php do_action( 'ligthning_entry_body_after' ); ?>
+
 	<?php
 	$args = array(
 		'before'      => '<nav class="page-link"><dl><dt>Pages :</dt><dd>',
