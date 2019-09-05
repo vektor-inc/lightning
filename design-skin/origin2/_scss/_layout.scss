@@ -3,6 +3,11 @@
 
 .siteContent > .container > .row {
 	display: block;
+	&:after{
+		content: "";
+	  display: block;
+	  clear: both;
+	}
 }
 
 @media ( max-width: $md-max){
