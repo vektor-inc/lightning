@@ -1,5 +1,7 @@
 <?php
 /*-------------------------------------------*/
+/*	lightning_get_the_class_name
+/*-------------------------------------------*/
 /*	Sanitize
 /*-------------------------------------------*/
 /*	Theme default options
@@ -22,13 +24,18 @@
 /*-------------------------------------------*/
 /*	Archive title
 /*-------------------------------------------*/
+/*	lightning_is_layout_onecolumn
+/*-------------------------------------------*/
 /*	lightning_check_color_mode
 /*-------------------------------------------*/
 
 
-
+/*-------------------------------------------*/
+/*	lightning_get_the_class_name
+/*-------------------------------------------*/
 function lightning_get_the_class_name( $position = '' ) {
 	$skin_info = Lightning_Design_Manager::get_current_skin();
+
 	if ( empty( $skin_info['bootstrap'] ) ) {
 		$class_names = array(
 			'header'          => 'navbar siteHeader',
@@ -36,14 +43,31 @@ function lightning_get_the_class_name( $position = '' ) {
 			'mainSection'     => 'col-md-8 mainSection',
 			'sideSection'     => 'col-md-3 col-md-offset-1 subSection sideSection',
 		);
+		if ( lightning_is_layout_onecolumn() ) {
+			$class_names['mainSection'] = 'col-md-12 mainSection';
+			$class_names['sideSection'] = 'col-md-12 sideSection';
+		}
 	} elseif ( $skin_info['bootstrap'] === 'bs4' ) {
 		$class_names = array(
 			'header'          => 'siteHeader',
 			'nav_menu_header' => 'gMenu vk-menu-acc',
-			'mainSection'     => 'col mainSection ',
-			'sideSection'     => 'col subSection sideSection',
+			'mainSection'     => 'col mainSection mainSection-col-two',
+			'sideSection'     => 'col subSection sideSection sideSection-col-two',
 		);
+		if ( lightning_is_layout_onecolumn() ) {
+			$class_names['mainSection'] = 'col mainSection mainSection-col-one';
+			$class_names['sideSection'] = 'col subSection sideSection sideSection-col-one';
+		} else {
+			// 2 column
+			$options = get_option( 'lightning_theme_options' );
+			// sidebar-position
+			if ( isset( $options['sidebar_position'] ) && $options['sidebar_position'] === 'left' ) {
+				$class_names['mainSection'] = 'col mainSection mainSection-col-two mainSection-pos-right';
+				$class_names['sideSection'] = 'col subSection sideSection sideSection-col-two sideSection-pos-left';
+			}
+		}
 	}
+
 	if ( empty( $class_names[ $position ] ) ) {
 		$return = '';
 	} else {
@@ -400,6 +424,31 @@ function lightning_is_frontpage_onecolumn() {
 	return false;
 }
 
+/*-------------------------------------------*/
+/*	lightning_is_layout_onecolumn
+/*-------------------------------------------*/
+
+function lightning_is_layout_onecolumn() {
+	$onecolumn = false;
+	if ( is_front_page() ) {
+		if ( lightning_is_frontpage_onecolumn() ) {
+			$onecolumn = true;
+		}
+	} elseif ( is_singular() ) {
+		if ( is_page() ) {
+			global $post;
+			$template           = get_post_meta( $post->ID, '_wp_page_template', true );
+			$template_onecolumn = array(
+				'page-onecolumn.php',
+				'page-lp.php',
+			);
+			if ( in_array( $template, $template_onecolumn ) ) {
+				$onecolumn = true;
+			}
+		}
+	}
+	return $onecolumn;
+}
 
 function lightning_get_theme_name() {
 	return apply_filters( 'lightning_theme_name', 'Lightning' );

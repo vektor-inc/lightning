@@ -13,7 +13,7 @@ get_header(); ?>
 <?php do_action( 'lightning_siteContent_container_prepend' ); ?>
 <div class="row">
 
-<div class="col-md-12 mainSection" id="main" role="main">
+<div class="<?php lightning_the_class_name( 'mainSection' ); ?>" id="main" role="main">
 
 	<?php
 	if ( have_posts() ) {

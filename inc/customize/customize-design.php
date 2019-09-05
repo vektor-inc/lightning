@@ -402,12 +402,6 @@ function lightning_print_css_common() {
 		if ( isset( $options['sidebar_position'] ) && $options['sidebar_position'] === 'left' ) {
 			$dynamic_css .= '@media (min-width: 992px) { .siteContent .subSection { float:left;margin-left:0; } .siteContent .mainSection { float:right; } }';
 		}
-	} elseif ( $skin_info['bootstrap'] === 'bs4' ) {
-		if ( isset( $options['sidebar_position'] ) && $options['sidebar_position'] === 'left' ) {
-			$dynamic_css .= '@media (min-width: 992px) {
-				.siteContent .subSection { -ms-flex-order: 1; order: 1; margin-left:0; }
-				.siteContent .mainSection { -webkit-box-ordinal-group: 3; -ms-flex-order: 2; order: 2; margin-left: 3rem; } }';
-		}
 	}
 
 	if ( $dynamic_css ) {
@@ -429,12 +423,14 @@ function lightning_print_css_common() {
 /*-------------------------------------------*/
 add_filter( 'body_class', 'ltg_add_body_class_sidefix' );
 function ltg_add_body_class_sidefix( $class ) {
+
 	$options = get_option( 'lightning_theme_options' );
 	if ( ! isset( $options['sidebar_fix'] ) || ! $options['sidebar_fix'] ) {
 		if ( apply_filters( 'lightning_sidefix_enable', true ) ) {
 			$class[] = 'sidebar-fix';
 		}
 	}
+
 	return $class;
 }
 

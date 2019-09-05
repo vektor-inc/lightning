@@ -14,15 +14,7 @@ if ( $bootstrap == '3' ) {
 <?php do_action( 'lightning_siteContent_container_prepend' ); ?>
 <div class="row">
 
-			<?php
-			if ( lightning_is_frontpage_onecolumn() ) {
-				$main_col = 'col-md-12';
-			} else {
-				$main_col = 'col-md-8';
-			}
-			?>
-
-			<div class="<?php echo $main_col; ?> mainSection">
+			<div class="<?php lightning_the_class_name( 'mainSection' ); ?>">
 
 			<?php do_action( 'lightning_home_content_top_widget_area_before' ); ?>
 
