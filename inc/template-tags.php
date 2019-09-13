@@ -226,8 +226,13 @@ function lightning_get_post_type() {
 	// $postType['slug'] = get_post_type();
 
 	global $wp_query;
-	if ( isset( $wp_query->query_vars['post_type'] ) && $wp_query->query_vars['post_type'] ) {
+	if ( ! empty( $wp_query->query_vars['post_type'] ) ) {
+
 		$postType['slug'] = $wp_query->query_vars['post_type'];
+		// Maybe $wp_query->query_vars['post_type'] is usually an array...
+		if ( is_array( $postType['slug'] ) ) {
+			$postType['slug'] = current( $postType['slug'] );
+		}
 	} elseif ( is_tax() ) {
 		// Case of tax archive and no posts
 		$taxonomy         = get_queried_object()->taxonomy;
