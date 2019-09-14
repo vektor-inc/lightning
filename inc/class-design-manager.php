@@ -4,10 +4,11 @@ class Lightning_Design_Manager {
 	static function init() {
 
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'load_skin_css_and_js' ) );
-		add_action( 'login_enqueue_scripts', array( __CLASS__, 'load_skin_editor_css' ) );
-		add_action( 'admin_enqueue_scripts', array( __CLASS__, 'load_skin_editor_css' ) );
 		add_action( 'after_setup_theme', array( __CLASS__, 'load_skin_php' ) );
 		add_action( 'after_setup_theme', array( __CLASS__, 'load_skin_callback' ) );
+
+		add_action( 'after_setup_theme', array( __CLASS__, 'load_skin_editor_css' ) );
+
 		add_action( 'customize_register', array( __CLASS__, 'customize_register' ) );
 
 		// This method is planned to be removed.
@@ -117,8 +118,6 @@ class Lightning_Design_Manager {
 			$bs4_css_url = get_template_directory_uri() . '/library/bootstrap-4/css/bootstrap.min.css';
 			$bs4_version = '?ver=4.3.1';
 			add_editor_style( $bs4_css_url . $bs4_version );
-
-			wp_enqueue_style( 'bootstrap4-adjuster', get_template_directory_uri() . '/assets/css/bs4adjuster_editor.css', array(), '', 'all' );
 		}
 
 		if ( ! empty( $skin_info['editor_css_path'] ) ) {
