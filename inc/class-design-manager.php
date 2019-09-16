@@ -45,6 +45,29 @@ class Lightning_Design_Manager {
 		return apply_filters( 'lightning-design-skins', $skins );
 	}
 
+
+	static function get_skins_info() {
+		$skins = array(
+			'variety'  => array(
+				'plugin_path' => 'lightning-skin-variety/lightning_skin_variety.php',
+			),
+			'charm'    => array(
+				'plugin_path' => 'lightning-skin-charm/lightning_skin_charm.php',
+			),
+			'jpnstyle' => array(
+				'plugin_path' => 'lightning-skin-jpnstyle/lightning_skin_jpnstyle.php',
+			),
+			'fort'     => array(
+				'plugin_path' => 'lightning-skin-fort/lightning-skin-fort.php',
+			),
+			'pale'     => array(
+				'plugin_path' => 'lightning-skin-pale/lightning-skin-pale.php',
+			),
+		);
+		return $skins;
+	}
+
+
 	/**
 	 * Get current skin function
 	 * @return [string] If empty current skin that set default skin.
@@ -52,9 +75,20 @@ class Lightning_Design_Manager {
 	static function get_current_skin() {
 		$skins        = self::get_skins();
 		$current_skin = get_option( 'lightning_design_skin' );
+
 		if ( ! $current_skin ) {
 			$current_skin = 'origin';
 		}
+
+		// If selected skin plugin is deactive that, set to default skin.
+		if ( $current_skin != 'origin' ) {
+			include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+			$skins_info = self::get_skins_info();
+			if ( isset( $skins_info[ $current_skin ]['plugin_path'] ) && ! is_plugin_active( $skins_info[ $current_skin ]['plugin_path'] ) ) {
+				$current_skin = 'origin';
+			}
+		}
+
 		if ( ! isset( $skins[ $current_skin ]['version'] ) ) {
 			$skins[ $current_skin ]['version'] = '';
 		}
