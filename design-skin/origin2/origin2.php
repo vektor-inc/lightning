@@ -14,9 +14,11 @@ function lightning_print_css_origin() {
 
 		// Global Menu //////////////////
 		$dynamic_css .= '
-		ul.gMenu li li a:hover { background-color:' . $color_key_dark . '; }
 		@media (min-width: 768px){
-		  ul.gMenu > li > a:after { border-bottom-color: ' . $color_key . ' ; }
+			.gMenu > li:before,
+			.gMenu > li.menu-item-has-children::after { border-bottom-color:' . $color_key_dark . ' }
+			.gMenu li li { background-color:' . $color_key_dark . ' }
+			.gMenu li li a:hover { background-color:' . $color_key . '; }
 		} /* @media (min-width: 768px) */';
 		if ( ! empty( $options['color_header_bg'] ) ) {
 			$color_header_bg = esc_html( $options['color_header_bg'] );
