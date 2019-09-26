@@ -27,21 +27,32 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			$options = self::get_loop_post_view_options( $options );
 
 			if ( $options['layout'] == 'card-holizontal' ) {
-				$html = self::get_view_card_holizontal( $post, $options );
+				$html = self::get_view_type_card_holizontal( $post, $options );
 			} elseif ( $options['layout'] == 'media' ) {
-				$html = self::get_view_media( $post, $options );
+				$html = self::get_view_type_media( $post, $options );
 			} else {
-				$html = self::get_view_card( $post, $options );
+				$html = self::get_view_type_card( $post, $options );
 			}
 			return $html;
 		}
 
-		static public function get_view_card( $post, $options ) {
-			$html = '';
-			if ( ! empty( $options['class']['outer'] ) ) {
-				$class_outer = ' ' . esc_attr( $options['class']['outer'] );
+		static public function get_view_first_div( $post, $options ) {
+			if ( $options['layout'] == 'card-holizontal' ) {
+				$class_outer = 'card';
+			} elseif ( $options['layout'] == 'media' ) {
+				$class_outer = 'media';
+			} else {
+				$class_outer = 'card';
 			}
-			$html .= '<div class="card' . $class_outer . '">';
+			if ( ! empty( $options['class']['outer'] ) ) {
+				$class_outer .= ' ' . esc_attr( $options['class']['outer'] );
+			}
+			return '<div id="post-' . esc_attr( $post->ID ) . '" ' . lightning_get_post_class( $class_outer ) . '>';
+		}
+
+		static public function get_view_type_card( $post, $options ) {
+			$html  = '';
+			$html .= self::get_view_first_div( $post, $options );
 			$html .= '<a href="' . get_the_permalink() . '">';
 			if ( $options['display']['overlay'] ) {
 				$html .= '<div class="card-img-overlay">';
@@ -67,12 +78,9 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			return $html;
 		}
 
-		static public function get_view_card_holizontal( $post, $options ) {
-			$html = '';
-			if ( ! empty( $options['class']['outer'] ) ) {
-				$class_outer = ' ' . esc_attr( $options['class']['outer'] );
-			}
-			$html .= '<div class="card' . $class_outer . '">';
+		static public function get_view_type_card_holizontal( $post, $options ) {
+			$html  = '';
+			$html .= self::get_view_first_div( $post, $options );
 			$html .= '<a href="' . get_the_permalink() . '">';
 			$html .= '<div class="row no-gutters">';
 			$html .= '<div class="col-md-5 col-sm-5">';
@@ -99,13 +107,9 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			return $html;
 		}
 
-		static public function get_view_media( $post, $options ) {
-			$html = '';
-			if ( ! empty( $options['class']['outer'] ) ) {
-				$class_outer = ' ' . esc_attr( $options['class']['outer'] );
-			}
-			$html .= '<div class="media' . $class_outer . '">';
-
+		static public function get_view_type_media( $post, $options ) {
+			$html  = '';
+			$html .= self::get_view_first_div( $post, $options );
 			if ( $options['display']['image'] ) {
 				$html      .= '<a href="' . get_the_permalink() . '" class="media-img mr-3">';
 				$image_attr = array( 'class' => '' );

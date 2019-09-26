@@ -81,6 +81,10 @@ function lightning_the_class_name( $position = '' ) {
 	echo lightning_get_the_class_name( $position );
 }
 
+function lightning_get_post_class( $class = '', $post_id = null ) {
+	// Separates classes with a single space, collates classes for post DIV
+	return 'class="' . join( ' ', get_post_class( $class, $post_id ) ) . '"';
+}
 
 /*-------------------------------------------*/
 /*	Sanitize

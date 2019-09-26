@@ -101,7 +101,7 @@ else :
 				<h5 class="postNextPrev_title"><?php _e( 'Previous article', 'lightning' ); ?></h5>
 				<?php
 				$options = array(
-					'layout'  => 'media',
+					'layout'  => 'card-holizontal',
 					'display' => array(
 						'image'       => true,
 						'excerpt'     => false,
