@@ -83,12 +83,14 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			$html .= self::get_view_first_div( $post, $options );
 			$html .= '<a href="' . get_the_permalink() . '">';
 			$html .= '<div class="row no-gutters">';
+
 			$html .= '<div class="col-md-5 col-sm-5">';
 			if ( $options['display']['image'] ) {
 				$image_attr = array( 'class' => 'card-img' );
 				$html      .= get_the_post_thumbnail( $post->ID, 'medium', $image_attr );
 			}
-			$html .= '</div>';
+			$html .= '</div><!-- /.col -->';
+
 			$html .= '<div class="col-md-7 col-sm-7">';
 			$html .= '<div class="card-body">';
 			$html .= '<h5 class="card-title">' . get_the_title() . '</h5>';
@@ -100,7 +102,8 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			}
 
 			$html .= '</div><!-- [ /.card-body ] -->';
-			$html .= '</div>';
+			$html .= '</div><!-- /.col -->';
+
 			$html .= '</div>';
 			$html .= '</a>';
 			$html .= '</div><!-- [ /.card ] -->';

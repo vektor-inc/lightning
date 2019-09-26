@@ -101,7 +101,7 @@ else :
 				<h5 class="postNextPrev_title"><?php _e( 'Previous article', 'lightning' ); ?></h5>
 				<?php
 				$options = array(
-					'layout'  => 'card-holizontal',
+					'layout'  => 'media',
 					'display' => array(
 						'image'       => true,
 						'excerpt'     => false,
@@ -127,7 +127,7 @@ else :
 			?>
 				<h5 class="postNextPrev_title postNextPrev_title-next"><?php _e( 'Next article', 'lightning' ); ?></h5>
 				<?php
-				$options = VK_Component_Posts::the_view( $post, $options );
+				VK_Component_Posts::the_view( $post, $options );
 			}
 			wp_reset_postdata();
 			?>
