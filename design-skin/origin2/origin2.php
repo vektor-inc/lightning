@@ -8,23 +8,16 @@ function lightning_print_css_origin() {
 	if ( isset( $options['color_key'] ) && isset( $options['color_key_dark'] ) ) {
 		$color_key      = esc_html( $options['color_key'] );
 		$color_key_dark = esc_html( $options['color_key_dark'] );
-		$dynamic_css    = '
-ul.gMenu li li a:hover { background-color:' . $color_key_dark . '; }
-.page-header { background-color:' . $color_key . '; }
-h2,
-.mainSection-title { border-top-color:' . $color_key . '; }
-h3:after,
-.subSection-title:after { border-bottom-color:' . $color_key . ';  }
-.media .media-body .media-heading a:hover { color:' . $color_key . ';  }
-ul.page-numbers li span.page-numbers.current { background-color:' . $color_key . '; }
-.pager li > a { border-color:' . $color_key . ';color:' . $color_key . ';}
-.pager li > a:hover { background-color:' . $color_key . ';color:#fff;}
-footer { border-top-color:' . $color_key . '; }
-dt { border-left-color:' . $color_key . '; }
-@media (min-width: 768px){
-  ul.gMenu > li > a:after { border-bottom-color: ' . $color_key . ' ; }
-} /* @media (min-width: 768px) */';
 
+		// Text Color ///////////////////
+		$dynamic_css = '.media .media-body .media-heading a:hover { color:' . $color_key . ';  }';
+
+		// Global Menu //////////////////
+		$dynamic_css .= '
+		ul.gMenu li li a:hover { background-color:' . $color_key_dark . '; }
+		@media (min-width: 768px){
+		  ul.gMenu > li > a:after { border-bottom-color: ' . $color_key . ' ; }
+		} /* @media (min-width: 768px) */';
 		if ( ! empty( $options['color_header_bg'] ) ) {
 			$color_header_bg = esc_html( $options['color_header_bg'] );
 			if ( lightning_check_color_mode( $color_header_bg ) == 'dark' ) {
@@ -37,6 +30,18 @@ dt { border-left-color:' . $color_key . '; }
 				// Light Color ///////////////////
 			}
 		}// if ( ! empty( $options['color_header_bg'] ) ) {
+
+		$dynamic_css .= '
+.page-header { background-color:' . $color_key . '; }
+h2,
+.mainSection-title { border-top-color:' . $color_key . '; }
+h3:after,
+.subSection-title:after { border-bottom-color:' . $color_key . ';  }
+ul.page-numbers li span.page-numbers.current { background-color:' . $color_key . '; }
+.pager li > a { border-color:' . $color_key . ';color:' . $color_key . ';}
+.pager li > a:hover { background-color:' . $color_key . ';color:#fff;}
+footer { border-top-color:' . $color_key . '; }
+dt { border-left-color:' . $color_key . '; }';
 
 		// delete before after space
 		$dynamic_css = trim( $dynamic_css );
