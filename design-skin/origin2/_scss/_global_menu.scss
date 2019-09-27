@@ -135,7 +135,10 @@ $time_transition:0.1s;
 /*	第二階層マウスホバー展開処理
 /*-------------------------------------------*/
 .gMenu > li {
-	& > .sub-menu {
+	/*
+	If except the 'ul' that overwrited by vk-mobile-nav absolute on such as vws.
+	*/
+	& > ul.sub-menu {
 		position: absolute;
 		z-index: 1000;
 		display:block;
