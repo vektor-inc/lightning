@@ -174,8 +174,10 @@ button {
 		font-weight: 700;
 	}
 }
-.woocommerce form .form-row.woocommerce-invalid label {
-	color:inherit;
+.woocommerce form {
+	.form-row.woocommerce-invalid label {
+		color:inherit;
+	}
 }
 .woocommerce-checkout-payment input[type=checkbox] {
 	position: relative;
@@ -186,6 +188,12 @@ button {
 /*-------------------------------------------*/
 .mainSection header.woocommerce-Address-title {
 	border-bottom:none;
+}
+.u-column1.col-1,
+.u-column2.col-2 {
+	@media (min-width: 768px){
+		max-width: 48%;
+	}
 }
 
 .woocommerce-MyAccount-navigation {
@@ -208,10 +216,17 @@ button {
 		}
 	}
 }
-.woocommerce form .form-row input.input-text.woocommerce-Input--email {
-	margin-bottom:2em;
+.woocommerce {
+	&-form {
+		font-size: 14px;
+		&-login__rememberme{
+			width: 100%;
+		}
+		.form-row input.input-text.woocommerce-Input--email {
+	 	margin-bottom:2em;
+	 }
+	}
 }
-
 
 .woocommerce-table,
 .woocommerce-orders-table {
