@@ -57,18 +57,31 @@ iframe {
 .wpdm-download-link {
 	margin-top:5px;
 }
-.w3eden .media{
-	flex-wrap: wrap;
+.w3eden {
+	.media{
+		padding: 1em 0;
+	}
+	.media-body {
+		margin-right: 1em;
+		margin-bottom:0.5em;
+		width: auto;
+	}
+	.package-title:after {
+		border:none;
+	}
 }
-.w3eden .package-title {
-	padding: 0;
+@media (max-width: 575.98px){
+	.w3eden {
+		.media {
+			display: block !important;
+		}
+		.link-template-default.thumbnail .wpdm-download-link.btn {
+			display: block;
+			margin-top:10px;
+		}
+	}
 }
-.w3eden .package-title:after {
-	border:none;
-}
-.w3eden .media-body {
-	width:auto;
-}
+
 
 /*-------------------------------------------*/
 /*	Print

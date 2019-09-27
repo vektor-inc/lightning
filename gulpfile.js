@@ -69,6 +69,7 @@ gulp.task('sass_skin2', function() {
 gulp.task('sass_common', function() {
 	gulp.src(['./assets/_scss/**/*.scss'])
 		.pipe(gulp.dest('../lightning/assets/_scss'))
+		.pipe(gulp.dest('../lightning-pro/assets/_scss'))
     .pipe(plumber({
       handleError: function(err) {
         console.log(err);
