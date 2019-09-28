@@ -72,14 +72,8 @@ $price_color:#e50000;
 		margin-right:-15px;
 		li {
 			@media (min-width: 576px){ width:33.3%; }
-		}
-	}
-	&.col-md-12 {
-		ul.product_list_widget {
-			li {
-				@media (min-width: 992px){ width:25%; }
-				@media (min-width: 1200px){ width:20%; }
-			}
+			@media (min-width: 992px){ width:25%; }
+			@media (min-width: 1200px){ width:20%; }
 		}
 	}
 }
