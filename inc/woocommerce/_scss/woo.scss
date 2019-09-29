@@ -1,6 +1,17 @@
 @charset "utf-8";
 
-$price_color:#e50000;
+/*-------------------------------------------*/
+/*	Archive
+/*-------------------------------------------*/
+/*	single
+/*-------------------------------------------*/
+/*	cart
+/*-------------------------------------------*/
+/*	Account
+/*-------------------------------------------*/
+
+
+$price_color:#cc0000;
 
 .woocommerce {
 	margin-bottom:3em;
@@ -104,8 +115,6 @@ input.input-text.qty {
 	color:$price_color;
 	font-weight: 700;
 }
-
-// .woocommerce ul.products li.product, .woocommerce-page ul.products li.product
 .woocommerce ul.products{
 	display:flex;
 	flex-wrap:wrap;
@@ -130,10 +139,6 @@ input.input-text.qty {
 		font-size:14px;
 	}
 }
-
-/*-------------------------------------------*/
-/*	single
-/*-------------------------------------------*/
 button {
 	background-color: #337ab7;
 }
@@ -148,7 +153,17 @@ button {
 /*-------------------------------------------*/
 /*	cart
 /*-------------------------------------------*/
+.cart_item{
+	.product-name{
+		text-align: left;
+	}
+}
+
 .shop_table {
+	font-size: 14px;
+	th {
+		font-weight: normal;
+	}
 	th,td {
 		border-bottom:none;
 	}
@@ -156,6 +171,22 @@ button {
 		a {
 			color:#333;
 		}
+	}
+	.tax-rate {
+		/* 「日本の消費税」表記 */
+		small{ white-space: nowrap; }
+	}
+	// td[data-title],
+	td.product-price,
+	td.product-subtotal,
+	td.product-total,
+	tr.tax-rate td,
+	tr.cart-subtotal td,
+	tr.order-total td{
+			text-align: right;
+	}
+	.form-control {
+		font-size: 14px;
 	}
 }
 .cart_totals {
@@ -177,16 +208,28 @@ button {
 	position: relative;
 }
 
+#customer_details {
+	#order_comments_field {
+		label,
+		.woocommerce-input-wrapper {
+			width: 100%;
+		}
+	}
+}
+
+
 /*-------------------------------------------*/
 /*	Account
 /*-------------------------------------------*/
 .mainSection header.woocommerce-Address-title {
 	border-bottom:none;
 }
-.u-column1.col-1,
-.u-column2.col-2 {
-	@media (min-width: 768px){
-		max-width: 48%;
+.woocommerce form {
+	.col-1,
+	.col-2 {
+		@media (min-width: 768px){
+			max-width: 48%;
+		}
 	}
 }
 
