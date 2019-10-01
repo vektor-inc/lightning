@@ -167,6 +167,11 @@ button {
 	th,td {
 		border-bottom:none;
 	}
+	thead {
+		th {
+			background-color: #f5f5f5;
+		}
+	}
 	.product-name {
 		a {
 			color:#333;
