@@ -292,23 +292,23 @@ ul.page-numbers { margin:0;padding: 0;
 		border-top: $border_primary;
 	}
 	&_title {
-		margin-bottom:0.3em;
-		font-size:14px;
-		&-next {
-			@media ( min-width: $sm-min ){
-				text-align: right;
-			}
-			@media ( max-width: $xs-max ){
-				margin-top:1em;
-			}
+		margin-bottom:0.6em;
+		font-size:12px;
+		line-height: 1;
+		.postNextPrev_next &{
+			text-align: right;
+			border:1px solid #ff0000;
 		}
 	}
-	&_card{
-		&_title{
-			font-size:14px;
+	.card{
+		&-title{
 			margin-bottom:0.4em;
+			.postNextPrev_next & {
+				text-align: right;
+				border:1px solid #ff0000;
+			}
 		}
-		&_meta {
+		&-meta {
 			font-size:10px;
 		}
 	}

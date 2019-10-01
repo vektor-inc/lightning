@@ -91,18 +91,17 @@ else :
 	<?php
 } else {
 ?>
-	<div class="row postNextPrev">
-	  <div class="col-sm-6">
+
+<div class="card-deck postNextPrev">
 
 			<?php
 			$post = get_previous_post();
 			if ( $post ) {
 			?>
-				<h5 class="postNextPrev_title"><?php _e( 'Previous article', 'lightning' ); ?></h5>
 				<?php
 				$options = array(
-					'layout'  => 'media',
-					'display' => array(
+					'layout'       => 'card-holizontal',
+					'display'      => array(
 						'image'       => true,
 						'excerpt'     => false,
 						'date'        => true,
@@ -110,28 +109,30 @@ else :
 						// 'link_text'   => __( 'Read more', 'lightning' ),
 						'overlay'     => '',
 					),
-					'class'   => array(
+					'class'        => array(
 						'outer' => 'card-sm',
 					),
+					'body_prepend' => '',
+					'body_append'  => '',
 				);
+				$options['body_prepend'] = '<p class="postNextPrev_title"><i class="fas fa-chevron-left"></i> ' . __( 'Previous article', 'lightning' ) . '</p>';
 				VK_Component_Posts::the_view( $post, $options );
 				// get_template_part( 'module_loop_post_card' );
 			}
 			wp_reset_postdata();
 			?>
-	  </div>
-	  <div class="col-sm-6">
 			<?php
 			$post = get_next_post();
 			if ( $post ) {
 			?>
-				<h5 class="postNextPrev_title postNextPrev_title-next"><?php _e( 'Next article', 'lightning' ); ?></h5>
 				<?php
+				$options['body_prepend']   = '<p class="postNextPrev_title">' . __( 'Next article', 'lightning' ) . ' <i class="fas fa-chevron-right"></i></p>';
+				$options['class']['outer'] = 'card-sm card-holizontal-reverse postNextPrev_next';
 				VK_Component_Posts::the_view( $post, $options );
 			}
 			wp_reset_postdata();
 			?>
-	  </div>
+	  <!-- </div> -->
 	</div>
 	<?php } ?>
 
