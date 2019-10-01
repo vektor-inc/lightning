@@ -224,11 +224,14 @@ button {
 .mainSection header.woocommerce-Address-title {
 	border-bottom:none;
 }
-.woocommerce form {
-	.col-1,
-	.col-2 {
-		@media (min-width: 768px){
-			max-width: 48%;
+.woocommerce {
+	.u-columns,
+	form {
+		.col-1,
+		.col-2 {
+			@media (min-width: 768px){
+				max-width: 48%;
+			}
 		}
 	}
 }
