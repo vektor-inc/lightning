@@ -288,28 +288,22 @@ ul.page-numbers { margin:0;padding: 0;
 .postNextPrev {
 	position: relative;
 	margin-bottom: $margin_section;
-	.media {
-		border-top: $border_primary;
-	}
-	&_title {
-		margin-bottom:0.6em;
+	&_label {
+		margin-bottom:1em;
 		font-size:12px;
 		line-height: 1;
 		.postNextPrev_next &{
 			text-align: right;
-			border:1px solid #ff0000;
 		}
 	}
 	.card{
 		&-title{
-			margin-bottom:0.4em;
+			font-size:14px;
+			margin-bottom:0.6em;
 			.postNextPrev_next & {
 				text-align: right;
 				border:1px solid #ff0000;
 			}
-		}
-		&-meta {
-			font-size:10px;
 		}
 	}
 }

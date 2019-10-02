@@ -7,6 +7,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 		static public function get_loop_post_view_options( $options ) {
 			$default = array(
 				'layout'       => 'card',
+				'slug'         => '',
 				'display'      => array(
 					'image'       => true,
 					'excerpt'     => false,
@@ -41,11 +42,11 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 
 		static public function get_view_first_div( $post, $options ) {
 			if ( $options['layout'] == 'card-holizontal' ) {
-				$class_outer = 'card card-holizontal';
+				$class_outer = 'card card-post card-holizontal';
 			} elseif ( $options['layout'] == 'media' ) {
 				$class_outer = 'media';
 			} else {
-				$class_outer = 'card';
+				$class_outer = 'card card-post';
 			}
 			if ( ! empty( $options['class']['outer'] ) ) {
 				$class_outer .= ' ' . esc_attr( $options['class']['outer'] );
@@ -60,11 +61,19 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				$body_html .= $options['body_prepend'];
 			}
 
+			$title_class = $options['layout'];
+
 			$body_html .= '<h5 class="card-title">' . get_the_title() . '</h5>';
 
-			if ( $options['display']['date'] ) {
+			if ( $options['display']['excerpt'] ) {
 				$body_html .= '<p class="card-text">';
-				$body_html .= '<span class="published">' . esc_html( get_the_date() ) . '</span>';
+				$body_html .= wp_kses_post( get_the_excerpt() );
+				$body_html .= '</p>';
+			}
+
+			if ( $options['display']['date'] ) {
+				$body_html .= '<p class="card-date">';
+				$body_html .= esc_html( get_the_date() );
 				$body_html .= '</p>';
 			}
 

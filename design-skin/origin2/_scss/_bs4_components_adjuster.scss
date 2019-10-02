@@ -18,11 +18,8 @@
 		position:relative;
 		left: -9999px;
 	}
-	.published {
-		position: absolute;
-		font-size: 11px;
-		left:1.2rem;
-		bottom:1rem;
+	a {
+		color: inherit;
 	}
 }
 
@@ -57,10 +54,34 @@
 	.card-title {
 		font-size:0.8rem;
 	}
-	.card-meta {
+	.card-text{
 		font-size:0.8rem;
+		line-height: 1.4;
+	}
+	.card-meta {
+		font-size:0.7rem;
 		line-height: 1.1;
 	}
+}
+
+.card-post {
+	.card-body {
+		padding-bottom: 1.5em;
+	}
+	.card-meta {
+		border:1px solid #ff0000;
+	}
+	.card-date {
+		position: absolute;
+		font-size: 11px;
+		margin-bottom:0;
+		left:1.2rem;
+		bottom:0.5rem;
+	}
+}
+
+.card-noborder {
+	border:none;
 }
 
 .media {

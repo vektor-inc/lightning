@@ -115,22 +115,26 @@ else :
 					'body_prepend' => '',
 					'body_append'  => '',
 				);
-				$options['body_prepend'] = '<p class="postNextPrev_title"><i class="fas fa-chevron-left"></i> ' . __( 'Previous article', 'lightning' ) . '</p>';
+				$options['body_prepend'] = '<p class="postNextPrev_label"><i class="fas fa-chevron-left"></i> ' . __( 'Previous article', 'lightning' ) . '</p>';
 				VK_Component_Posts::the_view( $post, $options );
+				wp_reset_postdata();
 				// get_template_part( 'module_loop_post_card' );
+			} else {
+				echo '<div class="card card-noborder"></div>';
 			}
-			wp_reset_postdata();
 			?>
 			<?php
 			$post = get_next_post();
 			if ( $post ) {
 			?>
 				<?php
-				$options['body_prepend']   = '<p class="postNextPrev_title">' . __( 'Next article', 'lightning' ) . ' <i class="fas fa-chevron-right"></i></p>';
+				$options['body_prepend']   = '<p class="postNextPrev_label">' . __( 'Next article', 'lightning' ) . ' <i class="fas fa-chevron-right"></i></p>';
 				$options['class']['outer'] = 'card-sm card-holizontal-reverse postNextPrev_next';
 				VK_Component_Posts::the_view( $post, $options );
+				wp_reset_postdata();
+			} else {
+				echo '<div class="card card-noborder"></div>';
 			}
-			wp_reset_postdata();
 			?>
 	  <!-- </div> -->
 	</div>
