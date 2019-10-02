@@ -63,17 +63,17 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 
 			$title_class = $options['layout'];
 
-			$body_html .= '<h5 class="card-title">' . get_the_title() . '</h5>';
+			$body_html .= '<h5 class="card-title">' . get_the_title( $post->ID ) . '</h5>';
 
 			if ( $options['display']['excerpt'] ) {
 				$body_html .= '<p class="card-text">';
-				$body_html .= wp_kses_post( get_the_excerpt() );
+				$body_html .= wp_kses_post( get_the_excerpt( $post->ID ) );
 				$body_html .= '</p>';
 			}
 
 			if ( $options['display']['date'] ) {
 				$body_html .= '<p class="card-date">';
-				$body_html .= esc_html( get_the_date() );
+				$body_html .= esc_html( get_the_date( null, $post->ID ) );
 				$body_html .= '</p>';
 			}
 
@@ -86,7 +86,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 		static public function get_view_type_card( $post, $options ) {
 			$html  = '';
 			$html .= self::get_view_first_div( $post, $options );
-			$html .= '<a href="' . get_the_permalink() . '">';
+			$html .= '<a href="' . get_the_permalink( $post->ID ) . '">';
 			if ( $options['display']['overlay'] ) {
 				$html .= '<div class="card-img-overlay">';
 				$html .= $options['display']['overlay'];
@@ -109,7 +109,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 		static public function get_view_type_card_holizontal( $post, $options ) {
 			$html  = '';
 			$html .= self::get_view_first_div( $post, $options );
-			$html .= '<a href="' . get_the_permalink() . '" class="card-holizontal-inner">';
+			$html .= '<a href="' . get_the_permalink( $post->ID ) . '" class="card-holizontal-inner">';
 			$html .= '<div class="row no-gutters card-holizontal-inner-row">';
 
 			if ( $options['display']['image'] ) {
@@ -152,11 +152,11 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				$html      .= '</a>';
 			}
 			$html .= '<div class="media-body">';
-			$html .= '<h5 class="media-title">' . get_the_title() . '</h5>';
+			$html .= '<h5 class="media-title">' . get_the_title( $post->ID ) . '</h5>';
 
 			if ( $options['display']['date'] ) {
 				$html .= '<p class="media-text">';
-				$html .= '<span class="published entry-meta_items">' . esc_html( get_the_date() ) . '</span>';
+				$html .= '<span class="published entry-meta_items">' . esc_html( get_the_date( null, $post->ID ) ) . '</span>';
 				$html .= '</p>';
 			}
 
