@@ -204,6 +204,8 @@ if ( class_exists( 'woocommerce' ) ) {
 require get_parent_theme_file_path( '/inc/components/class-vk-component-posts.php' );
 require get_parent_theme_file_path( '/inc/components/class-vk-component-button.php' );
 require get_parent_theme_file_path( '/inc/components/class-vk-component-mini-contents.php' );
+require get_parent_theme_file_path( '/inc/template-redirect.php' );
+
 
 /*-------------------------------------------*/
 /*	WidgetArea initiate
@@ -507,19 +509,5 @@ function lightning_deactivate_plugin( $plugin_path ) {
 		//re index
 		$active_plugins = array_values( $active_plugins );
 		update_option( 'active_plugins', $active_plugins );
-	}
-}
-
-/*-------------------------------------------*/
-/*	Redirect new directory file
-/*-------------------------------------------*/
-add_action( 'get_template_part_module_loop_post', 'lightning_change_module_loop_post' );
-function lightning_change_module_loop_post( $slug ) {
-
-	$templates[] = "{$slug}.php";
-
-	if ( ! locate_template( $templates, false, false ) ) {
-		$templates[] = 'template-parts/loop-post.php';
-		locate_template( $templates, true, false );
 	}
 }

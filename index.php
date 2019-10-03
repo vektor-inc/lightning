@@ -50,27 +50,31 @@
 
 	<?php if ( apply_filters( 'is_lightning_extend_loop', false ) ) { ?>
 
-	<?php do_action( 'lightning_extend_loop' ); ?>
+		<?php do_action( 'lightning_extend_loop' ); ?>
 
-<?php } elseif ( file_exists( get_stylesheet_directory() . '/module_loop_' . $postType['slug'] . '.php' ) && $postType != 'post' ) { ?>
+	<?php } else { ?>
 
-	<?php
-	while ( have_posts() ) :
-		the_post();
-?>
-	<?php get_template_part( 'module_loop_' . $postType['slug'] ); ?>
-	<?php endwhile; ?>
+		<?php
+		while ( have_posts() ) {
+			the_post();
 
-<?php } else { ?>
+			/**
+			 * Measures to load old files
+			 * Actually, it's ok to only use get_template_part().
+			 * It is measure for before version 7.0 that loaded module_loop_***.php.
+			 */
+			$templates[]  = 'module_loop_' . $postType['slug'] . '.php';
+			$templates[]  = 'module_loop_post.php';
+			$require_once = false;
+			if ( locate_template( $templates, false, $require_once ) ) {
+				locate_template( $templates, true, $require_once );
+			} else {
+				get_template_part( 'template-parts/loop', $postType['slug'] );
+			}
+		} // while ( have_posts() ) {
+		?>
 
-	<?php
-	while ( have_posts() ) :
-		the_post();
-?>
-	<?php get_template_part( 'module_loop_post' ); ?>
-	<?php endwhile; ?>
-
-<?php } // loop() ?>
+	<?php } // loop() ?>
 
 	<?php
 	the_posts_pagination(
