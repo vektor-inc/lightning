@@ -1,5 +1,4 @@
 <?php
-
 /*-------------------------------------------*/
 /*	Redirect new directory file
 /*-------------------------------------------*/
@@ -12,8 +11,10 @@
  * @return [type]       [description]
  */
 
-add_action( 'after_setup_theme', 'lightning_redirect_template_module_loop' );
-function lightning_redirect_template_module_loop() {
+add_action( 'after_setup_theme', 'lightning_redirect_module' );
+function lightning_redirect_module() {
+
+	//// module_loop_***.php
 	$postTypes = get_post_types( array( 'public' => true ) );
 	foreach ( $postTypes as $postType ) {
 		add_action(
@@ -23,11 +24,46 @@ function lightning_redirect_template_module_loop() {
 
 				// If old name file is don't exist that load new name file.
 				if ( ! locate_template( $templates, false, false ) ) {
-					get_template_part( 'template-parts/loop', get_post_type() );
-					// $templates[] = 'template-parts/loop-post.php';
-					// locate_template( $templates, true, false );
+					get_template_part( 'template-parts/post/loop', get_post_type() );
 				}
 			}
 		);
 	} // foreach ( $postTypes as $postType ) {
+
+	add_action(
+		'get_template_part_module_loop_post_meta', function( $slug ) {
+			$templates[] = "{$slug}.php";
+			if ( ! locate_template( $templates, false, false ) ) {
+				get_template_part( 'template-parts/post/meta' );
+			}
+		}
+	);
+
+	add_action(
+		'get_template_part_module_slide', function( $slug ) {
+			$templates[] = "{$slug}.php";
+			if ( ! locate_template( $templates, false, false ) ) {
+				get_template_part( 'template-parts/slide' );
+			}
+		}
+	);
+
+	add_action(
+		'get_template_part_module_pageTit', function( $slug ) {
+			$templates[] = "{$slug}.php";
+			if ( ! locate_template( $templates, false, false ) ) {
+				get_template_part( 'template-parts/page-header' );
+			}
+		}
+	);
+
+	add_action(
+		'get_template_part_module_panList', function( $slug ) {
+			$templates[] = "{$slug}.php";
+			if ( ! locate_template( $templates, false, false ) ) {
+				get_template_part( 'template-parts/breadcrumb' );
+			}
+		}
+	);
+
 }

@@ -1,9 +1,3 @@
-<?php
-print '<pre style="text-align:left">';
-print_r( $options );
-print '</pre>';
-
-	?>
 <div class="card">
 	<a href="<?php the_permalink(); ?>">
 

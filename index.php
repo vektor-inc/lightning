@@ -1,7 +1,27 @@
 <?php get_header(); ?>
 
-<?php get_template_part( 'module_pageTit' ); ?>
-<?php get_template_part( 'module_panList' ); ?>
+<?php
+// Dealing with old files.
+// Actually, it's ok to only use get_template_part().
+/*-------------------------------------------*/
+/* Page Header
+/*-------------------------------------------*/
+$old_file_name[] = 'module_pageTit.php';
+if ( locate_template( $old_file_name, false, false ) ) {
+	locate_template( $old_file_name, true, false );
+} else {
+	get_template_part( 'template-parts/page-header' );
+}
+/*-------------------------------------------*/
+/* BreadCrumb
+/*-------------------------------------------*/
+$old_file_name[] = 'module_panList.php';
+if ( locate_template( $old_file_name, false, false ) ) {
+	locate_template( $old_file_name, true, false );
+} else {
+	get_template_part( 'template-parts/breadcrumb' );
+}
+?>
 
 <div class="section siteContent">
 <?php do_action( 'lightning_siteContent_prepend' ); ?>
@@ -59,17 +79,17 @@
 			the_post();
 
 			/**
-			 * Measures to load old files
+			 * Dealing with old files
 			 * Actually, it's ok to only use get_template_part().
 			 * It is measure for before version 7.0 that loaded module_loop_***.php.
 			 */
-			$templates[]  = 'module_loop_' . $postType['slug'] . '.php';
-			$templates[]  = 'module_loop_post.php';
-			$require_once = false;
-			if ( locate_template( $templates, false, $require_once ) ) {
-				locate_template( $templates, true, $require_once );
+			$old_file_name[] = 'module_loop_' . $postType['slug'] . '.php';
+			$old_file_name[] = 'module_loop_post.php';
+			$require_once    = false;
+			if ( locate_template( $old_file_name, false, $require_once ) ) {
+				locate_template( $old_file_name, true, $require_once );
 			} else {
-				get_template_part( 'template-parts/loop', $postType['slug'] );
+				get_template_part( 'template-parts/post/loop', $postType['slug'] );
 			}
 		} // while ( have_posts() ) {
 		?>
@@ -107,4 +127,4 @@
 </div><!-- [ /.row ] -->
 </div><!-- [ /.container ] -->
 </div><!-- [ /.siteContent ] -->
-	<?php get_footer(); ?>
+<?php get_footer(); ?>

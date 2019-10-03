@@ -2,9 +2,14 @@
 
 <?php
 if ( $bootstrap == '3' ) {
-	get_template_part( 'module_slide' );
+	$old_file_name[] = 'module_slide.php';
+	if ( locate_template( $old_file_name, false, false ) ) {
+		locate_template( $old_file_name, true, false );
+	} else {
+		get_template_part( 'template-parts/slide', 'bs3' );
+	}
 } else {
-	get_template_part( 'module_slide_bs4' );
+	get_template_part( 'template-parts/slide', 'bs4' );
 }
 ?>
 
