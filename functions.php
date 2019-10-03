@@ -246,7 +246,7 @@ if ( ! function_exists( 'lightning_widgets_init' ) ) {
 
 		// Sidebar( post_type )
 
-			$postTypes = get_post_types( array( 'public' => true ) );
+		$postTypes = get_post_types( array( 'public' => true ) );
 
 		foreach ( $postTypes as $postType ) {
 
