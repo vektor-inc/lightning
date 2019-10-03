@@ -48,11 +48,11 @@
 
 <?php if ( have_posts() ) : ?>
 
-	<?php if ( apply_filters( 'is_lightning_extend_loop', false ) ) : ?>
+	<?php if ( apply_filters( 'is_lightning_extend_loop', false ) ) { ?>
 
 	<?php do_action( 'lightning_extend_loop' ); ?>
 
-	<?php elseif ( file_exists( get_stylesheet_directory() . '/module_loop_' . $postType['slug'] . '.php' ) && $postType != 'post' ) : ?>
+<?php } elseif ( file_exists( get_stylesheet_directory() . '/module_loop_' . $postType['slug'] . '.php' ) && $postType != 'post' ) { ?>
 
 	<?php
 	while ( have_posts() ) :
@@ -61,7 +61,7 @@
 	<?php get_template_part( 'module_loop_' . $postType['slug'] ); ?>
 	<?php endwhile; ?>
 
-	<?php else : ?>
+<?php } else { ?>
 
 	<?php
 	while ( have_posts() ) :
@@ -70,7 +70,7 @@
 	<?php get_template_part( 'module_loop_post' ); ?>
 	<?php endwhile; ?>
 
-	<?php endif; // loop() ?>
+<?php } // loop() ?>
 
 	<?php
 	the_posts_pagination(
