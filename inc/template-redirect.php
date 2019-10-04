@@ -43,7 +43,7 @@ function lightning_redirect_module() {
 		'get_template_part_module_slide', function( $slug ) {
 			$templates[] = "{$slug}.php";
 			if ( ! locate_template( $templates, false, false ) ) {
-				get_template_part( 'template-parts/slide' );
+				get_template_part( 'template-parts/slide-bs3' );
 			}
 		}
 	);
