@@ -5,10 +5,12 @@
 get_header(); ?>
 
 <div class="section siteContent">
+<?php do_action( 'lightning_siteContent_prepend' ); ?>
 <div class="container">
+<?php do_action( 'lightning_siteContent_container_prepend' ); ?>
 <div class="row">
-
-<div class="col-md-12 mainSection" id="main" role="main">
+<div class="<?php lightning_the_class_name( 'mainSection' ); ?>" id="main" role="main">
+<?php do_action( 'lightning_mainSection_prepend' ); ?>
 
 	<?php
 	if ( have_posts() ) {
@@ -28,9 +30,13 @@ get_header(); ?>
 			?>
 
 			<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<div class="entry-body">
-	<?php the_content(); ?>
-	</div>
+
+			<?php do_action( 'ligthning_entry_body_before' ); ?>
+			<div class="entry-body">
+			<?php the_content(); ?>
+			</div>
+			<?php do_action( 'ligthning_entry_body_after' ); ?>
+
 	<?php
 	$args = array(
 		'before'      => '<nav class="page-link"><dl><dt>Pages :</dt><dd>',

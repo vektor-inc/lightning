@@ -360,6 +360,7 @@ function lightning_output_keycolor_css() {
 add_action( 'wp_head', 'lightning_print_css_common', 2 );
 function lightning_print_css_common() {
 	$options     = get_option( 'lightning_theme_options' );
+	$skin_info   = Lightning_Design_Manager::get_current_skin();
 	$dynamic_css = '';
 
 	if ( isset( $options['color_key'] ) && isset( $options['color_key_dark'] ) ) {
@@ -397,8 +398,10 @@ function lightning_print_css_common() {
 		.localNav ul li.current-cat ul.children{ display:block; }';
 	}
 
-	if ( isset( $options['sidebar_position'] ) && $options['sidebar_position'] === 'left' ) {
-		$dynamic_css .= '@media (min-width: 992px) { .siteContent .subSection { float:left;margin-left:0; } .siteContent .mainSection { float:right; } }';
+	if ( empty( $skin_info['bootstrap'] ) ) {
+		if ( isset( $options['sidebar_position'] ) && $options['sidebar_position'] === 'left' ) {
+			$dynamic_css .= '@media (min-width: 992px) { .siteContent .subSection { float:left;margin-left:0; } .siteContent .mainSection { float:right; } }';
+		}
 	}
 
 	if ( $dynamic_css ) {
@@ -420,14 +423,26 @@ function lightning_print_css_common() {
 /*-------------------------------------------*/
 add_filter( 'body_class', 'ltg_add_body_class_sidefix' );
 function ltg_add_body_class_sidefix( $class ) {
+
 	$options = get_option( 'lightning_theme_options' );
 	if ( ! isset( $options['sidebar_fix'] ) || ! $options['sidebar_fix'] ) {
 		if ( apply_filters( 'lightning_sidefix_enable', true ) ) {
 			$class[] = 'sidebar-fix';
 		}
 	}
+
 	return $class;
 }
+
+add_filter( 'body_class', 'ltg_add_body_class_bootstrap_version' );
+function ltg_add_body_class_bootstrap_version( $class ) {
+	global $bootstrap;
+	if ( isset( $bootstrap ) && $bootstrap == '4' ) {
+			$class[] = 'bootstrap4';
+	}
+	return $class;
+}
+
 
 /*-------------------------------------------*/
 /*  編集ショートカットボタンの位置調整（ウィジェットのショートカットボタンと重なってしまうため）

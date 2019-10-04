@@ -1,0 +1,95 @@
+/* Bootstrap Adjuster */
+
+.card {
+	&-title {
+		margin-bottom:0.8em;
+	}
+	&-meta {
+		font-size:12px;
+	}
+	&-img-outer {
+		position: relative;
+		overflow: hidden;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: 50% 50%;
+	}
+	&-img-use-bg {
+		position:relative;
+		left: -9999px;
+	}
+	a {
+		color: inherit;
+	}
+}
+
+.card-holizontal {
+	&-inner {
+		height: 100%;
+		&-row {
+			height: 100%;
+		}
+	}
+	&-img-right {
+		&-row {
+			flex-direction: row-reverse;
+			border:1px solid #ff0000;
+		}
+	}
+	&-reverse{
+		.row {
+			flex-direction: row-reverse;
+			// text-align: right;
+		}
+	}
+	.card-body {
+		height:100%;
+	}
+}
+
+.card-sm{
+	.card-body {
+		padding: 1rem 1.2rem;
+	}
+	.card-title {
+		font-size:0.8rem;
+	}
+	.card-text{
+		font-size:0.8rem;
+		line-height: 1.4;
+	}
+	.card-meta {
+		font-size:0.7rem;
+		line-height: 1.1;
+	}
+}
+
+.card-post {
+	.card-body {
+		padding-bottom: 1.5em;
+	}
+	.card-meta {
+		border:1px solid #ff0000;
+	}
+	.card-date {
+		position: absolute;
+		font-size: 11px;
+		margin-bottom:0;
+		left:1.2rem;
+		bottom:0.5rem;
+	}
+}
+
+.card-noborder {
+	border:none;
+}
+
+.media {
+	&-img {
+		width:30%;
+	}
+	&-title {
+		font-size: 14px;
+		margin-bottom:0.5em;
+	}
+}

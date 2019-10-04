@@ -122,7 +122,6 @@ function lightning_theme_setup() {
 
 add_action( 'wp_enqueue_scripts', 'lightning_addJs' );
 function lightning_addJs() {
-	wp_enqueue_script( 'bootstrap-js', get_template_directory_uri() . '/library/bootstrap/js/bootstrap.min.js', array( 'jquery' ), '3.4.1', true );
 	wp_enqueue_script( 'lightning-js', get_template_directory_uri() . '/assets/js/lightning.min.js', array( 'jquery' ), LIGHTNING_THEME_VERSION, true );
 }
 
@@ -159,6 +158,7 @@ require get_parent_theme_file_path( '/inc/customize/customize-top-slide.php' );
 /*-------------------------------------------*/
 require get_parent_theme_file_path( '/inc/template-tags.php' );
 require get_parent_theme_file_path( '/inc/template-tags-old.php' );
+require get_parent_theme_file_path( '/inc/class-vk-helpers.php' );
 
 /*-------------------------------------------*/
 /*	Load widgets
@@ -179,7 +179,7 @@ require get_parent_theme_file_path( '/inc/tgm-plugin-activation/tgm-config.php' 
 /*-------------------------------------------*/
 /*	Load Font Awesome
 /*-------------------------------------------*/
-require get_parent_theme_file_path( '/inc/font-awesome-config.php' );
+require get_parent_theme_file_path( '/inc/font-awesome/font-awesome-config.php' );
 
 /*-------------------------------------------*/
 /*	Load Front PR Blocks
@@ -189,7 +189,7 @@ get_template_part( 'inc/front-page-pr' );
 /*-------------------------------------------*/
 /*	Load Front vk-mobile-nav
 /*-------------------------------------------*/
-get_template_part( 'inc/vk-mobile-nav-config' );
+get_template_part( 'inc/vk-mobile-nav/vk-mobile-nav-config' );
 
 /*-------------------------------------------*/
 /*	Load woocommerce modules
@@ -197,6 +197,15 @@ get_template_part( 'inc/vk-mobile-nav-config' );
 if ( class_exists( 'woocommerce' ) ) {
 	require get_parent_theme_file_path( '/inc/woocommerce/functions-woo.php' );
 }
+
+/*-------------------------------------------*/
+/*	Load other modules
+/*-------------------------------------------*/
+require get_parent_theme_file_path( '/inc/components/class-vk-component-posts.php' );
+require get_parent_theme_file_path( '/inc/components/class-vk-component-button.php' );
+require get_parent_theme_file_path( '/inc/components/class-vk-component-mini-contents.php' );
+require get_parent_theme_file_path( '/inc/template-redirect.php' );
+
 
 /*-------------------------------------------*/
 /*	WidgetArea initiate
@@ -237,7 +246,7 @@ if ( ! function_exists( 'lightning_widgets_init' ) ) {
 
 		// Sidebar( post_type )
 
-			$postTypes = get_post_types( array( 'public' => true ) );
+		$postTypes = get_post_types( array( 'public' => true ) );
 
 		foreach ( $postTypes as $postType ) {
 

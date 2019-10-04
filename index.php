@@ -1,13 +1,35 @@
 <?php get_header(); ?>
 
-<?php get_template_part( 'module_pageTit' ); ?>
-<?php get_template_part( 'module_panList' ); ?>
+<?php
+// Dealing with old files.
+// Actually, it's ok to only use get_template_part().
+/*-------------------------------------------*/
+/* Page Header
+/*-------------------------------------------*/
+$old_file_name[] = 'module_pageTit.php';
+if ( locate_template( $old_file_name, false, false ) ) {
+	locate_template( $old_file_name, true, false );
+} else {
+	get_template_part( 'template-parts/page-header' );
+}
+/*-------------------------------------------*/
+/* BreadCrumb
+/*-------------------------------------------*/
+$old_file_name[] = 'module_panList.php';
+if ( locate_template( $old_file_name, false, false ) ) {
+	locate_template( $old_file_name, true, false );
+} else {
+	get_template_part( 'template-parts/breadcrumb' );
+}
+?>
 
 <div class="section siteContent">
+<?php do_action( 'lightning_siteContent_prepend' ); ?>
 <div class="container">
+<?php do_action( 'lightning_siteContent_container_prepend' ); ?>
 <div class="row">
-
-<div class="col-md-8 mainSection" id="main" role="main">
+<div class="<?php lightning_the_class_name( 'mainSection' ); ?>" id="main" role="main">
+<?php do_action( 'lightning_mainSection_prepend' ); ?>
 
 	<?php
 	/*-------------------------------------------*/
@@ -46,29 +68,33 @@
 
 <?php if ( have_posts() ) : ?>
 
-	<?php if ( apply_filters( 'is_lightning_extend_loop', false ) ) : ?>
+	<?php if ( apply_filters( 'is_lightning_extend_loop', false ) ) { ?>
 
-	<?php do_action( 'lightning_extend_loop' ); ?>
+		<?php do_action( 'lightning_extend_loop' ); ?>
 
-	<?php elseif ( file_exists( get_stylesheet_directory() . '/module_loop_' . $postType['slug'] . '.php' ) && $postType != 'post' ) : ?>
+	<?php } else { ?>
 
-	<?php
-	while ( have_posts() ) :
-		the_post();
-?>
-	<?php get_template_part( 'module_loop_' . $postType['slug'] ); ?>
-	<?php endwhile; ?>
+		<?php
+		while ( have_posts() ) {
+			the_post();
 
-	<?php else : ?>
+			/**
+			 * Dealing with old files
+			 * Actually, it's ok to only use get_template_part().
+			 * It is measure for before version 7.0 that loaded module_loop_***.php.
+			 */
+			$old_file_name[] = 'module_loop_' . $postType['slug'] . '.php';
+			$old_file_name[] = 'module_loop_post.php';
+			$require_once    = false;
+			if ( locate_template( $old_file_name, false, $require_once ) ) {
+				locate_template( $old_file_name, true, $require_once );
+			} else {
+				get_template_part( 'template-parts/post/loop', $postType['slug'] );
+			}
+		} // while ( have_posts() ) {
+		?>
 
-	<?php
-	while ( have_posts() ) :
-		the_post();
-?>
-	<?php get_template_part( 'module_loop_post' ); ?>
-	<?php endwhile; ?>
-
-	<?php endif; // loop() ?>
+	<?php } // loop() ?>
 
 	<?php
 	the_posts_pagination(
@@ -94,11 +120,11 @@
 
 </div><!-- [ /.mainSection ] -->
 
-<div class="col-md-3 col-md-offset-1 subSection sideSection">
+<div class="<?php lightning_the_class_name( 'sideSection' ); ?>">
 <?php get_sidebar( get_post_type() ); ?>
 </div><!-- [ /.subSection ] -->
 
 </div><!-- [ /.row ] -->
 </div><!-- [ /.container ] -->
 </div><!-- [ /.siteContent ] -->
-	<?php get_footer(); ?>
+<?php get_footer(); ?>

@@ -1,20 +1,25 @@
 <?php get_header(); ?>
 
-<?php get_template_part( 'module_slide' ); ?>
+<?php
+if ( $bootstrap == '3' ) {
+	$old_file_name[] = 'module_slide.php';
+	if ( locate_template( $old_file_name, false, false ) ) {
+		locate_template( $old_file_name, true, false );
+	} else {
+		get_template_part( 'template-parts/slide', 'bs3' );
+	}
+} else {
+	get_template_part( 'template-parts/slide', 'bs4' );
+}
+?>
 
 <div class="section siteContent">
-	<div class="container">
-		<div class="row">
+<?php do_action( 'lightning_siteContent_prepend' ); ?>
+<div class="container">
+<?php do_action( 'lightning_siteContent_container_prepend' ); ?>
+<div class="row">
 
-			<?php
-			if ( lightning_is_frontpage_onecolumn() ) {
-				$main_col = 'col-md-12';
-			} else {
-				$main_col = 'col-md-8';
-			}
-			?>
-
-			<div class="<?php echo $main_col; ?> mainSection">
+			<div class="<?php lightning_the_class_name( 'mainSection' ); ?>">
 
 			<?php do_action( 'lightning_home_content_top_widget_area_before' ); ?>
 
@@ -92,13 +97,13 @@
 
 			<?php if ( ! lightning_is_frontpage_onecolumn() ) : ?>
 
-				<div class="col-md-3 col-md-offset-1 subSection sideSection">
+				<div class="<?php lightning_the_class_name( 'sideSection' ); ?>">
 					<?php get_sidebar(); ?>
 				</div><!-- [ /.subSection ] -->
 
 			<?php endif; ?>
 
-		</div><!-- [ /.row ] -->
-	</div><!-- [ /.container ] -->
+</div><!-- [ /.row ] -->
+</div><!-- [ /.container ] -->
 </div><!-- [ /.siteContent ] -->
 <?php get_footer(); ?>

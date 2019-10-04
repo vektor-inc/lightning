@@ -84,13 +84,18 @@ class WP_Widget_ltg_post_list extends WP_Widget {
 			if ( ! $instance['format'] ) {
 				while ( $post_loop->have_posts() ) :
 					$post_loop->the_post();
-					if (
-						file_exists( get_stylesheet_directory() . '/module_loop_' . $post_type . '.php' ) &&
-						$post_type != 'post'
-					) {
-						get_template_part( 'module_loop_' . $post_type );
+					/**
+					 * Dealing with old files
+					 * Actually, it's ok to only use get_template_part().
+					 * It is measure for before version 7.0 that loaded module_loop_***.php.
+					 */
+					$templates[]  = 'module_loop_' . $postType['slug'] . '.php';
+					$templates[]  = 'module_loop_post.php';
+					$require_once = false;
+					if ( locate_template( $templates, false, $require_once ) ) {
+						locate_template( $templates, true, $require_once );
 					} else {
-						get_template_part( 'module_loop_post' );
+						get_template_part( 'template-parts/post/loop', $postType['slug'] );
 					}
 				endwhile;
 			} elseif ( $instance['format'] == 1 ) {
@@ -119,7 +124,16 @@ class WP_Widget_ltg_post_list extends WP_Widget {
 
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<header>
-				<?php get_template_part( 'module_loop_post_meta' ); ?>
+				<?php
+				// Dealing with old files.
+				// Actually, it's ok to only use get_template_part().
+				$old_file_name[] = 'module_loop_post_meta.php';
+				if ( locate_template( $old_file_name, false, false ) ) {
+					locate_template( $old_file_name, true, false );
+				} else {
+					get_template_part( 'template-parts/post/meta' );
+				}
+				?>
 				<h1 class="entry-title"><?php the_title(); ?></h1>
 			</header>
 

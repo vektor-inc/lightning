@@ -350,4 +350,40 @@ class LightningTest extends WP_UnitTestCase {
 		}
 	}
 
+	function test_lightning_is_slide_outer_link() {
+		$test_array = array(
+			array(
+				'options' => array(
+					'top_slide_url_1'      => 'https://google.com',
+					'top_slide_text_btn_1' => '詳しくはこちら',
+				),
+				'correct' => false,
+			),
+			array(
+				'options' => array(
+					'top_slide_url_1'      => '',
+					'top_slide_text_btn_1' => '詳しくはこちら',
+				),
+				'correct' => false,
+			),
+			array(
+				'options' => array(
+					'top_slide_url_1'      => 'https://google.com',
+					'top_slide_text_btn_1' => '',
+				),
+				'correct' => true,
+			),
+		);
+		print PHP_EOL;
+		print '------------------------------------' . PHP_EOL;
+		print 'test_lightning_is_slide_outer_link' . PHP_EOL;
+		print '------------------------------------' . PHP_EOL;
+		foreach ( $test_array as $key => $value ) {
+			$return = lightning_is_slide_outer_link( $value['options'], 1 );
+			print 'return  :' . $return . PHP_EOL;
+			print 'correct :' . $value['correct'] . PHP_EOL;
+			$this->assertEquals( $value['correct'], $return );
+		}
+	}
+
 }
