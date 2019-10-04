@@ -20,7 +20,7 @@ if ( function_exists( 'wp_body_open' ) ) {
 }
 do_action( 'lightning_header_before' );
 ?>
-<header class="navbar siteHeader">
+<header class="<?php lightning_the_class_name( 'header' ); ?>">
 	<?php do_action( 'lightning_header_prepend' ); ?>
 	<div class="container siteHeadContainer">
 		<div class="navbar-header">
@@ -41,7 +41,7 @@ do_action( 'lightning_header_before' );
 			$args  = array(
 				'theme_location' => 'Header',
 				'container'      => 'nav',
-				'items_wrap'     => '<ul id="%1$s" class="%2$s nav gMenu">%3$s</ul>',
+				'items_wrap'     => '<ul id="%1$s" class="%2$s ' . lightning_get_the_class_name( 'nav_menu_header' ) . '">%3$s</ul>',
 				'fallback_cb'    => '',
 				'echo'           => false,
 				'walker'         => new description_walker(),

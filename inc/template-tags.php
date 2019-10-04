@@ -1,5 +1,7 @@
 <?php
 /*-------------------------------------------*/
+/*	lightning_get_the_class_name
+/*-------------------------------------------*/
 /*	Sanitize
 /*-------------------------------------------*/
 /*	Theme default options
@@ -22,9 +24,67 @@
 /*-------------------------------------------*/
 /*	Archive title
 /*-------------------------------------------*/
+/*	lightning_is_layout_onecolumn
+/*-------------------------------------------*/
 /*	lightning_check_color_mode
 /*-------------------------------------------*/
 
+
+/*-------------------------------------------*/
+/*	lightning_get_the_class_name
+/*-------------------------------------------*/
+function lightning_get_the_class_name( $position = '' ) {
+	$skin_info = Lightning_Design_Manager::get_current_skin();
+
+	if ( empty( $skin_info['bootstrap'] ) ) {
+		$class_names = array(
+			'header'          => 'navbar siteHeader',
+			'nav_menu_header' => 'nav gMenu',
+			'mainSection'     => 'col-md-8 mainSection',
+			'sideSection'     => 'col-md-3 col-md-offset-1 subSection sideSection',
+		);
+		if ( lightning_is_layout_onecolumn() ) {
+			$class_names['mainSection'] = 'col-md-12 mainSection';
+			$class_names['sideSection'] = 'col-md-12 sideSection';
+		}
+	} elseif ( $skin_info['bootstrap'] === 'bs4' ) {
+		$class_names = array(
+			'header'          => 'siteHeader',
+			'nav_menu_header' => 'gMenu vk-menu-acc',
+			'mainSection'     => 'col mainSection mainSection-col-two',
+			'sideSection'     => 'col subSection sideSection sideSection-col-two',
+		);
+		if ( lightning_is_layout_onecolumn() ) {
+			$class_names['mainSection'] = 'col mainSection mainSection-col-one';
+			$class_names['sideSection'] = 'col subSection sideSection sideSection-col-one';
+		} else {
+			// 2 column
+			$options = get_option( 'lightning_theme_options' );
+			// sidebar-position
+			if ( isset( $options['sidebar_position'] ) && $options['sidebar_position'] === 'left' ) {
+				$class_names['mainSection'] = 'col mainSection mainSection-col-two mainSection-pos-right';
+				$class_names['sideSection'] = 'col subSection sideSection sideSection-col-two sideSection-pos-left';
+			}
+		}
+	}
+
+	if ( empty( $class_names[ $position ] ) ) {
+		$return = '';
+	} else {
+		$return = esc_attr( $class_names[ $position ] );
+	}
+
+	return apply_filters( 'lightning_get_the_class_name', $return );
+}
+
+function lightning_the_class_name( $position = '' ) {
+	echo lightning_get_the_class_name( $position );
+}
+
+function lightning_get_post_class( $class = '', $post_id = null ) {
+	// Separates classes with a single space, collates classes for post DIV
+	return 'class="' . join( ' ', get_post_class( $class, $post_id ) ) . '"';
+}
 
 /*-------------------------------------------*/
 /*	Sanitize
@@ -170,8 +230,13 @@ function lightning_get_post_type() {
 	// $postType['slug'] = get_post_type();
 
 	global $wp_query;
-	if ( isset( $wp_query->query_vars['post_type'] ) && $wp_query->query_vars['post_type'] ) {
+	if ( ! empty( $wp_query->query_vars['post_type'] ) ) {
+
 		$postType['slug'] = $wp_query->query_vars['post_type'];
+		// Maybe $wp_query->query_vars['post_type'] is usually an array...
+		if ( is_array( $postType['slug'] ) ) {
+			$postType['slug'] = current( $postType['slug'] );
+		}
 	} elseif ( is_tax() ) {
 		// Case of tax archive and no posts
 		$taxonomy         = get_queried_object()->taxonomy;
@@ -266,7 +331,7 @@ function lightning_top_slide_count( $lightning_theme_options ) {
 /*	link url exist but btn txt exixt? or not
 /*-------------------------------------------*/
 function lightning_is_slide_outer_link( $lightning_theme_options, $i ) {
-	if ( ! empty( $lightning_theme_options[ 'top_slide_url_' . $i ] ) && empty( $lightning_theme_options[ 'top_slide_btn_text_' . $i ] ) ) {
+	if ( ! empty( $lightning_theme_options[ 'top_slide_url_' . $i ] ) && empty( $lightning_theme_options[ 'top_slide_text_btn_' . $i ] ) ) {
 		return true;
 	} else {
 		return false;
@@ -368,6 +433,31 @@ function lightning_is_frontpage_onecolumn() {
 	return false;
 }
 
+/*-------------------------------------------*/
+/*	lightning_is_layout_onecolumn
+/*-------------------------------------------*/
+
+function lightning_is_layout_onecolumn() {
+	$onecolumn = false;
+	if ( is_front_page() ) {
+		if ( lightning_is_frontpage_onecolumn() ) {
+			$onecolumn = true;
+		}
+	} elseif ( is_singular() ) {
+		if ( is_page() ) {
+			global $post;
+			$template           = get_post_meta( $post->ID, '_wp_page_template', true );
+			$template_onecolumn = array(
+				'page-onecolumn.php',
+				'page-lp.php',
+			);
+			if ( in_array( $template, $template_onecolumn ) ) {
+				$onecolumn = true;
+			}
+		}
+	}
+	return $onecolumn;
+}
 
 function lightning_get_theme_name() {
 	return apply_filters( 'lightning_theme_name', 'Lightning' );

@@ -1,0 +1,329 @@
+@charset "utf-8";
+@import "variables";
+
+/*-------------------------------------------*/
+/*	第二階層マウスホバー展開処理
+/*-------------------------------------------*/
+/*	PCとタッチデバイスでのプルダウンボタンなどの表示切り替え処理
+/*-------------------------------------------*/
+/*	下位展開ボタン
+/*-------------------------------------------*/
+/*	.gMenu_outer（フロート処理）
+/*-------------------------------------------*/
+
+
+.siteHeadContainer::after {
+	content:"";
+	display: block;
+  clear: both;
+}
+
+$menu_padding_vertical:14px;
+$menu_padding_holizontal:14px;
+$menu_bg_color:#333;
+$time_transition:0.1s;
+
+.gMenu_outer {
+	// position: relative; をここで指定してしまうと、スクロール時にすっと下がるモーションが付けられない
+	width: 100%;
+	min-height:4em; /* キャプション無し用 */
+	display: table; /* キャプション無しの時に上下中央になるように */
+	nav {
+		display: table-cell;
+		vertical-align: middle;
+	}
+}
+.gMenu {
+	margin :0 auto;
+	padding:0;
+	list-style: none;
+	position: relative;
+	a {
+		color:#333;
+		&:hover {
+				text-decoration: none;
+		}
+	}
+	li {
+		line-height: 1.4;
+		font-size:14px;
+	}
+	/* only first */
+	& > li {
+		float:left;
+		text-align: center;
+		list-style: none;
+		position: relative;
+		&:before{
+			position: absolute;
+			left:0;
+			bottom:-1px;
+			content: '';
+			width:0;
+			border-bottom:1px solid $color_key_dark;
+			transition: all 0.5s ease-out;
+		}
+		&:hover,
+	  &.current-post-ancestor,
+	  &.current-menu-item,
+	  &.current-menu-parent,
+	  &.current-menu-ancestor,
+	  &.current_page_parent,
+	  &.current_page_ancestor {
+			transition: all 0.5s ease-out;
+			// background-color: rgba(0,0,0,0.02);
+			&:before{
+				width:100%;
+			}
+		}
+		&.menu-item-has-children::after{
+			transition: all $time_transition ease-out;
+			content: '';
+			position: absolute;
+			padding: 0;
+			bottom: -10px;
+			left: 50%;
+			transform: translateX(-50%);
+			border: 10px solid transparent;
+			z-index: 1000;
+			opacity: 0;
+			border-bottom-color: $menu_bg_color;
+		}
+		.device-pc &.menu-item-has-children:hover::after,
+		&.acc-parent-open::after{
+			opacity: 1;
+			bottom: -1px;
+		}
+		&.acc-parent-close::after{
+			opacity: 0;
+		}
+		/* ./only first */
+
+	 }
+	 /* 2nd after */
+	 ul {
+		 padding: 0;
+		 margin:0;
+		 list-style-type: none;
+		 transition: all 0.3s ease-in;
+		 li {
+				white-space: nowrap;
+				font-size:14px;
+				background-color: $menu_bg_color;
+				width: 240px;
+				white-space: normal;
+			 & + li a{ border-top:1px solid rgba(255,255,255,0.2);}
+			 a {
+				 padding: $menu_padding_vertical 3em;
+				 color:#fff;
+				 &:hover {
+					 background-color: $color_key;
+					 transition: all 0.5s ease-out;
+				 }
+			 }
+		 }
+	 }
+}
+
+.gMenu_description {
+	display:block; overflow:hidden;
+	font-size:10px;
+	line-height: 1.4;
+}
+
+/*-------------------------------------------*/
+/*	第二階層マウスホバー展開処理
+/*-------------------------------------------*/
+.gMenu > li {
+	/*
+	If except the 'ul' that overwrited by vk-mobile-nav absolute on such as vws.
+	*/
+	& > ul.sub-menu {
+		position: absolute;
+		z-index: 1000;
+		display:block;
+		overflow:hidden;
+
+		// 横位置
+		// 親メニューに左右中央に寄せてからサブメニュー分を左にマイナスオフセット
+		// ※ ul > li のpositionでleft:-50%指定すると ul は 本来 li がある横幅まで存在するので
+		// 　余分なマウスオーバー反応エリアができてしまうため
+		left:50%;
+		margin-left:-120px;
+
+		// プルダウン展開
+		max-height: 0;
+	}
+	& > .sub-menu.acc-child-open,
+	.device-pc &:hover > .sub-menu{
+		opacity: 1;
+		max-height:1000px;
+	}
+}
+
+/*-------------------------------------------*/
+/*	PCとタッチデバイスでのプルダウンボタンなどの表示切り替え処理
+/*-------------------------------------------*/
+.gMenu {
+	& > li {
+
+		.device-pc & {
+			// 第一階層メニューのみ下階層展開ボタンを隠す
+			& > .acc-btn {
+				display: none;
+			}
+			// a タグに対して展開メニューボタン分の余白をつける
+			& > a {
+				display:block; overflow:hidden;
+				// PC端末時は下階層展開ボタンを表示しないので左右余白小さめ
+				padding: $menu_padding_vertical 1.8em;
+			}
+		}
+
+		// モバイル端末の場合
+		// li タグに対して余白をつける
+		// モバイル端末の場合は下階層展開ボタンを表示するので、
+		// 展開ボタンの押し間違えですぐにページ遷移してしまうため、
+		// liに余白をつけて、リンク対象は文字部分だけにする
+		.device-mobile & {
+			padding: $menu_padding_vertical 2.1em;
+		}
+	}
+	/* only second */
+	& > li > ul.sub-menu {
+		// PCの場合はリンク範囲が広いが、モバイルでは文字部分だけにするので、
+		// 第一階層文字下の余白分をmarginで確保しなくてはならない
+		.device-mobile & {
+			margin-top:$menu_padding_vertical;
+		}
+	} // / only second
+}
+
+/*-------------------------------------------*/
+/*	下位展開ボタン
+/*-------------------------------------------*/
+.gMenu {
+	&.vk-menu-acc {
+		.acc-btn{
+			width:20px;
+			height:20px;
+			right:6px;
+			top:12px;
+		}
+		.sub-menu {
+			.acc-btn{
+				right:$menu_padding_holizontal;
+				border-color:#fff;
+				color:#fff;
+				background-image: url(../images/vk-menu-acc-icon-open-white.svg);
+				&.acc-btn-close {
+					background-image: url(../images/vk-menu-close-white.svg);
+				}
+			}
+		}
+	}
+}
+@media ( max-width: $md-max ){
+	.gMenu_outer {
+		display: none;
+	}
+}
+@media ( max-width: $lg-max ){
+	.gMenu_outer {
+		text-align: center;
+	}
+	.gMenu{
+		display:inline-block; overflow:visible;
+	}
+}
+
+@media ( min-width: $xl-min ){
+	.gMenu_outer {
+		right:0;
+		float:right;
+		width: unset;
+	}
+	.gMenu{
+		right:0;
+		margin:0;
+		float:right;
+	}
+}
+
+// Lightning 全スキンBS4対応終了したら vk-mobile-nav　と一緒にこの記述を削除
+@media (min-width: $lg-min){
+	body.device-mobile {
+		.vk-mobile-nav-menu-btn {
+			display: none;
+		}
+	}
+}
+	// ↑Lightning 全スキンBS4対応終了したら vk-mobile-nav　と一緒にこの記述を削除
+/*-------------------------------------------*/
+/*	.gMenu_outer（フロート処理）
+/*-------------------------------------------*/
+/*
+PCでのフローバルメニュー 表示・非表示処理
+ 一定量スクロールすると、jsでbody タグに .header_scrolled クラスが付与される
+ .header_scrolled の付与処理は skin_active.php にjsが書いてある
+ スクロールされた時にメニューがfixedになるが、メニューの高さ分 navbar-header の下にmargin-bottomを付与するので、ガクンとならない。
+ ■メニューのアニメーション
+ 初期状態でメニューの高さ分である 54px をtopににオフセットしているが、positionを指定していないので、最初は効かない。
+ つまりここは本来54pxでなくてもかまわない。
+ スクロール識別クラスがつくとfixedになって -54pxの位置指定が効く。
+ しかし、先述の通りmargin-bottomが追加されるので、ガクンとはならない。
+ この時メニューは一旦 -54px の位置に移動するが、scrolled では 0 に指定されているので、アニメーションで0の位置に移動する
+*/
+@media (min-width: $lg-min){
+	.gMenu_outer {
+		top:-54px;
+	}
+	.header_scrolled {
+		.gMenu_outer {
+			position: fixed;top:0px;width:100%;transition: top 1s;
+			background-color: #fff;
+			z-index: 1000;
+			left:0;
+			box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+		}
+		.gMenu {
+			float:none;
+			right:unset;
+			margin-left:auto;
+			margin-right: auto;
+			padding-left:15px;
+			padding-right:15px;
+			display: flex;
+			& > li {
+				width:50%;
+				white-space: nowrap;
+				border-right: $border_primary;
+				&:first-child{
+					border-left: $border_primary;
+				}
+				// PC端末の場合
+				.device-pc & {
+					// 第一階層メニューのみ下階層展開ボタンを隠す
+					// a タグに対して余白をつける
+					& > a {
+						// PC端末時は下階層展開ボタンを表示しないので左右余白小さめ
+						padding: $menu_padding_vertical 1em;
+					}
+				}
+				.device-mobile & {
+					padding: $menu_padding_vertical 1em;
+				}
+			}
+		}
+		.navbar-header { margin-bottom:54px; }
+		&.admin-bar .gMenu_outer { top:32px;}
+		@media (min-width: $lg-min){
+			.gMenu_outer .gMenu {
+				width:$lg-container;
+			 }
+		}
+		@media (min-width: $xl-min){
+			.gMenu_outer .gMenu { width:$xl-container; }
+		}
+	}
+} // @media (min-width: 768px){

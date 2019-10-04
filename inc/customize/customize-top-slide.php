@@ -13,6 +13,35 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 		)
 	);
 
+	$skin_info = Lightning_Design_Manager::get_current_skin();
+	if ( isset( $skin_info['bootstrap'] ) && $skin_info['bootstrap'] == 'bs4' ) {
+		// Slide Effect
+		$wp_customize->add_setting(
+			'lightning_theme_options[top_slide_effect]', array(
+				'default'           => 'slide',
+				'type'              => 'option',
+				'capability'        => 'edit_theme_options',
+				'sanitize_callback' => 'sanitize_text_field',
+			)
+		);
+
+		$wp_customize->add_control(
+			'top_slide_effect', array(
+				'label'       => __( 'Slide effect', 'lightning' ),
+				'section'     => 'lightning_slide',
+				'settings'    => 'lightning_theme_options[top_slide_effect]',
+				'type'        => 'select',
+				'choices'     => array(
+					'slide' => 'slide',
+					'fade'  => 'fade',
+				),
+				'priority'    => 604,
+				'description' => '',
+				'input_after' => '',
+			)
+		);
+	}
+
 	// Slide interval time
 	$wp_customize->add_setting(
 		'lightning_theme_options[top_slide_time]', array(
