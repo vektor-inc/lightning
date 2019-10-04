@@ -64,7 +64,7 @@ iframe {
 	.media-body {
 		margin-right: 1em;
 		margin-bottom:0.5em;
-		width: auto;
+		flex: unset;
 	}
 	.package-title:after {
 		border:none;
