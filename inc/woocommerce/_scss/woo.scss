@@ -95,6 +95,15 @@ $price_color:#cc0000;
 		bottom: 10px;
 	}
 }
+
+.woocommerce nav.woocommerce-pagination ul.page-numbers {
+	border: none;
+	li {
+	margin:0 5px;
+	border: none;
+	}
+}
+
 /*-------------------------------------------*/
 /*	single
 /*-------------------------------------------*/
@@ -127,6 +136,7 @@ input.input-text.qty {
 		font-size:14px;
 		line-height: 1.5em;
 	}
+	li.product-type-subscription .price,
 	.price {
 		position: absolute;
 		bottom:30px;
@@ -153,47 +163,65 @@ button {
 /*-------------------------------------------*/
 /*	cart
 /*-------------------------------------------*/
+.woocommerce {
+	.shop_table {
+		font-size: 14px;
+		th {
+			font-weight: normal;
+		}
+		th,td {
+			border-bottom:none;
+		}
+		thead {
+			th {
+				background-color: #f5f5f5;
+			}
+		}
+		.product-name {
+			a {
+				color:#333;
+			}
+		}
+		.tax-rate {
+			/* 「日本の消費税」表記 */
+			small{ white-space: nowrap; }
+		}
+		// td[data-title],
+		td.product-price,
+		td.product-subtotal,
+		td.product-total,
+		tr.tax-rate td,
+		tr.cart-subtotal td,
+		tr.order-total td{
+				text-align: right;
+		}
+		tr.checkout_discount_headings {
+			th {
+				padding: 9px 12px !important;
+			}
+		}
+		tr.order_table_item{
+			td{
+				padding: 9px 12px !important;
+			}
+		}
+		td.actions input[type=text].input-text{
+			line-height: 1;
+			padding: 4px 6px 3px;
+			height:auto;
+		}
+		.form-control {
+			font-size: 14px;
+		}
+	}
+}
+
 .cart_item{
 	.product-name{
 		text-align: left;
 	}
 }
 
-.shop_table {
-	font-size: 14px;
-	th {
-		font-weight: normal;
-	}
-	th,td {
-		border-bottom:none;
-	}
-	thead {
-		th {
-			background-color: #f5f5f5;
-		}
-	}
-	.product-name {
-		a {
-			color:#333;
-		}
-	}
-	.tax-rate {
-		/* 「日本の消費税」表記 */
-		small{ white-space: nowrap; }
-	}
-	// td[data-title],
-	td.product-price,
-	td.product-subtotal,
-	td.product-total,
-	tr.tax-rate td,
-	tr.cart-subtotal td,
-	tr.order-total td{
-			text-align: right;
-	}
-	.form-control {
-		font-size: 14px;
-	}
-}
 .cart_totals {
 	h2 {
 		border:none;
@@ -222,6 +250,19 @@ button {
 	}
 }
 
+/*	cart discount
+/*-------------------------------------------*/
+tr.cart-discount td{
+		text-align: right;
+		.woocommerce-remove-coupon {
+			display: block;
+			letter-spacing: 2px;
+		}
+}
+
+.woocommerce .form-row {
+	display: inherit;
+}
 
 /*-------------------------------------------*/
 /*	Account
