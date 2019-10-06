@@ -142,7 +142,7 @@ gulp.task('js_build', function() {
 		'./assets/js/_header_fixed.js',
 		'./assets/js/_sidebar-fixed.js',
 		'./assets/js/_vk-prlx.min.js',
-		'./inc/vk-mobile-nav/js/vk-mobile-nav.min.js',
+		'./inc/vk-mobile-nav/package/js/vk-mobile-nav.min.js',
 	])
     .pipe(concat('lightning.js'))
     .pipe(jsmin())
@@ -154,7 +154,7 @@ gulp.task('js_build', function() {
 
 // Watch
 gulp.task('watch', function() {
-  gulp.watch(['./assets/js/**','./inc/vk-mobile-nav/js/**'], ['js_build']);
+  gulp.watch(['./assets/js/**','./inc/vk-mobile-nav/package/js/**'], ['js_build']);
   gulp.watch(['./assets/_scss/**','./inc/woocommerce/_scss/**'], ['sass_common']);
   gulp.watch(['./assets/_scss/**','./inc/woocommerce/_scss/**'], ['sass_woo']);
   gulp.watch(['./library/bootstrap-4/scss/**.scss'], ['sass_bs4']);
