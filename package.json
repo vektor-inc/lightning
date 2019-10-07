@@ -22,15 +22,15 @@
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.1.0",
-    "gulp-clean-css": "^3.9.0",
+    "gulp-clean-css": "^3.10.0",
     "gulp-concat": "^2.6.1",
     "gulp-cssmin": "^0.2.0",
     "gulp-jsmin": "^0.1.5",
     "gulp-merge-media-queries": "^0.2.1",
-    "gulp-plumber": "^1.1.0",
-    "gulp-rename": "^1.2.2",
+    "gulp-plumber": "^1.2.1",
+    "gulp-rename": "^1.4.0",
     "gulp-replace": "^1.0.0",
-    "gulp-sass": "^3.1.0",
-    "run-sequence": "^2.2.0"
+    "gulp-sass": "^3.2.1",
+    "run-sequence": "^2.2.1"
   }
 }
