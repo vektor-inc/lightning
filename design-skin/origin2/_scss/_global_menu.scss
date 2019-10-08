@@ -224,6 +224,9 @@ $time_transition:0.1s;
 				}
 			}
 		}
+		ul.acc-child-open {
+        	overflow-y: visible;
+		}
 	}
 }
 @media ( max-width: $md-max ){
