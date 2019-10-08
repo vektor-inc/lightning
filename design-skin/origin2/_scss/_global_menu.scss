@@ -113,8 +113,8 @@ $time_transition:0.1s;
 				width: 240px;
 				white-space: normal;
 			 & + li a{ border-top:1px solid rgba(255,255,255,0.2);}
-			 &.menu-item-has-children a{ 
-			 	padding: $menu_padding_vertical 3em; 
+			 &.menu-item-has-children > a{
+			 	padding: $menu_padding_vertical 3em $menu_padding_vertical 1em;
 			 }
 			 a {
 				 padding: $menu_padding_vertical 1em;
@@ -122,7 +122,7 @@ $time_transition:0.1s;
 				 &:hover {
 					 background-color: $color_key;
 					 transition: all 0.5s ease-out;
-				 }				 
+				 }
 			 }
 		 }
 	 }
