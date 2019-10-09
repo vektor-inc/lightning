@@ -411,22 +411,20 @@ ul.page-numbers { margin:0;padding: 0;
 .widget_vkexunit_post_list .mainSection-title,
 .widget_ltg_adv_post_list .pt_0 .mainSection-title { margin-bottom:0; }
 
-.widget_ltg_adv_full_wide_title_outer, .widget_ltg_full_wide_title_outer {
+.widget_ltg_full_wide_title_outer {
   text-align: center;
   background-size: cover;
   background-position:center center;
 }
-.widget_ltg_adv_full_wide_title_title, .widget_ltg_full_wide_title_title {
-  font-size:2.4rem;
-  @media ( min-width: 768px ){ font-size:2.8rem; }
-  @media ( min-width: 1200px ){ font-size:3.2rem; }
+.widget_ltg_full_wide_title_title {
+  font-size:2rem;
   padding:0;
   margin-bottom: 0.3em;
   line-height: 1.4em;
   background:none;
   border:none;
 }
-.widget_ltg_adv_full_wide_title_title:last-child, .widget_ltg_full_wide_title_title:last-child {
+.widget_ltg_full_wide_title_title:last-child {
   margin-bottom: 0;
 }
 .widget_ltg_adv_full_wide_title_caption, .widget_ltg_full_wide_title_caption {

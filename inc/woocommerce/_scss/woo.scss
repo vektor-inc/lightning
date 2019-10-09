@@ -287,6 +287,7 @@ tr.cart-discount td{
 		list-style: none;
 		margin-top:0;
 		padding:0;
+		font-size: 14px;
 		@media (min-width: 768px ){
 			margin-right:3em;
 		}
@@ -296,7 +297,7 @@ tr.cart-discount td{
 			margin-bottom:0;
 			a {
 				color :#333;
-				padding: 0.5em 0;
+				padding: 0.7em 0;
 				display:block; overflow:hidden;
 			}
 		}

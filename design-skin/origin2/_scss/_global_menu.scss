@@ -113,8 +113,11 @@ $time_transition:0.1s;
 				width: 240px;
 				white-space: normal;
 			 & + li a{ border-top:1px solid rgba(255,255,255,0.2);}
+			 &.menu-item-has-children > a{
+			 	padding: $menu_padding_vertical 3em $menu_padding_vertical 1em;
+			 }
 			 a {
-				 padding: $menu_padding_vertical 3em;
+				 padding: $menu_padding_vertical 1em;
 				 color:#fff;
 				 &:hover {
 					 background-color: $color_key;
@@ -220,6 +223,9 @@ $time_transition:0.1s;
 					background-image: url(../images/vk-menu-close-white.svg);
 				}
 			}
+		}
+		ul.acc-child-open {
+        	overflow-y: visible;
 		}
 	}
 }
