@@ -101,6 +101,7 @@ gulp.task('sass_woo', function() {
     .pipe(autoprefixer())
     .pipe(cleanCss())
     .pipe(gulp.dest('./inc/woocommerce/css/'))
+		.pipe(gulp.dest('../lightning-pro/inc/woocommerce/css/'))
 });
 gulp.task('sass_bs4', function() {
 	gulp.src(['./library/bootstrap-4/scss/**.scss'])
