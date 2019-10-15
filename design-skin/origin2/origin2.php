@@ -64,7 +64,7 @@ function lightning_origin2_header_scrolled_scripts() {
 		$script = "
 		;(function($,document,window){
 		$(document).ready(function($){
-			/* スクロール識別クラスを付与 */
+			/* Add scroll recognition class */
 			$(window).scroll(function () {
 				var scroll = $(this).scrollTop();
 				if ($(this).scrollTop() > 160) {
@@ -87,8 +87,6 @@ add_action( 'wp_enqueue_scripts', 'lightning_origin2_header_scrolled_scripts' );
 
 
 // lightning headfix disabel
-
-/*スクロールに応じてヘッダーを一旦スクロールさせるため、標準のヘッダー固定は解除する必要がある */
 add_filter( 'lightning_headfix_enable', 'lightning_origin2_headfix_disabel' );
 function lightning_origin2_headfix_disabel() {
 	return false;

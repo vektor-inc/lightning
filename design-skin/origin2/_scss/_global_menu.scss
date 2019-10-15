@@ -1,6 +1,11 @@
 @charset "utf-8";
 @import "variables";
 
+
+/*-------------------------------------------*/
+/*	only first
+/*-------------------------------------------*/
+/*	2nd after
 /*-------------------------------------------*/
 /*	第二階層マウスホバー展開処理
 /*-------------------------------------------*/
@@ -19,7 +24,7 @@
 }
 
 $menu_padding_vertical:14px;
-$menu_padding_holizontal:14px;
+$menu_padding_holizontal:1.2em;
 $menu_bg_color:#333;
 $time_transition:0.1s;
 
@@ -48,7 +53,9 @@ $time_transition:0.1s;
 		line-height: 1.4;
 		font-size:14px;
 	}
-	/* only first */
+	/*-------------------------------------------*/
+	/*	only first
+	/*-------------------------------------------*/
 	& > li {
 		float:left;
 		text-align: center;
@@ -100,7 +107,9 @@ $time_transition:0.1s;
 		/* ./only first */
 
 	 }
-	 /* 2nd after */
+	/*-------------------------------------------*/
+ 	/*	2nd after
+ 	/*-------------------------------------------*/
 	 ul {
 		 padding: 0;
 		 margin:0;
@@ -112,12 +121,13 @@ $time_transition:0.1s;
 				background-color: $menu_bg_color;
 				width: 240px;
 				white-space: normal;
+				text-align: left;
 			 & + li a{ border-top:1px solid rgba(255,255,255,0.2);}
 			 &.menu-item-has-children > a{
-			 	padding: $menu_padding_vertical 3em $menu_padding_vertical 1em;
+			 	padding: $menu_padding_vertical 3.5em $menu_padding_vertical $menu_padding_holizontal;
 			 }
 			 a {
-				 padding: $menu_padding_vertical 1em;
+				 padding: $menu_padding_vertical $menu_padding_holizontal;
 				 color:#fff;
 				 &:hover {
 					 background-color: $color_key;
@@ -139,7 +149,7 @@ $time_transition:0.1s;
 /*-------------------------------------------*/
 .gMenu > li {
 	/*
-	If except the 'ul' that overwrited by vk-mobile-nav absolute on such as vws.
+	If except the 'ul' from .gMenu that overwrited by vk-mobile-nav absolute on such as vws.
 	*/
 	& > ul.sub-menu {
 		position: absolute;
@@ -218,9 +228,9 @@ $time_transition:0.1s;
 				right:$menu_padding_holizontal;
 				border-color:#fff;
 				color:#fff;
-				background-image: url(../images/vk-menu-acc-icon-open-white.svg);
+				background-image: url(../../../inc/vk-mobile-nav/package/images/vk-menu-acc-icon-open-white.svg);
 				&.acc-btn-close {
-					background-image: url(../images/vk-menu-close-white.svg);
+					background-image: url(../../../inc/vk-mobile-nav/package/images/vk-menu-close-white.svg);
 				}
 			}
 		}
