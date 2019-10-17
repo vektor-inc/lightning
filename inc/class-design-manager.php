@@ -23,7 +23,7 @@ class Lightning_Design_Manager {
 	static function get_skins() {
 		$skins = array(
 			'origin'  => array(
-				'label'           => 'Origin',
+				'label'           => 'Origin ( Bootstrap3 )',
 				'css_path'        => get_template_directory_uri() . '/design-skin/origin/css/style.css',
 				'editor_css_path' => get_template_directory_uri() . '/design-skin/origin/css/editor.css',
 				// 'gutenberg_css_path' => get_template_directory_uri() . '/design-skin/origin/css/editor-gutenberg.css',
@@ -33,7 +33,7 @@ class Lightning_Design_Manager {
 				'version'         => LIGHTNING_THEME_VERSION,
 			),
 			'origin2' => array(
-				'label'           => __( 'Origin II ( Bootstrap4 )', 'lightning' ),
+				'label'           => 'Origin II ( Bootstrap4 )',
 				'css_path'        => get_template_directory_uri() . '/design-skin/origin2/css/style.css',
 				'editor_css_path' => get_template_directory_uri() . '/design-skin/origin2/css/editor.css',
 				'php_path'        => get_parent_theme_file_path( '/design-skin/origin2/origin2.php' ),
