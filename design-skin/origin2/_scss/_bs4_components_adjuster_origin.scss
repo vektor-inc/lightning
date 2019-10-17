@@ -1,0 +1,8 @@
+/* Bootstrap Adjuster */
+
+.card {
+	&_singleTermLabel{
+		border-radius: 0 0.25rem 0 0.25rem;
+		// border:1px solid #ff0000;
+	}
+}

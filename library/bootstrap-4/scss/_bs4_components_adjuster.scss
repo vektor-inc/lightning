@@ -3,6 +3,9 @@
 .card {
 	&-title {
 		margin-bottom:0.8em;
+		font-size: 14px;
+		line-height: 1.4;
+		font-weight: bold;
 	}
 	&-meta {
 		font-size:12px;
@@ -20,6 +23,13 @@
 	}
 	a {
 		color: inherit;
+	}
+	&_singleTermLabel{
+		font-size: 10px;
+		padding: 0.5em 1em;
+		position: absolute;
+		right:0;
+		top:0;
 	}
 }
 
