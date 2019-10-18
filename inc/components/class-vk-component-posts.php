@@ -56,31 +56,40 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 
 
 		static public function get_view_body( $post, $options ) {
-			$body_html = '';
-			if ( ! empty( $options['body_prepend'] ) ) {
-				$body_html .= $options['body_prepend'];
+			$layout_type = $options['layout'];
+			if ( $layout_type == 'card-horizontal' ) {
+				$layout_type = 'card';
 			}
 
-			$title_class = $options['layout'];
+			$html = '';
 
-			$body_html .= '<h5 class="card-title">' . get_the_title( $post->ID ) . '</h5>';
+			$html .= '<div class="' . $layout_type . '-body">';
+
+			if ( ! empty( $options['body_prepend'] ) ) {
+				$html .= $options['body_prepend'];
+			}
+
+			$html .= '<h5 class="' . $layout_type . '-title">' . get_the_title( $post->ID ) . '</h5>';
 
 			if ( $options['display']['excerpt'] ) {
-				$body_html .= '<p class="card-text">';
-				$body_html .= wp_kses_post( get_the_excerpt( $post->ID ) );
-				$body_html .= '</p>';
+				$html .= '<p class="' . $layout_type . '-text">';
+				$html .= wp_kses_post( get_the_excerpt( $post->ID ) );
+				$html .= '</p>';
 			}
 
 			if ( $options['display']['date'] ) {
-				$body_html .= '<p class="card-date">';
-				$body_html .= esc_html( get_the_date( null, $post->ID ) );
-				$body_html .= '</p>';
+				$html .= '<div class="' . $layout_type . '-date published">';
+				$html .= esc_html( get_the_date( null, $post->ID ) );
+				$html .= '</div>';
 			}
 
 			if ( ! empty( $options['body_append'] ) ) {
-				$body_html .= $options['body_append'];
+				$html .= $options['body_append'];
 			}
-			return $body_html;
+
+			$html .= '</div><!-- [ /.' . $layout_type . '-body ] -->';
+
+			return $html;
 		}
 
 		static public function get_view_type_card( $post, $options ) {
@@ -96,11 +105,9 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				$image_attr = array( 'class' => 'card-img-top' );
 				$html      .= get_the_post_thumbnail( $post->ID, 'medium', $image_attr );
 			}
-			$html .= '<div class="card-body">';
 
 			$html .= self::get_view_body( $post, $options );
 
-			$html .= '</div><!-- [ /.card-body ] -->';
 			$html .= '</a>';
 			$html .= '</div><!-- [ /.card ] -->';
 			return $html;
@@ -129,11 +136,9 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			$html .= '</div><!-- /.col -->';
 
 			$html .= '<div class="col-7">';
-			$html .= '<div class="card-body">';
 
 			$html .= self::get_view_body( $post, $options );
 
-			$html .= '</div><!-- [ /.card-body ] -->';
 			$html .= '</div><!-- /.col -->';
 
 			$html .= '</div>';
@@ -151,16 +156,9 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				$html      .= get_the_post_thumbnail( $post->ID, 'medium', $image_attr );
 				$html      .= '</a>';
 			}
-			$html .= '<div class="media-body">';
-			$html .= '<h5 class="media-title">' . get_the_title( $post->ID ) . '</h5>';
 
-			if ( $options['display']['date'] ) {
-				$html .= '<p class="media-text">';
-				$html .= '<span class="published entry-meta_items">' . esc_html( get_the_date( null, $post->ID ) ) . '</span>';
-				$html .= '</p>';
-			}
+			$html .= self::get_view_body( $post, $options );
 
-			$html .= '</div><!-- [ /.media-body ] -->';
 			$html .= '</div><!-- [ /.media ] -->';
 			return $html;
 		}
