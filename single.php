@@ -96,7 +96,7 @@ else :
 		$post_next     = get_next_post();
 		if ( $post_previous || $post_next ) {
 			$options = array(
-				'layout'       => 'card-holizontal',
+				'layout'       => 'card-horizontal',
 				'display'      => array(
 					'image'       => true,
 					'excerpt'     => false,
@@ -129,7 +129,7 @@ else :
 			<?php
 			if ( $post_next ) {
 				$options['body_prepend']   = '<p class="postNextPrev_label">' . __( 'Next article', 'lightning' ) . '</p>';
-				$options['class']['outer'] = 'card-sm card-holizontal-reverse postNextPrev_next';
+				$options['class']['outer'] = 'card-sm card-horizontal-reverse postNextPrev_next';
 				VK_Component_Posts::the_view( $post_next, $options );
 			} else {
 				echo '<div class="card card-noborder"></div>';

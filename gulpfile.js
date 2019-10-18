@@ -122,6 +122,7 @@ gulp.task('sass_bs4', function() {
 			suffix: '.min'
 		}))
     .pipe(gulp.dest('./library/bootstrap-4/css/'))
+		.pipe(gulp.dest('../lightning-pro/library/bootstrap-4/css/'))
 });
 
 // gulp.task('copy', function() {

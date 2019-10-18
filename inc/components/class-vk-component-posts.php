@@ -30,8 +30,8 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 		static public function get_view( $post, $options ) {
 			$options = self::get_loop_post_view_options( $options );
 
-			if ( $options['layout'] == 'card-holizontal' ) {
-				$html = self::get_view_type_card_holizontal( $post, $options );
+			if ( $options['layout'] == 'card-horizontal' ) {
+				$html = self::get_view_type_card_horizontal( $post, $options );
 			} elseif ( $options['layout'] == 'media' ) {
 				$html = self::get_view_type_media( $post, $options );
 			} else {
@@ -41,8 +41,8 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 		}
 
 		static public function get_view_first_div( $post, $options ) {
-			if ( $options['layout'] == 'card-holizontal' ) {
-				$class_outer = 'card card-post card-holizontal';
+			if ( $options['layout'] == 'card-horizontal' ) {
+				$class_outer = 'card card-post card-horizontal';
 			} elseif ( $options['layout'] == 'media' ) {
 				$class_outer = 'media';
 			} else {
@@ -106,11 +106,11 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			return $html;
 		}
 
-		static public function get_view_type_card_holizontal( $post, $options ) {
+		static public function get_view_type_card_horizontal( $post, $options ) {
 			$html  = '';
 			$html .= self::get_view_first_div( $post, $options );
-			$html .= '<a href="' . get_the_permalink( $post->ID ) . '" class="card-holizontal-inner">';
-			$html .= '<div class="row no-gutters card-holizontal-inner-row">';
+			$html .= '<a href="' . get_the_permalink( $post->ID ) . '" class="card-horizontal-inner">';
+			$html .= '<div class="row no-gutters card-horizontal-inner-row">';
 
 			if ( $options['display']['image'] ) {
 				$image_src = get_the_post_thumbnail_url( $post->ID, 'medium' );

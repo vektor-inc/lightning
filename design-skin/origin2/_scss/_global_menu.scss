@@ -24,7 +24,7 @@
 }
 
 $menu_padding_vertical:14px;
-$menu_padding_holizontal:1.2em;
+$menu_padding_horizontal:1.2em;
 $menu_bg_color:#333;
 $time_transition:0.1s;
 
@@ -124,10 +124,10 @@ $time_transition:0.1s;
 				text-align: left;
 			 & + li a{ border-top:1px solid rgba(255,255,255,0.2);}
 			 &.menu-item-has-children > a{
-			 	padding: $menu_padding_vertical 3.5em $menu_padding_vertical $menu_padding_holizontal;
+			 	padding: $menu_padding_vertical 3.5em $menu_padding_vertical $menu_padding_horizontal;
 			 }
 			 a {
-				 padding: $menu_padding_vertical $menu_padding_holizontal;
+				 padding: $menu_padding_vertical $menu_padding_horizontal;
 				 color:#fff;
 				 &:hover {
 					 background-color: $color_key;
@@ -225,7 +225,7 @@ $time_transition:0.1s;
 		}
 		.sub-menu {
 			.acc-btn{
-				right:$menu_padding_holizontal;
+				right:$menu_padding_horizontal;
 				border-color:#fff;
 				color:#fff;
 				background-image: url(../../../inc/vk-mobile-nav/package/images/vk-menu-acc-icon-open-white.svg);
