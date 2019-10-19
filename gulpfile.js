@@ -125,6 +125,13 @@ gulp.task('sass_bs4', function() {
 		.pipe(gulp.dest('../lightning-pro/library/bootstrap-4/css/'))
 });
 
+gulp.task('components_copy', function() {
+  gulp.src(['inc/components/*.php'])
+    .pipe(gulp.dest('./inc/components'))
+    .pipe(gulp.dest('../lightning-pro/inc/components'));
+});
+
+
 // gulp.task('copy', function() {
 //   gulp.src('./library/bootstrap/css/bootstrap.min.css')
 //     .pipe(rename({
@@ -156,6 +163,7 @@ gulp.task('js_build', function() {
 
 // Watch
 gulp.task('watch', function() {
+  gulp.watch(['./inc/components/*.php'], ['components_copy']);
   gulp.watch(['./assets/js/**','./inc/vk-mobile-nav/package/js/**'], ['js_build']);
   gulp.watch(['./assets/_scss/**','./inc/woocommerce/_scss/**'], ['sass_common']);
   gulp.watch(['./assets/_scss/**','./inc/woocommerce/_scss/**'], ['sass_woo']);

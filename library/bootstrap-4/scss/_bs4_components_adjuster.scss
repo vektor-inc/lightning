@@ -1,12 +1,30 @@
 /* Bootstrap Adjuster */
+$border_primary : 1px solid #e5e5e5;
+$color_font_default : #464646;
 
-.card {
-	&-title {
-		margin-bottom:0.8em;
+.vk_posts{
+	& &_title {
 		font-size: 14px;
 		line-height: 1.4;
 		font-weight: bold;
+		margin-bottom:0;
 	}
+	& &_excerpt {
+		margin-top: 1em;
+		font-size:12px;
+		line-height: 1.6;
+		opacity: 0.8;
+	}
+	& &_date {
+		margin-top: 0.5em;
+	}
+	.card-img-overlay{
+		bottom:unset;
+	}
+}
+
+
+.card {
 	&-meta {
 		font-size:12px;
 	}
@@ -82,11 +100,11 @@
 		border:1px solid #ff0000;
 	}
 	.card-date {
-		position: absolute;
+		// position: absolute;
 		font-size: 11px;
-		margin-bottom:0;
-		left:1.2rem;
-		bottom:0.5rem;
+		// margin-bottom:0;
+		// left:1.2rem;
+		// bottom:0.5rem;
 	}
 }
 
@@ -101,5 +119,8 @@
 	&-title {
 		font-size: 14px;
 		margin-bottom:0.5em;
+	}
+	&-date{
+		font-size: 11px;
 	}
 }

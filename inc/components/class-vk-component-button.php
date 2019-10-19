@@ -36,7 +36,9 @@ if ( ! class_exists( 'VK_Components_Button' ) ) {
 				$btn_target = ' target="' . esc_attr( $options['btn_target'] ) . '"';
 			}
 
-			$html .= self::get_style_all( $options );
+			if ( $options['btn_ghost'] || $options['btn_color_text'] || $options['btn_color_bg'] || $options['shadow_use'] || $options['shadow_color'] ) {
+				$html .= self::get_style_all( $options );
+			}
 
 			$html .= '<a' . $btn_class . ' href="' . esc_url( $options['btn_url'] ) . $btn_target . '">';
 			$html .= wp_kses_post( $options['btn_text'] );
