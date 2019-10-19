@@ -40,6 +40,10 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			return $html;
 		}
 
+		/**
+		 * Common Part _ first DIV
+		 * @var [type]
+		 */
 		static public function get_view_first_div( $post, $options ) {
 			if ( $options['layout'] == 'card-horizontal' ) {
 				$class_outer = 'card card-post card-horizontal';
@@ -51,10 +55,13 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			if ( ! empty( $options['class']['outer'] ) ) {
 				$class_outer .= ' ' . esc_attr( $options['class']['outer'] );
 			}
-			return '<div id="post-' . esc_attr( $post->ID ) . '" ' . lightning_get_post_class( $class_outer ) . '>';
+			return '<div id="post-' . esc_attr( $post->ID ) . '" class="vk_posts ' . join( ' ', get_post_class( $class_outer ) ) . '">';
 		}
 
-
+		/**
+		 * Common Part _ post body
+		 * @var [type]
+		 */
 		static public function get_view_body( $post, $options ) {
 			$layout_type = $options['layout'];
 			if ( $layout_type == 'card-horizontal' ) {
@@ -63,22 +70,22 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 
 			$html = '';
 
-			$html .= '<div class="' . $layout_type . '-body">';
+			$html .= '<div class="vk_posts_body ' . $layout_type . '-body">';
 
 			if ( ! empty( $options['body_prepend'] ) ) {
 				$html .= $options['body_prepend'];
 			}
 
-			$html .= '<h5 class="' . $layout_type . '-title">' . get_the_title( $post->ID ) . '</h5>';
+			$html .= '<h5 class="vk_posts_title ' . $layout_type . '-title">' . get_the_title( $post->ID ) . '</h5>';
 
 			if ( $options['display']['excerpt'] ) {
-				$html .= '<p class="' . $layout_type . '-text">';
+				$html .= '<p class="vk_posts_excerpt ' . $layout_type . '-text">';
 				$html .= wp_kses_post( get_the_excerpt( $post->ID ) );
 				$html .= '</p>';
 			}
 
 			if ( $options['display']['date'] ) {
-				$html .= '<div class="' . $layout_type . '-date published">';
+				$html .= '<div class="vk_posts_date ' . $layout_type . '-date published">';
 				$html .= esc_html( get_the_date( null, $post->ID ) );
 				$html .= '</div>';
 			}
@@ -92,6 +99,10 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			return $html;
 		}
 
+		/**
+		 * Card
+		 * @var [type]
+		 */
 		static public function get_view_type_card( $post, $options ) {
 			$html  = '';
 			$html .= self::get_view_first_div( $post, $options );
@@ -113,6 +124,10 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			return $html;
 		}
 
+		/**
+		 * Card horizontal
+		 * @var [type]
+		 */
 		static public function get_view_type_card_horizontal( $post, $options ) {
 			$html  = '';
 			$html .= self::get_view_first_div( $post, $options );
@@ -147,6 +162,10 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			return $html;
 		}
 
+		/**
+		 * Media
+		 * @var [type]
+		 */
 		static public function get_view_type_media( $post, $options ) {
 			$html  = '';
 			$html .= self::get_view_first_div( $post, $options );
