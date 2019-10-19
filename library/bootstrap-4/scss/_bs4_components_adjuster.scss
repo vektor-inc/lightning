@@ -74,7 +74,7 @@ $xl-min:1200px;
 		bottom:unset;
 	}
 
-	.media {
+	&.media {
 		&:first-child {
 			border-top: none;
 		}
