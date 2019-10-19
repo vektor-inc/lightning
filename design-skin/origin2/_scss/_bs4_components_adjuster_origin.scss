@@ -6,30 +6,3 @@
 		// border:1px solid #ff0000;
 	}
 }
-
-.vk_posts-col {
-	@media ( min-width : $sm-min ){
-			&-sm-3 { width : calc( 25% - 30px );}
-			&-sm-4 { width : calc( 33.3% - 30px );}
-			&-sm-6 { width : calc( 50% - 30px );}
-			&-sm-12 { width : calc( 100% - 30px );}
-	}
-	@media ( min-width : $md-min ){
-			&-md-3 { width : calc( 25% - 30px );}
-			&-md-4 { width : calc( 33.3% - 30px );}
-			&-md-6 { width : calc( 50% - 30px );}
-			&-md-12 { width : calc( 100% - 30px );}
-	}
-	@media ( min-width : $lg-min ){
-			&-lg-3 { width : calc( 25% - 30px );}
-			&-lg-4 { width : calc( 33.3% - 30px );}
-			&-lg-6 { width : calc( 50% - 30px );}
-			&-lg-12 { width : calc( 100% - 30px );}
-	}
-	@media ( min-width : $xl-min ){
-			&-xl-3 { width : calc( 25% - 30px );}
-			&-xl-4 { width : calc( 33.3% - 30px );}
-			&-xl-6 { width : calc( 50% - 30px );}
-			&-xl-12 { width : calc( 100% - 30px );}
-	}
-}
