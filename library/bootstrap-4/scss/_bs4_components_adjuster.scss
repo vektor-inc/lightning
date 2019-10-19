@@ -8,6 +8,9 @@ $color_font_default : #464646;
 		line-height: 1.4;
 		font-weight: bold;
 		margin-bottom:0;
+		a {
+			color:#333;
+		}
 	}
 	& &_excerpt {
 		margin-top: 1em;
@@ -16,7 +19,9 @@ $color_font_default : #464646;
 		opacity: 0.8;
 	}
 	& &_date {
+		font-size:11px;
 		margin-top: 0.5em;
+		color:#666;
 	}
 	.card-img-overlay{
 		bottom:unset;
@@ -96,31 +101,10 @@ $color_font_default : #464646;
 	.card-body {
 		padding-bottom: 1.5em;
 	}
-	.card-meta {
-		border:1px solid #ff0000;
-	}
-	.card-date {
-		// position: absolute;
-		font-size: 11px;
-		// margin-bottom:0;
-		// left:1.2rem;
-		// bottom:0.5rem;
-	}
-}
-
-.card-noborder {
-	border:none;
 }
 
 .media {
 	&-img {
 		width:30%;
-	}
-	&-title {
-		font-size: 14px;
-		margin-bottom:0.5em;
-	}
-	&-date{
-		font-size: 11px;
 	}
 }

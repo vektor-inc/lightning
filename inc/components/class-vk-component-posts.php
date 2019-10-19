@@ -84,7 +84,13 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 		 * Common Part _ post body
 		 * @var [type]
 		 */
-		static public function get_view_body( $post, $options ) {
+		static public function get_view_body( $post, $options, $attr = array() ) {
+
+			$default = array(
+				'textlink' => false,
+			);
+			$attr    = wp_parse_args( $attr, $default );
+
 			$layout_type = $options['layout'];
 			if ( $layout_type == 'card-horizontal' ) {
 				$layout_type = 'card';
@@ -98,7 +104,19 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				$html .= $options['body_prepend'];
 			}
 
-			$html .= '<h5 class="vk_posts_title ' . $layout_type . '-title">' . get_the_title( $post->ID ) . '</h5>';
+			$html .= '<h5 class="vk_posts_title ' . $layout_type . '-title">';
+
+			if ( $attr['textlink'] ) {
+				$html .= '<a href="' . get_the_permalink( $post->ID ) . '">';
+			}
+
+			$html .= get_the_title( $post->ID );
+
+			if ( $attr['textlink'] ) {
+				$html .= '</a>';
+			}
+
+			$html .= '</h5>';
 
 			if ( $options['display']['date'] ) {
 				$html .= '<div class="vk_posts_date ' . $layout_type . '-date published">';
@@ -145,7 +163,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 		static public function get_view_type_card( $post, $options ) {
 			$html  = '';
 			$html .= self::get_view_first_div( $post, $options );
-			// $html .= '<a href="' . get_the_permalink( $post->ID ) . '">';
+			$html .= '<a href="' . get_the_permalink( $post->ID ) . '">';
 			if ( $options['display']['overlay'] ) {
 				$html .= '<div class="card-img-overlay">';
 				$html .= $options['display']['overlay'];
@@ -155,7 +173,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			$html .= self::get_thumbnail_image( $post, $options, 'card-img-top' );
 			$html .= self::get_view_body( $post, $options );
 
-			// $html .= '</a>';
+			$html .= '</a>';
 			$html .= '</div><!-- [ /.card ] -->';
 			return $html;
 		}
@@ -184,11 +202,9 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				$html .= $options['display']['overlay'];
 				$html .= '</div>';
 			}
-			if ( $options['display']['image'] ) {
-				// $image_attr = array( 'class' => 'card-img card-img-use-bg' );
-				// $html      .= get_the_post_thumbnail( $post->ID, 'medium', $image_attr );
-				$html .= self::get_thumbnail_image( $post, $options, 'card-img card-img-use-bg' );
-			}
+
+			$html .= self::get_thumbnail_image( $post, $options, 'card-img card-img-use-bg' );
+
 			$html .= '</div><!-- /.col -->';
 
 			$html .= '<div class="col-7">';
@@ -216,7 +232,10 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				$html .= '</a>';
 			}
 
-			$html .= self::get_view_body( $post, $options );
+			$attr  = array(
+				'textlink' => true,
+			);
+			$html .= self::get_view_body( $post, $options, $attr );
 
 			$html .= '</div><!-- [ /.media ] -->';
 			return $html;
