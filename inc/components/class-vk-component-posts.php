@@ -16,7 +16,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				'btn_text'          => __( 'Read more', 'lightning' ),
 				'overlay'           => false,
 				'new'               => false,
-				'new_text'          => __( 'New', 'lightning' ),
+				'new_text'          => __( 'New!!', 'lightning' ),
 				'new_date'          => 7,
 				'class_outer'       => '',
 				'class_title'       => '',
@@ -115,7 +115,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				$today = date_i18n( 'U' );
 				$entry = get_the_time( 'U' );
 				$kiji  = date( 'U', ( $today - $entry ) ) / 86400;
-				if ( $options['new'] > $kiji ) {
+				if ( $options['new_date'] > $kiji ) {
 					$html .= '<span class="vk_posts_title_new">' . $options['new_text'] . '</span>';
 				}
 			}

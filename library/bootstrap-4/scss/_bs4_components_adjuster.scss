@@ -46,6 +46,19 @@ $xl-min:1200px;
 /* vk_posts common style
 /*-------------------------------------------*/
 .vk_posts{
+	img {
+		transition-duration: 0.3s;
+	}
+	a:hover {
+		text-decoration: none;
+		img {
+			// opacity: 0.7;
+			 filter: saturate(150%);
+			 filter: brightness(70%);
+			 // filter: contrast(110%);
+			// transform: scale(1.1,1.1);
+		}
+	}
 	& &_title {
 		font-size: 14px;
 		line-height: 1.4;
@@ -54,6 +67,12 @@ $xl-min:1200px;
 		a {
 			color:#333;
 		}
+	}
+	&_title_new {
+		margin-left: 0.4em;
+		font-size:0.8em;
+		white-space: nowrap;
+		color:red;
 	}
 	& &_excerpt {
 		margin-top: 1em;
@@ -98,6 +117,7 @@ $xl-min:1200px;
 /* .card
 /*-------------------------------------------*/
 .card {
+	overflow: hidden;
 	&-noborder {
 		border: none;
 	}
@@ -124,6 +144,7 @@ $xl-min:1200px;
 		position: absolute;
 		right:0;
 		top:0;
+		z-index: 100;
 	}
 }
 
