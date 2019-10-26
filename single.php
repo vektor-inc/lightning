@@ -96,20 +96,15 @@ else :
 		$post_next     = get_next_post();
 		if ( $post_previous || $post_next ) {
 			$options = array(
-				'layout'       => 'card-horizontal',
-				'display'      => array(
-					'image'       => true,
-					'excerpt'     => false,
-					'date'        => true,
-					'link_button' => false,
-					// 'link_text'   => __( 'Read more', 'lightning' ),
-					'overlay'     => '',
-				),
-				'class'        => array(
-					'outer' => 'card-sm',
-				),
-				'body_prepend' => '',
-				'body_append'  => '',
+				'layout'            => 'card-horizontal',
+				'image'             => true,
+				'image_default_url' => get_template_directory_uri() . '/assets/images/no-image.png',
+				'excerpt'           => false,
+				'date'              => true,
+				'btn'               => false,
+				'overlay'           => '',
+				'body_prepend'      => '',
+				'body_append'       => '',
 			);
 		?>
 
@@ -118,21 +113,22 @@ else :
 			<?php
 			if ( $post_previous ) {
 				$options['body_prepend'] = '<p class="postNextPrev_label">' . __( 'Previous article', 'lightning' ) . '</p>';
+				$options['class_outer']  = 'card-sm vk_posts-col-md-6';
 				VK_Component_Posts::the_view( $post_previous, $options );
 				// get_template_part( 'module_loop_post_card' );
 			} else {
-				echo '<div class="card card-noborder"></div>';
+				echo '<div class="card card-noborder vk_posts vk_posts-col-md-6"></div>';
 			} // if ( $post_previous ) {
 			wp_reset_postdata();
 			?>
 
 			<?php
 			if ( $post_next ) {
-				$options['body_prepend']   = '<p class="postNextPrev_label">' . __( 'Next article', 'lightning' ) . '</p>';
-				$options['class']['outer'] = 'card-sm card-horizontal-reverse postNextPrev_next';
+				$options['body_prepend'] = '<p class="postNextPrev_label">' . __( 'Next article', 'lightning' ) . '</p>';
+				$options['class_outer']  = 'card-sm vk_posts-col-md-6 card-horizontal-reverse postNextPrev_next';
 				VK_Component_Posts::the_view( $post_next, $options );
 			} else {
-				echo '<div class="card card-noborder"></div>';
+				echo '<div class="card card-noborder vk_posts vk_posts-col-md-6"></div>';
 			} // if ( $post_next ) {
 			wp_reset_postdata();
 			?>
