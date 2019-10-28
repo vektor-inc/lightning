@@ -53,6 +53,21 @@ $xl-min:1200px;
 	margin-bottom:2em;
 }
 .vk_post{
+	.mainSection &.vk_post-col-md-12 {
+		@media ( min-width : $md-min ){
+			font-size: 1.143em;
+		}
+	}
+	.mainSection &.vk_post-col-lg-12 {
+		@media ( min-width : $lg-min ){
+			font-size: 1.286em;
+		}
+	}
+	.mainSection &.vk_post-col-xl-12 {
+		@media ( min-width : $xl-min ){
+			font-size: 1.5em;
+		}
+	}
 	img {
 		transition-duration: 0.3s;
 	}
@@ -67,27 +82,12 @@ $xl-min:1200px;
 		}
 	}
 	& &_title {
-		font-size: 14px;
+		font-size: 0.875em;
 		line-height: 1.4;
 		font-weight: bold;
 		margin-bottom:0;
 		a {
 			color:#333;
-		}
-	}
-	.mainSection &.vk_post-col-md-12 &_title {
-		@media ( min-width : $md-min ){
-			font-size: 16px;
-		}
-	}
-	.mainSection &.vk_post-col-lg-12 &_title {
-		@media ( min-width : $lg-min ){
-			font-size: 18px;
-		}
-	}
-	.mainSection &.vk_post-col-xl-12 &_title {
-		@media ( min-width : $xl-min ){
-			font-size: 21px;
 		}
 	}
 	&_title_new {
