@@ -196,30 +196,31 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			$html .= '<a href="' . get_the_permalink( $post->ID ) . '" class="card-horizontal-inner">';
 			$html .= '<div class="row no-gutters card-horizontal-inner-row">';
 
-			$image_src = '';
-			if ( $options['image'] ) {
-				$image_src = get_the_post_thumbnail_url( $post->ID, 'medium' );
-				if ( ! $image_src && $options['image_default_url'] ) {
-					$image_src = esc_url( $options['image_default_url'] );
-				}
-			}
-
-			$html .= '<div class="col-5 card-img-outer" style="background-image:url(' . $image_src . ')">';
 			if ( $options['overlay'] ) {
 				$html .= '<div class="card-img-overlay">';
 				$html .= $options['overlay'];
 				$html .= '</div>';
 			}
 
-			$html .= self::get_thumbnail_image( $post, $options, 'card-img card-img-use-bg' );
+			$image_src = '';
+			if ( $options['image'] ) {
 
-			$html .= '</div><!-- /.col -->';
+				$image_src = get_the_post_thumbnail_url( $post->ID, 'medium' );
+				if ( ! $image_src && $options['image_default_url'] ) {
+					$image_src = esc_url( $options['image_default_url'] );
+				}
 
-			$html .= '<div class="col-7">';
+				$html .= '<div class="col-5 card-img-outer" style="background-image:url(' . $image_src . ')">';
+				$html .= self::get_thumbnail_image( $post, $options, 'card-img card-img-use-bg' );
+				$html .= '</div><!-- /.col -->';
+				$html .= '<div class="col-7">';
+			}
 
 			$html .= self::get_view_body( $post, $options );
 
-			$html .= '</div><!-- /.col -->';
+			if ( $options['image'] ) {
+				$html .= '</div><!-- /.col -->';
+			}
 
 			$html .= '</div>';
 			$html .= '</a>';
@@ -253,5 +254,44 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 		static public function the_view( $post, $options ) {
 			 echo wp_kses_post( self::get_view( $post, $options ) );
 		}
+
+		/*-------------------------------------------*/
+		/* UI Helper method
+		/*-------------------------------------------*/
+		/**
+		 * Convert col-count from inputed column count.
+		 * @param  integer $input_col [description]
+		 * @return [type]             [description]
+		 */
+		public static function get_col_converted_size( $input_col = 4 ) {
+			if ( $input_col == 1 ) {
+				$col = 12;
+			} elseif ( $input_col == 2 ) {
+				$col = 6;
+			} elseif ( $input_col == 3 ) {
+				$col = 4;
+			} elseif ( $input_col == 4 ) {
+				$col = 3;
+			}
+			return strval( $col );
+		}
+
+		/**
+		 * Get all size col classes
+		 * @param  [type] $attributes inputed col numbers array
+		 * @return [type]             [description]
+		 */
+		public static function get_col_size_classes( $attributes ) {
+			$col_class_array = array();
+			$sizes           = array( 'xs', 'sm', 'md', 'lg', 'xl' );
+			foreach ( $sizes as $key => $size ) {
+				if ( ! empty( $attributes[ 'col_' . $size ] ) ) {
+					$col_class_array[] = 'vk_posts-col-' . $size . '-' . self::get_col_converted_size( $attributes[ 'col_' . $size ] );
+				}
+			}
+			$col_class = implode( ' ', $col_class_array );
+			return $col_class;
+		}
+
 	}
 }
