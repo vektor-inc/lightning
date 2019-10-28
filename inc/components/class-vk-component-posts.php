@@ -56,7 +56,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			if ( ! empty( $options['class_outer'] ) ) {
 				$class_outer .= ' ' . esc_attr( $options['class_outer'] );
 			}
-			return '<div id="post-' . esc_attr( $post->ID ) . '" class="vk_posts ' . join( ' ', get_post_class( $class_outer ) ) . '">';
+			return '<div id="post-' . esc_attr( $post->ID ) . '" class="vk_post ' . join( ' ', get_post_class( $class_outer ) ) . '">';
 		}
 
 		/**
@@ -97,13 +97,13 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 
 			$html = '';
 
-			$html .= '<div class="vk_posts_body ' . $layout_type . '-body">';
+			$html .= '<div class="vk_post_body ' . $layout_type . '-body">';
 
 			if ( ! empty( $options['body_prepend'] ) ) {
 				$html .= $options['body_prepend'];
 			}
 
-			$html .= '<h5 class="vk_posts_title ' . $layout_type . '-title">';
+			$html .= '<h5 class="vk_post_title ' . $layout_type . '-title">';
 
 			if ( $attr['textlink'] ) {
 				$html .= '<a href="' . get_the_permalink( $post->ID ) . '">';
@@ -116,7 +116,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				$entry = get_the_time( 'U' );
 				$kiji  = date( 'U', ( $today - $entry ) ) / 86400;
 				if ( $options['new_date'] > $kiji ) {
-					$html .= '<span class="vk_posts_title_new">' . $options['new_text'] . '</span>';
+					$html .= '<span class="vk_post_title_new">' . $options['new_text'] . '</span>';
 				}
 			}
 
@@ -127,13 +127,13 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			$html .= '</h5>';
 
 			if ( $options['date'] ) {
-				$html .= '<div class="vk_posts_date ' . $layout_type . '-date published">';
+				$html .= '<div class="vk_post_date ' . $layout_type . '-date published">';
 				$html .= esc_html( get_the_date( null, $post->ID ) );
 				$html .= '</div>';
 			}
 
 			if ( $options['excerpt'] ) {
-				$html .= '<p class="vk_posts_excerpt ' . $layout_type . '-text">';
+				$html .= '<p class="vk_post_excerpt ' . $layout_type . '-text">';
 				$html .= wp_kses_post( get_the_excerpt( $post->ID ) );
 				$html .= '</p>';
 			}
@@ -286,7 +286,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			$sizes           = array( 'xs', 'sm', 'md', 'lg', 'xl' );
 			foreach ( $sizes as $key => $size ) {
 				if ( ! empty( $attributes[ 'col_' . $size ] ) ) {
-					$col_class_array[] = 'vk_posts-col-' . $size . '-' . self::get_col_converted_size( $attributes[ 'col_' . $size ] );
+					$col_class_array[] = 'vk_post-col-' . $size . '-' . self::get_col_converted_size( $attributes[ 'col_' . $size ] );
 				}
 			}
 			$col_class = implode( ' ', $col_class_array );
