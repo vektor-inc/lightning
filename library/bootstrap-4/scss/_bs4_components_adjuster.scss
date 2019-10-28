@@ -16,6 +16,10 @@ $xl-min:1200px;
 /* vk_posts Layout
 /*-------------------------------------------*/
 .vk_posts-col {
+	&-xs-3 { width : calc( 25% - 30px );}
+	&-xs-4 { width : calc( 33.3% - 30px );}
+	&-xs-6 { width : calc( 50% - 30px );}
+	&-xs-12 { width : calc( 100% - 30px );}
 	@media ( min-width : $sm-min ){
 			&-sm-3 { width : calc( 25% - 30px );}
 			&-sm-4 { width : calc( 33.3% - 30px );}

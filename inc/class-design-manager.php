@@ -72,7 +72,7 @@ class Lightning_Design_Manager {
 	 * Get current skin function
 	 * @return [string] If empty current skin that set default skin.
 	 */
-	static function get_current_skin() {
+	public static function get_current_skin() {
 		$skins        = self::get_skins();
 		$current_skin = get_option( 'lightning_design_skin' );
 
