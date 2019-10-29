@@ -66,6 +66,9 @@ $xl-min:1200px;
 			// transform: scale(1.1,1.1);
 		}
 	}
+	&_img {
+		position: relative;
+	}
 	& &_title {
 		font-size: 14px;
 		line-height: 1.4;
@@ -105,9 +108,9 @@ $xl-min:1200px;
 				margin-bottom: 30px;
 		}
 	}
-	.card-img-overlay{
-		bottom:unset;
-	}
+	// .card-img-overlay{
+	// 	bottom:unset;
+	// }
 
 	&.media {
 		&:first-child {

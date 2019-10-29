@@ -69,6 +69,16 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 		static public function get_thumbnail_image( $post, $options, $class = '' ) {
 			$html = '';
 			if ( $options['image'] ) {
+				$html .= '<div class="vk_post_img">';
+
+				if ( $options['overlay'] ) {
+
+					$html .= '<div class="card-img-overlay">';
+					$html .= $options['overlay'];
+					$html .= '</div>';
+
+				}
+
 				$image_attr = array( 'class' => $class );
 				$img        = get_the_post_thumbnail( $post->ID, 'medium', $image_attr );
 				if ( $img ) {
@@ -76,7 +86,9 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				} elseif ( $options['image_default_url'] ) {
 					$html .= '<img src="' . esc_url( $options['image_default_url'] ) . '" alt="" class="' . $class . '" />';
 				}
-			}
+
+				$html .= '</div><!-- [ /.vk_post_img ] -->';
+			} // if ( $options['image'] ) {
 			return $html;
 		}
 
@@ -173,20 +185,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			$html .= self::get_view_first_div( $post, $options );
 			$html .= '<a href="' . get_the_permalink( $post->ID ) . '">';
 
-			if ( $options['image'] ) {
-				$html .= '<div class="vk_post_img">';
-				if ( $options['overlay'] ) {
-					$html .= '<div class="card-img-overlay">';
-					$html .= $options['overlay'];
-					$html .= '</div>';
-				}
-			}
-
 			$html .= self::get_thumbnail_image( $post, $options, 'card-img-top' );
-
-			if ( $options['image'] ) {
-				$html .= '</div><!-- [ /.vk_post_img ] -->';
-			}
 
 			$html .= self::get_view_body( $post, $options );
 
@@ -214,13 +213,6 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				}
 
 				$html .= '<div class="col-5 card-img-outer" style="background-image:url(' . $image_src . ')">';
-				if ( $options['overlay'] ) {
-					$html .= '<div class="vk_post_img">';
-					$html .= '<div class="card-img-overlay">';
-					$html .= $options['overlay'];
-					$html .= '</div>';
-					$html .= '</div>';
-				}
 				$html .= self::get_thumbnail_image( $post, $options, 'card-img card-img-use-bg' );
 				$html .= '</div><!-- /.col -->';
 				$html .= '<div class="col-7">';
