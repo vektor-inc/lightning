@@ -51,8 +51,14 @@ $xl-min:1200px;
 /*-------------------------------------------*/
 .vk_posts{
 	margin-bottom:2em;
+	margin-left:-15px;
+	margin-right:-15px;
+	display: flex;
+	flex-wrap: wrap;
 }
 .vk_post{
+	margin-left:15px;
+	margin-right:15px;
 	img {
 		transition-duration: 0.3s;
 	}
@@ -104,7 +110,6 @@ $xl-min:1200px;
 		box-sizing: border-box;
 		max-width: 100%;
 		@media (min-width: 576px){
-				flex: unset;
 				margin-bottom: 30px;
 		}
 	}

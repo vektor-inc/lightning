@@ -108,16 +108,16 @@ else :
 			);
 		?>
 
-		<div class="card-deck postNextPrev">
+		<div class="vk_posts postNextPrev">
 
 			<?php
 			if ( $post_previous ) {
 				$options['body_prepend'] = '<p class="postNextPrev_label">' . __( 'Previous article', 'lightning' ) . '</p>';
-				$options['class_outer']  = 'card-sm vk_posts-col-md-6';
+				$options['class_outer']  = 'card-sm vk_post-col-md-6';
 				VK_Component_Posts::the_view( $post_previous, $options );
 				// get_template_part( 'module_loop_post_card' );
 			} else {
-				echo '<div class="card card-noborder vk_posts vk_posts-col-md-6"></div>';
+				echo '<div class="card card-noborder vk_posts vk_post-col-md-6"></div>';
 			} // if ( $post_previous ) {
 			wp_reset_postdata();
 			?>
@@ -125,10 +125,10 @@ else :
 			<?php
 			if ( $post_next ) {
 				$options['body_prepend'] = '<p class="postNextPrev_label">' . __( 'Next article', 'lightning' ) . '</p>';
-				$options['class_outer']  = 'card-sm vk_posts-col-md-6 card-horizontal-reverse postNextPrev_next';
+				$options['class_outer']  = 'card-sm vk_post-col-md-6 card-horizontal-reverse postNextPrev_next';
 				VK_Component_Posts::the_view( $post_next, $options );
 			} else {
-				echo '<div class="card card-noborder vk_posts vk_posts-col-md-6"></div>';
+				echo '<div class="card card-noborder vk_posts vk_post-col-md-6"></div>';
 			} // if ( $post_next ) {
 			wp_reset_postdata();
 			?>
