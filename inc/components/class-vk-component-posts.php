@@ -172,13 +172,22 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			$html  = '';
 			$html .= self::get_view_first_div( $post, $options );
 			$html .= '<a href="' . get_the_permalink( $post->ID ) . '">';
-			if ( $options['overlay'] ) {
-				$html .= '<div class="card-img-overlay">';
-				$html .= $options['overlay'];
-				$html .= '</div>';
+
+			if ( $options['image'] ) {
+				$html .= '<div class="vk_post_img">';
+				if ( $options['overlay'] ) {
+					$html .= '<div class="card-img-overlay">';
+					$html .= $options['overlay'];
+					$html .= '</div>';
+				}
 			}
 
 			$html .= self::get_thumbnail_image( $post, $options, 'card-img-top' );
+
+			if ( $options['image'] ) {
+				$html .= '</div><!-- [ /.vk_post_img ] -->';
+			}
+
 			$html .= self::get_view_body( $post, $options );
 
 			$html .= '</a>';
@@ -196,12 +205,6 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			$html .= '<a href="' . get_the_permalink( $post->ID ) . '" class="card-horizontal-inner">';
 			$html .= '<div class="row no-gutters card-horizontal-inner-row">';
 
-			if ( $options['overlay'] ) {
-				$html .= '<div class="card-img-overlay">';
-				$html .= $options['overlay'];
-				$html .= '</div>';
-			}
-
 			$image_src = '';
 			if ( $options['image'] ) {
 
@@ -211,6 +214,13 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				}
 
 				$html .= '<div class="col-5 card-img-outer" style="background-image:url(' . $image_src . ')">';
+				if ( $options['overlay'] ) {
+					$html .= '<div class="vk_post_img">';
+					$html .= '<div class="card-img-overlay">';
+					$html .= $options['overlay'];
+					$html .= '</div>';
+					$html .= '</div>';
+				}
 				$html .= self::get_thumbnail_image( $post, $options, 'card-img card-img-use-bg' );
 				$html .= '</div><!-- /.col -->';
 				$html .= '<div class="col-7">';
@@ -236,7 +246,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			$html  = '';
 			$html .= self::get_view_first_div( $post, $options );
 			if ( $options['image'] ) {
-				$html .= '<a href="' . get_the_permalink() . '" class="media-img mr-3">';
+				$html .= '<a href="' . get_the_permalink() . '" class="media-img">';
 				$html .= self::get_thumbnail_image( $post, $options, '' );
 				$html .= '</a>';
 			}

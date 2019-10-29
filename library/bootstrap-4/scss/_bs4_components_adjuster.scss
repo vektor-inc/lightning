@@ -53,21 +53,6 @@ $xl-min:1200px;
 	margin-bottom:2em;
 }
 .vk_post{
-	.mainSection &.vk_post-col-md-12 {
-		@media ( min-width : $md-min ){
-			font-size: 1.143em;
-		}
-	}
-	.mainSection &.vk_post-col-lg-12 {
-		@media ( min-width : $lg-min ){
-			font-size: 1.286em;
-		}
-	}
-	.mainSection &.vk_post-col-xl-12 {
-		@media ( min-width : $xl-min ){
-			font-size: 1.5em;
-		}
-	}
 	img {
 		transition-duration: 0.3s;
 	}
@@ -82,7 +67,7 @@ $xl-min:1200px;
 		}
 	}
 	& &_title {
-		font-size: 0.875em;
+		font-size: 14px;
 		line-height: 1.4;
 		font-weight: bold;
 		margin-bottom:0;
@@ -98,7 +83,7 @@ $xl-min:1200px;
 	}
 	& &_excerpt {
 		margin-top: 1em;
-		font-size:12px;
+		font-size: 12px;
 		line-height: 1.6;
 		opacity: 0.8;
 	}
@@ -107,6 +92,10 @@ $xl-min:1200px;
 		margin-top: 0.5em;
 		color:#666;
 	}
+	/*
+	Basicly wright to without .vk_post.
+	This additional is can't over wright only.
+	 */
 	&.card {
 		padding: 0;
 		box-sizing: border-box;
@@ -127,13 +116,53 @@ $xl-min:1200px;
 		padding: 1em 0;
 		margin:0 15px;
 		border-bottom:$border_primary ;
-		&-img{
-			border:$border_primary;
-			padding: 1px;
+	}
+}
+
+/*-------------------------------------------*/
+/* Main section 1 column adjustment
+/*-------------------------------------------*/
+.mainSection .vk_post.vk_post-col-sm-12 {
+	@media ( min-width : $sm-min ){
+		.vk_post_title {
+			font-size: 16px;
+		}
+		.vk_post_excerpt {
+			font-size: 14px;
 		}
 	}
-
 }
+.mainSection .vk_post.vk_post-col-md-12 {
+	@media ( min-width : $md-min ){
+		.vk_post_title {
+			font-size: 18px;
+		}
+		.vk_post_excerpt {
+			font-size: 14px;
+		}
+	}
+}
+.mainSection .vk_post.vk_post-col-lg-12 {
+	@media ( min-width : $lg-min ){
+		.vk_post_title {
+			font-size: 18px;
+		}
+		.vk_post_excerpt {
+			font-size: 14px;
+		}
+	}
+}
+.mainSection .vk_post.vk_post-col-xl-12 {
+	@media ( min-width : $xl-min ){
+		.vk_post_title {
+			font-size: 21px;
+		}
+		.vk_post_excerpt {
+			font-size: 14px;
+		}
+	}
+}
+
 
 /*-------------------------------------------*/
 /* .card
@@ -218,13 +247,21 @@ $xl-min:1200px;
 }
 
 /*-------------------------------------------*/
-/* .media
+/* .media new type
 /*-------------------------------------------*/
 .media {
 	&-img {
 		width:30%;
+		border:$border_primary;
+		padding: 1px;
+		margin-right: 1rem;
 	}
 }
+
+/*-------------------------------------------*/
+/* .media old type ( Lightning Default )
+/*-------------------------------------------*/
+
 
 .media { border-bottom:$border_primary;padding:1rem 0;margin-top:0;
 	& > div { width:100%; }
@@ -240,7 +277,8 @@ $xl-min:1200px;
   }
 
   .media-body {
-    .media-heading { font-size:20px;line-height:1.4em;margin-top:0; margin-bottom:0.4em;font-weight: normal;
+    .media-heading {
+			font-size:20px;line-height:1.4em;margin-top:0; margin-bottom:0.4em;font-weight: normal;
       /* Begin heading style reset */
       background: none;box-shadow: none;padding: 0;
       /* End heading style reset */
@@ -248,11 +286,11 @@ $xl-min:1200px;
         &:hover { text-decoration: none; }
       }
     }
-    p { margin-bottom:0;font-size:14px; line-height:150%; }
-    .entry-meta_updated { display: none; }
-    .entry-meta_items_author { display: none; }
-    a.media-body_excerpt { color:$color_font_default;display:block; overflow:hidden; }
   }
+	p { margin-bottom:0;font-size:14px; line-height:150%; }
+	.entry-meta_updated { display: none; }
+	.entry-meta_items_author { display: none; }
+	a.media-body_excerpt { color:$color_font_default;display:block; overflow:hidden; }
 }
 @media (max-width: 767px){
 .media {
