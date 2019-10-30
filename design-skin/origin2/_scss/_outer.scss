@@ -226,7 +226,7 @@ h1.entry-title { font-size:26px; }
 ul.page-numbers { margin:0;padding: 0;
   li { margin:0;list-style: none; display:block; overflow:hidden;float:left;
     a,
-    span.page-numbers { padding: 6px 12px;display: block;border:1px solid #ddd;margin-left: -1px; }
+    span.page-numbers { padding: 6px 12px;display: block;border:1px solid #ddd;margin-left: -1px;color:$color_font_default }
     a:hover { text-decoration: none; }
     &:first-child a {margin-left:0;}
     a:hover { background-color: #efefef; }

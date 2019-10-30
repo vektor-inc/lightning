@@ -140,6 +140,7 @@ $xl-min:1200px;
 		}
 		&.media {
 			padding: 1.5rem 0;
+			&:first-child { border-top:$border_primary; }
 			.media-img {
 				margin-right: 1.4rem;
 			}
