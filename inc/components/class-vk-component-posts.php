@@ -256,7 +256,11 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				}
 
 				$html .= '<div class="col-5 card-img-outer" style="background-image:url(' . $image_src . ')">';
-				$html .= self::get_thumbnail_image( $post, $options, 'card-img card-img-use-bg' );
+				$attr  = array(
+					'class_outer' => '',
+					'class_image' => 'card-img card-img-use-bg',
+				);
+				$html .= self::get_thumbnail_image( $post, $options, $attr );
 				$html .= '</div><!-- /.col -->';
 				$html .= '<div class="col-7">';
 			}
@@ -282,7 +286,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			$html .= self::get_view_first_div( $post, $options );
 			if ( $options['image'] ) {
 				$html .= '<a href="' . get_the_permalink() . '" class="media-img">';
-				$html .= self::get_thumbnail_image( $post, $options, '' );
+				$html .= self::get_thumbnail_image( $post, $options, null );
 				$html .= '</a>';
 			}
 
