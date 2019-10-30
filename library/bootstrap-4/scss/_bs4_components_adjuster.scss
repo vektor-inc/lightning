@@ -72,7 +72,7 @@ $xl-min:1200px;
 			// transform: scale(1.1,1.1);
 		}
 	}
-	&_img {
+	&_imgOuter {
 		position: relative;
 	}
 	& &_title {
@@ -138,6 +138,12 @@ $xl-min:1200px;
 		.vk_post_excerpt {
 			font-size: 14px;
 		}
+		&.media {
+			padding: 1.5rem 0;
+			.media-img {
+				margin-right: 1.4rem;
+			}
+		}
 	}
 }
 .mainSection .vk_post.vk_post-col-md-12 {
@@ -157,6 +163,12 @@ $xl-min:1200px;
 		}
 		.vk_post_excerpt {
 			font-size: 14px;
+		}
+		&.media {
+			padding: 1.8rem 0;
+			.media-img {
+				margin-right: 1.8rem;
+			}
 		}
 	}
 }

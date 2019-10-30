@@ -4,6 +4,19 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 
 	class VK_Component_Posts {
 
+		/*-------------------------------------------*/
+		/* Basic method
+		/*-------------------------------------------*/
+		/* Common Parts
+		/*-------------------------------------------*/
+		/* Layout patterns
+		/*-------------------------------------------*/
+		/* UI Helper method
+		/*-------------------------------------------*/
+
+		/*-------------------------------------------*/
+		/* Basic method
+		/*-------------------------------------------*/
 		static public function get_loop_post_view_options( $options ) {
 			$default = array(
 				'layout'            => 'card',
@@ -46,7 +59,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 		}
 
 		/*-------------------------------------------*/
-		/* Common Part
+		/* Common Parts
 		/*-------------------------------------------*/
 		/**
 		 * Common Part _ first DIV
@@ -73,10 +86,20 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 		 * @param  string $class   [description]
 		 * @return [type]          [description]
 		 */
-		static public function get_thumbnail_image( $post, $options, $class = '' ) {
+		static public function get_thumbnail_image( $post, $options, $attr = array() ) {
+
+			$default = array(
+				'class_outer' => '',
+				'class_image' => '',
+			);
+			$classes = wp_parse_args( $attr, $default );
+
 			$html = '';
 			if ( $options['image'] ) {
-				$html .= '<div class="vk_post_img">';
+				if ( $classes['class_outer'] ) {
+					$classes['class_outer'] = ' ' . $classes['class_outer'];
+				}
+				$html .= '<div class="vk_post_imgOuter' . $classes['class_outer'] . '">';
 
 				if ( $options['overlay'] ) {
 
@@ -86,15 +109,21 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 
 				}
 
-				$image_attr = array( 'class' => $class );
+				if ( $classes['class_image'] ) {
+					$image_class = 'vk_post_imgOuter_img ' . $classes['class_image'];
+				} else {
+					$image_class = 'vk_post_imgOuter_img';
+				}
+
+				$image_attr = array( 'class' => $image_class );
 				$img        = get_the_post_thumbnail( $post->ID, 'medium', $image_attr );
 				if ( $img ) {
 					$html .= $img;
 				} elseif ( $options['image_default_url'] ) {
-					$html .= '<img src="' . esc_url( $options['image_default_url'] ) . '" alt="" class="' . $class . '" />';
+					$html .= '<img src="' . esc_url( $options['image_default_url'] ) . '" alt="" class="' . $image_class . '" />';
 				}
 
-				$html .= '</div><!-- [ /.vk_post_img ] -->';
+				$html .= '</div><!-- [ /.vk_post_imgOuter ] -->';
 			} // if ( $options['image'] ) {
 			return $html;
 		}
@@ -195,7 +224,11 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			$html .= self::get_view_first_div( $post, $options );
 			$html .= '<a href="' . get_the_permalink( $post->ID ) . '">';
 
-			$html .= self::get_thumbnail_image( $post, $options, 'card-img-top' );
+			$attr  = array(
+				'class_outer' => '',
+				'class_image' => 'card-img-top',
+			);
+			$html .= self::get_thumbnail_image( $post, $options, $attr );
 
 			$html .= self::get_view_body( $post, $options );
 
