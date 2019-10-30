@@ -41,6 +41,13 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			return $html;
 		}
 
+		static public function the_view( $post, $options ) {
+			 echo wp_kses_post( self::get_view( $post, $options ) );
+		}
+
+		/*-------------------------------------------*/
+		/* Common Part
+		/*-------------------------------------------*/
 		/**
 		 * Common Part _ first DIV
 		 * @var [type]
@@ -176,6 +183,9 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			return $html;
 		}
 
+		/*-------------------------------------------*/
+		/* Layout patterns
+		/*-------------------------------------------*/
 		/**
 		 * Card
 		 * @var [type]
@@ -250,11 +260,6 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 
 			$html .= '</div><!-- [ /.media ] -->';
 			return $html;
-		}
-
-
-		static public function the_view( $post, $options ) {
-			 echo wp_kses_post( self::get_view( $post, $options ) );
 		}
 
 		/*-------------------------------------------*/
