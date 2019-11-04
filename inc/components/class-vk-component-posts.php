@@ -19,24 +19,24 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 		/*-------------------------------------------*/
 		static public function get_loop_post_view_options( $options ) {
 			$default = array(
-				'layout'            => 'card',
-				// 'slug'         => '',
-				'image'             => true,
-				'image_default_url' => false,
-				'excerpt'           => false,
-				'date'              => false,
-				'btn'               => false,
-				'btn_text'          => __( 'Read more', 'lightning' ),
-				'overlay'           => false,
-				'new'               => false,
-				'new_text'          => __( 'New!!', 'lightning' ),
-				'new_date'          => 7,
-				'class_outer'       => '',
-				'class_title'       => '',
-				'body_prepend'      => '',
-				'body_append'       => '',
+				'layout'             => 'card',
+				'image'              => true,
+				'image_default_url'  => false,
+				'image_overlay_term' => true,
+				'excerpt'            => false,
+				'date'               => false,
+				'btn'                => false,
+				'btn_text'           => __( 'Read more', 'lightning' ),
+				'overlay'            => false,
+				'new'                => false,
+				'new_text'           => __( 'New!!', 'lightning' ),
+				'new_date'           => 7,
+				'class_outer'        => '',
+				'class_title'        => '',
+				'body_prepend'       => '',
+				'body_append'        => '',
 			);
-			$return = wp_parse_args( $options, $default );
+			$return  = wp_parse_args( $options, $default );
 			return $return;
 		}
 
@@ -77,10 +77,13 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 
 				while ( $wp_query->have_posts() ) {
 					$wp_query->the_post();
-					$term_args          = array(
+					$term_args = array(
 						'class' => 'card_singleTermLabel',
 					);
-					$options['overlay'] = Vk_term_color::get_single_term_with_color( false, $term_args );
+
+					if ( $options['image_overlay_term'] ) {
+						$options['overlay'] = Vk_term_color::get_single_term_with_color( false, $term_args );
+					}
 					global $post;
 					$loop .= VK_Component_Posts::get_view( $post, $options );
 				} // while ( have_posts() ) {
