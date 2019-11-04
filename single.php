@@ -96,15 +96,16 @@ else :
 		$post_next     = get_next_post();
 		if ( $post_previous || $post_next ) {
 			$options = array(
-				'layout'            => 'card-horizontal',
-				'image'             => true,
-				'image_default_url' => get_template_directory_uri() . '/assets/images/no-image.png',
-				'excerpt'           => false,
-				'date'              => true,
-				'btn'               => false,
-				'overlay'           => '',
-				'body_prepend'      => '',
-				'body_append'       => '',
+				'layout'                     => 'card-horizontal',
+				'display_image'              => true,
+				'display_image_overlay_term' => true,
+				'display_excerpt'            => false,
+				'display_date'               => true,
+				'display_btn'                => false,
+				'image_default_url'          => get_template_directory_uri() . '/assets/images/no-image.png',
+				'overlay'                    => '',
+				'body_prepend'               => '',
+				'body_append'                => '',
 			);
 		?>
 

@@ -19,22 +19,22 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 		/*-------------------------------------------*/
 		static public function get_loop_post_view_options( $options ) {
 			$default = array(
-				'layout'             => 'card',
-				'image'              => true,
-				'image_default_url'  => false,
-				'image_overlay_term' => true,
-				'excerpt'            => false,
-				'date'               => false,
-				'btn'                => false,
-				'btn_text'           => __( 'Read more', 'lightning' ),
-				'overlay'            => false,
-				'new'                => false,
-				'new_text'           => __( 'New!!', 'lightning' ),
-				'new_date'           => 7,
-				'class_outer'        => '',
-				'class_title'        => '',
-				'body_prepend'       => '',
-				'body_append'        => '',
+				'layout'                     => 'card',
+				'display_image'              => true,
+				'display_image_overlay_term' => true,
+				'display_excerpt'            => false,
+				'display_date'               => true,
+				'display_new'                => true,
+				'display_btn'                => false,
+				'image_default_url'          => false,
+				'overlay'                    => false,
+				'btn_text'                   => __( 'Read more', 'lightning' ),
+				'new_text'                   => __( 'New!!', 'lightning' ),
+				'new_date'                   => 7,
+				'class_outer'                => '',
+				'class_title'                => '',
+				'body_prepend'               => '',
+				'body_append'                => '',
 			);
 			$return  = wp_parse_args( $options, $default );
 			return $return;
@@ -81,7 +81,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 						'class' => 'card_singleTermLabel',
 					);
 
-					if ( $options['image_overlay_term'] ) {
+					if ( $options['display_image_overlay_term'] ) {
 						$options['overlay'] = Vk_term_color::get_single_term_with_color( false, $term_args );
 					}
 					global $post;
@@ -136,7 +136,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			$classes = wp_parse_args( $attr, $default );
 
 			$html = '';
-			if ( $options['image'] ) {
+			if ( $options['display_image'] ) {
 				if ( $classes['class_outer'] ) {
 					$classes['class_outer'] = ' ' . $classes['class_outer'];
 				}
@@ -165,7 +165,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				}
 
 				$html .= '</div><!-- [ /.vk_post_imgOuter ] -->';
-			} // if ( $options['image'] ) {
+			} // if ( $options['display_image'] ) {
 			return $html;
 		}
 
@@ -200,7 +200,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 
 			$html .= get_the_title( $post->ID );
 
-			if ( $options['new'] ) {
+			if ( $options['display_new'] ) {
 				$today = date_i18n( 'U' );
 				$entry = get_the_time( 'U' );
 				$kiji  = date( 'U', ( $today - $entry ) ) / 86400;
@@ -215,19 +215,19 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 
 			$html .= '</h5>';
 
-			if ( $options['date'] ) {
+			if ( $options['display_date'] ) {
 				$html .= '<div class="vk_post_date ' . $layout_type . '-date published">';
 				$html .= esc_html( get_the_date( null, $post->ID ) );
 				$html .= '</div>';
 			}
 
-			if ( $options['excerpt'] ) {
+			if ( $options['display_excerpt'] ) {
 				$html .= '<p class="vk_post_excerpt ' . $layout_type . '-text">';
 				$html .= wp_kses_post( get_the_excerpt( $post->ID ) );
 				$html .= '</p>';
 			}
 
-			if ( $options['btn'] ) {
+			if ( $options['display_btn'] ) {
 				$button_options = array(
 					'outer_id'       => '',
 					'outer_class'    => '',
@@ -289,7 +289,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			$html .= '<div class="row no-gutters card-horizontal-inner-row">';
 
 			$image_src = '';
-			if ( $options['image'] ) {
+			if ( $options['display_image'] ) {
 
 				$image_src = get_the_post_thumbnail_url( $post->ID, 'medium' );
 				if ( ! $image_src && $options['image_default_url'] ) {
@@ -308,7 +308,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 
 			$html .= self::get_view_body( $post, $options );
 
-			if ( $options['image'] ) {
+			if ( $options['display_image'] ) {
 				$html .= '</div><!-- /.col -->';
 			}
 
@@ -325,7 +325,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 		static public function get_view_type_media( $post, $options ) {
 			$html  = '';
 			$html .= self::get_view_first_div( $post, $options );
-			if ( $options['image'] ) {
+			if ( $options['display_image'] ) {
 				$html .= '<a href="' . get_the_permalink() . '" class="media-img">';
 				$html .= self::get_thumbnail_image( $post, $options, null );
 				$html .= '</a>';
