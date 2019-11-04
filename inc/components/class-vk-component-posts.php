@@ -77,13 +77,6 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 
 				while ( $wp_query->have_posts() ) {
 					$wp_query->the_post();
-					$term_args = array(
-						'class' => 'card_singleTermLabel',
-					);
-
-					if ( $options['display_image_overlay_term'] ) {
-						$options['overlay'] = Vk_term_color::get_single_term_with_color( false, $term_args );
-					}
 					global $post;
 					$loop .= VK_Component_Posts::get_view( $post, $options );
 				} // while ( have_posts() ) {
@@ -117,7 +110,8 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			if ( ! empty( $options['class_outer'] ) ) {
 				$class_outer .= ' ' . esc_attr( $options['class_outer'] );
 			}
-			return '<div id="post-' . esc_attr( $post->ID ) . '" class="vk_post ' . join( ' ', get_post_class( $class_outer ) ) . '">';
+			$html = '<div id="post-' . esc_attr( $post->ID ) . '" class="vk_post ' . join( ' ', get_post_class( $class_outer ) ) . '">';
+			return $html;
 		}
 
 		/**
@@ -143,10 +137,19 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				$html .= '<div class="vk_post_imgOuter' . $classes['class_outer'] . '">';
 
 				if ( $options['overlay'] ) {
-
 					$html .= '<div class="card-img-overlay">';
 					$html .= $options['overlay'];
 					$html .= '</div>';
+				}
+
+				if ( $options['display_image_overlay_term'] ) {
+
+					$html     .= '<div class="card-img-overlay">';
+					$term_args = array(
+						'class' => 'card_singleTermLabel',
+					);
+					$html     .= Vk_term_color::get_single_term_with_color( false, $term_args );
+					$html     .= '</div>';
 
 				}
 
