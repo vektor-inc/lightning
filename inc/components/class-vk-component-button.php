@@ -26,7 +26,8 @@ if ( ! class_exists( 'VK_Components_Button' ) ) {
 
 			$html = '';
 
-			$options = self::get_options( $options );
+			$options   = self::get_options( $options );
+			$btn_class = '';
 			if ( $options['btn_class'] ) {
 				$btn_class = ' class="' . esc_attr( $options['btn_class'] ) . '"';
 			}
@@ -40,7 +41,7 @@ if ( ! class_exists( 'VK_Components_Button' ) ) {
 				$html .= self::get_style_all( $options );
 			}
 
-			$html .= '<a' . $btn_class . ' href="' . esc_url( $options['btn_url'] ) . $btn_target . '">';
+			$html .= '<a' . $btn_class . ' href="' . esc_url( $options['btn_url'] ) . '"' . $btn_target . '>';
 			$html .= wp_kses_post( $options['btn_text'] );
 			$html .= '</a>';
 
