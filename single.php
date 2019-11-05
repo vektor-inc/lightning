@@ -1,7 +1,27 @@
 <?php get_header(); ?>
 
-<?php get_template_part( 'module_pageTit' ); ?>
-<?php get_template_part( 'module_panList' ); ?>
+<?php
+// Dealing with old files.
+// Actually, it's ok to only use get_template_part().
+/*-------------------------------------------*/
+/* Page Header
+/*-------------------------------------------*/
+$old_file_name[] = 'module_pageTit.php';
+if ( locate_template( $old_file_name, false, false ) ) {
+	locate_template( $old_file_name, true, false );
+} else {
+	get_template_part( 'template-parts/page-header' );
+}
+/*-------------------------------------------*/
+/* BreadCrumb
+/*-------------------------------------------*/
+$old_file_name[] = 'module_panList.php';
+if ( locate_template( $old_file_name, false, false ) ) {
+	locate_template( $old_file_name, true, false );
+} else {
+	get_template_part( 'template-parts/breadcrumb' );
+}
+?>
 
 <div class="section siteContent">
 <?php do_action( 'lightning_siteContent_prepend' ); ?>
