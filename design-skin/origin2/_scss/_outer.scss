@@ -222,7 +222,10 @@ h1.entry-title { font-size:26px; }
 /*-------------------------------------------*/
 /* .pagination
 /*-------------------------------------------*/
-.pagination { margin-bottom:0; }
+.pagination {
+	margin-top:2rem;
+	margin-bottom:0;
+ }
 ul.page-numbers { margin:0;padding: 0;
   li { margin:0;list-style: none; display:block; overflow:hidden;float:left;
     a,
