@@ -34,7 +34,7 @@ body { font-family: "メイリオ",Meiryo,"ＭＳ Ｐゴシック","Hiragino Kak
 /* JPN STYLE で発生 */
 img { max-width: 100%; height:auto; }
 img { max-width: 100%; height:auto; }
-p { line-height: 2;margin-bottom:$margin_bottom; }
+p { line-height: 1.8em;margin-bottom:$margin_bottom; }
 em { font-weight: bold;font-style: italic !important;font-family: "ＭＳ Ｐゴシック","Hiragino Kaku Gothic Pro","ヒラギノ角ゴ Pro W3",sans-serif; }
 ul,ol,dl { margin-top:1.5em;margin-bottom:$margin_bottom;}
 li { margin-bottom:0.8em; line-height: 1.65em; }
