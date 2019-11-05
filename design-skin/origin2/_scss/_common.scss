@@ -74,20 +74,6 @@ h3,.h3,
 /* h2じゃないけれど同じ文字サイズにする .mainSection-title のケースがあるので必要 */
 h2,.h2,.mainSection-title  { font-size:$font-size-h2; }
 
-// h4,.h4 { font-size:20px; position: relative; }
-// h5,.h5 { font-size:18px; }
-// h6,.h6 { font-size:16px; }
-
-@media (max-width: 767px){
-	// h1 { font-size:24px;}
-	// h2 { font-size:21px;}
-	// h3 { font-size:20px;}
-	// h4 { font-size:18px;}
-	// h5 { font-size:18px;}
-	// h6 { font-size:16px;}
-}// @media (max-width: 767px){
-
-
 blockquote { padding:20px; } /* don't include .wp-block- -> can't fa padding over wright...*/
 .wp-block-freeform.block-library-rich-text__tinymce blockquote,
 blockquote.wp-block-quote:not(.is-large):not(.is-style-large),
@@ -134,13 +120,6 @@ table { border-collapse: collapse; border-spacing: 0;width:100%; border-top:$bor
 .btn { white-space: normal; }
 .btn-xs { padding-left:15px;padding-right:15px;font-size:12px; }
 .btn.btn-block { padding-left:10px;padding-right:10px; }
-
-.card {
-
-}
-.card-meta {
-
-}
 
 /*-------------------------------------------*/
 /* images
