@@ -101,6 +101,9 @@ $xl-min:1200px;
 		margin-top: 0.5em;
 		color:#666;
 	}
+	.vk_post_imgOuter a {
+		display:block; overflow:hidden;
+	}
 	/*
 	Basicly wright to without .vk_post.
 	This additional is can't over wright only.
@@ -109,6 +112,9 @@ $xl-min:1200px;
 		padding: 0;
 		box-sizing: border-box;
 		max-width: 100%;
+		.vk_post_btnOuter {
+			width: calc( 100% - 2.5rem );
+		}
 		@media (min-width: 576px){
 				margin-bottom: 30px;
 		}
@@ -124,6 +130,37 @@ $xl-min:1200px;
 		padding: 1em 0;
 		margin:0 15px;
 		border-bottom:$border_primary ;
+	}
+}
+/*-------------------------------------------*/
+/* Button display
+/*-------------------------------------------*/
+.vk_post-btn-display {
+	.vk_post_body {
+		position: relative;
+		height:100%;
+	}
+	.vk_post_btnOuter {
+		margin-top:1em;
+		position: absolute;
+		bottom:0;
+	}
+	&.media {
+		.vk_post_body {
+			padding-bottom:50px;
+		}
+		.vk_post_btnOuter {
+			width: 100%;
+		}
+	}
+	&.card {
+		.vk_post_body {
+			padding-bottom:70px;
+		}
+		.vk_post_btnOuter {
+			width: calc( 100% - 2.5rem );
+			bottom:1.25rem
+		}
 	}
 }
 
@@ -212,7 +249,7 @@ $xl-min:1200px;
 	}
 	&_singleTermLabel{
 		font-size: 10px;
-		padding: 0.5em 1em;
+		padding: 0.3em 0.8em;
 		position: absolute;
 		right:0;
 		top:0;
@@ -223,6 +260,11 @@ $xl-min:1200px;
 .card-horizontal {
 	&-inner {
 		height: 100%;
+		&::after {
+			content: "";
+		  display: block;
+		  clear: both;
+		}
 		&-row {
 			height: 100%;
 		}
@@ -271,10 +313,15 @@ $xl-min:1200px;
 /*-------------------------------------------*/
 .media {
 	&-img {
-		width:30%;
 		border:$border_primary;
 		padding: 1px;
 		margin-right: 1rem;
+	}
+	.vk_post &-img {
+		width:35%;
+	}
+	.vk_post &-body {
+		width:65%;
 	}
 }
 

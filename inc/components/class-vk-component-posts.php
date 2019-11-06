@@ -32,6 +32,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				'btn_align'                  => 'right',
 				'new_text'                   => __( 'New!!', 'lightning' ),
 				'new_date'                   => 7,
+				'textlink'                   => true,
 				'class_outer'                => '',
 				'class_title'                => '',
 				'body_prepend'               => '',
@@ -76,7 +77,6 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 
 				$loop                  .= '<div class="vk_posts' . $outer_class . '">';
 				$options['display_btn'] = true;
-				$options['btn_text']    = 'うひょdisplay';
 
 				while ( $wp_query->have_posts() ) {
 					$wp_query->the_post();
@@ -141,6 +141,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 					$classes['class_outer'] = ' ' . $classes['class_outer'];
 				}
 				$html .= '<div class="vk_post_imgOuter' . $classes['class_outer'] . '">' . "\n";
+				$html .= '<a href="' . get_the_permalink( $post->ID ) . '">' . "\n";
 
 				if ( $options['overlay'] ) {
 					$html .= '<div class="card-img-overlay">' . "\n";
@@ -172,7 +173,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				} elseif ( $options['image_default_url'] ) {
 					$html .= '<img src="' . esc_url( $options['image_default_url'] ) . '" alt="" class="' . $image_class . '" />' . "\n";
 				}
-
+				$html .= '</a>' . "\n";
 				$html .= '</div><!-- [ /.vk_post_imgOuter ] -->' . "\n";
 			} // if ( $options['display_image'] ) {
 			return $html;
@@ -182,11 +183,11 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 		 * Common Part _ post body
 		 * @var [type]
 		 */
-		static public function get_view_body( $post, $options, $attr = array() ) {
-			$default = array(
-				'textlink' => false,
-			);
-			$attr    = wp_parse_args( $attr, $default );
+		static public function get_view_body( $post, $options ) {
+			// $default = array(
+			// 	'textlink' => false,
+			// );
+			// $attr = wp_parse_args( $attr, $default );
 
 			$layout_type = $options['layout'];
 			if ( $layout_type == 'card-horizontal' ) {
@@ -203,7 +204,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 
 			$html .= '<h5 class="vk_post_title ' . $layout_type . '-title">';
 
-			if ( $attr['textlink'] ) {
+			if ( $options['textlink'] ) {
 				$html .= '<a href="' . get_the_permalink( $post->ID ) . '">' . "\n";
 			}
 
@@ -218,7 +219,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				}
 			}
 
-			if ( $attr['textlink'] ) {
+			if ( $options['textlink'] ) {
 				$html .= '</a>' . "\n";
 			}
 
@@ -279,7 +280,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 		static public function get_view_type_card( $post, $options ) {
 			$html  = '';
 			$html .= self::get_view_first_div( $post, $options );
-			$html .= '<a href="' . get_the_permalink( $post->ID ) . '">';
+			// $html .= '<a href="' . get_the_permalink( $post->ID ) . '">';
 
 			$attr  = array(
 				'class_outer' => '',
@@ -289,7 +290,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 
 			$html .= self::get_view_body( $post, $options );
 
-			$html .= '</a>';
+			// $html .= '</a>';
 			$html .= '</div><!-- [ /.card ] -->' . "\n\n";
 			return $html;
 		}
@@ -301,7 +302,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 		static public function get_view_type_card_horizontal( $post, $options ) {
 			$html  = '';
 			$html .= self::get_view_first_div( $post, $options );
-			$html .= '<a href="' . get_the_permalink( $post->ID ) . '" class="card-horizontal-inner">' . "\n";
+			// $html .= '<a href="' . get_the_permalink( $post->ID ) . '" class="card-horizontal-inner">' . "\n";
 			$html .= '<div class="row no-gutters card-horizontal-inner-row">' . "\n";
 
 			$image_src = '';
@@ -329,7 +330,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			}
 
 			$html .= '</div><!-- [ /.row ] -->' . "\n";
-			$html .= '</a>' . "\n";
+			// $html .= '</a>' . "\n";
 			$html .= '</div><!-- [ /.card ] -->' . "\n\n";
 			return $html;
 		}
@@ -342,17 +343,21 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			$html  = '';
 			$html .= self::get_view_first_div( $post, $options );
 			if ( $options['display_image'] ) {
-				$html .= '<a href="' . get_the_permalink() . '" class="media-img">';
-				$html .= self::get_thumbnail_image( $post, $options, null );
-				$html .= '</a>';
+				// $html .= '<a href="' . get_the_permalink() . '" class="media-img">';
+				$attr  = array(
+					'class_outer' => 'media-img',
+					'class_image' => '',
+				);
+				$html .= self::get_thumbnail_image( $post, $options, $attr );
+				// $html .= '</a>' . "\n";
 			}
 
-			$attr  = array(
-				'textlink' => true,
-			);
-			$html .= self::get_view_body( $post, $options, $attr );
+			// $attr  = array(
+			// 	'textlink' => true,
+			// );
+			$html .= self::get_view_body( $post, $options );
 
-			$html .= '</div><!-- [ /.media ] -->';
+			$html .= '</div><!-- [ /.media ] -->' . "\n\n";
 			return $html;
 		}
 

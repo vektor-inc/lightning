@@ -1,8 +1,14 @@
 /* Bootstrap Adjuster */
 @import "variables";
 .card {
-	&_singleTermLabel{
+	.card_singleTermLabel{
 		border-radius: 0 0.25rem 0 0.25rem;
 		// border:1px solid #ff0000;
+	}
+}
+
+.media {
+	.card-img-overlay {
+		margin:1px;
 	}
 }
