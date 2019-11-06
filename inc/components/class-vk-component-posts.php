@@ -29,7 +29,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				'image_default_url'          => false,
 				'overlay'                    => false,
 				'btn_text'                   => __( 'Read more', 'lightning' ),
-				'btn_align'                  => 'right',
+				'btn_align'                  => 'text-right',
 				'new_text'                   => __( 'New!!', 'lightning' ),
 				'new_date'                   => 7,
 				'textlink'                   => true,
@@ -75,8 +75,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 					$outer_class = ' ' . $options_loop['class_loop_outer'];
 				}
 
-				$loop                  .= '<div class="vk_posts' . $outer_class . '">';
-				$options['display_btn'] = true;
+				$loop .= '<div class="vk_posts' . $outer_class . '">';
 
 				while ( $wp_query->have_posts() ) {
 					$wp_query->the_post();
@@ -252,11 +251,11 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 					'shadow_color'   => '',
 				);
 
-				$text_align = '';
-				if ( $options['btn_align'] == 'right' ) {
-					$text_align = ' text-right';
-				}
-				$html .= '<div class="vk_post_btnOuter' . $text_align . '">';
+				// $text_align = '';
+				// if ( $options['btn_align'] == 'right' ) {
+				// 	$text_align = ' text-right';
+				// }
+				$html .= '<div class="vk_post_btnOuter ' . $options['btn_align'] . '">';
 				$html .= VK_Component_Button::get_view( $button_options );
 				$html .= '</div>' . "\n";
 			}
