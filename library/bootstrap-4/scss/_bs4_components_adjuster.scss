@@ -15,6 +15,23 @@ $xl-min:1200px;
 /*-------------------------------------------*/
 /* vk_post Layout
 /*-------------------------------------------*/
+/* vk_post common style
+/*-------------------------------------------*/
+/* Button display
+/*-------------------------------------------*/
+/* Main section 1 column adjustment
+/*-------------------------------------------*/
+/* .card
+/*-------------------------------------------*/
+/* .media new type
+/*-------------------------------------------*/
+/* .media old type ( Lightning Default )
+/*-------------------------------------------*/
+
+
+/*-------------------------------------------*/
+/* vk_post Layout
+/*-------------------------------------------*/
 .vk_post-col {
 	&-xs-3 { width : calc( 25% - 30px );}
 	&-xs-4 { width : calc( 33.3% - 30px );}
@@ -119,10 +136,6 @@ $xl-min:1200px;
 				margin-bottom: 30px;
 		}
 	}
-	// .card-img-overlay{
-	// 	bottom:unset;
-	// }
-
 	&.media {
 		&:first-child {
 			border-top: none;
@@ -323,16 +336,52 @@ $xl-min:1200px;
 	.vk_post &-body {
 		width:65%;
 	}
+
+}
+.media.vk_post-col {
+	&:first-child { border-top:$border_primary; }
+	&-xs-6:first-child,
+	&-xs-6:nth-child(2) { border-top: $border_primary; }
+	@media ( min-width : $sm-min ){
+		&-sm-6:nth-child(2),
+		&-sm-4:nth-child(2),
+		&-sm-4:nth-child(3),
+		&-sm-3:nth-child(2),
+		&-sm-3:nth-child(3),
+		&-sm-3:nth-child(4) { border-top: $border_primary; }
+	}
+	@media ( min-width : $md-min ){
+		&-md-6:nth-child(2),
+		&-md-4:nth-child(2),
+		&-md-4:nth-child(3),
+		&-md-3:nth-child(2),
+		&-md-3:nth-child(3),
+		&-md-3:nth-child(4) { border-top: $border_primary; }
+	}
+	@media ( min-width : $lg-min ){
+		&-lg-6:nth-child(2),
+		&-lg-4:nth-child(2),
+		&-lg-4:nth-child(3),
+		&-lg-3:nth-child(2),
+		&-lg-3:nth-child(3),
+		&-lg-3:nth-child(4) { border-top: $border_primary; }
+	}
+	@media ( min-width : $xl-min ){
+		&-xl-6:nth-child(2),
+		&-xl-4:nth-child(2),
+		&-xl-4:nth-child(3),
+		&-xl-3:nth-child(2),
+		&-xl-3:nth-child(3),
+		&-xl-3:nth-child(4) { border-top: $border_primary; }
+	}
 }
 
 /*-------------------------------------------*/
 /* .media old type ( Lightning Default )
 /*-------------------------------------------*/
 
-
 .media { border-bottom:$border_primary;padding:1rem 0;margin-top:0;
 	& > div { width:100%; }
-  &:first-child { border-top:$border_primary; }
   .postList_thumbnail { width:160px;margin-bottom:0.5em;padding-right:30px; display:block; overflow:hidden;float:left;
     a { position: relative;display:block; overflow:hidden;border:1px solid #e5e5e5; }
     img { width: 100%;height:auto;border:1px solid #fff; }
