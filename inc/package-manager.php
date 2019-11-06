@@ -12,7 +12,7 @@
 $options = get_option( 'lightning_theme_options' );
 
 if ( ! empty( $options['disable_functions'] ) && is_array( $options['disable_functions'] ) ) {
-	$functions = lightning_package_array();
+	$functions = lightning_old_packages_array();
 	foreach ( $options['disable_functions'] as $key => $value ) {
 		if ( ! $value ) {
 			$value[''];
@@ -21,7 +21,7 @@ if ( ! empty( $options['disable_functions'] ) && is_array( $options['disable_fun
 	}
 }
 
-function lightning_package_array() {
+function lightning_old_packages_array() {
 	$packages = array(
 		// 'woocommerce'                => array(
 		// 	'label'       => __( 'WooCommerce', 'lightning' ),
@@ -29,12 +29,12 @@ function lightning_package_array() {
 		// ),
 		'widget_full_wide_title'     => array(
 			'label'       => __( 'Full Wide Title Widget', 'lightning' ),
-			'description' => __( '', 'lightning' ),
+			'description' => __( 'If you are using Lightning Pro that, You can use the same function by Outer Block and Title Block in Plugin VK Blocks.', 'lightning' ),
 			'path'        => get_parent_theme_file_path( '/inc/widgets/widget-full-wide-title.php' ),
 		),
 		'widget_contents_area_posts' => array(
 			'label'       => __( 'Content Area Posts Widget', 'lightning' ),
-			'description' => __( '', 'lightning' ),
+			'description' => __( 'If you are using Lightning Pro that, You can use the more powerful function by Media Posts BS4 Widget and Latest Posts Block in Plugin VK Blocks.', 'lightning' ),
 			'path'        => get_parent_theme_file_path( '/inc/widgets/widget-new-posts.php' ),
 		),
 		'widget_front_pr'            => array(
@@ -43,7 +43,7 @@ function lightning_package_array() {
 			'path'        => get_parent_theme_file_path( '/inc/front-page-pr.php' ),
 		),
 	);
-	return apply_filters( 'lightning', $packages );
+	return apply_filters( 'lightning_old_packages_array', $packages );
 }
 
 /*-------------------------------------------*/
@@ -59,7 +59,25 @@ function lightning_customize_register_function( $wp_customize ) {
 		)
 	);
 
-	$functions = lightning_package_array();
+	// slide_title
+	$wp_customize->add_setting(
+		'not_recommended_title', array(
+			'sanitize_callback' => 'sanitize_text_field',
+		)
+	);
+	$wp_customize->add_control(
+		new Custom_Html_Control(
+			$wp_customize, 'not_recommended_title', array(
+				'label'            => __( 'Not recommended functions', 'lightning' ),
+				'section'          => 'lightning_function',
+				'type'             => 'text',
+				'custom_title_sub' => '',
+				'custom_html'      => '<p>' . __( 'These are old functions that already alternated to the new function.', 'lightning' ) . '</p>',
+			)
+		)
+	);
+
+	$functions = lightning_old_packages_array();
 
 	foreach ( $functions as $key => $value ) {
 		$wp_customize->add_setting(
@@ -72,7 +90,7 @@ function lightning_customize_register_function( $wp_customize ) {
 		);
 		$wp_customize->add_control(
 			"lightning_theme_options[disable_functions][$key]", array(
-				'label'       => $value['label'],
+				'label'       => sprintf( __( 'Stop %s', 'lightning' ), $value['label'] ),
 				'section'     => 'lightning_function',
 				'settings'    => "lightning_theme_options[disable_functions][$key]",
 				'type'        => 'checkbox',
