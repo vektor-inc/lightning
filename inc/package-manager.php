@@ -9,14 +9,13 @@
 /*-------------------------------------------*/
 /*	Load Package
 /*-------------------------------------------*/
-$options = get_option( 'lightning_theme_options' );
-
-if ( ! empty( $options['disable_functions'] ) && is_array( $options['disable_functions'] ) ) {
-	$functions = lightning_old_packages_array();
-	foreach ( $options['disable_functions'] as $key => $value ) {
-		if ( ! $value ) {
-			$value[''];
-			require $functions[ $key ]['path'];
+add_action( 'after_setup_theme', 'Lightning_load_packages' );
+function Lightning_load_packages() {
+	$options  = get_option( 'lightning_theme_options' );
+	$packages = lightning_old_packages_array();
+	foreach ( $packages as $key => $value ) {
+		if ( empty( $options['disable_functions'][ $key ] ) ) {
+			require $value['path'];
 		}
 	}
 }
@@ -55,7 +54,7 @@ function lightning_customize_register_function( $wp_customize ) {
 	$wp_customize->add_section(
 		'lightning_function', array(
 			'title'    => lightning_get_prefix_customize_panel() . __( 'Function Settings', 'lightning' ),
-			'priority' => 500,
+			'priority' => 480,
 		)
 	);
 
