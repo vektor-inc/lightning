@@ -137,9 +137,6 @@ $xl-min:1200px;
 		}
 	}
 	&.media {
-		&:first-child {
-			border-top: none;
-		}
 		padding: 1em 0;
 		margin:0 15px;
 		border-bottom:$border_primary ;
@@ -160,7 +157,7 @@ $xl-min:1200px;
 	}
 	&.media {
 		.vk_post_body {
-			padding-bottom:50px;
+			padding-bottom:45px;
 		}
 		.vk_post_btnOuter {
 			width: 100%;
@@ -325,6 +322,7 @@ $xl-min:1200px;
 /* .media new type
 /*-------------------------------------------*/
 .media {
+	&:first-child { border-top:$border_primary; }
 	&-img {
 		border:$border_primary;
 		padding: 1px;
@@ -339,7 +337,6 @@ $xl-min:1200px;
 
 }
 .media.vk_post-col {
-	&:first-child { border-top:$border_primary; }
 	&-xs-6:first-child,
 	&-xs-6:nth-child(2) { border-top: $border_primary; }
 	@media ( min-width : $sm-min ){
