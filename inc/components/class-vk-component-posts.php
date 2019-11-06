@@ -29,6 +29,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				'image_default_url'          => false,
 				'overlay'                    => false,
 				'btn_text'                   => __( 'Read more', 'lightning' ),
+				'btn_align'                  => 'right',
 				'new_text'                   => __( 'New!!', 'lightning' ),
 				'new_date'                   => 7,
 				'class_outer'                => '',
@@ -73,7 +74,9 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 					$outer_class = ' ' . $options_loop['class_loop_outer'];
 				}
 
-				$loop .= '<div class="vk_posts' . $outer_class . '">';
+				$loop                  .= '<div class="vk_posts' . $outer_class . '">';
+				$options['display_btn'] = true;
+				$options['btn_text']    = 'うひょdisplay';
 
 				while ( $wp_query->have_posts() ) {
 					$wp_query->the_post();
@@ -110,7 +113,10 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			if ( ! empty( $options['class_outer'] ) ) {
 				$class_outer .= ' ' . esc_attr( $options['class_outer'] );
 			}
-			$html = '<div id="post-' . esc_attr( $post->ID ) . '" class="vk_post ' . join( ' ', get_post_class( $class_outer ) ) . '">';
+			if ( $options['display_btn'] ) {
+				$class_outer .= ' vk_post-btn-display';
+			}
+			$html = '<div id="post-' . esc_attr( $post->ID ) . '" class="vk_post ' . join( ' ', get_post_class( $class_outer ) ) . '">' . "\n";
 			return $html;
 		}
 
@@ -236,7 +242,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 					'outer_class'    => '',
 					'btn_text'       => $options['btn_text'],
 					'btn_url'        => get_the_permalink( $post->ID ),
-					'btn_class'      => 'btn btn-primary',
+					'btn_class'      => 'btn btn-primary btn-sm',
 					'btn_target'     => '',
 					'btn_ghost'      => false,
 					'btn_color_text' => '',
@@ -244,7 +250,14 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 					'shadow_use'     => false,
 					'shadow_color'   => '',
 				);
-				$html          .= VK_Component_Button::get_view( $button_options );
+
+				$text_align = '';
+				if ( $options['btn_align'] == 'right' ) {
+					$text_align = ' text-right';
+				}
+				$html .= '<div class="vk_post_btnOuter' . $text_align . '">';
+				$html .= VK_Component_Button::get_view( $button_options );
+				$html .= '</div>' . "\n";
 			}
 
 			if ( ! empty( $options['body_append'] ) ) {
