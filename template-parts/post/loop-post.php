@@ -15,7 +15,6 @@ Use components sample
 ======================
 You can use several variation post layout by VK_Component_Posts.
 See follow sample code.
-
-get_template_part( 'template-parts/post/loop-layout', 'use-component-sample' );
-
 */
+
+// get_template_part( 'template-parts/post/loop-layout', 'use-component-sample' );

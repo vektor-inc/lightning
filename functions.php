@@ -192,11 +192,8 @@ if ( class_exists( 'woocommerce' ) ) {
 /*-------------------------------------------*/
 /*	Load other modules
 /*-------------------------------------------*/
-require get_parent_theme_file_path( '/inc/components/class-vk-component-posts.php' );
-require get_parent_theme_file_path( '/inc/components/class-vk-component-button.php' );
-require get_parent_theme_file_path( '/inc/components/class-vk-component-mini-contents.php' );
+require get_parent_theme_file_path( '/inc/vk-components/vk-components-config.php' );
 require get_parent_theme_file_path( '/inc/template-redirect.php' );
-
 
 /*-------------------------------------------*/
 /*	WidgetArea initiate
