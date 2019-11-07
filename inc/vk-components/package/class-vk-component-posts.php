@@ -1,4 +1,9 @@
 <?php
+/*
+The original of this file is located at:
+https://github.com/vektor-inc/vektor-wp-libraries
+If you want to change this file, please change the original file.
+*/
 
 if ( ! class_exists( 'VK_Component_Posts' ) ) {
 
