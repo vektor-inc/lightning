@@ -14,9 +14,6 @@
 		<?php get_template_part( 'template-parts/post/meta' ); ?>
 		<h1 class="media-heading entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 		<a href="<?php the_permalink(); ?>" class="media-body_excerpt"><?php the_excerpt(); ?></a>
-		<!--
-		<div><a href="<?php the_permalink(); ?>" class="btn btn-default btn-sm"><?php _e( 'Read more', 'lightning' ); ?></a></div>
-		-->
 	</div>
 </div>
 </article>
