@@ -219,58 +219,17 @@ h1.entry-title { font-size:26px; }
   a { margin-right:8px; }
 }
 
-/*      .media(bootstrap)
-/*-------------------------------------------*/
-.media { border-bottom:$border_primary;padding:1rem 0;margin-top:0;
-	& > div { width:100%; }
-  &:first-child { border-top:$border_primary; }
-  .postList_thumbnail { width:160px;margin-bottom:0.5em;padding-right:30px; display:block; overflow:hidden;float:left;
-    a { position: relative;display:block; overflow:hidden;border:1px solid #e5e5e5; }
-    img { width: 100%;height:auto;border:1px solid #fff; }
-    .postList_cateLabel {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-    }
-  }
-
-  .media-body {
-    .media-heading { font-size:20px;line-height:1.4em;margin-top:0; margin-bottom:0.4em;font-weight: normal;
-      /* Begin heading style reset */
-      background: none;box-shadow: none;padding: 0;
-      /* End heading style reset */
-      a { color:$color_font_default;
-        &:hover { text-decoration: none; }
-      }
-    }
-    p { margin-bottom:0;font-size:14px; line-height:150%; }
-    .entry-meta_updated { display: none; }
-    .entry-meta_items_author { display: none; }
-    a.media-body_excerpt { color:$color_font_default;display:block; overflow:hidden; }
-  }
-}
-@media (max-width: 767px){
-.media {
-  .postList_thumbnail { padding-right:20px; }
-  .media-body {
-    .media-heading { font-size:1.2em;line-height:1.3em; margin-bottom:0.5em; }
-    } // .media-body
-  } // .media
-} // @media (max-width: 767px){
-@media (max-width: 500px){
-.media {
-  .postList_thumbnail { width:100px; }
-  } // .media
-} // @media (max-width: 767px){
-
 /*-------------------------------------------*/
 /* .pagination
 /*-------------------------------------------*/
-.pagination { margin-bottom:0; }
+.pagination {
+	margin-top:2rem;
+	margin-bottom:0;
+ }
 ul.page-numbers { margin:0;padding: 0;
   li { margin:0;list-style: none; display:block; overflow:hidden;float:left;
     a,
-    span.page-numbers { padding: 6px 12px;display: block;border:1px solid #ddd;margin-left: -1px; }
+    span.page-numbers { padding: 6px 12px;display: block;border:1px solid #ddd;margin-left: -1px;color:$color_font_default }
     a:hover { text-decoration: none; }
     &:first-child a {margin-left:0;}
     a:hover { background-color: #efefef; }

@@ -146,6 +146,8 @@ function lightning_load_common_editor_css() {
 	add_editor_style( get_template_directory_uri() . '/assets/css/common_editor.css', LIGHTNING_THEME_VERSION );
 }
 
+require get_parent_theme_file_path( '/inc/package-manager.php' );
+
 /*-------------------------------------------*/
 /*	Load Theme Customizer additions.
 /*-------------------------------------------*/
@@ -159,12 +161,6 @@ require get_parent_theme_file_path( '/inc/customize/customize-top-slide.php' );
 require get_parent_theme_file_path( '/inc/template-tags.php' );
 require get_parent_theme_file_path( '/inc/template-tags-old.php' );
 require get_parent_theme_file_path( '/inc/class-vk-helpers.php' );
-
-/*-------------------------------------------*/
-/*	Load widgets
-/*-------------------------------------------*/
-get_template_part( 'inc/widgets/widget-full-wide-title' );
-get_template_part( 'inc/widgets/widget-new-posts' );
 
 /*-------------------------------------------*/
 /*	Load designskin manager
@@ -182,11 +178,6 @@ require get_parent_theme_file_path( '/inc/tgm-plugin-activation/tgm-config.php' 
 require get_parent_theme_file_path( '/inc/font-awesome/font-awesome-config.php' );
 
 /*-------------------------------------------*/
-/*	Load Front PR Blocks
-/*-------------------------------------------*/
-get_template_part( 'inc/front-page-pr' );
-
-/*-------------------------------------------*/
 /*	Load Front vk-mobile-nav
 /*-------------------------------------------*/
 get_template_part( 'inc/vk-mobile-nav/vk-mobile-nav-config' );
@@ -201,11 +192,8 @@ if ( class_exists( 'woocommerce' ) ) {
 /*-------------------------------------------*/
 /*	Load other modules
 /*-------------------------------------------*/
-require get_parent_theme_file_path( '/inc/components/class-vk-component-posts.php' );
-require get_parent_theme_file_path( '/inc/components/class-vk-component-button.php' );
-require get_parent_theme_file_path( '/inc/components/class-vk-component-mini-contents.php' );
+require get_parent_theme_file_path( '/inc/vk-components/vk-components-config.php' );
 require get_parent_theme_file_path( '/inc/template-redirect.php' );
-
 
 /*-------------------------------------------*/
 /*	WidgetArea initiate

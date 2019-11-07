@@ -1,5 +1,4 @@
 @charset "utf-8";
-@import "bs4_components_adjuster";
 @import "common";
 @import "common_origin";
 @import "global_menu";
@@ -7,3 +6,5 @@
 @import "outer";
 @import "outer_origin";
 @import "slide";
+@import "../../../inc/vk-components/package/_scss/_vk-post.scss";
+@import "vk_post_adjuster_origin";

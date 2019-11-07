@@ -23,7 +23,7 @@ class Lightning_Design_Manager {
 	static function get_skins() {
 		$skins = array(
 			'origin'  => array(
-				'label'           => 'Origin',
+				'label'           => 'Origin ( Bootstrap3 )',
 				'css_path'        => get_template_directory_uri() . '/design-skin/origin/css/style.css',
 				'editor_css_path' => get_template_directory_uri() . '/design-skin/origin/css/editor.css',
 				// 'gutenberg_css_path' => get_template_directory_uri() . '/design-skin/origin/css/editor-gutenberg.css',
@@ -33,7 +33,7 @@ class Lightning_Design_Manager {
 				'version'         => LIGHTNING_THEME_VERSION,
 			),
 			'origin2' => array(
-				'label'           => __( 'Origin II ( Bootstrap4 / Experiment )', 'lightning' ),
+				'label'           => 'Origin II ( Bootstrap4 )',
 				'css_path'        => get_template_directory_uri() . '/design-skin/origin2/css/style.css',
 				'editor_css_path' => get_template_directory_uri() . '/design-skin/origin2/css/editor.css',
 				'php_path'        => get_parent_theme_file_path( '/design-skin/origin2/origin2.php' ),
@@ -72,20 +72,20 @@ class Lightning_Design_Manager {
 	 * Get current skin function
 	 * @return [string] If empty current skin that set default skin.
 	 */
-	static function get_current_skin() {
+	public static function get_current_skin() {
 		$skins        = self::get_skins();
 		$current_skin = get_option( 'lightning_design_skin' );
 
 		if ( ! $current_skin ) {
-			$current_skin = 'origin';
+			$current_skin = 'origin2';
 		}
 
 		// If selected skin plugin is deactive that, set to default skin.
-		if ( $current_skin != 'origin' ) {
+		if ( $current_skin != 'origin2' ) {
 			include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 			$skins_info = self::get_skins_info();
 			if ( isset( $skins_info[ $current_skin ]['plugin_path'] ) && ! is_plugin_active( $skins_info[ $current_skin ]['plugin_path'] ) ) {
-				$current_skin = 'origin';
+				$current_skin = 'origin2';
 			}
 		}
 
@@ -195,7 +195,7 @@ class Lightning_Design_Manager {
 	static function customize_register( $wp_customize ) {
 		$wp_customize->add_setting(
 			'lightning_design_skin', array(
-				'default'           => 'origin',
+				'default'           => 'origin2',
 				'type'              => 'option',
 				'capability'        => 'edit_theme_options',
 				'sanitize_callback' => 'sanitize_text_field',
