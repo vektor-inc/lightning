@@ -115,7 +115,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			if ( $options['display_btn'] ) {
 				$class_outer .= ' vk_post-btn-display';
 			}
-			$html = '<div id="post-' . esc_attr( $post->ID ) . '" class="vk_post ' . join( ' ', get_post_class( $class_outer ) ) . '">' . "\n";
+			$html = '<div id="post-' . esc_attr( $post->ID ) . '" class="vk_post ' . join( ' ', get_post_class( $class_outer ) ) . '">';
 			return $html;
 		}
 
@@ -139,23 +139,23 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				if ( $classes['class_outer'] ) {
 					$classes['class_outer'] = ' ' . $classes['class_outer'];
 				}
-				$html .= '<div class="vk_post_imgOuter' . $classes['class_outer'] . '">' . "\n";
-				$html .= '<a href="' . get_the_permalink( $post->ID ) . '">' . "\n";
+				$html .= '<div class="vk_post_imgOuter' . $classes['class_outer'] . '">';
+				$html .= '<a href="' . get_the_permalink( $post->ID ) . '">';
 
 				if ( $options['overlay'] ) {
-					$html .= '<div class="card-img-overlay">' . "\n";
+					$html .= '<div class="card-img-overlay">';
 					$html .= $options['overlay'];
-					$html .= '</div>' . "\n";
+					$html .= '</div>';
 				}
 
 				if ( $options['display_image_overlay_term'] ) {
 
-					$html     .= '<div class="card-img-overlay">' . "\n";
+					$html     .= '<div class="card-img-overlay">';
 					$term_args = array(
-						'class' => 'card_singleTermLabel',
+						'class' => 'vk_post_imgOuter_singleTermLabel',
 					);
-					$html     .= Vk_term_color::get_single_term_with_color( false, $term_args ) . "\n";
-					$html     .= '</div>' . "\n";
+					$html     .= Vk_term_color::get_single_term_with_color( false, $term_args );
+					$html     .= '</div>';
 
 				}
 
@@ -168,12 +168,12 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				$image_attr = array( 'class' => $image_class );
 				$img        = get_the_post_thumbnail( $post->ID, 'medium', $image_attr );
 				if ( $img ) {
-					$html .= $img . "\n";
+					$html .= $img;
 				} elseif ( $options['image_default_url'] ) {
-					$html .= '<img src="' . esc_url( $options['image_default_url'] ) . '" alt="" class="' . $image_class . '" />' . "\n";
+					$html .= '<img src="' . esc_url( $options['image_default_url'] ) . '" alt="" class="' . $image_class . '" />';
 				}
-				$html .= '</a>' . "\n";
-				$html .= '</div><!-- [ /.vk_post_imgOuter ] -->' . "\n";
+				$html .= '</a>';
+				$html .= '</div><!-- [ /.vk_post_imgOuter ] -->';
 			} // if ( $options['display_image'] ) {
 			return $html;
 		}
@@ -195,7 +195,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 
 			$html = '';
 
-			$html .= '<div class="vk_post_body ' . $layout_type . '-body">' . "\n";
+			$html .= '<div class="vk_post_body ' . $layout_type . '-body">';
 
 			if ( ! empty( $options['body_prepend'] ) ) {
 				$html .= $options['body_prepend'];
@@ -204,7 +204,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			$html .= '<h5 class="vk_post_title ' . $layout_type . '-title">';
 
 			if ( $options['textlink'] ) {
-				$html .= '<a href="' . get_the_permalink( $post->ID ) . '">' . "\n";
+				$html .= '<a href="' . get_the_permalink( $post->ID ) . '">';
 			}
 
 			$html .= get_the_title( $post->ID );
@@ -219,21 +219,21 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			}
 
 			if ( $options['textlink'] ) {
-				$html .= '</a>' . "\n";
+				$html .= '</a>';
 			}
 
-			$html .= '</h5>' . "\n";
+			$html .= '</h5>';
 
 			if ( $options['display_date'] ) {
 				$html .= '<div class="vk_post_date ' . $layout_type . '-date published">';
 				$html .= esc_html( get_the_date( null, $post->ID ) );
-				$html .= '</div>' . "\n";
+				$html .= '</div>';
 			}
 
 			if ( $options['display_excerpt'] ) {
 				$html .= '<p class="vk_post_excerpt ' . $layout_type . '-text">';
 				$html .= wp_kses_post( get_the_excerpt( $post->ID ) );
-				$html .= '</p>' . "\n";
+				$html .= '</p>';
 			}
 
 			if ( $options['display_btn'] ) {
@@ -257,14 +257,14 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				// }
 				$html .= '<div class="vk_post_btnOuter ' . $options['btn_align'] . '">';
 				$html .= VK_Component_Button::get_view( $button_options );
-				$html .= '</div>' . "\n";
+				$html .= '</div>';
 			}
 
 			if ( ! empty( $options['body_append'] ) ) {
 				$html .= $options['body_append'];
 			}
 
-			$html .= '</div><!-- [ /.' . $layout_type . '-body ] -->' . "\n";
+			$html .= '</div><!-- [ /.' . $layout_type . '-body ] -->';
 
 			return $html;
 		}
@@ -279,7 +279,6 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 		static public function get_view_type_card( $post, $options ) {
 			$html  = '';
 			$html .= self::get_view_first_div( $post, $options );
-			// $html .= '<a href="' . get_the_permalink( $post->ID ) . '">';
 
 			$attr  = array(
 				'class_outer' => '',
@@ -289,8 +288,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 
 			$html .= self::get_view_body( $post, $options );
 
-			// $html .= '</a>';
-			$html .= '</div><!-- [ /.card ] -->' . "\n\n";
+			$html .= '</div><!-- [ /.card ] -->';
 			return $html;
 		}
 
@@ -301,8 +299,8 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 		static public function get_view_type_card_horizontal( $post, $options ) {
 			$html  = '';
 			$html .= self::get_view_first_div( $post, $options );
-			// $html .= '<a href="' . get_the_permalink( $post->ID ) . '" class="card-horizontal-inner">' . "\n";
-			$html .= '<div class="row no-gutters card-horizontal-inner-row">' . "\n";
+			// $html .= '<a href="' . get_the_permalink( $post->ID ) . '" class="card-horizontal-inner">';
+			$html .= '<div class="row no-gutters card-horizontal-inner-row">';
 
 			$image_src = '';
 			if ( $options['display_image'] ) {
@@ -312,25 +310,25 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 					$image_src = esc_url( $options['image_default_url'] );
 				}
 
-				$html .= '<div class="col-5 card-img-outer" style="background-image:url(' . $image_src . ')">' . "\n";
+				$html .= '<div class="col-5 card-img-outer" style="background-image:url(' . $image_src . ')">';
 				$attr  = array(
 					'class_outer' => '',
 					'class_image' => 'card-img card-img-use-bg',
 				);
 				$html .= self::get_thumbnail_image( $post, $options, $attr );
-				$html .= '</div><!-- /.col -->' . "\n";
-				$html .= '<div class="col-7">' . "\n";
+				$html .= '</div><!-- /.col -->';
+				$html .= '<div class="col-7">';
 			}
 
 			$html .= self::get_view_body( $post, $options );
 
 			if ( $options['display_image'] ) {
-				$html .= '</div><!-- /.col -->' . "\n";
+				$html .= '</div><!-- /.col -->';
 			}
 
-			$html .= '</div><!-- [ /.row ] -->' . "\n";
-			// $html .= '</a>' . "\n";
-			$html .= '</div><!-- [ /.card ] -->' . "\n\n";
+			$html .= '</div><!-- [ /.row ] -->';
+			// $html .= '</a>';
+			$html .= '</div><!-- [ /.card ] -->';
 			return $html;
 		}
 
@@ -348,7 +346,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 					'class_image' => '',
 				);
 				$html .= self::get_thumbnail_image( $post, $options, $attr );
-				// $html .= '</a>' . "\n";
+				// $html .= '</a>';
 			}
 
 			// $attr  = array(
@@ -356,7 +354,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			// );
 			$html .= self::get_view_body( $post, $options );
 
-			$html .= '</div><!-- [ /.media ] -->' . "\n\n";
+			$html .= '</div><!-- [ /.media ] -->';
 			return $html;
 		}
 
