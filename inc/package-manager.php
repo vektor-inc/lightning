@@ -37,8 +37,8 @@ function lightning_old_packages_array() {
 			'path'        => get_parent_theme_file_path( '/inc/widgets/widget-new-posts.php' ),
 		),
 		'widget_front_pr'            => array(
-			'label'       => __( 'Content Area Posts Widget', 'lightning' ),
-			'description' => __( 'You can use same function by Plugin VK Blocks', 'lightning' ),
+			'label'       => __( 'Front Page PR Block', 'lightning' ),
+			'description' => __( 'You can use same function by PR Block in Plugin VK Blocks', 'lightning' ),
 			'path'        => get_parent_theme_file_path( '/inc/front-page-pr.php' ),
 		),
 	);

@@ -48,6 +48,10 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			return $return;
 		}
 
+		/**
+		 * [public description]
+		 * @var [type]
+		 */
 		static public function get_view( $post, $options ) {
 
 			$options = self::get_loop_post_view_options( $options );
@@ -66,6 +70,10 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			 echo wp_kses_post( self::get_view( $post, $options ) );
 		}
 
+		/**
+		 * [public description]
+		 * @var [type]
+		 */
 		static public function get_loop( $wp_query, $options, $options_loop = array() ) {
 
 			$options_loop_dafault = array(
@@ -96,6 +104,11 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			wp_reset_postdata();
 			return $loop;
 		}
+
+		/**
+		 * [public description]
+		 * @var [type]
+		 */
 		static public function the_loop( $wp_query, $options, $options_loop = array() ) {
 			echo self::get_loop( $wp_query, $options, $options_loop );
 		}
