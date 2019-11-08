@@ -117,7 +117,7 @@ if ( locate_template( $old_file_name, false, false ) ) {
 </div><!-- [ /.postList ] -->
 
 <?php do_action( 'lightning_loop_after' ); ?>
-
+<?php do_action( 'lightning_mainSection_append' ); ?>
 </div><!-- [ /.mainSection ] -->
 
 <div class="<?php lightning_the_class_name( 'sideSection' ); ?>">

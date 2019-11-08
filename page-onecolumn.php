@@ -65,7 +65,7 @@ if ( locate_template( $old_file_name, false, false ) ) {
 	endwhile;
 	};
 ?>
-
+<?php do_action( 'lightning_mainSection_append' ); ?>
 </div><!-- [ /.mainSection ] -->
 
 </div><!-- [ /.row ] -->
