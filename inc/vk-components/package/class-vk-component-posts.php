@@ -160,9 +160,9 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 					$term_args = array(
 						'class' => 'vk_post_imgOuter_singleTermLabel',
 					);
-					// if ( method_exists( 'Vk_term_color', 'get_single_term_with_color' ) ) {
+					if ( method_exists( 'Vk_term_color', 'get_single_term_with_color' ) ) {
 						$html .= Vk_term_color::get_single_term_with_color( false, $term_args );
-					// }
+					}
 					$html .= '</div>';
 
 				}
