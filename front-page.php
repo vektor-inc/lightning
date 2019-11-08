@@ -93,6 +93,7 @@ if ( $bootstrap == '3' ) {
 
 			<?php endif; // if ( apply_filters( 'is_lightning_home_top_posts_display', true ) ) : ?>
 
+			<?php do_action( 'lightning_mainSection_append' ); ?>
 			</div><!-- [ /.mainSection ] -->
 
 			<?php if ( ! lightning_is_frontpage_onecolumn() ) : ?>
