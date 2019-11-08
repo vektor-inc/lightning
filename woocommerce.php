@@ -38,7 +38,7 @@
 	</div><!-- [ /#post-<?php the_ID(); ?> ] -->
 
 
-
+<?php do_action( 'lightning_mainSection_append' ); ?>
 </div><!-- [ /.mainSection ] -->
 
 <div class="<?php lightning_the_class_name( 'sideSection' ); ?>">
