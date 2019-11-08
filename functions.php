@@ -146,7 +146,11 @@ function lightning_load_common_editor_css() {
 	add_editor_style( get_template_directory_uri() . '/assets/css/common_editor.css', LIGHTNING_THEME_VERSION );
 }
 
-require get_parent_theme_file_path( '/inc/package-manager.php' );
+
+/*-------------------------------------------*/
+/*	Load tga(Plugin install)
+/*-------------------------------------------*/
+require get_parent_theme_file_path( '/inc/tgm-plugin-activation/tgm-config.php' );
 
 /*-------------------------------------------*/
 /*	Load Theme Customizer additions.
@@ -156,6 +160,11 @@ require get_parent_theme_file_path( '/inc/customize/customize-design.php' );
 require get_parent_theme_file_path( '/inc/customize/customize-top-slide.php' );
 
 /*-------------------------------------------*/
+/*	Load allow customize modules
+/*-------------------------------------------*/
+get_template_part( 'inc/vk-mobile-nav/vk-mobile-nav-config' );
+
+/*-------------------------------------------*/
 /*	Load Custom template tags for this theme.
 /*-------------------------------------------*/
 require get_parent_theme_file_path( '/inc/template-tags.php' );
@@ -163,24 +172,14 @@ require get_parent_theme_file_path( '/inc/template-tags-old.php' );
 require get_parent_theme_file_path( '/inc/class-vk-helpers.php' );
 
 /*-------------------------------------------*/
-/*	Load designskin manager
+/*	Load modules
 /*-------------------------------------------*/
+require get_parent_theme_file_path( '/inc/package-manager.php' );
 require get_parent_theme_file_path( '/inc/class-design-manager.php' );
-
-/*-------------------------------------------*/
-/*	Load tga(Plugin install)
-/*-------------------------------------------*/
-require get_parent_theme_file_path( '/inc/tgm-plugin-activation/tgm-config.php' );
-
-/*-------------------------------------------*/
-/*	Load Font Awesome
-/*-------------------------------------------*/
 require get_parent_theme_file_path( '/inc/font-awesome/font-awesome-config.php' );
-
-/*-------------------------------------------*/
-/*	Load Front vk-mobile-nav
-/*-------------------------------------------*/
-get_template_part( 'inc/vk-mobile-nav/vk-mobile-nav-config' );
+require get_parent_theme_file_path( '/inc/term-color/term-color-config.php' );
+require get_parent_theme_file_path( '/inc/vk-components/vk-components-config.php' );
+require get_parent_theme_file_path( '/inc/template-redirect.php' );
 
 /*-------------------------------------------*/
 /*	Load woocommerce modules
@@ -188,12 +187,6 @@ get_template_part( 'inc/vk-mobile-nav/vk-mobile-nav-config' );
 if ( class_exists( 'woocommerce' ) ) {
 	require get_parent_theme_file_path( '/inc/woocommerce/functions-woo.php' );
 }
-
-/*-------------------------------------------*/
-/*	Load other modules
-/*-------------------------------------------*/
-require get_parent_theme_file_path( '/inc/vk-components/vk-components-config.php' );
-require get_parent_theme_file_path( '/inc/template-redirect.php' );
 
 /*-------------------------------------------*/
 /*	WidgetArea initiate
