@@ -32,7 +32,8 @@ $xl-min:1200px;
 /*-------------------------------------------*/
 /* vk_post Layout
 /*-------------------------------------------*/
-.vk_post-col {
+/* If exclude the .vk_posts that, when you select the .media don't work */
+.vk_posts .vk_post-col {
 	&-xs-3 { width : calc( 25% - 30px );}
 	&-xs-4 { width : calc( 33.3% - 30px );}
 	&-xs-6 { width : calc( 50% - 30px );}
@@ -129,7 +130,9 @@ $xl-min:1200px;
 		margin-top: 0.5em;
 		color:#666;
 	}
-
+	&_btn{
+		font-size:12px;
+	}
 	/*
 	Basicly wright to without .vk_post.
 	This additional is can't over wright only.
@@ -173,7 +176,7 @@ $xl-min:1200px;
 	}
 	&.card {
 		.vk_post_body {
-			padding-bottom:70px;
+			padding-bottom:65px;
 		}
 		.vk_post_btnOuter {
 			width: calc( 100% - 2.5rem );
