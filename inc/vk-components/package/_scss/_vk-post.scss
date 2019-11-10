@@ -146,6 +146,11 @@ $xl-min:1200px;
 			width: calc( 100% - 2.5rem );
 		}
 	}
+	&.card:not(.card-horizontal){
+		.vk_post_imgOuter {
+				border-bottom: $border_primary;
+		}
+	}
 	&.media {
 		width:100%;
 		padding: 1em 0;
