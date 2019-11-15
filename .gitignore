@@ -3,3 +3,5 @@ node_modules/
 dist/
 sftp-config.json
 thumbs.db
+.DS_Store
+._.DS_Store
