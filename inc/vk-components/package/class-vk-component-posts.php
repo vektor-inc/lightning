@@ -158,7 +158,14 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				if ( $classes['class_outer'] ) {
 					$classes['class_outer'] = ' ' . $classes['class_outer'];
 				}
-				$html .= '<div class="vk_post_imgOuter' . $classes['class_outer'] . '">';
+
+				$image_src = get_the_post_thumbnail_url( $post->ID, 'large' );
+				if ( ! $image_src && $options['image_default_url'] ) {
+					$image_src = esc_url( $options['image_default_url'] );
+				}
+				$style = ' style="background-image:url(' . $image_src . ')"';
+
+				$html .= '<div class="vk_post_imgOuter' . $classes['class_outer'] . '"' . $style . '>';
 				$html .= '<a href="' . get_the_permalink( $post->ID ) . '">';
 
 				if ( $options['overlay'] ) {
@@ -179,7 +186,6 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 					$html .= '</div>';
 
 				}
-
 				if ( $classes['class_image'] ) {
 					$image_class = 'vk_post_imgOuter_img ' . $classes['class_image'];
 				} else {
@@ -323,15 +329,9 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			// $html .= '<a href="' . get_the_permalink( $post->ID ) . '" class="card-horizontal-inner">';
 			$html .= '<div class="row no-gutters card-horizontal-inner-row">';
 
-			$image_src = '';
+			// $image_src = '';
 			if ( $options['display_image'] ) {
-
-				$image_src = get_the_post_thumbnail_url( $post->ID, 'medium' );
-				if ( ! $image_src && $options['image_default_url'] ) {
-					$image_src = esc_url( $options['image_default_url'] );
-				}
-
-				$html .= '<div class="col-5 card-img-outer" style="background-image:url(' . $image_src . ')">';
+				$html .= '<div class="col-5 card-img-outer">';
 				$attr  = array(
 					'class_outer' => '',
 					'class_image' => 'card-img card-img-use-bg',

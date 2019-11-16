@@ -20,12 +20,11 @@ function lightning_term_color_taxonomies_custom( $taxonomies ) {
 
 	/*
 	Reason of use after_setup_theme that,
-	don't work call by theme ... ( really? )
-	If it's true that use after_setup_theme to vk-components.
+	don't work call by theme custom post type's custom taxonomy
 	★★★★★★ 関数のprefixは固有のものに変更する事 ★★★★★★
 	*/
 
-// add_action( 'after_setup_theme', 'lightning_load_term_color' );
-// function lightning_load_term_color() {
-	require_once( 'package/class.term-color.php' );
-// }
+add_action( 'after_setup_theme', 'lightning_load_term_color' );
+function lightning_load_term_color() {
+	require_once 'package/class.term-color.php';
+}

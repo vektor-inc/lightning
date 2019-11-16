@@ -1,7 +1,12 @@
 @charset "utf-8";
 
 .carousel { border-bottom:$border_primary;display:block; overflow:hidden;width:100%; }
-.carousel-indicators { margin-bottom:0;bottom:5px; }
+.carousel-indicators { 
+	margin-bottom:0;
+	margin-top:0; 
+	bottom:0;
+	@media (max-width: 767px){ bottom: -0.6em;}
+}
 .slide {
 	img,
 	picture > img,
