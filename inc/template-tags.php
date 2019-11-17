@@ -67,6 +67,7 @@ function lightning_get_the_class_name( $position = '' ) {
 			}
 		}
 	}
+	$class_names = apply_filters( 'lightning_get_the_class_names', $class_names );
 
 	if ( empty( $class_names[ $position ] ) ) {
 		$return = '';
@@ -74,6 +75,9 @@ function lightning_get_the_class_name( $position = '' ) {
 		$return = esc_attr( $class_names[ $position ] );
 	}
 
+	// *** Warning ***
+	// The 'lightning_get_the_class_name' will be discontinued soon.
+	// Please instead to 'lightning_get_the_class_names'.
 	return apply_filters( 'lightning_get_the_class_name', $return );
 }
 
