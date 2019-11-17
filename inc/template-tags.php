@@ -74,7 +74,7 @@ function lightning_get_the_class_name( $position = '' ) {
 
 	$class_names = apply_filters( 'lightning_get_the_class_names', $class_names );
 
-	$return = $class_names[ $position ] );
+	$return = $class_names[ $position ];
 
 	// *** Warning ***
 	// The 'lightning_get_the_class_name' will be discontinued soon.
