@@ -1,0 +1,24 @@
+/*-------------------------------------------*/
+/*  latest posts
+/*-------------------------------------------*/
+.wp-block-latest-posts{
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	li{
+		margin: 0;
+		padding: 1rem 0;
+		border-bottom: 1px dotted #666;
+
+		a{
+			color: #464646;
+			@media (max-width: 768px){
+				font-size: 1rem;
+			}
+		}
+
+		time{
+			color: #d44950;
+		}
+	}
+}
