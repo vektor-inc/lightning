@@ -39,19 +39,19 @@ else :
 		while ( have_posts() ) :
 			the_post();
 		?>
-			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-		<header>
+		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+		<header class="<?php lightning_the_class_name( 'entry-header' ); ?>">
 		<?php get_template_part( 'module_loop_post_meta' ); ?>
 		<h1 class="entry-title"><?php the_title(); ?></h1>
 		</header>
 
 		<?php do_action( 'ligthning_entry_body_before' ); ?>
-		<div class="entry-body">
+		<div class="<?php lightning_the_class_name( 'entry-body' ); ?>">
 		<?php the_content(); ?>
 		</div>
 		<?php do_action( 'ligthning_entry_body_after' ); ?>
 
-		<div class="entry-footer">
+		<div class="<?php lightning_the_class_name( 'entry-footer' ); ?>">
 		<?php
 		$args = array(
 			'before'      => '<nav class="page-link"><dl><dt>Pages :</dt><dd>',

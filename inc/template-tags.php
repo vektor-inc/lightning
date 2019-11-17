@@ -67,18 +67,19 @@ function lightning_get_the_class_name( $position = '' ) {
 			}
 		}
 	}
-	$class_names = apply_filters( 'lightning_get_the_class_names', $class_names );
 
 	if ( empty( $class_names[ $position ] ) ) {
-		$return = '';
-	} else {
-		$return = esc_attr( $class_names[ $position ] );
+		$class_names[ $position ] = esc_attr( $position );
 	}
+
+	$class_names = apply_filters( 'lightning_get_the_class_names', $class_names );
+
+	$return = $class_names[ $position ] );
 
 	// *** Warning ***
 	// The 'lightning_get_the_class_name' will be discontinued soon.
 	// Please instead to 'lightning_get_the_class_names'.
-	return apply_filters( 'lightning_get_the_class_name', $return );
+	return esc_attr( apply_filters( 'lightning_get_the_class_name', $return ) );
 }
 
 function lightning_the_class_name( $position = '' ) {
