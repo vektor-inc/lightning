@@ -269,7 +269,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 					'outer_class'    => '',
 					'btn_text'       => $options['btn_text'],
 					'btn_url'        => get_the_permalink( $post->ID ),
-					'btn_class'      => 'btn btn-primary vk_post_btn',
+					'btn_class'      => 'btn btn-sm btn-primary vk_post_btn',
 					'btn_target'     => '',
 					'btn_ghost'      => false,
 					'btn_color_text' => '',
