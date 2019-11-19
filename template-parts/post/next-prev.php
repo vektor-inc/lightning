@@ -34,6 +34,7 @@ if ( $bootstrap == '4' ) {
 		if ( $post_previous ) {
 			$options['body_prepend'] = '<p class="postNextPrev_label">' . __( 'Previous article', 'lightning' ) . '</p>';
 			$options['class_outer']  = 'card-sm vk_post-col-md-6';
+			$options                 = apply_filters( 'lightning_next_prev_options', $options );
 			VK_Component_Posts::the_view( $post_previous, $options );
 			// get_template_part( 'module_loop_post_card' );
 		} else {
@@ -46,6 +47,7 @@ if ( $bootstrap == '4' ) {
 		if ( $post_next ) {
 			$options['body_prepend'] = '<p class="postNextPrev_label">' . __( 'Next article', 'lightning' ) . '</p>';
 			$options['class_outer']  = 'card-sm vk_post-col-md-6 card-horizontal-reverse postNextPrev_next';
+			$options                 = apply_filters( 'lightning_next_prev_options', $options );
 			VK_Component_Posts::the_view( $post_next, $options );
 		} else {
 			echo '<div class="card card-noborder vk_posts vk_post-col-md-6"></div>';
