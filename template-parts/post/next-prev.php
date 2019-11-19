@@ -40,7 +40,6 @@ if ( $bootstrap == '4' ) {
 		} else {
 			echo '<div class="card card-noborder vk_posts vk_post-col-md-6"></div>';
 		} // if ( $post_previous ) {
-		wp_reset_postdata();
 		?>
 
 		<?php
@@ -52,7 +51,6 @@ if ( $bootstrap == '4' ) {
 		} else {
 			echo '<div class="card card-noborder vk_posts vk_post-col-md-6"></div>';
 		} // if ( $post_next ) {
-		wp_reset_postdata();
 		?>
 
 		</div>
