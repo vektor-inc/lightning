@@ -1,6 +1,8 @@
 @charset "utf-8";
 // Do not use sass that the path of the image shifts
 @import "../../inc/vk-mobile-nav/package/css/vk-mobile-nav-bright.css";
+@import "../../inc/vk-components/package/_scss/vk-components.scss";
+@import "block/block";
 
 .slide-inner img {
 	width:100%;

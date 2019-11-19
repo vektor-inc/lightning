@@ -231,5 +231,47 @@ function lightning_bread_crumb() {
 	return $panListHtml;
 }
 $panListHtml = lightning_bread_crumb();
-$panListHtml = wp_kses_post( apply_filters( 'lightning_panListHtml', $panListHtml ) );
+
+$allowed_html = array(
+	'div'  => array(
+		'id'        => array(),
+		'class'     => array(),
+		'itemprop'  => array(),
+		'itemscope' => array(),
+		'itemtype'  => array(),
+	),
+	'ol'   => array(
+		'id'        => array(),
+		'class'     => array(),
+		'itemprop'  => array(),
+		'itemscope' => array(),
+		'itemtype'  => array(),
+	),
+	'li'   => array(
+		'id'        => array(),
+		'class'     => array(),
+		'itemprop'  => array(),
+		'itemscope' => array(),
+		'itemtype'  => array(),
+	),
+	'a'    => array(
+		'id'       => array(),
+		'class'    => array(),
+		'href'     => array(),
+		'target'   => array(),
+		'itemprop' => array(),
+	),
+	'span' => array(
+		'id'        => array(),
+		'class'     => array(),
+		'itemprop'  => array(),
+		'itemscope' => array(),
+		'itemtype'  => array(),
+	),
+	'i'    => array(
+		'id'    => array(),
+		'class' => array(),
+	),
+);
+$panListHtml  = wp_kses( $panListHtml, $allowed_html );
 echo $panListHtml;

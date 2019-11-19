@@ -39,19 +39,19 @@ else :
 		while ( have_posts() ) :
 			the_post();
 		?>
-			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-		<header>
+		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+		<header class="<?php lightning_the_class_name( 'entry-header' ); ?>">
 		<?php get_template_part( 'module_loop_post_meta' ); ?>
 		<h1 class="entry-title"><?php the_title(); ?></h1>
 		</header>
 
 		<?php do_action( 'ligthning_entry_body_before' ); ?>
-		<div class="entry-body">
+		<div class="<?php lightning_the_class_name( 'entry-body' ); ?>">
 		<?php the_content(); ?>
 		</div>
 		<?php do_action( 'ligthning_entry_body_after' ); ?>
 
-		<div class="entry-footer">
+		<div class="<?php lightning_the_class_name( 'entry-footer' ); ?>">
 		<?php
 		$args = array(
 			'before'      => '<nav class="page-link"><dl><dt>Pages :</dt><dd>',
@@ -100,71 +100,12 @@ else :
 		<?php comments_template( '', true ); ?>
 	</article>
 
-
-	<?php if ( $bootstrap == '3' ) { ?>
-		<nav>
-		  <ul class="pager">
-			<li class="previous"><?php previous_post_link( '%link', '%title' ); ?></li>
-			<li class="next"><?php next_post_link( '%link', '%title' ); ?></li>
-		  </ul>
-		</nav>
-	<?php } ?>
-
-	<?php
-	if ( $bootstrap == '4' ) {
-		$post_previous = get_previous_post();
-		$post_next     = get_next_post();
-		if ( $post_previous || $post_next ) {
-			$options = array(
-				'layout'                     => 'card-horizontal',
-				'display_image'              => true,
-				'display_image_overlay_term' => true,
-				'display_excerpt'            => false,
-				'display_date'               => true,
-				'display_btn'                => false,
-				'image_default_url'          => get_template_directory_uri() . '/assets/images/no-image.png',
-				'overlay'                    => '',
-				'body_prepend'               => '',
-				'body_append'                => '',
-			);
-		?>
-
-		<div class="vk_posts postNextPrev">
-
-			<?php
-			if ( $post_previous ) {
-				$options['body_prepend'] = '<p class="postNextPrev_label">' . __( 'Previous article', 'lightning' ) . '</p>';
-				$options['class_outer']  = 'card-sm vk_post-col-md-6';
-				VK_Component_Posts::the_view( $post_previous, $options );
-				// get_template_part( 'module_loop_post_card' );
-			} else {
-				echo '<div class="card card-noborder vk_posts vk_post-col-md-6"></div>';
-			} // if ( $post_previous ) {
-			wp_reset_postdata();
-			?>
-
-			<?php
-			if ( $post_next ) {
-				$options['body_prepend'] = '<p class="postNextPrev_label">' . __( 'Next article', 'lightning' ) . '</p>';
-				$options['class_outer']  = 'card-sm vk_post-col-md-6 card-horizontal-reverse postNextPrev_next';
-				VK_Component_Posts::the_view( $post_next, $options );
-			} else {
-				echo '<div class="card card-noborder vk_posts vk_post-col-md-6"></div>';
-			} // if ( $post_next ) {
-			wp_reset_postdata();
-			?>
-
-			</div>
-		<?php
-		} // if ( $post_previous || $post_next ) {
-	} // if ( $bootstrap == '4' ) {
-	?>
-
 	<?php
 	endwhile;
 	endif;
 	endif;
 ?>
+<?php get_template_part( 'template-parts/post/next-prev' ); ?>
 <?php do_action( 'lightning_mainSection_append' ); ?>
 </div><!-- [ /.mainSection ] -->
 

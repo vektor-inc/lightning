@@ -120,7 +120,7 @@ $xl-min:1200px;
 		margin-top: 0.5em;
 		color:#666;
 	}
-	&_btn{
+	& &_btn{
 		font-size:12px;
 	}
 	/*
@@ -286,7 +286,8 @@ $xl-min:1200px;
 /*-------------------------------------------*/
 .card {
 	overflow: hidden;
-	&-noborder {
+	/* .card.card-noborder にしないと負ける */
+	&.card-noborder {
 		border: none;
 	}
 	&-meta {
@@ -374,7 +375,7 @@ $xl-min:1200px;
 .media.vk_post-col {
 	&-xs-6:first-child,
 	&-xs-6:nth-child(2) { border-top: $border_primary; }
-	@media ( min-width : $sm-min ){
+	@media ( min-width : $sm-min ) and ( max-width : $sm-max ) {
 		&-sm-6:nth-child(2),
 		&-sm-4:nth-child(2),
 		&-sm-4:nth-child(3),
@@ -382,7 +383,7 @@ $xl-min:1200px;
 		&-sm-3:nth-child(3),
 		&-sm-3:nth-child(4) { border-top: $border_primary; }
 	}
-	@media ( min-width : $md-min ){
+	@media ( min-width : $md-min ) and ( max-width : $md-max ){
 		&-md-6:nth-child(2),
 		&-md-4:nth-child(2),
 		&-md-4:nth-child(3),
@@ -390,7 +391,7 @@ $xl-min:1200px;
 		&-md-3:nth-child(3),
 		&-md-3:nth-child(4) { border-top: $border_primary; }
 	}
-	@media ( min-width : $lg-min ){
+	@media ( min-width : $lg-min ) and ( max-width : $lg-max ){
 		&-lg-6:nth-child(2),
 		&-lg-4:nth-child(2),
 		&-lg-4:nth-child(3),

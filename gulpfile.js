@@ -83,6 +83,7 @@ gulp.task('sass_common', function() {
     }))
     .pipe(autoprefixer())
     .pipe(cleanCss())
+    .pipe(gulp.dest('../lightning-pro/assets/css'))
     .pipe(gulp.dest('./assets/css'));
 });
 gulp.task('sass_woo', function() {
@@ -164,7 +165,7 @@ gulp.task('js_build', function() {
 // Watch
 gulp.task('watch', function() {
   gulp.watch(['./inc/vk-components/*.php'], ['components_copy']);
-  gulp.watch(['./inc/vk-components/**/*.scss'], ['sass_skin2']);
+  gulp.watch(['./inc/vk-components/**/*.scss'], ['sass_common']);
   gulp.watch(['./assets/js/**','./inc/vk-mobile-nav/package/js/**'], ['js_build']);
   gulp.watch(['./assets/_scss/**','./inc/woocommerce/_scss/**'], ['sass_common']);
   gulp.watch(['./assets/_scss/**','./inc/woocommerce/_scss/**'], ['sass_woo']);
