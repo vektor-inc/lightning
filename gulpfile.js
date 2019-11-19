@@ -83,6 +83,7 @@ gulp.task('sass_common', function() {
     }))
     .pipe(autoprefixer())
     .pipe(cleanCss())
+    .pipe(gulp.dest('../lightning-pro/assets/css'))
     .pipe(gulp.dest('./assets/css'));
 });
 gulp.task('sass_woo', function() {
