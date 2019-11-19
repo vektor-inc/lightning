@@ -286,7 +286,8 @@ $xl-min:1200px;
 /*-------------------------------------------*/
 .card {
 	overflow: hidden;
-	&-noborder {
+	/* .card.card-noborder にしないと負ける */
+	&.card-noborder {
 		border: none;
 	}
 	&-meta {
