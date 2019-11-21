@@ -1,0 +1,12 @@
+/* メインのカラム幅 */
+.wp-block,
+.editor-block-list__layout > .wp-block {
+	display:block;
+	width:calc( 100% - 3rem );
+	max-width:1140px;
+}
+
+/* カラム（水平）で点線と余白ができる */
+.vk_post .row {
+	margin:0;
+}
