@@ -143,7 +143,8 @@ function lightning_css() {
 
 add_action( 'after_setup_theme', 'lightning_load_common_editor_css' );
 function lightning_load_common_editor_css() {
-	add_editor_style( get_template_directory_uri() . '/assets/css/common_editor.css', LIGHTNING_THEME_VERSION );
+	/* Use url then if you use local https has error bring to get css error and don't refrected */
+	add_editor_style( 'assets/css/common_editor.css', LIGHTNING_THEME_VERSION );
 }
 
 
