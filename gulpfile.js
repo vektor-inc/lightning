@@ -28,6 +28,9 @@ gulp.task('text-domain', function () {
 		gulp.src(['./inc/vk-mobile-nav/*'])
 				.pipe(replace('vk_mobile_nav_textdomain', 'lightning'))
 				.pipe(gulp.dest('./inc/vk-mobile-nav/'));
+		gulp.src(['./inc/term-color/package/*'])
+						.pipe(replace('lightning-pro', 'lightning'))
+						.pipe(gulp.dest('./inc/term-color/package/'));
 });
 
 gulp.task('sass_skin', function() {
