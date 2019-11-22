@@ -149,9 +149,9 @@ class Lightning_Design_Manager {
 
 		if ( isset( $skin_info['bootstrap'] ) && $skin_info['bootstrap'] == 'bs4' ) {
 			// Bootstrap4 skin
-			$bs4_css_url = get_template_directory_uri() . '/library/bootstrap-4/css/bootstrap.min.css';
-			$bs4_version = '?ver=4.3.1';
-			add_editor_style( $bs4_css_url . $bs4_version );
+			/* Notice : Use url then if you use local environment https has error that bring to get css error and don't refrected */
+			/* Notice : add_editor_style() is only one args. */
+			add_editor_style( 'library/bootstrap-4/css/bootstrap.min.css' );
 		}
 
 		if ( ! empty( $skin_info['editor_css_path'] ) ) {
