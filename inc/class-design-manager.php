@@ -46,21 +46,46 @@ class Lightning_Design_Manager {
 	}
 
 
+	/**
+	 * Only using deal with plugin skin deactive fallback.
+	 * @return [array] Return plugin url to activate check.
+	 */
 	static function get_skins_info() {
 		$skins = array(
-			'variety'  => array(
+			'variety'               => array(
 				'plugin_path' => 'lightning-skin-variety/lightning_skin_variety.php',
 			),
-			'charm'    => array(
+			'variety-bs4'           => array(
+				'plugin_path' => 'lightning-skin-variety/lightning_skin_variety.php',
+			),
+			'charm'                 => array(
 				'plugin_path' => 'lightning-skin-charm/lightning_skin_charm.php',
 			),
-			'jpnstyle' => array(
+			'charm-bs4'             => array(
+				'plugin_path' => 'lightning-skin-charm/lightning_skin_charm.php',
+			),
+			'jpnstyle'              => array(
 				'plugin_path' => 'lightning-skin-jpnstyle/lightning_skin_jpnstyle.php',
 			),
-			'fort'     => array(
+			'jpnstyle-bs4'          => array(
+				'plugin_path' => 'lightning-skin-jpnstyle/lightning_skin_jpnstyle.php',
+			),
+			'fort'                  => array(
 				'plugin_path' => 'lightning-skin-fort/lightning-skin-fort.php',
 			),
-			'pale'     => array(
+			'fort2'                 => array(
+				'plugin_path' => 'lightning-skin-fort/lightning-skin-fort.php',
+			),
+			'fort-bs4'              => array(
+				'plugin_path' => 'lightning-skin-fort/lightning-skin-fort.php',
+			),
+			'fort-bs4-footer-light' => array(
+				'plugin_path' => 'lightning-skin-fort/lightning-skin-fort.php',
+			),
+			'pale'                  => array(
+				'plugin_path' => 'lightning-skin-pale/lightning-skin-pale.php',
+			),
+			'pale-bs4'              => array(
 				'plugin_path' => 'lightning-skin-pale/lightning-skin-pale.php',
 			),
 		);
