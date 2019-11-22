@@ -279,7 +279,15 @@ $xl-min:1200px;
 		}
 	}
 }
-
+.mainSection .wp-block-column {
+	.vk_post.vk_post-col-sm-12,
+	.vk_post.vk_post-col-md-12,
+	.vk_post.vk_post-col-lg-12,
+	.vk_post.vk_post-col-xl-12 {
+		.vk_post_title { font-size: 1rem;  }
+		.vk_post_excerpt { font-size: 12px; }
+	}
+}
 
 /*-------------------------------------------*/
 /* .card
