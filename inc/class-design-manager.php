@@ -176,7 +176,7 @@ class Lightning_Design_Manager {
 			// Bootstrap4 skin
 			/* Notice : Use url then if you use local environment https has error that bring to get css error and don't refrected */
 			/* Notice : add_editor_style() is only one args. */
-			add_editor_style( 'library/bootstrap-4/css/bootstrap.min.css' );
+			add_editor_style( 'library/bootstrap-4/css/bootstrap.min.css?ver=' . LIGHTNING_THEME_VERSION );
 		}
 
 		if ( ! empty( $skin_info['editor_css_path'] ) ) {
