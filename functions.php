@@ -65,6 +65,11 @@ function lightning_theme_setup() {
 	add_theme_support( 'editor-styles' );
 
 	/*-------------------------------------------*/
+	/*  custom-background
+	/*-------------------------------------------*/
+	add_theme_support( 'custom-background' );
+
+	/*-------------------------------------------*/
 	/*	Admin page _ Eye catch
 	/*-------------------------------------------*/
 	add_theme_support( 'post-thumbnails' );
