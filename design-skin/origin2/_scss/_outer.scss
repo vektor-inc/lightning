@@ -235,9 +235,6 @@ $section_margin_bottom: 25px;
     margin-top: 0;
     line-height: 1.4em;
   }
-  .postList {
-    margin-bottom: $section_margin_bottom;
-  }
   // Media Posts 1st image Feature measures
   .postList::after {
     content: "";
@@ -757,7 +754,7 @@ ul.page-numbers {
 /*-------------------------------------------*/
 /* footer
 /*-------------------------------------------*/
-footer {
+.siteFooter {
   background-color: #f9f9f9;
   .widget {
     margin-bottom: 25px;
