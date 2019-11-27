@@ -1,0 +1,42 @@
+@media (max-width: $lg-max) {
+    .gMenu_outer {
+        text-align: center;
+    }
+
+    .gMenu {
+        display: inline-block;
+        overflow: visible;
+    }
+}
+
+@media (min-width: $xl-min) {
+    .gMenu_outer {
+        right: 0;
+        float: right;
+        width: unset;
+    }
+
+    .gMenu {
+        right: 0;
+        margin: 0;
+        float: right;
+    }
+}
+
+/*-------------------------------------------*/
+/*	下位展開ボタン
+/*-------------------------------------------*/
+.gMenu {
+    &.vk-menu-acc {
+        .sub-menu {
+            .acc-btn {
+                /* プラグインから参照する場合パスが異なる為共通ファイルでなくこちらで指定 */
+                background-image: url(../../../inc/vk-mobile-nav/package/images/vk-menu-acc-icon-open-white.svg);
+
+                &.acc-btn-close {
+                    background-image: url(../../../inc/vk-mobile-nav/package/images/vk-menu-close-white.svg);
+                }
+            }
+        }
+    }
+}

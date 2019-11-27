@@ -252,11 +252,6 @@ $time_transition: 0.1s;
                 right: $menu_padding_horizontal;
                 border-color: #fff;
                 color: #fff;
-                background-image: url(../../../inc/vk-mobile-nav/package/images/vk-menu-acc-icon-open-white.svg);
-
-                &.acc-btn-close {
-                    background-image: url(../../../inc/vk-mobile-nav/package/images/vk-menu-close-white.svg);
-                }
             }
         }
 
@@ -269,31 +264,6 @@ $time_transition: 0.1s;
 @media (max-width: $md-max) {
     .gMenu_outer {
         display: none;
-    }
-}
-
-@media (max-width: $lg-max) {
-    .gMenu_outer {
-        text-align: center;
-    }
-
-    .gMenu {
-        display: inline-block;
-        overflow: visible;
-    }
-}
-
-@media (min-width: $xl-min) {
-    .gMenu_outer {
-        right: 0;
-        float: right;
-        width: unset;
-    }
-
-    .gMenu {
-        right: 0;
-        margin: 0;
-        float: right;
     }
 }
 
