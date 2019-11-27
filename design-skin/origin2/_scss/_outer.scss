@@ -1,13 +1,9 @@
 @charset "utf-8";
-// @import "compass";
+@import "variables";
 
 /****************************************************************/
 /* Lightning Outer Area All Skin outer style
 /****************************************************************/
-
-$border_primary: 1px solid #e5e5e5;
-$color_font_default: #464646;
-$color_key: #337ab7;
 
 /*-------------------------------------------*/
 /* .navSection
@@ -216,6 +212,7 @@ h1.page-header_pageTitle:first-child {
     margin-top: 0;
     margin-bottom: 0;
     background: none;
+		padding: 6px 15px;
     li {
       margin-bottom: 0;
       list-style: none;
