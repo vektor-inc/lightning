@@ -11,6 +11,17 @@
 	margin:0;
 }
 
+.wp-block-image {
+	/* 編集画面専用 */
+	.components-resizable-box__container{
+		max-width: 100%;
+	}
+	figcaption {
+		text-align: center;
+		font-size:0.75rem;
+	}
+}
+
 /*-------------------------------------------*/
 /*  「最新の記事」ブロック
 /*-------------------------------------------*/
