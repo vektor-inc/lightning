@@ -1,0 +1,48 @@
+/* メインのカラム幅 */
+.wp-block,
+.editor-block-list__layout > .wp-block {
+	display:block;
+	width:calc( 100% - 2rem );
+	max-width:1140px;
+}
+
+/* カラム（水平）で点線と余白ができる */
+.vk_post .row {
+	margin:0;
+}
+
+.wp-block-image {
+	/* 編集画面専用 */
+	.components-resizable-box__container{
+		max-width: 100%;
+	}
+	figcaption {
+		text-align: center;
+		font-size:0.75rem;
+	}
+}
+
+/*-------------------------------------------*/
+/*  「最新の記事」ブロック
+/*-------------------------------------------*/
+.wp-block-latest-posts{
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	li{
+		margin: 0;
+		padding: 1rem 0;
+		border-bottom: 1px dotted #666;
+
+		a{
+			color: #464646;
+			@media (max-width: 768px){
+				font-size: 1rem;
+			}
+		}
+
+		time{
+			color: #d44950;
+		}
+	}
+}

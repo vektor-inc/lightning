@@ -65,6 +65,11 @@ function lightning_theme_setup() {
 	add_theme_support( 'editor-styles' );
 
 	/*-------------------------------------------*/
+	/*  custom-background
+	/*-------------------------------------------*/
+	add_theme_support( 'custom-background' );
+
+	/*-------------------------------------------*/
 	/*	Admin page _ Eye catch
 	/*-------------------------------------------*/
 	add_theme_support( 'post-thumbnails' );
@@ -143,7 +148,10 @@ function lightning_css() {
 
 add_action( 'after_setup_theme', 'lightning_load_common_editor_css' );
 function lightning_load_common_editor_css() {
-	add_editor_style( get_template_directory_uri() . '/assets/css/common_editor.css', LIGHTNING_THEME_VERSION );
+	// Bootstrap4 skin
+	/* Notice : Use url then if you use local environment https has error that bring to get css error and don't refrected */
+	/* Notice : add_editor_style() is only one args. */
+	add_editor_style( 'assets/css/common_editor.css' );
 }
 
 

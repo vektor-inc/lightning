@@ -68,9 +68,6 @@ h3:first-child,
 h4:first-child,
 h5:first-child { margin-top:0; }
 
-h3,.h3,
-.subSection-title { padding-bottom:8px;position: relative; }
-
 /* h2じゃないけれど同じ文字サイズにする .mainSection-title のケースがあるので必要 */
 h2,.h2,.mainSection-title  { font-size:$font-size-h2; }
 

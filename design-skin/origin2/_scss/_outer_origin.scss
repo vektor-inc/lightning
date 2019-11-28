@@ -1,5 +1,5 @@
 @charset "utf-8";
-// @import "compass";
+
 
 $border_horizontal: 1px solid rgba(0, 0, 0, 0.15);
 
@@ -70,7 +70,6 @@ $border_horizontal: 1px solid rgba(0, 0, 0, 0.15);
 /*	.breadSection
 /*-------------------------------------------*/
 .breadSection {
-  border-bottom: 1px solid #f3f3f3;
   .breadcrumb {
     li {
       line-height: 1.2;
@@ -83,7 +82,6 @@ $border_horizontal: 1px solid rgba(0, 0, 0, 0.15);
       border-bottom: 1px solid $color_font_light;
       text-decoration: none;
     }
-    padding: 6px 15px;
     & > li + li:before {
       content: "/";
       margin-left: 0.5em;

@@ -273,5 +273,6 @@ $allowed_html = array(
 		'class' => array(),
 	),
 );
+$panListHtml  = apply_filters( 'lightning_panListHtml', $panListHtml );
 $panListHtml  = wp_kses( $panListHtml, $allowed_html );
 echo $panListHtml;

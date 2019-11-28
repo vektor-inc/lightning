@@ -52,3 +52,7 @@
 		padding-bottom:0;
 	}
 }
+.siteFooter {
+	// これがないとfooterMenuの上部marginが効かない
+	display:block; overflow:hidden;
+}
