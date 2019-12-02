@@ -1,58 +1,65 @@
 @charset "utf-8";
+
 @import "variables";
 
 .siteContent > .container > .row {
-	display: block;
-	&:after{
-		content: "";
-	  display: block;
-	  clear: both;
-	}
+    display: block;
+
+    &:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
 }
 
-@media ( max-width: $md-max){
-	.mainSection,
-	.sideSection {
-		width:100%;
-		flex-basis:unset;
-	}
+@media (max-width: $md-max) {
+    .mainSection,
+    .sideSection {
+        width: 100%;
+        flex-basis: unset;
+    }
 }
 
-@media ( min-width: $lg-min){
-	.mainSection-col-two {
-		width:66.66667%;
-		float:left;
-	}
-	.sideSection-col-two {
-		width: calc( 100% - 66.66667% - 3em );
-		float:right;
-	}
+@media (min-width: $lg-min) {
+    .mainSection-col-two {
+        width: 66.66667%;
+        float: left;
+    }
 
-	// sidebar-left
-	.sideSection-pos-left {
-		float:left;
-	}
-	.mainSection-pos-right {
-		float:right;
-	}
+    .sideSection-col-two {
+        width: calc( 100% - 66.66667% - 3em );
+        float: right;
+    }
 
-	// one-column
-	.mainSection-col-one,
-	.sideSection-col-one {
-		width:100%;
-	}
+    // sidebar-left
+    .sideSection-pos-left {
+        float: left;
+    }
+
+    .mainSection-pos-right {
+        float: right;
+    }
+
+    // one-column
+    .mainSection-col-one,
+    .sideSection-col-one {
+        width: 100%;
+    }
 }
 
 .siteContent {
-	.page-template-page-lp-builder &,
-	.page-template-page-lp & {
-		padding-top:0;
-	}
-	.page-template-page-lp-builder &{
-		padding-bottom:0;
-	}
+    .page-template-page-lp-builder &,
+    .page-template-page-lp & {
+        padding-top: 0;
+    }
+
+    .page-template-page-lp-builder & {
+        padding-bottom: 0;
+    }
 }
+
 .siteFooter {
-	// これがないとfooterMenuの上部marginが効かない
-	display:block; overflow:hidden;
+    // これがないとfooterMenuの上部marginが効かない
+    display: block;
+    overflow: hidden;
 }

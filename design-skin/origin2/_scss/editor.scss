@@ -1,8 +1,16 @@
 @charset "utf-8";
+
 @import "common";
 @import "common_origin";
 @import "vk_post_adjuster_origin";
 
-$color_key : #337ab7;
-.row { border:1px dashed #ccc;margin:0 2px; }
-body.wp-autoresize { padding:15px !important; }
+$color_key: #337ab7;
+
+.row {
+    border: 1px dashed #ccc;
+    margin: 0 2px;
+}
+
+body.wp-autoresize {
+    padding: 15px !important;
+}
