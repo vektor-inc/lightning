@@ -35,8 +35,11 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v7.4.0
+* CSS tuning only
+
 v7.3.0
-* [ Add function ] Custom Background supported. 
+* [ Add function ] Custom Background supported.
 
 v4.1.0
 * [ Add function ] Add slide interval setteing.
