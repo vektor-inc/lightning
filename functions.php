@@ -43,6 +43,8 @@ define( 'LIGHTNING_SHORT_NAME', 'LTG THEME' );
 /*-------------------------------------------*/
 /*  disable_tgm_notification_except_admin
 /*-------------------------------------------*/
+/*	Add defer first aid
+/*-------------------------------------------*/
 
 
 
@@ -499,4 +501,18 @@ function lightning_deactivate_plugin( $plugin_path ) {
 		$active_plugins = array_values( $active_plugins );
 		update_option( 'active_plugins', $active_plugins );
 	}
+}
+
+/*-------------------------------------------*/
+/*	Add defer first aid
+/*-------------------------------------------*/
+function lightning_add_defer_to_scripts( $tag, $handle ) {
+	if ( ! preg_match( '/\b(async|defer)\b/', $tag ) ) {
+		return str_replace( ' src', ' defer src', $tag );
+	}
+	return $tag;
+}
+
+if ( ! is_admin() ) {
+	add_filter( 'script_loader_tag', 'lightning_add_defer_to_scripts', 10, 2 );
 }
