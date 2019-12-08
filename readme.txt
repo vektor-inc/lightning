@@ -35,6 +35,9 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v7.5.0
+* Add defer first aid
+
 v7.4.0
 * CSS tuning only
 
