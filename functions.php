@@ -506,13 +506,13 @@ function lightning_deactivate_plugin( $plugin_path ) {
 /*-------------------------------------------*/
 /*	Add defer first aid
 /*-------------------------------------------*/
-function lightning_add_defer_to_scripts( $tag, $handle ) {
-	if ( ! preg_match( '/\b(async|defer)\b/', $tag ) ) {
-		return str_replace( ' src', ' defer src', $tag );
-	}
-	return $tag;
-}
-
-if ( ! is_admin() ) {
-	add_filter( 'script_loader_tag', 'lightning_add_defer_to_scripts', 10, 2 );
-}
+// function lightning_add_defer_to_scripts( $tag, $handle ) {
+// 	if ( ! preg_match( '/\b(async|defer)\b/', $tag ) ) {
+// 		return str_replace( ' src', ' defer src', $tag );
+// 	}
+// 	return $tag;
+// }
+//
+// if ( ! is_admin() ) {
+// 	add_filter( 'script_loader_tag', 'lightning_add_defer_to_scripts', 10, 2 );
+// }
