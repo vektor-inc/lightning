@@ -1,18 +1,21 @@
 <?php
 global $bootstrap;
+$in_same_term   = apply_filters( 'lightning_prev_next_post_in_same_term', false );
+$excluded_terms = apply_filters( 'lightning_prev_next_post_excluded_terms', '' );
+$taxonomy       = apply_filters( 'lightning_prev_next_post_taxonomy', 'category' );
 if ( $bootstrap == '3' ) { ?>
 	<nav>
 		<ul class="pager">
-		<li class="previous"><?php previous_post_link( '%link', '%title' ); ?></li>
-		<li class="next"><?php next_post_link( '%link', '%title' ); ?></li>
+		<li class="previous"><?php previous_post_link( '%link', '%title', $in_same_term, $excluded_terms, $taxonomy ); ?></li>
+		<li class="next"><?php next_post_link( '%link', '%title', $in_same_term, $excluded_terms, $taxonomy ); ?></li>
 		</ul>
 	</nav>
 <?php } ?>
 
 <?php
 if ( $bootstrap == '4' ) {
-	$post_previous = get_previous_post();
-	$post_next     = get_next_post();
+	$post_previous = get_previous_post( $in_same_term, $excluded_terms, $taxonomy );
+	$post_next     = get_next_post( $in_same_term, $excluded_terms, $taxonomy );
 	if ( $post_previous || $post_next ) {
 		$options = array(
 			'layout'                     => 'card-horizontal',
