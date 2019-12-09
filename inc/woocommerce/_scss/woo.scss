@@ -275,6 +275,7 @@ tr.cart-discount td{
 	form {
 		.col-1,
 		.col-2 {
+			max-width: inherit;
 			@media (min-width: 768px){
 				max-width: 48%;
 			}
