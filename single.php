@@ -45,11 +45,11 @@ else :
 		<h1 class="entry-title"><?php the_title(); ?></h1>
 		</header>
 
-		<?php do_action( 'ligthning_entry_body_before' ); ?>
+		<?php do_action( 'lightning_entry_body_before' ); ?>
 		<div class="<?php lightning_the_class_name( 'entry-body' ); ?>">
 		<?php the_content(); ?>
 		</div>
-		<?php do_action( 'ligthning_entry_body_after' ); ?>
+		<?php do_action( 'lightning_entry_body_after' ); ?>
 
 		<div class="<?php lightning_the_class_name( 'entry-footer' ); ?>">
 		<?php

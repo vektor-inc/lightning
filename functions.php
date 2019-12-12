@@ -516,3 +516,15 @@ function lightning_deactivate_plugin( $plugin_path ) {
 // if ( ! is_admin() ) {
 // 	add_filter( 'script_loader_tag', 'lightning_add_defer_to_scripts', 10, 2 );
 // }
+
+/*-------------------------------------------*/
+/*	Deal with typo name action
+/*-------------------------------------------*/
+add_action('lightning_entry_body_after','lightning_ligthning_entry_body_after');
+function lightning_ligthning_entry_body_after(){
+	do_action( 'ligthning_entry_body_after' );
+}
+add_action('lightning_entry_body_before','lightning_ligthning_entry_body_before');
+function lightning_ligthning_entry_body_before(){
+	do_action( 'ligthning_entry_body_before' );
+}
