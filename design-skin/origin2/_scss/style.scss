@@ -1,11 +1,12 @@
 @charset "utf-8";
 
-@import "common";
+@import "../../bs4-common/_scss/variables";
+@import "../../bs4-common/_scss/common";
+@import "../../bs4-common/_scss/layout";
+@import "../../bs4-common/_scss/outer";
+@import "../../bs4-common/_scss/slide";
 @import "common_origin";
 @import "global_menu";
 @import "global_menu_origin";
-@import "layout";
-@import "outer";
 @import "outer_origin";
-@import "slide";
 @import "vk_post_adjuster_origin";

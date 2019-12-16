@@ -1,0 +1,49 @@
+@charset "utf-8";
+
+@import "../origin2/_scss/variables";
+
+$section-padding: 2rem;
+
+.siteContent {
+    padding: 1em 0 1.5em;
+
+    @media (min-width: 768px) {
+        padding: 3.5em 0 3.5em;
+    }
+}
+
+.siteContent {
+    padding: 3rem 0;
+
+    .mainSection,
+    .subSection {
+        padding: $base-padding-xs;
+
+        @media (min-width: $sm-min) {
+            padding: $base-padding-sm;
+        }
+
+        @media (min-width: $md-min) {
+            padding: $base-padding-md;
+        }
+
+        @media (min-width: $lg-min) {
+            padding: $base-padding-lg;
+        }
+    }
+
+    // ２カラムのlgサイズのみ左右の余白を小さく
+    .sideSection-col-two {
+        @media (min-width: $lg-min) {
+            padding: $base-padding-lg 1rem;
+        }
+
+        @media (min-width: $xl-min) {
+            padding: $base-padding-lg;
+        }
+    }
+
+    & > .container > .row {
+        margin: 0;
+    }
+}
