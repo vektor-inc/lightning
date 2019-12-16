@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-@import "../origin2/_scss/variables";
+@import "variables";
 
 $section-padding: 2rem;
 
@@ -46,4 +46,30 @@ $section-padding: 2rem;
     & > .container > .row {
         margin: 0;
     }
+}
+
+
+/*-------------------------------------------*/
+/* Full Wide Title Offset ( 安定したら別ファイルに分離 )
+/*-------------------------------------------*/
+.vk_outer-width-full,
+.widget_ltg_full_wide_title_outer {
+	margin: 0 - $base-padding-xs;
+	padding: 2em $base-padding-xs;
+	@media (min-width: $sm-min) {
+		margin: 0 -$base-padding-sm;
+		padding: 2em $base-padding-sm;
+	}
+	@media (min-width: $md-min) {
+		margin: 0 -$base-padding-md;
+		padding: 2em $base-padding-md;
+	}
+	@media (min-width: $lg-min) {
+		margin: 0 - $base-padding-lg;
+		padding: 2.5em $base-padding-lg;
+	}
+	@media (min-width: $xl-min) {
+		margin: 0 - $base-padding-lg;
+		padding: 3em $base-padding-lg;
+	}
 }
