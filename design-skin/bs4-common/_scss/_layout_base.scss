@@ -2,49 +2,57 @@
 
 @import "variables";
 
-$section-padding: 2rem;
 
-.siteContent {
+/*-------------------------------------------*/
+/* FsiteContent
+/*-------------------------------------------*/
+/* baseSection
+/*-------------------------------------------*/
+/* Full Wide Title Offset ( 安定したら別ファイルに分離 )
+/*-------------------------------------------*/
+
+
+/*-------------------------------------------*/
+/* FsiteContent
+/*-------------------------------------------*/
+.siteContent-base-on {
     padding: 1em 0 1.5em;
-
-    @media (min-width: 768px) {
+    @media (min-width: $md-min) {
         padding: 3.5em 0 3.5em;
+    }
+    & > .container > .row {
+        margin: 0;
     }
 }
 
-.siteContent {
-    padding: 3rem 0;
+/*-------------------------------------------*/
+/* baseSection
+/*-------------------------------------------*/
+.baseSection-base-on{
+    background-color: #fff;
+    padding: $base-padding-xs;
 
-    .mainSection,
-    .subSection {
-        padding: $base-padding-xs;
-
-        @media (min-width: $sm-min) {
-            padding: $base-padding-sm;
-        }
-
-        @media (min-width: $md-min) {
-            padding: $base-padding-md;
-        }
-
-        @media (min-width: $lg-min) {
-            padding: $base-padding-lg;
-        }
+    @media (min-width: $sm-min) {
+        padding: $base-padding-sm;
     }
 
-    // ２カラムのlgサイズのみ左右の余白を小さく
-    .sideSection-col-two {
-        @media (min-width: $lg-min) {
-            padding: $base-padding-lg 1rem;
-        }
-
-        @media (min-width: $xl-min) {
-            padding: $base-padding-lg;
-        }
+    @media (min-width: $md-min) {
+        padding: $base-padding-md;
     }
 
-    & > .container > .row {
-        margin: 0;
+    @media (min-width: $lg-min) {
+        padding: $base-padding-lg;
+    }
+}
+
+// ２カラムのlgサイズのみ左右の余白を小さく
+.baseSection-base-on.sideSection-col-two {
+    @media (min-width: $lg-min) {
+        padding: $base-padding-lg 1rem;
+    }
+
+    @media (min-width: $xl-min) {
+        padding: $base-padding-lg;
     }
 }
 
@@ -52,24 +60,36 @@ $section-padding: 2rem;
 /*-------------------------------------------*/
 /* Full Wide Title Offset ( 安定したら別ファイルに分離 )
 /*-------------------------------------------*/
-.vk_outer-width-full,
-.widget_ltg_full_wide_title_outer {
-	margin: 0 - $base-padding-xs;
-	padding: 2em $base-padding-xs;
-	@media (min-width: $sm-min) {
-		margin: 0 -$base-padding-sm;
-		padding: 2em $base-padding-sm;
-	}
-	@media (min-width: $md-min) {
-		margin: 0 -$base-padding-md;
-		padding: 2em $base-padding-md;
-	}
-	@media (min-width: $lg-min) {
-		margin: 0 - $base-padding-lg;
-		padding: 2.5em $base-padding-lg;
-	}
-	@media (min-width: $xl-min) {
-		margin: 0 - $base-padding-lg;
-		padding: 3em $base-padding-lg;
-	}
+.baseSection-base-on {
+    .vk_outer-width-full,
+    .widget_ltg_full_wide_title_outer {
+		margin-left: - $base-padding-xs;
+		margin-right: - $base-padding-xs;
+		padding-left: $base-padding-xs;
+		padding-right: $base-padding-xs;
+        @media (min-width: $sm-min) {
+			margin-left: - $base-padding-sm;
+			margin-right: - $base-padding-sm;
+			padding-left: $base-padding-sm;
+			padding-right: $base-padding-sm;
+        }
+        @media (min-width: $md-min) {
+			margin-left: - $base-padding-md;
+			margin-right: - $base-padding-md;
+			padding-left: $base-padding-md;
+			padding-right: $base-padding-md;
+        }
+        @media (min-width: $lg-min) {
+			margin-left: - $base-padding-lg;
+			margin-right: - $base-padding-lg;
+			padding-left: $base-padding-lg;
+			padding-right: $base-padding-lg;
+        }
+        @media (min-width: $xl-min) {
+			margin-left: - $base-padding-lg;
+			margin-right: - $base-padding-lg;
+			padding-left: $base-padding-lg;
+			padding-right: $base-padding-lg;
+        }
+    }
 }
