@@ -4,7 +4,7 @@
  */
 get_header(); ?>
 
-<div class="section siteContent">
+<div class="<?php lightning_the_class_name( 'siteContent' ); ?>">
 <?php do_action( 'lightning_siteContent_prepend' ); ?>
 
 <?php

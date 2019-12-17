@@ -23,7 +23,7 @@ if ( locate_template( $old_file_name, false, false ) ) {
 }
 ?>
 
-<div class="section siteContent">
+<div class="<?php lightning_the_class_name( 'siteContent' ); ?>">
 <?php do_action( 'lightning_siteContent_prepend' ); ?>
 <div class="container">
 <?php do_action( 'lightning_siteContent_container_prepend' ); ?>
@@ -64,7 +64,7 @@ if ( locate_template( $old_file_name, false, false ) ) {
 	do_action( 'lightning_loop_before' );
 ?>
 
-<div class="postList">
+<div class="<?php lightning_the_class_name( 'postList' ); ?>">
 
 <?php if ( have_posts() ) : ?>
 

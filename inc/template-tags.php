@@ -40,6 +40,7 @@ function lightning_get_the_class_name( $position = '' ) {
 		$class_names = array(
 			'header'          => 'navbar siteHeader',
 			'nav_menu_header' => 'nav gMenu',
+			'siteContent'     => 'section siteContent',
 			'mainSection'     => 'col-md-8 mainSection',
 			'sideSection'     => 'col-md-3 col-md-offset-1 subSection sideSection',
 		);
@@ -47,12 +48,15 @@ function lightning_get_the_class_name( $position = '' ) {
 			$class_names['mainSection'] = 'col-md-12 mainSection';
 			$class_names['sideSection'] = 'col-md-12 sideSection';
 		}
+
 	} elseif ( $skin_info['bootstrap'] === 'bs4' ) {
+
 		$class_names = array(
 			'header'          => 'siteHeader',
 			'nav_menu_header' => 'gMenu vk-menu-acc',
-			'mainSection'     => 'col mainSection mainSection-col-two',
-			'sideSection'     => 'col subSection sideSection sideSection-col-two',
+			'siteContent'     => 'section siteContent',
+			'mainSection'     => 'col mainSection mainSection-col-two baseSection',
+			'sideSection'     => 'col subSection sideSection sideSection-col-two baseSection',
 		);
 		if ( lightning_is_layout_onecolumn() ) {
 			$class_names['mainSection'] = 'col mainSection mainSection-col-one';

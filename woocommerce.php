@@ -3,7 +3,7 @@
 <?php get_template_part( 'module_pageTit' ); ?>
 <?php get_template_part( 'module_panList' ); ?>
 
-<div class="section siteContent">
+<div class="<?php lightning_the_class_name( 'siteContent' ); ?>">
 <?php do_action( 'lightning_siteContent_prepend' ); ?>
 <div class="container">
 <?php do_action( 'lightning_siteContent_container_prepend' ); ?>
