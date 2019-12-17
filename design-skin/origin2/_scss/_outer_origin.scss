@@ -107,19 +107,19 @@ $border_horizontal: 1px solid rgba(0, 0, 0, 0.15);
 }
 
 // @media ( min-width: 576px ){ .siteContent { padding:1.5em 0 1.5em; } }
-@media (min-width: 768px) {
+@media (min-width: $md-min) {
     .siteContent {
         padding: 2.5em 0 2.5em;
     }
 }
 
-@media (min-width: 992px) {
+@media (min-width: $lg-min) {
     .siteContent {
         padding: 3em 0 3em;
     }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: $xl-min) {
     .siteContent {
         padding: 3.5em 0 3.5em;
     }
