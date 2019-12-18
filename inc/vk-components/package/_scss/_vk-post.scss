@@ -129,7 +129,7 @@ $xl-min:1200px;
 	 */
 	&.card {
 		padding: 0;
-		margin-bottom: 1.8rem;
+		margin-bottom: 30px;
 		box-sizing: border-box;
 		max-width: 100%;
 		.vk_post_btnOuter {
@@ -307,6 +307,27 @@ $xl-min:1200px;
 	}
 	a {
 		color: inherit;
+	}
+}
+
+/*-------------------------------------------*/
+/* １カラム カード の時の下部の余白を小さく変更
+/*-------------------------------------------*/
+.card.vk_post-col {
+	@media ( max-width : $xs-max ){
+		&-xs-12 { margin-bottom:15px; }
+	}
+	@media ( min-width : $sm-min ) and ( max-width : $sm-max ) {
+		&-sm-12 { margin-bottom:15px; }
+	}
+	@media ( min-width : $md-min ) and ( max-width : $md-max ) {
+		&-md-12 { margin-bottom:15px; }
+	}
+	@media ( min-width : $lg-min ) and ( max-width : $lg-max ) {
+		&-lg-12 { margin-bottom:15px; }
+	}
+	@media ( min-width : $xl-min ) {
+		&-xl-12 { margin-bottom:15px; }
 	}
 }
 
