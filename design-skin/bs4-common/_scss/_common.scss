@@ -190,25 +190,26 @@ table {
     border-spacing: 0;
     width: 100%;
     border-top: $border_primary;
-
     th,
     td,
     thead tr th,
     thead tr td,
     tbody tr th,
     tbody tr td {
-        padding: 1em;
         border-bottom: $border_primary;
-
         .form-control {
             max-width: 90%;
         }
     }
-
-    th {
-        font-weight: lighter;
-    }
 }
+th {
+    font-weight: lighter;
+}
+th,
+td {
+    padding: 1em;
+}
+
 
 /*-------------------------------------------*/
 /* .btn
