@@ -2,6 +2,33 @@
 
 @import "variables";
 
+/*-------------------------------------------*/
+/* .siteContent
+/*-------------------------------------------*/
+.siteContent:not(.siteContent-base-on) {
+    padding: 1.5em 0 1.5em;
+    @media (min-width: $md-min) {
+        padding: 2.5em 0 2.5em;
+    }
+    @media (min-width: $lg-min) {
+        padding: 3em 0 3em;
+    }
+    @media (min-width: $xl-min) {
+        padding: 3.5em 0 3.5em;
+    }
+}
+
+.siteContent {
+    .page-template-page-lp-builder &,
+    .page-template-page-lp & {
+        padding-top: 0;
+    }
+
+    .page-template-page-lp-builder & {
+        padding-bottom: 0;
+    }
+}
+
 .siteContent > .container > .row {
     display: block;
 
@@ -44,17 +71,6 @@
     .mainSection-col-one,
     .sideSection-col-one {
         width: 100%;
-    }
-}
-
-.siteContent {
-    .page-template-page-lp-builder &,
-    .page-template-page-lp & {
-        padding-top: 0;
-    }
-
-    .page-template-page-lp-builder & {
-        padding-bottom: 0;
     }
 }
 

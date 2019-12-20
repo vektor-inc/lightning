@@ -16,10 +16,15 @@
 /* FsiteContent
 /*-------------------------------------------*/
 .siteContent-base-on {
+    padding:2rem 0 2rem;
+    .home &{
+        padding-top:3.5rem;
+    }
     & > .container > .row {
         margin: 0;
     }
 }
+
 
 /*-------------------------------------------*/
 /* baseSection
