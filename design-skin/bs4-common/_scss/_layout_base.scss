@@ -16,10 +16,6 @@
 /* FsiteContent
 /*-------------------------------------------*/
 .siteContent-base-on {
-    padding: 1em 0 1.5em;
-    @media (min-width: $md-min) {
-        padding: 3.5em 0 3.5em;
-    }
     & > .container > .row {
         margin: 0;
     }
@@ -28,39 +24,42 @@
 /*-------------------------------------------*/
 /* baseSection
 /*-------------------------------------------*/
-.baseSection-base-on{
+.mainSection-base-on,
+.sideSection-base-on{
     background-color: #fff;
     padding: $base-padding-xs;
 
-    @media (min-width: $sm-min) {
+    @media ( min-width: $sm-min ) {
         padding: $base-padding-sm;
     }
 
-    @media (min-width: $md-min) {
+    @media ( min-width: $md-min ) {
         padding: $base-padding-md;
     }
-
-    @media (min-width: $lg-min) {
+}
+.mainSection-base-on {
+    @media ( min-width: $lg-min ) {
         padding: $base-padding-lg;
     }
 }
-
-// ２カラムのlgサイズのみ左右の余白を小さく
-.baseSection-base-on.sideSection-col-two {
-    @media (min-width: $lg-min) {
-        padding: $base-padding-lg 1rem;
+// サイドバーの方が幅が狭いので、同じ余白を取ると錯覚でサイドバーの余白の方が広く見えてしまうため、余白を小さく設定してある
+.sideSection-base-on {
+    @media ( min-width: $lg-min ) {
+        padding: $base-padding-lg $base-padding-side-lg;
     }
-
     @media (min-width: $xl-min) {
-        padding: $base-padding-lg;
+        padding: $base-padding-lg $base-padding-side-xl;
     }
 }
+
 
 
 /*-------------------------------------------*/
 /* Full Wide Title Offset ( 安定したら別ファイルに分離 )
 /*-------------------------------------------*/
-.baseSection-base-on {
+/* ベースがある時はベースをはみ出して貫通しないように、ベースの余白分だけマイナスオフセット */
+.mainSection-base-on,
+.sideSection-base-on {
     .vk_outer-width-full,
     .widget_ltg_full_wide_title_outer {
 		margin-left: - $base-padding-xs;
@@ -79,6 +78,12 @@
 			padding-left: $base-padding-md;
 			padding-right: $base-padding-md;
         }
+    }
+}
+
+.mainSection-base-on {
+    .vk_outer-width-full,
+    .widget_ltg_full_wide_title_outer {
         @media (min-width: $lg-min) {
 			margin-left: - $base-padding-lg;
 			margin-right: - $base-padding-lg;
@@ -90,6 +95,23 @@
 			margin-right: - $base-padding-lg;
 			padding-left: $base-padding-lg;
 			padding-right: $base-padding-lg;
+        }
+    }
+}
+.sideSection-base-on {
+    .vk_outer-width-full,
+    .widget_ltg_full_wide_title_outer {
+        @media (min-width: $lg-min) {
+			margin-left: - $base-padding-side-lg;
+			margin-right: - $base-padding-side-lg;
+			padding-left: $base-padding-side-lg;
+			padding-right: $base-padding-side-lg;
+        }
+        @media (min-width: $xl-min) {
+			margin-left: - $base-padding-side-xl;
+			margin-right: - $base-padding-side-xl;
+			padding-left: $base-padding-side-xl;
+			padding-right: $base-padding-side-xl;
         }
     }
 }
