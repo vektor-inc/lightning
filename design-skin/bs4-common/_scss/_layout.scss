@@ -39,6 +39,14 @@
     }
 }
 
+.mainSection,
+.sideSection {
+    aside:last-child,
+    div:last-child {
+        margin-bottom:0;
+    }
+}
+
 @media (max-width: $md-max) {
     .mainSection,
     .sideSection {
