@@ -733,10 +733,6 @@ ul.page-numbers {
     display: block;
 }
 
-// .widget_text .subSection-title,
-// .widget_tag_cloud .subSection-title,
-// .widget_recent_comments .subSection-title { margin-bottom:15px; }
-
 /* .widget_link_list はプラグインなどの外部ウィジェットからの指定用。
 .widget と同列で書かれる時もあれば下階層に書かれる事もある。ExUnitの固定ページリストウィジェットなどで使用 */
 .widget_link_list,
@@ -765,9 +761,6 @@ ul.page-numbers {
     }
 
     ul {
-        // li { display:block; overflow:hidden; list-style: none;
-        //   a { position: relative;padding: 10px 15px;border-bottom:$border_primary; }
-        // }
         li {
             margin-bottom: 0;
         }
@@ -777,7 +770,7 @@ ul.page-numbers {
             padding: 10px 0.5em 8px;
             border-bottom: $border_primary;
             color: $color_font_default;
-            box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.9);
+            box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.7);
         }
 
         li li a {
@@ -1120,7 +1113,7 @@ p.no-comments {
     line-height: 1.6em;
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: $xs-max) {
     .prBlock {
         margin-bottom: 1.5em;
     }
