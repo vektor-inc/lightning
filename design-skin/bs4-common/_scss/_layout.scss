@@ -41,8 +41,8 @@
 
 .mainSection,
 .sideSection {
-    aside:last-child,
-    div:last-child {
+    & > aside:last-child,
+    & > div:last-child {
         margin-bottom:0;
     }
 }
