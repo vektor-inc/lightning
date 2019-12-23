@@ -53,7 +53,10 @@ img {
 }
 
 p {
-    line-height: 1.9;
+    line-height: 1.7;
+    @media( min-width: $md-min ){
+        line-height: 1.9;
+    }
     margin-bottom: $margin_bottom;
 }
 

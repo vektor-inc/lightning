@@ -256,10 +256,9 @@ h1.page-header_pageTitle:first-child {
 $section_margin_bottom: 25px;
 
 .mainSection {
-    header {
-        position: relative;
-        border-bottom: $border_primary;
-    }
+    // header {
+
+    // }
 
     header h1 {
         margin-top: 0;
@@ -288,6 +287,25 @@ h1.entry-title {
 
 .mainSection .widget {
     margin-bottom: $section_margin_bottom;
+}
+
+.baseSection {
+    margin-bottom:1rem;
+    @media ( min-width: $md-min ){
+        margin-bottom:1.5rem;
+    }
+    @media ( min-width: $lg-min ){
+        margin-bottom:2rem;
+    }
+}
+
+.entry-header {
+    margin-bottom:1.5rem;
+    @media ( min-width:$lg-min ){
+        margin-bottom:2rem;
+    }
+    position: relative;
+    border-bottom: $border_primary;
 }
 
 .entry-meta {
@@ -356,7 +374,6 @@ h1.entry-title {
 }
 
 .entry-body {
-    padding: 1em 0 0;
     margin-bottom: 1em;
 }
 
@@ -364,10 +381,6 @@ h1.entry-title {
     content: "";
     clear: both;
     display: block;
-}
-
-.page .entry-body {
-    padding-top: 0;
 }
 
 @media (max-width: 767px) {
@@ -390,7 +403,6 @@ h1.entry-title {
 
     .entry-body,
     .widget .entry-body {
-        padding: 2em 0 0;
         margin-bottom: 2em;
     }
 } // @media (min-width: 768px){
