@@ -45,11 +45,7 @@
     & > div:last-child {
         margin-bottom:0;
     }
-}
-
-@media (max-width: $md-max) {
-    .mainSection,
-    .sideSection {
+    @media (max-width: $md-max) {
         width: 100%;
         flex-basis: unset;
     }
@@ -79,6 +75,16 @@
     .mainSection-col-one,
     .sideSection-col-one {
         width: 100%;
+    }
+}
+
+/*
+mainSection だけにしているのはスマホ時にsideSectionがくるのでひっつかないように。
+そもそも外側の余白は .siteContent でつけられているので sideSection には不要
+*/
+.mainSection {
+    @media ( max-width: $md-max ){
+        margin-bottom:1.5rem;
     }
 }
 

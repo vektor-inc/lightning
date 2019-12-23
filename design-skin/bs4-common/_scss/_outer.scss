@@ -289,16 +289,6 @@ h1.entry-title {
     margin-bottom: $section_margin_bottom;
 }
 
-.baseSection {
-    margin-bottom:1rem;
-    @media ( min-width: $md-min ){
-        margin-bottom:1.5rem;
-    }
-    @media ( min-width: $lg-min ){
-        margin-bottom:2rem;
-    }
-}
-
 .entry-header {
     margin-bottom:1.5rem;
     @media ( min-width:$lg-min ){
@@ -373,10 +363,6 @@ h1.entry-title {
     }
 }
 
-.entry-body {
-    margin-bottom: 1em;
-}
-
 .entry-body::after {
     content: "";
     clear: both;
@@ -401,10 +387,10 @@ h1.entry-title {
         margin-bottom: 35px;
     }
 
-    .entry-body,
-    .widget .entry-body {
-        margin-bottom: 2em;
-    }
+    // .entry-body,
+    // .widget .entry-body {
+    //     margin-bottom: 2em;
+    // }
 } // @media (min-width: 768px){
 
 /*      .entry-footer
