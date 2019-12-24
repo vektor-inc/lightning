@@ -173,13 +173,15 @@ input.form-control.input_widthAuto {
     }
 }
 
-@media (max-width: 991px) {
+@media (max-width: $md-max) {
     .navbar-header {
         float: none;
-    } /* (max-width: 991px) の外に出すと初期設定のfloat:leftに負ける */
+    } /* (max-width: $md-max) の外に出すと初期設定のfloat:leftに負ける */
     .navbar-brand {
         float: inherit;
         text-align: center;
+        display: block;
+        margin:0 auto;
         padding: 0 45px;
     }
 
