@@ -1,0 +1,282 @@
+@charset "utf-8";
+
+// Fort / Variety
+
+/*-------------------------------------------*/
+/*	.gMenu desigin
+/*-------------------------------------------*/
+/*	.gMenu .PCでのグローバルメニュー 表示・非表示処理
+/*-------------------------------------------*/
+/*	PCとタッチデバイスでのプルダウンボタンなどの表示切り替え処理
+/*-------------------------------------------*/
+/*	下位展開ボタン
+/*-------------------------------------------*/
+
+$menu_padding_vertical: 14px;
+$menu_padding_holizontal: 1.2em;
+
+@media (min-width: $lg-min) {
+	.vk-mobile-nav-menu-btn {
+		display: none;
+	}
+}
+
+@media (max-width: $md-max) {
+  .gMenu_outer {
+	display: none;
+  }
+}
+
+/*-------------------------------------------*/
+/*	.gMenu desigin
+/*-------------------------------------------*/
+.gMenu {
+	display: flex;
+	padding: 0;
+	margin: 0;
+	a {
+		color: $g_nav_font_color;
+		height:100%;
+	}
+	a:hover,
+	a:active,
+	a:focus {
+		background-color:$g_nav_bg_hover_color;
+		transition: background-color 0.4s;
+		color: $g_nav_font_color;
+	}
+
+	li {
+		line-height: 1.4;
+		font-size: 12px;
+	}
+	/*-------------------------------------------*/
+	/*	only first
+	/*-------------------------------------------*/
+	& > li {
+		width: 100%;
+		border-left: $g_nav_border_separator;
+		& > a {
+			border-bottom: none;
+		}
+		&:last-child {
+			border-right: $g_nav_border_separator;
+		}
+		.gMenu_name {
+			text-align: center;
+			display: block;
+  		}
+		.gMenu_description {
+			display: block;
+			overflow: hidden;
+			font-size: 10px;
+			line-height: 14px;
+			opacity: 0.6;
+			text-align: center;
+		}
+		&:hover,
+		&.current-post-ancestor,
+		&.current-menu-item,
+		&.current-menu-parent,
+		&.current-menu-ancestor,
+		&.current_page_item,
+		&.current_page_parent,
+		&.current_page_ancestor {
+			transition: all 0.5s ease-out;
+			background-color: $g_nav_bg_hover_color;
+			&:before {
+				width: 100%;
+			}
+		}
+	}
+
+	/*-------------------------------------------*/
+	/*	2nd only
+	/*-------------------------------------------*/
+	& > li > ul.sub-menu {
+		transition: all .3s;
+		position: absolute;
+		max-height:0;
+		background-color: $g_nav_sub_bg_color;
+		box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+		/*
+		幅が異なる第一階層のメニューの中心にサブメニューを表示させる
+		まずは第一階層のメニューの中心が left:50%; なので、ここを基準にサブメニューを配置
+		*/
+		left: 50%;
+		margin-left: -120px;
+		width: 240px;
+	}
+	/*-------------------------------------------*/
+	/*	2nd after
+	/*-------------------------------------------*/
+	ul {
+		margin-top:0;
+		li {
+			&.menu-item-has-children > a {
+				padding: $menu_padding_vertical 3.5em $menu_padding_vertical
+					$menu_padding_holizontal;
+			}
+			a {
+				padding: $menu_padding_vertical $menu_padding_holizontal;
+				border-bottom: $g_nav_border_separator;
+				&:hover {
+					background-color: $g_nav_bg_hover_color;
+				}
+			}
+		} //li
+		ul.acc-child-open {
+			overflow-y: visible;
+		}
+	}
+}
+
+/*-------------------------------------------*/
+/*	.gMenu .PCでの上部固定グローバルメニュー 表示・非表示処理
+/*-------------------------------------------*/
+/*
+ 一定量スクロールすると、jsでbody タグに .header_scrolled クラスが付与される
+ .header_scrolled の付与処理は skin_active.php にjsが書いてある
+ スクロールされた時にメニューがfixedになるが、メニューの高さ分 navbar-header の下にmargin-bottomを付与するので、ガクンとならない。
+
+// スクロール後にメニューが上から落ちてくるアニメーション //////////
+ 初期状態でメニューの高さ分である 54px をtopににオフセットしているが、positionを指定していないので、最初は効かない
+ つまりここは本来54pxでなくてもかまわない。
+ スクロール識別クラスがつくとfixedになって -54pxの位置指定が効く。
+ しかし、先述の通りmargin-bottomが追加されるので、ガクンとはならない。
+ この時メニューは一旦 -54px の位置に移動するが、scrolled では 0 に指定されているので、アニメーションで0の位置に移動する
+*/
+
+@media (min-width: $lg-min) {
+	.gMenu_outer {
+		clear: both;
+		z-index: 1000;
+	}
+	.gMenu_outer::after {
+		content: "";
+		clear: both;
+		display: block;
+	}
+	.gMenu_outer nav {
+		margin-left: auto;
+		margin-right: auto;
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+	.gMenu_outer nav ul {
+		float: none;
+		list-style: none;
+		padding-left: 0;
+		margin-bottom: 0;
+	}
+	body .gMenu_outer {
+		top: -54px;
+		transition: top 1s;
+	}
+	body.header_scrolled .gMenu_outer {
+		position: fixed;
+		top: 0px;
+		width: 100%;
+		transition: top 1s;
+		box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+	}
+	body.header_scrolled .navbar-header {
+		margin-bottom: 54px;
+	}
+	body.header_scrolled.admin-bar .gMenu_outer {
+		top: 32px;
+	}
+} // @media (min-width: $lg-min) {
+
+
+
+/*-------------------------------------------*/
+/*	PCとタッチデバイスでのプルダウンボタンなどの表示切り替え処理
+/*-------------------------------------------*/
+.gMenu {
+	& > li {
+		.device-pc & {
+			// 第一階層メニューのみ下階層展開ボタンを隠す
+			& > .acc-btn {
+				display: none;
+			}
+			// a タグに対して展開メニューボタン分の余白をつける
+			& > a {
+				display: block;
+				overflow: hidden;
+				// PC端末時は下階層展開ボタンを表示しないので左右余白小さめ
+				padding: $menu_padding_vertical 1em;
+			}
+		}
+
+		// モバイル端末の場合
+		// li タグに対して余白をつける
+		// モバイル端末の場合は下階層展開ボタンを表示するので、
+		// 展開ボタンの押し間違えですぐにページ遷移してしまうため、
+		// liに余白をつけて、リンク対象は文字部分だけにする
+		.device-mobile & {
+			padding: $menu_padding_vertical 2.1em;
+		}
+	}
+	/* only second */
+	& > li > ul.sub-menu {
+		// PCの場合はリンク範囲が広いが、モバイルでは文字部分だけにするので、
+		// 第一階層文字下の余白分をmarginで確保しなくてはならない
+		.device-mobile & {
+			margin-top: $menu_padding_vertical;
+		}
+	} // / only second
+}
+
+/*-------------------------------------------*/
+/*	下位展開ボタン
+/*-------------------------------------------*/
+.gMenu {
+}
+.gMenu {
+	.device-pc & {
+		// Hide first level .acc-btn button when display terminal is PC
+		& > li > .acc-btn {
+			display: none;
+		}
+		& > li:hover > .sub-menu,
+		& > li > .sub-menu.acc-child-open {
+			opacity: 1;
+			max-height: 1000px;
+		}
+	} //.device-pc
+	li > .sub-menu.acc-child-open {
+		opacity: 1;
+		max-height: 1000px;
+	}
+	&.vk-menu-acc {
+		.sub-menu {
+			.acc-btn {
+				right: $menu_padding_holizontal;
+			}
+		}
+		ul.acc-child-open {
+			overflow-y: visible;
+		}
+	}
+	.acc-btn {
+		width: 20px;
+		height: 20px;
+		right: 6px;
+		top: 12px;
+		color: $g_nav_font_color;
+		border-color: $g_nav_font_color;
+		background-image: $g_nav_main_acc_icon_open_url;
+		&.acc-btn-close {
+			background-image: $g_nav_main_acc_icon_open_url;
+		}
+	}
+	.sub-menu {
+      .acc-btn {
+		background-image: $g_nav_sub_acc_icon_open_url;
+		&.acc-btn-close {
+			background-image: $g_nav_sub_acc_icon_open_url;
+		}
+	}
+	}
+}

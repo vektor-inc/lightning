@@ -1,0 +1,16 @@
+@charset "utf-8";
+
+// Fort / Variety
+
+.gMenu_outer {
+	background-color: $g_nav_bg_color;
+	nav {
+		margin:0 auto;
+		@media ( min-width: $lg-min ) {
+			width: $lg-container;
+		}
+		@media ( min-width: $xl-min ) {
+			width: $xl-container;
+		}
+	}
+}
