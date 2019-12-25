@@ -1,6 +1,9 @@
 @charset "utf-8";
 
-// Fort / Variety
+@import "gmenu";
+
+
+// Fort / Variety / Pale
 
 /*-------------------------------------------*/
 /*	.gMenu desigin
@@ -44,6 +47,7 @@ $menu_padding_holizontal: 1.2em;
 		background-color:$g_nav_bg_hover_color;
 		transition: background-color 0.4s;
 		color: $g_nav_font_color;
+		text-decoration: none;
 	}
 
 	li {
@@ -54,7 +58,6 @@ $menu_padding_holizontal: 1.2em;
 	/*	only first
 	/*-------------------------------------------*/
 	& > li {
-		width: 100%;
 		border-left: $g_nav_border_separator;
 		& > a {
 			border-bottom: none;
@@ -94,7 +97,7 @@ $menu_padding_holizontal: 1.2em;
 	/*	2nd only
 	/*-------------------------------------------*/
 	& > li > ul.sub-menu {
-		transition: all .3s;
+		transition: all .5s;
 		position: absolute;
 		max-height:0;
 		background-color: $g_nav_sub_bg_color;
@@ -117,9 +120,14 @@ $menu_padding_holizontal: 1.2em;
 				padding: $menu_padding_vertical 3.5em $menu_padding_vertical
 					$menu_padding_holizontal;
 			}
+			a,
+			a:hover{
+				color:$g_nav_sub_font_color;
+			}
 			a {
 				padding: $menu_padding_vertical $menu_padding_holizontal;
 				border-bottom: $g_nav_border_separator;
+
 				&:hover {
 					background-color: $g_nav_bg_hover_color;
 				}
@@ -268,15 +276,18 @@ $menu_padding_holizontal: 1.2em;
 		border-color: $g_nav_font_color;
 		background-image: $g_nav_main_acc_icon_open_url;
 		&.acc-btn-close {
-			background-image: $g_nav_main_acc_icon_open_url;
+			background-image: $g_nav_main_acc_icon_close_url;
 		}
 	}
 	.sub-menu {
       .acc-btn {
 		background-image: $g_nav_sub_acc_icon_open_url;
+		border-color: $g_nav_sub_font_color;
 		&.acc-btn-close {
-			background-image: $g_nav_sub_acc_icon_open_url;
+			background-image: $g_nav_sub_acc_icon_close_url;
 		}
 	}
 	}
 }
+
+ @import "gmenu_scrolled";

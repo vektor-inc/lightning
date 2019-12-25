@@ -2,6 +2,34 @@
 
 // Fort / Variety
 
+/*-------------------------------------------*/
+/*	.siteHeadContainer
+/*-------------------------------------------*/
+@media (min-width: $lg-min) {
+  .siteHeadContainer.container {
+    width: 100%;
+    max-width: unset;
+    padding: 0;
+    .navbar-header {
+      float: none;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 20px 15px;
+    }
+  }
+}
+
+@media (min-width: $lg-min) {
+  .siteHeadContainer.container .navbar-header {
+    width: $lg-container;
+  }
+}
+@media (min-width: $xl-min) {
+  .siteHeadContainer.container .navbar-header {
+    width: $xl-container;
+  }
+}
+
 .gMenu_outer {
 	background-color: $g_nav_bg_color;
 	nav {
@@ -13,4 +41,9 @@
 			width: $xl-container;
 		}
 	}
+}
+.gMenu {
+  & > li {
+    width: 100%;
+  }
 }

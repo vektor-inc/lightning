@@ -5,6 +5,7 @@
 /*-------------------------------------------*/
 /* .siteContent
 /*-------------------------------------------*/
+.siteContent:not(.page-template-page-lp-builder &),
 .siteContent:not(.siteContent-base-on) {
     padding: 2em 0 2em;
     @media (min-width: $md-min) {
@@ -18,12 +19,12 @@
     }
 }
 
-.siteContent {
+.siteContent,
+.siteContent.siteContent-base-on {
     .page-template-page-lp-builder &,
     .page-template-page-lp & {
         padding-top: 0;
     }
-
     .page-template-page-lp-builder & {
         padding-bottom: 0;
     }

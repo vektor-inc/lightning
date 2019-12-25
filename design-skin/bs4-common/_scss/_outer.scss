@@ -133,6 +133,7 @@ input.form-control.input_widthAuto {
 /*-------------------------------------------*/
 .siteHeader {
     width: 100%;
+    position: relative;
     z-index: 1000;
     top: 0;
     background-color: #fff;
@@ -879,7 +880,6 @@ ul.page-numbers {
 /* footer
 /*-------------------------------------------*/
 .siteFooter {
-    background-color: #f9f9f9;
 
     .widget {
         margin-bottom: 25px;
