@@ -28,7 +28,7 @@
         // 展開ボタンの押し間違えですぐにページ遷移してしまうため、
         // liに余白をつけて、リンク対象は文字部分だけにする
         .device-mobile & {
-            padding: $menu_padding_vertical 2.1em;
+            padding: $menu_padding_vertical 2.4em;
         }
     }
 

@@ -23,4 +23,7 @@
         opacity: 1;
         max-height: 1000px;
     }
+    & > .sub-menu.acc-child-close {
+        max-height: 0;
+    }
 }

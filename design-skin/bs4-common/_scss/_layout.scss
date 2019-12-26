@@ -13,7 +13,7 @@
 /*-------------------------------------------*/
 /* .siteContent
 /*-------------------------------------------*/
-.siteContent:not(.siteContent-base-on) {
+.siteContent {
     padding: 2rem 0 2rem;
     @media (min-width: $md-min) {
         padding: 2.5rem 0 2.5rem;
@@ -24,16 +24,6 @@
     @media (min-width: $xl-min) {
         padding: 3.5rem 0 3.5rem;
     }
-}
-.page-template-page-lp,
-.page-template-page-lp-builder {
-    .siteContent {
-        padding:0;
-    }
-}
-
-.siteContent,
-.siteContent.siteContent-base-on {
     .page-template-page-lp-builder &,
     .page-template-page-lp & {
         padding-top: 0;

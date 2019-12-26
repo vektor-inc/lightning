@@ -27,6 +27,18 @@
     }
 }
 
+.page-template-page-lp-builder,
+.page-template-page-lp {
+    .siteContent.siteContent-base-on {
+        padding-top: 0;
+        .mainSection-base-on {
+            padding-top: 0;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+    }
+}
+
 /*-------------------------------------------*/
 /* baseSection
 /*-------------------------------------------*/
@@ -34,7 +46,6 @@
 .sideSection-base-on{
     background-color: #fff;
     padding: $base-padding-xs;
-
     @media ( min-width: $sm-min ) {
         padding: $base-padding-sm;
     }
