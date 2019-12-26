@@ -1,11 +1,11 @@
 @charset "utf-8";
-
+@import "variables_origin";
 @import "../../bs4-common/_scss/variables";
 @import "../../bs4-common/_scss/common";
 @import "../../bs4-common/_scss/layout";
 @import "../../bs4-common/_scss/layout_base";
 @import "../../bs4-common/_scss/outer";
-@import "../../bs4-common/_scss/global_menu";
+@import "../../bs4-common/_scss/gmenu";
 @import "../../bs4-common/_scss/slide";
 @import "common_origin";
 @import "global_menu_origin";

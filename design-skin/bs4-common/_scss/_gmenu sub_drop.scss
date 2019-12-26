@@ -1,0 +1,26 @@
+@charset "utf-8";
+
+/*-------------------------------------------*/
+/*	第二階層マウスホバー展開処理
+/*-------------------------------------------*/
+.gMenu > li {
+    /*
+    If except the 'ul' from .gMenu that overwrited by vk-mobile-nav absolute on such as vws.
+    */
+    & > ul.sub-menu {
+        position: absolute;
+        z-index: 1000;
+        display: block;
+        overflow: hidden;
+
+        // プルダウン展開
+		max-height: 0;
+		transition: all .5s;
+    }
+
+    & > .sub-menu.acc-child-open,
+    &:hover > .sub-menu {
+        opacity: 1;
+        max-height: 1000px;
+    }
+}

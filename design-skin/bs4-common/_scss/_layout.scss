@@ -2,6 +2,14 @@
 
 @import "variables";
 
+.siteHeader {
+	.siteHeadContainer:after{
+        content: "";
+        display: block;
+        clear: both;
+	}
+}
+
 /*-------------------------------------------*/
 /* .siteContent
 /*-------------------------------------------*/
