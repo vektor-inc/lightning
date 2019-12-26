@@ -46,9 +46,11 @@
             top: 0px;
             left:0;
             width: 100%;
+            min-height:unset;
             background-color: #fff;
             box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
             nav {
+                display: block; /* Cope with setted table-sell such a OriginII  */
                 width: $lg-container;
                 @media ( min-width: $xl-min ) {
                     width: $xl-container;

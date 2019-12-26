@@ -14,13 +14,7 @@ $menu_padding_horizontal: 1.2em;
 		display: none;
 	}
 	// position: relative; をここで指定してしまうと、スクロール時にすっと下がるモーションが付けられない
-    min-height: 4em; /* キャプション無し用 */
-	display: table; /* キャプション無しの時に上下中央になるように */
 	width:100%; /* If not this specification that not center on Charm  */
-    nav {
-        display: table-cell;
-		vertical-align: middle;
-	}
 }
 
 .gMenu {
@@ -58,6 +52,7 @@ $menu_padding_horizontal: 1.2em;
 			border-right: $g_nav_border_separator;
 		}
 		.gMenu_name {
+			font-size:$g_nav_font_size;
 			display: block;
 		  }
 		.gMenu_description {
@@ -69,7 +64,7 @@ $menu_padding_horizontal: 1.2em;
 			text-align: center;
 		}
 		&:hover,
-		&[class*="current"]{
+		&[class^=current]{
 			transition: all 0.5s ease-out;
 			background-color: $g_nav_bg_hover_color;
 			&:before {
@@ -107,7 +102,7 @@ $menu_padding_horizontal: 1.2em;
 			}
 			a {
 				padding: $menu_padding_vertical $menu_padding_horizontal;
-				border-bottom: $g_nav_border_separator;
+				border-bottom: $g_nav_sub_border_separator;
 				&:hover {
 					background-color: $g_nav_bg_hover_color;
 				}
