@@ -656,7 +656,9 @@ ul.page-numbers {
 /*-------------------------------------------*/
 .subSection {
     display: block;
-
+    .localNav {
+        display: block;
+    }
     .widget {
         margin-bottom: 25px;
     }

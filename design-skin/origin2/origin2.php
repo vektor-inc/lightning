@@ -42,7 +42,7 @@ h3:after,
 ul.page-numbers li span.page-numbers.current { background-color:' . $color_key . '; }
 .pager li > a { border-color:' . $color_key . ';color:' . $color_key . ';}
 .pager li > a:hover { background-color:' . $color_key . ';color:#fff;}
-footer { border-top-color:' . $color_key . '; }
+.siteFooter { border-top-color:' . $color_key . '; }
 dt { border-left-color:' . $color_key . '; }';
 
 		// delete before after space
