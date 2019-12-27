@@ -69,6 +69,12 @@ gulp.task('sass_skin2', function () {
     .pipe(gulp.dest('./design-skin/origin2/css'))
     .pipe(gulp.dest('../lightning-pro/design-skin/origin2/css'));
 });
+
+gulp.task('dist_foundation', function () {
+  gulp.src(['design-skin/foundation/**'])
+    .pipe(gulp.dest('../../plugins/lightning-skin-charm/bs4/_scss/foundation'));
+});
+
 gulp.task('sass_common', function () {
   gulp.src(['./assets/_scss/**/*.scss'])
     .pipe(gulp.dest('../lightning/assets/_scss'))
@@ -175,7 +181,7 @@ gulp.task('watch', function () {
   gulp.watch(['./library/bootstrap-4/scss/**.scss'], ['sass_bs4']);
   gulp.watch(['./design-skin/origin/_scss/**/*.scss'], ['sass_skin']);
   gulp.watch(['./design-skin/origin2/_scss/**/*.scss'], ['sass_skin2']);
-  gulp.watch(['./design-skin/bs4-common/_scss/**/*.scss'], ['sass_skin2']);
+  gulp.watch(['./design-skin/foundation/_scss/**/*.scss'], ['sass_skin2', 'dist_foundation']);
 });
 
 gulp.task('default', ['text-domain', 'watch']);

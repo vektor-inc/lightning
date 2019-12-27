@@ -53,10 +53,10 @@ $menu_padding_horizontal: 1.2em;
     /*	only first
 	/*-------------------------------------------*/
 	& > li {
-		border-left: $g_nav_border_separator;
+		border-left: $g_nav_separator;
 		text-align: center;
 		&:last-child {
-			border-right: $g_nav_border_separator;
+			border-right: $g_nav_separator;
 		}
 		.gMenu_name {
 			font-size:$g_nav_font_size;
@@ -109,7 +109,7 @@ $menu_padding_horizontal: 1.2em;
 			}
 			a {
 				padding: $menu_padding_vertical $menu_padding_horizontal;
-				border-bottom: $g_nav_sub_border_separator;
+				border-bottom: $g_nav_sub_separator;
 				&:hover {
 					background-color: $g_nav_bg_hover_color;
 				}

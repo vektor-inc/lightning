@@ -74,6 +74,10 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
             display: flex;
             & > li {
                 width:50%;
+                border-left: $g_nav_scrolled_separator;
+                &:last-child {
+                    border-right: $g_nav_scrolled_separator;
+                }
             }
         }
     }
