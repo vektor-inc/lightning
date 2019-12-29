@@ -24,12 +24,11 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
  この時メニューは一旦 -54px の位置に移動するが、scrolled では 0 に指定されているので、アニメーションで0の位置に移動する
 */
 
-@media ( min-width: $lg-min ) {
-
-    .gMenu_outer {
-        top: -54px;
-        transition: top 1s;
-    }
+@media (min-width: $lg-min) {
+	.gMenu_outer {
+		top: -54px;
+		transition: top 1s;
+	}
 
 	.gMenu_outer::after {
 		content: "";
@@ -37,48 +36,48 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 		display: block;
 	}
 	.header_scrolled {
-        .siteHeadContainer.container {
-            width: 100%;
-            max-width: unset;
-        }
-        .navbar-header {
-            margin-bottom: 54px;
-        }
-        &.admin-bar .gMenu_outer {
-            top: 32px;
-        }
-        .gMenu_outer {
-            clear: both;
-            z-index: 1000;
-            position: fixed;
-            top: 0px;
-            left:0;
-            width: 100%;
-            min-height:unset;
-            background-color: #fff;
-            box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-            nav {
-                display: block; /* Cope with setted table-sell such a OriginII  */
-                width: $lg-container;
-                @media ( min-width: $xl-min ) {
-                    width: $xl-container;
-                }
-                margin-left: auto;
-                margin-right: auto;
-                padding-left: 15px;
-                padding-right: 15px;
-            }
-        }
-        .gMenu {
-            float: none;
-            display: flex;
-            & > li {
-                width:50%;
-                border-left: $g_nav_scrolled_separator;
-                &:last-child {
-                    border-right: $g_nav_scrolled_separator;
-                }
-            }
-        }
-    }
+		.siteHeadContainer.container {
+			width: 100%;
+			max-width: unset;
+		}
+		.navbar-header {
+			margin-bottom: 54px;
+		}
+		&.admin-bar .gMenu_outer {
+			top: 32px;
+		}
+		.gMenu_outer {
+			clear: both;
+			z-index: 1000;
+			position: fixed;
+			top: 0px;
+			left: 0;
+			width: 100%;
+			min-height: unset;
+			background-color: $g_nav_scrolled_bg_color;
+			box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+			nav {
+				display: block; /* Cope with setted table-sell such a OriginII  */
+				width: $lg-container;
+				@media (min-width: $xl-min) {
+					width: $xl-container;
+				}
+				margin-left: auto;
+				margin-right: auto;
+				padding-left: 15px;
+				padding-right: 15px;
+			}
+		}
+		.gMenu {
+			float: none;
+			display: flex;
+			& > li {
+				width: 50%;
+				border-left: $g_nav_scrolled_separator;
+				&:last-child {
+					border-right: $g_nav_scrolled_separator;
+				}
+			}
+		}
+	}
 }
