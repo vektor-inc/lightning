@@ -6,6 +6,8 @@
 
 // load foundation
 @import "../../foundation/_scss/foundation";
+@import "../../foundation/_scss/layout/gmenu/_gmenu-effect-origin";
+@import "../../foundation/_scss/layout/gmenu/_gmenu-layout-float";
 
 // load skin specific
 @import "common_origin";
