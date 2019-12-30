@@ -1,15 +1,9 @@
 @charset "utf-8";
 @import "variables_origin";
 @import "../../foundation/_scss/variables";
-@import "../../foundation/_scss/common";
-@import "../../foundation/_scss/layout";
-@import "../../foundation/_scss/layout_base";
-@import "../../foundation/_scss/outer";
-@import "../../foundation/_scss/gmenu/_gmenu";
-@import "../../foundation/_scss/gmenu/_gmenu-effect-origin";
-@import "../../foundation/_scss/gmenu/_gmenu-layout-float";
-@import "../../foundation/_scss/slide";
+@import "../../foundation/_scss/foundation";
+
 @import "common_origin";
-@import "global_menu_origin";
+@import "gmenu_origin";
 @import "outer_origin";
 @import "vk_post_adjuster_origin";
