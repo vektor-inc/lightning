@@ -8,7 +8,6 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 
 *************************************/
 
-
 /*-------------------------------------------*/
 /*	.gMenu desigin
 /*-------------------------------------------*/
@@ -17,40 +16,40 @@ $menu_padding_vertical: 14px;
 $menu_padding_horizontal: 1.2em;
 
 .gMenu_outer {
-	@media ( max-width: $md-max ) {
+	@media (max-width: $md-max) {
 		display: none;
 	}
 	// position: relative; をここで指定してしまうと、スクロール時にすっと下がるモーションが付けられない
-	width:100%; /* If not this specification that not center on Charm  */
+	width: 100%; /* If not this specification that not center on Charm  */
 }
 
 .gMenu {
-    margin: 0 auto;
+	margin: 0 auto;
 	padding: 0;
 	display: flex;
-    list-style: none;
+	list-style: none;
 	position: relative;
 	a {
 		color: $g_nav_font_color;
-		height:100%;
+		height: 100%;
 	}
 	a:hover,
 	a:active,
 	a:focus {
-		background-color:$g_nav_bg_hover_color;
+		background-color: $g_nav_bg_hover_color;
 		transition: background-color 0.4s;
 		color: $g_nav_font_color;
 		text-decoration: none;
 	}
 	li {
-		margin:0;
+		margin: 0;
 		list-style: none;
 		line-height: 1.4;
 		font-size: 12px;
 		position: relative;
 	}
 	/*-------------------------------------------*/
-    /*	only first
+	/*	only first
 	/*-------------------------------------------*/
 	& > li {
 		border-left: $g_nav_separator;
@@ -59,7 +58,7 @@ $menu_padding_horizontal: 1.2em;
 			border-right: $g_nav_separator;
 		}
 		.gMenu_name {
-			font-size:$g_nav_font_size;
+			font-size: $g_nav_font_size;
 			display: block;
 		}
 		.gMenu_description {
@@ -70,8 +69,9 @@ $menu_padding_horizontal: 1.2em;
 			opacity: 0.6;
 			text-align: center;
 		}
+		/* Class is necessarily to the * because class was added to many other class name that first class is not necessarily "current"  */
 		&:hover,
-		&[class^=current]{
+		&[class*="current"] {
 			transition: all 0.5s ease-out;
 			background-color: $g_nav_bg_hover_color;
 			&:before {
@@ -86,16 +86,16 @@ $menu_padding_horizontal: 1.2em;
 		background-color: $g_nav_sub_bg_color;
 		box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 
-        // 横位置
-        // 親メニューに左右中央に寄せてからサブメニュー分を左にマイナスオフセット
-        // ※ ul > li のpositionでleft:-50%指定すると ul は 本来 li がある横幅まで存在するので
-        // 　余分なマウスオーバー反応エリアができてしまうため
-        left: 50%;
+		// 横位置
+		// 親メニューに左右中央に寄せてからサブメニュー分を左にマイナスオフセット
+		// ※ ul > li のpositionでleft:-50%指定すると ul は 本来 li がある横幅まで存在するので
+		// 　余分なマウスオーバー反応エリアができてしまうため
+		left: 50%;
 		margin-left: -120px;
 		width: 240px;
 	}
-    /*-------------------------------------------*/
-    /*	2nd after
+	/*-------------------------------------------*/
+	/*	2nd after
 	/*-------------------------------------------*/
 	ul {
 		margin: 0;
@@ -104,8 +104,8 @@ $menu_padding_horizontal: 1.2em;
 		transition: all 0.3s ease-in;
 		li {
 			a,
-			a:hover{
-				color:$g_nav_sub_font_color;
+			a:hover {
+				color: $g_nav_sub_font_color;
 			}
 			a {
 				padding: $menu_padding_vertical $menu_padding_horizontal;
@@ -115,7 +115,8 @@ $menu_padding_horizontal: 1.2em;
 				}
 			}
 			&.menu-item-has-children > a {
-				padding: $menu_padding_vertical 3.5em $menu_padding_vertical $menu_padding_horizontal;
+				padding: $menu_padding_vertical 3.5em $menu_padding_vertical
+					$menu_padding_horizontal;
 			}
 		}
 	}
