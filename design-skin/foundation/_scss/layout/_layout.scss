@@ -37,6 +37,11 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 	.page-template-page-lp-builder & {
 		padding-bottom: 0;
 	}
+	&.siteContent-paddingVertical-off,
+	&.siteContent-paddingVertical-off.siteContent-base-on {
+		padding-top: 0;
+		padding-bottom: 0;
+	}
 }
 
 .siteContent > .container > .row {
@@ -95,6 +100,10 @@ mainSection だけにしているのはスマホ時にsideSectionがくるので
 .mainSection {
 	@media (max-width: $md-max) {
 		margin-bottom: 1.5rem;
+	}
+	&.mainSection-marginVertical-off {
+		margin-top: 0;
+		margin-bottom: 0;
 	}
 }
 
