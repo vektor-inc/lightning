@@ -181,7 +181,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 						'class' => 'vk_post_imgOuter_singleTermLabel',
 					);
 					if ( method_exists( 'Vk_term_color', 'get_single_term_with_color' ) ) {
-						$html .= Vk_term_color::get_single_term_with_color( false, $term_args );
+						$html .= Vk_term_color::get_single_term_with_color( $post, $term_args );
 					}
 					$html .= '</div>';
 

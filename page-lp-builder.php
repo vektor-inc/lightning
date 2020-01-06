@@ -4,7 +4,7 @@
  */
 get_header(); ?>
 
-<div class="section siteContent">
+<div class="<?php lightning_the_class_name( 'siteContent' ); ?>">
 <?php do_action( 'lightning_siteContent_prepend' ); ?>
 
 <?php
@@ -15,11 +15,11 @@ if ( have_posts() ) {
 
 	<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-		<?php do_action( 'ligthning_entry_body_before' ); ?>
+		<?php do_action( 'lightning_entry_body_before' ); ?>
 		<div class="<?php lightning_the_class_name( 'entry-body' ); ?>">
 		<?php the_content(); ?>
 		</div>
-		<?php do_action( 'ligthning_entry_body_after' ); ?>
+		<?php do_action( 'lightning_entry_body_after' ); ?>
 
 		<?php
 		$args = array(

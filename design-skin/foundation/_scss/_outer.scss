@@ -1,0 +1,962 @@
+@charset "utf-8";
+
+/**** CAUTION ************************
+
+If you want to modify this file,
+If this file included in plugin that, you don't modify this file.
+Original file path is themes/lightning/design-skin/foundation/ that, please modify original files.
+
+*************************************/
+
+/****************************************************************/
+/* Lightning Outer Area All Skin outer style
+/****************************************************************/
+
+/*-------------------------------------------*/
+/* .navSection
+/*-------------------------------------------*/
+/* nav
+/*-------------------------------------------*/
+/* .page-header
+/*-------------------------------------------*/
+/* .breadSection
+/*-------------------------------------------*/
+/*      .mainSection
+/*      .media(bootstrap)
+/*-------------------------------------------*/
+/* .pagination
+/*-------------------------------------------*/
+/* .page-link
+/*-------------------------------------------*/
+/* .pager
+/*-------------------------------------------*/
+/* .site-sub
+/*-------------------------------------------*/
+/* Widget
+/*-------------------------------------------*/
+
+/*-------------------------------------------*/
+/* .archive
+/*-------------------------------------------*/
+/* single
+/*-------------------------------------------*/
+/* .comments-area
+/*-------------------------------------------*/
+/* search
+/*-------------------------------------------*/
+
+// Not allowed Theme check
+// @media screen and (max-width: 600px){
+// #wpadminbar { position: fixed; }
+// }
+html,
+body {
+	overflow-x: hidden;
+}
+
+.sectionBox {
+	padding-top: 2em;
+	padding-bottom: 2em;
+	display: block;
+}
+
+.sectionBox:after {
+	content: "";
+	clear: both;
+	display: block;
+}
+
+.nav li a {
+	color: $color_font_default;
+}
+
+.btn-default {
+	background: none;
+	color: $color_key;
+	border-color: $color_key;
+}
+
+.btn-default:focus,
+.btn-default:hover {
+	background-color: $color_key;
+	color: #fff;
+	border-color: $color_key;
+}
+
+.screen-reader-text {
+	display: none;
+}
+
+input.form-control {
+	margin-bottom: 3px;
+}
+
+input.form-control.input_widthAuto {
+	width: auto;
+}
+
+/*-------------------------------------------*/
+/* .navSection
+/*-------------------------------------------*/
+@media (max-width: 991px) {
+	.menuBtn {
+		position: absolute;
+		top: 0;
+		z-index: 2000;
+		margin: 8px;
+		padding: 4px 8px;
+
+		&.btn-default {
+			border-color: #999;
+			color: #999;
+		}
+
+		&.btn-default:hover {
+			border-color: #fff;
+			color: #fff;
+		}
+
+		&.menuBtn_right {
+			right: 0px;
+		}
+	}
+} // @media (max-width: 991px){
+@media (min-width: 992px) {
+	.menuBtn,
+	.navSection,
+	.navSection .searchform {
+		display: none;
+	}
+}
+
+/*-------------------------------------------*/
+/* .page-header
+/*-------------------------------------------*/
+.page-header {
+	margin-top: 0;
+	margin-bottom: 0;
+	padding-bottom: 0;
+
+	/* If text-align setting write to .page-header_pageTitle that page-header align function not work */
+	text-align: center;
+}
+
+.page-header_pageTitle,
+h1.page-header_pageTitle:first-child {
+	margin: 1.2em 0;
+	font-size: 1.75rem;
+	line-height: 1.1;
+}
+
+// @media (min-width: 992px){
+//   .page-header_pageTitle,
+//   h1.page-header_pageTitle:first-child { font-size:2rem; }
+// }
+/*-------------------------------------------*/
+/* .breadSection
+/*-------------------------------------------*/
+.breadSection {
+	border-bottom: $border_primary;
+
+	.breadcrumb {
+		margin-top: 0;
+		margin-bottom: 0;
+		background: none;
+		padding: 6px 15px;
+
+		li {
+			margin-bottom: 0;
+			list-style: none;
+		}
+
+		span {
+			font-size: 0.75em;
+		}
+	}
+}
+
+/*      .mainSection
+/*-------------------------------------------*/
+$section_margin_bottom: 25px;
+
+.mainSection {
+	// header {
+
+	// }
+
+	header h1 {
+		margin-top: 0;
+		line-height: 1.4em;
+	}
+
+	// Media Posts 1st image Feature measures
+	.postList::after {
+		content: "";
+		clear: both;
+		display: block;
+	}
+}
+
+h1.mainSection-title {
+	font-size: 24px;
+}
+
+h1.mainSection-title i {
+	margin-right: 8px;
+}
+
+h1.entry-title {
+	font-size: 32px;
+}
+
+.mainSection .widget {
+	margin-bottom: $section_margin_bottom;
+}
+
+.entry-header {
+	margin-bottom: 1.5rem;
+	@media (min-width: $lg-min) {
+		margin-bottom: 2rem;
+	}
+	position: relative;
+	border-bottom: $border_primary;
+}
+
+.entry-meta {
+	margin-bottom: 0.8em;
+	padding-left: 3px;
+
+	i {
+		margin-right: 5px;
+	}
+}
+
+.entry-meta_items {
+	font-size: 12px;
+}
+
+.entry-meta_items.published a {
+	color: $color_font_default;
+}
+
+.entry-meta_items_author {
+	margin-left: 0.8em;
+}
+
+.entry-meta_items_term {
+	float: right;
+	margin-right: 0;
+}
+
+.entry-meta_items_term_button {
+	font-size: 0.8rem;
+	padding: 0.15em 1em 0.1em;
+}
+
+.entry-meta_hidden {
+	display: none;
+}
+
+.fa_v4 {
+	.entry-meta_items.published::before {
+		margin-right: 5px;
+		font-family: FontAwesome;
+		content: "\f073";
+	}
+
+	.entry-meta_items_author::before {
+		margin-right: 5px;
+		font-family: FontAwesome;
+		content: "\f040";
+	}
+}
+
+.fa_v5_css {
+	.entry-meta_items.published::before {
+		margin-right: 5px;
+		font-family: "Font Awesome 5 Free";
+		content: "\f073";
+		font-weight: 900;
+	}
+
+	.entry-meta_items_author::before {
+		margin-right: 5px;
+		font-family: "Font Awesome 5 Free";
+		content: "\f303";
+		font-weight: 900;
+	}
+}
+
+.entry-body::after {
+	content: "";
+	clear: both;
+	display: block;
+}
+
+@media (max-width: 767px) {
+	.entry-meta {
+		.entry-meta_items_term {
+			float: none;
+			display: block;
+			margin-top: 0.5em;
+		}
+	}
+
+	h1.entry-title {
+		font-size: 26px;
+	}
+} // @media (max-width: 767px){
+@media (min-width: 768px) {
+	.mainSection .widget {
+		margin-bottom: 35px;
+	}
+
+	// .entry-body,
+	// .widget .entry-body {
+	//     margin-bottom: 2em;
+	// }
+} // @media (min-width: 768px){
+
+/*      .entry-footer
+/*-------------------------------------------*/
+.entry-footer {
+	display: block;
+	overflow: hidden;
+	margin-bottom: 2em;
+}
+
+.entry-meta-dataList {
+	display: block;
+	overflow: hidden;
+	padding-top: 3px;
+
+	dl {
+		margin: 0 0 2px;
+	}
+
+	dt,
+	dd {
+		display: block;
+		overflow: hidden;
+		margin-bottom: 0;
+	}
+
+	dt {
+		float: left;
+		background-color: #666;
+		color: #fff;
+		font-size: 10px;
+		line-height: 1.1em;
+		padding: 4px 8px;
+		font-weight: lighter;
+		margin-right: 10px;
+		border: none;
+		min-width: 10em;
+		text-align: center;
+		border-radius: 3px;
+	}
+
+	dd {
+		font-size: 12px;
+		border: none;
+		padding-left: 0;
+
+		a {
+			display: inline-block;
+			padding: 0 2px 1px;
+		}
+	}
+} // .entry-meta-dataList
+
+.entry-tag {
+	display: block;
+	overflow: hidden;
+
+	dl {
+		margin-bottom: 0;
+	}
+}
+
+/*      .tagcloud
+/*-------------------------------------------*/
+.tagcloud {
+	a {
+		color: $color_font_default;
+		margin-bottom: 4px;
+		white-space: nowrap;
+
+		&:before {
+			margin-right: 5px;
+		}
+
+		&:hover {
+			text-decoration: none;
+			opacity: 0.6;
+		}
+	}
+}
+
+.entry-meta-dataList .tagcloud {
+	a {
+		margin-right: 8px;
+	}
+}
+
+/*-------------------------------------------*/
+/* .pagination
+/*-------------------------------------------*/
+.pagination {
+	margin-top: 2rem;
+	margin-bottom: 0;
+
+	.nav-links {
+		margin: 0 auto;
+	}
+}
+
+ul.page-numbers {
+	margin: 0;
+	padding: 0;
+
+	li {
+		margin: 0;
+		list-style: none;
+		display: block;
+		overflow: hidden;
+		float: left;
+
+		a,
+		span.page-numbers {
+			padding: 6px 12px;
+			display: block;
+			border: 1px solid #ddd;
+			margin-left: -1px;
+			color: $color_font_default;
+		}
+
+		a:hover {
+			text-decoration: none;
+		}
+
+		&:first-child a {
+			margin-left: 0;
+		}
+
+		a:hover {
+			background-color: #efefef;
+		}
+
+		span.page-numbers.current {
+			color: #fff;
+			background-color: $color_key;
+		}
+
+		&:first-child > a {
+			border-top-left-radius: 4px;
+			border-bottom-left-radius: 4px;
+		}
+
+		&:last-child > a {
+			border-top-right-radius: 4px;
+			border-bottom-right-radius: 4px;
+		}
+	}
+
+	li:first-child > .page-numbers {
+		border-top-left-radius: 4px;
+		border-bottom-left-radius: 4px;
+	}
+
+	li:last-child > .page-numbers {
+		border-top-right-radius: 4px;
+		border-bottom-right-radius: 4px;
+	}
+}
+
+/*-------------------------------------------*/
+/* .page-link
+/*-------------------------------------------*/
+.page-link {
+	dl {
+		display: block;
+		overflow: hidden;
+		margin-bottom: 0;
+	}
+
+	dt,
+	dd {
+		border: none;
+		padding: 0;
+		margin-bottom: 0;
+	}
+
+	dt {
+		padding: 6px 10px 6px 0;
+		float: left;
+	}
+
+	span.page-numbers {
+		padding: 6px 12px;
+		display: block;
+		float: left;
+	}
+}
+
+.postNextPrev {
+	position: relative;
+	margin-bottom: $margin_section;
+
+	&_label {
+		margin-bottom: 1em;
+		font-size: 12px;
+		line-height: 1;
+
+		.postNextPrev_next & {
+			text-align: right;
+		}
+	}
+
+	.card {
+		&-title {
+			font-size: 14px;
+			margin-bottom: 0.6em;
+
+			.postNextPrev_next & {
+				text-align: right;
+				border: 1px solid #ff0000;
+			}
+		}
+		margin-bottom: 0;
+	}
+}
+
+/*-------------------------------------------*/
+/* .pager
+/*-------------------------------------------*/
+.pager ul {
+	margin-top: 0;
+}
+
+.pager li {
+	margin-bottom: 10px;
+	display: inline-block;
+
+	& > a {
+		border-radius: 0;
+		padding: 7px 15px 5px;
+	}
+}
+
+// @media (max-width: 767px){
+.pager li {
+	display: block;
+	overflow: hidden;
+	float: none;
+
+	a {
+		display: block;
+		overflow: hidden;
+		float: none;
+		width: 100%;
+		text-align: left;
+	}
+
+	&.previous a:before {
+		content: "«";
+		margin-right: 0.8em;
+	}
+
+	&.next a:before {
+		content: "»";
+		margin-right: 0.8em;
+	}
+} // .pager li
+
+/*-------------------------------------------*/
+/* .subSection
+/*-------------------------------------------*/
+.subSection {
+	display: block;
+	.localNav {
+		display: block;
+	}
+	.widget {
+		margin-bottom: 25px;
+	}
+
+	.media {
+		padding: 1em 0 0.8em;
+		margin-top: 0;
+
+		.postList_thumbnail {
+			width: 80px;
+			padding-right: 15px;
+		}
+
+		.media-heading {
+			font-size: 14px;
+		}
+	}
+
+	li > a:hover {
+		text-decoration: underline;
+	}
+
+	li.current-cat > a,
+	li.current_page_item > a {
+		background-color: rgba(0, 0, 0, 0.05);
+	}
+}
+
+.subSection:after {
+	content: "";
+	clear: both;
+	display: block;
+}
+
+.subSection-title {
+	font-size: 18px;
+	margin-bottom: 15px;
+}
+
+.subSection-title i {
+	margin-right: 8px;
+}
+
+/*-------------------------------------------*/
+/* Widget
+/*-------------------------------------------*/
+.widget {
+	display: block;
+
+	.subSection-title {
+		margin-top: 0;
+		font-size: 18px;
+	}
+
+	ul {
+		margin-top: 0;
+	}
+}
+
+.widget:after {
+	content: "";
+	clear: both;
+	display: block;
+}
+
+/* .widget_link_list はプラグインなどの外部ウィジェットからの指定用。
+.widget と同列で書かれる時もあれば下階層に書かれる事もある。ExUnitの固定ページリストウィジェットなどで使用 */
+.widget_link_list,
+.widget_recent_comments,
+.widget_nav_menu,
+.widget_archive,
+.widget_categories,
+.widget_pages,
+.widget_recent_entries {
+	ul {
+		padding-left: 0;
+		margin: 0;
+		font-size: 14px;
+		list-style: none;
+	}
+}
+
+.widget_link_list,
+.widget_nav_menu,
+.widget_archive,
+.widget_categories,
+.widget_pages,
+.widget_recent_entries {
+	.subSection-title {
+		margin-bottom: 0;
+	}
+
+	ul {
+		li {
+			margin-bottom: 0;
+		}
+
+		li a {
+			display: block;
+			padding: 10px 0.5em 8px;
+			border-bottom: $border_primary;
+			color: $color_font_default;
+			box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.7);
+		}
+
+		li li a {
+			padding-left: 1.5em;
+		}
+
+		li li li a {
+			padding-left: 2.5em;
+		}
+
+		li li li li a {
+			padding-left: 3.5em;
+		}
+
+		li li li li li a {
+			padding-left: 4.5em;
+		}
+
+		li li li li li li a {
+			padding-left: 5.5em;
+		}
+
+		li li li li li li li a {
+			padding-left: 6.5em;
+		}
+
+		li li li li li li li li a {
+			padding-left: 7.5em;
+		}
+
+		li li li li li li li li li a {
+			padding-left: 8.5em;
+		}
+
+		li li li li li li li li li li a {
+			padding-left: 9.5em;
+		}
+
+		li li li li li li li li li li li a {
+			padding-left: 10.5em;
+		}
+
+		ul {
+			margin: 0;
+			padding-left: 0;
+		}
+	}
+}
+
+.widget_archive,
+.widget_categories {
+	select {
+		margin-top: 10px;
+	}
+}
+
+.widget_vkexunit_post_list .mainSection-title {
+	margin-bottom: 0;
+}
+
+/* 上下パッディングは個別で指定されたりするのでセレクタが軽くなるように指定してある */
+/* ベースありの時の左右余白指定は layout_base.scss に書いてある */
+.widget_ltg_full_wide_title_outer {
+	margin-top: 0;
+	margin-bottom: 0;
+	padding-top: 2em;
+	padding-bottom: 2em;
+	@media (min-width: $lg-min) {
+		padding-top: 2.5em;
+		padding-bottom: 2.5em;
+	}
+	@media (min-width: $xl-min) {
+		padding-top: 3em;
+		padding-bottom: 3em;
+	}
+}
+.widget_ltg_full_wide_title_outer {
+	text-align: center;
+	background-size: cover;
+	background-position: center center;
+	margin: 0 calc(50% - 50vw) 3em;
+	padding: 3em calc(50vw - 50%);
+}
+
+.widget_ltg_full_wide_title_title {
+	font-size: 2rem;
+	padding: 0;
+	margin-bottom: 0.3em;
+	line-height: 1.4em;
+	background: none;
+	border: none;
+}
+
+.widget_ltg_full_wide_title_title:last-child {
+	margin-bottom: 0;
+}
+
+.widget_ltg_adv_full_wide_title_caption,
+.widget_ltg_full_wide_title_caption {
+	margin-bottom: 0;
+	line-height: 1.4em;
+}
+
+/*      .tagcloud
+/*-------------------------------------------*/
+.widget .tagcloud a {
+	border-radius: 4px;
+	padding: 3px 10px 1px;
+	line-height: 2.4em;
+}
+
+/* パララックスやページタイトル固定の時に透けないように */
+.siteContent_after {
+	position: relative;
+}
+
+.sticky {
+	display: block;
+	overflow: hidden;
+	padding: 1em;
+	background-color: #f5f5f5;
+}
+
+/*-------------------------------------------*/
+/* .archive
+/*-------------------------------------------*/
+.archive-header {
+	margin-bottom: 1em;
+}
+
+.archive-meta {
+	margin-bottom: 2em;
+}
+
+/*-------------------------------------------*/
+/* single
+/*-------------------------------------------*/
+#respond label {
+	font-weight: lighter;
+}
+
+/*-------------------------------------------*/
+/* .comments-area
+/*-------------------------------------------*/
+.comments-title {
+	line-height: 1.4em;
+	font-size: 24px;
+}
+
+ol.comment-list {
+	padding: 0;
+	margin-top: 0;
+}
+
+li.comment {
+	border: 4px solid #eee;
+	padding: 1em;
+	margin: 0 0 1em;
+	list-style: none;
+
+	ol.children {
+		padding-left: 1em;
+
+		li.comment {
+			border: none;
+		}
+	}
+}
+
+.comment-author {
+	display: block;
+	overflow: hidden;
+	margin-bottom: 10px;
+	padding: 7px;
+	background-color: #f5f5f5;
+	border: 4px solid #eee;
+}
+
+.comment-meta {
+	display: block;
+	overflow: hidden;
+	border-bottom: $border_primary;
+	margin-bottom: 10px;
+}
+
+li.pingback {
+	margin: 0 0 1em;
+	list-style: none;
+	border-bottom: 1px dotted #999;
+}
+
+p.no-comments {
+	background-color: #f3f3f3;
+	border: 1px solid #e5e5e5;
+	text-align: center;
+	padding: 2em;
+}
+
+// theme check pass
+.bypostauthor {
+	color: $color_font_default;
+}
+
+/*-------------------------------------------*/
+/* search
+/*-------------------------------------------*/
+// form.searchform { margin:1em 0;
+//   div { display: flex;
+//     input[type=text]#s { width:64%;margin-right:2%; }
+//     input[type=submit]#searchsubmit { float:right;width:34%; text-align: center;padding-left:2px;padding-right:2px; }
+//   }
+// }
+// input#searchsubmit { vertical-align: top; }
+
+/*-------------------------------------------*/
+/* Widget .veu_prBlocks
+/*-------------------------------------------*/
+/* htmlに直接styleを書き込むので継承を弱くするために入れ子で書かない */
+.prBlock {
+	a {
+		color: #333;
+
+		&:hover {
+			color: #333;
+			text-decoration: none;
+		}
+	}
+}
+
+.prBlock_icon_outer {
+	display: block;
+	margin: 0 auto;
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	position: relative;
+}
+
+.prBlock_icon {
+	position: absolute;
+	font-size: 36px;
+	top: 50%;
+	left: 50%;
+	transform: translateY(-50%) translateX(-50%);
+}
+
+.prBlock_title {
+	margin-top: 0.9em;
+	margin-bottom: 0.7em;
+	text-align: center;
+	font-size: 18px;
+	line-height: 1.4em;
+}
+
+.prBlock_image {
+	position: relative;
+	display: block;
+	width: 120px;
+	height: 120px;
+	margin: 0 auto;
+	overflow: hidden;
+	border-radius: 50%;
+	text-indent: -9999px;
+}
+
+.prBlock_summary {
+	margin-bottom: 0.5em;
+	text-align: center;
+	font-size: 14px;
+	line-height: 1.6em;
+}
+
+@media screen and (max-width: $xs-max) {
+	.prBlock {
+		margin-bottom: 1.5em;
+	}
+}

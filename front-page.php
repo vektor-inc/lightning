@@ -13,7 +13,7 @@ if ( $bootstrap == '3' ) {
 }
 ?>
 
-<div class="section siteContent">
+<div class="<?php lightning_the_class_name( 'siteContent' ); ?>">
 <?php do_action( 'lightning_siteContent_prepend' ); ?>
 <div class="container">
 <?php do_action( 'lightning_siteContent_container_prepend' ); ?>

@@ -1,11 +1,16 @@
 @charset "utf-8";
 
-@import "common";
+// load variable
+@import "variables_origin";
+@import "../../foundation/_scss/variables";
+
+// load foundation
+@import "../../foundation/_scss/foundation";
+@import "../../foundation/_scss/layout/gmenu/_gmenu-effect-origin";
+@import "../../foundation/_scss/layout/gmenu/_gmenu-layout-float";
+
+// load skin specific
 @import "common_origin";
-@import "global_menu";
-@import "global_menu_origin";
-@import "layout";
-@import "outer";
+@import "gmenu_origin";
 @import "outer_origin";
-@import "slide";
 @import "vk_post_adjuster_origin";

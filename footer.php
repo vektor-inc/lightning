@@ -58,6 +58,9 @@
 			?>
 		</div>
 	</div>
+
+	<?php do_action( 'lightning_copySection_before' ); ?>
+
 	<div class="container sectionBox copySection text-center">
 			<?php lightning_the_footerCopyRight(); ?>
 	</div>

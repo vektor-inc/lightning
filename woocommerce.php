@@ -3,7 +3,7 @@
 <?php get_template_part( 'module_pageTit' ); ?>
 <?php get_template_part( 'module_panList' ); ?>
 
-<div class="section siteContent">
+<div class="<?php lightning_the_class_name( 'siteContent' ); ?>">
 <?php do_action( 'lightning_siteContent_prepend' ); ?>
 <div class="container">
 <?php do_action( 'lightning_siteContent_container_prepend' ); ?>
@@ -12,7 +12,7 @@
 <?php do_action( 'lightning_mainSection_prepend' ); ?>
 
 	<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<?php do_action( 'ligthning_entry_body_before' ); ?>
+	<?php do_action( 'lightning_entry_body_before' ); ?>
 	<div class="entry-body">
 	<?php woocommerce_content(); ?>
 	</div>
