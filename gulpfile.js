@@ -77,7 +77,6 @@ gulp.task('dist_foundation', function () {
     .pipe(gulp.dest('../../plugins/lightning-skin-fort/bs4/_scss/foundation'))
     .pipe(gulp.dest('../../plugins/lightning-skin-pale/bs4/_scss/foundation'))
     .pipe(gulp.dest('../../plugins/lightning-skin-sample/assets/foundation'));
-  });;
 });
 
 gulp.task('sass_common', function () {
