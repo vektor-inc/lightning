@@ -26,7 +26,15 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 		max-height: 0;
 		transition: all 0.5s;
 	}
+
 	.device-pc & {
+		& > .sub-menu {
+			/*
+            When activate Lightning bbPress Extension and add css enque array() that, common.min.css output position become late and get strong.
+            This assignment is for cope with vk-mobile-nav-css(common.min.css) overwrite.
+            */
+			position: absolute;
+		}
 		&:hover > .sub-menu {
 			opacity: 1;
 			max-height: 1000px;
@@ -42,12 +50,4 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 			max-height: 1000px;
 		}
 	}
-
-	// & > .sub-menu
-	// &:hover > .sub-menu,
-	// &:hover > .sub-menu.sub-menu.acc-child-close,
-	// & > .sub-menu.acc-child-open {
-	//     opacity: 1;
-	//     max-height: 1000px;
-	// }
 }
