@@ -180,7 +180,6 @@ gulp.task('watch', function () {
   gulp.watch(['./inc/vk-components/*.php'], ['components_copy']);
   gulp.watch(['./inc/vk-components/**/*.scss'], ['sass_common']);
   gulp.watch(['./assets/js/**', './inc/vk-mobile-nav/package/js/**'], ['js_build']);
-  gulp.watch(['./assets/_scss/**', './inc/woocommerce/_scss/**'], ['sass_common']);
   gulp.watch(['./assets/_scss/**', './inc/woocommerce/_scss/**'], ['sass_woo']);
   gulp.watch(['./library/bootstrap-4/scss/**.scss'], ['sass_bs4']);
   gulp.watch(['./design-skin/origin/_scss/**/*.scss'], ['sass_skin']);
