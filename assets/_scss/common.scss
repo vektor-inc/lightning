@@ -5,7 +5,7 @@
 @import "block/block";
 
 .slide-inner img {
-	width:100%;
+	width: 100%;
 }
 
 /*-------------------------------------------*/
@@ -14,86 +14,93 @@
 
 .widget_search,
 .widget_display_search,
-.widget_product_search{
+.widget_product_search {
 	.widget-title.subSection-title {
-		margin-bottom:15px;
+		margin-bottom: 15px;
 	}
 }
 .widget_search form div,
 .widget_display_search form div,
 .widget_product_search form {
 	display: flex;
-	flex-wrap:wrap;
-	width:100%;
+	flex-wrap: wrap;
+	width: 100%;
 	justify-content: space-between;
 	input#s,
 	input#bbp_search,
 	input.search-field {
-		width:64%;
-		border:1px solid #ccc;
+		width: 64%;
+		border: 1px solid #ccc;
 		// border-radius: 3px;
 		padding: 6px 12px;
-    font-size: 14px;
-		margin-right:0;
-		margin-bottom:0;
+		font-size: 14px;
+		margin-right: 0;
+		margin-bottom: 0;
 	}
 	input#searchsubmit,
 	input#bbp_search_submit,
 	button {
-		width:33%;
+		width: 33%;
 		color: #fff;
-		border:none;
+		border: none;
 		padding: 6px;
 		// border-radius: 4px;
-		font-size:16px;
+		font-size: 16px;
 	}
 }
 
 iframe {
-	border:none;
+	border: none;
 }
 
 /*-------------------------------------------*/
 /*	Download Manager
 /*-------------------------------------------*/
 .wpdm-download-link {
-	margin-top:5px;
+	margin-top: 5px;
 }
 .w3eden {
-	.media{
+	.media {
 		padding: 1em 0;
 	}
 	.media-body {
 		margin-right: 1em;
-		margin-bottom:0.5em;
+		margin-bottom: 0.5em;
 		flex: unset;
 	}
 	.package-title:after {
-		border:none;
+		border: none;
 	}
 }
-@media (max-width: 575.98px){
+@media (max-width: 575.98px) {
 	.w3eden {
 		.media {
 			display: block !important;
 		}
 		.link-template-default.thumbnail .wpdm-download-link.btn {
 			display: block;
-			margin-top:10px;
+			margin-top: 10px;
 		}
 	}
 }
-
 
 /*-------------------------------------------*/
 /*	Print
 /*-------------------------------------------*/
 @media print {
-	#page_top { display: none !important; }
+	#page_top {
+		display: none !important;
+	}
 	.vk-mobile-nav-menu-btn,
 	.vk-mobile-nav,
-	.mobile-fix-nav { display: none; }
-	a{ text-decoration: none !important; }
+	.mobile-fix-nav {
+		display: none;
+	}
+	a {
+		text-decoration: none !important;
+	}
 	a[href]:after,
-	abbr[title]:after { content: "" !important; }
+	abbr[title]:after {
+		content: "" !important;
+	}
 }
