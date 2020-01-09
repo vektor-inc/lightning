@@ -25,9 +25,9 @@ gulp.task('text-domain', function () {
   gulp.src(['./inc/font-awesome/package/*.php'])
     .pipe(replace(', \'vk_font_awesome_version_textdomain\'', ', \'lightning\''))
     .pipe(gulp.dest('./inc/font-awesome/package/'));
-  gulp.src(['./inc/vk-mobile-nav/*'])
+  gulp.src(['./inc/vk-mobile-nav/package/*.php'])
     .pipe(replace('vk_mobile_nav_textdomain', 'lightning'))
-    .pipe(gulp.dest('./inc/vk-mobile-nav/'));
+    .pipe(gulp.dest('./inc/vk-mobile-nav/package/'));
   gulp.src(['./inc/term-color/package/*'])
     .pipe(replace('lightning-pro', 'lightning'))
     .pipe(gulp.dest('./inc/term-color/package/'));
