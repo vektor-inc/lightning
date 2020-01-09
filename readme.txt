@@ -35,6 +35,13 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v8.0.1
+* [ OriginII ] design bug fix about bbpress
+
+v8.0.0
+* Change base section system
+* Add action filters
+
 v7.5.0
 * Add defer first aid
 

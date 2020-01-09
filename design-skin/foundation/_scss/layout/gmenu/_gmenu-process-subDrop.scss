@@ -12,43 +12,42 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 /*	第二階層マウスホバー展開処理
 /*-------------------------------------------*/
 .gMenu > li {
-    /*
+	/*
     If except the 'ul' from .gMenu that overwrited by vk-mobile-nav absolute on such as vws.
     */
-    & > .sub-menu {
-        position: absolute;
-        z-index: 1000;
-        display: block;
-        overflow: hidden;
+	& > .sub-menu {
+		position: absolute;
+		z-index: 1000;
+		display: block;
+		overflow: hidden;
 
-        // プルダウン展開
-        opacity: 0;
+		// プルダウン展開
+		opacity: 0;
 		max-height: 0;
-        transition: all .5s;
+		transition: all 0.5s;
+	}
 
-    }
-    .device-pc & {
-        &:hover > .sub-menu{
-            opacity: 1;
-            max-height: 1000px;
-        }
-    }
-    .device-mobile & {
-        & > .sub-menu.acc-child-close {
-            opacity: 0;
-            max-height: 0;
-        }
-        & > .sub-menu.acc-child-open {
-            opacity: 1;
-            max-height: 1000px;
-        }
-    }
-
-    // & > .sub-menu
-    // &:hover > .sub-menu,
-    // &:hover > .sub-menu.sub-menu.acc-child-close,
-    // & > .sub-menu.acc-child-open {
-    //     opacity: 1;
-    //     max-height: 1000px;
-    // }
+	.device-pc & {
+		& > .sub-menu {
+			/*
+            When activate Lightning bbPress Extension and add css enque array() that, common.min.css output position become late and get strong.
+            This assignment is for cope with vk-mobile-nav-css(common.min.css) overwrite.
+            */
+			position: absolute;
+		}
+		&:hover > .sub-menu {
+			opacity: 1;
+			max-height: 1000px;
+		}
+	}
+	.device-mobile & {
+		& > .sub-menu.acc-child-close {
+			opacity: 0;
+			max-height: 0;
+		}
+		& > .sub-menu.acc-child-open {
+			opacity: 1;
+			max-height: 1000px;
+		}
+	}
 }

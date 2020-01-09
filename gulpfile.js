@@ -25,9 +25,9 @@ gulp.task('text-domain', function () {
   gulp.src(['./inc/font-awesome/package/*.php'])
     .pipe(replace(', \'vk_font_awesome_version_textdomain\'', ', \'lightning\''))
     .pipe(gulp.dest('./inc/font-awesome/package/'));
-  gulp.src(['./inc/vk-mobile-nav/*'])
+  gulp.src(['./inc/vk-mobile-nav/package/*.php'])
     .pipe(replace('vk_mobile_nav_textdomain', 'lightning'))
-    .pipe(gulp.dest('./inc/vk-mobile-nav/'));
+    .pipe(gulp.dest('./inc/vk-mobile-nav/package/'));
   gulp.src(['./inc/term-color/package/*'])
     .pipe(replace('lightning-pro', 'lightning'))
     .pipe(gulp.dest('./inc/term-color/package/'));
@@ -180,7 +180,6 @@ gulp.task('watch', function () {
   gulp.watch(['./inc/vk-components/*.php'], ['components_copy']);
   gulp.watch(['./inc/vk-components/**/*.scss'], ['sass_common']);
   gulp.watch(['./assets/js/**', './inc/vk-mobile-nav/package/js/**'], ['js_build']);
-  gulp.watch(['./assets/_scss/**', './inc/woocommerce/_scss/**'], ['sass_common']);
   gulp.watch(['./assets/_scss/**', './inc/woocommerce/_scss/**'], ['sass_woo']);
   gulp.watch(['./library/bootstrap-4/scss/**.scss'], ['sass_bs4']);
   gulp.watch(['./design-skin/origin/_scss/**/*.scss'], ['sass_skin']);

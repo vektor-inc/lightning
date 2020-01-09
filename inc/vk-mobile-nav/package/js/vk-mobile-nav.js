@@ -167,5 +167,4 @@
 	jQuery(document).ready(function() {
 		vk_menu_acc_run();
 	});
-
 })(jQuery);
