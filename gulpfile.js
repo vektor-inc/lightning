@@ -213,6 +213,36 @@ gulp.task('copy_dist', function () {
     .pipe(gulp.dest('dist/lightning')); // dist/lightningディレクトリに出力
 });
 
+gulp.task('dist_pro', function () {
+  return gulp.src(
+    [
+      './**/*.php',
+      './**/*.txt',
+      './**/*.css',
+      './**/*.png',
+      './assets/**',
+      './design-skin/**',
+      './inc/**',
+      './library/**',
+      './template-parts/**',
+      './languages/**',
+      "!./.vscode/**",
+      "!./bin/**",
+      "!./dist/**",
+      "!./node_modules/**/*.*",
+      "!./tests/**",
+      "!./dist/**",
+      "!./readme.txt",
+      "!./style.css",
+      "!./screenshot.png",
+      "!./inc/tgm-plugin-activation/**",
+    ], {
+    base: './'
+  }
+  )
+    .pipe(gulp.dest('../lightning-pro/')); // dist/lightningディレクトリに出力
+});
+
 gulp.task('dist', gulp.series('text-domain','copy_dist'));
 gulp.task('default',  gulp.series('text-domain', 'watch'));
 gulp.task('compile',  gulp.series('js_build', 'text-domain'));
