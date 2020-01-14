@@ -460,7 +460,7 @@ function lightning_is_layout_onecolumn() {
 			}
 		}
 	}
-	return $onecolumn;
+	return apply_filter( 'lightning_is_layout_onecolumn', $onecolumn );
 }
 
 function lightning_get_theme_name() {
