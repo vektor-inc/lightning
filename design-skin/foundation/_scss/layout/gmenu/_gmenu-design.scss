@@ -54,6 +54,13 @@ $menu_padding_horizontal: 1.2em;
 	& > li {
 		border-left: $g_nav_separator;
 		text-align: center;
+		/*
+		メニューは
+		・必要なら <br> でユーザーが改行指定できる
+		・幅は自動調整される 
+		ため nowrap 指定の方が表示が安定する
+		*/
+		white-space: nowrap;
 		&:last-child {
 			border-right: $g_nav_separator;
 		}
