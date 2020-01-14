@@ -18,7 +18,7 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 		&:before {
 			position: absolute;
 			left: 0;
-			bottom: -1px;
+			bottom: 0;
 			content: "";
 			width: 0;
 			border-bottom: 1px solid $color_key_dark;
