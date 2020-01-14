@@ -211,6 +211,7 @@ gulp.task('copy_dist', function () {
     base: './'
   }
   )
+    .pipe(gulp.dest('../../../../../../update/app/public/wp-content/themes/lightning')) // dist版テスト用
     .pipe(gulp.dest('dist/lightning')); // dist/lightningディレクトリに出力
 });
 
