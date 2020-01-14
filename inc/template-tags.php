@@ -1,37 +1,25 @@
 <?php
-/*-------------------------------------------*/
-/*	lightning_get_the_class_name
-/*-------------------------------------------*/
-/*	Sanitize
-/*-------------------------------------------*/
-/*	Theme default options
-/*-------------------------------------------*/
-/*	lightning_get_theme_options()
-/*-------------------------------------------*/
-/*	Head logo
-/*-------------------------------------------*/
-/*	Chack use post top page
-/*-------------------------------------------*/
-/*	Chack post type info
-/*-------------------------------------------*/
-/*	lightning_is_mobile
-/*-------------------------------------------*/
-/*	lightning_top_slide_count
-/*-------------------------------------------*/
-/*	lightning_is_slide_outer_link
-/*-------------------------------------------*/
-/*	lightning_slide_cover_style
-/*-------------------------------------------*/
-/*	Archive title
-/*-------------------------------------------*/
-/*	lightning_is_layout_onecolumn
-/*-------------------------------------------*/
-/*	lightning_check_color_mode
+
+/*
+  lightning_get_the_class_name
+  Sanitize
+  Theme default options
+  lightning_get_theme_options()
+  Head logo
+  Chack use post top page
+  Chack post type info
+  lightning_is_mobile
+  lightning_top_slide_count
+  lightning_is_slide_outer_link
+  lightning_slide_cover_style
+  Archive title
+  lightning_is_layout_onecolumn
+  lightning_check_color_mode
 /*-------------------------------------------*/
 
 
-/*-------------------------------------------*/
-/*	lightning_get_the_class_name
+/*
+  lightning_get_the_class_name
 /*-------------------------------------------*/
 function lightning_get_the_class_name( $position = '' ) {
 	$skin_info = Lightning_Design_Manager::get_current_skin();
@@ -48,7 +36,6 @@ function lightning_get_the_class_name( $position = '' ) {
 			$class_names['mainSection'] = 'col-md-12 mainSection';
 			$class_names['sideSection'] = 'col-md-12 sideSection';
 		}
-
 	} elseif ( $skin_info['bootstrap'] === 'bs4' ) {
 
 		$class_names = array(
@@ -90,11 +77,12 @@ function lightning_the_class_name( $position = '' ) {
 	echo lightning_get_the_class_name( $position );
 }
 
-/*-------------------------------------------*/
-/*	Sanitize
+/*
+  Sanitize
 /*-------------------------------------------*/
 
-	/*	Add sanitize checkbox
+	/*
+	  Add sanitize checkbox
 	/*-------------------------------------------*/
 function lightning_sanitize_checkbox( $input ) {
 	if ( $input == true ) {
@@ -145,8 +133,8 @@ function lightning_sanitize_textarea( $input ) {
 	return wp_kses( $input, $allowed_html );
 }
 
-/*-------------------------------------------*/
-/*	Theme default options
+/*
+  Theme default options
 /*-------------------------------------------*/
 function lightning_get_theme_options_default() {
 	$theme_options_default = array(
@@ -179,8 +167,8 @@ function lightning_theme_options_default() {
 	return lightning_get_theme_options_default();
 }
 
-/*-------------------------------------------*/
-/*	lightning_get_theme_options()
+/*
+  lightning_get_theme_options()
 /*-------------------------------------------*/
 function lightning_get_theme_options() {
 	$lightning_theme_options_default = lightning_get_theme_options_default();
@@ -190,8 +178,8 @@ function lightning_get_theme_options() {
 	return $lightning_theme_options;
 }
 
-/*-------------------------------------------*/
-/*	Head logo
+/*
+  Head logo
 /*-------------------------------------------*/
 function lightning_print_headlogo() {
 	$options = get_option( 'lightning_theme_options' );
@@ -202,8 +190,8 @@ function lightning_print_headlogo() {
 	}
 }
 
-/*-------------------------------------------*/
-/*	Chack use post top page
+/*
+  Chack use post top page
 /*-------------------------------------------*/
 function lightning_get_page_for_posts() {
 	// Get post top page by setting display page.
@@ -219,8 +207,8 @@ function lightning_get_page_for_posts() {
 }
 
 
-/*-------------------------------------------*/
-/*	Chack post type info
+/*
+  Chack post type info
 /*-------------------------------------------*/
 function lightning_get_post_type() {
 	// Check use post top page
@@ -229,7 +217,8 @@ function lightning_get_post_type() {
 	$woocommerce_shop_page_id = get_option( 'woocommerce_shop_page_id' );
 
 	// Get post type slug
-	/*-------------------------------------------*/
+	/*
+	-------------------------------------------*/
 	// When WooCommerce taxonomy archive page , get_post_type() is does not work properly
 	// $postType['slug'] = get_post_type();
 
@@ -282,8 +271,8 @@ function lightning_get_post_type() {
 }
 
 
-/*-------------------------------------------*/
-/*	lightning_is_mobile
+/*
+  lightning_is_mobile
 /*-------------------------------------------*/
 function lightning_is_mobile() {
 	$useragents = array(
@@ -311,8 +300,8 @@ function lightning_is_mobile() {
 	return apply_filters( 'lightning_is_mobile', $is_mobile );
 }
 
-/*-------------------------------------------*/
-/*	lightning_top_slide_count
+/*
+  lightning_top_slide_count
 /*-------------------------------------------*/
 function lightning_top_slide_count_max() {
 	$top_slide_count_max = 5;
@@ -330,9 +319,10 @@ function lightning_top_slide_count( $lightning_theme_options ) {
 	}
 	return $top_slide_count;
 }
-/*-------------------------------------------*/
-/*	lightning_is_slide_outer_link
-/*	link url exist but btn txt exixt? or not
+/*
+  lightning_is_slide_outer_link
+/*
+  link url exist but btn txt exixt? or not
 /*-------------------------------------------*/
 function lightning_is_slide_outer_link( $lightning_theme_options, $i ) {
 	if ( ! empty( $lightning_theme_options[ 'top_slide_url_' . $i ] ) && empty( $lightning_theme_options[ 'top_slide_text_btn_' . $i ] ) ) {
@@ -342,8 +332,8 @@ function lightning_is_slide_outer_link( $lightning_theme_options, $i ) {
 	}
 }
 
-/*-------------------------------------------*/
-/*	lightning_slide_cover_style
+/*
+  lightning_slide_cover_style
 /*-------------------------------------------*/
 function lightning_slide_cover_style( $lightning_theme_options, $i ) {
 	$cover_style = '';
@@ -364,8 +354,8 @@ function lightning_slide_cover_style( $lightning_theme_options, $i ) {
 	return $cover_style;
 }
 
-/*-------------------------------------------*/
-/*	Archive title
+/*
+  Archive title
 /*-------------------------------------------*/
 add_filter( 'get_the_archive_title', 'lightning_get_the_archive_title' );
 function lightning_get_the_archive_title() {
@@ -401,8 +391,8 @@ function lightning_get_the_archive_title() {
 	return apply_filters( 'lightning_get_the_archive_title', $title );
 }
 
-/*-------------------------------------------*/
-/*	CopyRight
+/*
+  CopyRight
 /*-------------------------------------------*/
 function lightning_the_footerCopyRight() {
 
@@ -437,8 +427,8 @@ function lightning_is_frontpage_onecolumn() {
 	return false;
 }
 
-/*-------------------------------------------*/
-/*	lightning_is_layout_onecolumn
+/*
+  lightning_is_layout_onecolumn
 /*-------------------------------------------*/
 
 function lightning_is_layout_onecolumn() {
@@ -484,11 +474,12 @@ function lightning_get_prefix_customize_panel() {
 	return $prefix_customize_panel;
 }
 
-/*-------------------------------------------*/
-/*	lightning_check_color_mode
+/*
+  lightning_check_color_mode
 /*-------------------------------------------*/
 /**
  * [lightning_check_color_mode description]
+ *
  * @param  string  $input         input color code
  * @param  boolean $return_detail If false that return 'mode' only
  * @return string                 If $return_detail == false that return light ot dark
