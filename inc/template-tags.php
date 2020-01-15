@@ -448,6 +448,17 @@ function lightning_is_layout_onecolumn() {
 			if ( in_array( $template, $template_onecolumn ) ) {
 				$onecolumn = true;
 			}
+		} elseif ( is_single() ) {
+			global $post;
+			$template           = get_post_meta( $post->ID, '_wp_page_template', true );
+			$template_onecolumn = array(
+				'page-onecolumn.php',
+				'single-onecolumn.php',
+				'page-lp.php',
+			);
+			if ( in_array( $template, $template_onecolumn ) ) {
+				$onecolumn = true;
+			}
 		}
 	}
 	return apply_filters( 'lightning_is_layout_onecolumn', $onecolumn );
