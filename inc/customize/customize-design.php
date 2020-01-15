@@ -122,95 +122,9 @@ function lightning_customize_register_design( $wp_customize ) {
 				'section'          => 'lightning_design',
 				'type'             => 'text',
 				'custom_title_sub' => '',
-				'custom_html'      => '',
+				'custom_html'      => '<p>'.__('This setting field was moved to the "Layout Setting" panel.', 'lightning' ) .'</p>',
 				'priority'         => 700,
 			)
-		)
-	);
-	// sidebar_position
-	$wp_customize->add_setting(
-		'lightning_theme_options[sidebar_position]', array(
-			'default'           => 'right',
-			'type'              => 'option',
-			'capability'        => 'edit_theme_options',
-			'sanitize_callback' => 'lightning_sanitize_radio',
-		)
-	);
-	$wp_customize->add_control(
-		'lightning_theme_options[sidebar_position]', array(
-			'label'    => __( 'Sidebar position ( PC mode )', 'lightning' ),
-			'section'  => 'lightning_design',
-			'settings' => 'lightning_theme_options[sidebar_position]',
-			'type'     => 'radio',
-			'choices'  => array(
-				'right' => __( 'Right', 'lightning' ),
-				'left'  => __( 'Left', 'lightning' ),
-			),
-			'priority' => 700,
-		)
-	);
-
-	// sidebar_fix
-	$wp_customize->add_setting(
-		'lightning_theme_options[sidebar_fix]', array(
-			'default'           => false,
-			'type'              => 'option',
-			'capability'        => 'edit_theme_options',
-			'sanitize_callback' => 'lightning_sanitize_checkbox',
-		)
-	);
-	$wp_customize->add_control(
-		'lightning_theme_options[sidebar_fix]', array(
-			'label'    => __( 'Don\'t fix the sidebar', 'lightning' ),
-			'section'  => 'lightning_design',
-			'settings' => 'lightning_theme_options[sidebar_fix]',
-			'type'     => 'checkbox',
-			'priority' => 700,
-		)
-	);
-	$wp_customize->selective_refresh->add_partial(
-		'lightning_theme_options[sidebar_fix]', array(
-			'selector'        => '.sideSection',
-			'render_callback' => '',
-		)
-	);
-
-	/*	Layout _ homepage
-	/*-------------------------------------------*/
-	$wp_customize->add_setting(
-		'layout_toppage', array(
-			'sanitize_callback' => 'sanitize_text_field',
-		)
-	);
-	$wp_customize->add_control(
-		new Custom_Html_Control(
-			$wp_customize, 'layout_toppage', array(
-				'label'            => '',
-				'section'          => 'lightning_design',
-				'type'             => 'text',
-				'custom_title_sub' => __( 'Home page sidebar setting', 'lightning' ),
-				'custom_html'      => '',
-				'priority'         => 700,
-			)
-		)
-	);
-	// top_sidebar_hidden
-	$wp_customize->add_setting(
-		'lightning_theme_options[top_sidebar_hidden]', array(
-			'default'           => false,
-			'type'              => 'option',
-			'capability'        => 'edit_theme_options',
-			'sanitize_callback' => 'lightning_sanitize_checkbox',
-		)
-	);
-	$wp_customize->add_control(
-		'lightning_theme_options[top_sidebar_hidden]', array(
-			'label'       => __( 'Don\'t show sidebar on home page', 'lightning' ),
-			'section'     => 'lightning_design',
-			'settings'    => 'lightning_theme_options[top_sidebar_hidden]',
-			'type'        => 'checkbox',
-			'priority'    => 700,
-			'description' => __( '* Even if there is no check here, if the page template specified on the top page is "without sidebar", it will be 1 column.', 'lightning' ),
 		)
 	);
 

@@ -167,6 +167,7 @@ require get_parent_theme_file_path( '/inc/tgm-plugin-activation/tgm-config.php' 
 /*-------------------------------------------*/
 require get_parent_theme_file_path( '/inc/customize/customize.php' );
 require get_parent_theme_file_path( '/inc/customize/customize-design.php' );
+require get_parent_theme_file_path( '/inc/customize/customize-layout.php' );
 require get_parent_theme_file_path( '/inc/customize/customize-top-slide.php' );
 
 /*-------------------------------------------*/
