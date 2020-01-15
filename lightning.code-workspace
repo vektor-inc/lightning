@@ -1,0 +1,35 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"editor.detectIndentation": false,
+		"editor.insertSpaces": false,
+		"files.eol": "\n",
+		"phpcs.standard": "WordPress",
+		"phpcbf.standard": "WordPress",
+		"phpcbf.executablePath": "phpcbf.bat",
+		"phpcbf.onsave": true,
+		"[html]": {
+			"editor.formatOnSave": true,
+		},
+		"[css]": {
+			"editor.formatOnSave": true,
+		},
+		"[scss]": {
+			"editor.formatOnSave": true,
+		},
+		"[javascript]": {
+			"editor.formatOnSave": true,
+		},
+		"[json]": {
+			"editor.formatOnSave": true,
+		},
+		"[php]": {
+			"editor.formatOnSave": false,
+		},
+
+	}
+}
