@@ -313,9 +313,9 @@ class LightningTest extends WP_UnitTestCase {
 		print '------------------------------------' . PHP_EOL;
 
 		$before_option         = get_option( 'lightning_theme_options' );
-		$before_page_for_posts = get_option( 'page_for_posts' );
+		$before_page_for_posts = get_option( 'page_for_posts' ); // 投稿トップに指定するページ
 		$before_page_on_front  = get_option( 'page_on_front' ); // フロントに指定する固定ページ
-		$before_show_on_front  = get_option( 'show_on_front' ); // or posts
+		$before_show_on_front  = get_option( 'show_on_front' ); // トップページ指定するかどうか page or posts
 
 		// Create test category
 		$catarr = array(
@@ -447,6 +447,8 @@ class LightningTest extends WP_UnitTestCase {
 		$cate_id = wp_delete_category($catarr);
 		update_option( 'lightning_theme_options', $before_option );
 		update_option( 'page_for_posts', $before_page_for_posts );
+		update_option( 'page_on_front', $before_page_on_front );
+		update_option( 'show_on_front', $before_show_on_front );
 	}
 
 	function test_lightning_check_color_mode() {

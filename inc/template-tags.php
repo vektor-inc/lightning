@@ -434,9 +434,7 @@ function lightning_is_frontpage_onecolumn() {
 function lightning_is_layout_onecolumn() {
 	$onecolumn = false;
 	$options =  get_option('lightning_theme_options');
-	$page_for_posts = get_option( 'page_for_posts' );
 	global $wp_query;
-	// print '<pre style="text-align:left">';print_r($wp_query->query['page_id']);print '</pre>';
 	if (  is_front_page() ){
 		// echo 'DEBUG━━━━━━━━━━━ is_front_page ━━━━━━━━━'."<br>\n";
 		if ( isset( $options['layout']['front-page'] ) && $options['layout']['front-page'] === 'col-one' ){
