@@ -98,7 +98,7 @@ input.form-control.input_widthAuto {
 /*-------------------------------------------*/
 /* .navSection
 /*-------------------------------------------*/
-@media (max-width: 991px) {
+@media (max-width: $md-max) {
 	.menuBtn {
 		position: absolute;
 		top: 0;
@@ -121,7 +121,7 @@ input.form-control.input_widthAuto {
 		}
 	}
 } // @media (max-width: 991px){
-@media (min-width: 992px) {
+@media (min-width: $lg-min) {
 	.menuBtn,
 	.navSection,
 	.navSection .searchform {
@@ -293,7 +293,7 @@ h1.entry-title {
 	display: block;
 }
 
-@media (max-width: 767px) {
+@media (max-width: $sm-max) {
 	.entry-meta {
 		.entry-meta_items_term {
 			float: none;
@@ -306,7 +306,7 @@ h1.entry-title {
 		font-size: 26px;
 	}
 } // @media (max-width: 767px){
-@media (min-width: 768px) {
+@media (min-width: $md-min) {
 	.mainSection .widget {
 		margin-bottom: 35px;
 	}
