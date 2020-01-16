@@ -1,9 +1,11 @@
 <?php
 
 /*
-$ vagrant ssh
-$ cd $(wp theme path --dir lightning)
-$ phpunit
+ * cd /app
+ * bash setup-phpunit.sh
+ * source ~/.bashrc
+ * cd $(wp theme path --dir lightning)
+ * phpunit
 */
 
 class LightningTest extends WP_UnitTestCase {
@@ -301,6 +303,150 @@ class LightningTest extends WP_UnitTestCase {
 		update_option( 'lightning_theme_options', $before_options );
 		update_option( 'page_on_front', $before_page_on_front );
 		update_post_meta( $before_page_on_front, '_wp_page_template', $before_template );
+	}
+
+
+	function test_lightning_is_layout_onecolumn() {
+		print PHP_EOL;
+		print '------------------------------------' . PHP_EOL;
+		print 'lightning_is_layout_onecolumn' . PHP_EOL;
+		print '------------------------------------' . PHP_EOL;
+
+		$before_option         = get_option( 'lightning_theme_options' );
+		$before_page_for_posts = get_option( 'page_for_posts' );
+		$before_page_on_front  = get_option( 'page_on_front' ); // フロントに指定する固定ページ
+		$before_show_on_front  = get_option( 'show_on_front' ); // or posts
+
+		// Create test category
+		$catarr = array(
+			'cat_name' => 'test_category',
+		);
+		$cate_id = wp_insert_category( $catarr );
+
+		// Create test post
+		$post    = array(
+			'post_title'   => 'test',
+			'post_status'  => 'publish',
+			'post_content' => 'content',
+			'post_category' => array( $cate_id ),
+		);
+		$post_id = wp_insert_post( $post );
+
+		// Create test home page
+		$post    = array(
+			'post_title'   => 'post_top',
+			'post_type'    => 'page',
+			'post_status'  => 'publish',
+			'post_content' => 'content',
+		);
+		$home_page_id = wp_insert_post( $post );
+
+		// Create test home page
+		$post    = array(
+			'post_title'   => 'front_page',
+			'post_type'    => 'page',
+			'post_status'  => 'publish',
+			'post_content' => 'content',
+		);
+		$front_page_id = wp_insert_post( $post );
+		update_option( 'page_on_front', $front_page_id); // フロントに指定する固定ページ
+		update_option( 'page_for_posts', $home_page_id); // 投稿トップに指定する固定ページ
+		update_option( 'show_on_front', 'page'); // or posts
+
+		/* Test Array
+		/*--------------------------------*/
+		$test_array = array(
+			// Front page
+			array(
+				'options' => array(
+					'layout' => array(
+						'front-page' => 'col-one',
+					),
+				),
+				'post_custom' => '',
+				'target_url' => home_url( '/' ),
+				'correct' => true,
+			),
+			// Search
+			array(
+				'options' => array(
+					'layout' => array(
+						'search' => 'col-one',
+					),
+				),
+				'post_custom' => '',
+				'target_url' => home_url( '/' ).'?s=aaa',
+				'correct' => true,
+			),
+			// 404
+			array(
+				'options' => array(
+					'layout' => array(
+						'error404' => 'col-one',
+					),
+				),
+				'post_custom' => '',
+				'target_url' => home_url( '/' ) . '?name=abcdefg',
+				'correct' => true,
+			),
+			// Category
+			array(
+				'options' => array(
+					'layout' => array(
+						'archive' => 'col-one',
+					),
+				),
+				'post_custom' => '',
+				'target_url' => get_term_link( $cate_id ),
+				'correct' => true,
+			),
+			// Post home
+			array(
+				'page_type' => 'home',
+				'options' => array(
+					'layout' => array(
+						'archive' => 'col-one',
+					),
+				),
+				'post_custom' => '',
+				'target_url' => get_permalink( get_option( 'page_for_posts' ) ),
+				'correct' => true,
+			),
+			// Single
+			array(
+				'page_type' => 'single',
+				'options' => array(
+					'layout' => array(
+						'single' => 'col-one',
+					),
+				),
+				'post_custom' => '',
+				'target_url' => get_permalink( $post_id ),
+				'correct' => true,
+			),
+		);
+
+		foreach( $test_array as $value ){
+			$options = $value['options'];
+			update_option('lightning_theme_options', $options );
+
+			// Move to test page
+			$this->go_to( $value['target_url'] );
+
+			$return = lightning_is_layout_onecolumn();
+			print 'url     :' . $_SERVER["REQUEST_URI"] . PHP_EOL;
+			print 'return  :' . $return . PHP_EOL;
+			print 'correct :' . $value['correct'] . PHP_EOL;
+			$this->assertEquals( $value['correct'], $return );
+		}
+
+		/* テスト前の値に戻す
+		/*--------------------------------*/
+		wp_delete_post( $post_id );
+		wp_delete_post( $home_page_id );
+		$cate_id = wp_delete_category($catarr);
+		update_option( 'lightning_theme_options', $before_option );
+		update_option( 'page_for_posts', $before_page_for_posts );
 	}
 
 	function test_lightning_check_color_mode() {

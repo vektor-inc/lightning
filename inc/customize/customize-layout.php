@@ -38,18 +38,19 @@ function lightning_customize_register_layout( $wp_customize ) {
 			'label' => __( 'Home page', 'lightning' ),
 			'description' => '',
 		),
-		'archive' => array(
-			'label' => __( 'Archive page (Post and custom post type)', 'lightning' ),
-		),
-		'single' => array(
-			'label' => __( 'Single page (Post and custom post type)', 'lightning' ),
-		),
 		'search' => array(
 			'label' => __( 'Search', 'lightning' ),
 		),
 		'error404' => array(
 			'label' => __( '404 page', 'lightning' ),
 		),
+		'archive' => array(
+			'label' => __( 'Archive page (Post and custom post type)', 'lightning' ),
+		),
+		'single' => array(
+			'label' => __( 'Single page (Post and custom post type)', 'lightning' ),
+		),
+		// If cope with custom post types that like a "archive-post" "single-post".
 	);
 
 	$choices = array(

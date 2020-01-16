@@ -433,6 +433,43 @@ function lightning_is_frontpage_onecolumn() {
 
 function lightning_is_layout_onecolumn() {
 	$onecolumn = false;
+	$options =  get_option('lightning_theme_options');
+	$page_for_posts = get_option( 'page_for_posts' );
+	global $wp_query;
+	// print '<pre style="text-align:left">';print_r($wp_query->query['page_id']);print '</pre>';
+	if (  is_front_page() ){
+		// echo 'DEBUG━━━━━━━━━━━ is_front_page ━━━━━━━━━'."<br>\n";
+		if ( isset( $options['layout']['front-page'] ) && $options['layout']['front-page'] === 'col-one' ){
+			$onecolumn = true;
+		} 
+	} else if ( is_404() ) {
+		// echo 'DEBUG━━━━━━━━━━━ is_404 ━━━━━━━━━'."<br>\n";
+		if ( isset( $options['layout']['error404'] ) && $options['layout']['error404'] === 'col-one' ){
+			$onecolumn = true;
+		} 
+	} else if ( is_search() ) {
+		// echo 'DEBUG━━━━━━━━━━━ is_search ━━━━━━━━━'."<br>\n";
+		if ( isset( $options['layout']['search'] ) && $options['layout']['search'] === 'col-one' ){
+			$onecolumn = true;
+		}
+	} else if ( is_home() && ! is_front_page() ) {
+		// echo 'DEBUG━━━━━━━━━━━ is_home() && ! is_front_page() ━━━━━━━━━'."<br>\n";
+		if ( isset( $options['layout']['archive'] ) && $options['layout']['archive'] === 'col-one' ){
+			$onecolumn = true;
+		} 
+	} else if ( is_category() ) {
+		// echo 'DEBUG━━━━━━━━━━━ is_category ━━━━━━━━━'."<br>\n";
+		if ( isset( $options['layout']['archive'] ) && $options['layout']['archive'] === 'col-one' ){
+			$onecolumn = true;
+		} 
+	} else if ( is_single() ) {
+		// echo 'DEBUG━━━━━━━━━━━ is_single ━━━━━━━━━'."<br>\n";
+		if ( isset( $options['layout']['single'] ) && $options['layout']['single'] === 'col-one' ){
+			$onecolumn = true;
+		}
+	}
+
+
 	if ( is_front_page() ) {
 		if ( lightning_is_frontpage_onecolumn() ) {
 			$onecolumn = true;
@@ -448,17 +485,6 @@ function lightning_is_layout_onecolumn() {
 			if ( in_array( $template, $template_onecolumn ) ) {
 				$onecolumn = true;
 			}
-		// } elseif ( is_single() ) {
-		// 	global $post;
-		// 	$template           = get_post_meta( $post->ID, '_wp_page_template', true );
-		// 	$template_onecolumn = array(
-		// 		'page-onecolumn.php',
-		// 		'single-onecolumn.php',
-		// 		'page-lp.php',
-		// 	);
-		// 	if ( in_array( $template, $template_onecolumn ) ) {
-		// 		$onecolumn = true;
-		// 	}
 		}
 	}
 	return apply_filters( 'lightning_is_layout_onecolumn', $onecolumn );
