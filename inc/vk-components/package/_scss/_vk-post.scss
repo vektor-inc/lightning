@@ -267,6 +267,9 @@ $xl-min: 1200px;
 			bottom: 1.25rem;
 		}
 	}
+	.card-text:nth-last-child(2) {
+		margin-bottom: 0;
+	}
 }
 
 /*-------------------------------------------*/
