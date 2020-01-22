@@ -29,6 +29,8 @@ $xl-min: 1200px;
 /*-------------------------------------------*/
 /* .card
 /*-------------------------------------------*/
+/* .card-noborder
+/*-------------------------------------------*/
 /* .media new type
 /*-------------------------------------------*/
 /* .media old type ( Lightning Default )
@@ -349,10 +351,6 @@ $xl-min: 1200px;
 /*-------------------------------------------*/
 .card {
 	overflow: hidden;
-	/* .card.card-noborder にしないと負ける */
-	&.card-noborder {
-		border: none;
-	}
 	&-meta {
 		font-size: 12px;
 	}
@@ -362,6 +360,29 @@ $xl-min: 1200px;
 	}
 	a {
 		color: inherit;
+	}
+}
+
+/*-------------------------------------------*/
+/* .card-noborder
+/*-------------------------------------------*/
+.card-noborder {
+	&.card {
+		/*.card.card-noborder にしないと負ける */
+		border: none;
+	}
+	.card-body {
+		padding-left: 0;
+		padding-right: 0;
+	}
+	&.vk_post-btn-display {
+		.card_body {
+			padding-bottom: 48px;
+		}
+		.vk_post_btnOuter {
+			width: 100%;
+			bottom: 0;
+		}
 	}
 }
 
@@ -396,6 +417,9 @@ $xl-min: 1200px;
 	}
 }
 
+/*-------------------------------------------*/
+/* .card-horizontal
+/*-------------------------------------------*/
 .card-horizontal {
 	&-inner {
 		height: 100%;
