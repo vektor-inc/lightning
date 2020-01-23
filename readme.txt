@@ -35,6 +35,9 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v8.1.0
+* [ Add filter ] vk_post_options
+
 v8.0.1
 * [ OriginII ] design bug fix about bbpress
 
