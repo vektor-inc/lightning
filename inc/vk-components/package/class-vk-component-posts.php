@@ -41,7 +41,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				'body_prepend'               => '',
 				'body_append'                => '',
 			);
-			$return  = wp_parse_args( $options, $default );
+			$return  = apply_filters( 'vk_post_option', wp_parse_args( $options, $default ) );
 			return $return;
 		}
 
