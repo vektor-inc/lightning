@@ -1,3 +1,9 @@
+/*
+このファイルの元ファイルは
+https://github.com/vektor-inc/vektor-wp-libraries
+にあります。修正の際は上記リポジトリのデータを修正してください。
+*/
+
 /* Bootstrap Adjuster */
 $border_primary: 1px solid #e5e5e5;
 $color_font_default: #464646;
@@ -22,6 +28,8 @@ $xl-min: 1200px;
 /* Main section 1 column adjustment
 /*-------------------------------------------*/
 /* .card
+/*-------------------------------------------*/
+/* .card-noborder
 /*-------------------------------------------*/
 /* .media new type
 /*-------------------------------------------*/
@@ -261,6 +269,9 @@ $xl-min: 1200px;
 			bottom: 1.25rem;
 		}
 	}
+	.card-text:nth-last-child(2) {
+		margin-bottom: 0;
+	}
 }
 
 /*-------------------------------------------*/
@@ -340,10 +351,6 @@ $xl-min: 1200px;
 /*-------------------------------------------*/
 .card {
 	overflow: hidden;
-	/* .card.card-noborder にしないと負ける */
-	&.card-noborder {
-		border: none;
-	}
 	&-meta {
 		font-size: 12px;
 	}
@@ -353,6 +360,29 @@ $xl-min: 1200px;
 	}
 	a {
 		color: inherit;
+	}
+}
+
+/*-------------------------------------------*/
+/* .card-noborder
+/*-------------------------------------------*/
+.card-noborder {
+	&.card {
+		/*.card.card-noborder にしないと負ける */
+		border: none;
+	}
+	.card-body {
+		padding-left: 0;
+		padding-right: 0;
+	}
+	&.vk_post-btn-display {
+		.card-body {
+			padding-bottom: 2.8rem;
+		}
+		.vk_post_btnOuter {
+			width: 100%;
+			bottom: 0;
+		}
 	}
 }
 
@@ -387,6 +417,9 @@ $xl-min: 1200px;
 	}
 }
 
+/*-------------------------------------------*/
+/* .card-horizontal
+/*-------------------------------------------*/
 .card-horizontal {
 	&-inner {
 		height: 100%;

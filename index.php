@@ -3,8 +3,8 @@
 <?php
 // Dealing with old files.
 // Actually, it's ok to only use get_template_part().
-/*-------------------------------------------*/
-/* Page Header
+/*
+ Page Header
 /*-------------------------------------------*/
 $old_file_name[] = 'module_pageTit.php';
 if ( locate_template( $old_file_name, false, false ) ) {
@@ -12,8 +12,8 @@ if ( locate_template( $old_file_name, false, false ) ) {
 } else {
 	get_template_part( 'template-parts/page-header' );
 }
-/*-------------------------------------------*/
-/* BreadCrumb
+/*
+ BreadCrumb
 /*-------------------------------------------*/
 $old_file_name[] = 'module_panList.php';
 if ( locate_template( $old_file_name, false, false ) ) {
@@ -32,8 +32,8 @@ if ( locate_template( $old_file_name, false, false ) ) {
 <?php do_action( 'lightning_mainSection_prepend' ); ?>
 
 	<?php
-	/*-------------------------------------------*/
-	/*  Archive title
+	/*
+	  Archive title
 	/*-------------------------------------------*/
 	$archiveTitle_html = '';
 	$page_for_posts    = lightning_get_page_for_posts();
@@ -46,8 +46,8 @@ if ( locate_template( $old_file_name, false, false ) ) {
 	}
 	echo wp_kses_post( apply_filters( 'lightning_mainSection_archiveTitle', $archiveTitle_html ) );
 
-	/*-------------------------------------------*/
-	/*  Archive description
+	/*
+	  Archive description
 	/*-------------------------------------------*/
 	$archiveDescription_html = '';
 	if ( is_category() || is_tax() || is_tag() ) {
@@ -62,7 +62,7 @@ if ( locate_template( $old_file_name, false, false ) ) {
 	$postType = lightning_get_post_type();
 
 	do_action( 'lightning_loop_before' );
-?>
+	?>
 
 <div class="<?php lightning_the_class_name( 'postList' ); ?>">
 

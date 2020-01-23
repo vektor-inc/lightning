@@ -9,20 +9,17 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 
 	class VK_Component_Posts {
 
-		/*-------------------------------------------*/
-		/* Basic method
-		/*-------------------------------------------*/
-		/* Common Parts
-		/*-------------------------------------------*/
-		/* Layout patterns
-		/*-------------------------------------------*/
-		/* UI Helper method
+		/*-------------------------------------------
+		 Basic method
+		 Common Parts
+		 Layout patterns
+		 UI Helper method
 		/*-------------------------------------------*/
 
+		/*
+		 Basic method
 		/*-------------------------------------------*/
-		/* Basic method
-		/*-------------------------------------------*/
-		static public function get_loop_post_view_options( $options ) {
+		public static function get_loop_post_view_options( $options ) {
 			global $vk_components_textdomain;
 			$default = array(
 				'layout'                     => 'card',
@@ -44,15 +41,16 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				'body_prepend'               => '',
 				'body_append'                => '',
 			);
-			$return  = wp_parse_args( $options, $default );
+			$return  = apply_filters( 'vk_post_options', wp_parse_args( $options, $default ) );
 			return $return;
 		}
 
 		/**
 		 * [public description]
+		 *
 		 * @var [type]
 		 */
-		static public function get_view( $post, $options ) {
+		public static function get_view( $post, $options ) {
 
 			$options = self::get_loop_post_view_options( $options );
 
@@ -66,15 +64,16 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			return $html;
 		}
 
-		static public function the_view( $post, $options ) {
+		public static function the_view( $post, $options ) {
 			 echo wp_kses_post( self::get_view( $post, $options ) );
 		}
 
 		/**
 		 * [public description]
+		 *
 		 * @var [type]
 		 */
-		static public function get_loop( $wp_query, $options, $options_loop = array() ) {
+		public static function get_loop( $wp_query, $options, $options_loop = array() ) {
 
 			$options_loop_dafault = array(
 				'class_loop_outer' => '',
@@ -94,33 +93,36 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				while ( $wp_query->have_posts() ) {
 					$wp_query->the_post();
 					global $post;
-					$loop .= VK_Component_Posts::get_view( $post, $options );
+					$loop .= self::get_view( $post, $options );
 				} // while ( have_posts() ) {
 				endif;
 
 				$loop .= '</div>';
 
-			wp_reset_query();
 			wp_reset_postdata();
 			return $loop;
 		}
 
 		/**
 		 * [public description]
+		 *
 		 * @var [type]
 		 */
-		static public function the_loop( $wp_query, $options, $options_loop = array() ) {
+		public static function the_loop( $wp_query, $options, $options_loop = array() ) {
 			echo self::get_loop( $wp_query, $options, $options_loop );
 		}
 
+
+		/*
+		 Common Parts
 		/*-------------------------------------------*/
-		/* Common Parts
-		/*-------------------------------------------*/
+
 		/**
 		 * Common Part _ first DIV
+		 *
 		 * @var [type]
 		 */
-		static public function get_view_first_div( $post, $options ) {
+		public static function get_view_first_div( $post, $options ) {
 			if ( $options['layout'] == 'card-horizontal' ) {
 				$class_outer = 'card card-post card-horizontal';
 			} elseif ( $options['layout'] == 'media' ) {
@@ -140,12 +142,13 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 
 		/**
 		 * Common Part _ post thumbnail
+		 *
 		 * @param  [type] $post    [description]
 		 * @param  [type] $options [description]
 		 * @param  string $class   [description]
 		 * @return [type]          [description]
 		 */
-		static public function get_thumbnail_image( $post, $options, $attr = array() ) {
+		public static function get_thumbnail_image( $post, $options, $attr = array() ) {
 
 			$default = array(
 				'class_outer' => '',
@@ -207,11 +210,12 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 
 		/**
 		 * Common Part _ post body
+		 *
 		 * @var [type]
 		 */
-		static public function get_view_body( $post, $options ) {
+		public static function get_view_body( $post, $options ) {
 			// $default = array(
-			// 	'textlink' => false,
+			// 'textlink' => false,
 			// );
 			// $attr = wp_parse_args( $attr, $default );
 
@@ -280,7 +284,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 
 				// $text_align = '';
 				// if ( $options['btn_align'] == 'right' ) {
-				// 	$text_align = ' text-right';
+				// $text_align = ' text-right';
 				// }
 				$html .= '<div class="vk_post_btnOuter ' . $options['btn_align'] . '">';
 				$html .= VK_Component_Button::get_view( $button_options );
@@ -296,14 +300,17 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			return $html;
 		}
 
+
+		/*
+		 Layout patterns
 		/*-------------------------------------------*/
-		/* Layout patterns
-		/*-------------------------------------------*/
+
 		/**
 		 * Card
+		 *
 		 * @var [type]
 		 */
-		static public function get_view_type_card( $post, $options ) {
+		public static function get_view_type_card( $post, $options ) {
 			$html  = '';
 			$html .= self::get_view_first_div( $post, $options );
 
@@ -321,9 +328,10 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 
 		/**
 		 * Card horizontal
+		 *
 		 * @var [type]
 		 */
-		static public function get_view_type_card_horizontal( $post, $options ) {
+		public static function get_view_type_card_horizontal( $post, $options ) {
 			$html  = '';
 			$html .= self::get_view_first_div( $post, $options );
 			// $html .= '<a href="' . get_the_permalink( $post->ID ) . '" class="card-horizontal-inner">';
@@ -355,9 +363,10 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 
 		/**
 		 * Media
+		 *
 		 * @var [type]
 		 */
-		static public function get_view_type_media( $post, $options ) {
+		public static function get_view_type_media( $post, $options ) {
 			$html  = '';
 			$html .= self::get_view_first_div( $post, $options );
 			if ( $options['display_image'] ) {
@@ -371,7 +380,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			}
 
 			// $attr  = array(
-			// 	'textlink' => true,
+			// 'textlink' => true,
 			// );
 			$html .= self::get_view_body( $post, $options );
 
@@ -379,11 +388,13 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			return $html;
 		}
 
+		/*
+		 UI Helper method
 		/*-------------------------------------------*/
-		/* UI Helper method
-		/*-------------------------------------------*/
+
 		/**
 		 * Convert col-count from inputed column count.
+		 *
 		 * @param  integer $input_col [description]
 		 * @return [type]             [description]
 		 */
@@ -402,6 +413,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 
 		/**
 		 * Get all size col classes
+		 *
 		 * @param  [type] $attributes inputed col numbers array
 		 * @return [type]             [description]
 		 */

@@ -60,6 +60,15 @@ $menu_padding_horizontal: 1.2em;
 		.gMenu_name {
 			font-size: $g_nav_font_size;
 			display: block;
+			/*
+			メニューは
+			・必要なら <br> でユーザーが改行指定できる
+			・幅は自動調整される 
+			ため nowrap 指定の方が表示が安定する
+			本当は & > li にかけていたが、下階層にまでnowrapが効いてしまう現象が発生し、
+			ドロップダウンメニューに被ってしまうため .gMenu_name に移動
+			*/
+			white-space: nowrap;
 		}
 		.gMenu_description {
 			display: block;

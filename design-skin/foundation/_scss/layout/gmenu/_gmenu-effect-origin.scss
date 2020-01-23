@@ -18,7 +18,7 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 		&:before {
 			position: absolute;
 			left: 0;
-			bottom: -1px;
+			bottom: 0;
 			content: "";
 			width: 0;
 			border-bottom: 1px solid $color_key_dark;
@@ -41,7 +41,7 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 		.device-pc &.menu-item-has-children:hover::after,
 		&.acc-parent-open::after {
 			opacity: 1;
-			bottom: -1px;
+			bottom: 1px;
 		}
 
 		&.acc-parent-close::after {
@@ -49,6 +49,13 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 		}
 	}
 
+	/*-------------------------------------------*/
+	/*	2nd only
+	/*-------------------------------------------*/
+	& > li > ul {
+		// The reason for upping it by 1px is that active-border runs off the drop-down menu..
+		margin-top: -1px;
+	}
 	/*-------------------------------------------*/
 	/*	2nd after
     /*-------------------------------------------*/
