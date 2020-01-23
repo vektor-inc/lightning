@@ -41,7 +41,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				'body_prepend'               => '',
 				'body_append'                => '',
 			);
-			$return  = apply_filters( 'vk_post_option', wp_parse_args( $options, $default ) );
+			$return  = apply_filters( 'vk_post_options', wp_parse_args( $options, $default ) );
 			return $return;
 		}
 
@@ -116,7 +116,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 		/*
 		 Common Parts
 		/*-------------------------------------------*/
-		
+
 		/**
 		 * Common Part _ first DIV
 		 *
