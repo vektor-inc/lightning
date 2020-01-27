@@ -37,7 +37,7 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
     .gMenu_outer {
         right: 0;
         float: right;
-        width: unset;
+        width: auto; /* unset だとIE11で無効になるのでautoに */
         min-height: 4em; /* キャプション無し用 */
         display: table; /* キャプション無しの時に上下中央になるように */
     }
