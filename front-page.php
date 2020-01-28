@@ -66,6 +66,7 @@ if ( $bootstrap == '3' ) {
 						 * Actually, it's ok to only use get_template_part().
 						 * It is measure for before version 7.0 that loaded module_loop_***.php.
 						 */
+						$postType = lightning_get_post_type();
 						$old_file_name[] = 'module_loop_' . $postType['slug'] . '.php';
 						$old_file_name[] = 'module_loop_post.php';
 						$require_once    = false;
