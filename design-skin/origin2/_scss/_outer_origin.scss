@@ -8,162 +8,162 @@ $border_horizontal: 1px solid rgba(0, 0, 0, 0.15);
 .widget_search form div,
 .widget_display_search form div,
 .widget_product_search form {
-    input#s,
-    input#bbp_search,
-    input.search-field {
-        border-radius: 4px;
-    }
+	input#s,
+	input#bbp_search,
+	input.search-field {
+		border-radius: 4px;
+	}
 
-    input#searchsubmit,
-    input#bbp_search_submit,
-    button {
-        border-radius: 4px;
-    }
+	input#searchsubmit,
+	input#bbp_search_submit,
+	button {
+		border-radius: 4px;
+	}
 }
 
 @media (max-width: 991px) {
-    .headerTop {
-        .headerTop .headerTop_tel_wrap {
-            color: #464646;
-        }
+	.headerTop {
+		.headerTop .headerTop_tel_wrap {
+			color: #464646;
+		}
 
-        ul {
-            border-top: $border_horizontal;
-        }
+		ul {
+			border-top: $border_horizontal;
+		}
 
-        ul a {
-            color: #464646;
-            border-bottom: $border_horizontal;
-        }
-    }
+		ul a {
+			color: #464646;
+			border-bottom: $border_horizontal;
+		}
+	}
 
-    // ul.gMenu { border-top:$border_horizontal }
-    // ul.gMenu a { border-bottom:$border_horizontal; }
+	// ul.gMenu { border-top:$border_horizontal }
+	// ul.gMenu a { border-bottom:$border_horizontal; }
 } // @media (max-width: 991px){
 
 .siteHeader {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
-
 
 /*-------------------------------------------*/
 /* .page-header
 /*-------------------------------------------*/
 .page-header {
-    background-color: $color_key;
-    color: #fff;
+	background-color: $color_key;
+	color: #fff;
 }
 
 /*-------------------------------------------*/
 /*	.breadSection
 /*-------------------------------------------*/
 .breadSection {
-    .breadcrumb {
-        li {
-            line-height: 1.2;
-        }
+	.breadcrumb {
+		li {
+			line-height: 1.2;
+		}
 
-        a {
-            color: $color_font_light;
-            padding-bottom: 2px;
-        }
+		a {
+			color: $color_font_light;
+			padding-bottom: 2px;
+		}
 
-        a:hover {
-            border-bottom: 1px solid $color_font_light;
-            text-decoration: none;
-        }
+		a:hover {
+			border-bottom: 1px solid $color_font_light;
+			text-decoration: none;
+		}
 
-        & > li + li:before {
-            content: "/";
-            margin-left: 0.5em;
-            margin-right: 0.5em;
-            font-size: 12px;
-        }
-    }
+		& > li + li:before {
+			content: "/";
+			margin-left: 0.5em;
+			margin-right: 0.5em;
+			font-size: 12px;
+		}
+	}
 }
 
 /*-------------------------------------------*/
 /* .pagination
 /*-------------------------------------------*/
 ul.page-numbers {
-    li:first-child > .page-numbers {
-        border-top-left-radius: 4px;
-        border-bottom-left-radius: 4px;
-    }
+	li:first-child > .page-numbers {
+		border-top-left-radius: 4px;
+		border-bottom-left-radius: 4px;
+	}
 
-    li:last-child > .page-numbers {
-        border-top-right-radius: 4px;
-        border-bottom-right-radius: 4px;
-    }
+	li:last-child > .page-numbers {
+		border-top-right-radius: 4px;
+		border-bottom-right-radius: 4px;
+	}
 }
 
 /*-------------------------------------------*/
 /* footer
 /*-------------------------------------------*/
 .siteFooter {
-    border-top: 3px solid #337ab7;
-    background-color: #f9f9f9;
+	border-top: 3px solid #337ab7;
+	background-color: #f9f9f9;
 }
 
 /*-------------------------------------------*/
 /*      .tagcloud
 /*-------------------------------------------*/
 .widget .tagcloud a {
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    background-color: rgba(255, 255, 255, 0.9);
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	background-color: rgba(255, 255, 255, 0.9);
 }
 
 footer.siteFooter .widget .tagcloud a {
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    background-color: rgba(255, 255, 255, 0.8);
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	background-color: rgba(255, 255, 255, 0.8);
 }
 
 /*-------------------------------------------*/
 /*      .veu_sitemap
 /*-------------------------------------------*/
 .veu_sitemap {
-    h4 {
-        padding: 0.2em 1em;
-        font-size: 18px;
-    }
+	h4 {
+		padding: 0.2em 1em;
+		font-size: 18px;
+	}
 
-    h5 {
-        margin: 1em 1em;
-        padding: 0 0 3px;
-        font-size: 18px;
-    }
+	h5 {
+		margin: 1em 1em;
+		padding: 0 0 3px;
+		font-size: 18px;
+	}
 
-    a {
-        color: $color_font_default;
-    }
+	a {
+		color: $color_font_default;
+	}
 
-    & > ul {}
+	& > ul {
+	}
 
-    ul {
-        margin-left: 1em;
-        padding-left: 0;
-        list-style: none;
+	ul {
+		margin-left: 1em;
+		padding-left: 0;
+		list-style: none;
 
-        li {
-            list-style: none;
-        }
+		li {
+			list-style: none;
+		}
 
-        & > li > a {
-            position: relative;
-            padding-left: 1.2em;
+		& > li > a {
+			position: relative;
+			padding-left: 1.2em;
 
-            &:before {
-                display: block;
-                position: absolute;
-                top: 50%;
-                left: 0.5em;
-                transform: translateY(-65%);
-                font-size: 10px;
-                line-height: 1em;
-                font-family: "メイリオ", Meiryo, sans-serif;
-                content: "≫";
-                margin-right: 0.5em;
-            }
-        }
-    }
+			&:before {
+				display: block;
+				position: absolute;
+				top: 50%;
+				left: 0.5em;
+				transform: translateY(-65%);
+				font-size: 10px;
+				line-height: 1em;
+				font-family: "メイリオ", Meiryo, sans-serif;
+				content: "≫";
+				margin-right: 0.5em;
+			}
+		}
+	}
 }
