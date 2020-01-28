@@ -61,13 +61,25 @@ if ( $bootstrap == '3' ) {
 					<div class="postList">
 
 						<?php
+						/**
+						 * Dealing with old files
+						 * Actually, it's ok to only use get_template_part().
+						 * It is measure for before version 7.0 that loaded module_loop_***.php.
+						 */
+						$old_file_name[] = 'module_loop_' . $postType['slug'] . '.php';
+						$old_file_name[] = 'module_loop_post.php';
+						$require_once    = false;
+
 						while ( have_posts() ) :
 							the_post();
-							?>
 
-							<?php get_template_part( 'module_loop_post' ); ?>
+							if ( locate_template( $old_file_name, false, $require_once ) ) {
+								locate_template( $old_file_name, true, $require_once );
+							} else {
+								get_template_part( 'template-parts/post/loop', $postType['slug'] );
+							}
 
-						<?php endwhile; ?>
+						endwhile; ?>
 
 						<?php
 						the_posts_pagination(
