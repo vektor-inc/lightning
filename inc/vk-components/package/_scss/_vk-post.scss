@@ -370,6 +370,10 @@ $xl-min: 1200px;
 	&.card {
 		/*.card.card-noborder にしないと負ける */
 		border: none;
+		background: none;
+	}
+	.vk_post_imgOuter {
+		border: none;
 	}
 	.card-body {
 		padding-left: 0;
