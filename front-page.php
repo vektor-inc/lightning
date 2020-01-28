@@ -31,27 +31,27 @@ if ( $bootstrap == '3' ) {
 
 			<?php if ( apply_filters( 'is_lightning_home_content_display', true ) ) : ?>
 
-			<?php if ( have_posts() ) : ?>
+				<?php if ( have_posts() ) : ?>
 
-				<?php if ( 'page' == get_option( 'show_on_front' ) ) : ?>
+					<?php if ( 'page' == get_option( 'show_on_front' ) ) : ?>
 
-					<?php
-					while ( have_posts() ) :
-						the_post();
-?>
+						<?php
+						while ( have_posts() ) :
+							the_post();
+							?>
 
 						<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 						<div class="entry-body">
 							<?php the_content(); ?>
 						</div>
-						<?php
-						wp_link_pages(
-							array(
-								'before' => '<div class="page-link">' . 'Pages:',
-								'after'  => '</div>',
-							)
-						);
-?>
+							<?php
+							wp_link_pages(
+								array(
+									'before' => '<div class="page-link">' . 'Pages:',
+									'after'  => '</div>',
+								)
+							);
+							?>
 						 </article><!-- [ /#post-<?php the_ID(); ?> ] -->
 
 					<?php endwhile; ?>
@@ -63,7 +63,7 @@ if ( $bootstrap == '3' ) {
 						<?php
 						while ( have_posts() ) :
 							the_post();
-?>
+							?>
 
 							<?php get_template_part( 'module_loop_post' ); ?>
 
@@ -79,7 +79,7 @@ if ( $bootstrap == '3' ) {
 								'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'lightning' ) . ' </span>',
 							)
 						);
-							?>
+						?>
 
 					</div><!-- [ /.postList ] -->
 
