@@ -176,9 +176,9 @@ gulp.task('dist_foundation', function (done) {
 // Watch
 gulp.task('watch', function (done) {
   gulp.watch(['./inc/vk-components/*.php'], gulp.series('components_copy'));
-  gulp.watch(['./inc/vk-components/**/*.scss'], gulp.series('sass_common'));
+  gulp.watch(['./assets/_scss/**','./inc/vk-mobile-nav/package/css/**','./inc/vk-components/**/*.css'], gulp.series('sass_common'));
   gulp.watch(['./assets/js/**', './inc/vk-mobile-nav/package/js/**'], gulp.series('js_build'));
-  gulp.watch(['./assets/_scss/**', './inc/woocommerce/_scss/**'], gulp.series('sass_woo'));
+  gulp.watch(['./inc/woocommerce/_scss/**'], gulp.series('sass_woo'));
   gulp.watch(['./library/bootstrap-4/scss/**.scss'], gulp.series('sass_bs4'));
   gulp.watch(['./design-skin/origin/_scss/**/*.scss'], gulp.series('sass_skin'));
   gulp.watch(['./design-skin/origin2/_scss/**/*.scss'], gulp.series('sass_skin2'));
