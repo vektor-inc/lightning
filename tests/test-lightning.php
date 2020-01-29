@@ -21,9 +21,9 @@ class LightningTest extends WP_UnitTestCase {
 		print '------------------------------------' . PHP_EOL;
 		$test_array = array(
 			// array(
-			// 	'options'   => array(), // フィールド自体が存在しない場合にサンプル画像を返す
-			// 	'check_key' => 'top_slide_image_1',
-			// 	'correct'   => get_template_directory_uri() . '/assets/images/top_image_1.jpg',
+			// 'options'   => array(), // フィールド自体が存在しない場合にサンプル画像を返す
+			// 'check_key' => 'top_slide_image_1',
+			// 'correct'   => get_template_directory_uri() . '/assets/images/top_image_1.jpg',
 			// ),
 			array(
 				'options'   => array(
@@ -40,30 +40,30 @@ class LightningTest extends WP_UnitTestCase {
 				'correct'   => '',
 			),
 			// array(
-			// 	'options'   => array(
-			// 		'top_slide_image_1' => 'http://aaa.com/sample.jpg',
-			// 	),
-			// 	'check_key' => 'top_slide_image_1',
-			// 	'correct'   => 'http://aaa.com/sample.jpg',
+			// 'options'   => array(
+			// 'top_slide_image_1' => 'http://aaa.com/sample.jpg',
+			// ),
+			// 'check_key' => 'top_slide_image_1',
+			// 'correct'   => 'http://aaa.com/sample.jpg',
 			// ),
 			// array(
-			// 	'options'   => array(),
-			// 	'check_key' => 'top_slide_text_title_1',
-			// 	'correct'   => __( 'Simple and Customize easy <br>WordPress theme.', 'lightning' ),
+			// 'options'   => array(),
+			// 'check_key' => 'top_slide_text_title_1',
+			// 'correct'   => __( 'Simple and Customize easy <br>WordPress theme.', 'lightning' ),
 			// ),
 			// array(
-			// 	'options'   => array(
-			// 		'top_slide_text_title_1' => null,
-			// 	),
-			// 	'check_key' => 'top_slide_text_title_1',
-			// 	'correct'   => '',
+			// 'options'   => array(
+			// 'top_slide_text_title_1' => null,
+			// ),
+			// 'check_key' => 'top_slide_text_title_1',
+			// 'correct'   => '',
 			// ),
 			// array(
-			// 	'options'   => array(
-			// 		'top_slide_text_title_1' => '',
-			// 	),
-			// 	'check_key' => 'top_slide_text_title_1',
-			// 	'correct'   => '',
+			// 'options'   => array(
+			// 'top_slide_text_title_1' => '',
+			// ),
+			// 'check_key' => 'top_slide_text_title_1',
+			// 'correct'   => '',
 			// ),
 		);
 		// 操作前のオプション値を取得
@@ -91,8 +91,8 @@ class LightningTest extends WP_UnitTestCase {
 	function test_lightning_top_slide_count() {
 		$test_array = array(
 			// array(
-			// 	'options' => array(),
-			// 	'correct' => 3,
+			// 'options' => array(),
+			// 'correct' => 3,
 			// ),
 			array(
 				'options' => array(
@@ -298,7 +298,8 @@ class LightningTest extends WP_UnitTestCase {
 			$this->assertEquals( $value['correct'], $return );
 		}
 
-		/* テスト前の値に戻す
+		/*
+		 テスト前の値に戻す
 		/*--------------------------------*/
 		update_option( 'lightning_theme_options', $before_options );
 		update_option( 'page_on_front', $before_page_on_front );
@@ -318,22 +319,22 @@ class LightningTest extends WP_UnitTestCase {
 		$before_show_on_front  = get_option( 'show_on_front' ); // トップページ指定するかどうか page or posts
 
 		// Create test category
-		$catarr = array(
+		$catarr  = array(
 			'cat_name' => 'test_category',
 		);
 		$cate_id = wp_insert_category( $catarr );
 
 		// Create test post
 		$post    = array(
-			'post_title'   => 'test',
-			'post_status'  => 'publish',
-			'post_content' => 'content',
+			'post_title'    => 'test',
+			'post_status'   => 'publish',
+			'post_content'  => 'content',
 			'post_category' => array( $cate_id ),
 		);
 		$post_id = wp_insert_post( $post );
 
 		// Create test home page
-		$post    = array(
+		$post         = array(
 			'post_title'   => 'post_top',
 			'post_type'    => 'page',
 			'post_status'  => 'publish',
@@ -342,109 +343,111 @@ class LightningTest extends WP_UnitTestCase {
 		$home_page_id = wp_insert_post( $post );
 
 		// Create test home page
-		$post    = array(
+		$post          = array(
 			'post_title'   => 'front_page',
 			'post_type'    => 'page',
 			'post_status'  => 'publish',
 			'post_content' => 'content',
 		);
 		$front_page_id = wp_insert_post( $post );
-		update_option( 'page_on_front', $front_page_id); // フロントに指定する固定ページ
-		update_option( 'page_for_posts', $home_page_id); // 投稿トップに指定する固定ページ
-		update_option( 'show_on_front', 'page'); // or posts
+		update_option( 'page_on_front', $front_page_id ); // フロントに指定する固定ページ
+		update_option( 'page_for_posts', $home_page_id ); // 投稿トップに指定する固定ページ
+		update_option( 'show_on_front', 'page' ); // or posts
 
-		/* Test Array
+		/*
+		 Test Array
 		/*--------------------------------*/
 		$test_array = array(
 			// Front page
 			array(
-				'options' => array(
+				'options'     => array(
 					'layout' => array(
 						'front-page' => 'col-one',
 					),
 				),
 				'post_custom' => '',
-				'target_url' => home_url( '/' ),
-				'correct' => true,
+				'target_url'  => home_url( '/' ),
+				'correct'     => true,
 			),
 			// Search
 			array(
-				'options' => array(
+				'options'     => array(
 					'layout' => array(
 						'search' => 'col-one',
 					),
 				),
 				'post_custom' => '',
-				'target_url' => home_url( '/' ).'?s=aaa',
-				'correct' => true,
+				'target_url'  => home_url( '/' ) . '?s=aaa',
+				'correct'     => true,
 			),
 			// 404
 			array(
-				'options' => array(
+				'options'     => array(
 					'layout' => array(
 						'error404' => 'col-one',
 					),
 				),
 				'post_custom' => '',
-				'target_url' => home_url( '/' ) . '?name=abcdefg',
-				'correct' => true,
+				'target_url'  => home_url( '/' ) . '?name=abcdefg',
+				'correct'     => true,
 			),
 			// Category
 			array(
-				'options' => array(
+				'options'     => array(
 					'layout' => array(
 						'archive' => 'col-one',
 					),
 				),
 				'post_custom' => '',
-				'target_url' => get_term_link( $cate_id ),
-				'correct' => true,
+				'target_url'  => get_term_link( $cate_id ),
+				'correct'     => true,
 			),
 			// Post home
 			array(
-				'page_type' => 'home',
-				'options' => array(
+				'page_type'   => 'home',
+				'options'     => array(
 					'layout' => array(
 						'archive' => 'col-one',
 					),
 				),
 				'post_custom' => '',
-				'target_url' => get_permalink( get_option( 'page_for_posts' ) ),
-				'correct' => true,
+				'target_url'  => get_permalink( get_option( 'page_for_posts' ) ),
+				'correct'     => true,
 			),
 			// Single
 			array(
-				'page_type' => 'single',
-				'options' => array(
+				'page_type'   => 'single',
+				'options'     => array(
 					'layout' => array(
 						'single' => 'col-one',
 					),
 				),
 				'post_custom' => '',
-				'target_url' => get_permalink( $post_id ),
-				'correct' => true,
+				'target_url'  => get_permalink( $post_id ),
+				'correct'     => true,
 			),
 		);
 
-		foreach( $test_array as $value ){
+		foreach ( $test_array as $value ) {
 			$options = $value['options'];
-			update_option('lightning_theme_options', $options );
+			update_option( 'lightning_theme_options', $options );
 
 			// Move to test page
 			$this->go_to( $value['target_url'] );
 
 			$return = lightning_is_layout_onecolumn();
-			print 'url     :' . $_SERVER["REQUEST_URI"] . PHP_EOL;
+			print 'url     :' . $_SERVER['REQUEST_URI'] . PHP_EOL;
 			print 'return  :' . $return . PHP_EOL;
 			print 'correct :' . $value['correct'] . PHP_EOL;
 			$this->assertEquals( $value['correct'], $return );
 		}
 
-		/* テスト前の値に戻す
+		/*
+		 テスト前の値に戻す
 		/*--------------------------------*/
 		wp_delete_post( $post_id );
 		wp_delete_post( $home_page_id );
-		$cate_id = wp_delete_category($catarr);
+		$cate_id = wp_delete_category( $catarr );
 		update_option( 'lightning_theme_options', $before_option );
 		update_option( 'page_for_posts', $before_page_for_posts );
 		update_option( 'page_on_front', $before_page_on_front );
