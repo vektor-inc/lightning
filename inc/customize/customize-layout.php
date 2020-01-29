@@ -23,10 +23,10 @@ function lightning_customize_register_layout( $wp_customize ) {
 	$wp_customize->add_control(
 		new Custom_Html_Control(
 			$wp_customize, 'ltg_column_setting', array(
-				'label'            => '',
+				'label'            => __( 'Column Setting', 'lightning' ) . ' ( ' . __( 'PC mode', 'lightning' ).' )',
 				'section'          => 'lightning_layout',
 				'type'             => 'text',
-				'custom_title_sub' => __( 'Column Setting', 'lightning' ) . ' ( ' . __( 'PC mode', 'lightning' ).' )',
+				'custom_title_sub' => '',
 				'custom_html'      => '',
 				// 'priority'         => 700,
 			)
@@ -82,6 +82,24 @@ function lightning_customize_register_layout( $wp_customize ) {
 		);
 	}
 
+	$wp_customize->add_setting(
+		'ltg_sidebar_setting', array(
+			'sanitize_callback' => 'sanitize_text_field',
+		)
+	);
+	$wp_customize->add_control(
+		new Custom_Html_Control(
+			$wp_customize, 'ltg_sidebar_setting', array(
+				'label'            => __( 'Sidebar Setting', 'lightning' ),
+				'section'          => 'lightning_layout',
+				'type'             => 'text',
+				'custom_title_sub' => '',
+				'custom_html'      => '',
+				// 'priority'         => 700,
+			)
+		)
+	);
+
 	// sidebar_position
 	$wp_customize->add_setting(
 		'lightning_theme_options[sidebar_position]', array(
@@ -101,11 +119,26 @@ function lightning_customize_register_layout( $wp_customize ) {
 				'right' => __( 'Right', 'lightning' ),
 				'left'  => __( 'Left', 'lightning' ),
 			),
-			'priority' => 700,
 		)
 	);
 
 	// sidebar_fix
+	$wp_customize->add_setting(
+		'ltg_sidebar_fix_setting_title', array(
+			'sanitize_callback' => 'sanitize_text_field',
+		)
+	);
+	$wp_customize->add_control(
+		new Custom_Html_Control(
+			$wp_customize, 'ltg_sidebar_fix_setting_title', array(
+				'label'            => '',
+				'section'          => 'lightning_layout',
+				'type'             => 'text',
+				'custom_title_sub' => __( 'Sidebar fix', 'lightning' ),
+				'custom_html'      => '',
+			)
+		)
+	);
 	$wp_customize->add_setting(
 		'lightning_theme_options[sidebar_fix]', array(
 			'default'           => false,
@@ -120,7 +153,6 @@ function lightning_customize_register_layout( $wp_customize ) {
 			'section'  => 'lightning_layout',
 			'settings' => 'lightning_theme_options[sidebar_fix]',
 			'type'     => 'checkbox',
-			'priority' => 700,
 		)
 	);
 	$wp_customize->selective_refresh->add_partial(
@@ -129,5 +161,50 @@ function lightning_customize_register_layout( $wp_customize ) {
 			'render_callback' => '',
 		)
 	);
+
+	$wp_customize->add_setting(
+		'ltg_sidebar_display_setting_title', array(
+			'sanitize_callback' => 'sanitize_text_field',
+		)
+	);
+	$wp_customize->add_control(
+		new Custom_Html_Control(
+			$wp_customize, 'ltg_sidebar_display_setting_title', array(
+				'label'            => '',
+				'section'          => 'lightning_layout',
+				'type'             => 'text',
+				'custom_title_sub' => __( 'Sidebar display', 'lightning' ) . ' ( ' . __( 'One-column mode', 'lightning' ).' )',
+				'custom_html'      => '<p>Sidebar display setting of case of one-column.</p>',
+			)
+		)
+	);
+
+	$choices = array(
+		'break' => __( 'Display to under the Main Section', 'lightning-pro' ),
+		'hidden' => __( 'Do not display', 'lightning-pro' ),
+	);
+
+	foreach( $page_types as $key => $value ){
+		$wp_customize->add_setting(
+			'lightning_theme_options[sidebar_display][' . $key . ']', array(
+				'default'           => 'break',
+				'type'              => 'option',
+				'capability'        => 'edit_theme_options',
+				'sanitize_callback' => 'sanitize_text_field',
+			)
+		);
+	
+		$wp_customize->add_control(
+			'lightning_theme_options[sidebar_display][' . $key . ']',
+			array(
+				'label'    => $value['label'],
+				'section'  => 'lightning_layout',
+				'settings' => 'lightning_theme_options[sidebar_display][' . $key . ']',
+				'type'     => 'select',
+				'choices'  => $choices,
+				// 'priority' => 700,
+			)
+		);
+	}
 
 }
