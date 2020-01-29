@@ -362,17 +362,7 @@ class LightningTest extends WP_UnitTestCase {
 			array(
 				'options'     => array(
 					'layout' => array(
-						'front-page' => 'col-one_side-br',
-					),
-				),
-				'post_custom' => '',
-				'target_url'  => home_url( '/' ),
-				'correct'     => true,
-			),
-			array(
-				'options'     => array(
-					'layout' => array(
-						'front-page' => 'col-one_side-hide',
+						'front-page' => 'col-one',
 					),
 				),
 				'post_custom' => '',
@@ -405,7 +395,7 @@ class LightningTest extends WP_UnitTestCase {
 			array(
 				'options'     => array(
 					'layout' => array(
-						'search' => 'col-one_side-br',
+						'search' => 'col-one',
 					),
 				),
 				'post_custom' => '',
@@ -416,7 +406,7 @@ class LightningTest extends WP_UnitTestCase {
 			array(
 				'options'     => array(
 					'layout' => array(
-						'error404' => 'col-one_side-br',
+						'error404' => 'col-one',
 					),
 				),
 				'post_custom' => '',
@@ -427,7 +417,7 @@ class LightningTest extends WP_UnitTestCase {
 			array(
 				'options'     => array(
 					'layout' => array(
-						'archive' => 'col-one_side-br',
+						'archive' => 'col-one',
 					),
 				),
 				'post_custom' => '',
@@ -439,7 +429,7 @@ class LightningTest extends WP_UnitTestCase {
 				'page_type'   => 'home',
 				'options'     => array(
 					'layout' => array(
-						'archive' => 'col-one_side-br',
+						'archive' => 'col-one',
 					),
 				),
 				'post_custom' => '',
@@ -451,7 +441,7 @@ class LightningTest extends WP_UnitTestCase {
 				'page_type'   => 'single',
 				'options'     => array(
 					'layout' => array(
-						'single' => 'col-one_side-br',
+						'single' => 'col-one',
 					),
 				),
 				'post_custom' => '',

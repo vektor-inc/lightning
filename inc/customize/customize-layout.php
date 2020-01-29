@@ -56,8 +56,7 @@ function lightning_customize_register_layout( $wp_customize ) {
 	$choices = array(
 		'default' => __( 'Unspecified', 'lightning-pro' ),
 		'col-two' => __( 'Two colmun', 'lightning-pro' ),
-		'col-one_side-br' => __( 'One column ( Sidebar break )', 'lightning-pro' ),
-		'col-one_side-hide' => __( 'One column ( Sidebar hidden )', 'lightning-pro' ),
+		'col-one' => __( 'One column', 'lightning-pro' ),
 	);
 
 	foreach( $page_types as $key => $value ){

@@ -427,14 +427,6 @@ function lightning_is_frontpage_onecolumn() {
 	return false;
 }
 
-function lightning_is_layout_onecolumn_from_side_setting( $options, $page ){
-	$return = false;
-	if ( $options['layout'][$page] === 'col-one_side-br' || $options['layout'][$page] === 'col-one_side-hide' ){
-		$return = true;
-	}
-	return $return;
-}
-
 /*
   lightning_is_layout_onecolumn
 /*-------------------------------------------*/
@@ -445,32 +437,32 @@ function lightning_is_layout_onecolumn() {
 	global $wp_query;
 	if (  is_front_page() ){
 		// echo 'DEBUG━━━━━━━━━━━ is_front_page ━━━━━━━━━'."<br>\n";
-		if ( isset( $options['layout']['front-page'] ) && lightning_is_layout_onecolumn_from_side_setting( $options, 'front-page' ) ){
+		if ( isset( $options['layout']['front-page'] ) && $options['layout']['front-page'] === 'col-one' ){
 			$onecolumn = true;
 		} 
 	} else if ( is_404() ) {
 		// echo 'DEBUG━━━━━━━━━━━ is_404 ━━━━━━━━━'."<br>\n";
-		if ( isset( $options['layout']['error404'] ) && lightning_is_layout_onecolumn_from_side_setting( $options, 'error404' ) ){
+		if ( isset( $options['layout']['error404'] ) && $options['layout']['error404'] === 'col-one' ){
 			$onecolumn = true;
 		} 
 	} else if ( is_search() ) {
 		// echo 'DEBUG━━━━━━━━━━━ is_search ━━━━━━━━━'."<br>\n";
-		if ( isset( $options['layout']['search'] ) && lightning_is_layout_onecolumn_from_side_setting( $options, 'search' ) ){
+		if ( isset( $options['layout']['search'] ) && $options['layout']['search'] === 'col-one' ){
 			$onecolumn = true;
 		}
 	} else if ( is_home() && ! is_front_page() ) {
 		// echo 'DEBUG━━━━━━━━━━━ is_home() && ! is_front_page() ━━━━━━━━━'."<br>\n";
-		if ( isset( $options['layout']['archive'] ) && lightning_is_layout_onecolumn_from_side_setting( $options, 'archive' ) ){
+		if ( isset( $options['layout']['archive'] ) && $options['layout']['archive'] === 'col-one' ){
 			$onecolumn = true;
 		} 
 	} else if ( is_category() ) {
 		// echo 'DEBUG━━━━━━━━━━━ is_category ━━━━━━━━━'."<br>\n";
-		if ( isset( $options['layout']['archive'] ) && lightning_is_layout_onecolumn_from_side_setting( $options, 'archive' ) ){
+		if ( isset( $options['layout']['archive'] ) && $options['layout']['archive'] === 'col-one' ){
 			$onecolumn = true;
 		} 
 	} else if ( is_single() ) {
 		// echo 'DEBUG━━━━━━━━━━━ is_single ━━━━━━━━━'."<br>\n";
-		if ( isset( $options['layout']['single'] ) && lightning_is_layout_onecolumn_from_side_setting( $options, 'single' ) ){
+		if ( isset( $options['layout']['single'] ) && $options['layout']['single'] === 'col-one' ){
 			$onecolumn = true;
 		}
 	}
