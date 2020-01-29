@@ -151,7 +151,7 @@ gulp.task('js_build', function (done) {
     './assets/js/_header_fixed.js',
     './assets/js/_sidebar-fixed.js',
     './assets/js/_vk-prlx.min.js',
-    './inc/vk-mobile-nav/package/js/vk-mobile-nav.min.js',
+    './inc/vk-mobile-nav/package/js/vk-mobile-nav.js',
   ])
     .pipe(concat('lightning.js'))
     .pipe(jsmin())
