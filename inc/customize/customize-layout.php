@@ -56,7 +56,8 @@ function lightning_customize_register_layout( $wp_customize ) {
 	$choices = array(
 		'default' => __( 'Unspecified', 'lightning-pro' ),
 		'col-two' => __( 'Two colmun', 'lightning-pro' ),
-		'col-one' => __( 'One column', 'lightning-pro' ),
+		'col-one_side-br' => __( 'One column ( Sidebar break )', 'lightning-pro' ),
+		'col-one_side-hide' => __( 'One column ( Sidebar hidden )', 'lightning-pro' ),
 	);
 
 	foreach( $page_types as $key => $value ){
@@ -147,25 +148,6 @@ function lightning_customize_register_layout( $wp_customize ) {
 				'custom_html'      => '',
 				'priority'         => 700,
 			)
-		)
-	);
-	// top_sidebar_hidden
-	$wp_customize->add_setting(
-		'lightning_theme_options[top_sidebar_hidden]', array(
-			'default'           => false,
-			'type'              => 'option',
-			'capability'        => 'edit_theme_options',
-			'sanitize_callback' => 'lightning_sanitize_checkbox',
-		)
-	);
-	$wp_customize->add_control(
-		'lightning_theme_options[top_sidebar_hidden]', array(
-			'label'       => __( 'Don\'t show sidebar on home page', 'lightning' ),
-			'section'     => 'lightning_layout',
-			'settings'    => 'lightning_theme_options[top_sidebar_hidden]',
-			'type'        => 'checkbox',
-			'priority'    => 700,
-			'description' => __( '* Even if there is no check here, if the page template specified on the top page is "without sidebar", it will be 1 column.', 'lightning' ),
 		)
 	);
 

@@ -1,11 +1,11 @@
 <?php
 
 /*
- * cd /app
- * bash setup-phpunit.sh
- * source ~/.bashrc
- * cd $(wp theme path --dir lightning)
- * phpunit
+cd /app
+bash setup-phpunit.sh
+source ~/.bashrc
+cd $(wp theme path --dir lightning)
+phpunit
 */
 
 class LightningTest extends WP_UnitTestCase {
@@ -362,18 +362,50 @@ class LightningTest extends WP_UnitTestCase {
 			array(
 				'options'     => array(
 					'layout' => array(
-						'front-page' => 'col-one',
+						'front-page' => 'col-one_side-br',
 					),
 				),
 				'post_custom' => '',
 				'target_url'  => home_url( '/' ),
 				'correct'     => true,
 			),
+			array(
+				'options'     => array(
+					'layout' => array(
+						'front-page' => 'col-one_side-hide',
+					),
+				),
+				'post_custom' => '',
+				'target_url'  => home_url( '/' ),
+				'correct'     => true,
+			),
+			// Front page _ old one column setting
+			// array(
+			// 	'options'     => array(
+			// 		'top_sidebar_hidden' => true,
+			// 	),
+			// 	'post_custom' => '',
+			// 	'target_url'  => home_url( '/' ),
+			// 	'correct'     => true,
+			// ),
+			// Front page _ old one column setting
+			// トップ１カラム指定が古い状態で万が一残ってたとしても新しい設定が2カラムなら2カラムにする
+			// array(
+			// 	'options'     => array(
+			// 		'top_sidebar_hidden' => true,
+			// 		'layout' => array(
+			// 			'front-page' => 'col-two',
+			// 		),
+			// 	),
+			// 	'post_custom' => '',
+			// 	'target_url'  => home_url( '/' ),
+			// 	'correct'     => false,
+			// ),
 			// Search
 			array(
 				'options'     => array(
 					'layout' => array(
-						'search' => 'col-one',
+						'search' => 'col-one_side-br',
 					),
 				),
 				'post_custom' => '',
@@ -384,7 +416,7 @@ class LightningTest extends WP_UnitTestCase {
 			array(
 				'options'     => array(
 					'layout' => array(
-						'error404' => 'col-one',
+						'error404' => 'col-one_side-br',
 					),
 				),
 				'post_custom' => '',
@@ -395,7 +427,7 @@ class LightningTest extends WP_UnitTestCase {
 			array(
 				'options'     => array(
 					'layout' => array(
-						'archive' => 'col-one',
+						'archive' => 'col-one_side-br',
 					),
 				),
 				'post_custom' => '',
@@ -407,7 +439,7 @@ class LightningTest extends WP_UnitTestCase {
 				'page_type'   => 'home',
 				'options'     => array(
 					'layout' => array(
-						'archive' => 'col-one',
+						'archive' => 'col-one_side-br',
 					),
 				),
 				'post_custom' => '',
@@ -419,7 +451,7 @@ class LightningTest extends WP_UnitTestCase {
 				'page_type'   => 'single',
 				'options'     => array(
 					'layout' => array(
-						'single' => 'col-one',
+						'single' => 'col-one_side-br',
 					),
 				),
 				'post_custom' => '',
