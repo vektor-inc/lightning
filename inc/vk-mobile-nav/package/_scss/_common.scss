@@ -62,13 +62,11 @@ body.device-mobile {
 	height: 34px;
 	cursor: pointer;
 	text-indent: -9999px;
-	background: url("../images/vk-menu-btn-black.svg") center 50% no-repeat;
 	background-size: 24px 24px;
 	transition: border-color $time_transition ease-out;
 }
 .vk-mobile-nav-menu-btn.menu-open {
 	border: 1px solid $color_font_default;
-	background: url("../images/vk-menu-close-black.svg") center 50% no-repeat;
 }
 
 /* 現状 .mobile-nav-btn-right は AdvUnit より body class に追加している */

@@ -75,17 +75,18 @@ if ( locate_template( $old_file_name, false, false ) ) {
 	<?php } else { ?>
 
 		<?php
+		/**
+		 * Dealing with old files
+		 * Actually, it's ok to only use get_template_part().
+		 * It is measure for before version 7.0 that loaded module_loop_***.php.
+		 */
+		$old_file_name[] = 'module_loop_' . $postType['slug'] . '.php';
+		$old_file_name[] = 'module_loop_post.php';
+		$require_once    = false;
+
 		while ( have_posts() ) {
 			the_post();
 
-			/**
-			 * Dealing with old files
-			 * Actually, it's ok to only use get_template_part().
-			 * It is measure for before version 7.0 that loaded module_loop_***.php.
-			 */
-			$old_file_name[] = 'module_loop_' . $postType['slug'] . '.php';
-			$old_file_name[] = 'module_loop_post.php';
-			$require_once    = false;
 			if ( locate_template( $old_file_name, false, $require_once ) ) {
 				locate_template( $old_file_name, true, $require_once );
 			} else {
