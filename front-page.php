@@ -31,27 +31,27 @@ if ( $bootstrap == '3' ) {
 
 			<?php if ( apply_filters( 'is_lightning_home_content_display', true ) ) : ?>
 
-			<?php if ( have_posts() ) : ?>
+				<?php if ( have_posts() ) : ?>
 
-				<?php if ( 'page' == get_option( 'show_on_front' ) ) : ?>
+					<?php if ( 'page' == get_option( 'show_on_front' ) ) : ?>
 
-					<?php
-					while ( have_posts() ) :
-						the_post();
-?>
+						<?php
+						while ( have_posts() ) :
+							the_post();
+							?>
 
 						<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 						<div class="entry-body">
 							<?php the_content(); ?>
 						</div>
-						<?php
-						wp_link_pages(
-							array(
-								'before' => '<div class="page-link">' . 'Pages:',
-								'after'  => '</div>',
-							)
-						);
-?>
+							<?php
+							wp_link_pages(
+								array(
+									'before' => '<div class="page-link">' . 'Pages:',
+									'after'  => '</div>',
+								)
+							);
+							?>
 						 </article><!-- [ /#post-<?php the_ID(); ?> ] -->
 
 					<?php endwhile; ?>
@@ -61,13 +61,26 @@ if ( $bootstrap == '3' ) {
 					<div class="postList">
 
 						<?php
+						/**
+						 * Dealing with old files
+						 * Actually, it's ok to only use get_template_part().
+						 * It is measure for before version 7.0 that loaded module_loop_***.php.
+						 */
+						$postType = lightning_get_post_type();
+						$old_file_name[] = 'module_loop_' . $postType['slug'] . '.php';
+						$old_file_name[] = 'module_loop_post.php';
+						$require_once    = false;
+
 						while ( have_posts() ) :
 							the_post();
-?>
 
-							<?php get_template_part( 'module_loop_post' ); ?>
+							if ( locate_template( $old_file_name, false, $require_once ) ) {
+								locate_template( $old_file_name, true, $require_once );
+							} else {
+								get_template_part( 'template-parts/post/loop', $postType['slug'] );
+							}
 
-						<?php endwhile; ?>
+						endwhile; ?>
 
 						<?php
 						the_posts_pagination(
@@ -79,7 +92,7 @@ if ( $bootstrap == '3' ) {
 								'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'lightning' ) . ' </span>',
 							)
 						);
-							?>
+						?>
 
 					</div><!-- [ /.postList ] -->
 

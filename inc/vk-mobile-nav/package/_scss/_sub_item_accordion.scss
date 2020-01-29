@@ -13,57 +13,58 @@
 	}
 	li {
 		position: relative;
-		margin-bottom:0;
+		margin-bottom: 0;
 	}
 	.acc-btn {
 		position: absolute;
-		right:8px;
-		top:8px;
-		width:28px;
-		height:28px;
-		border:1px solid $color_font_default;
+		right: 8px;
+		top: 8px;
+		width: 28px;
+		height: 28px;
+		border: 1px solid $color_font_default;
 		border-radius: 2px;
-		background:url('../images/vk-menu-acc-icon-open-white.svg') center 50% no-repeat;
+		background: url("../images/vk-menu-acc-icon-open-white.svg") center 50%
+			no-repeat;
 		background-size: 28px 28px;
 		cursor: pointer;
 		z-index: 1000;
 		transition: transform $time_transition ease-out;
 	}
-	.acc-btn:before{
+	.acc-btn:before {
 		position: relative;
-		top:-5px;
-		left:4px;
-		font-size:16px;
+		top: -5px;
+		left: 4px;
+		font-size: 16px;
 	}
-	.acc-btn-open{
-
+	.acc-btn-open {
 	}
-	.acc-btn-close{
+	.acc-btn-close {
 		// transform: rotate(180deg);
-		background:url('../images/vk-menu-btn-close.svg') center 50% no-repeat;
+		background: url("../images/vk-menu-btn-close.svg") center 50% no-repeat;
 	}
 	ul.sub-menu {
-		max-height:0;
+		max-height: 0;
 		opacity: 0;
-		overflow:hidden;
+		overflow: hidden;
 		transition: all $time_transition ease-in;
 		position: relative;
 		z-index: 1;
-		display:block;
+		display: block;
 		li {
 			a {
-				display:block; overflow:hidden;
+				display: block;
+				overflow: hidden;
 			}
 		}
 	}
 	ul.acc-child-open {
 		transition: all $time_transition ease-in;
-		max-height:1000px;
+		max-height: 1000px;
 		opacity: 1;
 	}
 	ul.acc-child-close {
 		transition: all $time_transition ease-in;
-		max-height:0;
+		max-height: 0;
 		opacity: 0;
 	}
 }

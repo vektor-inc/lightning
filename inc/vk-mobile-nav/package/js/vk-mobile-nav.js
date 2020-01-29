@@ -35,7 +35,19 @@
 
 	// ページ内リンクをクリックされた時に閉じるための処理
 	jQuery('.vk-mobile-nav li > a').click(function() {
-		vk_mobile_nav_close('.vk-mobile-nav-menu-btn');
+		var href = jQuery(this).attr('href');
+		var result = href.match(/^(#).*/);
+
+		// クリックされたリンク先がページ内リンクかどうか
+		if ( jQuery.isArray(result) && result[1] === '#' ){
+			// 閉じる
+			vk_mobile_nav_close('.vk-mobile-nav-menu-btn');
+		} else {
+			// 閉じない
+			// ページ内リンク以外で閉じるとモバイルSafariにおいて
+			// 閉じる動作の途中で画面遷移時に画面を停止させられるため
+			// ページ内リンク以外では閉じないようにする
+		}
 	});
 
 	// モバイルナビの実行
