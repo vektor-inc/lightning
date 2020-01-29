@@ -131,24 +131,4 @@ function lightning_customize_register_layout( $wp_customize ) {
 		)
 	);
 
-	/*	Layout _ homepage
-	/*-------------------------------------------*/
-	$wp_customize->add_setting(
-		'layout_toppage', array(
-			'sanitize_callback' => 'sanitize_text_field',
-		)
-	);
-	$wp_customize->add_control(
-		new Custom_Html_Control(
-			$wp_customize, 'layout_toppage', array(
-				'label'            => '',
-				'section'          => 'lightning_layout',
-				'type'             => 'text',
-				'custom_title_sub' => __( 'Home page sidebar setting', 'lightning' ),
-				'custom_html'      => '',
-				'priority'         => 700,
-			)
-		)
-	);
-
 }
