@@ -2,11 +2,14 @@
 $options = get_option( 'lightning_theme_options' );
 if ( isset( $options['top_sidebar_hidden'] ) ) {
 	if ( $options['top_sidebar_hidden'] ) {
-		$options['layout']['front-page'] = 'col-one_side-hide';
+		$options['layout']['front-page'] = 'col-one';
 		update_option( 'lightning_theme_options', $options );
 	}
 	unset( $options['top_sidebar_hidden'] );
 }
+
+
+
 
 /*-------------------------------------------*/
 /*	Deal with typo name action
