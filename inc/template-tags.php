@@ -408,24 +408,7 @@ function lightning_the_footerCopyRight() {
 
 }
 
-function lightning_is_frontpage_onecolumn() {
-	// ※ global変数だとテストが効かないため
-	// global $lightning_theme_options;
-	// $options          = $lightning_theme_options;
-	$options          = get_option( 'lightning_theme_options' );
-	$page_on_front_id = get_option( 'page_on_front' );
 
-	if ( isset( $options['top_sidebar_hidden'] ) && $options['top_sidebar_hidden'] ) {
-		return true;
-	}
-	if ( $page_on_front_id ) {
-		$template = get_post_meta( $page_on_front_id, '_wp_page_template', true );
-		if ( $template == 'page-onecolumn.php' ) {
-			return true;
-		}
-	}
-	return false;
-}
 
 /*
   lightning_is_layout_onecolumn
@@ -439,7 +422,16 @@ function lightning_is_layout_onecolumn() {
 		// echo 'DEBUG━━━━━━━━━━━ is_front_page ━━━━━━━━━'."<br>\n";
 		if ( isset( $options['layout']['front-page'] ) && $options['layout']['front-page'] === 'col-one' ){
 			$onecolumn = true;
-		} 
+		} else {
+			$page_on_front_id = get_option( 'page_on_front' );
+			if ( $page_on_front_id ) {
+				$template = get_post_meta( $page_on_front_id, '_wp_page_template', true );
+				if ( $template == 'page-onecolumn.php' ) {
+					return true;
+				}
+			}
+		}
+
 	} else if ( is_404() ) {
 		// echo 'DEBUG━━━━━━━━━━━ is_404 ━━━━━━━━━'."<br>\n";
 		if ( isset( $options['layout']['error404'] ) && $options['layout']['error404'] === 'col-one' ){
@@ -467,12 +459,7 @@ function lightning_is_layout_onecolumn() {
 		}
 	}
 
-
-	if ( is_front_page() ) {
-		// if ( lightning_is_frontpage_onecolumn() ) {
-		// 	$onecolumn = true;
-		// }
-	} elseif ( is_singular() ) {
+	if ( is_singular() ) {
 		if ( is_page() ) {
 			global $post;
 			$template           = get_post_meta( $post->ID, '_wp_page_template', true );

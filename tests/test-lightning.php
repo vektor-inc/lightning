@@ -250,63 +250,6 @@ class LightningTest extends WP_UnitTestCase {
 		}
 	}
 
-	// function test_lightning_is_frontpage_onecolumn() {
-	// $before_options = get_option( 'lightning_theme_options' );
-	// トップに指定されてる固定ページIDを取得
-	// $before_page_on_front = get_option( 'page_on_front' );
-	// if ( $before_page_on_front ) {
-	// $page_on_front = $before_page_on_front;
-	// } else {
-	// $page_on_front = 1;
-	// }
-	// トップに指定されてる固定ページのテンプレートを取得
-	// $before_template = get_post_meta( $page_on_front, '_wp_page_template', true );
-
-	// $test_array = array(
-	// カスタマイザーでチェックが入っている場合（優先）
-	// array(
-	// 'top_sidebar_hidden' => true,
-	// '_wp_page_template'  => 'default',
-	// 'correct'            => true,
-	// ),
-	// カスタマイザーでチェックが入っていなくても固定ページで指定がある場合
-	// array(
-	// 'top_sidebar_hidden' => false,
-	// '_wp_page_template'  => 'page-onecolumn.php',
-	// 'correct'            => true,
-	// ),
-
-	// );
-
-	// print PHP_EOL;
-	// print '------------------------------------' . PHP_EOL;
-	// print 'is_frontpage_onecolumn' . PHP_EOL;
-	// print '------------------------------------' . PHP_EOL;
-	// foreach ( $test_array as $key => $value ) {
-
-	// カスタマイザーでの指定
-	// $options['top_sidebar_hidden'] = $value['top_sidebar_hidden'];
-	// update_option( 'lightning_theme_options', $options );
-
-	// 固定ページ側のテンプレート
-	// update_option( 'page_on_front', $page_on_front );
-	// update_post_meta( $page_on_front, '_wp_page_template', $value['_wp_page_template'] );
-
-	// $return = lightning_is_frontpage_onecolumn();
-	// print 'return  :' . $return . PHP_EOL;
-	// print 'correct :' . $value['correct'] . PHP_EOL;
-	// $this->assertEquals( $value['correct'], $return );
-	// }
-
-	// *
-	// テスト前の値に戻す
-	// *--------------------------------*/
-	// update_option( 'lightning_theme_options', $before_options );
-	// update_option( 'page_on_front', $before_page_on_front );
-	// update_post_meta( $before_page_on_front, '_wp_page_template', $before_template );
-	// }
-
-
 	function test_lightning_is_layout_onecolumn() {
 		print PHP_EOL;
 		print '------------------------------------' . PHP_EOL;
@@ -365,7 +308,7 @@ class LightningTest extends WP_UnitTestCase {
 						'front-page' => 'col-one',
 					),
 				),
-				'post_custom' => '',
+				'_wp_page_template' => '',
 				'target_url'  => home_url( '/' ),
 				'correct'     => true,
 			),
@@ -374,7 +317,7 @@ class LightningTest extends WP_UnitTestCase {
 				'options'     => array(
 					'top_sidebar_hidden' => true,
 				),
-				'post_custom' => '',
+				'_wp_page_template' => '',
 				'target_url'  => home_url( '/' ),
 				'correct'     => true,
 			),
@@ -387,9 +330,33 @@ class LightningTest extends WP_UnitTestCase {
 						'front-page' => 'col-two',
 					),
 				),
-				'post_custom' => '',
+				'_wp_page_template' => '',
 				'target_url'  => home_url( '/' ),
 				'correct'     => false,
+			),
+			// Front page _ カスタマイザー未指定 / 固定ページで１カラムテンプレートが選択（非推奨）
+			array(
+				'options'     => array(
+					// 'top_sidebar_hidden' => true,
+					// 'layout'             => array(
+					// 	'front-page' => 'col-two',
+					// ),
+				),
+				'_wp_page_template' => 'page-onecolumn.php',
+				'target_url'  => home_url( '/' ),
+				'correct'     => true,
+			),
+			// Front page _ カスタマイザーで２カラムが選択 / 固定ページ側で１カラムテンプレートが選択（非推奨）
+			// 個別のページからの指定を優先させる
+			array(
+				'options'     => array(
+					'layout'             => array(
+						'front-page' => 'col-two',
+					),
+				),
+				'_wp_page_template' => 'page-onecolumn.php',
+				'target_url'  => home_url( '/' ),
+				'correct'     => true,
 			),
 			// Search
 			array(
@@ -398,7 +365,7 @@ class LightningTest extends WP_UnitTestCase {
 						'search' => 'col-one',
 					),
 				),
-				'post_custom' => '',
+				'_wp_page_template' => '',
 				'target_url'  => home_url( '/' ) . '?s=aaa',
 				'correct'     => true,
 			),
@@ -409,7 +376,7 @@ class LightningTest extends WP_UnitTestCase {
 						'error404' => 'col-one',
 					),
 				),
-				'post_custom' => '',
+				'_wp_page_template' => '',
 				'target_url'  => home_url( '/' ) . '?name=abcdefg',
 				'correct'     => true,
 			),
@@ -420,7 +387,7 @@ class LightningTest extends WP_UnitTestCase {
 						'archive' => 'col-one',
 					),
 				),
-				'post_custom' => '',
+				'_wp_page_template' => '',
 				'target_url'  => get_term_link( $cate_id ),
 				'correct'     => true,
 			),
@@ -432,7 +399,7 @@ class LightningTest extends WP_UnitTestCase {
 						'archive' => 'col-one',
 					),
 				),
-				'post_custom' => '',
+				'_wp_page_template' => '',
 				'target_url'  => get_permalink( get_option( 'page_for_posts' ) ),
 				'correct'     => true,
 			),
@@ -444,7 +411,7 @@ class LightningTest extends WP_UnitTestCase {
 						'single' => 'col-one',
 					),
 				),
-				'post_custom' => '',
+				'_wp_page_template' => '',
 				'target_url'  => get_permalink( $post_id ),
 				'correct'     => true,
 			),
@@ -453,6 +420,12 @@ class LightningTest extends WP_UnitTestCase {
 		foreach ( $test_array as $value ) {
 			$options = $value['options'];
 			update_option( 'lightning_theme_options', $options );
+
+			if ( $value['_wp_page_template'] ) {
+				update_post_meta( $front_page_id , '_wp_page_template', $value['_wp_page_template'] );
+			}
+
+			// 古いセッティング値のコンバート（実際にはfunctions-compatible.phpで after_setup_theme で実行されている）
 			lightning_options_compatible();
 
 			// Move to test page
