@@ -469,9 +469,9 @@ function lightning_is_layout_onecolumn() {
 
 
 	if ( is_front_page() ) {
-		if ( lightning_is_frontpage_onecolumn() ) {
-			$onecolumn = true;
-		}
+		// if ( lightning_is_frontpage_onecolumn() ) {
+		// 	$onecolumn = true;
+		// }
 	} elseif ( is_singular() ) {
 		if ( is_page() ) {
 			global $post;

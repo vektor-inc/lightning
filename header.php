@@ -47,7 +47,7 @@ do_action( 'lightning_header_before' );
 				'walker'         => new description_walker(),
 			);
 			$gMenu = wp_nav_menu( $args );
-		?>
+			?>
 		</div>
 
 		<?php
@@ -58,6 +58,13 @@ do_action( 'lightning_header_before' );
 		}
 		?>
 	</div>
-	<?php do_action( 'lightning_header_append' ); ?>
+	<?php
+	do_action( 'lightning_header_append' );
+
+	$option = get_option( 'lightning_theme_options' );
+	print '<pre style="text-align:left">';
+	print_r( $option );
+	print '</pre>';
+	?>
 </header>
 <?php do_action( 'lightning_header_after' ); ?>
