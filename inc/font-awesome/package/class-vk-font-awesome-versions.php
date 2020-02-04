@@ -80,6 +80,7 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 
 		/**
 		 * When use Font Awesome 4,7 then print 'fa '.
+		 *
 		 * @var strings;
 		 */
 		public static function print_fa() {
@@ -113,9 +114,10 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 		}
 
 		/**
-	 * add body class
-	 * @return [type] [description]
-	 */
+		 * add body class
+		 *
+		 * @return [type] [description]
+		 */
 		static function add_body_class_fa_version( $class ) {
 			$current_option = self::get_option_fa();
 			if ( $current_option == '4.7' ) {
@@ -130,6 +132,7 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 
 		/**
 		 * Output dynbamic css according to Font Awesome versions
+		 *
 		 * @return [type] [description]
 		 */
 		static function dynamic_css() {
@@ -162,22 +165,24 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 			}
 		}
 
-		/*-------------------------------------------*/
-		/*	customize_register
+		/*
+		  customize_register
 		/*-------------------------------------------*/
 		static function customize_register( $wp_customize ) {
 
 			global $vk_font_awesome_version_prefix_customize_panel;
 
 			$wp_customize->add_section(
-				'VK Font Awesome', array(
+				'VK Font Awesome',
+				array(
 					'title'    => $vk_font_awesome_version_prefix_customize_panel . __( 'Font Awesome', 'lightning' ),
 					'priority' => 450,
 				)
 			);
 
 			$wp_customize->add_setting(
-				'vk_font_awesome_version', array(
+				'vk_font_awesome_version',
+				array(
 					'default'           => '5_WebFonts_CSS',
 					'type'              => 'option',
 					'capability'        => 'edit_theme_options',
@@ -185,13 +190,14 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 				)
 			);
 
-			$versions = Vk_Font_Awesome_Versions::versions();
+			$versions = self::versions();
 			foreach ( $versions as $key => $value ) {
 				$choices[ $key ] = $value['label'];
 			}
 
 			$wp_customize->add_control(
-				'vk_font_awesome_version', array(
+				'vk_font_awesome_version',
+				array(
 					'label'       => __( 'Font Awesome Version', 'lightning' ),
 					'section'     => 'VK Font Awesome',
 					'settings'    => 'vk_font_awesome_version',
