@@ -552,6 +552,20 @@ class LightningTest extends WP_UnitTestCase {
 		}
 	}
 
+	function test_lightning_is_subsection_display(){
+		$test_array = array(
+			array(
+				'options'   => array(
+					'sidebar_display' => array(
+						'front-page' => '',
+					),
+				),
+			),
+		);
+	}
+
+
+
 	function test_lightning_is_slide_outer_link() {
 		$test_array = array(
 			array(
