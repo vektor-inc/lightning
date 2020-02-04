@@ -13,7 +13,7 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 
 		static function init() {
 			add_action( 'customize_register', array( __CLASS__, 'customize_register' ) );
-			add_action( 'wp_enqueue_scripts', array( __CLASS__, 'load_font_awesome' ), 3 );
+			add_action( 'wp_footer', array( __CLASS__, 'load_font_awesome' ), 3 );
 			add_action( 'admin_init', array( __CLASS__, 'load_admin_font_awesome' ) );
 			add_action( 'enqueue_block_editor_assets', array( __CLASS__, 'load_gutenberg_font_awesome' ) );
 			add_action( 'wp_head', array( __CLASS__, 'dynamic_css' ), 3 );
