@@ -201,6 +201,7 @@ $xl-min: 1200px;
 		position: relative;
 		background-size: cover;
 		background-position: center 50%;
+		border-bottom: $border_primary;
 		::after {
 			content: "";
 			position: absolute;
@@ -211,7 +212,7 @@ $xl-min: 1200px;
 			background: rgba(0, 0, 0, 0);
 			transition-duration: 0.3s;
 		}
-		:hover::after {
+		.card-img-overlay:hover::after {
 			background: rgba(0, 0, 0, 0.5);
 		}
 		a {
@@ -224,7 +225,6 @@ $xl-min: 1200px;
 	}
 	&:not(.card-horizontal) {
 		.vk_post_imgOuter {
-			border-bottom: $border_primary;
 			&:before {
 				content: "";
 				display: block;
@@ -235,6 +235,7 @@ $xl-min: 1200px;
 	&.card-horizontal {
 		.vk_post_imgOuter {
 			height: 100%;
+			border-bottom: none;
 		}
 	}
 }
@@ -351,6 +352,7 @@ $xl-min: 1200px;
 /*-------------------------------------------*/
 .card {
 	overflow: hidden;
+	box-shadow: none;
 	&-meta {
 		font-size: 12px;
 	}
