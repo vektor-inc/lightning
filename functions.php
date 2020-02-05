@@ -4,112 +4,110 @@ $theme_opt = wp_get_theme( get_template() );
 
 define( 'LIGHTNING_THEME_VERSION', $theme_opt->Version );
 define( 'LIGHTNING_SHORT_NAME', 'LTG THEME' );
-/*-------------------------------------------*/
-/*	Theme setup
-/*-------------------------------------------*/
-/*	Load JS
-/*-------------------------------------------*/
-/*	Load CSS
-/*-------------------------------------------*/
-/*	Load Theme Customizer additions.
-/*-------------------------------------------*/
-/*	Load Custom template tags for this theme.
-/*-------------------------------------------*/
-/*	Load widgets
-/*-------------------------------------------*/
-/*	Load designskin manager
-/*-------------------------------------------*/
-/*	Load tga(Plugin install)
-/*-------------------------------------------*/
-/*	Load Front PR Blocks
-/*-------------------------------------------*/
-
-/*-------------------------------------------*/
-/*	WidgetArea initiate
-/*-------------------------------------------*/
-/*	Year Artchive list 'year' and count insert to inner </a>
-/*-------------------------------------------*/
-/*	Category list 'count insert to inner </a>
-/*-------------------------------------------*/
-/*	Global navigation add cptions
-/*-------------------------------------------*/
-/*	headfix enable
-/*-------------------------------------------*/
-/*	Tag Cloud _ Change font size
-/*-------------------------------------------*/
-/*	HOME _ Default content hidden
-/*-------------------------------------------*/
-/*  Move jQuery to footer
-/*-------------------------------------------*/
-/*  disable_tgm_notification_except_admin
-/*-------------------------------------------*/
-/*	Add defer first aid
+/*
+  Theme setup
+/*
+  Load JS
+/*
+  Load CSS
+/*
+  Load Theme Customizer additions.
+/*
+  Load Custom template tags for this theme.
+/*
+  Load widgets
+/*
+  Load designskin manager
+/*
+  Load tga(Plugin install)
+/*
+  Load Front PR Blocks
+/*
+  WidgetArea initiate
+/*
+  Year Artchive list 'year' and count insert to inner </a>
+/*
+  Category list 'count insert to inner </a>
+/*
+  Global navigation add cptions
+/*
+  headfix enable
+/*
+  Tag Cloud _ Change font size
+/*
+  HOME _ Default content hidden
+/*
+  Move jQuery to footer
+/*
+  disable_tgm_notification_except_admin
+/*
+  Add defer first aid
 /*-------------------------------------------*/
 
 
 
-/*-------------------------------------------*/
-/*	Theme setup
+/*
+  Theme setup
 /*-------------------------------------------*/
 add_action( 'after_setup_theme', 'lightning_theme_setup' );
 function lightning_theme_setup() {
 
 	global $content_width;
 
-	/*-------------------------------------------*/
-	/*  Title tag
+	/*
+	  Title tag
 	/*-------------------------------------------*/
 	add_theme_support( 'title-tag' );
 
-	/*-------------------------------------------*/
-	/*  editor-styles
+	/*
+	  editor-styles
 	/*-------------------------------------------*/
 	add_theme_support( 'editor-styles' );
 
-	/*-------------------------------------------*/
-	/*  custom-background
+	/*
+	  custom-background
 	/*-------------------------------------------*/
 	add_theme_support( 'custom-background' );
 
-	/*-------------------------------------------*/
-	/*	Admin page _ Eye catch
+	/*
+	  Admin page _ Eye catch
 	/*-------------------------------------------*/
 	add_theme_support( 'post-thumbnails' );
 	set_post_thumbnail_size( 320, 180, true );
 
-	/*-------------------------------------------*/
-	/*	Custom menu
+	/*
+	  Custom menu
 	/*-------------------------------------------*/
 	register_nav_menus( array( 'Header' => 'Header Navigation' ) );
 	register_nav_menus( array( 'Footer' => 'Footer Navigation' ) );
 
 	load_theme_textdomain( 'lightning', get_template_directory() . '/languages' );
 
-	/*-------------------------------------------*/
-	/*	Set content width
+	/*
+	  Set content width
 	/* 	(Auto set up to media max with.)
 	/*-------------------------------------------*/
 	if ( ! isset( $content_width ) ) {
 		$content_width = 750;
 	}
 
-	/*-------------------------------------------*/
-	/*	Add theme support for selective refresh for widgets.
+	/*
+	  Add theme support for selective refresh for widgets.
 	/*-------------------------------------------*/
 	add_theme_support( 'customize-selective-refresh-widgets' );
 
-	/*-------------------------------------------*/
-	/*	Feed Links
+	/*
+	  Feed Links
 	/*-------------------------------------------*/
 	add_theme_support( 'automatic-feed-links' );
 
-	/*-------------------------------------------*/
-	/*	WooCommerce
+	/*
+	  WooCommerce
 	/*-------------------------------------------*/
 	add_theme_support( 'woocommerce' );
 
-	/*-------------------------------------------*/
-	/*	Option init
+	/*
+	  Option init
 	/*-------------------------------------------*/
 	/*
 	Save default option first time.
@@ -123,8 +121,8 @@ function lightning_theme_setup() {
 
 }
 
-/*-------------------------------------------*/
-/*	Load JS
+/*
+  Load JS
 /*-------------------------------------------*/
 
 add_action( 'wp_enqueue_scripts', 'lightning_addJs' );
@@ -139,8 +137,8 @@ function lightning_commentJs() {
 	}
 }
 
-/*-------------------------------------------*/
-/*	Load CSS
+/*
+  Load CSS
 /*-------------------------------------------*/
 add_action( 'wp_enqueue_scripts', 'lightning_css' );
 function lightning_css() {
@@ -151,41 +149,41 @@ function lightning_css() {
 add_action( 'after_setup_theme', 'lightning_load_common_editor_css' );
 function lightning_load_common_editor_css() {
 	// Bootstrap4 skin
-	/* Notice : Use url then if you use local environment https has error that bring to get css error and don't refrected */
+	/*
+	 Notice : Use url then if you use local environment https has error that bring to get css error and don't refrected */
 	/* Notice : add_editor_style() is only one args. */
 	add_editor_style( 'assets/css/common_editor.css' );
 }
 
-
 require get_parent_theme_file_path( '/functions-compatible.php' );
 
-/*-------------------------------------------*/
-/*	Load tga(Plugin install)
+/*
+  Load tga(Plugin install)
 /*-------------------------------------------*/
 require get_parent_theme_file_path( '/inc/tgm-plugin-activation/tgm-config.php' );
 
-/*-------------------------------------------*/
-/*	Load Theme Customizer additions.
+/*
+  Load Theme Customizer additions.
 /*-------------------------------------------*/
 require get_parent_theme_file_path( '/inc/customize/customize.php' );
 require get_parent_theme_file_path( '/inc/customize/customize-design.php' );
 require get_parent_theme_file_path( '/inc/customize/customize-layout.php' );
 require get_parent_theme_file_path( '/inc/customize/customize-top-slide.php' );
 
-/*-------------------------------------------*/
-/*	Load allow customize modules
+/*
+  Load allow customize modules
 /*-------------------------------------------*/
 get_template_part( 'inc/vk-mobile-nav/vk-mobile-nav-config' );
 
-/*-------------------------------------------*/
-/*	Load Custom template tags for this theme.
+/*
+  Load Custom template tags for this theme.
 /*-------------------------------------------*/
 require get_parent_theme_file_path( '/inc/template-tags.php' );
 require get_parent_theme_file_path( '/inc/template-tags-old.php' );
 require get_parent_theme_file_path( '/inc/class-vk-helpers.php' );
 
-/*-------------------------------------------*/
-/*	Load modules
+/*
+  Load modules
 /*-------------------------------------------*/
 require get_parent_theme_file_path( '/inc/package-manager.php' );
 require get_parent_theme_file_path( '/inc/class-design-manager.php' );
@@ -194,15 +192,15 @@ require get_parent_theme_file_path( '/inc/term-color/term-color-config.php' );
 require get_parent_theme_file_path( '/inc/vk-components/vk-components-config.php' );
 require get_parent_theme_file_path( '/inc/template-redirect.php' );
 
-/*-------------------------------------------*/
-/*	Load woocommerce modules
+/*
+  Load woocommerce modules
 /*-------------------------------------------*/
 if ( class_exists( 'woocommerce' ) ) {
 	require get_parent_theme_file_path( '/inc/woocommerce/functions-woo.php' );
 }
 
-/*-------------------------------------------*/
-/*	WidgetArea initiate
+/*
+  WidgetArea initiate
 /*-------------------------------------------*/
 if ( ! function_exists( 'lightning_widgets_init' ) ) {
 	function lightning_widgets_init() {
@@ -342,36 +340,36 @@ if ( ! function_exists( 'lightning_widgets_init' ) ) {
 			);
 			$posts = get_posts( $args );
 
-		if ( $posts ) {
-			foreach ( $posts as $key => $post ) {
-				register_sidebar(
-					array(
-						/* Translators: %s: LP title */
-						'name'          => sprintf( __( 'LP widget "%s"', 'lightning' ), esc_html( $post->post_title ) ),
-						'id'            => 'lp-widget-' . $post->ID,
-						'before_widget' => '<div class="widget %2$s" id="%1$s">',
-						'after_widget'  => '</div>',
-						'before_title'  => '<h2 class="mainSection-title">',
-						'after_title'   => '</h2>',
-					)
-				);
+			if ( $posts ) {
+				foreach ( $posts as $key => $post ) {
+					register_sidebar(
+						array(
+							/* Translators: %s: LP title */
+							'name'          => sprintf( __( 'LP widget "%s"', 'lightning' ), esc_html( $post->post_title ) ),
+							'id'            => 'lp-widget-' . $post->ID,
+							'before_widget' => '<div class="widget %2$s" id="%1$s">',
+							'after_widget'  => '</div>',
+							'before_title'  => '<h2 class="mainSection-title">',
+							'after_title'   => '</h2>',
+						)
+					);
+				}
 			}
-		}
 			wp_reset_postdata();
 	}
 } // if ( ! function_exists( 'lightning_widgets_init' ) ) {
 add_action( 'widgets_init', 'lightning_widgets_init' );
 
-/*-------------------------------------------*/
-/*	Year Artchive list 'year' and count insert to inner </a>
+/*
+  Year Artchive list 'year' and count insert to inner </a>
 /*-------------------------------------------*/
 function lightning_archives_link( $html ) {
 	return preg_replace( '@</a>(.+?)</li>@', '\1</a></li>', $html );
 }
 add_filter( 'get_archives_link', 'lightning_archives_link' );
 
-/*-------------------------------------------*/
-/*	Category list count insert to inner </a>
+/*
+  Category list count insert to inner </a>
 /*-------------------------------------------*/
 function lightning_list_categories( $output, $args ) {
 	$output = preg_replace( '/<\/a>\s*\((\d+)\)/', ' ($1)</a>', $output );
@@ -379,8 +377,8 @@ function lightning_list_categories( $output, $args ) {
 }
 add_filter( 'wp_list_categories', 'lightning_list_categories', 10, 2 );
 
-/*-------------------------------------------*/
-/*	Global navigation add cptions
+/*
+  Global navigation add cptions
 /*-------------------------------------------*/
 class description_walker extends Walker_Nav_Menu {
 	function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
@@ -418,8 +416,8 @@ class description_walker extends Walker_Nav_Menu {
 	}
 }
 
-/*-------------------------------------------*/
-/*	headfix enable
+/*
+  headfix enable
 /*-------------------------------------------*/
 add_filter( 'body_class', 'lightning_body_class' );
 function lightning_body_class( $class ) {
@@ -450,8 +448,10 @@ function lightning_header_height_changer_disabel(){
 }
 */
 
-/*-------------------------------------------
-/*	Tag Cloud _ Change font size
+/*
+-------------------------------------------
+/*
+  Tag Cloud _ Change font size
 /*-------------------------------------------*/
 function lightning_tag_cloud_filter( $args ) {
 	$args['smallest'] = 10;
@@ -460,8 +460,8 @@ function lightning_tag_cloud_filter( $args ) {
 }
 add_filter( 'widget_tag_cloud_args', 'lightning_tag_cloud_filter' );
 
-/*-------------------------------------------*/
-/*	HOME _ Default content hidden
+/*
+  HOME _ Default content hidden
 /*-------------------------------------------*/
 add_filter( 'is_lightning_home_content_display', 'lightning_home_content_hidden' );
 function lightning_home_content_hidden( $flag ) {
@@ -472,8 +472,8 @@ function lightning_home_content_hidden( $flag ) {
 	return $flag;
 }
 
-/*-------------------------------------------*/
-/*  disable_tgm_notification_except_admin
+/*
+  disable_tgm_notification_except_admin
 /*-------------------------------------------*/
 add_action( 'admin_head', 'lightning_disable_tgm_notification_except_admin' );
 function lightning_disable_tgm_notification_except_admin() {
@@ -486,8 +486,8 @@ function lightning_disable_tgm_notification_except_admin() {
 	}
 }
 
-/*-------------------------------------------*/
-/*	Deactive Lightning Advanced Unit
+/*
+  Deactive Lightning Advanced Unit
 /*-------------------------------------------*/
 add_action( 'init', 'lightning_deactive_adv_unit' );
 function lightning_deactive_adv_unit() {
@@ -495,25 +495,24 @@ function lightning_deactive_adv_unit() {
 	lightning_deactivate_plugin( $plugin_path );
 }
 function lightning_deactivate_plugin( $plugin_path ) {
-	include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+	include_once ABSPATH . 'wp-admin/includes/plugin.php';
 	if ( is_plugin_active( $plugin_path ) ) {
 		$active_plugins = get_option( 'active_plugins' );
-		//delete item
+		// delete item
 		$active_plugins = array_diff( $active_plugins, array( $plugin_path ) );
-		//re index
+		// re index
 		$active_plugins = array_values( $active_plugins );
 		update_option( 'active_plugins', $active_plugins );
 	}
 }
 
-/*-------------------------------------------*/
-/*	Add defer first aid
-/*-------------------------------------------*/
+/*
+  Add defer first aid
 // function lightning_add_defer_to_scripts( $tag, $handle ) {
-// 	if ( ! preg_match( '/\b(async|defer)\b/', $tag ) ) {
-// 		return str_replace( ' src', ' defer src', $tag );
-// 	}
-// 	return $tag;
+// if ( ! preg_match( '/\b(async|defer)\b/', $tag ) ) {
+// return str_replace( ' src', ' defer src', $tag );
+// }
+// return $tag;
 // }
 //
 // if ( ! is_admin() ) {
