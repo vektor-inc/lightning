@@ -156,10 +156,16 @@ function lightning_load_common_editor_css() {
 }
 
 
+
 /*
   Load tga(Plugin install)
 /*-------------------------------------------*/
 require get_parent_theme_file_path( '/inc/tgm-plugin-activation/tgm-config.php' );
+
+/*
+  Load enqueue-point-controller
+/*-------------------------------------------*/
+require get_parent_theme_file_path( '/inc/enqueue-point-controller/enqueue-point-controller.php' );
 
 /*
   Load Theme Customizer additions.
