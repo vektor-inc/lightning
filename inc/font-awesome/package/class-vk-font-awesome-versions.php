@@ -13,12 +13,12 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 		// public static $hook_point = apply_filters( 'vkfa_enqueue_point', 'wp_enqueue_scripts' );
 
 		function __construct() {
-			
+
 			/**
 			 * Reason of Using through the after_setup_theme is 
 			 * to be able to change the action hook point of css load from theme..
 			 */
-			add_action( 'after_setup_theme', array( __CLASS__, 'load_font_awesome_action' ) );
+			add_action( 'after_setup_theme', array( __CLASS__, 'load_css_action' ) );
 
 			add_action( 'customize_register', array( __CLASS__, 'customize_register' ) );
 			add_action( 'admin_init', array( __CLASS__, 'load_admin_font_awesome' ) );
@@ -27,7 +27,7 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 			add_filter( 'body_class', array( __CLASS__, 'add_body_class_fa_version' ) );
 		}
 
-		public static function load_font_awesome_action() {
+		public static function load_css_action() {
 			$hook_point = apply_filters( 'vkfa_enqueue_point', 'wp_enqueue_scripts' );
 			add_action( $hook_point, array( __CLASS__, 'load_font_awesome' ) );
 		}
