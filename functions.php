@@ -140,15 +140,22 @@ function lightning_commentJs() {
 /*
   Load CSS
 /*-------------------------------------------*/
-add_action( 'wp_enqueue_scripts', 'lightning_css' );
+add_action( 'after_setup_theme', 'lightning_load_css_action' );
+function lightning_load_css_action(){
+	$hook_point = apply_filters( 'lightning_enqueue_point_common_and_theme_css', 'wp_enqueue_scripts' );
+	add_action( $hook_point, 'lightning_css' );
+}
+
 function lightning_css() {
 	wp_enqueue_style( 'lightning-common-style', get_template_directory_uri() . '/assets/css/common.css', array(), LIGHTNING_THEME_VERSION );
 	wp_enqueue_style( 'lightning-theme-style', get_stylesheet_uri(), array( 'lightning-design-style' ), LIGHTNING_THEME_VERSION );
 }
 
+/*
+  Load Editor CSS
+/*-------------------------------------------*/
 add_action( 'after_setup_theme', 'lightning_load_common_editor_css' );
 function lightning_load_common_editor_css() {
-	// Bootstrap4 skin
 	/*
 	 Notice : Use url then if you use local environment https has error that bring to get css error and don't refrected */
 	/* Notice : add_editor_style() is only one args. */
