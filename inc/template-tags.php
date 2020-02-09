@@ -431,23 +431,23 @@ function lightning_is_layout_onecolumn() {
 			}
 		}
 
-	} else if ( is_404() ) {
+	} elseif ( is_404() ) {
 		if ( isset( $options['layout']['error404'] ) && $options['layout']['error404'] === 'col-one' ){
 			$onecolumn = true;
 		} 
-	} else if ( is_search() ) {
+	} elseif ( is_search() ) {
 		if ( isset( $options['layout']['search'] ) && $options['layout']['search'] === 'col-one' ){
 			$onecolumn = true;
 		}
-	} else if ( is_home() && ! is_front_page() ) {
+	} elseif ( is_home() && ! is_front_page() ) {
 		if ( isset( $options['layout']['archive'] ) && $options['layout']['archive'] === 'col-one' ){
 			$onecolumn = true;
 		} 
-	} else if ( is_category() ) {
+	} elseif ( is_category() ) {
 		if ( isset( $options['layout']['archive'] ) && $options['layout']['archive'] === 'col-one' ){
 			$onecolumn = true;
 		} 
-	} else if ( is_single() ) {
+	} elseif ( is_single() ) {
 		if ( isset( $options['layout']['single'] ) && $options['layout']['single'] === 'col-one' ){
 			$onecolumn = true;
 		}
@@ -472,10 +472,44 @@ function lightning_is_layout_onecolumn() {
 /*
   lightning_is_subsection_display
 /*-------------------------------------------*/
-function lightning_is_subsection_display(){
-	$return = false;
+function lightning_is_subsection_display() {
+	$return = true;
 	$options =  get_option('lightning_theme_options');
-	
+
+	// break and hidden
+	if ( is_front_page() ){
+		if ( $options['sidebar_display']['front-page'] === 'hidden' ) {
+			$return = false;
+		}
+		if ( ! lightning_is_layout_onecolumn() ) {
+			$return = true;
+		}
+	} elseif ( is_404() ){
+		if ( $options['sidebar_display']['error404'] === 'hidden' ) {
+			$return = false;
+		}
+	} elseif ( is_search() ){
+		if ( $options['sidebar_display']['search'] === 'hidden' ) {
+			$return = false;
+		}
+	} elseif ( is_home() && ! is_front_page() ){
+		if ( $options['sidebar_display']['archive'] === 'hidden' ) {
+			$return = false;
+		}
+	} elseif ( is_archive() ){
+		if ( $options['sidebar_display']['archive'] === 'hidden' ) {
+			$return = false;
+		}
+	} elseif ( is_page() ){
+		// if ( $options['sidebar_display']['single'] === 'hidden' ) {
+		// 	$return = false;
+		// }
+	} elseif ( is_single() ){
+		if ( $options['sidebar_display']['single'] === 'hidden' ) {
+			$return = false;
+		}
+	}
+	return $return;
 }
 
 

@@ -63,10 +63,10 @@ do_action( 'lightning_header_before' );
 	<?php
 	do_action( 'lightning_header_append' );
 
-	$option = get_option( 'lightning_theme_options' );
-	print '<pre style="text-align:left">';
-	print_r( $option );
-	print '</pre>';
+	// $option = get_option( 'lightning_theme_options' );
+	// print '<pre style="text-align:left">';
+	// print_r( $option );
+	// print '</pre>';
 	?>
 </header>
 <?php do_action( 'lightning_header_after' ); ?>

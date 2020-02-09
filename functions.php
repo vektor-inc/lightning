@@ -531,3 +531,5 @@ function lightning_deactivate_plugin( $plugin_path ) {
 // if ( ! is_admin() ) {
 // 	add_filter( 'script_loader_tag', 'lightning_add_defer_to_scripts', 10, 2 );
 // }
+
+*/

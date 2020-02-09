@@ -116,9 +116,11 @@ else :
 <?php do_action( 'lightning_mainSection_append' ); ?>
 </div><!-- [ /.mainSection ] -->
 
-<div class="<?php lightning_the_class_name( 'sideSection' ); ?>">
-<?php get_sidebar( get_post_type() ); ?>
-</div><!-- [ /.subSection ] -->
+<?php if ( lightning_is_subsection_display() ){ ?>
+	<div class="<?php lightning_the_class_name( 'sideSection' ); ?>">
+	<?php get_sidebar( get_post_type() ); ?>
+	</div><!-- [ /.subSection ] -->
+<?php } ?>
 
 </div><!-- [ /.row ] -->
 </div><!-- [ /.container ] -->
