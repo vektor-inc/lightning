@@ -125,12 +125,12 @@ function lightning_theme_setup() {
   Load JS
 /*-------------------------------------------*/
 
-add_action( 'wp_footer', 'lightning_addJs' );
+add_action( 'wp_enqueue_scripts', 'lightning_addJs' );
 function lightning_addJs() {
 	wp_enqueue_script( 'lightning-js', get_template_directory_uri() . '/assets/js/lightning.min.js', array( 'jquery' ), LIGHTNING_THEME_VERSION, true );
 }
 
-add_action( 'wp_footer', 'lightning_commentJs' );
+add_action( 'wp_enqueue_scripts', 'lightning_commentJs' );
 function lightning_commentJs() {
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -140,15 +140,22 @@ function lightning_commentJs() {
 /*
   Load CSS
 /*-------------------------------------------*/
-add_action( 'wp_footer', 'lightning_css' );
+add_action( 'after_setup_theme', 'lightning_load_css_action' );
+function lightning_load_css_action(){
+	$hook_point = apply_filters( 'lightning_enqueue_point_common_and_theme_css', 'wp_enqueue_scripts' );
+	add_action( $hook_point, 'lightning_css' );
+}
+
 function lightning_css() {
 	wp_enqueue_style( 'lightning-common-style', get_template_directory_uri() . '/assets/css/common.css', array(), LIGHTNING_THEME_VERSION );
 	wp_enqueue_style( 'lightning-theme-style', get_stylesheet_uri(), array( 'lightning-design-style' ), LIGHTNING_THEME_VERSION );
 }
 
+/*
+  Load Editor CSS
+/*-------------------------------------------*/
 add_action( 'after_setup_theme', 'lightning_load_common_editor_css' );
 function lightning_load_common_editor_css() {
-	// Bootstrap4 skin
 	/*
 	 Notice : Use url then if you use local environment https has error that bring to get css error and don't refrected */
 	/* Notice : add_editor_style() is only one args. */
@@ -157,10 +164,16 @@ function lightning_load_common_editor_css() {
 
 require get_parent_theme_file_path( '/functions-compatible.php' );
 
+
 /*
   Load tga(Plugin install)
 /*-------------------------------------------*/
 require get_parent_theme_file_path( '/inc/tgm-plugin-activation/tgm-config.php' );
+
+/*
+  Load enqueue-point-controller
+/*-------------------------------------------*/
+require get_parent_theme_file_path( '/inc/enqueue-point-controller/enqueue-point-controller.php' );
 
 /*
   Load Theme Customizer additions.

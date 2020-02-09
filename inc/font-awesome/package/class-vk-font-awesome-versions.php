@@ -10,14 +10,26 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 	class Vk_Font_Awesome_Versions {
 
 		private static $version_default = '5_WebFonts_CSS';
+		// public static $hook_point = apply_filters( 'vkfa_enqueue_point', 'wp_enqueue_scripts' );
 
-		static function init() {
+		function __construct() {
+
+			/**
+			 * Reason of Using through the after_setup_theme is 
+			 * to be able to change the action hook point of css load from theme..
+			 */
+			add_action( 'after_setup_theme', array( __CLASS__, 'load_css_action' ) );
+
 			add_action( 'customize_register', array( __CLASS__, 'customize_register' ) );
-			add_action( 'wp_footer', array( __CLASS__, 'load_font_awesome' ), 3 );
 			add_action( 'admin_init', array( __CLASS__, 'load_admin_font_awesome' ) );
 			add_action( 'enqueue_block_editor_assets', array( __CLASS__, 'load_gutenberg_font_awesome' ) );
 			add_action( 'wp_head', array( __CLASS__, 'dynamic_css' ), 3 );
 			add_filter( 'body_class', array( __CLASS__, 'add_body_class_fa_version' ) );
+		}
+
+		public static function load_css_action() {
+			$hook_point = apply_filters( 'vkfa_enqueue_point', 'wp_enqueue_scripts' );
+			add_action( $hook_point, array( __CLASS__, 'load_font_awesome' ) );
 		}
 
 		static function versions() {
@@ -95,11 +107,11 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 		static function load_font_awesome() {
 			$current = self::current_info();
 			if ( $current['type'] === 'svg-with-js' ) {
-				wp_enqueue_script( 'font-awesome-js', $current['url_js'], array(), $current['version'] );
+				wp_enqueue_script( 'vk-font-awesome-js', $current['url_js'], array(), $current['version'] );
 				// [ Danger ] This script now causes important errors
 				// wp_add_inline_script( 'font-awesome-js', 'FontAwesomeConfig = { searchPseudoElements: true };', 'before' );
 			} else {
-				wp_enqueue_style( 'font-awesome', $current['url_css'], array(), $current['version'] );
+				wp_enqueue_style( 'vk-font-awesome', $current['url_css'], array(), $current['version'] );
 			}
 		}
 
@@ -210,5 +222,7 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 		} // static function customize_register( $wp_customize ) {
 
 	} // Vk_Font_Awesome_Versions
-	Vk_Font_Awesome_Versions::init();
+
+	$vk_font_awesome_versions = new Vk_Font_Awesome_Versions;
+	
 } // if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {

@@ -58,7 +58,6 @@ function lightning_customize_register_function( $wp_customize ) {
 		)
 	);
 
-	// slide_title
 	$wp_customize->add_setting(
 		'not_recommended_title', array(
 			'sanitize_callback' => 'sanitize_text_field',
