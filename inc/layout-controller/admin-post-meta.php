@@ -66,6 +66,8 @@ function lightning_design_setting_meta_fields() {
 
 	echo $form;
 
+	do_action('lightning_design_setting_meta_fields');
+
 }
 
 /*
