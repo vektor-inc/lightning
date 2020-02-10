@@ -62,6 +62,8 @@ function lightning_is_layout_onecolumn() {
 					$onecolumn = true;
 			} elseif ( $post->_lightning_design_setting['layout'] === 'col-two' ) {
 				$onecolumn = false;
+			} elseif ( $post->_lightning_design_setting['layout'] === 'col-one' ) {
+				$onecolumn = true;
 			}
 		}
 	}

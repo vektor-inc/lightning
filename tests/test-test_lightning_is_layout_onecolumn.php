@@ -63,117 +63,146 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 		$test_array = array(
 			// Front page
 			array(
-				'options'     => array(
+				'options'           => array(
 					'layout' => array(
 						'front-page' => 'col-one',
 					),
 				),
 				'_wp_page_template' => '',
-				'target_url'  => home_url( '/' ),
-				'correct'     => true,
+				'target_url'        => home_url( '/' ),
+				'correct'           => true,
 			),
 			// Front page _ old one column setting
 			array(
-				'options'     => array(
+				'options'           => array(
 					'top_sidebar_hidden' => true,
 				),
 				'_wp_page_template' => '',
-				'target_url'  => home_url( '/' ),
-				'correct'     => true,
+				'target_url'        => home_url( '/' ),
+				'correct'           => true,
 			),
 			// Front page _ old one column setting
 			// トップ１カラム指定が古い状態で万が一残ってたとしても新しい設定が2カラムなら2カラムにする
 			array(
-				'options'     => array(
+				'options'           => array(
 					'top_sidebar_hidden' => true,
 					'layout'             => array(
 						'front-page' => 'col-two',
 					),
 				),
 				'_wp_page_template' => '',
-				'target_url'  => home_url( '/' ),
-				'correct'     => false,
+				'target_url'        => home_url( '/' ),
+				'correct'           => false,
 			),
 			// Front page _ カスタマイザー未指定 / 固定ページで１カラムテンプレートが選択（非推奨）
 			array(
-				'options'     => array(
+				'options'           => array(
 					// 'top_sidebar_hidden' => true,
 					// 'layout'             => array(
-					// 	'front-page' => 'col-two',
+					// 'front-page' => 'col-two',
 					// ),
 				),
 				'_wp_page_template' => 'page-onecolumn.php',
-				'target_url'  => home_url( '/' ),
-				'correct'     => true,
+				'target_url'        => home_url( '/' ),
+				'correct'           => true,
 			),
 			// Front page _ カスタマイザーで２カラムが選択 / 固定ページ側で１カラムテンプレートが選択（非推奨）
 			// 個別のページからの指定を優先させる
 			array(
-				'options'     => array(
-					'layout'             => array(
+				'options'           => array(
+					'layout' => array(
 						'front-page' => 'col-two',
 					),
 				),
 				'_wp_page_template' => 'page-onecolumn.php',
-				'target_url'  => home_url( '/' ),
-				'correct'     => true,
+				'target_url'        => home_url( '/' ),
+				'correct'           => true,
 			),
 			// Search
 			array(
-				'options'     => array(
+				'options'           => array(
 					'layout' => array(
 						'search' => 'col-one',
 					),
 				),
 				'_wp_page_template' => '',
-				'target_url'  => home_url( '/' ) . '?s=aaa',
-				'correct'     => true,
+				'target_url'        => home_url( '/' ) . '?s=aaa',
+				'correct'           => true,
 			),
 			// 404
 			array(
-				'options'     => array(
+				'options'           => array(
 					'layout' => array(
 						'error404' => 'col-one',
 					),
 				),
 				'_wp_page_template' => '',
-				'target_url'  => home_url( '/' ) . '?name=abcdefg',
-				'correct'     => true,
+				'target_url'        => home_url( '/' ) . '?name=abcdefg',
+				'correct'           => true,
 			),
 			// Category
 			array(
-				'options'     => array(
+				'options'           => array(
 					'layout' => array(
 						'archive' => 'col-one',
 					),
 				),
 				'_wp_page_template' => '',
-				'target_url'  => get_term_link( $cate_id ),
-				'correct'     => true,
+				'target_url'        => get_term_link( $cate_id ),
+				'correct'           => true,
 			),
 			// Post home
 			array(
-				'page_type'   => 'home',
-				'options'     => array(
+				'page_type'         => 'home',
+				'options'           => array(
 					'layout' => array(
 						'archive' => 'col-one',
 					),
 				),
 				'_wp_page_template' => '',
-				'target_url'  => get_permalink( get_option( 'page_for_posts' ) ),
-				'correct'     => true,
+				'target_url'        => get_permalink( get_option( 'page_for_posts' ) ),
+				'correct'           => true,
 			),
 			// Single
 			array(
-				'page_type'   => 'single',
-				'options'     => array(
+				'page_type'         => 'single',
+				'options'           => array(
 					'layout' => array(
 						'single' => 'col-one',
 					),
 				),
 				'_wp_page_template' => '',
-				'target_url'  => get_permalink( $post_id ),
-				'correct'     => true,
+				'target_url'        => get_permalink( $post_id ),
+				'correct'           => true,
+			),
+			// Single
+			array(
+				'page_type'                 => 'single',
+				'options'                   => array(
+					'layout' => array(
+						'single' => 'col-one',
+					),
+				),
+				'_wp_page_template'         => '',
+				'_lightning_design_setting' => array(
+					'layout' => 'col-two',
+				),
+				'target_url'                => get_permalink( $post_id ),
+				'correct'                   => false,
+			),
+			array(
+				'page_type'                 => 'single',
+				'options'                   => array(
+					'layout' => array(
+						'single' => 'col-two',
+					),
+				),
+				'_wp_page_template'         => '',
+				'_lightning_design_setting' => array(
+					'layout' => 'col-one',
+				),
+				'target_url'                => get_permalink( $post_id ),
+				'correct'                   => true,
 			),
 		);
 
@@ -182,7 +211,10 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 			update_option( 'lightning_theme_options', $options );
 
 			if ( $value['_wp_page_template'] ) {
-				update_post_meta( $front_page_id , '_wp_page_template', $value['_wp_page_template'] );
+				update_post_meta( $front_page_id, '_wp_page_template', $value['_wp_page_template'] );
+			}
+			if ( isset( $value['_lightning_design_setting'] ) ) {
+				update_post_meta( $post_id, '_lightning_design_setting', $value['_lightning_design_setting'] );
 			}
 
 			// 古いセッティング値のコンバート（実際にはfunctions-compatible.phpで after_setup_theme で実行されている）
