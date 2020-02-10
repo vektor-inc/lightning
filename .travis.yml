@@ -55,8 +55,7 @@ node_js:
   - '0.10'
 
 before_script:
-  - npm install -g gulp gulp-concat gulp-cssmin gulp-jsmin gulp-plumber gulp-rename
-  - npm install
+  - npm install -D
   - bash bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
   - |
@@ -73,7 +72,7 @@ script:
   - cd design-skin/origin
   - compass compile
   - cd ../../
-  - gulp compile
+  - npm run compile
 
 after_success:
   - bash ./bin/deploy.sh

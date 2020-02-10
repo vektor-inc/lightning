@@ -1,24 +1,24 @@
 {
   "name": "lightning",
-  "version": "3.3.0",
-  "description": "[![Build Status](https://travis-ci.org/vektor-inc/Lightning.svg?branch=master)](https://travis-ci.org/vektor-inc/Lightning)",
-  "main": "gulpfile.js",
+  "version": "8.2.0",
+  "description": " Lightning is a very simple & easy to customize theme which is based on the Bootstrap. It is also very friendly with custom post types and custom taxonomies. When you add a new one, the breadcrumbs will be adjusted and posts will look beautifully without editing or adding a template files.",
   "directories": {
     "test": "tests"
   },
   "scripts": {
-    "dist": "gulp dist"
+    "dist": "gulp dist",
+    "compile": "gulp compile"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vektor-inc/Lightning.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Vektor, Inc.",
+  "license": "GNU2",
   "bugs": {
     "url": "https://github.com/vektor-inc/Lightning/issues"
   },
-  "homepage": "https://github.com/vektor-inc/Lightning#readme",
+  "homepage": "https://lightning.nagoya",
   "devDependencies": {
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^4.1.0",
