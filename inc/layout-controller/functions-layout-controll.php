@@ -77,31 +77,44 @@ function lightning_is_subsection_display() {
 
 	// break and hidden
 	if ( is_front_page() ){
-		if ( $options['sidebar_display']['front-page'] === 'hidden' ) {
+		if ( 
+			isset( $options['sidebar_display']['front-page'] ) && 
+			$options['sidebar_display']['front-page'] === 'hidden' 
+			) {
 			$return = false;
 		}
 		if ( ! lightning_is_layout_onecolumn() ) {
 			$return = true;
 		}
 	} elseif ( is_404() ){
-		if ( $options['sidebar_display']['error404'] === 'hidden' ) {
+		if ( 
+			isset( $options['sidebar_display']['error404'] ) && 
+			$options['sidebar_display']['error404'] === 'hidden' ) {
 			$return = false;
 		}
 	} elseif ( is_search() ){
-		if ( $options['sidebar_display']['search'] === 'hidden' ) {
+		if ( 
+			isset( $options['sidebar_display']['search']) && 
+			$options['sidebar_display']['search'] === 'hidden' ) {
 			$return = false;
 		}
 	} elseif ( is_home() && ! is_front_page() ){
-		if ( $options['sidebar_display']['archive'] === 'hidden' ) {
+		if ( 
+			isset( $options['sidebar_display']['archive']) && 
+			$options['sidebar_display']['archive'] === 'hidden' ) {
 			$return = false;
 		}
 	} elseif ( is_archive() ){
-		if ( $options['sidebar_display']['archive'] === 'hidden' ) {
+		if ( 
+			isset($options['sidebar_display']['archive'] ) && 
+			$options['sidebar_display']['archive'] === 'hidden' ) {
 			$return = false;
 		}
 	} elseif ( is_singular() ) {
 		if ( is_single() ){
-			if ( $options['sidebar_display']['single'] === 'hidden' ) {
+			if ( 
+				isset( $options['sidebar_display']['single'] ) && 
+				$options['sidebar_display']['single'] === 'hidden' ) {
 				$return = false;
 			}
 		}
