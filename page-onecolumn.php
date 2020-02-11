@@ -1,6 +1,6 @@
 <?php
 /*
- * Template Name: No sidebar
+ * Template Name: No sidebar ( not recommended )
  */
 get_header(); ?>
 

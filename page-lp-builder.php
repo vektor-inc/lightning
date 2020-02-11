@@ -1,6 +1,6 @@
 <?php
 /*
- * Template Name: Landing Page for Page Builder
+ * Template Name: Landing Page for Page Builder ( not recommended )
  */
 get_header(); ?>
 
