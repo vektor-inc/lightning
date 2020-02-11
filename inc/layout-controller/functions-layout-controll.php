@@ -56,17 +56,16 @@ function lightning_is_layout_onecolumn() {
 			}
 		}
 		if ( isset( $post->_lightning_design_setting['layout'] ) ) {
-			if ( 
-				$post->_lightning_design_setting['layout'] === 'col-one' || $post->_lightning_design_setting['layout'] === 'col-one-no-sidebar'
-				) {
-					$onecolumn = true;
-			} elseif ( $post->_lightning_design_setting['layout'] === 'col-two' ) {
+			if ( $post->_lightning_design_setting['layout'] === 'col-two' ) {
 				$onecolumn = false;
+			} elseif ( $post->_lightning_design_setting['layout'] === 'col-one-no-subsection' ) {
+				$onecolumn = true;
 			} elseif ( $post->_lightning_design_setting['layout'] === 'col-one' ) {
 				$onecolumn = true;
 			}
 		}
 	}
+
 	return apply_filters( 'lightning_is_layout_onecolumn', $onecolumn );
 }
 
@@ -122,13 +121,30 @@ function lightning_is_subsection_display() {
 		}
 		global $post;
 		if ( isset( $post->_lightning_design_setting['layout'] ) ) {
-			if ( $post->_lightning_design_setting['layout'] === 'col-one-no-sidebar'
-				) {
+			if ( $post->_lightning_design_setting['layout'] === 'col-one-no-subsection' ) {
 					$return = false;
 			} elseif ( $post->_lightning_design_setting['layout'] === 'col-two' ) {
 				$return = true;
 			}
 		}
 	}
-	return $return;
+	return apply_filters( 'lightning_is_subsection_display', $return);
+}
+
+/**
+ * Page header and Breadcrumb Display or hidden
+ *
+ * @return boolean
+ */
+function lightning_is_page_header_and_breadcrumb() {
+	$return = true;
+	if ( is_page() ){
+		global $post;
+
+		if ( ! empty( $post->_lightning_design_setting['hidden_page_header_and_breadcrumb'] ) ) {
+			$return = false;
+		}
+		
+	}
+	return apply_filters( 'lightning_is_page_header_and_breadcrumb', $return );
 }

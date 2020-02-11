@@ -41,6 +41,8 @@ function lightning_design_setting_meta_fields() {
 	$id = '_lightning_design_setting[layout]';
 	$saved_post_meta = get_post_meta( $post->ID, '_lightning_design_setting', true );
 
+	print '<pre style="text-align:left">';print_r($saved_post_meta);print '</pre>';
+
 	if ( ! empty( $saved_post_meta['layout'] ) ){
 		$saved = $saved_post_meta['layout'];
 	} else {
@@ -64,6 +66,24 @@ function lightning_design_setting_meta_fields() {
 	}
 	$form .= '</select>';
 
+	/*  .Page Header
+	/*-------------------------------------------*/
+	$form .= '<h4>' . __( 'Page Header', 'lightning' ) . '</h4>';
+
+	$id = '_lightning_design_setting[hidden_page_header_and_breadcrumb]';
+	$name = '_lightning_design_setting[hidden_page_header_and_breadcrumb]';
+	$label = __( 'Don\'t display Page Header and Breadcrumb', 'lightning' );
+
+	$form .= '<ul>';
+
+	$checked = '';
+	if ( ! empty( $saved_post_meta['hidden_page_header_and_breadcrumb'] ) ){
+		$checked = ' checked';
+	}
+
+	$form .= '<li class="vk_checklist_item vk_checklist_item-style-vertical">' . '<input type="checkbox" id="' . esc_attr( $id ) . '" name="' . esc_attr( $name ) . '" value="true"' . $checked . ' class="vk_checklist_item_input"><label for="' . esc_attr( $name ) . '" class="vk_checklist_item_label">' . wp_kses_post( $label ) . '</label></li>';
+	$form .= '</ul>';
+
 	echo $form;
 
 	do_action('lightning_design_setting_meta_fields');
@@ -76,14 +96,14 @@ function lightning_design_setting_meta_fields() {
 add_action( 'save_post', 'lightning_design_setting_save' );
 
 function lightning_design_setting_save( $post_id ) {
-	global $post;
 
-	// Recieve nonce ( CSRF )
+	// // Recieve nonce ( CSRF )
 	$noncename__lightning_desigin = isset( $_POST['noncename__lightning_desigin'] ) ? $_POST['noncename__lightning_desigin'] : null;
 
 	if ( ! wp_verify_nonce( $noncename__lightning_desigin, wp_create_nonce( __FILE__ ) ) ) {
 		return $post_id;
 	}
+
 
 	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 		return $post_id; }
@@ -94,10 +114,11 @@ function lightning_design_setting_save( $post_id ) {
 	if ( get_post_meta( $post_id, $field ) == '' ) {
 		add_post_meta( $post_id, $field, $field_value, true );
 
-	} elseif ( $field_value != get_post_meta( $post_id, $field, true ) ) {
-
 	} elseif ( $field_value == '' ) {
 		delete_post_meta( $post_id, $field, get_post_meta( $post_id, $field, true ) );
+
+	} else {
+		update_post_meta( $post_id, $field, $field_value );
 	}
 
 }

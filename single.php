@@ -1,28 +1,30 @@
 <?php get_header(); ?>
 
 <?php
-// Dealing with old files.
-// Actually, it's ok to only use get_template_part().
+if ( lightning_is_page_header_and_breadcrumb() ){
 
-/*
- Page Header
-/*-------------------------------------------*/
-$old_file_name[] = 'module_pageTit.php';
-if ( locate_template( $old_file_name, false, false ) ) {
-	locate_template( $old_file_name, true, false );
-} else {
-	get_template_part( 'template-parts/page-header' );
-}
+	// Dealing with old files.
+	// Actually, it's ok to only use get_template_part().
+	/*-------------------------------------------*/
+	/* Page Header
+	/*-------------------------------------------*/
+	$old_file_name[] = 'module_pageTit.php';
+	if ( locate_template( $old_file_name, false, false ) ) {
+		locate_template( $old_file_name, true, false );
+	} else {
+		get_template_part( 'template-parts/page-header' );
+	}
+	/*-------------------------------------------*/
+	/* BreadCrumb
+	/*-------------------------------------------*/
+	$old_file_name[] = 'module_panList.php';
+	if ( locate_template( $old_file_name, false, false ) ) {
+		locate_template( $old_file_name, true, false );
+	} else {
+		get_template_part( 'template-parts/breadcrumb' );
+	}
 
-/*
- BreadCrumb
-/*-------------------------------------------*/
-$old_file_name[] = 'module_panList.php';
-if ( locate_template( $old_file_name, false, false ) ) {
-	locate_template( $old_file_name, true, false );
-} else {
-	get_template_part( 'template-parts/breadcrumb' );
-}
+} // if ( lightning_is_page_header_and_top_breadcrumb() ){
 ?>
 
 <div class="<?php lightning_the_class_name( 'siteContent' ); ?>">
