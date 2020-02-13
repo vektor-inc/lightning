@@ -37,7 +37,7 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 		$post_id = wp_insert_post( $post );
 
 		// Create test home page
-		$post         = array(
+		$post           = array(
 			'post_title'   => 'normal page',
 			'post_type'    => 'page',
 			'post_status'  => 'publish',
@@ -200,19 +200,19 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 				'correct'           => true,
 			),
 			array(
-				'page_type'         => 'page',
-				'options'           => array(
+				'page_type'                 => 'page',
+				'options'                   => array(
 					'layout' => array(
 						'page' => 'col-one',
 					),
 				),
-				'_wp_page_template' => '',
+				'_wp_page_template'         => '',
 				'_lightning_design_setting' => array(
 					'layout' => 'col-two',
 				),
-				'target_url'        => get_permalink( $normal_page_id ),
-				'post_id'           => $normal_page_id,
-				'correct'           => false,
+				'target_url'                => get_permalink( $normal_page_id ),
+				'post_id'                   => $normal_page_id,
+				'correct'                   => false,
 			),
 
 			// Single

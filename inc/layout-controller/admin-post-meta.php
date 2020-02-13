@@ -7,7 +7,7 @@ add_action( 'admin_menu', 'lightning_add_design_meta_box' );
 // add meta_box
 function lightning_add_design_meta_box() {
 
-	$args    = array(
+	$args       = array(
 		'public' => true,
 	);
 	$post_types = get_post_types( $args, 'object' );
@@ -29,53 +29,55 @@ function lightning_add_design_meta_box() {
 
 function lightning_design_setting_meta_fields() {
 
-	//CSRF対策の設定（フォームにhiddenフィールドとして追加するためのnonceを「'noncename__lightning_desigin」として設定）
+	// CSRF対策の設定（フォームにhiddenフィールドとして追加するためのnonceを「'noncename__lightning_desigin」として設定）
 	wp_nonce_field( wp_create_nonce( __FILE__ ), 'noncename__lightning_desigin' );
 
 	global $post;
 
-	/*  Layout setting
+	/*
+	  Layout setting
 	/*-------------------------------------------*/
-	echo '<h4>'.__( 'Layout setting', 'lightning' ).'</h4>';
+	echo '<h4>' . __( 'Layout setting', 'lightning' ) . '</h4>';
 
-	$id = '_lightning_design_setting[layout]';
+	$id              = '_lightning_design_setting[layout]';
 	$saved_post_meta = get_post_meta( $post->ID, '_lightning_design_setting', true );
 
-	if ( ! empty( $saved_post_meta['layout'] ) ){
+	if ( ! empty( $saved_post_meta['layout'] ) ) {
 		$saved = $saved_post_meta['layout'];
 	} else {
 		$saved = '';
 	}
 
 	$options = array(
-		'default' => __( 'Use common settings', 'lightning' ),
-		'col-two' => __( '2 column', 'lightning' ),
-		'col-one' => __( '1 column', 'lightning' ),
+		'default'               => __( 'Use common settings', 'lightning' ),
+		'col-two'               => __( '2 column', 'lightning' ),
+		'col-one'               => __( '1 column', 'lightning' ),
 		'col-one-no-subsection' => __( '1 column ( No sub section )', 'lightning' ),
 	);
 
-	$form = '<select id="' . esc_attr( $id ) . '" name="' . esc_attr( $id ) . '">';	
-	foreach( $options as $key => $value ){
+	$form = '<select id="' . esc_attr( $id ) . '" name="' . esc_attr( $id ) . '">';
+	foreach ( $options as $key => $value ) {
 		$selected = '';
-		if ( $key === $saved ){
+		if ( $key === $saved ) {
 			$selected = ' selected';
 		}
-		$form .= '<option value="'.esc_attr( $key ).'"'.$selected.'>'.esc_html( $value ).'</option>';
+		$form .= '<option value="' . esc_attr( $key ) . '"' . $selected . '>' . esc_html( $value ) . '</option>';
 	}
 	$form .= '</select>';
 
-	/*  .Page Header
+	/*
+	  .Page Header
 	/*-------------------------------------------*/
 	$form .= '<h4>' . __( 'Page Header', 'lightning' ) . '</h4>';
 
-	$id = '_lightning_design_setting[hidden_page_header_and_breadcrumb]';
-	$name = '_lightning_design_setting[hidden_page_header_and_breadcrumb]';
+	$id    = '_lightning_design_setting[hidden_page_header_and_breadcrumb]';
+	$name  = '_lightning_design_setting[hidden_page_header_and_breadcrumb]';
 	$label = __( 'Don\'t display Page Header and Breadcrumb', 'lightning' );
 
 	$form .= '<ul>';
 
 	$checked = '';
-	if ( ! empty( $saved_post_meta['hidden_page_header_and_breadcrumb'] ) ){
+	if ( ! empty( $saved_post_meta['hidden_page_header_and_breadcrumb'] ) ) {
 		$checked = ' checked';
 	}
 
@@ -84,7 +86,7 @@ function lightning_design_setting_meta_fields() {
 
 	echo $form;
 
-	do_action('lightning_design_setting_meta_fields');
+	do_action( 'lightning_design_setting_meta_fields' );
 
 }
 
@@ -101,7 +103,6 @@ function lightning_design_setting_save( $post_id ) {
 	if ( ! wp_verify_nonce( $noncename__lightning_desigin, wp_create_nonce( __FILE__ ) ) ) {
 		return $post_id;
 	}
-
 
 	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 		return $post_id; }

@@ -11,7 +11,7 @@ function lightning_layout_target_array() {
 		'archive'  => array(
 			'function' => 'is_archive',
 		),
-		'page'   => array(
+		'page'     => array(
 			'function' => 'is_page',
 		),
 		'single'   => array(

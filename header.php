@@ -60,15 +60,6 @@ do_action( 'lightning_header_before' );
 		}
 		?>
 	</div>
-	<?php
-	do_action( 'lightning_header_append' );
-
-	lightning_is_layout_onecolumn();
-
-	// $option = get_option( 'lightning_theme_options' );
-	// print '<pre style="text-align:left">';
-	// print_r( $option );
-	// print '</pre>';
-	?>
+	<?php do_action( 'lightning_header_append' ); ?>
 </header>
 <?php do_action( 'lightning_header_after' ); ?>
