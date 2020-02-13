@@ -141,7 +141,7 @@ function lightning_commentJs() {
   Load CSS
 /*-------------------------------------------*/
 add_action( 'after_setup_theme', 'lightning_load_css_action' );
-function lightning_load_css_action(){
+function lightning_load_css_action() {
 	$hook_point = apply_filters( 'lightning_enqueue_point_common_and_theme_css', 'wp_enqueue_scripts' );
 	add_action( $hook_point, 'lightning_css' );
 }
@@ -180,7 +180,6 @@ require get_parent_theme_file_path( '/inc/enqueue-point-controller/enqueue-point
 /*-------------------------------------------*/
 require get_parent_theme_file_path( '/inc/customize/customize.php' );
 require get_parent_theme_file_path( '/inc/customize/customize-design.php' );
-require get_parent_theme_file_path( '/inc/customize/customize-layout.php' );
 require get_parent_theme_file_path( '/inc/customize/customize-top-slide.php' );
 
 /*
@@ -530,7 +529,7 @@ function lightning_deactivate_plugin( $plugin_path ) {
 // }
 //
 // if ( ! is_admin() ) {
-// 	add_filter( 'script_loader_tag', 'lightning_add_defer_to_scripts', 10, 2 );
+// add_filter( 'script_loader_tag', 'lightning_add_defer_to_scripts', 10, 2 );
 // }
 
 */

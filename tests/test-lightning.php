@@ -263,7 +263,7 @@ class LightningTest extends WP_UnitTestCase {
 				// 'check_keys' => array( array( 'layout' => 'front-page' ) )
 				'correct'   => array(
 					'layout' => array(
-						'front-page' => 'col-one',
+						'front-page' => 'col-one-no-subsection',
 					),
 				),
 			),

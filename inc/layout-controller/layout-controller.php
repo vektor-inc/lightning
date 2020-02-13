@@ -1,5 +1,4 @@
 <?php
-require_once( 'admin-post-meta.php' );
-// require_once( 'admin-customizer.php' );
-
-require_once( 'functions-layout-controll.php' );
+require get_parent_theme_file_path( '/inc/layout-controller/admin-post-meta.php' );
+require get_parent_theme_file_path( '/inc/layout-controller/admin-customize-layout.php' );
+require get_parent_theme_file_path( '/inc/layout-controller/functions-layout-controll.php' );

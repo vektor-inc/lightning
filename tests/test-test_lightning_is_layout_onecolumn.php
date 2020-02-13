@@ -72,6 +72,16 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 				'target_url'        => home_url( '/' ),
 				'correct'           => true,
 			),
+			array(
+				'options'           => array(
+					'layout' => array(
+						'front-page' => 'col-one-no-subsection',
+					),
+				),
+				'_wp_page_template' => '',
+				'target_url'        => home_url( '/' ),
+				'correct'           => true,
+			),
 			// Front page _ old one column setting
 			array(
 				'options'           => array(

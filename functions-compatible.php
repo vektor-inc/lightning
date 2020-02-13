@@ -13,7 +13,7 @@ function lightning_options_compatible() {
 			if ( isset( $options['layout']['front-page'] ) && $options['layout']['front-page'] === 'col-two' ) {
 
 			} else {
-				$options['layout']['front-page'] = 'col-one';
+				$options['layout']['front-page'] = 'col-one-no-subsection';
 				update_option( 'lightning_theme_options', $options );
 			}
 		}

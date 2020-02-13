@@ -10,7 +10,7 @@ phpunit
 
 class LightningIsSubsectionDisplayTest extends WP_UnitTestCase {
 
-	function test_lightning_is_subsection_display(){
+	function test_lightning_is_subsection_display() {
 
 		print PHP_EOL;
 		print '------------------------------------' . PHP_EOL;
@@ -23,7 +23,7 @@ class LightningIsSubsectionDisplayTest extends WP_UnitTestCase {
 		$before_show_on_front  = get_option( 'show_on_front' ); // トップページ指定するかどうか page or posts
 
 		// Create test home page
-		$post         = array(
+		$post    = array(
 			'post_title'   => 'single-page',
 			'post_type'    => 'post',
 			'post_status'  => 'publish',
@@ -33,59 +33,66 @@ class LightningIsSubsectionDisplayTest extends WP_UnitTestCase {
 
 		$test_array = array(
 			array(
-				'options'   => array(
-					'layout'             => array(
-						'front-page' => 'col-one',
-					),
-					'sidebar_display' => array(
-						'front-page' => 'hidden',
+				'options'    => array(
+					'layout' => array(
+						'front-page' => 'col-one-no-subsection',
 					),
 				),
-				'target_url'  => home_url( '/' ),
-				'correct'     => false,
+				'target_url' => home_url( '/' ),
+				'correct'    => false,
 			),
-			// // Front page _ old one column setting
+			// Front page _ old one column setting
+			// * No subsection hidden
 			array(
-				'options'     => array(
+				'options'    => array(
 					'layout'             => array(
-						'front-page' => 'col-one',
-					),
-					'sidebar_display' => array(
-						'front-page' => 'break', // If break...
+						'front-page' => 'col-one', // auto convert to col-one-no-subsection
 					),
 					'top_sidebar_hidden' => true,
 				),
-				'target_url'  => home_url( '/' ),
-				'correct'     => true,
+				'target_url' => home_url( '/' ),
+				'correct'    => false,
 			),
-			// Front page _ old one column setting
-			// トップ１カラム指定が古い状態で万が一残ってたとしても新しい設定が2カラムなら2カラムにする
+			// // Front page _ old one column setting
+			// // トップ１カラム指定が古い状態で万が一残ってたとしても新しい設定が2カラムなら2カラムにする
 			array(
-				'options'     => array(
-					'sidebar_display' => array(
-						'front-page' => 'break', // If break...
-					),
+				'options'           => array(
 					'top_sidebar_hidden' => true,
 					'layout'             => array(
 						'front-page' => 'col-two', // Top priority
 					),
 				),
 				'_wp_page_template' => '',
-				'target_url'  => home_url( '/' ),
-				'correct'     => true,
+				'target_url'        => home_url( '/' ),
+				'correct'           => true,
 			),
-			// post single
+			// // post single
 			array(
-				'options'   => array(
-					'layout'             => array(
-						'single' => 'col-one',
-					),
-					'sidebar_display' => array(
-						'single' => 'hidden',
+				'options'    => array(
+					'layout' => array(
+						'single' => 'col-two',
 					),
 				),
-				'target_url'  => get_permalink( $post_id ),
-				'correct'     => false,
+				'target_url' => get_permalink( $post_id ),
+				'correct'    => true,
+			),
+			array(
+				'options'    => array(
+					'layout' => array(
+						'single' => 'col-one',
+					),
+				),
+				'target_url' => get_permalink( $post_id ),
+				'correct'    => true,
+			),
+			array(
+				'options'    => array(
+					'layout' => array(
+						'single' => 'col-one-no-subsection',
+					),
+				),
+				'target_url' => get_permalink( $post_id ),
+				'correct'    => false,
 			),
 		);
 
@@ -94,7 +101,7 @@ class LightningIsSubsectionDisplayTest extends WP_UnitTestCase {
 			update_option( 'lightning_theme_options', $options );
 
 			// if ( $value['_wp_page_template'] ) {
-			// 	update_post_meta( $front_page_id , '_wp_page_template', $value['_wp_page_template'] );
+			// update_post_meta( $front_page_id , '_wp_page_template', $value['_wp_page_template'] );
 			// }
 
 			// 古いセッティング値のコンバート（実際にはfunctions-compatible.phpで after_setup_theme で実行されている）
