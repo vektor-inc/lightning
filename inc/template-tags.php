@@ -48,6 +48,9 @@ function lightning_get_the_class_name( $position = '' ) {
 		if ( lightning_is_layout_onecolumn() ) {
 			$class_names['mainSection'] = 'col mainSection mainSection-col-one';
 			$class_names['sideSection'] = 'col subSection sideSection sideSection-col-one';
+			if ( lightning_is_subsection_display() ){
+				$class_names['mainSection'] .= ' mainSection-mb-true';
+			}
 		} else {
 			// 2 column
 			$options = get_option( 'lightning_theme_options' );
