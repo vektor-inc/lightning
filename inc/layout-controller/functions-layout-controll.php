@@ -11,6 +11,9 @@ function lightning_layout_target_array() {
 		'archive'  => array(
 			'function' => 'is_archive',
 		),
+		'page'   => array(
+			'function' => 'is_page',
+		),
 		'single'   => array(
 			'function' => 'is_single',
 		),
@@ -82,7 +85,6 @@ function lightning_is_layout_onecolumn() {
 			}
 		}
 	}
-
 	return apply_filters( 'lightning_is_layout_onecolumn', $onecolumn );
 }
 

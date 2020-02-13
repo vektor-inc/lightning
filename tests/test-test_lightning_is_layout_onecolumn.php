@@ -38,6 +38,15 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 
 		// Create test home page
 		$post         = array(
+			'post_title'   => 'normal page',
+			'post_type'    => 'page',
+			'post_status'  => 'publish',
+			'post_content' => 'content',
+		);
+		$normal_page_id = wp_insert_post( $post );
+
+		// Create test home page
+		$post         = array(
 			'post_title'   => 'post_top',
 			'post_type'    => 'page',
 			'post_status'  => 'publish',
@@ -128,6 +137,7 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 				'target_url'        => home_url( '/' ),
 				'correct'           => true,
 			),
+
 			// Search
 			array(
 				'options'           => array(
@@ -139,6 +149,7 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 				'target_url'        => home_url( '/' ) . '?s=aaa',
 				'correct'           => true,
 			),
+
 			// 404
 			array(
 				'options'           => array(
@@ -150,6 +161,7 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 				'target_url'        => home_url( '/' ) . '?name=abcdefg',
 				'correct'           => true,
 			),
+
 			// Category
 			array(
 				'options'           => array(
@@ -161,6 +173,7 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 				'target_url'        => get_term_link( $cate_id ),
 				'correct'           => true,
 			),
+
 			// Post home
 			array(
 				'page_type'         => 'home',
@@ -173,6 +186,35 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 				'target_url'        => get_permalink( get_option( 'page_for_posts' ) ),
 				'correct'           => true,
 			),
+
+			array(
+				'page_type'         => 'page',
+				'options'           => array(
+					'layout' => array(
+						'page' => 'col-one',
+					),
+				),
+				'_wp_page_template' => '',
+				'target_url'        => get_permalink( $normal_page_id ),
+				'post_id'           => $normal_page_id,
+				'correct'           => true,
+			),
+			array(
+				'page_type'         => 'page',
+				'options'           => array(
+					'layout' => array(
+						'page' => 'col-one',
+					),
+				),
+				'_wp_page_template' => '',
+				'_lightning_design_setting' => array(
+					'layout' => 'col-two',
+				),
+				'target_url'        => get_permalink( $normal_page_id ),
+				'post_id'           => $normal_page_id,
+				'correct'           => false,
+			),
+
 			// Single
 			array(
 				'page_type'         => 'single',
@@ -183,6 +225,7 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 				),
 				'_wp_page_template' => '',
 				'target_url'        => get_permalink( $post_id ),
+				'post_id'           => $post_id,
 				'correct'           => true,
 			),
 			// Single
@@ -198,6 +241,7 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 					'layout' => 'col-two',
 				),
 				'target_url'                => get_permalink( $post_id ),
+				'post_id'                   => $post_id,
 				'correct'                   => false,
 			),
 			array(
@@ -212,6 +256,7 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 					'layout' => 'col-one',
 				),
 				'target_url'                => get_permalink( $post_id ),
+				'post_id'                   => $post_id,
 				'correct'                   => true,
 			),
 		);
@@ -224,7 +269,7 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 				update_post_meta( $front_page_id, '_wp_page_template', $value['_wp_page_template'] );
 			}
 			if ( isset( $value['_lightning_design_setting'] ) ) {
-				update_post_meta( $post_id, '_lightning_design_setting', $value['_lightning_design_setting'] );
+				update_post_meta( $value['post_id'], '_lightning_design_setting', $value['_lightning_design_setting'] );
 			}
 
 			// 古いセッティング値のコンバート（実際にはfunctions-compatible.phpで after_setup_theme で実行されている）

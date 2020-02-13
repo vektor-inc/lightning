@@ -41,8 +41,6 @@ function lightning_design_setting_meta_fields() {
 	$id = '_lightning_design_setting[layout]';
 	$saved_post_meta = get_post_meta( $post->ID, '_lightning_design_setting', true );
 
-	print '<pre style="text-align:left">';print_r($saved_post_meta);print '</pre>';
-
 	if ( ! empty( $saved_post_meta['layout'] ) ){
 		$saved = $saved_post_meta['layout'];
 	} else {
