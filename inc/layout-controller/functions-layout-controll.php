@@ -145,7 +145,7 @@ function lightning_is_subsection_display() {
 	 */
 function lightning_is_page_header_and_breadcrumb() {
 	$return = true;
-	if ( is_page() ) {
+	if ( is_singular() ) {
 		global $post;
 
 		if ( ! empty( $post->_lightning_design_setting['hidden_page_header_and_breadcrumb'] ) ) {
