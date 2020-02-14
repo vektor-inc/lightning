@@ -98,7 +98,7 @@ mainSection だけにしているのはサブセクションが下に配置さ�
 そもそも外側の余白は .siteContent でつけられているので sideSection には不要
 */
 .mainSection {
-	&-mb-true {
+	&-marginBottom-on {
 		margin-bottom: 3rem;
 	}
 	@media (max-width: $md-max) {

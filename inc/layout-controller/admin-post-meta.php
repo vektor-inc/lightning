@@ -81,6 +81,25 @@ function lightning_design_setting_meta_fields() {
 		$checked = ' checked';
 	}
 
+	$form .= '<li class="vk_checklist_item vk_checklist_item-style-vertical">' . '<input type="checkbox" id="' . esc_attr( $id ) . '" name="' . esc_attr( $name ) . '" value="true"' . $checked . '  class="vk_checklist_item_input"><label for="' . esc_attr( $name ) . '" class="vk_checklist_item_label">' . wp_kses_post( $label ) . '</label></li>';
+	$form .= '</ul>';
+
+	/*
+	  .siteContent padding
+	/*-------------------------------------------*/
+	$form .= '<h4>' . __( 'Padding and margin setting', 'lightning-pro' ) . '</h4>';
+
+	$id    = '_lightning_design_setting[siteContent_padding]';
+	$name  = '_lightning_design_setting[siteContent_padding]';
+	$label = __( 'Delete siteContent padding', 'lightning-pro' );
+
+	$form .= '<ul>';
+
+	$checked = '';
+	if ( ! empty( $saved_post_meta['siteContent_padding'] ) ) {
+		$checked = ' checked';
+	}
+
 	$form .= '<li class="vk_checklist_item vk_checklist_item-style-vertical">' . '<input type="checkbox" id="' . esc_attr( $id ) . '" name="' . esc_attr( $name ) . '" value="true"' . $checked . ' class="vk_checklist_item_input"><label for="' . esc_attr( $name ) . '" class="vk_checklist_item_label">' . wp_kses_post( $label ) . '</label></li>';
 	$form .= '</ul>';
 

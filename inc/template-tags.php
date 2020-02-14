@@ -49,7 +49,7 @@ function lightning_get_the_class_name( $position = '' ) {
 			$class_names['mainSection'] = 'col mainSection mainSection-col-one';
 			$class_names['sideSection'] = 'col subSection sideSection sideSection-col-one';
 			if ( lightning_is_subsection_display() ){
-				$class_names['mainSection'] .= ' mainSection-mb-true';
+				$class_names['mainSection'] .= ' mainSection-marginBottom-on';
 			}
 		} else {
 			// 2 column
@@ -59,6 +59,10 @@ function lightning_get_the_class_name( $position = '' ) {
 				$class_names['mainSection'] = 'col mainSection mainSection-col-two mainSection-pos-right';
 				$class_names['sideSection'] = 'col subSection sideSection sideSection-col-two sideSection-pos-left';
 			}
+		}
+		if ( lightning_is_siteContent_padding_off() ){
+			$class_names['siteContent'] .= ' siteContent-paddingVertical-off';
+			$class_names['mainSection'] .= ' mainSection-marginVertical-off';
 		}
 	}
 
@@ -84,9 +88,9 @@ function lightning_the_class_name( $position = '' ) {
   Sanitize
 /*-------------------------------------------*/
 
-	/*
-	  Add sanitize checkbox
-	/*-------------------------------------------*/
+/*
+	Add sanitize checkbox
+/*-------------------------------------------*/
 function lightning_sanitize_checkbox( $input ) {
 	if ( $input == true ) {
 		return true;
