@@ -64,6 +64,9 @@ function lightning_theme_setup() {
 	/*-------------------------------------------*/
 	add_theme_support( 'editor-styles' );
 
+	add_theme_support( 'wp-block-styles' );
+	add_theme_support( 'align-wide' );
+
 	/*
 	  custom-background
 	/*-------------------------------------------*/
