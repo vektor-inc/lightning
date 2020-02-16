@@ -1,9 +1,11 @@
 <?php
 
 /*
-$ vagrant ssh
-$ cd $(wp theme path --dir lightning)
-$ phpunit
+cd /app
+bash setup-phpunit.sh
+source ~/.bashrc
+cd $(wp theme path --dir lightning)
+phpunit
 */
 
 class LightningTest extends WP_UnitTestCase {
@@ -19,9 +21,9 @@ class LightningTest extends WP_UnitTestCase {
 		print '------------------------------------' . PHP_EOL;
 		$test_array = array(
 			// array(
-			// 	'options'   => array(), // フィールド自体が存在しない場合にサンプル画像を返す
-			// 	'check_key' => 'top_slide_image_1',
-			// 	'correct'   => get_template_directory_uri() . '/assets/images/top_image_1.jpg',
+			// 'options'   => array(), // フィールド自体が存在しない場合にサンプル画像を返す
+			// 'check_key' => 'top_slide_image_1',
+			// 'correct'   => get_template_directory_uri() . '/assets/images/top_image_1.jpg',
 			// ),
 			array(
 				'options'   => array(
@@ -38,30 +40,30 @@ class LightningTest extends WP_UnitTestCase {
 				'correct'   => '',
 			),
 			// array(
-			// 	'options'   => array(
-			// 		'top_slide_image_1' => 'http://aaa.com/sample.jpg',
-			// 	),
-			// 	'check_key' => 'top_slide_image_1',
-			// 	'correct'   => 'http://aaa.com/sample.jpg',
+			// 'options'   => array(
+			// 'top_slide_image_1' => 'http://aaa.com/sample.jpg',
+			// ),
+			// 'check_key' => 'top_slide_image_1',
+			// 'correct'   => 'http://aaa.com/sample.jpg',
 			// ),
 			// array(
-			// 	'options'   => array(),
-			// 	'check_key' => 'top_slide_text_title_1',
-			// 	'correct'   => __( 'Simple and Customize easy <br>WordPress theme.', 'lightning' ),
+			// 'options'   => array(),
+			// 'check_key' => 'top_slide_text_title_1',
+			// 'correct'   => __( 'Simple and Customize easy <br>WordPress theme.', 'lightning' ),
 			// ),
 			// array(
-			// 	'options'   => array(
-			// 		'top_slide_text_title_1' => null,
-			// 	),
-			// 	'check_key' => 'top_slide_text_title_1',
-			// 	'correct'   => '',
+			// 'options'   => array(
+			// 'top_slide_text_title_1' => null,
+			// ),
+			// 'check_key' => 'top_slide_text_title_1',
+			// 'correct'   => '',
 			// ),
 			// array(
-			// 	'options'   => array(
-			// 		'top_slide_text_title_1' => '',
-			// 	),
-			// 	'check_key' => 'top_slide_text_title_1',
-			// 	'correct'   => '',
+			// 'options'   => array(
+			// 'top_slide_text_title_1' => '',
+			// ),
+			// 'check_key' => 'top_slide_text_title_1',
+			// 'correct'   => '',
 			// ),
 		);
 		// 操作前のオプション値を取得
@@ -89,8 +91,8 @@ class LightningTest extends WP_UnitTestCase {
 	function test_lightning_top_slide_count() {
 		$test_array = array(
 			// array(
-			// 	'options' => array(),
-			// 	'correct' => 3,
+			// 'options' => array(),
+			// 'correct' => 3,
 			// ),
 			array(
 				'options' => array(
@@ -248,59 +250,58 @@ class LightningTest extends WP_UnitTestCase {
 		}
 	}
 
-	function test_lightning_is_frontpage_onecolumn() {
-		$before_options = get_option( 'lightning_theme_options' );
-		// トップに指定されてる固定ページIDを取得
-		$before_page_on_front = get_option( 'page_on_front' );
-		if ( $before_page_on_front ) {
-			$page_on_front = $before_page_on_front;
-		} else {
-			$page_on_front = 1;
-		}
-		// トップに指定されてる固定ページのテンプレートを取得
-		$before_template = get_post_meta( $page_on_front, '_wp_page_template', true );
-
-		$test_array = array(
-			// カスタマイザーでチェックが入っている場合（優先）
-			array(
-				'top_sidebar_hidden' => true,
-				'_wp_page_template'  => 'default',
-				'correct'            => true,
-			),
-			// カスタマイザーでチェックが入っていなくても固定ページで指定がある場合
-			array(
-				'top_sidebar_hidden' => false,
-				'_wp_page_template'  => 'page-onecolumn.php',
-				'correct'            => true,
-			),
-
-		);
-
+	function test_lightning_options_compatible() {
 		print PHP_EOL;
 		print '------------------------------------' . PHP_EOL;
-		print 'is_frontpage_onecolumn' . PHP_EOL;
+		print 'test_lightning_options_compatible' . PHP_EOL;
 		print '------------------------------------' . PHP_EOL;
+		$test_array = array(
+			array(
+				'options'   => array(
+					'top_sidebar_hidden' => true,
+				),
+				// 'check_keys' => array( array( 'layout' => 'front-page' ) )
+				'correct'   => array(
+					'layout' => array(
+						'front-page' => 'col-one-no-subsection',
+					),
+				),
+			),
+			array(
+				'options'   => array(
+					'top_sidebar_hidden' => true,
+					'layout' => array(
+						'front-page' => 'col-two',
+					),
+				),
+				// 'check_keys' => array( array( 'layout' => 'front-page' ) ),
+				'correct'   => array(
+					'layout' => array(
+						'front-page' => 'col-two',
+					),
+				),
+			),
+		);
+		// 操作前のオプション値を取得
+		$before_options = get_option( 'lightning_theme_options' );
 		foreach ( $test_array as $key => $value ) {
+			delete_option( 'lightning_theme_options' );
 
-			// カスタマイザーでの指定
-			$options['top_sidebar_hidden'] = $value['top_sidebar_hidden'];
-			update_option( 'lightning_theme_options', $options );
+			add_option( 'lightning_theme_options', $value['options'] );
 
-			// 固定ページ側のテンプレート
-			update_option( 'page_on_front', $page_on_front );
-			update_post_meta( $page_on_front, '_wp_page_template', $value['_wp_page_template'] );
+			lightning_options_compatible();
 
-			$return = lightning_is_frontpage_onecolumn();
-			print 'return  :' . $return . PHP_EOL;
-			print 'correct :' . $value['correct'] . PHP_EOL;
-			$this->assertEquals( $value['correct'], $return );
+			$return = get_option('lightning_theme_options');
+
+			$this->assertEquals( $value['correct']['layout']['front-page'], $return['layout']['front-page'] );
+
 		}
-
-		/* テスト前の値に戻す
-		/*--------------------------------*/
-		update_option( 'lightning_theme_options', $before_options );
-		update_option( 'page_on_front', $before_page_on_front );
-		update_post_meta( $before_page_on_front, '_wp_page_template', $before_template );
+		// テストで入れたオプションを削除
+		delete_option( 'lightning_theme_options' );
+		if ( $before_options ) {
+			// テスト前のオプション値に戻す
+			add_option( 'lightning_theme_options', $before_options );
+		}
 	}
 
 	function test_lightning_check_color_mode() {

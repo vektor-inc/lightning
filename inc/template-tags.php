@@ -48,6 +48,9 @@ function lightning_get_the_class_name( $position = '' ) {
 		if ( lightning_is_layout_onecolumn() ) {
 			$class_names['mainSection'] = 'col mainSection mainSection-col-one';
 			$class_names['sideSection'] = 'col subSection sideSection sideSection-col-one';
+			if ( lightning_is_subsection_display() ){
+				$class_names['mainSection'] .= ' mainSection-marginBottom-on';
+			}
 		} else {
 			// 2 column
 			$options = get_option( 'lightning_theme_options' );
@@ -56,6 +59,10 @@ function lightning_get_the_class_name( $position = '' ) {
 				$class_names['mainSection'] = 'col mainSection mainSection-col-two mainSection-pos-right';
 				$class_names['sideSection'] = 'col subSection sideSection sideSection-col-two sideSection-pos-left';
 			}
+		}
+		if ( lightning_is_siteContent_padding_off() ){
+			$class_names['siteContent'] .= ' siteContent-paddingVertical-off';
+			$class_names['mainSection'] .= ' mainSection-marginVertical-off';
 		}
 	}
 
@@ -81,9 +88,9 @@ function lightning_the_class_name( $position = '' ) {
   Sanitize
 /*-------------------------------------------*/
 
-	/*
-	  Add sanitize checkbox
-	/*-------------------------------------------*/
+/*
+	Add sanitize checkbox
+/*-------------------------------------------*/
 function lightning_sanitize_checkbox( $input ) {
 	if ( $input == true ) {
 		return true;
@@ -184,7 +191,7 @@ function lightning_get_theme_options() {
 function lightning_print_headlogo() {
 	$options = get_option( 'lightning_theme_options' );
 	if ( isset( $options['head_logo'] ) && $options['head_logo'] ) {
-		print '<img src="' . $options['head_logo'] . '" alt="' . get_bloginfo( 'name' ) . '" />';
+		print '<img src="' . esc_url( $options['head_logo'] ) . '" alt="' . esc_attr( get_bloginfo( 'name' ) ) . '" />';
 	} else {
 		bloginfo( 'name' );
 	}
@@ -406,51 +413,6 @@ function lightning_the_footerCopyRight() {
 	$lightning_footerPowered = __( '<p>Powered by <a href="https://wordpress.org/">WordPress</a> &amp; <a href="https://lightning.nagoya" target="_blank" title="Free WordPress Theme Lightning"> Lightning Theme</a> by Vektor,Inc. technology.</p>', 'lightning' );
 	echo apply_filters( 'lightning_footerPoweredCustom', $lightning_footerPowered );
 
-}
-
-function lightning_is_frontpage_onecolumn() {
-	// ※ global変数だとテストが効かないため
-	// global $lightning_theme_options;
-	// $options          = $lightning_theme_options;
-	$options          = get_option( 'lightning_theme_options' );
-	$page_on_front_id = get_option( 'page_on_front' );
-
-	if ( isset( $options['top_sidebar_hidden'] ) && $options['top_sidebar_hidden'] ) {
-		return true;
-	}
-	if ( $page_on_front_id ) {
-		$template = get_post_meta( $page_on_front_id, '_wp_page_template', true );
-		if ( $template == 'page-onecolumn.php' ) {
-			return true;
-		}
-	}
-	return false;
-}
-
-/*
-  lightning_is_layout_onecolumn
-/*-------------------------------------------*/
-
-function lightning_is_layout_onecolumn() {
-	$onecolumn = false;
-	if ( is_front_page() ) {
-		if ( lightning_is_frontpage_onecolumn() ) {
-			$onecolumn = true;
-		}
-	} elseif ( is_singular() ) {
-		if ( is_page() ) {
-			global $post;
-			$template           = get_post_meta( $post->ID, '_wp_page_template', true );
-			$template_onecolumn = array(
-				'page-onecolumn.php',
-				'page-lp.php',
-			);
-			if ( in_array( $template, $template_onecolumn ) ) {
-				$onecolumn = true;
-			}
-		}
-	}
-	return apply_filters( 'lightning_is_layout_onecolumn', $onecolumn );
 }
 
 function lightning_get_theme_name() {

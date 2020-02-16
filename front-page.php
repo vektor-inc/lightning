@@ -109,12 +109,10 @@ if ( $bootstrap == '3' ) {
 			<?php do_action( 'lightning_mainSection_append' ); ?>
 			</div><!-- [ /.mainSection ] -->
 
-			<?php if ( ! lightning_is_frontpage_onecolumn() ) : ?>
-
+			<?php if ( lightning_is_subsection_display() ) : ?>
 				<div class="<?php lightning_the_class_name( 'sideSection' ); ?>">
 					<?php get_sidebar(); ?>
 				</div><!-- [ /.subSection ] -->
-
 			<?php endif; ?>
 
 </div><!-- [ /.row ] -->

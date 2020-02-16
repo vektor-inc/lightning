@@ -64,6 +64,9 @@ function lightning_theme_setup() {
 	/*-------------------------------------------*/
 	add_theme_support( 'editor-styles' );
 
+	add_theme_support( 'wp-block-styles' );
+	add_theme_support( 'align-wide' );
+
 	/*
 	  custom-background
 	/*-------------------------------------------*/
@@ -140,26 +143,40 @@ function lightning_commentJs() {
 /*
   Load CSS
 /*-------------------------------------------*/
-add_action( 'wp_enqueue_scripts', 'lightning_css' );
+add_action( 'after_setup_theme', 'lightning_load_css_action' );
+function lightning_load_css_action() {
+	$hook_point = apply_filters( 'lightning_enqueue_point_common_and_theme_css', 'wp_enqueue_scripts' );
+	add_action( $hook_point, 'lightning_css' );
+}
+
 function lightning_css() {
 	wp_enqueue_style( 'lightning-common-style', get_template_directory_uri() . '/assets/css/common.css', array(), LIGHTNING_THEME_VERSION );
 	wp_enqueue_style( 'lightning-theme-style', get_stylesheet_uri(), array( 'lightning-design-style' ), LIGHTNING_THEME_VERSION );
 }
 
+/*
+  Load Editor CSS
+/*-------------------------------------------*/
 add_action( 'after_setup_theme', 'lightning_load_common_editor_css' );
 function lightning_load_common_editor_css() {
-	// Bootstrap4 skin
 	/*
 	 Notice : Use url then if you use local environment https has error that bring to get css error and don't refrected */
 	/* Notice : add_editor_style() is only one args. */
 	add_editor_style( 'assets/css/common_editor.css' );
 }
 
+require get_parent_theme_file_path( '/functions-compatible.php' );
+
 
 /*
   Load tga(Plugin install)
 /*-------------------------------------------*/
 require get_parent_theme_file_path( '/inc/tgm-plugin-activation/tgm-config.php' );
+
+/*
+  Load enqueue-point-controller
+/*-------------------------------------------*/
+require get_parent_theme_file_path( '/inc/enqueue-point-controller/enqueue-point-controller.php' );
 
 /*
   Load Theme Customizer additions.
@@ -189,6 +206,7 @@ require get_parent_theme_file_path( '/inc/font-awesome/font-awesome-config.php' 
 require get_parent_theme_file_path( '/inc/term-color/term-color-config.php' );
 require get_parent_theme_file_path( '/inc/vk-components/vk-components-config.php' );
 require get_parent_theme_file_path( '/inc/template-redirect.php' );
+require get_parent_theme_file_path( '/inc/layout-controller/layout-controller.php' );
 
 /*
   Load woocommerce modules
@@ -517,14 +535,4 @@ function lightning_deactivate_plugin( $plugin_path ) {
 // add_filter( 'script_loader_tag', 'lightning_add_defer_to_scripts', 10, 2 );
 // }
 
-/*
-  Deal with typo name action
-/*-------------------------------------------*/
-add_action( 'lightning_entry_body_after', 'lightning_ligthning_entry_body_after' );
-function lightning_ligthning_entry_body_after() {
-	do_action( 'ligthning_entry_body_after' );
-}
-add_action( 'lightning_entry_body_before', 'lightning_ligthning_entry_body_before' );
-function lightning_ligthning_entry_body_before() {
-	do_action( 'ligthning_entry_body_before' );
-}
+*/

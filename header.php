@@ -12,6 +12,8 @@ $lightning_theme_options = get_option( 'lightning_theme_options' );
 
 </head>
 <body <?php body_class(); ?>>
+<a class="skip-link screen-reader-text" href="#main"><?php _e( 'Skip to the content', 'lightning' ); ?></a>
+<a class="skip-link screen-reader-text" href="#main"><?php _e( 'Skip to the Navigation', 'lightning' ); ?></a>
 <?php
 if ( function_exists( 'wp_body_open' ) ) {
 	wp_body_open();
@@ -47,7 +49,7 @@ do_action( 'lightning_header_before' );
 				'walker'         => new description_walker(),
 			);
 			$gMenu = wp_nav_menu( $args );
-		?>
+			?>
 		</div>
 
 		<?php

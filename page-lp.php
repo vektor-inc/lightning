@@ -1,6 +1,6 @@
 <?php
 /*
- * Template Name: Landing Page
+ * Template Name: Landing Page ( not recommended )
  */
 get_header(); ?>
 

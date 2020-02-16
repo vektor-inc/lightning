@@ -1,0 +1,26 @@
+// editor only
+
+/* メインのカラム幅 */
+// .editor-block-list__layout > .wp-block,
+.wp-block {
+	display: block;
+	width: calc(100% - 2rem);
+	max-width: 1110px;
+}
+
+@media (min-width: 600px) {
+	.block-editor-block-list__layout
+		.block-editor-block-list__block[data-align="full"] {
+		max-width: calc(100% + 46px + 46px);
+		width: calc(100% + 46px + 46px);
+		margin-left: -46px;
+		margin-right: -46px;
+	}
+}
+@media (min-width: 600px) {
+	.block-editor-block-list__layout
+		.block-editor-block-list__block[data-align="wide"] {
+		max-width: 100%;
+		width: 100%;
+	}
+}

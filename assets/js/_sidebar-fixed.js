@@ -115,6 +115,12 @@
 
             } // if ( sideFix.window_height < sidebar_bottom_position_default ) {
 
+            if ( jQuery('body').hasClass('bootstrap4') ){
+                // スクロール時の固定ナビゲーションでサイドバー上部が隠れないように
+                var global_nav_fix_height = jQuery('.gMenu_outer').outerHeight();
+                move_position_start = content_position_now['top'] - global_nav_fix_height - 20;
+                move_position_end = height_difference + content_position_now['top'] - global_nav_fix_height - 20 ;
+            }
 
             /* スクロール動作条件
             /*-------------------------------------------*/

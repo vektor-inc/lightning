@@ -120,6 +120,7 @@ $xl-min: 1200px;
 	margin-right: -15px;
 	display: flex;
 	flex-wrap: wrap;
+	clear: both; /* To be cope with inline image float and so on. */
 }
 .vk_post {
 	margin-left: 15px;
