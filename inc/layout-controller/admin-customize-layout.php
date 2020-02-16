@@ -66,6 +66,14 @@ function lightning_customize_register_layout( $wp_customize ) {
 		'col-one-no-subsection' => __( '1 column ( No sub section )', 'lightning' ),
 	);
 
+	$wp_customize->selective_refresh->add_partial(
+		'lightning_theme_options[layout][front-page]',
+		array(
+			'selector'        => '.mainSection',
+			'render_callback' => '',
+		)
+	);
+
 	foreach ( $page_types as $key => $value ) {
 		$wp_customize->add_setting(
 			'lightning_theme_options[layout][' . $key . ']',
