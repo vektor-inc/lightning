@@ -37,7 +37,7 @@ function lightning_customize_register_enqueue_point( $wp_customize ) {
 			'section'     => 'lightning_function',
 			'settings'    => "lightning_theme_options[enqueue_point_footer]",
 			'type'        => 'checkbox',
-			'description' => 'If you enabled this checkbox that page loading speed become little faster.',
+			'description' => __( 'If you enabled this checkbox that page loading speed become little faster.', 'lightning' ),
 		)
 	);
 

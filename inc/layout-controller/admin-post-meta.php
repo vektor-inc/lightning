@@ -68,11 +68,11 @@ function lightning_design_setting_meta_fields() {
 	/*
 	  .Page Header
 	/*-------------------------------------------*/
-	$form .= '<h4>' . __( 'Page Header', 'lightning' ) . '</h4>';
+	$form .= '<h4>' . __( 'Page Header and Breadcrumb', 'lightning' ) . '</h4>';
 
 	$id    = '_lightning_design_setting[hidden_page_header_and_breadcrumb]';
 	$name  = '_lightning_design_setting[hidden_page_header_and_breadcrumb]';
-	$label = __( 'Don\'t display Page Header and Breadcrumb', 'lightning' );
+	$label = __( 'Don\'t display', 'lightning' );
 
 	$form .= '<ul>';
 
