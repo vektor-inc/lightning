@@ -17,7 +17,7 @@ function lightning_customize_register_enqueue_point( $wp_customize ) {
 			$wp_customize,
 			'enqueue_point_title',
 			array(
-				'label'            => __( 'CSS and Javascript load point ', 'lightning' ),
+				'label'            => __( 'CSS and JavaScript load point ', 'lightning' ),
 				'section'          => 'lightning_function',
 				'type'             => 'text',
 				'custom_title_sub' => '',
