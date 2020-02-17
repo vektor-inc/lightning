@@ -1,6 +1,5 @@
 <?php
 /*
-/*
   customize_register
 /*-------------------------------------------*/
 add_action( 'customize_register', 'lightning_customize_register_enqueue_point' );
@@ -59,6 +58,9 @@ function lightning_change_enqueue_point_run_filter() {
 	$options = get_option( 'lightning_theme_options' );
 
 	if ( ! empty( $options['enqueue_point_footer'] ) ) {
+
+		// Theme late load css ( ex : overwrite ExUnit common CSS )
+		add_filter( 'lightning_late_load_style_enqueue_point', 'lightning_change_enqueue_point_to_footer' );
 
 		// Theme common and theme-style
 		add_filter( 'lightning_enqueue_point_common_and_theme_css', 'lightning_change_enqueue_point_to_footer' );
