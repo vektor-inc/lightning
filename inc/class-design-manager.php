@@ -4,6 +4,7 @@ class Lightning_Design_Manager {
 	static function init() {
 
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'load_skin_css_and_js' ) );
+		add_action( 'after_setup_theme', array( __CLASS__, 'load_late_css_action' ) );
 		add_action( 'after_setup_theme', array( __CLASS__, 'load_skin_php' ) );
 		add_action( 'after_setup_theme', array( __CLASS__, 'load_skin_callback' ) );
 
@@ -18,6 +19,7 @@ class Lightning_Design_Manager {
 
 	/**
 	 * Set default skin
+	 *
 	 * @return array スキン固有で読み込むファイル情報の配列
 	 */
 	static function get_skins() {
@@ -35,6 +37,7 @@ class Lightning_Design_Manager {
 			'origin2' => array(
 				'label'           => __( 'Origin II ( Bootstrap4 )', 'lightning' ),
 				'css_path'        => get_template_directory_uri() . '/design-skin/origin2/css/style.css',
+				'css_late_path' => '',
 				'editor_css_path' => get_template_directory_uri() . '/design-skin/origin2/css/editor.css',
 				'php_path'        => get_parent_theme_file_path( '/design-skin/origin2/origin2.php' ),
 				'js_path'         => '',
@@ -48,6 +51,7 @@ class Lightning_Design_Manager {
 
 	/**
 	 * Only using deal with plugin skin deactive fallback.
+	 *
 	 * @return [array] Return plugin url to activate check.
 	 */
 	static function get_skins_info() {
@@ -95,6 +99,7 @@ class Lightning_Design_Manager {
 
 	/**
 	 * Get current skin function
+	 *
 	 * @return [string] If empty current skin that set default skin.
 	 */
 	public static function get_current_skin() {
@@ -107,7 +112,7 @@ class Lightning_Design_Manager {
 
 		// If selected skin plugin is deactive that, set to default skin.
 		if ( $current_skin != 'origin2' ) {
-			include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+			include_once ABSPATH . 'wp-admin/includes/plugin.php';
 			$skins_info = self::get_skins_info();
 			if ( isset( $skins_info[ $current_skin ]['plugin_path'] ) && ! is_plugin_active( $skins_info[ $current_skin ]['plugin_path'] ) ) {
 				$current_skin = 'origin2';
@@ -122,6 +127,7 @@ class Lightning_Design_Manager {
 
 	/**
 	 * Load skin CSS and JavaScript
+	 *
 	 * @return [type] [description]
 	 */
 	static function load_skin_css_and_js() {
@@ -132,7 +138,7 @@ class Lightning_Design_Manager {
 			$skin_css_url = $skin_info['css_path'];
 		}
 
-		/// load bootstrap ///////////////////////
+		// load bootstrap ///////////////////////
 
 		global $bootstrap;
 		$bootstrap = '3';
@@ -151,13 +157,13 @@ class Lightning_Design_Manager {
 			wp_enqueue_style( 'bootstrap-4-style', $bs4_css_url, array(), $bs4_version );
 			wp_enqueue_script( 'bootstrap-4-js', get_template_directory_uri() . '/library/bootstrap-4/js/bootstrap.min.js', array( 'jquery' ), $bs4_version, true );
 
-			/// load skin CSS ///////////////////////
+			// load skin CSS ///////////////////////
 
 			wp_enqueue_style( 'lightning-design-style', $skin_css_url, array( 'bootstrap-4-style' ), $skin_info['version'] );
 
 		}
 
-		/// load JS ///////////////////////
+		// load JS ///////////////////////
 
 		if ( ! empty( $skin_info['js_path'] ) ) {
 			wp_enqueue_script( 'lightning-design-js', $skin_info['js_path'], array( 'jquery' ), $skin_info['version'], true );
@@ -166,7 +172,26 @@ class Lightning_Design_Manager {
 	}
 
 	/**
+	 * Load late css ( To be overwrite )
+	 *
+	 * @return void
+	 */
+	public static function load_late_css_action() {
+		$hook_point = apply_filters( 'lightning_late_load_style_enqueue_point', 'wp_enqueue_scripts' );
+		add_action( $hook_point, array( __CLASS__, 'load_late_load_css' ) );
+	}
+
+	static function load_late_load_css() {
+		$skin_info = self::get_current_skin();
+		if ( ! empty( $skin_info['css_late_path'] ) ) {
+			$skin_css_footer_url = $skin_info['css_late_path'];
+			wp_enqueue_style( 'lightning-late-load-style', $skin_css_footer_url, array(), $skin_info['version'] );
+		}
+	}
+
+	/**
 	 * Load skin Editor CSS
+	 *
 	 * @return [type] [description]
 	 */
 	static function load_skin_editor_css() {
@@ -174,7 +199,8 @@ class Lightning_Design_Manager {
 
 		if ( isset( $skin_info['bootstrap'] ) && $skin_info['bootstrap'] == 'bs4' ) {
 			// Bootstrap4 skin
-			/* Notice : Use url then if you use local environment https has error that bring to get css error and don't refrected */
+			/*
+			 Notice : Use url then if you use local environment https has error that bring to get css error and don't refrected */
 			/* Notice : add_editor_style() is only one args. */
 			add_editor_style( 'library/bootstrap-4/css/bootstrap.min.css' );
 		}
@@ -215,7 +241,8 @@ class Lightning_Design_Manager {
 
 	static function customize_register( $wp_customize ) {
 		$wp_customize->add_setting(
-			'lightning_design_skin', array(
+			'lightning_design_skin',
+			array(
 				'default'           => 'origin2',
 				'type'              => 'option',
 				'capability'        => 'edit_theme_options',
@@ -229,7 +256,8 @@ class Lightning_Design_Manager {
 		}
 
 		$wp_customize->add_control(
-			'lightning_design_skin', array(
+			'lightning_design_skin',
+			array(
 				'label'       => __( 'Design skin', 'lightning' ),
 				'section'     => 'lightning_design',
 				'settings'    => 'lightning_design_skin',
