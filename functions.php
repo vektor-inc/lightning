@@ -467,8 +467,6 @@ function lightning_header_height_changer_disabel(){
 */
 
 /*
--------------------------------------------
-/*
   Tag Cloud _ Change font size
 /*-------------------------------------------*/
 function lightning_tag_cloud_filter( $args ) {
@@ -545,7 +543,6 @@ function lightning_deactivate_plugin( $plugin_path ) {
 /*-------------------------------------------*/
 
   remove_action( 'embed_footer', 'print_embed_sharing_dialog' );
-
 
   function lightning_embed_styles() {
 	wp_enqueue_style( 'wp-oembed-embed', get_template_directory_uri() . '/assets/css/wp-embed.css' );
