@@ -73,6 +73,84 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 }
 
 /*-------------------------------------------*/
+/* Block Core alignwide
+/*-------------------------------------------*/
+@media (max-width: $xs-max) {
+	.mainSection-base-on,
+	.sideSection-base-on {
+		.alignwide {
+			width: calc(100% + 1.4rem + 1.4rem);
+			margin-left: -$base-padding-xs;
+			margin-right: -$base-padding-xs;
+			&.wp-block-image {
+				width: calc(100% + 1.4rem + 1.4rem);
+			}
+		}
+	}
+}
+@media (min-width: $sm-min) {
+	.mainSection-base-on,
+	.sideSection-base-on {
+		.alignwide {
+			width: calc(100% + 1.7rem + 1.7rem);
+			margin-left: -$base-padding-sm;
+			margin-right: -$base-padding-sm;
+			&.wp-block-image {
+				width: calc(100% + 1.7rem + 1.7rem);
+			}
+		}
+	}
+}
+@media (min-width: $md-min) {
+	.mainSection-base-on,
+	.sideSection-base-on {
+		.alignwide {
+			width: calc(100% + 2rem + 2rem);
+			margin-left: -$base-padding-md;
+			margin-right: -$base-padding-md;
+			&.wp-block-image {
+				width: calc(100% + 2rem + 2rem);
+			}
+		}
+	}
+}
+@media (min-width: $lg-min) {
+	.mainSection-base-on,
+	.sideSection-base-on.sideSection-col-one {
+		.alignwide {
+			width: calc(100% + 2.4rem + 2.4rem);
+			margin-left: -$base-padding-lg;
+			margin-right: -$base-padding-lg;
+			&.wp-block-image {
+				width: calc(100% + 2.4rem + 2.4rem);
+			}
+		}
+	}
+	.sideSection-base-on.sideSection-col-two {
+		.alignwide {
+			width: calc(100% + 1.7rem + 1.7rem);
+			margin-left: -$base-padding-side-lg;
+			margin-right: -$base-padding-side-lg;
+			&.wp-block-image {
+				width: calc(100% + 1.7rem + 1.7rem);
+			}
+		}
+	}
+}
+@media (min-width: $xl-min) {
+	.sideSection-base-on.sideSection-col-two {
+		.alignwide {
+			width: calc(100% + 2rem + 2rem);
+			margin-left: -$base-padding-side-xl;
+			margin-right: -$base-padding-side-xl;
+			&.wp-block-image {
+				width: calc(100% + 2rem + 2rem);
+			}
+		}
+	}
+}
+
+/*-------------------------------------------*/
 /* Full Wide Title Offset ( 安定したら別ファイルに分離 )
 /*-------------------------------------------*/
 /* ベースがある時はベースをはみ出して貫通しないように、ベースの余白分だけマイナスオフセット */
