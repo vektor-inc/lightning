@@ -46,6 +46,8 @@ define( 'LIGHTNING_SHORT_NAME', 'LTG THEME' );
 
 
 
+
+
 /*
   Theme setup
 /*-------------------------------------------*/
@@ -536,3 +538,16 @@ function lightning_deactivate_plugin( $plugin_path ) {
 // }
 
 */
+
+
+/*-------------------------------------------*/
+/*	embed card
+/*-------------------------------------------*/
+
+  remove_action( 'embed_footer', 'print_embed_sharing_dialog' );
+
+
+  function lightning_embed_styles() {
+	wp_enqueue_style( 'wp-oembed-embed', get_template_directory_uri() . '/assets/css/wp-embed.css' );
+  }
+  add_action( 'embed_head', 'lightning_embed_styles' );
