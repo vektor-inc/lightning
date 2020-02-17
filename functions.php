@@ -503,26 +503,6 @@ function lightning_disable_tgm_notification_except_admin() {
 }
 
 /*
-  Deactive Lightning Advanced Unit
-/*-------------------------------------------*/
-add_action( 'init', 'lightning_deactive_adv_unit' );
-function lightning_deactive_adv_unit() {
-	$plugin_path = 'lightning-advanced-unit/lightning_advanced_unit.php';
-	lightning_deactivate_plugin( $plugin_path );
-}
-function lightning_deactivate_plugin( $plugin_path ) {
-	include_once ABSPATH . 'wp-admin/includes/plugin.php';
-	if ( is_plugin_active( $plugin_path ) ) {
-		$active_plugins = get_option( 'active_plugins' );
-		// delete item
-		$active_plugins = array_diff( $active_plugins, array( $plugin_path ) );
-		// re index
-		$active_plugins = array_values( $active_plugins );
-		update_option( 'active_plugins', $active_plugins );
-	}
-}
-
-/*
   Add defer first aid
 // function lightning_add_defer_to_scripts( $tag, $handle ) {
 // if ( ! preg_match( '/\b(async|defer)\b/', $tag ) ) {
