@@ -63,7 +63,9 @@ function lightning_theme_setup() {
 	/*-------------------------------------------*/
 	add_theme_support( 'editor-styles' );
 
-	add_theme_support( 'wp-block-styles' );
+	// When this support that printed front css and it's overwrite skin table style and so on
+	// add_theme_support( 'wp-block-styles' );
+
 	add_theme_support( 'align-wide' );
 
 	/*
