@@ -145,12 +145,15 @@ function lightning_commentJs() {
 add_action( 'after_setup_theme', 'lightning_load_css_action' );
 function lightning_load_css_action() {
 	$hook_point = apply_filters( 'lightning_enqueue_point_common_and_theme_css', 'wp_enqueue_scripts' );
-	add_action( $hook_point, 'lightning_css' );
+	add_action( $hook_point, 'lightning_common_style' );
+	add_action( $hook_point, 'lightning_theme_style' );
 }
 
-function lightning_css() {
+function lightning_common_style() {
 	wp_enqueue_style( 'lightning-common-style', get_template_directory_uri() . '/assets/css/common.css', array(), LIGHTNING_THEME_VERSION );
-	wp_enqueue_style( 'lightning-theme-style', get_stylesheet_uri(), array( 'lightning-design-style' ), LIGHTNING_THEME_VERSION );
+}
+function lightning_theme_style() {
+	wp_enqueue_style( 'lightning-theme-style', get_stylesheet_uri(), array(), LIGHTNING_THEME_VERSION );
 }
 
 /*

@@ -238,7 +238,13 @@ function lightning_customize_register_design( $wp_customize ) {
 /*	Lightning custom color Print head
 /*	* This is used for Contents and Plugins and others
 /*-------------------------------------------*/
-add_action( 'wp_head', 'lightning_output_keycolor_css', 1 );
+$options = get_option( 'lightning_theme_options' );
+if ( ! empty( $options['enqueue_point_footer'] ) ) {
+	add_action( 'wp_footer', 'lightning_output_keycolor_css' );
+} else {
+	add_action( 'wp_head', 'lightning_output_keycolor_css' );
+}
+
 function lightning_output_keycolor_css() {
 	$options        = get_option( 'lightning_theme_options' );
 	$colors_default = array(
@@ -265,13 +271,20 @@ function lightning_output_keycolor_css() {
 	$dynamic_css = preg_replace( '/[\n\r\t]/', '', $dynamic_css );
 	// Change multiple spaces to single space
 	$dynamic_css = preg_replace( '/\s(?=\s)/', '', $dynamic_css );
-	wp_add_inline_style( 'lightning-design-style', $dynamic_css );
+	// wp_add_inline_style() is not stable on change enquepoint system.
+	echo '<style id="lightning-color-custom-for-plugins" type="text/css">' . $dynamic_css . '</style>';
 }
 
 /*-------------------------------------------*/
 /*	Print head
 /*-------------------------------------------*/
-add_action( 'wp_head', 'lightning_print_css_common', 2 );
+$options = get_option( 'lightning_theme_options' );
+if ( ! empty( $options['enqueue_point_footer'] ) ) {
+	add_action( 'wp_footer', 'lightning_print_css_common',20 );
+} else {
+	add_action( 'wp_head', 'lightning_print_css_common', 20 );
+}
+
 function lightning_print_css_common() {
 	$options     = get_option( 'lightning_theme_options' );
 	$skin_info   = Lightning_Design_Manager::get_current_skin();
@@ -280,7 +293,7 @@ function lightning_print_css_common() {
 	if ( isset( $options['color_key'] ) && isset( $options['color_key_dark'] ) ) {
 		$color_key      = ( ! empty( $options['color_key'] ) ) ? esc_html( $options['color_key'] ) : '#337ab7';
 		$color_key_dark = ( ! empty( $options['color_key_dark'] ) ) ? esc_html( $options['color_key_dark'] ) : '#2e6da4';
-		$dynamic_css   .= '
+		$dynamic_css   .= '/* ltg common custom */ 
 		.bbp-submit-wrapper .button.submit,
 		.woocommerce a.button.alt:hover,
 		.woocommerce-product-search button:hover,
@@ -326,7 +339,10 @@ function lightning_print_css_common() {
 		// multi space convert to single space
 		$dynamic_css = preg_replace( '/\s(?=\s)/', '', $dynamic_css );
 
-		wp_add_inline_style( 'lightning-design-style', $dynamic_css );
+		// wp_add_inline_style() is not stable on change enquepoint system.
+		echo '<style id="lightning-common-style-custom" type="text/css">' . $dynamic_css . '</style>';
+		// wp_add_inline_style( 'lightning-common-style', $dynamic_css );
+
 
 	}
 
