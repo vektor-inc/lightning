@@ -5,19 +5,19 @@
 /*-------------------------------------------*/
 
 p.wp-embed-heading {
-    font-size: 1.25em;
+	font-size: 1.25em;
 	font-weight: 500;
-	@media screen and (max-width:480px) {
+	@media screen and (max-width: 480px) {
 		font-size: 1.1em;
 	}
 }
 
-.wp-embed{
-	@media screen and (max-width:480px) {
+.wp-embed {
+	@media screen and (max-width: 480px) {
 		padding: 15px;
 	}
-	&-featured-image{
-		@media screen and (min-width:481px) {
+	&-featured-image {
+		@media screen and (min-width: 481px) {
 			width: 25%;
 		}
 		float: right;
@@ -26,7 +26,7 @@ p.wp-embed-heading {
 		width: 40%;
 		overflow: hidden;
 	}
-	&-site-icon{
+	&-site-icon {
 		height: 20px;
 		width: 20px;
 	}
@@ -34,10 +34,12 @@ p.wp-embed-heading {
 		font-size: 0.9em;
 		line-height: 1.4;
 		font-weight: 500;
-		a{ padding-left: 30px; }
+		a {
+			padding-left: 30px;
+		}
 	}
-	&-excerpt{
-		@media screen and (max-width:1024px) {
+	&-excerpt {
+		@media screen and (max-width: 1024px) {
 			overflow: auto;
 			display: -webkit-box;
 			-webkit-box-orient: vertical;
@@ -46,4 +48,3 @@ p.wp-embed-heading {
 		}
 	}
 }
-
