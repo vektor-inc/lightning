@@ -126,18 +126,9 @@ function lightning_is_subsection_display() {
 		if ( isset( $options['layout']['archive'] ) ) {
 			if ( $options['layout']['archive'] === 'col-one-no-subsection' ) {
 				
-// print '<pre style="text-align:left">';print_r($options['layout']['archive']);print '</pre>';
 				$return = false;
 			}
 		}
-
-	// } elseif ( is_post_type_archive() ) {
-	// 	echo '<br />_|＼○_ﾋｬｯ ε=＼＿○ﾉ ﾎｰｳ!!'.'<br />'."\n";
-	// 	if ( isset( $options['layout']['archive'] ) ) {
-	// 		if ( $options['layout']['archive'] === 'col-one-no-subsection' ) {
-	// 			$return = false;
-	// 		}
-	// 	}
 
 	} elseif ( is_singular() ) {
 		if ( is_single() ) {
