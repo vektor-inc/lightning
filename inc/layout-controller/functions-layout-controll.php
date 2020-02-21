@@ -60,8 +60,10 @@ function lightning_is_layout_onecolumn() {
 			}
 		}
 	} elseif ( is_home() && ! is_front_page() ) {
-		if ( isset( $options['layout']['archive'] ) && $options['layout']['archive'] === 'col-one' ) {
-			$onecolumn = true;
+		if ( isset( $options['layout']['archive'] ) ) {
+			if ( $options['layout']['archive'] === 'col-one' || $options['layout']['archive'] === 'col-one-no-subsection' ) {
+				$onecolumn = true;
+			}
 		}
 	}
 
@@ -120,10 +122,23 @@ function lightning_is_subsection_display() {
 			$return = false;
 		}
 	} elseif ( is_home() && ! is_front_page() ) {
-		if ( isset( $options['layout']['archive'] ) &&
-		$options['layout']['archive'] === 'hidden' ) {
-			$return = false;
+		
+		if ( isset( $options['layout']['archive'] ) ) {
+			if ( $options['layout']['archive'] === 'col-one-no-subsection' ) {
+				
+// print '<pre style="text-align:left">';print_r($options['layout']['archive']);print '</pre>';
+				$return = false;
+			}
 		}
+
+	// } elseif ( is_post_type_archive() ) {
+	// 	echo '<br />_|＼○_ﾋｬｯ ε=＼＿○ﾉ ﾎｰｳ!!'.'<br />'."\n";
+	// 	if ( isset( $options['layout']['archive'] ) ) {
+	// 		if ( $options['layout']['archive'] === 'col-one-no-subsection' ) {
+	// 			$return = false;
+	// 		}
+	// 	}
+
 	} elseif ( is_singular() ) {
 		if ( is_single() ) {
 			if ( isset( $options['layout']['single'] ) &&
