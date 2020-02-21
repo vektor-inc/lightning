@@ -29,8 +29,13 @@ https://github.com/kurudrive/lightning-skin-sample
 | wp_enqueue_scripts | | lightning-common-style | 全スキン共通CSS |
 | wp_enqueue_scripts | | lightning-theme-style [旧] | 子テーマでカスタマイズされるのでなるべく後ろである必要がある |
 | wp_enqueue_scripts | | vk-font-awesome-css [旧] |  
+| wp_head | 200 | ExUnit CSSカスタマイズ 共通 [旧] |  
+| wp_head | 201 | ExUnit CSSカスタマイズ 投稿 [旧] |  
 | wp_footer | | vkExUnit_common_style-inline-css [高] | |
 | wp_footer | | vk-font-awesome-css [高]  | |
 | wp_footer | | lightning-late-load-style [高] | ExUnitなどが後読み込みになっても上書きするためのファイル |
-| wp_footer | 20 |  | カスタマイザで出力される色など |
 | wp_footer | | lightning-theme-style [高] | 子テーマでカスタマイズされるのでなるべく後ろである必要がある |
+| wp_footer | 20 |  | カスタマイザで出力される色など |
+| wp_footer | 25 |  | スキン固有のカスタマイザで出力される色など [高] |
+| wp_footer | 200 | ExUnit CSSカスタマイズ 共通 [高] |  
+| wp_footer | 201 | ExUnit CSSカスタマイズ 投稿 [高] |  
