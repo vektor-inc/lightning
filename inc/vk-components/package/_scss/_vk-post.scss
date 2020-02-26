@@ -213,7 +213,7 @@ $xl-min: 1200px;
 			background: rgba(0, 0, 0, 0);
 			transition-duration: 0.3s;
 		}
-		.card-img-overlay:hover::after {
+		a:hover .card-img-overlay::after {
 			background: rgba(0, 0, 0, 0.5);
 		}
 		a {
