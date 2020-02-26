@@ -21,10 +21,12 @@ function lightning_layout_target_array() {
 	return $array;
 }
 
-/*
-  lightning_is_layout_onecolumn
-/*-------------------------------------------*/
-
+/**
+ * lightning_is_layout_onecolumn
+ *
+ * @since Lightning 9.0.0
+ * @return boolean
+ */
 function lightning_is_layout_onecolumn() {
 	$onecolumn = false;
 	$options   = get_option( 'lightning_theme_options' );
@@ -58,8 +60,10 @@ function lightning_is_layout_onecolumn() {
 			}
 		}
 	} elseif ( is_home() && ! is_front_page() ) {
-		if ( isset( $options['layout']['archive'] ) && $options['layout']['archive'] === 'col-one' ) {
-			$onecolumn = true;
+		if ( isset( $options['layout']['archive'] ) ) {
+			if ( $options['layout']['archive'] === 'col-one' || $options['layout']['archive'] === 'col-one-no-subsection' ) {
+				$onecolumn = true;
+			}
 		}
 	}
 
@@ -88,9 +92,12 @@ function lightning_is_layout_onecolumn() {
 	return apply_filters( 'lightning_is_layout_onecolumn', $onecolumn );
 }
 
-	/*
-	lightning_is_subsection_display
-	/*-------------------------------------------*/
+/**
+ * lightning_is_subsection_display
+ *
+ * @since Lightning 9.0.0
+ * @return boolean
+ */
 function lightning_is_subsection_display() {
 	$return  = true;
 	$options = get_option( 'lightning_theme_options' );
@@ -115,10 +122,14 @@ function lightning_is_subsection_display() {
 			$return = false;
 		}
 	} elseif ( is_home() && ! is_front_page() ) {
-		if ( isset( $options['layout']['archive'] ) &&
-		$options['layout']['archive'] === 'hidden' ) {
-			$return = false;
+		
+		if ( isset( $options['layout']['archive'] ) ) {
+			if ( $options['layout']['archive'] === 'col-one-no-subsection' ) {
+				
+				$return = false;
+			}
 		}
+
 	} elseif ( is_singular() ) {
 		if ( is_single() ) {
 			if ( isset( $options['layout']['single'] ) &&
@@ -138,11 +149,12 @@ function lightning_is_subsection_display() {
 	return apply_filters( 'lightning_is_subsection_display', $return );
 }
 
-	/**
-	 * Page header and Breadcrumb Display or hidden
-	 *
-	 * @return boolean
-	 */
+/**
+ * Page header and Breadcrumb Display or hidden
+ *
+ * @since Lightning 9.0.0
+ * @return boolean
+ */
 function lightning_is_page_header_and_breadcrumb() {
 	$return = true;
 	if ( is_singular() ) {

@@ -23,6 +23,24 @@ class LightningIsSubsectionDisplayTest extends WP_UnitTestCase {
 		$before_show_on_front  = get_option( 'show_on_front' ); // トップページ指定するかどうか page or posts
 
 		// Create test home page
+		$post         = array(
+			'post_title'   => 'post_top',
+			'post_type'    => 'page',
+			'post_status'  => 'publish',
+			'post_content' => 'content',
+		);
+		$home_page_id = wp_insert_post( $post );
+
+		// Create test home page
+		$post          = array(
+			'post_title'   => 'front_page',
+			'post_type'    => 'page',
+			'post_status'  => 'publish',
+			'post_content' => 'content',
+		);
+		$front_page_id = wp_insert_post( $post );
+
+		// Create test single page
 		$post    = array(
 			'post_title'   => 'single-page',
 			'post_type'    => 'post',
@@ -30,6 +48,10 @@ class LightningIsSubsectionDisplayTest extends WP_UnitTestCase {
 			'post_content' => 'content',
 		);
 		$post_id = wp_insert_post( $post );
+
+		update_option( 'page_on_front', $front_page_id ); // フロントに指定する固定ページ
+		update_option( 'page_for_posts', $home_page_id ); // 投稿トップに指定する固定ページ
+		update_option( 'show_on_front', 'page' ); // or posts
 
 		$test_array = array(
 			array(
@@ -53,8 +75,8 @@ class LightningIsSubsectionDisplayTest extends WP_UnitTestCase {
 				'target_url' => home_url( '/' ),
 				'correct'    => false,
 			),
-			// // Front page _ old one column setting
-			// // トップ１カラム指定が古い状態で万が一残ってたとしても新しい設定が2カラムなら2カラムにする
+			// Front page _ old one column setting
+			// トップ１カラム指定が古い状態で万が一残ってたとしても新しい設定が2カラムなら2カラムにする
 			array(
 				'options'           => array(
 					'top_sidebar_hidden' => true,
@@ -66,7 +88,19 @@ class LightningIsSubsectionDisplayTest extends WP_UnitTestCase {
 				'target_url'        => home_url( '/' ),
 				'correct'           => true,
 			),
-			// // post single
+
+			// post archive
+			array(
+				'options'    => array(
+					'layout' => array(
+						'archive' => 'col-one-no-subsection',
+					),
+				),
+				'target_url' => get_permalink( $home_page_id ),
+				'correct'    => false,
+			),
+
+			// post single
 			array(
 				'options'    => array(
 					'layout' => array(

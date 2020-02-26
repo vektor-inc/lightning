@@ -47,6 +47,17 @@ function lightning_customize_register_enqueue_point( $wp_customize ) {
 
 }
 
+function lightning_is_speeding(){
+
+	$return = false;
+	$options = get_option( 'lightning_theme_options' );
+
+	if ( ! empty( $options['enqueue_point_footer'] ) ) {
+		$return = true;
+	}
+
+	return $return;
+}
 
 /**
  * Change load point
