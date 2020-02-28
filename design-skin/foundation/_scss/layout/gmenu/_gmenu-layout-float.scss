@@ -25,7 +25,11 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 		margin: 0;
 		float: right;
 	}
-	nav {
+	/* 
+	If no caption but to be middle of vertical.
+	If don't add .gMenu_outer that this setting effect to the mobile-nav and give rise to mobile-nav don't become width:100%.
+	*/
+	.gMenu_outer nav {
 		display: table-cell;
 		vertical-align: middle;
 	}
