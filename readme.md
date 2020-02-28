@@ -26,6 +26,7 @@ https://github.com/kurudrive/lightning-skin-sample
 | wp_enqueue_scripts | | vkExUnit_common_style-inline-css [旧] | |
 | wp_enqueue_scripts | | Bootstrap | |
 | wp_enqueue_scripts | | lightning-design-style | デザインスキン |
+| wp_enqueue_scripts | | lightning-design-style wp_add_inline_style | デザインスキン |
 | wp_enqueue_scripts | | lightning-common-style [旧] | 全スキン共通CSS |
 | wp_enqueue_scripts | | lightning-theme-style [旧] | 子テーマでカスタマイズされるのでなるべく後ろである必要がある |
 | wp_enqueue_scripts | | vk-font-awesome-css [旧] |  
