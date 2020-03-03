@@ -9,29 +9,29 @@ if ( apply_filters( 'lightning_default_slide_display', true ) ) {
 	$top_slide_count     = apply_filters( 'lightning_top_slide_count', $top_slide_count );
 
 	if ( $top_slide_count ) : ?>
-	<?php
-	if ( empty( $lightning_theme_options['top_slide_time'] ) ) {
-		$interval = 4000;
-	} else {
-		$interval = esc_attr( $lightning_theme_options['top_slide_time'] );
-	}
-	$effect = '';
-	if ( isset( $lightning_theme_options['top_slide_effect'] ) && $lightning_theme_options['top_slide_effect'] == 'fade' ) {
-		$effect = ' carousel-fade';
-	}
-	?>
+		<?php
+		if ( empty( $lightning_theme_options['top_slide_time'] ) ) {
+			$interval = 4000;
+		} else {
+			$interval = esc_attr( $lightning_theme_options['top_slide_time'] );
+		}
+		$effect = '';
+		if ( isset( $lightning_theme_options['top_slide_effect'] ) && $lightning_theme_options['top_slide_effect'] == 'fade' ) {
+			$effect = ' carousel-fade';
+		}
+		?>
 	<div id="top__fullcarousel" data-interval="<?php echo $interval; ?>" class="carousel slide<?php echo $effect; ?>" data-ride="carousel">
 
 
-	<?php if ( $top_slide_count >= 2 ) : ?>
+		<?php if ( $top_slide_count >= 2 ) : ?>
 		<!-- Indicators -->
 		<ol class="carousel-indicators">
-		<?php for ( $i = 0; $i <= $top_slide_count - 1; ) { ?>
+			<?php for ( $i = 0; $i <= $top_slide_count - 1; ) { ?>
 			<li data-target="#top__fullcarousel" data-slide-to="<?php echo $i; ?>"></li>
-			<?php
-			$i++;
-}
-		?>
+				<?php
+				$i++;
+			}
+			?>
 		</ol>
 	<?php endif; ?>
 	<div class="carousel-inner">
@@ -59,7 +59,7 @@ if ( apply_filters( 'lightning_default_slide_display', true ) ) {
 												<?php
 												if ( $i == 1 ) {
 													echo ' active';}
-	?>
+												?>
 	">
 
 				<?php if ( lightning_is_slide_outer_link( $lightning_theme_options, $i ) ) : ?>
@@ -70,15 +70,17 @@ if ( apply_filters( 'lightning_default_slide_display', true ) ) {
 					<?php
 					// If Mobile Image exist
 					if ( ! empty( $lightning_theme_options[ 'top_slide_image_mobile_' . $i ] ) ) :
-					?>
+						?>
 						  <source media="(max-width: 767px)" srcset="<?php echo esc_attr( $lightning_theme_options[ 'top_slide_image_mobile_' . $i ] ); ?>">
 					<?php endif; ?>
 					  <img src="<?php echo esc_attr( $lightning_theme_options[ 'top_slide_image_' . $i ] ); ?>" alt="<?php echo esc_attr( $top_slide_alt ); ?>" class="slide-item-img d-block w-100">
 					</picture>
 
 					<?php
-					/*-------------------------------------------*/
-					/*	slide-cover
+					/*
+					-------------------------------------------*/
+					/*
+					  slide-cover
 					/*-------------------------------------------*/
 					$cover_style = lightning_slide_cover_style( $lightning_theme_options, $i );
 					if ( $cover_style ) {
@@ -94,8 +96,10 @@ if ( apply_filters( 'lightning_default_slide_display', true ) ) {
 					<div class="slide-text-set mini-content">
 
 					<?php
-					/*-------------------------------------------*/
-					/*	mini_content
+					/*
+					-------------------------------------------*/
+					/*
+					  mini_content
 					/*-------------------------------------------*/
 
 					$mini_content_args = array(
@@ -146,7 +150,7 @@ if ( apply_filters( 'lightning_default_slide_display', true ) ) {
 						$mini_content_args['btn_color_bg'] = $lightning_theme_options['color_key'];
 					}
 
-?>
+					?>
 
 					<?php VK_Component_Mini_Contents::the_view( $mini_content_args ); ?>
 
@@ -160,7 +164,7 @@ if ( apply_filters( 'lightning_default_slide_display', true ) ) {
 		?>
 	</div><!-- [ /.carousel-inner ] -->
 
-	<?php if ( $top_slide_count >= 2 ) : ?>
+		<?php if ( $top_slide_count >= 2 ) : ?>
 		<a class="carousel-control-prev" href="#top__fullcarousel" role="button" data-slide="prev">
 		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 		<span class="sr-only">Previous</span>
