@@ -20,7 +20,7 @@ if ( apply_filters( 'lightning_default_slide_display', true ) ) {
 			$effect = ' carousel-fade';
 		}
 		?>
-	<div id="top__fullcarousel" data-interval="<?php echo $interval; ?>" class="carousel slide<?php echo $effect; ?>" data-ride="carousel">
+	<div id="top__fullcarousel" data-interval="<?php echo $interval; ?>" class="carousel slide slide-main<?php echo $effect; ?>" data-ride="carousel">
 
 
 		<?php if ( $top_slide_count >= 2 ) : ?>

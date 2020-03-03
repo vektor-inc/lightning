@@ -9,25 +9,25 @@ if ( apply_filters( 'lightning_default_slide_display', true ) ) {
 	$top_slide_count     = apply_filters( 'lightning_top_slide_count', $top_slide_count );
 
 	if ( $top_slide_count ) : ?>
-	<?php
-	if ( empty( $lightning_theme_options['top_slide_time'] ) ) {
-		$interval = 4000;
-	} else {
-		$interval = esc_attr( $lightning_theme_options['top_slide_time'] );
-	}
-	?>
+		<?php
+		if ( empty( $lightning_theme_options['top_slide_time'] ) ) {
+			$interval = 4000;
+		} else {
+			$interval = esc_attr( $lightning_theme_options['top_slide_time'] );
+		}
+		?>
 	<div id="top__fullcarousel" data-interval="<?php echo $interval; ?>" class="carousel slide" data-ride="carousel">
 <div class="carousel-inner">
 
-	<?php if ( $top_slide_count >= 2 ) : ?>
+		<?php if ( $top_slide_count >= 2 ) : ?>
 		<!-- Indicators -->
 		<ol class="carousel-indicators">
-		<?php for ( $i = 0; $i <= $top_slide_count - 1; ) { ?>
+			<?php for ( $i = 0; $i <= $top_slide_count - 1; ) { ?>
 			<li data-target="#top__fullcarousel" data-slide-to="<?php echo $i; ?>"></li>
-			<?php
-			$i++;
-}
-		?>
+				<?php
+				$i++;
+			}
+			?>
 		</ol>
 	<?php endif; ?>
 
@@ -55,7 +55,7 @@ if ( apply_filters( 'lightning_default_slide_display', true ) ) {
 												<?php
 												if ( $i == 1 ) {
 													echo ' active';}
-	?>
+												?>
 	">
 
 				<?php if ( lightning_is_slide_outer_link( $lightning_theme_options, $i ) ) : ?>
@@ -66,15 +66,17 @@ if ( apply_filters( 'lightning_default_slide_display', true ) ) {
 					<?php
 					// If Mobile Image exist
 					if ( ! empty( $lightning_theme_options[ 'top_slide_image_mobile_' . $i ] ) ) :
-					?>
+						?>
 						  <source media="(max-width: 767px)" srcset="<?php echo esc_attr( $lightning_theme_options[ 'top_slide_image_mobile_' . $i ] ); ?>">
 					<?php endif; ?>
 					  <img src="<?php echo esc_attr( $lightning_theme_options[ 'top_slide_image_' . $i ] ); ?>" alt="<?php echo esc_attr( $top_slide_alt ); ?>" class="slide-item-img d-block w-100">
 					</picture>
 
 					<?php
-					/*-------------------------------------------*/
-					/*	slide-cover
+					/*
+					-------------------------------------------*/
+					/*
+					  slide-cover
 					/*-------------------------------------------*/
 					$cover_style = lightning_slide_cover_style( $lightning_theme_options, $i );
 					if ( $cover_style ) {
@@ -89,8 +91,10 @@ if ( apply_filters( 'lightning_default_slide_display', true ) ) {
 
 					<?php
 
-					/*-------------------------------------------*/
-					/*	mini_content
+					/*
+					-------------------------------------------*/
+					/*
+					  mini_content
 					/*-------------------------------------------*/
 
 					$mini_content_args['style_class']  = 'mini-content-' . $i;
@@ -146,7 +150,7 @@ if ( apply_filters( 'lightning_default_slide_display', true ) ) {
 					<?php
 					// If Text caption exist
 					if ( $mini_content_args['caption'] ) :
-					?>
+						?>
 									  <div class="slide-text-caption"<?php echo $font_style; ?>>
 											<?php echo nl2br( esc_textarea( $mini_content_args['caption'] ) ); ?>
 									  </div>
@@ -173,7 +177,7 @@ if ( apply_filters( 'lightning_default_slide_display', true ) ) {
 									echo '.' . $style_class . ' .btn-ghost { border-color:' . $mini_content_args['text_color'] . ';color:' . $mini_content_args['text_color'] . ';' . $box_shadow . $text_shadow . ' }';
 									echo '.' . $style_class . ' .btn-ghost:hover { border-color:' . $mini_content_args['btn_bg_color'] . '; background-color:' . $mini_content_args['btn_bg_color'] . '; color:#fff; text-shadow:none; }';
 									echo '</style>';
-									?>
+						?>
 									<a class="btn btn-ghost" href="<?php echo esc_url( $mini_content_args['link_url'] ); ?>"<?php echo $mini_content_args['link_target']; ?>><?php echo wp_kses_post( $mini_content_args['btn_text'] ); ?></a>
 									<?php endif; ?>
 
@@ -188,7 +192,7 @@ if ( apply_filters( 'lightning_default_slide_display', true ) ) {
 		?>
 	</div><!-- [ /.carousel-inner ] -->
 
-	<?php if ( $top_slide_count >= 2 ) : ?>
+		<?php if ( $top_slide_count >= 2 ) : ?>
 	<a class="left carousel-control" href="#top__fullcarousel" data-slide="prev"><i class="icon-prev fa fa-angle-left"></i></a>
 	<a class="right carousel-control" href="#top__fullcarousel" data-slide="next"><i class="icon-next fa fa-angle-right"></i></a>
 	<?php endif; ?>
