@@ -16,7 +16,7 @@ if ( apply_filters( 'lightning_default_slide_display', true ) ) {
 			$interval = esc_attr( $lightning_theme_options['top_slide_time'] );
 		}
 		?>
-	<div id="top__fullcarousel" data-interval="<?php echo $interval; ?>" class="carousel slide" data-ride="carousel">
+	<div id="top__fullcarousel" data-interval="<?php echo $interval; ?>" class="carousel slide slide-main" data-ride="carousel">
 <div class="carousel-inner">
 
 		<?php if ( $top_slide_count >= 2 ) : ?>
