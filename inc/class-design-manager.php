@@ -38,7 +38,7 @@ class Lightning_Design_Manager {
 			'origin2' => array(
 				'label'           => __( 'Origin II ( Bootstrap4 )', 'lightning' ),
 				'css_path'        => get_template_directory_uri() . '/design-skin/origin2/css/style.css',
-				'css_late_path' => '',
+				'css_late_path'   => '',
 				'editor_css_path' => get_template_directory_uri() . '/design-skin/origin2/css/editor.css',
 				'php_path'        => get_parent_theme_file_path( '/design-skin/origin2/origin2.php' ),
 				'js_path'         => '',
@@ -187,7 +187,7 @@ class Lightning_Design_Manager {
 		if ( ! empty( $skin_info['css_late_path'] ) ) {
 			$skin_css_footer_url = $skin_info['css_late_path'];
 			// $deps is needed to overwrite with skins.
-			wp_enqueue_style( 'lightning-late-load-style', $skin_css_footer_url, array( 'lightning-common-style','vk-font-awesome','vk-blocks-build-css' ), $skin_info['version'] );
+			wp_enqueue_style( 'lightning-late-load-style', $skin_css_footer_url, array( 'lightning-common-style', 'vk-font-awesome', 'vk-blocks-build-css' ), $skin_info['version'] );
 		}
 	}
 
