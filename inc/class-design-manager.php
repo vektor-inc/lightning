@@ -9,7 +9,9 @@ class Lightning_Design_Manager {
 		add_action( 'wp', array( __CLASS__, 'load_skin_php' ) );
 		add_action( 'wp', array( __CLASS__, 'load_skin_callback' ) );
 
-		add_action( 'wp', array( __CLASS__, 'load_skin_editor_css' ) );
+		// Don't use following action point.
+		// wp : become do not load css.
+		add_action( 'after_setup_theme', array( __CLASS__, 'load_skin_editor_css' ) );
 
 		add_action( 'customize_register', array( __CLASS__, 'customize_register' ) );
 
