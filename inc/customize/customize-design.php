@@ -39,7 +39,7 @@ function lightning_customize_register_design( $wp_customize ) {
 	);
 	$wp_customize->selective_refresh->add_partial(
 		'lightning_theme_options[head_logo]', array(
-			'selector'        => '.siteHeader_logo',
+			'selector'        => '.siteHeader_logo.default',
 			'render_callback' => '',
 		)
 	);
