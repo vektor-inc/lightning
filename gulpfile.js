@@ -231,6 +231,7 @@ gulp.task('dist_pro', function () {
       "!./bin/**",
       "!./dist/**",
       "!./node_modules/**/*.*",
+      "!./tests/**",
       "!./dist/**",
       "!./readme.txt",
       "!./style.css",
