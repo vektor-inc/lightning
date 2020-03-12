@@ -27,6 +27,7 @@ function lightning_get_the_class_name( $position = '', $extend = array() ) {
 	if ( empty( $skin_info['bootstrap'] ) ) {
 		$class_names = array(
 			'header'          => 'navbar siteHeader',
+			'header_logo'     => 'navbar-brand siteHeader_logo',
 			'nav_menu_header' => 'nav gMenu',
 			'siteContent'     => 'section siteContent',
 			'mainSection'     => 'col-md-8 mainSection',
@@ -40,6 +41,7 @@ function lightning_get_the_class_name( $position = '', $extend = array() ) {
 
 		$class_names = array(
 			'header'          => 'siteHeader',
+			'header_logo'     => 'navbar-brand siteHeader_logo',
 			'nav_menu_header' => 'gMenu vk-menu-acc',
 			'siteContent'     => 'section siteContent',
 			'mainSection'     => 'col mainSection mainSection-col-two baseSection',
