@@ -189,13 +189,18 @@ function lightning_get_theme_options() {
 /*
   Head logo
 /*-------------------------------------------*/
-function lightning_print_headlogo() {
+function lightning_get_print_headlogo() {
 	$options = get_option( 'lightning_theme_options' );
-	if ( isset( $options['head_logo'] ) && $options['head_logo'] ) {
-		print '<img src="' . esc_url( $options['head_logo'] ) . '" alt="' . esc_attr( get_bloginfo( 'name' ) ) . '" />';
-	} else {
-		bloginfo( 'name' );
+	if ( ! empty( $options['head_logo'] ) ) {
+		$head_logo = apply_filters( 'lightning_head_logo_image_url', $options['head_logo'] );
+		if ( $head_logo ) {
+			return '<img src="' . esc_url( $head_logo ) . '" alt="' . esc_attr( get_bloginfo( 'name' ) ) . '" />';
+		}
 	}
+	return get_bloginfo( 'name' );
+}
+function lightning_print_headlogo() {
+	echo lightning_get_print_headlogo();
 }
 
 /*
