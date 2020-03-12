@@ -21,7 +21,7 @@
 /*
   lightning_get_the_class_name
 /*-------------------------------------------*/
-function lightning_get_the_class_name( $position = '', $extend=array() ) {
+function lightning_get_the_class_name( $position = '', $extend = array() ) {
 	$skin_info = Lightning_Design_Manager::get_current_skin();
 
 	if ( empty( $skin_info['bootstrap'] ) ) {
@@ -48,7 +48,7 @@ function lightning_get_the_class_name( $position = '', $extend=array() ) {
 		if ( lightning_is_layout_onecolumn() ) {
 			$class_names['mainSection'] = 'col mainSection mainSection-col-one';
 			$class_names['sideSection'] = 'col subSection sideSection sideSection-col-one';
-			if ( lightning_is_subsection_display() ){
+			if ( lightning_is_subsection_display() ) {
 				$class_names['mainSection'] .= ' mainSection-marginBottom-on';
 			}
 		} else {
@@ -60,7 +60,7 @@ function lightning_get_the_class_name( $position = '', $extend=array() ) {
 				$class_names['sideSection'] = 'col subSection sideSection sideSection-col-two sideSection-pos-left';
 			}
 		}
-		if ( lightning_is_siteContent_padding_off() ){
+		if ( lightning_is_siteContent_padding_off() ) {
 			$class_names['siteContent'] .= ' siteContent-paddingVertical-off';
 			$class_names['mainSection'] .= ' mainSection-marginVertical-off';
 		}
@@ -81,7 +81,7 @@ function lightning_get_the_class_name( $position = '', $extend=array() ) {
 	return esc_attr( apply_filters( 'lightning_get_the_class_name', $return ) );
 }
 
-function lightning_the_class_name( $position = '', $extend=array() ) {
+function lightning_the_class_name( $position = '', $extend = array() ) {
 	echo lightning_get_the_class_name( $position, $extend );
 }
 
