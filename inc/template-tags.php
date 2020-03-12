@@ -21,7 +21,7 @@
 /*
   lightning_get_the_class_name
 /*-------------------------------------------*/
-function lightning_get_the_class_name( $position = '', $extend = array() ) {
+function lightning_get_the_class_name( $position = '' ) {
 	$skin_info = Lightning_Design_Manager::get_current_skin();
 
 	if ( empty( $skin_info['bootstrap'] ) ) {
@@ -71,7 +71,6 @@ function lightning_get_the_class_name( $position = '', $extend = array() ) {
 	if ( empty( $class_names[ $position ] ) ) {
 		$class_names[ $position ] = esc_attr( $position );
 	}
-	$class_names[ $position ] .= ' ' . implode( ',', $extend );
 
 	$class_names = apply_filters( 'lightning_get_the_class_names', $class_names, $position );
 
