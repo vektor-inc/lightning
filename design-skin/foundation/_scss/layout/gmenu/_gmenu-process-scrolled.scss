@@ -17,11 +17,14 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
  スクロールされた時にメニューがfixedになるが、メニューの高さ分 navbar-header の下にmargin-bottomを付与するので、ガクンとならない。
 
 // スクロール後にメニューが上から落ちてくるアニメーション //////////
- 初期状態でメニューの高さ分である 54px をtopににオフセットしているが、positionを指定していないので、最初は効かない
- つまりここは本来54pxでなくてもかまわない。
- スクロール識別クラスがつくとfixedになって -54pxの位置指定が効く。
- しかし、先述の通りmargin-bottomが追加されるので、ガクンとはならない。
- この時メニューは一旦 -54px の位置に移動するが、scrolled では 0 に指定されているので、アニメーションで0の位置に移動する
+1.	初期状態でメニューの高さ分である 54px をtopににオフセット
+	しかしpositionを指定していないので、最初は効かず通常の位置で表示。
+	よってここは本来54pxでなくてもかまわない。
+2.  jsでbodyタグに .header_scrolled がつく
+3.	.gMenu_outer の position は fixed になって -54pxの位置指定が効く。
+	しかし、先述の通りmargin-bottomが追加されるので、ガクンとはならない。
+4.	この時メニューは一旦 -54px の位置に移動するが、scrolled では 0 に指定されているので、
+	アニメーションで0の位置に移動する。
 */
 
 @media (min-width: $lg-min) {
@@ -38,7 +41,9 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 	.header_scrolled {
 		.siteHeadContainer.container {
 			width: 100%;
-			max-width: unset;
+			// unset指定があると固定解除の瞬間にサイトロゴが一瞬左に表示されたままになるため為コメントアウト
+			// この指定に特別な理由がなければ2020/06/01以降に削除
+			// max-width: unset;
 		}
 		.navbar-header {
 			margin-bottom: 54px;
