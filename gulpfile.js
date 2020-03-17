@@ -5,9 +5,10 @@ var replace = require('gulp-replace');
 // ファイル結合
 var concat = require('gulp-concat');
 // js最小化
-var jsmin = require('gulp-jsmin');
+var jsmin = require('gulp-uglify');
 // ファイルリネーム（.min作成用）
 var rename = require('gulp-rename');
+var babel = require('gulp-babel');
 
 // エラーでも監視を続行させる
 var plumber = require('gulp-plumber');
@@ -97,14 +98,13 @@ gulp.task('sass_skin', function (done) {
 });
 
 gulp.task('sass_skin2', function (done) {
-  gulp.src(['design-skin/origin2/_scss/**/*.scss'])
+  return gulp.src(['design-skin/origin2/_scss/**/*.scss'])
     .pipe(plumber({
       handleError: function (err) {
         console.log(err);
         this.emit('end');
       }
     }))
-    .pipe(plumber())
     .pipe(sass())
     .pipe(cmq({
       log: true
@@ -112,7 +112,6 @@ gulp.task('sass_skin2', function (done) {
     .pipe(autoprefixer())
     .pipe(cleanCss())
     .pipe(gulp.dest('./design-skin/origin2/css'))
-    .pipe(gulp.dest('../lightning-pro/design-skin/origin2/css'));
     done();
 });
 
@@ -153,6 +152,9 @@ gulp.task('js_build', function (done) {
     './inc/vk-mobile-nav/package/js/vk-mobile-nav.js',
   ])
     .pipe(concat('lightning.js'))
+    .pipe(babel({
+        presets: ['@babel/env']
+    }))
     .pipe(jsmin())
     .pipe(rename({
       suffix: '.min'
