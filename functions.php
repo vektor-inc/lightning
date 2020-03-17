@@ -532,3 +532,11 @@ function lightning_embed_styles() {
 	wp_enqueue_style( 'wp-oembed-embed', get_template_directory_uri() . '/assets/css/wp-embed.css' );
 }
   add_action( 'embed_head', 'lightning_embed_styles' );
+
+
+add_action( 'wp_print_styles', function() {
+	wp_dequeue_style( 'contact-form-7' );
+}, 0);
+add_action( 'wp_print_scripts', function() {
+	wp_dequeue_script( 'contact-form-7' );
+}, 0);
