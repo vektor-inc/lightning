@@ -15,7 +15,7 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 		function __construct() {
 
 			/**
-			 * Reason of Using through the after_setup_theme is 
+			 * Reason of Using through the after_setup_theme is
 			 * to be able to change the action hook point of css load from theme..
 			 */
 			add_action( 'after_setup_theme', array( __CLASS__, 'load_css_action' ) );
@@ -24,6 +24,7 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 			add_action( 'admin_init', array( __CLASS__, 'load_admin_font_awesome' ) );
 			add_action( 'enqueue_block_editor_assets', array( __CLASS__, 'load_gutenberg_font_awesome' ) );
 			add_action( 'wp_head', array( __CLASS__, 'dynamic_css' ), 3 );
+			add_action( 'wp_enqueue_scripts', array( __CLASS__, 'register_font_awesome' ), 5 );
 			add_filter( 'body_class', array( __CLASS__, 'add_body_class_fa_version' ) );
 		}
 
@@ -55,6 +56,13 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 					'version' => '4.7',
 					'type'    => 'web-fonts-with-css',
 					'url_css' => $font_awesome_directory_uri . 'versions/4.7.0/css/font-awesome.min.css',
+					'url_js'  => '',
+				),
+				'none'            => array(
+					'label'   => __( 'Not Include', 'lightning' ),
+					'version' => 'none',
+					'type'    => 'nothing',
+					'url_css' => '',
 					'url_js'  => '',
 				),
 			);
@@ -104,14 +112,30 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 			return $fa;
 		}
 
+		static function register_font_awesome() {
+			$current = self::current_info();
+			if ( $current['type'] === 'nothing' ) {
+				return;
+			}
+
+			if ( ! empty( $current['url_js'] ) ) {
+				wp_register_script( 'vk-font-awesome-js', $current['url_js'], array(), $current['version'], true );
+			}
+			if ( ! empty( $current['url_css'] ) ) {
+				wp_register_style( 'vk-font-awesome', $current['url_css'], array(), $current['version'] );
+			}
+		}
+
 		static function load_font_awesome() {
 			$current = self::current_info();
+
+			if ( $current['type'] === 'nothing' ) {
+				return;
+			}
 			if ( $current['type'] === 'svg-with-js' ) {
-				wp_enqueue_script( 'vk-font-awesome-js', $current['url_js'], array(), $current['version'] );
-				// [ Danger ] This script now causes important errors
-				// wp_add_inline_script( 'font-awesome-js', 'FontAwesomeConfig = { searchPseudoElements: true };', 'before' );
+				wp_enqueue_script( 'vk-font-awesome-js' );
 			} else {
-				wp_enqueue_style( 'vk-font-awesome', $current['url_css'], array(), $current['version'] );
+				wp_enqueue_style( 'vk-font-awesome' );
 			}
 		}
 
@@ -121,8 +145,8 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 		}
 
 		static function load_gutenberg_font_awesome() {
-			$current_info = self::current_info();
-			wp_enqueue_style( 'gutenberg-font-awesome', $current_info['url_css'], array(), $current_info['version'] );
+			$current = self::current_info();
+			wp_enqueue_style( 'vk-font-awesome' );
 		}
 
 		/**
@@ -224,5 +248,5 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 	} // Vk_Font_Awesome_Versions
 
 	$vk_font_awesome_versions = new Vk_Font_Awesome_Versions;
-	
+
 } // if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
