@@ -65,10 +65,10 @@
   }
 
   function menu_close() {
-    $('body').removeClass('headerMenuOpen');
-    $('.menuBtn').removeClass('menuOpen').addClass('menuClose');
-    $('#gMenu_outer').removeClass('itemOpen').addClass('itemClose');
-    $('#menuBtn i').removeClass('fa-times').addClass('fa-bars');
+    document.body.classList.remove('headerMenuOpen')
+    toggle('.menuBtn', 'menuOpen', 'menuClose')
+    toggle('#gMenu_outer', 'itemOpen', 'itemClose')
+    toggle('#menuBtn i', 'fa-times', 'fa-bars')
   }
 
   /*----------------------------------------------------------*/
