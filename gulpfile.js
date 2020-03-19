@@ -5,7 +5,7 @@ var replace = require('gulp-replace');
 // ファイル結合
 var concat = require('gulp-concat');
 // js最小化
-var jsmin = require('gulp-jsmin');
+var jsmin = require('gulp-uglify');
 // ファイルリネーム（.min作成用）
 var rename = require('gulp-rename');
 
@@ -17,6 +17,7 @@ var autoprefixer = require('gulp-autoprefixer');
 var cleanCss = require('gulp-clean-css');
 var cssmin = require('gulp-cssmin');
 var cmq = require('gulp-merge-media-queries');
+var babel = require('gulp-babel');
 
 
 gulp.task('text-domain', function (done) {
@@ -144,7 +145,7 @@ gulp.task('components_copy', function (done) {
 });
 
 // ファイル結合
-gulp.task('js_build', function (done) {
+gulp.task('js_build', function () {
   return gulp.src([
     './assets/js/_master.js',
     './assets/js/_header_fixed.js',
@@ -152,13 +153,12 @@ gulp.task('js_build', function (done) {
     './assets/js/_vk-prlx.min.js',
     './inc/vk-mobile-nav/package/js/vk-mobile-nav.js',
   ])
-    .pipe(concat('lightning.js'))
-    .pipe(jsmin())
-    .pipe(rename({
-      suffix: '.min'
+    .pipe(concat('lightning.min.js'))
+    .pipe(babel({
+      presets: ['@babel/env']
     }))
+    .pipe(jsmin())
     .pipe(gulp.dest('./assets/js/'));
-    done();
 });
 
 gulp.task('dist_foundation', function (done) {
