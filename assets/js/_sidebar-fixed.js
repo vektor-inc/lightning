@@ -3,20 +3,14 @@
 /* スクロール時のサイドバー位置固定処理
 /*-------------------------------------------*/
 
-;(function($){
+;((window, document, $) => {
 
     /* 読み込み / リサイズ時の処理
     /*-------------------------------------------*/
-    jQuery(document).ready(function(){
-
-    });
-    jQuery(window).resize(function(){
-
-    });
-    jQuery(window).scroll(function(){
+    $(window).scroll(function(){
         if( !$('body').hasClass('sidebar-fix') ){ return; }
         // サイドバーの位置を取得
-        var sidebar_position_now = jQuery('.sideSection').offset();
+        var sidebar_position_now = $('.sideSection').offset();
         // サイドバーがなかったら処理中止
         if ( !sidebar_position_now ) { return }
         sideFix_scroll();
@@ -27,8 +21,8 @@
     /*-------------------------------------------*/
     function sideFix_reset(){
         // サイドバー上部の余白をリセット
-        jQuery('.sideSection').css({ "margin-top" : "" });
-        // jQuery('.sideSection').css({ "position":"relative", "bottom":"", "left":"" });
+        $('.sideSection').css({ "margin-top" : "" });
+        // $('.sideSection').css({ "position":"relative", "bottom":"", "left":"" });
     }
 
     /* スクロール時の処理
@@ -48,14 +42,14 @@
         } else {
 
             // サイドバーの位置を取得
-            var sidebar_position_now = jQuery('.sideSection').offset();
+            var sidebar_position_now = $('.sideSection').offset();
             // コンテンツエリアの位置を取得
-            var content_position_now = jQuery('.mainSection').offset();
+            var content_position_now = $('.mainSection').offset();
 
             // サイドバーの高さを取得
-            var sidebar_height = jQuery('.sideSection').outerHeight();
+            var sidebar_height = $('.sideSection').outerHeight();
             // メインコンテンツの高さを取得
-            var content_height = jQuery('.mainSection').outerHeight();
+            var content_height = $('.mainSection').outerHeight();
             // メインコンテンツとサイドバーの高さの差
             var height_difference = content_height - sidebar_height;
 
@@ -116,9 +110,9 @@
             } // if ( sideFix.window_height < sidebar_bottom_position_default ) {
 
             // ↓ これやるとサイドバーが長い時にサイドバーがなかなかスクロールしない
-            // if ( jQuery('body').hasClass('bootstrap4') ){
+            // if ( $('body').hasClass('bootstrap4') ){
             //     // スクロール時の固定ナビゲーションでサイドバー上部が隠れないように
-            //     var global_nav_fix_height = jQuery('.gMenu_outer').outerHeight();
+            //     var global_nav_fix_height = $('.gMenu_outer').outerHeight();
             //     move_position_start = content_position_now['top'] - global_nav_fix_height - 20;
             //     move_position_end = height_difference + content_position_now['top'] - global_nav_fix_height - 20 ;
             // }
@@ -153,17 +147,17 @@
                     // サイドバー上部に追加する余白 = スクロール量 - サイドバーの移動開始スクロール値
                     var yohaku = scrollHeight - move_position_start;
                     // サイドバー上部に余白を追加
-                    jQuery('.sideSection').css({ "margin-top" : yohaku });
-                    // jQuery('.sideSection').css({ "position":"fixed", "bottom":"30", "left":sidebar_position_now['left'],"width":sideFix.sidebar_width });
+                    $('.sideSection').css({ "margin-top" : yohaku });
+                    // $('.sideSection').css({ "position":"fixed", "bottom":"30", "left":sidebar_position_now['left'],"width":sideFix.sidebar_width });
 
                 } else {
                     // スクロール量が終了ポイントを過ぎた時、下端が揃わないので強制的に揃える
                     var yohaku = content_height - sidebar_height;
-                    jQuery('.sideSection').css({ "margin-top" : yohaku });
+                    $('.sideSection').css({ "margin-top" : yohaku });
                 } // if ( scrollHeight < move_position_start ){
             }
         }	// if ( sideFix.wrap_width < 992 ) {
 
     }
 
-})(jQuery);
+})(window, document, jQuery);
