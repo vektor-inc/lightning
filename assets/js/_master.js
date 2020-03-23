@@ -39,29 +39,29 @@
   /*----------------------------------------------------------*/
   function run_menu_control() {
     // jQuery('.menuBtn').each(function(){
-    jQuery('.menuBtn').click(function() {
-      if (!jQuery('.menuBtn').hasClass('menuOpen')) {
-        jQuery('body').removeClass('headerMenuClose').addClass('headerMenuOpen'); // 今後廃止
-        jQuery('body').removeClass('header-menu-close').addClass('header-menu-open');
-        jQuery('.menuBtn').removeClass('menuClose').addClass('menuOpen');
-        jQuery('#gMenu_outer').removeClass('itemClose').addClass('itemOpen');
-        jQuery('#menuBtn i').removeClass('fa-bars').addClass('fa-times');
+    $('.menuBtn').click(function() {
+      if (!$('.menuBtn').hasClass('menuOpen')) {
+        $('body').removeClass('headerMenuClose').addClass('headerMenuOpen'); // 今後廃止
+        $('body').removeClass('header-menu-close').addClass('header-menu-open');
+        $('.menuBtn').removeClass('menuClose').addClass('menuOpen');
+        $('#gMenu_outer').removeClass('itemClose').addClass('itemOpen');
+        $('#menuBtn i').removeClass('fa-bars').addClass('fa-times');
       } else {
-        jQuery('body').removeClass('headerMenuOpen'); // 今後廃止
-        jQuery('body').removeClass('header-menu-open');
-        jQuery('.menuBtn').removeClass('menuOpen').addClass('menuClose');
-        jQuery('#gMenu_outer').removeClass('itemOpen').addClass('itemClose');
-        jQuery('#menuBtn i').removeClass('fa-times').addClass('fa-bars');
+        $('body').removeClass('headerMenuOpen'); // 今後廃止
+        $('body').removeClass('header-menu-open');
+        $('.menuBtn').removeClass('menuOpen').addClass('menuClose');
+        $('#gMenu_outer').removeClass('itemOpen').addClass('itemClose');
+        $('#menuBtn i').removeClass('fa-times').addClass('fa-bars');
       }
     });
     // });
   }
 
   function menu_close() {
-    jQuery('body').removeClass('headerMenuOpen');
-    jQuery('.menuBtn').removeClass('menuOpen').addClass('menuClose');
-    jQuery('#gMenu_outer').removeClass('itemOpen').addClass('itemClose');
-    jQuery('#menuBtn i').removeClass('fa-times').addClass('fa-bars');
+    $('body').removeClass('headerMenuOpen');
+    $('.menuBtn').removeClass('menuOpen').addClass('menuClose');
+    $('#gMenu_outer').removeClass('itemOpen').addClass('itemClose');
+    $('#menuBtn i').removeClass('fa-times').addClass('fa-bars');
   }
 
   /*----------------------------------------------------------*/
@@ -77,8 +77,8 @@
   /*	iframeのレスポンシブ対応
   /*-------------------------------------------*/
   function iframe_responsive() {
-    jQuery('iframe').each(function(i) {
-      var iframeUrl = jQuery(this).attr("src");
+    $('iframe').each(function(i) {
+      var iframeUrl = $(this).attr("src");
       if (!iframeUrl) {
         return;
       }
@@ -89,12 +89,12 @@
         (iframeUrl.indexOf("vimeo") != -1) ||
         (iframeUrl.indexOf("maps") != -1)
       ) {
-        var iframeWidth = jQuery(this).attr("width");
-        var iframeHeight = jQuery(this).attr("height");
+        var iframeWidth = $(this).attr("width");
+        var iframeHeight = $(this).attr("height");
         var iframeRate = iframeHeight / iframeWidth;
-        var nowIframeWidth = jQuery(this).width();
+        var nowIframeWidth = $(this).width();
         var newIframeHeight = nowIframeWidth * iframeRate;
-        jQuery(this).css({
+        $(this).css({
           "max-width": "100%",
           "height": newIframeHeight
         });
