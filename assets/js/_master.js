@@ -1,5 +1,5 @@
 ;
-(function($) {
+((window, document, $) => {
   $(function() {
     run_menu_control();
     $('iframe').load(function() {
@@ -68,10 +68,10 @@
   /*	Top slide control
   /*----------------------------------------------------------*/
   // add active class to first item
-  jQuery(document).ready(function() {
-    jQuery('#top__fullcarousel .carousel-indicators li:first-child').addClass("active");
-    jQuery('#top__fullcarousel .item:first-child').addClass("active");
-  });
+  window.addEventListener('DOMContentLoaded', () => {
+    addClass('#top__fullcarousel .carousel-indicators li:first-child', "active")
+    addClass('#top__fullcarousel .item:first-child', "active")
+  })
 
   /*-------------------------------------------*/
   /*	iframeのレスポンシブ対応
@@ -105,27 +105,41 @@
   /*----------------------------------------------------------*/
   /*	add bootstrap class
   /*----------------------------------------------------------*/
-  jQuery(document).ready(function() {
-    jQuery('textarea').addClass("form-control");
-    jQuery('select').addClass("form-control");
-    jQuery('input[type=text]').addClass("form-control");
-    jQuery('input[type=number]').addClass("form-control");
-    jQuery('input[type=search]').addClass("form-control");
-    jQuery('input[type=password]').addClass("form-control");
-    jQuery('input[type=email]').addClass("form-control");
-    jQuery('input[type=tel]').addClass("form-control");
-    jQuery('input[type=submit]').addClass("btn btn-primary");
-    jQuery('#respond p').each(function(i) {
-      jQuery(this).children('input').appendTo(jQuery(this));
+  window.addEventListener('DOMContentLoaded', () => {
+    addClass('textarea', 'form-control')
+    addClass('select', 'form-control')
+    addClass('input[type=text]', 'form-control')
+    addClass('input[type=number]', 'form-control')
+    addClass('input[type=search]', 'form-control')
+    addClass('input[type=password]', 'form-control')
+    addClass('input[type=email]', 'form-control')
+    addClass('input[type=tel]', 'form-control')
+    addClass('input[type=submit]', 'btn')
+    addClass('input[type=submit]', 'btn-primary')
+    $('#respond p').each(function(i) {
+      console.log($(this).children('input'));
+      $(this).children('input').appendTo($(this));
     });
-    jQuery('form#searchform').addClass('form-inline');
-    jQuery('form#searchform input[type=text]').addClass('form-group');
-  });
-  // jQuery('#respond p label').prependTo()
+    addClass('form#searchform', 'form-inline')
+    addClass('form#searchform input[type=text]', 'form-group')
+  }, false);
 
-  // function addClass_dropdown(){
-  // 	jQuery('.navbar-collapse ul.sub-menu').parent().addClass('dropdown');
-  // 	jQuery('.navbar-collapse ul.sub-menu').parent().append('<i class="fa fa-home dropdown-toggle" data-doggle="dropdown"></i>');
-  // 	jQuery('.navbar-collapse ul.sub-menu').addClass('dropdown-menu');
-  // }
-})(jQuery);
+
+  // common functions
+  function addClass(selector, cls) {
+    Array.prototype.forEach.call(
+      document.querySelectorAll(selector),
+      (elem) => elem.classList.add(cls)
+    );
+  }
+
+  function toggle(selector, remover, adder) {
+    Array.prototype.forEach.call(
+      document.querySelectorAll(selector),
+      (elem) => {
+        elem.classList.remove(remover)
+        elem.classList.add(adder)
+      }
+    );
+  }
+})(window, document, jQuery);
