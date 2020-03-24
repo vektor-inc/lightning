@@ -17,7 +17,7 @@
   /* もう使ってない気がする
   /*----------------------------------------------------------*/
   function run_menu_control() {
-    if (!getElementsByClassName('menuBtn')[0].classList.contain('nemuOpen')) {
+    if (!getElementsByClassName('menuBtn')[0].classList.contains('nemuOpen')) {
       document.body.classList.remove('headerMenuClose') // 今後廃止
       document.body.classList.add('headerMenuOpen') // 今後廃止
       document.body.classList.remove('header-menu-close')
