@@ -1,68 +1,58 @@
 ;
-((window, document, $) => {
-  $(function() {
-    run_menu_control();
-    $('iframe').load(function() {
-      iframe_responsive();
-    });
-    // addClass_dropdown();
-  });
-  $(document).ready(function() {
-    iframe_responsive();
-    // addClass_dropdown();
-  });
-  $(window).resize(function() {
-    iframe_responsive();
-    var wrap_width = $('body').width();
-    if (wrap_width > 767) {
-      menu_close();
-    }
-    // menu_close();
-    // addClass_dropdown();
-  });
-
+((window, document) => {
   /*----------------------------------------------------------*/
   /*	scroll
   /*----------------------------------------------------------*/
   // Scroll function
-  $(window).scroll(function() {
-    var scroll = $(this).scrollTop();
-    if ($(this).scrollTop() > 1) {
-      $('body').addClass('scrolled');
-    } else {
-      $('body').removeClass('scrolled');
+  window.addEventListener('scroll', () => {
+    if(window.pageYOffset > 0){
+      document.body.classList.add('scrolled')
+    }else{
+      document.body.classList.remove('scrolled')
     }
-  });
+  })
 
   /*----------------------------------------------------------*/
-  /*	gMenu control
+  /* gMenu control
+  /* もう使ってない気がする
   /*----------------------------------------------------------*/
   function run_menu_control() {
-    // jQuery('.menuBtn').each(function(){
-    $('.menuBtn').click(function() {
-      if (!$('.menuBtn').hasClass('menuOpen')) {
-        $('body').removeClass('headerMenuClose').addClass('headerMenuOpen'); // 今後廃止
-        $('body').removeClass('header-menu-close').addClass('header-menu-open');
-        $('.menuBtn').removeClass('menuClose').addClass('menuOpen');
-        $('#gMenu_outer').removeClass('itemClose').addClass('itemOpen');
-        $('#menuBtn i').removeClass('fa-bars').addClass('fa-times');
-      } else {
-        $('body').removeClass('headerMenuOpen'); // 今後廃止
-        $('body').removeClass('header-menu-open');
-        $('.menuBtn').removeClass('menuOpen').addClass('menuClose');
-        $('#gMenu_outer').removeClass('itemOpen').addClass('itemClose');
-        $('#menuBtn i').removeClass('fa-times').addClass('fa-bars');
-      }
-    });
-    // });
+    if (!getElementsByClassName('menuBtn')[0].classList.contain('nemuOpen')) {
+      document.body.classList.remove('headerMenuClose') // 今後廃止
+      document.body.classList.add('headerMenuOpen') // 今後廃止
+      document.body.classList.remove('header-menu-close')
+      document.body.classList.add('header-menu-open')
+      swap('.menuBtn', 'menuClose', 'menuOpen')
+      swap('#gMenu_outer', 'itemClose', 'itemOpen')
+      swap('#menuBtn i', 'fa-bars', 'fa-times')
+    } else {
+      document.body.classList.remove('headerMenuOpen') // 今後廃止
+      document.body.classList.remove('header-menu-open')
+      swap('.menuBtn', 'menuOpen', 'menuClose')
+      swap('#gMenu_outer', 'itemkOpen', 'itemClose')
+      swap('#menuBtn i', 'fa-times', 'fa-bars')
+    }
   }
+  window.addEventListener('DOMContentLoaded', () => {
+    Array.prototype.forEach.call(document.getElementsByClassName('menuBtn'), (elem) => {
+      elem.addEventListener('click', menu_control, false);
+    })
+  })
 
   function menu_close() {
-    $('body').removeClass('headerMenuOpen');
-    $('.menuBtn').removeClass('menuOpen').addClass('menuClose');
-    $('#gMenu_outer').removeClass('itemOpen').addClass('itemClose');
-    $('#menuBtn i').removeClass('fa-times').addClass('fa-bars');
+    document.body.classList.remove('headerMenuOpen')
+    swap('.menuBtn', 'menuOpen', 'menuClose')
+    swap('#gMenu_outer', 'itemOpen', 'itemClose')
+    swap('#menuBtn i', 'fa-times', 'fa-bars')
   }
+
+  let timer_menu = false
+  window.addEventListener('resize', ()=>{
+    if (timer_menu) clearTimeout(timer_menu);
+    timer_menu = setTimeout(()=>{
+      if(document.body.offsetWidth > 767) menu_close()
+    }, 200)
+  })
 
   /*----------------------------------------------------------*/
   /*	Top slide control
@@ -77,30 +67,36 @@
   /*	iframeのレスポンシブ対応
   /*-------------------------------------------*/
   function iframe_responsive() {
-    $('iframe').each(function(i) {
-      var iframeUrl = $(this).attr("src");
-      if (!iframeUrl) {
-        return;
+    Array.prototype.forEach.call(
+      document.getElementsByTagName('iframe'),
+      (i) => {
+        let iframeUrl = i.getAttribute('src')
+        if(!iframeUrl){return}
+        // iframeのURLの中に youtube か map が存在する位置を検索する
+        // 見つからなかった場合には -1 が返される
+        if (
+          (iframeUrl.indexOf("youtube") >= 0) ||
+          (iframeUrl.indexOf("vimeo") >= 0) ||
+          (iframeUrl.indexOf("maps") >= 0)
+        ) {
+          var iframeWidth = i.getAttribute("width");
+          var iframeHeight = i.getAttribute("height");
+          var iframeRate = iframeHeight / iframeWidth;
+          var nowIframeWidth = i.offsetWidth
+          var newIframeHeight = nowIframeWidth * iframeRate;
+          i.style.maxWidth = '100%'
+          i.style.height = newIframeHeight + 'px'
+        }
       }
-      // iframeのURLの中に youtube か map が存在する位置を検索する
-      // 見つからなかった場合には -1 が返される
-      if (
-        (iframeUrl.indexOf("youtube") != -1) ||
-        (iframeUrl.indexOf("vimeo") != -1) ||
-        (iframeUrl.indexOf("maps") != -1)
-      ) {
-        var iframeWidth = $(this).attr("width");
-        var iframeHeight = $(this).attr("height");
-        var iframeRate = iframeHeight / iframeWidth;
-        var nowIframeWidth = $(this).width();
-        var newIframeHeight = nowIframeWidth * iframeRate;
-        $(this).css({
-          "max-width": "100%",
-          "height": newIframeHeight
-        });
-      }
-    });
+    );
   }
+
+  window.addEventListener('DOMContentLoaded',iframe_responsive)
+  let timer = false;
+  window.addEventListener('resize', ()=>{
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(iframe_responsive, 200);
+  })
 
   /*----------------------------------------------------------*/
   /*	add bootstrap class
@@ -116,14 +112,13 @@
     addClass('input[type=tel]', 'form-control')
     addClass('input[type=submit]', 'btn')
     addClass('input[type=submit]', 'btn-primary')
-    $('#respond p').each(function(i) {
-      console.log($(this).children('input'));
-      $(this).children('input').appendTo($(this));
-    });
+    // $('#respond p').each(function(i) {
+    //   console.log($(this).children('input'));
+    //   $(this).children('input').appendTo($(this));
+    // });
     addClass('form#searchform', 'form-inline')
     addClass('form#searchform input[type=text]', 'form-group')
   }, false);
-
 
   // common functions
   function addClass(selector, cls) {
@@ -133,7 +128,7 @@
     );
   }
 
-  function toggle(selector, remover, adder) {
+  function swap(selector, remover, adder) {
     Array.prototype.forEach.call(
       document.querySelectorAll(selector),
       (elem) => {
@@ -142,4 +137,4 @@
       }
     );
   }
-})(window, document, jQuery);
+})(window, document);
