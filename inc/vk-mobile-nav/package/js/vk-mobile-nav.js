@@ -36,7 +36,7 @@
 	// ページ内リンクをクリックされた時に閉じるための処理
 	jQuery('.vk-mobile-nav li > a').click(function() {
 		var href = jQuery(this).attr('href');
-		var result = href.match(/^(#).*/);
+		var result = href.match(/.*(#).*/);
 
 		// クリックされたリンク先がページ内リンクかどうか
 		if ( jQuery.isArray(result) && result[1] === '#' ){
