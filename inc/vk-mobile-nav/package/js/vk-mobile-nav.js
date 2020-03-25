@@ -1,3 +1,15 @@
+/* ************************************* */
+
+/* **** Caution **** */
+
+/*
+This riginal file is following place.
+https://github.com/vektor-inc/vektor-wp-libraries
+If you want to change this file that, you have to change original file.
+*/
+
+/* ************************************* */
+
 ;
 (function(window, document, $) {
 	/*-------------------------------------*/
@@ -36,7 +48,7 @@
 	// ページ内リンクをクリックされた時に閉じるための処理
 	$('.vk-mobile-nav li > a').click(function() {
 		var href = $(this).attr('href');
-		var result = href.match(/^(#).*/);
+		var result = href.match(/.*(#).*/);
 
 		// クリックされたリンク先がページ内リンクかどうか
 		if ( $.isArray(result) && result[1] === '#' ){
