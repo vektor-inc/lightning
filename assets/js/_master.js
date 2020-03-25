@@ -1,5 +1,7 @@
 ;
 ((window, document) => {
+  let addClass = window.ltg.addClass
+  let swap = window.ltg.swap
   /*----------------------------------------------------------*/
   /*	scroll
   /*----------------------------------------------------------*/
@@ -119,22 +121,4 @@
     addClass('form#searchform', 'form-inline')
     addClass('form#searchform input[type=text]', 'form-group')
   }, false);
-
-  // common functions
-  function addClass(selector, cls) {
-    Array.prototype.forEach.call(
-      document.querySelectorAll(selector),
-      (elem) => elem.classList.add(cls)
-    );
-  }
-
-  function swap(selector, remover, adder) {
-    Array.prototype.forEach.call(
-      document.querySelectorAll(selector),
-      (elem) => {
-        elem.classList.remove(remover)
-        elem.classList.add(adder)
-      }
-    );
-  }
 })(window, document);

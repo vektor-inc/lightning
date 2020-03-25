@@ -6,9 +6,9 @@
 
 		window.addEventListener('resize', ()=>{
 			if (timer !== false){
-				clearTimeout(timer);
+				clearTimeout(timer)
 			}
-			timer = setTimeout(offset_header, 300);
+			timer = setTimeout(offset_header, 300)
 		})
 		offset_header()
 	})

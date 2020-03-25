@@ -147,6 +147,7 @@ gulp.task('components_copy', function (done) {
 // ファイル結合
 gulp.task('js_build', function () {
   return gulp.src([
+    './assets/js/_common.js',
     './assets/js/_master.js',
     './assets/js/_header_fixed.js',
     './assets/js/_sidebar-fixed.js',
