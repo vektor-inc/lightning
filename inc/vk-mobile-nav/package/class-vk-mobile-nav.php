@@ -26,6 +26,7 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 
 		/**
 		 * body class 端末識別クラス追加
+		 *
 		 * @return [type] [description]
 		 */
 		function add_body_class_mobile_device( $class ) {
@@ -39,6 +40,7 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 
 		/**
 		 * モバイル用メニュー追加
+		 *
 		 * @return [type] [description]
 		 */
 		public static function setup_menu() {
@@ -47,6 +49,7 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 
 		/**
 		 * モバイルメニュー用ウィジェットエリア追加
+		 *
 		 * @return [type] [description]
 		 */
 		static function setup_widget() {
@@ -85,7 +88,7 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 				echo '<div class="vk-mobile-nav-menu-btn">MENU</div>';
 			}
 
-			echo '<div class="vk-mobile-nav">';
+			echo '<div class="vk-mobile-nav" id="vk-mobile-nav">';
 			if ( is_active_sidebar( 'vk-mobile-nav-upper' ) ) {
 				dynamic_sidebar( 'vk-mobile-nav-upper' );
 			} else {
@@ -101,7 +104,7 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 				array(
 					'theme_location' => 'vk-mobile-nav',
 					'container'      => '',
-					'items_wrap'     => '<nav class="global-nav"><ul id="%1$s" class="vk-menu-acc  %2$s">%3$s</ul></nav>',
+					'items_wrap'     => '<nav class="global-nav" role="navigation"><ul id="%1$s" class="vk-menu-acc  %2$s">%3$s</ul></nav>',
 					'fallback_cb'    => '',
 					'echo'           => false,
 					// 'depth'          => 1,
@@ -145,8 +148,8 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 			echo '</div>';
 		}
 
-		/*-------------------------------------------*/
-		/*  Load js & CSS
+		/*
+		  Load js & CSS
 		/*-------------------------------------------*/
 
 		public static function add_script() {
