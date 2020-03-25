@@ -3,7 +3,7 @@
 @import "../../inc/vk-mobile-nav/package/css/vk-mobile-nav-bright.css";
 // VK Components is no using image that using sass is no probrem.
 // @import "../../inc/vk-components/package/css/vk-components.css";
-@import "../../inc/vk-components/package/_scss/vk-components.scss";
+@import "vk-components";
 @import "block/block";
 
 .slide-inner img {
@@ -110,3 +110,4 @@ iframe {
 		content: "" !important;
 	}
 }
+
