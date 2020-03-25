@@ -33,7 +33,7 @@ do_action( 'lightning_header_before' );
 				$title_tag = 'p';
 			}
 			?>
-			<<?php echo $title_tag; ?> class="navbar-brand siteHeader_logo">
+			<<?php echo $title_tag; ?> class="<?php lightning_the_class_name( 'header_logo' ); ?>">
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
 				<span><?php lightning_print_headlogo(); ?></span>
 			</a>
