@@ -1,131 +1,124 @@
 ;
-(function($) {
-  $(function() {
-    run_menu_control();
-    $('iframe').load(function() {
-      iframe_responsive();
-    });
-    // addClass_dropdown();
-  });
-  $(document).ready(function() {
-    iframe_responsive();
-    // addClass_dropdown();
-  });
-  $(window).resize(function() {
-    iframe_responsive();
-    var wrap_width = $('body').width();
-    if (wrap_width > 767) {
-      menu_close();
+((window, document) => {
+    let addClass = window.ltg.addClass
+    let swap = window.ltg.swap
+    /*----------------------------------------------------------*/
+    /*  scroll
+    /*----------------------------------------------------------*/
+    // Scroll function
+    window.addEventListener('scroll', () => {
+        if(window.pageYOffset > 0){
+            document.body.classList.add('scrolled')
+        }else{
+            document.body.classList.remove('scrolled')
+        }
+    })
+
+    /*----------------------------------------------------------*/
+    /* gMenu control
+    /* もう使ってない気がする
+    /*----------------------------------------------------------*/
+    function run_menu_control() {
+        if (!getElementsByClassName('menuBtn')[0].classList.contains('nemuOpen')) {
+            document.body.classList.remove('headerMenuClose') // 今後廃止
+            document.body.classList.add('headerMenuOpen') // 今後廃止
+            document.body.classList.remove('header-menu-close')
+            document.body.classList.add('header-menu-open')
+            swap('.menuBtn', 'menuClose', 'menuOpen')
+            swap('#gMenu_outer', 'itemClose', 'itemOpen')
+            swap('#menuBtn i', 'fa-bars', 'fa-times')
+        } else {
+            document.body.classList.remove('headerMenuOpen') // 今後廃止
+            document.body.classList.remove('header-menu-open')
+            swap('.menuBtn', 'menuOpen', 'menuClose')
+            swap('#gMenu_outer', 'itemkOpen', 'itemClose')
+            swap('#menuBtn i', 'fa-times', 'fa-bars')
+        }
     }
-    // menu_close();
-    // addClass_dropdown();
-  });
+    window.addEventListener('DOMContentLoaded', () => {
+        Array.prototype.forEach.call(document.getElementsByClassName('menuBtn'), (elem) => {
+            elem.addEventListener('click', menu_control, false);
+        })
+    })
 
-  /*----------------------------------------------------------*/
-  /*	scroll
-  /*----------------------------------------------------------*/
-  // Scroll function
-  $(window).scroll(function() {
-    var scroll = $(this).scrollTop();
-    if ($(this).scrollTop() > 1) {
-      $('body').addClass('scrolled');
-    } else {
-      $('body').removeClass('scrolled');
+    function menu_close() {
+        document.body.classList.remove('headerMenuOpen')
+        swap('.menuBtn', 'menuOpen', 'menuClose')
+        swap('#gMenu_outer', 'itemOpen', 'itemClose')
+        swap('#menuBtn i', 'fa-times', 'fa-bars')
     }
-  });
 
-  /*----------------------------------------------------------*/
-  /*	gMenu control
-  /*----------------------------------------------------------*/
-  function run_menu_control() {
-    // jQuery('.menuBtn').each(function(){
-    jQuery('.menuBtn').click(function() {
-      if (!jQuery('.menuBtn').hasClass('menuOpen')) {
-        jQuery('body').removeClass('headerMenuClose').addClass('headerMenuOpen'); // 今後廃止
-        jQuery('body').removeClass('header-menu-close').addClass('header-menu-open');
-        jQuery('.menuBtn').removeClass('menuClose').addClass('menuOpen');
-        jQuery('#gMenu_outer').removeClass('itemClose').addClass('itemOpen');
-        jQuery('#menuBtn i').removeClass('fa-bars').addClass('fa-times');
-      } else {
-        jQuery('body').removeClass('headerMenuOpen'); // 今後廃止
-        jQuery('body').removeClass('header-menu-open');
-        jQuery('.menuBtn').removeClass('menuOpen').addClass('menuClose');
-        jQuery('#gMenu_outer').removeClass('itemOpen').addClass('itemClose');
-        jQuery('#menuBtn i').removeClass('fa-times').addClass('fa-bars');
-      }
-    });
-    // });
-  }
+    let timer_menu = false
+    window.addEventListener('resize', ()=>{
+        if (timer_menu) clearTimeout(timer_menu);
+        timer_menu = setTimeout(()=>{
+            if(document.body.offsetWidth > 767) menu_close()
+        }, 200)
+    })
 
-  function menu_close() {
-    jQuery('body').removeClass('headerMenuOpen');
-    jQuery('.menuBtn').removeClass('menuOpen').addClass('menuClose');
-    jQuery('#gMenu_outer').removeClass('itemOpen').addClass('itemClose');
-    jQuery('#menuBtn i').removeClass('fa-times').addClass('fa-bars');
-  }
+    /*----------------------------------------------------------*/
+    /*  Top slide control
+    /*----------------------------------------------------------*/
+    // add active class to first item
+    window.addEventListener('DOMContentLoaded', () => {
+        addClass('#top__fullcarousel .carousel-indicators li:first-child', "active")
+        addClass('#top__fullcarousel .item:first-child', "active")
+    })
 
-  /*----------------------------------------------------------*/
-  /*	Top slide control
-  /*----------------------------------------------------------*/
-  // add active class to first item
-  jQuery(document).ready(function() {
-    jQuery('#top__fullcarousel .carousel-indicators li:first-child').addClass("active");
-    jQuery('#top__fullcarousel .item:first-child').addClass("active");
-  });
+    /*-------------------------------------------*/
+    /*  iframeのレスポンシブ対応
+    /*-------------------------------------------*/
+    function iframe_responsive() {
+        Array.prototype.forEach.call(
+            document.getElementsByTagName('iframe'),
+            (i) => {
+                let iframeUrl = i.getAttribute('src')
+                if(!iframeUrl){return}
+                // iframeのURLの中に youtube か map が存在する位置を検索する
+                // 見つからなかった場合には -1 が返される
+                if (
+                    (iframeUrl.indexOf("youtube") >= 0) ||
+                    (iframeUrl.indexOf("vimeo") >= 0) ||
+                    (iframeUrl.indexOf("maps") >= 0)
+                ) {
+                    var iframeWidth = i.getAttribute("width");
+                    var iframeHeight = i.getAttribute("height");
+                    var iframeRate = iframeHeight / iframeWidth;
+                    var nowIframeWidth = i.offsetWidth
+                    var newIframeHeight = nowIframeWidth * iframeRate;
+                    i.style.maxWidth = '100%'
+                    i.style.height = newIframeHeight + 'px'
+                }
+            }
+        );
+    }
 
-  /*-------------------------------------------*/
-  /*	iframeのレスポンシブ対応
-  /*-------------------------------------------*/
-  function iframe_responsive() {
-    jQuery('iframe').each(function(i) {
-      var iframeUrl = jQuery(this).attr("src");
-      if (!iframeUrl) {
-        return;
-      }
-      // iframeのURLの中に youtube か map が存在する位置を検索する
-      // 見つからなかった場合には -1 が返される
-      if (
-        (iframeUrl.indexOf("youtube") != -1) ||
-        (iframeUrl.indexOf("vimeo") != -1) ||
-        (iframeUrl.indexOf("maps") != -1)
-      ) {
-        var iframeWidth = jQuery(this).attr("width");
-        var iframeHeight = jQuery(this).attr("height");
-        var iframeRate = iframeHeight / iframeWidth;
-        var nowIframeWidth = jQuery(this).width();
-        var newIframeHeight = nowIframeWidth * iframeRate;
-        jQuery(this).css({
-          "max-width": "100%",
-          "height": newIframeHeight
-        });
-      }
-    });
-  }
+    window.addEventListener('DOMContentLoaded',iframe_responsive)
+    let timer = false;
+    window.addEventListener('resize', ()=>{
+        if (timer) clearTimeout(timer);
+        timer = setTimeout(iframe_responsive, 200);
+    })
 
-  /*----------------------------------------------------------*/
-  /*	add bootstrap class
-  /*----------------------------------------------------------*/
-  jQuery(document).ready(function() {
-    jQuery('textarea').addClass("form-control");
-    jQuery('select').addClass("form-control");
-    jQuery('input[type=text]').addClass("form-control");
-    jQuery('input[type=number]').addClass("form-control");
-    jQuery('input[type=search]').addClass("form-control");
-    jQuery('input[type=password]').addClass("form-control");
-    jQuery('input[type=email]').addClass("form-control");
-    jQuery('input[type=tel]').addClass("form-control");
-    jQuery('input[type=submit]').addClass("btn btn-primary");
-    jQuery('#respond p').each(function(i) {
-      jQuery(this).children('input').appendTo(jQuery(this));
-    });
-    jQuery('form#searchform').addClass('form-inline');
-    jQuery('form#searchform input[type=text]').addClass('form-group');
-  });
-  // jQuery('#respond p label').prependTo()
-
-  // function addClass_dropdown(){
-  // 	jQuery('.navbar-collapse ul.sub-menu').parent().addClass('dropdown');
-  // 	jQuery('.navbar-collapse ul.sub-menu').parent().append('<i class="fa fa-home dropdown-toggle" data-doggle="dropdown"></i>');
-  // 	jQuery('.navbar-collapse ul.sub-menu').addClass('dropdown-menu');
-  // }
-})(jQuery);
+    /*----------------------------------------------------------*/
+    /*  add bootstrap class
+    /*----------------------------------------------------------*/
+    window.addEventListener('DOMContentLoaded', () => {
+        addClass('textarea', 'form-control')
+        addClass('select', 'form-control')
+        addClass('input[type=text]', 'form-control')
+        addClass('input[type=number]', 'form-control')
+        addClass('input[type=search]', 'form-control')
+        addClass('input[type=password]', 'form-control')
+        addClass('input[type=email]', 'form-control')
+        addClass('input[type=tel]', 'form-control')
+        addClass('input[type=submit]', 'btn')
+        addClass('input[type=submit]', 'btn-primary')
+        // $('#respond p').each(function(i) {
+        //   console.log($(this).children('input'));
+        //   $(this).children('input').appendTo($(this));
+        // });
+        addClass('form#searchform', 'form-inline')
+        addClass('form#searchform input[type=text]', 'form-group')
+    }, false);
+})(window, document);

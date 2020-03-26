@@ -5,7 +5,7 @@ var replace = require('gulp-replace');
 // ファイル結合
 var concat = require('gulp-concat');
 // js最小化
-var jsmin = require('gulp-jsmin');
+var jsmin = require('gulp-uglify');
 // ファイルリネーム（.min作成用）
 var rename = require('gulp-rename');
 
@@ -16,6 +16,7 @@ var autoprefixer = require('gulp-autoprefixer');
 var cleanCss = require('gulp-clean-css');
 var cssmin = require('gulp-cssmin');
 var cmq = require('gulp-merge-media-queries');
+var babel = require('gulp-babel');
 let error_stop = true
 
 function src(list) {
@@ -123,18 +124,19 @@ gulp.task('components_copy', function (done) {
 
 // ファイル結合
 gulp.task('js_build', function (done) {
-  src([
+  return gulp.src([
+    './assets/js/_common.js',
     './assets/js/_master.js',
     './assets/js/_header_fixed.js',
     './assets/js/_sidebar-fixed.js',
     './assets/js/_vk-prlx.min.js',
     './inc/vk-mobile-nav/package/js/vk-mobile-nav.js',
   ])
-    .pipe(concat('lightning.js'))
-    .pipe(jsmin())
-    .pipe(rename({
-      suffix: '.min'
+    .pipe(concat('lightning.min.js'))
+    .pipe(babel({
+      presets: ['@babel/env']
     }))
+    .pipe(jsmin())
     .pipe(gulp.dest('./assets/js/'));
   done();
 });
@@ -155,7 +157,7 @@ gulp.task('watch', function (done) {
   error_stop = false
   gulp.watch(['./inc/vk-components/*.php'], gulp.series('components_copy'));
   gulp.watch(['./assets/_scss/**','./inc/vk-mobile-nav/package/css/**','./inc/vk-components/**/*.css'], gulp.series('sass_common'));
-  gulp.watch(['./assets/js/**', './inc/vk-mobile-nav/package/js/**'], gulp.series('js_build'));
+  gulp.watch(['./assets/js/_*.js', './inc/vk-mobile-nav/package/js/**'], gulp.series('js_build'));
   gulp.watch(['./inc/woocommerce/_scss/**'], gulp.series('sass_woo'));
   gulp.watch(['./library/bootstrap-4/scss/**.scss'], gulp.series('sass_bs4'));
   gulp.watch(['./design-skin/origin/_scss/**/*.scss'], gulp.series('sass_skin'));
