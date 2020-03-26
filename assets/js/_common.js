@@ -6,10 +6,10 @@
         window.ltg.addClass = addClass
         window.ltg.swap = swap
 
-        function action(query, func) {
+        function action(query, fn) {
             Array.prototype.forEach.call(
                 document.querySelectorAll(query),
-                func
+                fn
             )
         }
 
