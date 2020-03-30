@@ -74,8 +74,6 @@ if ( apply_filters( 'lightning_default_slide_display', true ) ) {
 
 					<?php
 					/*
-					-------------------------------------------*/
-					/*
 					  slide-cover
 					/*-------------------------------------------*/
 					$cover_style = lightning_slide_cover_style( $lightning_theme_options, $i );
@@ -91,8 +89,6 @@ if ( apply_filters( 'lightning_default_slide_display', true ) ) {
 
 					<?php
 
-					/*
-					-------------------------------------------*/
 					/*
 					  mini_content
 					/*-------------------------------------------*/

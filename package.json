@@ -7,7 +7,8 @@
     "test": "tests"
   },
   "scripts": {
-    "dist": "gulp dist"
+    "dist": "gulp dist",
+    "gulp": "gulp"
   },
   "repository": {
     "type": "git",
@@ -20,17 +21,20 @@
   },
   "homepage": "https://github.com/vektor-inc/Lightning#readme",
   "devDependencies": {
+    "@babel/core": "^7.8.7",
+    "@babel/preset-env": "^7.8.7",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^4.1.0",
+    "gulp-babel": "^8.0.0",
     "gulp-clean-css": "^3.10.0",
     "gulp-concat": "^2.6.1",
     "gulp-cssmin": "^0.2.0",
-    "gulp-jsmin": "^0.1.5",
     "gulp-merge-media-queries": "^0.2.1",
     "gulp-plumber": "^1.2.1",
     "gulp-rename": "^1.4.0",
     "gulp-replace": "^1.0.0",
     "gulp-sass": "^3.2.1",
+    "gulp-uglify": "^3.0.2",
     "run-sequence": "^2.2.1",
     "stylelint-config-wordpress": "^15.0.0"
   },

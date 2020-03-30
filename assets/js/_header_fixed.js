@@ -1,88 +1,92 @@
-;(function($,document,window){
+;
+((window, document, $) => {
+    let timer = false;
+    window.addEventListener('DOMContentLoaded', () => {
+        if(!document.body.classList.contains('headfix')) return;
 
-	var timer = false;
-	$(document).ready(function(){
-		offset_header();
-	});
-	$(window).resize(function(){
-		if (timer !== false){
-			clearTimeout(timer);
-		}
-		timer = setTimeout(offset_header, 300);
-	});
+        window.addEventListener('resize', ()=>{
+            if (timer !== false){
+                clearTimeout(timer)
+            }
+            timer = setTimeout(offset_header, 300)
+        })
+        offset_header()
+    })
 
-	/*----------------------------------------------------------*/
-	/*	Offset header
-	/*----------------------------------------------------------*/
-	function offset_header(){
+    /*----------------------------------------------------------*/
+    /*  Offset header
+    /*----------------------------------------------------------*/
+    function offset_header(){
+        let siteHeader = document.getElementsByClassName('siteHeader')[0]
+        siteHeader.style.position = 'fixed'
 
-		if(!$('body').hasClass('headfix')){ return; }
+        let headerHeight = siteHeader.clientHeight
 
-		$('.siteHeader').css({"position":"fixed"});
+        siteHeader.nextElementSibling.style.marginTop = headerHeight + 'px'
 
-		var headerHeight = $('header.siteHeader').height();
-		$('header.siteHeader').next().css("margin-top",headerHeight+"px");
+        if(document.body.classList.contains('admin-bar')){
+            // Get adminbar height
+            let adminBarHeight = document.getElementById('wpadminbar').clientHeight
+            // Math hight of siteHeader + adminbar
+            // var allHead_height = adminBarHeight + headerHeight;
+            // Add padding
+            siteHeader.style.top = adminBarHeight + 'px'
+        }
+    }
 
-		if ( $('body').hasClass('admin-bar') ){
-			// Get adminbar height
-			var adminBarHeight = $('#wpadminbar').height();
-			// Math hight of siteHeader + adminbar
-			// var allHead_height = adminBarHeight + headerHeight;
-			// Add padding
-			$('.admin-bar .siteHeader').css("top",adminBarHeight+"px");
-		}
-	}
+    /*-------------------------------------------*/
+    /*  Header height changer
+    /*-------------------------------------------*/
+    window.addEventListener('DOMContentLoaded', () => {
+        if(!document.body.classList.contains('header_height_changer')) return;
 
-	/*-------------------------------------------*/
-	/*	Header height changer
-	/*-------------------------------------------*/
-	$(document).ready(function(){
+        var head_logo_image_defaultHeight = document.querySelector('.navbar-brand img').clientHeight
+        var bodyWidth = document.body.clientWidth
 
-		if( !$('body').hasClass('header_height_changer') ){ return; }
+        // When missed the get height
+        if ( head_logo_image_defaultHeight < 38 ) {
+            if ( bodyWidth >= 991 ) {
+                head_logo_image_defaultHeight = 60;
+            } else {
+                head_logo_image_defaultHeight = 40;
+            }
+        }
 
-		var head_logo_image_defaultHeight = $('.navbar-brand img').height();
-		var bodyWidth = $(window).width();
-		// When missed the get height
-		if ( head_logo_image_defaultHeight < 38 ) {
-			if ( bodyWidth >= 991 ) {
-				head_logo_image_defaultHeight = 60;
-			} else {
-				head_logo_image_defaultHeight = 40;
-			}
-		}
-		// Scroll function
-		$(window).scroll(function () {
-			var bodyWidth = $(window).width();
-			if ( bodyWidth >= 991 ) {
-				var scroll = $(this).scrollTop();
-				if ($(this).scrollTop() > 10) {
-					head_low( head_logo_image_defaultHeight );
-				} else {
-					head_high( head_logo_image_defaultHeight );
-				}
-			}
-		});
-	});
-	function head_low( head_logo_image_defaultHeight ){
-		changeHeight = head_logo_image_defaultHeight*0.8;
-		$('.siteHeader .siteHeadContainer').stop().animate({
-			"padding-top":"5px",
-			"padding-bottom":"0px",
-		},100);
-		$('.navbar-brand img').stop().animate({
-			"max-height":changeHeight+"px",
-		},100);
-	}
-	function head_high( head_logo_image_defaultHeight ){
-		$('.siteHeader .siteHeadContainer').stop().animate({
-			"padding-top":"20px",
-			"padding-bottom":"18px",
-		},100,function(){
-			offset_header();
-		});
-		$('.navbar-brand img').stop().animate({
-			"max-height":head_logo_image_defaultHeight+"px",
-		},100);
-	}
+        // Scroll function
+        window.addEventListener('scroll', () => {
+            var bodyWidth = document.body.clientWidth
+            if ( bodyWidth >= 991 ) {
+                var scroll = window.pageYOffset || document.documentElement.scrollTop
+                if (scroll > 10) {
+                    head_low( head_logo_image_defaultHeight );
+                } else {
+                    head_high( head_logo_image_defaultHeight );
+                }
+            }
+        })
+    });
 
-})(jQuery,document,window);
+    function head_low( head_logo_image_defaultHeight ){
+        let changeHeight = head_logo_image_defaultHeight*0.8;
+        $('.siteHeader .siteHeadContainer').stop().animate({
+            "padding-top":"5px",
+            "padding-bottom":"0px",
+        },100);
+        $('.navbar-brand img').stop().animate({
+            "max-height":changeHeight+"px",
+        },100);
+    }
+
+    function head_high( head_logo_image_defaultHeight ){
+        $('.siteHeader .siteHeadContainer').stop().animate({
+            "padding-top":"20px",
+            "padding-bottom":"18px",
+        },100,function(){
+            offset_header();
+        });
+        $('.navbar-brand img').stop().animate({
+            "max-height":head_logo_image_defaultHeight+"px",
+        },100);
+    }
+
+})(window, document, jQuery);

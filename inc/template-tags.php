@@ -27,6 +27,7 @@ function lightning_get_the_class_name( $position = '' ) {
 	if ( empty( $skin_info['bootstrap'] ) ) {
 		$class_names = array(
 			'header'          => 'navbar siteHeader',
+			'header_logo'     => 'navbar-brand siteHeader_logo',
 			'nav_menu_header' => 'nav gMenu',
 			'siteContent'     => 'section siteContent',
 			'mainSection'     => 'col-md-8 mainSection',
@@ -40,6 +41,7 @@ function lightning_get_the_class_name( $position = '' ) {
 
 		$class_names = array(
 			'header'          => 'siteHeader',
+			'header_logo'     => 'navbar-brand siteHeader_logo',
 			'nav_menu_header' => 'gMenu vk-menu-acc',
 			'siteContent'     => 'section siteContent',
 			'mainSection'     => 'col mainSection mainSection-col-two baseSection',
@@ -48,7 +50,7 @@ function lightning_get_the_class_name( $position = '' ) {
 		if ( lightning_is_layout_onecolumn() ) {
 			$class_names['mainSection'] = 'col mainSection mainSection-col-one';
 			$class_names['sideSection'] = 'col subSection sideSection sideSection-col-one';
-			if ( lightning_is_subsection_display() ){
+			if ( lightning_is_subsection_display() ) {
 				$class_names['mainSection'] .= ' mainSection-marginBottom-on';
 			}
 		} else {
@@ -60,7 +62,7 @@ function lightning_get_the_class_name( $position = '' ) {
 				$class_names['sideSection'] = 'col subSection sideSection sideSection-col-two sideSection-pos-left';
 			}
 		}
-		if ( lightning_is_siteContent_padding_off() ){
+		if ( lightning_is_siteContent_padding_off() ) {
 			$class_names['siteContent'] .= ' siteContent-paddingVertical-off';
 			$class_names['mainSection'] .= ' mainSection-marginVertical-off';
 		}
@@ -70,7 +72,7 @@ function lightning_get_the_class_name( $position = '' ) {
 		$class_names[ $position ] = esc_attr( $position );
 	}
 
-	$class_names = apply_filters( 'lightning_get_the_class_names', $class_names );
+	$class_names = apply_filters( 'lightning_get_the_class_names', $class_names, $position );
 
 	$return = $class_names[ $position ];
 
@@ -80,8 +82,8 @@ function lightning_get_the_class_name( $position = '' ) {
 	return esc_attr( apply_filters( 'lightning_get_the_class_name', $return ) );
 }
 
-function lightning_the_class_name( $position = '' ) {
-	echo lightning_get_the_class_name( $position );
+function lightning_the_class_name( $position = '', $extend = array() ) {
+	echo lightning_get_the_class_name( $position, $extend );
 }
 
 /*
@@ -188,13 +190,18 @@ function lightning_get_theme_options() {
 /*
   Head logo
 /*-------------------------------------------*/
-function lightning_print_headlogo() {
+function lightning_get_print_headlogo() {
 	$options = get_option( 'lightning_theme_options' );
-	if ( isset( $options['head_logo'] ) && $options['head_logo'] ) {
-		print '<img src="' . esc_url( $options['head_logo'] ) . '" alt="' . esc_attr( get_bloginfo( 'name' ) ) . '" />';
-	} else {
-		bloginfo( 'name' );
+	if ( ! empty( $options['head_logo'] ) ) {
+		$head_logo = apply_filters( 'lightning_head_logo_image_url', $options['head_logo'] );
+		if ( $head_logo ) {
+			return '<img src="' . esc_url( $head_logo ) . '" alt="' . esc_attr( get_bloginfo( 'name' ) ) . '" />';
+		}
 	}
+	return get_bloginfo( 'name' );
+}
+function lightning_print_headlogo() {
+	echo lightning_get_print_headlogo();
 }
 
 /*
