@@ -8,4 +8,4 @@ RUN cd /opt && php /opt/composer.phar require --dev "phpunit/phpunit=7.5.9"
 ADD bin /var/www/lightning/bin
 RUN bash /var/www/lightning/bin/install-wp-tests.sh wordpress wordpress wordpress db latest true
 
-CMD "vendor/bin/phpunit"
+CMD "/opt/vendor/bin/phpunit"
