@@ -18,7 +18,10 @@ if ( ! file_exists( $_tests_dir . '/includes/functions.php' ) ) {
 require_once $_tests_dir . '/includes/functions.php';
 
 function _manually_load_plugin() {
-	$theme_name = getenv( 'LIGHTNING_THEME_NAME', 'lightning' );
+	$theme_name = getenv( 'LIGHTNING_THEME_NAME' );
+	if ( ! $theme_name ) {
+		$theme_name = 'lightning';
+	}
 	register_theme_directory( dirname( __FILE__ ) . '/../../' );
 	search_theme_directories();
 	switch_theme( $theme_name );
