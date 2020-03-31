@@ -12,8 +12,10 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    environment:
+      LIGHTNING_THEME_NAME: Lightning
     volumes:
-      - .:/var/www/lightning
+      - .:/var/www/Lightning
     depends_on:
       - db
     command: "/opt/vendor/bin/phpunit"
