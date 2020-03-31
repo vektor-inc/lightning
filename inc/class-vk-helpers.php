@@ -86,6 +86,12 @@ if ( ! class_exists( 'VK_Helpers' ) ) {
 
 			$color['brightness'] = 0.00130718954 * $color['number_sum'];
 
+			if ( $color['brightness'] < 0.5 ) {
+				$color['mode'] = 'dark';
+			} else {
+				$color['mode'] = 'bright';
+			}
+
 			return $color;
 
 		}

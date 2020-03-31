@@ -5,19 +5,27 @@ var replace = require('gulp-replace');
 // ファイル結合
 var concat = require('gulp-concat');
 // js最小化
-var jsmin = require('gulp-jsmin');
+var jsmin = require('gulp-uglify');
 // ファイルリネーム（.min作成用）
 var rename = require('gulp-rename');
 
 // エラーでも監視を続行させる
 var plumber = require('gulp-plumber');
-
 var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
 var cleanCss = require('gulp-clean-css');
 var cssmin = require('gulp-cssmin');
 var cmq = require('gulp-merge-media-queries');
+var babel = require('gulp-babel');
+let error_stop = true
 
+function src(list) {
+  if(error_stop) {
+    return gulp.src(list)
+  }else{
+    return gulp.src(list).pipe(plumber())
+  }
+}
 
 gulp.task('text-domain', function (done) {
   gulp.src(['./inc/font-awesome/package/*.php'])
@@ -29,62 +37,53 @@ gulp.task('text-domain', function (done) {
   gulp.src(['./inc/term-color/package/*'])
     .pipe(replace('lightning-pro', 'lightning'))
     .pipe(gulp.dest('./inc/term-color/package/'));
-    done();
+  done();
 });
 
 gulp.task('sass_common', function (done) {
-  gulp.src(['./assets/_scss/**/*.scss'])
-    .pipe(gulp.dest('../lightning-pro/assets/_scss'))
-    .pipe(plumber({
-      handleError: function (err) {
-        console.log(err);
-        this.emit('end');
+  src(['./assets/_scss/**/*.scss'])
+    .pipe(
+      sass({
+        includePaths: [
+          './assets/scss',
+          './inc/vk-components/package/_scss'
+        ]
       }
-    }))
-    .pipe(plumber())
-    .pipe(sass())
-    .pipe(cmq({
-      log: true
-    }))
+    ))
+    .pipe(cmq(
+      {
+        log: true
+      }
+    ))
     .pipe(autoprefixer())
     .pipe(cleanCss())
     .pipe(gulp.dest('../lightning-pro/assets/css'))
-    .pipe(gulp.dest('./assets/css'));
-    done();
+    .pipe(gulp.dest('./assets/css'))
+  done()
 });
 
 gulp.task('sass_bs4', function (done) {
-  gulp.src(['./library/bootstrap-4/scss/**.scss'])
-    .pipe(plumber({
-      handleError: function (err) {
-        console.log(err);
-        this.emit('end');
-      }
-    }))
-    .pipe(plumber())
+  src(['./library/bootstrap-4/scss/**.scss'])
     .pipe(sass())
-    .pipe(cmq({
-      log: true
-    }))
+    .pipe(cmq(
+      {
+        log: true
+      }
+    ))
     .pipe(autoprefixer())
     .pipe(cleanCss())
-    .pipe(rename({
-      suffix: '.min'
-    }))
+    .pipe(rename(
+      {
+        suffix: '.min'
+      }
+    ))
     .pipe(gulp.dest('./library/bootstrap-4/css/'))
     .pipe(gulp.dest('../lightning-pro/library/bootstrap-4/css/'));
-    done();
+  done();
 });
 
 gulp.task('sass_skin', function (done) {
-  gulp.src(['design-skin/origin/_scss/**/*.scss'])
-    .pipe(plumber({
-      handleError: function (err) {
-        console.log(err);
-        this.emit('end');
-      }
-    }))
-    .pipe(plumber())
+  src(['design-skin/origin/_scss/**/*.scss'])
     .pipe(sass())
     .pipe(cmq({
       log: true
@@ -93,38 +92,26 @@ gulp.task('sass_skin', function (done) {
     .pipe(cleanCss())
     .pipe(gulp.dest('./design-skin/origin/css'))
     .pipe(gulp.dest('../lightning-pro/design-skin/origin/css'));
-    done();
+  done();
 });
 
 gulp.task('sass_skin2', function (done) {
-  gulp.src(['design-skin/origin2/_scss/**/*.scss'])
-    .pipe(plumber({
-      handleError: function (err) {
-        console.log(err);
-        this.emit('end');
-      }
-    }))
-    .pipe(plumber())
+  src(['design-skin/origin2/_scss/**/*.scss'])
     .pipe(sass())
-    .pipe(cmq({
-      log: true
-    }))
+    .pipe(cmq(
+      {
+        log: true
+      }
+    ))
     .pipe(autoprefixer())
     .pipe(cleanCss())
     .pipe(gulp.dest('./design-skin/origin2/css'))
     .pipe(gulp.dest('../lightning-pro/design-skin/origin2/css'));
-    done();
+  done();
 });
 
 gulp.task('sass_woo', function (done) {
-  gulp.src(['./inc/woocommerce/_scss/**.scss'])
-    .pipe(plumber({
-      handleError: function (err) {
-        console.log(err);
-        this.emit('end');
-      }
-    }))
-    .pipe(plumber())
+  return src(['./inc/woocommerce/_scss/**.scss'])
     .pipe(sass())
     .pipe(cmq({
       log: true
@@ -133,32 +120,31 @@ gulp.task('sass_woo', function (done) {
     .pipe(cleanCss())
     .pipe(gulp.dest('./inc/woocommerce/css/'))
     .pipe(gulp.dest('../lightning-pro/inc/woocommerce/css/'));
-    done();
 });
 
 gulp.task('components_copy', function (done) {
-  gulp.src(['inc/components/*.php'])
+  return gulp.src(['inc/components/*.php'])
     .pipe(gulp.dest('./inc/components'))
     .pipe(gulp.dest('../lightning-pro/inc/components'));
-    done();
 });
 
 // ファイル結合
 gulp.task('js_build', function (done) {
   return gulp.src([
+    './assets/js/_common.js',
     './assets/js/_master.js',
     './assets/js/_header_fixed.js',
     './assets/js/_sidebar-fixed.js',
     './assets/js/_vk-prlx.min.js',
     './inc/vk-mobile-nav/package/js/vk-mobile-nav.js',
   ])
-    .pipe(concat('lightning.js'))
-    .pipe(jsmin())
-    .pipe(rename({
-      suffix: '.min'
+    .pipe(concat('lightning.min.js'))
+    .pipe(babel({
+      presets: ['@babel/env']
     }))
+    .pipe(jsmin())
     .pipe(gulp.dest('./assets/js/'));
-    done();
+  done();
 });
 
 gulp.task('dist_foundation', function (done) {
@@ -174,9 +160,10 @@ gulp.task('dist_foundation', function (done) {
 
 // Watch
 gulp.task('watch', function (done) {
+  error_stop = false
   gulp.watch(['./inc/vk-components/*.php'], gulp.series('components_copy'));
   gulp.watch(['./assets/_scss/**','./inc/vk-mobile-nav/package/css/**','./inc/vk-components/**/*.css'], gulp.series('sass_common'));
-  gulp.watch(['./assets/js/**', './inc/vk-mobile-nav/package/js/**'], gulp.series('js_build'));
+  gulp.watch(['./assets/js/_*.js', './inc/vk-mobile-nav/package/js/**'], gulp.series('js_build'));
   gulp.watch(['./inc/woocommerce/_scss/**'], gulp.series('sass_woo'));
   gulp.watch(['./library/bootstrap-4/scss/**.scss'], gulp.series('sass_bs4'));
   gulp.watch(['./design-skin/origin/_scss/**/*.scss'], gulp.series('sass_skin'));
@@ -200,6 +187,7 @@ gulp.task('copy_dist', function () {
       './library/**',
       './template-parts/**',
       './languages/**',
+      "!./vendor/**",
       "!./.vscode/**",
       "!./bin/**",
       "!./dist/**",
@@ -207,8 +195,8 @@ gulp.task('copy_dist', function () {
       "!./tests/**",
       "!./dist/**",
     ], {
-    base: './'
-  }
+      base: './'
+    }
   )
     .pipe(gulp.dest('../../../../../../update/app/public/wp-content/themes/lightning')) // dist版テスト用
     .pipe(gulp.dest('dist/lightning')); // dist/lightningディレクトリに出力
@@ -227,6 +215,7 @@ gulp.task('dist_pro', function () {
       './library/**',
       './template-parts/**',
       './languages/**',
+      "!./vendor/**",
       "!./.vscode/**",
       "!./bin/**",
       "!./dist/**",
@@ -238,12 +227,12 @@ gulp.task('dist_pro', function () {
       "!./screenshot.png",
       "!./inc/tgm-plugin-activation/**",
     ], {
-    base: './'
-  }
+      base: './'
+    }
   )
     .pipe(gulp.dest('../lightning-pro/')); // dist/lightningディレクトリに出力
 });
 
 gulp.task('dist', gulp.series('text-domain','copy_dist'));
 gulp.task('default',  gulp.series('text-domain', 'watch'));
-gulp.task('compile',  gulp.series('js_build', 'text-domain'));
+
