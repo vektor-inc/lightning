@@ -11,6 +11,7 @@ env:
     - GIT_COMMITTER_EMAIL=kurudrive@gmail.com
     - GIT_AUTHOR_NAME=travis-ci
     - GIT_AUTHOR_EMAIL=kurudrive@gmail.com
+    - LIGHTNING_THEME_NAME=Lightning
     - secure: "dr02Vmh5hQ9xlQZKWVF6eMt3mM2aXkXIW5LRhNB8UcFtUasrJnINZEJty3CEAGu94d8HSEhs2cQLdoYvxvs+6DAMoXrc+LaVFXoDmoTg1ogdCoF0cyWHLYn5tul4toOCg4mzjD2y/umDcrp/p5ezq2BmhEb5eHBz+Oqp9eZyhgXm5hf3hcb5I9c0ztUMNn1tVzhab/X7i4MMvYP36ojVekJqLY4YOOwlmoaikDPfVeK8P6nvuJJtUnVPuOwlgdQXL5iNIrGpVb6WFKDtLZcIfaEjX5zCLMynpPB+HWcALBySlkLwc03JwKcBoUKah7JdgyIebcP2D/9Q6F2U8ZmZpSx1eLpPXXwI3SMcvx7T/ac7UeTguf1f6NAokCdzxccApxJk6NxdnHMlAcK54RiXvpMiOG7BTM8C9RqSGs7BNC3g29NAKutG9qn3HlTZDlx2s9iBI+IFvxX/IZmMnI2rho2l1hVSgFORl4rArAEF5LTRZgUbhdz1RCq/f0vvKHyJ1fl40kMNYKMLcTafBx44wBL9Ep4Siwg3zmILyfEOARyC32mwpSGM0ts91QjJEOitRikHKa1f27FLX6vZW0S4Qf8L7wdaqZnReIyrqO9B/BOhInJMFjVAFwMdGpMoVha4rAQ4cfT3EEVaDBVVCaLfaADRO8uwRLhyDKkOlbeGjpc="
 
 matrix:
@@ -23,12 +24,10 @@ matrix:
       dist: trusty
       env:
         - WP_VERSION=latest WP_MULTISITE=0
-        - WP_VERSION=latest WP_MULTISITE=1
-        - WP_VERSION=4.4 WP_MULTISITE=0
 
-node_js:
-  - '0.8'
-  - '0.10'
+cache:
+  directories:
+    - vendor
 
 before_script:
   - npm i -D
@@ -38,7 +37,7 @@ before_script:
     if [[ ${TRAVIS_PHP_VERSION:0:3} == "7.0" ]]; then
       composer require "phpunit/phpunit=5.6.*"
     else
-      composer require "phpunit/phpunit=4.8.*"
+      composer require "phpunit/phpunit=7.5.9"
     fi
   - cp assets/js/lightning.min.js .lightning.min.js.before
   - cp assets/css/common.css .common.css.before
@@ -73,6 +72,8 @@ script:
   - diff inc/woocommerce/css/woo.css .woo.css.before
   # sass_bs4
   - npm run gulp sass_bs4
+  # PHP Unit Test
+  - vendor/bin/phpunit -c phpunit.xml
 
 after_success:
   - bash ./bin/deploy.sh
