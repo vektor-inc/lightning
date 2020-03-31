@@ -29,7 +29,6 @@ before_script:
   - npm i -D
   - bash bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
   - export PATH="${PWD}/vendor/bin:${PATH}"
-  - echo $(pwd)
   - |
     if [[ ${TRAVIS_PHP_VERSION:0:3} == "7.0" ]]; then
       composer require "phpunit/phpunit=5.6.*"
