@@ -131,11 +131,11 @@ gulp.task('components_copy', function (done) {
 // ファイル結合
 gulp.task('js_build', function (done) {
   return gulp.src([
-    './assets/js/_common.js',
-    './assets/js/_master.js',
-    './assets/js/_header_fixed.js',
-    './assets/js/_sidebar-fixed.js',
-    './assets/js/_vk-prlx.min.js',
+    './assets/_js/_common.js',
+    './assets/_js/_master.js',
+    './assets/_js/_header_fixed.js',
+    './assets/_js/_sidebar-fixed.js',
+    './assets/_js/_vk-prlx.min.js',
     './inc/vk-mobile-nav/package/js/vk-mobile-nav.js',
   ])
     .pipe(concat('lightning.min.js'))
