@@ -1,14 +1,13 @@
+var path = require('path')
+var fs = require('fs')
 var gulp = require('gulp');
-
 var replace = require('gulp-replace');
-
 // ファイル結合
 var concat = require('gulp-concat');
 // js最小化
 var jsmin = require('gulp-uglify');
 // ファイルリネーム（.min作成用）
 var rename = require('gulp-rename');
-
 // エラーでも監視を続行させる
 var plumber = require('gulp-plumber');
 var sass = require('gulp-sass');
@@ -18,6 +17,9 @@ var cssmin = require('gulp-cssmin');
 var cmq = require('gulp-merge-media-queries');
 var babel = require('gulp-babel');
 let error_stop = true
+
+var theme_name = 'lightning'
+
 
 function src(list) {
   if(error_stop) {
@@ -37,8 +39,8 @@ gulp.task('text-domain', function (done) {
   gulp.src(['./inc/term-color/package/*'])
     .pipe(replace('lightning-pro', 'lightning'))
     .pipe(gulp.dest('./inc/term-color/package/'));
-  done();
-});
+  done()
+})
 
 gulp.task('sass_common', function (done) {
   src(['./assets/_scss/**/*.scss'])
@@ -129,7 +131,7 @@ gulp.task('components_copy', function (done) {
 });
 
 // ファイル結合
-gulp.task('js_build', function (done) {
+gulp.task('js_build', function () {
   return gulp.src([
     './assets/_js/_common.js',
     './assets/_js/_master.js',
@@ -144,7 +146,6 @@ gulp.task('js_build', function (done) {
     }))
     .pipe(jsmin())
     .pipe(gulp.dest('./assets/js/'));
-  done();
 });
 
 gulp.task('dist_foundation', function (done) {
@@ -173,33 +174,45 @@ gulp.task('watch', function (done) {
 });
 
 // copy dist ////////////////////////////////////////////////
-
 gulp.task('copy_dist', function () {
-  return gulp.src(
+  var test_dir = '../../../../../../update/app/public/wp-content/themes/lightning'
+  var dist_dir = path.join(process.cwd(), 'dist', theme_name)
+
+  // reset dist dir
+  fs.rmdir(dist_dir, (e) => {})
+  var g = gulp.src(
     [
-      './**/*.php',
-      './**/*.txt',
-      './**/*.css',
-      './**/*.png',
-      './assets/**',
-      './design-skin/**',
-      './inc/**',
-      './library/**',
-      './template-parts/**',
-      './languages/**',
-      "!./vendor/**",
-      "!./.vscode/**",
-      "!./bin/**",
-      "!./dist/**",
-      "!./node_modules/**/*.*",
-      "!./tests/**",
-      "!./dist/**",
+      '*.php',
+      'style.css',
+      'readme.txt',
+      'screenshot.png',
+      'assets/css/*.css',
+      'assets/js/*.js',
+      'assets/images/*',
+      'design-skin/**/css/*',
+      'design-skin/**/fonts/*',
+      'design-skin/**/*.php',
+      'inc/**/*.php',
+      'inc/font-awesome/**/*',
+      'inc/vk-mobile-nav/**/*',
+      'library/**/css/*',
+      'library/**/fonts/*',
+      'library/**/js/*',
+      'template-parts/**',
+      '!**/*.scss',
+      '!.*'
     ], {
-      base: './'
+      base: process.cwd()
     }
-  )
-    .pipe(gulp.dest('../../../../../../update/app/public/wp-content/themes/lightning')) // dist版テスト用
-    .pipe(gulp.dest('dist/lightning')); // dist/lightningディレクトリに出力
+  ).pipe(gulp.dest(dist_dir))
+
+  fs.access(test_dir, fs.constants.W_OK, (e) => {
+    if (!e) {
+      g.pipe(gulp.dest(test_dir))
+    }
+  });
+
+  return g
 });
 
 gulp.task('dist_pro', function () {
@@ -227,12 +240,11 @@ gulp.task('dist_pro', function () {
       "!./screenshot.png",
       "!./inc/tgm-plugin-activation/**",
     ], {
-      base: './'
+      base: process.cwd()
     }
   )
     .pipe(gulp.dest('../lightning-pro/')); // dist/lightningディレクトリに出力
 });
 
-gulp.task('dist', gulp.series('text-domain','copy_dist'));
-gulp.task('default',  gulp.series('text-domain', 'watch'));
-
+gulp.task('dist', gulp.series('text-domain','copy_dist'))
+gulp.task('default',  gulp.series('text-domain', 'watch'))
