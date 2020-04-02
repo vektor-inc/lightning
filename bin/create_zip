@@ -1,0 +1,19 @@
+#!/bin/bash
+
+set -ex
+
+REPO_ROOT=$(dirname $(cd $(dirname $0); pwd))
+CURRENT_VERSION=$(cat style.css|grep Version|sed -E 's/^ *Version: *([^ ]*) *$/\1/')
+ZIP_NAME="lightning-${CURRENT_VERSION}.zip"
+
+npm run build
+npm run dist
+
+[[ -e "${REPO_ROOT}/dist/${ZIP_NAME}" ]] && rm ${REPO_ROOT}/dist/${ZIP_NAME}
+
+cd ${REPO_ROOT}/dist
+zip -r ${ZIP_NAME} lightning/
+
+echo "create dist/${ZIP_NAME}"
+
+exit 0
