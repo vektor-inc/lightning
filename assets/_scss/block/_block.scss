@@ -43,6 +43,18 @@
 	margin: 0;
 	padding: 0;
 	list-style-type: none;
+	&.is-grid{ //グリット表示の場合
+		margin-left: -8px;
+		margin-right: -8px;
+		li{
+			margin: 0 8px 0 8px;
+			padding: .5rem;
+			border-bottom: none;
+		}
+	}
+	&__featured-image{
+		margin-bottom: 1em;
+	}
 	li {
 		margin: 0;
 		padding: 1rem 0;

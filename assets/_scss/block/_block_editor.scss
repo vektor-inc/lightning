@@ -24,3 +24,19 @@
 		width: 100%;
 	}
 }
+
+.editor-styles-wrapper{
+	.wp-block-latest-posts{
+		&__featured-image{
+			margin-bottom:1em;
+		}
+		&.is-grid{
+			margin-left:-8px;
+			margin-right: -8px;
+			li{
+				margin:0px 8px 16px 8px;
+				border-bottom: none;
+			}
+		}
+	}
+}
