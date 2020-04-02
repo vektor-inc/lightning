@@ -246,5 +246,14 @@ gulp.task('dist_pro', function () {
     .pipe(gulp.dest('../lightning-pro/')); // dist/lightningディレクトリに出力
 });
 
+gulp.task('build', gulp.series(
+  'sass_common',
+  'sass_bs4',
+  'sass_skin',
+  'sass_skin2',
+  'sass_woo',
+  'components_copy',
+  'js_build',
+));
 gulp.task('dist', gulp.series('text-domain','copy_dist'))
 gulp.task('default',  gulp.series('text-domain', 'watch'))

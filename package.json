@@ -7,6 +7,7 @@
     "test": "tests"
   },
   "scripts": {
+    "build": "gulp build",
     "dist": "gulp dist",
     "gulp": "gulp"
   },
