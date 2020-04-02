@@ -163,7 +163,7 @@ gulp.task('watch', function (done) {
   error_stop = false
   gulp.watch(['./inc/vk-components/*.php'], gulp.series('components_copy'));
   gulp.watch(['./assets/_scss/**','./inc/vk-mobile-nav/package/css/**','./inc/vk-components/**/*.css'], gulp.series('sass_common'));
-  gulp.watch(['./assets/js/_*.js', './inc/vk-mobile-nav/package/js/**'], gulp.series('js_build'));
+  gulp.watch(['./assets/_js/*.js', './inc/vk-mobile-nav/package/js/**'], gulp.series('js_build'));
   gulp.watch(['./inc/woocommerce/_scss/**'], gulp.series('sass_woo'));
   gulp.watch(['./library/bootstrap-4/scss/**.scss'], gulp.series('sass_bs4'));
   gulp.watch(['./design-skin/origin/_scss/**/*.scss'], gulp.series('sass_skin'));
