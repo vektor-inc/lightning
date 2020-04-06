@@ -14,8 +14,8 @@
             document.body.classList.remove('scrolled')
         }
     }
-    window.addEventListener('scroll', bodyClass)
-    window.addEventListener('DOMContentLoaded', bodyClass)
+    window.addEventListener('scroll', bodyClass, false)
+    window.addEventListener('DOMContentLoaded', bodyClass, false)
 
     if(lightningOpt.header_scrool){
         let body_class_timer = false;
@@ -29,7 +29,6 @@
         }
 
         let remove_header = (e) => {
-            e.preventDefault()
             document.body.classList.remove('header_scrolled')
             window.removeEventListener('scroll', header_scrool_func)
             if (body_class_timer !== false) {
@@ -39,7 +38,7 @@
             body_class_timer = setTimeout(()=>{
                 window.addEventListener('scroll', header_scrool_func, true)
                 body_class_lock = false
-            }, 3000);
+            }, 2000);
         }
 
         window.addEventListener('DOMContentLoaded', () => {
