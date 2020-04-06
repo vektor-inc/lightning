@@ -2,17 +2,43 @@
 ((window, document) => {
     let addClass = window.ltg.addClass
     let swap = window.ltg.swap
+
     /*----------------------------------------------------------*/
     /*  scroll
     /*----------------------------------------------------------*/
     // Scroll function
-    window.addEventListener('scroll', () => {
+    let bodyClass = () => {
         if(window.pageYOffset > 0){
             document.body.classList.add('scrolled')
         }else{
             document.body.classList.remove('scrolled')
         }
-    })
+        if(lightningOpt.header_scrool && window.pageYOffset > 160){
+            document.body.classList.add('header_scrolled')
+        }else{
+            document.body.classList.remove('header_scrolled')
+        }
+    }
+    window.addEventListener('scroll', bodyClass)
+    window.addEventListener('DOMContentLoaded', bodyClass)
+
+    let remove_header = (e) => {
+        document.body.classList.remove('header_scrolled');
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        Array.prototype.forEach.call(
+            document.getElementsByTagName('a'),
+            (elem) => {
+                let href = elem.getAttribute('href')
+                if(!href || href.indexOf('#') != 0) return;
+                if (['tab', 'button'].indexOf(elem.getAttribute('role')) > 0) return;
+                if (elem.getAttribute('data-toggle')) return;
+                if (elem.getAttribute('carousel-control')) return;
+                elem.addEventListener('click', remove_header)
+            }
+        )
+    });
 
     /*----------------------------------------------------------*/
     /* gMenu control
