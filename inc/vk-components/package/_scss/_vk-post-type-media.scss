@@ -1,0 +1,186 @@
+/*
+このファイルの元ファイルは
+https://github.com/vektor-inc/vektor-wp-libraries
+にあります。修正の際は上記リポジトリのデータを修正してください。
+*/
+
+/*-------------------------------------------*/
+/* .media new type
+/*-------------------------------------------*/
+/* .media old type ( Lightning Default )
+/*-------------------------------------------*/
+
+.vk_post {
+	/*
+	Basicly wright to without .vk_post.
+	This additional is can't over wright only.
+	 */
+	&.media {
+		width: 100%;
+		padding: 1em 0;
+		margin: 0 15px;
+		border-bottom: $border_primary;
+	}
+}
+
+/*-------------------------------------------*/
+/* .media new type
+/*-------------------------------------------*/
+.media {
+	&:first-child {
+		border-top: $border_primary;
+	}
+	&-img {
+		border: $border_primary;
+		padding: 1px;
+		margin-right: 1rem;
+	}
+	.vk_post &-img {
+		width: 35%;
+	}
+	.vk_post &-body {
+		width: 65%;
+	}
+}
+/* border-top control */
+.media.vk_post-col {
+	&-xs-6:first-child,
+	&-xs-6:nth-child(2) {
+		border-top: $border_primary;
+	}
+	@media (min-width: $sm-min) and (max-width: $sm-max) {
+		&-sm-6:nth-child(2),
+		&-sm-4:nth-child(2),
+		&-sm-4:nth-child(3),
+		&-sm-3:nth-child(2),
+		&-sm-3:nth-child(3),
+		&-sm-3:nth-child(4) {
+			border-top: $border_primary;
+		}
+	}
+	@media (min-width: $md-min) and (max-width: $md-max) {
+		&-md-6:nth-child(2),
+		&-md-4:nth-child(2),
+		&-md-4:nth-child(3),
+		&-md-3:nth-child(2),
+		&-md-3:nth-child(3),
+		&-md-3:nth-child(4) {
+			border-top: $border_primary;
+		}
+	}
+	@media (min-width: $lg-min) and (max-width: $lg-max) {
+		&-lg-6:nth-child(2),
+		&-lg-4:nth-child(2),
+		&-lg-4:nth-child(3),
+		&-lg-3:nth-child(2),
+		&-lg-3:nth-child(3),
+		&-lg-3:nth-child(4) {
+			border-top: $border_primary;
+		}
+	}
+	@media (min-width: $xl-min) {
+		&-xl-6:nth-child(2),
+		&-xl-4:nth-child(2),
+		&-xl-4:nth-child(3),
+		&-xl-3:nth-child(2),
+		&-xl-3:nth-child(3),
+		&-xl-3:nth-child(4) {
+			border-top: $border_primary;
+		}
+	}
+}
+
+/*-------------------------------------------*/
+/* .media old type ( Lightning Default )
+/*-------------------------------------------*/
+
+.media {
+	border-bottom: $border_primary;
+	padding: 1rem 0;
+	margin-top: 0;
+	& > div {
+		width: 100%;
+	}
+	.postList_thumbnail {
+		width: 160px;
+		margin-bottom: 0.5em;
+		padding-right: 30px;
+		display: block;
+		overflow: hidden;
+		float: left;
+		a {
+			position: relative;
+			display: block;
+			overflow: hidden;
+			border: 1px solid #e5e5e5;
+		}
+		img {
+			width: 100%;
+			height: auto;
+			border: 1px solid #fff;
+		}
+		.postList_cateLabel {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+		}
+	}
+
+	.media-body {
+		.media-heading {
+			font-size: 20px;
+			line-height: 1.4em;
+			margin-top: 0;
+			margin-bottom: 0.4em;
+			font-weight: normal;
+			/* Begin heading style reset */
+			background: none;
+			box-shadow: none;
+			padding: 0;
+			/* End heading style reset */
+			a {
+				color: $color_font_default;
+				&:hover {
+					text-decoration: none;
+				}
+			}
+		}
+	}
+	p {
+		margin-bottom: 0;
+		font-size: 14px;
+		line-height: 150%;
+	}
+	.entry-meta_updated {
+		display: none;
+	}
+	.entry-meta_items_author {
+		display: none;
+	}
+	a.media-body_excerpt {
+		color: $color_font_default;
+		display: block;
+		overflow: hidden;
+	}
+}
+@media (max-width: 767px) {
+	.media {
+		.postList_thumbnail {
+			padding-right: 20px;
+		}
+		.media-body {
+			.media-heading {
+				font-size: 1.2em;
+				line-height: 1.3em;
+				margin-bottom: 0.5em;
+			}
+		} // .media-body
+	} // .media
+} // @media (max-width: 767px){
+@media (max-width: 500px) {
+	.media {
+		.postList_thumbnail {
+			width: 100px;
+		}
+	} // .media
+} // @media (max-width: 767px){

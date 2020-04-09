@@ -38,7 +38,7 @@ if ( ! class_exists( 'Vk_term_color' ) ) {
 			?>
 			<div class="form-field">
 			<?php wp_nonce_field( basename( __FILE__ ), 'term_color_nonce' ); ?>
-				<label for="term_color"><?php _e( 'Color', 'lightning' ); ?></label>
+				<label for="term_color"><?php _e( 'Color', 'vk_term_color_textdomain' ); ?></label>
 				<input type="text" name="term_color" id="term_color" class="term_color" value="">
 			</div>
 		<?php
@@ -53,7 +53,7 @@ if ( ! class_exists( 'Vk_term_color' ) ) {
 			$term_color = Vk_term_color::get_term_color( $term->term_id );
 			?>
 			<tr class="form-field">
-			<th scope="row" valign="top"><label for="term_color"><?php _e( 'Color', 'lightning' ); ?></label></th>
+			<th scope="row" valign="top"><label for="term_color"><?php _e( 'Color', 'vk_term_color_textdomain' ); ?></label></th>
 				<td>
 				<?php wp_nonce_field( basename( __FILE__ ), 'term_color_nonce' ); ?>
 					<input type="text" name="term_color" id="term_color" class="term_color" value="<?php echo $term_color; ?>">
@@ -127,7 +127,7 @@ if ( ! class_exists( 'Vk_term_color' ) ) {
 
 		function edit_term_columns( $columns ) {
 
-			$columns['color'] = __( 'Color', 'lightning' );
+			$columns['color'] = __( 'Color', 'vk_term_color_textdomain' );
 
 			return $columns;
 		}
@@ -174,6 +174,7 @@ if ( ! class_exists( 'Vk_term_color' ) ) {
 
 			$args_default = array(
 				'class' => '',
+				'link' => false,
 			);
 			$args         = wp_parse_args( $args, $args_default );
 
@@ -189,9 +190,25 @@ if ( ! class_exists( 'Vk_term_color' ) ) {
 				$taxonomy                = key( $taxonomies );
 				$terms                   = get_the_terms( $post->ID, $taxonomy );
 				$term_name               = esc_html( $terms[0]->name );
+				$term_url  				 = esc_url( get_term_link( $terms[0]->term_id, $taxonomy ) );
 				$term_color              = Vk_term_color::get_term_color( $terms[0]->term_id );
 				$term_color              = ( $term_color ) ? ' style="color:#fff;background-color:' . $term_color . '"' : '';
-				$single_term_with_color .= '<span' . $outer_class . $term_color . '>' . $term_name . '</span>';
+
+				if ( $args['link'] ){
+					$single_term_with_color .= '<a' . $outer_class . $term_color . ' href="' . esc_url( $term_url ) . '">';
+				} else {
+					$single_term_with_color .= '<span' . $outer_class . $term_color . '>';
+				}
+
+				$single_term_with_color .= $term_name;
+
+				if ( $args['link'] ){
+					$single_term_with_color .= '</a>';
+				} else {
+					$single_term_with_color .= '</span>';
+				}
+
+
 			endif;
 			return $single_term_with_color;
 		}
