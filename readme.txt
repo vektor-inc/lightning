@@ -1,5 +1,5 @@
 === Lightning ===
-Lightning WordPress theme, Copyright (C) 2015-2019 Vektor,Inc.
+Lightning WordPress theme, Copyright (C) 2015-2020 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
 
 == Description ==
@@ -34,6 +34,9 @@ https://www.vektor-inc.co.jp/inquiry/
 
 
 == Changelog ==
+
+v9.4.0
+* [ Specification Change ] vk component posts update ( cope with post list layout text )
 
 v8.1.0
 * [ Add filter ] vk_post_options

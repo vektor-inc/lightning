@@ -8,6 +8,10 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 
 *************************************/
 
+:root {
+	--text-color: #464646;
+}
+
 $border_primary: 1px solid rgba(0, 0, 0, 0.05);
 $color_font_default: #464646;
 $color_font_light: #666;
