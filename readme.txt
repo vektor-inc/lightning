@@ -35,6 +35,9 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v9.4.1
+* [ Bugfix ] Fixed bug that gives arise from no custom taxonomy / term.
+
 v9.4.0
 * [ Specification Change ] vk component posts update ( cope with post list layout text )
 
