@@ -20,8 +20,6 @@ if ( ! class_exists( 'Vk_term_color' ) ) {
 		}
 
 		/*
-		-------------------------------------------*/
-		/*
 		  SANITIZE DATA
 		/*-------------------------------------------*/
 
@@ -40,7 +38,7 @@ if ( ! class_exists( 'Vk_term_color' ) ) {
 			?>
 			<div class="form-field">
 			<?php wp_nonce_field( basename( __FILE__ ), 'term_color_nonce' ); ?>
-				<label for="term_color"><?php _e( 'Color', 'vk_term_color_textdomain' ); ?></label>
+				<label for="term_color"><?php _e( 'Color', 'lightning' ); ?></label>
 				<input type="text" name="term_color" id="term_color" class="term_color" value="">
 			</div>
 			<?php
@@ -55,7 +53,7 @@ if ( ! class_exists( 'Vk_term_color' ) ) {
 			$term_color = self::get_term_color( $term->term_id );
 			?>
 			<tr class="form-field">
-			<th scope="row" valign="top"><label for="term_color"><?php _e( 'Color', 'vk_term_color_textdomain' ); ?></label></th>
+			<th scope="row" valign="top"><label for="term_color"><?php _e( 'Color', 'lightning' ); ?></label></th>
 				<td>
 				<?php wp_nonce_field( basename( __FILE__ ), 'term_color_nonce' ); ?>
 					<input type="text" name="term_color" id="term_color" class="term_color" value="<?php echo $term_color; ?>">
@@ -129,7 +127,7 @@ if ( ! class_exists( 'Vk_term_color' ) ) {
 
 		function edit_term_columns( $columns ) {
 
-			$columns['color'] = __( 'Color', 'vk_term_color_textdomain' );
+			$columns['color'] = __( 'Color', 'lightning' );
 
 			return $columns;
 		}

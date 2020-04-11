@@ -87,11 +87,11 @@ function lightning_design_setting_meta_fields() {
 	/*
 	  .siteContent padding
 	/*-------------------------------------------*/
-	$form .= '<h4>' . __( 'Padding and margin setting', 'lightning-pro' ) . '</h4>';
+	$form .= '<h4>' . __( 'Padding and margin setting', 'lightning' ) . '</h4>';
 
 	$id    = '_lightning_design_setting[siteContent_padding]';
 	$name  = '_lightning_design_setting[siteContent_padding]';
-	$label = __( 'Delete siteContent padding', 'lightning-pro' );
+	$label = __( 'Delete siteContent padding', 'lightning' );
 
 	$form .= '<ul>';
 

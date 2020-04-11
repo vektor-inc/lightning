@@ -344,19 +344,19 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 
 			$patterns = array(
 				'card'            => array(
-					'label'             => __( 'Card', 'vk-compo-textdomain' ),
+					'label'             => __( 'Card', 'lightning' ),
 					'class_posts_outer' => '',
 				),
 				'card-horizontal' => array(
-					'label'             => __( 'Card Horizontal', 'vk-compo-textdomain' ),
+					'label'             => __( 'Card Horizontal', 'lightning' ),
 					'class_posts_outer' => '',
 				),
 				'media'           => array(
-					'label'             => __( 'Media', 'vk-compo-textdomain' ),
+					'label'             => __( 'Media', 'lightning' ),
 					'class_posts_outer' => 'media-outer',
 				),
 				'postListText'    => array(
-					'label'             => _x( 'Text 1 Column', 'post list type', 'vk-compo-textdomain' ),
+					'label'             => _x( 'Text 1 Column', 'post list type', 'lightning' ),
 					'class_posts_outer' => 'postListText-outer',
 				),
 			);
