@@ -1,12 +1,14 @@
 <?php
-/*-------------------------------------------*/
-/*	top slide
+
+/*
+  top slide
 /*-------------------------------------------*/
 add_action( 'customize_register', 'lightning_customize_register_top_slide' );
 function lightning_customize_register_top_slide( $wp_customize ) {
 
 	$wp_customize->add_section(
-		'lightning_slide', array(
+		'lightning_slide',
+		array(
 			'title'    => lightning_get_prefix_customize_panel() . __( 'Home page slide show', 'lightning' ),
 			'priority' => 600,
 		// 'panel'			=> 'lightning_setting',
@@ -17,7 +19,8 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 	if ( isset( $skin_info['bootstrap'] ) && $skin_info['bootstrap'] == 'bs4' ) {
 		// Slide Effect
 		$wp_customize->add_setting(
-			'lightning_theme_options[top_slide_effect]', array(
+			'lightning_theme_options[top_slide_effect]',
+			array(
 				'default'           => 'slide',
 				'type'              => 'option',
 				'capability'        => 'edit_theme_options',
@@ -26,7 +29,8 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 		);
 
 		$wp_customize->add_control(
-			'top_slide_effect', array(
+			'top_slide_effect',
+			array(
 				'label'       => __( 'Slide effect', 'lightning' ),
 				'section'     => 'lightning_slide',
 				'settings'    => 'lightning_theme_options[top_slide_effect]',
@@ -44,7 +48,8 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 
 	// Slide interval time
 	$wp_customize->add_setting(
-		'lightning_theme_options[top_slide_time]', array(
+		'lightning_theme_options[top_slide_time]',
+		array(
 			'default'           => 4000,
 			'type'              => 'option',
 			'capability'        => 'edit_theme_options',
@@ -54,7 +59,9 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 
 	$wp_customize->add_control(
 		new Custom_Text_Control(
-			$wp_customize, 'top_slide_time', array(
+			$wp_customize,
+			'top_slide_time',
+			array(
 				'label'       => __( 'Slide interval time', 'lightning' ),
 				'section'     => 'lightning_slide',
 				'settings'    => 'lightning_theme_options[top_slide_time]',
@@ -86,14 +93,17 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 
 		// slide_title
 		$wp_customize->add_setting(
-			'slide_title_' . $i, array(
+			'slide_title_' . $i,
+			array(
 				'sanitize_callback' => 'sanitize_text_field',
 			)
 		);
 		$priority = $priority + 1;
 		$wp_customize->add_control(
 			new Custom_Html_Control(
-				$wp_customize, 'slide_title_' . $i, array(
+				$wp_customize,
+				'slide_title_' . $i,
+				array(
 					'label'            => __( 'Slide', 'lightning' ) . ' [' . $i . ']',
 					'section'          => 'lightning_slide',
 					'type'             => 'text',
@@ -105,7 +115,8 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 		);
 
 		$wp_customize->selective_refresh->add_partial(
-			'lightning_theme_options[top_slide_image_' . $i . ']', array(
+			'lightning_theme_options[top_slide_image_' . $i . ']',
+			array(
 				'selector'        => '.item-' . $i . ' picture',
 				'render_callback' => '',
 			)
@@ -113,7 +124,8 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 
 		// image
 		$wp_customize->add_setting(
-			'lightning_theme_options[top_slide_image_' . $i . ']', array(
+			'lightning_theme_options[top_slide_image_' . $i . ']',
+			array(
 				'default'           => $theme_options_customize_default['top_slide_image'],
 				'type'              => 'option',
 				'capability'        => 'edit_theme_options',
@@ -138,7 +150,8 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 
 		// image mobile
 		$wp_customize->add_setting(
-			'lightning_theme_options[top_slide_image_mobile_' . $i . ']', array(
+			'lightning_theme_options[top_slide_image_mobile_' . $i . ']',
+			array(
 				'default'           => '',
 				'type'              => 'option',
 				'capability'        => 'edit_theme_options',
@@ -163,7 +176,8 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 
 		// alt
 		$wp_customize->add_setting(
-			'lightning_theme_options[top_slide_alt_' . $i . ']', array(
+			'lightning_theme_options[top_slide_alt_' . $i . ']',
+			array(
 				'default'           => '',
 				'type'              => 'option',
 				'capability'        => 'edit_theme_options',
@@ -174,7 +188,9 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 		$priority = $priority + 1;
 		$wp_customize->add_control(
 			new Custom_Text_Control(
-				$wp_customize, 'top_slide_alt_' . $i, array(
+				$wp_customize,
+				'top_slide_alt_' . $i,
+				array(
 					'label'       => '[' . $i . '] ' . __( 'Slide image alt', 'lightning' ),
 					'section'     => 'lightning_slide',
 					'settings'    => 'lightning_theme_options[top_slide_alt_' . $i . ']',
@@ -187,7 +203,8 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 
 		// color
 		$wp_customize->add_setting(
-			'lightning_theme_options[top_slide_cover_color_' . $i . ']', array(
+			'lightning_theme_options[top_slide_cover_color_' . $i . ']',
+			array(
 				'default'           => '',
 				'type'              => 'option',
 				'capability'        => 'edit_theme_options',
@@ -197,7 +214,9 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 		$priority = $priority + 1;
 		$wp_customize->add_control(
 			new WP_Customize_Color_Control(
-				$wp_customize, 'top_slide_cover_color_' . $i . '', array(
+				$wp_customize,
+				'top_slide_cover_color_' . $i . '',
+				array(
 					'label'    => '[' . $i . '] ' . __( 'Slide cover color', 'lightning' ) . ' (' . __( 'optional', 'lightning' ) . ')',
 					'section'  => 'lightning_slide',
 					'settings' => 'lightning_theme_options[top_slide_cover_color_' . $i . ']',
@@ -208,7 +227,8 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 
 		// opacity
 		$wp_customize->add_setting(
-			'lightning_theme_options[top_slide_cover_opacity_' . $i . ']', array(
+			'lightning_theme_options[top_slide_cover_opacity_' . $i . ']',
+			array(
 				'default'           => '',
 				'type'              => 'option',
 				'capability'        => 'edit_theme_options',
@@ -218,7 +238,9 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 		$priority = $priority + 1;
 		$wp_customize->add_control(
 			new Custom_Text_Control(
-				$wp_customize, 'top_slide_cover_opacity_' . $i, array(
+				$wp_customize,
+				'top_slide_cover_opacity_' . $i,
+				array(
 					'label'       => '[' . $i . '] ' . __( 'Slide cover opacity', 'lightning' ),
 					'section'     => 'lightning_slide',
 					'settings'    => 'lightning_theme_options[top_slide_cover_opacity_' . $i . ']',
@@ -232,7 +254,8 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 
 			// url
 			$wp_customize->add_setting(
-				'lightning_theme_options[top_slide_url_' . $i . ']', array(
+				'lightning_theme_options[top_slide_url_' . $i . ']',
+				array(
 					'default'           => '',
 					'type'              => 'option',
 					'capability'        => 'edit_theme_options',
@@ -242,7 +265,8 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 
 			$priority = $priority + 1;
 			$wp_customize->add_control(
-				'top_slide_url_' . $i, array(
+				'top_slide_url_' . $i,
+				array(
 					'label'    => '[' . $i . '] ' . __( 'Slide image link url', 'lightning' ),
 					'section'  => 'lightning_slide',
 					'settings' => 'lightning_theme_options[top_slide_url_' . $i . ']',
@@ -253,7 +277,8 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 
 			// link blank
 			$wp_customize->add_setting(
-				'lightning_theme_options[top_slide_link_blank_' . $i . ']', array(
+				'lightning_theme_options[top_slide_link_blank_' . $i . ']',
+				array(
 					'default'           => false,
 					'type'              => 'option',
 					'capability'        => 'edit_theme_options',
@@ -263,7 +288,8 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 
 			$priority = $priority + 1;
 			$wp_customize->add_control(
-				'lightning_theme_options[top_slide_link_blank_' . $i . ']', array(
+				'lightning_theme_options[top_slide_link_blank_' . $i . ']',
+				array(
 					'label'    => __( 'Open in new window.', 'lightning' ),
 					'section'  => 'lightning_slide',
 					'settings' => 'lightning_theme_options[top_slide_link_blank_' . $i . ']',
@@ -274,7 +300,8 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 
 		// text title
 		$wp_customize->add_setting(
-			'lightning_theme_options[top_slide_text_title_' . $i . ']', array(
+			'lightning_theme_options[top_slide_text_title_' . $i . ']',
+			array(
 				'default'           => '',
 				'type'              => 'option',
 				'capability'        => 'edit_theme_options',
@@ -284,7 +311,8 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 
 		$priority = $priority + 1;
 		$wp_customize->add_control(
-			'top_slide_text_title_' . $i, array(
+			'top_slide_text_title_' . $i,
+			array(
 				'label'       => '[' . $i . '] ' . __( 'Slide title', 'lightning' ) . ' (' . __( 'optional', 'lightning' ) . ')',
 				'section'     => 'lightning_slide',
 				'settings'    => 'lightning_theme_options[top_slide_text_title_' . $i . ']',
@@ -296,7 +324,8 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 
 		// text caption
 		$wp_customize->add_setting(
-			'lightning_theme_options[top_slide_text_caption_' . $i . ']', array(
+			'lightning_theme_options[top_slide_text_caption_' . $i . ']',
+			array(
 				'default'           => '',
 				'type'              => 'option',
 				'capability'        => 'edit_theme_options',
@@ -306,7 +335,8 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 
 		$priority = $priority + 1;
 		$wp_customize->add_control(
-			'top_slide_text_caption_' . $i, array(
+			'top_slide_text_caption_' . $i,
+			array(
 				'label'       => '[' . $i . '] ' . __( 'Slide text', 'lightning' ) . ' (' . __( 'optional', 'lightning' ) . ')',
 				'section'     => 'lightning_slide',
 				'settings'    => 'lightning_theme_options[top_slide_text_caption_' . $i . ']',
@@ -318,7 +348,8 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 
 		// btn text
 		$wp_customize->add_setting(
-			'lightning_theme_options[top_slide_text_btn_' . $i . ']', array(
+			'lightning_theme_options[top_slide_text_btn_' . $i . ']',
+			array(
 				'default'           => '',
 				'type'              => 'option',
 				'capability'        => 'edit_theme_options',
@@ -329,7 +360,9 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 		$priority = $priority + 1;
 		$wp_customize->add_control(
 			new Custom_Text_Control(
-				$wp_customize, 'top_slide_text_btn_' . $i, array(
+				$wp_customize,
+				'top_slide_text_btn_' . $i,
+				array(
 					'label'       => '[' . $i . '] ' . __( 'Button text', 'lightning' ) . ' (' . __( 'optional', 'lightning' ) . ')',
 					'section'     => 'lightning_slide',
 					'settings'    => 'lightning_theme_options[top_slide_text_btn_' . $i . ']',
@@ -342,7 +375,8 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 
 		// text position
 		$wp_customize->add_setting(
-			'lightning_theme_options[top_slide_text_align_' . $i . ']', array(
+			'lightning_theme_options[top_slide_text_align_' . $i . ']',
+			array(
 				'default'           => '',
 				'type'              => 'option',
 				'capability'        => 'edit_theme_options',
@@ -352,7 +386,8 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 
 		$priority = $priority + 1;
 		$wp_customize->add_control(
-			'top_slide_text_align_' . $i, array(
+			'top_slide_text_align_' . $i,
+			array(
 				'label'    => '[' . $i . '] ' . __( 'Position to display text', 'lightning' ) . ' (' . __( 'optional', 'lightning' ) . ')',
 				'section'  => 'lightning_slide',
 				'settings' => 'lightning_theme_options[top_slide_text_align_' . $i . ']',
@@ -368,7 +403,8 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 
 		// color
 		$wp_customize->add_setting(
-			'lightning_theme_options[top_slide_text_color_' . $i . ']', array(
+			'lightning_theme_options[top_slide_text_color_' . $i . ']',
+			array(
 				'default'           => '',
 				'type'              => 'option',
 				'capability'        => 'edit_theme_options',
@@ -378,7 +414,9 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 		$priority = $priority + 1;
 		$wp_customize->add_control(
 			new WP_Customize_Color_Control(
-				$wp_customize, 'top_slide_text_color_' . $i . '', array(
+				$wp_customize,
+				'top_slide_text_color_' . $i . '',
+				array(
 					'label'    => '[' . $i . '] ' . __( 'Slide text color', 'lightning' ) . ' (' . __( 'optional', 'lightning' ) . ')',
 					'section'  => 'lightning_slide',
 					'settings' => 'lightning_theme_options[top_slide_text_color_' . $i . ']',
@@ -389,7 +427,8 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 
 		// top_slide_text_shadow_use_
 		$wp_customize->add_setting(
-			'lightning_theme_options[top_slide_text_shadow_use_' . $i . ']', array(
+			'lightning_theme_options[top_slide_text_shadow_use_' . $i . ']',
+			array(
 				'default'           => '',
 				'type'              => 'option',
 				'capability'        => 'edit_theme_options',
@@ -398,7 +437,8 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 		);
 		$priority = $priority + 1;
 		$wp_customize->add_control(
-			'lightning_theme_options[top_slide_text_shadow_use_' . $i . ']', array(
+			'lightning_theme_options[top_slide_text_shadow_use_' . $i . ']',
+			array(
 				'label'    => __( 'Use text shadow', 'lightning' ) . ' (' . __( 'optional', 'lightning' ) . ')',
 				'section'  => 'lightning_slide',
 				'settings' => 'lightning_theme_options[top_slide_text_shadow_use_' . $i . ']',
@@ -409,7 +449,8 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 
 		// top_slide_text_shadow_color_
 		$wp_customize->add_setting(
-			'lightning_theme_options[top_slide_text_shadow_color_' . $i . ']', array(
+			'lightning_theme_options[top_slide_text_shadow_color_' . $i . ']',
+			array(
 				'default'           => '',
 				'type'              => 'option',
 				'capability'        => 'edit_theme_options',
@@ -419,7 +460,9 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 		$priority = $priority + 1;
 		$wp_customize->add_control(
 			new WP_Customize_Color_Control(
-				$wp_customize, 'top_slide_text_shadow_color_' . $i . '', array(
+				$wp_customize,
+				'top_slide_text_shadow_color_' . $i . '',
+				array(
 					'label'    => '[' . $i . '] ' . __( 'Text shadow color', 'lightning' ) . ' (' . __( 'optional', 'lightning' ) . ')',
 					'section'  => 'lightning_slide',
 					'settings' => 'lightning_theme_options[top_slide_text_shadow_color_' . $i . ']',
