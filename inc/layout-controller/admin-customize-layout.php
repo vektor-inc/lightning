@@ -60,9 +60,9 @@ function lightning_customize_register_layout( $wp_customize ) {
 	);
 
 	$choices = array(
-		'default'               => __( 'Unspecified', 'lightning-pro' ),
-		'col-two'               => __( '2 column', 'lightning-pro' ),
-		'col-one'               => __( '1 column', 'lightning-pro' ),
+		'default'               => __( 'Unspecified', 'lightning' ),
+		'col-two'               => __( '2 column', 'lightning' ),
+		'col-one'               => __( '1 column', 'lightning' ),
 		'col-one-no-subsection' => __( '1 column ( No sub section )', 'lightning' ),
 	);
 

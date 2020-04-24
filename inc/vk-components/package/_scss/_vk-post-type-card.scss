@@ -1,0 +1,157 @@
+/*
+このファイルの元ファイルは
+https://github.com/vektor-inc/vektor-wp-libraries
+にあります。修正の際は上記リポジトリのデータを修正してください。
+*/
+
+/*-------------------------------------------*/
+/* .card
+/*-------------------------------------------*/
+/* .card-noborder
+/*-------------------------------------------*/
+
+.vk_post {
+	/*
+	Basicly wright to without .vk_post.
+	This additional is can't over wright only.
+	 */
+	&.card {
+		padding: 0;
+		margin-bottom: 30px;
+		box-sizing: border-box;
+		max-width: 100%;
+		.vk_post_btnOuter {
+			width: calc(100% - 2.5rem);
+		}
+	}
+}
+
+/*-------------------------------------------*/
+/* .card
+/*-------------------------------------------*/
+.card {
+	overflow: hidden;
+	box-shadow: none;
+	&-meta {
+		font-size: 12px;
+	}
+	&-img-use-bg {
+		position: relative;
+		left: -9999px;
+	}
+	a {
+		color: inherit;
+	}
+}
+
+/*-------------------------------------------*/
+/* .card-noborder
+/*-------------------------------------------*/
+.card-noborder {
+	&.card {
+		/*.card.card-noborder にしないと負ける */
+		border: none;
+		background: none;
+	}
+	.vk_post_imgOuter {
+		border: none;
+	}
+	.card-body {
+		padding-left: 0;
+		padding-right: 0;
+	}
+	&.vk_post-btn-display {
+		.card-body {
+			padding-bottom: 2.8rem;
+		}
+		.vk_post_btnOuter {
+			width: 100%;
+			bottom: 0;
+		}
+	}
+}
+
+/*-------------------------------------------*/
+/* １カラム カード の時の下部の余白を小さく変更
+/*-------------------------------------------*/
+.card.vk_post-col {
+	@media (max-width: $xs-max) {
+		&-xs-12 {
+			margin-bottom: 15px;
+		}
+	}
+	@media (min-width: $sm-min) and (max-width: $sm-max) {
+		&-sm-12 {
+			margin-bottom: 15px;
+		}
+	}
+	@media (min-width: $md-min) and (max-width: $md-max) {
+		&-md-12 {
+			margin-bottom: 15px;
+		}
+	}
+	@media (min-width: $lg-min) and (max-width: $lg-max) {
+		&-lg-12 {
+			margin-bottom: 15px;
+		}
+	}
+	@media (min-width: $xl-min) {
+		&-xl-12 {
+			margin-bottom: 15px;
+		}
+	}
+}
+
+/*-------------------------------------------*/
+/* .card-horizontal
+/*-------------------------------------------*/
+.card-horizontal {
+	&-inner {
+		height: 100%;
+		&::after {
+			content: "";
+			display: block;
+			clear: both;
+		}
+		&-row {
+			height: 100%;
+		}
+	}
+	&-img-right {
+		&-row {
+			flex-direction: row-reverse;
+		}
+	}
+	&-reverse {
+		.row {
+			flex-direction: row-reverse;
+			// text-align: right;
+		}
+	}
+	.card-body {
+		height: 100%;
+	}
+}
+
+.card-sm {
+	.card-body {
+		padding: 1rem 1.2rem;
+	}
+	.card-title {
+		font-size: 0.8rem;
+	}
+	.card-text {
+		font-size: 0.8rem;
+		line-height: 1.4;
+	}
+	.card-meta {
+		font-size: 0.7rem;
+		line-height: 1.1;
+	}
+}
+
+.card-post {
+	.card-body {
+		padding-bottom: 1.5em;
+	}
+}
