@@ -63,43 +63,43 @@
     /* gMenu control
     /* もう使ってない気がする
     /*----------------------------------------------------------*/
-    function run_menu_control() {
-        if (!getElementsByClassName('menuBtn')[0].classList.contains('nemuOpen')) {
-            document.body.classList.remove('headerMenuClose') // 今後廃止
-            document.body.classList.add('headerMenuOpen') // 今後廃止
-            document.body.classList.remove('header-menu-close')
-            document.body.classList.add('header-menu-open')
-            swap('.menuBtn', 'menuClose', 'menuOpen')
-            swap('#gMenu_outer', 'itemClose', 'itemOpen')
-            swap('#menuBtn i', 'fa-bars', 'fa-times')
-        } else {
-            document.body.classList.remove('headerMenuOpen') // 今後廃止
-            document.body.classList.remove('header-menu-open')
-            swap('.menuBtn', 'menuOpen', 'menuClose')
-            swap('#gMenu_outer', 'itemkOpen', 'itemClose')
-            swap('#menuBtn i', 'fa-times', 'fa-bars')
-        }
-    }
-    window.addEventListener('DOMContentLoaded', () => {
-        Array.prototype.forEach.call(document.getElementsByClassName('menuBtn'), (elem) => {
-            elem.addEventListener('click', menu_control, false);
-        })
-    })
+    // function run_menu_control() {
+    //     if (!getElementsByClassName('menuBtn')[0].classList.contains('nemuOpen')) {
+    //         document.body.classList.remove('headerMenuClose') // 今後廃止
+    //         document.body.classList.add('headerMenuOpen') // 今後廃止
+    //         document.body.classList.remove('header-menu-close')
+    //         document.body.classList.add('header-menu-open')
+    //         swap('.menuBtn', 'menuClose', 'menuOpen')
+    //         swap('#gMenu_outer', 'itemClose', 'itemOpen')
+    //         swap('#menuBtn i', 'fa-bars', 'fa-times')
+    //     } else {
+    //         document.body.classList.remove('headerMenuOpen') // 今後廃止
+    //         document.body.classList.remove('header-menu-open')
+    //         swap('.menuBtn', 'menuOpen', 'menuClose')
+    //         swap('#gMenu_outer', 'itemkOpen', 'itemClose')
+    //         swap('#menuBtn i', 'fa-times', 'fa-bars')
+    //     }
+    // }
+    // window.addEventListener('DOMContentLoaded', () => {
+    //     Array.prototype.forEach.call(document.getElementsByClassName('menuBtn'), (elem) => {
+    //         elem.addEventListener('click', menu_control, false);
+    //     })
+    // })
 
-    function menu_close() {
-        document.body.classList.remove('headerMenuOpen')
-        swap('.menuBtn', 'menuOpen', 'menuClose')
-        swap('#gMenu_outer', 'itemOpen', 'itemClose')
-        swap('#menuBtn i', 'fa-times', 'fa-bars')
-    }
+    // function menu_close() {
+    //     document.body.classList.remove('headerMenuOpen')
+    //     swap('.menuBtn', 'menuOpen', 'menuClose')
+    //     swap('#gMenu_outer', 'itemOpen', 'itemClose')
+    //     swap('#menuBtn i', 'fa-times', 'fa-bars')
+    // }
 
-    let timer_menu = false
-    window.addEventListener('resize', ()=>{
-        if (timer_menu) clearTimeout(timer_menu);
-        timer_menu = setTimeout(()=>{
-            if(document.body.offsetWidth > 767) menu_close()
-        }, 200)
-    })
+    // let timer_menu = false
+    // window.addEventListener('resize', ()=>{
+    //     if (timer_menu) clearTimeout(timer_menu);
+    //     timer_menu = setTimeout(()=>{
+    //         if(document.body.offsetWidth > 767) menu_close()
+    //     }, 200)
+    // })
 
     /*----------------------------------------------------------*/
     /*  Top slide control
