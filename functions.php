@@ -131,7 +131,11 @@ function lightning_theme_setup() {
 
 add_action( 'wp_enqueue_scripts', 'lightning_addJs' );
 function lightning_addJs() {
-	wp_enqueue_script( 'lightning-js', get_template_directory_uri() . '/assets/js/lightning.min.js', array( 'jquery' ), LIGHTNING_THEME_VERSION, true );
+	wp_register_script( 'lightning', get_template_directory_uri() . '/assets/js/lightning.min.js', array(), LIGHTNING_THEME_VERSION, true );
+	wp_localize_script( 'lightning', 'lightningOpt', apply_filters( 'lightning_localize_options', array() ) );
+	// jsのjQuery依存はもう無いが、一応追加しておく
+	wp_enqueue_script( 'jquery' );
+	wp_enqueue_script( 'lightning' );
 }
 
 add_action( 'wp_enqueue_scripts', 'lightning_commentJs' );
@@ -532,3 +536,45 @@ function lightning_embed_styles() {
 	wp_enqueue_style( 'wp-oembed-embed', get_template_directory_uri() . '/assets/css/wp-embed.css' );
 }
   add_action( 'embed_head', 'lightning_embed_styles' );
+
+
+function lightning_add_custom_color(){
+	$options = lightning_get_theme_options();
+	$lightning_color_array = array(
+		array(
+			'name'  => __( 'Lightning Key Color', 'lightning' ),
+			'slug'  => 'ltg-color-key',
+			'color' => $options['color_key'],
+		),
+		array(
+			'name'  => __( 'Lightning Key Color', 'lightning' ),
+			'slug'  => 'ltg-color-key-dark',
+			'color' => $options['color_key_dark'],
+		),
+	);
+
+
+
+	// add_theme_support( 'editor-color-palette');
+	$palette = get_theme_support( 'editor-color-palette' );
+	
+	global $_wp_theme_features;
+	// $palette = $_wp_theme_features['editor-color-palette'];
+	
+	
+	// print '<pre style="text-align:left">';print_r($_wp_theme_features);print '</pre>';
+	// print '<pre style="text-align:left">';print_r($palette);print '</pre>';
+	// die();
+	if ( ! empty( $palette ) ) {
+		print '<pre style="text-align:left">';print_r($palette);print '</pre>';
+		// $palette = array_merge( $palette[0], $lightning_color_array );
+		// add_theme_support( 'editor-color-palette', $palette );
+	}
+	
+	// add_theme_support(
+	// 	'editor-color-palette',
+	// 	$lightning_color_array
+	// );
+}
+
+  add_action( 'wp_loaded', 'lightning_add_custom_color', 11 );

@@ -33,16 +33,22 @@ If you want to change this file that, you have to change original file.
         /*-------------------------------------*/
         // メニューを閉じる
         function vk_mobile_nav_close(target){
-            // ※ fix nav の方を押される事もあるので each 処理している
-            removeClass(target, 'menu-open')
+            // ※ fix nav の方を押される事もある
+			document.getElementById('vk-mobile-nav-menu-btn').classList.remove('menu-open')
             // メニュー本体から .vk-mobile-nav-open を削除
             document.getElementById('vk-mobile-nav').classList.remove('vk-mobile-nav-open')
         }
 
         // 実行関数
         function vk_mobile_nav_run(target){
-            document.getElementById('vk-mobile-nav-menu-btn').addEventListener('click', (e) => {
-                if(e.target.classList.contains('menu-open')){
+			/*
+			モバイル固定ナビ利用時にアイコンフォントのタグを押されてしまうので
+			addEventListener('click', (e) => からの e.target.classList などで取得しても
+			fontawesome のクラス名が返ってきて誤動作してしまうため、buttn に一旦格納
+			*/
+			let button = document.getElementById('vk-mobile-nav-menu-btn');
+            button.addEventListener('click', () => {
+                if( button.classList.contains('menu-open') ){
                     vk_mobile_nav_close(target);
                 }else{
                     addClass(target, 'menu-open')

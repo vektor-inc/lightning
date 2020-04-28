@@ -2,59 +2,104 @@
 ((window, document) => {
     let addClass = window.ltg.addClass
     let swap = window.ltg.swap
+
     /*----------------------------------------------------------*/
     /*  scroll
     /*----------------------------------------------------------*/
     // Scroll function
-    window.addEventListener('scroll', () => {
+    let bodyClass = () => {
         if(window.pageYOffset > 0){
             document.body.classList.add('scrolled')
         }else{
             document.body.classList.remove('scrolled')
         }
-    })
+    }
+    window.addEventListener('scroll', bodyClass, false)
+    window.addEventListener('DOMContentLoaded', bodyClass, false)
+
+    if(lightningOpt.header_scrool){
+        let body_class_timer = false;
+        let body_class_lock = false;
+        let header_scrool_func = ()=>{
+            if(!body_class_lock && window.pageYOffset > 160){
+                document.body.classList.add('header_scrolled')
+            }else{
+                document.body.classList.remove('header_scrolled')
+            }
+        }
+
+        let remove_header = (e) => {
+            document.body.classList.remove('header_scrolled')
+            window.removeEventListener('scroll', header_scrool_func)
+            if (body_class_timer !== false) {
+                clearTimeout(body_class_timer)
+            }
+            body_class_lock = true
+            body_class_timer = setTimeout(()=>{
+                window.addEventListener('scroll', header_scrool_func, true)
+                body_class_lock = false
+            }, 2000);
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            Array.prototype.forEach.call(
+                document.getElementsByTagName('a'),
+                (elem) => {
+                    let href = elem.getAttribute('href')
+                    if(!href || href.indexOf('#') != 0) return;
+                    if (['tab', 'button'].indexOf(elem.getAttribute('role')) > 0) return;
+                    if (elem.getAttribute('data-toggle')) return;
+                    if (elem.getAttribute('carousel-control')) return;
+                    elem.addEventListener('click', remove_header)
+                }
+            )
+        });
+
+        window.addEventListener('scroll', header_scrool_func, true)
+        window.addEventListener('DOMContentLoaded', header_scrool_func, false)
+    }
 
     /*----------------------------------------------------------*/
     /* gMenu control
     /* もう使ってない気がする
     /*----------------------------------------------------------*/
-    function run_menu_control() {
-        if (!getElementsByClassName('menuBtn')[0].classList.contains('nemuOpen')) {
-            document.body.classList.remove('headerMenuClose') // 今後廃止
-            document.body.classList.add('headerMenuOpen') // 今後廃止
-            document.body.classList.remove('header-menu-close')
-            document.body.classList.add('header-menu-open')
-            swap('.menuBtn', 'menuClose', 'menuOpen')
-            swap('#gMenu_outer', 'itemClose', 'itemOpen')
-            swap('#menuBtn i', 'fa-bars', 'fa-times')
-        } else {
-            document.body.classList.remove('headerMenuOpen') // 今後廃止
-            document.body.classList.remove('header-menu-open')
-            swap('.menuBtn', 'menuOpen', 'menuClose')
-            swap('#gMenu_outer', 'itemkOpen', 'itemClose')
-            swap('#menuBtn i', 'fa-times', 'fa-bars')
-        }
-    }
-    window.addEventListener('DOMContentLoaded', () => {
-        Array.prototype.forEach.call(document.getElementsByClassName('menuBtn'), (elem) => {
-            elem.addEventListener('click', menu_control, false);
-        })
-    })
+    // function run_menu_control() {
+    //     if (!getElementsByClassName('menuBtn')[0].classList.contains('nemuOpen')) {
+    //         document.body.classList.remove('headerMenuClose') // 今後廃止
+    //         document.body.classList.add('headerMenuOpen') // 今後廃止
+    //         document.body.classList.remove('header-menu-close')
+    //         document.body.classList.add('header-menu-open')
+    //         swap('.menuBtn', 'menuClose', 'menuOpen')
+    //         swap('#gMenu_outer', 'itemClose', 'itemOpen')
+    //         swap('#menuBtn i', 'fa-bars', 'fa-times')
+    //     } else {
+    //         document.body.classList.remove('headerMenuOpen') // 今後廃止
+    //         document.body.classList.remove('header-menu-open')
+    //         swap('.menuBtn', 'menuOpen', 'menuClose')
+    //         swap('#gMenu_outer', 'itemkOpen', 'itemClose')
+    //         swap('#menuBtn i', 'fa-times', 'fa-bars')
+    //     }
+    // }
+    // window.addEventListener('DOMContentLoaded', () => {
+    //     Array.prototype.forEach.call(document.getElementsByClassName('menuBtn'), (elem) => {
+    //         elem.addEventListener('click', menu_control, false);
+    //     })
+    // })
 
-    function menu_close() {
-        document.body.classList.remove('headerMenuOpen')
-        swap('.menuBtn', 'menuOpen', 'menuClose')
-        swap('#gMenu_outer', 'itemOpen', 'itemClose')
-        swap('#menuBtn i', 'fa-times', 'fa-bars')
-    }
+    // function menu_close() {
+    //     document.body.classList.remove('headerMenuOpen')
+    //     swap('.menuBtn', 'menuOpen', 'menuClose')
+    //     swap('#gMenu_outer', 'itemOpen', 'itemClose')
+    //     swap('#menuBtn i', 'fa-times', 'fa-bars')
+    // }
 
-    let timer_menu = false
-    window.addEventListener('resize', ()=>{
-        if (timer_menu) clearTimeout(timer_menu);
-        timer_menu = setTimeout(()=>{
-            if(document.body.offsetWidth > 767) menu_close()
-        }, 200)
-    })
+    // let timer_menu = false
+    // window.addEventListener('resize', ()=>{
+    //     if (timer_menu) clearTimeout(timer_menu);
+    //     timer_menu = setTimeout(()=>{
+    //         if(document.body.offsetWidth > 767) menu_close()
+    //     }, 200)
+    // })
 
     /*----------------------------------------------------------*/
     /*  Top slide control
