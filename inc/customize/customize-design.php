@@ -303,6 +303,10 @@ function lightning_print_css_common() {
 		.woocommerce-product-search button,
 		.woocommerce button.button.alt:hover { background-color:' . $color_key . ' ; }
 		.woocommerce ul.product_list_widget li a:hover img { border-color:' . $color_key . '; }
+		:root {
+			--color-key:' . $color_key . ';
+			--color-key-dark:' . $color_key_dark . ';
+		}
 		.veu_color_txt_key { color:' . $color_key_dark . ' ; }
 		.veu_color_bg_key { background-color:' . $color_key_dark . ' ; }
 		.veu_color_border_key { border-color:' . $color_key_dark . ' ; }
