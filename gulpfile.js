@@ -236,6 +236,6 @@ gulp.task('dist_pro', function () {
     .pipe(gulp.dest('../lightning-pro/')); // dist/lightningディレクトリに出力
 });
 
-gulp.task('dist', gulp.series('text-domain','copy_dist'));
+gulp.task('dist', gulp.series('text-domain','sass_common','copy_dist'));
 gulp.task('default',  gulp.series('text-domain', 'watch'));
 
