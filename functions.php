@@ -131,11 +131,11 @@ function lightning_theme_setup() {
 
 add_action( 'wp_enqueue_scripts', 'lightning_addJs' );
 function lightning_addJs() {
-	wp_register_script( 'lightning', get_template_directory_uri() . '/assets/js/lightning.min.js', array(), LIGHTNING_THEME_VERSION, true );
-	wp_localize_script( 'lightning', 'lightningOpt', apply_filters( 'lightning_localize_options', array() ) );
+	wp_register_script( 'lightning-js', get_template_directory_uri() . '/assets/js/lightning.min.js', array(), LIGHTNING_THEME_VERSION, true );
+	wp_localize_script( 'lightning-js', 'lightningOpt', apply_filters( 'lightning_localize_options', array() ) );
 	// jsのjQuery依存はもう無いが、一応追加しておく
 	wp_enqueue_script( 'jquery' );
-	wp_enqueue_script( 'lightning' );
+	wp_enqueue_script( 'lightning-js' );
 }
 
 add_action( 'wp_enqueue_scripts', 'lightning_commentJs' );
