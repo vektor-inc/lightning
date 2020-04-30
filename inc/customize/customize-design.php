@@ -371,6 +371,25 @@ function ltg_add_body_class_bootstrap_version( $class ) {
 	return $class;
 }
 
+add_action( 'enqueue_block_editor_assets', 'lightning_add_editor_dynamic_css' );
+function lightning_add_editor_dynamic_css(){
+	$options     = get_option( 'lightning_theme_options' );
+	$color_key      = ( ! empty( $options['color_key'] ) ) ? esc_html( $options['color_key'] ) : '#337ab7';
+	$color_key_dark = ( ! empty( $options['color_key_dark'] ) ) ? esc_html( $options['color_key_dark'] ) : '#2e6da4';
+	$dynamic_css = '
+	:root {
+		--color-key:' . $color_key . ';
+		--color-key-dark:' . $color_key_dark . ';
+	}
+	';
+	// delete before after space
+	$dynamic_css = trim( $dynamic_css );
+	// convert tab and br to space
+	$dynamic_css = preg_replace( '/[\n\r\t]/', '', $dynamic_css );
+	// Change multiple spaces to single space
+	$dynamic_css = preg_replace( '/\s(?=\s)/', '', $dynamic_css );
+	wp_add_inline_style( 'lightning-common-editor-gutenberg', $dynamic_css );
+}
 
 /*-------------------------------------------*/
 /*  編集ショートカットボタンの位置調整（ウィジェットのショートカットボタンと重なってしまうため）
