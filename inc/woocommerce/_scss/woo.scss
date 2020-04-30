@@ -190,6 +190,7 @@ $price_color_delete: #555555;
 				text-decoration: none;
 				img {
 					border-color: #337ab7;
+					border-color: var(--color-key);
 				}
 			}
 		}
@@ -322,7 +323,7 @@ $price_color_delete: #555555;
 	}
 }
 button {
-	background-color: #337ab7;
+	/* Don't use! This property effect to default block editor UI */
 }
 .related.products {
 	clear: both;
