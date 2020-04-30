@@ -11,7 +11,9 @@ add_action( 'after_setup_theme', 'lightning_add_woocommerce_support' );
   Load CSS
 /*-------------------------------------------*/
 function lightning_woo_css() {
-	wp_enqueue_style( 'lightning-woo-style', get_template_directory_uri() . '/inc/woocommerce/css/woo.css', array( 'lightning-common-style' ), LIGHTNING_THEME_VERSION );
+	$editor_style_path = get_template_directory_uri() . '/inc/woocommerce/css/woo.css';
+	wp_enqueue_style( 'lightning-woo-style', $editor_style_path, array( 'lightning-common-style' ), LIGHTNING_THEME_VERSION );
+	add_editor_style( $editor_style_path );
 }
 add_action( 'wp_enqueue_scripts', 'lightning_woo_css' );
 
@@ -49,12 +51,12 @@ function lightning_widgets_init_product() {
 }
 add_action( 'widgets_init', 'lightning_widgets_init_product' );
 
-/*-------------------------------------------*/
-/*	Print Dynamic css
+/*
+  Print Dynamic css
 /*-------------------------------------------*/
 $options = get_option( 'lightning_theme_options' );
 if ( ! empty( $options['enqueue_point_footer'] ) ) {
-	add_action( 'wp_footer', 'lightning_print_css_woo',20 );
+	add_action( 'wp_footer', 'lightning_print_css_woo', 20 );
 } else {
 	add_action( 'wp_head', 'lightning_print_css_woo', 20 );
 }
@@ -70,7 +72,6 @@ function lightning_print_css_woo() {
 		';
 	} // if ( isset($options['color_key'] && isset($options['color_key_dark'] ) {
 
-
 	if ( $dynamic_css ) {
 		// delete br
 		$dynamic_css = str_replace( PHP_EOL, '', $dynamic_css );
@@ -82,7 +83,6 @@ function lightning_print_css_woo() {
 		// wp_add_inline_style() is not stable on change enquepoint system.
 		echo '<style id="lightning-woo-style-custom" type="text/css">' . $dynamic_css . '</style>';
 		// wp_add_inline_style( 'lightning-common-style', $dynamic_css );
-
 
 	}
 
