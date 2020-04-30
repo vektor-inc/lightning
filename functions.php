@@ -173,6 +173,22 @@ function lightning_load_common_editor_css() {
 	add_editor_style( 'assets/css/common_editor.css' );
 }
 
+/*
+Already add_editor_style() is used but reload css by wp_enqueue_style() reason is
+use to wp_add_inline_style()
+*/
+add_action( 'enqueue_block_editor_assets', 'lightning_load_common_editor_css_to_gutenberg' );
+function lightning_load_common_editor_css_to_gutenberg(){
+
+	wp_enqueue_style(
+		'lightning-common-editor-gutenberg',
+		'assets/css/common_editor.css',
+		array( 'wp-edit-blocks' ),
+		$skin_info['version']
+	);
+}
+
+
 require get_parent_theme_file_path( '/functions-compatible.php' );
 
 
@@ -524,8 +540,6 @@ function lightning_disable_tgm_notification_except_admin() {
 */
 
 
-/*
--------------------------------------------*/
 /*
   embed card
 /*-------------------------------------------*/
