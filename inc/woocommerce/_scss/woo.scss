@@ -24,11 +24,15 @@ $color-key-dark-default: #2e6da4;
 	--image-border: 1px solid #e5e5e5;
 }
 
+/*-------------------------------------------*/
+/*	Form common
+/*-------------------------------------------*/
 .woocommerce {
 	margin-bottom: 3em;
 	label {
 		font-weight: normal;
 	}
+	input[type="text"],
 	input[type="number"] {
 		border: 1px solid #ced4da;
 		border-radius: 0.25rem;
