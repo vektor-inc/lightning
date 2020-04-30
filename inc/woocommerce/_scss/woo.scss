@@ -11,9 +11,15 @@
 /*-------------------------------------------*/
 /*	Account
 /*-------------------------------------------*/
+/*	.wc-block-grid__products
+/*-------------------------------------------*/
 
 $price_color: #cc0000;
 $price_color_delete: #555555;
+// fallback
+$color-key-default: #337ab7;
+$color-key-dark-default: #2e6da4;
+
 :root {
 	--image-border: 1px solid #e5e5e5;
 }
@@ -23,16 +29,35 @@ $price_color_delete: #555555;
 	label {
 		font-weight: normal;
 	}
+	input[type="number"] {
+		border: 1px solid #ced4da;
+		border-radius: 0.25rem;
+		padding: 0.375rem 0.8rem;
+	}
+}
+
+.woocommerce-product-search {
+	button[type="submit"] {
+		background-color: var(--color-key, $color-key-default);
+	}
 }
 
 /*-------------------------------------------*/
 /*	Product common
 /*-------------------------------------------*/
+
+// .woocommerce-product-gallery__image,
+// .size-woocommerce_thumbnail,
+// .product_list_widget li img {
+// 	border: 1px solid #e5e5e5;
+// }
+
 .woocommerce {
 	span.onsale {
 		background-color: $price_color;
 	}
 }
+.product_list_widget,
 .price {
 	.woocommerce-Price-currencySymbol {
 		font-weight: normal;
@@ -50,6 +75,7 @@ $price_color_delete: #555555;
 	}
 	ins {
 		text-decoration: none;
+		font-size: 1.25em;
 	}
 }
 .woocommerce-Price-amount {
@@ -200,7 +226,6 @@ $price_color_delete: #555555;
 			width: 100%;
 			height: auto;
 			box-sizing: border-box;
-			border: 1px solid #e5e5e5;
 		}
 	}
 	.product-title {
@@ -208,12 +233,6 @@ $price_color_delete: #555555;
 		font-weight: normal;
 		color: #333;
 		font-size: 14px;
-	}
-	.woocommerce-Price-amount {
-		font-size: 14px;
-		line-height: 1.65em;
-		color: $price_color;
-		font-weight: 700;
 	}
 }
 .mainSection {
@@ -452,7 +471,7 @@ tr.cart-discount td {
 }
 
 /*-------------------------------------------*/
-/*	Thank you
+/*	Thank you Page
 /*-------------------------------------------*/
 .woocommerce ul.order_details {
 	padding: 0;
@@ -522,6 +541,10 @@ tr.cart-discount td {
 	display: block;
 	text-align: center;
 }
+
+/*-------------------------------------------*/
+/*	.wc-block-grid__products
+/*-------------------------------------------*/
 .wc-block-grid__products {
 	.wc-block-grid__product {
 		&-image {

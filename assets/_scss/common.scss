@@ -5,6 +5,11 @@
 @import "../../inc/vk-components/package/css/vk-components.css";
 @import "block/block";
 
+:root {
+	--color-key-default: #337ab7;
+	--color-key-dark-default: #2e6da4;
+}
+
 .slide-inner img {
 	width: 100%;
 }
