@@ -85,4 +85,12 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 			}
 		}
 	}
+	.device-pc {
+		.gMenu {
+			& > li a {
+				padding-left: 1em;
+				padding-right: 1em;
+			}
+		}
+	}
 }

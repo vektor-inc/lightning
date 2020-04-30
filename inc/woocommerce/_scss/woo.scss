@@ -27,6 +27,7 @@ $color-key-dark-default: #2e6da4;
 /*-------------------------------------------*/
 /*	Form common
 /*-------------------------------------------*/
+
 .woocommerce {
 	margin-bottom: 3em;
 	label {
@@ -94,8 +95,8 @@ $color-key-dark-default: #2e6da4;
 .woocommerce a.button,
 .woocommerce button.button,
 .woocommerce input.button {
-	padding-left: 1.5em;
-	padding-right: 1.5em;
+	// padding-left: 1.5em;
+	// padding-right: 1.5em;
 }
 .woocommerce {
 	a.button.add_to_cart_button {
@@ -185,18 +186,57 @@ $color-key-dark-default: #2e6da4;
 	background-color: var(--color-key);
 }
 
+.products .added_to_cart.wc-forward {
+	position: relative;
+	text-align: center;
+	font-size: 12px;
+	top: 0.2rem;
+	margin-bottom: 2px;
+	display: block;
+	overflow: hidden;
+	color: var(--text-color);
+	border: 1px solid var(--text-color);
+	border-radius: 4px;
+	padding: 2px;
+	&:hover {
+		text-decoration: none;
+		color: #fff;
+		background-color: var(--color-key, #337ab7);
+		border-color: var(--color-key-dark, #2e6da4);
+	}
+}
+
 /*-------------------------------------------*/
 /*	Archive
 /*-------------------------------------------*/
 .woocommerce {
-	ul.products li.product {
-		.woocommerce-loop-category__title,
-		.woocommerce-loop-product__title,
-		h3 {
-			border: none;
-			background: none;
-			padding: 0;
-			color: #333;
+	ul.products[class*="columns-"] {
+		li.product {
+			.woocommerce-loop-category__title,
+			.woocommerce-loop-product__title,
+			h3 {
+				border: none;
+				background: none;
+				padding: 0;
+				color: #333;
+			}
+			.add_to_cart_button {
+				box-sizing: border-box;
+				width: 100%;
+				font-size: 12px;
+			}
+		}
+	}
+}
+@media (max-width: 768px) {
+	.woocommerce {
+		ul.products[class*="columns-"] {
+			margin-left: -2%;
+			margin-right: -2%;
+			li.product {
+				width: 46%;
+				margin: 2%;
+			}
 		}
 	}
 }
@@ -418,6 +458,15 @@ button {
 				font-size: 1.2em;
 			}
 		}
+		.quantity {
+			text-align: right;
+			.qty {
+				display: inline-block;
+				min-width: 5em;
+				padding-left: 0.5rem;
+				padding-right: 0.5rem;
+			}
+		}
 	}
 }
 
@@ -588,16 +637,6 @@ tr.cart-discount td {
 				padding: 10px 1.5em;
 				width: 100%;
 			}
-		}
-		.added_to_cart.wc-forward {
-			position: relative;
-			top: 0.2rem;
-			display: block;
-			overflow: hidden;
-			color: var(--text-color);
-			border: 1px solid var(--text-color);
-			border-radius: 4px;
-			padding: 5px 10px;
 		}
 	}
 }
