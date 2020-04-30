@@ -522,10 +522,9 @@ tr.cart-discount td {
 	display: block;
 	text-align: center;
 }
-
-.wc-block-grid {
-	&__product {
-		& &-image {
+.wc-block-grid__products {
+	.wc-block-grid__product {
+		&-image {
 			// margin-bottom: 1rem;
 			// border: var(--image-border);
 		}
@@ -537,7 +536,7 @@ tr.cart-discount td {
 			font-size: 14px;
 			margin-bottom: 10px;
 		}
-		&-onsale {
+		.wc-block-grid__product-onsale {
 			margin-top: 0;
 			background-color: $price_color;
 			color: #fff;
