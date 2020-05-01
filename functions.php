@@ -178,13 +178,13 @@ Already add_editor_style() is used but reload css by wp_enqueue_style() reason i
 use to wp_add_inline_style()
 */
 add_action( 'enqueue_block_editor_assets', 'lightning_load_common_editor_css_to_gutenberg' );
-function lightning_load_common_editor_css_to_gutenberg(){
+function lightning_load_common_editor_css_to_gutenberg() {
 
 	wp_enqueue_style(
 		'lightning-common-editor-gutenberg',
 		'assets/css/common_editor.css',
 		array( 'wp-edit-blocks' ),
-		$skin_info['version']
+		LIGHTNING_THEME_VERSION
 	);
 }
 
