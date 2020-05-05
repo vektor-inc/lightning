@@ -35,6 +35,13 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v9.6.0
+* [ Design tuning ] WooCommerce parts design tuning
+* [ Specification change ] Menu javascript refactaring
+
+v9.5.0
+* skip release at free version
+
 v9.4.1
 * [ Bugfix ] Fixed bug that gives arise from no custom taxonomy / term.
 
