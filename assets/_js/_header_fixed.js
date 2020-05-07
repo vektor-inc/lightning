@@ -17,6 +17,10 @@
     /*  Offset header
     /*----------------------------------------------------------*/
     function offset_header(){
+
+		// When jpnstyle that use jpnstyle specialize script
+		if(document.body.classList.contains('jpnstyle')) return;
+
         let siteHeader = document.getElementsByClassName('siteHeader')[0]
         siteHeader.style.position = 'fixed'
 

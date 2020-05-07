@@ -28,16 +28,19 @@ function src(list) {
 }
 
 gulp.task('text-domain', function (done) {
-  gulp.src(['./inc/font-awesome/package/*.php'])
-    .pipe(replace(', \'vk_font_awesome_version_textdomain\'', ', \'lightning\''))
-    .pipe(gulp.dest('./inc/font-awesome/package/'));
-  gulp.src(['./inc/vk-mobile-nav/package/*.php'])
-    .pipe(replace('vk_mobile_nav_textdomain', 'lightning'))
-    .pipe(gulp.dest('./inc/vk-mobile-nav/package/'));
-  gulp.src(['./inc/term-color/package/*'])
-    .pipe(replace('lightning-pro', 'lightning'))
-    .pipe(gulp.dest('./inc/term-color/package/'));
-  done();
+	gulp.src(['./inc/font-awesome/package/*.php'])
+	.pipe(replace(', \'vk_font_awesome_version_textdomain\'', ', \'lightning\''))
+	.pipe(gulp.dest('./inc/font-awesome/package/'));
+	gulp.src(['./inc/vk-components/package/*.php'])
+	.pipe(replace(', \'vk-compo-textdomain\'', ', \'lightning\''))
+	.pipe(gulp.dest('./inc/vk-components/package/'));
+	gulp.src(['./inc/vk-mobile-nav/package/*.php'])
+	.pipe(replace('vk_mobile_nav_textdomain', 'lightning'))
+	.pipe(gulp.dest('./inc/vk-mobile-nav/package/'));
+	gulp.src(['./inc/term-color/package/*'])
+	.pipe(replace('vk_term_color_textdomain', 'lightning'))
+	.pipe(gulp.dest('./inc/term-color/package/'));
+	done();
 });
 
 gulp.task('sass_common', function (done) {
@@ -233,6 +236,6 @@ gulp.task('dist_pro', function () {
     .pipe(gulp.dest('../lightning-pro/')); // dist/lightningディレクトリに出力
 });
 
-gulp.task('dist', gulp.series('text-domain','copy_dist'));
+gulp.task('dist', gulp.series('text-domain','sass_common','copy_dist'));
 gulp.task('default',  gulp.series('text-domain', 'watch'));
 

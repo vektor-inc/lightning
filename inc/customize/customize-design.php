@@ -294,15 +294,12 @@ function lightning_print_css_common() {
 		$color_key      = ( ! empty( $options['color_key'] ) ) ? esc_html( $options['color_key'] ) : '#337ab7';
 		$color_key_dark = ( ! empty( $options['color_key_dark'] ) ) ? esc_html( $options['color_key_dark'] ) : '#2e6da4';
 		$dynamic_css   .= '/* ltg common custom */ 
-		.bbp-submit-wrapper .button.submit,
-		.woocommerce a.button.alt:hover,
-		.woocommerce-product-search button:hover,
-		.woocommerce button.button.alt { background-color:' . $color_key_dark . ' ; }
-		.bbp-submit-wrapper .button.submit:hover,
-		.woocommerce a.button.alt,
-		.woocommerce-product-search button,
-		.woocommerce button.button.alt:hover { background-color:' . $color_key . ' ; }
-		.woocommerce ul.product_list_widget li a:hover img { border-color:' . $color_key . '; }
+		:root {
+			--color-key:' . $color_key . ';
+			--color-key-dark:' . $color_key_dark . ';
+		}
+		.bbp-submit-wrapper .button.submit { background-color:' . $color_key_dark . ' ; }
+		.bbp-submit-wrapper .button.submit:hover { background-color:' . $color_key . ' ; }
 		.veu_color_txt_key { color:' . $color_key_dark . ' ; }
 		.veu_color_bg_key { background-color:' . $color_key_dark . ' ; }
 		.veu_color_border_key { border-color:' . $color_key_dark . ' ; }
@@ -343,7 +340,6 @@ function lightning_print_css_common() {
 		echo '<style id="lightning-common-style-custom" type="text/css">' . $dynamic_css . '</style>';
 		// wp_add_inline_style( 'lightning-common-style', $dynamic_css );
 
-
 	}
 
 }
@@ -374,6 +370,43 @@ function ltg_add_body_class_bootstrap_version( $class ) {
 	return $class;
 }
 
+/**
+ * Lightning common dynamic css
+ *
+ * @return string
+ */
+function lightning_get_common_inline_css(){
+	$options     = get_option( 'lightning_theme_options' );
+	$color_key      = ( ! empty( $options['color_key'] ) ) ? esc_html( $options['color_key'] ) : '#337ab7';
+	$color_key_dark = ( ! empty( $options['color_key_dark'] ) ) ? esc_html( $options['color_key_dark'] ) : '#2e6da4';
+	$dynamic_css = '
+	:root {
+		--color-key:' . $color_key . ';
+		--color-key-dark:' . $color_key_dark . ';
+	}
+	';
+	// delete before after space
+	$dynamic_css = trim( $dynamic_css );
+	// convert tab and br to space
+	$dynamic_css = preg_replace( '/[\n\r\t]/', '', $dynamic_css );
+	// Change multiple spaces to single space
+	$dynamic_css = preg_replace( '/\s(?=\s)/', '', $dynamic_css );
+	return $dynamic_css;
+}
+
+function lightning_add_common_dynamic_css(){
+	$dynamic_css = lightning_get_common_inline_css();
+	wp_add_inline_style( 'lightning-common-style', $dynamic_css );
+}
+// Caution : Load common css point is 2 case exist
+add_action( 'wp_enqueue_scripts', 'lightning_add_common_dynamic_css' );
+add_action( 'wp_footer', 'lightning_add_common_dynamic_css' );
+
+function lightning_add_common_dynamic_css_to_editor(){
+	$dynamic_css = lightning_get_common_inline_css();
+	wp_add_inline_style( 'lightning-common-editor-gutenberg', $dynamic_css );
+}
+add_action( 'enqueue_block_editor_assets', 'lightning_add_common_dynamic_css_to_editor' );
 
 /*-------------------------------------------*/
 /*  編集ショートカットボタンの位置調整（ウィジェットのショートカットボタンと重なってしまうため）

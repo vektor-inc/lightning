@@ -5,6 +5,11 @@
 @import "../../inc/vk-components/package/css/vk-components.css";
 @import "block/block";
 
+:root {
+	--color-key-default: #337ab7;
+	--color-key-dark-default: #2e6da4;
+}
+
 .slide-inner img {
 	width: 100%;
 }
@@ -56,6 +61,30 @@
 
 iframe {
 	border: none;
+}
+/*-------------------------------------------*/
+/*	calendar
+/*-------------------------------------------*/
+.wp-calendar-table{
+	border-top-color:#e5e5e5;
+	caption{
+		caption-side: top;
+		color: inherit;
+	}
+	th{
+		font-weight: bold;
+	}
+	th,td {
+		padding-left:0;
+		padding-right:0;
+		text-align:center;
+		border-bottom-color: #e5e5e5;
+	}
+}
+.wp-calendar-nav{
+	margin:.7em 0 1.5em;
+	display: flex;
+    justify-content: space-between;
 }
 
 /*-------------------------------------------*/

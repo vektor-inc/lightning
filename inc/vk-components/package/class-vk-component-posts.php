@@ -78,9 +78,9 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 		public static function get_loop( $wp_query, $options, $options_loop = array() ) {
 
 			// Outer Post Type classes
-			$patterns = self::get_patterns();
+			$patterns                    = self::get_patterns();
 			$loop_outer_class_post_types = array();
-			if ( !isset( $wp_query->query['post_type'] ) ) {
+			if ( ! isset( $wp_query->query['post_type'] ) ) {
 				$loop_outer_class_post_types[] = 'vk_posts-postType-post';
 			} else {
 				if ( is_array( $wp_query->query['post_type'] ) ) {
@@ -97,12 +97,12 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			// Additional loop option
 			$loop_outer_class = implode( ' ', $loop_outer_class_post_types );
 
-			if ( ! empty( $options_loop['class_loop_outer'] ) ){
+			if ( ! empty( $options_loop['class_loop_outer'] ) ) {
 				$loop_outer_class .= ' ' . $options_loop['class_loop_outer'];
 			}
 
 			// Set post item outer col class
-			if ( $options['layout'] !== 'postListText' ){
+			if ( $options['layout'] !== 'postListText' ) {
 				// If get info of column that deploy col to class annd add
 				if ( empty( $options['class_outer'] ) ) {
 					$options['class_outer'] = self::get_col_size_classes( $options );
@@ -111,10 +111,26 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				}
 			}
 
+			// Set hidden class
+			$hidden_class = array();
+			if ( ! empty( $options['vkb_hidden'] ) ) {
+				array_push( $hidden_class, 'vk_hidden' );
+			} elseif ( ! empty( $options['vkb_hidden_xl'] ) ) {
+				array_push( $hidden_class, 'vk_hidden-xl' );
+			} elseif ( ! empty( $options['vkb_hidden_lg'] ) ) {
+				array_push( $hidden_class, 'vk_hidden-lg' );
+			} elseif ( ! empty( $options['vkb_hidden_md'] ) ) {
+				array_push( $hidden_class, 'vk_hidden-md' );
+			} elseif ( ! empty( $options['vkb_hidden_sm'] ) ) {
+				array_push( $hidden_class, 'vk_hidden-sm' );
+			} elseif ( ! empty( $options['vkb_hidden_xs'] ) ) {
+				array_push( $hidden_class, 'vk_hidden-xs' );
+			}
+
 			$loop = '';
 			if ( $wp_query->have_posts() ) :
 
-				$loop .= '<div class="vk_posts ' . esc_attr( $loop_outer_class ) . '">';
+				$loop .= '<div class="vk_posts ' . esc_attr( $loop_outer_class ) . ' ' . esc_attr( implode( ' ', $hidden_class ) ) . '">';
 
 				while ( $wp_query->have_posts() ) {
 					$wp_query->the_post();
@@ -171,7 +187,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				$class_outer .= ' vk_post-btn-display';
 			}
 			global $post;
-			$html = '<div id="post-' . esc_attr( $post->ID ) . '" class="vk_post vk-post-postType-'. esc_attr( $post->post_type ) . ' ' . join( ' ', get_post_class( $class_outer ) ) . '">';
+			$html = '<div id="post-' . esc_attr( $post->ID ) . '" class="vk_post vk-post-postType-' . esc_attr( $post->post_type ) . ' ' . join( ' ', get_post_class( $class_outer ) ) . '">';
 			return $html;
 		}
 
@@ -235,7 +251,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				if ( $img ) {
 					$html .= $img;
 				} elseif ( $options['image_default_url'] ) {
-					$html .= '<img src="' . esc_url( $options['image_default_url'] ) . '" alt="" class="' . $image_class . '" />';
+					$html .= '<img src="' . esc_url( $options['image_default_url'] ) . '" alt="" class="' . $image_class . '" loading="lazy" />';
 				}
 				$html .= '</a>';
 				$html .= '</div><!-- [ /.vk_post_imgOuter ] -->';
@@ -344,19 +360,19 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 
 			$patterns = array(
 				'card'            => array(
-					'label'             => __( 'Card', 'vk-compo-textdomain' ),
+					'label'             => __( 'Card', 'lightning' ),
 					'class_posts_outer' => '',
 				),
 				'card-horizontal' => array(
-					'label'             => __( 'Card Horizontal', 'vk-compo-textdomain' ),
+					'label'             => __( 'Card Horizontal', 'lightning' ),
 					'class_posts_outer' => '',
 				),
 				'media'           => array(
-					'label'             => __( 'Media', 'vk-compo-textdomain' ),
+					'label'             => __( 'Media', 'lightning' ),
 					'class_posts_outer' => 'media-outer',
 				),
 				'postListText'    => array(
-					'label'             => _x( 'Text 1 Column', 'post list type', 'vk-compo-textdomain' ),
+					'label'             => _x( 'Text 1 Column', 'post list type', 'lightning' ),
 					'class_posts_outer' => 'postListText-outer',
 				),
 			);
@@ -454,7 +470,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 		public static function get_view_type_text( $post, $options ) {
 
 			$layout_type = $options['layout'];
-			
+
 			$html  = '';
 			$html .= self::get_view_first_div( $post, $options );
 
@@ -465,10 +481,10 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			}
 
 			if ( $options['display_image_overlay_term'] ) {
-				$html .= '<span class="postListText_singleTermLabel">';
+				$html     .= '<span class="postListText_singleTermLabel">';
 				$term_args = array(
 					'class' => 'postListText_singleTermLabel_inner',
-					'link' => true,
+					'link'  => true,
 				);
 				if ( method_exists( 'Vk_term_color', 'get_single_term_with_color' ) ) {
 					$html .= Vk_term_color::get_single_term_with_color( $post, $term_args );
@@ -488,7 +504,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 					$html .= '<span class="vk_post_title_new">' . $options['new_text'] . '</span>';
 				}
 			}
-			
+
 			$html .= '</h5>';
 
 			$html .= '</div>';

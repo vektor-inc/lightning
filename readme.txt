@@ -35,6 +35,20 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v9.6.1
+* [ Design bug fix ] WooCommerce parts design tuning
+* [ Design bug fix ][ Calendar Widget ] Calendar sticks out of sidebar
+
+v9.6.0
+* [ Design tuning ] WooCommerce parts design tuning
+* [ Specification change ] Menu javascript refactaring
+
+v9.5.0
+* skip release at free version
+
+v9.4.1
+* [ Bugfix ] Fixed bug that gives arise from no custom taxonomy / term.
+
 v9.4.0
 * [ Specification Change ] vk component posts update ( cope with post list layout text )
 

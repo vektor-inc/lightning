@@ -59,31 +59,11 @@ dt { border-left-color:' . $color_key . '; }';
 /*	Your design skin Specific functions
 /*-------------------------------------------*/
 
-function lightning_origin2_header_scrolled_scripts() {
-	if ( function_exists( 'wp_add_inline_script' ) ) {
-		$script = "
-		;(function($,document,window){
-		$(document).ready(function($){
-			/* Add scroll recognition class */
-			$(window).scroll(function () {
-				var scroll = $(this).scrollTop();
-				if ($(this).scrollTop() > 160) {
-					$('body').addClass('header_scrolled');
-				} else {
-					$('body').removeClass('header_scrolled');
-				}
-			});
-		});
-		})(jQuery,document,window);
-		";
-		// delete br
-		$script = str_replace( PHP_EOL, '', $script );
-		// delete tab
-		$script = preg_replace( '/[\n\r\t]/', '', $script );
-		wp_add_inline_script( 'jquery-core', $script, 'after' );
-	}
+add_filter('lightning_localize_options', 'lightning_origin2_add_js_option', 10 , 1);
+function lightning_origin2_add_js_option( $options ) {
+	$options['header_scrool'] = true;
+	return $options;
 }
-add_action( 'wp_enqueue_scripts', 'lightning_origin2_header_scrolled_scripts' );
 
 
 // lightning headfix disabel

@@ -131,7 +131,11 @@ function lightning_theme_setup() {
 
 add_action( 'wp_enqueue_scripts', 'lightning_addJs' );
 function lightning_addJs() {
-	wp_enqueue_script( 'lightning-js', get_template_directory_uri() . '/assets/js/lightning.min.js', array( 'jquery' ), LIGHTNING_THEME_VERSION, true );
+	wp_register_script( 'lightning-js', get_template_directory_uri() . '/assets/js/lightning.min.js', array(), LIGHTNING_THEME_VERSION, true );
+	wp_localize_script( 'lightning-js', 'lightningOpt', apply_filters( 'lightning_localize_options', array() ) );
+	// jsのjQuery依存はもう無いが、一応追加しておく
+	wp_enqueue_script( 'jquery' );
+	wp_enqueue_script( 'lightning-js' );
 }
 
 add_action( 'wp_enqueue_scripts', 'lightning_commentJs' );
@@ -168,6 +172,22 @@ function lightning_load_common_editor_css() {
 	/* Notice : add_editor_style() is only one args. */
 	add_editor_style( 'assets/css/common_editor.css' );
 }
+
+/*
+Already add_editor_style() is used but reload css by wp_enqueue_style() reason is
+use to wp_add_inline_style()
+*/
+add_action( 'enqueue_block_editor_assets', 'lightning_load_common_editor_css_to_gutenberg' );
+function lightning_load_common_editor_css_to_gutenberg() {
+
+	wp_enqueue_style(
+		'lightning-common-editor-gutenberg',
+		'assets/css/common_editor.css',
+		array( 'wp-edit-blocks' ),
+		LIGHTNING_THEME_VERSION
+	);
+}
+
 
 require get_parent_theme_file_path( '/functions-compatible.php' );
 
@@ -520,8 +540,6 @@ function lightning_disable_tgm_notification_except_admin() {
 */
 
 
-/*
--------------------------------------------*/
 /*
   embed card
 /*-------------------------------------------*/
