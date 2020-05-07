@@ -114,8 +114,16 @@ else :
 	endwhile;
 	endif; // if ( have_posts() ) :
 	endif; // if ( apply_filters( 'is_lightning_extend_single', false ) ) :
+
 ?>
-<?php get_template_part( 'template-parts/post/next-prev' ); ?>
+
+<?php
+get_template_part(
+	'template-parts/post/next-prev',
+	get_post_type()
+);
+?>
+
 <?php do_action( 'lightning_mainSection_append' ); ?>
 </div><!-- [ /.mainSection ] -->
 

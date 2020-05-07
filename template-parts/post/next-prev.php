@@ -38,8 +38,14 @@ if ( $bootstrap == '4' ) {
 			$options['body_prepend'] = '<p class="postNextPrev_label">' . __( 'Previous article', 'lightning' ) . '</p>';
 			$options['class_outer']  = 'card-sm vk_post-col-xs-12 vk_post-col-sm-12 vk_post-col-md-6';
 			$options                 = apply_filters( 'lightning_next_prev_options', $options );
-			VK_Component_Posts::the_view( $post_previous, $options );
-			// get_template_part( 'module_loop_post_card' );
+			$options                 = apply_filters( 'lightning_next_prev_options_prev', $options );
+			$post                    = $post_previous;
+			/*
+			Reason of $post = $post_previous;
+			To use WordPress normal template-tag filter ( Like a 'post_thumbnail_html' filter )
+			 */
+			VK_Component_Posts::the_view( $post, $options );
+			wp_reset_postdata();
 		} else {
 			echo '<div class="vk_post-col-xs-12 vk_post-col-sm-12 vk_post-col-md-6"></div>';
 		} // if ( $post_previous ) {
@@ -50,7 +56,10 @@ if ( $bootstrap == '4' ) {
 			$options['body_prepend'] = '<p class="postNextPrev_label">' . __( 'Next article', 'lightning' ) . '</p>';
 			$options['class_outer']  = 'card-sm vk_post-col-xs-12 vk_post-col-sm-12 vk_post-col-md-6 card-horizontal-reverse postNextPrev_next';
 			$options                 = apply_filters( 'lightning_next_prev_options', $options );
-			VK_Component_Posts::the_view( $post_next, $options );
+			$options                 = apply_filters( 'lightning_next_prev_options_next', $options );
+			$post                    = $post_next;
+			VK_Component_Posts::the_view( $post, $options );
+			wp_reset_postdata();
 		} else {
 			echo '<div class="vk_post-col-xs-12 vk_post-col-sm-12 vk_post-col-md-6"></div>';
 		} // if ( $post_next ) {
