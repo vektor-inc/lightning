@@ -35,6 +35,10 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v9.6.1
+* [ Design bug fix ] WooCommerce parts design tuning
+* [ Design bug fix ][ Calendar Widget ] Calendar sticks out of sidebar
+
 v9.6.0
 * [ Design tuning ] WooCommerce parts design tuning
 * [ Specification change ] Menu javascript refactaring
