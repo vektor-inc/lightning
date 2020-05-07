@@ -251,7 +251,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				if ( $img ) {
 					$html .= $img;
 				} elseif ( $options['image_default_url'] ) {
-					$html .= '<img src="' . esc_url( $options['image_default_url'] ) . '" alt="" class="' . $image_class . '" />';
+					$html .= '<img src="' . esc_url( $options['image_default_url'] ) . '" alt="" class="' . $image_class . '" loading="lazy" />';
 				}
 				$html .= '</a>';
 				$html .= '</div><!-- [ /.vk_post_imgOuter ] -->';
@@ -360,19 +360,19 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 
 			$patterns = array(
 				'card'            => array(
-					'label'             => __( 'Card', 'lightning' ),
+					'label'             => __( 'Card', 'vk-compo-textdomain' ),
 					'class_posts_outer' => '',
 				),
 				'card-horizontal' => array(
-					'label'             => __( 'Card Horizontal', 'lightning' ),
+					'label'             => __( 'Card Horizontal', 'vk-compo-textdomain' ),
 					'class_posts_outer' => '',
 				),
 				'media'           => array(
-					'label'             => __( 'Media', 'lightning' ),
+					'label'             => __( 'Media', 'vk-compo-textdomain' ),
 					'class_posts_outer' => 'media-outer',
 				),
 				'postListText'    => array(
-					'label'             => _x( 'Text 1 Column', 'post list type', 'lightning' ),
+					'label'             => _x( 'Text 1 Column', 'post list type', 'vk-compo-textdomain' ),
 					'class_posts_outer' => 'postListText-outer',
 				),
 			);
