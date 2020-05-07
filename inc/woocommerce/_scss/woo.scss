@@ -120,11 +120,11 @@ $color-key-dark-default: #2e6da4;
 	}
 }
 .wp-block-product-category .wp-block-button__link {
-	background-color: var(--color-key-dark);
+	background-color: var(--color-key-dark, $color-key-dark-default);
 }
 .wp-block-product-category .wp-block-button__link:hover {
 	text-decoration: none;
-	background-color: var(--color-key);
+	background-color: var(--color-key, $color-key-default);
 }
 
 .woocommerce #respond input#submit,
@@ -132,14 +132,14 @@ $color-key-dark-default: #2e6da4;
 .woocommerce button.button,
 .woocommerce input.button {
 	color: #fff;
-	background-color: var(--color-key-dark);
+	background-color: var(--color-key-dark, $color-key-dark-default);
 }
 .woocommerce #respond input#submit:hover,
 .woocommerce a.button:hover,
 .woocommerce button.button:hover,
 .woocommerce input.button:hover {
 	color: #fff;
-	background-color: var(--color-key);
+	background-color: var(--color-key, $color-key-default);
 }
 
 .woocommerce #respond input#submit.alt,
@@ -147,14 +147,14 @@ $color-key-dark-default: #2e6da4;
 .woocommerce button.button.alt,
 .woocommerce input.button.alt {
 	color: #fff;
-	background-color: var(--color-key-dark);
+	background-color: var(--color-key-dark, $color-key-dark-default);
 }
 .woocommerce #respond input#submit.alt:hover,
 .woocommerce a.button.alt:hover,
 .woocommerce button.button.alt:hover,
 .woocommerce input.button.alt:hover {
 	color: #fff;
-	background-color: var(--color-key);
+	background-color: var(--color-key, $color-key-default);
 }
 .woocommerce #respond input#submit.disabled,
 .woocommerce #respond input#submit:disabled,
@@ -183,7 +183,7 @@ $color-key-dark-default: #2e6da4;
 .woocommerce input.button:disabled:hover,
 .woocommerce input.button:disabled[disabled]:hover {
 	color: #fff;
-	background-color: var(--color-key);
+	background-color: var(--color-key, $color-key-default);
 }
 
 .product,
@@ -264,7 +264,7 @@ div[class*="wp-block-product"] {
 				text-decoration: none;
 				img {
 					border-color: #337ab7;
-					border-color: var(--color-key);
+					border-color: var(--color-key, $color-key-default);
 				}
 			}
 		}
