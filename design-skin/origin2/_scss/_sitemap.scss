@@ -1,0 +1,50 @@
+/*-------------------------------------------*/
+/*      .veu_sitemap
+/*-------------------------------------------*/
+.veu_sitemap {
+	h4 {
+		padding: 0.2em 1em;
+		font-size: 18px;
+	}
+
+	h5 {
+		margin: 1em 1em;
+		padding: 0 0 3px;
+		font-size: 18px;
+	}
+
+	a {
+		color: $color_font_default;
+	}
+
+	& > ul {
+	}
+
+	ul {
+		margin-left: 1em;
+		padding-left: 0;
+		list-style: none;
+
+		li {
+			list-style: none;
+		}
+
+		& > li > a {
+			position: relative;
+			padding-left: 1.2em;
+
+			&:before {
+				display: block;
+				position: absolute;
+				top: 50%;
+				left: 0.5em;
+				transform: translateY(-65%);
+				font-size: 10px;
+				line-height: 1em;
+				font-family: "メイリオ", Meiryo, sans-serif;
+				content: "≫";
+				margin-right: 0.5em;
+			}
+		}
+	}
+}
