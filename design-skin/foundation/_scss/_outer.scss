@@ -109,36 +109,36 @@ input.form-control.input_widthAuto {
 /*-------------------------------------------*/
 /* .navSection
 /*-------------------------------------------*/
-@media (max-width: $md-max) {
-	.menuBtn {
-		position: absolute;
-		top: 0;
-		z-index: 2000;
-		margin: 8px;
-		padding: 4px 8px;
+// @media (max-width: $md-max) {
+// 	.menuBtn {
+// 		position: absolute;
+// 		top: 0;
+// 		z-index: 2000;
+// 		margin: 8px;
+// 		padding: 4px 8px;
 
-		&.btn-default {
-			border-color: #999;
-			color: #999;
-		}
+// 		&.btn-default {
+// 			border-color: #999;
+// 			color: #999;
+// 		}
 
-		&.btn-default:hover {
-			border-color: #fff;
-			color: #fff;
-		}
+// 		&.btn-default:hover {
+// 			border-color: #fff;
+// 			color: #fff;
+// 		}
 
-		&.menuBtn_right {
-			right: 0px;
-		}
-	}
-} // @media (max-width: 991px){
-@media (min-width: $lg-min) {
-	.menuBtn,
-	.navSection,
-	.navSection .searchform {
-		display: none;
-	}
-}
+// 		&.menuBtn_right {
+// 			right: 0px;
+// 		}
+// 	}
+// } // @media (max-width: 991px){
+// @media (min-width: $lg-min) {
+// 	.menuBtn,
+// 	.navSection,
+// 	.navSection .searchform {
+// 		display: none;
+// 	}
+// }
 
 /*-------------------------------------------*/
 /* .page-header
