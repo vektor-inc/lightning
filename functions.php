@@ -182,7 +182,8 @@ function lightning_load_common_editor_css_to_gutenberg() {
 
 	wp_enqueue_style(
 		'lightning-common-editor-gutenberg',
-		'assets/css/common_editor.css',
+		// If not full path that can't load in editor screen
+		get_template_directory_uri() . '/assets/css/common_editor.css',
 		array( 'wp-edit-blocks' ),
 		LIGHTNING_THEME_VERSION
 	);
