@@ -35,6 +35,11 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v9.8.0
+* [ Bug fix ] A part of css file faild on edit screen
+* [ Other ] Cope with HTML Sitemap Block ( ExUnit ) edit screen css
+* [ Design bug fix ] Post page sidebar default post list text size tuning  
+
 v9.7.0
 * Change version
 
