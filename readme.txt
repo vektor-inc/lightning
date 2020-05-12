@@ -35,7 +35,16 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v9.8.0
+* [ Bug fix ] A part of css file faild on edit screen
+* [ Other ] Cope with HTML Sitemap Block ( ExUnit ) edit screen css
+* [ Design bug fix ] Post page sidebar default post list text size tuning  
+
+v9.7.0
+* Change version
+
 v9.6.1
+* [ Specification Change ] Post Next Prev Structural improvement
 * [ Design bug fix ] WooCommerce parts design tuning
 * [ Design bug fix ][ Calendar Widget ] Calendar sticks out of sidebar
 

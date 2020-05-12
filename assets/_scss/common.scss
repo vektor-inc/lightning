@@ -19,6 +19,18 @@
 }
 
 /*-------------------------------------------*/
+/*	Default Post List on sidebar
+/*-------------------------------------------*/
+
+.subSection {
+	.media {
+		.media-heading {
+			font-size: 14px;
+		}
+	}
+}
+
+/*-------------------------------------------*/
 /*	Search
 /*-------------------------------------------*/
 
@@ -65,26 +77,27 @@ iframe {
 /*-------------------------------------------*/
 /*	calendar
 /*-------------------------------------------*/
-.wp-calendar-table{
-	border-top-color:#e5e5e5;
-	caption{
+.wp-calendar-table {
+	border-top-color: #e5e5e5;
+	caption {
 		caption-side: top;
 		color: inherit;
 	}
-	th{
+	th {
 		font-weight: bold;
 	}
-	th,td {
-		padding-left:0;
-		padding-right:0;
-		text-align:center;
+	th,
+	td {
+		padding-left: 0;
+		padding-right: 0;
+		text-align: center;
 		border-bottom-color: #e5e5e5;
 	}
 }
-.wp-calendar-nav{
-	margin:.7em 0 1.5em;
+.wp-calendar-nav {
+	margin: 0.7em 0 1.5em;
 	display: flex;
-    justify-content: space-between;
+	justify-content: space-between;
 }
 
 /*-------------------------------------------*/

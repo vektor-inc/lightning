@@ -1,0 +1,28 @@
+/*-------------------------------------------*/
+/*      .veu_sitemap
+/*-------------------------------------------*/
+.veu_sitemap {
+	.sitemap-post-type-title {
+		border-bottom: 1px dotted #999;
+	}
+	ul {
+		li {
+			list-style: none;
+		}
+		& > li > a {
+			padding-left: 1.2em;
+			&:before {
+				display: block;
+				position: absolute;
+				top: 47%;
+				left: 0;
+				transform: translateY(-65%);
+				font-size: 10px;
+				line-height: 1em;
+				font-family: "メイリオ", Meiryo, sans-serif;
+				content: "≫";
+				margin-right: 0.5em;
+			}
+		}
+	}
+}
