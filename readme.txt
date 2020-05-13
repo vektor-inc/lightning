@@ -35,6 +35,9 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v9.8.1
+* [ Design Bug fix ][ woo ] Layout bug fix
+
 v9.8.0
 * [ Bug fix ] A part of css file faild on edit screen
 * [ Other ] Cope with HTML Sitemap Block ( ExUnit ) edit screen css
