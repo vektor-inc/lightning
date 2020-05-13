@@ -13,6 +13,8 @@
 /*-------------------------------------------*/
 /*	.wc-block-grid__products
 /*-------------------------------------------*/
+/*	Layout confrict adjustment
+/*-------------------------------------------*/
 
 $price_color: #c00;
 $price_color_delete: #555;
@@ -602,20 +604,6 @@ tr.cart-discount td {
 	border-bottom: none;
 }
 
-.woocommerce {
-	.u-columns,
-	form {
-		.col-1,
-		.col-2 {
-			max-width: inherit;
-
-			@media (min-width: 768px) {
-				max-width: 48%;
-			}
-		}
-	}
-}
-
 .woocommerce-MyAccount-navigation {
 	ul {
 		list-style: none;
@@ -723,9 +711,24 @@ tr.cart-discount td {
 	}
 }
 
+/*-------------------------------------------*/
+/*	Layout confrict adjustment
+/*-------------------------------------------*/
+.woocommerce {
+	.u-columns,
+	form {
+		.col-1,
+		.col-2 {
+			max-width: inherit;
+			@media (min-width: 768px) {
+				max-width: 48%;
+			}
+		}
+	}
+}
 .woocommerce .col2-set .col-1,
-.woocommerce-page .col2-set .col-1,
 .woocommerce .col2-set .col-2,
+.woocommerce-page .col2-set .col-1,
 .woocommerce-page .col2-set .col-2 {
 	max-width: 48%;
 }
