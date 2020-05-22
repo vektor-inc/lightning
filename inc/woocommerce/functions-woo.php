@@ -15,7 +15,7 @@ function lightning_woo_css() {
 }
 add_action( 'wp_enqueue_scripts', 'lightning_woo_css' );
 
-function lightning_add_woocommerce_css_to_editor(){
+function lightning_add_woocommerce_css_to_editor() {
 	add_editor_style( '/inc/woocommerce/css/woo.css' );
 }
 add_action( 'after_setup_theme', 'lightning_add_woocommerce_css_to_editor' );
@@ -53,3 +53,18 @@ function lightning_widgets_init_product() {
 
 }
 add_action( 'widgets_init', 'lightning_widgets_init_product' );
+
+
+/*
+  Adding support for WooCommerce 3.0’s new gallery feature
+-------------------------------------------*/
+/*
+https://woocommerce.wordpress.com/2017/02/28/adding-support-for-woocommerce-2-7s-new-gallery-feature-to-your-theme/
+*/
+add_action( 'after_setup_theme', 'lightning_woo_product_gallery_setup' );
+
+function lightning_woo_product_gallery_setup() {
+	add_theme_support( 'wc-product-gallery-zoom' );
+	add_theme_support( 'wc-product-gallery-lightbox' );
+	add_theme_support( 'wc-product-gallery-slider' );
+}
