@@ -35,6 +35,9 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v9.9.0
+* Adding support for WooCommerce 3.0’s new gallery feature
+
 v9.8.1
 * [ Design Bug fix ][ woo ] Layout bug fix
 
