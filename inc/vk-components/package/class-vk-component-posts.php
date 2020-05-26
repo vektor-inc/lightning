@@ -31,9 +31,9 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				'display_btn'                => false,
 				'image_default_url'          => false,
 				'overlay'                    => false,
-				'btn_text'                   => __( 'Read more', $vk_components_textdomain ),
+				'btn_text'                   => __( 'Read more', 'lightning' ),
 				'btn_align'                  => 'text-right',
-				'new_text'                   => __( 'New!!', $vk_components_textdomain ),
+				'new_text'                   => __( 'New!!', 'lightning' ),
 				'new_date'                   => 7,
 				'textlink'                   => true,
 				'class_outer'                => '',
@@ -533,8 +533,8 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			} elseif ( $input_col == 6 ) {
 				$col = 2;
 			} else {
-                $col = 4;
-            }
+				$col = 4;
+			}
 			return strval( $col );
 		}
 
