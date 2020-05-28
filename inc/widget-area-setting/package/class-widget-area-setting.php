@@ -136,7 +136,7 @@ if ( ! class_exists( 'Widget_Area_Setting' ) ) {
 		public static function enqueue_style() {
 			$options     = get_option( 'widget' );
 			$dynamic_css = '';
-			if ( isset( $options['footer_upper_widget_padding_delete'] ] ) && true === $options['footer_upper_widget_padding_delete'] ] ) {
+			if ( ! empty ( $options['footer_upper_widget_padding_delete'] ] ) ) {
 				$dynamic_css  = '.siteContent_after.sectionBox{';
 				$dynamic_css .= 'padding:0';
 				$dynamic_css .= '}';
