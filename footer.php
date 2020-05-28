@@ -28,8 +28,8 @@
 			?>
 		</div>
 	</div>
-	<div class="container sectionBox">
-		<div class="row ">
+	<div class="container sectionBox footerWidget">
+		<div class="row">
 			<?php
 			// Area setting
 			$footer_widget_area = array(

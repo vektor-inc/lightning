@@ -79,6 +79,14 @@ if ( ! class_exists( 'Widget_Area_Setting' ) ) {
 				)
 			);
 
+			$wp_customize->selective_refresh->add_partial(
+				'lightning_widget_setting[footer_upper_widget_padding_delete]',
+				array(
+					'selector'        => '.siteContent_after',
+					'render_callback' => '',
+				)
+			);
+
 			// Footer Widget Area Heading.
 			$wp_customize->add_setting(
 				'footer-widget-area',
@@ -125,6 +133,15 @@ if ( ! class_exists( 'Widget_Area_Setting' ) ) {
 						3 => __( '3 column', 'lightning' ),
 						4 => __( '4 column', 'lightning' ),
 					),
+					'description' => __( '* If you save and reload after making changes, the number of the widget area setting panels  will increase or decrease.', 'lightning' ),
+				)
+			);
+
+			$wp_customize->selective_refresh->add_partial(
+				'lightning_widget_setting[footer_widget_area_count]',
+				array(
+					'selector'        => '.footerWidget',
+					'render_callback' => '',
 				)
 			);
 
