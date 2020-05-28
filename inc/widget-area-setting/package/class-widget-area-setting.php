@@ -105,10 +105,10 @@ if ( ! class_exists( 'Widget_Area_Setting' ) ) {
 			$wp_customize->add_setting(
 				'lightning_widget_setting[footer_widget_area_count]',
 				array(
-					'default'           => '3',
+					'default'           => 3,
 					'type'              => 'option',
 					'capability'        => 'edit_theme_options',
-					'sanitize_callback' => 'sanitize_text_field',
+					'sanitize_callback' => 'lightning_sanitize_number',
 				)
 			);
 
@@ -120,10 +120,10 @@ if ( ! class_exists( 'Widget_Area_Setting' ) ) {
 					'settings' => 'lightning_widget_setting[footer_widget_area_count]',
 					'type'     => 'select',
 					'choices'  => array(
-						'1' => __( '1 column', 'lightning' ),
-						'2' => __( '2 column', 'lightning' ),
-						'3' => __( '3 column', 'lightning' ),
-						'4' => __( '4 column', 'lightning' ),
+						1 => __( '1 column', 'lightning' ),
+						2 => __( '2 column', 'lightning' ),
+						3 => __( '3 column', 'lightning' ),
+						4 => __( '4 column', 'lightning' ),
 					),
 				)
 			);
