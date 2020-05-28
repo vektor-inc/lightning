@@ -60,7 +60,7 @@ if ( ! class_exists( 'Widget_Area_Setting' ) ) {
 
 			// Padding Bottom.
 			$wp_customize->add_setting(
-				'lightning_widget_setting[padding_bottom]',
+				'lightning_widget_setting[footer_upper_widget_padding_delete]',
 				array(
 					'default'           => false,
 					'type'              => 'option',
@@ -70,11 +70,11 @@ if ( ! class_exists( 'Widget_Area_Setting' ) ) {
 			);
 
 			$wp_customize->add_control(
-				'lightning_widget_setting[padding_bottom]',
+				'lightning_widget_setting[footer_upper_widget_padding_delete]',
 				array(
-					'label'    => __( 'Set Padding Bottom to 0', 'lightning' ),
+					'label'    => __( 'Delete Padding Top and Bottom', 'lightning' ),
 					'section'  => 'widget_area_setting',
-					'settings' => 'lightning_widget_setting[padding_bottom]',
+					'settings' => 'lightning_widget_setting[footer_upper_widget_padding_delete]',
 					'type'     => 'checkbox',
 				)
 			);
@@ -136,9 +136,9 @@ if ( ! class_exists( 'Widget_Area_Setting' ) ) {
 		public static function enqueue_style() {
 			$options     = get_option( 'widget' );
 			$dynamic_css = '';
-			if ( isset( $options['padding_bottom'] ) && true === $options['padding_bottom'] ) {
+			if ( isset( $options['footer_upper_widget_padding_delete'] ] ) && true === $options['footer_upper_widget_padding_delete'] ] ) {
 				$dynamic_css  = '.siteContent_after.sectionBox{';
-				$dynamic_css .= 'padding-bottom:0;';
+				$dynamic_css .= 'padding:0';
 				$dynamic_css .= '}';
 			}
 			wp_add_inline_style( 'lightning-design-style', $dynamic_css );
