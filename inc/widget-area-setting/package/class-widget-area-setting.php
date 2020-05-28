@@ -134,7 +134,7 @@ if ( ! class_exists( 'Widget_Area_Setting' ) ) {
 		 * Enqueue Style.
 		 */
 		public static function enqueue_style() {
-			$options     = get_option( 'widget' );
+			$options     = get_option( 'lightning_widget_setting' );
 			$dynamic_css = '';
 			if ( ! empty ( $options['footer_upper_widget_padding_delete'] ) ) {
 				$dynamic_css  = '.siteContent_after.sectionBox{';
