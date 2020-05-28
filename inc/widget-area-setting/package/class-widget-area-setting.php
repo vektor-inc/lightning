@@ -72,7 +72,7 @@ if ( ! class_exists( 'Widget_Area_Setting' ) ) {
 			$wp_customize->add_control(
 				'lightning_widget_setting[footer_upper_widget_padding_delete]',
 				array(
-					'label'    => __( 'Delete Padding Top and Bottom', 'lightning' ),
+					'label'    => __( 'Delete Padding', 'lightning' ),
 					'section'  => 'widget_area_setting',
 					'settings' => 'lightning_widget_setting[footer_upper_widget_padding_delete]',
 					'type'     => 'checkbox',
