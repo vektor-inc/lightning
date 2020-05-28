@@ -60,7 +60,7 @@ if ( ! class_exists( 'Widget_Area_Setting' ) ) {
 
 			// Padding Bottom.
 			$wp_customize->add_setting(
-				'widget[padding_bottom]',
+				'lightning_widget_setting[padding_bottom]',
 				array(
 					'default'           => false,
 					'type'              => 'option',
@@ -70,11 +70,11 @@ if ( ! class_exists( 'Widget_Area_Setting' ) ) {
 			);
 
 			$wp_customize->add_control(
-				'widget[padding_bottom]',
+				'lightning_widget_setting[padding_bottom]',
 				array(
 					'label'    => __( 'Set Padding Bottom to 0', 'lightning' ),
 					'section'  => 'widget_area_setting',
-					'settings' => 'widget[padding_bottom]',
+					'settings' => 'lightning_widget_setting[padding_bottom]',
 					'type'     => 'checkbox',
 				)
 			);
@@ -103,7 +103,7 @@ if ( ! class_exists( 'Widget_Area_Setting' ) ) {
 
 			// Number of Footer Widget area.
 			$wp_customize->add_setting(
-				'widget[footer_widget_area_count]',
+				'lightning_widget_setting[footer_widget_area_count]',
 				array(
 					'default'           => '3',
 					'type'              => 'option',
@@ -113,11 +113,11 @@ if ( ! class_exists( 'Widget_Area_Setting' ) ) {
 			);
 
 			$wp_customize->add_control(
-				'widget[footer_widget_area_count]',
+				'lightning_widget_setting[footer_widget_area_count]',
 				array(
 					'label'    => __( 'Footer Widget Area Count', 'lightning' ),
 					'section'  => 'widget_area_setting',
-					'settings' => 'widget[footer_widget_area_count]',
+					'settings' => 'lightning_widget_setting[footer_widget_area_count]',
 					'type'     => 'select',
 					'choices'  => array(
 						'1' => __( '1 column', 'lightning' ),
@@ -151,7 +151,7 @@ if ( ! class_exists( 'Widget_Area_Setting' ) ) {
 		 */
 		public static function set_footter_widget_area_count( $footer_widget_area_count ) {
 			$footer_widget_area_count = 3;
-			$options                  = get_option( 'widget' );
+			$options                  = get_option( 'lightning_widget_setting' );
 			if ( isset( $options['footer_widget_area_count'] ) ) {
 				if ( '1' === $options['footer_widget_area_count'] ) {
 					$footer_widget_area_count = 1;
