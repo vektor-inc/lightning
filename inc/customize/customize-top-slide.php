@@ -15,6 +15,27 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 		)
 	);
 
+	// Disappear Slide.
+	$wp_customize->add_setting(
+		'lightning_theme_options[disappear_slide]',
+		array(
+			'default'           => false,
+			'type'              => 'option',
+			'capability'        => 'edit_theme_options',
+			'sanitize_callback' => 'lightning_sanitize_checkbox',
+		)
+	);
+
+	$wp_customize->add_control(
+		'lightning_theme_options[disappear_slide]',
+		array(
+			'label'    => __( 'Disappear Slide', 'lightning' ),
+			'section'  => 'lightning_slide',
+			'settings' => 'lightning_theme_options[disappear_slide]',
+			'type'     => 'checkbox',
+		)
+	);
+
 	$skin_info = Lightning_Design_Manager::get_current_skin();
 	if ( isset( $skin_info['bootstrap'] ) && $skin_info['bootstrap'] == 'bs4' ) {
 		// Slide Effect
