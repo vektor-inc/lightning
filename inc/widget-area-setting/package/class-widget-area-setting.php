@@ -65,7 +65,7 @@ if ( ! class_exists( 'Widget_Area_Setting' ) ) {
 					'default'           => false,
 					'type'              => 'option',
 					'capability'        => 'edit_theme_options',
-					'sanitize_callback' => 'veu_sanitize_boolean',
+					'sanitize_callback' => 'lightning_sanitize_checkbox',
 				)
 			);
 
