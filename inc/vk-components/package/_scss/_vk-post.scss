@@ -33,6 +33,9 @@ $xl-min: 1200px;
 /*-------------------------------------------*/
 /* If exclude the .vk_posts that, when you select the .media don't work */
 .vk_posts .vk_post-col {
+	&-xs-2 {
+		width: calc(16.66% - 30px);
+	}
 	&-xs-3 {
 		width: calc(25% - 30px);
 	}
@@ -46,6 +49,9 @@ $xl-min: 1200px;
 		width: calc(100% - 30px);
 	}
 	@media (min-width: $sm-min) {
+		&-sm-2 {
+			width: calc(16.66% - 30px);
+		}
 		&-sm-3 {
 			width: calc(25% - 30px);
 		}
@@ -60,6 +66,9 @@ $xl-min: 1200px;
 		}
 	}
 	@media (min-width: $md-min) {
+		&-md-2 {
+			width: calc(16.66% - 30px);
+		}
 		&-md-3 {
 			width: calc(25% - 30px);
 		}
@@ -74,6 +83,9 @@ $xl-min: 1200px;
 		}
 	}
 	@media (min-width: $lg-min) {
+		&-lg-2 {
+			width: calc(16.66% - 30px);
+		}
 		&-lg-3 {
 			width: calc(25% - 30px);
 		}
@@ -88,6 +100,9 @@ $xl-min: 1200px;
 		}
 	}
 	@media (min-width: $xl-min) {
+		&-xl-2 {
+			width: calc(16.66% - 30px);
+		}
 		&-xl-3 {
 			width: calc(25% - 30px);
 		}

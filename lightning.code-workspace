@@ -1,0 +1,58 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"editor.tabSize": 4,
+		"editor.detectIndentation": false,
+		"editor.insertSpaces": false,
+		"editor.codeActionsOnSave": {
+			"source.fixAll.eslint": true
+		},
+		"files.eol": "\n",
+		"phpcs.standard": "WordPress",
+		"phpcbf.standard": "WordPress",
+		"phpcbf.executablePath": "phpcbf.bat",
+		"phpcbf.onsave": true,
+		"javascript.format.enable": false,
+		"stylelint.autoFixOnSave": true,
+		"[html]": {
+			"editor.formatOnSave": true,
+		},
+		"[css]": {
+			"editor.formatOnSave": false,
+		},
+		"[scss]": {
+			"editor.formatOnSave": false,
+		},
+		"[javascript]": {
+			"editor.formatOnSave": false,
+		},
+		"[json]": {
+			"editor.formatOnSave": true,
+		},
+		"[php]": {
+			"editor.formatOnSave": false,
+		},
+		"liveSassCompile.settings.autoprefix": [
+			"> 1%",
+			"last 2 versions"
+		  ],
+		"liveSassCompile.settings.formats":
+		[{
+			"format": "expanded",
+			"extensionName": ".css",
+			"savePath": "~/../css/",
+		},
+		{
+			"format": "compressed",
+			"extensionName": ".min.css",
+			"savePath": "~/../css/",
+		}],
+		"liveSassCompile.settings.excludeList":[
+			"**/library/**"
+		],
+	}
+}

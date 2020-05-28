@@ -232,6 +232,7 @@ require get_parent_theme_file_path( '/inc/term-color/term-color-config.php' );
 require get_parent_theme_file_path( '/inc/vk-components/vk-components-config.php' );
 require get_parent_theme_file_path( '/inc/template-redirect.php' );
 require get_parent_theme_file_path( '/inc/layout-controller/layout-controller.php' );
+require get_parent_theme_file_path( '/inc/widget-area-setting/widget-area-setting-config.php' );
 
 /*
   Load woocommerce modules
@@ -359,7 +360,7 @@ if ( ! function_exists( 'lightning_widgets_init' ) ) {
 		for ( $i = 1; $i <= $footer_widget_area_count; ) {
 			register_sidebar(
 				array(
-					'name'          => __( 'Footer widget area ', 'lightning' ) . $i,
+					'name'          => __( 'Footer widget area', 'lightning' ). ' ' . $i,
 					'id'            => 'footer-widget-' . $i,
 					'before_widget' => '<aside class="widget %2$s" id="%1$s">',
 					'after_widget'  => '</aside>',

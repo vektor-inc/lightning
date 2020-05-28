@@ -14,7 +14,16 @@
 	width: 100%;
 }
 
+/*-------------------------------------------*/
+/*	customize-partial-edit-shortcut-button
+/*-------------------------------------------*/
 .mainSection > span > .customize-partial-edit-shortcut-button {
+	margin-left: -2em;
+}
+.siteContent_after > span > .customize-partial-edit-shortcut-button {
+	margin-left: 2em;
+}
+.footerWidget > span > .customize-partial-edit-shortcut-button {
 	margin-left: -2em;
 }
 
