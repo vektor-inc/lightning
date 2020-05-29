@@ -35,6 +35,12 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v9.11.0
+* Add Hide Slide Function
+
+v9.10.0
+* Add Widget Setting
+
 v9.9.0
 * Adding support for WooCommerce 3.0’s new gallery feature
 
