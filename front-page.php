@@ -1,15 +1,17 @@
 <?php get_header(); ?>
 
 <?php
-if ( $bootstrap == '3' ) {
-	$old_file_name[] = 'module_slide.php';
-	if ( locate_template( $old_file_name, false, false ) ) {
-		locate_template( $old_file_name, true, false );
+if ( empty( $lightning_theme_options['top_slide_hide'] ) ) {
+	if ( $bootstrap == '3' ) {
+		$old_file_name[] = 'module_slide.php';
+		if ( locate_template( $old_file_name, false, false ) ) {
+			locate_template( $old_file_name, true, false );
+		} else {
+			get_template_part( 'template-parts/slide', 'bs3' );
+		}
 	} else {
-		get_template_part( 'template-parts/slide', 'bs3' );
+		get_template_part( 'template-parts/slide', 'bs4' );
 	}
-} else {
-	get_template_part( 'template-parts/slide', 'bs4' );
 }
 ?>
 

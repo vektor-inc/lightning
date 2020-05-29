@@ -37,7 +37,7 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 			$versions = array(
 				'5_SVG_JS'       => array(
 					'label'   => '5 SVG with JS ( ' . __( 'Not recommended', 'lightning' ) . ' )',
-					'version' => '5.11.2',
+					'version' => '5.13.0',
 					'type'    => 'svg-with-js',
 					/* [ Notice ] use editor css*/
 					'url_css' => $font_awesome_directory_uri . 'versions/5/css/all.min.css',
@@ -45,7 +45,7 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 				),
 				'5_WebFonts_CSS' => array(
 					'label'   => '5 Web Fonts with CSS',
-					'version' => '5.11.2',
+					'version' => '5.13.0',
 					'type'    => 'web-fonts-with-css',
 					'url_css' => $font_awesome_directory_uri . 'versions/5/css/all.min.css',
 					'url_js'  => '',
