@@ -17,7 +17,7 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 
 	// Disappear Slide.
 	$wp_customize->add_setting(
-		'lightning_theme_options[disappear_slide]',
+		'lightning_theme_options[top_slide_hide]',
 		array(
 			'default'           => false,
 			'type'              => 'option',
@@ -27,11 +27,11 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 	);
 
 	$wp_customize->add_control(
-		'lightning_theme_options[disappear_slide]',
+		'lightning_theme_options[top_slide_hide]',
 		array(
-			'label'    => __( 'Disappear Slide', 'lightning' ),
+			'label'    => __( 'Hide slide', 'lightning' ),
 			'section'  => 'lightning_slide',
-			'settings' => 'lightning_theme_options[disappear_slide]',
+			'settings' => 'lightning_theme_options[top_slide_hide]',
 			'type'     => 'checkbox',
 		)
 	);

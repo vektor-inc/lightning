@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <?php
-if ( empty( $lightning_theme_options['disappear_slide'] ) ) {
+if ( empty( $lightning_theme_options['top_slide_hide'] ) ) {
 	if ( $bootstrap == '3' ) {
 		$old_file_name[] = 'module_slide.php';
 		if ( locate_template( $old_file_name, false, false ) ) {
