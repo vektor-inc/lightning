@@ -35,8 +35,12 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v9.11.1
+* Delete unused files in Font Awesome
+
 v9.11.0
 * Add Hide Slide Function
+* Font Awesome 5.13.0
 
 v9.10.0
 * Add Widget Setting
