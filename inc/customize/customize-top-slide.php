@@ -15,7 +15,7 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 		)
 	);
 
-	// Disappear Slide.
+	// Hide Slide.
 	$wp_customize->add_setting(
 		'lightning_theme_options[top_slide_hide]',
 		array(
