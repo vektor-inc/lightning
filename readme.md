@@ -55,5 +55,5 @@ https://github.com/kurudrive/lightning-skin-sample
 
 ```shell
 
-$ docker-composer run wp
+$ docker-compose run wp
 ```
