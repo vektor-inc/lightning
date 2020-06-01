@@ -23,7 +23,6 @@
                 elem.style.marginTop = ''
             }
         )
-        // $('.sideSection').css({ "margin-top" : "" });
     }
 
     /* スクロール時の処理
@@ -123,7 +122,7 @@
 
             /* スクロール動作条件
             /*-------------------------------------------*/
-            //	サイドバーがメインコンテンツよりも高い場合は処理しない
+            //  サイドバーがメインコンテンツよりも高い場合は処理しない
             if ( sidebar_height > content_height ){ return; }
 
             // スクロール量を取得
@@ -135,10 +134,9 @@
 
             } else {
                 //** スクロール量がサイドバーの移動開始スクロール値より大きい場合
-
-                let gmenuHeight = document.getElementById('gMenu_outer').offsetHeight
+                let gmenu = document.getElementById('gMenu_outer')
+                let gmenuHeight = gmenu? gmenu.offsetHeight: 0;
                 // スクロールの高さより サイドバーの移動終了スクロール値 が大きい場合のみ処理する
-                // if ( content_bottom_position_now > sidebar_bottom_position_now ){ // これがないと延々とスクロールする
                 if ( scrollHeight < move_position_end ){ // これがないと延々とスクロールする
 
                     // 移動開始
