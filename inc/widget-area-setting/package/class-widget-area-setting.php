@@ -15,7 +15,7 @@ if ( ! class_exists( 'Widget_Area_Setting' ) ) {
 		 */
 		public function __construct() {
 			add_action( 'customize_register', array( __CLASS__, 'resister_customize' ) );
-			add_action( 'wp_enqueue_scripts', array( __CLASS__, 'enqueue_style' ) );
+			add_action( 'wp_head', array( __CLASS__, 'enqueue_style' ), 5 );
 			add_filter( 'lightning_footer_widget_area_count', array( __CLASS__, 'set_footter_widget_area_count' ) );
 		}
 
@@ -123,15 +123,15 @@ if ( ! class_exists( 'Widget_Area_Setting' ) ) {
 			$wp_customize->add_control(
 				'lightning_widget_setting[footer_widget_area_count]',
 				array(
-					'label'    => __( 'Footer Widget Area Count', 'lightning' ),
-					'section'  => 'widget_area_setting',
-					'settings' => 'lightning_widget_setting[footer_widget_area_count]',
-					'type'     => 'select',
-					'choices'  => array(
-						1 => __( '1 column', 'lightning' ),
-						2 => __( '2 column', 'lightning' ),
-						3 => __( '3 column', 'lightning' ),
-						4 => __( '4 column', 'lightning' ),
+					'label'       => __( 'Footer Widget Area Count', 'lightning' ),
+					'section'     => 'widget_area_setting',
+					'settings'    => 'lightning_widget_setting[footer_widget_area_count]',
+					'type'        => 'select',
+					'choices'     => array(
+						'1' => __( '1 column', 'lightning' ),
+						'2' => __( '2 column', 'lightning' ),
+						'3' => __( '3 column', 'lightning' ),
+						'4' => __( '4 column', 'lightning' ),
 					),
 					'description' => __( '* If you save and reload after making changes, the number of the widget area setting panels  will increase or decrease.', 'lightning' ),
 				)
@@ -153,7 +153,7 @@ if ( ! class_exists( 'Widget_Area_Setting' ) ) {
 		public static function enqueue_style() {
 			$options     = get_option( 'lightning_widget_setting' );
 			$dynamic_css = '';
-			if ( ! empty ( $options['footer_upper_widget_padding_delete'] ) ) {
+			if ( ! empty( $options['footer_upper_widget_padding_delete'] ) ) {
 				$dynamic_css  = '.siteContent_after.sectionBox{';
 				$dynamic_css .= 'padding:0';
 				$dynamic_css .= '}';
