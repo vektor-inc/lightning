@@ -16,6 +16,10 @@ if ( $bootstrap == '3' ) { ?>
 if ( $bootstrap == '4' ) {
 	$post_previous = get_previous_post( $in_same_term, $excluded_terms, $taxonomy );
 	$post_next     = get_next_post( $in_same_term, $excluded_terms, $taxonomy );
+
+	$image_option = get_option( 'lightning_theme_options' );
+
+	$image_default_url = ! empty( $image_option['default_list_image'] ) ? $image_option['default_list_image'] : get_template_directory_uri() . '/assets/images/no-image.png';
 	if ( $post_previous || $post_next ) {
 		$options = array(
 			'layout'                     => 'card-horizontal',
@@ -24,7 +28,7 @@ if ( $bootstrap == '4' ) {
 			'display_excerpt'            => false,
 			'display_date'               => true,
 			'display_btn'                => false,
-			'image_default_url'          => get_template_directory_uri() . '/assets/images/no-image.png',
+			'image_default_url'          => $image_default_url,
 			'overlay'                    => '',
 			'body_prepend'               => '',
 			'body_append'                => '',

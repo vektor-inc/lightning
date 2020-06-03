@@ -106,6 +106,53 @@ function lightning_customize_register_design( $wp_customize ) {
 			)
 		);
 	} // if ( apply_filters( 'lightning_show_default_keycolor_customizer', true ) ) {
+	
+	// defualt eye cache hedding.
+	$wp_customize->add_setting(
+		'defualt_list_image',
+		array(
+			'sanitize_callback' => 'sanitize_text_field',
+		)
+	);
+	$wp_customize->add_control(
+		new Custom_Html_Control(
+			$wp_customize,
+			'defualt_list_image',
+			array(
+				'label'            => __( 'Default List Image', 'lightning' ),
+				'section'          => 'lightning_design',
+				'type'             => 'text',
+				'custom_title_sub' => '',
+				'custom_html'      => '',
+				'priority'         => 700,
+			)
+		)
+	);
+
+	// defualt list image.
+	$wp_customize->add_setting(
+		'lightning_theme_options[default_list_image]',
+		array(
+			'default'           => get_template_directory_uri() . '/assets/images/no-image.png',
+			'type'              => 'option',
+			'capability'        => 'edit_theme_options',
+			'sanitize_callback' => 'esc_url_raw',
+		)
+	);
+
+	$wp_customize->add_control(
+		new WP_Customize_Image_Control(
+			$wp_customize,
+			'lightning_theme_options[default_list_image]',
+			array(
+				'label'       =>  __( 'Default List Image', 'lightning' ),
+				'section'     => 'lightning_design',
+				'settings'    => 'lightning_theme_options[default_list_image]',
+				'description' => '',
+				'priority'         => 700,
+			)
+		)
+	);
 
 	/*-------------------------------------------*/
 	/*	Layout
