@@ -74,6 +74,11 @@ function lightning_theme_setup() {
 	add_theme_support( 'custom-background' );
 
 	/*
+	  cope with page excerpt
+	/*-------------------------------------------*/
+	add_post_type_support( 'page', 'excerpt' );
+
+	/*
 	  Admin page _ Eye catch
 	/*-------------------------------------------*/
 	add_theme_support( 'post-thumbnails' );
@@ -360,7 +365,7 @@ if ( ! function_exists( 'lightning_widgets_init' ) ) {
 		for ( $i = 1; $i <= $footer_widget_area_count; ) {
 			register_sidebar(
 				array(
-					'name'          => __( 'Footer widget area', 'lightning' ). ' ' . $i,
+					'name'          => __( 'Footer widget area', 'lightning' ) . ' ' . $i,
 					'id'            => 'footer-widget-' . $i,
 					'before_widget' => '<aside class="widget %2$s" id="%1$s">',
 					'after_widget'  => '</aside>',
