@@ -80,7 +80,6 @@ do_action( 'lightning_breadcrumb_after' );
 							$old_file_name[] = 'module_loop_' . $loop_post_type['slug'] . '.php';
 							$old_file_name[] = 'module_loop_post.php';
 							$require_once    = false;
-							$count = 0;
 							while ( have_posts() ) {
 								the_post();
 
@@ -89,7 +88,6 @@ do_action( 'lightning_breadcrumb_after' );
 								} else {
 									get_template_part( 'template-parts/post/loop', $loop_post_type['slug'] );
 								}
-								do_action( 'lightning_insert_native_ads' );
 							}
 						}
 						the_posts_pagination(

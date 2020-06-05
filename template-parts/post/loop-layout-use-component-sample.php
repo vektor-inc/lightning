@@ -1,6 +1,12 @@
 <?php
+/**
+ * Sample Loop Template of Lightning
+ *
+ * @package Lightning
+ */
+
 $options = array(
-	'layout'                     => 'card-horizontal', // card , card-horizontal , media
+	'layout'                     => 'card-horizontal', // card , card-horizontal , media.
 	'display_image'              => true,
 	'display_image_overlay_term' => true,
 	'display_excerpt'            => true,
