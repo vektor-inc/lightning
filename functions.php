@@ -58,6 +58,9 @@ function lightning_theme_setup() {
 	add_theme_support( 'post-thumbnails' );
 	set_post_thumbnail_size( 320, 180, true );
 
+	// cope with page excerpt.
+	add_post_type_support( 'page', 'excerpt' );
+
 	// Custom menu.
 	register_nav_menus( array( 'Header' => 'Header Navigation' ) );
 	register_nav_menus( array( 'Footer' => 'Footer Navigation' ) );
