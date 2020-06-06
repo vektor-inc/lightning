@@ -60,6 +60,11 @@ function lightning_theme_setup() {
 	add_post_type_support( 'page', 'excerpt' );
 
 	/*
+	  cope with page excerpt
+	/*-------------------------------------------*/
+	add_post_type_support( 'page', 'excerpt' );
+
+	/*
 	  Admin page _ Eye catch
 	/*-------------------------------------------*/
 	add_theme_support( 'post-thumbnails' );
