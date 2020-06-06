@@ -54,10 +54,14 @@ function lightning_theme_setup() {
 	// custom-background.
 	add_theme_support( 'custom-background' );
 
-	// cope with page excerpt.
+	/*
+	  cope with page excerpt
+	/*-------------------------------------------*/
 	add_post_type_support( 'page', 'excerpt' );
 
-	// Admin page _ Eye catch.
+	/*
+	  Admin page _ Eye catch
+	/*-------------------------------------------*/
 	add_theme_support( 'post-thumbnails' );
 	set_post_thumbnail_size( 320, 180, true );
 
