@@ -37,19 +37,19 @@ global $lightning_theme_options;
 	$taxonomies = get_the_taxonomies();
 	if ( $taxonomies ) {
 		/*
-			Get $loop_taxonomy name
-			$loop_taxonomy   = key( $taxonomies );
+			Get $the_taxonomy name
+			$the_taxonomy   = key( $taxonomies );
 			To avoid WooCommerce default tax
 		*/
 		foreach ( $taxonomies as $key => $value ) {
 			if ( 'product_type' !== $key ) {
-				$loop_taxonomy = $key;
+				$the_taxonomy = $key;
 				break;
 			}
 		}
 
-		$terms      = get_the_terms( get_the_ID(), $loop_taxonomy );
-		$term_url   = esc_url( get_term_link( $terms[0]->term_id, $loop_taxonomy ) );
+		$terms      = get_the_terms( get_the_ID(), $the_taxonomy );
+		$term_url   = esc_url( get_term_link( $terms[0]->term_id, $the_taxonomy ) );
 		$term_name  = esc_html( $terms[0]->name );
 		$term_color = '';
 		if ( class_exists( 'Vk_term_color' ) ) {

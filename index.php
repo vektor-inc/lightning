@@ -38,29 +38,29 @@ do_action( 'lightning_breadcrumb_after' );
 				do_action( 'lightning_mainSection_prepend' );
 
 				// Archive Title.
-				$archiveTitle_html = '';
-				$page_for_posts    = lightning_get_page_for_posts();
+				$archive_title_html = '';
+				$page_for_posts     = lightning_get_page_for_posts();
 				// Use post top page（ Archive title wrap to div ）.
 				if ( $page_for_posts['post_top_use'] || get_post_type() !== 'post' ) {
 					if ( is_year() || is_month() || is_day() || is_tag() || is_author() || is_tax() || is_category() ) {
-						$archiveTitle      = get_the_archive_title();
-						$archiveTitle_html = '<header class="archive-header"><h1>' . $archiveTitle . '</h1></header>';
+						$archive_title      = get_the_archive_title();
+						$archive_title_html = '<header class="archive-header"><h1>' . $archive_title . '</h1></header>';
 					}
 				}
-				echo wp_kses_post( apply_filters( 'lightning_mainSection_archiveTitle', $archiveTitle_html ) );
+				echo wp_kses_post( apply_filters( 'lightning_mainSection_archiveTitle', $archive_title_html ) );
 
 				// Archive description.
-				$archiveDescription_html = '';
+				$archive_description_html = '';
 				if ( is_category() || is_tax() || is_tag() ) {
-					$archiveDescription = term_description();
-					$page_number        = get_query_var( 'paged', 0 );
-					if ( ! empty( $archiveDescription ) && 0 === $page_number ) {
-						$archiveDescription_html = '<div class="archive-meta">' . $archiveDescription . '</div>';
+					$archive_description = term_description();
+					$page_number         = get_query_var( 'paged', 0 );
+					if ( ! empty( $archive_description ) && 0 === $page_number ) {
+						$archive_description_html = '<div class="archive-meta">' . $archive_description . '</div>';
 					}
 				}
-				echo wp_kses_post( apply_filters( 'lightning_mainSection_archiveDescription', $archiveDescription_html ) );
+				echo wp_kses_post( apply_filters( 'lightning_mainSection_archiveDescription', $archive_description_html ) );
 
-				$loop_post_type = lightning_get_post_type();
+				$the_post_type = lightning_get_post_type();
 
 				do_action( 'lightning_loop_before' );
 				?>
@@ -77,17 +77,22 @@ do_action( 'lightning_breadcrumb_after' );
 							 * Actually, it's ok to only use get_template_part().
 							 * It is measure for before version 7.0 that loaded module_loop_***.php.
 							 */
-							$old_file_name[] = 'module_loop_' . $loop_post_type['slug'] . '.php';
+							$old_file_name[] = 'module_loop_' . $the_post_type['slug'] . '.php';
 							$old_file_name[] = 'module_loop_post.php';
 							$require_once    = false;
+							global $loop_count;
+							$loop_count = 0;
 							while ( have_posts() ) {
 								the_post();
 
 								if ( locate_template( $old_file_name, false, $require_once ) ) {
 									locate_template( $old_file_name, true, $require_once );
 								} else {
-									get_template_part( 'template-parts/post/loop', $loop_post_type['slug'] );
+									get_template_part( 'template-parts/post/loop', $the_post_type['slug'] );
 								}
+								$loop_count++;
+								$insert_html = '';
+								$insert_html = apply_filters( 'lightning_loop_insert_html', $insert_html );
 							}
 						}
 						the_posts_pagination(

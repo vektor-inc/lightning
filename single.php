@@ -74,24 +74,24 @@ if ( lightning_is_page_header_and_breadcrumb() ) {
 									wp_link_pages( $args );
 
 									// Category and tax data.
-									$args          = array(
+									$args           = array(
 										// translators: The Taxoonomy Template.
 										'template'      => __( '<dl><dt>%s</dt><dd>%l</dd></dl>', 'lightning' ),
 										'term_template' => '<a href="%1$s">%2$s</a>',
 									);
-									$taxonomies    = get_the_taxonomies( $post->ID, $args );
-									$taxnomiesHtml = '';
+									$taxonomies     = get_the_taxonomies( $post->ID, $args );
+									$taxnomies_html = '';
 
 									if ( $taxonomies ) {
 										foreach ( $taxonomies as $key => $value ) {
 											if ( 'post_tag' !== $key ) {
-												$taxnomiesHtml .= '<div class="entry-meta-dataList">' . $value . '</div>';
+												$taxnomies_html .= '<div class="entry-meta-dataList">' . $value . '</div>';
 											}
 										}
 									}
 
-									$taxnomiesHtml = apply_filters( 'lightning_taxnomiesHtml', $taxnomiesHtml );
-									echo wp_kses_post( $taxnomiesHtml );
+									$taxnomies_html = apply_filters( 'lightning_taxnomiesHtml', $taxnomies_html );
+									echo wp_kses_post( $taxnomies_html );
 
 									// tag list.
 									$tags_list = get_the_tag_list();

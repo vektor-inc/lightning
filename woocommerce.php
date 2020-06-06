@@ -39,36 +39,35 @@ if ( lightning_is_page_header_and_breadcrumb() ) {
 		<div class="row">
 			<div class="<?php lightning_the_class_name( 'mainSection' ); ?>" id="main" role="main">
 				<?php
-				do_action( 'lightning_mainSection_prepend' ); 
+				do_action( 'lightning_mainSection_prepend' );
 				// Add class only Here.
 				$article_outer_class = '';
 				$article_outer_class = apply_filters( 'lightning_article_outer_class', $article_outer_class );
 				?>
 
-					<div id="post-<?php the_ID(); ?>" <?php post_class( $article_outer_class ); ?>>
-						<?php do_action( 'lightning_entry_body_before' ); ?>
-						<div class="entry-body">
-							<?php woocommerce_content(); ?>
-						</div>
-						<?php
-						do_action( 'lightning_entry_body_after' );
-						$args = array(
-							'before'      => '<nav class="page-link"><dl><dt>Pages :</dt><dd>',
-							'after'       => '</dd></dl></nav>',
-							'link_before' => '<span class="page-numbers">',
-							'link_after'  => '</span>',
-							'echo'        => 1,
-						);
-						wp_link_pages( $args );
-
-						/**
-						 * Woocommerce_after_main_content hook.
-						 *
-						 * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
-						 */
-						// do_action( 'woocommerce_after_main_content' );
-						?>
+				<div id="post-<?php the_ID(); ?>" <?php post_class( $article_outer_class ); ?>>
+					<?php do_action( 'lightning_entry_body_before' ); ?>
+					<div class="entry-body">
+						<?php woocommerce_content(); ?>
 					</div>
+					<?php
+					do_action( 'lightning_entry_body_after' );
+					$args = array(
+						'before'      => '<nav class="page-link"><dl><dt>Pages :</dt><dd>',
+						'after'       => '</dd></dl></nav>',
+						'link_before' => '<span class="page-numbers">',
+						'link_after'  => '</span>',
+						'echo'        => 1,
+					);
+					wp_link_pages( $args );
+
+					/*
+					Woocommerce_after_main_content hook.
+					@hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
+					do_action( 'woocommerce_after_main_content' );
+					*/
+					?>
+				</div>
 
 				<?php do_action( 'lightning_mainSection_append' ); ?>
 			</div><!-- [ /.mainSection ] -->
@@ -76,13 +75,13 @@ if ( lightning_is_page_header_and_breadcrumb() ) {
 			<?php if ( lightning_is_subsection_display() ) { ?>
 				<div class="<?php lightning_the_class_name( 'sideSection' ); ?>">
 					<?php
-						/**
-						 * woocommerce_sidebar hook.
-						 *
-						 * @hooked woocommerce_get_sidebar - 10
-						 */
-						do_action( 'woocommerce_sidebar' );
-						get_sidebar( get_post_type() );
+					/**
+					 * Woocommerce_sidebar hook.
+					 *
+					 * @hooked woocommerce_get_sidebar - 10
+					 */
+					do_action( 'woocommerce_sidebar' );
+					get_sidebar( get_post_type() );
 					?>
 				</div><!-- [ /.subSection ] -->
 				<?php

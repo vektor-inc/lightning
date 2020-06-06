@@ -1,238 +1,213 @@
 <?php
+/**
+ * BreadCrumb Template of Lightning
+ *
+ * @package Lightning
+ */
 
+/**
+ * Lightning BreadCrumb
+ */
 function lightning_bread_crumb() {
-	/*-------------------------------------------*/
-	/*  Lightning BreadCrumb
-	/*-------------------------------------------*/
 
 	global $wp_query;
 
-	// Get Post type info
-	/*-------------------------------------------*/
-	$postType = lightning_get_post_type();
+	// Get Post type info.
+	$the_post_type = lightning_get_post_type();
 
-	// Get Post top page info
-	/*-------------------------------------------*/
+	// Get Post top page info.
 	$page_for_posts = lightning_get_page_for_posts();
 
-	// Microdata
-	// http://schema.org/BreadcrumbList
-	/*-------------------------------------------*/
+	/*
+	Microdata.
+	http://schema.org/BreadcrumbList
+	*/
 	$microdata_li        = ' itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"';
 	$microdata_li_a      = ' itemprop="item"';
 	$microdata_li_a_span = ' itemprop="name"';
 
-	$panListHtml = '<!-- [ .breadSection ] -->
-<div class="section breadSection">
-<div class="container">
-<div class="row">
-<ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList">';
+	$breadclumb_html  = '<!-- [ .breadSection ] -->';
+	$breadclumb_html .= '<div class="section breadSection">';
+	$breadclumb_html .= '<div class="container">';
+	$breadclumb_html .= '<div class="row">';
+	$breadclumb_html .= '<ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList">';
 
-	$panListHtml .= '<li id="panHome"' . $microdata_li . '><a' . $microdata_li_a . ' href="' . home_url( '/' ) . '"><span' . $microdata_li_a_span . '><i class="fa fa-home"></i> HOME</span></a></li>';
+	$breadclumb_html .= '<li id="panHome"' . $microdata_li . '><a' . $microdata_li_a . ' href="' . home_url( '/' ) . '"><span' . $microdata_li_a_span . '><i class="fa fa-home"></i> HOME</span></a></li>';
 
-	/* Post type
-	/*-------------------------------*/
-
+	// Post type.
 	if ( is_archive() || ( is_single() && ! is_attachment() ) ) {
 
-		if ( $postType['slug'] == 'post' || is_category() || is_tag() ) { /* including single-post */
+		if ( 'post' === $the_post_type['slug'] || is_category() || is_tag() ) { /* including single-post */
 			if ( $page_for_posts['post_top_use'] ) {
 				if ( ! is_home() ) {
-					$panListHtml .= '<li' . $microdata_li . '><a' . $microdata_li_a . ' href="' . esc_url( $postType['url'] ) . '"><span' . $microdata_li_a_span . '>' . $postType['name'] . '</span></a></li>';
+					$breadclumb_html .= '<li' . $microdata_li . '><a' . $microdata_li_a . ' href="' . esc_url( $the_post_type['url'] ) . '"><span' . $microdata_li_a_span . '>' . $the_post_type['name'] . '</span></a></li>';
 				} else {
-					$panListHtml .= '<li><span>' . get_the_title( '', '', false ) . '</span></li>';
+					$breadclumb_html .= '<li><span>' . get_the_title( '', '', false ) . '</span></li>';
 				}
 			}
 		} else {
 			if ( is_single() || is_date() || is_tax() || is_author() ) {
-				$panListHtml .= '<li' . $microdata_li . '><a' . $microdata_li_a . ' href="' . esc_url( $postType['url'] ) . '"><span' . $microdata_li_a_span . '>' . $postType['name'] . '</span></a></li>';
+				$breadclumb_html .= '<li' . $microdata_li . '><a' . $microdata_li_a . ' href="' . esc_url( $the_post_type['url'] ) . '"><span' . $microdata_li_a_span . '>' . $the_post_type['name'] . '</span></a></li>';
 			} else {
-				$panListHtml .= '<li><span>' . $postType['name'] . '</span></li>';
+				$breadclumb_html .= '<li><span>' . $the_post_type['name'] . '</span></li>';
 			}
 		}
 	}
 
 	if ( is_home() ) {
 
-		/*
-		When use to post top page
-		When "is_page()" that post top is don't display.
-		*/
-		if ( isset( $postType['name'] ) && $postType['name'] ) {
-			$panListHtml .= '<li><span>' . $postType['name'] . '</span></li>';
+		// When use to post top page.
+		// When "is_page()" that post top is don't display.
+		if ( isset( $the_post_type['name'] ) && $the_post_type['name'] ) {
+			$breadclumb_html .= '<li><span>' . $the_post_type['name'] . '</span></li>';
 		}
 	} elseif ( is_category() ) {
 
-		/* Category
-		/*-------------------------------*/
-
-		// Get category information & insert to $cat
+		// Category.
+		// Get category information & insert to $cat.
 		$cat = get_queried_object();
 
-		// parent != 0  >>>  Parent exist
-		if ( $cat->parent != 0 ) :
-			// 祖先のカテゴリー情報を逆順で取得
+		// parent != 0  >>>  Parent exist.
+		if ( 0 !== $cat->parent ) {
+			// 祖先のカテゴリー情報を逆順で取得.
 			$ancestors = array_reverse( get_ancestors( $cat->cat_ID, 'category' ) );
-			// 祖先階層の配列回数分ループ
-			foreach ( $ancestors as $ancestor ) :
-				$panListHtml .= '<li' . $microdata_li . '><a' . $microdata_li_a . ' href="' . get_category_link( $ancestor ) . '"><span' . $microdata_li_a_span . '>' . esc_html( get_cat_name( $ancestor ) ) . '</span></a></li>';
-			endforeach;
-			endif;
-		$panListHtml .= '<li><span>' . $cat->cat_name . '</span></li>';
+			// 祖先階層の配列回数分ループ.
+			foreach ( $ancestors as $ancestor ) {
+				$breadclumb_html .= '<li' . $microdata_li . '><a' . $microdata_li_a . ' href="' . get_category_link( $ancestor ) . '"><span' . $microdata_li_a_span . '>' . esc_html( get_cat_name( $ancestor ) ) . '</span></a></li>';
+			}
+		}
+		$breadclumb_html .= '<li><span>' . $cat->cat_name . '</span></li>';
 
 	} elseif ( is_tag() ) {
 
-		/* Tag
-		/*-------------------------------*/
-
-		$tagTitle     = single_tag_title( '', false );
-		$panListHtml .= '<li><span>' . $tagTitle . '</span></li>';
+		// Tag.
+		$tag_title        = single_tag_title( '', false );
+		$breadclumb_html .= '<li><span>' . $tag_title . '</span></li>';
 
 	} elseif ( is_tax() ) {
 
-		/* term
-		/*-------------------------------*/
-
+		// Term.
 		$now_term        = $wp_query->queried_object->term_id;
 		$now_term_parent = $wp_query->queried_object->parent;
 		$now_taxonomy    = $wp_query->queried_object->taxonomy;
 
-		// parent が !0 の場合 = 親カテゴリーが存在する場合
-		if ( $now_term_parent != 0 ) :
-			// 祖先のカテゴリー情報を逆順で取得
+		// parent が !0 の場合 = 親カテゴリーが存在する場合.
+		if ( 0 !== $now_term_parent ) {
+			// 祖先のカテゴリー情報を逆順で取得.
 			$ancestors = array_reverse( get_ancestors( $now_term, $now_taxonomy ) );
-			// 祖先階層の配列回数分ループ
-			foreach ( $ancestors as $ancestor ) :
-				$pan_term     = get_term( $ancestor, $now_taxonomy );
-				$panListHtml .= '<li' . $microdata_li . '><a' . $microdata_li_a . ' href="' . get_term_link( $ancestor, $now_taxonomy ) . '"><span' . $microdata_li_a_span . '>' . esc_html( $pan_term->name ) . '</a></li>';
-			endforeach;
-		endif;
+			// 祖先階層の配列回数分ループ.
+			foreach ( $ancestors as $ancestor ) {
+				$pan_term         = get_term( $ancestor, $now_taxonomy );
+				$breadclumb_html .= '<li' . $microdata_li . '><a' . $microdata_li_a . ' href="' . get_term_link( $ancestor, $now_taxonomy ) . '"><span' . $microdata_li_a_span . '>' . esc_html( $pan_term->name ) . '</a></li>';
+			}
+		}
 
-		$panListHtml .= '<li><span>' . esc_html( single_cat_title( '', '', false ) ) . '</span></li>';
+		$breadclumb_html .= '<li><span>' . esc_html( single_cat_title( '', '', false ) ) . '</span></li>';
 
 	} elseif ( is_author() ) {
 
-		/* Author
-		/*-------------------------------*/
-
-		$userObj      = get_queried_object();
-		$panListHtml .= '<li><span>' . esc_html( $userObj->display_name ) . '</span></li>';
+		// Author.
+		$user_object      = get_queried_object();
+		$breadclumb_html .= '<li><span>' . esc_html( $user_object->display_name ) . '</span></li>';
 
 	} elseif ( is_archive() && ( ! is_category() || ! is_tax() ) ) {
 
-		/* Year / Monthly / Dayly
-		/*-------------------------------*/
-
+		// Year / Month / Day.
 		if ( is_date() ) {
-			$panListHtml .= '<li><span>' . esc_html( get_the_archive_title() ) . '</span></li>';
+			$breadclumb_html .= '<li><span>' . esc_html( get_the_archive_title() ) . '</span></li>';
 		}
 	} elseif ( is_single() ) {
 
-		/* Single
-		/*-------------------------------*/
+		// Single.
 
-		// Case of post
-
-		if ( $postType['slug'] == 'post' ) {
+		// Case of post.
+		if ( 'post' === $the_post_type['slug'] ) {
 			$category = get_the_category();
 			if ( $category ) {
-				// get parent category info
+				// get parent category info.
 				$parents = array_reverse( get_ancestors( $category[0]->term_id, 'category', 'taxonomy' ) );
 				array_push( $parents, $category[0]->term_id );
 				foreach ( $parents as $parent_term_id ) {
-					$parent_obj   = get_term( $parent_term_id, 'category' );
-					$term_url     = get_term_link( $parent_obj->term_id, $parent_obj->taxonomy );
-					$panListHtml .= '<li' . $microdata_li . '><a' . $microdata_li_a . ' href="' . $term_url . '"><span' . $microdata_li_a_span . '>' . esc_html( $parent_obj->name ) . '</span></a></li>';
+					$parent_obj       = get_term( $parent_term_id, 'category' );
+					$term_url         = get_term_link( $parent_obj->term_id, $parent_obj->taxonomy );
+					$breadclumb_html .= '<li' . $microdata_li . '><a' . $microdata_li_a . ' href="' . $term_url . '"><span' . $microdata_li_a_span . '>' . esc_html( $parent_obj->name ) . '</span></a></li>';
 				}
 			}
 
-			// Case of custom post type
+			// Case of custom post type.
 
 		} else {
 			$taxonomies = get_the_taxonomies();
 
-			// To avoid WooCommerce default tax
+			// To avoid WooCommerce default tax.
 			foreach ( $taxonomies as $key => $value ) {
-				if ( $key != 'product_type' ) {
+				if ( 'product_type' !== $key ) {
 					$taxonomy = $key;
 					break;
 				}
 			}
 
-			if ( $taxonomies ) :
+			if ( $taxonomies ) {
 				$terms = get_the_terms( get_the_ID(), $taxonomy );
 
-				//keeps only the first term (categ)
+				// keeps only the first term (categ).
 				$term = reset( $terms );
-				if ( 0 != $term->parent ) {
+				if ( 0 !== $term->parent ) {
 
-					// Get term ancestors info
+					// Get term ancestors info.
 					$ancestors = array_reverse( get_ancestors( $term->term_id, $taxonomy ) );
-					// Print loop term ancestors
-					foreach ( $ancestors as $ancestor ) :
-						$pan_term     = get_term( $ancestor, $taxonomy );
-						$panListHtml .= '<li' . $microdata_li . '><a' . $microdata_li_a . ' href="' . get_term_link( $ancestor, $taxonomy ) . '"><span' . $microdata_li_a_span . '>' . esc_html( $pan_term->name ) . '</span></a></li>';
-					endforeach;
+					// Print loop term ancestors.
+					foreach ( $ancestors as $ancestor ) {
+						$pan_term         = get_term( $ancestor, $taxonomy );
+						$breadclumb_html .= '<li' . $microdata_li . '><a' . $microdata_li_a . ' href="' . get_term_link( $ancestor, $taxonomy ) . '"><span' . $microdata_li_a_span . '>' . esc_html( $pan_term->name ) . '</span></a></li>';
+					}
 				}
-				$term_url     = get_term_link( $term->term_id, $taxonomy );
-				$panListHtml .= '<li' . $microdata_li . '><a' . $microdata_li_a . ' href="' . $term_url . '"><span' . $microdata_li_a_span . '>' . esc_html( $term->name ) . '</span></a></li>';
-				endif;
-
+				$term_url         = get_term_link( $term->term_id, $taxonomy );
+				$breadclumb_html .= '<li' . $microdata_li . '><a' . $microdata_li_a . ' href="' . $term_url . '"><span' . $microdata_li_a_span . '>' . esc_html( $term->name ) . '</span></a></li>';
+			}
 		}
-
-			$panListHtml .= '<li><span>' . get_the_title() . '</span></li>';
+		$breadclumb_html .= '<li><span>' . get_the_title() . '</span></li>';
 
 	} elseif ( is_page() ) {
 
-		/* Page
-		/*-------------------------------*/
-
+		// Page.
 		$post = $wp_query->get_queried_object();
-		if ( $post->post_parent == 0 ) {
-			$panListHtml .= '<li><span>' . get_the_title() . '</span></li>';
+		if ( 0 === $post->post_parent ) {
+			$breadclumb_html .= '<li><span>' . get_the_title() . '</span></li>';
 		} else {
 			$ancestors = array_reverse( get_post_ancestors( $post->ID ) );
 			array_push( $ancestors, $post->ID );
 			foreach ( $ancestors as $ancestor ) {
-				if ( $ancestor != end( $ancestors ) ) {
-					$panListHtml .= '<li' . $microdata_li . '><a' . $microdata_li_a . ' href="' . get_permalink( $ancestor ) . '"><span' . $microdata_li_a_span . '>' . strip_tags( apply_filters( 'single_post_title', get_the_title( $ancestor ) ) ) . '</span></a></li>';
+				if ( end( $ancestors ) !== $ancestor ) {
+					$breadclumb_html .= '<li' . $microdata_li . '><a' . $microdata_li_a . ' href="' . get_permalink( $ancestor ) . '"><span' . $microdata_li_a_span . '>' . wp_strip_all_tags( apply_filters( 'single_post_title', get_the_title( $ancestor ) ) ) . '</span></a></li>';
 				} else {
-					$panListHtml .= '<li><span>' . strip_tags( apply_filters( 'single_post_title', get_the_title( $ancestor ) ) ) . '</span></li>';
+					$breadclumb_html .= '<li><span>' . wp_strip_all_tags( apply_filters( 'single_post_title', get_the_title( $ancestor ) ) ) . '</span></li>';
 				}
 			}
 		}
 	} elseif ( is_404() ) {
 
-		/* 404
-		/*-------------------------------*/
-
-		$panListHtml .= '<li><span>' . __( 'Not found', 'lightning' ) . '</span></li>';
+		// 404.
+		$breadclumb_html .= '<li><span>' . __( 'Not found', 'lightning' ) . '</span></li>';
 
 	} elseif ( is_search() ) {
 
-		/* Search result
-		/*-------------------------------*/
-
-		$panListHtml .= '<li><span>' . sprintf( __( 'Search Results for : %s', 'lightning' ), get_search_query() ) . '</span></li>';
+		// Search result.
+		// translators: Search Result Text.
+		$breadclumb_html .= '<li><span>' . sprintf( __( 'Search Results for : %s', 'lightning' ), get_search_query() ) . '</span></li>';
 
 	} elseif ( is_attachment() ) {
 
-		/* Attachment
-		/*-------------------------------*/
-
-		$panListHtml .= '<li><span>' . get_the_title( '', '', false ) . '</span></li>';
+		// Attachment.
+		$breadclumb_html .= '<li><span>' . get_the_title( '', '', false ) . '</span></li>';
 
 	}
-	$panListHtml .= '</ol>
-</div>
-</div>
-</div>
-<!-- [ /.breadSection ] -->';
-	return $panListHtml;
+	$breadclumb_html .= '</ol></div></div></div><!-- [ /.breadSection ] -->';
+	return $breadclumb_html;
 }
-$panListHtml = lightning_bread_crumb();
+$breadclumb_html = lightning_bread_crumb();
 
-$allowed_html = array(
+$allowed_html    = array(
 	'div'  => array(
 		'id'        => array(),
 		'class'     => array(),
@@ -273,6 +248,5 @@ $allowed_html = array(
 		'class' => array(),
 	),
 );
-$panListHtml  = apply_filters( 'lightning_panListHtml', $panListHtml );
-$panListHtml  = wp_kses( $panListHtml, $allowed_html );
-echo $panListHtml;
+$breadclumb_html = apply_filters( 'lightning_panListHtml', $breadclumb_html );
+echo wp_kses( $breadclumb_html, $allowed_html );
