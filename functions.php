@@ -54,19 +54,10 @@ function lightning_theme_setup() {
 	// custom-background.
 	add_theme_support( 'custom-background' );
 
-	/*
-	  cope with page excerpt
-	/*-------------------------------------------*/
+	// cope with page excerpt.
 	add_post_type_support( 'page', 'excerpt' );
 
-	/*
-	  cope with page excerpt
-	/*-------------------------------------------*/
-	add_post_type_support( 'page', 'excerpt' );
-
-	/*
-	  Admin page _ Eye catch
-	/*-------------------------------------------*/
+	// Admin page _ Eye catch.
 	add_theme_support( 'post-thumbnails' );
 	set_post_thumbnail_size( 320, 180, true );
 
@@ -210,6 +201,9 @@ require get_parent_theme_file_path( '/inc/vk-components/vk-components-config.php
 require get_parent_theme_file_path( '/inc/template-redirect.php' );
 require get_parent_theme_file_path( '/inc/layout-controller/layout-controller.php' );
 require get_parent_theme_file_path( '/inc/widget-area-setting/widget-area-setting-config.php' );
+
+// Description Walker.
+require get_parent_theme_file_path( '/inc/class-description-walker.php' );
 
 // Load woocommerce modules.
 if ( class_exists( 'woocommerce' ) ) {
@@ -393,9 +387,6 @@ function lightning_list_categories( $output, $args ) {
 	return $output;
 }
 add_filter( 'wp_list_categories', 'lightning_list_categories', 10, 2 );
-
-// Description Walker.
-require get_parent_theme_file_path( '/inc/class-description-walker.php' );
 
 /**
  *  Headfix Enable
