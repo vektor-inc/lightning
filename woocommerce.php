@@ -35,11 +35,8 @@ if ( lightning_is_page_header_and_breadcrumb() ){
 <div class="row">
 <div class="<?php lightning_the_class_name( 'mainSection' ); ?>" id="main" role="main">
 <?php do_action( 'lightning_mainSection_prepend' ); ?>
-<?php
-$article_outer_class = '';
-$article_outer_class = apply_filters( 'lightning_article_outer_class', $article_outer_class );
-?>
-	<div id="post-<?php the_ID(); ?>" <?php post_class( $article_outer_class ); ?>>
+
+	<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<?php do_action( 'lightning_entry_body_before' ); ?>
 	<div class="<?php lightning_the_class_name( 'entry-body' ); ?>">
 	<?php woocommerce_content(); ?>
@@ -83,8 +80,6 @@ $article_outer_class = apply_filters( 'lightning_article_outer_class', $article_
 <?php get_sidebar( get_post_type() ); ?>
 </div><!-- [ /.subSection ] -->
 <?php endif; ?>
-
-<?php do_action( 'lightning_additional_sidebar' ); ?>
 
 </div><!-- [ /.row ] -->
 <?php do_action( 'lightning_site_content_container_apepend' ); ?>
