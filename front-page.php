@@ -97,7 +97,7 @@ do_action( 'lightning_top_slide_after');
 							$lightning_insert_count++;
 							$insert_loop_html = '';
 							$insert_loop_html = apply_filters( 'lightning_insert_loop_html', $insert_loop_html );
-							echo $insert_loop_html;
+							echo wp_kses_post( $insert_loop_html );
 						endwhile;
 					endif;
 						?>

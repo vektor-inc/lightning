@@ -16,7 +16,6 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 		 UI Helper method
 		/*-------------------------------------------*/
 
-		public static $count = 0;
 
 		/*
 		 Basic method
@@ -133,13 +132,14 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			if ( $wp_query->have_posts() ) :
 
 				$loop .= '<div class="vk_posts ' . esc_attr( $loop_outer_class ) . ' ' . esc_attr( implode( ' ', $hidden_class ) ) . '">';
-
+				global $vk_components_insert_count;
+				$vk_components_insert_count = 0;
 				while ( $wp_query->have_posts() ) {
 					$wp_query->the_post();
 					global $post;
 					global $vk_components_insert_loop_html;
 					$loop .= self::get_view( $post, $options );
-					self::$count++;
+					$vk_components_insert_count++;
 					$loop .= apply_filters( $vk_components_insert_loop_html, $insert_loop_html );
 				} // while ( have_posts() ) {
 				endif;

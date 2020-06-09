@@ -2,7 +2,8 @@
 /*-------------------------------------------*/
 /*  Load modules
 /*-------------------------------------------*/
-
+global $vk_components_insert_count;
+$vk_components_insert_count = $lightning_insert_count;
 global $vk_components_insert_loop_html;
 $vk_components_insert_loop_html = 'lightning_insert_loop_html';
 

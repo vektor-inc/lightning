@@ -99,7 +99,7 @@ do_action( 'lightning_breadcrumb_after' );
 			$lightning_insert_count++;
 			$insert_loop_html = '';
 			$insert_loop_html = apply_filters( 'lightning_insert_loop_html', $insert_loop_html );
-			echo $insert_loop_html;
+			echo wp_kses_post( $insert_loop_html );
 		} // while ( have_posts() ) {
 		?>
 
