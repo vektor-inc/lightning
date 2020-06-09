@@ -86,8 +86,8 @@ do_action( 'lightning_breadcrumb_after' );
 		$old_file_name[] = 'module_loop_post.php';
 		$require_once    = false;
 
-		global $lightning_insert_count;
-		$lightning_insert_count = 0;
+		global $lightning_loop_item_count;
+		$lightning_loop_item_count = 0;
 		while ( have_posts() ) {
 			the_post();
 
@@ -96,10 +96,8 @@ do_action( 'lightning_breadcrumb_after' );
 			} else {
 				get_template_part( 'template-parts/post/loop', $postType['slug'] );
 			}
-			$lightning_insert_count++;
-			$insert_loop_html = '';
-			$insert_loop_html = apply_filters( 'lightning_insert_loop_html', $insert_loop_html );
-			echo wp_kses_post( $insert_loop_html );
+			$lightning_loop_item_count++;
+			do_action( 'lightning_loop_item_after' );
 		} // while ( have_posts() ) {
 		?>
 
