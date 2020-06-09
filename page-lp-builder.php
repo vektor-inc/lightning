@@ -11,11 +11,9 @@ get_header(); ?>
 if ( have_posts() ) {
 	while ( have_posts() ) :
 		the_post();
-		$article_outer_class = '';
-		$article_outer_class = apply_filters( 'lightning_article_outer_class', $article_outer_class );
 	?>
 
-	<article id="post-<?php the_ID(); ?>" <?php post_class( $article_outer_class ); ?>>
+	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 		<?php do_action( 'lightning_entry_body_before' ); ?>
 		<div class="<?php lightning_the_class_name( 'entry-body' ); ?>">
