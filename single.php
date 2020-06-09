@@ -44,10 +44,8 @@ else :
 	if ( have_posts() ) :
 		while ( have_posts() ) :
 			the_post();
-			$article_outer_class = '';
-			$article_outer_class = apply_filters( 'lightning_article_outer_class', $article_outer_class );
 			?>
-		<article id="post-<?php the_ID(); ?>" <?php post_class( $article_outer_class ); ?>>
+		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		<header class="<?php lightning_the_class_name( 'entry-header' ); ?>">
 			<?php get_template_part( 'template-parts/post/meta' ); ?>
 			<h1 class="entry-title"><?php the_title(); ?></h1>
@@ -136,8 +134,6 @@ get_template_part(
 	<?php get_sidebar( get_post_type() ); ?>
 	</div><!-- [ /.subSection ] -->
 <?php } ?>
-
-<?php do_action( 'lightning_additional_sidebar' ); ?>
 
 </div><!-- [ /.row ] -->
 <?php do_action( 'lightning_site_content_container_apepend' ); ?>
