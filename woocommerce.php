@@ -17,13 +17,14 @@ if ( lightning_is_page_header_and_breadcrumb() ){
 	/*-------------------------------------------*/
 	/* BreadCrumb
 	/*-------------------------------------------*/
+	do_action( 'lightning_breadcrumb_before' );
 	$old_file_name[] = 'module_panList.php';
 	if ( locate_template( $old_file_name, false, false ) ) {
 		locate_template( $old_file_name, true, false );
 	} else {
 		get_template_part( 'template-parts/breadcrumb' );
 	}
-
+	do_action( 'lightning_breadcrumb_after' );
 } // if ( lightning_is_page_header_and_top_breadcrumb() ){
 ?>
 
@@ -34,12 +35,16 @@ if ( lightning_is_page_header_and_breadcrumb() ){
 <div class="row">
 <div class="<?php lightning_the_class_name( 'mainSection' ); ?>" id="main" role="main">
 <?php do_action( 'lightning_mainSection_prepend' ); ?>
-
-	<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<?php
+$article_outer_class = '';
+$article_outer_class = apply_filters( 'lightning_article_outer_class', $article_outer_class );
+?>
+	<div id="post-<?php the_ID(); ?>" <?php post_class( $article_outer_class ); ?>>
 	<?php do_action( 'lightning_entry_body_before' ); ?>
-	<div class="entry-body">
+	<div class="<?php lightning_the_class_name( 'entry-body' ); ?>">
 	<?php woocommerce_content(); ?>
 	</div>
+	<?php do_action( 'lightning_entry_body_after' ); ?>
 	<?php
 	$args = array(
 		'before'      => '<nav class="page-link"><dl><dt>Pages :</dt><dd>',
@@ -79,7 +84,12 @@ if ( lightning_is_page_header_and_breadcrumb() ){
 </div><!-- [ /.subSection ] -->
 <?php endif; ?>
 
+<?php do_action( 'lightning_additional_sidebar' ); ?>
+
 </div><!-- [ /.row ] -->
+<?php do_action( 'lightning_site_content_container_apepend' ); ?>
 </div><!-- [ /.container ] -->
+<?php do_action( 'lightning_site_content_apepend' ); ?>
 </div><!-- [ /.siteContent ] -->
 <?php get_footer(); ?>
+

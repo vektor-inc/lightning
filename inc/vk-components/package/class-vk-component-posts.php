@@ -16,6 +16,8 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 		 UI Helper method
 		/*-------------------------------------------*/
 
+		public static $count = 0;
+
 		/*
 		 Basic method
 		/*-------------------------------------------*/
@@ -135,7 +137,10 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				while ( $wp_query->have_posts() ) {
 					$wp_query->the_post();
 					global $post;
+					global $vk_components_insert_loop_html;
 					$loop .= self::get_view( $post, $options );
+					self::$count++;
+					$loop .= apply_filters( $vk_components_insert_loop_html, $insert_loop_html );
 				} // while ( have_posts() ) {
 				endif;
 
