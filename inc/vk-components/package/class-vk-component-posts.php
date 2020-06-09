@@ -137,7 +137,6 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				while ( $wp_query->have_posts() ) {
 					$wp_query->the_post();
 					global $post;
-					global $vk_components_insert_loop_html;
 					$loop .= self::get_view( $post, $options );
 					$vk_components_insert_count++;
 					$loop .= apply_filters( $vk_components_insert_loop_html, $insert_loop_html );
