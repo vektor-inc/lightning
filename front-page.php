@@ -135,7 +135,7 @@ do_action( 'lightning_top_slide_after');
 				</div><!-- [ /.subSection ] -->
 			<?php endif; ?>
 
-			<?php do_action( 'lightning_additional_sidebar' ); ?>
+			
 
 </div><!-- [ /.row ] -->
 <?php do_action( 'lightning_siteContent_container_apepend' ); ?>
