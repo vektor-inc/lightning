@@ -1,5 +1,13 @@
 <?php
+/**
+ * Layout Controller of Lightning.
+ *
+ * @package Lightning
+ */
 
+/**
+ * Array of Layout Taeget
+ */
 function lightning_layout_target_array() {
 	$array = array(
 		'error404' => array(
@@ -8,21 +16,12 @@ function lightning_layout_target_array() {
 		'search'   => array(
 			'function' => 'is_search',
 		),
-		'archive'  => array(
-			'function' => 'is_archive',
-		),
-		'page'     => array(
-			'function' => 'is_page',
-		),
-		'single'   => array(
-			'function' => 'is_single',
-		),
 	);
 	return $array;
 }
 
 /**
- * lightning_is_layout_onecolumn
+ * Lightning Is Layout One Column
  *
  * @since Lightning 9.0.0
  * @return boolean
@@ -37,32 +36,51 @@ function lightning_is_layout_onecolumn() {
 	foreach ( $array as $key => $value ) {
 		if ( call_user_func( $value['function'] ) ) {
 			if ( isset( $options['layout'][ $key ] ) ) {
-				if ( $options['layout'][ $key ] === 'col-one' || $options['layout'][ $key ] === 'col-one-no-subsection' ) {
+				if ( 'col-one' === $options['layout'][ $key ] || 'col-one-no-subsection' === $options['layout'][ $key ] ) {
 					$onecolumn = true;
 				}
 			}
 		}
 	}
 
-	if ( is_front_page() ) {
+	if ( is_front_page() && ! is_home() ) {
 		if ( isset( $options['layout']['front-page'] ) ) {
 
-			if ( $options['layout']['front-page'] === 'col-one' || $options['layout']['front-page'] === 'col-one-no-subsection' ) {
+			if ( 'col-one' === $options['layout']['front-page'] || 'col-one-no-subsection' === $options['layout']['front-page'] ) {
 				$onecolumn = true;
 			}
 		} else {
 			$page_on_front_id = get_option( 'page_on_front' );
 			if ( $page_on_front_id ) {
 				$template = get_post_meta( $page_on_front_id, '_wp_page_template', true );
-				if ( $template == 'page-onecolumn.php' ) {
+				if ( 'page-onecolumn.php' === $template || 'page-lp.php' === $template ) {
 					return true;
 				}
 			}
 		}
-	} elseif ( is_home() && ! is_front_page() ) {
-		if ( isset( $options['layout']['archive'] ) ) {
-			if ( $options['layout']['archive'] === 'col-one' || $options['layout']['archive'] === 'col-one-no-subsection' ) {
+	} elseif ( is_home() ) {
+		if ( isset( $options['layout']['archive-post'] ) ) {
+			if ( 'col-one' === $options['layout']['archive-post'] || 'col-one-no-subsection' === $options['layout']['archive-post'] ) {
 				$onecolumn = true;
+			}
+		}
+	}
+
+	$get_post_types = get_post_types(
+		array(
+			'public'   => true,
+			'_builtin' => false,
+		),
+		'names'
+	);
+
+	if ( is_archive() ) {
+		$get_post_types = array( 'post' ) + $get_post_types;
+		foreach ( $get_post_types as $get_post_type ) {
+			if ( isset( $options['layout'][ 'archive-' . $get_post_type ] ) && get_post_type() === $get_post_type ) {
+				if ( 'col-one' === $options['layout'][ 'archive-' . $get_post_type ] || 'col-one-no-subsection' === $options['layout'][ 'archive-' . $get_post_type ] ) {
+					$onecolumn = true;
+				}
 			}
 		}
 	}
@@ -75,16 +93,24 @@ function lightning_is_layout_onecolumn() {
 				'page-onecolumn.php',
 				'page-lp.php',
 			);
-			if ( in_array( $template, $template_onecolumn ) ) {
+			if ( in_array( $template, $template_onecolumn, true ) ) {
 				$onecolumn = true;
 			}
 		}
+		$get_post_types = array( 'post', 'page' ) + $get_post_types;
+		foreach ( $get_post_types as $get_post_type ) {
+			if ( isset( $options['layout'][ 'single-' . $get_post_type ] ) && get_post_type() === $get_post_type ) {
+				if ( 'col-one' === $options['layout'][ 'single-' . $get_post_type ] || 'col-one-no-subsection' === $options['layout'][ 'single-' . $get_post_type ] ) {
+					$onecolumn = true;
+				}
+			}
+		}
 		if ( isset( $post->_lightning_design_setting['layout'] ) ) {
-			if ( $post->_lightning_design_setting['layout'] === 'col-two' ) {
+			if ( 'col-two' === $post->_lightning_design_setting['layout'] ) {
 				$onecolumn = false;
-			} elseif ( $post->_lightning_design_setting['layout'] === 'col-one-no-subsection' ) {
+			} elseif ( 'col-one-no-subsection' === $post->_lightning_design_setting['layout'] ) {
 				$onecolumn = true;
-			} elseif ( $post->_lightning_design_setting['layout'] === 'col-one' ) {
+			} elseif ( 'col-one' === $post->_lightning_design_setting['layout'] ) {
 				$onecolumn = true;
 			}
 		}
@@ -93,12 +119,13 @@ function lightning_is_layout_onecolumn() {
 }
 
 /**
- * lightning_is_subsection_display
+ * Lightning Is Subsection Display
  *
  * @since Lightning 9.0.0
  * @return boolean
  */
 function lightning_is_subsection_display() {
+	global $post;
 	$return  = true;
 	$options = get_option( 'lightning_theme_options' );
 
@@ -107,42 +134,53 @@ function lightning_is_subsection_display() {
 	foreach ( $array as $key => $value ) {
 		if ( call_user_func( $value['function'] ) ) {
 			if ( isset( $options['layout'][ $key ] ) ) {
-				if ( $options['layout'][ $key ] === 'col-one-no-subsection' ) {
+				if ( 'col-one-no-subsection' === $options['layout'][ $key ] ) {
 					$onecolumn = false;
 				}
 			}
 		}
 	}
 
-	// break and hidden
-	if ( is_front_page() ) {
-		if ( isset( $options['layout']['front-page'] ) &&
-		$options['layout']['front-page'] === 'col-one-no-subsection'
-		) {
+	$get_post_types = get_post_types(
+		array(
+			'public'   => true,
+			'_builtin' => false,
+		),
+		'names'
+	);
+
+	// break and hidden.
+	if ( is_front_page() && ! is_home() ) {
+		if ( isset( $options['layout']['front-page'] ) && 'col-one-no-subsection' === $options['layout']['front-page'] ) {
 			$return = false;
 		}
-	} elseif ( is_home() && ! is_front_page() ) {
-		
+	} elseif ( is_home() ) {
 		if ( isset( $options['layout']['archive'] ) ) {
-			if ( $options['layout']['archive'] === 'col-one-no-subsection' ) {
-				
+			if ( 'col-one-no-subsection' === $options['layout']['archive-post'] ) {
 				$return = false;
 			}
 		}
-
+	} elseif ( is_archive() ) {
+		$get_post_types = array( 'post' ) + $get_post_types;
+		foreach ( $get_post_types as $get_post_type ) {
+			if ( isset( $options['layout'][ 'archive-' . $get_post_type ] ) && get_post_type() === $get_post_type ) {
+				if ( 'col-one-no-subsection' === $options['layout'][ 'archive-' . $get_post_type ] ) {
+					$return = false;
+				}
+			}
+		}
 	} elseif ( is_singular() ) {
-		if ( is_single() ) {
-			if ( isset( $options['layout']['single'] ) &&
-			$options['layout']['single'] === 'col-one-no-subsection' ) {
-				$return = false;
+		$get_post_types = array( 'post', 'page' ) + $get_post_types;
+		foreach ( $get_post_types as $get_post_type ) {
+			if ( isset( $options['layout'][ 'single-' . $get_post_type ] ) && get_post_type() === $get_post_type ) {
+				if ( 'col-one-no-subsection' === $options['layout'][ 'single-' . $get_post_type ] ) {
+					$return = false;
+				}
 			}
 		}
-		global $post;
 		if ( isset( $post->_lightning_design_setting['layout'] ) ) {
-			if ( $post->_lightning_design_setting['layout'] === 'col-one-no-subsection' ) {
+			if ( 'col-one-no-subsection' === $post->_lightning_design_setting['layout'] ) {
 				$return = false;
-			} elseif ( $post->_lightning_design_setting['layout'] === 'col-two' ) {
-				$return = true;
 			}
 		}
 	}
