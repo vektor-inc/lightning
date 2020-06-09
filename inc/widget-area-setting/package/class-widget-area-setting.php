@@ -113,7 +113,7 @@ if ( ! class_exists( 'Widget_Area_Setting' ) ) {
 			$wp_customize->add_setting(
 				'lightning_widget_setting[footer_widget_area_count]',
 				array(
-					'default'           => 3,
+					'default'           => '3',
 					'type'              => 'option',
 					'capability'        => 'edit_theme_options',
 					'sanitize_callback' => 'lightning_sanitize_number',
@@ -132,6 +132,7 @@ if ( ! class_exists( 'Widget_Area_Setting' ) ) {
 						'2' => __( '2 column', 'lightning' ),
 						'3' => __( '3 column', 'lightning' ),
 						'4' => __( '4 column', 'lightning' ),
+						'6' => __( '6 column', 'lightning' ),
 					),
 					'description' => __( '* If you save and reload after making changes, the number of the widget area setting panels  will increase or decrease.', 'lightning' ),
 				)
@@ -178,6 +179,8 @@ if ( ! class_exists( 'Widget_Area_Setting' ) ) {
 					$footer_widget_area_count = 3;
 				} elseif ( '4' === $options['footer_widget_area_count'] ) {
 					$footer_widget_area_count = 4;
+				} elseif ( '6' === $options['footer_widget_area_count'] ) {
+					$footer_widget_area_count = 6;
 				}
 			}
 			return $footer_widget_area_count;

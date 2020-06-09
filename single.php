@@ -18,12 +18,14 @@ if ( lightning_is_page_header_and_breadcrumb() ) {
 	/*
 	 BreadCrumb
 	/*-------------------------------------------*/
+	do_action( 'lightning_breadcrumb_before' );
 	$old_file_name[] = 'module_panList.php';
 	if ( locate_template( $old_file_name, false, false ) ) {
 		locate_template( $old_file_name, true, false );
 	} else {
 		get_template_part( 'template-parts/breadcrumb' );
 	}
+	do_action( 'lightning_breadcrumb_after' );
 } // if ( lightning_is_page_header_and_top_breadcrumb() ){
 ?>
 
@@ -42,8 +44,10 @@ else :
 	if ( have_posts() ) :
 		while ( have_posts() ) :
 			the_post();
+			$article_outer_class = '';
+			$article_outer_class = apply_filters( 'lightning_article_outer_class', $article_outer_class );
 			?>
-		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+		<article id="post-<?php the_ID(); ?>" <?php post_class( $article_outer_class ); ?>>
 		<header class="<?php lightning_the_class_name( 'entry-header' ); ?>">
 			<?php get_template_part( 'template-parts/post/meta' ); ?>
 			<h1 class="entry-title"><?php the_title(); ?></h1>
@@ -133,7 +137,11 @@ get_template_part(
 	</div><!-- [ /.subSection ] -->
 <?php } ?>
 
+<?php do_action( 'lightning_additional_sidebar' ); ?>
+
 </div><!-- [ /.row ] -->
+<?php do_action( 'lightning_site_content_container_apepend' ); ?>
 </div><!-- [ /.container ] -->
+<?php do_action( 'lightning_site_content_apepend' ); ?>
 </div><!-- [ /.siteContent ] -->
 <?php get_footer(); ?>

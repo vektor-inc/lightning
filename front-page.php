@@ -1,6 +1,7 @@
 <?php get_header(); ?>
 
 <?php
+do_action( 'lightning_top_slide_before' );
 if ( empty( $lightning_theme_options['top_slide_hide'] ) ) {
 	if ( $bootstrap == '3' ) {
 		$old_file_name[] = 'module_slide.php';
@@ -13,6 +14,7 @@ if ( empty( $lightning_theme_options['top_slide_hide'] ) ) {
 		get_template_part( 'template-parts/slide', 'bs4' );
 	}
 }
+do_action( 'lightning_top_slide_after');
 ?>
 
 <div class="<?php lightning_the_class_name( 'siteContent' ); ?>">
@@ -43,9 +45,11 @@ if ( empty( $lightning_theme_options['top_slide_hide'] ) ) {
 							?>
 
 						<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-						<div class="entry-body">
+						<?php do_action( 'lightning_entry_body_before' ); ?>
+						<div class="<?php lightning_the_class_name( 'entry-body' ); ?>">
 							<?php the_content(); ?>
 						</div>
+						<?php do_action( 'lightning_entry_body_after' ); ?>
 							<?php
 							wp_link_pages(
 								array(
@@ -60,7 +64,14 @@ if ( empty( $lightning_theme_options['top_slide_hide'] ) ) {
 
 				<?php else : ?>
 
-					<div class="postList">
+
+					<div class="<?php lightning_the_class_name( 'postList' ); ?>">
+
+					<?php if ( apply_filters( 'is_lightning_extend_loop', false ) ) : ?>
+
+						<?php do_action( 'lightning_extend_loop' ); ?>
+
+					<?php else : ?>
 
 						<?php
 						/**
@@ -68,11 +79,13 @@ if ( empty( $lightning_theme_options['top_slide_hide'] ) ) {
 						 * Actually, it's ok to only use get_template_part().
 						 * It is measure for before version 7.0 that loaded module_loop_***.php.
 						 */
-						$postType = lightning_get_post_type();
+						$postType        = lightning_get_post_type();
 						$old_file_name[] = 'module_loop_' . $postType['slug'] . '.php';
 						$old_file_name[] = 'module_loop_post.php';
 						$require_once    = false;
 
+						global $lightning_insert_count;
+						$lightning_insert_count = 0;
 						while ( have_posts() ) :
 							the_post();
 
@@ -81,8 +94,13 @@ if ( empty( $lightning_theme_options['top_slide_hide'] ) ) {
 							} else {
 								get_template_part( 'template-parts/post/loop', $postType['slug'] );
 							}
-
-						endwhile; ?>
+							$lightning_insert_count++;
+							$insert_loop_html = '';
+							$insert_loop_html = apply_filters( 'lightning_insert_loop_html', $insert_loop_html );
+							echo $insert_loop_html;
+						endwhile;
+					endif;
+						?>
 
 						<?php
 						the_posts_pagination(
@@ -117,7 +135,11 @@ if ( empty( $lightning_theme_options['top_slide_hide'] ) ) {
 				</div><!-- [ /.subSection ] -->
 			<?php endif; ?>
 
+			<?php do_action( 'lightning_additional_sidebar' ); ?>
+
 </div><!-- [ /.row ] -->
+<?php do_action( 'lightning_site_content_container_apepend' ); ?>
 </div><!-- [ /.container ] -->
+<?php do_action( 'lightning_site_content_apepend' ); ?>
 </div><!-- [ /.siteContent ] -->
 <?php get_footer(); ?>

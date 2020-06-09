@@ -15,12 +15,14 @@ if ( locate_template( $old_file_name, false, false ) ) {
 /*
  BreadCrumb
 /*-------------------------------------------*/
+do_action( 'lightning_breadcrumb_before' );
 $old_file_name[] = 'module_panList.php';
 if ( locate_template( $old_file_name, false, false ) ) {
 	locate_template( $old_file_name, true, false );
 } else {
 	get_template_part( 'template-parts/breadcrumb' );
 }
+do_action( 'lightning_breadcrumb_after' );
 ?>
 
 <div class="<?php lightning_the_class_name( 'siteContent' ); ?>">
@@ -84,6 +86,8 @@ if ( locate_template( $old_file_name, false, false ) ) {
 		$old_file_name[] = 'module_loop_post.php';
 		$require_once    = false;
 
+		global $lightning_insert_count;
+		$lightning_insert_count = 0;
 		while ( have_posts() ) {
 			the_post();
 
@@ -92,6 +96,10 @@ if ( locate_template( $old_file_name, false, false ) ) {
 			} else {
 				get_template_part( 'template-parts/post/loop', $postType['slug'] );
 			}
+			$lightning_insert_count++;
+			$insert_loop_html = '';
+			$insert_loop_html = apply_filters( 'lightning_insert_loop_html', $insert_loop_html );
+			echo $insert_loop_html;
 		} // while ( have_posts() ) {
 		?>
 
@@ -127,8 +135,12 @@ if ( locate_template( $old_file_name, false, false ) ) {
 	</div><!-- [ /.subSection ] -->
 <?php } ?>
 
+<?php do_action( 'lightning_additional_sidebar' ); ?>
+
 
 </div><!-- [ /.row ] -->
+<?php do_action( 'lightning_site_content_container_apepend' ); ?>
 </div><!-- [ /.container ] -->
+<?php do_action( 'lightning_site_content_apepend' ); ?>
 </div><!-- [ /.siteContent ] -->
 <?php get_footer(); ?>

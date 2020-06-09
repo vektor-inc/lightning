@@ -5,6 +5,7 @@
 get_header(); ?>
 
 <?php
+if ( lightning_is_page_header_and_breadcrumb() ){
 // Dealing with old files.
 // Actually, it's ok to only use get_template_part().
 /*-------------------------------------------*/
@@ -19,11 +20,14 @@ if ( locate_template( $old_file_name, false, false ) ) {
 /*-------------------------------------------*/
 /* BreadCrumb
 /*-------------------------------------------*/
+do_action( 'lightning_breadcrumb_before' );
 $old_file_name[] = 'module_panList.php';
 if ( locate_template( $old_file_name, false, false ) ) {
 	locate_template( $old_file_name, true, false );
 } else {
 	get_template_part( 'template-parts/breadcrumb' );
+}
+do_action( 'lightning_breadcrumb_after' );
 }
 ?>
 
@@ -39,9 +43,11 @@ if ( locate_template( $old_file_name, false, false ) ) {
 	if ( have_posts() ) {
 		while ( have_posts() ) :
 			the_post();
+			$article_outer_class = '';
+			$article_outer_class = apply_filters( 'lightning_article_outer_class', $article_outer_class );
 		?>
 
-			<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+			<article id="post-<?php the_ID(); ?>" <?php post_class( $article_outer_class ); ?>>
 
 	<?php do_action( 'lightning_entry_body_before' ); ?>
 	<div class="<?php lightning_the_class_name( 'entry-body' ); ?>">
@@ -58,8 +64,9 @@ if ( locate_template( $old_file_name, false, false ) ) {
 		'echo'        => 1,
 	);
 			wp_link_pages( $args );
+			do_action( 'lightning_comment_space' );
 			?>
-			</div><!-- [ /#post-<?php the_ID(); ?> ] -->
+			</article><!-- [ /#post-<?php the_ID(); ?> ] -->
 
 	<?php
 	endwhile;
@@ -69,6 +76,8 @@ if ( locate_template( $old_file_name, false, false ) ) {
 </div><!-- [ /.mainSection ] -->
 
 </div><!-- [ /.row ] -->
+<?php do_action( 'lightning_site_content_container_apepend' ); ?>
 </div><!-- [ /.container ] -->
+<?php do_action( 'lightning_site_content_apepend' ); ?>
 </div><!-- [ /.siteContent ] -->
 <?php get_footer(); ?>
