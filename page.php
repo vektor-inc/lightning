@@ -76,8 +76,6 @@ if ( have_posts() ) {
 </div><!-- [ /.subSection ] -->
 <?php endif; ?>
 
-<?php do_action( 'lightning_additional_sidebar' ); ?>
-
 </div><!-- [ /.row ] -->
 <?php do_action( 'lightning_site_content_container_apepend' ); ?>
 </div><!-- [ /.container ] -->
