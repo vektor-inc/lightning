@@ -38,6 +38,6 @@ if ( have_posts() ) {
 endwhile;
 }
 ?>
-<?php do_action( 'lightning_site_content_apepend' ); ?>
+<?php do_action( 'lightning_siteContent_apepend' ); ?>
 </div><!-- [ /.siteContent ] -->
 <?php get_footer(); ?>

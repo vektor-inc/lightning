@@ -138,8 +138,8 @@ do_action( 'lightning_top_slide_after');
 			<?php do_action( 'lightning_additional_sidebar' ); ?>
 
 </div><!-- [ /.row ] -->
-<?php do_action( 'lightning_site_content_container_apepend' ); ?>
+<?php do_action( 'lightning_siteContent_container_apepend' ); ?>
 </div><!-- [ /.container ] -->
-<?php do_action( 'lightning_site_content_apepend' ); ?>
+<?php do_action( 'lightning_siteContent_apepend' ); ?>
 </div><!-- [ /.siteContent ] -->
 <?php get_footer(); ?>
