@@ -1,6 +1,7 @@
 <?php get_header(); ?>
 
 <?php
+do_action( 'lightning_top_slide_before' );
 if ( empty( $lightning_theme_options['top_slide_hide'] ) ) {
 	if ( $bootstrap == '3' ) {
 		$old_file_name[] = 'module_slide.php';
@@ -13,6 +14,7 @@ if ( empty( $lightning_theme_options['top_slide_hide'] ) ) {
 		get_template_part( 'template-parts/slide', 'bs4' );
 	}
 }
+do_action( 'lightning_top_slide_after');
 ?>
 
 <div class="<?php lightning_the_class_name( 'siteContent' ); ?>">
@@ -43,9 +45,11 @@ if ( empty( $lightning_theme_options['top_slide_hide'] ) ) {
 							?>
 
 						<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-						<div class="entry-body">
+						<?php do_action( 'lightning_entry_body_before' ); ?>
+						<div class="<?php lightning_the_class_name( 'entry-body' ); ?>">
 							<?php the_content(); ?>
 						</div>
+						<?php do_action( 'lightning_entry_body_after' ); ?>
 							<?php
 							wp_link_pages(
 								array(
@@ -60,7 +64,13 @@ if ( empty( $lightning_theme_options['top_slide_hide'] ) ) {
 
 				<?php else : ?>
 
-					<div class="postList">
+					<div class="<?php lightning_the_class_name( 'postList' ); ?>">
+
+					<?php if ( apply_filters( 'is_lightning_extend_loop', false ) ) : ?>
+
+						<?php do_action( 'lightning_extend_loop' ); ?>
+
+					<?php else : ?>
 
 						<?php
 						/**
@@ -82,9 +92,10 @@ if ( empty( $lightning_theme_options['top_slide_hide'] ) ) {
 								get_template_part( 'template-parts/post/loop', $postType['slug'] );
 							}
 
-						endwhile; ?>
+						endwhile;
+					endif; ?>
 
-						<?php
+					<?php
 						the_posts_pagination(
 							array(
 								'mid_size'           => 1,
