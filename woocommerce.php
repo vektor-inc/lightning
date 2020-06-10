@@ -37,7 +37,7 @@ if ( lightning_is_page_header_and_breadcrumb() ){
 <div class="<?php lightning_the_class_name( 'mainSection' ); ?>" id="main" role="main">
 <?php do_action( 'lightning_mainSection_prepend' ); ?>
 
-	<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<?php do_action( 'lightning_entry_body_before' ); ?>
 	<div class="<?php lightning_the_class_name( 'entry-body' ); ?>">
 	<?php woocommerce_content(); ?>
@@ -61,7 +61,7 @@ if ( lightning_is_page_header_and_breadcrumb() ){
 		 */
 		// do_action( 'woocommerce_after_main_content' );
 	?>
-	</div><!-- [ /#post-<?php the_ID(); ?> ] -->
+	</article><!-- [ /#post-<?php the_ID(); ?> ] -->
 
 
 <?php do_action( 'lightning_mainSection_append' ); ?>

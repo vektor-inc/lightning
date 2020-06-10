@@ -13,7 +13,7 @@ if ( have_posts() ) {
 		the_post();
 	?>
 
-	<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 		<?php do_action( 'lightning_entry_body_before' ); ?>
 		<div class="<?php lightning_the_class_name( 'entry-body' ); ?>">
@@ -30,8 +30,8 @@ if ( have_posts() ) {
 			'echo'        => 1,
 		);
 		wp_link_pages( $args );
-	?>
-	</div><!-- [ /#post-<?php the_ID(); ?> ] -->
+		?>
+	</article><!-- [ /#post-<?php the_ID(); ?> ] -->
 
 <?php
 endwhile;
