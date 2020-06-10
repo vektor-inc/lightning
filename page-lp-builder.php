@@ -38,5 +38,6 @@ endwhile;
 }
 ?>
 
+<?php do_action( 'lightning_siteContent_apepend' ); ?>
 </div><!-- [ /.siteContent ] -->
 <?php get_footer(); ?>

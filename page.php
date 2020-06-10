@@ -76,6 +76,8 @@ if ( have_posts() ) {
 
 
 </div><!-- [ /.row ] -->
+<?php do_action( 'lightning_siteContent_container_apepend' ); ?>
 </div><!-- [ /.container ] -->
+<?php do_action( 'lightning_siteContent_apepend' ); ?>
 </div><!-- [ /.siteContent ] -->
 <?php get_footer(); ?>

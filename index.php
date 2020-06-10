@@ -129,6 +129,8 @@ if ( locate_template( $old_file_name, false, false ) ) {
 
 
 </div><!-- [ /.row ] -->
+<?php do_action( 'lightning_siteContent_container_apepend' ); ?>
 </div><!-- [ /.container ] -->
+<?php do_action( 'lightning_siteContent_apepend' ); ?>
 </div><!-- [ /.siteContent ] -->
 <?php get_footer(); ?>

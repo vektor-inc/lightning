@@ -118,6 +118,8 @@ if ( empty( $lightning_theme_options['top_slide_hide'] ) ) {
 			<?php endif; ?>
 
 </div><!-- [ /.row ] -->
+<?php do_action( 'lightning_siteContent_container_apepend' ); ?>
 </div><!-- [ /.container ] -->
+<?php do_action( 'lightning_siteContent_apepend' ); ?>
 </div><!-- [ /.siteContent ] -->
 <?php get_footer(); ?>
