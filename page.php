@@ -17,8 +17,8 @@ if ( lightning_is_page_header_and_breadcrumb() ){
 	/*-------------------------------------------*/
 	/* BreadCrumb
 	/*-------------------------------------------*/
-	$old_file_name[] = 'module_panList.php';
 	do_action( 'lightning_breadcrumb_before' );
+	$old_file_name[] = 'module_panList.php';
 	if ( locate_template( $old_file_name, false, false ) ) {
 		locate_template( $old_file_name, true, false );
 	} else {
