@@ -81,6 +81,8 @@ if ( lightning_is_page_header_and_breadcrumb() ){
 </div><!-- [ /.subSection ] -->
 <?php endif; ?>
 
+<?php do_action( 'lightning_additional_section' ); ?>
+
 </div><!-- [ /.row ] -->
 <?php do_action( 'lightning_siteContent_container_apepend' ); ?>
 </div><!-- [ /.container ] -->
