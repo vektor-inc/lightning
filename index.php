@@ -16,11 +16,13 @@ if ( locate_template( $old_file_name, false, false ) ) {
  BreadCrumb
 /*-------------------------------------------*/
 $old_file_name[] = 'module_panList.php';
+do_action( 'lightning_breadcrumb_before' );
 if ( locate_template( $old_file_name, false, false ) ) {
 	locate_template( $old_file_name, true, false );
 } else {
 	get_template_part( 'template-parts/breadcrumb' );
 }
+do_action( 'lightning_breadcrumb_after' );
 ?>
 
 <div class="<?php lightning_the_class_name( 'siteContent' ); ?>">
