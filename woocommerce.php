@@ -17,12 +17,14 @@ if ( lightning_is_page_header_and_breadcrumb() ){
 	/*-------------------------------------------*/
 	/* BreadCrumb
 	/*-------------------------------------------*/
+	do_action( 'lightning_breadcrumb_before' );
 	$old_file_name[] = 'module_panList.php';
 	if ( locate_template( $old_file_name, false, false ) ) {
 		locate_template( $old_file_name, true, false );
 	} else {
 		get_template_part( 'template-parts/breadcrumb' );
 	}
+	do_action( 'lightning_breadcrumb_after' );
 
 } // if ( lightning_is_page_header_and_top_breadcrumb() ){
 ?>
@@ -80,6 +82,8 @@ if ( lightning_is_page_header_and_breadcrumb() ){
 <?php endif; ?>
 
 </div><!-- [ /.row ] -->
+<?php do_action( 'lightning_siteContent_container_apepend' ); ?>
 </div><!-- [ /.container ] -->
+<?php do_action( 'lightning_siteContent_apepend' ); ?>
 </div><!-- [ /.siteContent ] -->
 <?php get_footer(); ?>
