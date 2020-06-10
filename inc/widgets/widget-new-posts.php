@@ -136,7 +136,7 @@ class WP_Widget_ltg_post_list extends WP_Widget {
 				<h1 class="entry-title"><?php the_title(); ?></h1>
 			</header>
 
-			<div class="entry-body">
+			<div class="<?php lightning_the_class_name( 'entry-body' ); ?>">
 
 				<?php
 				$lightning_more_btn_txt = '<span class="btn btn-default btn-block">' . __( 'Read more', 'lightning' ) . '</span>';
