@@ -41,6 +41,8 @@
 				3 => array( 'class' => 'col-md-4' ),
 				// Use 4 widget area
 				4 => array( 'class' => 'col-md-3' ),
+				// Use 6 widget area
+				6 => array( 'class' => 'col-md-2' ),
 			);
 
 			$footer_widget_area_count = 3;
