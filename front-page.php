@@ -44,7 +44,7 @@ do_action( 'lightning_top_slide_after');
 							the_post();
 							?>
 
-						<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+						<article id="post-<?php the_ID(); ?>" <?php post_class( apply_filters( 'lightning_article_outer_class', '' ) ); ?>>
 						<?php do_action( 'lightning_entry_body_before' ); ?>
 						<div class="<?php lightning_the_class_name( 'entry-body' ); ?>">
 							<?php the_content(); ?>
