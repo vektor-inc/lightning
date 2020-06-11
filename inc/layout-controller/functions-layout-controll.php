@@ -154,26 +154,16 @@ function lightning_is_subsection_display() {
 			$return = false;
 		}
 	} elseif ( is_home() ) {
-		if ( isset( $options['layout']['archive'] ) ) {
-			if ( $options['layout']['archive'] === 'col-one-no-subsection' ) {
-				$return = false;
-			}
-		}
 		if ( isset( $options['layout']['archive-post'] ) ) {
 			if ( 'col-one-no-subsection' === $options['layout']['archive-post'] ) {
 				$return = false;
 			}
 		}
 	} elseif ( is_archive() ) {
-		if ( isset( $options['layout']['archive'] ) ) {
-			if ( 'col-one-no-subsection' === $options['layout']['archive'] ) {
-				$return = false;
-			}
-		}
-		$additional_post_types = array( 'post' ) + $additional_post_types;
-		foreach ( $additional_post_types as $get_post_type ) {
-			if ( isset( $options['layout'][ 'archive-' . $get_post_type ] ) && get_post_type() === $get_post_type ) {
-				if ( 'col-one-no-subsection' === $options['layout'][ 'archive-' . $get_post_type ] ) {
+		$archive_post_types = array( 'post' ) + $additional_post_types;
+		foreach ( $archive_post_types as $archive_post_type ) {
+			if ( isset( $options['layout'][ 'archive-' . $archive_post_type ] ) && get_post_type() === $archive_post_type ) {
+				if ( 'col-one-no-subsection' === $options['layout'][ 'archive-' . $archive_post_type ] ) {
 					$return = false;
 				}
 			}
@@ -189,10 +179,10 @@ function lightning_is_subsection_display() {
 				$return = false;
 			}
 		}
-		$additional_post_types = array( 'post', 'page' ) + $additional_post_types;
-		foreach ( $additional_post_types as $get_post_type ) {
-			if ( isset( $options['layout'][ 'single-' . $get_post_type ] ) && get_post_type() === $get_post_type ) {
-				if ( 'col-one-no-subsection' === $options['layout'][ 'single-' . $get_post_type ] ) {
+		$single_post_types = array( 'post', 'page' ) + $additional_post_types;
+		foreach ( $single_post_types as $single_post_type ) {
+			if ( isset( $options['layout'][ 'single-' . $single_post_type ] ) && get_post_type() === $single_post_type ) {
+				if ( 'col-one-no-subsection' === $options['layout'][ 'single-' . $single_post_type ] ) {
 					$return = false;
 				}
 			}

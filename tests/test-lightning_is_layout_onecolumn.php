@@ -73,7 +73,7 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 		$front_page_id = wp_insert_post( $post );
 
 		// custom post type.
-		$post          = array(
+		$post     = array(
 			'post_title'   => 'event-test',
 			'post_type'    => 'event',
 			'post_status'  => 'publish',
@@ -196,17 +196,6 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 				'options'           => array(
 					'layout' => array(
 						'archive' => 'col-one',
-					),
-				),
-				'_wp_page_template' => '',
-				'target_url'        => home_url( '/' ) . '?post_type=event',
-				'correct'           => true,
-			),
-			array(
-				'options'           => array(
-					'layout' => array(
-						'archive' => 'col-two',
-						'archive-event' => 'col-one',
 					),
 				),
 				'_wp_page_template' => '',
