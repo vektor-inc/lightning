@@ -86,6 +86,9 @@ do_action( 'lightning_breadcrumb_after' );
 		$old_file_name[] = 'module_loop_post.php';
 		$require_once    = false;
 
+		global $lightning_loop_item_count;
+		$lightning_loop_item_count = 0;
+
 		while ( have_posts() ) {
 			the_post();
 
@@ -94,6 +97,10 @@ do_action( 'lightning_breadcrumb_after' );
 			} else {
 				get_template_part( 'template-parts/post/loop', $postType['slug'] );
 			}
+
+			$lightning_loop_item_count++;
+			do_action( 'lightning_loop_item_after' );
+
 		} // while ( have_posts() ) {
 		?>
 
