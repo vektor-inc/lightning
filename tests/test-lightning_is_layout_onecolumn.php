@@ -202,6 +202,16 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 				'target_url'        => home_url( '/' ) . '?post_type=post',
 				'correct'           => true,
 			),
+			array(
+				'options'           => array(
+					'layout' => array(
+						'archive-event' => 'col-one',
+					),
+				),
+				'_wp_page_template' => '',
+				'target_url'        => home_url( '/' ) . '?post_type=event',
+				'correct'           => true,
+			),
 			// Post type archive
 			array(
 				'options'           => array(
