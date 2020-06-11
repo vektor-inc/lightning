@@ -32,7 +32,7 @@ gulp.task('text-domain', function (done) {
 	.pipe(replace(', \'vk_font_awesome_version_textdomain\'', ', \'lightning\''))
 	.pipe(gulp.dest('./inc/font-awesome/package/'));
 	gulp.src(['./inc/vk-components/package/*.php'])
-	.pipe(replace(', \'vk-compo-textdomain\'', ', \'lightning\''))
+	.pipe(replace(', \'vk_components_textdomain\'', ', \'lightning\''))
 	.pipe(gulp.dest('./inc/vk-components/package/'));
 	gulp.src(['./inc/vk-mobile-nav/package/*.php'])
 	.pipe(replace('vk_mobile_nav_textdomain', 'lightning'))
