@@ -45,7 +45,7 @@ else :
 		while ( have_posts() ) :
 			the_post();
 			?>
-		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+		<article id="post-<?php the_ID(); ?>" <?php post_class( apply_filters( 'lightning_article_outer_class', '' ) ); ?>>
 		<header class="<?php lightning_the_class_name( 'entry-header' ); ?>">
 			<?php get_template_part( 'template-parts/post/meta' ); ?>
 			<h1 class="entry-title"><?php the_title(); ?></h1>
