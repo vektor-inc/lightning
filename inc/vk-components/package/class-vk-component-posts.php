@@ -20,7 +20,6 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 		 Basic method
 		/*-------------------------------------------*/
 		public static function get_loop_post_view_options( $options ) {
-			global $vk_components_textdomain;
 			$default = array(
 				'layout'                     => 'card',
 				'display_image'              => true,
@@ -132,14 +131,24 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 
 				$loop .= '<div class="vk_posts ' . esc_attr( $loop_outer_class ) . ' ' . esc_attr( implode( ' ', $hidden_class ) ) . '">';
 
+				global $vk_posts_loop_count;
+				$vk_posts_loop_count = 0;
+
 				while ( $wp_query->have_posts() ) {
+
+					$vk_posts_loop_count++;
+
 					$wp_query->the_post();
 					global $post;
 					$loop .= self::get_view( $post, $options );
+
+					$loop .= apply_filters( 'vk_posts_loop_middle', '', $options );
+
 				} // while ( have_posts() ) {
-				endif;
 
 				$loop .= '</div>';
+
+			endif;
 
 			wp_reset_postdata();
 			return $loop;
@@ -533,8 +542,8 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			} elseif ( $input_col == 6 ) {
 				$col = 2;
 			} else {
-				$col = 4;
-			}
+                $col = 4;
+            }
 			return strval( $col );
 		}
 
