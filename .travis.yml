@@ -1,81 +1,65 @@
+sudo: false
+dist: trusty
+
 language: php
 
+notifications:
+  email:
+    on_success: never
+    on_failure: change
+
 branches:
-  - master
-  - develop
-  - /^feature\/.*/
-
-env:
-  global:
-    - GIT_COMMITTER_NAME=travis-ci
-    - GIT_COMMITTER_EMAIL=kurudrive@gmail.com
-    - GIT_AUTHOR_NAME=travis-ci
-    - GIT_AUTHOR_EMAIL=kurudrive@gmail.com
-    - LIGHTNING_THEME_NAME=Lightning
-    - secure: "dr02Vmh5hQ9xlQZKWVF6eMt3mM2aXkXIW5LRhNB8UcFtUasrJnINZEJty3CEAGu94d8HSEhs2cQLdoYvxvs+6DAMoXrc+LaVFXoDmoTg1ogdCoF0cyWHLYn5tul4toOCg4mzjD2y/umDcrp/p5ezq2BmhEb5eHBz+Oqp9eZyhgXm5hf3hcb5I9c0ztUMNn1tVzhab/X7i4MMvYP36ojVekJqLY4YOOwlmoaikDPfVeK8P6nvuJJtUnVPuOwlgdQXL5iNIrGpVb6WFKDtLZcIfaEjX5zCLMynpPB+HWcALBySlkLwc03JwKcBoUKah7JdgyIebcP2D/9Q6F2U8ZmZpSx1eLpPXXwI3SMcvx7T/ac7UeTguf1f6NAokCdzxccApxJk6NxdnHMlAcK54RiXvpMiOG7BTM8C9RqSGs7BNC3g29NAKutG9qn3HlTZDlx2s9iBI+IFvxX/IZmMnI2rho2l1hVSgFORl4rArAEF5LTRZgUbhdz1RCq/f0vvKHyJ1fl40kMNYKMLcTafBx44wBL9Ep4Siwg3zmILyfEOARyC32mwpSGM0ts91QjJEOitRikHKa1f27FLX6vZW0S4Qf8L7wdaqZnReIyrqO9B/BOhInJMFjVAFwMdGpMoVha4rAQ4cfT3EEVaDBVVCaLfaADRO8uwRLhyDKkOlbeGjpc="
-
-matrix:
-  include:
-    - php: 7.3
-      dist: trusty
-      env:
-        - WP_VERSION=latest WP_MULTISITE=0
-    - php: 7.2
-      dist: trusty
-      env:
-        - WP_VERSION=latest WP_MULTISITE=0
+  only:
+    - master
 
 cache:
   directories:
-    - vendor
+    - $HOME/.composer/cache
+
+matrix:
+  include:
+    - php: 7.2
+      env: WP_VERSION=latest
+    - php: 7.1
+      env: WP_VERSION=latest
+    - php: 7.0
+      env: WP_VERSION=latest
+    - php: 5.6
+      env: WP_VERSION=latest
+    - php: 5.6
+      env: WP_VERSION=trunk
+    - php: 5.6
+      env: WP_TRAVISCI=phpcs
 
 before_script:
-  - npm i -D
-  - bash bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
-  - export PATH="${PWD}/vendor/bin:${PATH}"
+  - export PATH="$HOME/.composer/vendor/bin:$PATH"
   - |
-    if [[ ${TRAVIS_PHP_VERSION:0:3} == "7.0" ]]; then
-      composer require "phpunit/phpunit=5.6.*"
+    if [ -f ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini ]; then
+      phpenv config-rm xdebug.ini
     else
-      composer require "phpunit/phpunit=7.5.9"
+      echo "xdebug.ini does not exist"
     fi
-  - cp assets/js/lightning.min.js .lightning.min.js.before
-  - cp assets/css/common.css .common.css.before
-  - cp assets/css/common_editor.css .common_editor.css.before
-  - cp assets/css/wp-embed.css .embed.css.before
-  - cp design-skin/origin/css/editor.css .origin.editor.css.before
-  - cp design-skin/origin/css/style.css .origin.style.css.before
-  - cp design-skin/origin2/css/editor.css .origin2.editor.css.before
-  - cp design-skin/origin2/css/style.css .origin2.style.css.before
-  - cp inc/woocommerce/css/woo.css .woo.css.before
+  - |
+    if [[ ! -z "$WP_VERSION" ]] ; then
+      bash bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
+      composer global require "phpunit/phpunit=4.8.*|5.7.*"
+    fi
+  - |
+    if [[ "$WP_TRAVISCI" == "phpcs" ]] ; then
+      composer global require wp-coding-standards/wpcs
+      composer global require phpcompatibility/php-compatibility
+      composer global require phpcompatibility/phpcompatibility-paragonie
+      composer global require phpcompatibility/phpcompatibility-wp
+      phpcs --config-set installed_paths $HOME/.composer/vendor/wp-coding-standards/wpcs,$HOME/.composer/vendor/phpcompatibility/php-compatibility,$HOME/.composer/vendor/phpcompatibility/phpcompatibility-paragonie,$HOME/.composer/vendor/phpcompatibility/phpcompatibility-wp
+    fi
 
 script:
-  # php syntax error check
-  - find ./ -type d -name vendor -prune -o -name '*.php'|xargs -I {} php -l {}
-  # js forget compile check
-  - npm run gulp js_build
-  - diff assets/js/lightning.min.js .lightning.min.js.before
-  # common css forget compile check
-  - npm run gulp sass_common
-  - diff assets/css/common.css .common.css.before
-  - diff assets/css/common_editor.css .common_editor.css.before
-  - diff assets/css/wp-embed.css .embed.css.before
-  # origin scss forget compile check
-  - npm run gulp sass_skin
-  - diff design-skin/origin/css/editor.css .origin.editor.css.before
-  - diff design-skin/origin/css/style.css .origin.style.css.before
-  # origin2 scss forget compile check
-  - npm run gulp sass_skin2
-  - diff design-skin/origin2/css/editor.css .origin2.editor.css.before
-  - diff design-skin/origin2/css/style.css .origin2.style.css.before
-  # woocommerce scsss forget compile check
-  - diff inc/woocommerce/css/woo.css .woo.css.before
-  # sass_bs4
-  - npm run gulp sass_bs4
-  # PHP Unit Test
-  - vendor/bin/phpunit -c phpunit.xml
-
-after_success:
-  - bash ./bin/deploy.sh
-
-
+  - |
+    if [[ ! -z "$WP_VERSION" ]] ; then
+      phpunit
+      WP_MULTISITE=1 phpunit
+    fi
+  - |
+    if [[ "$WP_TRAVISCI" == "phpcs" ]] ; then
+      phpcs
+    fi
