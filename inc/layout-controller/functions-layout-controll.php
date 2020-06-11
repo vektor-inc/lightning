@@ -43,9 +43,8 @@ function lightning_is_layout_onecolumn() {
 		}
 	}
 
-	if ( is_front_page() && ! is_home() ) {
+	if ( is_front_page() ) {
 		if ( isset( $options['layout']['front-page'] ) ) {
-
 			if ( 'col-one' === $options['layout']['front-page'] || 'col-one-no-subsection' === $options['layout']['front-page'] ) {
 				$onecolumn = true;
 			}
@@ -54,11 +53,16 @@ function lightning_is_layout_onecolumn() {
 			if ( $page_on_front_id ) {
 				$template = get_post_meta( $page_on_front_id, '_wp_page_template', true );
 				if ( 'page-onecolumn.php' === $template || 'page-lp.php' === $template ) {
-					return true;
+					$onecolumn = true;
 				}
 			}
 		}
-	} elseif ( is_home() ) {
+	} elseif ( is_home() && ! is_front_page() ) {
+		if ( isset( $options['layout']['archive'] ) ) {
+			if ( $options['layout']['archive'] === 'col-one' || $options['layout']['archive'] === 'col-one-no-subsection' ) {
+				$onecolumn = true;
+			}
+		}
 		if ( isset( $options['layout']['archive-post'] ) ) {
 			if ( 'col-one' === $options['layout']['archive-post'] || 'col-one-no-subsection' === $options['layout']['archive-post'] ) {
 				$onecolumn = true;
@@ -75,6 +79,11 @@ function lightning_is_layout_onecolumn() {
 	);
 
 	if ( is_archive() ) {
+		if ( isset( $options['layout']['archive'] ) ) {
+			if ( 'col-one' === $options['layout']['archive'] || 'col-one-no-subsection' === $options['layout']['archive'] ) {
+				$onecolumn = true;
+			}
+		}
 		$get_post_types = array( 'post' ) + $get_post_types;
 		foreach ( $get_post_types as $get_post_type ) {
 			if ( isset( $options['layout'][ 'archive-' . $get_post_type ] ) && get_post_type() === $get_post_type ) {
@@ -94,6 +103,16 @@ function lightning_is_layout_onecolumn() {
 				'page-lp.php',
 			);
 			if ( in_array( $template, $template_onecolumn, true ) ) {
+				$onecolumn = true;
+			}
+		}
+		if ( is_page() && isset( $options['layout']['page'] ) ) {
+			if ( 'col-one' === $options['layout']['page'] || 'col-one-no-subsection' === $options['layout']['page'] ) {
+				$onecolumn = true;
+			}
+		}
+		if ( is_single() && isset( $options['layout']['single'] ) ) {
+			if ( 'col-one' === $options['layout']['single'] || 'col-one-no-subsection' === $options['layout']['single'] ) {
 				$onecolumn = true;
 			}
 		}
@@ -156,11 +175,21 @@ function lightning_is_subsection_display() {
 		}
 	} elseif ( is_home() ) {
 		if ( isset( $options['layout']['archive'] ) ) {
+			if ( $options['layout']['archive'] === 'col-one-no-subsection' ) {
+				$return = false;
+			}
+		}
+		if ( isset( $options['layout']['archive-post'] ) ) {
 			if ( 'col-one-no-subsection' === $options['layout']['archive-post'] ) {
 				$return = false;
 			}
 		}
 	} elseif ( is_archive() ) {
+		if ( isset( $options['layout']['archive'] ) ) {
+			if ( 'col-one-no-subsection' === $options['layout']['archive'] ) {
+				$return = false;
+			}
+		}
 		$get_post_types = array( 'post' ) + $get_post_types;
 		foreach ( $get_post_types as $get_post_type ) {
 			if ( isset( $options['layout'][ 'archive-' . $get_post_type ] ) && get_post_type() === $get_post_type ) {
@@ -170,6 +199,16 @@ function lightning_is_subsection_display() {
 			}
 		}
 	} elseif ( is_singular() ) {
+		if ( is_single() && isset( $options['layout']['single'] ) ) {
+			if ( 'col-one-no-subsection' === $options['layout']['single'] ) {
+				$return = false;
+			}
+		}
+		if ( is_page() && isset( $options['layout']['page'] ) ) {
+			if ( 'col-one-no-subsection' === $options['layout']['page'] ) {
+				$return = false;
+			}
+		}
 		$get_post_types = array( 'post', 'page' ) + $get_post_types;
 		foreach ( $get_post_types as $get_post_type ) {
 			if ( isset( $options['layout'][ 'single-' . $get_post_type ] ) && get_post_type() === $get_post_type ) {

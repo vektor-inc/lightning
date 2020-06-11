@@ -1,4 +1,5 @@
-<?php
+<div class="">
+</div><?php
 
 /*
 cd /app
@@ -20,6 +21,14 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 		$before_page_for_posts = get_option( 'page_for_posts' ); // 投稿トップに指定するページ
 		$before_page_on_front  = get_option( 'page_on_front' ); // フロントに指定する固定ページ
 		$before_show_on_front  = get_option( 'show_on_front' ); // トップページ指定するかどうか page or posts
+
+		register_post_type(
+			'event',
+			array(
+				'has_archive' => true,
+				'public'      => true,
+			)
+		);
 
 		// Create test category
 		$catarr  = array(
@@ -62,6 +71,16 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 			'post_content' => 'content',
 		);
 		$front_page_id = wp_insert_post( $post );
+
+		// custom post type.
+		$post          = array(
+			'post_title'   => 'event-test',
+			'post_type'    => 'event',
+			'post_status'  => 'publish',
+			'post_content' => 'content',
+		);
+		$event_id = wp_insert_post( $post );
+
 		update_option( 'page_on_front', $front_page_id ); // フロントに指定する固定ページ
 		update_option( 'page_for_posts', $home_page_id ); // 投稿トップに指定する固定ページ
 		update_option( 'show_on_front', 'page' ); // or posts
@@ -173,6 +192,47 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 				'target_url'        => home_url( '/' ) . '?post_type=post',
 				'correct'           => true,
 			),
+			array(
+				'options'           => array(
+					'layout' => array(
+						'archive' => 'col-one',
+					),
+				),
+				'_wp_page_template' => '',
+				'target_url'        => home_url( '/' ) . '?post_type=event',
+				'correct'           => true,
+			),
+			array(
+				'options'           => array(
+					'layout' => array(
+						'archive' => 'col-two',
+						'archive-event' => 'col-one',
+					),
+				),
+				'_wp_page_template' => '',
+				'target_url'        => home_url( '/' ) . '?post_type=event',
+				'correct'           => true,
+			),
+			array(
+				'options'           => array(
+					'layout' => array(
+						'archive-post' => 'col-one',
+					),
+				),
+				'_wp_page_template' => '',
+				'target_url'        => home_url( '/' ) . '?post_type=post',
+				'correct'           => true,
+			),
+			array(
+				'options'           => array(
+					'layout' => array(
+						'archive-event' => 'col-one',
+					),
+				),
+				'_wp_page_template' => '',
+				'target_url'        => home_url( '/' ) . '?post_type=event',
+				'correct'           => true,
+			),
 			// Post type archive
 			array(
 				'options'           => array(
@@ -252,6 +312,32 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 			),
 			// Single
 			array(
+				'page_type'         => 'single',
+				'options'           => array(
+					'layout' => array(
+						'single-event' => 'col-one',
+					),
+				),
+				'_wp_page_template' => '',
+				'target_url'        => get_permalink( $event_id ),
+				'post_id'           => $event_id,
+				'correct'           => true,
+			),
+			// Single
+			array(
+				'page_type'         => 'single',
+				'options'           => array(
+					'layout' => array(
+						'single-post' => 'col-one',
+					),
+				),
+				'_wp_page_template' => '',
+				'target_url'        => get_permalink( $post_id ),
+				'post_id'           => $post_id,
+				'correct'           => true,
+			),
+			// Single
+			array(
 				'page_type'                 => 'single',
 				'options'                   => array(
 					'layout' => array(
@@ -281,6 +367,7 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 				'post_id'                   => $post_id,
 				'correct'                   => true,
 			),
+
 		);
 
 		foreach ( $test_array as $value ) {
