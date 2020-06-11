@@ -43,7 +43,7 @@ function lightning_is_layout_onecolumn() {
 		}
 	}
 
-	if ( is_front_page() ) {
+	if ( is_front_page() && ! is_home() ) {
 		if ( isset( $options['layout']['front-page'] ) ) {
 			if ( 'col-one' === $options['layout']['front-page'] || 'col-one-no-subsection' === $options['layout']['front-page'] ) {
 				$onecolumn = true;
@@ -57,12 +57,7 @@ function lightning_is_layout_onecolumn() {
 				}
 			}
 		}
-	} elseif ( is_home() && ! is_front_page() ) {
-		if ( isset( $options['layout']['archive'] ) ) {
-			if ( $options['layout']['archive'] === 'col-one' || $options['layout']['archive'] === 'col-one-no-subsection' ) {
-				$onecolumn = true;
-			}
-		}
+	} elseif ( is_home() ) {
 		if ( isset( $options['layout']['archive-post'] ) ) {
 			if ( 'col-one' === $options['layout']['archive-post'] || 'col-one-no-subsection' === $options['layout']['archive-post'] ) {
 				$onecolumn = true;
@@ -70,7 +65,7 @@ function lightning_is_layout_onecolumn() {
 		}
 	}
 
-	$get_post_types = get_post_types(
+	$additional_post_types = get_post_types(
 		array(
 			'public'   => true,
 			'_builtin' => false,
@@ -79,15 +74,10 @@ function lightning_is_layout_onecolumn() {
 	);
 
 	if ( is_archive() ) {
-		if ( isset( $options['layout']['archive'] ) ) {
-			if ( 'col-one' === $options['layout']['archive'] || 'col-one-no-subsection' === $options['layout']['archive'] ) {
-				$onecolumn = true;
-			}
-		}
-		$get_post_types = array( 'post' ) + $get_post_types;
-		foreach ( $get_post_types as $get_post_type ) {
-			if ( isset( $options['layout'][ 'archive-' . $get_post_type ] ) && get_post_type() === $get_post_type ) {
-				if ( 'col-one' === $options['layout'][ 'archive-' . $get_post_type ] || 'col-one-no-subsection' === $options['layout'][ 'archive-' . $get_post_type ] ) {
+		$archive_post_types = array( 'post' ) + $additional_post_types;
+		foreach ( $archive_post_types as $archive_post_type ) {
+			if ( isset( $options['layout'][ 'archive-' . $archive_post_type ] ) && get_post_type() === $archive_post_type ) {
+				if ( 'col-one' === $options['layout'][ 'archive-' . $archive_post_type ] || 'col-one-no-subsection' === $options['layout'][ 'archive-' . $archive_post_type ] ) {
 					$onecolumn = true;
 				}
 			}
@@ -106,20 +96,10 @@ function lightning_is_layout_onecolumn() {
 				$onecolumn = true;
 			}
 		}
-		if ( is_page() && isset( $options['layout']['page'] ) ) {
-			if ( 'col-one' === $options['layout']['page'] || 'col-one-no-subsection' === $options['layout']['page'] ) {
-				$onecolumn = true;
-			}
-		}
-		if ( is_single() && isset( $options['layout']['single'] ) ) {
-			if ( 'col-one' === $options['layout']['single'] || 'col-one-no-subsection' === $options['layout']['single'] ) {
-				$onecolumn = true;
-			}
-		}
-		$get_post_types = array( 'post', 'page' ) + $get_post_types;
-		foreach ( $get_post_types as $get_post_type ) {
-			if ( isset( $options['layout'][ 'single-' . $get_post_type ] ) && get_post_type() === $get_post_type ) {
-				if ( 'col-one' === $options['layout'][ 'single-' . $get_post_type ] || 'col-one-no-subsection' === $options['layout'][ 'single-' . $get_post_type ] ) {
+		$single_post_types = array( 'post', 'page' ) + $additional_post_types;
+		foreach ( $single_post_types as $single_post_type ) {
+			if ( isset( $options['layout'][ 'single-' . $single_post_type ] ) && get_post_type() === $single_post_type ) {
+				if ( 'col-one' === $options['layout'][ 'single-' . $single_post_type ] || 'col-one-no-subsection' === $options['layout'][ 'single-' . $single_post_type ] ) {
 					$onecolumn = true;
 				}
 			}
@@ -160,7 +140,7 @@ function lightning_is_subsection_display() {
 		}
 	}
 
-	$get_post_types = get_post_types(
+	$additional_post_types = get_post_types(
 		array(
 			'public'   => true,
 			'_builtin' => false,
@@ -190,8 +170,8 @@ function lightning_is_subsection_display() {
 				$return = false;
 			}
 		}
-		$get_post_types = array( 'post' ) + $get_post_types;
-		foreach ( $get_post_types as $get_post_type ) {
+		$additional_post_types = array( 'post' ) + $additional_post_types;
+		foreach ( $additional_post_types as $get_post_type ) {
 			if ( isset( $options['layout'][ 'archive-' . $get_post_type ] ) && get_post_type() === $get_post_type ) {
 				if ( 'col-one-no-subsection' === $options['layout'][ 'archive-' . $get_post_type ] ) {
 					$return = false;
@@ -209,8 +189,8 @@ function lightning_is_subsection_display() {
 				$return = false;
 			}
 		}
-		$get_post_types = array( 'post', 'page' ) + $get_post_types;
-		foreach ( $get_post_types as $get_post_type ) {
+		$additional_post_types = array( 'post', 'page' ) + $additional_post_types;
+		foreach ( $additional_post_types as $get_post_type ) {
 			if ( isset( $options['layout'][ 'single-' . $get_post_type ] ) && get_post_type() === $get_post_type ) {
 				if ( 'col-one-no-subsection' === $options['layout'][ 'single-' . $get_post_type ] ) {
 					$return = false;
