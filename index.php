@@ -129,6 +129,7 @@ do_action( 'lightning_breadcrumb_after' );
 	</div><!-- [ /.subSection ] -->
 <?php } ?>
 
+<?php do_action( 'lightning_additional_section' ); ?>
 
 </div><!-- [ /.row ] -->
 <?php do_action( 'lightning_siteContent_container_apepend' ); ?>
