@@ -8,6 +8,18 @@ add_action( 'after_setup_theme', 'lightning_options_compatible' );
  */
 function lightning_options_compatible() {
 	$options = get_option( 'lightning_theme_options' );
+	global $wp_query;
+
+	$additional_post_types = get_post_types(
+		array(
+			'public'   => true,
+			'_builtin' => false,
+		),
+		'names'
+	);
+
+	$archive_post_types = array( 'post' ) + $additional_post_types;
+
 	if ( isset( $options['top_sidebar_hidden'] ) ) {
 		if ( $options['top_sidebar_hidden'] ) {
 			if ( isset( $options['layout']['front-page'] ) && $options['layout']['front-page'] === 'col-two' ) {
@@ -18,6 +30,49 @@ function lightning_options_compatible() {
 			}
 		}
 		unset( $options['top_sidebar_hidden'] );
+	}
+	if ( isset( $options['layout']['archive'] ) ) {
+		foreach ( $archive_post_types as $archive_post_type ) {
+			if ( 'col-two' === $options['layout']['archive'] ) {
+				$options['layout'][ 'archive-' . $archive_post_type ] = 'col-two';
+				update_option( 'lightning_theme_options', $options );
+			} elseif ( 'col-one' === $options['layout']['archive'] ) {
+				$options['layout'][ 'archive-' . $archive_post_type ] = 'col-one';
+				update_option( 'lightning_theme_options', $options );
+			} elseif ( 'col-one-no-subsection' === $options['layout']['archive'] ) {
+				$options['layout'][ 'archive-' . $archive_post_type ] = 'col-one-no-subsection';
+				update_option( 'lightning_theme_options', $options );
+			}
+		}
+		unset( $options['layout']['archive'] );
+	}
+	if ( isset( $options['layout']['single'] ) ) {
+		foreach ( $archive_post_types as $archive_post_type ) {
+			if ( 'col-two' === $options['layout']['single'] ) {
+				$options['layout'][ 'single-' . $archive_post_type ] = 'col-two';
+				update_option( 'lightning_theme_options', $options );
+			} elseif ( 'col-one' === $options['layout']['single'] ) {
+				$options['layout'][ 'single-' . $archive_post_type ] = 'col-one';
+				update_option( 'lightning_theme_options', $options );
+			} elseif ( 'col-one-no-subsection' === $options['layout']['single'] ) {
+				$options['layout'][ 'single-' . $archive_post_type ] = 'col-one-no-subsection';
+				update_option( 'lightning_theme_options', $options );
+			}
+		}
+		unset( $options['layout']['single'] );
+	}
+	if ( isset( $options['layout']['page'] ) ) {
+		if ( 'col-two' === $options['layout']['page'] ) {
+			$options['layout']['single-page'] = 'col-two';
+			update_option( 'lightning_theme_options', $options );
+		} elseif ( 'col-one' === $options['layout']['page'] ) {
+			$options['layout']['single-page'] = 'col-one';
+			update_option( 'lightning_theme_options', $options );
+		} elseif ( 'col-one-no-subsection' === $options['layout']['page'] ) {
+			$options['layout']['single-page'] = 'col-one-no-subsection';
+			update_option( 'lightning_theme_options', $options );
+		}
+		unset( $options['layout']['page'] );
 	}
 }
 

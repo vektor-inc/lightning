@@ -1,5 +1,4 @@
-<div class="">
-</div><?php
+<?php
 
 /*
 cd /app
@@ -202,6 +201,7 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 				'target_url'        => home_url( '/' ) . '?post_type=event',
 				'correct'           => true,
 			),
+			/*
 			array(
 				'options'           => array(
 					'layout' => array(
@@ -213,6 +213,7 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 				'target_url'        => home_url( '/' ) . '?post_type=event',
 				'correct'           => true,
 			),
+			*/
 			array(
 				'options'           => array(
 					'layout' => array(
