@@ -31,8 +31,8 @@ function lightning_options_compatible() {
 		}
 		unset( $options['top_sidebar_hidden'] );
 	}
-	foreach ( $archive_post_types as $archive_post_type ) {
-		if ( isset( $options['layout']['archive'] ) && empty( $options['layout'][ 'archive-' . $archive_post_type ] ) ) {
+	if ( isset( $options['layout']['archive'] ) ) {
+		foreach ( $archive_post_types as $archive_post_type ) {
 			if ( 'col-two' === $options['layout']['archive'] ) {
 				$options['layout'][ 'archive-' . $archive_post_type ] = 'col-two';
 				update_option( 'lightning_theme_options', $options );
@@ -43,9 +43,11 @@ function lightning_options_compatible() {
 				$options['layout'][ 'archive-' . $archive_post_type ] = 'col-one-no-subsection';
 				update_option( 'lightning_theme_options', $options );
 			}
-			unset( $options['layout']['archive'] );
 		}
-		if ( isset( $options['layout']['single'] ) && empty( $options['layout'][ 'single-' . $archive_post_type ] ) ) {
+		unset( $options['layout']['archive'] );
+	}
+	if ( isset( $options['layout']['single'] ) ) {
+		foreach ( $archive_post_types as $archive_post_type ) {
 			if ( 'col-two' === $options['layout']['single'] ) {
 				$options['layout'][ 'single-' . $archive_post_type ] = 'col-two';
 				update_option( 'lightning_theme_options', $options );
@@ -56,10 +58,10 @@ function lightning_options_compatible() {
 				$options['layout'][ 'single-' . $archive_post_type ] = 'col-one-no-subsection';
 				update_option( 'lightning_theme_options', $options );
 			}
-			unset( $options['layout']['single'] );
 		}
+		unset( $options['layout']['single'] );
 	}
-	if ( isset( $options['layout']['page'] ) && empty( $options['layout']['single-page'] ) ) {
+	if ( isset( $options['layout']['page'] ) ) {
 		if ( 'col-two' === $options['layout']['page'] ) {
 			$options['layout']['single-page'] = 'col-two';
 			update_option( 'lightning_theme_options', $options );
