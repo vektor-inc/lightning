@@ -47,17 +47,47 @@ function lightning_customize_register_layout( $wp_customize ) {
 		'error404'   => array(
 			'label' => __( '404 page', 'lightning' ),
 		),
-		'archive'    => array(
-			'label' => __( 'Archive page', 'lightning' ),
-		),
-		'page'       => array(
-			'label' => _x( 'Page', 'customize-layout', 'lightning' ),
-		),
-		'single'     => array(
-			'label' => __( 'Single page', 'lightning' ),
-		),
 		// If cope with custom post types that like a "archive-post" "single-post".
 	);
+
+	$get_post_types = get_post_types(
+		array(
+			'public'   => true,
+			'_builtin' => false,
+		),
+		'names'
+	);
+
+	$page_types = $page_types + array(
+		'archive-post' => array(
+			'label' => __( 'Archive Page [post]', 'lightning' ),
+		),
+	);
+
+	foreach ( $get_post_types as $get_post_type ) {
+		$page_types = $page_types + array(
+			'archive-' . $get_post_type => array(
+				'label' => __( 'Archive Page [' . $get_post_type . ']', 'lightning' ),
+			),
+		);
+	}
+
+	$page_types = $page_types + array(
+		'single-page' => array(
+			'label' => __( 'Single Page [page]', 'lightning' ),
+		),
+		'single-post' => array(
+			'label' => __( 'Single Page [post]', 'lightning' ),
+		),
+	);
+
+	foreach ( $get_post_types as $get_post_type ) {
+		$page_types = $page_types + array(
+			'single-' . $get_post_type => array(
+				'label' => __( 'Single Page [' . $get_post_type . ']', 'lightning' ),
+			),
+		);
+	}
 
 	$choices = array(
 		'default'               => __( 'Unspecified', 'lightning' ),
@@ -65,6 +95,7 @@ function lightning_customize_register_layout( $wp_customize ) {
 		'col-one'               => __( '1 column', 'lightning' ),
 		'col-one-no-subsection' => __( '1 column ( No sub section )', 'lightning' ),
 	);
+	$choices = apply_filters( 'lighghtning_columns_setting_choice', $choices );
 
 	$wp_customize->selective_refresh->add_partial(
 		'lightning_theme_options[layout][front-page]',

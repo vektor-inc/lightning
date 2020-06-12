@@ -35,6 +35,16 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v10.0.0
+* [ Add Function ] Cope with layout per custom post type 
+* [ Add Action hook ]
+* [ Spacification Change ] Change article div to article from div
+* [ Spacification Change ] Cope with footer widget area to 6 column
+ 
+v9.14.0
+* Bootstrap update to 4.5.0
+* Add theme support page excerpt
+
 v9.11.1
 * Delete unused files in Font Awesome
 

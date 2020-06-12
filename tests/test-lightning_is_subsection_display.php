@@ -99,7 +99,16 @@ class LightningIsSubsectionDisplayTest extends WP_UnitTestCase {
 				'target_url' => get_permalink( $home_page_id ),
 				'correct'    => false,
 			),
-
+			// post archive
+			array(
+				'options'    => array(
+					'layout' => array(
+						'archive-post' => 'col-one-no-subsection',
+					),
+				),
+				'target_url' => get_permalink( $home_page_id ),
+				'correct'    => false,
+			),
 			// post single
 			array(
 				'options'    => array(
