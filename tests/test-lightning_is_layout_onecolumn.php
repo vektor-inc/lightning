@@ -184,39 +184,6 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 			array(
 				'options'           => array(
 					'layout' => array(
-						'archive' => 'col-one',
-					),
-				),
-				'_wp_page_template' => '',
-				'target_url'        => home_url( '/' ) . '?post_type=post',
-				'correct'           => true,
-			),
-			array(
-				'options'           => array(
-					'layout' => array(
-						'archive' => 'col-one',
-					),
-				),
-				'_wp_page_template' => '',
-				'target_url'        => home_url( '/' ) . '?post_type=event',
-				'correct'           => true,
-			),
-			/*
-			array(
-				'options'           => array(
-					'layout' => array(
-						'archive' => 'col-two',
-						'archive-event' => 'col-one',
-					),
-				),
-				'_wp_page_template' => '',
-				'target_url'        => home_url( '/' ) . '?post_type=event',
-				'correct'           => true,
-			),
-			*/
-			array(
-				'options'           => array(
-					'layout' => array(
 						'archive-post' => 'col-one',
 					),
 				),
@@ -227,6 +194,40 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 			array(
 				'options'           => array(
 					'layout' => array(
+						'archive-event' => 'col-one',
+					),
+				),
+				'_wp_page_template' => '',
+				'target_url'        => home_url( '/' ) . '?post_type=event',
+				'correct'           => true,
+			),
+			// Post type archive（ Old specification parameter ）
+			array(
+				'options'           => array(
+					'layout' => array(
+						'archive' => 'col-one',
+					),
+				),
+				'_wp_page_template' => '',
+				'target_url'        => home_url( '/' ) . '?post_type=post',
+				'correct'           => true,
+			),
+			// Post type archive（ Old specification parameter ）
+			array(
+				'options'           => array(
+					'layout' => array(
+						'archive' => 'col-one',
+					),
+				),
+				'_wp_page_template' => '',
+				'target_url'        => home_url( '/' ) . '?post_type=event',
+				'correct'           => true,
+			),
+			// Post type archive（ New parameter with Old specification parameter ）
+			array(
+				'options'           => array(
+					'layout' => array(
+						'archive' => 'col-two',
 						'archive-event' => 'col-one',
 					),
 				),
@@ -270,6 +271,7 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 				'correct'           => true,
 			),
 
+			// Page（ Old specification parameter ）
 			array(
 				'page_type'         => 'page',
 				'options'           => array(
@@ -282,6 +284,7 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 				'post_id'           => $normal_page_id,
 				'correct'           => true,
 			),
+			// Page（ Old specification parameter with post_meta ）
 			array(
 				'page_type'                 => 'page',
 				'options'                   => array(
@@ -298,7 +301,7 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 				'correct'                   => false,
 			),
 
-			// Single
+			// Single（ Old specification parameter ）
 			array(
 				'page_type'         => 'single',
 				'options'           => array(
