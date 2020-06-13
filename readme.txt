@@ -35,6 +35,9 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v10.0.1
+* [ Bug fix ] layout controll compatible bug fix
+
 v10.0.0
 * [ Add Function ] Cope with layout per custom post type 
 * [ Add Action hook ]
