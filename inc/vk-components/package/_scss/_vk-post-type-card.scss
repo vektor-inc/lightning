@@ -70,6 +70,22 @@ https://github.com/vektor-inc/vektor-wp-libraries
 		}
 	}
 }
+/*-------------------------------------------*/
+/* .card-imageRound
+/*-------------------------------------------*/
+.card-imageRound {
+	.vk_post_imgOuter {
+		margin-left: auto;
+		margin-right: auto;
+		width: 150px;
+		height: 150px;
+		border-radius: 50%; /* 角丸半径を50%にする(=円形にする) */
+		background-position: center center; /* 横長画像の左上を基準に表示 */
+		&::before {
+			padding-top: 150px;
+		}
+	}
+}
 
 /*-------------------------------------------*/
 /* １カラム カード の時の下部の余白を小さく変更

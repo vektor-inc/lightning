@@ -211,19 +211,22 @@ $xl-min: 1200px;
 			left: -9999px;
 		}
 	}
-	&:not(.card-horizontal) {
-		.vk_post_imgOuter {
-			&:before {
-				content: "";
-				display: block;
-				padding-top: 62%;
-			}
+
+	.vk_post_imgOuter {
+		&:before {
+			content: "";
+			display: block;
+			padding-top: 62%;
 		}
 	}
+
 	&.card-horizontal {
 		.vk_post_imgOuter {
 			height: 100%;
 			border-bottom: none;
+			&:before {
+				padding-top: 0;
+			}
 		}
 	}
 }
