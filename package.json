@@ -3,10 +3,9 @@
   "version": "3.3.0",
   "description": "[![Build Status](https://travis-ci.org/vektor-inc/Lightning.svg?branch=master)](https://travis-ci.org/vektor-inc/Lightning)",
   "main": "gulpfile.js",
-  "directories": {
-    "test": "tests"
-  },
   "scripts": {
+    "webpack": "webpack",
+    "js_watch": "webpack --watch --config webpack.dev.config.js",
     "dist": "gulp dist",
     "gulp": "gulp"
   },
@@ -26,7 +25,6 @@
     "babel-loader": "^8.1.0",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^4.1.0",
-    "gulp-babel": "^8.0.0",
     "gulp-clean-css": "^3.10.0",
     "gulp-concat": "^2.6.1",
     "gulp-cssmin": "^0.2.0",
@@ -35,12 +33,13 @@
     "gulp-rename": "^1.4.0",
     "gulp-replace": "^1.0.0",
     "gulp-sass": "^3.2.1",
-    "gulp-uglify": "^3.0.2",
     "run-sequence": "^2.2.1",
     "stylelint-config-wordpress": "^15.0.0",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11",
     "webpack-merge": "^4.2.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "is-mobile": "^2.2.1"
+  }
 }

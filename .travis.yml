@@ -53,7 +53,7 @@ script:
   # php syntax error check
   - find ./ -type d -name vendor -prune -o -name '*.php'|xargs -I {} php -l {}
   # js forget compile check
-  - npm run gulp js_build
+  - npm run webpack --config webpack.config.js
   - diff assets/js/lightning.min.js .lightning.min.js.before
   # common css forget compile check
   - npm run gulp sass_common

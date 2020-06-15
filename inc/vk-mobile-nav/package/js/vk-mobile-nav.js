@@ -203,3 +203,12 @@ If you want to change this file that, you have to change original file.
         document.addEventListener('DOMContentLoaded', vk_menu_acc_run)
     })(5000);
 })(window, document);
+
+((d)=>{
+    const mobile = require('is-mobile');
+    window.addEventListener('DOMContentLoaded', ()=>{
+        const isMobile = mobile.isMobile();
+        ['device-mobile', 'device-pc'].forEach((m)=>document.body.classList.remove(m))
+        document.body.classList.add(mobile.isMobile()? 'device-mobile': 'device-pc')
+    })
+})(document)

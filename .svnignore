@@ -1,0 +1,16 @@
+.git/
+.gitignore
+dist/
+bin/
+tests/
+.eslintrc.json
+.travis.yml
+Dockerfile
+docker-compose.yml
+gulpfile.js
+lightning.code-workspace
+package*.json
+phpunit.xml
+readme.md
+sftp-config.json
+webpack*.js
