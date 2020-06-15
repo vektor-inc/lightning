@@ -153,7 +153,7 @@ function lightning_commentJs() {
 	}
 }
 
-/*
+
 function lightning_store_start() {
 	ob_start('lightning_get_output_html');
 }
@@ -169,7 +169,7 @@ function lightning_get_output_html( $buffer ) {
 	$lightning_html = $buffer;
 	return $buffer;
 }
-*
+
 
 /*
   Load CSS
@@ -182,7 +182,6 @@ function lightning_load_css_action() {
 }
 
 function lightning_common_style() {
-	global $lightning_html;
 	wp_register_style( 'lightning-common-style', false, array(), LIGHTNING_THEME_VERSION );
 	wp_enqueue_style( 'lightning-common-style' );
 	$css  = file_get_contents( get_template_directory_uri() . '/assets/css/common.css', true );
@@ -191,7 +190,6 @@ function lightning_common_style() {
 	// wp_enqueue_style( 'lightning-common-style', get_template_directory_uri() . '/assets/css/common.css', array(), LIGHTNING_THEME_VERSION );
 }
 function lightning_theme_style() {
-	global $lightning_html;
 	wp_register_style( 'lightning-theme-style', false, array(), LIGHTNING_THEME_VERSION );
 	wp_enqueue_style( 'lightning-theme-style' );
 	$css  = file_get_contents( get_stylesheet_uri(), true );
