@@ -207,8 +207,8 @@ If you want to change this file that, you have to change original file.
 const mobile = require('is-mobile');
 ((d)=>{
     window.addEventListener('DOMContentLoaded', ()=>{
-        const isMobile = mobile.isMobile({tablet:false})
+        const isMobile = mobile.isMobile({tablet:true})
         ;['device-mobile', 'device-pc'].forEach((m)=>document.body.classList.remove(m))
-        document.body.classList.add(mobile.isMobile()? 'device-mobile': 'device-pc')
+        document.body.classList.add(isMobile? 'device-mobile': 'device-pc')
     })
 })(document)
