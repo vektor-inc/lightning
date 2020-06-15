@@ -53,38 +53,25 @@ function lightning_customize_register_layout( $wp_customize ) {
 	$get_post_types = get_post_types(
 		array(
 			'public'   => true,
-			'_builtin' => false,
 		),
-		'names'
-	);
-
-	$page_types = $page_types + array(
-		'archive-post' => array(
-			'label' => __( 'Archive Page [post]', 'lightning' ),
-		),
+		'object'
 	);
 
 	foreach ( $get_post_types as $get_post_type ) {
-		$page_types = $page_types + array(
-			'archive-' . $get_post_type => array(
-				'label' => __( 'Archive Page [' . $get_post_type . ']', 'lightning' ),
-			),
-		);
+		$archive_link = get_post_type_archive_link( $get_post_type->name );
+		if ( $archive_link ){
+			$page_types = $page_types + array(
+				'archive-' . $get_post_type->name => array(
+					'label' => __( 'Archive Page', 'lightning' ). ' [' . esc_html( $get_post_type->label ) . ']',
+				),
+			);
+		}
 	}
 
-	$page_types = $page_types + array(
-		'single-page' => array(
-			'label' => __( 'Single Page [page]', 'lightning' ),
-		),
-		'single-post' => array(
-			'label' => __( 'Single Page [post]', 'lightning' ),
-		),
-	);
-
 	foreach ( $get_post_types as $get_post_type ) {
 		$page_types = $page_types + array(
-			'single-' . $get_post_type => array(
-				'label' => __( 'Single Page [' . $get_post_type . ']', 'lightning' ),
+			'single-' . $get_post_type->name => array(
+				'label' => __( 'Single Page', 'lightning' ). ' [' . esc_html( $get_post_type->label ) . ']',
 			),
 		);
 	}

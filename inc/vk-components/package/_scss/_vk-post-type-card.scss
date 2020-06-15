@@ -70,11 +70,54 @@ https://github.com/vektor-inc/vektor-wp-libraries
 		}
 	}
 }
+/*-------------------------------------------*/
+/* .card-imageRound
+/*-------------------------------------------*/
+.card-imageRound {
+	.vk_post_imgOuter {
+		margin-left: auto;
+		margin-right: auto;
+		width: 150px;
+		height: 150px;
+		border-radius: 50%; /* 角丸半径を50%にする(=円形にする) */
+		background-position: center center; /* 横長画像の左上を基準に表示 */
+		&::before {
+			padding-top: 150px;
+		}
+	}
+}
 
 /*-------------------------------------------*/
-/* １カラム カード の時の下部の余白を小さく変更
+/* １カラム カード水平 の時の下部の余白を小さく変更
 /*-------------------------------------------*/
 .card.vk_post-col {
+	@media (max-width: $xs-max) {
+		&-xs-12 {
+			margin-bottom: 20px;
+		}
+	}
+	@media (min-width: $sm-min) and (max-width: $sm-max) {
+		&-sm-12 {
+			margin-bottom: 20px;
+		}
+	}
+	@media (min-width: $md-min) and (max-width: $md-max) {
+		&-md-12 {
+			margin-bottom: 20px;
+		}
+	}
+	@media (min-width: $lg-min) and (max-width: $lg-max) {
+		&-lg-12 {
+			margin-bottom: 20px;
+		}
+	}
+	@media (min-width: $xl-min) {
+		&-xl-12 {
+			margin-bottom: 20px;
+		}
+	}
+}
+.card-horizontal.vk_post-col {
 	@media (max-width: $xs-max) {
 		&-xs-12 {
 			margin-bottom: 15px;
@@ -98,6 +141,35 @@ https://github.com/vektor-inc/vektor-wp-libraries
 	@media (min-width: $xl-min) {
 		&-xl-12 {
 			margin-bottom: 15px;
+		}
+	}
+}
+
+.card-noborder.vk_post-col,
+.card-imageRound.vk_post-col {
+	@media (max-width: $xs-max) {
+		&-xs-12 {
+			margin-bottom: 40px;
+		}
+	}
+	@media (min-width: $sm-min) and (max-width: $sm-max) {
+		&-sm-12 {
+			margin-bottom: 40px;
+		}
+	}
+	@media (min-width: $md-min) and (max-width: $md-max) {
+		&-md-12 {
+			margin-bottom: 40px;
+		}
+	}
+	@media (min-width: $lg-min) and (max-width: $lg-max) {
+		&-lg-12 {
+			margin-bottom: 40px;
+		}
+	}
+	@media (min-width: $xl-min) {
+		&-xl-12 {
+			margin-bottom: 40px;
 		}
 	}
 }
