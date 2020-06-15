@@ -153,6 +153,24 @@ function lightning_commentJs() {
 	}
 }
 
+function buffer_start() {
+	ob_start();
+}
+add_action( 'wp_head', 'buffer_start', 1 );
+
+function buffer_end() {
+	$html = ob_get_contents();
+	ob_flush();
+	return $html;
+}
+add_action( 'wp_footer', 'buffer_end', 9999 );
+
+function lightning_get_output_html() {
+	$html = buffer_end();
+	echo $html;
+}
+add_action( 'wp_footer', 'buffer_end' );
+
 /*
   Load CSS
 /*-------------------------------------------*/
