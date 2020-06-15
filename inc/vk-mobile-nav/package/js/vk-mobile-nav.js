@@ -204,6 +204,7 @@ If you want to change this file that, you have to change original file.
     })(5000);
 })(window, document);
 
+// import node mobile judge package
 const mobile = require('is-mobile');
 ((d)=>{
     window.addEventListener('DOMContentLoaded', ()=>{
