@@ -35,14 +35,13 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
-v10.0.1
-* [ Bug fix ] layout controll compatible bug fix
-
-v10.0.0
+v10.0.2
 * [ Add Function ] Cope with layout per custom post type 
 * [ Add Action hook ]
 * [ Spacification Change ] Change article div to article from div
 * [ Spacification Change ] Cope with footer widget area to 6 column
+* [ Spacification Change ] singular.php instead to page.php and single.php
+* [ Spacification Change ] Change judge means of Touch device to JavaScript from PHP
  
 v9.14.0
 * Bootstrap update to 4.5.0
