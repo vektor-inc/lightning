@@ -110,6 +110,7 @@ class Lightning_Design_Manager {
 	 * @return [string] If empty current skin that set default skin.
 	 */
 	public static function get_current_skin() {
+		global $html;
 		$skins        = self::get_skins();
 		$current_skin = get_option( 'lightning_design_skin' );
 
@@ -161,12 +162,22 @@ class Lightning_Design_Manager {
 			// Bootstrap4 skin
 			$bs4_css_url = get_template_directory_uri() . '/library/bootstrap-4/css/bootstrap.min.css';
 			$bs4_version = '4.3.1';
-			wp_enqueue_style( 'bootstrap-4-style', $bs4_css_url, array(), $bs4_version );
+
+			wp_register_style( 'bootstrap-4-style', false, array(), $bs4_version );
+			wp_enqueue_style( 'bootstrap-4-style' );
+			$css = file_get_contents( $bs4_css_url, true );
+			$css  = celtislab\CSS_tree_shaking::simple_minify( $css, $html );
+			wp_add_inline_style( 'bootstrap-4-style', $css );
+			// wp_enqueue_style( 'bootstrap-4-style', $bs4_css_url, array(), $bs4_version );
 			wp_enqueue_script( 'bootstrap-4-js', get_template_directory_uri() . '/library/bootstrap-4/js/bootstrap.min.js', array( 'jquery' ), $bs4_version, true );
 
 			// load skin CSS ///////////////////////
-
-			wp_enqueue_style( 'lightning-design-style', $skin_css_url, array( 'bootstrap-4-style' ), $skin_info['version'] );
+			wp_register_style( 'lightning-design-style', false, array( 'bootstrap-4-style' ), $skin_info['version'] );
+			wp_enqueue_style( 'lightning-design-style' );
+			$css = file_get_contents( $skin_css_url, true );
+			$css  = celtislab\CSS_tree_shaking::simple_minify( $css, $html );
+			wp_add_inline_style( 'lightning-design-style', $css );
+			// wp_enqueue_style( 'lightning-design-style', $skin_css_url, array( 'bootstrap-4-style' ), $skin_info['version'] );
 
 		}
 

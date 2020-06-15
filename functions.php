@@ -4,6 +4,9 @@ $theme_opt = wp_get_theme( get_template() );
 
 define( 'LIGHTNING_THEME_VERSION', $theme_opt->Version );
 define( 'LIGHTNING_SHORT_NAME', 'LTG THEME' );
+
+require get_parent_theme_file_path( '/inc/css-tree-shaking.php' );
+
 /*
   Theme setup
 /*
@@ -151,6 +154,24 @@ function lightning_commentJs() {
 }
 
 /*
+function lightning_store_start() {
+	ob_start('lightning_get_output_html');
+}
+add_action('after_setup_theme', 'lightning_store_start');
+
+function lightning_store_end() {
+	ob_end_flush();
+}
+add_action('shutdown', 'lightning_store_end');
+
+function lightning_get_output_html( $buffer ) {
+	global $lightning_html;
+	$lightning_html = $buffer;
+	return $buffer;
+}
+*
+
+/*
   Load CSS
 /*-------------------------------------------*/
 add_action( 'after_setup_theme', 'lightning_load_css_action' );
@@ -161,10 +182,22 @@ function lightning_load_css_action() {
 }
 
 function lightning_common_style() {
-	wp_enqueue_style( 'lightning-common-style', get_template_directory_uri() . '/assets/css/common.css', array(), LIGHTNING_THEME_VERSION );
+	global $lightning_html;
+	wp_register_style( 'lightning-common-style', false, array(), LIGHTNING_THEME_VERSION );
+	wp_enqueue_style( 'lightning-common-style' );
+	$css  = file_get_contents( get_template_directory_uri() . '/assets/css/common.css', true );
+	$css  = celtislab\CSS_tree_shaking::simple_minify( $css, $html );
+	wp_add_inline_style( 'lightning-common-style', $css );
+	// wp_enqueue_style( 'lightning-common-style', get_template_directory_uri() . '/assets/css/common.css', array(), LIGHTNING_THEME_VERSION );
 }
 function lightning_theme_style() {
-	wp_enqueue_style( 'lightning-theme-style', get_stylesheet_uri(), array(), LIGHTNING_THEME_VERSION );
+	global $lightning_html;
+	wp_register_style( 'lightning-theme-style', false, array(), LIGHTNING_THEME_VERSION );
+	wp_enqueue_style( 'lightning-theme-style' );
+	$css  = file_get_contents( get_stylesheet_uri(), true );
+	$css  = celtislab\CSS_tree_shaking::simple_minify( $css, $html );
+	wp_add_inline_style( 'lightning-theme-style', $css );
+	// wp_enqueue_style( 'lightning-theme-style', get_stylesheet_uri(), array(), LIGHTNING_THEME_VERSION );
 }
 
 /*
