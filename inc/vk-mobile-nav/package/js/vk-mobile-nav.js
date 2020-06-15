@@ -204,11 +204,11 @@ If you want to change this file that, you have to change original file.
     })(5000);
 })(window, document);
 
+const mobile = require('is-mobile');
 ((d)=>{
-    const mobile = require('is-mobile');
     window.addEventListener('DOMContentLoaded', ()=>{
-        const isMobile = mobile.isMobile();
-        ['device-mobile', 'device-pc'].forEach((m)=>document.body.classList.remove(m))
+        const isMobile = mobile.isMobile({tablet:false})
+        ;['device-mobile', 'device-pc'].forEach((m)=>document.body.classList.remove(m))
         document.body.classList.add(mobile.isMobile()? 'device-mobile': 'device-pc')
     })
 })(document)
