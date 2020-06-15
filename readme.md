@@ -57,3 +57,15 @@ https://github.com/kurudrive/lightning-skin-sample
 
 $ docker-compose run wp
 ```
+
+## JS更新作業時
+
+```
+npm run js_watch
+```
+
+## 製品版リリース用 js圧縮される
+
+```
+npm run webpack
+```
