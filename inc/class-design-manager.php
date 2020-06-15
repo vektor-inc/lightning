@@ -166,7 +166,7 @@ class Lightning_Design_Manager {
 			wp_register_style( 'bootstrap-4-style', false, array(), $bs4_version );
 			wp_enqueue_style( 'bootstrap-4-style' );
 			$css = file_get_contents( $bs4_css_url, true );
-			$css  = celtislab\CSS_tree_shaking::simple_minify( $css, $html );
+			$css  = celtislab\CSS_tree_shaking::simple_minify( $css );
 			wp_add_inline_style( 'bootstrap-4-style', $css );
 			// wp_enqueue_style( 'bootstrap-4-style', $bs4_css_url, array(), $bs4_version );
 
@@ -176,7 +176,7 @@ class Lightning_Design_Manager {
 			wp_register_style( 'lightning-design-style', false, array( 'bootstrap-4-style' ), $skin_info['version'] );
 			wp_enqueue_style( 'lightning-design-style' );
 			$css = file_get_contents( $skin_css_url, true );
-			$css  = celtislab\CSS_tree_shaking::simple_minify( $css, $html );
+			$css  = celtislab\CSS_tree_shaking::simple_minify( $css );
 			wp_add_inline_style( 'lightning-design-style', $css );
 			// wp_enqueue_style( 'lightning-design-style', $skin_css_url, array( 'bootstrap-4-style' ), $skin_info['version'] );
 
