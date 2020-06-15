@@ -169,6 +169,7 @@ class Lightning_Design_Manager {
 			$css  = celtislab\CSS_tree_shaking::simple_minify( $css, $html );
 			wp_add_inline_style( 'bootstrap-4-style', $css );
 			// wp_enqueue_style( 'bootstrap-4-style', $bs4_css_url, array(), $bs4_version );
+
 			wp_enqueue_script( 'bootstrap-4-js', get_template_directory_uri() . '/library/bootstrap-4/js/bootstrap.min.js', array( 'jquery' ), $bs4_version, true );
 
 			// load skin CSS ///////////////////////

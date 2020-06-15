@@ -153,24 +153,6 @@ function lightning_commentJs() {
 	}
 }
 
-
-function lightning_store_start() {
-	ob_start('lightning_get_output_html');
-}
-add_action('after_setup_theme', 'lightning_store_start');
-
-function lightning_store_end() {
-	ob_end_flush();
-}
-add_action('shutdown', 'lightning_store_end');
-
-function lightning_get_output_html( $buffer ) {
-	global $lightning_html;
-	$lightning_html = $buffer;
-	return $buffer;
-}
-
-
 /*
   Load CSS
 /*-------------------------------------------*/
