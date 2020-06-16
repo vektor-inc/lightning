@@ -42,7 +42,7 @@ function lightning_is_layout_onecolumn() {
 			}
 		}
 	}
-	
+
 	// show_on_front 'page' case
 	if ( is_front_page() && ! is_home() ) {
 		if ( isset( $options['layout']['front-page'] ) ) {
@@ -64,12 +64,18 @@ function lightning_is_layout_onecolumn() {
 	ユニットテストの is_front_page() 判定が何故かトップページでfalseになってしまうため
 	is_home() && ! is_page() で判定する
 	*/
-	} elseif ( is_home() && ! is_page() ) {
+	} elseif ( is_front_page() && is_home() ) {
 		if ( isset( $options['layout']['front-page'] ) ) {
 			if ( 'col-one' === $options['layout']['front-page'] || 'col-one-no-subsection' === $options['layout']['front-page'] ) {
 				$onecolumn = true;
 			}
 		} else if ( isset( $options['layout']['archive-post'] ) ) {
+			if ( 'col-one' === $options['layout']['archive-post'] || 'col-one-no-subsection' === $options['layout']['archive-post'] ) {
+				$onecolumn = true;
+			}
+		}
+	} elseif ( ! is_front_page() && is_home() ) {
+		if ( isset( $options['layout']['archive-post'] ) ) {
 			if ( 'col-one' === $options['layout']['archive-post'] || 'col-one-no-subsection' === $options['layout']['archive-post'] ) {
 				$onecolumn = true;
 			}
@@ -84,7 +90,10 @@ function lightning_is_layout_onecolumn() {
 		'names'
 	);
 
-	if ( is_archive() && ! is_home() ) {
+	/**
+	 * アーカイブページの場合
+	 */
+	if ( is_archive() ) {
 		$archive_post_types = array( 'post' ) + $additional_post_types;
 		foreach ( $archive_post_types as $archive_post_type ) {
 			if ( isset( $options['layout'][ 'archive-' . $archive_post_type ] ) && get_post_type() === $archive_post_type ) {
@@ -164,7 +173,15 @@ function lightning_is_subsection_display() {
 		if ( isset( $options['layout']['front-page'] ) && 'col-one-no-subsection' === $options['layout']['front-page'] ) {
 			$return = false;
 		}
-	} elseif ( is_home() ) {
+	} elseif ( is_front_page() && is_home() ) {
+		if ( isset( $options['layout']['front-page'] ) && 'col-one-no-subsection' === $options['layout']['front-page'] ) {
+			$return = false;
+		} elseif ( isset( $options['layout']['archive-post'] ) ) {
+			if ( 'col-one-no-subsection' === $options['layout']['archive-post'] ) {
+				$return = false;
+			}
+		}
+	}  elseif ( ! is_front_page() && is_home() ) {
 		if ( isset( $options['layout']['archive-post'] ) ) {
 			if ( 'col-one-no-subsection' === $options['layout']['archive-post'] ) {
 				$return = false;

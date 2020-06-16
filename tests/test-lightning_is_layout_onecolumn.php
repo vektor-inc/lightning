@@ -9,6 +9,21 @@ phpunit
 */
 
 class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
+	
+	/**
+	 * is_front_page を定義してみる
+	 * 出典： https://core.trac.wordpress.org/browser/tags/5.4/src/wp-includes/class-wp-query.php#L3891
+	 */
+	public function is_front_page() {
+        // Most likely case.
+        if ( 'posts' == get_option( 'show_on_front' ) && $this->is_home() ) {
+                return true;
+        } elseif ( 'page' == get_option( 'show_on_front' ) && get_option( 'page_on_front' ) && $this->is_page( get_option( 'page_on_front' ) ) ) {
+                return true;
+        } else {
+                return false;
+        }
+	}
 
 	function test_lightning_is_layout_onecolumn() {
 		print PHP_EOL;
@@ -495,7 +510,7 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 			print 'url     :' . $_SERVER['REQUEST_URI'] . PHP_EOL;
 			print 'return  :' . $return . PHP_EOL;
 			print 'correct :' . $value['correct'] . PHP_EOL;
-			print 'is_front :' . is_front_page() . PHP_EOL;
+			print 'is_front :' . self::is_front_page() . PHP_EOL;
 			print 'is_home :' . is_home() . PHP_EOL;
 			if ( isset( $value['charck_key'] ) ){
 				print 'charck_key :' .  $value['charck_key'] . PHP_EOL;
