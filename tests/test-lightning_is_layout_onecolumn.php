@@ -16,9 +16,9 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 	 */
 	public function is_front_page() {
         // Most likely case.
-        if ( 'posts' == get_option( 'show_on_front' ) && $this->is_home() ) {
+        if ( 'posts' == get_option( 'show_on_front' ) && is_home() ) {
                 return true;
-        } elseif ( 'page' == get_option( 'show_on_front' ) && get_option( 'page_on_front' ) && $this->is_page( get_option( 'page_on_front' ) ) ) {
+        } elseif ( 'page' == get_option( 'show_on_front' ) && get_option( 'page_on_front' ) && is_page( get_option( 'page_on_front' ) ) ) {
                 return true;
         } else {
                 return false;
