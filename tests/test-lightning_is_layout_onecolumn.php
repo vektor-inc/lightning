@@ -115,7 +115,7 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 
 			// Front page _ トップ : 固定ページ指定
 			// Front page _ カスタマイザー : 未指定
-			// Front page _ 固定ページ : １カラムテンプレートが選択（非推奨）
+			// Front page _ 固定ページ属性 : １カラムテンプレートが選択（非推奨）
 			array(
 				'options'           => array(),
 				'_wp_page_template' => 'page-onecolumn.php',
@@ -125,7 +125,7 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 			),
 			// Front page _ トップ : 固定ページ指定
 			// Front page _ カスタマイザー : ２カラム指定
-			// Front page _ 固定ページ : １カラムテンプレートが選択（非推奨）
+			// Front page _ 固定ページ属性 : １カラムテンプレートが選択（非推奨）
 			array(
 				'options'           => array(
 					'layout' => array(
@@ -139,7 +139,7 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 			),
 			// Front page _ トップ : 固定ページ指定
 			// Front page _ カスタマイザー : 1カラム指定
-			// Front page _ 固定ページ : デフォルトテンプレートが選択
+			// Front page _ 固定ページ属性 : デフォルトテンプレートが選択
 			array(
 				'options'           => array(
 					'layout' => array(
@@ -153,8 +153,8 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 			),
 			// Front page _ トップ : 固定ページ指定
 			// Front page _ カスタマイザー : ２カラム指定
-			// Front page _ 固定ページ : デフォルトテンプレートが選択
-			// Front page _ デザイン設定 : １カラム指定
+			// Front page _ 固定ページ属性 : デフォルトテンプレートが選択
+			// Front page _ 固定ページデザイン設定 : １カラム指定
 			array(
 				'options'           => array(
 					'layout' => array(
@@ -182,6 +182,41 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 				'show_on_front'		=> 'posts',
 				'target_url'        => home_url( '/' ),
 				'correct'           => true,
+			),
+
+			// Post index //////////////////////////////////////////////////////
+
+			// Post index _ カスタマイザー : 1カラム
+			array(
+				'options'           => array(
+					'layout' => array(
+						'archive-post' => 'col-one',
+					),
+				),
+				'post_id'           => $home_page_id,
+				'target_url'        => get_permalink( get_option( 'page_for_posts' ) ),
+				'correct'           => true,
+			),
+
+			// Post index _ カスタマイザー : 1カラム
+			// Post index _ 固定ページデザイン設定 : １カラム指定
+			/*
+			他の設定の仕様にあわせるなら投稿トップ（is_home）に指定した固定ページのレイアウト設定が効くべきではあるが、
+			4系以前の仕様ではその制御が未指定で個別ページからのレイアウト指定が効いてないので、
+			４系以前のロジックを引き継ぐとカスタマイザの指定指定優先としている
+			*/
+			array(
+				'options'           => array(
+					'layout' => array(
+						'archive-post' => 'col-two',
+					),
+				),
+				'_lightning_design_setting' => array(
+					'layout' => 'col-one',
+				),
+				'post_id'           => $home_page_id,
+				'target_url'        => get_permalink( get_option( 'page_for_posts' ) ),
+				'correct'           => false,
 			),
 
 			// Search //////////////////////////////////////////////////////
@@ -217,7 +252,15 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 						'archive-post' => 'col-one',
 					),
 				),
-				'_wp_page_template' => '',
+				'target_url'        => home_url( '/' ) . '?post_type=post',
+				'correct'           => true,
+			),
+			array(
+				'options'           => array(
+					'layout' => array(
+						'archive-post' => 'col-one-no-subsection',
+					),
+				),
 				'target_url'        => home_url( '/' ) . '?post_type=post',
 				'correct'           => true,
 			),
@@ -227,20 +270,7 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 						'archive-event' => 'col-one',
 					),
 				),
-				'_wp_page_template' => '',
 				'target_url'        => home_url( '/' ) . '?post_type=event',
-				'correct'           => true,
-			),
-
-			// Post type archive
-			array(
-				'options'           => array(
-					'layout' => array(
-						'archive' => 'col-one-no-subsection',
-					),
-				),
-				'_wp_page_template' => '',
-				'target_url'        => home_url( '/' ) . '?post_type=post',
 				'correct'           => true,
 			),
 			// Category
@@ -250,20 +280,7 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 						'archive' => 'col-one',
 					),
 				),
-				'_wp_page_template' => '',
 				'target_url'        => get_term_link( $cate_id ),
-				'correct'           => true,
-			),
-
-			// Post home
-			array(
-				'options'           => array(
-					'layout' => array(
-						'archive' => 'col-one',
-					),
-				),
-				'_wp_page_template' => '',
-				'target_url'        => get_permalink( get_option( 'page_for_posts' ) ),
 				'correct'           => true,
 			),
 
@@ -377,7 +394,16 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 				'target_url'        => home_url( '/' ) . '?post_type=post',
 				'correct'           => true,
 			),
-
+			array(
+				'options'           => array(
+					'layout' => array(
+						'archive' => 'col-one-no-subsection',
+					),
+				),
+				'_wp_page_template' => '',
+				'target_url'        => home_url( '/' ) . '?post_type=post',
+				'correct'           => true,
+			),
 			// Post type archive（ Old specification parameter ）
 			array(
 				'options'           => array(
@@ -447,7 +473,7 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 			$options = $value['options'];
 			update_option( 'lightning_theme_options', $options );
 
-			if ( $value['_wp_page_template'] ) {
+			if ( isset( $value['_wp_page_template'] ) ) {
 				update_post_meta( $front_page_id, '_wp_page_template', $value['_wp_page_template'] );
 			}
 			if ( isset( $value['_lightning_design_setting'] ) ) {
@@ -476,7 +502,7 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 			}
 			$this->assertEquals( $value['correct'], $return );
 
-			if ( $value['_wp_page_template'] ) {
+			if ( !empty( $value['_wp_page_template'] ) ) {
 				delete_post_meta( $front_page_id, '_wp_page_template' );
 			}
 			if ( isset( $value['_lightning_design_setting'] ) ) {
