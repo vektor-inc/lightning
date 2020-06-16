@@ -180,16 +180,6 @@ function lightning_is_subsection_display() {
 			}
 		}
 	} elseif ( is_singular() ) {
-		if ( is_single() && isset( $options['layout']['single'] ) ) {
-			if ( 'col-one-no-subsection' === $options['layout']['single'] ) {
-				$return = false;
-			}
-		}
-		if ( is_page() && isset( $options['layout']['page'] ) ) {
-			if ( 'col-one-no-subsection' === $options['layout']['page'] ) {
-				$return = false;
-			}
-		}
 		$single_post_types = array( 'post', 'page' ) + $additional_post_types;
 		foreach ( $single_post_types as $single_post_type ) {
 			if ( isset( $options['layout'][ 'single-' . $single_post_type ] ) && get_post_type() === $single_post_type ) {
