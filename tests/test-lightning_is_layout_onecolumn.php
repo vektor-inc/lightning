@@ -485,6 +485,8 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 				delete_option( 'page_for_posts' );
 			} else {
 				update_option( 'show_on_front', 'page' );
+				update_option( 'page_on_front', $front_page_id );
+				update_option( 'page_for_posts', $home_page_id );
 			}
 
 			// 古いセッティング値のコンバート（実際にはfunctions-compatible.phpで after_setup_theme で実行されている）
