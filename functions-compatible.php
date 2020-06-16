@@ -35,7 +35,7 @@ function lightning_options_compatible() {
 		foreach ( $archive_post_types as $archive_post_type ) {
 			// Old parameter exist && not default
 			if ( $options['layout']['archive'] && $options['layout']['archive'] !== 'default' ){
-				// New parameter is not exist 
+				// New parameter is not exist.
 				if ( empty ( $options['layout'][ 'archive-' . $archive_post_type ] ) ){
 					$options['layout'][ 'archive-' . $archive_post_type ] = $options['layout']['archive'];
 				}

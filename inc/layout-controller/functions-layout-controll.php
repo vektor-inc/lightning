@@ -86,6 +86,14 @@ function lightning_is_layout_onecolumn() {
 
 	if ( is_singular() ) {
 		global $post;
+		$single_post_types = array( 'post', 'page' ) + $additional_post_types;
+		foreach ( $single_post_types as $single_post_type ) {
+			if ( isset( $options['layout'][ 'single-' . $single_post_type ] ) && get_post_type() === $single_post_type ) {
+				if ( 'col-one' === $options['layout'][ 'single-' . $single_post_type ] || 'col-one-no-subsection' === $options['layout'][ 'single-' . $single_post_type ] ) {
+					$onecolumn = true;
+				}
+			}
+		}
 		if ( is_page() ) {
 			$template           = get_post_meta( $post->ID, '_wp_page_template', true );
 			$template_onecolumn = array(
@@ -94,14 +102,6 @@ function lightning_is_layout_onecolumn() {
 			);
 			if ( in_array( $template, $template_onecolumn, true ) ) {
 				$onecolumn = true;
-			}
-		}
-		$single_post_types = array( 'post', 'page' ) + $additional_post_types;
-		foreach ( $single_post_types as $single_post_type ) {
-			if ( isset( $options['layout'][ 'single-' . $single_post_type ] ) && get_post_type() === $single_post_type ) {
-				if ( 'col-one' === $options['layout'][ 'single-' . $single_post_type ] || 'col-one-no-subsection' === $options['layout'][ 'single-' . $single_post_type ] ) {
-					$onecolumn = true;
-				}
 			}
 		}
 		if ( isset( $post->_lightning_design_setting['layout'] ) ) {
