@@ -155,7 +155,46 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 				'target_url'        => home_url( '/' ),
 				'correct'           => true,
 			),
-
+			// 個別のページからの指定を優先させる
+			array(
+				'options'           => array(
+					'layout' => array(
+						'front-page' => 'col-one',
+						'archive-post' => 'col-two'
+					),
+				),
+				'_wp_page_template' => '',
+				'target_url'        => home_url( '/' ),
+				'correct'           => true,
+			),
+			// 個別のページからの指定を優先させる
+			array(
+				'options'           => array(
+					'layout' => array(
+						'front-page' => 'col-two',
+						'archive-post' => 'col-two'
+					),
+				),
+				'_wp_page_template' => 'page-onecolumn.php',
+				'target_url'        => home_url( '/' ),
+				'correct'           => true,
+			),
+			// 個別のページからの指定を優先させる
+			array(
+				'options'           => array(
+					'layout' => array(
+						'front-page' => 'col-two',
+						'archive-post' => 'col-two'
+					),
+				),
+				'_wp_page_template' => 'page.php',
+				'_lightning_design_setting' => array(
+					'layout' => 'col-one',
+				),
+				'post_id'           => $front_page_id,
+				'target_url'        => home_url( '/' ),
+				'correct'           => true,
+			),
 			// Search
 			array(
 				'options'           => array(
