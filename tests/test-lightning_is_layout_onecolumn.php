@@ -512,6 +512,7 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 			print 'correct :' . $value['correct'] . PHP_EOL;
 			print 'is_front :' . self::is_front_page() . PHP_EOL;
 			print 'is_home :' . is_home() . PHP_EOL;
+			print 'is_archive :' . is_archive() . PHP_EOL;
 			if ( isset( $value['charck_key'] ) ){
 				print 'charck_key :' .  $value['charck_key'] . PHP_EOL;
 			}
