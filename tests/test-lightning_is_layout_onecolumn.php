@@ -28,12 +28,27 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 				'public'      => true,
 			)
 		);
+		register_taxonomy(
+			'event_cat',
+			'event',
+			array(
+				'label' => __( 'Event Category' ),
+				'rewrite' => array( 'slug' => 'event_cat' ),
+				'hierarchical' => true,
+			)
+		);
 
 		// Create test category
 		$catarr  = array(
 			'cat_name' => 'test_category',
 		);
 		$cate_id = wp_insert_category( $catarr );
+
+		// Create test term
+		// $args  = array(
+		// 	'slug' => 'event_test',
+		// );
+		// $cate_id = wp_insert_term( 'event_test', 'event_cat', $args );
 
 		// Create test post
 		$post    = array(
@@ -184,7 +199,7 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 				'correct'           => true,
 			),
 
-			// Post index //////////////////////////////////////////////////////
+			// Post index（ is_home() ） //////////////////////////////////////////////////////
 
 			// Post index _ カスタマイザー : 1カラム
 			array(
@@ -203,7 +218,7 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 			/*
 			他の設定の仕様にあわせるなら投稿トップ（is_home）に指定した固定ページのレイアウト設定が効くべきではあるが、
 			4系以前の仕様ではその制御が未指定で個別ページからのレイアウト指定が効いてないので、
-			４系以前のロジックを引き継ぐとカスタマイザの指定指定優先としている
+			4系以前のロジックを引き継ぐとカスタマイザの指定指定優先としている
 			*/
 			array(
 				'options'           => array(
@@ -273,7 +288,8 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 				'target_url'        => home_url( '/' ) . '?post_type=event',
 				'correct'           => true,
 			),
-			// Category
+
+			// is_category()
 			array(
 				'options'           => array(
 					'layout' => array(
