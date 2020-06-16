@@ -170,10 +170,8 @@ function lightning_is_subsection_display() {
 	} elseif ( is_home() ) {
 		if ( isset( $options['layout']['front-page'] ) && 'col-one-no-subsection' === $options['layout']['front-page'] ) {
 			$return = false;
-		} elseif ( isset( $options['layout']['archive-post'] ) ) {
-			if ( 'col-one-no-subsection' === $options['layout']['archive-post'] ) {
-				$return = false;
-			}
+		} elseif ( isset( $options['layout']['archive-post'] ) && 'col-one-no-subsection' === $options['layout']['archive-post'] ) {
+			$return = false;
 		}
 	} elseif ( is_archive() ) {
 		$archive_post_types = array( 'post' ) + $additional_post_types;
