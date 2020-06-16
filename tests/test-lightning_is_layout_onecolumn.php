@@ -88,8 +88,10 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 		 Test Array
 		/*--------------------------------*/
 		$test_array = array(
+
 			// Front page //////////////////////////////////////////////////////
 			
+			// Front page _ カスタマイザの設定のみ
 			array(
 				'options'           => array(
 					'layout' => array(
@@ -111,20 +113,19 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 				'correct'           => true,
 			),
 
-			// Front page _ カスタマイザー未指定 / 固定ページで１カラムテンプレートが選択（非推奨）
+			// Front page _ トップ : 固定ページ指定
+			// Front page _ カスタマイザー : 未指定
+			// Front page _ 固定ページ : １カラムテンプレートが選択（非推奨）
 			array(
-				'options'           => array(
-					// 'top_sidebar_hidden' => true,
-					// 'layout'             => array(
-					// 'front-page' => 'col-two',
-					// ),
-				),
+				'options'           => array(),
 				'_wp_page_template' => 'page-onecolumn.php',
+				'show_on_front'		=> 'page',
 				'target_url'        => home_url( '/' ),
 				'correct'           => true,
 			),
-			// Front page _ カスタマイザーで２カラムが選択 / 固定ページ側で１カラムテンプレートが選択（非推奨）
-			// 個別のページからの指定を優先させる
+			// Front page _ トップ : 固定ページ指定
+			// Front page _ カスタマイザー : ２カラム指定
+			// Front page _ 固定ページ : １カラムテンプレートが選択（非推奨）
 			array(
 				'options'           => array(
 					'layout' => array(
@@ -132,39 +133,32 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 					),
 				),
 				'_wp_page_template' => 'page-onecolumn.php',
+				'show_on_front'		=> 'page',
 				'target_url'        => home_url( '/' ),
 				'correct'           => true,
 			),
-			// 個別のページからの指定を優先させる
+			// Front page _ トップ : 固定ページ指定
+			// Front page _ カスタマイザー : 1カラム指定
+			// Front page _ 固定ページ : デフォルトテンプレートが選択
 			array(
 				'options'           => array(
 					'layout' => array(
 						'front-page' => 'col-one',
-						'archive-post' => 'col-two'
 					),
 				),
-				'_wp_page_template' => '',
+				'_wp_page_template' => 'page.php',
+				'post_id'           => $front_page_id,
 				'target_url'        => home_url( '/' ),
 				'correct'           => true,
 			),
-			// 個別のページからの指定を優先させる
+			// Front page _ トップ : 固定ページ指定
+			// Front page _ カスタマイザー : ２カラム指定
+			// Front page _ 固定ページ : デフォルトテンプレートが選択
+			// Front page _ デザイン設定 : １カラム指定
 			array(
 				'options'           => array(
 					'layout' => array(
 						'front-page' => 'col-two',
-						'archive-post' => 'col-two'
-					),
-				),
-				'_wp_page_template' => 'page-onecolumn.php',
-				'target_url'        => home_url( '/' ),
-				'correct'           => true,
-			),
-			// 個別のページからの指定を優先させる
-			array(
-				'options'           => array(
-					'layout' => array(
-						'front-page' => 'col-two',
-						'archive-post' => 'col-two'
 					),
 				),
 				'_wp_page_template' => 'page.php',
@@ -175,7 +169,22 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 				'target_url'        => home_url( '/' ),
 				'correct'           => true,
 			),
-			// Search
+			// Front page _ トップ : 最近の投稿指定
+			// Front page _ カスタマイザー : トップ１カラムが選択 / 投稿アーカイブ : ２カラムが選択
+			array(
+				'options'           => array(
+					'layout' => array(
+						'front-page' => 'col-one',
+						'archive-post' => 'col-two'
+					),
+				),
+				'_wp_page_template' => '',
+				'show_on_front'		=> 'posts',
+				'target_url'        => home_url( '/' ),
+				'correct'           => true,
+			),
+
+			// Search //////////////////////////////////////////////////////
 			array(
 				'options'           => array(
 					'layout' => array(
@@ -187,7 +196,7 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 				'correct'           => true,
 			),
 
-			// 404
+			// 404 //////////////////////////////////////////////////////
 			array(
 				'options'           => array(
 					'layout' => array(
@@ -198,6 +207,8 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 				'target_url'        => home_url( '/' ) . '?name=abcdefg',
 				'correct'           => true,
 			),
+
+			// Archive //////////////////////////////////////////////////////
 
 			// Post type archive
 			array(
@@ -256,10 +267,10 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 				'correct'           => true,
 			),
 
+			// Singular //////////////////////////////////////////////////////
 
 			// Page
 			array(
-				// 'page_type'         => 'single',
 				'options'           => array(
 					'layout' => array(
 						'single-page' => 'default',
@@ -442,6 +453,11 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 			if ( isset( $value['_lightning_design_setting'] ) ) {
 				update_post_meta( $value['post_id'], '_lightning_design_setting', $value['_lightning_design_setting'] );
 			}
+			if ( isset( $value['show_on_front'] ) && $value['show_on_front'] === 'posts') {
+				delete_option( 'show_on_front', 'posts' );
+			} else {
+				update_option( 'show_on_front', 'page' );
+			}
 
 			// 古いセッティング値のコンバート（実際にはfunctions-compatible.phpで after_setup_theme で実行されている）
 			lightning_options_compatible();
@@ -453,6 +469,11 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 			print 'url     :' . $_SERVER['REQUEST_URI'] . PHP_EOL;
 			print 'return  :' . $return . PHP_EOL;
 			print 'correct :' . $value['correct'] . PHP_EOL;
+			print 'is_front :' . is_front_page() . PHP_EOL;
+			print 'is_home :' . is_home() . PHP_EOL;
+			if ( isset( $value['charck_key'] ) ){
+				print 'charck_key :' .  $value['charck_key'] . PHP_EOL;
+			}
 			$this->assertEquals( $value['correct'], $return );
 
 			if ( $value['_wp_page_template'] ) {
