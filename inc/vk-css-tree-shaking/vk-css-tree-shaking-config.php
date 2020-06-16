@@ -32,4 +32,5 @@ if ( ! class_exists( 'VK_CSS_Tree_Shaking' ) ) {
 			'url' => $skin_css_url,
 		),
 	);
+	require_once dirname( __FILE__ ) . '/package/class-vk-css-tree-shaking.php';
 }
