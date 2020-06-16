@@ -97,7 +97,7 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 
 		update_option( 'page_on_front', $front_page_id ); // フロントに指定する固定ページ
 		update_option( 'page_for_posts', $home_page_id ); // 投稿トップに指定する固定ページ
-		// update_option( 'show_on_front', 'page' ); // or posts
+		update_option( 'show_on_front', 'page' ); // or posts
 
 		/*
 		 Test Array
