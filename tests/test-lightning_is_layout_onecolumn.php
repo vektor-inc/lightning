@@ -260,7 +260,6 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 
 			// Post home
 			array(
-				'page_type'         => 'home',
 				'options'           => array(
 					'layout' => array(
 						'archive' => 'col-one',
@@ -273,7 +272,6 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 
 			// Page（ Old specification parameter ）
 			array(
-				'page_type'         => 'page',
 				'options'           => array(
 					'layout' => array(
 						'page' => 'col-one',
@@ -286,7 +284,6 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 			),
 			// Page（ Old specification parameter with post_meta ）
 			array(
-				'page_type'                 => 'page',
 				'options'                   => array(
 					'layout' => array(
 						'page' => 'col-one',
@@ -320,7 +317,6 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 
 			// Single（ Old specification parameter ）
 			array(
-				'page_type'         => 'single',
 				'options'           => array(
 					'layout' => array(
 						'single' => 'col-one',
@@ -333,7 +329,6 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 			),
 			// Single
 			array(
-				'page_type'         => 'single',
 				'options'           => array(
 					'layout' => array(
 						'single-event' => 'col-one',
@@ -346,7 +341,6 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 			),
 			// Single
 			array(
-				'page_type'         => 'single',
 				'options'           => array(
 					'layout' => array(
 						'single-post' => 'col-one',
@@ -359,7 +353,6 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 			),
 			// Single
 			array(
-				'page_type'                 => 'single',
 				'options'                   => array(
 					'layout' => array(
 						'single' => 'col-one',
@@ -374,7 +367,6 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 				'correct'                   => false,
 			),
 			array(
-				'page_type'                 => 'single',
 				'options'                   => array(
 					'layout' => array(
 						'single' => 'col-two',
