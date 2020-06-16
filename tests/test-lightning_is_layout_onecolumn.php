@@ -301,6 +301,23 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 				'correct'                   => false,
 			),
 
+			// Page
+			array(
+				// 'page_type'         => 'single',
+				'options'           => array(
+					'layout' => array(
+						'single-page' => 'default',
+					),
+				),
+				'_wp_page_template' => 'page-onecolumn.php',
+				'_lightning_design_setting' => array(
+					'layout' => 'col-one',
+				),
+				'target_url'        => get_permalink( $normal_page_id ),
+				'post_id'           => $normal_page_id,
+				'correct'           => true,
+			),
+
 			// Single（ Old specification parameter ）
 			array(
 				'page_type'         => 'single',
