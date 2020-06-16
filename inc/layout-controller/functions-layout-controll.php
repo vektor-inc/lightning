@@ -64,12 +64,18 @@ function lightning_is_layout_onecolumn() {
 	ユニットテストの is_front_page() 判定が何故かトップページでfalseになってしまうため
 	is_home() && ! is_page() で判定する
 	*/
-	} elseif ( is_home() ) {
+	} elseif ( is_front_page() && is_home() ) {
 		if ( isset( $options['layout']['front-page'] ) ) {
 			if ( 'col-one' === $options['layout']['front-page'] || 'col-one-no-subsection' === $options['layout']['front-page'] ) {
 				$onecolumn = true;
+			} elseif ( isset( $options['layout']['archive-post'] ) ) {
+				if ( 'col-one' === $options['layout']['archive-post'] || 'col-one-no-subsection' === $options['layout']['archive-post'] ) {
+					$onecolumn = true;
+				}
 			}
-		} elseif ( isset( $options['layout']['archive-post'] ) ) {
+		}
+	} elseif ( ! is_front_page() && is_home() ) {
+		if ( isset( $options['layout']['archive-post'] ) ) {
 			if ( 'col-one' === $options['layout']['archive-post'] || 'col-one-no-subsection' === $options['layout']['archive-post'] ) {
 				$onecolumn = true;
 			}
@@ -167,10 +173,14 @@ function lightning_is_subsection_display() {
 		if ( isset( $options['layout']['front-page'] ) && 'col-one-no-subsection' === $options['layout']['front-page'] ) {
 			$return = false;
 		}
-	} elseif ( is_home() ) {
+	} elseif ( is_front_page() && is_home() ) {
 		if ( isset( $options['layout']['front-page'] ) && 'col-one-no-subsection' === $options['layout']['front-page'] ) {
 			$return = false;
 		} elseif ( isset( $options['layout']['archive-post'] ) && 'col-one-no-subsection' === $options['layout']['archive-post'] ) {
+			$return = false;
+		}
+	} elseif ( ! is_front_page() && is_home() ) {
+		if ( isset( $options['layout']['archive-post'] ) && 'col-one-no-subsection' === $options['layout']['archive-post'] ) {
 			$return = false;
 		}
 	} elseif ( is_archive() ) {
