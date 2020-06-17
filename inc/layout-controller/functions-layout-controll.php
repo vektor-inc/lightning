@@ -181,13 +181,10 @@ function lightning_is_subsection_display() {
 			if ( isset( $post->_lightning_design_setting['layout'] ) ) {
 				
 				if ( 'col-one-no-subsection' === $post->_lightning_design_setting['layout'] ) {
-					echo '<br />1無し'."\n";
 					$return = false;
 				} elseif ( 'col-two' === $post->_lightning_design_setting['layout'] ) {
-					echo '<br />2'."\n";
 					$return = true;
 				} elseif ( 'col-one' === $post->_lightning_design_setting['layout'] ) {
-					echo '<br />1'."\n";
 					/* 1 column but subsection is exist */
 					$return = true;
 				}
