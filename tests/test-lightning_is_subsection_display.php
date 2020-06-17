@@ -54,6 +54,9 @@ class LightningIsSubsectionDisplayTest extends WP_UnitTestCase {
 		update_option( 'show_on_front', 'page' ); // or posts
 
 		$test_array = array(
+
+			// Front page //////////////////////////////////////////////////////
+
 			array(
 				'options'    => array(
 					'layout' => array(
@@ -84,12 +87,12 @@ class LightningIsSubsectionDisplayTest extends WP_UnitTestCase {
 						'front-page' => 'col-two', // Top priority
 					),
 				),
-				'_wp_page_template' => '',
 				'target_url'        => home_url( '/' ),
 				'correct'           => true,
 			),
 
-			// post archive
+			// Archive //////////////////////////////////////////////////////
+			
 			array(
 				'options'    => array(
 					'layout' => array(
@@ -99,7 +102,7 @@ class LightningIsSubsectionDisplayTest extends WP_UnitTestCase {
 				'target_url' => get_permalink( $home_page_id ),
 				'correct'    => false,
 			),
-			// post archive
+		
 			array(
 				'options'    => array(
 					'layout' => array(
@@ -109,7 +112,37 @@ class LightningIsSubsectionDisplayTest extends WP_UnitTestCase {
 				'target_url' => get_permalink( $home_page_id ),
 				'correct'    => false,
 			),
-			// post single
+
+			// singular //////////////////////////////////////////////////////
+
+			array(
+				'options'    => array(
+					'layout' => array(
+						'single-post' => 'col-two',
+					),
+				),
+				'target_url' => get_permalink( $post_id ),
+				'correct'    => true,
+			),
+
+			array(
+				'options'    => array(
+					'layout' => array(
+						'single-page' => 'col-one-no-subsection',
+					),
+				),
+				'_lightning_design_setting' => array(
+					'layout' => 'col-two',
+				),
+				'post_id'    => $post_id,
+				'target_url' => get_permalink( $post_id ),
+				'correct'    => true,
+			),
+
+			////////////////////////////////////////////////////////////////
+			// Legacy fallback
+			////////////////////////////////////////////////////////////////
+
 			array(
 				'options'    => array(
 					'layout' => array(
@@ -143,9 +176,12 @@ class LightningIsSubsectionDisplayTest extends WP_UnitTestCase {
 			$options = $value['options'];
 			update_option( 'lightning_theme_options', $options );
 
-			// if ( $value['_wp_page_template'] ) {
-			// update_post_meta( $front_page_id , '_wp_page_template', $value['_wp_page_template'] );
-			// }
+			if ( isset( $value['_wp_page_template'] ) ) {
+				update_post_meta( $value['post_id'], '_wp_page_template', $value['_wp_page_template'] );
+			}
+			if ( isset( $value['_lightning_design_setting'] ) ) {
+				update_post_meta( $value['post_id'], '_lightning_design_setting', $value['_lightning_design_setting'] );
+			}
 
 			// 古いセッティング値のコンバート（実際にはfunctions-compatible.phpで after_setup_theme で実行されている）
 			lightning_options_compatible();
@@ -158,6 +194,14 @@ class LightningIsSubsectionDisplayTest extends WP_UnitTestCase {
 			print 'return  :' . $return . PHP_EOL;
 			print 'correct :' . $value['correct'] . PHP_EOL;
 			$this->assertEquals( $value['correct'], $return );
+
+			if ( isset( $value['_wp_page_template'] ) ) {
+				delete_post_meta( $value['post_id'], '_wp_page_template', $value['_wp_page_template'] );
+			}
+			if ( isset( $value['_lightning_design_setting'] ) ) {
+				delete_post_meta( $value['post_id'], '_lightning_design_setting', $value['_lightning_design_setting'] );
+			}
+
 		}
 
 	}
