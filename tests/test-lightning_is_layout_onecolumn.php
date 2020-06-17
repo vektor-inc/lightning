@@ -21,6 +21,8 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 		$before_page_on_front  = get_option( 'page_on_front' ); // フロントに指定する固定ページ
 		$before_show_on_front  = get_option( 'show_on_front' ); // トップページ指定するかどうか page or posts
 
+		/*** ↓↓ テスト用事前データ設定（ test_lightning_is_layout_onecolumn と test_lightning_is_subsection_display 共通 ) ****/
+
 		register_post_type(
 			'event',
 			array(
@@ -48,7 +50,8 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 		$args  = array(
 			'slug' => 'event_test',
 		);
-		$term_id = wp_insert_term( 'event_test', 'event_cat', $args );
+		$term_info = wp_insert_term( 'event_test', 'event_cat', $args );
+		$term_id = $term_info['term_id'];
 
 		// Create test post
 		$post    = array(
@@ -94,12 +97,14 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 			'post_content' => 'content',
 		);
 		$event_id = wp_insert_post( $post );
-		// set event category
+		// set event category to event post
 		wp_set_object_terms( $event_id, 'event_test', 'event_cat' );
 
 		update_option( 'page_on_front', $front_page_id ); // フロントに指定する固定ページ
 		update_option( 'page_for_posts', $home_page_id ); // 投稿トップに指定する固定ページ
 		update_option( 'show_on_front', 'page' ); // or posts
+
+		/*** ↑↑ テスト用事前データ設定（ test_lightning_is_layout_onecolumn と test_lightning_is_subsection_display 共通 ) ****/
 
 		/*
 		 Test Array

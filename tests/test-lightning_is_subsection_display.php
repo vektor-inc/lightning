@@ -22,6 +22,8 @@ class LightningIsSubsectionDisplayTest extends WP_UnitTestCase {
 		$before_page_on_front  = get_option( 'page_on_front' ); // フロントに指定する固定ページ
 		$before_show_on_front  = get_option( 'show_on_front' ); // トップページ指定するかどうか page or posts
 
+		/*** ↓↓ テスト用事前データ設定（ test_lightning_is_layout_onecolumn と test_lightning_is_subsection_display 共通 ) ****/
+
 		register_post_type(
 			'event',
 			array(
@@ -102,6 +104,8 @@ class LightningIsSubsectionDisplayTest extends WP_UnitTestCase {
 		update_option( 'page_on_front', $front_page_id ); // フロントに指定する固定ページ
 		update_option( 'page_for_posts', $home_page_id ); // 投稿トップに指定する固定ページ
 		update_option( 'show_on_front', 'page' ); // or posts
+
+		/*** ↑↑ テスト用事前データ設定（ test_lightning_is_layout_onecolumn と test_lightning_is_subsection_display 共通 ) ****/
 
 		/*
 		 Test Array
