@@ -238,6 +238,7 @@ require get_parent_theme_file_path( '/inc/vk-components/vk-components-config.php
 require get_parent_theme_file_path( '/inc/template-redirect.php' );
 require get_parent_theme_file_path( '/inc/layout-controller/layout-controller.php' );
 require get_parent_theme_file_path( '/inc/widget-area-setting/widget-area-setting-config.php' );
+require get_parent_theme_file_path( '/inc/move-scripts-to-footer/move-scripts-to-footer.php' );
 
 /*
   Load woocommerce modules
