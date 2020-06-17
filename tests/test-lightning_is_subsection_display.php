@@ -144,10 +144,64 @@ class LightningIsSubsectionDisplayTest extends WP_UnitTestCase {
 				'correct'           => true,
 			),
 
+			// Front page _ トップ : 固定ページ指定
+			// Front page _ カスタマイザー : 1カラムサブセクション無し（サブ無し）
+			// Front page _ カスタマイザー : 固定ページは2カラム指定
+			// Front page _ 返り値 : 非表示
+			array(
+				'show_on_front'		=> 'page',
+				'options'    => array(
+					'layout' => array(
+						'front-page' => 'col-one-no-subsection',
+						'single-page' => 'col-two',
+					),
+				),
+				'target_url' => home_url( '/' ),
+				'correct'    => false,
+			),
+
+			// Front page _ トップ : 固定ページ指定
+			// Front page _ カスタマイザー : 1カラムサブセクション無し（サブ無し）
+			// Front page _ 固定ページデザイン設定 : １カラム指定
+			// Front page _ 返り値 : 表示
+			array(
+				'show_on_front'		=> 'page',
+				'options'    => array(
+					'layout' => array(
+						'front-page' => 'col-one-no-subsection',
+					),
+				),
+				'_lightning_design_setting' => array(
+					'layout' => 'col-one',
+				),
+				'post_id'           => $front_page_id,
+				'target_url' => home_url( '/' ),
+				'correct'    => true,
+			),
+
+			// Front page _ トップ : 固定ページ指定
+			// Front page _ カスタマイザー : 1カラムサブセクション無し（サブ無し）
+			// Front page _ 固定ページデザイン設定 : ２カラム指定
+			// Front page _ 返り値 : 表示
+			array(
+				'show_on_front'		=> 'page',
+				'options'    => array(
+					'layout' => array(
+						'front-page' => 'col-one-no-subsection',
+					),
+				),
+				'_lightning_design_setting' => array(
+					'layout' => 'col-two',
+				),
+				'post_id'			=> $front_page_id,
+				'target_url' => home_url( '/' ),
+				'correct'    => true,
+			),
+
 			// Archive //////////////////////////////////////////////////////
 
 			// is_home _ カスタマイザー : 1カラムサブセクション無し（サブ無し）
-			// is_home _ 返り値 : サブ無し
+			// is_home _ 返り値 : 非表示
 			array(
 				'options'    => array(
 					'layout' => array(
@@ -159,7 +213,7 @@ class LightningIsSubsectionDisplayTest extends WP_UnitTestCase {
 			),
 
 			// is_post_type_archive('post') _ カスタマイザー : 1カラムサブセクション無し（サブ無し）
-			// is_post_type_archive('post') _ 返り値 : サブ無し
+			// is_post_type_archive('post') _ 返り値 : 非表示
 			array(
 				'options'    => array(
 					'layout' => array(
@@ -171,7 +225,7 @@ class LightningIsSubsectionDisplayTest extends WP_UnitTestCase {
 			),
 
 			// is_category _ カスタマイザー : サブセクション無し
-			// is_category _ 返り値 : サブ無し
+			// is_category _ 返り値 : 非表示
 			array(
 				'options'           => array(
 					'layout' => array(
@@ -183,7 +237,7 @@ class LightningIsSubsectionDisplayTest extends WP_UnitTestCase {
 			),
 
 			// is_post_type_archive('event') _ カスタマイザー : 1カラムサブセクション無し（サブ無し）
-			// is_post_type_archive('event') _ 返り値 : サブ無し
+			// is_post_type_archive('event') _ 返り値 : 非表示
 			array(
 				'options'    => array(
 					'layout' => array(
@@ -195,7 +249,7 @@ class LightningIsSubsectionDisplayTest extends WP_UnitTestCase {
 			),
 
 			// is_tax( 'event_cat' ) _ カスタマイザー : 1カラムサブセクション無し（サブ無し）
-			// is_tax( 'event_cat' ) _ 返り値 : サブ無し
+			// is_tax( 'event_cat' ) _ 返り値 : 非表示
 
 			/******************************************/
 			// array(
@@ -223,7 +277,7 @@ class LightningIsSubsectionDisplayTest extends WP_UnitTestCase {
 			),
 			// single _ カスタマイザー : 1カラムサブセクション無し（サブ無し）
 			// single _ 投稿ページデザイン設定 : ２カラム（サブ有り）
-			// single _ 返り値 : サブ有り
+			// single _ 返り値 : 表示
 			array(
 				'options'    => array(
 					'layout' => array(
@@ -239,7 +293,7 @@ class LightningIsSubsectionDisplayTest extends WP_UnitTestCase {
 			),
 			// page _ カスタマイザー : 1カラムサブセクション無し（サブ無し）
 			// page _ 固定ページデザイン設定 : ２カラム（サブ有り）
-			// page _ 返り値 : サブ有り
+			// page _ 返り値 : 表示
 			array(
 				'options'    => array(
 					'layout' => array(
@@ -255,7 +309,7 @@ class LightningIsSubsectionDisplayTest extends WP_UnitTestCase {
 			),
 			// page _ カスタマイザー : 1カラムサブセクション無し（サブ無し）
 			// page _ 固定ページ属性 : １カラムテンプレートが選択（サブ無し）
-			// page _ 返り値 : サブ無し
+			// page _ 返り値 : 非表示
 			array(
 				'options'    => array(
 					'layout' => array(
@@ -270,7 +324,7 @@ class LightningIsSubsectionDisplayTest extends WP_UnitTestCase {
 			// page _ カスタマイザー : 1カラムサブセクション無し（サブ無し）
 			// page _ 固定ページ属性 : １カラムテンプレートが選択（サブ無し）
 			// page _ 固定ページデザイン設定 : ２カラム（サブ有り）
-			// page _ 返り値 : サブ有り
+			// page _ 返り値 : 表示
 			array(
 				'options'    => array(
 					'layout' => array(
@@ -331,7 +385,7 @@ class LightningIsSubsectionDisplayTest extends WP_UnitTestCase {
 			// page _ カスタマイザー : 1カラムサブセクション無し（サブ無し）
 			// page _ 固定ページ属性 : テンプレート指定なし（デフォルトテンプレートが選択）
 			// page _ 固定ページデザイン設定 : ２カラム（サブ有り）
-			// page _ 返り値 : サブ有り
+			// page _ 返り値 : 表示
 			array(
 				'options'    => array(
 					'layout' => array(
@@ -357,6 +411,7 @@ class LightningIsSubsectionDisplayTest extends WP_UnitTestCase {
 			if ( isset( $value['_lightning_design_setting'] ) ) {
 				update_post_meta( $value['post_id'], '_lightning_design_setting', $value['_lightning_design_setting'] );
 			}
+
 
 			// 古いセッティング値のコンバート（実際にはfunctions-compatible.phpで after_setup_theme で実行されている）
 			lightning_options_compatible();
