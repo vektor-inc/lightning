@@ -204,9 +204,11 @@ function lightning_is_subsection_display() {
 			$return = false;
 		}
 	} elseif ( is_archive() ) {
+		$current_post_type_info = lightning_get_post_type();
 		$archive_post_types = array( 'post' ) + $additional_post_types;
 		foreach ( $archive_post_types as $archive_post_type ) {
-			if ( isset( $options['layout'][ 'archive-' . $archive_post_type ] ) && get_post_type() === $archive_post_type ) {
+
+			if ( isset( $options['layout'][ 'archive-' . $archive_post_type ] ) && $current_post_type_info['slug'] === $archive_post_type ) {
 				if ( 'col-one-no-subsection' === $options['layout'][ 'archive-' . $archive_post_type ] ) {
 					$return = false;
 				}

@@ -49,7 +49,8 @@ class LightningIsSubsectionDisplayTest extends WP_UnitTestCase {
 		$args  = array(
 			'slug' => 'event_test',
 		);
-		$term_id = wp_insert_term( 'event_test', 'event_cat', $args );
+		$term_info = wp_insert_term( 'event_test', 'event_cat', $args );
+		$term_id = $term_info['term_id'];
 
 		// Create test post
 		$post    = array(
@@ -95,7 +96,7 @@ class LightningIsSubsectionDisplayTest extends WP_UnitTestCase {
 			'post_content' => 'content',
 		);
 		$event_id = wp_insert_post( $post );
-		// set event category
+		// set event category to event post
 		wp_set_object_terms( $event_id, 'event_test', 'event_cat' );
 
 		update_option( 'page_on_front', $front_page_id ); // フロントに指定する固定ページ
@@ -250,19 +251,15 @@ class LightningIsSubsectionDisplayTest extends WP_UnitTestCase {
 
 			// is_tax( 'event_cat' ) _ カスタマイザー : 1カラムサブセクション無し（サブ無し）
 			// is_tax( 'event_cat' ) _ 返り値 : 非表示
-
-			/******************************************/
-			// array(
-			// 	'options'           => array(
-			// 		'layout' => array(
-			// 			'archive-event' => 'col-one-no-subsection',
-			// 		),
-			// 	),
-			// 	'target_url'        => get_term_link( $term_id ),
-			// 	'correct'           => false,
-			// ),
-			/******************************************/
-
+			array(
+				'options'           => array(
+					'layout' => array(
+						'archive-event' => 'col-one-no-subsection',
+					),
+				),
+				'target_url'        => get_term_link( $term_id ),
+				'correct'           => false,
+			),
 
 			// singular //////////////////////////////////////////////////////
 
@@ -402,6 +399,7 @@ class LightningIsSubsectionDisplayTest extends WP_UnitTestCase {
 		);
 
 		foreach ( $test_array as $value ) {
+
 			$options = $value['options'];
 			update_option( 'lightning_theme_options', $options );
 
@@ -412,9 +410,11 @@ class LightningIsSubsectionDisplayTest extends WP_UnitTestCase {
 				update_post_meta( $value['post_id'], '_lightning_design_setting', $value['_lightning_design_setting'] );
 			}
 
-
 			// 古いセッティング値のコンバート（実際にはfunctions-compatible.phpで after_setup_theme で実行されている）
 			lightning_options_compatible();
+
+
+
 
 			// Move to test page
 			$this->go_to( $value['target_url'] );
