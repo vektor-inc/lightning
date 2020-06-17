@@ -113,7 +113,6 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 						'front-page' => 'col-one',
 					),
 				),
-				'_wp_page_template' => '',
 				'target_url'        => home_url( '/' ),
 				'correct'           => true,
 			),
@@ -123,7 +122,6 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 						'front-page' => 'col-one-no-subsection',
 					),
 				),
-				'_wp_page_template' => '',
 				'target_url'        => home_url( '/' ),
 				'correct'           => true,
 			),
@@ -132,9 +130,10 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 			// Front page _ カスタマイザー : 未指定
 			// Front page _ 固定ページ属性 : １カラムテンプレートが選択（非推奨）
 			array(
+				'show_on_front'		=> 'page',
 				'options'           => array(),
 				'_wp_page_template' => 'page-onecolumn.php',
-				'show_on_front'		=> 'page',
+				'post_id'           => $front_page_id,
 				'target_url'        => home_url( '/' ),
 				'correct'           => true,
 			),
@@ -142,13 +141,14 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 			// Front page _ カスタマイザー : ２カラム指定
 			// Front page _ 固定ページ属性 : １カラムテンプレートが選択（非推奨）
 			array(
+				'show_on_front'		=> 'page',
 				'options'           => array(
 					'layout' => array(
 						'front-page' => 'col-two',
 					),
 				),
 				'_wp_page_template' => 'page-onecolumn.php',
-				'show_on_front'		=> 'page',
+				'post_id'           => $front_page_id,
 				'target_url'        => home_url( '/' ),
 				'correct'           => true,
 			),
@@ -187,14 +187,13 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 			// Front page _ トップ : 最近の投稿指定
 			// Front page _ カスタマイザー : トップ１カラムが選択 / 投稿アーカイブ : ２カラムが選択
 			array(
+				'show_on_front'		=> 'posts',
 				'options'           => array(
 					'layout' => array(
 						'front-page' => 'col-one',
 						'archive-post' => 'col-two'
 					),
 				),
-				'_wp_page_template' => '',
-				'show_on_front'		=> 'posts',
 				'target_url'        => home_url( '/' ),
 				'correct'           => true,
 			),
@@ -208,7 +207,6 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 						'archive-post' => 'col-one',
 					),
 				),
-				'post_id'           => $home_page_id,
 				'target_url'        => get_permalink( get_option( 'page_for_posts' ) ),
 				'correct'           => true,
 			),
@@ -241,7 +239,6 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 						'search' => 'col-one',
 					),
 				),
-				'_wp_page_template' => '',
 				'target_url'        => home_url( '/' ) . '?s=aaa',
 				'correct'           => true,
 			),
@@ -253,7 +250,6 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 						'error404' => 'col-one',
 					),
 				),
-				'_wp_page_template' => '',
 				'target_url'        => home_url( '/' ) . '?name=abcdefg',
 				'correct'           => true,
 			),
@@ -313,8 +309,8 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 				'_lightning_design_setting' => array(
 					'layout' => 'col-one',
 				),
-				'target_url'        => get_permalink( $normal_page_id ),
 				'post_id'           => $normal_page_id,
+				'target_url'        => get_permalink( $normal_page_id ),
 				'correct'           => true,
 			),
 
@@ -325,9 +321,7 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 						'single-event' => 'col-one',
 					),
 				),
-				'_wp_page_template' => '',
 				'target_url'        => get_permalink( $event_id ),
-				'post_id'           => $event_id,
 				'correct'           => true,
 			),
 			// Single
@@ -337,9 +331,7 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 						'single-post' => 'col-one',
 					),
 				),
-				'_wp_page_template' => '',
 				'target_url'        => get_permalink( $post_id ),
-				'post_id'           => $post_id,
 				'correct'           => true,
 			),
 			// Single
@@ -353,8 +345,8 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 				'_lightning_design_setting' => array(
 					'layout' => 'col-two',
 				),
-				'target_url'                => get_permalink( $post_id ),
 				'post_id'                   => $post_id,
+				'target_url'                => get_permalink( $post_id ),
 				'correct'                   => false,
 			),
 			array(
@@ -367,8 +359,8 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 				'_lightning_design_setting' => array(
 					'layout' => 'col-one',
 				),
-				'target_url'                => get_permalink( $post_id ),
 				'post_id'                   => $post_id,
+				'target_url'                => get_permalink( $post_id ),
 				'correct'                   => true,
 			),
 
@@ -381,7 +373,6 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 				'options'           => array(
 					'top_sidebar_hidden' => true,
 				),
-				'_wp_page_template' => '',
 				'target_url'        => home_url( '/' ),
 				'correct'           => true,
 			),
@@ -394,7 +385,6 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 						'front-page' => 'col-two',
 					),
 				),
-				'_wp_page_template' => '',
 				'target_url'        => home_url( '/' ),
 				'correct'           => false,
 			),
@@ -406,7 +396,6 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 						'archive' => 'col-one',
 					),
 				),
-				'_wp_page_template' => '',
 				'target_url'        => home_url( '/' ) . '?post_type=post',
 				'correct'           => true,
 			),
@@ -416,7 +405,6 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 						'archive' => 'col-one-no-subsection',
 					),
 				),
-				'_wp_page_template' => '',
 				'target_url'        => home_url( '/' ) . '?post_type=post',
 				'correct'           => true,
 			),
@@ -427,7 +415,6 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 						'archive' => 'col-one',
 					),
 				),
-				'_wp_page_template' => '',
 				'target_url'        => home_url( '/' ) . '?post_type=event',
 				'correct'           => true,
 			),
@@ -439,7 +426,6 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 						'archive-event' => 'col-one',
 					),
 				),
-				'_wp_page_template' => '',
 				'target_url'        => home_url( '/' ) . '?post_type=event',
 				'correct'           => true,
 			),
@@ -451,9 +437,7 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 						'page' => 'col-one',
 					),
 				),
-				'_wp_page_template' => '',
 				'target_url'        => get_permalink( $normal_page_id ),
-				'post_id'           => $normal_page_id,
 				'correct'           => true,
 			),
 			// Page（ Old specification parameter with post_meta ）
@@ -467,8 +451,8 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 				'_lightning_design_setting' => array(
 					'layout' => 'col-two',
 				),
-				'target_url'                => get_permalink( $normal_page_id ),
 				'post_id'                   => $normal_page_id,
+				'target_url'                => get_permalink( $normal_page_id ),
 				'correct'                   => false,
 			),
 			// Single（ Old specification parameter ）
@@ -478,9 +462,7 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 						'single' => 'col-one',
 					),
 				),
-				'_wp_page_template' => '',
 				'target_url'        => get_permalink( $post_id ),
-				'post_id'           => $post_id,
 				'correct'           => true,
 			),
 		);
@@ -490,7 +472,7 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 			update_option( 'lightning_theme_options', $options );
 
 			if ( isset( $value['_wp_page_template'] ) ) {
-				update_post_meta( $front_page_id, '_wp_page_template', $value['_wp_page_template'] );
+				update_post_meta( $value['post_id'], '_wp_page_template', $value['_wp_page_template'] );
 			}
 			if ( isset( $value['_lightning_design_setting'] ) ) {
 				update_post_meta( $value['post_id'], '_lightning_design_setting', $value['_lightning_design_setting'] );
@@ -519,7 +501,7 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 			$this->assertEquals( $value['correct'], $return );
 
 			if ( !empty( $value['_wp_page_template'] ) ) {
-				delete_post_meta( $front_page_id, '_wp_page_template' );
+				delete_post_meta( $value['post_id'], '_wp_page_template' );
 			}
 			if ( isset( $value['_lightning_design_setting'] ) ) {
 				delete_post_meta( $value['post_id'], '_lightning_design_setting' );
