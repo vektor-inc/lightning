@@ -49,6 +49,15 @@ class LightningIsSubsectionDisplayTest extends WP_UnitTestCase {
 		);
 		$post_id = wp_insert_post( $post );
 
+		// Create test page
+		$post           = array(
+			'post_title'   => 'normal page',
+			'post_type'    => 'page',
+			'post_status'  => 'publish',
+			'post_content' => 'content',
+		);
+		$normal_page_id = wp_insert_post( $post );
+
 		update_option( 'page_on_front', $front_page_id ); // フロントに指定する固定ページ
 		update_option( 'page_for_posts', $home_page_id ); // 投稿トップに指定する固定ページ
 		update_option( 'show_on_front', 'page' ); // or posts
@@ -124,7 +133,25 @@ class LightningIsSubsectionDisplayTest extends WP_UnitTestCase {
 				'target_url' => get_permalink( $post_id ),
 				'correct'    => true,
 			),
-
+			// single _ カスタマイザー : 1カラムサブセクション無し（サブ無し）
+			// single _ 投稿ページデザイン設定 : ２カラム（サブ有り）
+			// single _ 返り値 : サブ有り
+			array(
+				'options'    => array(
+					'layout' => array(
+						'single-post' => 'col-one-no-subsection',
+					),
+				),
+				'_lightning_design_setting' => array(
+					'layout' => 'col-two',
+				),
+				'post_id'    => $post_id,
+				'target_url' => get_permalink( $post_id ),
+				'correct'    => true,
+			),
+			// page _ カスタマイザー : 1カラムサブセクション無し（サブ無し）
+			// page _ 固定ページデザイン設定 : ２カラム（サブ有り）
+			// page _ 返り値 : サブ有り
 			array(
 				'options'    => array(
 					'layout' => array(
@@ -134,8 +161,40 @@ class LightningIsSubsectionDisplayTest extends WP_UnitTestCase {
 				'_lightning_design_setting' => array(
 					'layout' => 'col-two',
 				),
-				'post_id'    => $post_id,
-				'target_url' => get_permalink( $post_id ),
+				'post_id'    => $normal_page_id,
+				'target_url' => get_permalink( $normal_page_id ),
+				'correct'    => true,
+			),
+			// page _ カスタマイザー : 1カラムサブセクション無し（サブ無し）
+			// page _ 固定ページ属性 : １カラムテンプレートが選択（サブ無し）
+			// page _ 返り値 : サブ無し
+			array(
+				'options'    => array(
+					'layout' => array(
+						'single-page' => 'col-one-no-subsection',
+					),
+				),
+				'_wp_page_template' => 'page-onecolumn.php',
+				'post_id'    => $normal_page_id,
+				'target_url' => get_permalink( $normal_page_id ),
+				'correct'    => false,
+			),
+			// page _ カスタマイザー : 1カラムサブセクション無し（サブ無し）
+			// page _ 固定ページ属性 : １カラムテンプレートが選択（サブ無し）
+			// page _ 固定ページデザイン設定 : ２カラム（サブ有り）
+			// page _ 返り値 : サブ有り
+			array(
+				'options'    => array(
+					'layout' => array(
+						'single-page' => 'col-one-no-subsection',
+					),
+				),
+				'_wp_page_template' => 'page-onecolumn.php',
+				'_lightning_design_setting' => array(
+					'layout' => 'col-two',
+				),
+				'post_id'    => $normal_page_id,
+				'target_url' => get_permalink( $normal_page_id ),
 				'correct'    => true,
 			),
 
@@ -170,6 +229,23 @@ class LightningIsSubsectionDisplayTest extends WP_UnitTestCase {
 				'target_url' => get_permalink( $post_id ),
 				'correct'    => false,
 			),
+			// page _ カスタマイザー : 1カラムサブセクション無し（サブ無し）
+			// page _ 固定ページ属性 : テンプレート指定なし（デフォルトテンプレートが選択）
+			// page _ 固定ページデザイン設定 : ２カラム（サブ有り）
+			// page _ 返り値 : サブ有り
+			array(
+				'options'    => array(
+					'layout' => array(
+						'page' => 'col-one-no-subsection',
+					),
+				),
+				'_lightning_design_setting' => array(
+					'layout' => 'col-two',
+				),
+				'post_id'    => $normal_page_id,
+				'target_url' => get_permalink( $normal_page_id ),
+				'correct'    => true,
+			),
 		);
 
 		foreach ( $test_array as $value ) {
@@ -194,7 +270,9 @@ class LightningIsSubsectionDisplayTest extends WP_UnitTestCase {
 			print 'return  :' . $return . PHP_EOL;
 			print 'correct :' . $value['correct'] . PHP_EOL;
 			$this->assertEquals( $value['correct'], $return );
-
+			if ( isset( $value['charck_key'] ) ){
+				print 'charck_key :' .  $value['charck_key'] . PHP_EOL;
+			}
 			if ( isset( $value['_wp_page_template'] ) ) {
 				delete_post_meta( $value['post_id'], '_wp_page_template', $value['_wp_page_template'] );
 			}
