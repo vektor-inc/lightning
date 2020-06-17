@@ -9,7 +9,7 @@ phpunit
 */
 
 class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
-
+	
 	function test_lightning_is_layout_onecolumn() {
 		print PHP_EOL;
 		print '------------------------------------' . PHP_EOL;
@@ -478,9 +478,13 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 				update_post_meta( $value['post_id'], '_lightning_design_setting', $value['_lightning_design_setting'] );
 			}
 			if ( isset( $value['show_on_front'] ) && $value['show_on_front'] === 'posts') {
-				delete_option( 'show_on_front', 'posts' );
+				update_option( 'show_on_front', 'posts' );
+				delete_option( 'page_on_front' );
+				delete_option( 'page_for_posts' );
 			} else {
 				update_option( 'show_on_front', 'page' );
+				update_option( 'page_on_front', $front_page_id );
+				update_option( 'page_for_posts', $home_page_id );
 			}
 
 			// 古いセッティング値のコンバート（実際にはfunctions-compatible.phpで after_setup_theme で実行されている）
@@ -493,8 +497,9 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 			print 'url     :' . $_SERVER['REQUEST_URI'] . PHP_EOL;
 			print 'return  :' . $return . PHP_EOL;
 			print 'correct :' . $value['correct'] . PHP_EOL;
-			print 'is_front :' . is_front_page() . PHP_EOL;
+			print 'is_front_page :' . is_front_page() . PHP_EOL;
 			print 'is_home :' . is_home() . PHP_EOL;
+			print 'is_archive :' . is_archive() . PHP_EOL;
 			if ( isset( $value['charck_key'] ) ){
 				print 'charck_key :' .  $value['charck_key'] . PHP_EOL;
 			}
