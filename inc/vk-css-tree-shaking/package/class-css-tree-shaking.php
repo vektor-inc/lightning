@@ -10,7 +10,7 @@
  * License: GPLv2
  * 
  */
-namespace yasakani;    
+namespace celtislab;
 
 defined( 'ABSPATH' ) || exit;
 

@@ -5,8 +5,6 @@ $theme_opt = wp_get_theme( get_template() );
 define( 'LIGHTNING_THEME_VERSION', $theme_opt->Version );
 define( 'LIGHTNING_SHORT_NAME', 'LTG THEME' );
 
-require get_parent_theme_file_path( '/inc/css-tree-shaking.php' );
-
 /*
   Theme setup
 /*
