@@ -1,0 +1,74 @@
+name: Build Check
+
+on:
+  push:
+    branches:
+      - master
+      - develop
+      - ^feature/.+
+  pull_request:
+    branches:
+      - master
+      - develop
+      - ^feature/.+
+
+jobs:
+  buid_check:
+    name: build test
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      with:
+        node-version: 10.x
+
+    - run: cp assets/js/lightning.min.js lightning.min.js.before
+    - run: cp assets/css/common.css common.css.before
+    - run: cp assets/css/common_editor.css common_editor.css.before
+    - run: cp assets/css/wp-embed.css wp-embed.css.before
+
+    - run: cp library/bootstrap-4/css/bootstrap.css bootstrap4.css.before
+    - run: cp library/bootstrap-3/css/bootstrap.css bootstrap3.css.before
+
+    - run: cp design-skin/origin/css/style.css origin.style.css.before
+    - run: cp design-skin/origin/css/editor.css origin.editor.css.before
+
+    - run: cp design-skin/origin2/css/style.css origin2.style.css.before
+    - run: cp design-skin/origin2/css/editor.css origin2.editor.css.before
+
+    - run: cp inc/woocommerce/css/woo.css woo.css.before
+
+    - run: npm install -D
+
+    # js forget compile check
+    - run: npm run webpack
+    - run: diff assets/js/lightning.min.js lightning.min.js.before
+
+    # common css forget compile check
+    - run: npm run gulp sass_common
+    - run: diff assets/css/common.css common.css.before
+    - run: diff assets/css/common_editor.css common_editor.css.before
+    - run: diff assets/css/wp-embed.css wp-embed.css.before
+
+    # sass_bs4
+    - run: diff library/bootstrap-4/css/bootstrap.css bootstrap4.css.before
+    - run: diff library/bootstrap-3/css/bootstrap.css bootstrap3.css.before
+
+    # origin scss forget compile check
+    - run: diff design-skin/origin/css/style.css origin.style.css.before
+    - run: diff design-skin/origin/css/editor.css origin.editor.css.before
+
+    # origin2 scss forget compile check
+    - run: diff design-skin/origin2/css/style.css origin2.style.css.before
+    - run: diff design-skin/origin2/css/editor.css origin2.editor.css.before
+
+    # woocommerce scsss forget compile check
+    - run: diff inc/woocommerce/css/woo.css woo.css.before
+
+  php_unit:
+    name: php unittest
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - run: docker-compose run wp
+
