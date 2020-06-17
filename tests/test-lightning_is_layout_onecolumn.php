@@ -136,7 +136,7 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 			// Front page _ トップ : 固定ページ指定
 			// Front page _ カスタマイザー : 未指定
 			// Front page _ 固定ページ属性 : １カラムテンプレートが選択（非推奨）
-			// Front page _ 返り値 : true
+			// Front page _ 返り値 : １カラム
 			array(
 				'show_on_front'		=> 'page',
 				'options'           => array(),
@@ -148,7 +148,7 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 			// Front page _ トップ : 固定ページ指定
 			// Front page _ カスタマイザー : ２カラム指定
 			// Front page _ 固定ページ属性 : １カラムテンプレートが選択（非推奨）
-			// Front page _ 返り値 : true
+			// Front page _ 返り値 : １カラム
 			array(
 				'show_on_front'		=> 'page',
 				'options'           => array(
@@ -162,9 +162,9 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 				'correct'           => true,
 			),
 			// Front page _ トップ : 固定ページ指定
-			// Front page _ カスタマイザー : 1カラム指定
+			// Front page _ カスタマイザー : １カラム指定
 			// Front page _ 固定ページ属性 : デフォルトテンプレートが選択
-			// Front page _ 返り値 : true
+			// Front page _ 返り値 : １カラム
 			array(
 				'options'           => array(
 					'layout' => array(
@@ -180,7 +180,7 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 			// Front page _ カスタマイザー : ２カラム指定
 			// Front page _ 固定ページ属性 : デフォルトテンプレートが選択
 			// Front page _ 固定ページデザイン設定 : １カラム指定
-			// Front page _ 返り値 : true
+			// Front page _ 返り値 : １カラム
 			array(
 				'options'           => array(
 					'layout' => array(
@@ -197,7 +197,7 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 			),
 			// Front page _ トップ : 最近の投稿指定
 			// Front page _ カスタマイザー : トップ１カラムが選択 / 投稿アーカイブ : ２カラムが選択
-			// Front page _ 返り値 : true
+			// Front page _ 返り値 : １カラム
 			array(
 				'show_on_front'		=> 'posts',
 				'options'           => array(
@@ -212,7 +212,7 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 
 			// Post index（ is_home() ） //////////////////////////////////////////////////////
 
-			// Post index _ カスタマイザー : 1カラム
+			// Post index _ カスタマイザー : １カラム
 			array(
 				'options'           => array(
 					'layout' => array(
@@ -223,9 +223,9 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 				'correct'           => true,
 			),
 
-			// Post index _ カスタマイザー : 1カラム
+			// Post index _ カスタマイザー : ２カラム
 			// Post index _ 固定ページデザイン設定 : １カラム指定
-			// Post index _ 返り値 : false
+			// Post index _ 返り値 : ２カラム
 			/*
 			他の設定の仕様にあわせるなら投稿トップ（is_home）に指定した固定ページのレイアウト設定が効くべきではあるが、
 			4系以前の仕様ではその制御が未指定で個別ページからのレイアウト指定が効いてないので、
@@ -289,8 +289,8 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 				'correct'           => true,
 			),
 
-			// is_category _ カスタマイザー : 1カラム
-			// is_category _ 返り値 : true
+			// is_category _ カスタマイザー : １カラム
+			// is_category _ 返り値 : １カラム
 			array(
 				'options'           => array(
 					'layout' => array(
@@ -303,8 +303,8 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 
 			// Custom Post Type Archive
 
-			// is_post_type_archive('event) _ カスタマイザー : 1カラム
-			// is_post_type_archive('event) _ 返り値 : true
+			// is_post_type_archive('event) _ カスタマイザー : １カラム
+			// is_post_type_archive('event) _ 返り値 : １カラム
 			array(
 				'options'           => array(
 					'layout' => array(
@@ -315,20 +315,29 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 				'correct'           => true,
 			),
 
-			// is_tax( 'event_cat' ) _ カスタマイザー : 1カラム
-			// is_tax( 'event_cat' ) _ 返り値 : true
+			// is_tax( 'event_cat' ) _ カスタマイザー : １カラム
+			// is_tax( 'event_cat' ) _ 返り値 : １カラム
+			array(
+				'options'           => array(
+					'layout' => array(
+						'archive-event' => 'col-one',
+					),
+				),
+				'target_url'        => get_term_link( $term_id ),
+				'correct'           => true,
+			),
 
-			/******************************************/
-			// array(
-			// 	'options'           => array(
-			// 		'layout' => array(
-			// 			'archive-event' => 'col-one',
-			// 		),
-			// 	),
-			// 	'target_url'        => get_term_link( $term_id ),
-			// 	'correct'           => true,
-			// ),
-			/******************************************/
+			// is_tax( 'event_cat' ) _ カスタマイザー : ２カラム
+			// is_tax( 'event_cat' ) _ 返り値 : ２カラム
+			array(
+				'options'           => array(
+					'layout' => array(
+						'archive-event' => 'col-two',
+					),
+				),
+				'target_url'        => get_term_link( $term_id ),
+				'correct'           => false,
+			),
 
 			// Singular //////////////////////////////////////////////////////
 
