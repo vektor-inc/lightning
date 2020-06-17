@@ -22,6 +22,53 @@ class LightningIsSubsectionDisplayTest extends WP_UnitTestCase {
 		$before_page_on_front  = get_option( 'page_on_front' ); // フロントに指定する固定ページ
 		$before_show_on_front  = get_option( 'show_on_front' ); // トップページ指定するかどうか page or posts
 
+		register_post_type(
+			'event',
+			array(
+				'has_archive' => true,
+				'public'      => true,
+			)
+		);
+		register_taxonomy(
+			'event_cat',
+			'event',
+			array(
+				'label' => __( 'Event Category' ),
+				'rewrite' => array( 'slug' => 'event_cat' ),
+				'hierarchical' => true,
+			)
+		);
+
+		// Create test category
+		$catarr  = array(
+			'cat_name' => 'test_category',
+		);
+		$cate_id = wp_insert_category( $catarr );
+
+		// Create test term
+		$args  = array(
+			'slug' => 'event_test',
+		);
+		$term_id = wp_insert_term( 'event_test', 'event_cat', $args );
+
+		// Create test post
+		$post    = array(
+			'post_title'    => 'test',
+			'post_status'   => 'publish',
+			'post_content'  => 'content',
+			'post_category' => array( $cate_id ),
+		);
+		$post_id = wp_insert_post( $post );
+
+		// Create test page
+		$post           = array(
+			'post_title'   => 'normal page',
+			'post_type'    => 'page',
+			'post_status'  => 'publish',
+			'post_content' => 'content',
+		);
+		$normal_page_id = wp_insert_post( $post );
+
 		// Create test home page
 		$post         = array(
 			'post_title'   => 'post_top',
@@ -40,28 +87,25 @@ class LightningIsSubsectionDisplayTest extends WP_UnitTestCase {
 		);
 		$front_page_id = wp_insert_post( $post );
 
-		// Create test single page
-		$post    = array(
-			'post_title'   => 'single-page',
-			'post_type'    => 'post',
+		// custom post type.
+		$post          = array(
+			'post_title'   => 'event-test',
+			'post_type'    => 'event',
 			'post_status'  => 'publish',
 			'post_content' => 'content',
 		);
-		$post_id = wp_insert_post( $post );
-
-		// Create test page
-		$post           = array(
-			'post_title'   => 'normal page',
-			'post_type'    => 'page',
-			'post_status'  => 'publish',
-			'post_content' => 'content',
-		);
-		$normal_page_id = wp_insert_post( $post );
+		$event_id = wp_insert_post( $post );
+		// set event category
+		wp_set_object_terms( $event_id, 'event_test', 'event_cat' );
 
 		update_option( 'page_on_front', $front_page_id ); // フロントに指定する固定ページ
 		update_option( 'page_for_posts', $home_page_id ); // 投稿トップに指定する固定ページ
 		update_option( 'show_on_front', 'page' ); // or posts
 
+		/*
+		 Test Array
+		/*--------------------------------*/
+		
 		$test_array = array(
 
 			// Front page //////////////////////////////////////////////////////
@@ -101,17 +145,9 @@ class LightningIsSubsectionDisplayTest extends WP_UnitTestCase {
 			),
 
 			// Archive //////////////////////////////////////////////////////
-			
-			array(
-				'options'    => array(
-					'layout' => array(
-						'archive' => 'col-one-no-subsection',
-					),
-				),
-				'target_url' => get_permalink( $home_page_id ),
-				'correct'    => false,
-			),
-		
+
+			// is_home _ カスタマイザー : 1カラムサブセクション無し（サブ無し）
+			// is_home _ 返り値 : サブ無し
 			array(
 				'options'    => array(
 					'layout' => array(
@@ -121,6 +157,58 @@ class LightningIsSubsectionDisplayTest extends WP_UnitTestCase {
 				'target_url' => get_permalink( $home_page_id ),
 				'correct'    => false,
 			),
+
+			// is_post_type_archive('post') _ カスタマイザー : 1カラムサブセクション無し（サブ無し）
+			// is_post_type_archive('post') _ 返り値 : サブ無し
+			array(
+				'options'    => array(
+					'layout' => array(
+						'archive-post' => 'col-one-no-subsection',
+					),
+				),
+				'target_url'        => get_post_type_archive_link( 'post' ),
+				'correct'    => false,
+			),
+
+			// is_category _ カスタマイザー : サブセクション無し
+			// is_category _ 返り値 : サブ無し
+			array(
+				'options'           => array(
+					'layout' => array(
+						'archive-post' => 'col-one-no-subsection',
+					),
+				),
+				'target_url'        => get_term_link( $cate_id ),
+				'correct'           => false,
+			),
+
+			// is_post_type_archive('event') _ カスタマイザー : 1カラムサブセクション無し（サブ無し）
+			// is_post_type_archive('event') _ 返り値 : サブ無し
+			array(
+				'options'    => array(
+					'layout' => array(
+						'archive-event' => 'col-one-no-subsection',
+					),
+				),
+				'target_url'        => get_post_type_archive_link( 'event' ),
+				'correct'    => false,
+			),
+
+			// is_tax( 'event_cat' ) _ カスタマイザー : 1カラムサブセクション無し（サブ無し）
+			// is_tax( 'event_cat' ) _ 返り値 : サブ無し
+
+			/******************************************/
+			// array(
+			// 	'options'           => array(
+			// 		'layout' => array(
+			// 			'archive-event' => 'col-one-no-subsection',
+			// 		),
+			// 	),
+			// 	'target_url'        => get_term_link( $term_id ),
+			// 	'correct'           => false,
+			// ),
+			/******************************************/
+
 
 			// singular //////////////////////////////////////////////////////
 
@@ -201,6 +289,17 @@ class LightningIsSubsectionDisplayTest extends WP_UnitTestCase {
 			////////////////////////////////////////////////////////////////
 			// Legacy fallback
 			////////////////////////////////////////////////////////////////
+
+			// is_home
+			array(
+				'options'    => array(
+					'layout' => array(
+						'archive' => 'col-one-no-subsection',
+					),
+				),
+				'target_url' => get_permalink( $home_page_id ),
+				'correct'    => false,
+			),
 
 			array(
 				'options'    => array(

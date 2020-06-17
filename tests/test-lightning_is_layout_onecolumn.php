@@ -45,10 +45,10 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 		$cate_id = wp_insert_category( $catarr );
 
 		// Create test term
-		// $args  = array(
-		// 	'slug' => 'event_test',
-		// );
-		// $cate_id = wp_insert_term( 'event_test', 'event_cat', $args );
+		$args  = array(
+			'slug' => 'event_test',
+		);
+		$term_id = wp_insert_term( 'event_test', 'event_cat', $args );
 
 		// Create test post
 		$post    = array(
@@ -94,6 +94,8 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 			'post_content' => 'content',
 		);
 		$event_id = wp_insert_post( $post );
+		// set event category
+		wp_set_object_terms( $event_id, 'event_test', 'event_cat' );
 
 		update_option( 'page_on_front', $front_page_id ); // フロントに指定する固定ページ
 		update_option( 'page_for_posts', $home_page_id ); // 投稿トップに指定する固定ページ
@@ -129,6 +131,7 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 			// Front page _ トップ : 固定ページ指定
 			// Front page _ カスタマイザー : 未指定
 			// Front page _ 固定ページ属性 : １カラムテンプレートが選択（非推奨）
+			// Front page _ 返り値 : true
 			array(
 				'show_on_front'		=> 'page',
 				'options'           => array(),
@@ -140,6 +143,7 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 			// Front page _ トップ : 固定ページ指定
 			// Front page _ カスタマイザー : ２カラム指定
 			// Front page _ 固定ページ属性 : １カラムテンプレートが選択（非推奨）
+			// Front page _ 返り値 : true
 			array(
 				'show_on_front'		=> 'page',
 				'options'           => array(
@@ -155,6 +159,7 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 			// Front page _ トップ : 固定ページ指定
 			// Front page _ カスタマイザー : 1カラム指定
 			// Front page _ 固定ページ属性 : デフォルトテンプレートが選択
+			// Front page _ 返り値 : true
 			array(
 				'options'           => array(
 					'layout' => array(
@@ -170,6 +175,7 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 			// Front page _ カスタマイザー : ２カラム指定
 			// Front page _ 固定ページ属性 : デフォルトテンプレートが選択
 			// Front page _ 固定ページデザイン設定 : １カラム指定
+			// Front page _ 返り値 : true
 			array(
 				'options'           => array(
 					'layout' => array(
@@ -186,6 +192,7 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 			),
 			// Front page _ トップ : 最近の投稿指定
 			// Front page _ カスタマイザー : トップ１カラムが選択 / 投稿アーカイブ : ２カラムが選択
+			// Front page _ 返り値 : true
 			array(
 				'show_on_front'		=> 'posts',
 				'options'           => array(
@@ -213,6 +220,7 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 
 			// Post index _ カスタマイザー : 1カラム
 			// Post index _ 固定ページデザイン設定 : １カラム指定
+			// Post index _ 返り値 : false
 			/*
 			他の設定の仕様にあわせるなら投稿トップ（is_home）に指定した固定ページのレイアウト設定が効くべきではあるが、
 			4系以前の仕様ではその制御が未指定で個別ページからのレイアウト指定が効いてないので、
@@ -275,26 +283,47 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 				'target_url'        => home_url( '/' ) . '?post_type=post',
 				'correct'           => true,
 			),
+
+			// is_category _ カスタマイザー : 1カラム
+			// is_category _ 返り値 : true
+			array(
+				'options'           => array(
+					'layout' => array(
+						'archive-post' => 'col-one',
+					),
+				),
+				'target_url'        => get_term_link( $cate_id ),
+				'correct'           => true,
+			),
+
+			// Custom Post Type Archive
+
+			// is_post_type_archive('event) _ カスタマイザー : 1カラム
+			// is_post_type_archive('event) _ 返り値 : true
 			array(
 				'options'           => array(
 					'layout' => array(
 						'archive-event' => 'col-one',
 					),
 				),
-				'target_url'        => home_url( '/' ) . '?post_type=event',
+				'target_url'        => get_post_type_archive_link( 'event' ),
 				'correct'           => true,
 			),
 
-			// is_category()
-			array(
-				'options'           => array(
-					'layout' => array(
-						'archive' => 'col-one',
-					),
-				),
-				'target_url'        => get_term_link( $cate_id ),
-				'correct'           => true,
-			),
+			// is_tax( 'event_cat' ) _ カスタマイザー : 1カラム
+			// is_tax( 'event_cat' ) _ 返り値 : true
+
+			/******************************************/
+			// array(
+			// 	'options'           => array(
+			// 		'layout' => array(
+			// 			'archive-event' => 'col-one',
+			// 		),
+			// 	),
+			// 	'target_url'        => get_term_link( $term_id ),
+			// 	'correct'           => true,
+			// ),
+			/******************************************/
 
 			// Singular //////////////////////////////////////////////////////
 
@@ -427,6 +456,17 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 					),
 				),
 				'target_url'        => home_url( '/' ) . '?post_type=event',
+				'correct'           => true,
+			),
+
+			// is_category()
+			array(
+				'options'           => array(
+					'layout' => array(
+						'archive' => 'col-one',
+					),
+				),
+				'target_url'        => get_term_link( $cate_id ),
 				'correct'           => true,
 			),
 
