@@ -28,8 +28,9 @@ if ( ! class_exists( 'VK_CSS_Tree_Shaking' ) ) {
 			require_once dirname( __FILE__ ) . '/class-css-tree-shaking.php';
 			global $vk_css_tree_shaking_array;
 			foreach ( $vk_css_tree_shaking_array as $vk_css_array  ) {
-
-				$css    = file_get_contents( $vk_css_array['url'], true );
+				$options['ssl']['verify_peer'] = false;
+				$options['ssl']['verify_peer_name'] = false;
+				$css    = file_get_contents( $vk_css_array['url'], true, stream_context_create($options) );
 				$css    = celtislab\CSS_tree_shaking::extended_minify( $css, $buffer );
 				$buffer = str_replace(
 					'<link rel=\'stylesheet\' id=\'' . $vk_css_array['id'] . '-css\'  href=\'' . $vk_css_array['url'] . '?ver='. $vk_css_array['version'] . '\' type=\'text/css\' media=\'all\' />',
