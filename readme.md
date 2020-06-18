@@ -69,7 +69,7 @@ $ npm run build
 
 #### jsビルド
 ```
-$ npm run bulid:js
+$ npm run bulid:script
 ```
 
 #### scssビルド
@@ -86,7 +86,7 @@ $ npm run build:text-domain
 
 #### js
 ```
-$ npm run watch:js
+$ npm run watch:script
 ```
 
 #### scss
