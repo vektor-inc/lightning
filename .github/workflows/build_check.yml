@@ -76,10 +76,10 @@ jobs:
         ports:
           - 3306
         env:
-            MYSQL_ROOT_PASSWORD: wordpress
-            MYSQL_DATABASE: wordpress
-            MYSQL_USER: wordpress
-            MYSQL_PASSWORD: wordpress
+          MYSQL_ROOT_PASSWORD: wordpress
+          MYSQL_DATABASE: wordpress
+          MYSQL_USER: wordpress
+          MYSQL_PASSWORD: wordpress
     steps:
     - uses: actions/checkout@v2
     - name: Cache multiple paths
