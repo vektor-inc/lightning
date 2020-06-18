@@ -9,7 +9,7 @@ if ( ! class_exists( 'VK_Component_Mini_Contents' ) ) {
 
 	class VK_Component_Mini_Contents {
 
-		static public function get_options( $options ) {
+		public static function get_options( $options ) {
 			$default = array(
 				'outer_id'       => '',
 				'outer_class'    => '',
@@ -35,7 +35,7 @@ if ( ! class_exists( 'VK_Component_Mini_Contents' ) ) {
 			return $options;
 		}
 
-		static public function get_view( $options ) {
+		public static function get_view( $options ) {
 			$options = self::get_options( $options );
 
 			$html  = '';
@@ -79,7 +79,7 @@ if ( ! class_exists( 'VK_Component_Mini_Contents' ) ) {
 					$caption_class = ' class="' . esc_attr( $options['caption_class'] ) . '"';
 				}
 				$html .= '<' . esc_html( $options['caption_tag'] ) . $caption_class . $font_style . '>';
-				$html .= nl2br( esc_textarea( $options['caption_text'] ) );
+				$html .= nl2br( wp_kses_post( $options['caption_text'] ) );
 				$html .= '</' . esc_html( $options['caption_tag'] ) . '>';
 
 			}
@@ -96,7 +96,7 @@ if ( ! class_exists( 'VK_Component_Mini_Contents' ) ) {
 			return $html;
 		}
 
-		static public function the_view( $options ) {
+		public static function the_view( $options ) {
 			 echo self::get_view( $options );
 		}
 	}
