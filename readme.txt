@@ -1,6 +1,10 @@
 === Lightning ===
 Lightning WordPress theme, Copyright (C) 2015-2020 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
+Tested up to: 5.4.2
+Stable tag: 10.0.7
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 Lightning is a very simple theme that built by Bootstrap.
@@ -35,7 +39,10 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
-v10.0.2
+v10.0.7
+* [ Bug fix ] Delete debug code
+ 
+v10.0.6
 * [ Add Function ] Cope with layout per custom post type 
 * [ Add Action hook ]
 * [ Spacification Change ] Change article div to article from div
