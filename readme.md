@@ -58,19 +58,42 @@ https://github.com/kurudrive/lightning-skin-sample
 $ docker-compose run wp
 ```
 
-## JS更新作業時
+## 各種コマンド
 
-```
-npm run js_watch
-```
+### ビルド
 
-## 製品版リリース用 js圧縮される
-
+js,scss,テキストドメインのビルドをすべて行う
 ```
-npm run webpack
+$ npm run build
 ```
 
----
+#### jsビルド
+```
+$ npm run bulid:js
+```
+
+#### scssビルド
+```
+$ npm run build:style
+```
+
+#### テキストドメイン書き換え
+```
+$ npm run build:text-domain
+```
+
+### 開発モード
+
+#### js
+```
+$ npm run watch:js
+```
+
+#### scss
+```
+$ npm run watch:style
+```
+
 
 ## プルリクエストを送る際の確認事項
 
