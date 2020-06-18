@@ -4,10 +4,14 @@
   "description": "[![Build Status](https://travis-ci.org/vektor-inc/Lightning.svg?branch=master)](https://travis-ci.org/vektor-inc/Lightning)",
   "main": "gulpfile.js",
   "scripts": {
-    "webpack": "webpack",
-    "js_watch": "webpack --watch --config webpack.dev.config.js",
-    "dist": "gulp dist",
-    "gulp": "gulp"
+    "dist": "bin/dist",
+    "gulp": "gulp",
+    "build": "npm run build:js && npm run build:style && npm run build:text-domain",
+    "build:js": "webpack --config webpack.config.js",
+    "build:style": "gulp sass_common && gulp sass_bs4 && gulp sass_skin && gulp sass_skin2 && gulp sass_woo",
+    "build:text-domain": "gulp text-domain",
+    "watch:js": "webpack --config webpack.dev.config.js --watch",
+    "watch:style": "gulp watch"
   },
   "repository": {
     "type": "git",
