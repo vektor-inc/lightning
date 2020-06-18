@@ -94,6 +94,16 @@ $ npm run watch:js
 $ npm run watch:style
 ```
 
+### dist作成
+
+```
+$ npm run build
+$ npm run dist
+```
+
+`dist/`内に管理画面でのインポート用zipと、転送用のテーマディレクトリが作成されます。
+
+
 
 ## プルリクエストを送る際の確認事項
 
