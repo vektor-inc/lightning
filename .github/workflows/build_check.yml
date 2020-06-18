@@ -67,6 +67,31 @@ jobs:
   php_unit:
     name: php unittest
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: [7.2, 7.3, 7.4]
+    services:
+      mysql:
+        image: mysql:5.7
+        ports:
+          - 3306
+        env:
+            MYSQL_ROOT_PASSWORD: wordpress
+            MYSQL_DATABASE: wordpress
+            MYSQL_USER: wordpress
+            MYSQL_PASSWORD: wordpress
     steps:
     - uses: actions/checkout@v2
-    - run: docker-compose run wp
+    - name: Cache multiple paths
+      uses: actions/cache@v2
+      with:
+        path: vendor
+        key: ${{ runner.os }}-php${{ matrix.php }}-${{ hashFiles('**/composer.lock') }}
+    - name: Setup PHP ${{ matrix.php }}
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ matrix.php }}
+    - name: install composer packages
+      run: composer install --dev
+    - run: bin/install-wp-tests.sh wordpress wordpress wordpress 127.0.0.1:${{ job.services.mysql.ports['3306'] }} latest true
+    - run: vendor/bin/phpunit
