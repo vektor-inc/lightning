@@ -148,7 +148,7 @@ if ( apply_filters( 'lightning_default_slide_display', true ) ) {
 					if ( $mini_content_args['caption'] ) :
 						?>
 									  <div class="slide-text-caption"<?php echo $font_style; ?>>
-											<?php echo nl2br( esc_textarea( $mini_content_args['caption'] ) ); ?>
+											<?php echo nl2br( wp_kses_post( $mini_content_args['caption'] ) ); ?>
 									  </div>
 					<?php endif; ?>
 
