@@ -30,5 +30,4 @@ class VK_Old_Options_Notice {
 			}
 		}
 	}
-	
 }
