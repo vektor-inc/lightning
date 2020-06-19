@@ -1,21 +1,22 @@
-var gulp = require('gulp');
+const gulp = require('gulp')
 
-var replace = require('gulp-replace');
+const replace = require('gulp-replace')
 
 // ファイル結合
-var concat = require('gulp-concat');
+const concat = require('gulp-concat')
 // ファイルリネーム（.min作成用）
-var rename = require('gulp-rename');
+const rename = require('gulp-rename')
 
 // エラーでも監視を続行させる
-var plumber = require('gulp-plumber');
-var sass = require('gulp-sass');
-var autoprefixer = require('gulp-autoprefixer');
-var cleanCss = require('gulp-clean-css');
-var cssmin = require('gulp-cssmin');
-var cmq = require('gulp-merge-media-queries');
+const plumber = require('gulp-plumber')
+const sass = require('gulp-sass');
+const autoprefixer = require('gulp-autoprefixer')
+const cleanCss = require('gulp-clean-css')
+const cssmin = require('gulp-cssmin')
+const cmq = require('gulp-merge-media-queries')
+const path = require('path')
 
-let error_stop = true
+const error_stop = true
 
 function src(list) {
   if(error_stop) {
@@ -143,7 +144,6 @@ gulp.task('dist_foundation', function (done) {
 // Watch
 gulp.task('watch', function (done) {
   error_stop = false
-  gulp.watch(['./inc/vk-components/*.php'], gulp.series('components_copy'));
   gulp.watch(['./assets/_scss/**','./inc/vk-mobile-nav/package/css/**','./inc/vk-components/**/*.css'], gulp.series('sass_common'));
   gulp.watch(['./inc/woocommerce/_scss/**'], gulp.series('sass_woo'));
   gulp.watch(['./library/bootstrap-4/scss/**.scss'], gulp.series('sass_bs4'));
@@ -155,8 +155,8 @@ gulp.task('watch', function (done) {
 
 // copy dist ////////////////////////////////////////////////
 
-gulp.task('copy_dist', function () {
-  return gulp.src(
+gulp.task('copy_dist', function (done) {
+  const files = gulp.src(
     [
       './**/*.php',
       './**/*.txt',
@@ -179,12 +179,12 @@ gulp.task('copy_dist', function () {
       base: './'
     }
   )
-    .pipe(gulp.dest('../../../../../../updatetestfree/app/public/wp-content/themes/lightning')) // dist版テスト用
-    .pipe(gulp.dest('dist/lightning')); // dist/lightningディレクトリに出力
+
+  return files.pipe(gulp.dest('../../../../../../updatetestfree/app/public/wp-content/themes/lightning')); // dist/lightningディレクトリに出力
 });
 
 gulp.task('dist_pro', function () {
-  return gulp.src(
+  const files = gulp.src(
     [
       './**/*.php',
       './**/*.txt',
@@ -211,7 +211,12 @@ gulp.task('dist_pro', function () {
       base: './'
     }
   )
-    .pipe(gulp.dest('../lightning-pro/')); // dist/lightningディレクトリに出力
+
+  if (process.env.COPY_TO) {
+    return files.pipe(gulp.dest(path.resolve(__dirname, process.env.COPY_TO)))
+  }
+
+  return files.pipe(gulp.dest('../lightning-pro/'))
 });
 
 gulp.task('dist', gulp.series('text-domain','sass_common','copy_dist'));
