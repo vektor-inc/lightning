@@ -1,0 +1,25 @@
+#! /bin/bash
+set -ex
+
+THEME_NAME='Lightning'
+PLUGIN_DIR=$(cd $(dirname $(dirname $0)); pwd)
+CURRENT_VERSION=$(cat style.css|grep -i version|head -n 1|sed -E 's/^[ *]*Version *: *([^ ]*) *$/\1/i')
+
+dist_dir=${PLUGIN_DIR}/dist
+
+ZIPBALL=${dist_dir}/${THEME_NAME}_v${CURRENT_VERSION}.zip
+
+src_dir=${dist_dir}/${THEME_NAME}
+
+[[ -e ${src_dir} ]] && rm -rf ${src_dir}
+mkdir -p ${src_dir}
+
+rsync -av ${PLUGIN_DIR}/ ${src_dir}/ --exclude-from='.svnignore'
+
+[[ -e "${ZIPBALL}" ]] && rm -r ${ZIPBALL}
+
+cd ${dist_dir}
+
+zip -r ${ZIPBALL} ${THEME_NAME}/
+
+exit 0

@@ -6,7 +6,7 @@
   "scripts": {
     "webpack": "webpack",
     "js_watch": "webpack --watch --config webpack.dev.config.js",
-    "dist": "gulp dist",
+    "dist": "bin/dist",
     "gulp": "gulp"
   },
   "repository": {
