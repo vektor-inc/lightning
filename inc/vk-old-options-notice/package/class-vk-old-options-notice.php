@@ -30,7 +30,6 @@ if ( ! class_exists( 'VK_Old_Options_Notice' ) ) {
 							}
 						}
 					}
-
 				}
 			}
 		}
