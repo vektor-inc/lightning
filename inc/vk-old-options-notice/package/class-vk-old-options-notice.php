@@ -19,13 +19,21 @@ if ( ! class_exists( 'VK_Old_Options_Notice' ) ) {
 				if ( 'option' === $old_setting['data_type'] ) {
 					$options     = get_option( $old_setting['target_field'] );
 					$old_options = $old_setting['old_value'];
-					if ( array_intersect_assoc( $old_options, $options ) ) {
-						if ( 'judge' === $arg ) {
-							return true;
-						} elseif ( 'update' === $arg ) {
-							call_user_func( $old_setting['callback'] );
+					var_dump( array_intersect_assoc( $old_options, $options ) );
+					//if ( array_intersect_assoc( $old_options, $options ) ) {
+						foreach( $options as $key1 => $value1 )	{
+							foreach( $old_options as $key2 => $value2 )	{
+								if ( $value1 === $value2 ) {
+									if ( 'judge' === $arg ) {
+										return true;
+									} elseif ( 'update' === $arg ) {
+										call_user_func( $old_setting['callback'] );
+									}
+								}
+							}
 						}
-					}
+
+					//}
 				}
 			}
 		}
