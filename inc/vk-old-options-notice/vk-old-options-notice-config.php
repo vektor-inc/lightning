@@ -5,7 +5,7 @@
  * @package Lightning
  */
 
-
+if ( ! class_exists( 'VK_Old_Options_Notice' ) ) {
 	global $old_setting_array;
 	$old_setting_array = array(
 		array(
@@ -24,4 +24,5 @@
 	$vk_update_link = 'lightning-update-link';
 
 	require_once dirname( __FILE__ ) . '/package/class-vk-old-options-notice.php';
+}
 
