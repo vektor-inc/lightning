@@ -19,7 +19,7 @@ if ( ! class_exists( 'VK_Old_Options_Notice' ) ) {
 				if ( 'option' === $old_setting['data_type'] ) {
 					$options     = get_option( $old_setting['target_field'] );
 					$old_options = $old_setting['old_value'];
-					if ( in_array( $old_options, $options, false ) ) {
+					if ( in_array( $old_options, $options, true ) ) {
 						if ( 'judge' === $arg ) {
 							return true;
 						} elseif ( 'update' === $arg ) {
