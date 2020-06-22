@@ -9,8 +9,8 @@ if ( ! class_exists( 'VK_Old_Options_Notice' ) ) {
 	class VK_Old_Options_Notice {
 
 		public function __construct() {
-			add_action( 'admin_notices', array( __CLASS__,  'old_options_notice' ) );
-			add_action( 'admin_init', array( __CLASS__,  'launch_update_options' ) );
+			add_action( 'admin_notices', array( __CLASS__, 'old_options_notice' ) );
+			add_action( 'admin_init', array( __CLASS__, 'launch_update_options' ) );
 		}
 
 		public function option_judgment( $arg ) {
@@ -18,8 +18,9 @@ if ( ! class_exists( 'VK_Old_Options_Notice' ) ) {
 			foreach ( (array) $old_setting_array as $old_setting ) {
 				if ( 'option' === $old_setting['data_type'] ) {
 					$options     = get_option( $old_setting['target_field'] );
+					print_r( $options );
 					$old_options = $old_setting['old_value'];
-		
+					print_r( $old_options );
 					if ( in_array( $old_options, $options, false ) ) {
 						if ( 'judge' === $arg ) {
 							return true;
@@ -30,7 +31,7 @@ if ( ! class_exists( 'VK_Old_Options_Notice' ) ) {
 				}
 			}
 		}
-		
+
 		public function old_options_notice() {
 			global $pagenow;
 			global $vk_update_link;
@@ -47,5 +48,6 @@ if ( ! class_exists( 'VK_Old_Options_Notice' ) ) {
 			}
 		}
 	}
+	new VK_Old_Options_Notice();
 }
 
