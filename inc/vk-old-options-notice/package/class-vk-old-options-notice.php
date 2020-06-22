@@ -6,13 +6,24 @@
  */
 
 if ( ! class_exists( 'VK_Old_Options_Notice' ) ) {
+	/**
+	 * VK Old Option Notice
+	 */
 	class VK_Old_Options_Notice {
 
+		/**
+		 * Constructor
+		 */
 		public function __construct() {
 			add_action( 'admin_notices', array( __CLASS__, 'old_options_notice' ) );
 			add_action( 'admin_init', array( __CLASS__, 'launch_update_options' ) );
 		}
 
+		/**
+		 * Option Judgment
+		 *
+		 * @param srting $arg jugge or update.
+		 */
 		public function option_judgment( $arg ) {
 			global $old_setting_array;
 			foreach ( (array) $old_setting_array as $old_setting ) {
@@ -34,6 +45,9 @@ if ( ! class_exists( 'VK_Old_Options_Notice' ) ) {
 			}
 		}
 
+		/**
+		 * Notice Old Option
+		 */
 		public function old_options_notice() {
 			global $pagenow;
 			global $vk_update_link;
@@ -43,6 +57,10 @@ if ( ! class_exists( 'VK_Old_Options_Notice' ) ) {
 				}
 			}
 		}
+
+		/**
+		 * Launch Update Options
+		 */
 		public function launch_update_options() {
 			global $vk_update_link;
 			if ( isset( $_GET[ $vk_update_link ] ) ) {
