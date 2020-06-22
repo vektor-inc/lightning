@@ -41,7 +41,7 @@ if ( ! class_exists( 'VK_Old_Options_Notice' ) ) {
 		}
 		public function launch_update_options() {
 			global $vk_update_link;
-			if ( $_GET[ $vk_update_link ] ) {
+			if ( isset( $_GET[ $vk_update_link ] ) ) {
 				self::option_judgment( 'update' );
 			}
 		}
