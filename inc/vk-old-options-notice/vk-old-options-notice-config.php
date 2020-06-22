@@ -10,7 +10,7 @@
 	$old_setting_array = array(
 		array(
 			'data_type'    => 'option',
-			'target_field' => 'lightning_theme_option',
+			'target_field' => 'lightning_theme_options',
 			'old_value'    => array(
 				'layout' => array(
 					'archive' => 'one-column',
