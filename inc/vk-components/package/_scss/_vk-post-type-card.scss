@@ -85,6 +85,9 @@ https://github.com/vektor-inc/vektor-wp-libraries
 			padding-top: 150px;
 		}
 	}
+	.card-img-overlay::after {
+		border-radius: 50%; // 画像のマウスオーバー用
+	}
 }
 
 /*-------------------------------------------*/
