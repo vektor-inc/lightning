@@ -11,13 +11,17 @@
 		array(
 			'data_type'    => 'option',
 			'target_field' => 'lightning_theme_options',
-			'old_value'    => ['layout']['archive'],
+			'old_value'    => array(
+				'layout' => array(
+					'archive' => 'col-one'
+				)
+			),
 			'callback'     => 'lightning_options_compatible',
 		),
 	);
 
 	global $vk_update_link;
-	$vk_update_link = '?lightning-update-link';
+	$vk_update_link = 'lightning-update-link';
 
 	require_once dirname( __FILE__ ) . '/package/class-vk-old-options-notice.php';
 

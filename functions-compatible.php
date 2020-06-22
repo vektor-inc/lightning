@@ -1,5 +1,5 @@
 <?php
-// add_action( 'after_setup_theme', 'lightning_options_compatible' );
+add_action( 'after_setup_theme', 'lightning_options_compatible' );
 /**
  * This is converter that old options to new options value
  * This function is also used in test-lightning.php
@@ -26,10 +26,10 @@ function lightning_options_compatible() {
 
 			} else {
 				$options['layout']['front-page'] = 'col-one-no-subsection';
-				update_option( 'lightning_theme_options', $options );
 			}
 		}
-		unset( $options['top_sidebar_hidden'] );
+		$options['top_sidebar_hidden'] = null;
+		update_option( 'lightning_theme_options', $options );
 	}
 	if ( isset( $options['layout']['archive'] ) ) {
 		foreach ( $archive_post_types as $archive_post_type ) {
@@ -41,20 +41,22 @@ function lightning_options_compatible() {
 				}
 			}
 		}
+		$options['layout']['archive'] = null;
 		update_option( 'lightning_theme_options', $options );
-		unset( $options['layout']['archive'] );
+		
 	}
 	if ( isset( $options['layout']['single'] ) && $options['layout']['single'] != 'default' ) {
 		foreach ( $archive_post_types as $archive_post_type ) {
 			$options['layout'][ 'single-' . $archive_post_type ] = $options['layout']['single'];
 		}
+		$options['layout']['single'] = null;
 		update_option( 'lightning_theme_options', $options );
-		unset( $options['layout']['single'] );
+		
 	}
 	if ( isset( $options['layout']['page'] ) && $options['layout']['page'] != 'default' ) {
 		$options['layout']['single-page'] = $options['layout']['page'];
+		$options['layout']['page'] = null;
 		update_option( 'lightning_theme_options', $options );
-		unset( $options['layout']['page'] );
 	}
 }
 
