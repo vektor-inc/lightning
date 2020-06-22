@@ -15,7 +15,8 @@ function option_judgment( $arg ) {
 		if ( 'option' === $old_setting['data_type'] ) {
 			$options = get_option( $old_setting['target_field'] );
 			$old_options = $old_setting['old_value'];
-			if ( isset( $options[$old_options] ) ) {
+			if ( ! empty( $options[$old_options] ) ) {
+				echo 'bbbb';
 				if ( 'judge' === $arg ) {
 					return true;
 				} elseif ( 'action' === $arg )   {

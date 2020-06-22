@@ -11,7 +11,7 @@
 		array(
 			'data_type'    => 'option',
 			'target_field' => 'lightning_theme_options',
-			'old_value'    => '[layout][archive]',
+			'old_value'    => ['layout']['archive'],
 			'callback'     => 'lightning_options_compatible',
 		),
 	);
