@@ -11,11 +11,7 @@
 		array(
 			'data_type'    => 'option',
 			'target_field' => 'lightning_theme_options',
-			'old_value'    => array(
-				'layout' => array(
-					'archive' => 'one-column',
-				),
-			),
+			'old_value'    => ['layout']['archive'],
 			'callback'     => 'lightning_options_compatible',
 		),
 	);

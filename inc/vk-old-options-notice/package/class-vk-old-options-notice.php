@@ -14,11 +14,12 @@ function option_judgment( $arg ) {
 	foreach ( (array) $old_setting_array as $old_setting ) {
 		if ( 'option' === $old_setting['data_type'] ) {
 			$options = get_option( $old_setting['target_field'] );
-			if ( isset( $options['old_value'] ) ) {
+			$old_options = $old_setting['old_value'];
+			if ( isset( $options[$old_options] ) ) {
 				if ( 'judge' === $arg ) {
 					return true;
 				} elseif ( 'action' === $arg )   {
-					call_user_func( $options['callback'] );
+					call_user_func( $old_setting['callback'] );
 				}
 			}
 		}
