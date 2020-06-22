@@ -23,7 +23,7 @@ if ( ! class_exists( 'VK_Old_Options_Notice' ) ) {
 					print_r( $old_options );
 					// print_r( array_search( $old_options, $options, true  ) );
 					// print_r( array_search( $old_options, $options, false  ) );
-					if ( in_array( $old_options, $options, false ) ) {
+					if ( in_array( $old_options, $options, true ) ) {
 						if ( 'judge' === $arg ) {
 							return true;
 						} elseif ( 'update' === $arg ) {
