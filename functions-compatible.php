@@ -1,5 +1,5 @@
 <?php
-add_action( 'after_setup_theme', 'lightning_options_compatible' );
+// add_action( 'after_setup_theme', 'lightning_options_compatible' );
 /**
  * This is converter that old options to new options value
  * This function is also used in test-lightning.php

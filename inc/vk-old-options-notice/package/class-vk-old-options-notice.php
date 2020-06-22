@@ -18,11 +18,11 @@ if ( ! class_exists( 'VK_Old_Options_Notice' ) ) {
 			foreach ( (array) $old_setting_array as $old_setting ) {
 				if ( 'option' === $old_setting['data_type'] ) {
 					$options     = get_option( $old_setting['target_field'] );
-					// print_r( $options );
+					print_r( $options );
 					$old_options = $old_setting['old_value'];
-					// print_r( $old_options );
-					print_r( array_search( $old_options, $options, true  ) );
-					print_r( array_search( $old_options, $options, false  ) );
+					print_r( $old_options );
+					// print_r( array_search( $old_options, $options, true  ) );
+					// print_r( array_search( $old_options, $options, false  ) );
 					if ( in_array( $old_options, $options, false ) ) {
 						if ( 'judge' === $arg ) {
 							return true;
