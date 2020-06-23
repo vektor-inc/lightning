@@ -13,12 +13,12 @@
     "type": "git",
     "url": "git+https://github.com/vektor-inc/Lightning.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Vektor, Inc.",
+  "license": "GPL-2.0-only",
   "bugs": {
     "url": "https://github.com/vektor-inc/Lightning/issues"
   },
-  "homepage": "https://github.com/vektor-inc/Lightning#readme",
+  "homepage": "https://lightning.nagoya/ja/",
   "devDependencies": {
     "@babel/core": "^7.10.2",
     "@babel/preset-env": "^7.10.2",
