@@ -3,7 +3,7 @@ set -ex
 
 THEME_NAME='Lightning'
 PLUGIN_DIR=$(cd $(dirname $(dirname $0)); pwd)
-CURRENT_VERSION=$(cat style.css|grep -i '^ *version *:'|head -n 1|sed -E 's/^[ *]*Version: *([^ ]*) *$/\1/i')
+CURRENT_VERSION=$(cat "${PLUGIN_DIR}/style.css"|grep -i '^ *version *:'|head -n 1|sed -E 's/^[ *]*Version: *([^ ]*) *$/\1/i')
 
 dist_dir="${PLUGIN_DIR}/dist"
 ZIPBALL="${dist_dir}/${THEME_NAME}_v${CURRENT_VERSION}.zip"
