@@ -17,8 +17,24 @@ if ( is_active_sidebar( $widdget_area_name ) ) {
 		$post_id = $post->ID;
 	} // if($post->ancestors){
 
-	if ( $post_id ) {
-		$children = wp_list_pages( 'title_li=&child_of=' . $post_id . '&echo=0' );
+	$setting = array(
+		'child_of' => $post_id,
+	);
+
+	$pages = get_pages( $setting );
+
+	if ( $pages ) {
+		$pageids = array();
+		foreach ( $pages as $page ) {
+			$pageids[] = $page->ID;
+		}
+		$setting = array(
+			'title_li' => '',
+			'include'  => $post_id . ',' . implode( ',', $pageids ),
+			'echo'     => 0,
+		);
+
+		$children = wp_list_pages( $setting );
 		if ( $children ) { ?>
 			<aside class="widget widget_child_page widget_link_list">
 			<nav class="localNav">
