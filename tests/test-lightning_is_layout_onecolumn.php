@@ -34,7 +34,7 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 			'event_cat',
 			'event',
 			array(
-				'label' => __( 'Event Category' ),
+				'label' => 'Event Category',
 				'rewrite' => array( 'slug' => 'event_cat' ),
 				'hierarchical' => true,
 			)
