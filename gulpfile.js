@@ -16,7 +16,7 @@ const cssmin = require('gulp-cssmin')
 const cmq = require('gulp-merge-media-queries')
 const path = require('path')
 
-const error_stop = true
+let error_stop = true
 
 function src(list) {
   if(error_stop) {
