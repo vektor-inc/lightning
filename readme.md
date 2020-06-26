@@ -1,5 +1,4 @@
-[![Build Status](https://travis-ci.org/vektor-inc/Lightning.svg?branch=master)](https://travis-ci.org/vektor-inc/Lightning)
-
+![Build Check](https://github.com/vektor-inc/Lightning/workflows/Build%20Check/badge.svg)
 
 # WordPress Theme "Lightning"
 
@@ -58,14 +57,65 @@ https://github.com/kurudrive/lightning-skin-sample
 $ docker-compose run wp
 ```
 
-## JS更新作業時
+## 各種コマンド
+
+### ビルド
+
+js,scss,テキストドメインのビルドをすべて行う
+```
+$ npm run build
+```
+
+#### jsビルド
+```
+$ npm run bulid:script
+```
+
+#### scssビルド
+```
+$ npm run build:style
+```
+
+#### テキストドメイン書き換え
+```
+$ npm run build:text-domain
+```
+
+### 開発モード
+
+#### js
+```
+$ npm run watch:script
+```
+
+#### scss
+```
+$ npm run watch:style
+```
+
+### dist作成
 
 ```
-npm run js_watch
+$ npm run build
+$ npm run dist
 ```
 
-## 製品版リリース用 js圧縮される
+`dist/`内に管理画面でのインポート用zipと、転送用のテーマディレクトリが作成されます。
 
-```
-npm run webpack
-```
+
+
+## プルリクエストを送る際の確認事項
+
+#### 複数の内容を含まない
+
+複数の趣旨の変更内容（機能の不具合修正とまったく別のアクションフック追加などの仕様変更など）を一つのプルリクエストで送ると確認・マージが非常ににやりにくくいので、内容別で送るようにしてください。
+
+#### ライブラリファイルの修正はライブラリの親の修正を先にする
+
+通常ライブラリから各プロジェクトに複製してプロジェクト毎にテキストドメイン置換などを行うので、Lightningなど利用先側で変更コミットしてもライブラリに戻すのが面倒です。  
+親のライブラリで編集したいライブラリのgulpのwatchを走らせながら作業して、親のライブラリを先にコミットするようにしてください。  
+そうでないと子を修正しても親からの複製で先祖帰りするため。  
+
+#### プリリクの内容をざっくりで良いので書いてください
+
+何の目的でどういう変更をしたのかや、作業時のコマンドなど変更になる注意などある場合は記載よろしくお願いいたします。
