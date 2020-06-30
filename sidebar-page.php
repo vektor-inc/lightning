@@ -22,7 +22,7 @@ if ( is_active_sidebar( $widdget_area_name ) ) {
 		if ( $children ) { ?>
 			<aside class="widget widget_child_page widget_link_list">
 			<nav class="localNav">
-			<h1 class="subSection-title"><?php echo get_the_title( $post_id ); ?></h1>
+			<h1 class="subSection-title"><a href="<?php echo esc_url( get_permalink( $post_id ) ); ?>"><?php echo get_the_title( $post_id ); ?></a></h1>
 			<ul>
 			<?php echo $children; ?>
 			</ul>
