@@ -179,8 +179,8 @@ gulp.task('copy_dist', function (done) {
       base: './'
     }
   )
-
-  return files.pipe(gulp.dest('../../../../../../updatetestfree/app/public/wp-content/themes/lightning')); // dist/lightningディレクトリに出力
+  return files.pipe(gulp.dest('../../../../../../updatetestfree/app/public/wp-content/themes/lightning'))
+  .pipe(gulp.dest("dist/lightning"));
 });
 
 gulp.task('dist_pro', function () {
