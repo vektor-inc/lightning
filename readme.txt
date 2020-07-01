@@ -39,6 +39,9 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v10.2.0
+* [ Other ] Only version number ( Syncronize to Pro version )
+ 
 v10.1.0
 * [ Spacification Change ] Add link parrent page in side bar chidd Page list
 
