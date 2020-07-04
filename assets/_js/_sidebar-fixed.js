@@ -43,8 +43,6 @@
             let mainSection = document.getElementsByClassName('mainSection')[0]
             let sideSection = document.getElementsByClassName('sideSection')[0]
 
-            // サイドバーの位置を取得
-            let sidebar_position_top = sideSection.offsetTop
             // コンテンツエリアの位置を取得
             let content_position_top = document.getElementsByClassName('mainSection')[0].offsetTop
 
