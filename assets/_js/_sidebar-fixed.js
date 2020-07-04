@@ -58,22 +58,11 @@
 
             // サイドバー下端までの距離（サイドバー上部とコンテンツエリア上部が同じ位置の場合のみ有効） = コンテンツエリアの位置（高さ）+ サイドバーの高さ
             var sidebar_bottom_position_default = content_position_top + sidebar_height;
-            // コンテンツアリア下端までの距離 = サイトバーの位置（高さ）+ コンテントエリアの高さ
-            var content_bottom_position_default = content_position_top + content_height;
-
-            // サイドバー下端までの距離 = サイトバーの位置（高さ）+ サイドバーの高さ
-            var sidebar_bottom_position_now = sidebar_position_top + sidebar_height;
-            // コンテンツアリア下端までの距離 = サイトバーの位置（高さ）+ コンテントエリアの高さ
-            var content_bottom_position_now = content_position_top + content_height;
-
 
             /*
              * 初期状態で画面からサイドバーがはみだしている場合（ 画面の高さ < サイドバー下端までの距離 ）
             */
             if ( window_height < sidebar_bottom_position_default ) {
-
-                // 画面からはみ出しているサイドバーの高さ
-                var sidebar_over_size = sidebar_bottom_position_default - window_height;
 
                 // スクロール開始位置の状態ではみ出す量 = サイドバーの高さ - ウィンドウの高さ
                 var sidebar_over_size_start = sidebar_height - window_height;
