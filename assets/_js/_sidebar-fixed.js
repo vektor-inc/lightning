@@ -12,16 +12,17 @@
 
 // 基本概念 ///////////////////////////////////////
 
-* A:下端優先 sidebar-fix-primary-bottom
- 	サイドバーの下端まで表示されたらそこで固定する ( sidebar-fix_window-bottom )
-			コンテンツエリア下端がサイドバー下端よりも上の位置にスクロールしたら
-				コンテンツエリア下端とサイドバー下端の位置を揃える ( sidebar-fix_content-bottom )
-* B:上端優先（未実装）sidebar-fix-primary-top
- 	サイドバー上端が画面上部にきたら一旦固定 ( sidebar-fix_window-top )
-		コンテンツエリア下端までスクロールされたら
-			コンテンツエリア下端とサイドバー下端の位置を揃える ( sidebar-fix_content-bottom )
-*/ 
+* A:上端優先
+ 	サイドバー上端が画面上部にきたら一旦固定
+		コンテンツエリアとサイドバーの下端が揃う位置までスクロールされたら
+			コンテンツエリア下端とサイドバー下端の位置を揃える
 
+* B:下端優先
+ 	サイドバーの下端まで表示されたらそこで固定する
+			コンテンツエリア下端がサイドバー下端よりも上の位置にスクロールしたら
+				コンテンツエリア下端とサイドバー下端の位置を揃える
+
+*/
 
 ;((window, document) => {
 
@@ -42,15 +43,31 @@
     function sideFix_reset(){
 		let sideSection = document.getElementsByClassName('sideSection')[0]
 		sideSection.style.position = null;
+		sideSection.style.top = null;
 		sideSection.style.bottom = null;
 		sideSection.style.left = null;
 		sideSection.style.right = null;
 		sideSection.style.width = null;
     }
 
+	function sidebar_top_margin(){
+		let margin = 0;
+		// 通常のスクロールナビの場合 ///////////
+		let gmenu = document.getElementById('gMenu_outer')
+		let gmenuHeight = gmenu ? gmenu.getBoundingClientRect().bottom: 0;
+		console.log('めぬ :::::: ' + gmenuHeight);
+		margin = gmenuHeight + 30;
+		// JPNの固定ナビの場合 ////////////////
+		return margin;
+	}
+
+
     /* スクロール時の処理
     /*-------------------------------------------*/
     function sideFix_scroll(){
+
+		const fix_priority = "bottom";
+
         // 画面の幅を取得
         let wrap_width = document.body.offsetWidth
         // 画面の高を取得
@@ -66,36 +83,56 @@
             let mainSection = document.getElementsByClassName('mainSection')[0]
 			let sideSection = document.getElementsByClassName('sideSection')[0]
 			let parentSection = sideSection.parentNode;
-			
+
+            // コンテンツエリア上端の位置を取得
+			let content_position_top = mainSection.getBoundingClientRect().top + window.pageYOffset;
+            // コンテンツエリアの高さを取得
+			let content_height = mainSection.offsetHeight
+
 			// サイドバーの高さ
 			let sidebar_height = sideSection.offsetHeight
 			// サイドバーの幅
 			let sidebar_width = sideSection.offsetWidth
+            // サイドバー下端までの距離 = コンテンツエリア開始位置 + サイドバーの高さ
+			let sidebar_position_bottom_default = content_position_top + sidebar_height;
+			// サイドバー左端の位置
+			let sidebar_position_left_default = sideSection.getBoundingClientRect().left  + window.pageXOffset;
 
-            // コンテンツエリア上端の位置を取得
-			let content_position_top = document.getElementsByClassName('mainSection')[0].getBoundingClientRect().top + window.pageYOffset;
-            // コンテンツエリアの高さを取得
-			let content_height = mainSection.offsetHeight
 			// コンテンツエリア下端の位置を取得 = 上端 + 要素の高さ
 			let content_position_bottom = content_position_top + content_height
 			// コンテンツエリア下端を表示するまでスクロールしないといけない距離 = コンテンツエリア下端までの距離 - ウィンドウサイズ
 			let content_position_bottom_to_scroll = content_position_bottom - window_height;
 
-            // サイドバー下端までの距離 = コンテンツエリア開始位置 + サイドバーの高さ
-            let sidebar_position_bottom_default = content_position_top + sidebar_height;
+			// コンテンツエリアとサイドバーの高さの差
+			let diff_content_and_sidebar_bottom = content_height - sidebar_height;
 
 			// サイドバー下端を表示するまでスクロールしないといけない距離 = サイドバー下端までの距離 - ウィンドウサイズ
-			let sidebar_position_bottom_to_scroll = sidebar_position_bottom_default - window_height;
+			let to_scroll_sidebar_bottom = sidebar_position_bottom_default - window_height;
+			// サイドバー上端が画面上部にくるまでにスクロールしないといけない距離 = サイドバーの開始位置 - サイドバー上部に確保したい余白
+			let to_scroll_sidebar_top_stop = content_position_top - sidebar_top_margin();
+			// 上端優先でコンテンツエリアとサイドバーの下端が揃うスクロール位置 = コンテンツまでの距離 + コンテンツエリアとサイドバーの高さの差
+			let to_scroll_sidebar_top_stop_release = content_position_top + diff_content_and_sidebar_bottom;
 
-			// サイドバー左端の位置
-			let sidebar_position_left_default = sideSection.getBoundingClientRect().left  + window.pageXOffset;
 
             //  サイドバーがメインコンテンツよりも高い場合は処理しない
             if ( sidebar_height > content_height ){ return; }
 
+			// サイドバー上端が画面上部までスクロールしたかどうか
+			let is_sidebar_top_stop = false;
+			if ( to_scroll_sidebar_top_stop < window.pageYOffset ){
+				is_sidebar_top_stop = true;
+			}
+
+			// 上端優先でコンテンツエリアとサイドバーの下端が揃うスクロール位置までスクロールしたかどうか
+			let is_sidebar_top_stop_release = false;
+			if ( to_scroll_sidebar_top_stop_release < window.pageYOffset ){
+				is_sidebar_top_stop_release = true;
+			}
+
+
 			// サイドバー下端が表示されたかどうか
 			let is_sidebar_bottom_display = false;
-			if ( sidebar_position_bottom_to_scroll < window.pageYOffset ){
+			if ( to_scroll_sidebar_bottom < window.pageYOffset ){
 				is_sidebar_bottom_display = true;
 			}
 
@@ -105,32 +142,50 @@
 				is_content_bottom_display = true;
 			}
 
-			/* DOM操作
-			/*-------------------------------------------*/
 
-			// サイドバー下端が表示されたら
-			if ( is_sidebar_bottom_display ){
-				sideSection.style.position = "fixed";
-				sideSection.style.bottom = "30px";
-				sideSection.style.left = sidebar_position_left_default + "px";
-				sideSection.style.width = sidebar_width + "px";
-				
-				// コンテンツエリア下端が表示されたら
-				if ( is_content_bottom_display ){
-					sideSection.style.left = null;
-					parentSection.style.position = "relative";
-					sideSection.style.position = "absolute";
-					sideSection.style.bottom = 0;
-					sideSection.style.right = 0;
+			if ( fix_priority === "top" ) {
+				/* DOM操作（上端優先）
+				/*-------------------------------------------*/
+				if ( is_sidebar_top_stop ) {
+					sideSection.style.position = "fixed";
+					sideSection.style.top = sidebar_top_margin() + "px";
+					sideSection.style.left = sidebar_position_left_default + "px";
+					sideSection.style.width = sidebar_width + "px";
+					if ( is_sidebar_top_stop_release ){
+						sideSection.style.position = null;
+						sideSection.style.left = null;
+						sideSection.style.width = null;
+						sideSection.style.top = diff_content_and_sidebar_bottom + "px";
+					}
+				} else {
+					sideFix_reset();
 				}
+
 			} else {
-				sideFix_reset();
+				/* DOM操作（下端優先）
+				/*-------------------------------------------*/
+				// サイドバー下端が表示されたら
+				if ( is_sidebar_bottom_display ){
+					sideSection.style.position = "fixed";
+					sideSection.style.bottom = "30px";
+					sideSection.style.left = sidebar_position_left_default + "px";
+					sideSection.style.width = sidebar_width + "px";
+					
+					// コンテンツエリア下端が表示されたら
+					if ( is_content_bottom_display ){
+						sideSection.style.left = null;
+						parentSection.style.position = "relative";
+						sideSection.style.position = "absolute";
+						sideSection.style.bottom = 0;
+						sideSection.style.right = 0;
+					}
+				} else {
+					sideFix_reset();
+				}
 			}
 
-			console.log( 'スクロール : ' + scrollHeight);
+			console.log( 'スクロール : ' + window.pageYOffset);
 			console.log( 'content_position_top : ' + content_position_top);
-			console.log( 'move position start : ' + move_position_start);
-			console.log( '追加する余白 : ' + yohaku);
 			console.log( 'is_sidebar_bottom_display : ' + is_sidebar_bottom_display);
 			console.log( 'is_content_bottom_display : ' + is_content_bottom_display);
 			console.log( 'content_position_bottom : ' + content_position_bottom);
