@@ -141,6 +141,23 @@ gulp.task('dist_foundation', function (done) {
     done();
 });
 
+gulp.task('watch_pro', function (done) {
+	error_stop = false
+	gulp.watch(['./assets/_js/**','./assets/_scss/**'], gulp.series('dist_pro_dev'));
+	done();
+});
+gulp.task('dist_pro_dev', function () {
+	const files = gulp.src(
+		[
+			'./assets/_js/**',
+			'./assets/_scss/**'
+		], {
+			base: './'
+		}
+	)
+	return files.pipe(gulp.dest('../lightning-pro/'))
+});
+
 // Watch
 gulp.task('watch', function (done) {
   error_stop = false
