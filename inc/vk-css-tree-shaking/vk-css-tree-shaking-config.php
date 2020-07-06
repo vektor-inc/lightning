@@ -22,11 +22,6 @@ if ( ! class_exists( 'VK_CSS_Tree_Shaking' ) ) {
 			'url'     => get_template_directory_uri() . '/assets/css/common.css',
 			'version' => LIGHTNING_THEME_VERSION,
 		),
-		array(
-			'id'      => 'lightning-theme-style',
-			'url'     => get_stylesheet_uri(),
-			'version' => LIGHTNING_THEME_VERSION,
-		),
 	);
 	if ( $bs4_css_url && $bs4_version ) {
 		$add_array = array(
