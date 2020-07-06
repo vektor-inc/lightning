@@ -184,13 +184,13 @@
 				}
 			}
 
-			console.log( 'スクロール : ' + window.pageYOffset);
-			console.log( 'content_position_top : ' + content_position_top);
-			console.log( 'is_sidebar_bottom_display : ' + is_sidebar_bottom_display);
-			console.log( 'is_content_bottom_display : ' + is_content_bottom_display);
-			console.log( 'content_position_bottom : ' + content_position_bottom);
-			console.log( 'content_position_bottom_to_scroll : ' + content_position_bottom_to_scroll);
-			console.log( 'sidebar_position_left_default : ' + sidebar_position_left_default);
+			// console.log( 'スクロール : ' + window.pageYOffset);
+			// console.log( 'content_position_top : ' + content_position_top);
+			// console.log( 'is_sidebar_bottom_display : ' + is_sidebar_bottom_display);
+			// console.log( 'is_content_bottom_display : ' + is_content_bottom_display);
+			// console.log( 'content_position_bottom : ' + content_position_bottom);
+			// console.log( 'content_position_bottom_to_scroll : ' + content_position_bottom_to_scroll);
+			// console.log( 'sidebar_position_left_default : ' + sidebar_position_left_default);
         }
     }
 })(window, document);
