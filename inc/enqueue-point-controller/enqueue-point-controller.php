@@ -26,6 +26,26 @@ function lightning_customize_register_enqueue_point( $wp_customize ) {
 	);
 
 	$wp_customize->add_setting(
+		'lightning_theme_options[optimize_css]',
+		array(
+			'default'           => false,
+			'type'              => 'option',
+			'capability'        => 'edit_theme_options',
+			'sanitize_callback' => 'lightning_sanitize_checkbox',
+		)
+	);
+	$wp_customize->add_control(
+		'lightning_theme_options[optimize_css]',
+		array(
+			'label'       => __( 'Optimize CSS', 'lightning' ),
+			'section'     => 'lightning_function',
+			'settings'    => 'lightning_theme_options[optimize_css]',
+			'type'        => 'checkbox',
+			'description' => __( 'If you enabled this checkbox that the CSS will shrink or preload.', 'lightning' ),
+		)
+	);
+
+	$wp_customize->add_setting(
 		'lightning_theme_options[enqueue_point_footer]',
 		array(
 			'default'           => false,
@@ -58,6 +78,17 @@ function lightning_is_speeding(){
 
 	return $return;
 }
+
+/**
+ * Optimize CSS.
+ */
+function lightning_optimize_css() {
+	$options = get_option( 'lightning_theme_options' );
+	if ( ! empty( $options['optimize_css'] ) ) {
+		require get_parent_theme_file_path( '/inc/vk-css-optimize/vk-css-optimize-config.php' );
+	}
+}
+add_action( 'after_setup_theme', 'lightning_optimize_css' );
 
 /**
  * Change load point

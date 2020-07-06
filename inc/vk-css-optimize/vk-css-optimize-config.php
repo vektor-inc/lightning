@@ -39,5 +39,6 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 		);
 		array_push( $vk_css_tree_shaking_array, $add_array );
 	}
-	require_once dirname( __FILE__ ) . '/package/class-vk-css-tree-shaking.php';
+	$vk_css_tree_shaking_array = apply_filters( 'vk_css_tree_shaking_array', $vk_css_tree_shaking_array );
+	require_once dirname( __FILE__ ) . '/package/class-vk-css-optimize.php';
 }
