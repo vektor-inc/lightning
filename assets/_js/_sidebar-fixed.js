@@ -52,11 +52,13 @@
 
 	function sidebar_top_margin(){
 		let margin = 0;
+		
 		// 通常のスクロールナビの場合 ///////////
 		let gmenu = document.getElementById('gMenu_outer')
 		let gmenuHeight = gmenu ? gmenu.getBoundingClientRect().bottom: 0;
-		console.log('めぬ :::::: ' + gmenuHeight);
+		// 固定部分の下に追加する余白
 		margin = gmenuHeight + 30;
+
 		// JPNの固定ナビの場合 ////////////////
 		return margin;
 	}
@@ -66,7 +68,13 @@
     /*-------------------------------------------*/
     function sideFix_scroll(){
 
-		const fix_priority = "bottom";
+		let fix_priority = "top";
+		// Bodyタグのクラスから上端優先か下端優先かを取得
+		if( document.body.classList.contains('sidebar-fix-priority-top') == true ){
+			fix_priority = "top";
+		} else if ( document.body.classList.contains('sidebar-fix-priority-bottom') == true ){
+			fix_priority = "bottom";
+		}
 
         // 画面の幅を取得
         let wrap_width = document.body.offsetWidth
