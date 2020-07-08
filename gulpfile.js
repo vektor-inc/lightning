@@ -143,14 +143,18 @@ gulp.task('dist_foundation', function (done) {
 
 gulp.task('watch_pro', function (done) {
 	error_stop = false
-	gulp.watch(['./assets/_js/**','./assets/_scss/**','./inc/**'], gulp.series('dist_pro_dev'));
+	gulp.watch([
+		'./assets/_js/**',
+		// './assets/_scss/**',
+		'./inc/**'
+	], gulp.series('dist_pro_dev'));
 	done();
 });
 gulp.task('dist_pro_dev', function () {
 	const files = gulp.src(
 		[
 			'./assets/_js/**',
-			'./assets/_scss/**',
+			// './assets/_scss/**',
 			'./inc/**'
 		], {
 			base: './'

@@ -13,15 +13,26 @@
 // 基本概念 ///////////////////////////////////////
 
 * A:上端優先
- 	サイドバー上端が画面上部にきたら一旦固定
-		コンテンツエリアとサイドバーの下端が揃う位置までスクロールされたら
-			コンテンツエリア下端とサイドバー下端の位置を揃える
+	 サイドバー上端が画面上部にきたら一旦固定
+	 
+	 	サイドバーが表示エリアよりも高い時 {
+			コンテンツエリアとサイドバーの下端が揃う位置までスクロールされたら {
+				コンテンツエリア下端とサイドバー下端の位置を揃える
+			}
+		} else {
+			上部固定状態でのサイドバーの下端 より スクロールしてきたコンテンツエリアの下端が上になったら
+				コンテンツエリア下端とサイドバー下端の位置を揃える
+		}
+
 
 * B:下端優先
- 	サイドバーの下端まで表示されたらそこで固定する
-			コンテンツエリア下端がサイドバー下端よりも上の位置にスクロールしたら
-				コンテンツエリア下端とサイドバー下端の位置を揃える
-
+	サイドバーの表示エリアよりもサイドバーの高さが低い場合 {
+		上端優先で固定する（固定したサイドバーの上側に余白ができた状態で固定されてしまうため）
+	} else {
+		サイドバーの下端まで表示されたらそこで固定する
+				コンテンツエリア下端がサイドバー下端よりも上の位置にスクロールしたら
+					コンテンツエリア下端とサイドバー下端の位置を揃える
+	}
 */
 
 ;((window, document) => {
@@ -52,12 +63,13 @@
 
 	function sidebar_top_margin(){
 		let margin = 0;
-		
+
 		// 通常のスクロールナビの場合 ///////////
 		let gmenu = document.getElementById('gMenu_outer')
 		let gmenuHeight = gmenu ? gmenu.getBoundingClientRect().bottom: 0;
+
 		// 固定部分の下に追加する余白
-		margin = gmenuHeight + 30;
+		margin = gmenuHeight + 40;
 
 		// JPNの固定ナビの場合 ////////////////
 		return margin;
@@ -78,7 +90,7 @@
 
         // 画面の幅を取得
         let wrap_width = document.body.offsetWidth
-        // 画面の高を取得
+        // 画面の高さを取得
         let window_height = document.documentElement.clientHeight;
 
         if ( wrap_width < 992 ) {
@@ -103,8 +115,20 @@
 			let sidebar_width = sideSection.offsetWidth
             // サイドバー下端までの距離 = コンテンツエリア開始位置 + サイドバーの高さ
 			let sidebar_position_bottom_default = content_position_top + sidebar_height;
-			// サイドバー左端の位置
+			// サイドバー左端の位置（ Position:fixed の時に必要 ）
 			let sidebar_position_left_default = sideSection.getBoundingClientRect().left  + window.pageXOffset;
+			// サイドバーのウィンドウ内での表示領域 = ウィンドウ高さ - ヘッダー固定要素の高さ + 余白
+			let sidebar_area_height = window_height - sidebar_top_margin();
+
+			// 下端優先だったとしても...
+			if ( fix_priority === "bottom" ){
+				// ウィンドウ内のサイドバー表示領域がサイドバーよりも高い場合
+				if ( sidebar_area_height > sidebar_height ){
+					// 上端優先処理
+					fix_priority = "top";
+				}
+			}
+			console.log(fix_priority);
 
 			// コンテンツエリア下端の位置を取得 = 上端 + 要素の高さ
 			let content_position_bottom = content_position_top + content_height
@@ -119,7 +143,7 @@
 			// サイドバー上端が画面上部にくるまでにスクロールしないといけない距離 = サイドバーの開始位置 - サイドバー上部に確保したい余白
 			let to_scroll_sidebar_top_stop = content_position_top - sidebar_top_margin();
 			// 上端優先でコンテンツエリアとサイドバーの下端が揃うスクロール位置 = コンテンツまでの距離 + コンテンツエリアとサイドバーの高さの差
-			let to_scroll_sidebar_top_stop_release = content_position_top + diff_content_and_sidebar_bottom;
+			let to_scroll_sidebar_top_stop_release = content_position_top + diff_content_and_sidebar_bottom - window_height;
 
 
             //  サイドバーがメインコンテンツよりも高い場合は処理しない
@@ -131,12 +155,20 @@
 				is_sidebar_top_stop = true;
 			}
 
-			// 上端優先でコンテンツエリアとサイドバーの下端が揃うスクロール位置までスクロールしたかどうか
+			// 上端優先で固定を解除するタイミングかどうか
 			let is_sidebar_top_stop_release = false;
-			if ( to_scroll_sidebar_top_stop_release < window.pageYOffset ){
-				is_sidebar_top_stop_release = true;
+			if ( sidebar_area_height < sidebar_height ){
+				// コンテンツエリアとサイドバーの下端が揃うスクロール位置までスクロールしたら
+				if ( to_scroll_sidebar_top_stop_release < window.pageYOffset ){
+					is_sidebar_top_stop_release = true;
+				}
+			} else {
+				// 上部固定状態でのサイドバーの下端 より スクロールしてきたコンテンツエリアの下端が上になったら
+				if ( sidebar_top_margin() + sidebar_height > mainSection.getBoundingClientRect().bottom ){
+					// コンテンツエリア下端とサイドバー下端の位置を揃える
+					is_sidebar_top_stop_release = true;
+				}
 			}
-
 
 			// サイドバー下端が表示されたかどうか
 			let is_sidebar_bottom_display = false;
@@ -194,6 +226,8 @@
 
 			// console.log( 'スクロール : ' + window.pageYOffset);
 			// console.log( 'content_position_top : ' + content_position_top);
+			// console.log( 'sidebar_height : ' + sidebar_height);
+			// console.log( 'sidebar_area_height : ' + sidebar_area_height);
 			// console.log( 'is_sidebar_bottom_display : ' + is_sidebar_bottom_display);
 			// console.log( 'is_content_bottom_display : ' + is_content_bottom_display);
 			// console.log( 'content_position_bottom : ' + content_position_bottom);
