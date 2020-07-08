@@ -24,14 +24,14 @@ if ( ! class_exists( 'VK_Old_Options_Notice' ) ) {
 		 *
 		 * @param srting $arg jugge or update.
 		 */
-		public function option_judgment( $arg ) {
+		public static function option_judgment( $arg ) {
 			global $old_setting_array;
 			foreach ( (array) $old_setting_array as $old_setting ) {
 				if ( 'option' === $old_setting['data_type'] ) {
 					$options     = get_option( $old_setting['target_field'] );
 					$old_options = $old_setting['old_value'];
-					foreach( $options as $key1 => $value1 )	{
-						foreach( $old_options as $key2 => $value2 )	{
+					foreach ( $options as $key1 => $value1 ) {
+						foreach ( $old_options as $key2 => $value2 ) {
 							if ( $value1 === $value2 ) {
 								if ( 'judge' === $arg ) {
 									return true;
@@ -48,7 +48,7 @@ if ( ! class_exists( 'VK_Old_Options_Notice' ) ) {
 		/**
 		 * Notice Old Option
 		 */
-		public function old_options_notice() {
+		public static function old_options_notice() {
 			global $pagenow;
 			global $vk_update_link;
 			if ( 'index.php' === $pagenow ) {
@@ -61,7 +61,7 @@ if ( ! class_exists( 'VK_Old_Options_Notice' ) ) {
 		/**
 		 * Launch Update Options
 		 */
-		public function launch_update_options() {
+		public static function launch_update_options() {
 			global $vk_update_link;
 			if ( isset( $_GET[ $vk_update_link ] ) ) {
 				self::option_judgment( 'update' );
