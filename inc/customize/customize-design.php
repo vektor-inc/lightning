@@ -349,13 +349,21 @@ function lightning_print_css_common() {
 /*-------------------------------------------*/
 add_filter( 'body_class', 'ltg_add_body_class_sidefix' );
 function ltg_add_body_class_sidefix( $class ) {
-
 	$options = get_option( 'lightning_theme_options' );
 	if ( ! lightning_is_layout_onecolumn() ) {
-		if ( ! isset( $options['sidebar_fix'] ) || ! $options['sidebar_fix'] ) {
-			if ( apply_filters( 'lightning_sidefix_enable', true ) ) {
+		if ( isset( $options['sidebar_fix'] ) ) {
+			if ( $options['sidebar_fix'] == 'priority-top' ){
 				$class[] = 'sidebar-fix';
+				$class[] = 'sidebar-fix-priority-top';
+			} else if ( $options['sidebar_fix'] == 'priority-bottom' ){
+				$class[] = 'sidebar-fix';
+				$class[] = 'sidebar-fix-priority-bottom';
+			} else if ( $options['sidebar_fix'] === 'no-fix' ||  $options['sidebar_fix'] === true ){
+				return $class;
 			}
+		} else {
+			$class[] = 'sidebar-fix';
+			$class[] = 'sidebar-fix-priority-top';
 		}
 	}
 	return $class;
