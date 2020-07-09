@@ -238,12 +238,7 @@ function lightning_customize_register_design( $wp_customize ) {
 /*	Lightning custom color Print head
 /*	* This is used for Contents and Plugins and others
 /*-------------------------------------------*/
-$options = get_option( 'lightning_theme_options' );
-if ( ! empty( $options['enqueue_point_footer'] ) ) {
-	add_action( 'wp_footer', 'lightning_output_keycolor_css' );
-} else {
-	add_action( 'wp_head', 'lightning_output_keycolor_css' );
-}
+add_action( 'wp_head', 'lightning_output_keycolor_css' );
 
 function lightning_output_keycolor_css() {
 	$options        = get_option( 'lightning_theme_options' );
@@ -278,12 +273,7 @@ function lightning_output_keycolor_css() {
 /*-------------------------------------------*/
 /*	Print head
 /*-------------------------------------------*/
-$options = get_option( 'lightning_theme_options' );
-if ( ! empty( $options['enqueue_point_footer'] ) ) {
-	add_action( 'wp_footer', 'lightning_print_css_common',20 );
-} else {
-	add_action( 'wp_head', 'lightning_print_css_common', 20 );
-}
+add_action( 'wp_head', 'lightning_print_css_common', 20 );
 
 function lightning_print_css_common() {
 	$options     = get_option( 'lightning_theme_options' );
