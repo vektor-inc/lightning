@@ -12,6 +12,11 @@ require_once dirname( __FILE__ ) . '/vk-css-optimize-admin.php';
  */
 function lightning_optimize_css() {
 	$options = get_option( 'lightning_theme_options' );
+
+	if ( ! isset( $options['optimize_css'] ) ){
+		$options['optimize_css'] = true;
+	}
+
 	if ( ! empty( $options['optimize_css'] ) ) {
 
 		if ( ! class_exists( 'VK_CSS_Optimize' ) ) {

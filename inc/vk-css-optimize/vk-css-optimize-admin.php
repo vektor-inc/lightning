@@ -28,7 +28,7 @@ function lightning_customize_register_enqueue_point( $wp_customize ) {
 	$wp_customize->add_setting(
 		'lightning_theme_options[optimize_css]',
 		array(
-			'default'           => false,
+			'default'           => true,
 			'type'              => 'option',
 			'capability'        => 'edit_theme_options',
 			'sanitize_callback' => 'lightning_sanitize_checkbox',
