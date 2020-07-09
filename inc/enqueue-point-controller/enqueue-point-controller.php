@@ -6,7 +6,7 @@ add_action( 'customize_register', 'lightning_customize_register_enqueue_point' )
 function lightning_customize_register_enqueue_point( $wp_customize ) {
 
 	$wp_customize->add_setting(
-		'enqueue_point_title',
+		'speedinc_title',
 		array(
 			'sanitize_callback' => 'sanitize_text_field',
 		)
@@ -14,13 +14,13 @@ function lightning_customize_register_enqueue_point( $wp_customize ) {
 	$wp_customize->add_control(
 		new Custom_Html_Control(
 			$wp_customize,
-			'enqueue_point_title',
+			'speedinc_title',
 			array(
-				'label'            => __( 'CSS and JavaScript load point ', 'lightning' ),
+				'label'            => __( 'Speed setting', 'lightning' ),
 				'section'          => 'lightning_function',
 				'type'             => 'text',
 				'custom_title_sub' => '',
-				'custom_html'      => __( 'Move part of CSS and JS to the footer to improve display speed.', 'lightning' ),
+				// 'custom_html'      => __( 'Move part of CSS and JS to the footer to improve display speed.', 'lightning' ),
 			)
 		)
 	);
@@ -42,6 +42,26 @@ function lightning_customize_register_enqueue_point( $wp_customize ) {
 			'settings'    => 'lightning_theme_options[optimize_css]',
 			'type'        => 'checkbox',
 			'description' => __( 'If you enabled this checkbox that the CSS will shrink or preload.', 'lightning' ),
+		)
+	);
+
+	$wp_customize->add_setting(
+		'enqueue_point_title',
+		array(
+			'sanitize_callback' => 'sanitize_text_field',
+		)
+	);
+	$wp_customize->add_control(
+		new Custom_Html_Control(
+			$wp_customize,
+			'enqueue_point_title',
+			array(
+				'label'            => '',
+				'section'          => 'lightning_function',
+				'type'             => 'text',
+				'custom_title_sub' => __( 'CSS and JavaScript load point ', 'lightning' ),
+				'custom_html'      => __( 'Move part of CSS and JS to the footer to improve display speed.', 'lightning' ),
+			)
 		)
 	);
 
