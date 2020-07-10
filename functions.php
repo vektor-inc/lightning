@@ -204,9 +204,9 @@ require get_parent_theme_file_path( '/functions-compatible.php' );
 require get_parent_theme_file_path( '/inc/tgm-plugin-activation/tgm-config.php' );
 
 /*
-  Load enqueue-point-controller
+  Load vk-css-optimize
 /*-------------------------------------------*/
-require get_parent_theme_file_path( '/inc/enqueue-point-controller/enqueue-point-controller.php' );
+require get_parent_theme_file_path( '/inc/vk-css-optimize/vk-css-optimize-config.php' );
 
 /*
   Load Theme Customizer additions.
