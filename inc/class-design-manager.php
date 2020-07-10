@@ -165,7 +165,7 @@ class Lightning_Design_Manager {
 			wp_enqueue_style( 'bootstrap-4-style', $bs4_css_url, array(), $bs4_version );
 
 			$bs4_carousel_css_url = get_template_directory_uri() . '/library/bootstrap-4/css/bootstrap-carousel.min.css';
-			// wp_enqueue_style( 'bootstrap-4-carousel', $bs4_carousel_css_url, array(), $bs4_version );
+			wp_enqueue_style( 'bootstrap-4-carousel', $bs4_carousel_css_url, array(), $bs4_version );
 
 			wp_enqueue_script( 'bootstrap-4-js', get_template_directory_uri() . '/library/bootstrap-4/js/bootstrap.min.js', array( 'jquery' ), $bs4_version, true );
 

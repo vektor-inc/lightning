@@ -26,7 +26,7 @@ function lightning_optimize_css() {
 			$skin_version = ! empty( $skin_info['version'] ) ? $skin_info['version'] : '';
 		
 			$bs4_css_url = ( 'bs4' === $skin_info['bootstrap'] ) ? get_template_directory_uri() . '/library/bootstrap-4/css/bootstrap.min.css' : '';
-			$bs4_version = ( 'bs4' === $skin_info['bootstrap'] ) ? '4.3.1' : '';
+			$bs4_version = ( 'bs4' === $skin_info['bootstrap'] ) ? '4.5.0' : '';
 		
 			// 表示位置の配列.
 			global $vk_css_tree_shaking_array;
