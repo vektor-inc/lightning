@@ -391,7 +391,13 @@ ul.page-numbers { margin:0;padding: 0;
 /*-------------------------------------------*/
 .widget { display:block;
 
-  .subSection-title { margin-top:0;font-size:18px; }
+  .subSection-title { 
+    margin-top:0;
+    font-size:18px; 
+    a{
+      color: inherit;
+		}
+  }
   ul { margin-top:0; }
 }
 .widget:after {

@@ -1,45 +1,49 @@
 {
-  "name": "lightning",
-  "version": "3.3.0",
-  "description": "[![Build Status](https://travis-ci.org/vektor-inc/Lightning.svg?branch=master)](https://travis-ci.org/vektor-inc/Lightning)",
-  "main": "gulpfile.js",
-  "scripts": {
-    "webpack": "webpack",
-    "js_watch": "webpack --watch --config webpack.dev.config.js",
-    "dist": "gulp dist",
-    "gulp": "gulp"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/vektor-inc/Lightning.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/vektor-inc/Lightning/issues"
-  },
-  "homepage": "https://github.com/vektor-inc/Lightning#readme",
-  "devDependencies": {
-    "@babel/core": "^7.8.7",
-    "@babel/preset-env": "^7.8.7",
-    "babel-loader": "^8.1.0",
-    "gulp": "^4.0.2",
-    "gulp-autoprefixer": "^4.1.0",
-    "gulp-clean-css": "^3.10.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-cssmin": "^0.2.0",
-    "gulp-merge-media-queries": "^0.2.1",
-    "gulp-plumber": "^1.2.1",
-    "gulp-rename": "^1.4.0",
-    "gulp-replace": "^1.0.0",
-    "gulp-sass": "^3.2.1",
-    "run-sequence": "^2.2.1",
-    "stylelint-config-wordpress": "^15.0.0",
-    "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.11",
-    "webpack-merge": "^4.2.2"
-  },
-  "dependencies": {
-    "is-mobile": "^2.2.1"
-  }
+	"name": "lightning",
+	"version": "3.3.0",
+	"description": "[![Build Status](https://travis-ci.org/vektor-inc/Lightning.svg?branch=master)](https://travis-ci.org/vektor-inc/Lightning)",
+	"main": "gulpfile.js",
+	"scripts": {
+		"dist": "bin/dist",
+		"gulp": "gulp",
+		"build": "npm run build:script && npm run build:style && npm run build:text-domain",
+		"build:script": "webpack --config webpack.config.js",
+		"build:style": "gulp sass_common && gulp sass_bs4 && gulp sass_skin && gulp sass_skin2 && gulp sass_woo",
+		"build:text-domain": "gulp text-domain",
+		"watch:script": "webpack --config webpack.dev.config.js --watch",
+		"watch:style": "gulp watch"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/vektor-inc/Lightning.git"
+	},
+	"author": "Vektor, Inc.",
+	"license": "GPL-2.0-only",
+	"bugs": {
+		"url": "https://github.com/vektor-inc/Lightning/issues"
+	},
+	"homepage": "https://lightning.nagoya/",
+	"devDependencies": {
+		"@babel/core": "^7.10.2",
+		"@babel/preset-env": "^7.10.2",
+		"babel-loader": "^8.1.0",
+		"gulp": "^4.0.2",
+		"gulp-autoprefixer": "^4.1.0",
+		"gulp-clean-css": "^3.10.0",
+		"gulp-concat": "^2.6.1",
+		"gulp-cssmin": "^0.2.0",
+		"gulp-merge-media-queries": "^0.2.1",
+		"gulp-plumber": "^1.2.1",
+		"gulp-rename": "^1.4.0",
+		"gulp-replace": "^1.0.0",
+		"gulp-sass": "^3.2.1",
+		"run-sequence": "^2.2.1",
+		"stylelint-config-wordpress": "^15.0.0",
+		"webpack": "^4.43.0",
+		"webpack-cli": "^3.3.11",
+		"webpack-merge": "^4.2.2"
+	},
+	"dependencies": {
+		"is-mobile": "^2.2.1"
+	}
 }
