@@ -26,13 +26,17 @@ if ( ! class_exists( 'Widget_Area_Setting' ) ) {
 		 */
 		public static function resister_customize( $wp_customize ) {
 			global $widget_area_setting_prefix;
+			global $widget_area_setting_priority;
+			if ( ! $widget_area_setting_priority ){
+				$widget_area_setting_priority = 560;
+			}
 
 			// add section.
 			$wp_customize->add_section(
 				'widget_area_setting',
 				array(
 					'title'    => $widget_area_setting_prefix . __( 'Widget Area Setting', 'lightning' ),
-					'priority' => 512,
+					'priority' => $widget_area_setting_priority,
 				)
 			);
 

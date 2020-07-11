@@ -10,7 +10,7 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 		'lightning_slide',
 		array(
 			'title'    => lightning_get_prefix_customize_panel() . __( 'Home page slide show', 'lightning' ),
-			'priority' => 600,
+			'priority' => 520,
 		// 'panel'			=> 'lightning_setting',
 		)
 	);

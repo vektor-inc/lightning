@@ -11,4 +11,7 @@ if ( ! class_exists( 'Widget_Area_Setting' ) ) {
 	global $widget_area_setting_prefix;
 	$widget_area_setting_prefix = lightning_get_prefix_customize_panel();
 
+	global $widget_area_setting_priority;
+	$widget_area_setting_priority = 555;
+
 }

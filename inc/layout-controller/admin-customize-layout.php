@@ -10,7 +10,7 @@ function lightning_customize_register_layout( $wp_customize ) {
 		'lightning_layout',
 		array(
 			'title'    => lightning_get_prefix_customize_panel() . __( 'Layout settings', 'lightning' ),
-			'priority' => 502,
+			'priority' => 503,
 		// 'panel'				=> 'lightning_setting',
 		)
 	);
