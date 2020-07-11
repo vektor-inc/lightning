@@ -155,7 +155,8 @@ gulp.task('dist_pro_dev', function () {
 		[
 			'./assets/_js/**',
 			// './assets/_scss/**',
-			'./inc/**'
+			'./inc/**',
+			"!./inc/tgm-plugin-activation/**",
 		], {
 			base: './'
 		}
@@ -196,7 +197,7 @@ gulp.task('copy_dist', function (done) {
       "!./dist/**",
       "!./node_modules/**/*.*",
       "!./tests/**",
-      "!./dist/**",
+	  "!./dist/**",
     ], {
       base: './'
     }
