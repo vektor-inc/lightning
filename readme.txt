@@ -39,6 +39,10 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v11.0.0
+* [ Add Function ] CSS optimize for speeding
+* [ Specification Change ] Rebuild Sidebar Fix logic and option
+
 v10.2.0
 * [ Other ] Only version number ( Syncronize to Pro version )
  
