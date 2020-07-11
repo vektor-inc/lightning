@@ -159,7 +159,21 @@ class CSS_tree_shaking {
         self::$atrule_data = array();
         self::$jsaddlist = $jsaddlist;  //JS によりDOMロード後に追加される ID や class 等が除外されなくするための名前の事前登録用
         $inidata = array( 'id'    => array(),
-                          'class' => array('header_scrolled','active','carousel-item-left','carousel-item-next'),
+                          'class' => array(
+								'header_scrolled',
+								'active',
+								'menu-open', 
+								'vk-mobile-nav-menu-btn',
+								'vk-mobile-nav-open',
+								'vk-mobile-nav-open',
+								'vk-menu-acc-active',
+								'acc-parent-open',
+								'acc-btn-open',
+								'acc-btn-close',
+								'acc-child-open',
+								'carousel-item-left',
+								'carousel-item-next',
+							),
                           'tag'   => array('html','head','body','title','style','meta','link','script','noscript')
                         );
         $pattern = array( 'id'    => '|[\s\t\'"]id\s?=\s?[\'"](.+?)[\'"]|u',
