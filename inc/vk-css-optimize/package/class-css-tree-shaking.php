@@ -166,7 +166,6 @@ class CSS_tree_shaking {
 						'menu-open', 
 						'vk-mobile-nav-menu-btn',
 						'vk-mobile-nav-open',
-						'vk-mobile-nav-open',
 						'vk-menu-acc-active',
 						'acc-parent-open',
 						'acc-btn',
