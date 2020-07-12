@@ -132,7 +132,6 @@ If you want to change this file that, you have to change original file.
 			next = self.nextSibling
 
 			if (self.classList.contains('acc-btn-open')) {
-				console.log("action")
 				// 親である li に open クラス追加
 				parent.classList.add('acc-parent-open')
 				self.classList.remove('acc-btn-open')
