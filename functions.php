@@ -155,9 +155,8 @@ function lightning_commentJs() {
 /*-------------------------------------------*/
 add_action( 'after_setup_theme', 'lightning_load_css_action' );
 function lightning_load_css_action() {
-	$hook_point = apply_filters( 'lightning_enqueue_point_common_and_theme_css', 'wp_enqueue_scripts' );
-	add_action( $hook_point, 'lightning_common_style' );
-	add_action( $hook_point, 'lightning_theme_style' );
+	add_action( 'wp_enqueue_scripts', 'lightning_common_style' );
+	add_action( 'wp_enqueue_scripts', 'lightning_theme_style' );
 }
 
 function lightning_common_style() {

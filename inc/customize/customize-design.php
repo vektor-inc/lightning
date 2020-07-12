@@ -273,7 +273,7 @@ function lightning_output_keycolor_css() {
 /*-------------------------------------------*/
 /*	Print head
 /*-------------------------------------------*/
-add_action( 'wp_head', 'lightning_print_css_common', 20 );
+add_action( 'wp_enqueue_scripts', 'lightning_print_css_common', 20 );
 
 function lightning_print_css_common() {
 	$options     = get_option( 'lightning_theme_options' );
@@ -327,8 +327,8 @@ function lightning_print_css_common() {
 		$dynamic_css = preg_replace( '/\s(?=\s)/', '', $dynamic_css );
 
 		// wp_add_inline_style() is not stable on change enquepoint system.
-		echo '<style id="lightning-common-style-custom" type="text/css">' . $dynamic_css . '</style>';
-		// wp_add_inline_style( 'lightning-common-style', $dynamic_css );
+		// echo '<style id="lightning-common-style-custom" type="text/css">' . $dynamic_css . '</style>';
+		wp_add_inline_style( 'lightning-common-style', $dynamic_css );
 
 	}
 

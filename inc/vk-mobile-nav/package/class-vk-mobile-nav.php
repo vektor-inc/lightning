@@ -17,6 +17,7 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 				add_action( 'widgets_init', array( get_called_class(), 'setup_widget' ) );
 				add_action( 'wp_footer', array( get_called_class(), 'menu_set_html' ) );
 				add_action( 'wp_enqueue_scripts', array( get_called_class(), 'add_script' ) );
+				add_action( 'wp_enqueue_scripts', array( get_called_class(), 'add_inline_css' ),30 );
 			}
 			add_filter( 'body_class', array( $this, 'add_body_class_mobile_device' ) );
 		}
@@ -157,6 +158,30 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 			wp_register_script( 'vk-mobile-nav-js', $library_url . 'js/vk-mobile-nav.min.js', array( 'jquery' ), self::$version );
 			wp_enqueue_script( 'vk-mobile-nav-js' );
 			wp_enqueue_style( 'vk-mobile-nav-css', $library_url . 'css/vk-mobile-nav-bright.css', array(), self::$version, 'all' );
+		}
+
+		/**
+		 * Add vk mobile nav inline css
+		 *
+		 * @return void
+		 */
+		public static function add_inline_css(){
+			global $library_url;
+			$dynamic_css = '/* vk-mobile-nav */
+			:root {
+				--vk-mobile-nav-menu-btn-bg-src: url("'.esc_url( $library_url.'/images/vk-menu-btn-black.svg').'");
+				--vk-mobile-nav-menu-btn-close-bg-src: url("'.esc_url( $library_url.'/images/vk-menu-close-black.svg').'");
+				--vk-menu-acc-icon-open-black-bg-src: url("'.esc_url( $library_url.'/images/vk-menu-acc-icon-open-black.svg').'");
+				--vk-menu-acc-icon-close-black-bg-src: url("'.esc_url( $library_url.'/images/vk-menu-close-black.svg').'");
+			}
+			';
+			// delete before after space
+			$dynamic_css = trim( $dynamic_css );
+			// convert tab and br to space
+			$dynamic_css = preg_replace( '/[\n\r\t]/', '', $dynamic_css );
+			// Change multiple spaces to single space
+			$dynamic_css = preg_replace( '/\s(?=\s)/', '', $dynamic_css );
+			wp_add_inline_style( 'lightning-common-style', $dynamic_css );
 		}
 
 	} // class Vk_Mobile_Nav
