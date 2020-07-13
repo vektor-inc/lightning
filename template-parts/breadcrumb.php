@@ -43,12 +43,14 @@ function lightning_bread_crumb() {
 					$panListHtml .= '<li><span>' . get_the_title( '', '', false ) . '</span></li>';
 				}
 			}
-		} else {
+		} elseif ( ! empty( $postType['name'] ) ) {
 			if ( is_single() || is_date() || is_tax() || is_author() ) {
 				$panListHtml .= '<li' . $microdata_li . '><a' . $microdata_li_a . ' href="' . esc_url( $postType['url'] ) . '"><span' . $microdata_li_a_span . '>' . $postType['name'] . '</span></a></li>';
 			} else {
 				$panListHtml .= '<li><span>' . $postType['name'] . '</span></li>';
 			}
+		} else {
+			$panListHtml .= '<li><span>' . __( 'Search Result', 'lightning' ) . '</span></li>';
 		}
 	}
 
