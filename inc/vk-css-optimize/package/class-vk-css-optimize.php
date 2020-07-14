@@ -21,6 +21,14 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 			$options = get_option( 'lightning_theme_options' );
 
 			if ( ! empty( $options['tree_shaking_class_exclude'] ) ) {
+				// delete before after space
+				$exclude_clssses = trim( $exclude_clssses );
+				// convert tab and br to space
+				$exclude_clssses = preg_replace( '/[\n\r\t]/', '', $exclude_clssses );
+				// Change multiple spaces to single space
+				$exclude_clssses = preg_replace( '/\s/', '', $exclude_clssses );
+				$exclude_clssses = str_replace( '，', ',', $exclude_clssses );
+				$exclude_clssses = str_replace( '、', ',', $exclude_clssses );
 				$exclude_clssses = explode( ',', $options['tree_shaking_class_exclude'] );
 			}
 
