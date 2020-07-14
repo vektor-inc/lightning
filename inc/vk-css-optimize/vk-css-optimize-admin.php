@@ -44,4 +44,24 @@ function lightning_customize_register_enqueue_point( $wp_customize ) {
 			'description' => __( 'If you enabled this checkbox that the CSS will shrink or preload.', 'lightning' ),
 		)
 	);
+
+	$wp_customize->add_setting(
+		'lightning_theme_options[tree_shaking_class_exclude]',
+		array(
+			'default'           => '',
+			'type'              => 'option',
+			'capability'        => 'edit_theme_options',
+			'sanitize_callback' => 'sanitize_text_field',
+		)
+	);
+	$wp_customize->add_control(
+		'lightning_theme_options[tree_shaking_class_exclude]',
+		array(
+			'label'       => __( 'Exclude class of tree shaking', 'lightning' ),
+			'section'     => 'lightning_function',
+			'settings'    => 'lightning_theme_options[tree_shaking_class_exclude]',
+			'type'        => 'textarea',
+			'description' => __( 'Enter classes separated with comma.', 'lightning' ),
+		)
+	);
 }
