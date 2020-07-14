@@ -1,12 +1,15 @@
 <?php
-/*-------------------------------------------*/
-/*	customize_register
+/*
+-------------------------------------------*/
+/*
+  customize_register
 /*-------------------------------------------*/
 add_action( 'customize_register', 'lightning_customize_register_design' );
 function lightning_customize_register_design( $wp_customize ) {
 
 	$wp_customize->add_section(
-		'lightning_design', array(
+		'lightning_design',
+		array(
 			'title'    => lightning_get_prefix_customize_panel() . __( 'Design settings', 'lightning' ),
 			'priority' => 501,
 		// 'panel'				=> 'lightning_setting',
@@ -17,7 +20,8 @@ function lightning_customize_register_design( $wp_customize ) {
 
 	// head logo
 	$wp_customize->add_setting(
-		'lightning_theme_options[head_logo]', array(
+		'lightning_theme_options[head_logo]',
+		array(
 			'default'           => '',
 			'type'              => 'option',
 			'capability'        => 'edit_theme_options',
@@ -38,107 +42,227 @@ function lightning_customize_register_design( $wp_customize ) {
 		)
 	);
 	$wp_customize->selective_refresh->add_partial(
-		'lightning_theme_options[head_logo]', array(
+		'lightning_theme_options[head_logo]',
+		array(
 			'selector'        => '.siteHeader_logo:not(.siteHeader_logo-trans-true)',
 			'render_callback' => '',
 		)
 	);
 
+	/*
+	Unuse Judgment
 	if ( apply_filters( 'lightning_show_default_keycolor_customizer', true ) ) {
+	*/
 
-		/*-------------------------------------------*/
-		/*	Color Setting
-		/*-------------------------------------------*/
-		$wp_customize->add_setting(
-			'color_header', array(
-				'sanitize_callback' => 'sanitize_text_field',
-			)
-		);
-		$wp_customize->add_control(
-			new Custom_Html_Control(
-				$wp_customize, 'color_header', array(
-					'label'            => __( 'Color Setting', 'lightning' ),
-					'section'          => 'lightning_design',
-					'type'             => 'text',
-					'custom_title_sub' => __( 'Key Color', 'lightning' ),
-					'custom_html'      => '',
-					'priority'         => 600,
-				)
-			)
-		);
-
-		// color
-		$wp_customize->add_setting(
-			'lightning_theme_options[color_key]', array(
-				'default'           => '#337ab7',
-				'type'              => 'option',
-				'capability'        => 'edit_theme_options',
-				'sanitize_callback' => 'sanitize_hex_color',
-			)
-		);
-		$wp_customize->add_control(
-			new WP_Customize_Color_Control(
-				$wp_customize, 'color_key', array(
-					'label'    => __( 'Key color', 'lightning' ),
-					'section'  => 'lightning_design',
-					'settings' => 'lightning_theme_options[color_key]',
-					'priority' => 600,
-				)
-			)
-		);
-
-		$wp_customize->add_setting(
-			'lightning_theme_options[color_key_dark]', array(
-				'default'           => '#2e6da4',
-				'type'              => 'option',
-				'capability'        => 'edit_theme_options',
-				'sanitize_callback' => 'sanitize_hex_color',
-			)
-		);
-		$wp_customize->add_control(
-			new WP_Customize_Color_Control(
-				$wp_customize, 'color_key_dark', array(
-					'label'    => __( 'Key color (dark)', 'lightning' ),
-					'section'  => 'lightning_design',
-					'settings' => 'lightning_theme_options[color_key_dark]',
-					'priority' => 600,
-				)
-			)
-		);
-	} // if ( apply_filters( 'lightning_show_default_keycolor_customizer', true ) ) {
-
-	/*-------------------------------------------*/
-	/*	Layout
+	/*
+	-------------------------------------------*/
+	/*
+	  Color Setting
 	/*-------------------------------------------*/
 	$wp_customize->add_setting(
-		'layout', array(
+		'color_header',
+		array(
 			'sanitize_callback' => 'sanitize_text_field',
 		)
 	);
 	$wp_customize->add_control(
 		new Custom_Html_Control(
-			$wp_customize, 'layout', array(
+			$wp_customize,
+			'color_header',
+			array(
+				'label'            => __( 'Color Setting', 'lightning' ),
+				'section'          => 'lightning_design',
+				'type'             => 'text',
+				'custom_title_sub' => __( 'Key Color', 'lightning' ),
+				'custom_html'      => '',
+				'priority'         => 600,
+			)
+		)
+	);
+
+	// color
+	$wp_customize->add_setting(
+		'lightning_theme_options[color_key]',
+		array(
+			'default'           => '#337ab7',
+			'type'              => 'option',
+			'capability'        => 'edit_theme_options',
+			'sanitize_callback' => 'sanitize_hex_color',
+		)
+	);
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'color_key',
+			array(
+				'label'    => __( 'Key color', 'lightning' ),
+				'section'  => 'lightning_design',
+				'settings' => 'lightning_theme_options[color_key]',
+				'priority' => 600,
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
+		'lightning_theme_options[color_key_dark]',
+		array(
+			'default'           => '#2e6da4',
+			'type'              => 'option',
+			'capability'        => 'edit_theme_options',
+			'sanitize_callback' => 'sanitize_hex_color',
+		)
+	);
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'color_key_dark',
+			array(
+				'label'    => __( 'Key color (dark)', 'lightning' ),
+				'section'  => 'lightning_design',
+				'settings' => 'lightning_theme_options[color_key_dark]',
+				'priority' => 600,
+			)
+		)
+	);
+
+	// Link Color Heading.
+	$wp_customize->add_setting(
+		'link_color_header',
+		array(
+			'sanitize_callback' => 'sanitize_text_field',
+		)
+	);
+	$wp_customize->add_control(
+		new Custom_Html_Control(
+			$wp_customize,
+			'link_color_header',
+			array(
+				'label'            => '',
+				'section'          => 'lightning_design',
+				'type'             => 'text',
+				'custom_title_sub' => __( 'Link text color', 'lightning' ),
+				'custom_html'      => '',
+				'priority'         => 600,
+			)
+		)
+	);
+
+	// Link Text Color ( Default ).
+	$wp_customize->add_setting(
+		'lightning_theme_options[link_text_color_default]',
+		array(
+			'default'           => '#337ab7',
+			'type'              => 'option',
+			'capability'        => 'edit_theme_options',
+			'sanitize_callback' => 'sanitize_hex_color',
+		)
+	);
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'lightning_theme_options[link_text_color_default]',
+			array(
+				'label'    => __( 'Link text color ( default )', 'lightning' ),
+				'section'  => 'lightning_design',
+				'settings' => 'lightning_theme_options[link_text_color_default]',
+				'priority' => 600,
+			)
+		)
+	);
+
+	// Link Text Color ( Hover ).
+	$wp_customize->add_setting(
+		'lightning_theme_options[link_text_color_hover]',
+		array(
+			'default'           => '',
+			'type'              => 'option',
+			'capability'        => 'edit_theme_options',
+			'sanitize_callback' => 'sanitize_hex_color',
+		)
+	);
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'lightning_theme_options[link_text_color_hover]',
+			array(
+				'label'    => __( 'Link text color ( hover )', 'lightning' ),
+				'section'  => 'lightning_design',
+				'settings' => 'lightning_theme_options[link_text_color_hover]',
+				'priority' => 600,
+			)
+		)
+	);
+
+	// Link Text Color ( Visited ).
+	$wp_customize->add_setting(
+		'lightning_theme_options[link_text_color_visited]',
+		array(
+			'default'           => '',
+			'type'              => 'option',
+			'capability'        => 'edit_theme_options',
+			'sanitize_callback' => 'sanitize_hex_color',
+		)
+	);
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'lightning_theme_options[link_text_color_visited]',
+			array(
+				'label'    => __( 'Link text color ( visited )', 'lightning' ),
+				'section'  => 'lightning_design',
+				'settings' => 'lightning_theme_options[link_text_color_visited]',
+				'priority' => 600,
+			)
+		)
+	);
+
+	/*
+	Unuse judgement
+	} // if ( apply_filters( 'lightning_show_default_keycolor_customizer', true ) ) {
+	*/
+
+	/*
+	-------------------------------------------*/
+	/*
+	  Layout
+	/*-------------------------------------------*/
+	$wp_customize->add_setting(
+		'layout',
+		array(
+			'sanitize_callback' => 'sanitize_text_field',
+		)
+	);
+	$wp_customize->add_control(
+		new Custom_Html_Control(
+			$wp_customize,
+			'layout',
+			array(
 				'label'            => __( 'Layout Setting', 'lightning' ),
 				'section'          => 'lightning_design',
 				'type'             => 'text',
 				'custom_title_sub' => '',
-				'custom_html'      => '<p>'.__('This setting field was moved to the "Layout Setting" panel.', 'lightning' ) .'</p>',
+				'custom_html'      => '<p>' . __( 'This setting field was moved to the "Layout Setting" panel.', 'lightning' ) . '</p>',
 				'priority'         => 700,
 			)
 		)
 	);
 
-	/*-------------------------------------------*/
-	/*	Other Setting
+	/*
+	-------------------------------------------*/
+	/*
+	  Other Setting
 	/*-------------------------------------------*/
 	$wp_customize->add_setting(
-		'Others', array(
+		'Others',
+		array(
 			'sanitize_callback' => 'sanitize_text_field',
 		)
 	);
 	$wp_customize->add_control(
 		new Custom_Html_Control(
-			$wp_customize, 'Others', array(
+			$wp_customize,
+			'Others',
+			array(
 				'label'            => __( 'Other Setting', 'lightning' ),
 				'section'          => 'lightning_design',
 				'type'             => 'text',
@@ -150,7 +274,8 @@ function lightning_customize_register_design( $wp_customize ) {
 	);
 
 	$wp_customize->selective_refresh->add_partial(
-		'lightning_theme_options[top_sidebar_hidden]', array(
+		'lightning_theme_options[top_sidebar_hidden]',
+		array(
 			'selector'        => '.home .mainSection',
 			'render_callback' => '',
 		)
@@ -158,7 +283,8 @@ function lightning_customize_register_design( $wp_customize ) {
 
 	// top_default_content_hidden
 	$wp_customize->add_setting(
-		'lightning_theme_options[top_default_content_hidden]', array(
+		'lightning_theme_options[top_default_content_hidden]',
+		array(
 			'default'           => false,
 			'type'              => 'option',
 			'capability'        => 'edit_theme_options',
@@ -166,7 +292,8 @@ function lightning_customize_register_design( $wp_customize ) {
 		)
 	);
 	$wp_customize->add_control(
-		'lightning_theme_options[top_default_content_hidden]', array(
+		'lightning_theme_options[top_default_content_hidden]',
+		array(
 			'label'    => __( 'Don\'t show default content(Post list or Front page) at home page', 'lightning' ),
 			'section'  => 'lightning_design',
 			'settings' => 'lightning_theme_options[top_default_content_hidden]',
@@ -177,7 +304,8 @@ function lightning_customize_register_design( $wp_customize ) {
 
 	// postUpdate_hidden
 	$wp_customize->add_setting(
-		'lightning_theme_options[postUpdate_hidden]', array(
+		'lightning_theme_options[postUpdate_hidden]',
+		array(
 			'default'           => false,
 			'type'              => 'option',
 			'capability'        => 'edit_theme_options',
@@ -185,7 +313,8 @@ function lightning_customize_register_design( $wp_customize ) {
 		)
 	);
 	$wp_customize->add_control(
-		'lightning_theme_options[postUpdate_hidden]', array(
+		'lightning_theme_options[postUpdate_hidden]',
+		array(
 			'label'    => __( 'Hide modified date on single pages.', 'lightning' ),
 			'section'  => 'lightning_design',
 			'settings' => 'lightning_theme_options[postUpdate_hidden]',
@@ -196,7 +325,8 @@ function lightning_customize_register_design( $wp_customize ) {
 
 	// postAuthor_hidden
 	$wp_customize->add_setting(
-		'lightning_theme_options[postAuthor_hidden]', array(
+		'lightning_theme_options[postAuthor_hidden]',
+		array(
 			'default'           => false,
 			'type'              => 'option',
 			'capability'        => 'edit_theme_options',
@@ -204,7 +334,8 @@ function lightning_customize_register_design( $wp_customize ) {
 		)
 	);
 	$wp_customize->add_control(
-		'lightning_theme_options[postAuthor_hidden]', array(
+		'lightning_theme_options[postAuthor_hidden]',
+		array(
 			'label'    => __( 'Don\'t display post author on a single page', 'lightning' ),
 			'section'  => 'lightning_design',
 			'settings' => 'lightning_theme_options[postAuthor_hidden]',
@@ -215,7 +346,8 @@ function lightning_customize_register_design( $wp_customize ) {
 
 	// sidebar_child_list_hidden
 	$wp_customize->add_setting(
-		'lightning_theme_options[sidebar_child_list_hidden]', array(
+		'lightning_theme_options[sidebar_child_list_hidden]',
+		array(
 			'default'           => false,
 			'type'              => 'option',
 			'capability'        => 'edit_theme_options',
@@ -223,7 +355,8 @@ function lightning_customize_register_design( $wp_customize ) {
 		)
 	);
 	$wp_customize->add_control(
-		'lightning_theme_options[sidebar_child_list_hidden]', array(
+		'lightning_theme_options[sidebar_child_list_hidden]',
+		array(
 			'label'    => __( 'Don\'t display grandchild page of deactive page at page sidebar.', 'lightning' ),
 			'section'  => 'lightning_design',
 			'settings' => 'lightning_theme_options[sidebar_child_list_hidden]',
@@ -234,9 +367,12 @@ function lightning_customize_register_design( $wp_customize ) {
 
 }
 
-/*-------------------------------------------*/
-/*	Lightning custom color Print head
-/*	* This is used for Contents and Plugins and others
+/*
+-------------------------------------------*/
+/*
+  Lightning custom color Print head
+/*
+  * This is used for Contents and Plugins and others
 /*-------------------------------------------*/
 add_action( 'wp_head', 'lightning_output_keycolor_css' );
 
@@ -270,8 +406,10 @@ function lightning_output_keycolor_css() {
 	echo '<style id="lightning-color-custom-for-plugins" type="text/css">' . $dynamic_css . '</style>';
 }
 
-/*-------------------------------------------*/
-/*	Print head
+/*
+-------------------------------------------*/
+/*
+  Print head
 /*-------------------------------------------*/
 add_action( 'wp_enqueue_scripts', 'lightning_print_css_common', 20 );
 
@@ -283,7 +421,7 @@ function lightning_print_css_common() {
 	if ( isset( $options['color_key'] ) && isset( $options['color_key_dark'] ) ) {
 		$color_key      = ( ! empty( $options['color_key'] ) ) ? esc_html( $options['color_key'] ) : '#337ab7';
 		$color_key_dark = ( ! empty( $options['color_key_dark'] ) ) ? esc_html( $options['color_key_dark'] ) : '#2e6da4';
-		$dynamic_css   .= '/* ltg common custom */ 
+		$dynamic_css   .= '/* ltg common custom */
 		:root {
 			--color-key:' . $color_key . ';
 			--color-key-dark:' . $color_key_dark . ';
@@ -302,7 +440,20 @@ function lightning_print_css_common() {
 		';
 	} // if ( isset($options['color_key'] && isset($options['color_key_dark'] ) {
 
-	/*  Child list hidden
+	$link_text_color_default = ! empty( $options['link_text_color_default'] ) ? $options['link_text_color_default'] : '#337ab7';
+	$link_text_color_hover   = ! empty( $options['link_text_color_hover'] ) ? $options['link_text_color_hover'] : '';
+	$link_text_color_visited = ! empty( $options['link_text_color_visited'] ) ? $options['link_text_color_visited'] : '';
+
+	$dynamic_css .= 'a { color:' . $link_text_color_default . '; }';
+	if ( ! empty( $link_text_color_hover ) ) {
+		$dynamic_css .= 'a:hover { color:' . $link_text_color_hover . '; }';
+	}
+	if ( ! empty( $link_text_color_visited ) ) {
+		$dynamic_css .= 'a:visited { color:' . $link_text_color_visited . '; }';
+	}
+
+	/*
+	  Child list hidden
 	/*-------------------------------------------*/
 	if ( isset( $options['sidebar_child_list_hidden'] ) && $options['sidebar_child_list_hidden'] ) {
 		$dynamic_css .= '/* sidebar child menu display */
@@ -334,21 +485,23 @@ function lightning_print_css_common() {
 
 }
 
-/*-------------------------------------------*/
-/*	add body class
+/*
+-------------------------------------------*/
+/*
+  add body class
 /*-------------------------------------------*/
 add_filter( 'body_class', 'ltg_add_body_class_sidefix' );
 function ltg_add_body_class_sidefix( $class ) {
 	$options = get_option( 'lightning_theme_options' );
 	if ( ! lightning_is_layout_onecolumn() ) {
 		if ( isset( $options['sidebar_fix'] ) ) {
-			if ( $options['sidebar_fix'] == 'priority-top' ){
+			if ( $options['sidebar_fix'] == 'priority-top' ) {
 				$class[] = 'sidebar-fix';
 				$class[] = 'sidebar-fix-priority-top';
-			} else if ( $options['sidebar_fix'] == 'priority-bottom' ){
+			} elseif ( $options['sidebar_fix'] == 'priority-bottom' ) {
 				$class[] = 'sidebar-fix';
 				$class[] = 'sidebar-fix-priority-bottom';
-			} else if ( $options['sidebar_fix'] === 'no-fix' ||  $options['sidebar_fix'] === true ){
+			} elseif ( $options['sidebar_fix'] === 'no-fix' || $options['sidebar_fix'] === true ) {
 				return $class;
 			}
 		} else {
@@ -373,11 +526,11 @@ function ltg_add_body_class_bootstrap_version( $class ) {
  *
  * @return string
  */
-function lightning_get_common_inline_css(){
-	$options     = get_option( 'lightning_theme_options' );
+function lightning_get_common_inline_css() {
+	$options        = get_option( 'lightning_theme_options' );
 	$color_key      = ( ! empty( $options['color_key'] ) ) ? esc_html( $options['color_key'] ) : '#337ab7';
 	$color_key_dark = ( ! empty( $options['color_key_dark'] ) ) ? esc_html( $options['color_key_dark'] ) : '#2e6da4';
-	$dynamic_css = '
+	$dynamic_css    = '
 	:root {
 		--color-key:' . $color_key . ';
 		--color-key-dark:' . $color_key_dark . ';
@@ -392,7 +545,7 @@ function lightning_get_common_inline_css(){
 	return $dynamic_css;
 }
 
-function lightning_add_common_dynamic_css(){
+function lightning_add_common_dynamic_css() {
 	$dynamic_css = lightning_get_common_inline_css();
 	wp_add_inline_style( 'lightning-common-style', $dynamic_css );
 }
@@ -400,14 +553,16 @@ function lightning_add_common_dynamic_css(){
 add_action( 'wp_enqueue_scripts', 'lightning_add_common_dynamic_css' );
 add_action( 'wp_footer', 'lightning_add_common_dynamic_css' );
 
-function lightning_add_common_dynamic_css_to_editor(){
+function lightning_add_common_dynamic_css_to_editor() {
 	$dynamic_css = lightning_get_common_inline_css();
 	wp_add_inline_style( 'lightning-common-editor-gutenberg', $dynamic_css );
 }
 add_action( 'enqueue_block_editor_assets', 'lightning_add_common_dynamic_css_to_editor' );
 
-/*-------------------------------------------*/
-/*  編集ショートカットボタンの位置調整（ウィジェットのショートカットボタンと重なってしまうため）
+/*
+-------------------------------------------*/
+/*
+  編集ショートカットボタンの位置調整（ウィジェットのショートカットボタンと重なってしまうため）
 /*-------------------------------------------*/
 add_action( 'wp_head', 'lightning_customize_preview_css_design', 2 );
 function lightning_customize_preview_css_design() {
