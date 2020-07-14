@@ -158,25 +158,37 @@ class CSS_tree_shaking {
     public static function extended_minify($css, $html, $jsaddlist=array()) {
         self::$atrule_data = array();
         self::$jsaddlist = $jsaddlist;  //JS によりDOMロード後に追加される ID や class 等が除外されなくするための名前の事前登録用
-        $inidata = array( 'id'    => array(),
-					'class' => array(
-						'device-mobile',
-						'header_scrolled',
-						'active',
-						'menu-open', 
-						'vk-mobile-nav-menu-btn',
-						'vk-mobile-nav-open',
-						'vk-menu-acc-active',
-						'acc-parent-open',
-						'acc-btn',
-						'acc-btn-open',
-						'acc-btn-close',
-						'acc-child-open',
-						'carousel-item-left',
-						'carousel-item-next',
-					),
-					'tag'   => array('html','head','body','title','style','meta','link','script','noscript')
-                        );
+        $inidata = array(
+			'id'    => array(),
+			'class' => array(
+				'device-mobile',
+				'header_scrolled',
+				'active',
+				'menu-open',
+				'vk-mobile-nav-menu-btn',
+				'vk-mobile-nav-open',
+				'vk-menu-acc-active',
+				'acc-parent-open',
+				'acc-btn',
+				'acc-btn-open',
+				'acc-btn-close',
+				'acc-child-open',
+				'carousel-item-left',
+				'carousel-item-next',
+			),
+			'tag'   => array(
+				'html',
+				'head',
+				'body',
+				'title',
+				'style',
+				'meta',
+				'link',
+				'script',
+				'noscript'
+			)
+		);
+		$inidata = apply_filters( 'css_tree_shaking_exclude', $inidata );
         $pattern = array( 'id'    => '|[\s\t\'"]id\s?=\s?[\'"](.+?)[\'"]|u',
                           'class' => '|[\s\t\'"]class\s?=\s?[\'"](.+?)[\'"]|u',
                           'tag'   => '|<([\w\-]+)|iu'
