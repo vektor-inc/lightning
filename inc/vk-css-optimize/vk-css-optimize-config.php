@@ -30,13 +30,22 @@ function lightning_optimize_css() {
 		
 			// 表示位置の配列.
 			global $vk_css_tree_shaking_array;
-			$vk_css_tree_shaking_array = array(
-				array(
+			if ( empty( $vk_css_tree_shaking_array ) ) {
+				$vk_css_tree_shaking_array = array(
+					array(
+						'id'      => 'lightning-common-style',
+						'url'     => get_template_directory_uri() . '/assets/css/common.css',
+						'version' => LIGHTNING_THEME_VERSION,
+					),
+				);
+			} else {
+				$add_array = array(
 					'id'      => 'lightning-common-style',
 					'url'     => get_template_directory_uri() . '/assets/css/common.css',
 					'version' => LIGHTNING_THEME_VERSION,
-				),
-			);
+				);
+				array_push( $vk_css_tree_shaking_array, $add_array );
+			}
 			if ( $bs4_css_url && $bs4_version ) {
 				$add_array = array(
 					'id'      => 'bootstrap-4-style',
