@@ -13,7 +13,7 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 
 		public function __construct() {
 			add_action( 'get_header', array( __CLASS__, 'get_html_start' ) );
-			add_action( 'shutdown', array( __CLASS__, 'get_html_end' ) );
+			add_action( 'wp_footer', array( __CLASS__, 'get_html_end' ), 2147483647 );
 		}
 
 		public static function get_html_start() {
