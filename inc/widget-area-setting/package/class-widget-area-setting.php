@@ -25,18 +25,18 @@ if ( ! class_exists( 'Widget_Area_Setting' ) ) {
 		 * @param \WP_Customize_Manager $wp_customize Customizer.
 		 */
 		public static function resister_customize( $wp_customize ) {
-			global $widget_area_setting_prefix;
-			global $widget_area_setting_priority;
-			if ( ! $widget_area_setting_priority ){
-				$widget_area_setting_priority = 560;
+			global $vk_footer_customize_prefix;
+			global $vk_footer_customize_priority;
+			if ( ! $vk_footer_customize_priority ){
+				$vk_footer_customize_priority = 540;
 			}
 
 			// add section.
 			$wp_customize->add_section(
-				'widget_area_setting',
+				'vk_footer_option',
 				array(
-					'title'    => $widget_area_setting_prefix . __( 'Widget Area Setting', 'lightning' ),
-					'priority' => $widget_area_setting_priority,
+					'title'    => $vk_footer_customize_prefix . __( 'Footer settings', 'lightning-pro' ),
+					'priority' => $vk_footer_customize_priority,
 				)
 			);
 
@@ -54,7 +54,7 @@ if ( ! class_exists( 'Widget_Area_Setting' ) ) {
 					'footer-upper-widget-area',
 					array(
 						'label'            => __( 'Widget area of upper footer', 'lightning' ),
-						'section'          => 'widget_area_setting',
+						'section'          => 'vk_footer_option',
 						'type'             => 'text',
 						'custom_title_sub' => '',
 						'custom_html'      => '',
@@ -77,7 +77,7 @@ if ( ! class_exists( 'Widget_Area_Setting' ) ) {
 				'lightning_widget_setting[footer_upper_widget_padding_delete]',
 				array(
 					'label'    => __( 'Delete Padding', 'lightning' ),
-					'section'  => 'widget_area_setting',
+					'section'  => 'vk_footer_option',
 					'settings' => 'lightning_widget_setting[footer_upper_widget_padding_delete]',
 					'type'     => 'checkbox',
 				)
@@ -105,7 +105,7 @@ if ( ! class_exists( 'Widget_Area_Setting' ) ) {
 					'footer-widget-area',
 					array(
 						'label'            => __( 'Footer widget area', 'lightning' ),
-						'section'          => 'widget_area_setting',
+						'section'          => 'vk_footer_option',
 						'type'             => 'text',
 						'custom_title_sub' => '',
 						'custom_html'      => '',
@@ -128,7 +128,7 @@ if ( ! class_exists( 'Widget_Area_Setting' ) ) {
 				'lightning_widget_setting[footer_widget_area_count]',
 				array(
 					'label'       => __( 'Footer Widget Area Count', 'lightning' ),
-					'section'     => 'widget_area_setting',
+					'section'     => 'vk_footer_option',
 					'settings'    => 'lightning_widget_setting[footer_widget_area_count]',
 					'type'        => 'select',
 					'choices'     => array(
@@ -149,7 +149,7 @@ if ( ! class_exists( 'Widget_Area_Setting' ) ) {
 					'render_callback' => '',
 				)
 			);
-
+			do_action( 'lightning_footer_customize_panel' );
 		}
 
 		/**
