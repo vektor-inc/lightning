@@ -27,7 +27,7 @@ if ( ! class_exists( 'Widget_Area_Setting' ) ) {
 		public static function resister_customize( $wp_customize ) {
 			global $vk_footer_customize_prefix;
 			global $vk_footer_customize_priority;
-			if ( ! $vk_footer_customize_priority ){
+			if ( ! $vk_footer_customize_priority ) {
 				$vk_footer_customize_priority = 540;
 			}
 
@@ -149,7 +149,6 @@ if ( ! class_exists( 'Widget_Area_Setting' ) ) {
 					'render_callback' => '',
 				)
 			);
-			do_action( 'lightning_footer_customize_panel' );
 		}
 
 		/**
