@@ -449,7 +449,7 @@ function lightning_print_css_common() {
 		$dynamic_css .= 'a:hover { color:' . $link_text_color_hover . '; }';
 	}
 	if ( ! empty( $link_text_color_visited ) ) {
-		$dynamic_css .= 'a:visited { color:' . $link_text_color_visited . '; }';
+		$dynamic_css .= '.entry-body a:visited { color:' . $link_text_color_visited . '; }';
 	}
 
 	/*
