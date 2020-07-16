@@ -480,7 +480,6 @@ function lightning_print_css_common() {
 		// wp_add_inline_style() is not stable on change enquepoint system.
 		// echo '<style id="lightning-common-style-custom" type="text/css">' . $dynamic_css . '</style>';
 		wp_add_inline_style( 'lightning-common-style', $dynamic_css );
-
 	}
 
 }
