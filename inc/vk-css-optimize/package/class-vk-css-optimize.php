@@ -19,20 +19,20 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 
 		public static function css_tree_shaking_exclude( $inidata ) {
 			$options         = get_option( 'lightning_theme_options' );
-			$exclude_clssses = array();
+			$exclude_classes_array = array();
 			if ( ! empty( $options['tree_shaking_class_exclude'] ) ) {
 				// delete before after space
-				$exclude_clssses = trim( $exclude_clssses );
+				$exclude_clssses = trim( $options['tree_shaking_class_exclude'] );
 				// convert tab and br to space
 				$exclude_clssses = preg_replace( '/[\n\r\t]/', '', $exclude_clssses );
 				// Change multiple spaces to single space
 				$exclude_clssses = preg_replace( '/\s/', '', $exclude_clssses );
 				$exclude_clssses = str_replace( '，', ',', $exclude_clssses );
 				$exclude_clssses = str_replace( '、', ',', $exclude_clssses );
-				$exclude_clssses = explode( ',', $options['tree_shaking_class_exclude'] );
+				$exclude_classes_array = explode( ',', $exclude_clssses );
 			}
 
-			$inidata['class'] = $inidata['class'] + $exclude_clssses;
+			$inidata['class'] = $inidata['class'] + $exclude_classes_array;
 
 			return $inidata;
 		}
