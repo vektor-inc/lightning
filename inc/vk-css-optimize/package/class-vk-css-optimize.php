@@ -19,7 +19,7 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 
 		public static function css_tree_shaking_exclude( $inidata ) {
 			$options         = get_option( 'lightning_theme_options' );
-			$exclude_clssses = '';
+			$exclude_clssses = array();
 			if ( ! empty( $options['tree_shaking_class_exclude'] ) ) {
 				// delete before after space
 				$exclude_clssses = trim( $exclude_clssses );
