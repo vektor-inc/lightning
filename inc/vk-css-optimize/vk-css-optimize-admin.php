@@ -28,10 +28,10 @@ function lightning_customize_register_enqueue_point( $wp_customize ) {
 	$wp_customize->add_setting(
 		'lightning_theme_options[optimize_css]',
 		array(
-			'default'           => true,
+			'default'           => 'optomize-all-css',
 			'type'              => 'option',
 			'capability'        => 'edit_theme_options',
-			'sanitize_callback' => 'lightning_sanitize_checkbox',
+			'sanitize_callback' => 'lightning_sanitize_radio',
 		)
 	);
 	$wp_customize->add_control(
@@ -40,8 +40,12 @@ function lightning_customize_register_enqueue_point( $wp_customize ) {
 			'label'       => __( 'Optimize CSS', 'lightning' ),
 			'section'     => 'lightning_function',
 			'settings'    => 'lightning_theme_options[optimize_css]',
-			'type'        => 'checkbox',
-			'description' => __( 'If you enabled this checkbox that the CSS will shrink or preload.', 'lightning' ),
+			'type'        => 'select',
+			'choices'     => array(
+				'default'           => __( 'Nothing to do', 'lightning' ),
+				'minimal-bootstrap' => __( 'Load Minimal Bootstrap ( only for BS4 )', 'lightning' ),
+				'optomize-all-css'  => __( 'Optimize All CSS', 'lightning' ),
+			),
 		)
 	);
 }
