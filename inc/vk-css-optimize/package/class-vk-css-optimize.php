@@ -18,8 +18,8 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 		}
 
 		public static function css_tree_shaking_exclude( $inidata ) {
-			$options = get_option( 'lightning_theme_options' );
-
+			$options         = get_option( 'lightning_theme_options' );
+			$exclude_clssses = '';
 			if ( ! empty( $options['tree_shaking_class_exclude'] ) ) {
 				// delete before after space
 				$exclude_clssses = trim( $exclude_clssses );
@@ -53,12 +53,12 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 			curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
 			curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, false );
 
-			//タイムアウト時間設定
+			// タイムアウト時間設定
 			curl_setopt( $ch, CURLOPT_TIMEOUT, $timeout );
 
-			//リダイレクトしている場合も読みこむ
+			// リダイレクトしている場合も読みこむ
 			curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, true );
-			curl_setopt( $ch, CURLOPT_MAXREDIRS, 10);
+			curl_setopt( $ch, CURLOPT_MAXREDIRS, 10 );
 
 			$result = curl_exec( $ch );
 			curl_close( $ch );
