@@ -32,7 +32,7 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 				$exclude_classes_array = explode( ',', $exclude_clssses );
 			}
 
-			$inidata['class'] = $inidata['class'] + $exclude_classes_array;
+			$inidata['class'] = array_merge( $inidata['class'], $exclude_classes_array );
 
 			return $inidata;
 		}
