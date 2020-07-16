@@ -25,24 +25,25 @@ if ( ! class_exists( 'Widget_Area_Setting' ) ) {
 		 * @param \WP_Customize_Manager $wp_customize Customizer.
 		 */
 		public static function resister_customize( $wp_customize ) {
-			global $widget_area_setting_prefix;
-			global $widget_area_setting_priority;
-			if ( ! $widget_area_setting_priority ){
-				$widget_area_setting_priority = 560;
+			global $vk_footer_customize_prefix;
+			global $vk_footer_customize_priority;
+			if ( ! $vk_footer_customize_priority ) {
+				$vk_footer_customize_priority = 540;
 			}
+			$priority = $vk_footer_customize_priority + 2;
 
 			// add section.
 			$wp_customize->add_section(
-				'widget_area_setting',
+				'vk_footer_option',
 				array(
-					'title'    => $widget_area_setting_prefix . __( 'Widget Area Setting', 'lightning' ),
-					'priority' => $widget_area_setting_priority,
+					'title'    => $vk_footer_customize_prefix . __( 'Footer settings', 'lightning-pro' ),
+					'priority' => $vk_footer_customize_priority,
 				)
 			);
 
 			// Footer Upper Widget Area Heading.
 			$wp_customize->add_setting(
-				'footer-upper-widget-area',
+				'footer-widget-setting',
 				array(
 					'sanitize_callback' => 'sanitize_text_field',
 				)
@@ -51,13 +52,14 @@ if ( ! class_exists( 'Widget_Area_Setting' ) ) {
 			$wp_customize->add_control(
 				new Custom_Html_Control(
 					$wp_customize,
-					'footer-upper-widget-area',
+					'footer-widget-setting',
 					array(
-						'label'            => __( 'Widget area of upper footer', 'lightning' ),
-						'section'          => 'widget_area_setting',
+						'label'            => __( 'Footer Widget Setting', 'lightning-pro' ),
+						'section'          => 'vk_footer_option',
 						'type'             => 'text',
 						'custom_title_sub' => '',
 						'custom_html'      => '',
+						'priority'         => $priority,
 					)
 				)
 			);
@@ -69,17 +71,22 @@ if ( ! class_exists( 'Widget_Area_Setting' ) ) {
 					'default'           => false,
 					'type'              => 'option',
 					'capability'        => 'edit_theme_options',
-					'sanitize_callback' => 'lightning_sanitize_checkbox',
+					'sanitize_callback' => 'lightning_sanitize_radio',
 				)
 			);
 
 			$wp_customize->add_control(
 				'lightning_widget_setting[footer_upper_widget_padding_delete]',
 				array(
-					'label'    => __( 'Delete Padding', 'lightning' ),
-					'section'  => 'widget_area_setting',
+					'label'    => __( 'Footer Upper Widget Padding', 'lightning-pro' ),
+					'section'  => 'vk_footer_option',
 					'settings' => 'lightning_widget_setting[footer_upper_widget_padding_delete]',
-					'type'     => 'checkbox',
+					'type'     => 'select',
+					'choices'  => array(
+						false => __( 'Nothing to do', 'lightning-pro' ),
+						true  => __( 'Delete Padding', 'lightning-pro' ),
+					),
+					'priority' => $priority,
 				)
 			);
 
@@ -88,28 +95,6 @@ if ( ! class_exists( 'Widget_Area_Setting' ) ) {
 				array(
 					'selector'        => '.siteContent_after',
 					'render_callback' => '',
-				)
-			);
-
-			// Footer Widget Area Heading.
-			$wp_customize->add_setting(
-				'footer-widget-area',
-				array(
-					'sanitize_callback' => 'sanitize_text_field',
-				)
-			);
-
-			$wp_customize->add_control(
-				new Custom_Html_Control(
-					$wp_customize,
-					'footer-widget-area',
-					array(
-						'label'            => __( 'Footer widget area', 'lightning' ),
-						'section'          => 'widget_area_setting',
-						'type'             => 'text',
-						'custom_title_sub' => '',
-						'custom_html'      => '',
-					)
 				)
 			);
 
@@ -127,18 +112,19 @@ if ( ! class_exists( 'Widget_Area_Setting' ) ) {
 			$wp_customize->add_control(
 				'lightning_widget_setting[footer_widget_area_count]',
 				array(
-					'label'       => __( 'Footer Widget Area Count', 'lightning' ),
-					'section'     => 'widget_area_setting',
+					'label'       => __( 'Footer Widget Area Count', 'lightning-pro' ),
+					'section'     => 'vk_footer_option',
 					'settings'    => 'lightning_widget_setting[footer_widget_area_count]',
 					'type'        => 'select',
 					'choices'     => array(
-						1 => __( '1 column', 'lightning' ),
-						2 => __( '2 column', 'lightning' ),
-						3 => __( '3 column', 'lightning' ),
-						4 => __( '4 column', 'lightning' ),
-						6 => __( '6 column', 'lightning' ),
+						1 => __( '1 column', 'lightning-pro' ),
+						2 => __( '2 column', 'lightning-pro' ),
+						3 => __( '3 column', 'lightning-pro' ),
+						4 => __( '4 column', 'lightning-pro' ),
+						6 => __( '6 column', 'lightning-pro' ),
 					),
-					'description' => __( '* If you save and reload after making changes, the number of the widget area setting panels  will increase or decrease.', 'lightning' ),
+					'description' => __( '* If you save and reload after making changes, the number of the widget area setting panels  will increase or decrease.', 'lightning-pro' ),
+					'priority'    => $priority,
 				)
 			);
 
@@ -149,7 +135,6 @@ if ( ! class_exists( 'Widget_Area_Setting' ) ) {
 					'render_callback' => '',
 				)
 			);
-
 		}
 
 		/**

@@ -1,7 +1,5 @@
 <?php
 /*
--------------------------------------------*/
-/*
   customize_register
 /*-------------------------------------------*/
 add_action( 'customize_register', 'lightning_customize_register_design' );
@@ -54,8 +52,6 @@ function lightning_customize_register_design( $wp_customize ) {
 	if ( apply_filters( 'lightning_show_default_keycolor_customizer', true ) ) {
 	*/
 
-	/*
-	-------------------------------------------*/
 	/*
 	  Color Setting
 	/*-------------------------------------------*/
@@ -222,8 +218,6 @@ function lightning_customize_register_design( $wp_customize ) {
 	*/
 
 	/*
-	-------------------------------------------*/
-	/*
 	  Layout
 	/*-------------------------------------------*/
 	$wp_customize->add_setting(
@@ -247,8 +241,6 @@ function lightning_customize_register_design( $wp_customize ) {
 		)
 	);
 
-	/*
-	-------------------------------------------*/
 	/*
 	  Other Setting
 	/*-------------------------------------------*/
@@ -368,10 +360,7 @@ function lightning_customize_register_design( $wp_customize ) {
 }
 
 /*
--------------------------------------------*/
-/*
   Lightning custom color Print head
-/*
   * This is used for Contents and Plugins and others
 /*-------------------------------------------*/
 add_action( 'wp_head', 'lightning_output_keycolor_css' );
@@ -406,8 +395,6 @@ function lightning_output_keycolor_css() {
 	echo '<style id="lightning-color-custom-for-plugins" type="text/css">' . $dynamic_css . '</style>';
 }
 
-/*
--------------------------------------------*/
 /*
   Print head
 /*-------------------------------------------*/
@@ -485,8 +472,6 @@ function lightning_print_css_common() {
 }
 
 /*
--------------------------------------------*/
-/*
   add body class
 /*-------------------------------------------*/
 add_filter( 'body_class', 'ltg_add_body_class_sidefix' );
@@ -558,8 +543,6 @@ function lightning_add_common_dynamic_css_to_editor() {
 }
 add_action( 'enqueue_block_editor_assets', 'lightning_add_common_dynamic_css_to_editor' );
 
-/*
--------------------------------------------*/
 /*
   編集ショートカットボタンの位置調整（ウィジェットのショートカットボタンと重なってしまうため）
 /*-------------------------------------------*/

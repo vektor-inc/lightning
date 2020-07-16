@@ -236,7 +236,7 @@ require get_parent_theme_file_path( '/inc/term-color/term-color-config.php' );
 require get_parent_theme_file_path( '/inc/vk-components/vk-components-config.php' );
 require get_parent_theme_file_path( '/inc/template-redirect.php' );
 require get_parent_theme_file_path( '/inc/layout-controller/layout-controller.php' );
-require get_parent_theme_file_path( '/inc/widget-area-setting/widget-area-setting-config.php' );
+require get_parent_theme_file_path( '/inc/vk-footer-customize/vk-footer-customize-config.php' );
 
 /*
   Load woocommerce modules
