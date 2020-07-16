@@ -14,10 +14,10 @@ function lightning_optimize_css() {
 	$options = get_option( 'lightning_theme_options' );
 
 	if ( ! isset( $options['optimize_css'] ) ){
-		$options['optimize_css'] = true;
+		$options['optimize_css'] = 'optomize-all-css';
 	}
 
-	if ( ! empty( $options['optimize_css'] ) ) {
+	if ( ! empty( $options['optimize_css'] ) && 'optomize-all-css' === $options['optimize_css'] ) {
 
 		if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 			$skin_info = Lightning_Design_Manager::get_current_skin();
@@ -46,7 +46,8 @@ function lightning_optimize_css() {
 				);
 				array_push( $vk_css_tree_shaking_array, $add_array );
 			}
-			if ( $bs4_css_url && $bs4_version ) {
+
+			if ( $bs4_css_url && $bs4_version  ) {
 				$add_array = array(
 					'id'      => 'bootstrap-4-style',
 					'url'     => $bs4_css_url,
