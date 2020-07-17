@@ -42,8 +42,8 @@ function lightning_customize_register_enqueue_point( $wp_customize ) {
 			'settings'    => 'lightning_theme_options[optimize_css]',
 			'type'        => 'select',
 			'choices'     => array(
-				'default'           => __( 'Nothing to do', 'lightning' ),
-				'minimal-bootstrap' => __( 'Load Minimal Bootstrap ( only for BS4 )', 'lightning' ),
+				'full-bootstrap'           => __( 'Nothing to do ( Full Bootstrap )', 'lightning' ),
+				'minimal-bootstrap' => __( 'Load minimal Bootstrap ( only for BS4 )', 'lightning' ),
 				'optomize-all-css'  => __( 'Optimize All CSS', 'lightning' ),
 			),
 		)
@@ -65,7 +65,7 @@ function lightning_customize_register_enqueue_point( $wp_customize ) {
 			'section'     => 'lightning_function',
 			'settings'    => 'lightning_theme_options[tree_shaking_class_exclude]',
 			'type'        => 'textarea',
-			'description' => __( 'Enter classes separated with comma.', 'lightning' ),
+			'description' => __( 'If you choose "Optimize All CSS" that delete the useless css.If you using active css class that please fill in class name. Ex) btn-active,slide-active,scrolled', 'lightning' ),
 		)
 	);
 }
