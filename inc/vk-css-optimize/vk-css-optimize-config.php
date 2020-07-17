@@ -14,7 +14,7 @@ function lightning_optimize_css() {
 	$options = get_option( 'lightning_theme_options' );
 
 	if ( ! isset( $options['optimize_css'] ) ){
-		$options['optimize_css'] = 'optomize-all-css';
+		$options['optimize_css'] = 'minimal-bootstrap';
 	}
 
 	if ( ! empty( $options['optimize_css'] ) && 'optomize-all-css' === $options['optimize_css'] ) {
