@@ -175,6 +175,8 @@ class CSS_tree_shaking {
 				'acc-child-open',
 				'carousel-item-left',
 				'carousel-item-next',
+				'carousel-item-right',
+				'carousel-item-prev',
 			),
 			'tag'   => array(
 				'html',
