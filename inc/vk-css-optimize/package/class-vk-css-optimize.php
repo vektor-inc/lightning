@@ -18,21 +18,21 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 		}
 
 		public static function css_tree_shaking_exclude( $inidata ) {
-			$options = get_option( 'lightning_theme_options' );
-
+			$options         = get_option( 'lightning_theme_options' );
+			$exclude_classes_array = array();
 			if ( ! empty( $options['tree_shaking_class_exclude'] ) ) {
 				// delete before after space
-				$exclude_clssses = trim( $exclude_clssses );
+				$exclude_clssses = trim( $options['tree_shaking_class_exclude'] );
 				// convert tab and br to space
 				$exclude_clssses = preg_replace( '/[\n\r\t]/', '', $exclude_clssses );
 				// Change multiple spaces to single space
 				$exclude_clssses = preg_replace( '/\s/', '', $exclude_clssses );
 				$exclude_clssses = str_replace( '，', ',', $exclude_clssses );
 				$exclude_clssses = str_replace( '、', ',', $exclude_clssses );
-				$exclude_clssses = explode( ',', $options['tree_shaking_class_exclude'] );
+				$exclude_classes_array = explode( ',', $exclude_clssses );
 			}
 
-			$inidata['class'] = $inidata['class'] + $exclude_clssses;
+			$inidata['class'] = array_merge( $inidata['class'], $exclude_classes_array );
 
 			return $inidata;
 		}
@@ -45,6 +45,27 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 			ob_end_flush();
 		}
 
+		public static function curl_get_contents( $url, $timeout = 30 ) {
+
+			$ch = curl_init();
+			curl_setopt( $ch, CURLOPT_URL, $url );
+			curl_setopt( $ch, CURLOPT_HEADER, false );
+			curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+			curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, false );
+
+			// タイムアウト時間設定
+			curl_setopt( $ch, CURLOPT_TIMEOUT, $timeout );
+
+			// リダイレクトしている場合も読みこむ
+			curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, true );
+			curl_setopt( $ch, CURLOPT_MAXREDIRS, 10 );
+
+			$result = curl_exec( $ch );
+			curl_close( $ch );
+
+			return $result;
+		}
+
 		public static function css_optimize( $buffer ) {
 			// CSS Tree Shaking.
 			require_once dirname( __FILE__ ) . '/class-css-tree-shaking.php';
@@ -52,7 +73,7 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 			foreach ( $vk_css_tree_shaking_array as $vk_css_array ) {
 				$options['ssl']['verify_peer']      = false;
 				$options['ssl']['verify_peer_name'] = false;
-				$css                                = file_get_contents( $vk_css_array['url'], true, stream_context_create( $options ) );
+				$css                                = self::curl_get_contents( $vk_css_array['url'], 30 );
 				$css                                = celtislab\CSS_tree_shaking::extended_minify( $css, $buffer );
 				$buffer                             = str_replace(
 					'<link rel=\'stylesheet\' id=\'' . $vk_css_array['id'] . '-css\'  href=\'' . $vk_css_array['url'] . '?ver=' . $vk_css_array['version'] . '\' type=\'text/css\' media=\'all\' />',
