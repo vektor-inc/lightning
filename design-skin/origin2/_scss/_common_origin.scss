@@ -11,7 +11,8 @@ h3,
 .subSection-title {
 	padding-bottom: 8px;
 	position: relative;
-	border-bottom: 1px solid #ccc;
+	border-bottom: 1px solid rgba( 0,0,0,0.1 );
+	box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.2);
 }
 
 h3:after,
