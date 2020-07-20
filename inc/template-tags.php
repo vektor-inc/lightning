@@ -32,6 +32,7 @@ function lightning_get_the_class_name( $position = '' ) {
 			'siteContent'     => 'section siteContent',
 			'mainSection'     => 'col-md-8 mainSection',
 			'sideSection'     => 'col-md-3 col-md-offset-1 subSection sideSection',
+			'siteFooter'      => 'section siteFooter',
 		);
 		if ( lightning_is_layout_onecolumn() ) {
 			$class_names['mainSection'] = 'col-md-12 mainSection';
@@ -46,6 +47,7 @@ function lightning_get_the_class_name( $position = '' ) {
 			'siteContent'     => 'section siteContent',
 			'mainSection'     => 'col mainSection mainSection-col-two baseSection',
 			'sideSection'     => 'col subSection sideSection sideSection-col-two baseSection',
+			'siteFooter'      => 'section siteFooter',
 		);
 		if ( lightning_is_layout_onecolumn() ) {
 			$class_names['mainSection'] = 'col mainSection mainSection-col-one';
