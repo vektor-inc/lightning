@@ -694,9 +694,8 @@ ul.page-numbers {
 		li a {
 			display: block;
 			padding: 10px 0.5em 8px;
-			border-bottom: $border_primary;
+			border-bottom: 1px solid var(--color-footer-border, #ccc);
 
-			box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.7);
 		}
 
 		li li a {
