@@ -12,8 +12,8 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 	class VK_CSS_Optimize {
 
 		public function __construct() {
-			add_action( 'wp_head', array( __CLASS__, 'get_html_start' ), 0 );
-			add_action( 'wp_footer', array( __CLASS__, 'get_html_end' ), 9999 );
+			add_action( 'get_header', array( __CLASS__, 'get_html_start' ), 2147483647 );
+			add_action( 'shutdown', array( __CLASS__, 'get_html_end' ), 0 );
 			add_filter( 'css_tree_shaking_exclude', array( __CLASS__, 'css_tree_shaking_exclude' ) );
 		}
 
@@ -77,6 +77,11 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 				$css                                = celtislab\CSS_tree_shaking::extended_minify( $css, $buffer );
 				$buffer                             = str_replace(
 					'<link rel=\'stylesheet\' id=\'' . $vk_css_array['id'] . '-css\'  href=\'' . $vk_css_array['url'] . '?ver=' . $vk_css_array['version'] . '\' type=\'text/css\' media=\'all\' />',
+					'<style id=\'' . $vk_css_array['id'] . '-css\' type=\'text/css\'>' . $css . '</style>',
+					$buffer
+				);
+				$buffer                             = str_replace(
+					'<link rel=\'stylesheet\' id=\'' . $vk_css_array['id'] . '-css\'  href=\'' . $vk_css_array['url'] . '\' type=\'text/css\' media=\'all\' />',
 					'<style id=\'' . $vk_css_array['id'] . '-css\' type=\'text/css\'>' . $css . '</style>',
 					$buffer
 				);
