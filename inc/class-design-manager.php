@@ -34,6 +34,7 @@ class Lightning_Design_Manager {
 			'origin'  => array(
 				'label'           => __( 'Origin ( Not recommended )', 'lightning' ),
 				'css_path'        => get_template_directory_uri() . '/design-skin/origin/css/style.css',
+				'css_sv_path'     => get_parent_theme_file_path( '/design-skin/origin/css/style.css' ),
 				'editor_css_path' => get_template_directory_uri() . '/design-skin/origin/css/editor.css',
 				// 'gutenberg_css_path' => get_template_directory_uri() . '/design-skin/origin/css/editor-gutenberg.css',
 				'php_path'        => get_parent_theme_file_path( '/design-skin/origin/origin.php' ),
@@ -44,6 +45,7 @@ class Lightning_Design_Manager {
 			'origin2' => array(
 				'label'           => __( 'Origin II ( Bootstrap4 )', 'lightning' ),
 				'css_path'        => get_template_directory_uri() . '/design-skin/origin2/css/style.css',
+				'css_sv_path'     => get_parent_theme_file_path( '/design-skin/origin2/css/style.css' ),
 				'css_late_path'   => '',
 				'editor_css_path' => get_template_directory_uri() . '/design-skin/origin2/css/editor.css',
 				'php_path'        => get_parent_theme_file_path( '/design-skin/origin2/origin2.php' ),
