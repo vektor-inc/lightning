@@ -36,7 +36,7 @@ if ( ! class_exists( 'Widget_Area_Setting' ) ) {
 			$wp_customize->add_section(
 				'vk_footer_option',
 				array(
-					'title'    => $vk_footer_customize_prefix . __( 'Footer settings', 'lightning-pro' ),
+					'title'    => $vk_footer_customize_prefix . __( 'Footer settings', 'lightning' ),
 					'priority' => $vk_footer_customize_priority,
 				)
 			);
@@ -54,7 +54,7 @@ if ( ! class_exists( 'Widget_Area_Setting' ) ) {
 					$wp_customize,
 					'footer-widget-setting',
 					array(
-						'label'            => __( 'Footer Widget Setting', 'lightning-pro' ),
+						'label'            => __( 'Footer Widget Setting', 'lightning' ),
 						'section'          => 'vk_footer_option',
 						'type'             => 'text',
 						'custom_title_sub' => '',
@@ -78,13 +78,13 @@ if ( ! class_exists( 'Widget_Area_Setting' ) ) {
 			$wp_customize->add_control(
 				'lightning_widget_setting[footer_upper_widget_padding_delete]',
 				array(
-					'label'    => __( 'Footer Upper Widget Padding', 'lightning-pro' ),
+					'label'    => __( 'Footer Upper Widget Padding', 'lightning' ),
 					'section'  => 'vk_footer_option',
 					'settings' => 'lightning_widget_setting[footer_upper_widget_padding_delete]',
 					'type'     => 'select',
 					'choices'  => array(
-						false => __( 'Nothing to do', 'lightning-pro' ),
-						true  => __( 'Delete Padding', 'lightning-pro' ),
+						false => __( 'Nothing to do', 'lightning' ),
+						true  => __( 'Delete Padding', 'lightning' ),
 					),
 					'priority' => $priority,
 				)
@@ -112,18 +112,18 @@ if ( ! class_exists( 'Widget_Area_Setting' ) ) {
 			$wp_customize->add_control(
 				'lightning_widget_setting[footer_widget_area_count]',
 				array(
-					'label'       => __( 'Footer Widget Area Count', 'lightning-pro' ),
+					'label'       => __( 'Footer Widget Area Count', 'lightning' ),
 					'section'     => 'vk_footer_option',
 					'settings'    => 'lightning_widget_setting[footer_widget_area_count]',
 					'type'        => 'select',
 					'choices'     => array(
-						1 => __( '1 column', 'lightning-pro' ),
-						2 => __( '2 column', 'lightning-pro' ),
-						3 => __( '3 column', 'lightning-pro' ),
-						4 => __( '4 column', 'lightning-pro' ),
-						6 => __( '6 column', 'lightning-pro' ),
+						1 => __( '1 column', 'lightning' ),
+						2 => __( '2 column', 'lightning' ),
+						3 => __( '3 column', 'lightning' ),
+						4 => __( '4 column', 'lightning' ),
+						6 => __( '6 column', 'lightning' ),
 					),
-					'description' => __( '* If you save and reload after making changes, the number of the widget area setting panels  will increase or decrease.', 'lightning-pro' ),
+					'description' => __( '* If you save and reload after making changes, the number of the widget area setting panels  will increase or decrease.', 'lightning' ),
 					'priority'    => $priority,
 				)
 			);
