@@ -331,6 +331,9 @@ div[class*="wp-block-product"] {
 			}
 		}
 	}
+	.media .alert{
+		overflow: hidden;
+	}
 }
 // for Subscription Product type
 .woocommerce ul.products li.product-type-subscription {

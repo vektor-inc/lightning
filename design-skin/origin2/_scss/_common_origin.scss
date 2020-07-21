@@ -11,7 +11,11 @@ h3,
 .subSection-title {
 	padding-bottom: 8px;
 	position: relative;
-	border-bottom: 1px solid #ccc;
+	border-bottom: 1px solid rgba( 0,0,0,0.1 );
+}
+
+.siteFooter .subSection-title {
+	border-bottom: 1px solid var(--color-footer-border, #ccc);
 }
 
 h3:after,

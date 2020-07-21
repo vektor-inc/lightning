@@ -15,4 +15,7 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 	global $set_enqueue_handle_style;
 	$set_enqueue_handle_style = 'lightning-design-style';
 
+	global $vk_font_awesome_version_priority;
+	$vk_font_awesome_version_priority = 560;
+
 }

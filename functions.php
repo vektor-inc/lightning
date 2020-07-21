@@ -155,9 +155,8 @@ function lightning_commentJs() {
 /*-------------------------------------------*/
 add_action( 'after_setup_theme', 'lightning_load_css_action' );
 function lightning_load_css_action() {
-	$hook_point = apply_filters( 'lightning_enqueue_point_common_and_theme_css', 'wp_enqueue_scripts' );
-	add_action( $hook_point, 'lightning_common_style' );
-	add_action( $hook_point, 'lightning_theme_style' );
+	add_action( 'wp_enqueue_scripts', 'lightning_common_style' );
+	add_action( 'wp_enqueue_scripts', 'lightning_theme_style' );
 }
 
 function lightning_common_style() {
@@ -204,9 +203,9 @@ require get_parent_theme_file_path( '/functions-compatible.php' );
 require get_parent_theme_file_path( '/inc/tgm-plugin-activation/tgm-config.php' );
 
 /*
-  Load enqueue-point-controller
+  Load vk-css-optimize
 /*-------------------------------------------*/
-require get_parent_theme_file_path( '/inc/enqueue-point-controller/enqueue-point-controller.php' );
+require get_parent_theme_file_path( '/inc/vk-css-optimize/vk-css-optimize-config.php' );
 
 /*
   Load Theme Customizer additions.
@@ -237,7 +236,7 @@ require get_parent_theme_file_path( '/inc/term-color/term-color-config.php' );
 require get_parent_theme_file_path( '/inc/vk-components/vk-components-config.php' );
 require get_parent_theme_file_path( '/inc/template-redirect.php' );
 require get_parent_theme_file_path( '/inc/layout-controller/layout-controller.php' );
-require get_parent_theme_file_path( '/inc/widget-area-setting/widget-area-setting-config.php' );
+require get_parent_theme_file_path( '/inc/vk-footer-customize/vk-footer-customize-config.php' );
 
 /*
   Load woocommerce modules

@@ -21,30 +21,47 @@ https://github.com/kurudrive/lightning-skin-sample
 
 |  読み込みポイント  | Priority |  読み込みファイル  | 備考 |
 | ---- | ---- | ---- | ---- |
-| wp_enqueue_scripts | | vkExUnit_common_style-css [旧] | |
-| wp_enqueue_scripts | | vkExUnit_common_style-inline-css [旧] | |
+| wp_enqueue_scripts | | vkExUnit_common_style-css | |
+| wp_enqueue_scripts | | vkExUnit_common_style-inline-css | |
 | wp_enqueue_scripts | | Bootstrap | |
 | wp_enqueue_scripts | | lightning-design-style | デザインスキン |
 | wp_enqueue_scripts | | lightning-design-style wp_add_inline_style | デザインスキン |
-| wp_enqueue_scripts | | lightning-common-style [旧] | 全スキン共通CSS |
-| wp_enqueue_scripts | | lightning-theme-style [旧] | 子テーマでカスタマイズされるのでなるべく後ろである必要がある |
-| wp_enqueue_scripts | | vk-font-awesome-css [旧] |
-| wp_head | 50 | HeaderColorManagerでカスタマイズから指定された色 [旧] |
-| wp_head | 200 | ExUnit CSSカスタマイズ 共通 [旧] |
-| wp_head | 201 | ExUnit CSSカスタマイズ 投稿 [旧] |
-| wp_footer | | vkExUnit_common_style-inline-css [高] | |
-| wp_footer | | vk-font-awesome-css [高]  | |
-| wp_footer(enqueue_style) | | lightning-common-style [高] | 全スキン共通CSS |
-| wp_footer(enqueue_style) | | lightning-theme-style [高] | 子テーマでカスタマイズされるのでなるべく後ろである必要がある |
-| wp_footer(enqueue_style) | lightning-common-style / vk-font-awesome / vk-blocks-build-css | lightning-late-load-style [高] | ExUnitなどが後読み込みになっても上書きするためのファイル |
-| wp_footer | 20 |  | カスタマイザで出力される色など |
-| wp_footer | 25 |  | スキン固有のカスタマイザで出力される色など [高] |
-| wp_footer | 26 | HeaderColorManagerでカスタマイズから指定された色 [高] |
-| wp_footer | 200 | ExUnit CSSカスタマイズ 共通 [高] |
-| wp_footer | 201 | ExUnit CSSカスタマイズ 投稿 [高] |
+| wp_enqueue_scripts | | lightning-common-style | 全スキン共通CSS |
+| wp_enqueue_scripts | | lightning-theme-style | 子テーマでカスタマイズされるのでなるべく後ろである必要がある |
+| wp_enqueue_scripts | | vk-font-awesome-css |
+| wp_head | 50 | HeaderColorManagerでカスタマイズから指定された色 |
+| wp_head | 200 | ExUnit CSSカスタマイズ 共通 |
+| wp_head | 201 | ExUnit CSSカスタマイズ 投稿 |
 
-[旧] 通常設定時
-[高] 高速化設定時
+---
+
+## Customize panel priority
+
+```
+$wp_customize->add_section(
+```
+
+* 400 | License key
+* 450 | 機能設定
+* 501 | デザイン設定
+* 502 | フォント設定
+* 503 | レイアウト設定
+* 510 | ヘッダー上部設定
+* 511 | ヘッダー設定
+* 513 | キャンペーンテキスト設定
+* 520 | トップページスライドショー設定
+* 521 | トップページPR BLock設定
+* 530 | ページヘッダー設定
+* 535 | アーカイブページ設定
+* 536 | アーカイブページレイアウト
+* 540 | フッター設定
+* 543 | コピーライト設定
+* 550 | モバイル固定ナビ
+* 555 | ウィジェットエリア設定（フッター設定に統合したい）
+* 556 | Googleタグマネージャー
+* 560 | Font Awesome
+
+---
 
 ## UnitTest
 このテーマにはPHP Unit Testを用意しています。
@@ -57,19 +74,52 @@ https://github.com/kurudrive/lightning-skin-sample
 $ docker-compose run wp
 ```
 
-## JS更新作業時
+## 各種コマンド
 
-```
-npm run js_watch
-```
+### ビルド
 
-## 製品版リリース用 js圧縮される
-
+js,scss,テキストドメインのビルドをすべて行う
 ```
-npm run webpack
+$ npm run build
 ```
 
----
+#### jsビルド
+```
+$ npm run bulid:script
+```
+
+#### scssビルド
+```
+$ npm run build:style
+```
+
+#### テキストドメイン書き換え
+```
+$ npm run build:text-domain
+```
+
+### 開発モード
+
+#### js
+```
+$ npm run watch:script
+```
+
+#### scss
+```
+$ npm run watch:style
+```
+
+### dist作成
+
+```
+$ npm run build
+$ npm run dist
+```
+
+`dist/`内に管理画面でのインポート用zipと、転送用のテーマディレクトリが作成されます。
+
+
 
 ## プルリクエストを送る際の確認事項
 

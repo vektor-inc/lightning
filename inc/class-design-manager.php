@@ -34,6 +34,7 @@ class Lightning_Design_Manager {
 			'origin'  => array(
 				'label'           => __( 'Origin ( Not recommended )', 'lightning' ),
 				'css_path'        => get_template_directory_uri() . '/design-skin/origin/css/style.css',
+				'css_sv_path'     => get_parent_theme_file_path( '/design-skin/origin/css/style.css' ),
 				'editor_css_path' => get_template_directory_uri() . '/design-skin/origin/css/editor.css',
 				// 'gutenberg_css_path' => get_template_directory_uri() . '/design-skin/origin/css/editor-gutenberg.css',
 				'php_path'        => get_parent_theme_file_path( '/design-skin/origin/origin.php' ),
@@ -44,6 +45,7 @@ class Lightning_Design_Manager {
 			'origin2' => array(
 				'label'           => __( 'Origin II ( Bootstrap4 )', 'lightning' ),
 				'css_path'        => get_template_directory_uri() . '/design-skin/origin2/css/style.css',
+				'css_sv_path'     => get_parent_theme_file_path( '/design-skin/origin2/css/style.css' ),
 				'css_late_path'   => '',
 				'editor_css_path' => get_template_directory_uri() . '/design-skin/origin2/css/editor.css',
 				'php_path'        => get_parent_theme_file_path( '/design-skin/origin2/origin2.php' ),
@@ -157,11 +159,18 @@ class Lightning_Design_Manager {
 			wp_enqueue_style( 'lightning-design-style', $skin_css_url, array(), $skin_info['version'] );
 
 		} elseif ( $skin_info['bootstrap'] == 'bs4' ) {
+			$options = get_option( 'lightning_theme_options' );
 			$bootstrap = '4';
 			// Bootstrap4 skin
-			$bs4_css_url = get_template_directory_uri() . '/library/bootstrap-4/css/bootstrap.min.css';
-			$bs4_version = '4.3.1';
+			$bs4_version = '4.5.0';
+			$bs4_css_url = '';
+			if ( ! empty( $options['optimize_css'] ) && 'minimal-bootstrap' === $options['optimize_css'] ) {
+				$bs4_css_url = get_template_directory_uri() . '/library/bootstrap-4/css/bootstrap-lite.min.css';
+			} else {
+				$bs4_css_url = get_template_directory_uri() . '/library/bootstrap-4/css/bootstrap.min.css';
+			}
 			wp_enqueue_style( 'bootstrap-4-style', $bs4_css_url, array(), $bs4_version );
+
 			wp_enqueue_script( 'bootstrap-4-js', get_template_directory_uri() . '/library/bootstrap-4/js/bootstrap.min.js', array( 'jquery' ), $bs4_version, true );
 
 			// load skin CSS ///////////////////////

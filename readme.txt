@@ -2,7 +2,7 @@
 Lightning WordPress theme, Copyright (C) 2015-2020 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
 Tested up to: 5.4.2
-Stable tag: 10.0.7
+Stable tag: 10.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,6 +38,16 @@ https://www.vektor-inc.co.jp/inquiry/
 
 
 == Changelog ==
+
+v11.0.0
+* [ Add Function ] CSS optimize for speeding
+* [ Specification Change ] Rebuild Sidebar Fix logic and option
+
+v10.2.0
+* [ Other ] Only version number ( Syncronize to Pro version )
+ 
+v10.1.0
+* [ Spacification Change ] Add link parrent page in side bar chidd Page list
 
 v10.0.7
 * [ Bug fix ] Delete debug code

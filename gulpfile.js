@@ -16,7 +16,7 @@ const cssmin = require('gulp-cssmin')
 const cmq = require('gulp-merge-media-queries')
 const path = require('path')
 
-const error_stop = true
+let error_stop = true
 
 function src(list) {
   if(error_stop) {
@@ -141,6 +141,29 @@ gulp.task('dist_foundation', function (done) {
     done();
 });
 
+gulp.task('watch_pro', function (done) {
+	error_stop = false
+	gulp.watch([
+		'./assets/_js/**',
+		// './assets/_scss/**',
+		'./inc/**'
+	], gulp.series('dist_pro_dev'));
+	done();
+});
+gulp.task('dist_pro_dev', function () {
+	const files = gulp.src(
+		[
+			'./assets/_js/**',
+			// './assets/_scss/**',
+			'./inc/**',
+			"!./inc/tgm-plugin-activation/**",
+		], {
+			base: './'
+		}
+	)
+	return files.pipe(gulp.dest('../lightning-pro/'))
+});
+
 // Watch
 gulp.task('watch', function (done) {
   error_stop = false
@@ -174,13 +197,13 @@ gulp.task('copy_dist', function (done) {
       "!./dist/**",
       "!./node_modules/**/*.*",
       "!./tests/**",
-      "!./dist/**",
+	  "!./dist/**",
     ], {
       base: './'
     }
   )
-
-  return files.pipe(gulp.dest('../../../../../../updatetestfree/app/public/wp-content/themes/lightning')); // dist/lightningディレクトリに出力
+  return files.pipe(gulp.dest('../../../../../../updatetestfree/app/public/wp-content/themes/lightning'))
+  .pipe(gulp.dest("dist/lightning"));
 });
 
 gulp.task('dist_pro', function () {

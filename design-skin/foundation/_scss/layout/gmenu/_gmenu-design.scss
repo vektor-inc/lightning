@@ -127,6 +127,17 @@ $menu_padding_horizontal: 1.2em;
 				padding: $menu_padding_vertical 3.5em $menu_padding_vertical
 					$menu_padding_horizontal;
 			}
+			@media (min-width: $lg-min) {
+				ul.sub-menu li {
+					a{ 
+						padding-left: 2.2em;
+					}
+					li a {
+						padding-left: 3.2em;
+					}
+				}
+			}
+
 		}
 	}
 }

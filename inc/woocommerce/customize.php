@@ -29,20 +29,3 @@ function lightning_customize_register_woo( $wp_customize ) {
 	);
 
 }
-
-/*
-  add body class
-/*-------------------------------------------*/
-add_filter( 'body_class', 'lightning_add_body_class_woo_image_border' );
-function lightning_add_body_class_woo_image_border( $class ) {
-
-	$options = get_option( 'lightning_theme_options' );
-	if ( ! lightning_is_layout_onecolumn() ) {
-		if ( ! isset( $options['sidebar_fix'] ) || ! $options['sidebar_fix'] ) {
-			if ( apply_filters( 'lightning_sidefix_enable', true ) ) {
-				$class[] = 'sidebar-fix';
-			}
-		}
-	}
-	return $class;
-}

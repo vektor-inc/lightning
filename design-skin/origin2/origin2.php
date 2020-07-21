@@ -43,7 +43,14 @@ ul.page-numbers li span.page-numbers.current { background-color:' . $color_key .
 .pager li > a { border-color:' . $color_key . ';color:' . $color_key . ';}
 .pager li > a:hover { background-color:' . $color_key . ';color:#fff;}
 .siteFooter { border-top-color:' . $color_key . '; }
-dt { border-left-color:' . $color_key . '; }';
+dt { border-left-color:' . $color_key . '; }
+:root {
+	--g_nav_main_acc_icon_open_url:url('.get_template_directory_uri(  ).'/inc/vk-mobile-nav/package/images/vk-menu-acc-icon-open-black.svg);
+	--g_nav_main_acc_icon_close_url: url('.get_template_directory_uri(  ).'/inc/vk-mobile-nav/package/images/vk-menu-close-black.svg);
+	--g_nav_sub_acc_icon_open_url: url('.get_template_directory_uri(  ).'/inc/vk-mobile-nav/package/images/vk-menu-acc-icon-open-white.svg);
+	--g_nav_sub_acc_icon_close_url: url('.get_template_directory_uri(  ).'/inc/vk-mobile-nav/package/images/vk-menu-close-white.svg);
+}
+';
 
 		// delete before after space
 		$dynamic_css = trim( $dynamic_css );

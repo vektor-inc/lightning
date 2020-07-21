@@ -12,7 +12,7 @@
 
 <?php do_action( 'lightning_footer_before' ); ?>
 
-<footer class="section siteFooter">
+<footer class="<?php lightning_the_class_name( 'siteFooter' ); ?>">
 	<div class="footerMenu">
 	   <div class="container">
 			<?php
