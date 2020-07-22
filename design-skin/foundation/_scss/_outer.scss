@@ -694,8 +694,10 @@ ul.page-numbers {
 		li a {
 			display: block;
 			padding: 10px 0.5em 8px;
+			border-bottom: $border_primary;
+		}
+		.siteFooter & li a {
 			border-bottom: 1px solid var(--color-footer-border, #ccc);
-
 		}
 
 		li li a {
