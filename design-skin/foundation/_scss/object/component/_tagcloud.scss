@@ -1,0 +1,24 @@
+/*      .tagcloud
+/*-------------------------------------------*/
+.tagcloud {
+	a {
+		color: $color_font_default;
+		margin-bottom: 4px;
+        white-space: nowrap;
+        text-decoration: none;
+		&:before {
+			margin-right: 5px;
+		}
+
+		&:hover {
+			text-decoration: none;
+			opacity: 0.6;
+		}
+	}
+}
+
+.entry-meta-dataList .tagcloud {
+	a {
+		margin-right: 8px;
+	}
+}
