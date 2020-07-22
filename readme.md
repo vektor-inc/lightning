@@ -33,6 +33,14 @@ https://github.com/kurudrive/lightning-skin-sample
 | wp_head | 200 | ExUnit CSSカスタマイズ 共通 |
 | wp_head | 201 | ExUnit CSSカスタマイズ 投稿 |
 
+
+lightning-late-load-style : 以下のハンドルに依存
+
+* lightning-design-style
+* lightning-common-style
+* vk-font-awesome
+* vk-blocks-build-css
+
 ---
 
 ## Customize panel priority
