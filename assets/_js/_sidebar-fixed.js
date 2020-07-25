@@ -128,7 +128,6 @@
 					fix_priority = "top";
 				}
 			}
-			console.log(fix_priority);
 
 			// コンテンツエリア下端の位置を取得 = 上端 + 要素の高さ
 			let content_position_bottom = content_position_top + content_height
@@ -183,27 +182,32 @@
 			}
 
 
+			/* DOM操作（上端優先）
+			/*-------------------------------------------*/
 			if ( fix_priority === "top" ) {
-				/* DOM操作（上端優先）
-				/*-------------------------------------------*/
+
+				// 上部固定するタイミングになったら
 				if ( is_sidebar_top_stop ) {
 					sideSection.style.position = "fixed";
 					sideSection.style.top = sidebar_top_margin() + "px";
 					sideSection.style.left = sidebar_position_left_default + "px";
 					sideSection.style.width = sidebar_width + "px";
+					// 固定解除
 					if ( is_sidebar_top_stop_release ){
 						sideSection.style.position = null;
 						sideSection.style.left = null;
 						sideSection.style.width = null;
+						// 固定解除したときににサイドバー上部に余白を付与
 						sideSection.style.top = diff_content_and_sidebar_bottom + "px";
 					}
 				} else {
 					sideFix_reset();
 				}
 
+			/* DOM操作（下端優先）
+			/*-------------------------------------------*/
 			} else {
-				/* DOM操作（下端優先）
-				/*-------------------------------------------*/
+
 				// サイドバー下端が表示されたら
 				if ( is_sidebar_bottom_display ){
 					sideSection.style.position = "fixed";
