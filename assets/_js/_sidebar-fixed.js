@@ -141,33 +141,36 @@
 			let to_scroll_sidebar_bottom = sidebar_position_bottom_default - window_height;
 			// サイドバー上端が画面上部にくるまでにスクロールしないといけない距離 = サイドバーの開始位置 - サイドバー上部に確保したい余白
 			let to_scroll_sidebar_top_stop = content_position_top - sidebar_top_margin();
-			// 上端優先でコンテンツエリアとサイドバーの下端が揃うスクロール位置 = コンテンツまでの距離 + コンテンツエリアとサイドバーの高さの差
-			let to_scroll_sidebar_top_stop_release = content_position_top + diff_content_and_sidebar_bottom - window_height;
-
 
             //  サイドバーがメインコンテンツよりも高い場合は処理しない
             if ( sidebar_height > content_height ){ return; }
 
+
+			/*-------------------------------------------*/
+			// 上端優先 
+			/*-------------------------------------------*/
+
 			// サイドバー上端が画面上部までスクロールしたかどうか
+			/*-------------------------------------------*/
 			let is_sidebar_top_stop = false;
 			if ( to_scroll_sidebar_top_stop < window.pageYOffset ){
 				is_sidebar_top_stop = true;
 			}
 
-			// 上端優先で固定を解除するタイミングかどうか
+			// トップ固定をリリースするタイミングかどうか
+			/*-------------------------------------------*/
 			let is_sidebar_top_stop_release = false;
-			if ( sidebar_area_height < sidebar_height ){
-				// コンテンツエリアとサイドバーの下端が揃うスクロール位置までスクロールしたら
-				if ( to_scroll_sidebar_top_stop_release < window.pageYOffset ){
-					is_sidebar_top_stop_release = true;
-				}
-			} else {
-				// 上部固定状態でのサイドバーの下端 より スクロールしてきたコンテンツエリアの下端が上になったら
-				if ( sidebar_top_margin() + sidebar_height > mainSection.getBoundingClientRect().bottom ){
-					// コンテンツエリア下端とサイドバー下端の位置を揃える
-					is_sidebar_top_stop_release = true;
-				}
+			
+			// 上部固定状態でのサイドバーの下端 より スクロールしてきたコンテンツエリアの下端が上になったら
+			// ※サイドバーの高さが表示エリア内かどうかは関係ない
+			if ( sidebar_top_margin() + sidebar_height > mainSection.getBoundingClientRect().bottom ){
+				// コンテンツエリア下端とサイドバー下端の位置を揃える
+				is_sidebar_top_stop_release = true;
 			}
+
+			/*-------------------------------------------*/
+			// 下端優先
+			/*-------------------------------------------*/
 
 			// サイドバー下端が表示されたかどうか
 			let is_sidebar_bottom_display = false;
@@ -182,7 +185,8 @@
 			}
 
 
-			/* DOM操作（上端優先）
+			/*-------------------------------------------*/
+			// DOM操作（上端優先）
 			/*-------------------------------------------*/
 			if ( fix_priority === "top" ) {
 
@@ -204,7 +208,8 @@
 					sideFix_reset();
 				}
 
-			/* DOM操作（下端優先）
+			/*-------------------------------------------*/
+			// DOM操作（下端優先）
 			/*-------------------------------------------*/
 			} else {
 
@@ -237,6 +242,7 @@
 			// console.log( 'content_position_bottom : ' + content_position_bottom);
 			// console.log( 'content_position_bottom_to_scroll : ' + content_position_bottom_to_scroll);
 			// console.log( 'sidebar_position_left_default : ' + sidebar_position_left_default);
+
         }
     }
 })(window, document);
