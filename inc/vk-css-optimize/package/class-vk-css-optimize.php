@@ -42,7 +42,9 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 		}
 
 		public static function get_html_end() {
-			ob_end_flush();
+			if ( ! is_admin() ){
+				ob_end_flush();
+			}
 		}
 
 		public static function css_optimize( $buffer ) {
