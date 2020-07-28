@@ -42,7 +42,7 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 		}
 
 		public static function get_html_end() {
-			if ( ! is_admin() ){
+			if ( ob_get_length() ){
 				ob_end_flush();
 			}
 		}
