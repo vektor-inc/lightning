@@ -4,7 +4,6 @@
 	"description": "[![Build Status](https://travis-ci.org/vektor-inc/Lightning.svg?branch=master)](https://travis-ci.org/vektor-inc/Lightning)",
 	"main": "gulpfile.js",
 	"scripts": {
-		"dist": "bin/dist",
 		"gulp": "gulp",
 		"build": "npm run build:script && npm run build:style && npm run build:text-domain",
 		"build:script": "webpack --config webpack.config.js",

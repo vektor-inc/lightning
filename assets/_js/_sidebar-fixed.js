@@ -46,6 +46,15 @@
 		if(document.getElementsByClassName('sideSection').length < 1) return;
 		
 		sideFix_scroll();
+	});
+
+    window.addEventListener('resize', ()=>{
+
+        if(!document.body.classList.contains('sidebar-fix')) return;
+        // サイドバーがなかったら処理中止
+		if(document.getElementsByClassName('sideSection').length < 1) return;
+		
+		sideFix_scroll();
     });
 
 
@@ -115,8 +124,13 @@
 			let sidebar_width = sideSection.offsetWidth
             // サイドバー下端までの距離 = コンテンツエリア開始位置 + サイドバーの高さ
 			let sidebar_position_bottom_default = content_position_top + sidebar_height;
+			
 			// サイドバー左端の位置（ Position:fixed の時に必要 ）
+			// 一旦positionをリセットしないとウィンドウサイズを変更した時にもサイドバーの左右の位置がおかしくなる
+			sideSection.style.position = null;
+			sideSection.style.left = null;
 			let sidebar_position_left_default = sideSection.getBoundingClientRect().left  + window.pageXOffset;
+
 			// サイドバーのウィンドウ内での表示領域 = ウィンドウ高さ - ヘッダー固定要素の高さ + 余白
 			let sidebar_area_height = window_height - sidebar_top_margin();
 
