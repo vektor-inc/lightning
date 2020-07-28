@@ -190,27 +190,27 @@ function lightning_customize_register_design( $wp_customize ) {
 	);
 
 	// Link Text Color ( Visited ).
-	$wp_customize->add_setting(
-		'lightning_theme_options[link_text_color_visited]',
-		array(
-			'default'           => '',
-			'type'              => 'option',
-			'capability'        => 'edit_theme_options',
-			'sanitize_callback' => 'sanitize_hex_color',
-		)
-	);
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'lightning_theme_options[link_text_color_visited]',
-			array(
-				'label'    => __( 'Link text color ( visited )', 'lightning' ),
-				'section'  => 'lightning_design',
-				'settings' => 'lightning_theme_options[link_text_color_visited]',
-				'priority' => 600,
-			)
-		)
-	);
+	// $wp_customize->add_setting(
+	// 	'lightning_theme_options[link_text_color_visited]',
+	// 	array(
+	// 		'default'           => '',
+	// 		'type'              => 'option',
+	// 		'capability'        => 'edit_theme_options',
+	// 		'sanitize_callback' => 'sanitize_hex_color',
+	// 	)
+	// );
+	// $wp_customize->add_control(
+	// 	new WP_Customize_Color_Control(
+	// 		$wp_customize,
+	// 		'lightning_theme_options[link_text_color_visited]',
+	// 		array(
+	// 			'label'    => __( 'Link text color ( visited )', 'lightning' ),
+	// 			'section'  => 'lightning_design',
+	// 			'settings' => 'lightning_theme_options[link_text_color_visited]',
+	// 			'priority' => 600,
+	// 		)
+	// 	)
+	// );
 
 	/*
 	Unuse judgement
@@ -429,15 +429,15 @@ function lightning_print_css_common() {
 
 	$link_text_color_default = ! empty( $options['link_text_color_default'] ) ? $options['link_text_color_default'] : '#337ab7';
 	$link_text_color_hover   = ! empty( $options['link_text_color_hover'] ) ? $options['link_text_color_hover'] : '';
-	$link_text_color_visited = ! empty( $options['link_text_color_visited'] ) ? $options['link_text_color_visited'] : '';
+	// $link_text_color_visited = ! empty( $options['link_text_color_visited'] ) ? $options['link_text_color_visited'] : '';
 
 	$dynamic_css .= 'a { color:' . $link_text_color_default . '; }';
 	if ( ! empty( $link_text_color_hover ) ) {
 		$dynamic_css .= 'a:hover { color:' . $link_text_color_hover . '; }';
 	}
-	if ( ! empty( $link_text_color_visited ) ) {
-		$dynamic_css .= '.entry-body a:visited { color:' . $link_text_color_visited . '; }';
-	}
+	// if ( ! empty( $link_text_color_visited ) ) {
+	// 	$dynamic_css .= 'a:visited { color:' . $link_text_color_visited . '; }';
+	// }
 
 	/*
 	  Child list hidden
