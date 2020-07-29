@@ -175,7 +175,7 @@ class Lightning_Design_Manager {
 
 			// load skin CSS ///////////////////////
 
-			wp_enqueue_style( 'lightning-design-style', $skin_css_url, array( 'bootstrap-4-style' ), $skin_info['version'] );
+			wp_enqueue_style( 'lightning-design-style', $skin_css_url, array( 'bootstrap-4-style','lightning-common-style' ), $skin_info['version'] );
 
 		}
 
