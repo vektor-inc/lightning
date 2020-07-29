@@ -175,7 +175,7 @@ class Lightning_Design_Manager {
 
 			// load skin CSS ///////////////////////
 
-			wp_enqueue_style( 'lightning-design-style', $skin_css_url, array( 'bootstrap-4-style' ), $skin_info['version'] );
+			wp_enqueue_style( 'lightning-design-style', $skin_css_url, array( 'bootstrap-4-style','lightning-common-style' ), $skin_info['version'] );
 
 		}
 
@@ -202,7 +202,7 @@ class Lightning_Design_Manager {
 		if ( ! empty( $skin_info['css_late_path'] ) ) {
 			$skin_css_footer_url = $skin_info['css_late_path'];
 			// $deps is needed to overwrite with skins.
-			wp_enqueue_style( 'lightning-late-load-style', $skin_css_footer_url, array( 'lightning-common-style', 'vk-font-awesome', 'vk-blocks-build-css' ), $skin_info['version'] );
+			wp_enqueue_style( 'lightning-late-load-style', $skin_css_footer_url, array( 'lightning-design-style', 'lightning-common-style', 'vk-font-awesome', 'vk-blocks-build-css' ), $skin_info['version'] );
 		}
 	}
 

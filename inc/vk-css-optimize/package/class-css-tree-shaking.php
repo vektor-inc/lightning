@@ -176,7 +176,10 @@ class CSS_tree_shaking {
 				'carousel-item-left',
 				'carousel-item-next',
 				'carousel-item-right',
-				'carousel-item-prev',
+                'carousel-item-prev',
+                'form-control',
+                'btn',
+                'btn-primary'
 			),
 			'tag'   => array(
 				'html',

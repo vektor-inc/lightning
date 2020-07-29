@@ -5,6 +5,19 @@
 	.widget {
 		margin-bottom: 25px;
 	}
+	a {
+		text-decoration: underline;
+		&:hover{
+			text-decoration: none;
+		}
+	}
+	li > a {
+		text-decoration: none;
+		&:hover{
+			text-decoration: underline;
+		}
+	}
+	
 }
 
 .footerMenu {

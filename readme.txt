@@ -2,7 +2,7 @@
 Lightning WordPress theme, Copyright (C) 2015-2020 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
 Tested up to: 5.4.2
-Stable tag: 10.1.0
+Stable tag: 11.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,6 +38,37 @@ https://www.vektor-inc.co.jp/inquiry/
 
 
 == Changelog ==
+
+v11.1.0
+* [ Specification Change ] load common & skin css order
+
+v11.0.9
+* [ Bug Fix ] CSS Optimize buffer release
+
+v11.0.8
+* [ Bug Fix ] Sidebar fixed position bug fix on resize window
+
+v11.0.7
+* [ Bug Fix ] CSS Optimize buffer release
+* [ Specification Change ] Delete visited link setting
+
+v11.0.6
+* [ Bug Fix ] Didebar fix logic
+
+v11.0.5
+* [ Design Bug Fix ] Footer tag cloud
+
+v11.0.4
+* [ Design Bug Fix ] CSS Optimize form bug fix
+
+v11.0.3
+* [ Design specification Change ] Footer text link text decoration
+
+v11.0.2
+* [ Bug fix ] Sidebar border color bug fix.
+
+v11.0.1
+* [ Other ] Only customize panel text.
 
 v11.0.0
 * [ Add Function ] CSS optimize for speeding
