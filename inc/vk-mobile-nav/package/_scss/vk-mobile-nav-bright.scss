@@ -7,6 +7,7 @@
 css tree shaking にかけるとそのページ内にcssが読み込まれて、
 画像参照の相対パスが効かなくなるため、画像URLを絶対パスにするために画像URLの変数はphpからインラインで読み込んでいる 
 :root {
+	--vk-menu-acc-btn-border-color: #333;
 	--vk-mobile-nav-menu-btn-bg-src: url("../images/vk-menu-btn-black.svg");
 	--vk-mobile-nav-menu-btn-close-bg-src: url("../images/vk-menu-close-black.svg");
 	--vk-menu-acc-icon-open-black-bg-src: url("../images/vk-menu-acc-icon-open-black.svg");
@@ -51,7 +52,7 @@ $color_font_default: #333;
 }
 
 .vk-menu-acc .acc-btn {
-	border: 1px solid $color_font_default;
+	border: 1px solid var(--vk-menu-acc-btn-border-color);
 	background: var(--vk-menu-acc-icon-open-black-bg-src) center 50% no-repeat;
 }
 .vk-menu-acc .acc-btn-close {

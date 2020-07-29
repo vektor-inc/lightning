@@ -410,6 +410,7 @@ function lightning_print_css_common() {
 		$color_key_dark = ( ! empty( $options['color_key_dark'] ) ) ? esc_html( $options['color_key_dark'] ) : '#2e6da4';
 		$dynamic_css   .= '/* ltg common custom */
 		:root {
+			--vk-menu-acc-btn-border-color:#333;
 			--color-key:' . $color_key . ';
 			--color-key-dark:' . $color_key_dark . ';
 		}
