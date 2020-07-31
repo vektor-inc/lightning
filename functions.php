@@ -76,7 +76,7 @@ function lightning_theme_setup() {
 	// Block Editor line height @since WordPress 5.5
 	add_theme_support( 'custom-line-height' );
 	// Block Editor custom unit @since WordPress 5.5
-	add_theme_support( 'custom-units', 'rem', 'em' );
+	add_theme_support( 'custom-units', 'px', 'em', 'rem', 'vw', 'vh'  );
 
 	/*
 	  cope with page excerpt
