@@ -40,15 +40,14 @@ do_action( 'lightning_header_before' );
 			</<?php echo $title_tag; ?>>
 			<?php do_action( 'lightning_header_logo_after' ); ?>
 			<?php
-			$args  = array(
+			$gMenu = wp_nav_menu( array(
 				'theme_location' => 'Header',
 				'container'      => 'nav',
 				'items_wrap'     => '<ul id="%1$s" class="%2$s ' . lightning_get_the_class_name( 'nav_menu_header' ) . '">%3$s</ul>',
 				'fallback_cb'    => '',
 				'echo'           => false,
 				'walker'         => new description_walker(),
-			);
-			$gMenu = wp_nav_menu( $args );
+			) );
 			?>
 		</div>
 
