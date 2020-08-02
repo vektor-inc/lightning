@@ -426,7 +426,7 @@ function lightning_print_css_common() {
 		.btn-primary:focus,
 		.btn-primary:hover { background-color:' . $color_key_dark . ';border-color:' . $color_key . '; }
 		.btn-outline-primary { color : ' . $color_key  . ' ; border-color:' . $color_key .'; }
-		.btn-outline-primary:hover { color : #fff; background-color:' . $color_key .'; }
+		.btn-outline-primary:hover { color : #fff; background-color:' . $color_key .';border-color:' . $color_key_dark  .'; }
 		';
 	} // if ( isset($options['color_key'] && isset($options['color_key_dark'] ) {
 
