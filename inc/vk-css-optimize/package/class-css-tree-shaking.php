@@ -179,7 +179,8 @@ class CSS_tree_shaking {
                 'carousel-item-prev',
                 'form-control',
                 'btn',
-                'btn-primary'
+                'btn-primary',
+                '.vk_post_imgOuter a:hover .card-img-overlay::after'
 			),
 			'tag'   => array(
 				'html',

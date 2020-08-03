@@ -190,7 +190,7 @@ $xl-min: 1200px;
 		background-size: cover;
 		background-position: center 50%;
 		border-bottom: $border_primary;
-		::after {
+		.card-img-overlay::after {
 			content: "";
 			position: absolute;
 			top: 0;
