@@ -42,9 +42,10 @@ function lightning_customize_register_enqueue_point( $wp_customize ) {
 			'settings'    => 'lightning_theme_options[optimize_css]',
 			'type'        => 'select',
 			'choices'     => array(
-				'full-bootstrap'           => __( 'Nothing to do ( Full Bootstrap )', 'lightning' ),
+				'full-bootstrap'    => __( 'Nothing to do ( Full Bootstrap )', 'lightning' ),
 				'minimal-bootstrap' => __( 'Load minimal Bootstrap ( only for BS4 )', 'lightning' ),
-				'optomize-all-css'  => __( 'Optimize All CSS (Beta)', 'lightning' ),
+				'tree-shaking'      => __( 'Optimize All CSS ( Tree Shaking ) (Beta)', 'lightning' ),
+				'optomize-all-css'  => __( 'Optimize All CSS ( Tree Shaking + Preload ) (Beta)', 'lightning' ),
 			),
 		)
 	);

@@ -17,7 +17,7 @@ function lightning_optimize_css() {
 		$options['optimize_css'] = 'minimal-bootstrap';
 	}
 
-	if ( ! empty( $options['optimize_css'] ) && 'optomize-all-css' === $options['optimize_css'] ) {
+	if ( ! empty( $options['optimize_css'] ) && ( 'optomize-all-css' === $options['optimize_css'] || 'tree-shaking' === $options['optimize_css'] ) ) {
 
 		if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 			$skin_info = Lightning_Design_Manager::get_current_skin();
