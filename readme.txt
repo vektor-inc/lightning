@@ -2,7 +2,7 @@
 Lightning WordPress theme, Copyright (C) 2015-2020 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
 Tested up to: 5.4.2
-Stable tag: 11.4.0
+Stable tag: 11.4.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -39,9 +39,12 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v11.4.3
+* [ Bug fix ] Card image link don't work by tree shaking
+
 v11.4.0
 * [ Add Function ] CSS Optimize add tree shaking only
-* [ Bug fix ] Cart hover tree shaking
+* [ Bug fix ] Card image link don't work by tree shaking
 
 v11.3.6
 * [ Bug fix ] fix card btn text color
