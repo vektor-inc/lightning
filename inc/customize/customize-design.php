@@ -467,9 +467,7 @@ function lightning_print_css_common() {
 		// multi space convert to single space
 		$dynamic_css = preg_replace( '/\s(?=\s)/', '', $dynamic_css );
 
-		// wp_add_inline_style() is not stable on change enquepoint system.
-		// echo '<style id="lightning-common-style-custom" type="text/css">' . $dynamic_css . '</style>';
-		wp_add_inline_style( 'lightning-common-style', $dynamic_css );
+		wp_add_inline_style( 'lightning-design-style', $dynamic_css );
 	}
 
 }
@@ -534,11 +532,9 @@ function lightning_get_common_inline_css() {
 
 function lightning_add_common_dynamic_css() {
 	$dynamic_css = lightning_get_common_inline_css();
-	wp_add_inline_style( 'lightning-common-style', $dynamic_css );
+	wp_add_inline_style( 'lightning-design-style', $dynamic_css );
 }
-// Caution : Load common css point is 2 case exist
 add_action( 'wp_enqueue_scripts', 'lightning_add_common_dynamic_css' );
-add_action( 'wp_footer', 'lightning_add_common_dynamic_css' );
 
 function lightning_add_common_dynamic_css_to_editor() {
 	$dynamic_css = lightning_get_common_inline_css();
