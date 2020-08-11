@@ -75,3 +75,25 @@ function lightning_optimize_css() {
 	}
 }
 add_action( 'after_setup_theme', 'lightning_optimize_css' );
+
+
+function lightning_css_tree_shaking_exclude( $inidata ) {
+	$options         = get_option( 'lightning_theme_options' );
+	$exclude_classes_array = array();
+	if ( ! empty( $options['tree_shaking_class_exclude'] ) ) {
+		// delete before after space
+		$exclude_clssses = trim( $options['tree_shaking_class_exclude'] );
+		// convert tab and br to space
+		$exclude_clssses = preg_replace( '/[\n\r\t]/', '', $exclude_clssses );
+		// Change multiple spaces to single space
+		$exclude_clssses = preg_replace( '/\s/', '', $exclude_clssses );
+		$exclude_clssses = str_replace( '，', ',', $exclude_clssses );
+		$exclude_clssses = str_replace( '、', ',', $exclude_clssses );
+		$exclude_classes_array = explode( ',', $exclude_clssses );
+	}
+
+	$inidata['class'] = array_merge( $inidata['class'], $exclude_classes_array );
+
+	return $inidata;
+}
+add_filter( 'css_tree_shaking_exclude', 'lightning_css_tree_shaking_exclude' );
