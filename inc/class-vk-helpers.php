@@ -79,10 +79,11 @@ if ( ! class_exists( 'VK_Helpers' ) ) {
 			}
 
 			// change 16 to 10 number
-			$color_red           = hexdec( $color_red );
-			$color_green         = hexdec( $color_green );
-			$color_blue          = hexdec( $color_blue );
-			$color['number_sum'] = $color_red + $color_green + $color_blue;
+			$color['color_red']           = hexdec( $color_red );
+			$color['color_green']         = hexdec( $color_green );
+			$color['color_blue']          = hexdec( $color_blue );
+
+			$color['number_sum'] = $color['color_red'] + $color['color_green'] + $color['color_blue'];
 
 			$color['brightness'] = 0.00130718954 * $color['number_sum'];
 
@@ -96,5 +97,15 @@ if ( ! class_exists( 'VK_Helpers' ) ) {
 
 		}
 
+		/**
+		 * 16進数をRGBAに変換する
+		 * @param  string $input 
+		 * @param  num $alpha 
+		 */
+		public static function color_convert_rgba( $input = '#FFFFFF', $alpha = 1  ) {
+			$color = VK_Helpers::color_mode_check($input);
+			$rgba .= 'rgba(' . $color['color_red'] . ', ' . $color['color_green'] . ', ' .$color['color_blue'] . ', ' . $alpha . ')';
+			return esc_html( $rgba );
+		}
 	}
 }
