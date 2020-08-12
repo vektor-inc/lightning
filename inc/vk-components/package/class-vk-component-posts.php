@@ -317,7 +317,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 
 			if ( $options['display_date'] ) {
 				$html .= '<div class="vk_post_date ' . $layout_type . '-date published">';
-				$html .= esc_html( get_the_date( null, $post->ID ) );
+				$html .= esc_html( get_the_date( '', $post->ID ) );
 				$html .= '</div>';
 			}
 
@@ -485,7 +485,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 
 			if ( $options['display_date'] ) {
 				$html .= '<span class="postListText_date published">';
-				$html .= esc_html( get_the_date( null, $post->ID ) );
+				$html .= esc_html( get_the_date( '', $post->ID ) );
 				$html .= '</span>';
 			}
 

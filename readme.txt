@@ -1,8 +1,8 @@
 === Lightning ===
 Lightning WordPress theme, Copyright (C) 2015-2020 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
-Tested up to: 5.4.2
-Stable tag: 11.3.2
+Tested up to: 5.5.0
+Stable tag: 11.4.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,6 +38,31 @@ https://www.vektor-inc.co.jp/inquiry/
 
 
 == Changelog ==
+
+v11.4.5
+* [ Bug fix ] Fix get_the_date() fitst argument on WP5.5
+
+v11.4.4
+* [ Bug fix ] In parly Key Color don't work bug fix
+
+v11.4.3
+* [ Bug fix ] Card image link don't work by tree shaking
+
+v11.4.0
+* [ Add Function ] CSS Optimize add tree shaking only
+* [ Bug fix ] Card image link don't work by tree shaking
+
+v11.3.6
+* [ Bug fix ] fix card btn text color
+
+v11.3.5
+* [ Bug fix ] fix card btn text color
+
+v11.3.4
+* [ Bug fix ] .page-header exist that VK Page Header Can't over write.
+
+v11.3.3
+* [ Bug fix ] Cope with key color at btn-outline-primary:hover
 
 v11.3.2
 * [ Bug fix ] Cope with key color at btn-outline-primary.

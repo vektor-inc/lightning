@@ -35,8 +35,13 @@ function lightning_print_css_origin() {
 		}
 	}// if ( ! empty( $options['color_header_bg'] ) ) {
 
+	// When pro version if this .page-header exist that VK Page Header Can't over write.
+	// @since 11.3.4
+	if ( ! class_exists('Vk_Page_Header') ){
+		$dynamic_css .= '.page-header { background-color:' . $color_key . '; }';
+	}
+
 	$dynamic_css .= '
-.page-header { background-color:' . $color_key . '; }
 h2,
 .mainSection-title { border-top-color:' . $color_key . '; }
 h3:after,

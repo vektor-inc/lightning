@@ -48,6 +48,8 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 		}
 
 		public static function css_optimize( $buffer ) {
+			$options = get_option( 'lightning_theme_options' );
+
 			// CSS Tree Shaking.
 			require_once dirname( __FILE__ ) . '/class-css-tree-shaking.php';
 			global $vk_css_tree_shaking_array;
@@ -76,12 +78,14 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 
 			}
 
-			// CSS Preload.
-			$buffer = str_replace(
-				'link rel=\'stylesheet\'',
-				'link rel="preload" as="style" onload="this.onload=null;this.rel=\'stylesheet\'"',
-				$buffer
-			);
+			if ( ! empty( $options['optimize_css'] ) && 'optomize-all-css' === $options['optimize_css'] ) {
+				// CSS Preload.
+				$buffer = str_replace(
+					'link rel=\'stylesheet\'',
+					'link rel="preload" as="style" onload="this.onload=null;this.rel=\'stylesheet\'"',
+					$buffer
+				);
+			}
 
 			return $buffer;
 		}

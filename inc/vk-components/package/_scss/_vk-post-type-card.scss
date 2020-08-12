@@ -41,6 +41,9 @@ https://github.com/vektor-inc/vektor-wp-libraries
 	}
 	a {
 		color: inherit;
+		&.btn-primary {
+			color:#fff;
+		}
 	}
 }
 
