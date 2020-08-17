@@ -180,7 +180,7 @@ class CSS_tree_shaking {
                 'form-control',
                 'btn',
                 'btn-primary',
-                '.vk_post_imgOuter a:hover .card-img-overlay::after'
+				'.vk_post_imgOuter a:hover .card-img-overlay::after',
 			),
 			'tag'   => array(
 				'html',
