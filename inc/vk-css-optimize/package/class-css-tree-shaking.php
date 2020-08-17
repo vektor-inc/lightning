@@ -181,7 +181,6 @@ class CSS_tree_shaking {
                 'btn',
                 'btn-primary',
 				'.vk_post_imgOuter a:hover .card-img-overlay::after',
-				'page_top_btn',
 			),
 			'tag'   => array(
 				'html',
