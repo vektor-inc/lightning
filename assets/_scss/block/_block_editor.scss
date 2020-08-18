@@ -44,4 +44,10 @@
 			}
 		}
 	}
+	.block-editor-block-list__layout{
+		.wp-block[data-align=full]{ //「全幅」ブロックの幅
+			width: calc(100% - -20px);
+			max-width: 100vw;
+		}
+	}
 }
