@@ -4,6 +4,7 @@
 // VK Components is no using image that using sass is no probrem.
 @import "../../inc/vk-components/package/css/vk-components.css";
 @import "block/block";
+@import "common_veu_overwrite";
 
 :root {
 	--color-key-default: #337ab7;

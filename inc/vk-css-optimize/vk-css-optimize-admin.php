@@ -28,10 +28,10 @@ function lightning_customize_register_enqueue_point( $wp_customize ) {
 	$wp_customize->add_setting(
 		'lightning_theme_options[optimize_css]',
 		array(
-			'default'           => true,
+			'default'           => 'minimal-bootstrap',
 			'type'              => 'option',
 			'capability'        => 'edit_theme_options',
-			'sanitize_callback' => 'lightning_sanitize_checkbox',
+			'sanitize_callback' => 'lightning_sanitize_radio',
 		)
 	);
 	$wp_customize->add_control(
@@ -40,8 +40,33 @@ function lightning_customize_register_enqueue_point( $wp_customize ) {
 			'label'       => __( 'Optimize CSS', 'lightning' ),
 			'section'     => 'lightning_function',
 			'settings'    => 'lightning_theme_options[optimize_css]',
-			'type'        => 'checkbox',
-			'description' => __( 'If you enabled this checkbox that the CSS will shrink or preload.', 'lightning' ),
+			'type'        => 'select',
+			'choices'     => array(
+				'full-bootstrap'    => __( 'Nothing to do ( Full Bootstrap )', 'lightning' ),
+				'minimal-bootstrap' => __( 'Load minimal Bootstrap ( only for BS4 )', 'lightning' ),
+				'tree-shaking'      => __( 'Optimize All CSS ( Tree Shaking ) (Beta)', 'lightning' ),
+				'optomize-all-css'  => __( 'Optimize All CSS ( Tree Shaking + Preload ) (Beta)', 'lightning' ),
+			),
+		)
+	);
+
+	$wp_customize->add_setting(
+		'lightning_theme_options[tree_shaking_class_exclude]',
+		array(
+			'default'           => '',
+			'type'              => 'option',
+			'capability'        => 'edit_theme_options',
+			'sanitize_callback' => 'sanitize_text_field',
+		)
+	);
+	$wp_customize->add_control(
+		'lightning_theme_options[tree_shaking_class_exclude]',
+		array(
+			'label'       => __( 'Exclude class of tree shaking', 'lightning' ),
+			'section'     => 'lightning_function',
+			'settings'    => 'lightning_theme_options[tree_shaking_class_exclude]',
+			'type'        => 'textarea',
+			'description' => __( 'If you choose "Optimize All CSS" that delete the useless css.If you using active css class that please fill in class name. Ex) btn-active,slide-active,scrolled', 'lightning' ),
 		)
 	);
 }

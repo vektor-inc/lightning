@@ -1,8 +1,8 @@
 === Lightning ===
 Lightning WordPress theme, Copyright (C) 2015-2020 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
-Tested up to: 5.4.2
-Stable tag: 10.1.0
+Tested up to: 5.5.0
+Stable tag: 11.4.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,6 +38,90 @@ https://www.vektor-inc.co.jp/inquiry/
 
 
 == Changelog ==
+
+v11.4.8
+* Only Change Version
+
+v11.4.7
+* [ Bug fix ] Full width adjustment editor screen
+
+v11.4.6
+* [ Bug fix ] Cope with ExUnit Tree Shaking
+
+v11.4.5
+* [ Bug fix ] Fix get_the_date() fitst argument on WP5.5
+
+v11.4.4
+* [ Bug fix ] In parly Key Color don't work bug fix
+
+v11.4.3
+* [ Bug fix ] Card image link don't work by tree shaking
+
+v11.4.0
+* [ Add Function ] CSS Optimize add tree shaking only
+* [ Bug fix ] Card image link don't work by tree shaking
+
+v11.3.6
+* [ Bug fix ] fix card btn text color
+
+v11.3.5
+* [ Bug fix ] fix card btn text color
+
+v11.3.4
+* [ Bug fix ] .page-header exist that VK Page Header Can't over write.
+
+v11.3.3
+* [ Bug fix ] Cope with key color at btn-outline-primary:hover
+
+v11.3.2
+* [ Bug fix ] Cope with key color at btn-outline-primary.
+
+v11.3.1
+* [ Other ] test up
+
+v11.3.0
+* [ Other ] Cope with ExUnit Contact Section on Sidebar and Footer
+
+v11.2.1
+* [ Bug fix ] WordPress 5.5 add unit px and vw and vh
+
+v11.2.0
+* Cope with WordPress 5.5 custom-line-height / custom-units
+
+v11.1.0
+* [ Specification Change ] load common & skin css order
+
+v11.0.9
+* [ Bug Fix ] CSS Optimize buffer release
+
+v11.0.8
+* [ Bug Fix ] Sidebar fixed position bug fix on resize window
+
+v11.0.7
+* [ Bug Fix ] CSS Optimize buffer release
+* [ Specification Change ] Delete visited link setting
+
+v11.0.6
+* [ Bug Fix ] Didebar fix logic
+
+v11.0.5
+* [ Design Bug Fix ] Footer tag cloud
+
+v11.0.4
+* [ Design Bug Fix ] CSS Optimize form bug fix
+
+v11.0.3
+* [ Design specification Change ] Footer text link text decoration
+
+v11.0.2
+* [ Bug fix ] Sidebar border color bug fix.
+
+v11.0.1
+* [ Other ] Only customize panel text.
+
+v11.0.0
+* [ Add Function ] CSS optimize for speeding
+* [ Specification Change ] Rebuild Sidebar Fix logic and option
 
 v10.2.0
 * [ Other ] Only version number ( Syncronize to Pro version )

@@ -190,7 +190,7 @@ $xl-min: 1200px;
 		background-size: cover;
 		background-position: center 50%;
 		border-bottom: $border_primary;
-		::after {
+		& > a::after {
 			content: "";
 			position: absolute;
 			top: 0;
@@ -224,8 +224,15 @@ $xl-min: 1200px;
 		.vk_post_imgOuter {
 			height: 100%;
 			border-bottom: none;
+			border-right:$border_primary;
 			&:before {
 				padding-top: 0;
+			}
+		}
+		&.card-horizontal-reverse {
+			.vk_post_imgOuter {
+				border-right:none;
+				border-left:$border_primary;
 			}
 		}
 	}

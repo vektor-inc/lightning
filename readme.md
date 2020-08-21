@@ -24,14 +24,52 @@ https://github.com/kurudrive/lightning-skin-sample
 | wp_enqueue_scripts | | vkExUnit_common_style-css | |
 | wp_enqueue_scripts | | vkExUnit_common_style-inline-css | |
 | wp_enqueue_scripts | | Bootstrap | |
+| wp_enqueue_scripts | | lightning-common-style | 全スキン共通CSS |
 | wp_enqueue_scripts | | lightning-design-style | デザインスキン |
 | wp_enqueue_scripts | | lightning-design-style wp_add_inline_style | デザインスキン |
-| wp_enqueue_scripts | | lightning-common-style | 全スキン共通CSS |
 | wp_enqueue_scripts | | lightning-theme-style | 子テーマでカスタマイズされるのでなるべく後ろである必要がある |
 | wp_enqueue_scripts | | vk-font-awesome-css |
 | wp_head | 50 | HeaderColorManagerでカスタマイズから指定された色 |
 | wp_head | 200 | ExUnit CSSカスタマイズ 共通 |
 | wp_head | 201 | ExUnit CSSカスタマイズ 投稿 |
+
+
+lightning-late-load-style : 以下のハンドルに依存
+
+* lightning-design-style
+* lightning-common-style
+* vk-font-awesome
+* vk-blocks-build-css
+
+---
+
+## Customize panel priority
+
+```
+$wp_customize->add_section(
+```
+
+* 400 | License key
+* 450 | 機能設定
+* 501 | デザイン設定
+* 502 | フォント設定
+* 503 | レイアウト設定
+* 510 | ヘッダー上部設定
+* 511 | ヘッダー設定
+* 513 | キャンペーンテキスト設定
+* 520 | トップページスライドショー設定
+* 521 | トップページPR BLock設定
+* 530 | ページヘッダー設定
+* 535 | アーカイブページ設定
+* 536 | アーカイブページレイアウト
+* 540 | フッター設定
+* 543 | コピーライト設定
+* 550 | モバイル固定ナビ
+* 555 | ウィジェットエリア設定（フッター設定に統合したい）
+* 556 | Googleタグマネージャー
+* 560 | Font Awesome
+
+---
 
 ## UnitTest
 このテーマにはPHP Unit Testを用意しています。

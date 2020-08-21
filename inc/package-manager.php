@@ -54,7 +54,7 @@ function lightning_customize_register_function( $wp_customize ) {
 	$wp_customize->add_section(
 		'lightning_function', array(
 			'title'    => lightning_get_prefix_customize_panel() . __( 'Function Settings', 'lightning' ),
-			'priority' => 480,
+			'priority' => 450,
 		)
 	);
 

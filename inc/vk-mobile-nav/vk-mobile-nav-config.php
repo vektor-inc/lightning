@@ -18,4 +18,5 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 	// add_action( 'lightning_header_before', array( 'Vk_Mobile_Nav', 'menu_set_html' ) );
 
 	remove_action( 'wp_enqueue_scripts', array( 'Vk_Mobile_Nav', 'add_script' ) );
+	remove_action( 'wp_enqueue_scripts', array( 'Vk_Mobile_Nav', 'add_css' ) );
 }

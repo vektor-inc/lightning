@@ -10,7 +10,7 @@ function lightning_customize_register_layout( $wp_customize ) {
 		'lightning_layout',
 		array(
 			'title'    => lightning_get_prefix_customize_panel() . __( 'Layout settings', 'lightning' ),
-			'priority' => 502,
+			'priority' => 503,
 		// 'panel'				=> 'lightning_setting',
 		)
 	);
@@ -193,7 +193,7 @@ function lightning_customize_register_layout( $wp_customize ) {
 	$wp_customize->add_control(
 		'lightning_theme_options[sidebar_fix]',
 		array(
-			'label'    => __( 'Don\'t fix the sidebar', 'lightning' ),
+			'label'    => __( 'Sidebar fix setting', 'lightning' ),
 			'section'  => 'lightning_layout',
 			'settings' => 'lightning_theme_options[sidebar_fix]',
 			'type'     => 'select',

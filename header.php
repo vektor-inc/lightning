@@ -13,7 +13,7 @@ $lightning_theme_options = get_option( 'lightning_theme_options' );
 </head>
 <body <?php body_class(); ?>>
 <a class="skip-link screen-reader-text" href="#main"><?php _e( 'Skip to the content', 'lightning' ); ?></a>
-<a class="skip-link screen-reader-text" href="#main"><?php _e( 'Skip to the Navigation', 'lightning' ); ?></a>
+<a class="skip-link screen-reader-text" href="#vk-mobile-nav"><?php _e( 'Skip to the Navigation', 'lightning' ); ?></a>
 <?php
 if ( function_exists( 'wp_body_open' ) ) {
 	wp_body_open();
@@ -40,15 +40,14 @@ do_action( 'lightning_header_before' );
 			</<?php echo $title_tag; ?>>
 			<?php do_action( 'lightning_header_logo_after' ); ?>
 			<?php
-			$args  = array(
+			$gMenu = wp_nav_menu( array(
 				'theme_location' => 'Header',
 				'container'      => 'nav',
 				'items_wrap'     => '<ul id="%1$s" class="%2$s ' . lightning_get_the_class_name( 'nav_menu_header' ) . '">%3$s</ul>',
 				'fallback_cb'    => '',
 				'echo'           => false,
 				'walker'         => new description_walker(),
-			);
-			$gMenu = wp_nav_menu( $args );
+			) );
 			?>
 		</div>
 

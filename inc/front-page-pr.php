@@ -11,7 +11,7 @@ function lightning_front_pr_blocks_customize_register( $wp_customize ) {
 	$wp_customize->add_section(
 		'lightning_front_pr', array(
 			'title'    => lightning_get_prefix_customize_panel() . __( 'Front Page PR Block', 'lightning' ),
-			'priority' => 700,
+			'priority' => 521,
 		// 'panel'				=> 'lightning_setting',
 		)
 	);
