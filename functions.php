@@ -76,13 +76,12 @@ function lightning_theme_setup() {
 	// Block Editor line height @since WordPress 5.5
 	add_theme_support( 'custom-line-height' );
 	// Block Editor custom unit @since WordPress 5.5
-	add_theme_support( 'custom-units', 'px', 'em', 'rem', 'vw', 'vh'  );
+	add_theme_support( 'custom-units', 'px', 'em', 'rem', 'vw', 'vh' );
 
 	/*
 	  cope with page excerpt
 	/*-------------------------------------------*/
 	add_post_type_support( 'page', 'excerpt' );
-
 
 	/*
 	  Admin page _ Eye catch
@@ -103,7 +102,7 @@ function lightning_theme_setup() {
 	/* 	(Auto set up to media max with.)
 	/*-------------------------------------------*/
 	if ( ! isset( $content_width ) ) {
-		$content_width = 750;
+		$content_width = 1140;
 	}
 
 	/*
