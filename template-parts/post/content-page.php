@@ -1,4 +1,6 @@
 <?php
+$lightning_theme_options = get_option( 'lightning_theme_options' );
+$page_comment_display = ! empty( $lightning_theme_options['page_comment_display'] ) ? true : false;
 if ( have_posts() ) {
 	while ( have_posts() ) :
 		the_post(); ?>
@@ -6,7 +8,9 @@ if ( have_posts() ) {
 
 		<?php do_action( 'lightning_entry_body_before' ); ?>
 		<div class="<?php lightning_the_class_name( 'entry-body' ); ?>">
-		<?php the_content(); ?>
+			<?php do_action( 'lightning_content_before' ); ?>
+			<?php the_content(); ?>
+			<?php do_action( 'lightning_content_after' ); ?>
 		</div>
 		<?php do_action( 'lightning_entry_body_after' ); ?>
 
@@ -20,6 +24,11 @@ if ( have_posts() ) {
 		);
 		wp_link_pages( $args );
 		?>
+			<?php do_action( 'lightning_comment_before' ); ?>
+			<?php if ( true === $page_comment_display ) : ?>
+				<?php comments_template( '', true );?>
+			<?php endif; ?>
+			<?php do_action( 'lightning_comment_after' ); ?>
 		</article><!-- [ /#post-<?php the_ID(); ?> ] -->
 	<?php endwhile;
 }

@@ -357,6 +357,27 @@ function lightning_customize_register_design( $wp_customize ) {
 		)
 	);
 
+	// page_comment_display
+	$wp_customize->add_setting(
+		'lightning_theme_options[page_comment_display]',
+		array(
+			'default'           => false,
+			'type'              => 'option',
+			'capability'        => 'edit_theme_options',
+			'sanitize_callback' => 'lightning_sanitize_checkbox',
+		)
+	);
+	$wp_customize->add_control(
+		'lightning_theme_options[page_comment_display]',
+		array(
+			'label'    => __( 'Display cooment tyemplate on page.', 'lightning' ),
+			'section'  => 'lightning_design',
+			'settings' => 'lightning_theme_options[page_comment_display]',
+			'type'     => 'checkbox',
+			'priority' => 801,
+		)
+	);
+
 }
 
 /*
