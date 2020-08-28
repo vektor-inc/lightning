@@ -1,0 +1,15 @@
+{
+    "name": "vektor-inc/font-awesome",
+    "description": "Font Awesome",
+    "license": "GPL 2.0 or Lator",
+    "authors": [
+        {
+            "name": "Vektor,Inc",
+            "homepage": "https://www.vektor-inc.co.jp/"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.0"
+    },
+    "require-dev": {}
+}
