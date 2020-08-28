@@ -357,9 +357,32 @@ function lightning_customize_register_design( $wp_customize ) {
 		)
 	);
 
-	// page_comment_display
+	/*
+	  Comment Setting
+	/*-------------------------------------------*/
 	$wp_customize->add_setting(
-		'lightning_theme_options[page_comment_display]',
+		'comment_header',
+		array(
+			'sanitize_callback' => 'sanitize_text_field',
+		)
+	);
+	$wp_customize->add_control(
+		new Custom_Html_Control(
+			$wp_customize,
+			'comment_header',
+			array(
+				'label'            => __( 'Comment Setting', 'lightning' ),
+				'section'          => 'lightning_design',
+				'type'             => 'text',
+				'custom_html'      => '',
+				'priority'         => 801,
+			)
+		)
+	);
+
+	// hide_comment.
+	$wp_customize->add_setting(
+		'lightning_theme_options[hide_comment][post]',
 		array(
 			'default'           => false,
 			'type'              => 'option',
@@ -368,16 +391,79 @@ function lightning_customize_register_design( $wp_customize ) {
 		)
 	);
 	$wp_customize->add_control(
-		'lightning_theme_options[page_comment_display]',
+		'lightning_theme_options[hide_comment][post]',
 		array(
-			'label'    => __( 'Display cooment tyemplate on page.', 'lightning' ),
+			'label'    => __( 'Hide cooment template on post.', 'lightning' ),
 			'section'  => 'lightning_design',
-			'settings' => 'lightning_theme_options[page_comment_display]',
+			'settings' => 'lightning_theme_options[hide_comment][post]',
 			'type'     => 'checkbox',
 			'priority' => 801,
 		)
 	);
 
+	// page_hide_comment
+	$wp_customize->add_setting(
+		'lightning_theme_options[hide_comment][page]',
+		array(
+			'default'           => true,
+			'type'              => 'option',
+			'capability'        => 'edit_theme_options',
+			'sanitize_callback' => 'lightning_sanitize_checkbox',
+		)
+	);
+	$wp_customize->add_control(
+		'lightning_theme_options[hide_comment][page]',
+		array(
+			'label'    => __( 'Hide cooment template on page.', 'lightning' ),
+			'section'  => 'lightning_design',
+			'settings' => 'lightning_theme_options[hide_comment][page]',
+			'type'     => 'checkbox',
+			'priority' => 801,
+		)
+	);
+
+	$coment_post_types = get_post_types(
+		array(
+			'public'   => true,
+			'_builtin' => false,
+		),
+		'object'
+	);
+
+	foreach ( $coment_post_types as $coment_post_type ) {
+
+		// page_hide_comment
+		$wp_customize->add_setting(
+			'lightning_theme_options[hide_comment][' . $coment_post_type->name . ']',
+			array(
+				'default'           => false,
+				'type'              => 'option',
+				'capability'        => 'edit_theme_options',
+				'sanitize_callback' => 'lightning_sanitize_checkbox',
+			)
+		);
+		$wp_customize->add_control(
+			'lightning_theme_options[hide_comment][' . $coment_post_type->name . ']',
+			array(
+				'label'    => sprintf( __( 'Hide cooment template on %s.', 'lightning' ), $coment_post_type->label ),
+				'section'  => 'lightning_design',
+				'settings' => 'lightning_theme_options[hide_comment][' . $coment_post_type->name . ']',
+				'type'     => 'checkbox',
+				'priority' => 801,
+			)
+		);
+	}
+
+}
+
+function lightning_default_comment_options() {
+	$comment_options = array(
+		'hide_comment' => array(
+			'post' => false,
+			'page' => true,
+		),
+	);
+	return $comment_options;
 }
 
 /*

@@ -1,6 +1,8 @@
 <?php
-$lightning_theme_options = get_option( 'lightning_theme_options' );
-$page_comment_display = ! empty( $lightning_theme_options['page_comment_display'] ) ? true : false;
+$options = get_option( 'lightning_theme_options' );
+$deahult = lightning_default_comment_options();
+$options = wp_parse_args( $options, $deahult );
+
 if ( have_posts() ) {
 	while ( have_posts() ) :
 		the_post(); ?>
@@ -25,7 +27,7 @@ if ( have_posts() ) {
 		wp_link_pages( $args );
 		?>
 			<?php do_action( 'lightning_comment_before' ); ?>
-			<?php if ( true === $page_comment_display ) : ?>
+			<?php if ( empty( $options['hide_comment'][get_post_type()] ) && post_type_supports( get_post_type(), 'comments' ) ) : ?>
 				<?php comments_template( '', true );?>
 			<?php endif; ?>
 			<?php do_action( 'lightning_comment_after' ); ?>
