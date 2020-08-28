@@ -400,6 +400,13 @@ function lightning_customize_register_design( $wp_customize ) {
 			'priority' => 801,
 		)
 	);
+	$wp_customize->selective_refresh->add_partial(
+		'lightning_theme_options[hide_comment][post]',
+		array(
+			'selector'        => '.comments-area',
+			'render_callback' => '',
+		)
+	);
 
 	// page_hide_comment
 	$wp_customize->add_setting(
@@ -419,6 +426,13 @@ function lightning_customize_register_design( $wp_customize ) {
 			'settings' => 'lightning_theme_options[hide_comment][page]',
 			'type'     => 'checkbox',
 			'priority' => 801,
+		)
+	);
+	$wp_customize->selective_refresh->add_partial(
+		'lightning_theme_options[hide_comment][page]',
+		array(
+			'selector'        => '.comments-area',
+			'render_callback' => '',
 		)
 	);
 
@@ -450,6 +464,13 @@ function lightning_customize_register_design( $wp_customize ) {
 				'settings' => 'lightning_theme_options[hide_comment][' . $coment_post_type->name . ']',
 				'type'     => 'checkbox',
 				'priority' => 801,
+			)
+		);
+		$wp_customize->selective_refresh->add_partial(
+			'lightning_theme_options[hide_comment][' . $coment_post_type->name . ']',
+			array(
+				'selector'        => '.comments-area',
+				'render_callback' => '',
 			)
 		);
 	}

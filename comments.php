@@ -67,7 +67,7 @@ if ( post_password_required() ) {
 
 	<?php
 		// If comments are closed and there are comments, let's leave a little note, shall we?
-		if ( ! comments_open() ) :
+		if ( ! comments_open() && '0' != get_comments_number() ) :
 	?>
 		<p class="no-comments"><?php _e( 'Comments are closed.', 'lightning' ); ?></p>
 
