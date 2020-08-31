@@ -6,7 +6,9 @@ if ( have_posts() ) {
 
 		<?php do_action( 'lightning_entry_body_before' ); ?>
 		<div class="<?php lightning_the_class_name( 'entry-body' ); ?>">
-		<?php the_content(); ?>
+			<?php do_action( 'lightning_content_before' ); ?>
+			<?php the_content(); ?>
+			<?php do_action( 'lightning_content_after' ); ?>
 		</div>
 		<?php do_action( 'lightning_entry_body_after' ); ?>
 
@@ -20,6 +22,9 @@ if ( have_posts() ) {
 		);
 		wp_link_pages( $args );
 		?>
+			<?php do_action( 'lightning_comment_before' ); ?>
+				<?php comments_template( '', true );?>
+			<?php do_action( 'lightning_comment_after' ); ?>
 		</article><!-- [ /#post-<?php the_ID(); ?> ] -->
 	<?php endwhile;
 }
