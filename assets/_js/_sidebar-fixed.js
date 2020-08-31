@@ -240,6 +240,11 @@
 						parentSection.style.position = "relative";
 						sideSection.style.position = "absolute";
 						sideSection.style.bottom = 0;
+
+						// 右サイトバーの時は absolute になるので right = 0 を付与しないといけなくなる
+						if ( sideSection.classList.contains('sideSection-pos-left') != true ){
+							sideSection.style.right = 0;
+						}
 					}
 				} else {
 					sideFix_reset();
