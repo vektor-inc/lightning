@@ -70,7 +70,7 @@ else :
 				</div><!-- [ /.entry-footer ] -->
 
 				<?php do_action( 'lightning_comment_before' ); ?>
-					<?php comments_template( '', true );?>
+					<?php comments_template( '', true ); ?>
 				<?php do_action( 'lightning_comment_after' ); ?>
 
 			</article>
