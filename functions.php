@@ -242,6 +242,7 @@ require get_parent_theme_file_path( '/inc/vk-components/vk-components-config.php
 require get_parent_theme_file_path( '/inc/template-redirect.php' );
 require get_parent_theme_file_path( '/inc/layout-controller/layout-controller.php' );
 require get_parent_theme_file_path( '/inc/vk-footer-customize/vk-footer-customize-config.php' );
+require get_parent_theme_file_path( '/inc/vk-old-options-notice/vk-old-options-notice-config.php' );
 
 
 /*
