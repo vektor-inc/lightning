@@ -16,8 +16,11 @@
 if ( post_password_required() ) {
 	return;
 }
+$options = get_option( 'lightning_theme_options' );
+$deahult = lightning_default_comment_options();
+$options = wp_parse_args( $options, $deahult );
 ?>
-
+<?php if ( empty( $options['hide_comment'][get_post_type()] ) && post_type_supports( get_post_type(), 'comments' ) ) : ?>
 <div id="comments" class="comments-area">
 
 	<?php // You can start editing here -- including this comment! ?>
@@ -76,3 +79,4 @@ if ( post_password_required() ) {
 	<?php comment_form(); ?>
 
 </div><!-- #comments -->
+<?php endif; ?>
