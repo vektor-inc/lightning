@@ -1,5 +1,5 @@
 #!/bin/bash
 
-npm run dist
+npm run build
 gulp dist
 windowszip dist/lightning

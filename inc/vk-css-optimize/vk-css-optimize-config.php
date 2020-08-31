@@ -50,7 +50,7 @@ function lightning_optimize_css() {
 			array_push( $vk_css_tree_shaking_array, $add_array );
 		}
 
-		if ( $bs4_css_url && $bs4_version ) {
+		if ( ! empty( $bs4_css_url ) && ! empty( $bs4_version ) ) {
 			$add_array = array(
 				'id'      => 'bootstrap-4-style',
 				'url'     => $bs4_css_url,
@@ -59,7 +59,7 @@ function lightning_optimize_css() {
 			);
 			array_push( $vk_css_tree_shaking_array, $add_array );
 		}
-		if ( $skin_css_url && $skin_version ) {
+		if ( ! empty( $skin_css_url ) && ! empty( $skin_version ) ) {
 			$add_array = array(
 				'id'      => 'lightning-design-style',
 				'url'     => $skin_css_url,

@@ -8,7 +8,7 @@ else :
 
 			<article id="post-<?php the_ID(); ?>" <?php post_class( apply_filters( 'lightning_article_outer_class', '' ) ); ?>>
 					<header class="<?php lightning_the_class_name( 'entry-header' ); ?>">
-						<?php get_template_part( 'template-parts/post/meta' ); ?>
+						<?php get_template_part( 'template-parts/post/meta', get_post_type() ); ?>
 						<h1 class="entry-title"><?php the_title(); ?></h1>
 					</header>
 
