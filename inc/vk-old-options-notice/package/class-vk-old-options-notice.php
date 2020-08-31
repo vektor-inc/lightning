@@ -30,9 +30,9 @@ if ( ! class_exists( 'VK_Old_Options_Notice' ) ) {
 				if ( 'option' === $old_setting['data_type'] ) {
 					$options     = get_option( $old_setting['target_field'] );
 					$old_options = $old_setting['old_value'];
-					foreach ( $options as $key1 => $value1 ) {
-						foreach ( $old_options as $key2 => $value2 ) {
-							if ( $value1 === $value2 ) {
+					foreach ( $options as $key => $options_value ) {
+						foreach ( $old_options as $old_key => $old_options_value ) {
+							if ( $options_value === $old_options_value ) {
 								if ( 'judge' === $arg ) {
 									return true;
 								} elseif ( 'update' === $arg ) {
