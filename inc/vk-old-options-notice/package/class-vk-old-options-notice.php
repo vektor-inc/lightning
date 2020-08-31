@@ -53,7 +53,7 @@ if ( ! class_exists( 'VK_Old_Options_Notice' ) ) {
 			global $vk_update_link;
 			if ( 'index.php' === $pagenow ) {
 				if ( self::option_judgment( 'judge' ) ) {
-					echo '<div class="notice notice-info"><p>' . __( 'Because old option is exists, you need to update detabase', 'lightning' ) . '<a href="?' . $vk_update_link . '">' . __( 'Update database', 'lightning' ) . '</a></p></div>';
+					echo '<div class="notice notice-info"><p><strong>Lightning : </strong> ' . __( 'Because old option is exists, you need to update database', 'lightning' ) . ' <a href="?' . $vk_update_link . '" class="button button-primary">' . __( 'Update database', 'lightning' ) . '</a></p></div>';
 				}
 			}
 		}
