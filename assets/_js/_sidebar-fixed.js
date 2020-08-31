@@ -240,7 +240,6 @@
 						parentSection.style.position = "relative";
 						sideSection.style.position = "absolute";
 						sideSection.style.bottom = 0;
-						sideSection.style.right = 0;
 					}
 				} else {
 					sideFix_reset();

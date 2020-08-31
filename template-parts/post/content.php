@@ -8,14 +8,16 @@ else :
 
 			<article id="post-<?php the_ID(); ?>" <?php post_class( apply_filters( 'lightning_article_outer_class', '' ) ); ?>>
 					<header class="<?php lightning_the_class_name( 'entry-header' ); ?>">
-						<?php get_template_part( 'template-parts/post/meta' ); ?>
+						<?php get_template_part( 'template-parts/post/meta', get_post_type() ); ?>
 						<h1 class="entry-title"><?php the_title(); ?></h1>
 					</header>
 
 					<?php do_action( 'lightning_entry_body_before' ); ?>
 
 					<div class="<?php lightning_the_class_name( 'entry-body' ); ?>">
+						<?php do_action( 'lightning_content_before' ); ?>
 						<?php the_content(); ?>
+						<?php do_action( 'lightning_content_after' ); ?>
 					</div>
 
 					<?php do_action( 'lightning_entry_body_after' ); ?>
@@ -68,7 +70,7 @@ else :
 				</div><!-- [ /.entry-footer ] -->
 
 				<?php do_action( 'lightning_comment_before' ); ?>
-				<?php comments_template( '', true ); ?>
+					<?php comments_template( '', true ); ?>
 				<?php do_action( 'lightning_comment_after' ); ?>
 
 			</article>
