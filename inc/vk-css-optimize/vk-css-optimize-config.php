@@ -19,7 +19,8 @@ function lightning_optimize_css() {
 
 	if ( ! empty( $options['optimize_css'] ) && ( 'optomize-all-css' === $options['optimize_css'] || 'tree-shaking' === $options['optimize_css'] ) ) {
 
-		global $bootstrap;
+        global $bootstrap;
+        $skin_info = Lightning_Design_Manager::get_current_skin();
 
 		$skin_css_url  = ! empty( $skin_info['css_path'] ) ? $skin_info['css_path'] : '';
 		$skin_css_path = ! empty( $skin_info['css_sv_path'] ) ? $skin_info['css_sv_path'] : '';
