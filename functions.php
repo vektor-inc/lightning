@@ -76,13 +76,12 @@ function lightning_theme_setup() {
 	// Block Editor line height @since WordPress 5.5
 	add_theme_support( 'custom-line-height' );
 	// Block Editor custom unit @since WordPress 5.5
-	add_theme_support( 'custom-units', 'px', 'em', 'rem', 'vw', 'vh'  );
+	add_theme_support( 'custom-units', 'px', 'em', 'rem', 'vw', 'vh' );
 
 	/*
 	  cope with page excerpt
 	/*-------------------------------------------*/
 	add_post_type_support( 'page', 'excerpt' );
-
 
 	/*
 	  Admin page _ Eye catch
@@ -103,7 +102,7 @@ function lightning_theme_setup() {
 	/* 	(Auto set up to media max with.)
 	/*-------------------------------------------*/
 	if ( ! isset( $content_width ) ) {
-		$content_width = 750;
+		$content_width = 1140;
 	}
 
 	/*
@@ -245,11 +244,18 @@ require get_parent_theme_file_path( '/inc/layout-controller/layout-controller.ph
 require get_parent_theme_file_path( '/inc/vk-footer-customize/vk-footer-customize-config.php' );
 require get_parent_theme_file_path( '/inc/vk-old-options-notice/vk-old-options-notice-config.php' );
 
+
 /*
-  Load woocommerce modules
+  Plugin support
 /*-------------------------------------------*/
+// Load woocommerce modules
 if ( class_exists( 'woocommerce' ) ) {
-	require get_parent_theme_file_path( '/inc/woocommerce/functions-woo.php' );
+	require get_parent_theme_file_path( '/plugin-support/woocommerce/functions-woo.php' );
+}
+// Load polylang modules
+include_once ABSPATH . 'wp-admin/includes/plugin.php';
+if ( is_plugin_active( 'polylang/polylang.php' ) ) {
+	require get_parent_theme_file_path( '/plugin-support/polylang/functions-polylang.php' );
 }
 
 /*

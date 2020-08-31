@@ -6,6 +6,7 @@
 	"scripts": {
 		"gulp": "gulp",
 		"build": "npm run build:script && npm run build:style && npm run build:text-domain",
+		"dist": "gulp dist",
 		"build:script": "webpack --config webpack.config.js",
 		"build:style": "gulp sass_common && gulp sass_bs4 && gulp sass_skin && gulp sass_skin2 && gulp sass_woo",
 		"build:text-domain": "gulp text-domain",

@@ -8,14 +8,16 @@ else :
 
 			<article id="post-<?php the_ID(); ?>" <?php post_class( apply_filters( 'lightning_article_outer_class', '' ) ); ?>>
 					<header class="<?php lightning_the_class_name( 'entry-header' ); ?>">
-						<?php get_template_part( 'template-parts/post/meta' ); ?>
+						<?php get_template_part( 'template-parts/post/meta', get_post_type() ); ?>
 						<h1 class="entry-title"><?php the_title(); ?></h1>
 					</header>
 
 					<?php do_action( 'lightning_entry_body_before' ); ?>
 
 					<div class="<?php lightning_the_class_name( 'entry-body' ); ?>">
+						<?php do_action( 'lightning_content_before' ); ?>
 						<?php the_content(); ?>
+						<?php do_action( 'lightning_content_after' ); ?>
 					</div>
 
 					<?php do_action( 'lightning_entry_body_after' ); ?>
@@ -41,13 +43,11 @@ else :
 							'template'      => __( '<dl><dt>%s</dt><dd>%l</dd></dl>', 'lightning' ),
 							'term_template' => '<a href="%1$s">%2$s</a>',
 						);
-						$taxonomies    = get_the_taxonomies( $post->ID, $args );
+						$taxonomies	= lightning_get_display_taxonomies( $post->ID, $args );
 						$taxnomiesHtml = '';
 						if ( $taxonomies ) {
 							foreach ( $taxonomies as $key => $value ) {
-								if ( $key != 'post_tag' ) {
-									$taxnomiesHtml .= '<div class="entry-meta-dataList">' . $value . '</div>';
-								}
+								$taxnomiesHtml .= '<div class="entry-meta-dataList">' . $value . '</div>';
 							} // foreach
 						} // if ($taxonomies)
 						$taxnomiesHtml = apply_filters( 'lightning_taxnomiesHtml', $taxnomiesHtml );
@@ -68,7 +68,7 @@ else :
 				</div><!-- [ /.entry-footer ] -->
 
 				<?php do_action( 'lightning_comment_before' ); ?>
-				<?php comments_template( '', true ); ?>
+					<?php comments_template( '', true ); ?>
 				<?php do_action( 'lightning_comment_after' ); ?>
 
 			</article>

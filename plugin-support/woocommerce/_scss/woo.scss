@@ -724,7 +724,8 @@ tr.cart-discount td {
 		.col-2 {
 			max-width: inherit;
 			@media (min-width: 768px) {
-				max-width: 48%;
+				width: 100%;
+				max-width: 100%;
 			}
 		}
 	}

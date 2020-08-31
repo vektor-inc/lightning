@@ -113,15 +113,15 @@ gulp.task('sass_skin2', function (done) {
 });
 
 gulp.task('sass_woo', function (done) {
-  return src(['./inc/woocommerce/_scss/**.scss'])
+  return src(['./plugin-support/woocommerce/_scss/**.scss'])
     .pipe(sass())
     .pipe(cmq({
       log: true
     }))
     .pipe(autoprefixer())
     .pipe(cleanCss())
-    .pipe(gulp.dest('./inc/woocommerce/css/'))
-    .pipe(gulp.dest('../lightning-pro/inc/woocommerce/css/'));
+    .pipe(gulp.dest('./plugin-support/woocommerce/css/'))
+    .pipe(gulp.dest('../lightning-pro/plugin-support/woocommerce/css/'));
 });
 
 gulp.task('components_copy', function (done) {
@@ -168,7 +168,7 @@ gulp.task('dist_pro_dev', function () {
 gulp.task('watch', function (done) {
   error_stop = false
   gulp.watch(['./assets/_scss/**','./inc/vk-mobile-nav/package/css/**','./inc/vk-components/**/*.css'], gulp.series('sass_common'));
-  gulp.watch(['./inc/woocommerce/_scss/**'], gulp.series('sass_woo'));
+  gulp.watch(['./plugin-support/woocommerce/_scss/**'], gulp.series('sass_woo'));
   gulp.watch(['./library/bootstrap-4/scss/**.scss'], gulp.series('sass_bs4'));
   gulp.watch(['./design-skin/origin/_scss/**/*.scss'], gulp.series('sass_skin'));
   gulp.watch(['./design-skin/origin2/_scss/**/*.scss'], gulp.series('sass_skin2'));
@@ -188,6 +188,7 @@ gulp.task('copy_dist', function (done) {
       './assets/**',
       './design-skin/**',
       './inc/**',
+      './plugin-support/**',
       './library/**',
       './template-parts/**',
       './languages/**',
@@ -216,6 +217,7 @@ gulp.task('dist_pro', function () {
       './assets/**',
       './design-skin/**',
       './inc/**',
+      './plugin-support/**',
       './library/**',
       './template-parts/**',
       './languages/**',

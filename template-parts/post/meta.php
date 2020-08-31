@@ -30,16 +30,13 @@ if ( $author ) {
 <?php endif; // if ( get_post_type() != 'product' ) ?>
 
 <?php
-	$taxonomies = get_the_taxonomies();
+$taxonomies	= lightning_get_display_taxonomies();
 if ( $taxonomies ) :
 	// get $taxonomy name
 	// $taxonomy   = key( $taxonomies );
-	// To avoid WooCommerce default tax
 	foreach ( $taxonomies as $key => $value ) {
-		if ( $key != 'product_type' ) {
-			$taxonomy = $key;
-			break;
-		}
+		$taxonomy = $key;
+		break;
 	}
 
 	$terms      = get_the_terms( get_the_ID(), $taxonomy );

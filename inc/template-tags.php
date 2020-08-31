@@ -497,3 +497,19 @@ function lightning_check_color_mode( $input = '#ffffff', $return_detail = false 
 		return $color['mode'];
 	}
 }
+
+function lightning_get_display_taxonomies( $post_id = null, $args = null ){
+	if ( ! $post_id ){
+		global $post;
+		$post_id = $post->ID;
+	}
+	$taxonomies	= get_the_taxonomies( $post_id, $args );
+	$exclusion	= array( 'post_tag', 'product_type' );
+	$exclusion	= apply_filters( 'vk_get_display_taxonomies_exclusion', $exclusion );
+	if ( is_array( $exclusion ) ){
+		foreach ( $exclusion as $key => $value ){
+			unset( $taxonomies[$value] );
+		}
+	}
+	return $taxonomies;
+}
