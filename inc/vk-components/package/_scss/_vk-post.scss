@@ -12,11 +12,13 @@ $xs-max: 575.98px;
 $sm-max: 767.98px;
 $md-max: 991.98px;
 $lg-max: 1199.98px;
+$xl-max: 1399.98px;
 
 $sm-min: 576px;
 $md-min: 768px;
 $lg-min: 992px;
 $xl-min: 1200px;
+$xxl-min: 1400px;
 
 /*-------------------------------------------*/
 /* vk_post Layout
@@ -113,6 +115,23 @@ $xl-min: 1200px;
 			width: calc(50% - 30px);
 		}
 		&-xl-12 {
+			width: calc(100% - 30px);
+		}
+    }
+    @media (min-width: $xxl-min) {
+		&-xxl-2 {
+			width: calc(16.66% - 30px);
+		}
+		&-xxl-3 {
+			width: calc(25% - 30px);
+		}
+		&-xxl-4 {
+			width: calc(33.3% - 30px);
+		}
+		&-xxl-6 {
+			width: calc(50% - 30px);
+		}
+		&-xxl-12 {
 			width: calc(100% - 30px);
 		}
 	}
@@ -331,11 +350,22 @@ $xl-min: 1200px;
 		}
 	}
 }
+.mainSection .vk_post-col-xxl-12 {
+	@media (min-width: $xxl-min) {
+		.vk_post_title {
+			font-size: 26px;
+		}
+		.vk_post_excerpt {
+			font-size: 14px;
+		}
+	}
+}
 .mainSection .wp-block-column {
 	.vk_post-col-sm-12,
 	.vk_post-col-md-12,
 	.vk_post-col-lg-12,
-	.vk_post-col-xl-12 {
+    .vk_post-col-xl-12,
+    .vk_post-col-xxl-12 {
 		.vk_post_title {
 			font-size: 1rem;
 		}

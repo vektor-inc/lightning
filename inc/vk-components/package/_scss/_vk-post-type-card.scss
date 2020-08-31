@@ -121,6 +121,11 @@ https://github.com/vektor-inc/vektor-wp-libraries
 		&-xl-12 {
 			margin-bottom: 20px;
 		}
+    }
+    @media (min-width: $xxl-min) {
+		&-xxl-12 {
+			margin-bottom: 20px;
+		}
 	}
 }
 .card-horizontal.vk_post-col {
@@ -146,6 +151,11 @@ https://github.com/vektor-inc/vektor-wp-libraries
 	}
 	@media (min-width: $xl-min) {
 		&-xl-12 {
+			margin-bottom: 15px;
+		}
+    }
+    @media (min-width: $xxl-min) {
+		&-xxl-12 {
 			margin-bottom: 15px;
 		}
 	}
@@ -175,6 +185,11 @@ https://github.com/vektor-inc/vektor-wp-libraries
 	}
 	@media (min-width: $xl-min) {
 		&-xl-12 {
+			margin-bottom: 40px;
+		}
+    }
+    @media (min-width: $xxl-min) {
+		&-xxl-12 {
 			margin-bottom: 40px;
 		}
 	}

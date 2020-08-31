@@ -87,6 +87,16 @@ https://github.com/vektor-inc/vektor-wp-libraries
 		&-xl-3:nth-child(4) {
 			border-top: $border_primary;
 		}
+    }
+    @media (min-width: $xxl-min) {
+		&-xxl-6:nth-child(2),
+		&-xxl-4:nth-child(2),
+		&-xxl-4:nth-child(3),
+		&-xxl-3:nth-child(2),
+		&-xxl-3:nth-child(3),
+		&-xxl-3:nth-child(4) {
+			border-top: $border_primary;
+		}
 	}
 }
 
