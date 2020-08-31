@@ -19,15 +19,15 @@ function lightning_optimize_css() {
 
 	if ( ! empty( $options['optimize_css'] ) && ( 'optomize-all-css' === $options['optimize_css'] || 'tree-shaking' === $options['optimize_css'] ) ) {
 
-		$skin_info = Lightning_Design_Manager::get_current_skin();
+		global $bootstrap;
 
 		$skin_css_url  = ! empty( $skin_info['css_path'] ) ? $skin_info['css_path'] : '';
 		$skin_css_path = ! empty( $skin_info['css_sv_path'] ) ? $skin_info['css_sv_path'] : '';
 		$skin_version  = ! empty( $skin_info['version'] ) ? $skin_info['version'] : '';
 
-		$bs4_css_url  = ( 'bs4' === $skin_info['bootstrap'] ) ? get_template_directory_uri() . '/library/bootstrap-4/css/bootstrap.min.css' : '';
-		$bs4_css_path = ( 'bs4' === $skin_info['bootstrap'] ) ? get_parent_theme_file_path( '/library/bootstrap-4/css/bootstrap.min.css' ) : '';
-		$bs4_version  = ( 'bs4' === $skin_info['bootstrap'] ) ? '4.5.0' : '';
+		$bs4_css_url  = ( '4' === $bootstrap ) ? get_template_directory_uri() . '/library/bootstrap-4/css/bootstrap.min.css' : '';
+		$bs4_css_path = ( '4' === $bootstrap ) ? get_parent_theme_file_path( '/library/bootstrap-4/css/bootstrap.min.css' ) : '';
+		$bs4_version  = ( '4' === $bootstrap ) ? '4.5.0' : '';
 
 		// 表示位置の配列.
 		global $vk_css_tree_shaking_array;
@@ -78,7 +78,7 @@ add_action( 'after_setup_theme', 'lightning_optimize_css' );
 
 
 function lightning_css_tree_shaking_exclude( $inidata ) {
-	$options         = get_option( 'lightning_theme_options' );
+	$options               = get_option( 'lightning_theme_options' );
 	$exclude_classes_array = array();
 	if ( ! empty( $options['tree_shaking_class_exclude'] ) ) {
 		// delete before after space
@@ -86,9 +86,9 @@ function lightning_css_tree_shaking_exclude( $inidata ) {
 		// convert tab and br to space
 		$exclude_clssses = preg_replace( '/[\n\r\t]/', '', $exclude_clssses );
 		// Change multiple spaces to single space
-		$exclude_clssses = preg_replace( '/\s/', '', $exclude_clssses );
-		$exclude_clssses = str_replace( '，', ',', $exclude_clssses );
-		$exclude_clssses = str_replace( '、', ',', $exclude_clssses );
+		$exclude_clssses       = preg_replace( '/\s/', '', $exclude_clssses );
+		$exclude_clssses       = str_replace( '，', ',', $exclude_clssses );
+		$exclude_clssses       = str_replace( '、', ',', $exclude_clssses );
 		$exclude_classes_array = explode( ',', $exclude_clssses );
 	}
 
