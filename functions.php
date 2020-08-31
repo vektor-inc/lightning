@@ -243,11 +243,18 @@ require get_parent_theme_file_path( '/inc/template-redirect.php' );
 require get_parent_theme_file_path( '/inc/layout-controller/layout-controller.php' );
 require get_parent_theme_file_path( '/inc/vk-footer-customize/vk-footer-customize-config.php' );
 
+
 /*
-  Load woocommerce modules
+  Plugin support
 /*-------------------------------------------*/
+// Load woocommerce modules
 if ( class_exists( 'woocommerce' ) ) {
-	require get_parent_theme_file_path( '/inc/woocommerce/functions-woo.php' );
+	require get_parent_theme_file_path( '/plugin-support/woocommerce/functions-woo.php' );
+}
+// Load polylang modules
+include_once ABSPATH . 'wp-admin/includes/plugin.php';
+if ( is_plugin_active( 'polylang/polylang.php' ) ) {
+	require get_parent_theme_file_path( '/plugin-support/polylang/functions-polylang.php' );
 }
 
 /*

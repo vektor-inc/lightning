@@ -35,7 +35,7 @@ jobs:
     - run: cp design-skin/origin2/css/style.css origin2.style.css.before
     - run: cp design-skin/origin2/css/editor.css origin2.editor.css.before
 
-    - run: cp inc/woocommerce/css/woo.css woo.css.before
+    - run: cp plugin-support/woocommerce/css/woo.css woo.css.before
 
     - run: npm install -D
 
@@ -72,7 +72,7 @@ jobs:
     # woocommerce scsss forget compile check
     - name: build woocomeerce StyleSheet
       run: npm run gulp sass_woo
-    - run: diff inc/woocommerce/css/woo.css woo.css.before
+    - run: diff plugin-support/woocommerce/css/woo.css woo.css.before
 
   php_unit:
     name: php unittest
