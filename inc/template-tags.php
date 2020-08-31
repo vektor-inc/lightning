@@ -505,7 +505,7 @@ function lightning_get_display_taxonomies( $post_id = null, $args = null ){
 	}
 	$taxonomies	= get_the_taxonomies( $post_id, $args );
 	$exclusion	= array( 'post_tag', 'product_type' );
-	$exclusion	= apply_filters( 'vk_exclude_term_list', $exclusion );
+	$exclusion	= apply_filters( 'vk_get_display_taxonomies_exclusion', $exclusion );
 	if ( is_array( $exclusion ) ){
 		foreach ( $exclusion as $key => $value ){
 			unset( $taxonomies[$value] );
