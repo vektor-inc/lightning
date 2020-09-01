@@ -16,8 +16,11 @@
 if ( post_password_required() ) {
 	return;
 }
+$options = get_option( 'lightning_theme_options' );
+$deahult = lightning_default_comment_options();
+$options = wp_parse_args( $options, $deahult );
 ?>
-
+<?php if ( empty( $options['hide_comment'][get_post_type()] ) && post_type_supports( get_post_type(), 'comments' ) ) : ?>
 <div id="comments" class="comments-area">
 
 	<?php // You can start editing here -- including this comment! ?>
@@ -67,15 +70,13 @@ if ( post_password_required() ) {
 
 	<?php
 		// If comments are closed and there are comments, let's leave a little note, shall we?
-		if ( ! comments_open() && '0' != get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) :
+		if ( ! comments_open() && '0' != get_comments_number() ) :
 	?>
-		<?php
-		// Don't display to Page
-		if (is_single()) :?>
 		<p class="no-comments"><?php _e( 'Comments are closed.', 'lightning' ); ?></p>
-		<?php endif; ?>
+
 	<?php endif; ?>
 
 	<?php comment_form(); ?>
 
 </div><!-- #comments -->
+<?php endif; ?>

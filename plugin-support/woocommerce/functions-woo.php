@@ -1,6 +1,6 @@
 <?php
 
-require get_parent_theme_file_path( '/inc/woocommerce/customize.php' );
+require get_parent_theme_file_path( '/plugin-support/woocommerce/customize.php' );
 
 function lightning_add_woocommerce_support() {
 	add_theme_support( 'woocommerce' );
@@ -11,12 +11,12 @@ add_action( 'after_setup_theme', 'lightning_add_woocommerce_support' );
   Load CSS
 /*-------------------------------------------*/
 function lightning_woo_css() {
-	wp_enqueue_style( 'lightning-woo-style', get_template_directory_uri() . '/inc/woocommerce/css/woo.css', array( 'lightning-common-style' ), LIGHTNING_THEME_VERSION );
+	wp_enqueue_style( 'lightning-woo-style', get_template_directory_uri() . '/plugin-support/woocommerce/css/woo.css', array( 'lightning-common-style' ), LIGHTNING_THEME_VERSION );
 }
 add_action( 'wp_enqueue_scripts', 'lightning_woo_css' );
 
 function lightning_add_woocommerce_css_to_editor() {
-	add_editor_style( '/inc/woocommerce/css/woo.css' );
+	add_editor_style( '/plugin-support/woocommerce/css/woo.css' );
 }
 add_action( 'after_setup_theme', 'lightning_add_woocommerce_css_to_editor' );
 
