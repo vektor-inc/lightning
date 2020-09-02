@@ -218,6 +218,7 @@ require get_parent_theme_file_path( '/inc/vk-css-optimize/vk-css-optimize-config
 require get_parent_theme_file_path( '/inc/customize/customize.php' );
 require get_parent_theme_file_path( '/inc/customize/customize-design.php' );
 require get_parent_theme_file_path( '/inc/customize/customize-top-slide.php' );
+require get_parent_theme_file_path( '/inc/customize/customize-functions.php' );
 
 /*
   Load allow customize modules
