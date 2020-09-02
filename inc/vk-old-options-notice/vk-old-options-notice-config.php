@@ -12,14 +12,6 @@ if ( ! class_exists( 'VK_Old_Options_Notice' ) ) {
 			'data_type'    => 'option',
 			'target_field' => 'lightning_theme_options',
 			'old_value'    => array(
-				'top_sidebar_hidden' => true
-			),
-			'callback'     => 'lightning_options_compatible',
-		),
-		array(
-			'data_type'    => 'option',
-			'target_field' => 'lightning_theme_options',
-			'old_value'    => array(
 				'layout' => array(
 					'archive' => 'col-one',
 				),
@@ -31,8 +23,8 @@ if ( ! class_exists( 'VK_Old_Options_Notice' ) ) {
 			'target_field' => 'lightning_theme_options',
 			'old_value'    => array(
 				'layout' => array(
-					'archive' => 'col-two'
-				)
+					'archive' => 'col-two',
+				),
 			),
 			'callback'     => 'lightning_options_compatible',
 		),
@@ -41,8 +33,8 @@ if ( ! class_exists( 'VK_Old_Options_Notice' ) ) {
 			'target_field' => 'lightning_theme_options',
 			'old_value'    => array(
 				'layout' => array(
-					'archive' => 'col-one-no-subsection'
-				)
+					'archive' => 'col-one-no-subsection',
+				),
 			),
 			'callback'     => 'lightning_options_compatible',
 		),
@@ -61,8 +53,8 @@ if ( ! class_exists( 'VK_Old_Options_Notice' ) ) {
 			'target_field' => 'lightning_theme_options',
 			'old_value'    => array(
 				'layout' => array(
-					'single' => 'col-two'
-				)
+					'single' => 'col-two',
+				),
 			),
 			'callback'     => 'lightning_options_compatible',
 		),
@@ -71,8 +63,8 @@ if ( ! class_exists( 'VK_Old_Options_Notice' ) ) {
 			'target_field' => 'lightning_theme_options',
 			'old_value'    => array(
 				'layout' => array(
-					'single' => 'col-one-no-subsection'
-				)
+					'single' => 'col-one-no-subsection',
+				),
 			),
 			'callback'     => 'lightning_options_compatible',
 		),
@@ -91,8 +83,8 @@ if ( ! class_exists( 'VK_Old_Options_Notice' ) ) {
 			'target_field' => 'lightning_theme_options',
 			'old_value'    => array(
 				'layout' => array(
-					'page' => 'col-two'
-				)
+					'page' => 'col-two',
+				),
 			),
 			'callback'     => 'lightning_options_compatible',
 		),
@@ -101,8 +93,8 @@ if ( ! class_exists( 'VK_Old_Options_Notice' ) ) {
 			'target_field' => 'lightning_theme_options',
 			'old_value'    => array(
 				'layout' => array(
-					'page' => 'col-one-no-subsection'
-				)
+					'page' => 'col-one-no-subsection',
+				),
 			),
 			'callback'     => 'lightning_options_compatible',
 		),
