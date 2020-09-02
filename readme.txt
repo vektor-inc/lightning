@@ -42,7 +42,7 @@ https://www.vektor-inc.co.jp/inquiry/
 v12.0.0
 * [ Specification change ] Cope with xxl
 * [ Specification change ] Cope width wide content width
-* [ Specification change ] change cope with plugin code directory
+* [ Specification change ] Change directory of cope with plugin code 
 * [ Add function ] Cope with comment for custom post types
 * [ Bug fix ] Cope with Polylang
 * [ Bug fix ] Bug fix on sidebar right / fix / priority bottom
