@@ -39,10 +39,13 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
-v11.6.0
+v12.0.0
+* [ Specification change ] Cope with xxl
+* [ Specification change ] Cope width wide content width
+* [ Specification change ] change cope with plugin code directory
 * [ Add function ] Cope with comment for custom post types
-* [ Specification change ] Cope width content width.
-* [ Bug fix ] Bug fix on sidebar right / fix / priority bottom.
+* [ Bug fix ] Cope with Polylang
+* [ Bug fix ] Bug fix on sidebar right / fix / priority bottom
 
 v11.5.0
 * [ Specification Change ] meta.php cope with the custom post types.
