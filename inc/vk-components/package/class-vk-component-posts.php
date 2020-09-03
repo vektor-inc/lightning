@@ -114,6 +114,8 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			$hidden_class = array();
 			if ( ! empty( $options['vkb_hidden'] ) ) {
 				array_push( $hidden_class, 'vk_hidden' );
+			} elseif ( ! empty( $options['vkb_hidden_xxl'] ) ) {
+				array_push( $hidden_class, 'vk_hidden-xxl' );
 			} elseif ( ! empty( $options['vkb_hidden_xl'] ) ) {
 				array_push( $hidden_class, 'vk_hidden-xl' );
 			} elseif ( ! empty( $options['vkb_hidden_lg'] ) ) {
@@ -555,7 +557,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 		 */
 		public static function get_col_size_classes( $attributes ) {
 			$col_class_array = array();
-			$sizes           = array( 'xs', 'sm', 'md', 'lg', 'xl' );
+			$sizes           = array( 'xs', 'sm', 'md', 'lg', 'xl', 'xxl' );
 			foreach ( $sizes as $key => $size ) {
 				if ( ! empty( $attributes[ 'col_' . $size ] ) ) {
 					$col_class_array[] = 'vk_post-col-' . $size . '-' . self::get_col_converted_size( $attributes[ 'col_' . $size ] );

@@ -183,7 +183,16 @@ if ( ! class_exists( 'Vk_term_color' ) ) {
 				$outer_class = ' class="' . esc_attr( $args['class'] ) . '"';
 			}
 
-			$taxonomies             = get_the_taxonomies();
+			$taxonomies	= get_the_taxonomies();
+			$exclusion	= array( 'post_tag', 'product_type' );
+			// * vk_exclude_term_list is used in lightning too.
+			$exclusion	= apply_filters( 'vk_get_display_taxonomies_exclusion', $exclusion );
+			if ( is_array( $exclusion ) ){
+				foreach ( $exclusion as $key => $value ){
+					unset( $taxonomies[$value] );
+				}
+			}
+
 			$single_term_with_color = '';
 			if ( $taxonomies ) :
 				// get $taxonomy name

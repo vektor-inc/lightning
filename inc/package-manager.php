@@ -22,10 +22,6 @@ function Lightning_load_packages() {
 
 function lightning_old_packages_array() {
 	$packages = array(
-		// 'woocommerce'                => array(
-		// 	'label'       => __( 'WooCommerce', 'lightning' ),
-		// 	'description' => __( '', 'lightning' ),
-		// ),
 		'widget_full_wide_title'     => array(
 			'label'       => __( 'Full Wide Title Widget', 'lightning' ),
 			'description' => __( 'If you are using Lightning Pro that, You can use the same function by Outer Block and Title Block in Plugin VK Blocks.', 'lightning' ),
@@ -48,15 +44,8 @@ function lightning_old_packages_array() {
 /*-------------------------------------------*/
 /*	customize_register
 /*-------------------------------------------*/
-add_action( 'customize_register', 'lightning_customize_register_function' );
-function lightning_customize_register_function( $wp_customize ) {
-
-	$wp_customize->add_section(
-		'lightning_function', array(
-			'title'    => lightning_get_prefix_customize_panel() . __( 'Function Settings', 'lightning' ),
-			'priority' => 450,
-		)
-	);
+add_action( 'customize_register', 'lightning_customize_register_package' );
+function lightning_customize_register_package( $wp_customize ) {
 
 	$wp_customize->add_setting(
 		'not_recommended_title', array(
