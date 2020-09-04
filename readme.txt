@@ -39,6 +39,9 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+* [ Desigin tuning ] term archive page title font Syncronize
+* [ Desigin tuning ] Post sidebar default post list title margin tuning
+
 v12.0.0
 * [ Specification change ] Cope with xxl
 * [ Specification change ] Cope width wide content width
