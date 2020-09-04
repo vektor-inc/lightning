@@ -801,6 +801,9 @@ ul.page-numbers {
 /*-------------------------------------------*/
 .archive-header {
 	margin-bottom: 1em;
+	&_title {
+		font-size:2rem;
+	}
 }
 
 .archive-meta {

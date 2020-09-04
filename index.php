@@ -43,7 +43,7 @@ do_action( 'lightning_breadcrumb_after' );
 	if ( $page_for_posts['post_top_use'] || get_post_type() !== 'post' ) {
 		if ( is_year() || is_month() || is_day() || is_tag() || is_author() || is_tax() || is_category() ) {
 			$archiveTitle      = get_the_archive_title();
-			$archiveTitle_html = '<header class="archive-header"><h1>' . $archiveTitle . '</h1></header>';
+			$archiveTitle_html = '<header class="archive-header"><h1 class="archive-header_title">' . $archiveTitle . '</h1></header>';
 		}
 	}
 	echo wp_kses_post( apply_filters( 'lightning_mainSection_archiveTitle', $archiveTitle_html ) );
