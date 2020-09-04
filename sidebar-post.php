@@ -22,7 +22,7 @@ $post_loop = new WP_Query(
 ?>
 
 <?php if ( $post_loop->have_posts() ) : ?>
-<aside class="widget">
+<aside class="widget widget_postlist">
 <h1 class="subSection-title"><?php echo __( 'Recent posts', 'lightning' ); ?></h1>
 <?php
 while ( $post_loop->have_posts() ) :
