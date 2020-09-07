@@ -39,6 +39,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+* [ Specification Change ][ FooterMenu / Footer Widget ] In case of no menu or no widget that change to don't display empty tags.
+
 v12.1.2
 * [ Bug fix ] Sidebar contact section on lg screen
 
