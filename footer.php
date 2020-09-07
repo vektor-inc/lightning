@@ -13,22 +13,24 @@
 <?php do_action( 'lightning_footer_before' ); ?>
 
 <footer class="<?php lightning_the_class_name( 'siteFooter' ); ?>">
-	<div class="footerMenu">
-	   <div class="container">
-			<?php
-			wp_nav_menu(
-				array(
-					'theme_location' => 'Footer',
-					'container'      => 'nav',
-					'items_wrap'     => '<ul id="%1$s" class="%2$s nav">%3$s</ul>',
-					'fallback_cb'    => '',
-					'depth'          => 1,
-				)
-			);
-			?>
+	<?php if ( has_nav_menu( 'Footer' ) ) : ?>
+		<div class="footerMenu">
+			<div class="container">
+				<?php
+				wp_nav_menu(
+					array(
+						'theme_location' => 'Footer',
+						'container'      => 'nav',
+						'items_wrap'     => '<ul id="%1$s" class="%2$s nav">%3$s</ul>',
+						'fallback_cb'    => '',
+						'depth'          => 1,
+					)
+				);
+				?>
+			</div>
 		</div>
-	</div>
-	<?php 
+	<?php endif; ?>
+	<?php
 	$footer_widget_area_count = 3;
 	$footer_widget_area_count = apply_filters( 'lightning_footer_widget_area_count', $footer_widget_area_count );
 	$footer_widget_exists = false;
