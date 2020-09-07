@@ -19,8 +19,8 @@ function lightning_optimize_css() {
 
 	if ( ! empty( $options['optimize_css'] ) && ( 'optomize-all-css' === $options['optimize_css'] || 'tree-shaking' === $options['optimize_css'] ) ) {
 
-        global $bootstrap;
-        $skin_info = Lightning_Design_Manager::get_current_skin();
+		global $bootstrap;
+		$skin_info = Lightning_Design_Manager::get_current_skin();
 
 		$skin_css_url  = ! empty( $skin_info['css_path'] ) ? $skin_info['css_path'] : '';
 		$skin_css_path = ! empty( $skin_info['css_sv_path'] ) ? $skin_info['css_sv_path'] : '';
@@ -98,3 +98,18 @@ function lightning_css_tree_shaking_exclude( $inidata ) {
 	return $inidata;
 }
 add_filter( 'css_tree_shaking_exclude', 'lightning_css_tree_shaking_exclude' );
+
+/**
+ * CSS Tree Shaking Exclude
+ *
+ * @param array $inidata CSS Tree Shaking Exclude Paramator.
+ */
+function lightning_css_tree_shaking_exclude_class( $inidata ) {
+	$exclude_classes_array = array(
+		'customize-partial-edit-shortcut',
+	);
+	$inidata['class']      = array_merge( $inidata['class'], $exclude_classes_array );
+
+	return $inidata;
+}
+add_filter( 'css_tree_shaking_exclude', 'lightning_css_tree_shaking_exclude_class' );
