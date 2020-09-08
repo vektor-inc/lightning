@@ -27,6 +27,12 @@
 .footerWidget > span > .customize-partial-edit-shortcut-button {
 	margin-left: -2em;
 }
+.slide .item picture .customize-partial-edit-shortcut {
+	position: absolute;
+	left: 15%;
+	top: 15%;
+	transform: translateY(-50%) translateX(0);
+}
 
 /*-------------------------------------------*/
 /*	Default Post List on sidebar

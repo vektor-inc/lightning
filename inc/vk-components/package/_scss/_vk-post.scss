@@ -295,6 +295,11 @@ $xxl-min: 1400px;
 /*-------------------------------------------*/
 /* Main section 1 column adjustment
 /*-------------------------------------------*/
+
+/*
+mainSection は Lightning 固有のクラス名なのでここに書いてあるのは本来よろしくない
+*/
+
 .mainSection .vk_post-col-sm-12 {
 	@media (min-width: $sm-min) {
 		.vk_post_title {

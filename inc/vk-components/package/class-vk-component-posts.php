@@ -503,7 +503,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				$html .= '</span>';
 			}
 
-			$html .= '<h5 class="postListText_title"><a href="' . get_the_permalink( $post->ID ) . '">';
+			$html .= '<p class="postListText_title"><a href="' . get_the_permalink( $post->ID ) . '">';
 			$html .= get_the_title( $post->ID );
 			$html .= '</a>';
 
@@ -516,7 +516,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				}
 			}
 
-			$html .= '</h5>';
+			$html .= '</p>';
 
 			$html .= '</div>';
 			return $html;

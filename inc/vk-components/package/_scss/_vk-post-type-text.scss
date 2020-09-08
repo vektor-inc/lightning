@@ -43,11 +43,11 @@ https://github.com/vektor-inc/vektor-wp-libraries
 	}
 	&_title {
 		font-size: 14px;
-		line-height: 1.6;
 		display: block;
 		overflow: hidden;
 		margin: 0;
 		padding-top: 0.2rem;
+		clear: both;
 		@media (min-width: $lg-min) {
 			padding-top: 0;
 			clear: none;
@@ -59,6 +59,10 @@ https://github.com/vektor-inc/vektor-wp-libraries
 			}
 		}
 	}
+}
+// Katawara の p タグ指定に負けないように
+.vk_posts .postListText_title{
+	line-height: 1.6;
 }
 
 .mainSection .postListText.vk_post-col-sm-12 {
