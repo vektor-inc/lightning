@@ -81,8 +81,10 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 	margin: 0;
 	background: none;
 	font-size: 3vw;
+	/* reset headding title design  */
 	text-align: inherit;
-
+	outline:unset;
+	outline-offset:unset;
 	@media (min-width: 768px) {
 		font-size: 2.5vw;
 	}
