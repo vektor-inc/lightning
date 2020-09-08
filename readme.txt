@@ -41,9 +41,10 @@ https://www.vektor-inc.co.jp/inquiry/
 
 v12.2.0
 * [ Specification Change ][ CSS optimize ] Abolition css preload
+* [ Specification Change ] update vk components ( text list title tag h5 -> p )
+* [ Specification Change ] Change to in case of no setted footer widget that Footer widget area outer html delete
 * [ Bug fix ][ Sidebar ] Edit shortcut icon position
 * [ Bug fix ][ Slidebar ] Cope with headding desigin changed
-* [ Specification Change ] update vk components ( text list title tag h5 -> p )
 
 v12.1.2
 * [ Bug fix ] Sidebar contact section on lg screen
