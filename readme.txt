@@ -39,6 +39,11 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v12.2.0
+* [ Specification Change ][ CSS optimize ] Abolition css preload
+* [ Bug fix ][ Sidebar ] Edit shortcut icon position
+* [ Specification Change ] update vk components ( text list title tag h5 -> p )
+
 v12.1.2
 * [ Bug fix ] Sidebar contact section on lg screen
 
