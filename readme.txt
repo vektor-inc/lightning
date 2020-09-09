@@ -46,9 +46,10 @@ v12.2.1
 v12.2.0
 * [ Specification Change ][ CSS optimize ] Abolition css preload
 * [ Specification Change ] update vk components ( text list title tag h5 -> p )
-* [ Specification Change ] Change to in case of no setted footer widget that Footer widget area outer html delete
+* [ Specification Change ][ FooterMenu / Footer Widget ] In case of no menu or no widget that change to don't display empty tags.
 * [ Bug fix ][ Sidebar ] Edit shortcut icon position
 * [ Bug fix ][ Slidebar ] Cope with headding desigin changed
+>>>>>>> develop
 
 v12.1.2
 * [ Bug fix ] Sidebar contact section on lg screen
