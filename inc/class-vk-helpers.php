@@ -107,5 +107,21 @@ if ( ! class_exists( 'VK_Helpers' ) ) {
 			$rgba .= 'rgba(' . $color['color_red'] . ', ' . $color['color_green'] . ', ' .$color['color_blue'] . ', ' . $alpha . ')';
 			return esc_html( $rgba );
 		}
+
+		/**
+		 * 有効化されているプラグインを無効化する
+		 */
+		public static function deactivate_plugin( $plugin_path ) {
+			include_once ABSPATH . 'wp-admin/includes/plugin.php';
+			if ( is_plugin_active( $plugin_path ) ) {
+				$active_plugins = get_option( 'active_plugins' );
+				// delete item
+				$active_plugins = array_diff( $active_plugins, array( $plugin_path ) );
+				// re index
+				$active_plugins = array_values( $active_plugins );
+				update_option( 'active_plugins', $active_plugins );
+			}
+		}
+
 	}
 }

@@ -513,3 +513,30 @@ function lightning_get_display_taxonomies( $post_id = null, $args = null ){
 	}
 	return $taxonomies;
 }
+
+/**
+ * @since 12.3.0
+ */
+function lightning_get_colors(){
+	$options     				= get_option( 'lightning_theme_options' );
+	$skin_info   				= Lightning_Design_Manager::get_current_skin();
+	$dynamic_css 				= '';
+	$colors['color_key']		= '';
+	$colors['color_key_dark']	= '';
+
+	if ( ! empty( $options['color_key'] ) ){
+		$colors['color_key']      = esc_html( $options['color_key'] );
+	}
+	if ( ! empty( $options['color_key_dark'] ) ){
+		$colors['color_key_dark'] = esc_html( $options['color_key_dark'] );
+	}
+
+	if ( $colors['color_key'] && ! $colors['color_key_dark'] ){
+		$colors['color_key_dark'] = VK_Helpers::color_auto_modifi( $colors['color_key'], 0.85 );
+	}
+
+	if ( ! $colors['color_key'] && $colors['color_key_dark'] ){
+		$colors['color_key']		= VK_Helpers::color_auto_modifi( $colors['color_key_dark'], 1.15 );
+	}
+	return $colors;
+}
