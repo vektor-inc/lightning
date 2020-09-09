@@ -411,13 +411,16 @@ function lightning_output_keycolor_css() {
 add_action( 'wp_enqueue_scripts', 'lightning_print_css_common', 20 );
 
 function lightning_print_css_common() {
-	$options     = get_option( 'lightning_theme_options' );
-	$skin_info   = Lightning_Design_Manager::get_current_skin();
-	$dynamic_css = '';
+	$options     	= get_option( 'lightning_theme_options' );
+	$skin_info   	= Lightning_Design_Manager::get_current_skin();
+	$dynamic_css 	= '';
 
-	if ( isset( $options['color_key'] ) && isset( $options['color_key_dark'] ) ) {
-		$color_key      = ( ! empty( $options['color_key'] ) ) ? esc_html( $options['color_key'] ) : '#337ab7';
-		$color_key_dark = ( ! empty( $options['color_key_dark'] ) ) ? esc_html( $options['color_key_dark'] ) : '#2e6da4';
+	$colors 		= lightning_get_colors();
+	$color_key		= $colors['color_key'];
+	$color_key_dark = $colors['color_key_dark'];
+
+	if ( ! empty( $options['color_key'] ) || ! empty( $options['color_key_dark'] ) ) {
+
 		$dynamic_css   .= '/* ltg common custom */
 		:root {
 			--vk-menu-acc-btn-border-color:#333;
