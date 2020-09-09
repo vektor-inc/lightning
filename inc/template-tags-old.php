@@ -26,3 +26,9 @@ function lightning_is_frontpage_onecolumn() {
 	// }
 	// return false;
 }
+
+function lightning_deactivate_plugin( $plugin_path ){
+	if ( class_exists( 'VK_Helpers' ) ){
+		VK_Helpers::deactivate_plugin( $plugin_path  );
+	}
+}

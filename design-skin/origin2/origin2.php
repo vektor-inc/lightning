@@ -8,8 +8,9 @@ add_action( 'wp_head', 'lightning_print_css_origin', 5 );
 function lightning_print_css_origin() {
 	$options = get_option( 'lightning_theme_options' );
 
-	$color_key      = ! empty( $options['color_key'] ) ? esc_html( $options['color_key'] ) : '#337ab7';
-	$color_key_dark = ! empty( $options['color_key_dark'] ) ? esc_html( $options['color_key_dark'] ) : '#2e6da4';
+	$colors 		= lightning_get_colors();
+	$color_key		= $colors['color_key'];
+	$color_key_dark = $colors['color_key_dark'];
 
 	// Text Color ///////////////////
 	$dynamic_css = '.media .media-body .media-heading a:hover { color:' . $color_key . ';  }';
