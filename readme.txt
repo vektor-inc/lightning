@@ -49,7 +49,6 @@ v12.2.0
 * [ Specification Change ][ FooterMenu / Footer Widget ] In case of no menu or no widget that change to don't display empty tags.
 * [ Bug fix ][ Sidebar ] Edit shortcut icon position
 * [ Bug fix ][ Slidebar ] Cope with headding desigin changed
->>>>>>> develop
 
 v12.1.2
 * [ Bug fix ] Sidebar contact section on lg screen
