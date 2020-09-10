@@ -110,6 +110,7 @@ add_filter( 'css_tree_shaking_exclude', 'lightning_css_tree_shaking_exclude' );
 function lightning_css_tree_shaking_exclude_class( $inidata ) {
 	$exclude_classes_array = array(
 		'customize-partial-edit-shortcut',
+		'vk_post',
 		'vk_post-col-xs-12',
 		'vk_post-col-xs-6',
 		'vk_post-col-xs-4',
