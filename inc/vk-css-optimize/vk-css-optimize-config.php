@@ -29,9 +29,9 @@ function lightning_optimize_css() {
 		$skin_css_path = ! empty( $skin_info['css_sv_path'] ) ? $skin_info['css_sv_path'] : '';
 		$skin_version  = ! empty( $skin_info['version'] ) ? $skin_info['version'] : '';
 
-		$bs4_css_url  = ( '4' === $bootstrap ) ? get_template_directory_uri() . '/library/bootstrap-4/css/bootstrap.min.css' : '';
-		$bs4_css_path = ( '4' === $bootstrap ) ? get_parent_theme_file_path( '/library/bootstrap-4/css/bootstrap.min.css' ) : '';
-		$bs4_version  = ( '4' === $bootstrap ) ? '4.5.0' : '';
+		$bs4_css_url  = ( ! empty( $skin_info['bootstrap'] ) && 'bs4' === $skin_info['bootstrap'] ) ? get_template_directory_uri() . '/library/bootstrap-4/css/bootstrap.min.css' : '';
+		$bs4_css_path = ( ! empty( $skin_info['bootstrap'] ) && 'bs4' === $skin_info['bootstrap'] ) ? get_parent_theme_file_path( '/library/bootstrap-4/css/bootstrap.min.css' ) : '';
+		$bs4_version  = ( ! empty( $skin_info['bootstrap'] ) && 'bs4' === $skin_info['bootstrap'] ) ? '4.5.0' : '';
 
 		// 表示位置の配列.
 		global $vk_css_tree_shaking_array;
@@ -110,6 +110,7 @@ add_filter( 'css_tree_shaking_exclude', 'lightning_css_tree_shaking_exclude' );
 function lightning_css_tree_shaking_exclude_class( $inidata ) {
 	$exclude_classes_array = array(
 		'customize-partial-edit-shortcut',
+		'vk_post',
 		'vk_post-col-xs-12',
 		'vk_post-col-xs-6',
 		'vk_post-col-xs-4',
