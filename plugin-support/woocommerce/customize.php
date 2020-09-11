@@ -14,7 +14,7 @@ function lightning_customize_register_woo( $wp_customize ) {
 			'default'           => false,
 			'type'              => 'option',
 			'capability'        => 'edit_theme_options',
-			'sanitize_callback' => 'lightning_sanitize_checkbox',
+			'sanitize_callback' => array( 'VK_Helpers', 'sanitize_checkbox' ),
 		)
 	);
 	$wp_customize->add_control(
