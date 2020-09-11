@@ -39,7 +39,7 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
-v12.2.2
+v12.2.3
 * [ Bug fix ] Card tree shaking 3
 
 v12.2.2
