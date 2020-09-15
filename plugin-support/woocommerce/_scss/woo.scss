@@ -26,6 +26,24 @@ $color-key-dark-default: #2e6da4;
 	--image-border: 1px solid #e5e5e5;
 }
 
+@mixin title_design_reset {
+	position: relative;
+	background-color: transparent;
+	outline: unset;
+	outline-offset: unset;
+	box-shadow: unset;
+	border: none;
+	border-radius:unset;
+	padding: 0;
+	color: inherit;
+	&::before,
+	&::after {
+		content: none;
+	}
+}
+
+
+
 /*-------------------------------------------*/
 /*	Form common
 /*-------------------------------------------*/
@@ -100,13 +118,6 @@ $color-key-dark-default: #2e6da4;
 /*
 	Button
 -------------------------------------------*/
-.woocommerce #respond input#submit,
-.woocommerce a.button,
-.woocommerce button.button,
-.woocommerce input.button {
-	// padding-left: 1.5em;
-	// padding-right: 1.5em;
-}
 
 .woocommerce {
 	a.button.add_to_cart_button {
@@ -338,8 +349,9 @@ div[class*="wp-block-product"] {
 // for Subscription Product type
 .woocommerce ul.products li.product-type-subscription {
 	.price {
-		position: relative;
-		bottom: 10px;
+		// subscription-detailsの緑の文字が重なるので削除←こちらに伴い不要となったので削除
+		// position: relative;
+		// bottom: 0;
 	}
 }
 
@@ -414,20 +426,22 @@ div[class*="wp-block-product"] {
 
 	li.product,
 	li.products {
-		padding-bottom: 65px;
+		padding-bottom: 35px;
 		position: relative;
 	}
 
 	.woocommerce-loop-product__title {
 		font-size: 14px;
 		line-height: 1.5em;
+		@include title_design_reset;
 	}
 
-	li.product-type-subscription .price,
-	.price {
-		position: absolute;
-		bottom: 30px;
-	}
+	// subscription-detailsの緑の文字が重なるので削除
+	// li.product-type-subscription .price,
+	// .price {	
+		// position: absolute;
+		// bottom: 30px;
+	// }
 
 	.add_to_cart_button {
 		text-align: center;
@@ -679,6 +693,7 @@ tr.cart-discount td {
 			font-weight: normal;
 			font-size: 14px;
 			margin-bottom: 10px;
+			@include title_design_reset;
 		}
 
 		.wc-block-grid__product-onsale {
