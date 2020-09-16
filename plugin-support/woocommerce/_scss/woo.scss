@@ -126,6 +126,7 @@ $color-key-dark-default: #2e6da4;
 }
 
 .fa_v5_css {
+	.wc-block-grid__product-add-to-cart .wp-block-button__link::after,
 	.wp-block-product-category .wp-block-button__link::after,
 	button.single_add_to_cart_button::after,
 	a.button.add_to_cart_button::after {
@@ -151,6 +152,7 @@ $color-key-dark-default: #2e6da4;
 	background-color: var(--color-key, $color-key-default);
 }
 
+.wc-block-grid__product-add-to-cart .wp-block-button__link,
 .woocommerce #respond input#submit,
 .woocommerce a.button,
 .woocommerce button.button,
@@ -159,14 +161,17 @@ $color-key-dark-default: #2e6da4;
 	background-color: var(--color-key-dark, $color-key-dark-default);
 }
 
+.wc-block-grid__product-add-to-cart .wp-block-button__link:hover,
 .woocommerce #respond input#submit:hover,
 .woocommerce a.button:hover,
 .woocommerce button.button:hover,
 .woocommerce input.button:hover {
 	color: #fff;
 	background-color: var(--color-key, $color-key-default);
+	text-decoration: none;
 }
 
+.wc-block-grid__product-add-to-cart .wp-block-button__link.alt,
 .woocommerce #respond input#submit.alt,
 .woocommerce a.button.alt,
 .woocommerce button.button.alt,
@@ -175,6 +180,7 @@ $color-key-dark-default: #2e6da4;
 	background-color: var(--color-key-dark, $color-key-dark-default);
 }
 
+.wc-block-grid__product-add-to-cart .wp-block-button__link.alt:hover,
 .woocommerce #respond input#submit.alt:hover,
 .woocommerce a.button.alt:hover,
 .woocommerce button.button.alt:hover,
@@ -683,17 +689,24 @@ tr.cart-discount td {
 		&-image {
 			// margin-bottom: 1rem;
 			// border: var(--image-border);
+			img{
+				border: 1px solid #f2f2f2;
+			}
 		}
 
 		&-link {
+			color: var(--text-color);
 		}
 
-		&-title {
+		&-title{
 			color: var(--text-color);
 			font-weight: normal;
 			font-size: 14px;
 			margin-bottom: 10px;
 			@include title_design_reset;
+			a{
+				color: var(--text-color);
+			}
 		}
 
 		.wc-block-grid__product-onsale {
@@ -724,6 +737,11 @@ tr.cart-discount td {
 				font-size: 0.875rem;
 				padding: 10px 1.5em;
 				width: 100%;
+			}
+		}
+		&-price__value{
+			.wc-block-components-formatted-money-amount{
+				color: $price_color;
 			}
 		}
 	}
