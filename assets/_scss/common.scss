@@ -72,7 +72,7 @@
 		margin-bottom: 15px;
 	}
 }
-.wp-block-search,
+
 .widget_search form div,
 .widget_display_search form div,
 .widget_product_search form {
@@ -80,7 +80,6 @@
 	flex-wrap: wrap;
 	width: 100%;
 	justify-content: space-between;
-	input.wp-block-search__input,
 	input#s,
 	input#bbp_search,
 	input.search-field {
@@ -93,7 +92,6 @@
 		margin-right: 0;
 		margin-bottom: 0;
 	}
-	.wp-block-search__button,
 	input#searchsubmit,
 	input#bbp_search_submit,
 	button {
