@@ -39,14 +39,18 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+<<<<<<< HEAD
 v12.4.0
 * [ Design tuning ] Add search block design
 * [ Specification Change ] content template cope with page slug
 
 v12.2.3
+=======
+v12.3.2
+>>>>>>> master
 * [ Bug fix ] Card tree shaking 3
 
-v12.2.2
+v12.3.1
 * [ Bug fix ] Card tree shaking 2
 
 v12.2.1
