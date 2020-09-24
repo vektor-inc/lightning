@@ -5,6 +5,7 @@ $border_horizontal: 1px solid rgba(0, 0, 0, 0.15);
 /*-------------------------------------------*/
 /* search
 /*-------------------------------------------*/
+.wp-block-search,
 .widget_search form div,
 .widget_display_search form div,
 .widget_product_search form {
@@ -13,7 +14,7 @@ $border_horizontal: 1px solid rgba(0, 0, 0, 0.15);
 	input.search-field {
 		border-radius: 4px;
 	}
-
+	.wp-block-search__button,
 	input#searchsubmit,
 	input#bbp_search_submit,
 	button {

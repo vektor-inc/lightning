@@ -99,3 +99,31 @@
 		}
 	}
 }
+
+/*-------------------------------------------*/
+/*  「検索」ブロック
+/*-------------------------------------------*/
+.wp-block-search {
+	.wp-block-search__label{
+		display: none;
+	}
+	.wp-block-search__button{
+		width: 33%;
+		color: #fff;
+		border: none;
+		padding: 6px;
+		font-size: 16px;
+		box-shadow:none;
+		text-align: center;
+	}
+	input.wp-block-search__input {
+		max-width: initial;
+		width: 64%;
+		border: 1px solid #ccc;
+		padding: 6px 12px;
+		font-size: 14px;
+		margin-right: 0;
+		margin-bottom: 0;
+	}
+
+}

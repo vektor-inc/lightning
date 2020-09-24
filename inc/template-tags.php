@@ -88,61 +88,7 @@ function lightning_the_class_name( $position = '', $extend = array() ) {
 	echo lightning_get_the_class_name( $position, $extend );
 }
 
-/*
-  Sanitize
-/*-------------------------------------------*/
 
-/*
-	Add sanitize checkbox
-/*-------------------------------------------*/
-function lightning_sanitize_checkbox( $input ) {
-	if ( $input == true ) {
-		return true;
-	} else {
-		return false;
-	}
-}
-
-function lightning_sanitize_number( $input ) {
-	$input = mb_convert_kana( $input, 'a' );
-	if ( is_numeric( $input ) ) {
-		return $input;
-	} else {
-		return 0;
-	}
-}
-
-function lightning_sanitize_number_percentage( $input ) {
-	$input = lightning_sanitize_number( $input );
-	if ( 0 <= $input && $input <= 100 ) {
-		return $input;
-	} else {
-		return 0;
-	}
-}
-
-function lightning_sanitize_radio( $input ) {
-	return esc_attr( $input );
-}
-
-function lightning_sanitize_textarea( $input ) {
-	$allowed_html = array(
-		'a'      => array(
-			'id'    => array(),
-			'href'  => array(),
-			'title' => array(),
-			'class' => array(),
-			'role'  => array(),
-		),
-		'br'     => array(),
-		'em'     => array(),
-		'strong' => array(),
-		'i'      => array(
-			'class' => array(),
-		),
-	);
-	return wp_kses( $input, $allowed_html );
-}
 
 /*
   Theme default options
@@ -363,7 +309,7 @@ function lightning_slide_cover_style( $lightning_theme_options, $i ) {
 		$cover_style = 'background-color:' . $lightning_theme_options[ 'top_slide_cover_color_' . $i ] . ';';
 
 		// opacity
-		$opacity      = lightning_sanitize_number_percentage( $lightning_theme_options[ 'top_slide_cover_opacity_' . $i ] ) / 100;
+		$opacity      = VK_Helpers::sanitize_number_percentage( $lightning_theme_options[ 'top_slide_cover_opacity_' . $i ] ) / 100;
 		$cover_style .= 'opacity:' . $opacity;
 
 	}

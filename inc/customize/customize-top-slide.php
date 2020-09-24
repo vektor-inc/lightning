@@ -22,7 +22,7 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 			'default'           => false,
 			'type'              => 'option',
 			'capability'        => 'edit_theme_options',
-			'sanitize_callback' => 'lightning_sanitize_checkbox',
+			'sanitize_callback' => array( 'VK_Helpers', 'sanitize_checkbox' ),
 		)
 	);
 
@@ -74,7 +74,7 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 			'default'           => 4000,
 			'type'              => 'option',
 			'capability'        => 'edit_theme_options',
-			'sanitize_callback' => 'lightning_sanitize_number',
+			'sanitize_callback' => array( 'VK_Helpers', 'sanitize_number' ),
 		)
 	);
 
@@ -253,7 +253,7 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 				'default'           => '',
 				'type'              => 'option',
 				'capability'        => 'edit_theme_options',
-				'sanitize_callback' => 'lightning_sanitize_number_percentage',
+				'sanitize_callback' => array( 'VK_Helpers', 'sanitize_number_percentage' ),
 			)
 		);
 		$priority = $priority + 1;
@@ -303,7 +303,7 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 					'default'           => false,
 					'type'              => 'option',
 					'capability'        => 'edit_theme_options',
-					'sanitize_callback' => 'lightning_sanitize_checkbox',
+					'sanitize_callback' => array( 'VK_Helpers', 'sanitize_checkbox' ),
 				)
 			);
 
@@ -401,7 +401,7 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 				'default'           => '',
 				'type'              => 'option',
 				'capability'        => 'edit_theme_options',
-				'sanitize_callback' => 'lightning_sanitize_radio',
+				'sanitize_callback' => array( 'VK_Helpers', 'sanitize_choice' ),
 			)
 		);
 
@@ -453,7 +453,7 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 				'default'           => '',
 				'type'              => 'option',
 				'capability'        => 'edit_theme_options',
-				'sanitize_callback' => 'lightning_sanitize_checkbox',
+				'sanitize_callback' => array( 'VK_Helpers', 'sanitize_checkbox' ),
 			)
 		);
 		$priority = $priority + 1;

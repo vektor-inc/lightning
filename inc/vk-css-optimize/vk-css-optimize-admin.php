@@ -31,7 +31,7 @@ function lightning_customize_register_enqueue_point( $wp_customize ) {
 			'default'           => 'minimal-bootstrap',
 			'type'              => 'option',
 			'capability'        => 'edit_theme_options',
-			'sanitize_callback' => 'lightning_sanitize_radio',
+			'sanitize_callback' => array( 'VK_Helpers', 'sanitize_choice' ),
 		)
 	);
 	$wp_customize->add_control(

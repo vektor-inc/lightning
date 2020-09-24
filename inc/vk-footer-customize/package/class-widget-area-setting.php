@@ -71,7 +71,7 @@ if ( ! class_exists( 'Widget_Area_Setting' ) ) {
 					'default'           => false,
 					'type'              => 'option',
 					'capability'        => 'edit_theme_options',
-					'sanitize_callback' => 'lightning_sanitize_radio',
+					'sanitize_callback' => array( 'VK_Helpers', 'sanitize_choice' ),
 				)
 			);
 
@@ -105,7 +105,7 @@ if ( ! class_exists( 'Widget_Area_Setting' ) ) {
 					'default'           => 3,
 					'type'              => 'option',
 					'capability'        => 'edit_theme_options',
-					'sanitize_callback' => 'lightning_sanitize_number',
+					'sanitize_callback' => array( 'VK_Helpers', 'sanitize_number' ),
 				)
 			);
 

@@ -26,6 +26,24 @@ $color-key-dark-default: #2e6da4;
 	--image-border: 1px solid #e5e5e5;
 }
 
+@mixin title_design_reset {
+	position: relative;
+	background-color: transparent;
+	outline: unset;
+	outline-offset: unset;
+	box-shadow: unset;
+	border: none;
+	border-radius:unset;
+	padding: 0;
+	color: inherit;
+	&::before,
+	&::after {
+		content: none;
+	}
+}
+
+
+
 /*-------------------------------------------*/
 /*	Form common
 /*-------------------------------------------*/
@@ -100,13 +118,6 @@ $color-key-dark-default: #2e6da4;
 /*
 	Button
 -------------------------------------------*/
-.woocommerce #respond input#submit,
-.woocommerce a.button,
-.woocommerce button.button,
-.woocommerce input.button {
-	// padding-left: 1.5em;
-	// padding-right: 1.5em;
-}
 
 .woocommerce {
 	a.button.add_to_cart_button {
@@ -115,6 +126,7 @@ $color-key-dark-default: #2e6da4;
 }
 
 .fa_v5_css {
+	.wc-block-grid__product-add-to-cart .add_to_cart_button::after,
 	.wp-block-product-category .wp-block-button__link::after,
 	button.single_add_to_cart_button::after,
 	a.button.add_to_cart_button::after {
@@ -140,6 +152,7 @@ $color-key-dark-default: #2e6da4;
 	background-color: var(--color-key, $color-key-default);
 }
 
+.wc-block-grid__product-add-to-cart .add_to_cart_button,
 .woocommerce #respond input#submit,
 .woocommerce a.button,
 .woocommerce button.button,
@@ -148,14 +161,17 @@ $color-key-dark-default: #2e6da4;
 	background-color: var(--color-key-dark, $color-key-dark-default);
 }
 
+.wc-block-grid__product-add-to-cart .add_to_cart_button:hover,
 .woocommerce #respond input#submit:hover,
 .woocommerce a.button:hover,
 .woocommerce button.button:hover,
 .woocommerce input.button:hover {
 	color: #fff;
 	background-color: var(--color-key, $color-key-default);
+	text-decoration: none;
 }
 
+.wc-block-grid__product-add-to-cart .add_to_cart_button.alt,
 .woocommerce #respond input#submit.alt,
 .woocommerce a.button.alt,
 .woocommerce button.button.alt,
@@ -164,6 +180,7 @@ $color-key-dark-default: #2e6da4;
 	background-color: var(--color-key-dark, $color-key-dark-default);
 }
 
+.wc-block-grid__product-add-to-cart .add_to_cart_button.alt:hover,
 .woocommerce #respond input#submit.alt:hover,
 .woocommerce a.button.alt:hover,
 .woocommerce button.button.alt:hover,
@@ -338,8 +355,9 @@ div[class*="wp-block-product"] {
 // for Subscription Product type
 .woocommerce ul.products li.product-type-subscription {
 	.price {
-		position: relative;
-		bottom: 10px;
+		// subscription-detailsの緑の文字が重なるので削除←こちらに伴い不要となったので削除
+		// position: relative;
+		// bottom: 0;
 	}
 }
 
@@ -414,20 +432,22 @@ div[class*="wp-block-product"] {
 
 	li.product,
 	li.products {
-		padding-bottom: 65px;
+		padding-bottom: 35px;
 		position: relative;
 	}
 
 	.woocommerce-loop-product__title {
 		font-size: 14px;
 		line-height: 1.5em;
+		@include title_design_reset;
 	}
 
-	li.product-type-subscription .price,
-	.price {
-		position: absolute;
-		bottom: 30px;
-	}
+	// subscription-detailsの緑の文字が重なるので削除
+	// li.product-type-subscription .price,
+	// .price {	
+		// position: absolute;
+		// bottom: 30px;
+	// }
 
 	.add_to_cart_button {
 		text-align: center;
@@ -669,16 +689,24 @@ tr.cart-discount td {
 		&-image {
 			// margin-bottom: 1rem;
 			// border: var(--image-border);
+			img{
+				border: 1px solid #f2f2f2;
+			}
 		}
 
 		&-link {
+			color: var(--text-color);
 		}
 
-		&-title {
+		&-title{
 			color: var(--text-color);
 			font-weight: normal;
 			font-size: 14px;
 			margin-bottom: 10px;
+			@include title_design_reset;
+			a{
+				color: var(--text-color);
+			}
 		}
 
 		.wc-block-grid__product-onsale {
@@ -709,6 +737,11 @@ tr.cart-discount td {
 				font-size: 0.875rem;
 				padding: 10px 1.5em;
 				width: 100%;
+			}
+		}
+		&-price__value{
+			.wc-block-components-formatted-money-amount{
+				color: $price_color;
 			}
 		}
 	}

@@ -27,6 +27,43 @@ function lightning_is_frontpage_onecolumn() {
 	// return false;
 }
 
+/*
+  Sanitize
+/*-------------------------------------------*/
+
+/*
+	Add sanitize checkbox
+/*-------------------------------------------*/
+function lightning_sanitize_checkbox( $input ) {
+	if ( class_exists( 'VK_Helpers' ) ) {
+		return VK_Helpers::sanitize_checkbox( $input );
+	}
+}
+
+function lightning_sanitize_number( $input ) {
+	if ( class_exists( 'VK_Helpers' ) ) {
+		return VK_Helpers::sanitize_number( $input );
+	}
+}
+
+function lightning_sanitize_number_percentage( $input ) {
+	if ( class_exists( 'VK_Helpers' ) ) {
+		return VK_Helpers::sanitize_number_percentage( $input );
+	}
+}
+
+function lightning_sanitize_radio( $input ) {
+	if ( class_exists( 'VK_Helpers' ) ) {
+		return VK_Helpers::sanitize_choice( $input );
+	}
+}
+
+function lightning_sanitize_textarea( $input ) {
+	if ( class_exists( 'VK_Helpers' ) ) {
+		return VK_Helpers::sanitize_textarea( $input );
+	}
+}
+
 function lightning_deactivate_plugin( $plugin_path ){
 	if ( class_exists( 'VK_Helpers' ) ){
 		VK_Helpers::deactivate_plugin( $plugin_path  );

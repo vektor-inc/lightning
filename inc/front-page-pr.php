@@ -21,7 +21,7 @@ function lightning_front_pr_blocks_customize_register( $wp_customize ) {
 			'default'           => true,
 			'type'              => 'option',
 			'capability'        => 'edit_theme_options',
-			'sanitize_callback' => 'lightning_sanitize_checkbox',
+			'sanitize_callback' => array( 'VK_Helpers', 'sanitize_checkbox' ),
 		)
 	);
 

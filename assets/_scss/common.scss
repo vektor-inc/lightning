@@ -42,6 +42,21 @@
 	.media {
 		.media-heading {
 			font-size: 14px;
+			//見出し機能のデザイン打消し
+			position: relative;
+			background-color: transparent;
+			outline: unset;
+			outline-offset: unset;
+			box-shadow: unset;
+			border: none;
+			border-radius:unset;
+			padding: 0;
+			color: #333;
+			text-align: unset;
+			&::after,
+			&::before{
+				content: none;
+			}
 		}
 	}
 }
@@ -57,6 +72,7 @@
 		margin-bottom: 15px;
 	}
 }
+
 .widget_search form div,
 .widget_display_search form div,
 .widget_product_search form {
@@ -67,6 +83,7 @@
 	input#s,
 	input#bbp_search,
 	input.search-field {
+		max-width: initial; //max-widthをriset
 		width: 64%;
 		border: 1px solid #ccc;
 		// border-radius: 3px;

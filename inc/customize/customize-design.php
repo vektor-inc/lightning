@@ -280,7 +280,7 @@ function lightning_customize_register_design( $wp_customize ) {
 			'default'           => false,
 			'type'              => 'option',
 			'capability'        => 'edit_theme_options',
-			'sanitize_callback' => 'lightning_sanitize_checkbox',
+			'sanitize_callback' => array( 'VK_Helpers', 'sanitize_checkbox' ),
 		)
 	);
 	$wp_customize->add_control(
@@ -301,7 +301,7 @@ function lightning_customize_register_design( $wp_customize ) {
 			'default'           => false,
 			'type'              => 'option',
 			'capability'        => 'edit_theme_options',
-			'sanitize_callback' => 'lightning_sanitize_checkbox',
+			'sanitize_callback' => array( 'VK_Helpers', 'sanitize_checkbox' ),
 		)
 	);
 	$wp_customize->add_control(
@@ -322,7 +322,7 @@ function lightning_customize_register_design( $wp_customize ) {
 			'default'           => false,
 			'type'              => 'option',
 			'capability'        => 'edit_theme_options',
-			'sanitize_callback' => 'lightning_sanitize_checkbox',
+			'sanitize_callback' => array( 'VK_Helpers', 'sanitize_checkbox' ),
 		)
 	);
 	$wp_customize->add_control(
@@ -343,7 +343,7 @@ function lightning_customize_register_design( $wp_customize ) {
 			'default'           => false,
 			'type'              => 'option',
 			'capability'        => 'edit_theme_options',
-			'sanitize_callback' => 'lightning_sanitize_checkbox',
+			'sanitize_callback' => array( 'VK_Helpers', 'sanitize_checkbox' ),
 		)
 	);
 	$wp_customize->add_control(
@@ -435,7 +435,10 @@ function lightning_print_css_common() {
 		.btn-default { border-color:' . $color_key . ';color:' . $color_key . ';}
 		.btn-default:focus,
 		.btn-default:hover { border-color:' . $color_key . ';background-color: ' . $color_key . '; }
+		.wp-block-search__button,
 		.btn-primary { background-color:' . $color_key . ';border-color:' . $color_key_dark . '; }
+		.wp-block-search__button:focus,
+		.wp-block-search__button:hover,
 		.btn-primary:focus,
 		.btn-primary:hover { background-color:' . $color_key_dark . ';border-color:' . $color_key . '; }
 		.btn-outline-primary { color : ' . $color_key  . ' ; border-color:' . $color_key .'; }

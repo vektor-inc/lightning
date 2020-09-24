@@ -38,7 +38,14 @@ if ( lightning_is_page_header_and_breadcrumb() ) {
 
 	<div class="<?php lightning_the_class_name( 'mainSection' ); ?>" id="main" role="main">
 		<?php do_action( 'lightning_mainSection_prepend' ); ?>
-		<?php get_template_part( 'template-parts/post/content', get_post_type() ); ?>
+		<?php 
+		$template = 'template-parts/post/content-' . esc_attr( $post->post_name ).'.php';
+		$return = locate_template( $template );
+		if ( $return && $post->post_name != get_post_type() ){
+			locate_template( $template, true );
+		} else {
+			get_template_part( 'template-parts/post/content', get_post_type() );
+		} ?>
 		<?php do_action( 'lightning_mainSection_append' ); ?>
 	</div><!-- [ /.mainSection ] -->
 
