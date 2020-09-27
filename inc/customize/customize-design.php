@@ -359,16 +359,6 @@ function lightning_customize_register_design( $wp_customize ) {
 
 }
 
-function lightning_default_comment_options() {
-	$comment_options = array(
-		'hide_comment' => array(
-			'post' => false,
-			'page' => true,
-		),
-	);
-	return $comment_options;
-}
-
 /*
   Lightning custom color Print head
   * This is used for Contents and Plugins and others
