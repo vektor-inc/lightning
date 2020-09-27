@@ -18,7 +18,12 @@ if ( post_password_required() ) {
 }
 ?>
 <?php if ( post_type_supports( get_post_type(), 'comments' ) ) : ?>
+
+	<?php 
+	global $post;
+	if ( comments_open( $post->ID ) || have_comments() ) : ?>
 	<div id="comments" class="comments-area">
+	<?php endif; ?>
 
 		<?php // You can start editing here -- including this comment! ?>
 
@@ -77,5 +82,8 @@ if ( post_password_required() ) {
 
 		<?php comment_form(); ?>
 
+	<?php if ( comments_open( $post->ID ) || have_comments() ) : ?>
 	</div><!-- #comments -->
+	<?php endif; ?>
+
 <?php endif; ?>
