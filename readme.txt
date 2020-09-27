@@ -40,7 +40,7 @@ https://www.vektor-inc.co.jp/inquiry/
 == Changelog ==
 
 v12.5.0
-* [ Delete function ] comment setting
+* [ Delete function ] comment setting( since 12.0.0 )
 
 v12.4.0
 * [ Design tuning ] Add search block design
