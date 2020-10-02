@@ -11,7 +11,11 @@
 		"build:style": "gulp sass_common && gulp sass_bs4 && gulp sass_skin && gulp sass_skin2 && gulp sass_woo",
 		"build:text-domain": "gulp text-domain",
 		"watch:script": "webpack --config webpack.dev.config.js --watch",
-		"watch:style": "gulp watch"
+		"watch:style": "gulp watch",
+		"phpunit:install:win": "wp-env run phpunit \"bash /var/www/html/wp-content/themes/lightning/bin/install-wp-tests.sh\"",
+		"phpunit:install:mac": "wp-env run phpunit 'bash /var/www/html/wp-content/themes/lightning/bin/install-wp-tests.sh'",
+		"phpunit:test:win": "wp-env run phpunit \"phpunit -c /var/www/html/wp-content/themes/lightning/phpunit.xml.dist --verbose\"",
+		"phpunit:test:mac": "wp-env run phpunit 'phpunit -c /var/www/html/wp-content/themes/lightning/phpunit.xml.dist --verbose'"
 	},
 	"repository": {
 		"type": "git",
