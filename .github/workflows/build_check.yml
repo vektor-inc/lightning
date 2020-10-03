@@ -101,7 +101,8 @@ jobs:
       uses: shivammathur/setup-php@v2
       with:
         php-version: ${{ matrix.php }}
+    - name: install npm scripts
+      run: npm install
     - name: install composer packages
-      run: composer install --dev
-    - run: bin/install-wp-tests.sh wordpress wordpress wordpress 127.0.0.1:${{ job.services.mysql.ports['3306'] }} latest true
-    - run: vendor/bin/phpunit
+      run: wp-env run composer 'composer install'
+    - run: wp-env run phpunit 'phpunit -c /var/www/html/wp-content/themes/lightning/phpunit.xml.dist --verbose'
