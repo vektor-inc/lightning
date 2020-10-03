@@ -104,5 +104,5 @@ jobs:
     - name: install npm scripts
       run: npm install
     - name: install composer packages
-      run: wp-env run composer 'composer install'
-    - run: wp-env run phpunit 'phpunit -c /var/www/html/wp-content/themes/lightning/phpunit.xml.dist --verbose'
+      run: npx wp-env run composer 'composer install'
+    - run: npx wp-env run phpunit 'phpunit -c /var/www/html/wp-content/themes/lightning/phpunit.xml.dist --verbose'
