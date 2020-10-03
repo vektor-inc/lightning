@@ -12,10 +12,10 @@
 		"build:text-domain": "gulp text-domain",
 		"watch:script": "webpack --config webpack.dev.config.js --watch",
 		"watch:style": "gulp watch",
-		"phpunit:install:win": "wp-env run phpunit \"bash /var/www/html/wp-content/themes/lightning/bin/install-wp-tests.sh\"",
-		"phpunit:install:mac": "wp-env run phpunit 'bash /var/www/html/wp-content/themes/lightning/bin/install-wp-tests.sh'",
-		"phpunit:test:win": "wp-env run phpunit \"phpunit -c /var/www/html/wp-content/themes/lightning/phpunit.xml.dist --verbose\"",
-		"phpunit:test:mac": "wp-env run phpunit 'phpunit -c /var/www/html/wp-content/themes/lightning/phpunit.xml.dist --verbose'"
+		"composer:install:win": "wp-env run composer \"composer install\"",
+		"composer:install:mac": "wp-env run composer 'composer install'",
+		"phpunit:win": "wp-env run phpunit \"phpunit -c /var/www/html/wp-content/themes/lightning/phpunit.xml.dist --verbose\"",
+		"phpunit:mac": "wp-env run phpunit 'phpunit -c /var/www/html/wp-content/themes/lightning/phpunit.xml.dist --verbose'"
 	},
 	"repository": {
 		"type": "git",
@@ -30,6 +30,7 @@
 	"devDependencies": {
 		"@babel/core": "^7.10.2",
 		"@babel/preset-env": "^7.10.2",
+		"@wordpress/env": "^2.0.1",
 		"babel-loader": "^8.1.0",
 		"gulp": "^4.0.2",
 		"gulp-autoprefixer": "^4.1.0",
