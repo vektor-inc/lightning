@@ -105,5 +105,5 @@ jobs:
       run: npm install
     - name: install composer packages
     - run: ./node_modules/@wordpress/env/bin/wp-env start
-      run: ./node_modules/@wordpress/env/bin/wp-env run composer 'composer install'
+    - run: ./node_modules/@wordpress/env/bin/wp-env run composer 'composer install'
     - run: ./node_modules/@wordpress/env/bin/wp-env run phpunit 'phpunit -c /var/www/html/wp-content/themes/lightning/phpunit.xml.dist --verbose'
