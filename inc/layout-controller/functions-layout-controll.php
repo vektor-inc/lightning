@@ -266,9 +266,9 @@ function lightning_is_page_header_and_breadcrumb() {
 function lightning_is_siteContent_padding_off() {
 	if ( is_singular() ) {
 		global $post;
-		$cf = $post->_lightning_design_setting;
-		if ( ! empty( $cf['siteContent_padding'] ) ) {
-			return true;
+		if ( ! empty( $post->_lightning_design_setting['siteContent_padding'] ) ) {
+			$return = true;
 		}
 	}
+	return apply_filters( 'lightning_is_siteContent_padding_off', $return );
 }
