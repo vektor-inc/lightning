@@ -20,7 +20,8 @@ h2,
 h3:after,
 .subSection-title:after { border-bottom-color:' . $color_key . ';  }
 .media .media-body .media-heading a:hover { color:' . $color_key . ';  }
-ul.page-numbers li span.page-numbers.current { background-color:' . $color_key . '; }
+ul.page-numbers li span.page-numbers.current,
+.page-link dl .post-page-numbers.current { background-color:' . $color_key . '; }
 .pager li > a { border-color:' . $color_key . ';color:' . $color_key . ';}
 .pager li > a:hover { background-color:' . $color_key . ';color:#fff;}
 footer { border-top-color:' . $color_key . '; }

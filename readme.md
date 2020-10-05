@@ -82,6 +82,26 @@ $wp_customize->add_section(
 $ docker-compose run wp
 ```
 
+### UnitTest on wp-env
+1. あらかじめ Docker をインストールしておきます。
+2. 下記を実行して npm scripts をインストールします。
+	```npm install```
+	```npm install -g @wordpress/env```
+3. あらかじめ、wp-env を起動しておきます。
+	```wp-env start```
+4. 下記を実行して composer 関連のファイルをインストールします。
+	- Windows の場合
+	```npm run composer:install:win```
+	- Mac の場合
+	```npm run composer:install:mac```
+5. 下記を実行して Unit Test を開始します。
+	- Windows の場合
+	```npm run phpunit:win```
+	- Mac の場合
+	```npm run phpunit:mac```
+
+
+
 ## 各種コマンド
 
 ### ビルド
