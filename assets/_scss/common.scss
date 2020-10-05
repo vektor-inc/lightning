@@ -140,8 +140,13 @@ iframe {
 	margin-top: 5px;
 }
 .w3eden {
+	margin-bottom:2rem;
 	.media {
-		padding: 1em 0;
+		padding:0;
+		border:none;
+		& > div {
+			width:auto;
+		}
 	}
 	.media-body {
 		margin-right: 1em;

@@ -23,7 +23,7 @@ $color-key-default: #337ab7;
 $color-key-dark-default: #2e6da4;
 
 :root {
-	--image-border: 1px solid #e5e5e5;
+	--color-woo-image-border: #e5e5e5;
 }
 
 @mixin title_design_reset {
@@ -41,8 +41,6 @@ $color-key-dark-default: #2e6da4;
 		content: none;
 	}
 }
-
-
 
 /*-------------------------------------------*/
 /*	Form common
@@ -687,10 +685,8 @@ tr.cart-discount td {
 .wc-block-grid__products {
 	.wc-block-grid__product {
 		&-image {
-			// margin-bottom: 1rem;
-			// border: var(--image-border);
 			img{
-				border: 1px solid #f2f2f2;
+				border: 1px solid var(--color-woo-image-border);
 			}
 		}
 
