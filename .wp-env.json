@@ -1,25 +1,6 @@
 {
 	"core": null,
-	"plugins": [
-		"../../plugins/lightning-advanced-slider",
-		"../../plugins/lightning-header-color-manager",
-		"../../plugins/lightning-skin-charm",
-		"../../plugins/lightning-skin-fort",
-		"../../plugins/lightning-skin-jpnstyle",
-		"../../plugins/lightning-skin-pale",
-		"../../plugins/lightning-skin-variety",
-		"../../plugins/lightning-video-unit",
-		"../../plugins/vk-all-in-one-expansion-unit",
-		"../../plugins/vk-block-patterns",
-		"../../plugins/vk-blocks-pro",
-		"../../plugins/vk-filter-search",
-		"../../plugins/vk-google-job-posting-manager",
-		"../../plugins/vk-legacy-notice",
-		"../../plugins/vk-link-target-controller",
-		"../../plugins/vk-plugin-beta-tester",
-		"../../plugins/vk-post-author-display"
-	  ],
-	  "themes": [
+	"themes": [
 		"."
-	  ]
+	]
 }
