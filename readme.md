@@ -93,7 +93,7 @@ $ docker-compose run wp
 	- Windows の場合
 	```npm run composer:install:win```
 	- Mac の場合
-	```npm run composer:install:win```
+	```npm run composer:install:mac```
 5. 下記を実行して Unit Test を開始します。
 	- Windows の場合
 	```npm run phpunit:win```
