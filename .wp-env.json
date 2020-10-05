@@ -1,5 +1,5 @@
 {
-	"core": "https://ja.wordpress.org/latest-ja.zip",
+	"core": null,
 	"plugins": [
 		"../../plugins/lightning-advanced-slider",
 		"../../plugins/lightning-header-color-manager",
