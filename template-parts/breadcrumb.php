@@ -32,8 +32,14 @@ function lightning_bread_crumb() {
 
 	/* Post type
 	/*-------------------------------*/
+	if ( is_search() ) {
 
-	if ( is_archive() || ( is_single() && ! is_attachment() ) ) {
+		/* Search result
+		/*-------------------------------*/
+		$search_text = ! empty( get_search_query() ) ? sprintf( __( 'Search Results for : %s', 'lightning' ), get_search_query() ) : __( 'Search Results', 'lightning' );
+		$panListHtml .= '<li><span>' . $search_text . '</span></li>';
+
+	} elseif ( is_archive() || ( is_single() && ! is_attachment() ) ) {
 
 		if ( $postType['slug'] == 'post' || is_category() || is_tag() ) { /* including single-post */
 			if ( $page_for_posts['post_top_use'] ) {
@@ -209,13 +215,6 @@ function lightning_bread_crumb() {
 		/*-------------------------------*/
 
 		$panListHtml .= '<li><span>' . __( 'Not found', 'lightning' ) . '</span></li>';
-
-	} elseif ( is_search() ) {
-
-		/* Search result
-		/*-------------------------------*/
-
-		$panListHtml .= '<li><span>' . sprintf( __( 'Search Results for : %s', 'lightning' ), get_search_query() ) . '</span></li>';
 
 	} elseif ( is_attachment() ) {
 
