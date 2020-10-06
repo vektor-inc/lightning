@@ -35,7 +35,11 @@ $pageTitHtml_after  .= '</div></div></div></div><!-- [ /.page-header ] -->' . "\
 $pageTitle = '';
 
 if ( is_search() ) {
-	$search_text = ! empty( get_search_query() ) ? sprintf( __( 'Search Results for : %s', 'lightning' ), get_search_query() ) : __( 'Search Results', 'lightning' );
+	if ( ! empty( get_search_query() ) ) {
+		$search_text = sprintf( __( 'Search Results for : %s', 'lightning' ), get_search_query() );
+	} else {
+		$search_text = __( 'Search Results', 'lightning' );
+	}
 	$pageTitle = $search_text;
 } elseif ( ! empty( $wp_query->query_vars['bbp_search'] ) ) {
 	$bbp_search = esc_html( urldecode( $wp_query->query_vars['bbp_search'] ) );
