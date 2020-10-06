@@ -746,22 +746,25 @@ tr.cart-discount td {
 /*-------------------------------------------*/
 /*	Layout confrict adjustment
 /*-------------------------------------------*/
-.woocommerce {
-	.u-columns,
-	form {
-		.col-1,
-		.col-2 {
-			max-width: inherit;
-			@media (min-width: 768px) {
-				width: 100%;
-				max-width: 100%;
-			}
-		}
-	}
-}
+/*
+* 支払い画面
+* ログイン画面
+* etc （都度追加）
+*/
+.woocommerce form .col-1,
+.woocommerce form .col-2,
+.woocommerce .u-columns .col-1,
+.woocommerce .u-columns .col-2,
 .woocommerce .col2-set .col-1,
 .woocommerce .col2-set .col-2,
 .woocommerce-page .col2-set .col-1,
 .woocommerce-page .col2-set .col-2 {
-	max-width: 48%;
+	@media (max-width: 767.98px) {
+		width: 100%;
+		max-width: 100%;
+	}
+	@media (min-width: 768px) {
+		width: 48%;
+		max-width: 48%;
+	}
 }
