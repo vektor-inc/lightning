@@ -63,8 +63,7 @@ function lightning_bread_crumb() {
 			$breadcrumb_html .= '<span' . $microdata_li_a_span . '>' . get_the_archive_title() . '</span>';
 			$breadcrumb_html .= '</a>';
 			$breadcrumb_html .= '</li>';
-		}
-		 elseif ( 'post' !== $post_type && 'page' !== $post_type ) {
+		} elseif ( 'post' !== $post_type && 'page' !== $post_type ) {
 			$breadcrumb_html .= '<li' . $microdata_li . '>';
 			$breadcrumb_html .= '<a' . $microdata_li_a . ' href="' . get_post_type_archive_link( $post_type ) . '">';
 			$breadcrumb_html .= '<span' . $microdata_li_a_span . '>' . $post_type_object->label . '</span>';
