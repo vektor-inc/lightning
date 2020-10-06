@@ -39,6 +39,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ Design bug fix ][ woo ] login screen column
+
 v12.6.1
 * [ Design Bug fix ] Page-link Block Add css
 
