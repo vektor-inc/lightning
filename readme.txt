@@ -39,6 +39,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ Specification Change ] Change search result title on search result page in case of no keyword
+[ Specification Change ] Don't display archive title and archive description on search result page
 [ Design bug fix ][ woo ] login screen column
 
 v12.6.1
