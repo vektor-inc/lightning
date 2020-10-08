@@ -2,7 +2,7 @@
 Lightning WordPress theme, Copyright (C) 2015-2020 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
 Tested up to: 5.5.1
-Stable tag: 12.6.1
+Stable tag: 12.7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -39,6 +39,7 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v12.7.0
 [ Specification Change ] Change search result title on search result page in case of no keyword
 [ Specification Change ] Don't display archive title and archive description on search result page
 [ Design bug fix ][ woo ] login screen column
