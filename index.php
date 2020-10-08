@@ -34,32 +34,38 @@ do_action( 'lightning_breadcrumb_after' );
 <?php do_action( 'lightning_mainSection_prepend' ); ?>
 
 	<?php
-	/*
-	  Archive title
-	/*-------------------------------------------*/
-	$archiveTitle_html = '';
-	$page_for_posts    = lightning_get_page_for_posts();
-	// Use post top page（ Archive title wrap to div ）.
-	if ( $page_for_posts['post_top_use'] || get_post_type() !== 'post' ) {
-		if ( is_year() || is_month() || is_day() || is_tag() || is_author() || is_tax() || is_category() ) {
-			$archiveTitle      = get_the_archive_title();
-			$archiveTitle_html = '<header class="archive-header"><h1 class="archive-header_title">' . $archiveTitle . '</h1></header>';
-		}
-	}
-	echo wp_kses_post( apply_filters( 'lightning_mainSection_archiveTitle', $archiveTitle_html ) );
 
-	/*
-	  Archive description
-	/*-------------------------------------------*/
-	$archiveDescription_html = '';
-	if ( is_category() || is_tax() || is_tag() ) {
-		$archiveDescription = term_description();
-		$page_number        = get_query_var( 'paged', 0 );
-		if ( ! empty( $archiveDescription ) && $page_number == 0 ) {
-			$archiveDescription_html = '<div class="archive-meta">' . $archiveDescription . '</div>';
+	// Excrude to in case of filter search
+	if ( ! is_search() ) {
+
+		/*
+		Archive title
+		/*-------------------------------------------*/
+		$archiveTitle_html = '';
+		$page_for_posts    = lightning_get_page_for_posts();
+		// Use post top page（ Archive title wrap to div ）.
+		if ( $page_for_posts['post_top_use'] || get_post_type() !== 'post' ) {
+			if ( is_year() || is_month() || is_day() || is_tag() || is_author() || is_tax() || is_category() ) {
+				$archiveTitle      = get_the_archive_title();
+				$archiveTitle_html = '<header class="archive-header"><h1 class="archive-header_title">' . $archiveTitle . '</h1></header>';
+			}
 		}
-	}
-	echo wp_kses_post( apply_filters( 'lightning_mainSection_archiveDescription', $archiveDescription_html ) );
+		echo wp_kses_post( apply_filters( 'lightning_mainSection_archiveTitle', $archiveTitle_html ) );
+		
+		/*
+		Archive description
+		/*-------------------------------------------*/
+		$archiveDescription_html = '';
+		if ( is_category() || is_tax() || is_tag() ) {
+			$archiveDescription = term_description();
+			$page_number        = get_query_var( 'paged', 0 );
+			if ( ! empty( $archiveDescription ) && $page_number == 0 ) {
+				$archiveDescription_html = '<div class="archive-meta">' . $archiveDescription . '</div>';
+			}
+		}
+		echo wp_kses_post( apply_filters( 'lightning_mainSection_archiveDescription', $archiveDescription_html ) );
+		
+	} // if ( ! is_search() ) {
 
 	$postType = lightning_get_post_type();
 

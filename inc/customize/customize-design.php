@@ -457,6 +457,11 @@ function lightning_print_css_common() {
 		.localNav ul li.current_page_ancestor ul.children,
 		.localNav ul li.current_page_item ul.children,
 		.localNav ul li.current-cat ul.children{ display:block; }';
+		$dynamic_css .= '/* ExUnit widget ( child page list widget and so on ) */
+		.localNavi ul.children	{ display:none; }
+		.localNavi li.current_page_ancestor ul.children,
+		.localNavi li.current_page_item ul.children,
+		.localNavi li.current-cat ul.children{ display:block; }';
 	}
 
 	if ( empty( $skin_info['bootstrap'] ) ) {
