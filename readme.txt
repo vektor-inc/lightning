@@ -40,10 +40,10 @@ https://www.vektor-inc.co.jp/inquiry/
 == Changelog ==
 
 v12.7.0
-[ Specification Change ] Change search result title on search result page in case of no keyword
-[ Specification Change ] Don't display archive title and archive description on search result page
-[ Design bug fix ][ woo ] login screen column
-[ Design bug fix ][ ExUnit Child page list widget ] fix hide bug at unactive child page
+* [ Specification Change ] Change search result title on search result page in case of no keyword
+* [ Specification Change ] Don't display archive title and archive description on search result page
+* [ Design bug fix ][ woo ] login screen column
+* [ Design bug fix ][ ExUnit Child page list widget ] fix hide bug at unactive child page
 
 v12.6.1
 * [ Design Bug fix ] Page-link Block Add css
