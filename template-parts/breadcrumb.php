@@ -36,12 +36,11 @@ function lightning_bread_crumb() {
 	$breadcrumb_html .= '</a>';
 	$breadcrumb_html .= '</li>';
 
-	/* Post type
+
+	/* Search result
 	/*-------------------------------*/
 	if ( is_search() ) {
 
-		/* Search result
-		/*-------------------------------*/
 		if ( ! empty( get_search_query() ) ) {
 			$search_text = sprintf( __( 'Search Results for : %s', 'lightning' ), get_search_query() );
 		} else {
@@ -49,6 +48,8 @@ function lightning_bread_crumb() {
 		}
 		$breadcrumb_html .= '<li><span>' . $search_text . '</span></li>';
 
+	/* Post type
+	/*-------------------------------*/
 	} elseif ( is_single() || is_page() ||is_category() || is_tag() || is_tax() || is_post_type_archive() ) {
 
 		if ( 'post' === $post_type && 'page' === $show_on_front && $page_for_post ) { /* including single-post */
@@ -207,6 +208,12 @@ function lightning_bread_crumb() {
 	$breadcrumb_html .= '</div>';
 	$breadcrumb_html .= '</div>';
 	$breadcrumb_html .= '<!-- [ /.breadSection ] -->';
+		// // delete before after space
+		// $dynamic_css = trim( $dynamic_css );
+		// convert tab and br to space
+		$breadcrumb_html = preg_replace( '/[\n\r\t]/', '', $breadcrumb_html );
+		// Change multiple spaces to single space
+		$breadcrumb_html = preg_replace( '/\s(?=\s)/', '', $breadcrumb_html );
 	return $breadcrumb_html;
 }
 
