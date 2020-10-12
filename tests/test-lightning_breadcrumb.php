@@ -138,10 +138,14 @@ class LightningBreadCrumbTest extends WP_UnitTestCase {
             ),
             // 固定ページ
             // HOME > 固定ページ名
-
+			array(
+				'target_url'        => get_permalink( $normal_page_id ),
+				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="http://example.org/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li><span>normal page</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
+            ),
 
             // 固定ページの子ページ
-            // HOME > 親ページ > 子ページ
+			// HOME > 親ページ > 子ページ
+
 
 
             // トップページに最新の投稿 / 子カテゴリー 

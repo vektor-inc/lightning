@@ -124,10 +124,10 @@ function lightning_bread_crumb() {
 			}
 
 			// The Single or Page.
-			$breadcrumb_html .= '<li' . $microdata_li . '>';
-			$breadcrumb_html .= '<a' . $microdata_li_a . ' href="' . get_permalink() . '">';
-			$breadcrumb_html .= '<span' . $microdata_li_a_span . '>' . get_the_title() . '</span>';
-			$breadcrumb_html .= '</a>';
+			$breadcrumb_html .= '<li>';
+			// $breadcrumb_html .= '<a' . $microdata_li_a . ' href="' . get_permalink() . '">';
+			$breadcrumb_html .= '<span>' . get_the_title() . '</span>';
+			// $breadcrumb_html .= '</a>';
 			$breadcrumb_html .= '</li>';
 
 		} elseif ( is_category() || is_tag() || is_tax() ) {
