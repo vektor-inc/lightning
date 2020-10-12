@@ -112,7 +112,7 @@ class LightningBreadCrumbTest extends WP_UnitTestCase {
 
 		// custom post type.
 		$post          = array(
-			'post_title'   => 'event-test',
+			'post_title'   => 'event-test-post',
 			'post_type'    => 'event',
 			'post_status'  => 'publish',
 			'post_content' => 'content',
@@ -200,28 +200,48 @@ class LightningBreadCrumbTest extends WP_UnitTestCase {
 
             // トップページに固定ページ / 投稿トップに特定の固定ページ指定 / 子カテゴリー 
 			// HOME > 投稿トップの固定ページ名 > 親カテゴリー > 子カテゴリー
-			
+			array(
+				'options' => array(
+					'page_on_front' => $front_page_id,
+					'show_on_front' =>'page',
+					'page_for_posts' => $home_page_id,
+				),
+				'target_url'        => get_term_link( $cate_child_id, 'category' ),
+				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="http://example.org/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="http://example.org/?page_id=7"><span itemprop="name">post_top</span></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.get_term_link( $cate_id, 'category' ).'"><span itemprop="name">test_category</span></a></li><li><span>test_category_child</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
+            ),
 
             // トップページに固定ページ / 投稿トップに特定の固定ページ指定 / 年別アーカイブ
-            // HOME > 投稿トップの固定ページ名 > アーカイブ名
-
-            // トップページに固定ページ / 投稿トップに特定の固定ページ指定 / 記事ページ
-            // HOME > 投稿トップの固定ページ名 > 親カテゴリー > 子カテゴリー > 記事タイトル
-
-
-            // トップページに固定ページ / 投稿トップページ無指定 / 子カテゴリー 
-			// HOME > 親カテゴリー > 子カテゴリー
+			// HOME > 投稿トップの固定ページ名 > アーカイブ名
+			// array(
+			// 	'options' => array(
+			// 		'page_on_front' => $front_page_id,
+			// 		'show_on_front' =>'page',
+			// 		'page_for_posts' => $home_page_id,
+			// 	),
+			// 	'target_url'        => home_url('2020/').'?post_type=post' ,
+			// 	'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="http://example.org/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="http://example.org/?page_id=7"><span itemprop="name">post_top</span></a></li><li><span>2020</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
+            // ),
 
 
             // トップページに固定ページ / 投稿トップページ無指定 / 年別アーカイブ 
-            // HOME > アーカイブ名
-
-            // トップページに固定ページ / 投稿トップページ無指定 / 記事ページ
-            // HOME > 親カテゴリー > 子カテゴリー > 記事タイトル
+			// HOME > アーカイブ名
+			// array(
+			// 	'options' => array(
+			// 		'page_on_front' => $front_page_id,
+			// 		'show_on_front' =>'page',
+			// 		'page_for_posts' => null,
+			// 	),
+			// 	'target_url'        => home_url('/').'?post_type=post&year=2020' ,
+			// 	'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="http://example.org/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li><span>2020</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
+            // ),
 
 
             // カスタム投稿タイプトップ 
-            // HOME > 投稿タイプ名
+			// HOME > 投稿タイプ名
+			array(
+				'target_url'        => home_url().'/?post_type=event',
+				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="http://example.org/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li><span>event</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
+            ),
 
             // カスタム投稿タイプ / カスタム分類アーカイブ
             // HOME > 投稿タイプ名 > カスタム分類
@@ -230,9 +250,18 @@ class LightningBreadCrumbTest extends WP_UnitTestCase {
             // HOME > 投稿タイプ名 > アーカイブ名
  
             // カスタム投稿タイプ / 記事詳細
-            // HOME > 投稿タイプ名 > カスタム分類 > 記事タイトル
+			// HOME > 投稿タイプ名 > カスタム分類 > 記事タイトル
+			// array(
+			// 	'target_url'        => get_permalink( $event_id ),
+			// 	'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="http://example.org/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.get_post_type_archive_link( 'event' ).'"><span itemprop="name">event</span></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.get_term_link( $term_id ).'"><span itemprop="name">event_test</span></a></li><li><span>event-test-post</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
+            // ),
 
 		);
+
+		print '*************************************************' . PHP_EOL;
+		$a = get_post($event_id);
+		print '<pre style="text-align:left">';print_r($a);print '</pre>';
+		print '*************************************************' . PHP_EOL;
 
 		foreach ( $test_array as $value ) {
             if ( ! empty( $value['options'] ) && is_array( $value['options'] ) ){
@@ -245,8 +274,8 @@ class LightningBreadCrumbTest extends WP_UnitTestCase {
             $this->go_to( $value['target_url'] );
             $return = lightning_bread_crumb();
 
-            global $wp_query;
-            print '<pre style="text-align:left">';print_r($wp_query->query);print '</pre>';
+            // global $wp_query;
+            // print '<pre style="text-align:left">';print_r($wp_query->query);print '</pre>';
 
             print PHP_EOL;
             print $value['target_url']. PHP_EOL;

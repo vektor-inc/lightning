@@ -9,6 +9,7 @@ function lightning_bread_crumb() {
 
 	// Get Post top page info
 	/*-------------------------------------------*/
+	// $post_type        = get_post_type();
 	$post_type        = lightning_get_post_type();
 	$post_type        = $post_type['slug'];
 	$post_type_object = get_post_type_object( $post_type );
@@ -60,10 +61,8 @@ function lightning_bread_crumb() {
 			$breadcrumb_html .= '</a>';
 			$breadcrumb_html .= '</li>';
 		} elseif ( is_post_type_archive() ) {
-			$breadcrumb_html .= '<li' . $microdata_li . '>';
-			$breadcrumb_html .= '<a' . $microdata_li_a . ' href="' . get_post_type_archive_link( $post_type ) . '">';
-			$breadcrumb_html .= '<span' . $microdata_li_a_span . '>' . get_the_archive_title() . '</span>';
-			$breadcrumb_html .= '</a>';
+			$breadcrumb_html .= '<li>';
+			$breadcrumb_html .= '<span>' . get_the_archive_title() . '</span>';
 			$breadcrumb_html .= '</li>';
 		} elseif ( 'post' !== $post_type && 'page' !== $post_type ) {
 			$breadcrumb_html .= '<li' . $microdata_li . '>';
