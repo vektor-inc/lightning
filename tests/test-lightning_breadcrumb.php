@@ -121,7 +121,7 @@ class LightningBreadCrumbTest extends WP_UnitTestCase {
 		// wp_set_object_terms( $event_id, 'event_test', 'event_cat' );
 
 		update_option( 'page_on_front', $front_page_id ); // フロントに指定する固定ページ
-		update_option( 'page_for_posts', $home_page_id ); // 投稿トップに指定する固定ページ
+		// update_option( 'page_for_posts', $home_page_id ); // 投稿トップに指定する固定ページ
 		update_option( 'show_on_front', 'page' ); // or posts
 
 		/*** ↑↑ テスト用事前データ設定（ test_lightning_is_layout_onecolumn と test_lightning_is_subsection_display 共通 ) ****/
@@ -154,7 +154,6 @@ class LightningBreadCrumbTest extends WP_UnitTestCase {
 				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="http://example.org/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li><span>Search Results for : aaa</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
 			),
 
-
 			// 投稿トップに固定ページ指定
             // HOME > 固定ページ名
 			array(
@@ -181,11 +180,13 @@ class LightningBreadCrumbTest extends WP_UnitTestCase {
 
             // トップページに最新の投稿（投稿トップ未指定） / 子カテゴリー 
 			// HOME > 親カテゴリー > 子カテゴリー
-			// array(
-			// 	'target_url'        => get_term_link( $cate_child_id, 'category' ),
-			// 	'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="http://example.org/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.get_term_link( $cate_id, 'category' ).'"><span itemprop="name">test_category</span></a></li><li><span>test_category_child</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
-            // ),
-
+			array(
+				'options' => array(
+					'page_for_posts' => null,
+				),
+				'target_url'        => get_term_link( $cate_child_id, 'category' ),
+				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="http://example.org/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.get_term_link( $cate_id, 'category' ).'"><span itemprop="name">test_category</span></a></li><li><span>test_category_child</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
+            ),
 
             // トップページに最新の投稿 / 投稿トップページ無指定 / 記事ページ
             // HOME > 親カテゴリー > 子カテゴリー > 記事タイトル      
@@ -231,9 +232,10 @@ class LightningBreadCrumbTest extends WP_UnitTestCase {
 		);
 
 		foreach ( $test_array as $value ) {
-            if ( ! empty( $value['options'] ) ){
-                $options = $value['options'];
-                update_option( 'lightning_theme_options', $options );
+            if ( ! empty( $value['options'] ) && is_array( $value['options'] ) ){
+				foreach ( $value['options'] as $option_key => $option_value){
+					update_option( $option_key, $option_value );
+				}
             }
 
 			// Move to test page
@@ -253,6 +255,12 @@ class LightningBreadCrumbTest extends WP_UnitTestCase {
 
 			$this->assertEquals( $value['correct'], $return );
 
+
+			if ( ! empty( $value['options'] ) && is_array( $value['options'] ) ){
+				foreach ( $value['options'] as $option_key => $option_value){
+					delete_option( $option_key );
+				}
+            }
 		}
 
 		/*
