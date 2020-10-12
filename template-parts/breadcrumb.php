@@ -52,7 +52,7 @@ function lightning_bread_crumb() {
 
 	/* Post type
 	/*-------------------------------*/
-	} elseif ( is_single() || is_page() ||is_category() || is_tag() || is_tax() || is_post_type_archive() ) {
+	} elseif ( is_single() || is_page() ||is_category() || is_tag() || is_tax() || is_post_type_archive() || is_date() ) {
 
 		if ( 'post' === $post_type && 'page' === $show_on_front && $page_for_post ) { /* including single-post */
 			$breadcrumb_html .= '<li' . $microdata_li . '>';
@@ -156,6 +156,10 @@ function lightning_bread_crumb() {
 			$breadcrumb_html .= '<span>' . esc_html( single_cat_title( '', '', false ) ) . '</span>';
 			// $breadcrumb_html .= '</a>';
 			$breadcrumb_html .= '</li>';
+		} elseif ( is_date() ) {
+			$breadcrumb_html .= '<li>';
+			$breadcrumb_html .= '<span>' . get_the_archive_title() . '</span>';
+			$breadcrumb_html .= '</li>';
 		}
 	}  elseif ( is_home() && ! is_front_page() ) {
 		$breadcrumb_html .= '<li>';
@@ -169,29 +173,6 @@ function lightning_bread_crumb() {
 		$breadcrumb_html .= '<span' . $microdata_li_a_span . '>' . get_the_archive_title() . '</span>';
 		$breadcrumb_html .= '</a>';
 		$breadcrumb_html .= '</li>';
-	} elseif ( is_date() ) {
-		$archive_year  = get_the_time( 'Y' );
-		$archive_month = get_the_time( 'm' );
-		$archive_day   = get_the_time( 'd' );
-		if ( is_year() ) {
-			$breadcrumb_html .= '<li' . $microdata_li . '>';
-			$breadcrumb_html .= '<a' . $microdata_li_a . ' href="' . get_year_link( $archive_year ) . '">';
-			$breadcrumb_html .= '<span' . $microdata_li_a_span . '>' . get_the_archive_title() . '</span>';
-			$breadcrumb_html .= '</a>';
-			$breadcrumb_html .= '</li>';
-		} elseif ( is_month() ) {
-			$breadcrumb_html .= '<li' . $microdata_li . '>';
-			$breadcrumb_html .= '<a' . $microdata_li_a . ' href="' . get_month_link( $archive_year, $archive_month ) . '">';
-			$breadcrumb_html .= '<span' . $microdata_li_a_span . '>' . get_the_archive_title() . '</span>';
-			$breadcrumb_html .= '</a>';
-			$breadcrumb_html .= '</li>';
-		} elseif ( is_day() ) {
-			$breadcrumb_html .= '<li' . $microdata_li . '>';
-			$breadcrumb_html .= '<a' . $microdata_li_a . ' href="' . get_day_link( $archive_year, $archive_month, $archive_day ) . '">';
-			$breadcrumb_html .= '<span' . $microdata_li_a_span . '>' . get_the_archive_title() . '</span>';
-			$breadcrumb_html .= '</a>';
-			$breadcrumb_html .= '</li>';
-		}
 	} elseif ( is_attachment() ) {
 		$breadcrumb_html .= '<li' . $microdata_li . '>';
 		$breadcrumb_html .= '<a' . $microdata_li_a . ' href="' . get_attachment_link() . '">';
