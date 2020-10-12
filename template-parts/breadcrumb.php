@@ -151,10 +151,10 @@ function lightning_bread_crumb() {
 					$breadcrumb_html .= '</li>';
 				}
 			}
-			$breadcrumb_html .= '<li' . $microdata_li . '>';
-			$breadcrumb_html .= '<a' . $microdata_li_a . ' href="' . get_term_link( $now_term, $now_taxonomy ) . '">';
-			$breadcrumb_html .= '<span' . $microdata_li_a_span . '>' . esc_html( single_cat_title( '', '', false ) ) . '</span>';
-			$breadcrumb_html .= '</a>';
+			$breadcrumb_html .= '<li>';
+			// $breadcrumb_html .= '<a' . $microdata_li_a . ' href="' . get_term_link( $now_term, $now_taxonomy ) . '">';
+			$breadcrumb_html .= '<span>' . esc_html( single_cat_title( '', '', false ) ) . '</span>';
+			// $breadcrumb_html .= '</a>';
 			$breadcrumb_html .= '</li>';
 		}
 	}  elseif ( is_home() && ! is_front_page() ) {

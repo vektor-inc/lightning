@@ -49,6 +49,12 @@ class LightningBreadCrumbTest extends WP_UnitTestCase {
 		);
 		$cate_id = wp_insert_category( $catarr );
 
+		$catarr  = array(
+			'cat_name' => 'test_category_child',
+			'category_parent' => $cate_id
+		);
+		$cate_child_id = wp_insert_category( $catarr );
+
 		// Create test term
 		$args  = array(
 			'slug' => 'event_test',
@@ -73,6 +79,16 @@ class LightningBreadCrumbTest extends WP_UnitTestCase {
 			'post_content' => 'content',
 		);
 		$normal_page_id = wp_insert_post( $post );
+
+		$post           = array(
+			'post_title'   => 'child page',
+			'post_type'    => 'page',
+			'post_status'  => 'publish',
+			'post_content' => 'content',
+			'post_parent' => $normal_page_id,
+
+		);
+		$child_page_id = wp_insert_post( $post );
 
 		// Create test home page
 		$post         = array(
@@ -102,6 +118,7 @@ class LightningBreadCrumbTest extends WP_UnitTestCase {
 		$event_id = wp_insert_post( $post );
 		// set event category to event post
 		wp_set_object_terms( $event_id, 'event_test', 'event_cat' );
+		// wp_set_object_terms( $event_id, 'event_test', 'event_cat' );
 
 		update_option( 'page_on_front', $front_page_id ); // フロントに指定する固定ページ
 		update_option( 'page_for_posts', $home_page_id ); // 投稿トップに指定する固定ページ
@@ -145,11 +162,18 @@ class LightningBreadCrumbTest extends WP_UnitTestCase {
 
             // 固定ページの子ページ
 			// HOME > 親ページ > 子ページ
+			array(
+				'target_url'        => get_permalink( $child_page_id ),
+				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="http://example.org/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.get_permalink( $normal_page_id ).'"><span itemprop="name">normal page</span></a></li><li><span>child page</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
+            ),
 
+            // トップページに最新の投稿（投稿トップ未指定） / 子カテゴリー 
+			// HOME > 親カテゴリー > 子カテゴリー
+			// array(
+			// 	'target_url'        => get_term_link( $cate_child_id, 'category' ),
+			// 	'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="http://example.org/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.get_term_link( $cate_id, 'category' ).'"><span itemprop="name">test_category</span></a></li><li><span>test_category_child</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
+            // ),
 
-
-            // トップページに最新の投稿 / 子カテゴリー 
-            // HOME > 親カテゴリー > 子カテゴリー
 
             // トップページに最新の投稿 / 投稿トップページ無指定 / 記事ページ
             // HOME > 親カテゴリー > 子カテゴリー > 記事タイトル      
@@ -158,8 +182,15 @@ class LightningBreadCrumbTest extends WP_UnitTestCase {
             // トップページに固定ページ / 投稿トップに特定の固定ページ指定
             // HOME > 投稿トップの固定ページ名
 
+            // トップページに固定ページ / 投稿トップに特定の固定ページ指定 / 親カテゴリー 
+			// HOME > 投稿トップの固定ページ名 > 親カテゴリー
+			array(
+				'target_url'        => get_term_link( $cate_id, 'category' ),
+				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="http://example.org/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="http://example.org/?page_id=7"><span itemprop="name">post_top</span></a></li><li><span>test_category</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
+			),
             // トップページに固定ページ / 投稿トップに特定の固定ページ指定 / 子カテゴリー 
-            // HOME > 投稿トップの固定ページ名 > 親カテゴリー > 子カテゴリー
+			// HOME > 投稿トップの固定ページ名 > 親カテゴリー > 子カテゴリー
+
 
             // トップページに固定ページ / 投稿トップに特定の固定ページ指定 / 年別アーカイブ
             // HOME > 投稿トップの固定ページ名 > アーカイブ名
@@ -169,7 +200,8 @@ class LightningBreadCrumbTest extends WP_UnitTestCase {
 
 
             // トップページに固定ページ / 投稿トップページ無指定 / 子カテゴリー 
-            // HOME > 親カテゴリー > 子カテゴリー
+			// HOME > 親カテゴリー > 子カテゴリー
+
 
             // トップページに固定ページ / 投稿トップページ無指定 / 年別アーカイブ 
             // HOME > アーカイブ名
