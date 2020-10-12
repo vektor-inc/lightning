@@ -70,6 +70,8 @@ class LightningBreadCrumbTest extends WP_UnitTestCase {
 			'post_category' => array( $cate_id ),
 		);
 		$post_id = wp_insert_post( $post );
+		// 投稿にカテゴリー指定
+		wp_set_object_terms( $post_id, 'test_category_child', 'category' );
 
 		// Create test page
 		$post           = array(
@@ -189,7 +191,14 @@ class LightningBreadCrumbTest extends WP_UnitTestCase {
             ),
 
             // トップページに最新の投稿 / 投稿トップページ無指定 / 記事ページ
-            // HOME > 親カテゴリー > 子カテゴリー > 記事タイトル      
+			// HOME > 親カテゴリー > 子カテゴリー > 記事タイトル
+			array(
+				'options' => array(
+					'page_for_posts' => null,
+				),
+				'target_url'        => get_permalink( $post_id ),
+				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="http://example.org/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.get_term_link( $cate_id, 'category' ).'"><span itemprop="name">test_category</span></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.get_term_link( $cate_child_id, 'category' ).'"><span itemprop="name">test_category_child</span></a></li><li><span>test</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
+            ),
 
 
             // トップページに固定ページ / 投稿トップに特定の固定ページ指定
