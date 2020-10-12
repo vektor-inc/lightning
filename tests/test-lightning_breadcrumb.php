@@ -120,11 +120,7 @@ class LightningBreadCrumbTest extends WP_UnitTestCase {
 		$event_id = wp_insert_post( $post );
 		// set event category to event post
 		wp_set_object_terms( $event_id, 'event_test', 'event_cat' );
-		// wp_set_object_terms( $event_id, 'event_test', 'event_cat' );
 
-		update_option( 'page_on_front', $front_page_id ); // フロントに指定する固定ページ
-		// update_option( 'page_for_posts', $home_page_id ); // 投稿トップに指定する固定ページ
-		update_option( 'show_on_front', 'page' ); // or posts
 
 		/*** ↑↑ テスト用事前データ設定（ test_lightning_is_layout_onecolumn と test_lightning_is_subsection_display 共通 ) ****/
 
@@ -155,16 +151,6 @@ class LightningBreadCrumbTest extends WP_UnitTestCase {
 				'target_url'        => home_url( '/?s=aaa' ),
 				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="http://example.org/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li><span>Search Results for : aaa</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
 			),
-
-			// 投稿トップに固定ページ指定
-            // HOME > 固定ページ名
-			array(
-				'options' => array(
-					'page_for_posts' => $home_page_id,
-				),
-				'target_url'        => get_permalink( $home_page_id ),
-				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="http://example.org/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li><span>post_top</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
-            ),
 
             // 固定ページ
             // HOME > 固定ページ名
@@ -200,9 +186,17 @@ class LightningBreadCrumbTest extends WP_UnitTestCase {
 				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="http://example.org/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.get_term_link( $cate_id, 'category' ).'"><span itemprop="name">test_category</span></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.get_term_link( $cate_child_id, 'category' ).'"><span itemprop="name">test_category_child</span></a></li><li><span>test</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
             ),
 
-
             // トップページに固定ページ / 投稿トップに特定の固定ページ指定
-            // HOME > 投稿トップの固定ページ名
+			// HOME > 投稿トップの固定ページ名
+			array(
+				'options' => array(
+					'page_on_front' => $front_page_id,
+					'show_on_front' =>'page',
+					'page_for_posts' => $home_page_id,
+				),
+				'target_url'        => get_permalink( $home_page_id ),
+				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="http://example.org/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li><span>post_top</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
+            ),
 
             // トップページに固定ページ / 投稿トップに特定の固定ページ指定 / 子カテゴリー 
 			// HOME > 投稿トップの固定ページ名 > 親カテゴリー > 子カテゴリー
