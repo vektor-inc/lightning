@@ -60,7 +60,7 @@ function lightning_bread_crumb() {
 			$breadcrumb_html .= '<span' . $microdata_li_a_span . '>' . $post_top_name . '</span>';
 			$breadcrumb_html .= '</a>';
 			$breadcrumb_html .= '</li>';
-		} elseif ( is_post_type_archive() ) {
+		} elseif ( is_post_type_archive() && ! is_date() ) {
 			$breadcrumb_html .= '<li>';
 			$breadcrumb_html .= '<span>' . get_the_archive_title() . '</span>';
 			$breadcrumb_html .= '</li>';

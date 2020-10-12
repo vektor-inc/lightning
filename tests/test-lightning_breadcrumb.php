@@ -213,15 +213,15 @@ class LightningBreadCrumbTest extends WP_UnitTestCase {
 
             // トップページに固定ページ / 投稿トップに特定の固定ページ指定 / 年別アーカイブ
 			// HOME > 投稿トップの固定ページ名 > アーカイブ名
-			// array(
-			// 	'options' => array(
-			// 		'page_on_front' => $front_page_id,
-			// 		'show_on_front' =>'page',
-			// 		'page_for_posts' => $home_page_id,
-			// 	),
-			// 	'target_url'        => home_url('2020/').'?post_type=post' ,
-			// 	'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/?page_id=7"><span itemprop="name">post_top</span></a></li><li><span>2020</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
-            // ),
+			array(
+				'options' => array(
+					'page_on_front' => $front_page_id,
+					'show_on_front' =>'page',
+					'page_for_posts' => $home_page_id,
+				),
+				'target_url'        => home_url().'/?post_type=post&year=2020' ,
+				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/?page_id=7"><span itemprop="name">post_top</span></a></li><li><span>2020</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
+            ),
 
             // トップページに固定ページ / 投稿トップページ無指定 / 年別アーカイブ 
 			// HOME > アーカイブ名
@@ -234,7 +234,6 @@ class LightningBreadCrumbTest extends WP_UnitTestCase {
 				'target_url'        => home_url('/').'?post_type=post&year=2020' ,
 				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li><span>2020</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
             ),
-
 
             // カスタム投稿タイプトップ 
 			// HOME > 投稿タイプ名
@@ -251,7 +250,11 @@ class LightningBreadCrumbTest extends WP_UnitTestCase {
             ),
 
             // カスタム投稿タイプ / 年別アーカイブ
-            // HOME > 投稿タイプ名 > アーカイブ名
+			// HOME > 投稿タイプ名 > アーカイブ名
+			array(
+				'target_url'        => home_url().'/?post_type=event&year=2020' ,
+				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.get_post_type_archive_link( 'event' ).'"><span itemprop="name">event</span></a></li><li><span>2020</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
+            ),
  
             // カスタム投稿タイプ / 記事詳細
 			// HOME > 投稿タイプ名 > カスタム分類 > 記事タイトル
@@ -261,11 +264,6 @@ class LightningBreadCrumbTest extends WP_UnitTestCase {
             ),
 
 		);
-
-		print '*************************************************' . PHP_EOL;
-		$a = get_post($event_post_id);
-		print '<pre style="text-align:left">';print_r($a);print '</pre>';
-		print '*************************************************' . PHP_EOL;
 
 		foreach ( $test_array as $value ) {
             if ( ! empty( $value['options'] ) && is_array( $value['options'] ) ){
