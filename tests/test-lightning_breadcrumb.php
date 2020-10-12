@@ -29,6 +29,7 @@ class LightningBreadCrumbTest extends WP_UnitTestCase {
 		register_post_type(
 			'event',
 			array(
+				'label'       => 'event',
 				'has_archive' => true,
 				'public'      => true,
 			)
