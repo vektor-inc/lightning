@@ -9,7 +9,9 @@ function lightning_bread_crumb() {
 
 	// Get Post top page info
 	/*-------------------------------------------*/
-	$post_type        = get_post_type();
+	// $post_type        = get_post_type();
+	$post_type        = lightning_get_post_type();
+	$post_type        = $post_type['slug'];
 	$post_type_object = get_post_type_object( $post_type );
 	$show_on_front    = get_option( 'show_on_front' );
 	$page_for_post    = get_option( 'page_for_posts' );
@@ -36,12 +38,11 @@ function lightning_bread_crumb() {
 	$breadcrumb_html .= '</a>';
 	$breadcrumb_html .= '</li>';
 
-	/* Post type
+
+	/* Search result
 	/*-------------------------------*/
 	if ( is_search() ) {
 
-		/* Search result
-		/*-------------------------------*/
 		if ( ! empty( get_search_query() ) ) {
 			$search_text = sprintf( __( 'Search Results for : %s', 'lightning' ), get_search_query() );
 		} else {
@@ -49,7 +50,9 @@ function lightning_bread_crumb() {
 		}
 		$breadcrumb_html .= '<li><span>' . $search_text . '</span></li>';
 
-	} elseif ( is_single() || is_page() ||is_category() || is_tag() || is_tax() || is_post_type_archive() ) {
+	/* Post type
+	/*-------------------------------*/
+	} elseif ( is_single() || is_page() ||is_category() || is_tag() || is_tax() || is_post_type_archive() || is_date() ) {
 
 		if ( 'post' === $post_type && 'page' === $show_on_front && $page_for_post ) { /* including single-post */
 			$breadcrumb_html .= '<li' . $microdata_li . '>';
@@ -57,11 +60,9 @@ function lightning_bread_crumb() {
 			$breadcrumb_html .= '<span' . $microdata_li_a_span . '>' . $post_top_name . '</span>';
 			$breadcrumb_html .= '</a>';
 			$breadcrumb_html .= '</li>';
-		} elseif ( is_post_type_archive() ) {
-			$breadcrumb_html .= '<li' . $microdata_li . '>';
-			$breadcrumb_html .= '<a' . $microdata_li_a . ' href="' . get_post_type_archive_link( $post_type ) . '">';
-			$breadcrumb_html .= '<span' . $microdata_li_a_span . '>' . get_the_archive_title() . '</span>';
-			$breadcrumb_html .= '</a>';
+		} elseif ( is_post_type_archive() && ! is_date() ) {
+			$breadcrumb_html .= '<li>';
+			$breadcrumb_html .= '<span>' . get_the_archive_title() . '</span>';
 			$breadcrumb_html .= '</li>';
 		} elseif ( 'post' !== $post_type && 'page' !== $post_type ) {
 			$breadcrumb_html .= '<li' . $microdata_li . '>';
@@ -123,10 +124,10 @@ function lightning_bread_crumb() {
 			}
 
 			// The Single or Page.
-			$breadcrumb_html .= '<li' . $microdata_li . '>';
-			$breadcrumb_html .= '<a' . $microdata_li_a . ' href="' . get_permalink() . '">';
-			$breadcrumb_html .= '<span' . $microdata_li_a_span . '>' . get_the_title() . '</span>';
-			$breadcrumb_html .= '</a>';
+			$breadcrumb_html .= '<li>';
+			// $breadcrumb_html .= '<a' . $microdata_li_a . ' href="' . get_permalink() . '">';
+			$breadcrumb_html .= '<span>' . get_the_title() . '</span>';
+			// $breadcrumb_html .= '</a>';
 			$breadcrumb_html .= '</li>';
 
 		} elseif ( is_category() || is_tag() || is_tax() ) {
@@ -150,17 +151,19 @@ function lightning_bread_crumb() {
 					$breadcrumb_html .= '</li>';
 				}
 			}
-			$breadcrumb_html .= '<li' . $microdata_li . '>';
-			$breadcrumb_html .= '<a' . $microdata_li_a . ' href="' . get_term_link( $now_term, $now_taxonomy ) . '">';
-			$breadcrumb_html .= '<span' . $microdata_li_a_span . '>' . esc_html( single_cat_title( '', '', false ) ) . '</span>';
-			$breadcrumb_html .= '</a>';
+			$breadcrumb_html .= '<li>';
+			// $breadcrumb_html .= '<a' . $microdata_li_a . ' href="' . get_term_link( $now_term, $now_taxonomy ) . '">';
+			$breadcrumb_html .= '<span>' . esc_html( single_cat_title( '', '', false ) ) . '</span>';
+			// $breadcrumb_html .= '</a>';
+			$breadcrumb_html .= '</li>';
+		} elseif ( is_date() ) {
+			$breadcrumb_html .= '<li>';
+			$breadcrumb_html .= '<span>' . get_the_archive_title() . '</span>';
 			$breadcrumb_html .= '</li>';
 		}
 	}  elseif ( is_home() && ! is_front_page() ) {
-		$breadcrumb_html .= '<li' . $microdata_li . '>';
-		$breadcrumb_html .= '<a' . $microdata_li_a . ' href="' . $post_top_url . '">';
-		$breadcrumb_html .= '<span' . $microdata_li_a_span . '>' . $post_top_name . '</span>';
-		$breadcrumb_html .= '</a>';
+		$breadcrumb_html .= '<li>';
+		$breadcrumb_html .= '<span>' . $post_top_name . '</span>';
 		$breadcrumb_html .= '</li>';
 	} elseif ( is_author() ) {
 		$author_id          = get_the_author_meta( 'ID' );
@@ -170,29 +173,6 @@ function lightning_bread_crumb() {
 		$breadcrumb_html .= '<span' . $microdata_li_a_span . '>' . get_the_archive_title() . '</span>';
 		$breadcrumb_html .= '</a>';
 		$breadcrumb_html .= '</li>';
-	} elseif ( is_date() ) {
-		$archive_year  = get_the_time( 'Y' );
-		$archive_month = get_the_time( 'm' );
-		$archive_day   = get_the_time( 'd' );
-		if ( is_year() ) {
-			$breadcrumb_html .= '<li' . $microdata_li . '>';
-			$breadcrumb_html .= '<a' . $microdata_li_a . ' href="' . get_year_link( $archive_year ) . '">';
-			$breadcrumb_html .= '<span' . $microdata_li_a_span . '>' . get_the_archive_title() . '</span>';
-			$breadcrumb_html .= '</a>';
-			$breadcrumb_html .= '</li>';
-		} elseif ( is_month() ) {
-			$breadcrumb_html .= '<li' . $microdata_li . '>';
-			$breadcrumb_html .= '<a' . $microdata_li_a . ' href="' . get_month_link( $archive_year, $archive_month ) . '">';
-			$breadcrumb_html .= '<span' . $microdata_li_a_span . '>' . get_the_archive_title() . '</span>';
-			$breadcrumb_html .= '</a>';
-			$breadcrumb_html .= '</li>';
-		} elseif ( is_day() ) {
-			$breadcrumb_html .= '<li' . $microdata_li . '>';
-			$breadcrumb_html .= '<a' . $microdata_li_a . ' href="' . get_day_link( $archive_year, $archive_month, $archive_day ) . '">';
-			$breadcrumb_html .= '<span' . $microdata_li_a_span . '>' . get_the_archive_title() . '</span>';
-			$breadcrumb_html .= '</a>';
-			$breadcrumb_html .= '</li>';
-		}
 	} elseif ( is_attachment() ) {
 		$breadcrumb_html .= '<li' . $microdata_li . '>';
 		$breadcrumb_html .= '<a' . $microdata_li_a . ' href="' . get_attachment_link() . '">';
@@ -207,6 +187,12 @@ function lightning_bread_crumb() {
 	$breadcrumb_html .= '</div>';
 	$breadcrumb_html .= '</div>';
 	$breadcrumb_html .= '<!-- [ /.breadSection ] -->';
+		// // delete before after space
+		// $dynamic_css = trim( $dynamic_css );
+		// convert tab and br to space
+		$breadcrumb_html = preg_replace( '/[\n\r\t]/', '', $breadcrumb_html );
+		// Change multiple spaces to single space
+		$breadcrumb_html = preg_replace( '/\s(?=\s)/', '', $breadcrumb_html );
 	return $breadcrumb_html;
 }
 
