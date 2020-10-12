@@ -158,10 +158,8 @@ function lightning_bread_crumb() {
 			$breadcrumb_html .= '</li>';
 		}
 	}  elseif ( is_home() && ! is_front_page() ) {
-		$breadcrumb_html .= '<li' . $microdata_li . '>';
-		$breadcrumb_html .= '<a' . $microdata_li_a . ' href="' . $post_top_url . '">';
-		$breadcrumb_html .= '<span' . $microdata_li_a_span . '>' . $post_top_name . '</span>';
-		$breadcrumb_html .= '</a>';
+		$breadcrumb_html .= '<li>';
+		$breadcrumb_html .= '<span>' . $post_top_name . '</span>';
 		$breadcrumb_html .= '</li>';
 	} elseif ( is_author() ) {
 		$author_id          = get_the_author_meta( 'ID' );

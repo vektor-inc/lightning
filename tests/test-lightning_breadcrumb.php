@@ -152,7 +152,19 @@ class LightningBreadCrumbTest extends WP_UnitTestCase {
 			array(
 				'target_url'        => home_url( '/?s=aaa' ),
 				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="http://example.org/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li><span>Search Results for : aaa</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
+			),
+
+
+			// 投稿トップに固定ページ指定
+            // HOME > 固定ページ名
+			array(
+				'options' => array(
+					'page_for_posts' => $home_page_id,
+				),
+				'target_url'        => get_permalink( $home_page_id ),
+				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="http://example.org/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li><span>post_top</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
             ),
+
             // 固定ページ
             // HOME > 固定ページ名
 			array(
@@ -182,15 +194,9 @@ class LightningBreadCrumbTest extends WP_UnitTestCase {
             // トップページに固定ページ / 投稿トップに特定の固定ページ指定
             // HOME > 投稿トップの固定ページ名
 
-            // トップページに固定ページ / 投稿トップに特定の固定ページ指定 / 親カテゴリー 
-			// HOME > 投稿トップの固定ページ名 > 親カテゴリー
-			array(
-				'target_url'        => get_term_link( $cate_id, 'category' ),
-				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="http://example.org/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="http://example.org/?page_id=7"><span itemprop="name">post_top</span></a></li><li><span>test_category</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
-			),
             // トップページに固定ページ / 投稿トップに特定の固定ページ指定 / 子カテゴリー 
 			// HOME > 投稿トップの固定ページ名 > 親カテゴリー > 子カテゴリー
-
+			
 
             // トップページに固定ページ / 投稿トップに特定の固定ページ指定 / 年別アーカイブ
             // HOME > 投稿トップの固定ページ名 > アーカイブ名
