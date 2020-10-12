@@ -58,10 +58,10 @@ class LightningBreadCrumbTest extends WP_UnitTestCase {
 
 		// Create test term
 		$args  = array(
-			'slug' => 'event_test',
+			'slug' => 'event_category_name',
 		);
-		$term_info = wp_insert_term( 'event_test', 'event_cat', $args );
-		$term_id = $term_info['term_id'];
+		$term_info = wp_insert_term( 'event_category_name', 'event_cat', $args );
+		$event_term_id = $term_info['term_id'];
 
 		// Create test post
 		$post    = array(
@@ -118,9 +118,9 @@ class LightningBreadCrumbTest extends WP_UnitTestCase {
 			'post_status'  => 'publish',
 			'post_content' => 'content',
 		);
-		$event_id = wp_insert_post( $post );
+		$event_post_id = wp_insert_post( $post );
 		// set event category to event post
-		wp_set_object_terms( $event_id, 'event_test', 'event_cat' );
+		wp_set_object_terms( $event_post_id, 'event_category_name', 'event_cat' );
 
 
 		/*** ↑↑ テスト用事前データ設定（ test_lightning_is_layout_onecolumn と test_lightning_is_subsection_display 共通 ) ****/
@@ -223,18 +223,17 @@ class LightningBreadCrumbTest extends WP_UnitTestCase {
 			// 	'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="http://example.org/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="http://example.org/?page_id=7"><span itemprop="name">post_top</span></a></li><li><span>2020</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
             // ),
 
-
             // トップページに固定ページ / 投稿トップページ無指定 / 年別アーカイブ 
 			// HOME > アーカイブ名
-			// array(
-			// 	'options' => array(
-			// 		'page_on_front' => $front_page_id,
-			// 		'show_on_front' =>'page',
-			// 		'page_for_posts' => null,
-			// 	),
-			// 	'target_url'        => home_url('/').'?post_type=post&year=2020' ,
-			// 	'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="http://example.org/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li><span>2020</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
-            // ),
+			array(
+				'options' => array(
+					'page_on_front' => $front_page_id,
+					'show_on_front' =>'page',
+					'page_for_posts' => null,
+				),
+				'target_url'        => home_url('/').'?post_type=post&year=2020' ,
+				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="http://example.org/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li><span>2020</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
+            ),
 
 
             // カスタム投稿タイプトップ 
@@ -245,22 +244,26 @@ class LightningBreadCrumbTest extends WP_UnitTestCase {
             ),
 
             // カスタム投稿タイプ / カスタム分類アーカイブ
-            // HOME > 投稿タイプ名 > カスタム分類
+			// HOME > 投稿タイプ名 > カスタム分類
+			array(
+				'target_url'        => get_term_link( $event_term_id ),
+				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="http://example.org/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.get_post_type_archive_link( 'event' ).'"><span itemprop="name">event</span></a></li><li><span>event_category_name</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
+            ),
 
             // カスタム投稿タイプ / 年別アーカイブ
             // HOME > 投稿タイプ名 > アーカイブ名
  
             // カスタム投稿タイプ / 記事詳細
 			// HOME > 投稿タイプ名 > カスタム分類 > 記事タイトル
-			// array(
-			// 	'target_url'        => get_permalink( $event_id ),
-			// 	'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="http://example.org/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.get_post_type_archive_link( 'event' ).'"><span itemprop="name">event</span></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.get_term_link( $term_id ).'"><span itemprop="name">event_test</span></a></li><li><span>event-test-post</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
-            // ),
+			array(
+				'target_url'        => get_permalink( $event_post_id ),
+				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="http://example.org/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.get_post_type_archive_link( 'event' ).'"><span itemprop="name">event</span></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.get_term_link( $event_term_id ).'"><span itemprop="name">event_category_name</span></a></li><li><span>event-test-post</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
+            ),
 
 		);
 
 		print '*************************************************' . PHP_EOL;
-		$a = get_post($event_id);
+		$a = get_post($event_post_id);
 		print '<pre style="text-align:left">';print_r($a);print '</pre>';
 		print '*************************************************' . PHP_EOL;
 
