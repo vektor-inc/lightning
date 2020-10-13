@@ -9,9 +9,9 @@ function lightning_bread_crumb() {
 
 	// Get Post top page info
 	/*-------------------------------------------*/
-	// $post_type        = get_post_type();
-	$post_type        = lightning_get_post_type();
-	$post_type        = $post_type['slug'];
+	$post_type        = get_post_type();
+	// $post_type        = lightning_get_post_type();
+	// $post_type        = $post_type['slug'];
 	$post_type_object = get_post_type_object( $post_type );
 	$show_on_front    = get_option( 'show_on_front' );
 	$page_for_post    = get_option( 'page_for_posts' );

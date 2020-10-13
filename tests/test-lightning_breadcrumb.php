@@ -158,11 +158,37 @@ class LightningBreadCrumbTest extends WP_UnitTestCase {
 			array(
 				'target_url'        => get_permalink( $normal_page_id ),
 				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li><span>normal page</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
+			),
+			
+
+			// トップページに固定ページ / 投稿トップに特定の固定ページ指定 / 固定ページ
+            // HOME > 固定ページ名
+			array(
+				'options' => array(
+					'page_on_front' => $front_page_id,
+					'show_on_front' =>'page',
+					'page_for_posts' => $home_page_id,
+				),
+				'target_url'        => get_permalink( $normal_page_id ),
+				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li><span>normal page</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
             ),
 
             // 固定ページの子ページ
 			// HOME > 親ページ > 子ページ
 			array(
+				'target_url'        => get_permalink( $child_page_id ),
+				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.get_permalink( $normal_page_id ).'"><span itemprop="name">normal page</span></a></li><li><span>child page</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
+			),
+			
+			// トップページに固定ページ / 投稿トップに特定の固定ページ指定
+			// 固定ページの子ページ
+			// HOME > 親ページ > 子ページ
+			array(
+				'options' => array(
+					'page_on_front' => $front_page_id,
+					'show_on_front' =>'page',
+					'page_for_posts' => $home_page_id,
+				),
 				'target_url'        => get_permalink( $child_page_id ),
 				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.get_permalink( $normal_page_id ).'"><span itemprop="name">normal page</span></a></li><li><span>child page</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
             ),
