@@ -185,7 +185,9 @@ function lightning_get_post_type() {
 	// $postType['slug'] = get_post_type();
 
 	global $wp_query;
-	if ( ! empty( $wp_query->query_vars['post_type'] ) ) {
+	if ( is_page() ){
+		$postType['slug'] = 'page';
+	} elseif ( ! empty( $wp_query->query_vars['post_type'] ) ) {
 
 		$postType['slug'] = $wp_query->query_vars['post_type'];
 		// Maybe $wp_query->query_vars['post_type'] is usually an array...
