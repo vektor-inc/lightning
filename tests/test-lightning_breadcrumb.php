@@ -251,7 +251,7 @@ class LightningBreadCrumbTest extends WP_UnitTestCase {
 					'page_for_posts' => $home_page_id,
 				),
 				'target_url'        => get_term_link( $cate_no_post_id, 'category' ),
-				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/?page_id='.$home_page_id.'"><span itemprop="name">post_top</span></a></li><li><span>No Post Category</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
+				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/?page_id='.$home_page_id.'"><span itemprop="name">post_top</span></a></li><li><span>no_post_category</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
             ),
 
             // トップページに固定ページ / 投稿トップに特定の固定ページ指定 / 年別アーカイブ
