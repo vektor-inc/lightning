@@ -150,7 +150,7 @@ function lightning_is_subsection_display() {
 		if ( call_user_func( $value['function'] ) ) {
 			if ( isset( $options['layout'][ $key ] ) ) {
 				if ( 'col-one-no-subsection' === $options['layout'][ $key ] ) {
-					$onecolumn = false;
+					$return = false;
 				}
 			}
 		}
