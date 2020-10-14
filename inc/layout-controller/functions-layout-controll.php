@@ -88,7 +88,7 @@ function lightning_is_layout_onecolumn() {
 	/**
 	 * アーカイブページの場合
 	 */
-	if ( is_archive() ) {
+	if ( is_archive() && ! is_search() ) {
 		$current_post_type_info = lightning_get_post_type();
 		$archive_post_types = array( 'post' ) + $additional_post_types;
 		foreach ( $archive_post_types as $archive_post_type ) {
@@ -150,7 +150,7 @@ function lightning_is_subsection_display() {
 		if ( call_user_func( $value['function'] ) ) {
 			if ( isset( $options['layout'][ $key ] ) ) {
 				if ( 'col-one-no-subsection' === $options['layout'][ $key ] ) {
-					$onecolumn = false;
+					$return = false;
 				}
 			}
 		}
@@ -201,7 +201,7 @@ function lightning_is_subsection_display() {
 		if ( isset( $options['layout']['archive-post'] ) && 'col-one-no-subsection' === $options['layout']['archive-post'] ) {
 			$return = false;
 		}
-	} elseif ( is_archive() ) {
+	} elseif ( is_archive() && ! is_search() ) {
 		$current_post_type_info = lightning_get_post_type();
 		$archive_post_types = array( 'post' ) + $additional_post_types;
 		foreach ( $archive_post_types as $archive_post_type ) {
