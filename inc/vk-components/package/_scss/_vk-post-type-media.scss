@@ -43,10 +43,14 @@ https://github.com/vektor-inc/vektor-wp-libraries
 	}
 }
 /* border-top control */
+.media.vk_post {
+	border-top: $border_primary;
+}
 .media.vk_post-col {
-	&-xs-6:first-child,
-	&-xs-6:nth-child(2) {
-		border-top: $border_primary;
+	@media  (max-width: $xs-max) {
+		&-xs-6:nth-child(2) {
+			border-top: $border_primary;
+		}
 	}
 	@media (min-width: $sm-min) and (max-width: $sm-max) {
 		&-sm-6:nth-child(2),
