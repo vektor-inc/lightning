@@ -113,7 +113,7 @@ $ npm run build
 
 #### jsビルド
 ```
-$ npm run bulid:script
+$ npm run build:script
 ```
 
 #### scssビルド
