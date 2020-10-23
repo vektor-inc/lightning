@@ -15,9 +15,6 @@ function lightning_optimize_css() {
 
 	if ( ! isset( $options['optimize_css'] ) ) {
 		$options['optimize_css'] = 'minimal-bootstrap';
-	} elseif ( 'optomize-all-css' === $options['optimize_css'] ) {
-		$options['optimize_css'] = 'tree-shaking';
-		update_option( 'lightning_theme_options', $options );
 	}
 
 	if ( ! empty( $options['optimize_css'] ) && ( 'optomize-all-css' === $options['optimize_css'] || 'tree-shaking' === $options['optimize_css'] ) ) {
