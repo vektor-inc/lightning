@@ -38,7 +38,13 @@ gulp.task('text-domain', function (done) {
 	.pipe(gulp.dest('./inc/vk-mobile-nav/package/'));
 	gulp.src(['./inc/term-color/package/*'])
 	.pipe(replace('vk_term_color_textdomain', 'lightning'))
-	.pipe(gulp.dest('./inc/term-color/package/'));
+  .pipe(gulp.dest('./inc/term-color/package/'));
+	gulp.src(['./inc/term-color/package/*'])
+	.pipe(replace('vk_term_color_textdomain', 'lightning'))
+  .pipe(gulp.dest('./inc/term-color/package/'));
+	gulp.src(["./inc/vk-css-optimize/package/*"])
+		.pipe(replace("css_optimize_textdomain", "lightning"))
+		.pipe(gulp.dest("./inc/vk-css-optimize/package/"));
 	done();
 });
 
