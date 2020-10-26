@@ -258,6 +258,9 @@ include_once ABSPATH . 'wp-admin/includes/plugin.php';
 if ( is_plugin_active( 'polylang/polylang.php' ) ) {
 	require get_parent_theme_file_path( '/plugin-support/polylang/functions-polylang.php' );
 }
+if ( is_plugin_active( 'bbpress/bbpress.php' ) ) {
+	require get_parent_theme_file_path( '/plugin-support/bbpress/functions-bbpress.php' );
+}
 
 /*
   WidgetArea initiate
