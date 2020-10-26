@@ -1,27 +1,32 @@
 <?php
+/*
+The original of this file is located at:
+https://github.com/vektor-inc/vektor-wp-libraries
+If you want to change this file, please change the original file.
+*/
 /**
  * CSS Simple Tree Shaking
- * 
+ *
  * Description: CSS 定義データから未使用の id, class, tag に関する定義を取り除き縮小化します
- * 
+ *
  * Version: 1.0.2
  * Author: enomoto@celtislab
  * Author URI: https://celtislab.net/
  * License: GPLv2
- * 
+ *
  */
 namespace celtislab;
 
 defined( 'ABSPATH' ) || exit;
 
 class CSS_tree_shaking {
-    
+
     private static $cmplist;
     private static $varlist;
     private static $jsaddlist;
     private static $atrule_data;
 	function __construct() {}
-    
+
     // アットルール一時退避( @{md5key} に置き換えておく)
     private static function atrule_store($css){
         $pattern = array( '|(@(\-[\w]+\-)?keyframes.+?\{)(.+?\})\}|',
@@ -41,7 +46,7 @@ class CSS_tree_shaking {
                 }
                	self::$atrule_data[ $key ] = $data;
                 return '@{' . $key . '}';
-            }, $css);            
+            }, $css);
         }
         return $css;
     }
@@ -52,13 +57,13 @@ class CSS_tree_shaking {
             $data = $matches[0];
             $key = $matches[1];
             if(strpos($key, 'AR_') !== false){
-                $data = (!empty(self::$atrule_data[ $key ]))? self::atrule_restore( self::$atrule_data[ $key ] ) : ''; 
+                $data = (!empty(self::$atrule_data[ $key ]))? self::atrule_restore( self::$atrule_data[ $key ] ) : '';
             }
             return $data;
         }, $css);
         return $css;
     }
-    
+
     //CSS から未使用の id, class, tag を含む定義を削除
     private static function tree_shaking($css) {
         $ncss = preg_replace_callback("|(.+?)(\{.+?\})|u", function($matches) {
@@ -83,7 +88,7 @@ class CSS_tree_shaking {
                                 //$jsaddlist 登録名が一部でも含まれていれば削除しない（処理を簡略化するため上位層のセレクタのみで判定）
                                 if(in_array($val, self::$jsaddlist))
                                     break;
-                                
+
                                 //$cmplist 登録名に含まれていないものが一つでもあれば削除
                                 if(!preg_match('/^[0-9]+/', $val) && !in_array($val, self::$cmplist[$item])){
                                     $sel = preg_replace( '/(' . preg_quote($s) . ')(,|$)/u', '$2', $sel, 1 );
@@ -104,7 +109,7 @@ class CSS_tree_shaking {
         }, $css);
         return $ncss;
     }
-    
+
     //未使用変数定義の削除（tree_shaking 実行後に実施する必要あり）
     public static function tree_shaking4var($css) {
         $ncss = $css;
@@ -121,21 +126,21 @@ class CSS_tree_shaking {
         $ncss = preg_replace_callback( '|(\-\-[\w\-]+?):url\(.+?\);?|u', function($matches) {
             $data = $matches[0];
             if(!in_array(trim($matches[1]), self::$varlist)){
-                $data = ''; 
+                $data = '';
             }
             return $data;
-        }, $ncss);            
+        }, $ncss);
         $ncss = preg_replace_callback( '|(\-\-[\w\-]+?):(.+?)([;\}])|u', function($matches) {
             $data = $matches[0];
             if(!preg_match('|url\(|u', $matches[2]) && !in_array(trim($matches[1]), self::$varlist)){
-                $data = ($matches[3] === '}')? '}' : ''; 
+                $data = ($matches[3] === '}')? '}' : '';
             }
             return $data;
-        }, $ncss);            
+        }, $ncss);
 
         return $ncss;
     }
-    
+
     /*=============================================================
      * CSS 内のコメント、改行、空白等を削除するだけのシンプルな縮小化
      */
@@ -151,7 +156,7 @@ class CSS_tree_shaking {
         }
         return $css;
     }
-    
+
     /*=============================================================
      * CSS 内の未使用 id, class, tag に関する定義を取り除く縮小化
      */
@@ -199,7 +204,7 @@ class CSS_tree_shaking {
                           'class' => '|[\s\t\'"]class\s?=\s?[\'"](.+?)[\'"]|u',
                           'tag'   => '|<([\w\-]+)|iu'
                         );
-        
+
         if(empty(self::$cmplist['parse'])){
             self::$cmplist['parse'] = true;
             foreach (array('id','class','tag') as $item) {
@@ -216,9 +221,9 @@ class CSS_tree_shaking {
             }
         }
         $css = self::simple_minify( $css );
-        $css = self::atrule_store( $css );        
+        $css = self::atrule_store( $css );
         $css = self::tree_shaking( $css );
-        $css = self::atrule_restore( $css );        
+        $css = self::atrule_restore( $css );
         $css = self::tree_shaking4var( $css );
         return $css;
     }
