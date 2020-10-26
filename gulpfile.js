@@ -124,6 +124,18 @@ gulp.task('sass_woo', function (done) {
     .pipe(gulp.dest('../lightning-pro/plugin-support/woocommerce/css/'));
 });
 
+gulp.task('sass_bbpress', function (done) {
+	return src(['./plugin-support/bbpress/_scss/**.scss'])
+	  .pipe(sass())
+	  .pipe(cmq({
+		log: true
+	  }))
+	  .pipe(autoprefixer())
+	  .pipe(cleanCss())
+	  .pipe(gulp.dest('./plugin-support/bbpress/css/'))
+	  .pipe(gulp.dest('../lightning-pro/plugin-support/bbpress/css/'));
+  });
+
 gulp.task('components_copy', function (done) {
   return gulp.src(['inc/components/*.php'])
     .pipe(gulp.dest('./inc/components'))
@@ -169,6 +181,7 @@ gulp.task('watch', function (done) {
   error_stop = false
   gulp.watch(['./assets/_scss/**','./inc/vk-mobile-nav/package/css/**','./inc/vk-components/**/*.css'], gulp.series('sass_common'));
   gulp.watch(['./plugin-support/woocommerce/_scss/**'], gulp.series('sass_woo'));
+  gulp.watch(['./plugin-support/bbpress/_scss/**'], gulp.series('sass_bbpress'));
   gulp.watch(['./library/bootstrap-4/scss/**.scss'], gulp.series('sass_bs4'));
   gulp.watch(['./design-skin/origin/_scss/**/*.scss'], gulp.series('sass_skin'));
   gulp.watch(['./design-skin/origin2/_scss/**/*.scss'], gulp.series('sass_skin2'));
