@@ -300,7 +300,7 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 
 			$vk_css_tree_shaking_array = VK_CSS_Optimize::css_tree_shaking_array();
 
-			$exclude_handles = array( 'woocommerce-layout', 'woocommerce-smallscreen-css', 'woocommerce-general-css' );
+			$exclude_handles = array( 'woocommerce-layout', 'woocommerce-smallscreen', 'woocommerce-general' );
 
 			$options = VK_CSS_Optimize::get_css_optimize_options();
 
