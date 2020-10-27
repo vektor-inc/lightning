@@ -100,7 +100,7 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 			$wp_customize->add_control(
 				'vk_css_optimize_options[tree_shaking_class_exclude]',
 				array(
-					'label'       => __( 'Exclude class of tree shaking', 'lightning' ),
+					'label'       => __( 'Exclude class of Tree shaking', 'lightning' ),
 					'section'     => 'css_optimize',
 					'settings'    => 'vk_css_optimize_options[tree_shaking_class_exclude]',
 					'type'        => 'textarea',
@@ -154,6 +154,34 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 				)
 			);
 
+			$wp_customize->add_setting(
+				'vk_css_optimize_options[preload_handle_exclude]',
+				array(
+					'default'           => '',
+					'type'              => 'option',
+					'capability'        => 'edit_theme_options',
+					'sanitize_callback' => 'sanitize_text_field',
+				)
+			);
+			$wp_customize->add_control(
+				'vk_css_optimize_options[preload_handle_exclude]',
+				array(
+					'label'       => __( 'Exclude class of Preload CSS', 'lightning' ),
+					'section'     => 'css_optimize',
+					'settings'    => 'vk_css_optimize_options[preload_handle_exclude]',
+					'type'        => 'textarea',
+					'description' => __( 'If you choose "Active Preload CSS" that css load timing was changed.If you have any do not want to preload css file that please fill in handle(id) name. Ex) pluginname_a-style,pluginname_b-css' ),
+				)
+			);
+
+		}
+
+		public static function get_css_optimize_options_default(){
+			$vk_css_optimize_options_default = array(
+				'tree_shaking'	=> '',
+				'preload' 		=> '',
+			);
+			return apply_filters( 'vk_css_optimize_options_default', $vk_css_optimize_options_default );
 		}
 
 		/**
@@ -171,10 +199,7 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 			}
 
 			$vk_css_optimize_options = get_option( 'vk_css_optimize_options' );
-			$vk_css_optimize_options_default = array(
-				'tree_shaking'	=> 'active',
-				'preload' 		=> 'active',
-			);
+			$vk_css_optimize_options_default = VK_CSS_Optimize::get_css_optimize_options_default();
 
 			// fall back function
 			// Actualy other array exist but optimize_css is most important
@@ -275,17 +300,24 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 
 			$vk_css_tree_shaking_array = VK_CSS_Optimize::css_tree_shaking_array();
 
-			$tree_shaking_handles = array();
+			$exclude_handles = array( 'woocommerce-layout', 'woocommerce-smallscreen-css', 'woocommerce-general-css' );
 
 			$options = VK_CSS_Optimize::get_css_optimize_options();
 
 			// tree shaking がかかっているものはpreloadから除外する
 			// でないと表示時に一瞬崩れて結局実用性に問題があるため
 			foreach ( $vk_css_tree_shaking_array as $vk_css_array ) {
-				$tree_shaking_handles[] = $vk_css_array['id'];
+				$exclude_handles[] = $vk_css_array['id'];
 			}
+
+			if ( ! empty( $options['preload_handle_exclude'] ) ){
+				$exclude_array = explode(",", $options['preload_handle_exclude']);
+				$exclude_handles = array_merge( $exclude_array, $exclude_handles );
+			}
+			
+			$exclude_handles = apply_filters( 'vk_css_preload_exclude_handles', $exclude_handles );
 			// クリティカルじゃないCSS（tree shakingにかけているもの以外）をpreload
-			if ( ! in_array( $handle, $tree_shaking_handles ) ){
+			if ( ! in_array( $handle, $exclude_handles ) ){
 				$tag = "<link rel='preload' id='".$handle."-css' href='".$href."' as='style' onload=\"this.onload=null;this.rel='stylesheet'\"/>\n";
 				$tag .= "<link rel='stylesheet' id='".$handle."-css' href='".$href."' media='print' onload=\"this.media='all'; this.onload=null;\">\n";
 			}
