@@ -92,3 +92,13 @@ function lightning_css_tree_shaking_exclude_class( $inidata ) {
 	return $inidata;
 }
 add_filter( 'css_tree_shaking_exclude', 'lightning_css_tree_shaking_exclude_class' );
+
+
+function lightning_css_optimize_options_default( $vk_css_optimize_options_default ) {
+	$vk_css_optimize_options_default = array(
+		'tree_shaking'	=> 'active',
+		'preload' 		=> '',
+	);
+	return $vk_css_optimize_options_default;
+}
+add_filter( 'vk_css_optimize_options_default', 'lightning_css_optimize_options_default' );
