@@ -83,6 +83,7 @@ function lightning_deactive_adv_unit() {
 }
 
 function lightning_pageheader_and_breadcrumb_compatible(){
+	
 	$post_types = get_post_types();
 	foreach ( $post_types as $key => $post_type ){
 		$args = array(
@@ -90,6 +91,7 @@ function lightning_pageheader_and_breadcrumb_compatible(){
 			'posts_per_page' => -1,
 		);
 		$posts = get_posts( $args );
+		
 		foreach ( $posts as $post ){
 			setup_postdata( $post );
 			$meta_value = $post->_lightning_design_setting;
