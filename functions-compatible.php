@@ -81,3 +81,27 @@ function lightning_deactive_adv_unit() {
 	$plugin_path = 'lightning-advanced-unit/lightning_advanced_unit.php';
 	VK_Helpers::deactivate_plugin( $plugin_path );
 }
+
+function lightning_pageheader_and_breadcrumb_compatible(){
+	
+	$post_types = get_post_types();
+	foreach ( $post_types as $key => $post_type ){
+		$args = array(
+			'post_type' => $key,
+			'posts_per_page' => -1,
+		);
+		$posts = get_posts( $args );
+		
+		foreach ( $posts as $post ){
+			setup_postdata( $post );
+			$meta_value = $post->_lightning_design_setting;
+			if ( ! empty( $meta_value['hidden_page_header_and_breadcrumb'] ) ){
+				unset( $meta_value['hidden_page_header_and_breadcrumb'] );
+				$meta_value['hidden_page_header'] = true;
+				$meta_value['hidden_breadcrumb'] = true;
+				update_post_meta( $post->ID, '_lightning_design_setting', $meta_value );
+			}
+			wp_reset_postdata();
+		}
+	}
+}

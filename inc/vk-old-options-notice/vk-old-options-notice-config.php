@@ -6,6 +6,14 @@
  */
 
 if ( ! class_exists( 'VK_Old_Options_Notice' ) ) {
+
+	// アップデート状況識別用のoption値保存名
+	global $vk_old_options_name;
+	$vk_old_options_name = 'lightning_old_options';
+
+	global $vk_update_link;
+	$vk_update_link = 'lightning-update-link';
+
 	global $old_setting_array;
 	$old_setting_array = array(
 		array(
@@ -98,10 +106,12 @@ if ( ! class_exists( 'VK_Old_Options_Notice' ) ) {
 			),
 			'callback'     => 'lightning_options_compatible',
 		),
+		array(
+			'data_type'    => 'meta',
+			'check_version' => '0.1.0',
+			'callback'     => 'lightning_pageheader_and_breadcrumb_compatible',
+		),
 	);
-
-	global $vk_update_link;
-	$vk_update_link = 'lightning-update-link';
 
 	require_once dirname( __FILE__ ) . '/package/class-vk-old-options-notice.php';
 }
