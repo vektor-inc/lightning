@@ -259,6 +259,13 @@ function lightning_is_page_header_and_breadcrumb() {
 		if ( ! empty( $post->_lightning_design_setting['hidden_page_header_and_breadcrumb'] ) ) {
 			$return = false;
 		}
+
+		if ( 
+		! empty( $post->_lightning_design_setting['hidden_page_header'] ) && 
+		! empty( $post->_lightning_design_setting['hidden_breadcrumb'] ) 
+		) {
+			$return = false;
+		}
 	}
 	return apply_filters( 'lightning_is_page_header_and_breadcrumb', $return );
 }
