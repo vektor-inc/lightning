@@ -70,18 +70,25 @@ function lightning_design_setting_meta_fields() {
 	/*-------------------------------------------*/
 	$form .= '<h4>' . __( 'Page Header and Breadcrumb', 'lightning' ) . '</h4>';
 
-	$id    = '_lightning_design_setting[hidden_page_header_and_breadcrumb]';
-	$name  = '_lightning_design_setting[hidden_page_header_and_breadcrumb]';
-	$label = __( 'Don\'t display', 'lightning' );
-
 	$form .= '<ul>';
 
+	// Page Header
+	$id    = '_lightning_design_setting[hidden_page_header]';
 	$checked = '';
-	if ( ! empty( $saved_post_meta['hidden_page_header_and_breadcrumb'] ) ) {
+	if ( ! empty( $saved_post_meta['hidden_page_header'] ) ) {
 		$checked = ' checked';
 	}
+	$form .= '<li class="vk_checklist_item vk_checklist_item-style-vertical">' . '<input type="checkbox" id="' . $id . '" name="' . $id . '" value="true"' . $checked . '  class="vk_checklist_item_input"><label for="' . $id . '" class="vk_checklist_item_label">' . wp_kses_post( __( 'Don\'t display Page Header', 'lightning' ) ) . '</label></li>';
 
-	$form .= '<li class="vk_checklist_item vk_checklist_item-style-vertical">' . '<input type="checkbox" id="' . esc_attr( $id ) . '" name="' . esc_attr( $name ) . '" value="true"' . $checked . '  class="vk_checklist_item_input"><label for="' . esc_attr( $name ) . '" class="vk_checklist_item_label">' . wp_kses_post( $label ) . '</label></li>';
+	
+	// Bread Crumb
+	$id    = '_lightning_design_setting[hidden_breadcrumb]';
+	$checked = '';
+	if ( ! empty( $saved_post_meta['hidden_breadcrumb'] ) ) {
+		$checked = ' checked';
+	}
+	$form .= '<li class="vk_checklist_item vk_checklist_item-style-vertical">' . '<input type="checkbox" id="' . $id . '" name="' . $id . '" value="true"' . $checked . '  class="vk_checklist_item_input"><label for="' . $id . '" class="vk_checklist_item_label">' . wp_kses_post( __( 'Don\'t display Breadcrumb', 'lightning' ) ) . '</label></li>';
+	
 	$form .= '</ul>';
 
 	/*
