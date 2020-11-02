@@ -334,7 +334,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 
 			if ( $options['display_taxonomies'] ) {
 				$args          = array(
-					'template'      => __( '<dt class="vk_post_taxonomy_title">%s</dt><dd class="vk_post_taxonomy_terms">%l</dd>', 'lightning' ),
+					'template'      => '<dt class="vk_post_taxonomy_title"><span class="vk_post_taxonomy_title_inner">%s</span></dt><dd class="vk_post_taxonomy_terms">%l</dd>',
 					'term_template' => '<a href="%1$s">%2$s</a>',
 				);
 				$taxonomies	= get_the_taxonomies( $post->ID, $args );
