@@ -1,9 +1,6 @@
 <?php get_header(); ?>
 
-<?php
-$lightning_design_setting = get_post_meta( $post->ID, '_lightning_design_setting', true );
-
-if ( empty( $lightning_design_setting['hidden_page_header'] ) ){
+<?php if ( lightning_is_page_header() ){
 	// Dealing with old files.
 	// Actually, it's ok to only use get_template_part().
 	/*
@@ -15,9 +12,9 @@ if ( empty( $lightning_design_setting['hidden_page_header'] ) ){
 	} else {
 		get_template_part( 'template-parts/page-header' );
 	}
-}
+} ?>
 
-if ( empty( $lightning_design_setting['hidden_breadcrumb'] ) ){
+<?php if ( lightning_is_breadcrumb() ){
 	/*
 	 BreadCrumb
 	/*-------------------------------------------*/
@@ -29,8 +26,7 @@ if ( empty( $lightning_design_setting['hidden_breadcrumb'] ) ){
 		get_template_part( 'template-parts/breadcrumb' );
 	}
 	do_action( 'lightning_breadcrumb_after' );
-}
-?>
+} ?>
 
 <div class="<?php lightning_the_class_name( 'siteContent' ); ?>">
 <?php do_action( 'lightning_siteContent_prepend' ); ?>
