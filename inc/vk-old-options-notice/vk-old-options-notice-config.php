@@ -5,6 +5,15 @@
  * @package Lightning
  */
 
+/*
+
+ ## Logic of display warnning
+
+1. option : get option automatically and check
+2. post meta and so on : compale last chack version and now check version
+
+*/
+
 if ( ! class_exists( 'VK_Old_Options_Notice' ) ) {
 
 	// アップデート状況識別用のoption値保存名
