@@ -69,3 +69,40 @@ function lightning_deactivate_plugin( $plugin_path ){
 		VK_Helpers::deactivate_plugin( $plugin_path  );
 	}
 }
+
+/**
+ * Page header and Breadcrumb Display or hidden
+ *
+ * @since Lightning 9.0.0
+ * @repeal Lightning 13.0.0
+ * @return boolean
+ */
+function lightning_is_page_header_and_breadcrumb() {
+	$return = true;
+	if ( is_singular() ) {
+		global $post;
+
+		if ( ! empty( $post->_lightning_design_setting['hidden_page_header_and_breadcrumb'] ) ) {
+			$return = false;
+		}
+
+		if ( 
+		! empty( $post->_lightning_design_setting['hidden_page_header'] ) && 
+		! empty( $post->_lightning_design_setting['hidden_breadcrumb'] ) 
+		) {
+			$return = false;
+		}
+	}
+	return apply_filters( 'lightning_is_page_header_and_breadcrumb', $return );
+}
+
+function lightning_is_siteContent_padding_off() {
+	$return = false;
+	if ( is_singular() ) {
+		global $post;
+		if ( ! empty( $post->_lightning_design_setting['siteContent_padding'] ) ) {
+			$return = true;
+		}
+	}
+	return apply_filters( 'lightning_is_siteContent_padding_off', $return );
+}

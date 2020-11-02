@@ -50,6 +50,9 @@ https://github.com/vektor-inc/vektor-wp-libraries
 /*-------------------------------------------*/
 /* .card-noborder
 /*-------------------------------------------*/
+:root {
+	--vk-color-border-hr: #e5e5e5;
+}
 .card-noborder {
 	&.card {
 		/*.card.card-noborder にしないと負ける */
@@ -57,11 +60,12 @@ https://github.com/vektor-inc/vektor-wp-libraries
 		background: none;
 	}
 	.vk_post_imgOuter {
-		border: none;
+		border : 1px solid var(--vk-color-border-hr);
 	}
 	.card-body {
 		padding-left: 0;
 		padding-right: 0;
+		padding-bottom:0;
 	}
 	&.vk_post-btn-display {
 		.card-body {
@@ -223,6 +227,7 @@ https://github.com/vektor-inc/vektor-wp-libraries
 	}
 	.card-body {
 		height: 100%;
+		padding-bottom: 1.5em;
 	}
 }
 
@@ -240,11 +245,5 @@ https://github.com/vektor-inc/vektor-wp-libraries
 	.card-meta {
 		font-size: 0.7rem;
 		line-height: 1.1;
-	}
-}
-
-.card-post {
-	.card-body {
-		padding-bottom: 1.5em;
 	}
 }

@@ -1,8 +1,6 @@
 <?php get_header(); ?>
 
-<?php
-if ( lightning_is_page_header_and_breadcrumb() ) {
-
+<?php if ( lightning_is_page_header() ){
 	// Dealing with old files.
 	// Actually, it's ok to only use get_template_part().
 	/*
@@ -14,7 +12,9 @@ if ( lightning_is_page_header_and_breadcrumb() ) {
 	} else {
 		get_template_part( 'template-parts/page-header' );
 	}
+} ?>
 
+<?php if ( lightning_is_breadcrumb() ){
 	/*
 	 BreadCrumb
 	/*-------------------------------------------*/
@@ -26,9 +26,7 @@ if ( lightning_is_page_header_and_breadcrumb() ) {
 		get_template_part( 'template-parts/breadcrumb' );
 	}
 	do_action( 'lightning_breadcrumb_after' );
-
-} // if ( lightning_is_page_header_and_top_breadcrumb() ){
-?>
+} ?>
 
 <div class="<?php lightning_the_class_name( 'siteContent' ); ?>">
 <?php do_action( 'lightning_siteContent_prepend' ); ?>
