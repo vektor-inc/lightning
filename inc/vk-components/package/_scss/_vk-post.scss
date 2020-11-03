@@ -229,6 +229,7 @@ $xxl-min: 1400px;
 			padding-left:10px;
 			a{
 				color: var(--vk-color-link);
+				white-space: nowrap;
 				&:hover{
 					opacity: 0.7;
 				}
