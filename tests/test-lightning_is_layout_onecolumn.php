@@ -5,6 +5,7 @@ cd /app
 bash setup-phpunit.sh
 source ~/.bashrc
 cd $(wp theme path --dir lightning)
+cd wp-content/themes/lightning
 phpunit
 */
 

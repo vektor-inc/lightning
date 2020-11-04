@@ -27,6 +27,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				'display_excerpt'            => false,
 				'display_date'               => true,
 				'display_new'                => true,
+				'display_taxonomies'         => false,
 				'display_btn'                => false,
 				'image_default_url'          => false,
 				'overlay'                    => false,
@@ -180,6 +181,8 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			// Add layout Class
 			if ( $options['layout'] == 'card-horizontal' ) {
 				$class_outer = 'card card-post card-horizontal';
+			} elseif ( $options['layout'] == 'card-noborder' ) {
+				$class_outer = 'card card-noborder';
 			} elseif ( $options['layout'] == 'media' ) {
 				$class_outer = 'media';
 			} elseif ( $options['layout'] == 'postListText' ) {
@@ -282,7 +285,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			// $attr = wp_parse_args( $attr, $default );
 
 			$layout_type = $options['layout'];
-			if ( $layout_type == 'card-horizontal' ) {
+			if ( $layout_type == 'card-horizontal' || $layout_type == 'card-noborder' ) {
 				$layout_type = 'card';
 			}
 
@@ -327,6 +330,30 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				$html .= '<p class="vk_post_excerpt ' . $layout_type . '-text">';
 				$html .= wp_kses_post( get_the_excerpt( $post->ID ) );
 				$html .= '</p>';
+			}
+
+			if ( $options['display_taxonomies'] ) {
+				$args          = array(
+					'template'      => '<dt class="vk_post_taxonomy_title"><span class="vk_post_taxonomy_title_inner">%s</span></dt><dd class="vk_post_taxonomy_terms">%l</dd>',
+					'term_template' => '<a href="%1$s">%2$s</a>',
+				);
+				$taxonomies	= get_the_taxonomies( $post->ID, $args );
+				$exclusion	= array( 'product_type' );
+				// このフィルター名は投稿詳細でも使っているので注意
+				$exclusion	= apply_filters( 'vk_get_display_taxonomies_exclusion', $exclusion );
+
+				if ( is_array( $exclusion ) ){
+					foreach ( $exclusion as $key => $value ){
+						unset( $taxonomies[$value] );
+					}
+				}
+				if ( $taxonomies ) {
+					$html .= '<div class="vk_post_taxonomies">';
+					foreach ( $taxonomies as $key => $value ) {
+						$html .= '<dl class="vk_post_taxonomy vk_post_taxonomy-' . $key . '">' . $value . '</dl>';
+					} // foreach
+					$html .= '</div>';
+				} // if ($taxonomies)
 			}
 
 			if ( $options['display_btn'] ) {

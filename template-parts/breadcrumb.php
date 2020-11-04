@@ -77,14 +77,29 @@ function lightning_bread_crumb() {
 			 * Single or Page.
 			 */
 			// Taxonomy of Single or Page.
-			$taxonomies = get_the_taxonomies();
+			$get_taxonomies = get_the_taxonomies();
+			$taxonomies     = array();
+
+			// 一旦タクソノミーの文字列配列に変換しないと色々と面倒.
+			foreach ( $get_taxonomies as $key => $value ) {
+				$taxonomies[] = $key;
+			}
+
+			// 除外するタクソノミーの文字列配列.
+			$exclude_taxonomies = array(
+				'product_type',
+				'language', // Polylang その１.
+				'post_translations',// Polylang その２.
+			);
+			$exclude_taxonomies = apply_filters( 'lightning_breadcrumb_exlude_taxonomy', $exclude_taxonomies );
+
+			// タクソノミーの差分を採用.
+			$taxonomies         = array_diff( $taxonomies, $exclude_taxonomies );
+
 			if ( $taxonomies ) {
-				// To avoid WooCommerce default tax.
-				foreach ( $taxonomies as $key => $value ) {
-					if ( 'product_type' !== $key ) {
-						$taxonomy = $key;
-						break;
-					}
+				foreach ( $taxonomies as $key ) {
+					$taxonomy = $key;
+					break;
 				}
 				$terms = get_the_terms( get_the_ID(), $taxonomy );
 				// keeps only the first term (categ).
