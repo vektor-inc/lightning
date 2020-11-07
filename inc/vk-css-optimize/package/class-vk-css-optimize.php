@@ -170,7 +170,7 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 					'section'     => 'css_optimize',
 					'settings'    => 'vk_css_optimize_options[preload_handle_exclude]',
 					'type'        => 'textarea',
-					'description' => __( 'If you choose "Active Preload CSS" that css load timing was changed.If you have any do not want to preload css file that please fill in handle(id) name. Ex) pluginname_a-style,pluginname_b-css' ),
+					'description' => __( 'If you choose "Active Preload CSS" that css load timing was changed.If you have any do not want to preload css file that please fill in handle(id) name. Ex) pluginname_a-style,pluginname_b-css', 'lightning' ),
 				)
 			);
 
