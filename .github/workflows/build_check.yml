@@ -19,7 +19,7 @@ jobs:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v1
       with:
-        node-version: 10.x
+        node-version: 12.x
 
     - run: cp assets/js/lightning.min.js lightning.min.js.before
     - run: cp assets/css/common.css common.css.before
@@ -92,6 +92,9 @@ jobs:
           MYSQL_PASSWORD: wordpress
     steps:
     - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
     - name: Cache multiple paths
       uses: actions/cache@v2
       with:
