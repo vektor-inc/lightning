@@ -3,6 +3,4 @@
 @import "block/block";
 @import "block/block_editor";
 
-button.editor-block-switcher__toggle {
-	overflow: hidden;
-}
+@import "bootstrap_overwrite";
