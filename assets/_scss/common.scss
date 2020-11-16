@@ -5,14 +5,11 @@
 @import "../../inc/vk-components/package/_scss/vk-components.scss";
 @import "block/block";
 @import "common_veu_overwrite";
+@import "bootstrap_overwrite";
 
 :root {
 	--color-key-default: #337ab7;
 	--color-key-dark-default: #2e6da4;
-}
-
-.slide-inner img {
-	width: 100%;
 }
 
 /*-------------------------------------------*/

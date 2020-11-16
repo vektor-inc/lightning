@@ -7,6 +7,30 @@
 }
 
 /*-------------------------------------------*/
+/*	フォーラムコンテンツ上部の余分な日付・タイトルを非表示に
+/*-------------------------------------------*/
+.post-type-archive-forum,
+.single-topic,
+.single-forum {
+	.entry-header {
+		display: none;
+	}
+}
+
+/*-------------------------------------------*/
+/*	フォーラム内検索CSS調整
+/*-------------------------------------------*/
+#bbp-search-form {
+	#bbp_search {
+		margin-bottom:0;
+	}
+	#bbp_search_submit {
+		vertical-align: unset;
+	}
+}
+
+
+/*-------------------------------------------*/
 /*	リンク設定ポップアップ修正
 /*-------------------------------------------*/
 #wp-link {
@@ -148,4 +172,33 @@ div.bbp-submit-wrapper {
 #bbpress-forums .bbp-pagination-links span.current {
 	background-color: var(--color-key, #c00);
 	color: #fff;
+}
+
+/*		トピックの送信ボタン調整
+/*-------------------------------------------*/
+#bbpress-forums {
+	.bbp-submit-wrapper{
+		float:none;
+		display: block;
+	}
+	#bbp_reply_submit,
+	#bbp_topic_submit {
+		display: block;
+		width:100%;
+		letter-spacing: 0.5em;
+		font-size:1.5em;
+		padding:0.7em;
+		&:disabled {
+			opacity: 0.3;
+		}
+	}
+}
+
+/*		singleページで Next Prev を非表示に
+/*-------------------------------------------*/
+.single-topic,
+.single-forum {
+	.vk_posts.postNextPrev{
+		display: none;
+	}
 }

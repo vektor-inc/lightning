@@ -1,0 +1,21 @@
+name: Create trello card when issue opened # GitHubに表示されるアクションの名前
+
+on: # 何をトリガーにするか
+  issues: # Issue
+    types: [opened, reopened] # オープンと、リオープンをトリガーにする
+
+jobs:
+  create_trello_card_job: # ジョブのID
+    runs-on: ubuntu-latest # ジョブを実行するマシン
+    name: Create Trello Card # GitHubに表示されるジョブの名前
+    steps: # ジョブ内のタスクをステップと呼ぶ
+    - name: Call trello-github-actions # GitHubに表示されるステップの名前
+      id: call-trello-github-actions # ステップの識別子
+      uses: jessicazu/trello-github-actions@v1.0 # 実行するアクション。v1.0を指定してください
+      with: # アクションに渡す入力パラメータ。Card作成のメソッドを指定している
+        trello-action: create_card_when_issue_opened
+      env: # アクションで用いる環境変数。Secretsに指定したTrelloの情報を設定する
+        TRELLO_API_KEY: ${{ secrets.TRELLO_API_KEY }}
+        TRELLO_API_TOKEN: ${{ secrets.TRELLO_API_TOKEN }}
+        TRELLO_BOARD_ID: ${{ secrets.TRELLO_BOARD_ID }}
+        TRELLO_LIST_ID: ${{ secrets.TRELLO_WAITING_LIST_ID }} # 作業待ちリストにカードを作成する

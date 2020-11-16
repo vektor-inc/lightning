@@ -278,6 +278,8 @@ gulp.task('dist_pro', function () {
       './template-parts/**',
       './languages/**',
       "!./vendor/**",
+      "!./assets/css/map/**",
+      "!./design-skin/origin2/css/map/**",
       "!./.vscode/**",
       "!./bin/**",
       "!./dist/**",
