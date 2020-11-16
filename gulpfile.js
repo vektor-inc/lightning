@@ -242,6 +242,7 @@ gulp.task('copy_dist', function (done) {
       './**/*.css',
       './**/*.png',
       './assets/**',
+      '!./assets/css/map/**',
       './design-skin/**',
       './inc/**',
       './plugin-support/**',
