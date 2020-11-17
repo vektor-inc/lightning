@@ -86,7 +86,10 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 	outline:unset;
 	outline-offset:unset;
 	// display:inline; がないとh3の見出しデザインで左右線を選ばれた時に flax を指定されてるので文字の中央揃えなどが効かなくなる
-	display: inline;
+	// display: inline;
+	// display:inline; だと、キャプションがない時にボタンが見出しの横にそのまま表示されてしまうので block 指定に変更
+	display: block;
+	
 	@media (min-width: 768px) {
 		font-size: 2.5vw;
 	}
