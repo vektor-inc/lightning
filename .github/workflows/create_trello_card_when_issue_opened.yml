@@ -11,7 +11,7 @@ jobs:
     steps: # ジョブ内のタスクをステップと呼ぶ
     - name: Call trello-github-actions # GitHubに表示されるステップの名前
       id: call-trello-github-actions # ステップの識別子
-      uses: jessicazu/trello-github-actions@v1.0 # 実行するアクション。v1.0を指定してください
+      uses: vektor-inc/trello-github-actions@v1.0 # 実行するアクション。v1.0を指定してください
       with: # アクションに渡す入力パラメータ。Card作成のメソッドを指定している
         trello-action: create_card_when_issue_opened
       env: # アクションで用いる環境変数。Secretsに指定したTrelloの情報を設定する
