@@ -10,7 +10,7 @@ https://github.com/vektor-inc/vektor-wp-libraries
 	This additional is can't over wright only.
 	 */
 	&.media {
-		width: 100%;
+		// width: 100%; // ここに迂闊に幅指定するとカラム指定が効かなくなる
 		padding: 1em 0;
 		margin: 0 15px;
 		border-bottom: $border_primary;
