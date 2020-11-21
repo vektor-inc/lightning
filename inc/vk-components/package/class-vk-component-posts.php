@@ -307,7 +307,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 
 			if ( $options['display_new'] ) {
 				$today = date_i18n( 'U' );
-				$entry = get_the_time( 'U' );
+				$entry = get_the_time( 'U', $post );
 				$kiji  = date( 'U', ( $today - $entry ) ) / 86400;
 				if ( $options['new_date'] > $kiji ) {
 					$html .= '<span class="vk_post_title_new">' . $options['new_text'] . '</span>';
