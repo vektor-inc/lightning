@@ -94,6 +94,10 @@ if ( ! class_exists( 'VK_Helpers' ) ) {
 		 */
 		public static function color_auto_modifi( $color, $change_rate = 1 ) {
 
+			if ( ! $color ){
+				return;
+			}
+
 			$color = preg_replace( '/#/', '', $color );
 			// 16進数を10進数に変換
 			$r = hexdec( substr( $color, 0, 2 ) );
