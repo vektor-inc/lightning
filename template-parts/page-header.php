@@ -7,7 +7,7 @@ $postType       = lightning_get_post_type();
 
 // Use post top page（ Archive title wrap to div ）
 if ( $page_for_posts['post_top_use'] ) {
-	if ( is_category() || is_tag() || is_author() || is_tax() || is_single() || is_date() ) {
+	if ( is_category() || is_tag() || is_tax() || is_single() || is_date() ) {
 		$pageTitTag = 'div';
 	} else {
 		$pageTitTag = 'h1';
@@ -46,6 +46,8 @@ if ( is_search() ) {
 	$pageTitle  = sprintf( __( 'Search Results for : %s', 'lightning' ), $bbp_search );
 } elseif ( is_404() ) {
 	$pageTitle = __( 'Not found', 'lightning' );
+} elseif ( is_author() ) {
+	$pageTitle = get_the_archive_title();
 } elseif ( is_category() || is_tag() || is_tax() || is_home() || is_author() || is_archive() || is_single() ) {
 
 	// Case of post type == 'post'
