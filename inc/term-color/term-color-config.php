@@ -19,12 +19,12 @@ function lightning_term_color_taxonomies_custom( $taxonomies ) {
 }
 
 	/*
-	Reason of use after_setup_theme that,
-	don't work call by theme custom post type's custom taxonomy
+	Reason of use init that,
+	don't work custom taxonomy defined on inti
 	★★★★★★ 関数のprefixは固有のものに変更する事 ★★★★★★
 	*/
 
-add_action( 'after_setup_theme', 'lightning_load_term_color' );
+add_action( 'init', 'lightning_load_term_color' );
 function lightning_load_term_color() {
 	require_once 'package/class.term-color.php';
 }
