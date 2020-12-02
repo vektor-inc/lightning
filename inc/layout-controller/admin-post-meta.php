@@ -54,6 +54,7 @@ function lightning_design_setting_meta_fields() {
 		'col-one'               => __( '1 column', 'lightning' ),
 		'col-one-no-subsection' => __( '1 column ( No sub section )', 'lightning' ),
 	);
+	$options = apply_filters( 'lighghtning_columns_setting_choice', $options );
 
 	$form = '<select id="' . esc_attr( $id ) . '" name="' . esc_attr( $id ) . '">';
 	foreach ( $options as $key => $value ) {
