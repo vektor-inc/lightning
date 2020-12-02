@@ -328,7 +328,7 @@ function lightning_get_the_archive_title() {
 	} elseif ( is_tag() ) {
 		$title = single_tag_title( '', false );
 	} elseif ( is_author() ) {
-		$title = sprintf( __( 'Author: %s', 'lightning' ), '<span class="vcard">' . get_the_author() . '</span>' );
+		$title = get_the_author();
 	} elseif ( is_year() ) {
 		$title = get_the_date( _x( 'Y', 'yearly archives date format', 'lightning' ) );
 	} elseif ( is_month() ) {

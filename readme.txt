@@ -39,6 +39,9 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v13.2.0
+[ Specification Change ][ Author archive ] change archive title display specification.
+
 v13.1.3
 [ Specification Change ] Load Term Color on init
 
