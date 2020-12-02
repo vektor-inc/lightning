@@ -14,7 +14,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: bash bin/dist
-    - run: echo "::set-env name=DIST_VERSION::$(echo ${{ github.ref }} | sed -E 's/^refs\/tags\/v?(.*)$/\1/')"
+    - run: echo "DIST_VERSION=$(echo ${{ github.ref }} | sed -E 's/^refs\/tags\/v?(.*)$/\1/')" >> $GITHUB_ENV
     - run: test -e dist/${{ env.dist_name }}_v${{ env.DIST_VERSION }}.zip
     - name: Create Release
       id: create_release
