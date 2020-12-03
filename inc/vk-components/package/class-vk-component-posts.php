@@ -25,6 +25,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				'display_image'              => true,
 				'display_image_overlay_term' => true,
 				'display_excerpt'            => false,
+				'display_author'             => false,
 				'display_date'               => true,
 				'display_new'                => true,
 				'display_taxonomies'         => false,
@@ -330,6 +331,28 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				$html .= '<p class="vk_post_excerpt ' . $layout_type . '-text">';
 				$html .= wp_kses_post( get_the_excerpt( $post->ID ) );
 				$html .= '</p>';
+			}
+
+			if ( $options['display_author'] ) {
+				$author = get_the_author();
+				if ( $author ) {
+					$html .= '<p class="vcard vk_post_author" itemprop="author">';
+
+					// VK Post Author Display の画像を取得
+					$profile_image_id = get_the_author_meta( 'user_profile_image' );
+					$html .= '<span class="vk_post_author_image">';
+					if ( $profile_image_id ) {
+						$profile_image_src = wp_get_attachment_image_src( $profile_image_id, 'thumbnail' );
+						$html      .= '<img class="vk_post_author_image" src="' . $profile_image_src[0] . '" alt="' . esc_attr( $author ) . '" />';
+					} else {
+						$html .= get_avatar( get_the_author_meta( 'email' ), 100 );
+					}
+					$html .= '</span>';
+
+					$html .= '<span class="fn vk_post_author_name" itemprop="name">';
+					$html .= esc_html( $author );
+					$html .= '</span></p>';
+				} // if author
 			}
 
 			if ( $options['display_taxonomies'] ) {
