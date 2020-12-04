@@ -41,6 +41,7 @@ https://www.vektor-inc.co.jp/inquiry/
 
 v13.3.0
 [ Specification Change ][ Post Component ] cope with post author display
+[ Add function ][ Layout setting ] cope with author archive layout
 
 v13.2.0
 [ Specification Change ][ Author archive ] change archive title display specification.
