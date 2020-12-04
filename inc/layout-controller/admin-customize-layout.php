@@ -47,6 +47,9 @@ function lightning_customize_register_layout( $wp_customize ) {
 		'error404'   => array(
 			'label' => __( '404 page', 'lightning' ),
 		),
+		'archive-author'     => array(
+			'label' => __( 'Archive Page', 'lightning' ). ' [' . __( 'Author', 'lightning' ) . ']',
+		),
 		// If cope with custom post types that like a "archive-post" "single-post".
 	);
 
