@@ -121,7 +121,7 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 		static function load_admin_font_awesome( $post ) {
 			$current = self::current_info();
 			// ブロックエディタでこれがあるとコンソールでエラー吐かれるのでclassicエディタのときだけ読み込み
-			if ( ! use_block_editor_for_post( $post ) ) {
+			if ( ! function_exists( 'use_block_editor_for_post' ) || ! use_block_editor_for_post( $post ) ) {
 				add_editor_style( $current['url_css'] );
 			}
 		}
