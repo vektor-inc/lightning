@@ -6,8 +6,8 @@
   Theme default options
   lightning_get_theme_options()
   Head logo
-  Chack use post top page
-  Chack post type info
+  lightning_get_page_for_posts()
+  lightning_get_post_type()
   lightning_is_mobile
   lightning_top_slide_count
   lightning_is_slide_outer_link

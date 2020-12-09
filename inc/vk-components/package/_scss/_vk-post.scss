@@ -198,6 +198,22 @@ $xxl-min: 1400px;
 		margin-top: $margin_post_item_element_narrow;
 		color: #666;
 	}
+	&_author {
+		margin: $margin_post_item_element 0;
+		&_image {
+			margin-right:10px;
+			img{
+				width:24px;
+				height:24px;
+				object-fit:cover;
+				border-radius:50%;
+				object-position:0px 0px;
+			}
+		}
+		&_name{
+			font-size:var(--vk-font-size-xs);
+		}
+	}
 	&_taxonomies {
 		margin-top:$margin_post_item_element;
 	}

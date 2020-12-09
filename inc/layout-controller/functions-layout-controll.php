@@ -16,6 +16,9 @@ function lightning_layout_target_array() {
 		'search'   => array(
 			'function' => 'is_search',
 		),
+		'archive-author'   => array(
+			'function' => 'is_archive',
+		),
 	);
 	return $array;
 }
@@ -88,7 +91,7 @@ function lightning_is_layout_onecolumn() {
 	/**
 	 * アーカイブページの場合
 	 */
-	if ( is_archive() && ! is_search() ) {
+	if ( is_archive() && ! is_search() && ! is_author() ) {
 		$current_post_type_info = lightning_get_post_type();
 		$archive_post_types = array( 'post' ) + $additional_post_types;
 		foreach ( $archive_post_types as $archive_post_type ) {
@@ -201,7 +204,7 @@ function lightning_is_subsection_display() {
 		if ( isset( $options['layout']['archive-post'] ) && 'col-one-no-subsection' === $options['layout']['archive-post'] ) {
 			$return = false;
 		}
-	} elseif ( is_archive() && ! is_search() ) {
+	} elseif ( is_archive() && ! is_search() && ! is_author() ) {
 		$current_post_type_info = lightning_get_post_type();
 		$archive_post_types = array( 'post' ) + $additional_post_types;
 		foreach ( $archive_post_types as $archive_post_type ) {
