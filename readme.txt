@@ -39,7 +39,6 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
-.
 v13.3.1
 [ Bug fix ] Cope with before WP 5.0
 
