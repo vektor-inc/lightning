@@ -25,6 +25,8 @@ do_action( 'lightning_top_slide_after');
 
 			<div class="<?php lightning_the_class_name( 'mainSection' ); ?>">
 
+			<?php do_action( 'lightning_mainSection_prepend' ); ?>
+
 			<?php do_action( 'lightning_home_content_top_widget_area_before' ); ?>
 
 			<?php if ( is_active_sidebar( 'home-content-top-widget-area' ) ) : ?>
