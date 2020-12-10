@@ -1,23 +1,23 @@
 <?php
 /**
- * Widget Setting
+ * VK Footer Customize
  *
  * @package VK Footer Customize
  */
 
-if ( ! class_exists( 'Widget_Area_Setting' ) ) {
+if ( ! class_exists( 'VK_Footer_Customize' ) ) {
 	/**
-	 * Widget_Area_Setting
+	 * VK Footer Customize
 	 */
-	class Widget_Area_Setting {
+	class VK_Footer_Customize {
 		/**
 		 * Constructor.
 		 */
 		public function __construct() {
-			global $vk_footer_setting_name;
+			global $vk_footer_widget_area_count;
 			add_action( 'customize_register', array( __CLASS__, 'resister_customize' ) );
 			add_action( 'wp_head', array( __CLASS__, 'enqueue_style' ), 5 );
-			add_filter( $vk_footer_setting_name . '_footer_widget_area_count', array( __CLASS__, 'set_footter_widget_area_count' ) );
+			add_filter( $vk_footer_widget_area_count, array( __CLASS__, 'set_footter_widget_area_count' ) );
 		}
 
 		/**
@@ -52,7 +52,7 @@ if ( ! class_exists( 'Widget_Area_Setting' ) ) {
 			$wp_customize->add_section(
 				'vk_footer_option',
 				array(
-					'title'    => $vk_footer_customize_prefix . __( 'Footer settings', 'vk-footer-customize-textdomain' ),
+					'title'    => $vk_footer_customize_prefix . __( 'Footer settings', 'lightning' ),
 					'priority' => $vk_footer_customize_priority,
 				)
 			);
@@ -69,7 +69,7 @@ if ( ! class_exists( 'Widget_Area_Setting' ) ) {
 					$wp_customize,
 					'footer-widget-setting',
 					array(
-						'label'            => __( 'Footer Widget Setting', 'vk-footer-customize-textdomain' ),
+						'label'            => __( 'Footer Widget Setting', 'lightning' ),
 						'section'          => 'vk_footer_option',
 						'type'             => 'text',
 						'custom_title_sub' => '',
@@ -92,13 +92,13 @@ if ( ! class_exists( 'Widget_Area_Setting' ) ) {
 			$wp_customize->add_control(
 				$vk_footer_setting_name . '[footer_upper_widget_padding_delete]',
 				array(
-					'label'    => __( 'Footer Upper Widget Padding', 'vk-footer-customize-textdomain' ),
+					'label'    => __( 'Footer Upper Widget Padding', 'lightning' ),
 					'section'  => 'vk_footer_option',
 					'settings' => $vk_footer_setting_name . '[footer_upper_widget_padding_delete]',
 					'type'     => 'select',
 					'choices'  => array(
-						'false' => __( 'Nothing to do', 'vk-footer-customize-textdomain' ),
-						'true'  => __( 'Delete Padding', 'vk-footer-customize-textdomain' ),
+						'false' => __( 'Nothing to do', 'lightning' ),
+						'true'  => __( 'Delete Padding', 'lightning' ),
 					),
 					'priority' => $priority,
 				)
@@ -124,18 +124,18 @@ if ( ! class_exists( 'Widget_Area_Setting' ) ) {
 			$wp_customize->add_control(
 				$vk_footer_setting_name . '[footer_widget_area_count]',
 				array(
-					'label'       => __( 'Footer Widget Area Count', 'vk-footer-customize-textdomain' ),
+					'label'       => __( 'Footer Widget Area Count', 'lightning' ),
 					'section'     => 'vk_footer_option',
 					'settings'    => $vk_footer_setting_name . '[footer_widget_area_count]',
 					'type'        => 'select',
 					'choices'     => array(
-						1 => __( '1 column', 'vk-footer-customize-textdomain' ),
-						2 => __( '2 column', 'vk-footer-customize-textdomain' ),
-						3 => __( '3 column', 'vk-footer-customize-textdomain' ),
-						4 => __( '4 column', 'vk-footer-customize-textdomain' ),
-						6 => __( '6 column', 'vk-footer-customize-textdomain' ),
+						1 => __( '1 column', 'lightning' ),
+						2 => __( '2 column', 'lightning' ),
+						3 => __( '3 column', 'lightning' ),
+						4 => __( '4 column', 'lightning' ),
+						6 => __( '6 column', 'lightning' ),
 					),
-					'description' => __( '* If you save and reload after making changes, the number of the widget area setting panels  will increase or decrease.', 'vk-footer-customize-textdomain' ),
+					'description' => __( '* If you save and reload after making changes, the number of the widget area setting panels  will increase or decrease.', 'lightning' ),
 					'priority'    => $priority,
 				)
 			);
@@ -185,5 +185,5 @@ if ( ! class_exists( 'Widget_Area_Setting' ) ) {
 		}
 
 	}
-	new Widget_Area_Setting();
+	new VK_Footer_Customize();
 }
