@@ -39,12 +39,9 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
-<<<<<<< HEAD
 v13.4.0
 [ Specification Change ][ BreadCrumb ] When display is_page that dont display taxonomies to breadcrumb
 
-=======
->>>>>>> master
 v13.3.1
 [ Bug fix ] Cope with before WP 5.0
 
