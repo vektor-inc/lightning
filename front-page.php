@@ -117,6 +117,7 @@ do_action( 'lightning_top_slide_after');
 						?>
 
 					</div><!-- [ /.postList ] -->
+					<?php do_action( 'lightning_loop_after' ); ?>
 
 				<?php endif; // if ( 'page' == get_option('show_on_front') ) : ?>
 
@@ -127,7 +128,7 @@ do_action( 'lightning_top_slide_after');
 			<?php endif; // have_post() ?>
 
 			<?php endif; // if ( apply_filters( 'is_lightning_home_top_posts_display', true ) ) : ?>
-			<?php do_action( 'lightning_loop_after' ); ?>
+
 			<?php do_action( 'lightning_mainSection_append' ); ?>
 			</div><!-- [ /.mainSection ] -->
 
