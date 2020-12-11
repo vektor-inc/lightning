@@ -2,7 +2,11 @@
 Lightning WordPress theme, Copyright (C) 2015-2020 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
 Tested up to: 5.5.3
+<<<<<<< HEAD
 Stable tag: 13.4.0
+=======
+Stable tag: 13.3.1
+>>>>>>> master
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -39,9 +43,12 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+<<<<<<< HEAD
 v13.4.0
 [ Specification Change ][ BreadCrumb ] When display is_page that dont display taxonomies to breadcrumb
 
+=======
+>>>>>>> master
 v13.3.1
 [ Bug fix ] Cope with before WP 5.0
 
