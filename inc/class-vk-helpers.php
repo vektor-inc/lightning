@@ -87,6 +87,19 @@ if ( ! class_exists( 'VK_Helpers' ) ) {
 		}
 
 		/**
+		 * Sanitize Boolean
+		 *
+		 * @param string $input $input.
+		 */
+		public static function sanitize_boolean( $input ) {
+			if ( $input == true ) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+
+		/**
 		 * 色を比率で明るくしたり暗くする
 		 *
 		 * @param  string  $color       #あり16進数.

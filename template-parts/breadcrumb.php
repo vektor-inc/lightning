@@ -72,7 +72,9 @@ function lightning_bread_crumb() {
 			$breadcrumb_html .= '</li>';
 		}
 
-		if ( is_single() || is_page() ) {
+		/* taxonomis list
+		/*-------------------------------*/
+		if ( is_single() ) {
 			/**
 			 * Single or Page.
 			 */
@@ -125,6 +127,9 @@ function lightning_bread_crumb() {
 				$breadcrumb_html .= '</a>';
 				$breadcrumb_html .= '</li>';
 			}
+		}
+
+		if ( is_single() || is_page() ) {
 
 			// Parent of Page or Single.
 			if ( 0 !== $post->post_parent ) {
