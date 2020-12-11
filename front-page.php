@@ -65,6 +65,7 @@ do_action( 'lightning_top_slide_after');
 					<?php endwhile; ?>
 
 				<?php else : ?>
+					<?php do_action( 'lightning_loop_before' );?>
 
 					<div class="<?php lightning_the_class_name( 'postList' ); ?>">
 
@@ -126,7 +127,7 @@ do_action( 'lightning_top_slide_after');
 			<?php endif; // have_post() ?>
 
 			<?php endif; // if ( apply_filters( 'is_lightning_home_top_posts_display', true ) ) : ?>
-
+			<?php do_action( 'lightning_loop_after' ); ?>
 			<?php do_action( 'lightning_mainSection_append' ); ?>
 			</div><!-- [ /.mainSection ] -->
 
