@@ -78,12 +78,12 @@ class WP_Widget_ltg_post_list extends WP_Widget {
 			}
 		}
 
-		$post_loop = new WP_Query( $p_args );
+		$wp_query = new WP_Query( $p_args );
 
-		if ( $post_loop->have_posts() ) :
+		if ( have_posts() ) :
 			if ( ! $instance['format'] ) {
-				while ( $post_loop->have_posts() ) :
-					$post_loop->the_post();
+				while ( $wp_query->have_posts() ) :
+					$wp_query->the_post();
 					/**
 					 * Dealing with old files
 					 * Actually, it's ok to only use get_template_part().
@@ -98,13 +98,15 @@ class WP_Widget_ltg_post_list extends WP_Widget {
 					}
 				endwhile;
 			} elseif ( $instance['format'] == 1 ) {
-				while ( $post_loop->have_posts() ) :
-					$post_loop->the_post();
-					$this->display_pattern_1();
+				while ( $wp_query->have_posts() ) :
+					$wp_query->the_post();
+					get_template_part( 'template-parts/post/article' );
 				endwhile;
 			}
-
 		endif;
+		wp_reset_postdata();
+		wp_reset_query();
+
 		echo  $this->more_link_html( $instance );
 		echo '</div>';
 		echo $args['after_widget'];
@@ -114,90 +116,6 @@ class WP_Widget_ltg_post_list extends WP_Widget {
 
 	} // widget($args, $instance)
 
-	/*-------------------------------------------*/
-	/*  display_pattern_1 Cointent Body
-	/*-------------------------------------------*/
-	function display_pattern_1() {
-		global $post;
-		?>
-
-		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-			<header>
-				<?php
-				// Dealing with old files.
-				// Actually, it's ok to only use get_template_part().
-				$old_file_name[] = 'module_loop_post_meta.php';
-				if ( locate_template( $old_file_name, false, false ) ) {
-					locate_template( $old_file_name, true, false );
-				} else {
-					get_template_part( 'template-parts/post/meta' );
-				}
-				?>
-				<h1 class="entry-title"><?php the_title(); ?></h1>
-			</header>
-
-			<div class="<?php lightning_the_class_name( 'entry-body' ); ?>">
-
-				<?php
-				$lightning_more_btn_txt = '<span class="btn btn-default btn-block">' . __( 'Read more', 'lightning' ) . '</span>';
-				$more_btn               = apply_filters( 'lightning-adv-more-btn-txt', $lightning_more_btn_txt );
-				global $is_pagewidget;
-				$is_pagewidget = true;
-				the_content( $more_btn );
-				$is_pagewidget = false;
-				?>
-			</div><!-- [ /.entry-body ] -->
-
-			<div class="entry-footer">
-				<?php
-				$args          = array(
-					'before'      => '<nav class="page-link"><dl><dt>Pages :</dt><dd>',
-					'after'       => '</dd></dl></nav>',
-					'link_before' => '<span class="page-numbers">',
-					'link_after'  => '</span>',
-					'echo'        => 1,
-				);
-				wp_link_pages( $args );
-				?>
-
-				<?php
-				/*-------------------------------------------*/
-				/*  Category and tax data
-				/*-------------------------------------------*/
-				$args          = array(
-					'template'      => __( '<dl><dt>%s</dt><dd>%l</dd></dl>', 'lightning' ),
-					'term_template' => '<a href="%1$s">%2$s</a>',
-				);
-				$taxonomies    = get_the_taxonomies( $post->ID, $args );
-				$taxnomiesHtml = '';
-				if ( $taxonomies ) {
-					foreach ( $taxonomies as $key => $value ) {
-						if ( $key != 'post_tag' ) {
-							$taxnomiesHtml .= '<div class="entry-meta-dataList">' . $value . '</div>';
-						}
-					} // foreach
-				} // if ($taxonomies)
-				$taxnomiesHtml = apply_filters( 'lightning_taxnomiesHtml', $taxnomiesHtml );
-				echo $taxnomiesHtml;
-				?>
-
-				<?php
-				$tags_list = get_the_tag_list();
-				if ( $tags_list ) :
-					?>
-					<div class="entry-meta-dataList entry-tag">
-						<dl>
-							<dt><?php _e( 'Tags', 'lightning' ); ?></dt>
-							<dd class="tagCloud"><?php echo $tags_list; ?></dd>
-						</dl>
-					</div><!-- [ /.entry-tag ] -->
-				<?php endif; ?>
-			</div><!-- [ /.entry-footer ] -->
-
-		</article>
-
-		<?php
-	}
 
 	function _taxonomy_init( $post_type ) {
 		if ( $post_type == 'post' ) {
