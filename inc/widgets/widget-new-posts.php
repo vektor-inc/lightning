@@ -103,6 +103,7 @@ class WP_Widget_ltg_post_list extends WP_Widget {
 		endif;
 
 		echo  $this->more_link_html( $instance );
+
 		echo '</div>';
 		echo $args['after_widget'];
 
