@@ -41,6 +41,7 @@ https://www.vektor-inc.co.jp/inquiry/
 
 v13.4.0
 [ Specification Change ][ BreadCrumb ] When display is_page that dont display taxonomies to breadcrumb
+[ Specification Change ] Change template structure in content.php and so on
 
 v13.3.1
 [ Bug fix ] Cope with before WP 5.0
