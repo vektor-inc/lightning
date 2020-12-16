@@ -77,13 +77,13 @@ class WP_Widget_ltg_post_list extends WP_Widget {
 				);
 			}
 		}
-
+		global $wp_query;
 		$wp_query = new WP_Query( $p_args );
 
 		if ( have_posts() ) :
-			if ( ! $instance['format'] ) {
-				while ( $wp_query->have_posts() ) :
-					$wp_query->the_post();
+			while ( have_posts() ) :
+				the_post();
+				if ( ! $instance['format'] ) {
 					/**
 					 * Dealing with old files
 					 * Actually, it's ok to only use get_template_part().
@@ -96,16 +96,11 @@ class WP_Widget_ltg_post_list extends WP_Widget {
 					} else {
 						get_template_part( 'template-parts/post/loop', $post_type );
 					}
-				endwhile;
-			} elseif ( $instance['format'] == 1 ) {
-				while ( $wp_query->have_posts() ) :
-					$wp_query->the_post();
+				} elseif ( $instance['format'] == 1 ) {
 					get_template_part( 'template-parts/post/article' );
-				endwhile;
-			}
+				}
+			endwhile;
 		endif;
-		wp_reset_postdata();
-		wp_reset_query();
 
 		echo  $this->more_link_html( $instance );
 		echo '</div>';
