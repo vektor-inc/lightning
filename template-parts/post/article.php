@@ -1,10 +1,6 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class( apply_filters( 'lightning_article_outer_class', '' ) ); ?>>
 
 	<?php 
-	// Warnning
-	// To keep loop post id. It is cope with in case of query reset at suchb as the_content.
-	$post_id = get_the_ID();
-
 	// check single or loop that true
 	$is_single_item_display = false;
 	if ( ! is_page() || is_front_page() || is_archive() ){
@@ -64,7 +60,7 @@
 				'template'      => __( '<dl><dt>%s</dt><dd>%l</dd></dl>', 'lightning' ),
 				'term_template' => '<a href="%1$s">%2$s</a>',
 			);
-			$taxonomies	= lightning_get_display_taxonomies( $post_id, $args );
+			$taxonomies	= lightning_get_display_taxonomies( get_the_ID(), $args );
 			$taxnomiesHtml = '';
 			if ( $taxonomies ) {
 				foreach ( $taxonomies as $key => $value ) {
