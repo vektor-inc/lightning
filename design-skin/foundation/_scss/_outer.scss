@@ -188,8 +188,6 @@ h1.page-header_pageTitle:first-child {
 
 /*      .mainSection
 /*-------------------------------------------*/
-$section_margin_bottom: 25px;
-
 .mainSection {
 	header h1 {
 		margin-top: 0;
@@ -215,10 +213,18 @@ h1.mainSection-title i {
 // .entry-title の付かない header h1 は カテゴリーアーカイブなどで存在するので注意
 h1.entry-title {
 	font-size: 32px;
+	& > a {
+		color: $color_font_default;
+	}
 }
 
 .mainSection .widget {
-	margin-bottom: $section_margin_bottom;
+	margin-bottom: 25px;
+}
+
+.entry-full {
+	border-bottom:$border_primary;
+	margin-bottom:$margin_section;
 }
 
 .entry-header {
@@ -331,7 +337,7 @@ h1.entry-title {
 .entry-footer {
 	display: block;
 	overflow: hidden;
-	margin-bottom: 2em;
+	margin-bottom: $margin_section;
 }
 
 .entry-meta-dataList {
