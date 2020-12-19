@@ -64,4 +64,3 @@ function lightning_get_print_headlogo() {
 function lightning_print_headlogo() {
 	echo lightning_get_print_headlogo();
 }
-
