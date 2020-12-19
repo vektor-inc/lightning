@@ -1,5 +1,11 @@
 <?php
 
+$current_skin = get_option( 'lightning_design_skin' );
+if ( $current_skin === 'origin3' ){
+	require get_parent_theme_file_path( '/_g3/functions.php' );
+	return;
+}
+
 $theme_opt = wp_get_theme( get_template() );
 
 define( 'LIGHTNING_THEME_VERSION', $theme_opt->Version );
@@ -50,6 +56,8 @@ define( 'LIGHTNING_SHORT_NAME', 'LTG THEME' );
 /*-------------------------------------------*/
 add_action( 'after_setup_theme', 'lightning_theme_setup' );
 function lightning_theme_setup() {
+
+	get_option();
 
 	global $content_width;
 
