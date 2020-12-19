@@ -3,42 +3,9 @@
 define( 'LIG_G3_DIR_PATH', get_parent_theme_file_path( '_g3/' ) );
 define( 'LIG_G3_DIR', '_g3' );
 
-class LTG_Template_Redirect {
+require get_parent_theme_file_path( '/' . LIG_G3_DIR . '/inc/class-ltg-template-redirect.php' );
+require get_parent_theme_file_path( '/' . LIG_G3_DIR . '/inc/template-tags.php' );
 
-    public function __construct(){
-        add_filter( 'frontpage_template', array( __CLASS__, 'redirect_index' ) );
-    }
-
-    public static function g3_convert( $template_names ){
-        $template = '';
-        foreach ( (array) $template_names as $template_name ) {
-            if ( ! $template_name ) {
-                continue;
-            }
-            if ( file_exists( STYLESHEETPATH . '/' . LIG_G3_DIR . '/' . $template_name ) ) {
-                $template = STYLESHEETPATH . '/' . LIG_G3_DIR . '/' . $template_name;
-                break;
-            } elseif ( file_exists( TEMPLATEPATH . '/' . LIG_G3_DIR . '/' . $template_name ) ) {
-                $template = TEMPLATEPATH . '/' . LIG_G3_DIR . '/' . $template_name;
-                break;
-            }
-        }
-        return $template;
-    }
-
-    public static function redirect_index( $template ){
-    $template_names[] = 'front-page.php';
-    $template_names[] = 'index.php';
- 
-    $template = self::g3_convert( $template_names );
-
-    return $template;
-
-    }
-
-}
-
-new LTG_Template_Redirect();
 
 
 
