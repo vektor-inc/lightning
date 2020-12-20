@@ -2,11 +2,11 @@
 /*-------------------------------------------*/
 /*	Set tag weight
 /*-------------------------------------------*/
-$page_for_posts = VK_Helpers::get_page_for_posts();
+$post_top_info = VK_Helpers::get_post_top_info();
 $post_type_info = VK_Helpers::get_post_type_info();
 
 // Use post top page（ Archive title wrap to div ）
-if ( $page_for_posts['post_top_use'] ) {
+if ( $post_top_info['use'] ) {
 	if ( is_category() || is_tag() || is_tax() || is_single() || is_date() ) {
 		$pageTitTag = 'div';
 	} else {
@@ -53,8 +53,8 @@ if ( is_search() ) {
 	// Case of post type == 'post'
 	if ( $post_type_info['slug'] == 'post' ) {
 		// Case of use post top page
-		if ( $page_for_posts['post_top_use'] ) {
-			$page_header_title = $page_for_posts['post_top_name'];
+		if ( $post_top_info['use'] ) {
+			$page_header_title = $post_top_info['name'];
 
 			// Case of don't use post top page
 		} else {
@@ -73,7 +73,7 @@ if ( is_search() ) {
 			} else {
 				$page_header_title = get_the_archive_title();
 			}
-		} // if ( $page_for_posts['post_top_use'] ) {
+		} // if ( $post_top_info['use'] ) {
 		// Case of custom post type
 	} else {
 		$page_header_title = $post_type_info['name'];

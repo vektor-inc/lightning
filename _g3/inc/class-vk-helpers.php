@@ -11,23 +11,28 @@ if ( ! class_exists( 'VK_Helpers' ) ) {
 	 */
 	class VK_Helpers {
 
-        public static function get_page_for_posts() {
+        public static function get_post_top_info() {
+
+            $post_top_info = array();
+
             // Get post top page by setting display page.
-            $page_for_posts['post_top_id'] = get_option( 'page_for_posts' );
+            $post_top_info['id'] = get_option( 'page_for_posts' );
         
             // Set use post top page flag.
-            $page_for_posts['post_top_use'] = ( $page_for_posts['post_top_id'] ) ? true : false;
+            $post_top_info['use'] = ( $post_top_info['id'] ) ? true : false;
         
             // When use post top page that get post top page name.
-            $page_for_posts['post_top_name'] = ( $page_for_posts['post_top_use'] ) ? get_the_title( $page_for_posts['post_top_id'] ) : '';
+            $post_top_info['name'] = ( $post_top_info['use'] ) ? get_the_title( $post_top_info['id'] ) : '';
+
+            $post_top_info['url'] = ( $post_top_info['use'] ) ? get_permalink( $post_top_info['id'] ) : '';
         
-            return $page_for_posts;
+            return $post_top_info;
         }
 
 
         public static function get_post_type_info() {
             // Check use post top page
-            $page_for_posts = self::get_page_for_posts();
+            $post_top_info = self::get_post_top_info();
         
             $woocommerce_shop_page_id = get_option( 'woocommerce_shop_page_id' );
         
@@ -64,8 +69,8 @@ if ( ! class_exists( 'VK_Helpers' ) ) {
                     'span' => array( 'class' => array() ),
                     'b'    => array(),
                 );
-                if ( $page_for_posts['post_top_use'] && $post_type_info['slug'] == 'post' ) {
-                    $post_type_info['name'] = wp_kses( get_the_title( $page_for_posts['post_top_id'] ), $allowed_html );
+                if ( $post_top_info['use'] && $post_type_info['slug'] == 'post' ) {
+                    $post_type_info['name'] = wp_kses( get_the_title( $post_top_info['id'] ), $allowed_html );
                 } elseif ( $woocommerce_shop_page_id && $post_type_info['slug'] == 'product' ) {
                     $post_type_info['name'] = wp_kses( get_the_title( $woocommerce_shop_page_id ), $allowed_html );
                 } else {
@@ -75,8 +80,8 @@ if ( ! class_exists( 'VK_Helpers' ) ) {
         
             // Get custom post type archive url
             /*-------------------------------------------*/
-            if ( $page_for_posts['post_top_use'] && $post_type_info['slug'] == 'post' ) {
-                $post_type_info['url'] = esc_url( get_the_permalink( $page_for_posts['post_top_id'] ) );
+            if ( $post_top_info['use'] && $post_type_info['slug'] == 'post' ) {
+                $post_type_info['url'] = esc_url( get_the_permalink( $post_top_info['id'] ) );
             } elseif ( $woocommerce_shop_page_id && $post_type_info['slug'] == 'product' ) {
                 $post_type_info['url'] = esc_url( get_the_permalink( $woocommerce_shop_page_id ) );
             } else {
