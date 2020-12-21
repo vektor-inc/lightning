@@ -46,7 +46,13 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 			.gMenu_name {
 				font-size: 12px;
 			}
+			//PC端末でaタグにつけていた余白がモバイル端末で出現するので打ち消し&inline-block化
+			&.menu-item-has-children > a {
+				display: inline-block;
+				padding-right:0;				
+			}
 		}
+
 	}
 
 	/* only second */
