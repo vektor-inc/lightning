@@ -87,16 +87,12 @@ function lightning_bread_crumb() {
 				$taxonomies[] = $key;
 			}
 
-			// 除外するタクソノミーの文字列配列.
-			$exclude_taxonomies = array(
-				'product_type',
-				'language', // Polylang その１.
-				'post_translations',// Polylang その２.
-			);
-			$exclude_taxonomies = apply_filters( 'lightning_breadcrumb_exlude_taxonomy', $exclude_taxonomies );
+			// プラグインの制御用テクそのミーなど、除外するタクソノミーの文字列配列.
+			$exclusion = apply_filters( 'lightning_breadcrumb_exlude_taxonomy', $exclusion );
+			$exclusion = apply_filters( 'vk_breadcrumb_taxonomies_exludion', $exclusion );
 
 			// タクソノミーの差分を採用.
-			$taxonomies         = array_diff( $taxonomies, $exclude_taxonomies );
+			$taxonomies         = array_diff( $taxonomies, $exclusion );
 
 			if ( $taxonomies ) {
 				foreach ( $taxonomies as $key ) {
