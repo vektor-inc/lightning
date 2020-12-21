@@ -26,15 +26,15 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
             $page_on_front = get_option( 'page_on_front' );
 
             if ( $page_on_front ){
-                $front_page_name = get_the_title( '$page_on_front' );
+                $front_page_name = get_the_title( $page_on_front );
             }
 
             $breadcrumb_array = array(
                 array(
                     'name'             => $front_page_name,
-                    'id'               => 'breadcrumb__home',
+                    'id'               => '',
                     'url'              => home_url(),
-                    'class_additional' => 'breadcrumb__home',
+                    'class'            => 'breadcrumb__list__item--home',
                 ),
             );
         
@@ -43,7 +43,7 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
                     'name'             => esc_html( $post_top_info['name'] ),
                     'id'               => '',
                     'url'              => '',
-                    'class_additional' => '',
+                    'class'            => '',
                 );
 
             } elseif ( is_404() ) {
@@ -51,7 +51,7 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
                     'name'             => __( 'Not found', 'lightning' ),
                     'id'               => '',
                     'url'              => '',
-                    'class_additional' => '',
+                    'class'            => '',
                 );
 
             } elseif ( is_search() ) {
@@ -59,7 +59,7 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
                     'name'             => sprintf( __( 'Search Results for : %s', 'lightning' ), get_search_query() ),
                     'id'               => '',
                     'url'              => '',
-                    'class_additional' => '',
+                    'class'            => '',
                 );
 
             } elseif ( is_attachment() ) {
@@ -67,7 +67,7 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
                     'name'             => get_the_title(),
                     'id'               => '',
                     'url'              => '',
-                    'class_additional' => '',
+                    'class'            => '',
                 );
 
             } elseif ( is_author() ) {
@@ -76,7 +76,7 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
                     'name'             => $user_obj->display_name,
                     'id'               => '',
                     'url'              => '',
-                    'class_additional' => '',
+                    'class'            => '',
                 );
 
             } elseif ( is_page() ) {
@@ -87,7 +87,7 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
                         'name'             => strip_tags( apply_filters( 'single_post_title', get_the_title() ) ),
                         'id'               => '',
                         'url'              => '',
-                        'class_additional' => '',
+                        'class'            => '',
                     );
                 } else {
                     // 子階層がある場合
@@ -99,14 +99,14 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
                                 'name'             => strip_tags( apply_filters( 'single_post_title', get_the_title( $ancestor ) ) ),
                                 'id'               => '',
                                 'url'              => get_permalink( $ancestor ),
-                                'class_additional' => '',
+                                'class'            => '',
                             );
                         } else {
                             $breadcrumb_array[] = array(
                                 'name'             => strip_tags( apply_filters( 'single_post_title', get_the_title( $ancestor ) ) ),
                                 'id'               => '',
                                 'url'              => '',
-                                'class_additional' => '',
+                                'class'            => '',
                             );
                         } // if ( $ancestor != end( $ancestors ) ) {
                     } // foreach ( $ancestors as $ancestor ) {
@@ -117,16 +117,16 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
                     'name'             => $post_type_info['name'],
                     'id'               => '',
                     'url'              => '',
-                    'class_additional' => '',
+                    'class'            => '',
                 );
             }
         
             if ( ( is_single() || is_archive() ) && ! is_post_type_archive() ) {
                 $breadcrumb_array[] = array(
-                    'name'             => $post_type['name'],
+                    'name'             => $post_type_info['name'],
                     'id'               => '',
-                    'url'              => $post_type['url'],
-                    'class_additional' => '',
+                    'url'              => $post_type_info['url'],
+                    'class'            => '',
                 );
             }
         
@@ -135,7 +135,7 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
                     'name'             => get_the_archive_title(),
                     'id'               => '',
                     'url'              => '',
-                    'class_additional' => '',
+                    'class'            => '',
                 );
 
             } elseif ( is_tag() ) {
@@ -143,7 +143,7 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
                     'name'             => single_tag_title( '', false ),
                     'id'               => '',
                     'url'              => '',
-                    'class_additional' => '',
+                    'class'            => '',
                 );
 
             } elseif ( is_category() ) {
@@ -164,7 +164,7 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
                     'name'             => get_cat_name( $ancestor ),
                     'id'               => '',
                     'url'              => get_category_link( $ancestor ),
-                    'class_additional' => '',
+                    'class'            => '',
                 );
             endforeach;
             endif;
@@ -172,7 +172,7 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
                 'name'             => $cat->cat_name,
                 'id'               => '',
                 'url'              => '',
-                'class_additional' => '',
+                'class'            => '',
             );
         
         } elseif ( is_tax() ) {
@@ -194,7 +194,7 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
                         'name'             => esc_html( $pan_term->name ),
                         'id'               => '',
                         'url'              => get_term_link( $ancestor, $now_taxonomy ),
-                        'class_additional' => '',
+                        'class'            => '',
                     );
                 endforeach;
                 endif;
@@ -202,78 +202,78 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
                 'name'             => single_cat_title( '', '', false ),
                 'id'               => '',
                 'url'              => '',
-                'class_additional' => '',
+                'class'            => '',
             );
 
         } elseif ( is_single() ) {
         
-            // /* Single
-            // /*-------------------------------*/
+            /* Single
+            /*-------------------------------*/
             
-            // // Case of post
+            // Case of post
             
-            // if ( $post_type['slug'] == 'post' ) {
-            //     $category = get_the_category();
-            //     // get parent category info
-            //     $parents = array_reverse( get_ancestors( $category[0]->term_id, 'category', 'taxonomy' ) );
-            //     array_push( $parents, $category[0]->term_id );
-            //     foreach ( $parents as $parent_term_id ) {
-            //         $parent_obj         = get_term( $parent_term_id, 'category' );
-            //         $term_url           = get_term_link( $parent_obj->term_id, $parent_obj->taxonomy );
-            //         $breadcrumb_array[] = array(
-            //             'name'             => $parent_obj->name,
-            //             'id'               => '',
-            //             'url'              => $term_url,
-            //             'class_additional' => '',
-            //         );
-            //     }
+            if ( $post_type_info['slug'] == 'post' ) {
+                $category = get_the_category();
+                // get parent category info
+                $parents = array_reverse( get_ancestors( $category[0]->term_id, 'category', 'taxonomy' ) );
+                array_push( $parents, $category[0]->term_id );
+                foreach ( $parents as $parent_term_id ) {
+                    $parent_obj         = get_term( $parent_term_id, 'category' );
+                    $term_url           = get_term_link( $parent_obj->term_id, $parent_obj->taxonomy );
+                    $breadcrumb_array[] = array(
+                        'name'             => $parent_obj->name,
+                        'id'               => '',
+                        'url'              => $term_url,
+                        'class'            => '',
+                    );
+                }
             
-            // // Case of custom post type
+            // Case of custom post type
             
-            // } else {
+            } else {
 
-            //     $taxonomies = get_the_taxonomies();
-            //     $taxonomy   = key( $taxonomies );
+                $taxonomies = get_the_taxonomies();
+                $taxonomy   = key( $taxonomies );
             
-            //     if ( $taxonomies ) {
-            //         $terms = get_the_terms( get_the_ID(), $taxonomy );
+                if ( $taxonomies ) {
+                    $terms = get_the_terms( get_the_ID(), $taxonomy );
             
-            //         //keeps only the first term (categ)
-            //         $term = reset( $terms );
-            //         if ( 0 != $term->parent ) {
+                    //keeps only the first term (categ)
+                    $term = reset( $terms );
+                    if ( 0 != $term->parent ) {
             
-            //             // Get term ancestors info
-            //             $ancestors = array_reverse( get_ancestors( $term->term_id, $taxonomy ) );
-            //             // Print loop term ancestors
-            //             foreach ( $ancestors as $ancestor ) :
-            //                 $pan_term           = get_term( $ancestor, $taxonomy );
-            //                 $breadcrumb_array[] = array(
-            //                     'name'             => $pan_term->name,
-            //                     'id'               => '',
-            //                     'url'              => get_term_link( $ancestor, $taxonomy ),
-            //                     'class_additional' => '',
-            //                 );
-            //             endforeach;
-            //         } // if ( 0 != $term->parent ) {
-            //         $term_url           = get_term_link( $term->term_id, $taxonomy );
-            //         $breadcrumb_array[] = array(
-            //             'name'             => $term->name,
-            //             'id'               => '',
-            //             'url'              => $term_url,
-            //             'class_additional' => '',
-            //         );
-            //     } // if ( $taxonomies ) {
-            // } // if ( $post_type['slug'] == 'post' ) {
+                        // Get term ancestors info
+                        $ancestors = array_reverse( get_ancestors( $term->term_id, $taxonomy ) );
+                        // Print loop term ancestors
+                        foreach ( $ancestors as $ancestor ) :
+                            $pan_term           = get_term( $ancestor, $taxonomy );
+                            $breadcrumb_array[] = array(
+                                'name'             => $pan_term->name,
+                                'id'               => '',
+                                'url'              => get_term_link( $ancestor, $taxonomy ),
+                                'class'            => '',
+                            );
+                        endforeach;
+                    } // if ( 0 != $term->parent ) {
+                    $term_url           = get_term_link( $term->term_id, $taxonomy );
+                    $breadcrumb_array[] = array(
+                        'name'             => $term->name,
+                        'id'               => '',
+                        'url'              => $term_url,
+                        'class'            => '',
+                    );
+                } // if ( $taxonomies ) {
+            } // if ( $post_type_info['slug'] == 'post' ) {
 
-            // $breadcrumb_array[] = array(
-            //     'name'             => get_the_title(),
-            //     'id'               => '',
-            //     'url'              => '',
-            //     'class_additional' => '',
-            // );
+                $breadcrumb_array[] = array(
+                    'name'             => get_the_title(),
+                    'id'               => '',
+                    'url'              => '',
+                    'class'            => '',
+                );
             } // is_single
 
-            return $breadcrumb_array = apply_filters( 'bizvektor_panList_array', $breadcrumb_array );
+            return $breadcrumb_array = apply_filters( 'vk_breadcrumb_array', $breadcrumb_array );
 
         }
         
@@ -285,6 +285,8 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 
                 $breadcrumb_array = self::get_array();
 
+                global $breadcrumb_options;
+
                 print '<pre style="text-align:left">';print_r($breadcrumb_array);print '</pre>';
 
                 // Microdata
@@ -294,17 +296,45 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
                 $microdata_li_a      = ' itemprop="item"';
                 $microdata_li_a_span = ' itemprop="name"';
             
-                // $breadcrumb_html  = '<!-- [ .breadSection ] -->';
-                // $breadcrumb_html .= '<div class="section breadSection">';
-                // $breadcrumb_html .= '<div class="container">';
-                // $breadcrumb_html .= '<div class="row">';
-                // $breadcrumb_html .= '<ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList">';
-            
-                // $breadcrumb_html .= '<li id="panHome"' . $microdata_li . '>';
-                // $breadcrumb_html .= '<a' . $microdata_li_a . ' href="' . home_url( '/' ) . '">';
-                // $breadcrumb_html .= '<span' . $microdata_li_a_span . '><i class="fa fa-home"></i> HOME</span>';
-                // $breadcrumb_html .= '</a>';
-                // $breadcrumb_html .= '</li>';
+                $breadcrumb_html = '<!-- [ #' . esc_attr( $breadcrumb_options['class_outer'] ) . ' ] -->';
+                $breadcrumb_html .= '<div id="' . esc_attr( $breadcrumb_options['class_outer'] ) . '" class="' . esc_attr( $breadcrumb_options['class_outer'] ) . '">';
+                $breadcrumb_html .= '<div class="' . esc_attr( $breadcrumb_options['class_inner'] ) . '">';
+                $breadcrumb_html .= '<ul class="' . esc_attr( $breadcrumb_options['class_list'] ) . '">';
+
+                foreach ( $breadcrumb_array as $key => $value ) {
+
+                    $id = ( $value['id'] ) ? ' id="' . esc_attr( $value['id'] ) . '"' : '';
+
+                    $class = ' class="' . esc_attr( $breadcrumb_options['class_list_item'] );
+                    if ( ! empty( $value['class'] ) ){
+                        $class .= ' ' .  esc_attr( $value['class'] );
+                    }
+                    $class .= '"';
+
+                    $breadcrumb_html .= '<li' . $id . $class . $microdata_li . '>';
+                
+                    if ( $value['url'] ) {
+                        $breadcrumb_html .= '<a href="' . esc_url( $value['url'] ) . '"' . $microdata_li_a . '>';
+                    }
+                
+                    $breadcrumb_html .= '<span' . $microdata_li_a_span . '>' . esc_html( $value['name'] ) . '</span>';
+                
+                    if ( $value['url'] ) {
+                        $breadcrumb_html .= '</a>';
+                    }
+                
+                    $breadcrumb_html .= '</li>';
+
+                }
+
+                $breadcrumb_html .= '</ul>';
+                $breadcrumb_html .= '</div>
+                </div>
+                <!-- [ /#' . esc_attr( $breadcrumb_options['class_outer'] ) . ' ] -->
+                ';
+                $breadcrumb_html  = apply_filters( 'vk_breadcrumb_html', $breadcrumb_html );
+                echo $breadcrumb_html;
+
         }
 
     }
