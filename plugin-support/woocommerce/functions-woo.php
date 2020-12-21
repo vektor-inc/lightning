@@ -159,3 +159,8 @@ function lightning_woo_is_siteContent_padding_off( $return ){
 }
 add_filter( 'lightning_is_siteContent_padding_off', 'lightning_woo_is_siteContent_padding_off' );
 
+function lightning_exclude_term_list_woo( $exclusion ){
+    $exclusion[] = 'product_type';
+    return $exclusion;
+}
+add_filter( 'vk_breadcrumb_taxonomies_exludion', 'lightning_exclude_term_list_woo' );
