@@ -232,8 +232,25 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
             
             } else {
 
-                $taxonomies = get_the_taxonomies();
-                $taxonomy   = key( $taxonomies );
+                // Taxonomy of Single or Page.
+                $get_taxonomies = get_the_taxonomies();
+                $taxonomies     = array();
+
+                // 一旦タクソノミーの文字列配列に変換しないと色々と面倒.
+                foreach ( $get_taxonomies as $key => $value ) {
+                    $taxonomies[] = $key;
+                }
+
+                // 除外するタクソノミーの文字列配列.
+                $exclude_taxonomies = array(
+                    'product_type',
+                    'language', // Polylang その１.
+                    'post_translations',// Polylang その２.
+                );
+                $exclude_taxonomies = apply_filters( 'vk_breadcrumb_exlude_taxonomy', $exclude_taxonomies );
+
+                // タクソノミーの差分を採用.
+                $taxonomies         = array_diff( $taxonomies, $exclude_taxonomies );
             
                 if ( $taxonomies ) {
                     $terms = get_the_terms( get_the_ID(), $taxonomy );
