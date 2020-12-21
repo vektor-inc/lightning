@@ -308,8 +308,6 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 
                 global $breadcrumb_options;
 
-                print '<pre style="text-align:left">';print_r($breadcrumb_array);print '</pre>';
-
                 // Microdata
                 // http://schema.org/BreadcrumbList
                 /*-------------------------------------------*/
