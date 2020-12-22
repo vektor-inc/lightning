@@ -22,7 +22,7 @@
 			'theme_location' 	=> 'global-menu',
 			'container'      	=> 'nav',
 			'container_class'	=> 'global-menu',
-			'items_wrap'     	=> '<ul id="%1$s" class="%2$s ' . lightning_get_class_name( 'global-menu__ul' ) . '">%3$s</ul>',
+			'items_wrap'     	=> '<ul id="%1$s" class="%2$s ' . lightning_get_class_name( 'global-menu__list' ) . '">%3$s</ul>',
 			'fallback_cb'    	=> '',
 			'echo'           	=> true,
 			'walker'         	=> new description_walker(),

@@ -32,6 +32,14 @@ do_action( 'lightning_site-header_after' );
         <div class="<?php lightning_the_class_name( 'main-section' ); ?>" id="main" role="main">
             <?php do_action( 'lightning_main-section_prepend' ); ?>
 
+            <?php if ( is_singular() ){
+                lightning_get_template_part( 'template-parts/main-singular' );
+                echo '━━━━━━━━━━━━━━━━━━━━'."<br>\n";
+            } else {
+                lightning_get_template_part( 'template-parts/main-archive' );
+                echo '<br />_|＼○_ﾋｬｯ ε=＼＿○ﾉ ﾎｰｳ!!'.'<br />'."\n";
+            } ?>
+
             <?php do_action( 'lightning_main-section_append' ); ?>
         </div><!-- [ /.main-section ] -->
 
