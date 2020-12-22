@@ -1,22 +1,50 @@
+<?php lightning_get_template_part( 'header' ); ?>
+
 <?php 
-lightning_get_template_part( 'header' );
+if ( lightning_is_site_header() ){
+    do_action( 'lightning_header_before' );
+    lightning_get_template_part( 'template-parts/header' );
+    do_action( 'lightning_header_after' );
+} 
+?>
 
-do_action( 'lightning_header_before' );
+<div class="<?php lightning_the_class_name( 'site-body' ); ?>">
+    <?php do_action( 'lightning_site-body_prepend' ); ?>
 
-lightning_get_template_part( 'template-parts/site-header' );
+    <div class="<?php lightning_the_class_name( 'site-body__container' ); ?> container">
 
-do_action( 'lightning_header_after' );
+        <?php if ( lightning_is_page_header() ){
+            do_action( 'lightning_page-header_before' );
+            lightning_get_template_part( 'template-parts/page-header' );
+            do_action( 'lightning_page-header_after' );
+        } ?>
 
-if ( lightning_is_page_header() ){
-    lightning_get_template_part( 'template-parts/page-header' );
-}
+        <?php if ( lightning_is_breadcrumb() ){
+            do_action( 'lightning_breadcrumb_before' );
+            VK_Breadcrumb::the_breadcrumb();
+            do_action( 'lightning_breadcrumb_after' );
+        } ?>
 
-do_action( 'lightning_breadcrumb_before' );
+        <div class="<?php lightning_the_class_name( 'main-section' ); ?>" id="main" role="main">
+            <?php do_action( 'lightning_main-section_prepend' ); ?>
 
-// if ( lightning_is_breadcrumb() ){
-// 	lightning_get_template_part( 'template-parts/breadcrumb' );
-// }
+            <?php do_action( 'lightning_main-section_append' ); ?>
+        </div><!-- [ /.main-section ] -->
 
-VK_Breadcrumb::the_breadcrumb();
+        <?php if ( lightning_is_subsection_display() ){ ?>
+            <?php get_sidebar( get_post_type() ); ?>
+        <?php } ?>
 
-do_action( 'lightning_breadcrumb_after' );
+    </div><!-- [ /.site-body__container ] -->
+
+    <?php do_action( 'lightning_site-body_apepend' ); ?>
+</div><!-- [ /.site-body ] -->
+
+<?php 
+if ( lightning_is_site_header() ){
+    do_action( 'lightning_header_before' );
+    lightning_get_template_part( 'template-parts/header' );
+    do_action( 'lightning_header_after' );
+} 
+?>
+<?php lightning_get_template_part( 'footer' ); ?>
