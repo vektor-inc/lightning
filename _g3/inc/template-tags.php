@@ -64,3 +64,17 @@ function lightning_get_print_headlogo() {
 function lightning_print_headlogo() {
 	echo lightning_get_print_headlogo();
 }
+
+function lightning_the_footer_copyight() {
+
+	// copyright
+	/*------------------*/
+	$lightning_footerCopyRight = '<p>' . sprintf( __( 'Copyright &copy; %s All Rights Reserved.', 'lightning' ), get_bloginfo( 'name' ) ) . '</p>';
+	echo apply_filters( 'lightning_footerCopyRightCustom', $lightning_footerCopyRight );
+
+	// Powered
+	/*------------------*/
+	$lightning_footerPowered = __( '<p>Powered by <a href="https://wordpress.org/">WordPress</a> &amp; <a href="https://lightning.nagoya" target="_blank" title="Free WordPress Theme Lightning"> Lightning Theme</a> by Vektor,Inc. technology.</p>', 'lightning' );
+	echo apply_filters( 'lightning_footerPoweredCustom', $lightning_footerPowered );
+
+}

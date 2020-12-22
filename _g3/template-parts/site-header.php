@@ -18,11 +18,11 @@
 		<?php do_action( 'lightning_site-header_logo_after' ); ?>
 
 		<?php
-		$gMenu = wp_nav_menu( array(
-			'theme_location' 	=> 'site-header',
+		wp_nav_menu( array(
+			'theme_location' 	=> 'global-menu',
 			'container'      	=> 'nav',
-			'container_class'	=> 'g-menu',
-			'items_wrap'     	=> '<ul id="%1$s" class="%2$s ' . lightning_get_class_name( 'g-menu__ul' ) . '">%3$s</ul>',
+			'container_class'	=> 'global-menu',
+			'items_wrap'     	=> '<ul id="%1$s" class="%2$s ' . lightning_get_class_name( 'global-menu__ul' ) . '">%3$s</ul>',
 			'fallback_cb'    	=> '',
 			'echo'           	=> true,
 			'walker'         	=> new description_walker(),
