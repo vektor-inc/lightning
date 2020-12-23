@@ -309,31 +309,3 @@ gulp.task('dist_pro', function () {
 
 gulp.task('dist', gulp.series('text-domain','sass_common','sass_skin2','copy_dist'));
 gulp.task('default',  gulp.series('text-domain', 'watch'));
-
-
-
-gulp.task('watch_kuru', function (done) {
-  gulp.parallel('watch');
-  gulp.watch(['./**.php','! ./dist/**'],gulp.series ('copy_dist','dist_kuru'));
-  done();
-});
-
-gulp.task('dist_kuru', function (done) {
-
-  const files = gulp.src(
-    [
-      "./dist/lightning/**",
-    ], {
-      base: './dist/'
-    }
-  )
-
-  // if (process.env.COPY_TO) {
-  //   return files.pipe(gulp.dest(path.resolve(__dirname, process.env.COPY_TO)))
-  // }
-
-  files.pipe(gulp.dest('../../../../../../../Local Sites/themecheck/app/public/wp-content/themes/'));
-  done();
-});
-gulp.task('watch_theme_check_kuru',  gulp.parallel('watch_kuru' ));
-
