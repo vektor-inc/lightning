@@ -1,0 +1,53 @@
+@charset "utf-8";
+
+/**** CAUTION ************************
+
+If you want to modify this file,
+If this file included in plugin that, you don't modify this file.
+Original file path is themes/lightning/design-skin/foundation/ that, please modify original files.
+
+*************************************/
+
+/*-------------------------------------------*/
+/*	第二階層マウスホバー展開処理
+/*-------------------------------------------*/
+.gMenu > li {
+	& > ul.sub-menu {
+		position: absolute;
+	}
+	
+	/*
+    If except the 'ul' from .gMenu that overwrited by vk-mobile-nav absolute on such as vws.
+    */
+	& > .sub-menu {
+		position: absolute;
+		z-index: 1000;
+		display: block;
+		overflow: hidden;
+
+		// プルダウン展開
+		opacity: 0;
+		max-height: 0;
+		transition: all 0.5s;
+	}
+
+	.device-pc & {
+
+		&:hover > .sub-menu {
+			opacity: 1;
+			max-height: 1000px;
+		}
+	}
+
+
+	.device-mobile & {
+		& > .sub-menu.acc-child-close {
+			opacity: 0;
+			max-height: 0;
+		}
+		& > .sub-menu.acc-child-open {
+			opacity: 1;
+			max-height: 1000px;
+		}
+	}
+}

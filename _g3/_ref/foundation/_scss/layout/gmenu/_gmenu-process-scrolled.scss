@@ -1,0 +1,96 @@
+@charset "utf-8";
+
+/**** CAUTION ************************
+
+If you want to modify this file,
+If this file included in plugin that, you don't modify this file.
+Original file path is themes/lightning/design-skin/foundation/ that, please modify original files.
+
+*************************************/
+
+/*-------------------------------------------*/
+/*	.gMenu .PCでの上部固定グローバルメニュー 表示・非表示処理
+/*-------------------------------------------*/
+/*
+ 一定量スクロールすると、jsでbody タグに .header_scrolled クラスが付与される
+ .header_scrolled の付与処理は skin_active.php にjsが書いてある
+ スクロールされた時にメニューがfixedになるが、メニューの高さ分 navbar-header の下にmargin-bottomを付与するので、ガクンとならない。
+
+// スクロール後にメニューが上から落ちてくるアニメーション //////////
+1.	初期状態でメニューの高さ分である 54px をtopににオフセット
+	しかしpositionを指定していないので、最初は効かず通常の位置で表示。
+	よってここは本来54pxでなくてもかまわない。
+2.  jsでbodyタグに .header_scrolled がつく
+3.	.gMenu_outer の position は fixed になって -54pxの位置指定が効く。
+	しかし、先述の通りmargin-bottomが追加されるので、ガクンとはならない。
+4.	この時メニューは一旦 -54px の位置に移動するが、scrolled では 0 に指定されているので、
+	アニメーションで0の位置に移動する。
+*/
+
+@media (min-width: $lg-min) {
+	.gMenu_outer {
+		top: -54px;
+		transition: top 1s;
+	}
+
+	.gMenu_outer::after {
+		content: "";
+		clear: both;
+		display: block;
+	}
+	.header_scrolled {
+		.siteHeadContainer.container {
+			width: 100%;
+			// unset指定があると固定解除の瞬間にサイトロゴが一瞬左に表示されたままになるため為コメントアウト
+			// この指定に特別な理由がなければ2020/06/01以降に削除
+			// max-width: unset;
+		}
+		.navbar-header {
+			margin-bottom: 54px;
+		}
+		&.admin-bar .gMenu_outer {
+			top: 32px;
+		}
+		.gMenu_outer {
+			clear: both;
+			z-index: 1000;
+			position: fixed;
+			top: 0px;
+			left: 0;
+			width: 100%;
+			min-height: unset;
+			background-color: $g_nav_scrolled_bg_color;
+			box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+			nav {
+				display: block; /* Cope with setted table-sell such a OriginII  */
+				width: $lg-container;
+				@media (min-width: $xl-min) {
+					width: $xl-container;
+				}
+				margin-left: auto;
+				margin-right: auto;
+				padding-left: 15px;
+				padding-right: 15px;
+			}
+		}
+		.gMenu {
+			float: none;
+			display: flex;
+			& > li {
+				width: 50%;
+				border-left: $g_nav_scrolled_separator;
+				&:last-child {
+					border-right: $g_nav_scrolled_separator;
+				}
+			}
+		}
+	}
+	.device-pc {
+		.gMenu {
+			& > li a {
+				padding-left: 1em;
+				padding-right: 1em;
+			}
+		}
+	}
+}

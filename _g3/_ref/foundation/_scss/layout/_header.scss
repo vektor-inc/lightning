@@ -1,0 +1,77 @@
+/*-------------------------------------------*/
+/* .siteHeader
+/*-------------------------------------------*/
+.siteHeader {
+	width: 100%;
+	position: relative;
+	z-index: 1000;
+	top: 0;
+	background-color: #fff;
+	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+	margin-bottom: 0;
+	min-height: 46px;
+	border: none;
+
+	&.navbar {
+		border-radius: 0;
+	}
+
+	.container {
+		padding-top: 5px;
+		padding-bottom: 4px;
+	}
+}
+
+.siteHeader_logo {
+	display: inline-block;
+	height: auto;
+	padding: 5px 0;
+	margin: 0;
+	font-size: 32px;
+	line-height: 1.5em;
+	white-space: inherit; // Setted the nowrap by Bootstrap .navbar-brand that negative
+
+	a {
+		color: #333;
+	}
+
+	a:hover {
+		text-decoration: none;
+		color: $color_key;
+	}
+
+	img {
+		max-height: 40px;
+		display: block;
+	}
+}
+
+@media (max-width: $md-max) {
+	.navbar-header {
+		float: none;
+	} /* (max-width: $md-max) の外に出すと初期設定のfloat:leftに負ける */
+	.siteHeader_logo {
+		font-size: 1.6rem;
+		float: inherit;
+		text-align: center;
+		display: block;
+		margin: 0 auto;
+		padding: 0 45px;
+	}
+
+	.siteHeader_logo img {
+		display: block;
+		margin: 0 auto;
+	}
+}
+
+@media (min-width: 992px) {
+	.siteHeader .container {
+		padding-top: 16px;
+		padding-bottom: 14px;
+	}
+
+	.siteHeader_logo img {
+		max-height: 50px;
+	}
+} // @media (min-width: 992px) {

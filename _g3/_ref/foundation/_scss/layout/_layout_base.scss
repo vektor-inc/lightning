@@ -1,0 +1,214 @@
+@charset "utf-8";
+
+/**** CAUTION ************************
+
+If you want to modify this file,
+If this file included in plugin that, you don't modify this file.
+Original file path is themes/lightning/design-skin/foundation/ that, please modify original files.
+
+*************************************/
+
+/*-------------------------------------------*/
+/* FsiteContent
+/*-------------------------------------------*/
+/* baseSection
+/*-------------------------------------------*/
+/* Full Wide Title Offset ( 安定したら別ファイルに分離 )
+/*-------------------------------------------*/
+
+/*-------------------------------------------*/
+/* FsiteContent
+/*-------------------------------------------*/
+.siteContent.siteContent-base-on {
+	@media (min-width: $md-min) {
+		padding: 2rem 0 3.5rem;
+	}
+	.home & {
+		padding-top: 3.5rem;
+	}
+	& > .container > .row {
+		margin: 0;
+	}
+}
+
+.page-template-page-lp-builder,
+.page-template-page-lp {
+	.siteContent.siteContent-base-on {
+		.mainSection-base-on {
+			padding-top: 0;
+			border-top-left-radius: 0;
+			border-top-right-radius: 0;
+		}
+	}
+}
+
+/*-------------------------------------------*/
+/* baseSection
+/*-------------------------------------------*/
+.mainSection-base-on,
+.sideSection-base-on {
+	background-color: #fff;
+	padding: $base-padding-xs;
+	@media (min-width: $sm-min) {
+		padding: $base-padding-sm;
+	}
+
+	@media (min-width: $md-min) {
+		padding: $base-padding-md;
+	}
+}
+.mainSection-base-on {
+	@media (min-width: $lg-min) {
+		padding: $base-padding-lg;
+	}
+}
+// サイドバーの方が幅が狭いので、同じ余白を取ると錯覚でサイドバーの余白の方が広く見えてしまうため、余白を小さく設定してある
+.sideSection-base-on {
+	@media (min-width: $lg-min) {
+		padding: $base-padding-lg $base-padding-side-lg;
+	}
+	@media (min-width: $xl-min) {
+		padding: $base-padding-lg $base-padding-side-xl;
+	}
+}
+
+/*-------------------------------------------*/
+/* Block Core alignwide
+/*-------------------------------------------*/
+@media (max-width: $xs-max) {
+	.mainSection-base-on,
+	.sideSection-base-on {
+		.alignwide {
+			width: calc(100% + 1.4rem + 1.4rem);
+			margin-left: -$base-padding-xs;
+			margin-right: -$base-padding-xs;
+			&.wp-block-image {
+				width: calc(100% + 1.4rem + 1.4rem);
+			}
+		}
+	}
+}
+@media (min-width: $sm-min) {
+	.mainSection-base-on,
+	.sideSection-base-on {
+		.alignwide {
+			width: calc(100% + 1.7rem + 1.7rem);
+			margin-left: -$base-padding-sm;
+			margin-right: -$base-padding-sm;
+			&.wp-block-image {
+				width: calc(100% + 1.7rem + 1.7rem);
+			}
+		}
+	}
+}
+@media (min-width: $md-min) {
+	.mainSection-base-on,
+	.sideSection-base-on {
+		.alignwide {
+			width: calc(100% + 2rem + 2rem);
+			margin-left: -$base-padding-md;
+			margin-right: -$base-padding-md;
+			&.wp-block-image {
+				width: calc(100% + 2rem + 2rem);
+			}
+		}
+	}
+}
+@media (min-width: $lg-min) {
+	.mainSection-base-on,
+	.sideSection-base-on.sideSection-col-one {
+		.alignwide {
+			width: calc(100% + 2.4rem + 2.4rem);
+			margin-left: -$base-padding-lg;
+			margin-right: -$base-padding-lg;
+			&.wp-block-image {
+				width: calc(100% + 2.4rem + 2.4rem);
+			}
+		}
+	}
+	.sideSection-base-on.sideSection-col-two {
+		.alignwide {
+			width: calc(100% + 1.7rem + 1.7rem);
+			margin-left: -$base-padding-side-lg;
+			margin-right: -$base-padding-side-lg;
+			&.wp-block-image {
+				width: calc(100% + 1.7rem + 1.7rem);
+			}
+		}
+	}
+}
+@media (min-width: $xl-min) {
+	.sideSection-base-on.sideSection-col-two {
+		.alignwide {
+			width: calc(100% + 2rem + 2rem);
+			margin-left: -$base-padding-side-xl;
+			margin-right: -$base-padding-side-xl;
+			&.wp-block-image {
+				width: calc(100% + 2rem + 2rem);
+			}
+		}
+	}
+}
+
+/*-------------------------------------------*/
+/* Full Wide Title Offset ( 安定したら別ファイルに分離 )
+/*-------------------------------------------*/
+/* ベースがある時はベースをはみ出して貫通しないように、ベースの余白分だけマイナスオフセット */
+.mainSection-base-on,
+.sideSection-base-on {
+	.vk_outer-width-full,
+	.widget_ltg_full_wide_title_outer {
+		margin-left: -$base-padding-xs;
+		margin-right: -$base-padding-xs;
+		padding-left: $base-padding-xs;
+		padding-right: $base-padding-xs;
+		@media (min-width: $sm-min) {
+			margin-left: -$base-padding-sm;
+			margin-right: -$base-padding-sm;
+			padding-left: $base-padding-sm;
+			padding-right: $base-padding-sm;
+		}
+		@media (min-width: $md-min) {
+			margin-left: -$base-padding-md;
+			margin-right: -$base-padding-md;
+			padding-left: $base-padding-md;
+			padding-right: $base-padding-md;
+		}
+	}
+}
+.mainSection{
+	&.mainSection-base-on {
+		.vk_outer-width-full,
+		.widget_ltg_full_wide_title_outer {
+			@media (min-width: $lg-min) {
+				margin-left: -$base-padding-lg;
+				margin-right: -$base-padding-lg;
+				padding-left: $base-padding-lg;
+				padding-right: $base-padding-lg;
+			}
+			@media (min-width: $xl-min) {
+				margin-left: -$base-padding-lg;
+				margin-right: -$base-padding-lg;
+				padding-left: $base-padding-lg;
+				padding-right: $base-padding-lg;
+			}
+		}
+	}
+}
+.sideSection-base-on {
+	.vk_outer-width-full,
+	.widget_ltg_full_wide_title_outer {
+		@media (min-width: $lg-min) {
+			margin-left: -$base-padding-side-lg;
+			margin-right: -$base-padding-side-lg;
+			padding-left: $base-padding-side-lg;
+			padding-right: $base-padding-side-lg;
+		}
+		@media (min-width: $xl-min) {
+			margin-left: -$base-padding-side-xl;
+			margin-right: -$base-padding-side-xl;
+			padding-left: $base-padding-side-xl;
+			padding-right: $base-padding-side-xl;
+		}
+	}
+}

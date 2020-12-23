@@ -1,0 +1,377 @@
+@charset "utf-8";
+
+/**** CAUTION ************************
+
+If you want to modify this file,
+If this file included in plugin that, you don't modify this file.
+Original file path is themes/lightning/design-skin/foundation/ that, please modify original files.
+
+*************************************/
+
+/****************************************************************/
+/* Lightning All Area All Skin common style
+/****************************************************************/
+
+/*-------------------------------------------*/
+/* common style
+/*-------------------------------------------*/
+/* headding
+/*-------------------------------------------*/
+/* images
+/*-------------------------------------------*/
+/* other class
+/*-------------------------------------------*/
+/* gutenberg button
+/*-------------------------------------------*/
+
+/*-------------------------------------------*/
+/* common style
+/*-------------------------------------------*/
+
+html,
+body {
+	font-size: 14px;
+}
+
+@media (min-width: $lg-min) {
+	html,
+	body {
+		font-size: 16px;
+	}
+}
+
+body {
+	font-family: "メイリオ", Meiryo, "Hiragino Kaku Gothic Pro",
+		"ヒラギノ角ゴ Pro W3", Hiragino Sans, "Noto Sans JP", sans-serif;
+	-ms-word-wrap: break-word;
+	word-wrap: break-word;
+}
+
+/* img が２行ないとgulpでcssに出力されないという謎のバグがあるため、原因がわかるまで２行書いておく */
+/* JPN STYLE で発生 */
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+p {
+	line-height: 1.7;
+	@media (min-width: $md-min) {
+		line-height: 1.9;
+	}
+	margin-bottom: $margin_bottom;
+}
+
+em {
+	font-weight: bold;
+}
+
+ul,
+ol,
+dl {
+	margin-top: 1.5em;
+	margin-bottom: $margin_bottom;
+}
+
+li {
+	margin-bottom: 0.8em;
+	line-height: 1.65em;
+}
+
+dt,
+dd {
+	padding-left: 10px;
+	border-left-width: 2px;
+	border-left-style: solid;
+	margin-bottom: 10px;
+}
+
+dt {
+	border-left-color: $color_key;
+}
+
+dd {
+	border-left-color: #e5e5e5;
+}
+
+dt.wp-caption-dt,
+dd.wp-caption-dd {
+	border-left: none;
+}
+
+ol ol,
+ul ul,
+ol ul,
+ul ol {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+/* bs4 display flex adjust */
+.form-inline label.screen-reader-text {
+	display: none;
+}
+
+/*-------------------------------------------*/
+/* headding
+/*-------------------------------------------*/
+
+h1 {
+	position: relative;
+}
+
+// .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 { line-height: 1.7em; }
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6,
+.mainSection-title {
+	margin: 1.5em 0 $margin_bottom;
+	clear: both;
+}
+
+h1:first-child,
+h2:first-child,
+h3:first-child,
+h4:first-child,
+h5:first-child {
+	margin-top: 0;
+}
+
+/* h2じゃないけれど同じ文字サイズにする .mainSection-title のケースがあるので必要 */
+h2,
+.h2,
+.mainSection-title {
+	font-size: $font-size-h2;
+}
+
+blockquote {
+	padding: 20px;
+} /* don't include .wp-block- -> can't fa padding over wright...*/
+.wp-block-freeform.block-library-rich-text__tinymce blockquote,
+blockquote.wp-block-quote:not(.is-large):not(.is-style-large),
+blockquote {
+	border: 5px solid #eee;
+	background-color: #fcfcfc;
+	position: relative;
+	font-size: 16px;
+}
+
+.fa_v4,
+.fa_v5_css {
+	blockquote {
+		padding: 35px 20px 30px;
+
+		&:before,
+		&:after {
+			color: #ccc;
+			position: absolute;
+		}
+
+		&:before {
+			top: 10px;
+		}
+
+		&:after {
+			bottom: 10px;
+			right: 20px;
+		}
+
+		&:before {
+			content: "\f10d";
+		}
+
+		&:after {
+			content: "\f10e";
+		}
+	}
+}
+
+.fa_v4 blockquote:before,
+.fa_v4 blockquote:after {
+	font-family: FontAwesome;
+}
+
+.fa_v5_css blockquote:before,
+.fa_v5_css blockquote:after {
+	font-family: "Font Awesome 5 Free";
+	font-weight: bold;
+}
+
+.table,
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: 100%;
+	border-top: $border_primary;
+	th,
+	td,
+	thead tr th,
+	thead tr td,
+	tbody tr th,
+	tbody tr td {
+		border-bottom: $border_primary;
+		.form-control {
+			max-width: 90%;
+		}
+	}
+}
+th {
+	font-weight: normal;
+}
+th,
+td {
+	padding: 1em;
+	font-size: 14px;
+}
+
+/*-------------------------------------------*/
+/* .btn
+/*-------------------------------------------*/
+.btn {
+	white-space: normal;
+}
+
+.btn-xs {
+	padding-left: 15px;
+	padding-right: 15px;
+	font-size: 12px;
+}
+
+.btn.btn-block {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+/*-------------------------------------------*/
+/* images
+/*-------------------------------------------*/
+.attachment img {
+	max-width: 100%;
+}
+
+.alignleft,
+img.alignleft {
+	display: inline;
+	float: left;
+	margin-right: 20px;
+	margin-top: 4px;
+}
+
+.alignright,
+img.alignright {
+	display: inline;
+	float: right;
+	margin-left: 20px;
+	margin-top: 4px;
+}
+
+.aligncenter,
+img.aligncenter {
+	clear: both;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+img.alignleft,
+img.alignright,
+img.aligncenter {
+	margin-bottom: 12px;
+}
+
+.wp-caption {
+	background: #fcfcfc;
+	line-height: 18px;
+	margin-top: 2.5em;
+	margin-bottom: 2.5em;
+	padding: 0 0 5px;
+	text-align: center;
+	border: 1px solid #e5e5e5;
+	max-width: 100% !important;
+}
+
+.wp-caption img {
+	margin: 10px 0 9px;
+	max-width: 95% !important;
+	height: auto !important;
+}
+
+.wp-caption p.wp-caption-text {
+	color: #888;
+	font-size: 12px;
+	margin: 0px;
+}
+
+.wp-smiley {
+	margin: 0;
+}
+
+.gallery {
+	margin: 0 auto 25px;
+}
+
+.gallery .gallery-item {
+	float: left;
+	margin-top: 0;
+	text-align: center;
+	width: 33%;
+}
+
+.gallery img {
+	border: 2px solid #cfcfcf;
+}
+
+.gallery .gallery-caption {
+	color: #888;
+	font-size: 12px;
+	margin: 0 0 12px;
+}
+
+.gallery dl {
+	margin: 0;
+}
+
+.gallery dt,
+.gallery dd {
+	border: none;
+}
+
+.gallery img {
+	border: 10px solid #f1f1f1;
+}
+
+.gallery br + br {
+	display: none;
+}
+
+.attachment img {
+	/* single attachment images should be centered */
+	display: block;
+	margin: 0 auto;
+}
+
+/*-------------------------------------------*/
+/* other class
+/*-------------------------------------------*/
+.well p:last-child {
+	margin-bottom: 0;
+}
+
+/*-------------------------------------------*/
+/* gutenberg button
+/*-------------------------------------------*/
+.wp-block-button .wp-block-button__link {
+	border-radius: 4px;
+}

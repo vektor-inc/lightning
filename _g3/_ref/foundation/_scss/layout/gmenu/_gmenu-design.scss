@@ -1,0 +1,143 @@
+@charset "utf-8";
+
+/**** CAUTION ************************
+
+If you want to modify this file,
+If this file included in plugin that, you don't modify this file.
+Original file path is themes/lightning/design-skin/foundation/ that, please modify original files.
+
+*************************************/
+
+/*-------------------------------------------*/
+/*	.gMenu desigin
+/*-------------------------------------------*/
+
+$menu_padding_vertical: 14px;
+$menu_padding_horizontal: 1.2em;
+
+.gMenu_outer {
+	@media (max-width: $md-max) {
+		display: none;
+	}
+	// position: relative; をここで指定してしまうと、スクロール時にすっと下がるモーションが付けられない
+	width: 100%; /* If not this specification that not center on Charm  */
+}
+
+.gMenu {
+	margin: 0 auto;
+	padding: 0;
+	display: flex;
+	list-style: none;
+	position: relative;
+	a {
+		color: $g_nav_font_color;
+		height: 100%;
+	}
+	a:hover,
+	a:active,
+	a:focus {
+		background-color: $g_nav_bg_hover_color;
+		transition: background-color 0.4s;
+		color: $g_nav_font_color;
+		text-decoration: none;
+	}
+	li {
+		margin: 0;
+		list-style: none;
+		line-height: 1.4;
+		font-size: 12px;
+		position: relative;
+	}
+	/*-------------------------------------------*/
+	/*	only first
+	/*-------------------------------------------*/
+	& > li {
+		border-left: $g_nav_separator;
+		text-align: center;
+		&:last-child {
+			border-right: $g_nav_separator;
+		}
+		.gMenu_name {
+			font-size: $g_nav_font_size;
+			display: block;
+			/*
+			メニューは
+			・必要なら <br> でユーザーが改行指定できる
+			・幅は自動調整される 
+			ため nowrap 指定の方が表示が安定する
+			本当は & > li にかけていたが、下階層にまでnowrapが効いてしまう現象が発生し、
+			ドロップダウンメニューに被ってしまうため .gMenu_name に移動
+			*/
+			white-space: nowrap;
+		}
+		.gMenu_description {
+			display: block;
+			overflow: hidden;
+			font-size: 10px;
+			line-height: 14px;
+			opacity: 0.6;
+			text-align: center;
+		}
+		/* Class is necessarily to the * because class was added to many other class name that first class is not necessarily "current"  */
+		&:hover,
+		&[class*="current"] {
+			transition: all 0.5s ease-out;
+			background-color: $g_nav_bg_hover_color;
+			&:before {
+				width: 100%;
+			}
+		}
+	}
+	/*-------------------------------------------*/
+	/*	2nd only
+	/*-------------------------------------------*/
+	& > li > ul.sub-menu {
+		background-color: $g_nav_sub_bg_color;
+		box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+
+		// 横位置
+		// 親メニューに左右中央に寄せてからサブメニュー分を左にマイナスオフセット
+		// ※ ul > li のpositionでleft:-50%指定すると ul は 本来 li がある横幅まで存在するので
+		// 　余分なマウスオーバー反応エリアができてしまうため
+		left: 50%;
+		margin-left: -120px;
+		width: 240px;
+	}
+	/*-------------------------------------------*/
+	/*	2nd after
+	/*-------------------------------------------*/
+	ul {
+		margin: 0;
+		padding: 0;
+		text-align: left;
+		transition: all 0.3s ease-in;
+		li {
+			a,
+			a:hover {
+				color: $g_nav_sub_font_color;
+			}
+			a {
+				padding: $menu_padding_vertical $menu_padding_horizontal;
+				border-bottom: $g_nav_sub_separator;
+				&:hover {
+					background-color: $g_nav_bg_hover_color;
+				}
+			}
+			&.menu-item-has-children > a {
+				padding: $menu_padding_vertical 3.5em $menu_padding_vertical
+					$menu_padding_horizontal;
+			}
+			@media (min-width: $lg-min) {
+				ul.sub-menu li {
+					a{ 
+						padding-left: 2.2em;
+					}
+					li a {
+						padding-left: 3.2em;
+					}
+				}
+			}
+
+		}
+	}
+}

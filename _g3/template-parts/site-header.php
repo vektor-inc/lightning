@@ -25,7 +25,7 @@
 			'items_wrap'     	=> '<ul id="%1$s" class="%2$s ' . lightning_get_class_name( 'global-menu__list' ) . '">%3$s</ul>',
 			'fallback_cb'    	=> '',
 			'echo'           	=> true,
-			'walker'         	=> new description_walker(),
+			'walker'         	=> new VK_Description_Walker(),
 		) );
 		?>
 	</div>

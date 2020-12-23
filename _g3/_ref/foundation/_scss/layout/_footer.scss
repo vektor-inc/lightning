@@ -1,0 +1,80 @@
+/*-------------------------------------------*/
+/* footer
+/*-------------------------------------------*/
+.siteFooter {
+	.widget {
+		margin-bottom: 25px;
+	}
+	a {
+		text-decoration: underline;
+		&:hover{
+			text-decoration: none;
+		}
+	}
+	li > a {
+		text-decoration: none;
+		&:hover{
+			text-decoration: underline;
+		}
+	}
+	
+}
+
+.footerMenu {
+	li {
+		margin-bottom: 0;
+		font-size: 14px;
+	}
+}
+
+@media (max-width: 767px) {
+	.footerMenu {
+		border-top: var(--color-footer-border,#ccc);;
+		border-bottom: var(--color-footer-border,#ccc);;
+
+		.nav {
+			display: unset;
+		}
+
+		li {
+			float: none;
+			border-bottom: var(--color-footer-border,#ccc);;
+			display: block;
+			overflow: hidden;
+			padding: 0.5em 0;
+		}
+
+		li:last-child {
+			border-bottom: none;
+		}
+	}
+} // @media (max-width: 767px){
+@media (min-width: 768px) {
+	.footerMenu {
+		ul {
+			margin: 12px 0 10px;
+		}
+
+		li {
+			float: left;
+		}
+
+		li a {
+			border-left: 1px solid var(--color-footer-border,#ccc);
+			padding: 0 1em;
+		}
+
+		li:last-child a {
+			border-right: 1px solid var(--color-footer-border,#ccc);
+		}
+	}
+}
+
+.copySection {
+	border-top: var(--color-footer-border,#ccc);;
+
+	p {
+		font-size: 12px;
+		margin: 0 15px 5px;
+	}
+}

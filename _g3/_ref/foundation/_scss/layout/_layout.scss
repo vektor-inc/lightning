@@ -1,0 +1,117 @@
+@charset "utf-8";
+
+/**** CAUTION ************************
+
+If you want to modify this file,
+If this file included in plugin that, you don't modify this file.
+Original file path is themes/lightning/design-skin/foundation/ that, please modify original files.
+
+*************************************/
+
+.siteHeader {
+	.siteHeadContainer:after {
+		content: "";
+		display: block;
+		clear: both;
+	}
+}
+
+/*-------------------------------------------*/
+/* .siteContent
+/*-------------------------------------------*/
+.siteContent {
+	padding: 2rem 0 2rem;
+	@media (min-width: $md-min) {
+		padding: 2.5rem 0 2.5rem;
+	}
+	@media (min-width: $lg-min) {
+		padding: 3rem 0 3.5rem;
+	}
+	@media (min-width: $xl-min) {
+		padding: 3.5rem 0 4rem;
+	}
+	.page-template-page-lp-builder &,
+	.page-template-page-lp & {
+		padding-top: 0;
+	}
+	.page-template-page-lp-builder & {
+		padding-bottom: 0;
+	}
+	&.siteContent-paddingVertical-off,
+	&.siteContent-paddingVertical-off.siteContent-base-on {
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+}
+
+.siteContent > .container > .row {
+	display: block;
+
+	&:after {
+		content: "";
+		display: block;
+		clear: both;
+	}
+}
+
+.mainSection,
+.sideSection {
+	& > aside:last-child,
+	& > div:last-child {
+		margin-bottom: 0;
+	}
+	@media (max-width: $md-max) {
+		width: 100%;
+		flex-basis: unset;
+	}
+}
+
+@media (min-width: $lg-min) {
+	.mainSection-col-two {
+		width: 66.66667%;
+		float: left;
+	}
+
+	.sideSection-col-two {
+		width: calc(100% - 66.66667% - 3rem);
+		float: right;
+	}
+
+	// sidebar-left
+	.sideSection-pos-left {
+		float: left;
+	}
+
+	.mainSection-pos-right {
+		float: right;
+	}
+
+	// one-column
+	.mainSection-col-one,
+	.sideSection-col-one {
+		width: 100%;
+	}
+}
+
+/*
+mainSection だけにしているのはサブセクションが下に配置される場合にひっつかないように。
+そもそも外側の余白は .siteContent でつけられているので sideSection には不要
+*/
+.mainSection {
+	&-marginBottom-on {
+		margin-bottom: 3rem;
+	}
+	@media (max-width: $md-max) {
+		margin-bottom: 2rem;
+	}
+	&.mainSection-marginVertical-off {
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+}
+
+.siteFooter {
+	// これがないとfooterMenuの上部marginが効かない
+	display: block;
+	overflow: hidden;
+}

@@ -25,6 +25,7 @@ class LTG_Template_Redirect {
         foreach ( $ridirect_array as $key => $type ){
             add_filter( "{$type}_template_hierarchy", array( __CLASS__, 'redirect_test' ) );
         }
+        add_filter( 'template_directory_uri', array( __CLASS__, 'template_directory_uri' ) );
     }
 
     public static function redirect_test( $templates ){
@@ -32,6 +33,10 @@ class LTG_Template_Redirect {
             $templates[$key] = LIG_G3_DIR . '/' . $template;
         }
         return $templates;
+    }
+
+    public static function template_directory_uri( $template_dir_uri  ){
+        return $template_dir_uri . '/' . LIG_G3_DIR;
     }
 }
 

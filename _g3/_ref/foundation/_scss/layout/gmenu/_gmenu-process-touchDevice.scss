@@ -1,0 +1,66 @@
+@charset "utf-8";
+
+/**** CAUTION ************************
+
+If you want to modify this file,
+If this file included in plugin that, you don't modify this file.
+Original file path is themes/lightning/design-skin/foundation/ that, please modify original files.
+
+*************************************/
+
+@media (min-width: $lg-min) {
+	body.device-mobile .vk-mobile-nav-menu-btn {
+		display: none;
+	}
+}
+
+/*-------------------------------------------*/
+/*	PCとタッチデバイスでのプルダウンボタンなどの表示切り替え処理
+/*-------------------------------------------*/
+.gMenu {
+	& > li {
+		// PC端末の場合 ////
+		.device-pc & {
+			// 第一階層メニューのみ下階層展開ボタンを隠す
+			& > .acc-btn {
+				display: none;
+			}
+
+			// a タグに対して展開メニューボタン分の余白をつける
+			& > a {
+				display: block;
+				overflow: hidden;
+
+				// PC端末時は下階層展開ボタンを表示しないので左右余白小さめ
+				padding: $menu_padding_vertical $g_nav_padding_horizontal_pc;
+			}
+		}
+
+		// モバイル端末の場合 /////
+		// li タグに対して余白をつける
+		// モバイル端末の場合は下階層展開ボタンを表示するので、
+		// 展開ボタンの押し間違えですぐにページ遷移してしまうため、
+		// liに余白をつけて、リンク対象は文字部分だけにする
+		.device-mobile & {
+			padding: $menu_padding_vertical 2.5em;
+			.gMenu_name {
+				font-size: 12px;
+			}
+			//PC端末でaタグにつけていた余白がモバイル端末で出現するので打ち消し&inline-block化
+			&.menu-item-has-children > a {
+				display: inline-block;
+				padding-right:0;				
+			}
+		}
+
+	}
+
+	/* only second */
+	& > li > ul.sub-menu {
+		// PCの場合はリンク範囲が広いが、モバイルでは文字部分だけにするので、
+		// 第一階層文字下の余白分をmarginで確保しなくてはならない
+		.device-mobile & {
+			margin-top: $menu_padding_vertical;
+		}
+	} // / only second
+}

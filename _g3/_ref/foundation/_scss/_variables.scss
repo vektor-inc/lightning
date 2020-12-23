@@ -1,0 +1,50 @@
+@charset "utf-8";
+
+/**** CAUTION ************************
+
+If you want to modify this file,
+If this file included in plugin that, you don't modify this file.
+Original file path is themes/lightning/design-skin/foundation/ that, please modify original files.
+
+*************************************/
+
+:root {
+	--text-color: #464646;
+	--color-footer-border:rgba(0, 0, 0, 0.15);
+}
+
+$border_primary: 1px solid rgba(0, 0, 0, 0.05);
+$color_font_default: #464646;
+$color_font_light: #666;
+$color_key: #337ab7;
+$color_key_dark: #2e6da4;
+$margin_bottom: 1.2em;
+$margin_section: 3rem;
+
+$col_margin_lateral: 15px;
+
+$xs-max: 575.98px;
+$sm-max: 767.98px;
+$md-max: 991.98px;
+$lg-max: 1199.98px;
+
+$sm-min: 576px;
+$md-min: 768px;
+$lg-min: 992px;
+$xl-min: 1200px;
+
+$font-size-h1: 1.75rem;
+$font-size-h2: 1.75rem;
+
+$sm-container: 540px;
+$md-container: 720px;
+$lg-container: 960px;
+$xl-container: 1140px;
+
+$base-padding-xs: 1.4rem;
+$base-padding-sm: 1.7rem;
+$base-padding-md: 2rem;
+$base-padding-lg: 2.4rem;
+
+$base-padding-side-lg: 1.7rem;
+$base-padding-side-xl: 2rem;
