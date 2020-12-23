@@ -2,7 +2,7 @@
 Lightning WordPress theme, Copyright (C) 2015-2020 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
 Tested up to: 5.6.0
-Stable tag: 13.4.0
+Stable tag: 13.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,6 +38,9 @@ https://www.vektor-inc.co.jp/inquiry/
 
 
 == Changelog ==
+
+v13.4.1
+[ Bug fix ][ OriginII ] fix in case of 13.4 appear vain margin bottom
 
 v13.4.0
 [ Specification Change ][ BreadCrumb ] When display is_page that dont display taxonomies to breadcrumb
