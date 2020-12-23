@@ -225,6 +225,10 @@ h1.entry-title {
 .entry-full {
 	border-bottom:$border_primary;
 	margin-bottom:$margin_section;
+	.mainSection-marginVertical-off & {
+		border-bottom:none;
+		margin-bottom:0;
+	}
 }
 
 .entry-header {
