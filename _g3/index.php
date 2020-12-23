@@ -34,10 +34,8 @@ do_action( 'lightning_site-header_after' );
 
             <?php if ( is_singular() ){
                 lightning_get_template_part( 'template-parts/main-singular' );
-                echo '━━━━━━━━━━━━━━━━━━━━'."<br>\n";
             } else {
                 lightning_get_template_part( 'template-parts/main-archive' );
-                echo '<br />_|＼○_ﾋｬｯ ε=＼＿○ﾉ ﾎｰｳ!!'.'<br />'."\n";
             } ?>
 
             <?php do_action( 'lightning_main-section_append' ); ?>

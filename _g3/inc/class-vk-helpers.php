@@ -11,6 +11,21 @@ if ( ! class_exists( 'VK_Helpers' ) ) {
 	 */
 	class VK_Helpers {
 
+/*
+get_post_top_info
+get_post_type_info
+sanitize_checkbox
+sanitize_number_percentage
+sanitize_choice
+sanitize_textarea
+sanitize_boolean
+color_auto_modifi
+color_adjust_under_ff
+color_mode_check
+color_convert_rgba
+deactivate_plugin
+*/
+
         public static function get_post_top_info() {
 
             $post_top_info = array();
@@ -92,6 +107,22 @@ if ( ! class_exists( 'VK_Helpers' ) ) {
             return $post_type_info;
         }
 
+
+		public static function get_display_taxonomies( $post_id = null, $args = null ){
+			if ( ! $post_id ){
+				global $post;
+				$post_id = $post->ID;
+			}
+			$taxonomies	= get_the_taxonomies( $post_id, $args );
+			$exclusion	= array( 'post_tag', 'product_type' );
+			$exclusion	= apply_filters( 'vk_get_display_taxonomies_exclusion', $exclusion );
+			if ( is_array( $exclusion ) ){
+				foreach ( $exclusion as $key => $value ){
+					unset( $taxonomies[$value] );
+				}
+			}
+			return $taxonomies;
+		}
 
 		/**
 		 * Sanitize Check Box
