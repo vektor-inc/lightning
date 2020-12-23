@@ -46,6 +46,10 @@ gulp.task('text-domain', function (done) {
 	gulp.src(["./inc/vk-css-optimize/package/*"])
 		.pipe(replace("css_optimize_textdomain", "lightning"))
 		.pipe(gulp.dest("./inc/vk-css-optimize/package/"));
+		// vk-footer-customize.
+		gulp.src(["./inc/vk-footer-customize/package/*.php"])
+		.pipe(replace("vk-footer-customize-textdomain","lightning"))
+		.pipe(gulp.dest("./inc/vk-footer-customize/package/"))
 	done();
 });
 
