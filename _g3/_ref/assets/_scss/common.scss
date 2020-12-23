@@ -1,0 +1,188 @@
+@charset "utf-8";
+// Do not use sass that the path of the image shifts
+@import "../../inc/vk-mobile-nav/package/css/vk-mobile-nav-bright.css";
+// VK Components is no using image that using sass is no probrem.
+@import "../../inc/vk-components/package/_scss/vk-components.scss";
+@import "block/block";
+@import "common_veu_overwrite";
+@import "bootstrap_overwrite";
+
+:root {
+	--color-key-default: #337ab7;
+	--color-key-dark-default: #2e6da4;
+}
+
+/*-------------------------------------------*/
+/*	customize-partial-edit-shortcut-button
+/*-------------------------------------------*/
+.mainSection > span > .customize-partial-edit-shortcut-button {
+	margin-left: -2em;
+}
+.siteContent_after > span > .customize-partial-edit-shortcut-button {
+	margin-left: 2em;
+}
+.footerWidget > span > .customize-partial-edit-shortcut-button {
+	margin-left: -2em;
+}
+.slide .item picture .customize-partial-edit-shortcut {
+	position: absolute;
+	left: 15%;
+	top: 15%;
+	transform: translateY(-50%) translateX(0);
+}
+
+/*-------------------------------------------*/
+/*	Default Post List on sidebar
+/*-------------------------------------------*/
+
+.subSection {
+	.media {
+		.media-heading {
+			font-size: 14px;
+			//見出し機能のデザイン打消し
+			position: relative;
+			background-color: transparent;
+			outline: unset;
+			outline-offset: unset;
+			box-shadow: unset;
+			border: none;
+			border-radius:unset;
+			padding: 0;
+			color: #333;
+			text-align: unset;
+			&::after,
+			&::before{
+				content: none;
+			}
+		}
+	}
+}
+
+/*-------------------------------------------*/
+/*	Search
+/*-------------------------------------------*/
+
+.widget_search,
+.widget_display_search,
+.widget_product_search {
+	.widget-title.subSection-title {
+		margin-bottom: 15px;
+	}
+}
+
+.widget_search form div,
+.widget_display_search form div,
+.widget_product_search form {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	justify-content: space-between;
+	input#s,
+	input#bbp_search,
+	input.search-field {
+		max-width: initial; //max-widthをriset
+		width: 64%;
+		border: 1px solid #ccc;
+		// border-radius: 3px;
+		padding: 6px 12px;
+		font-size: 14px;
+		margin-right: 0;
+		margin-bottom: 0;
+	}
+	input#searchsubmit,
+	input#bbp_search_submit,
+	button {
+		width: 33%;
+		color: #fff;
+		border: none;
+		padding: 6px;
+		// border-radius: 4px;
+		font-size: 16px;
+	}
+}
+
+iframe {
+	border: none;
+}
+/*-------------------------------------------*/
+/*	calendar
+/*-------------------------------------------*/
+.wp-calendar-table {
+	border-top-color: #e5e5e5;
+	caption {
+		caption-side: top;
+		color: inherit;
+	}
+	th {
+		font-weight: bold;
+	}
+	th,
+	td {
+		padding-left: 0;
+		padding-right: 0;
+		text-align: center;
+		border-bottom-color: #e5e5e5;
+	}
+}
+.wp-calendar-nav {
+	margin: 0.7em 0 1.5em;
+	display: flex;
+	justify-content: space-between;
+}
+
+/*-------------------------------------------*/
+/*	Download Manager
+/*-------------------------------------------*/
+.wpdm-download-link {
+	margin-top: 5px;
+}
+.w3eden {
+	margin-bottom:2rem;
+	.media {
+		padding:0;
+		border:none;
+		& > div {
+			width:auto;
+		}
+	}
+	.media-body {
+		margin-right: 1em;
+		margin-bottom: 0.5em;
+		flex: unset;
+	}
+	.package-title:after {
+		border: none;
+	}
+}
+@media (max-width: 575.98px) {
+	.w3eden {
+		.media {
+			display: block !important;
+		}
+		.link-template-default.thumbnail .wpdm-download-link.btn {
+			display: block;
+			margin-top: 10px;
+		}
+	}
+}
+
+/*-------------------------------------------*/
+/*	Print
+/*-------------------------------------------*/
+@media print {
+	#page_top {
+		display: none !important;
+	}
+	.vk-mobile-nav-menu-btn,
+	.vk-mobile-nav,
+	.mobile-fix-nav {
+		display: none;
+	}
+	a {
+		text-decoration: none !important;
+	}
+	a[href]:after,
+	abbr[title]:after {
+		content: "" !important;
+	}
+}

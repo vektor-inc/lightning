@@ -61,7 +61,6 @@ do_action( 'lightning_loop_before' );
 
     } // while ( have_posts() ) {
     ?>
-
 <?php } // loop() ?>
 
 <?php

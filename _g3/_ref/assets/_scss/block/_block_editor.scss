@@ -1,0 +1,56 @@
+// editor only
+
+/* メインのカラム幅 */
+// .editor-block-list__layout > .wp-block,
+.wp-block {
+	// display: block; // これを指定してしまうと メディアと文章ブロックで display:grid; が効かなくなる
+	width: calc(100% - 2rem);
+	max-width: 1110px;
+	// WP 5.5 以降 標準ボタンブロックで複数配置 したときに外側と出力HTMLが異なってセンター揃えにならない
+	&[data-align=center]{
+		text-align: center;
+	}
+}
+
+
+@media (min-width: 600px) {
+	.block-editor-block-list__layout
+		.block-editor-block-list__block[data-align="full"] {
+		max-width: calc(100% + 46px + 46px);
+		width: calc(100% + 46px + 46px);
+		margin-left: -46px;
+		margin-right: -46px;
+	}
+}
+@media (min-width: 600px) {
+	.block-editor-block-list__layout
+		.block-editor-block-list__block[data-align="wide"] {
+		max-width: 100%;
+		width: 100%;
+	}
+}
+
+.editor-styles-wrapper{
+	.wp-block-latest-posts{
+		&__featured-image{
+			margin-bottom:1em;
+		}
+		&.is-grid{
+			margin-left:-8px;
+			margin-right: -8px;
+			li{
+				margin:0px 8px 16px 8px;
+				border-bottom: none;
+			}
+		}
+	}
+	.block-editor-block-list__layout{
+		.wp-block[data-align=full]{ //「全幅」ブロックの幅
+			width: calc(100% - -20px);
+			max-width: 100vw;
+		}
+	}
+	.wp-block-search .wp-block-search__button{
+		background-color: #007bff;
+	}
+}

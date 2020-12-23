@@ -259,13 +259,12 @@ function lightning_is_subsection_display() {
 function lightning_is_page_header() {
 	$return = true;
 	if ( is_singular() ) {
-
 		global $post;
-
 		if ( ! empty( $post->_lightning_design_setting['hidden_page_header'] ) ) {
 			$return = false;
 		}
-
+	} else if ( is_front_page() ) {
+		$return = false;
 	}
 	return apply_filters( 'lightning_is_page_header', $return );
 }
@@ -281,13 +280,12 @@ function lightning_is_page_header() {
 function lightning_is_breadcrumb() {
 	$return = true;
 	if ( is_singular() ) {
-
 		global $post;
-
 		if ( ! empty( $post->_lightning_design_setting['hidden_breadcrumb'] ) ) {
 			$return = false;
 		}
-
+	} else if ( is_front_page() ) {
+		$return = false;
 	}
 	return apply_filters( 'lightning_is_breadcrumb', $return );
 }

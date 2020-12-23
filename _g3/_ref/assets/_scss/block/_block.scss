@@ -1,0 +1,129 @@
+.alignfull {
+	width: 100vw;
+	margin-left: calc(50% - 50vw);
+	margin-right: calc(50% - 50vw);
+	&.wp-block-image {
+		// Default block style overwrite
+		width: 100vw;
+		max-width: 100vw;
+	}
+}
+.alignwide {
+	margin-left: calc(25% - 25vw);
+	margin-right: calc(25% - 25vw);
+	&.wp-block-image {
+		max-width: 100vw;
+	}
+}
+
+/* カラム（水平）で点線と余白ができる */
+.vk_post .row {
+	margin: 0;
+}
+
+.wp-block-image {
+	max-width: 100%;
+	// &.figure {
+	// 	max-width: 100%;
+	// }
+	/* 編集画面専用 */
+	.components-resizable-box__container {
+		max-width: 100%;
+	}
+	figcaption {
+		text-align: center;
+		font-size: 0.75rem;
+	}
+}
+
+/*-------------------------------------------*/
+/*  Table Block
+/*-------------------------------------------*/
+.wp-block-table {
+	figcaption {
+		margin-top: 0.4rem;
+		text-align: center;
+		font-size: 0.75rem;
+	}
+}
+
+/*-------------------------------------------*/
+/*  「最新の記事」ブロック
+/*-------------------------------------------*/
+.wp-block-latest-posts {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	&.is-grid {
+		//グリット表示の場合
+		margin-left: -8px;
+		margin-right: -8px;
+		li {
+			margin: 0 8px 0 8px;
+			padding: 0.5rem;
+			border-bottom: none;
+		}
+	}
+	&__featured-image {
+		margin-bottom: 1em;
+	}
+	li {
+		margin: 0;
+		padding: 1rem 0;
+		border-bottom: 1px dotted #666;
+
+		a {
+			color: #464646;
+			@media (max-width: 768px) {
+				font-size: 1rem;
+			}
+		}
+
+		time {
+			color: #d44950;
+		}
+	}
+}
+
+@media (max-width: 600px){
+	.wp-block-media-text {
+		&.is-stacked-on-mobile{
+			.wp-block-media-text__media {
+				margin-bottom:1.6rem;
+			}
+			&.has-media-on-the-right {
+				.wp-block-media-text__media {
+					margin-top:1.6rem;
+				}
+			}
+		}
+	}
+}
+
+/*-------------------------------------------*/
+/*  「検索」ブロック
+/*-------------------------------------------*/
+.wp-block-search {
+	.wp-block-search__label{
+		display: none;
+	}
+	.wp-block-search__button{
+		width: 33%;
+		color: #fff;
+		border: none;
+		padding: 6px;
+		font-size: 16px;
+		box-shadow:none;
+		text-align: center;
+	}
+	input.wp-block-search__input {
+		max-width: initial;
+		width: 64%;
+		border: 1px solid #ccc;
+		padding: 6px 12px;
+		font-size: 14px;
+		margin-right: 0;
+		margin-bottom: 0;
+	}
+
+}
