@@ -13,6 +13,7 @@ require get_parent_theme_file_path( LIG_G3_DIR . '/inc/class-ltg-template-redire
 require get_parent_theme_file_path( LIG_G3_DIR . '/inc/template-tags.php' );
 require get_parent_theme_file_path( LIG_G3_DIR . '/inc/layout-controller/layout-controller.php' );
 require get_parent_theme_file_path( LIG_G3_DIR . '/inc/vk-components/config.php' );
+require get_parent_theme_file_path( LIG_G3_DIR . '/inc/vk-mobile-nav/config.php' );
 require get_parent_theme_file_path( LIG_G3_DIR . '/inc/vk-breadcrumb/config.php' );
 
 

@@ -1,0 +1,135 @@
+@charset "utf-8";
+// @import "compass";
+
+$border_primary: 1px solid #666;
+$color_font_default: rgba(255, 255, 255, 0.8);
+$time_transition: 0.5s;
+$btn_radius: 2px;
+
+$admin_bar_height_pc: 32px;
+$admin_bar_height_mobile: 46px;
+
+$manu_btn_margin: 5px;
+
+/* body.admin-bar にすると継承が強すぎて fix nav などで上書きしにくいため */
+.admin-bar {
+	.vk-mobile-nav-menu-btn {
+		top: calc(#{$admin_bar_height_pc} + #{$manu_btn_margin});
+		@media screen and (max-width: 782px) {
+			top: calc(#{$admin_bar_height_mobile} + #{$manu_btn_margin});
+		}
+	}
+	.vk-mobile-nav.vk-mobile-nav-open {
+		top: $admin_bar_height_pc;
+		@media screen and (max-width: 782px) {
+			top: $admin_bar_height_mobile;
+		}
+	}
+}
+
+body.device-pc {
+	// PCで画面が広い時に非表示
+	@media  ( min-width: 992px) {
+		.vk-mobile-nav-menu-btn {
+			display: none;
+		}
+		.vk-mobile-nav {
+			display: none;
+		}
+	}
+}
+
+// Lightning 全スキンBS4対応終了したら削除
+body.device-mobile {
+	/* モバイル端末では画面サイズ関係なく表示 */
+	.vk-mobile-nav-menu-btn {
+		display: block;
+	}
+}
+
+/*-------------------------------------------*/
+/* .vk-mobile-nav-menu-btn
+/*-------------------------------------------*/
+.vk-mobile-nav-menu-btn {
+	position: fixed;
+	top: $manu_btn_margin;
+	left: $manu_btn_margin;
+	z-index: 2100;
+	overflow: hidden;
+	border: 1px solid #333;
+	border-radius: 2px;
+	width: 34px;
+	height: 34px;
+	cursor: pointer;
+	text-indent: -9999px;
+	background-size: 24px 24px;
+	transition: border-color $time_transition ease-out;
+}
+.vk-mobile-nav-menu-btn.menu-open {
+	border: 1px solid $color_font_default;
+}
+
+/* 現状 .mobile-nav-btn-right は AdvUnit より body class に追加している */
+.mobile-nav-btn-right .vk-mobile-nav-menu-btn {
+	left: inherit;
+	right: $manu_btn_margin;
+}
+
+/*-------------------------------------------*/
+/* .vk-mobile-nav
+/*-------------------------------------------*/
+$margin-section-bottom: 1.5em;
+// メニューボタンがタップされてたら
+.vk-mobile-nav.vk-mobile-nav-open {
+	top: 0;
+}
+
+.vk-mobile-nav {
+	position: fixed;
+	top: -2000px;
+	z-index: 2000;
+	width: 100%;
+	height: 100%;
+	display: block;
+	padding: 45px 10px;
+	overflow: scroll;
+	transition: top $time_transition ease-out;
+	.global-nav {
+		margin-bottom: $margin-section-bottom;
+	}
+	nav ul {
+		padding: 0;
+		margin: 0;
+		li {
+			list-style: none;
+			line-height: 1.65;
+			a {
+				padding: 0.7em 0.5em;
+				position: relative;
+				display: block;
+				overflow: hidden;
+				&:hover {
+					text-decoration: none;
+				}
+			}
+		}
+		li li a {
+			padding-left: 1.5em;
+		}
+		li li li a {
+			padding-left: 2.5em;
+		}
+		li li li li a {
+			padding-left: 3.5em;
+		}
+	}
+}
+.vk-mobile-nav-widget {
+	margin-bottom: $margin-section-bottom;
+}
+
+.vk-mobile-nav .customize-partial-edit-shortcut button,
+.vk-mobile-nav .widget .customize-partial-edit-shortcut button {
+	left: 0px;
+	top: -30px;
+}
