@@ -5,6 +5,7 @@ const autoprefixer = require('gulp-autoprefixer')
 const cleanCss = require('gulp-clean-css')
 const cmq = require('gulp-merge-media-queries')
 var sourcemaps = require('gulp-sourcemaps');
+const aliases = require('gulp-style-aliases')
 
 let error_stop = true
 
@@ -18,6 +19,9 @@ function src(list) {
 
 gulp.task('sass', function (done) {
   src(['./assets/_scss/**/*.scss'])
+  .pipe(aliases({
+    "@bootstrap": "./node_modules/bootstrap/scss"
+  }))
   .pipe(
     sass({
       includePaths: [
