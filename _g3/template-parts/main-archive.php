@@ -54,7 +54,7 @@ do_action( 'lightning_loop_before' );
     while ( have_posts() ) {
         the_post();
 
-        // get_template_part( 'template-parts/post/loop', $post_type_info['slug'] );
+        lightning_get_template_part( 'template-parts/loop-item', $post_type_info['slug'] );
 
         $lightning_loop_item_count++;
         do_action( 'lightning_loop_item_after' );

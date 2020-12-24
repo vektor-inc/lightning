@@ -1,0 +1,132 @@
+/*
+このファイルの元ファイルは
+https://github.com/vektor-inc/vektor-wp-libraries
+にあります。修正の際は上記リポジトリのデータを修正してください。
+*/
+
+.vk_posts-layout-postListText {
+	margin-bottom: 0.8rem;
+}
+
+.postListText {
+	padding: 0.8rem 0 0.7rem;
+	border-bottom: 1px dotted #ccc;
+	display: block;
+	overflow: hidden;
+	width: 100%;
+	&_date {
+		font-size: 1rem;
+		white-space: nowrap;
+		font-size: 14px;
+		display: block;
+		float: left;
+		min-width: 115px;
+		margin-right: 1em;
+	}
+	&_singleTermLabel {
+		padding: 0;
+		display: block;
+		float: left;
+		min-width: 150px;
+		margin-right: 1em;
+		margin-top: 2px;
+		&_inner {
+			display: block;
+			overflow: hidden;
+			font-size: 12px;
+			white-space: nowrap;
+			padding: 0 1rem;
+			line-height: 16px;
+			border-radius: 2px;
+			text-align: center;
+		}
+	}
+	&_title {
+		font-size: 14px;
+		display: block;
+		overflow: hidden;
+		margin: 0;
+		padding-top: 0.2rem;
+		clear: both;
+		@media (min-width: $lg-min) {
+			padding-top: 0;
+			clear: none;
+		}
+		a {
+			color: var(--text-color);
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+}
+// Katawara の p タグ指定に負けないように
+.vk_posts .postListText_title{
+	line-height: 1.6;
+}
+
+.mainSection .postListText.vk_post-col-sm-12 {
+	@media (min-width: $sm-min) {
+		.vk_post_title {
+			font-size: 16px;
+			font-weight: normal;
+		}
+		// .vk_post_excerpt {
+		// 	font-size: 14px;
+		// }
+		// &.media {
+		// 	padding: 1.5rem 0;
+		// 	&:first-child {
+		// 		border-top: $border_primary;
+		// 	}
+		// 	.media-img {
+		// 		margin-right: 1.4rem;
+		// 	}
+		// }
+	}
+	// }
+	// .mainSection .postListText.vk_post-col-md-12 {
+	// 	@media (min-width: $md-min) {
+	// 		.vk_post_title {
+	// 			font-size: 18px;
+	// 		}
+	// 		.vk_post_excerpt {
+	// 			font-size: 14px;
+	// 		}
+	// 	}
+	// }
+	// .mainSection .postListText.vk_post-col-lg-12 {
+	// 	@media (min-width: $lg-min) {
+	// 		.vk_post_title {
+	// 			font-size: 18px;
+	// 		}
+	// 		.vk_post_excerpt {
+	// 			font-size: 14px;
+	// 		}
+	// 		&.media {
+	// 			padding: 1.8rem 0;
+	// 			.media-img {
+	// 				margin-right: 1.8rem;
+	// 			}
+	// 		}
+	// 	}
+	// }
+	// .mainSection .postListText.vk_post-col-xl-12 {
+	// 	@media (min-width: $xl-min) {
+	// 		.vk_post_title {
+	// 			font-size: 21px;
+	// 		}
+	// 		.vk_post_excerpt {
+	// 			font-size: 14px;
+	// 		}
+    // 	}
+    	// .mainSection .postListText.vk_post-col-xxl-12 {
+	// 	@media (min-width: $xxl-min) {
+	// 		.vk_post_title {
+	// 			font-size: 21px;
+	// 		}
+	// 		.vk_post_excerpt {
+	// 			font-size: 14px;
+	// 		}
+	// 	}
+}
