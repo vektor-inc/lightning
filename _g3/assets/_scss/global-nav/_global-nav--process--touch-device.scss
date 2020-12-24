@@ -17,7 +17,7 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 /*-------------------------------------------*/
 /*	PCとタッチデバイスでのプルダウンボタンなどの表示切り替え処理
 /*-------------------------------------------*/
-.gMenu {
+.global-nav__list {
 	& > li {
 		// PC端末の場合 ////
 		.device-pc & {

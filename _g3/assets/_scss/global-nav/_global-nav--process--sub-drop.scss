@@ -11,7 +11,7 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 /*-------------------------------------------*/
 /*	第二階層マウスホバー展開処理
 /*-------------------------------------------*/
-.gMenu > li {
+.global-nav__list > li {
 	& > ul.sub-menu {
 		position: absolute;
 	}
