@@ -139,10 +139,10 @@ function lightning_is_layout_onecolumn() {
 /**
  * Lightning Is Subsection Display
  *
- * @since Lightning 9.0.0
+ * @since G3
  * @return boolean
  */
-function lightning_is_subsection_display() {
+function lightning_is_subsection() {
 	global $post;
 	$return  = true;
 	$options = get_option( 'lightning_theme_options' );
@@ -245,7 +245,7 @@ function lightning_is_subsection_display() {
 			}
 		}
 	}
-	return apply_filters( 'lightning_is_subsection_display', $return );
+	return apply_filters( 'lightning_is_subsection', $return );
 }
 
 /**
@@ -289,3 +289,13 @@ function lightning_is_breadcrumb() {
 	}
 	return apply_filters( 'lightning_is_breadcrumb', $return );
 }
+
+// function lightning_layout_class_site_body_padding_vertical( $class_name ){
+// 	if ( lightning_is_siteContent_padding_off() ) {
+// 		$class_names['siteContent'] .= ' siteContent-paddingVertical-off';
+// 		$class_names['mainSection'] .= ' mainSection-marginVertical-off';
+// 		$class_name = $class_name . ' site-body__contents--padding-vertical--none';
+// 	}
+// 	return $class_name;
+// }
+// add_filter( 'lightning_get_class_name_site-body__contents', 'lightning_layout_class_site_body_padding_vertical' );

@@ -34,7 +34,7 @@ function lightning_get_template_part( $slug, $name = null, $args = array() ) {
 }
 
 function lightning_get_class_name( $position = '' ) {
-
+    
     $class_name = apply_filters( "lightning_get_class_name_{$position}", $position );
 
     if ( is_array( $class_name ) ){

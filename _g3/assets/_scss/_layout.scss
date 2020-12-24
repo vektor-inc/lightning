@@ -1,0 +1,101 @@
+@charset "utf-8";
+
+/*-------------------------------------------*/
+/* clearfix
+/*-------------------------------------------*/
+.site-header,
+.site-body,
+.site-footer,
+.main-section,
+.sub-section {
+	&:after {
+		content: "";
+		display: block;
+		clear: both;
+	}
+}
+
+.site-body{
+    &__contents {
+        padding: 2rem 0 2rem;
+        @media (min-width: $md-min) {
+            padding: 2.5rem 0 2.5rem;
+        }
+        @media (min-width: $lg-min) {
+            padding: 3rem 0 3.5rem;
+        }
+        @media (min-width: $xl-min) {
+            padding: 3.5rem 0 4rem;
+        }
+        &--padding-vertical--none,
+        &--padding-vertical--none.siteContent-base-on {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+    }
+}
+
+/*-------------------------------------------*/
+/* .siteContent
+/*-------------------------------------------*/
+.main-section,
+.sub-section {
+	& > aside:last-child,
+	& > div:last-child {
+		margin-bottom: 0;
+	}
+	@media (max-width: $md-max) {
+		width: 100%;
+		flex-basis: unset;
+	}
+}
+
+@media (min-width: $lg-min) {
+	.main-section--col--two {
+		width: 66.66667%;
+		float: left;
+	}
+
+	.sub-section--col--two {
+		width: calc(100% - 66.66667% - 3rem);
+		float: right;
+	}
+
+	// sidebar-left
+	.sideSection-pos-left {
+		float: left;
+	}
+
+	.mainSection-pos-right {
+		float: right;
+	}
+
+	// one-column
+	.mainSection-col-one,
+	.sideSection-col-one {
+		width: 100%;
+	}
+}
+
+/*
+mainSection だけにしているのはサブセクションが下に配置される場合にひっつかないように。
+そもそも外側の余白は .siteContent でつけられているので sideSection には不要
+*/
+.mainSection {
+	&-marginBottom-on {
+		margin-bottom: 3rem;
+	}
+	@media (max-width: $md-max) {
+		margin-bottom: 2rem;
+	}
+	&.mainSection-marginVertical-off {
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+}
+
+.siteFooter {
+	// これがないとfooterMenuの上部marginが効かない
+	display: block;
+	overflow: hidden;
+}
