@@ -25,7 +25,7 @@ if ( $post_top_info['use'] ) {
 /*	Set wrap tags
 /*-------------------------------------------*/
 $page_header_html_before  = '<div class="page-header"><div class="container">' . "\n";
-$page_header_html_before .= '<' . $pageTitTag . ' class="page-header__page-title">' . "\n";
+$page_header_html_before .= '<' . $pageTitTag . ' class="page-header__title">' . "\n";
 $page_header_html_after   = '</' . $pageTitTag . '>' . "\n";
 $page_header_html_after  .= '</div></div><!-- [ /.page-header ] -->' . "\n";
 

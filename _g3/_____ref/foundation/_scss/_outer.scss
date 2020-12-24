@@ -127,24 +127,7 @@ input.form-control.input_widthAuto {
 // 	}
 // }
 
-/*-------------------------------------------*/
-/* .page-header
-/*-------------------------------------------*/
-.page-header {
-	margin-top: 0;
-	margin-bottom: 0;
-	padding-bottom: 0;
 
-	/* If text-align setting write to .page-header_pageTitle that page-header align function not work */
-	text-align: center;
-}
-
-.page-header_pageTitle,
-h1.page-header_pageTitle:first-child {
-	margin: 1.2em 0;
-	font-size: 1.75rem;
-	line-height: 1.1;
-}
 
 // @media (min-width: 992px){
 //   .page-header_pageTitle,
