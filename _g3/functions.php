@@ -98,3 +98,23 @@ function lightning_common_style() {
 function lightning_theme_style() {
 	wp_enqueue_style( 'lightning-theme-style', get_stylesheet_uri(), array(), LIGHTNING_THEME_VERSION );
 }
+
+/*
+  Load JS
+/*-------------------------------------------*/
+
+add_action( 'wp_enqueue_scripts', 'lightning_addJs' );
+function lightning_addJs() {
+	wp_register_script( 'lightning-js', get_template_directory_uri() . '/assets/js/main.js', array(), LIGHTNING_THEME_VERSION, true );
+	wp_localize_script( 'lightning-js', 'lightningOpt', apply_filters( 'lightning_localize_options', array() ) );
+	wp_enqueue_script( 'lightning-js' );
+	// jsのjQuery依存はもう無いが、一応追加しておく
+	wp_enqueue_script( 'jquery' );
+}
+
+add_action( 'wp_enqueue_scripts', 'lightning_comment_js' );
+function lightning_comment_js() {
+	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+		wp_enqueue_script( 'comment-reply' );
+	}
+}

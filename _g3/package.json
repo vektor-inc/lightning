@@ -4,7 +4,8 @@
   "description": "",
   "main": "gulpfile.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch:script": "webpack --config webpack.config.js --watch"
   },
   "author": "",
   "license": "ISC",
@@ -20,7 +21,12 @@
     "popper.js": "^1.16.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "babel-loader": "^8.2.2",
     "gulp-plumber": "^1.2.1",
-    "gulp-style-aliases": "^1.1.11"
+    "gulp-style-aliases": "^1.1.11",
+    "webpack": "^5.11.0",
+    "webpack-cli": "^4.2.0"
   }
 }
