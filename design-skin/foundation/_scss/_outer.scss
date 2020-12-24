@@ -223,10 +223,12 @@ h1.entry-title {
 }
 
 .entry-full {
-	border-bottom:$border_primary;
 	margin-bottom:$margin_section;
+	.blog &,
+	.archive &{
+		border-bottom:$border_primary;
+	}
 	.mainSection-marginVertical-off & {
-		border-bottom:none;
 		margin-bottom:0;
 	}
 }
