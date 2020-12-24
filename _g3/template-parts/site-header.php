@@ -19,10 +19,10 @@
 
 		<?php
 		wp_nav_menu( array(
-			'theme_location' 	=> 'global-menu',
+			'theme_location' 	=> 'global-nav',
 			'container'      	=> 'nav',
-			'container_class'	=> 'global-menu',
-			'items_wrap'     	=> '<ul id="%1$s" class="%2$s ' . lightning_get_class_name( 'global-menu__list' ) . '">%3$s</ul>',
+			'container_class'	=> 'global-nav',
+			'items_wrap'     	=> '<ul id="%1$s" class="%2$s ' . lightning_get_class_name( 'global-nav__list' ) . '">%3$s</ul>',
 			'fallback_cb'    	=> '',
 			'echo'           	=> true,
 			'walker'         	=> new VK_Description_Walker(),

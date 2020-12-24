@@ -1,13 +1,13 @@
 <footer class="<?php lightning_the_class_name( 'site-footer' ); ?>">
 
-	<?php if ( has_nav_menu( 'footer-menu' ) ) : ?>
+	<?php if ( has_nav_menu( 'footer-nav' ) ) : ?>
         <?php
         wp_nav_menu(
             array(
-                'theme_location'    => 'footer-menu',
+                'theme_location'    => 'footer-nav',
                 'container'         => 'nav',
-                'container_class'	=> 'footer-menu',
-                'items_wrap'        => '<ul id="%1$s" class="%2$s ' . lightning_get_class_name( 'footer-menu__list' ) . '">%3$s</ul>',
+                'container_class'	=> 'footer-nav',
+                'items_wrap'        => '<ul id="%1$s" class="%2$s ' . lightning_get_class_name( 'footer-nav__list' ) . '">%3$s</ul>',
                 'fallback_cb'       => '',
                 'depth'             => 1,
             )

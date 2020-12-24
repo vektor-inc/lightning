@@ -59,47 +59,9 @@ function lightning_theme_setup() {
 
 	global $content_width;
 
-	/*
-	  Title tag
-	/*-------------------------------------------*/
-	add_theme_support( 'title-tag' );
 
-	/*
-	  editor-styles
-	/*-------------------------------------------*/
-	add_theme_support( 'editor-styles' );
-
-	// When this support that printed front css and it's overwrite skin table style and so on
-	// add_theme_support( 'wp-block-styles' );
-
-	add_theme_support( 'align-wide' );
-
-	/*
-	  custom-background
-	/*-------------------------------------------*/
-	add_theme_support( 'custom-background' );
-
-	// Block Editor line height @since WordPress 5.5
-	add_theme_support( 'custom-line-height' );
-	// Block Editor custom unit @since WordPress 5.5
-	add_theme_support( 'custom-units', 'px', 'em', 'rem', 'vw', 'vh' );
-
-	/*
-	  cope with page excerpt
-	/*-------------------------------------------*/
-	add_post_type_support( 'page', 'excerpt' );
-
-	/*
-	  Admin page _ Eye catch
-	/*-------------------------------------------*/
-	add_theme_support( 'post-thumbnails' );
 	set_post_thumbnail_size( 320, 180, true );
 
-	/*
-	  Custom menu
-	/*-------------------------------------------*/
-	register_nav_menus( array( 'Header' => 'Header Navigation' ) );
-	register_nav_menus( array( 'Footer' => 'Footer Navigation' ) );
 
 	load_theme_textdomain( 'lightning', get_template_directory() . '/languages' );
 
@@ -110,21 +72,6 @@ function lightning_theme_setup() {
 	if ( ! isset( $content_width ) ) {
 		$content_width = 1140;
 	}
-
-	/*
-	  Add theme support for selective refresh for widgets.
-	/*-------------------------------------------*/
-	add_theme_support( 'customize-selective-refresh-widgets' );
-
-	/*
-	  Feed Links
-	/*-------------------------------------------*/
-	add_theme_support( 'automatic-feed-links' );
-
-	/*
-	  WooCommerce
-	/*-------------------------------------------*/
-	add_theme_support( 'woocommerce' );
 
 	/*
 	  Option init
@@ -211,13 +158,6 @@ require get_parent_theme_file_path( '/inc/customize/customize-functions.php' );
   Load allow customize modules
 /*-------------------------------------------*/
 get_template_part( 'inc/vk-mobile-nav/vk-mobile-nav-config' );
-
-/*
-  Load Custom template tags for this theme.
-/*-------------------------------------------*/
-require get_parent_theme_file_path( '/inc/template-tags.php' );
-require get_parent_theme_file_path( '/inc/template-tags-old.php' );
-require get_parent_theme_file_path( '/inc/class-vk-helpers.php' );
 
 /*
   Load modules
@@ -471,18 +411,6 @@ function lightning_tag_cloud_filter( $args ) {
 add_filter( 'widget_tag_cloud_args', 'lightning_tag_cloud_filter' );
 
 /*
-  HOME _ Default content hidden
-/*-------------------------------------------*/
-add_filter( 'is_lightning_home_content_display', 'lightning_home_content_hidden' );
-function lightning_home_content_hidden( $flag ) {
-	global $lightning_theme_options;
-	if ( isset( $lightning_theme_options['top_default_content_hidden'] ) && $lightning_theme_options['top_default_content_hidden'] ) {
-		$flag = false;
-	}
-	return $flag;
-}
-
-/*
   disable_tgm_notification_except_admin
 /*-------------------------------------------*/
 add_action( 'admin_head', 'lightning_disable_tgm_notification_except_admin' );
@@ -495,22 +423,6 @@ function lightning_disable_tgm_notification_except_admin() {
 		echo wp_kses( $text, $allowed_html );
 	}
 }
-
-/*
-  Add defer first aid
-// function lightning_add_defer_to_scripts( $tag, $handle ) {
-// if ( ! preg_match( '/\b(async|defer)\b/', $tag ) ) {
-// return str_replace( ' src', ' defer src', $tag );
-// }
-// return $tag;
-// }
-//
-// if ( ! is_admin() ) {
-// add_filter( 'script_loader_tag', 'lightning_add_defer_to_scripts', 10, 2 );
-// }
-
-*/
-
 
 /*
   embed card

@@ -17,6 +17,72 @@ require get_parent_theme_file_path( LIG_G3_DIR . '/inc/vk-breadcrumb/config.php'
 
 
 /*
+  Theme setup
+/*-------------------------------------------*/
+add_action( 'after_setup_theme', 'lightning_theme_setup' );
+function lightning_theme_setup() {
+
+	/*
+	  Title tag
+	/*-------------------------------------------*/
+	add_theme_support( 'title-tag' );
+
+	/*
+	  editor-styles
+	/*-------------------------------------------*/
+	add_theme_support( 'editor-styles' );
+
+	// When this support that printed front css and it's overwrite skin table style and so on
+	// add_theme_support( 'wp-block-styles' );
+
+    add_theme_support( 'align-wide' );
+
+	/*
+	  custom-background
+	/*-------------------------------------------*/
+	add_theme_support( 'custom-background' );
+
+	// Block Editor line height @since WordPress 5.5
+	add_theme_support( 'custom-line-height' );
+	// Block Editor custom unit @since WordPress 5.5
+	add_theme_support( 'custom-units', 'px', 'em', 'rem', 'vw', 'vh' );
+
+	/*
+	  cope with page excerpt
+	/*-------------------------------------------*/
+	add_post_type_support( 'page', 'excerpt' );
+
+	/*
+	  Admin page _ Eye catch
+	/*-------------------------------------------*/
+	add_theme_support( 'post-thumbnails' );
+
+	/*
+	  Custom menu
+	/*-------------------------------------------*/
+	register_nav_menus( array( 'global-nav' => 'Header Navigation' ) );
+	register_nav_menus( array( 'footer-nav' => 'Footer Navigation' ) );
+
+	/*
+	  Add theme support for selective refresh for widgets.
+	/*-------------------------------------------*/
+	add_theme_support( 'customize-selective-refresh-widgets' );
+
+	/*
+	  Feed Links
+	/*-------------------------------------------*/
+	add_theme_support( 'automatic-feed-links' );
+
+	/*
+	  WooCommerce
+	/*-------------------------------------------*/
+	add_theme_support( 'woocommerce' );
+
+
+}
+
+
+/*
   Load CSS
 /*-------------------------------------------*/
 add_action( 'after_setup_theme', 'lightning_load_css_action' );
