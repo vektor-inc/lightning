@@ -318,7 +318,7 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
                 $breadcrumb_html = '<!-- [ #' . esc_attr( $breadcrumb_options['class_outer'] ) . ' ] -->';
                 $breadcrumb_html .= '<div id="' . esc_attr( $breadcrumb_options['class_outer'] ) . '" class="' . esc_attr( $breadcrumb_options['class_outer'] ) . '">';
                 $breadcrumb_html .= '<div class="' . esc_attr( $breadcrumb_options['class_inner'] ) . '">';
-                $breadcrumb_html .= '<ul class="' . esc_attr( $breadcrumb_options['class_list'] ) . '">';
+                $breadcrumb_html .= '<ol class="' . esc_attr( $breadcrumb_options['class_list'] ) . '">';
 
                 foreach ( $breadcrumb_array as $key => $value ) {
 

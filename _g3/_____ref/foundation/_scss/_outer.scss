@@ -150,28 +150,6 @@ h1.page-header_pageTitle:first-child {
 //   .page-header_pageTitle,
 //   h1.page-header_pageTitle:first-child { font-size:2rem; }
 // }
-/*-------------------------------------------*/
-/* .breadSection
-/*-------------------------------------------*/
-.breadSection {
-	border-bottom: $border_primary;
-
-	.breadcrumb {
-		margin-top: 0;
-		margin-bottom: 0;
-		background: none;
-		padding: 6px 15px;
-
-		li {
-			margin-bottom: 0;
-			list-style: none;
-		}
-
-		span {
-			font-size: 0.75em;
-		}
-	}
-}
 
 /*      .mainSection
 /*-------------------------------------------*/
