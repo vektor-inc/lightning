@@ -17,10 +17,9 @@
 		a:hover,
 		a:active,
 		a:focus {
-			background-color: var(--vk-color-primary);
-			transition: background-color 0.4s;
-			color: var(--vk-color-text-header);
-			text-decoration: none;
+			// background-color: var(--vk-color-primary);
+			// transition: background-color 0.4s;
+			// color: var(--vk-color-text-header);
 		}
 		margin: 0 auto;
 		padding: 0;
@@ -29,7 +28,6 @@
 		position: relative;
 		a {
 			color: var(--vk-color-text-header);
-			text-decoration: none;;
 		}
 		li {
 			margin: 0;
@@ -67,8 +65,8 @@
 			/* Class is necessarily to the * because class was added to many other class name that first class is not necessarily "current"  */
 			&:hover,
 			&[class*="current"] {
-				transition: all 0.5s ease-out;
-				background-color: var(--vk-color-primary);
+				// transition: all 0.5s ease-out;
+				// background-color: var(--vk-color-primary);
 				&:before {
 					width: 100%;
 				}

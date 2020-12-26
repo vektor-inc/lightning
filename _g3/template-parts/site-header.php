@@ -1,4 +1,4 @@
-<header class="<?php lightning_the_class_name( 'site-header' ); ?>">
+<header class="<?php lightning_the_class_name( 'site-header' ); ?> site-header--center">
 	<?php do_action( 'lightning_site-header_prepend' ); ?>
 	<div class="site-header__container container">
 
@@ -22,7 +22,7 @@
 			'theme_location' 	=> 'global-nav',
 			'container'      	=> 'nav',
 			'container_class'	=> 'global-nav',
-			'items_wrap'     	=> '<ul id="%1$s" class="%2$s vk-menu-acc ' . lightning_get_class_name( 'global-nav__list' ) . '">%3$s</ul>',
+			'items_wrap'     	=> '<ul id="%1$s" class="%2$s vk-menu-acc ' . lightning_get_class_name( 'global-nav__list nav' ) . '">%3$s</ul>',
 			'fallback_cb'    	=> '',
 			'echo'           	=> true,
 			'walker'         	=> new VK_Description_Walker(),

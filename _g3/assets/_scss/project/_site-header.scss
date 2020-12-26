@@ -1,0 +1,14 @@
+.site-header {
+    &--center {
+        .site-header__logo {
+            text-align: center;
+        }
+        .global-nav__list {
+            // text-align: center;
+            justify-content: center;
+        }
+    }
+    &__logo{
+        
+    }
+}

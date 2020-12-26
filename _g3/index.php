@@ -8,26 +8,26 @@ if ( apply_filters( 'lightning_is_site-header', true ) ){
 do_action( 'lightning_site-header_after' );
 ?>
 
+<?php 
+    do_action( 'lightning_page-header_before' );
+    if ( lightning_is_page_header() ){
+        lightning_get_template_part( 'template-parts/page-header' );
+    }
+    do_action( 'lightning_page-header_after' );
+    ?>
+
+    <?php 
+    do_action( 'lightning_breadcrumb_before' );
+    if ( lightning_is_breadcrumb() ){
+        VK_Breadcrumb::the_breadcrumb();
+    }
+    do_action( 'lightning_breadcrumb_after' );
+    ?>
+
 <div class="<?php lightning_the_class_name( 'site-body' ); ?>">
     <?php do_action( 'lightning_site-body_prepend' ); ?>
 
     <div class="<?php lightning_the_class_name( 'site-body__container' ); ?> container">
-
-        <?php 
-        do_action( 'lightning_page-header_before' );
-        if ( lightning_is_page_header() ){
-            lightning_get_template_part( 'template-parts/page-header' );
-        }
-        do_action( 'lightning_page-header_after' );
-        ?>
-
-        <?php 
-        do_action( 'lightning_breadcrumb_before' );
-        if ( lightning_is_breadcrumb() ){
-            VK_Breadcrumb::the_breadcrumb();
-        }
-        do_action( 'lightning_breadcrumb_after' );
-        ?>
 
         <div class="<?php lightning_the_class_name( 'site-body__contents' ); ?>">
 

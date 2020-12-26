@@ -1,0 +1,17 @@
+.nav {
+    margin:0;
+    padding:0;
+    li {
+        list-style: none;
+        a {
+            color: var(--vk-color-text-body);
+            text-decoration: none;
+            padding:0.7em 1.5em;
+        }
+    }
+}
+.nav--line{
+    li {
+        display: inline-block;
+    }  
+}

@@ -11,6 +11,10 @@
 @import "variables";
 @import "layout";
 @import "common";
+@import "components/nav";
 @import "global-nav/global-nav";
+@import "project/site-header";
 @import "project/page-header";
 @import "project/breadcrumb";
+@import "project/pagenation";
+@import "project/site-footer";
