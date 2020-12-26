@@ -78,3 +78,25 @@ function lightning_the_footer_copyight() {
 	echo apply_filters( 'lightning_footerPoweredCustom', $lightning_footerPowered );
 
 }
+
+
+function lightning_get_theme_name() {
+	return apply_filters( 'lightning_theme_name', 'Lightning' );
+}
+function lightning_get_theme_name_short() {
+	return apply_filters( 'lightning_get_theme_name_short', 'LTG' );
+}
+function lightning_get_prefix() {
+	$prefix = apply_filters( 'lightning_get_prefix', 'LTG' );
+	if ( $prefix ) {
+		$prefix .= ' ';
+	}
+	return $prefix;
+}
+function lightning_get_prefix_customize_panel() {
+	$prefix_customize_panel = apply_filters( 'lightning_get_prefix_customize_panel', 'Lightning' );
+	if ( $prefix_customize_panel ) {
+		$prefix_customize_panel .= ' ';
+	}
+	return $prefix_customize_panel;
+}

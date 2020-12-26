@@ -4,14 +4,15 @@
 .pagination {
 	margin-top: 2rem;
 	margin-bottom: 0;
-
+	text-align: center;
 	.nav-links {
 		margin: 0 auto;
+		display: inline-flex;
 	}
 }
 
 ul.page-numbers {
-	margin: 0;
+	margin: 0 auto;
 	padding: 0;
 
 	li {
