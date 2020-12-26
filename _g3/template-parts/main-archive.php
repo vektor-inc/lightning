@@ -37,8 +37,6 @@ $post_type_info = VK_Helpers::get_post_type_info();
 do_action( 'lightning_loop_before' );
 ?>
 
-<div class="<?php lightning_the_class_name( 'post-list' ); ?>">
-
 <?php if ( have_posts() ) : ?>
 
 <?php if ( apply_filters( 'is_lightning_extend_loop', false ) ) { ?>
@@ -47,20 +45,25 @@ do_action( 'lightning_loop_before' );
 
 <?php } else { ?>
 
-    <?php
-    global $lightning_loop_item_count;
-    $lightning_loop_item_count = 0;
+    <div class="<?php lightning_the_class_name( 'post-list' ); ?> vk_posts">
 
-    while ( have_posts() ) {
-        the_post();
+        <?php
+        global $lightning_loop_item_count;
+        $lightning_loop_item_count = 0;
 
-        lightning_get_template_part( 'template-parts/loop-item', $post_type_info['slug'] );
+        while ( have_posts() ) {
+            the_post();
 
-        $lightning_loop_item_count++;
-        do_action( 'lightning_loop_item_after' );
+            lightning_get_template_part( 'template-parts/loop-item', $post_type_info['slug'] );
 
-    } // while ( have_posts() ) {
-    ?>
+            $lightning_loop_item_count++;
+            do_action( 'lightning_loop_item_after' );
+
+        } // while ( have_posts() ) {
+        ?>
+
+    </div><!-- [ /.post-list ] -->
+
 <?php } // loop() ?>
 
 <?php
@@ -80,7 +83,5 @@ the_posts_pagination(
 <div class="well"><p><?php echo wp_kses_post( apply_filters( 'lightning_no_posts_text', __( 'No posts.', 'lightning' ) ) ); ?></p></div>
 
 <?php endif; // have_post() ?>
-
-</div><!-- [ /.post-list ] -->
 
 <?php do_action( 'lightning_loop_after' ); ?>

@@ -1,8 +1,10 @@
 .site-footer {
     &__copyright {
+        padding:1rem;
         p {
             text-align: center;
-            font-size:var(--vk-size-text-sm);
+            margin:0.5rem;
+            font-size:var(--vk-size-text-xs);
         }
     }
 }
