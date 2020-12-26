@@ -13,7 +13,8 @@
 @import "common";
 @import "utils";
 @import "components/nav";
-@import "components/vk-compo-overwrite";
+@import "overwrite/vk-components";
+@import "overwrite/button";
 @import "global-nav/global-nav";
 @import "project/site-header";
 @import "project/page-header";
