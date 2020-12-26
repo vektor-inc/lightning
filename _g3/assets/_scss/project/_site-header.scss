@@ -1,6 +1,8 @@
 .site-header {
+    padding-top:1.5rem;
     &--center {
         .site-header__logo {
+            margin:0 auto;
             text-align: center;
         }
         .global-nav__list {

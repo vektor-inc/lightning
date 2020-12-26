@@ -6,7 +6,7 @@
 		if ( is_front_page() ) {
 			$title_tag = 'h1';
 		} else {
-			$title_tag = 'p';
+			$title_tag = 'div';
 		}
 		?>
 		<<?php echo $title_tag; ?> class="<?php lightning_the_class_name( 'site-header__logo' ); ?>">

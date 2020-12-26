@@ -118,3 +118,8 @@ function lightning_comment_js() {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
+
+function lightning_load_fonts(){
+	echo '<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">';
+}
+add_action( 'wp_head', 'lightning_load_fonts' );

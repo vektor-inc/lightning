@@ -1,6 +1,22 @@
 html,
 body {
 	overflow-x: hidden;
+	padding: 0;
+	margin:0;
+	font-family: 'Lato', 'Noto Sans JP', 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+	-ms-word-wrap: break-word;
+	word-wrap: break-word;
+}
+html,
+body {
+	font-size: 14px;
+}
+
+@media (min-width: $lg-min) {
+	html,
+	body {
+		font-size: 16px;
+	}
 }
 
 .screen-reader-text {
@@ -16,4 +32,50 @@ body {
 	width: 1px;
 	word-wrap: normal !important;
 	word-break: normal;
+}
+
+p {
+	line-height: var( --vk-line-height );
+	margin:0 0 var(--vk-margin-element-bottom);
+}
+
+p + h2,
+p + h3,
+p + h4,
+p + h5,
+p + h6 {
+	margin-top:2em;
+}
+h1,h2,h3,h4,h5,h6 {
+	margin-bottom:1.2em;
+}
+h1 {
+	font-size:3rem;
+}
+h2 {
+	font-size:2rem;
+}
+h3 {
+	font-size:1.5rem;
+}
+h4 {
+	font-size:1.33rem;
+}
+h5 {
+	font-size:1.2rem;
+}
+h6 {
+	font-size:1rem;
+}
+
+li {
+	margin-top:0.5em;
+	margin-bottom:0.5em;
+}
+
+blockquote {
+	margin:0;
+	padding:1em 1.5em;
+	border-left:1px solid var(--vk-color-primary);
+	background-color: var(--vk-color-accent-bg);
 }

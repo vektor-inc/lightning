@@ -28,24 +28,6 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 /* common style
 /*-------------------------------------------*/
 
-html,
-body {
-	font-size: 14px;
-}
-
-@media (min-width: $lg-min) {
-	html,
-	body {
-		font-size: 16px;
-	}
-}
-
-body {
-	font-family: "メイリオ", Meiryo, "Hiragino Kaku Gothic Pro",
-		"ヒラギノ角ゴ Pro W3", Hiragino Sans, "Noto Sans JP", sans-serif;
-	-ms-word-wrap: break-word;
-	word-wrap: break-word;
-}
 
 /* img が２行ないとgulpでcssに出力されないという謎のバグがあるため、原因がわかるまで２行書いておく */
 /* JPN STYLE で発生 */
@@ -57,14 +39,6 @@ img {
 img {
 	max-width: 100%;
 	height: auto;
-}
-
-p {
-	line-height: 1.7;
-	@media (min-width: $md-min) {
-		line-height: 1.9;
-	}
-	margin-bottom: $margin_bottom;
 }
 
 em {
