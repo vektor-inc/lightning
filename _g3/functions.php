@@ -113,6 +113,13 @@ function lightning_addJs() {
 	wp_enqueue_script( 'jquery' );
 }
 
+// fix global menu
+add_filter( 'lightning_localize_options', 'lightning_global_nav_fix', 10, 1 );
+function lightning_global_nav_fix( $options ) {
+	$options['header_scrool'] = true;
+	return $options;
+}
+
 add_action( 'wp_enqueue_scripts', 'lightning_comment_js' );
 function lightning_comment_js() {
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
