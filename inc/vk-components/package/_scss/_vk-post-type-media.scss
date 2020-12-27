@@ -54,7 +54,7 @@ https://github.com/vektor-inc/vektor-wp-libraries
 	}
 
 	.media-body {
-		.media-heading {
+		.media-title {
 			font-size: 20px;
 			line-height: 1.4em;
 			margin-top: 0;
@@ -67,9 +67,7 @@ https://github.com/vektor-inc/vektor-wp-libraries
 			/* End heading style reset */
 			a {
 				color: $color_font_default;
-				&:hover {
-					text-decoration: none;
-				}
+				text-decoration: none;
 			}
 		}
 	}
@@ -96,7 +94,7 @@ https://github.com/vektor-inc/vektor-wp-libraries
 			padding-right: 20px;
 		}
 		.media-body {
-			.media-heading {
+			.media-title {
 				font-size: 1.2em;
 				line-height: 1.3em;
 				margin-bottom: 0.5em;
