@@ -45,7 +45,7 @@ do_action( 'lightning_loop_before' );
 
 <?php } else { ?>
 
-    <div class="<?php lightning_the_class_name( 'post-list' ); ?> vk_posts">
+    <div class="<?php lightning_the_class_name( 'post-list' ); ?> vk_posts vk_posts-mainSection">
 
         <?php
         global $lightning_loop_item_count;

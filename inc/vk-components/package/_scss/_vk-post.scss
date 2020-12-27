@@ -325,7 +325,6 @@ $xxl-min: 1400px;
 		height: 100%;
 	}
 	.vk_post_btnOuter {
-		margin-top: 1em;
 		position: absolute;
 		bottom: 0;
 	}
@@ -346,8 +345,11 @@ $xxl-min: 1400px;
 			bottom: 1.25rem;
 		}
 	}
-	.card-text:nth-last-child(2) {
-		margin-bottom: 0;
+	.card-text,
+	.media-text{
+		&:nth-last-child(2) {
+			margin-bottom: 0;
+		}
 	}
 }
 
@@ -370,15 +372,6 @@ mainSection は Lightning 固有のクラス名なのでここに書いてある
 			.vk_post_excerpt {
 				font-size: 14px;
 			}
-			&.media {
-				padding: 1.5rem 0;
-				&:first-child {
-					border-top: $border_primary;
-				}
-				.media-img {
-					margin-right: 1.4rem;
-				}
-			}
 		}
 	}
 	.vk_post-col-md-12 {
@@ -399,12 +392,6 @@ mainSection は Lightning 固有のクラス名なのでここに書いてある
 			}
 			.vk_post_excerpt {
 				font-size: 14px;
-			}
-			&.media {
-				padding: 1.8rem 0;
-				.media-img {
-					margin-right: 1.8rem;
-				}
 			}
 		}
 	}
