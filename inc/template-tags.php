@@ -45,7 +45,7 @@ function lightning_get_the_class_name( $position = '' ) {
 			'header_logo'     => 'navbar-brand siteHeader_logo',
 			'nav_menu_header' => 'gMenu vk-menu-acc',
 			'siteContent'     => 'section siteContent',
-			'mainSection'     => 'col mainSection mainSection-col-two baseSection',
+			'mainSection'     => 'col mainSection mainSection-col-two baseSection vk_posts-mainSection',
 			'sideSection'     => 'col subSection sideSection sideSection-col-two baseSection',
 			'siteFooter'      => 'section siteFooter',
 		);
