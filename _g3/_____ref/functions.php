@@ -89,32 +89,9 @@ function lightning_theme_setup() {
 }
 
 
-/*
-  Load Editor CSS
-/*-------------------------------------------*/
-add_action( 'after_setup_theme', 'lightning_load_common_editor_css' );
-function lightning_load_common_editor_css() {
-	/*
-	 Notice : Use url then if you use local environment https has error that bring to get css error and don't refrected */
-	/* Notice : add_editor_style() is only one args. */
-	add_editor_style( 'assets/css/common_editor.css' );
-}
 
-/*
-Already add_editor_style() is used but reload css by wp_enqueue_style() reason is
-use to wp_add_inline_style()
-*/
-add_action( 'enqueue_block_editor_assets', 'lightning_load_common_editor_css_to_gutenberg' );
-function lightning_load_common_editor_css_to_gutenberg() {
 
-	wp_enqueue_style(
-		'lightning-common-editor-gutenberg',
-		// If not full path that can't load in editor screen
-		get_template_directory_uri() . '/assets/css/common_editor.css',
-		array( 'wp-edit-blocks' ),
-		LIGHTNING_THEME_VERSION
-	);
-}
+
 
 
 require get_parent_theme_file_path( '/functions-compatible.php' );

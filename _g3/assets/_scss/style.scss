@@ -1,25 +1,2 @@
-@import "@bootstrap/functions";
-@import "bootstrap_variables";
-@import "@bootstrap/mixins";
-@import "@bootstrap/grid";
-@import "@bootstrap/buttons";
-@import "@bootstrap/card";
-@import "@bootstrap/alert";
-@import "@bootstrap/media";
-@import "../../inc/vk-components/package/_scss/vk-components.scss";
-@import "../../inc/vk-mobile-nav/package/css/vk-mobile-nav-bright.css";
-@import "variables";
-@import "layout";
-@import "common";
-@import "utils";
-@import "components/nav";
-@import "overwrite/vk-components";
-@import "overwrite/button";
-@import "global-nav/global-nav";
-@import "project/site-header";
-@import "project/page-header";
-@import "project/breadcrumb";
-@import "project/pagenation";
-@import "project/site-footer";
-
-@import "skin";
+@import "editor";
+@import "outer";
