@@ -109,7 +109,7 @@ function lightning_load_common_editor_css() {
 	/*
 	 Notice : Use url then if you use local environment https has error that bring to get css error and don't refrected */
 	/* Notice : add_editor_style() is only one args. */
-	add_editor_style( 'assets/css/common_editor.css' );
+	add_editor_style( 'assets/css/editor.css' );
 }
 
 /*
@@ -122,7 +122,7 @@ function lightning_load_common_editor_css_to_gutenberg() {
 	wp_enqueue_style(
 		'lightning-common-editor-gutenberg',
 		// If not full path that can't load in editor screen
-		get_template_directory_uri() . '/assets/css/common_editor.css',
+		get_template_directory_uri() . '/assets/css/editor.css',
 		array( 'wp-edit-blocks' ),
 		LIGHTNING_THEME_VERSION
 	);
