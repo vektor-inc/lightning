@@ -37,6 +37,15 @@ function lightning_get_class_name( $position = '' ) {
     
     $class_name = apply_filters( "lightning_get_class_name_{$position}", $position );
 
+    if ( ! lightning_is_layout_onecolumn() ) {
+        if ( $position === 'main-section' ){
+            $class_name = $class_name . ' main-section--col--two';
+        }
+        if ( $position === 'sub-section' ){
+            $class_name = $class_name . ' sub-section--col--two';
+        }
+    }
+
     if ( is_array( $class_name ) ){
         $classname = implode( " ", $classname );
     }
