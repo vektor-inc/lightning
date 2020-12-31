@@ -18,6 +18,7 @@ require get_parent_theme_file_path( LIG_G3_DIR . '/inc/layout-controller/layout-
 require get_parent_theme_file_path( LIG_G3_DIR . '/inc/vk-components/config.php' );
 require get_parent_theme_file_path( LIG_G3_DIR . '/inc/vk-mobile-nav/config.php' );
 require get_parent_theme_file_path( LIG_G3_DIR . '/inc/vk-breadcrumb/config.php' );
+require get_parent_theme_file_path( LIG_G3_DIR . '/inc/widget-area.php' );
 
 /*
   Theme setup

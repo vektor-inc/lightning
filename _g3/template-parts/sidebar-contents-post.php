@@ -11,8 +11,9 @@ $post_loop = new WP_Query(
 ?>
 
 <?php if ( $post_loop->have_posts() ) : ?>
-<aside class="widget widget_postlist">
+<aside class="widget widget_media">
 <h4 class="sub-section__title"><?php echo __( 'Recent posts', 'lightning' ); ?></h4>
+<div class="vk_posts">
 <?php
 while ( $post_loop->have_posts() ) :
 	$post_loop->the_post();
@@ -39,12 +40,13 @@ while ( $post_loop->have_posts() ) :
     wp_kses_post( VK_Component_Posts::the_view( $post, $options ) );
 
 endwhile; ?>
+</div>
 </aside>
 <?php endif; ?>
 <?php wp_reset_query(); ?>
 
-<aside class="widget widget_categories widget_link_list">
-<nav class="localNav">
+<aside class="widget">
+<nav class="list-nav">
 <h4 class="sub-section__title"><?php _e( 'Category', 'lightning' ); ?></h4>
 <ul>
 	<?php wp_list_categories( 'title_li=' ); ?>
@@ -52,8 +54,8 @@ endwhile; ?>
 </nav>
 </aside>
 
-<aside class="widget widget_archive widget_link_list">
-<nav class="localNav">
+<aside class="widget">
+<nav class="list-nav">
 <h4 class="sub-section__title"><?php _e( 'Archive', 'lightning' ); ?></h4>
 <ul>
 	<?php

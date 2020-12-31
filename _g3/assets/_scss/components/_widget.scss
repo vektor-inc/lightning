@@ -1,0 +1,13 @@
+.widget{
+    display: block;
+    margin-bottom: var(--vk-margin-section-bottom);
+    &__title {
+
+    }
+}
+
+.widget:after {
+	content: "";
+	clear: both;
+	display: block;
+}

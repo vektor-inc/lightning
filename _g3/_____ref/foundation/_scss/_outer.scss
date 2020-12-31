@@ -509,7 +509,7 @@ h1.entry-title {
 /* Widget
 /*-------------------------------------------*/
 .widget {
-	display: block;
+	
 
 	.subSection-title {
 		margin-top: 0;
@@ -524,11 +524,7 @@ h1.entry-title {
 	}
 }
 
-.widget:after {
-	content: "";
-	clear: both;
-	display: block;
-}
+
 
 /* .widget_link_list はプラグインなどの外部ウィジェットからの指定用。
 .widget と同列で書かれる時もあれば下階層に書かれる事もある。ExUnitの固定ページリストウィジェットなどで使用 */

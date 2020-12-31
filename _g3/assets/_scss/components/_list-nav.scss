@@ -1,0 +1,17 @@
+.list-nav {
+    ul {
+        padding: 0;
+        margin:0;
+    }
+    li {
+        a {
+            display:block;
+            padding-top: 0.5em;
+            padding-bottom: 0.5em;
+            border-bottom:1px solid var(--vk-color-border-hr); 
+        }
+        &:first-child > a {
+            border-top:1px solid var(--vk-color-border-hr); 
+        } 
+    }
+}

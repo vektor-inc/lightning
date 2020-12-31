@@ -18,11 +18,15 @@
 
 @import "variables";
 @import "layout";
+@import "components/list-nav";
+@import "components/widget";
 @import "global-nav/global-nav";
 @import "project/site-header";
 @import "project/page-header";
 @import "project/breadcrumb";
 @import "project/pagenation";
+@import "project/sub-section";
 @import "project/site-footer";
 @import "../../inc/vk-mobile-nav/package/css/vk-mobile-nav-bright.css";
 @import "overwrite/vk-mobile-nav";
+
