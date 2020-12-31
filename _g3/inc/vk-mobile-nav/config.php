@@ -3,8 +3,9 @@
 /*-------------------------------------------*/
 /*  Load modules
 /*-------------------------------------------*/
+
 if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
-	require get_parent_theme_file_path( '/inc/vk-mobile-nav/package/class-vk-mobile-nav.php' );
+	require LIG_G3_DIR_PATH . '/inc/vk-mobile-nav/package/class-vk-mobile-nav.php';
 
 	global $default_nav;
 	$default_nav = 'global-nav';
