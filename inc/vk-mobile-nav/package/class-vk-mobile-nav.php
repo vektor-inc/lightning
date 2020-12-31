@@ -105,7 +105,7 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 				array(
 					'theme_location' => 'vk-mobile-nav',
 					'container'      => '',
-					'items_wrap'     => '<nav class="vk-mobile-nav-menu-outer" role="navigation"><ul id="%1$s" class="vk-menu-acc  %2$s">%3$s</ul></nav>',
+					'items_wrap'     => '<nav class="vk-mobile-nav-menu-outer" role="navigation"><ul id="%1$s" class="vk-menu-acc %2$s">%3$s</ul></nav>',
 					'fallback_cb'    => '',
 					'echo'           => false,
 					// 'depth'          => 1,
@@ -116,7 +116,7 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 				array(
 					'theme_location' => $default_nav,
 					'container'      => '',
-					'items_wrap'     => '<nav class="vk-mobile-nav-menu-outer"><ul id="%1$s" class="vk-menu-acc  %2$s">%3$s</ul></nav>',
+					'items_wrap'     => '<nav class="vk-mobile-nav-menu-outer" role="navigation"><ul id="%1$s" class="vk-menu-acc %2$s">%3$s</ul></nav>',
 					'fallback_cb'    => '',
 					'echo'           => false,
 					// 'depth'          => 1,
