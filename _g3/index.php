@@ -26,33 +26,31 @@ do_action( 'lightning_site-header_after' );
 
 <div class="<?php lightning_the_class_name( 'site-body' ); ?>">
     <?php do_action( 'lightning_site-body_prepend' ); ?>
-
     <div class="container">
-    <div class="<?php lightning_the_class_name( 'site-body__container' ); ?>">
+        <div class="<?php lightning_the_class_name( 'site-body__container' ); ?>">
 
-        <div class="<?php lightning_the_class_name( 'main-section' ); ?>" id="main" role="main">
-            <?php do_action( 'lightning_main-section_prepend' ); ?>
+            <div class="<?php lightning_the_class_name( 'main-section' ); ?>" id="main" role="main">
+                <?php do_action( 'lightning_main-section_prepend' ); ?>
 
-            <?php if ( is_singular() ){
-                lightning_get_template_part( 'template-parts/main-singular' );
-            } else {
-                lightning_get_template_part( 'template-parts/main-archive' );
-            } ?>
+                <?php if ( is_singular() ){
+                    lightning_get_template_part( 'template-parts/main-singular' );
+                } else {
+                    lightning_get_template_part( 'template-parts/main-archive' );
+                } ?>
 
-            <?php do_action( 'lightning_main-section_append' ); ?>
-        </div><!-- [ /.main-section ] -->
+                <?php do_action( 'lightning_main-section_append' ); ?>
+            </div><!-- [ /.main-section ] -->
 
-        <?php 
-        do_action( 'lightning_sub-section_before' );
-        if ( lightning_is_subsection() ){ 
-            lightning_get_template_part( 'sidebar', get_post_type() );
-        }
-        do_action( 'lightning_sub-section_after' );
-        ?>
+            <?php 
+            do_action( 'lightning_sub-section_before' );
+            if ( lightning_is_subsection() ){ 
+                lightning_get_template_part( 'sidebar', get_post_type() );
+            }
+            do_action( 'lightning_sub-section_after' );
+            ?>
 
-    </div><!-- [ /.site-body__container ] -->
+        </div><!-- [ /.site-body__container ] -->
     </div>
-
     <?php do_action( 'lightning_site-body_apepend' ); ?>
 </div><!-- [ /.site-body ] -->
 
