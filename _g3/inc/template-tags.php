@@ -37,12 +37,39 @@ function lightning_get_class_name( $position = '' ) {
     
     $class_name = apply_filters( "lightning_get_class_name_{$position}", $position );
 
-    if ( ! lightning_is_layout_onecolumn() ) {
+    if ( lightning_is_layout_onecolumn() ) {
+        if ( $position === 'main-section' ){
+            if ( lightning_is_subsection() ) {
+                $class_name = $class_name . ' main-section--margin-bottom--on';
+            }
+        }
+
+    } elseif ( ! lightning_is_layout_onecolumn() ) {
         if ( $position === 'main-section' ){
             $class_name = $class_name . ' main-section--col--two';
         }
         if ( $position === 'sub-section' ){
             $class_name = $class_name . ' sub-section--col--two';
+        }
+        // 2 column
+        $options = get_option( 'lightning_theme_options' );
+        // sidebar-position
+        if ( isset( $options['sidebar_position'] ) && $options['sidebar_position'] === 'left' ) {
+            if ( $position === 'main-section' ){
+                $class_name = $class_name . ' main-section--pos--right';
+            }
+            if ( $position === 'sub-section' ){
+                $class_name = $class_name . ' sub-section--pos--left';
+            }
+        }
+    }
+
+    if ( lightning_is_site_body_padding_off() ) {
+        if ( $position === 'site-body' ){
+            $class_name = $class_name . ' site-body--padding-vertical--off';
+        }
+        if ( $position === 'main-section' ){
+            $class_name = $class_name . ' main-section--margin-vertical--off';
         }
     }
 

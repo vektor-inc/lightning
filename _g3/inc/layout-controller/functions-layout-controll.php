@@ -290,12 +290,13 @@ function lightning_is_breadcrumb() {
 	return apply_filters( 'lightning_is_breadcrumb', $return );
 }
 
-// function lightning_layout_class_site_body_padding_vertical( $class_name ){
-// 	if ( lightning_is_siteContent_padding_off() ) {
-// 		$class_names['siteContent'] .= ' siteContent-paddingVertical-off';
-// 		$class_names['mainSection'] .= ' mainSection-marginVertical-off';
-// 		$class_name = $class_name . ' site-body__contents--padding-vertical--none';
-// 	}
-// 	return $class_name;
-// }
-// add_filter( 'lightning_get_class_name_site-body__contents', 'lightning_layout_class_site_body_padding_vertical' );
+function lightning_is_site_body_padding_off() {
+	$return = false;
+	if ( is_singular() ) {
+		global $post;
+		if ( ! empty( $post->_lightning_design_setting['siteContent_padding'] ) ) {
+			$return = true;
+		}
+	}
+	return apply_filters( 'lightning_is_site_body_padding_off', $return );
+}
