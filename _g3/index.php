@@ -8,6 +8,8 @@ if ( apply_filters( 'lightning_is_site-header', true ) ){
 do_action( 'lightning_site-header_after' );
 ?>
 
+<?php if ( ! is_front_page() ) : ?>
+
 <?php 
     do_action( 'lightning_page-header_before' );
     if ( lightning_is_page_header() ){
@@ -23,6 +25,8 @@ do_action( 'lightning_site-header_after' );
     }
     do_action( 'lightning_breadcrumb_after' );
     ?>
+
+<?php endif; ?>
 
 <div class="<?php lightning_the_class_name( 'site-body' ); ?>">
     <?php do_action( 'lightning_site-body_prepend' ); ?>

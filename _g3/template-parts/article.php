@@ -3,7 +3,7 @@
 	<?php 
 	// check single or loop that true
 	$is_single_item_display = false;
-	if ( ! is_page() || is_front_page() || is_archive() ){
+	if ( ! is_page() || ! is_front_page() || is_archive() ){
 		$is_single_item_display = true;
 	}
 	?>
