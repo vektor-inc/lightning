@@ -173,16 +173,7 @@ function lightning_is_subsection() {
 			$return = false;
 		}
 		if ( is_page() ) {
-			$template           = get_post_meta( $post->ID, '_wp_page_template', true );
-			$template_onecolumn = array(
-				'page-onecolumn.php',
-				'page-lp.php',
-			);
-			if ( in_array( $template, $template_onecolumn, true ) ) {
-				$return = false;
-			}
 			if ( isset( $post->_lightning_design_setting['layout'] ) ) {
-				
 				if ( 'col-one-no-subsection' === $post->_lightning_design_setting['layout'] ) {
 					$return = false;
 				} elseif ( 'col-two' === $post->_lightning_design_setting['layout'] ) {
@@ -222,16 +213,6 @@ function lightning_is_subsection() {
 				if ( 'col-one-no-subsection' === $options['layout'][ 'single-' . $single_post_type ] ) {
 					$return = false;
 				}
-			}
-		}
-		if ( is_page() ) {
-			$template           = get_post_meta( $post->ID, '_wp_page_template', true );
-			$template_onecolumn = array(
-				'page-onecolumn.php',
-				'page-lp.php',
-			);
-			if ( in_array( $template, $template_onecolumn, true ) ) {
-				$return = false;
 			}
 		}
 		if ( isset( $post->_lightning_design_setting['layout'] ) ) {
@@ -299,4 +280,29 @@ function lightning_is_site_body_padding_off() {
 		}
 	}
 	return apply_filters( 'lightning_is_site_body_padding_off', $return );
+}
+
+/*
+  add body class
+/*-------------------------------------------*/
+add_filter( 'body_class', 'lightning_add_body_class_sidefix' );
+function lightning_add_body_class_sidefix( $class ) {
+	$options = get_option( 'lightning_theme_options' );
+	if ( ! lightning_is_layout_onecolumn() ) {
+		if ( isset( $options['sidebar_fix'] ) ) {
+			if ( $options['sidebar_fix'] == 'priority-top' ) {
+				$class[] = 'sidebar-fix';
+				$class[] = 'sidebar-fix-priority-top';
+			} elseif ( $options['sidebar_fix'] == 'priority-bottom' ) {
+				$class[] = 'sidebar-fix';
+				$class[] = 'sidebar-fix-priority-bottom';
+			} elseif ( $options['sidebar_fix'] === 'no-fix' || $options['sidebar_fix'] === true ) {
+				return $class;
+			}
+		} else {
+			$class[] = 'sidebar-fix';
+			$class[] = 'sidebar-fix-priority-top';
+		}
+	}
+	return $class;
 }

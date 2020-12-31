@@ -1,5 +1,6 @@
 .site-header {
     padding-top:1.5rem;
+    display:block; overflow:hidden;
     &--center {
         .site-header__logo {
             margin:0 auto;

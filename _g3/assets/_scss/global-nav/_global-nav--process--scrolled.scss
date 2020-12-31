@@ -9,19 +9,19 @@
  スクロールされた時にメニューがfixedになるが、メニューの高さ分 navbar-header の下にmargin-bottomを付与するので、ガクンとならない。
 
 // スクロール後にメニューが上から落ちてくるアニメーション //////////
-1.	初期状態でメニューの高さ分である 54px をtopににオフセット
+1.	初期状態でメニューの高さ分である 63px をtopににオフセット
 	しかしpositionを指定していないので、最初は効かず通常の位置で表示。
-	よってここは本来54pxでなくてもかまわない。
+	よってここは本来63pxでなくてもかまわない。
 2.  jsでbodyタグに .header_scrolled がつく
-3.	.global-nav の position は fixed になって -54pxの位置指定が効く。
+3.	.global-nav の position は fixed になって -63pxの位置指定が効く。
 	しかし、先述の通りmargin-bottomが追加されるので、ガクンとはならない。
-4.	この時メニューは一旦 -54px の位置に移動するが、scrolled では 0 に指定されているので、
+4.	この時メニューは一旦 -63px の位置に移動するが、scrolled では 0 に指定されているので、
 	アニメーションで0の位置に移動する。
 */
 
 @media (min-width: $lg-min) {
 	.global-nav {
-		top: -54px;
+		top: -63px;
 		transition: top 1s;
 	}
 
@@ -35,7 +35,7 @@
 			width: 100%;
 		}
 		.site-header__logo{
-			margin-bottom: 54px;
+			margin-bottom: 63px;
 		}
 		&.admin-bar .global-nav {
 			top: 32px;

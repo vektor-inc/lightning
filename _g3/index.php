@@ -27,7 +27,8 @@ do_action( 'lightning_site-header_after' );
 <div class="<?php lightning_the_class_name( 'site-body' ); ?>">
     <?php do_action( 'lightning_site-body_prepend' ); ?>
 
-    <div class="<?php lightning_the_class_name( 'site-body__container' ); ?> container">
+    <div class="container">
+    <div class="<?php lightning_the_class_name( 'site-body__container' ); ?>">
 
         <div class="<?php lightning_the_class_name( 'main-section' ); ?>" id="main" role="main">
             <?php do_action( 'lightning_main-section_prepend' ); ?>
@@ -50,6 +51,7 @@ do_action( 'lightning_site-header_after' );
         ?>
 
     </div><!-- [ /.site-body__container ] -->
+    </div>
 
     <?php do_action( 'lightning_site-body_apepend' ); ?>
 </div><!-- [ /.site-body ] -->
