@@ -42,6 +42,32 @@ gulp.task('sass', function (done) {
   done()
 });
 
+
+gulp.task('sass_skin', function (done) {
+  src(['./design-skin/origin3/_scss/**/*.scss'])
+  .pipe(aliases({
+    "@bootstrap": "./node_modules/bootstrap/scss"
+  }))
+  .pipe(
+    sass({
+      includePaths: [
+        './design-skin/origin3/_scss',
+        // './inc/vk-components/package/_scss'
+      ]
+    }
+  ))
+    .pipe(sourcemaps.init())
+    .pipe(cmq(
+      {
+        log: true
+      }
+    ))
+    .pipe(autoprefixer())
+    .pipe(cleanCss())
+    .pipe(gulp.dest('./design-skin/origin3/css'))
+  done()
+});
+
 gulp.task('sass_woo', function (done) {
   return src(['./plugin-support/woocommerce/_scss/**.scss'])
     .pipe(sass())
@@ -68,6 +94,7 @@ gulp.task('sass_bbpress', function (done) {
 gulp.task('watch', function (done) {
   error_stop = false
   gulp.watch(['./assets/_scss/**','./inc/vk-mobile-nav/package/css/**','./inc/vk-components/**/*.css'], gulp.series('sass'));
+  gulp.watch(['./design-skin/origin3/_scss/**'], gulp.series('sass_skin'));
   gulp.watch(['./plugin-support/woocommerce/_scss/**'], gulp.series('sass_woo'));
   gulp.watch(['./plugin-support/bbpress/_scss/**'], gulp.series('sass_bbpress'));
   done();

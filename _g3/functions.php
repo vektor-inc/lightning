@@ -8,6 +8,7 @@ $theme_opt = wp_get_theme( get_template() );
 define( 'LIGHTNING_THEME_VERSION', $theme_opt->Version );
 
 require get_parent_theme_file_path( LIG_G3_DIR . '/inc/class-vk-helpers.php' );
+require get_parent_theme_file_path( LIG_G3_DIR . '/inc/class-design-manager.php' );
 require get_parent_theme_file_path( LIG_G3_DIR . '/inc/class-vk-description-walker.php' );
 require get_parent_theme_file_path( LIG_G3_DIR . '/inc/class-ltg-template-redirect.php' );
 require get_parent_theme_file_path( LIG_G3_DIR . '/inc/template-tags.php' );
