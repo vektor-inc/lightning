@@ -1,4 +1,5 @@
 .site-footer {
+    display:block; overflow:hidden;
     &__copyright {
         padding:1rem;
         p {
@@ -6,5 +7,11 @@
             margin:0.5rem;
             font-size:var(--vk-size-text-xs);
         }
+    }
+}
+.footer-nav {
+    padding:0.6em;
+    li {
+        padding :0 1.5em;
     }
 }
