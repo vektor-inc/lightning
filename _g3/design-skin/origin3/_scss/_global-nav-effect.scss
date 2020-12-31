@@ -9,7 +9,7 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 
 *************************************/
 
-.gMenu {
+.global-nav__list {
 	/*-------------------------------------------*/
 	/*	only first
     /*-------------------------------------------*/
@@ -21,7 +21,7 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 			bottom: 0;
 			content: "";
 			width: 0;
-			border-bottom: 1px solid $color_key_dark;
+			border-bottom: 1px solid var(--vk-color-primary-dark);
 			transition: all 0.5s ease-out;
 		}
 		&.menu-item-has-children::after {
@@ -35,7 +35,7 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 			border: 10px solid transparent;
 			z-index: 1000;
 			opacity: 0;
-			border-bottom-color: $g_nav_sub_bg_color;
+			border-bottom-color: var(--vk-color-primary-dark);
 		}
 
 		.device-pc &.menu-item-has-children:hover::after,
@@ -52,7 +52,7 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 	/*-------------------------------------------*/
 	/*	2nd only
 	/*-------------------------------------------*/
-	& > li > ul {
+	& > li > ul.sub-menu {
 		// The reason for upping it by 1px is that active-border runs off the drop-down menu..
 		margin-top: -1px;
 	}
@@ -63,7 +63,7 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 		li {
 			a {
 				&:hover {
-					background-color: $color_key;
+					background-color: var(--vk-color-primary);
 				}
 			}
 		}
