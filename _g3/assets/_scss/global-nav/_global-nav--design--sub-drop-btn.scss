@@ -45,7 +45,7 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 	.sub-menu {
 		.acc-btn {
 			background-image: var(--g_nav_sub_acc_icon_open_url);
-			border-color: $g_nav_sub_font_color;
+			border: 1px solid $g_nav_sub_font_color;
 			&.acc-btn-close {
 				background-image: var(--g_nav_sub_acc_icon_close_url);
 			}

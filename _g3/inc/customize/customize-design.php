@@ -110,9 +110,14 @@ function lightning_get_common_inline_css() {
     }
     $color_key_dark = VK_Helpers::color_auto_modifi( $color_key, 0.8 );
 	$dynamic_css    = '
+	/* aaaaaa */
 	:root {
 		--vk-color-primary:' . $color_key . ';
 		--vk-color-primary-dark:' . $color_key_dark . ';
+		--g_nav_main_acc_icon_open_url:url(' . get_template_directory_uri() . '/inc/vk-mobile-nav/package/images/vk-menu-acc-icon-open-black.svg);
+		--g_nav_main_acc_icon_close_url: url(' . get_template_directory_uri() . '/inc/vk-mobile-nav/package/images/vk-menu-close-black.svg);
+		--g_nav_sub_acc_icon_open_url: url(' . get_template_directory_uri() . '/inc/vk-mobile-nav/package/images/vk-menu-acc-icon-open-white.svg);
+		--g_nav_sub_acc_icon_close_url: url(' . get_template_directory_uri() . '/inc/vk-mobile-nav/package/images/vk-menu-close-white.svg);
 	}
 	';
 	// delete before after space
@@ -123,3 +128,15 @@ function lightning_get_common_inline_css() {
 	$dynamic_css = preg_replace( '/\s(?=\s)/', '', $dynamic_css );
 	return $dynamic_css;
 }
+
+function lightning_add_common_dynamic_css() {
+	$dynamic_css = lightning_get_common_inline_css();
+	wp_add_inline_style( 'lightning-common-style', $dynamic_css );
+}
+add_action( 'wp_enqueue_scripts', 'lightning_add_common_dynamic_css',11 );
+
+function lightning_add_common_dynamic_css_to_editor() {
+	$dynamic_css = lightning_get_common_inline_css();
+	wp_add_inline_style( 'lightning-common-editor-gutenberg', $dynamic_css );
+}
+add_action( 'enqueue_block_editor_assets', 'lightning_add_common_dynamic_css_to_editor' );
