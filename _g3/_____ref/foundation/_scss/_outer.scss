@@ -490,35 +490,14 @@ h1.entry-title {
 	}
 }
 
-.subSection:after {
-	content: "";
-	clear: both;
-	display: block;
-}
-
-.subSection-title {
-	font-size: 18px;
-	margin-bottom: 15px;
-}
-
-.subSection-title i {
-	margin-right: 8px;
-}
-
 /*-------------------------------------------*/
 /* Widget
 /*-------------------------------------------*/
 .widget {
-	
-
 	.subSection-title {
 		margin-top: 0;
 		font-size: 18px;
-		a {
-			color: inherit;
-		}
 	}
-
 	ul {
 		margin-top: 0;
 	}
@@ -626,49 +605,6 @@ h1.entry-title {
 
 .widget_vkexunit_post_list .mainSection-title {
 	margin-bottom: 0;
-}
-
-/* 上下パッディングは個別で指定されたりするのでセレクタが軽くなるように指定してある */
-/* ベースありの時の左右余白指定は layout_base.scss に書いてある */
-.widget_ltg_full_wide_title_outer {
-	margin-top: 0;
-	margin-bottom: 0;
-	padding-top: 2em;
-	padding-bottom: 2em;
-	@media (min-width: $lg-min) {
-		padding-top: 2.5em;
-		padding-bottom: 2.5em;
-	}
-	@media (min-width: $xl-min) {
-		padding-top: 3em;
-		padding-bottom: 3em;
-	}
-}
-.widget_ltg_full_wide_title_outer {
-	text-align: center;
-	background-size: cover;
-	background-position: center center;
-	margin: 0 calc(50% - 50vw) 3em;
-	padding: 3em calc(50vw - 50%);
-}
-
-.widget_ltg_full_wide_title_title {
-	font-size: 2rem;
-	padding: 0;
-	margin-bottom: 0.3em;
-	line-height: 1.4em;
-	background: none;
-	border: none;
-}
-
-.widget_ltg_full_wide_title_title:last-child {
-	margin-bottom: 0;
-}
-
-.widget_ltg_adv_full_wide_title_caption,
-.widget_ltg_full_wide_title_caption {
-	margin-bottom: 0;
-	line-height: 1.4em;
 }
 
 /*      .tagcloud

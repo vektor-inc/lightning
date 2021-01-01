@@ -1,4 +1,10 @@
+:root{
+    --vk-margin-list-menu-left:1em;
+}
 .list-nav {
+    & > ul > li:first-child > a {
+        border-top:1px solid var(--vk-color-border-hr); 
+    } 
     ul {
         padding: 0;
         margin:0;
@@ -8,10 +14,30 @@
             display:block;
             padding-top: 0.5em;
             padding-bottom: 0.5em;
+            padding-left: var(--vk-margin-list-menu-left);
             border-bottom:1px solid var(--vk-color-border-hr); 
         }
-        &:first-child > a {
-            border-top:1px solid var(--vk-color-border-hr); 
-        } 
     }
+    li li a {
+        padding-left: calc( var(--vk-margin-list-menu-left) * 2 );
+    }
+    li li li a {
+        padding-left: calc( var(--vk-margin-list-menu-left) * 3 );
+    }
+    li li li li a {
+        padding-left: calc( var(--vk-margin-list-menu-left) * 4 );
+    }
+    li li li li li a {
+        padding-left: calc( var(--vk-margin-list-menu-left) * 5 );
+    }
+    li li li li li li a {
+        padding-left: calc( var(--vk-margin-list-menu-left) * 6 );
+    }
+    li li li li li li li a {
+        padding-left: calc( var(--vk-margin-list-menu-left) * 7 );
+    }
+    li li li li li li li li a {
+        padding-left: calc( var(--vk-margin-list-menu-left) * 8 );
+    }
+
 }
