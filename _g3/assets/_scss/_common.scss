@@ -85,3 +85,20 @@ blockquote {
 i {
 	margin-right: 0.5em;
 }
+
+input[type=text],
+input[type=number],
+input[type=email],
+input[type=tel],
+input[type=url],
+input[type=date],
+select,
+textarea {
+	border:1px solid var(--vk-color-border-form);
+	padding:0.8em 1em;
+	margin:0.5rem 0;
+	width:100%;
+}
+input[type=file] {
+	margin:0.5rem 0;
+}

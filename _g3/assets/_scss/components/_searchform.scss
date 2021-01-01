@@ -1,0 +1,14 @@
+.searchform {
+    div {
+        display: flex;
+    }
+    input {
+        margin: 0;
+    }
+    input[type=submit]{
+        border:1px solid var(--vk-color-border-form);
+        border-left:none;
+        padding-left: 1em;
+        padding-right: 1em;
+    }
+}
