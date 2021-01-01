@@ -45,17 +45,14 @@ endwhile; ?>
 <?php endif; ?>
 <?php wp_reset_query(); ?>
 
-<aside class="widget">
-<nav class="list-nav">
+<aside class="widget widget_link_list">
 <h4 class="sub-section__title"><?php _e( 'Category', 'lightning' ); ?></h4>
 <ul>
 	<?php wp_list_categories( 'title_li=' ); ?>
 </ul>
-</nav>
 </aside>
 
-<aside class="widget">
-<nav class="list-nav">
+<aside class="widget widget_link_list">
 <h4 class="sub-section__title"><?php _e( 'Archive', 'lightning' ); ?></h4>
 <ul>
 	<?php
@@ -66,5 +63,4 @@ endwhile; ?>
 	wp_get_archives( $args );
 	?>
 </ul>
-</nav>
 </aside>

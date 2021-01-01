@@ -87,43 +87,6 @@ input.form-control.input_widthAuto {
 /*-------------------------------------------*/
 /* .navSection
 /*-------------------------------------------*/
-// @media (max-width: $md-max) {
-// 	.menuBtn {
-// 		position: absolute;
-// 		top: 0;
-// 		z-index: 2000;
-// 		margin: 8px;
-// 		padding: 4px 8px;
-
-// 		&.btn-default {
-// 			border-color: #999;
-// 			color: #999;
-// 		}
-
-// 		&.btn-default:hover {
-// 			border-color: #fff;
-// 			color: #fff;
-// 		}
-
-// 		&.menuBtn_right {
-// 			right: 0px;
-// 		}
-// 	}
-// } // @media (max-width: 991px){
-// @media (min-width: $lg-min) {
-// 	.menuBtn,
-// 	.navSection,
-// 	.navSection .searchform {
-// 		display: none;
-// 	}
-// }
-
-
-
-// @media (min-width: 992px){
-//   .page-header_pageTitle,
-//   h1.page-header_pageTitle:first-child { font-size:2rem; }
-// }
 
 /*      .mainSection
 /*-------------------------------------------*/
@@ -458,7 +421,6 @@ h1.entry-title {
 /* .subSection
 /*-------------------------------------------*/
 .subSection {
-	display: block;
 	.localNav {
 		display: block;
 	}
@@ -493,18 +455,6 @@ h1.entry-title {
 /*-------------------------------------------*/
 /* Widget
 /*-------------------------------------------*/
-.widget {
-	.subSection-title {
-		margin-top: 0;
-		font-size: 18px;
-	}
-	ul {
-		margin-top: 0;
-	}
-}
-
-
-
 /* .widget_link_list はプラグインなどの外部ウィジェットからの指定用。
 .widget と同列で書かれる時もあれば下階層に書かれる事もある。ExUnitの固定ページリストウィジェットなどで使用 */
 .widget_link_list,
@@ -515,10 +465,7 @@ h1.entry-title {
 .widget_pages,
 .widget_recent_entries {
 	ul {
-		padding-left: 0;
-		margin: 0;
 		font-size: 14px;
-		list-style: none;
 	}
 }
 
@@ -529,77 +476,13 @@ h1.entry-title {
 .widget_pages,
 .widget_postlist,
 .widget_recent_entries {
-	a {
-		color: $color_font_default;
-	}
 	.subSection-title {
 		margin-bottom: 0;
 	}
 	ul {
-		li {
-			margin-bottom: 0;
-		}
-
-		li a {
-			display: block;
-			padding: 10px 0.5em 8px;
-			border-bottom: $border_primary;
-		}
 		.siteFooter & li a {
 			border-bottom: 1px solid var(--color-footer-border, #ccc);
 		}
-
-		li li a {
-			padding-left: 1.5em;
-		}
-
-		li li li a {
-			padding-left: 2.5em;
-		}
-
-		li li li li a {
-			padding-left: 3.5em;
-		}
-
-		li li li li li a {
-			padding-left: 4.5em;
-		}
-
-		li li li li li li a {
-			padding-left: 5.5em;
-		}
-
-		li li li li li li li a {
-			padding-left: 6.5em;
-		}
-
-		li li li li li li li li a {
-			padding-left: 7.5em;
-		}
-
-		li li li li li li li li li a {
-			padding-left: 8.5em;
-		}
-
-		li li li li li li li li li li a {
-			padding-left: 9.5em;
-		}
-
-		li li li li li li li li li li li a {
-			padding-left: 10.5em;
-		}
-
-		ul {
-			margin: 0;
-			padding-left: 0;
-		}
-	}
-}
-
-.widget_archive,
-.widget_categories {
-	select {
-		margin-top: 10px;
 	}
 }
 
@@ -613,11 +496,6 @@ h1.entry-title {
 	border-radius: 4px;
 	padding: 3px 10px 1px;
 	line-height: 2.4em;
-}
-
-/* パララックスやページタイトル固定の時に透けないように */
-.siteContent_after {
-	position: relative;
 }
 
 .sticky {

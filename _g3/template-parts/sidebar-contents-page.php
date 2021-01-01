@@ -9,14 +9,12 @@
 
 	if ( $post_id ) {
 		$children = wp_list_pages( 'title_li=&child_of=' . $post_id . '&echo=0' );
-		if ( $children ) { ?>
-			<aside class="widget widget_child_page">
-			<nav class="list-nav">
+        if ( $children ) { ?>
+            <aside class="widget widget_link_list">
 			<h4 class="sub-section__title"><a href="<?php echo esc_url( get_permalink( $post_id ) ); ?>"><?php echo get_the_title( $post_id ); ?></a></h4>
 			<ul>
 			<?php echo $children; ?>
 			</ul>
-			</nav>
 			</aside>
 		<?php } // if ($children)
 	} // if ($post_id)
