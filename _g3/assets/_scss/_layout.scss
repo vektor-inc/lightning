@@ -52,12 +52,12 @@
 
 @media (min-width: $lg-min) {
 	.main-section--col--two {
-		width: 66.66667%;
+		width: var(--vk-width-col-2-main);
 		float: left;
 	}
 
 	.sub-section--col--two {
-		width: calc(100% - 66.66667% - 3rem);
+		width: calc(100% - var(--vk-width-col-2-main) - var(--vk-width-col-2-gap));
 		float: right;
 	}
 

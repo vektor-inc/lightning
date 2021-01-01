@@ -8,6 +8,13 @@
     &__title {
 
     }
+    ul {
+        padding-left:1.5em;
+        li {
+            margin-top:0.8em;
+            margin-top:0.8em;
+        }
+    }
 }
 
 .widget:after {
@@ -35,8 +42,8 @@
         margin: 0;
         a {
             display:block;
-            padding-top: 0.5em;
-            padding-bottom: 0.5em;
+            padding-top: 0.7em;
+            padding-bottom: 0.7em;
             padding-left: var(--vk-margin-list-menu-left);
             border-bottom:1px solid var(--vk-color-border-hr); 
             text-decoration: none;
@@ -70,4 +77,10 @@
 	select {
 		margin-top: 10px;
 	}
+}
+.widget_recent_entries{
+    .post-date {
+        display:block; overflow:hidden;
+        font-size:var(--vk-size-text-xs);
+    }
 }
