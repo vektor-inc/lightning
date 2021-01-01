@@ -64,7 +64,7 @@
 			$taxnomiesHtml = '';
 			if ( $taxonomies ) {
 				foreach ( $taxonomies as $key => $value ) {
-					$taxnomiesHtml .= '<div class="entry-meta-dataList">' . $value . '</div>';
+					$taxnomiesHtml .= '<div class="entry-meta--data-list">' . $value . '</div>';
 				} // foreach
 			} // if ($taxonomies)
 			$taxnomiesHtml = apply_filters( 'lightning_taxnomiesHtml', $taxnomiesHtml );
@@ -73,7 +73,7 @@
 			// tag list
 			$tags_list = get_the_tag_list();
 			if ( $tags_list ) { ?>
-				<div class="entry-meta-dataList entry-tag">
+				<div class="entry-meta--data-list">
 					<dl>
 					<dt><?php _e( 'Tags', 'lightning' ); ?></dt>
 					<dd class="tagcloud"><?php echo $tags_list; ?></dd>

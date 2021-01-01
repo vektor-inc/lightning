@@ -25,7 +25,9 @@ body {
 
 a {
 	color:var(--vk-color-text-link);
+	text-decoration-style: dotted;
 	text-underline-offset:2px;
+	text-decoration-thickness: 1px;
 	&:hover {
 		text-decoration: none;
 		color: var(--vk-color-text-link-hover);
