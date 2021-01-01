@@ -5,15 +5,12 @@
 .widget{
     display: block;
     margin-bottom: var(--vk-margin-section-bottom);
-    &__title {
-
-    }
     ul {
         padding-left:1.5em;
-        li {
-            margin-top:0.8em;
-            margin-top:0.8em;
-        }
+    }
+    li {
+        margin-top:0.8em;
+        margin-top:0.8em;
     }
 }
 
@@ -47,6 +44,13 @@
             padding-left: var(--vk-margin-list-menu-left);
             border-bottom:1px solid var(--vk-color-border-hr); 
             text-decoration: none;
+            &:hover{
+                background-color: var(--vk-color-accent-bg);
+            }
+        }
+        &.current-cat > a,
+        &.current_page_item > a {
+            background-color: var(--vk-color-accent-bg);
         }
     }
     li li a {

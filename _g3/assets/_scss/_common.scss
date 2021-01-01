@@ -25,6 +25,11 @@ body {
 
 a {
 	color:var(--vk-color-text-link);
+	text-underline-offset:2px;
+	&:hover {
+		text-decoration: none;
+		color: var(--vk-color-text-link-hover);
+	}
 }
 
 p {

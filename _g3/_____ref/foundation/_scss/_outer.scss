@@ -95,13 +95,6 @@ input.form-control.input_widthAuto {
 		margin-top: 0;
 		line-height: 1.4em;
 	}
-
-	// Media Posts 1st image Feature measures
-	.postList::after {
-		content: "";
-		clear: both;
-		display: block;
-	}
 }
 
 h1.mainSection-title {
@@ -118,10 +111,6 @@ h1.entry-title {
 	& > a {
 		color: $color_font_default;
 	}
-}
-
-.mainSection .widget {
-	margin-bottom: 25px;
 }
 
 .entry-full {
@@ -172,20 +161,6 @@ h1.entry-title {
 
 .entry-meta_hidden {
 	display: none;
-}
-
-.fa_v4 {
-	.entry-meta_items.published::before {
-		margin-right: 5px;
-		font-family: FontAwesome;
-		content: "\f073";
-	}
-
-	.entry-meta_items_author::before {
-		margin-right: 5px;
-		font-family: FontAwesome;
-		content: "\f040";
-	}
 }
 
 .fa_v5_css {
@@ -445,11 +420,6 @@ h1.entry-title {
 	li > a:hover {
 		text-decoration: underline;
 	}
-
-	li.current-cat > a,
-	li.current_page_item > a {
-		background-color: rgba(0, 0, 0, 0.05);
-	}
 }
 
 /*-------------------------------------------*/
@@ -586,79 +556,4 @@ p.no-comments {
 // theme check pass
 .bypostauthor {
 	color: $color_font_default;
-}
-
-/*-------------------------------------------*/
-/* search
-/*-------------------------------------------*/
-// form.searchform { margin:1em 0;
-//   div { display: flex;
-//     input[type=text]#s { width:64%;margin-right:2%; }
-//     input[type=submit]#searchsubmit { float:right;width:34%; text-align: center;padding-left:2px;padding-right:2px; }
-//   }
-// }
-// input#searchsubmit { vertical-align: top; }
-
-/*-------------------------------------------*/
-/* Widget .veu_prBlocks
-/*-------------------------------------------*/
-/* htmlに直接styleを書き込むので継承を弱くするために入れ子で書かない */
-.prBlock {
-	a {
-		color: #333;
-
-		&:hover {
-			color: #333;
-			text-decoration: none;
-		}
-	}
-}
-
-.prBlock_icon_outer {
-	display: block;
-	margin: 0 auto;
-	width: 80px;
-	height: 80px;
-	border-radius: 50%;
-	position: relative;
-}
-
-.prBlock_icon {
-	position: absolute;
-	font-size: 36px;
-	top: 50%;
-	left: 50%;
-	transform: translateY(-50%) translateX(-50%);
-}
-
-.prBlock_title {
-	margin-top: 0.9em;
-	margin-bottom: 0.7em;
-	text-align: center;
-	font-size: 18px;
-	line-height: 1.4em;
-}
-
-.prBlock_image {
-	position: relative;
-	display: block;
-	width: 120px;
-	height: 120px;
-	margin: 0 auto;
-	overflow: hidden;
-	border-radius: 50%;
-	text-indent: -9999px;
-}
-
-.prBlock_summary {
-	margin-bottom: 0.5em;
-	text-align: center;
-	font-size: 14px;
-	line-height: 1.6em;
-}
-
-@media screen and (max-width: $xs-max) {
-	.prBlock {
-		margin-bottom: 1.5em;
-	}
 }
