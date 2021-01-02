@@ -1,7 +1,12 @@
-.widget .tagcloud a {
+.tagcloud a {
+    &::before{
+        margin-right:0.4em;
+    }
 	border-radius: 4px;
-    padding: 3px 4px 1px;
+    padding: 3px 0 1px;
+    margin-right:0.8em;
     font-size:var(--vk-size-text-xs) !important;
     line-height: 2.4em;
     white-space: nowrap;
+    text-decoration: none;
 }

@@ -37,10 +37,10 @@
 		font-size: 12px;
 		border: none;
 		padding-left: 0;
-
 		a {
 			display: inline-block;
-			padding: 0 4px 1px;
+            padding: 0;
+            margin-right:0.8em;
 			color: $color_font_default;
 		}
 	}
