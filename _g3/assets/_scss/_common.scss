@@ -27,10 +27,11 @@ a {
 	color:var(--vk-color-text-link);
 	text-decoration-style: dotted;
 	text-underline-offset:2px;
+	text-decoration-color:rgba(0,0,0,0.3);
 	text-decoration-thickness: 1px;
 	&:hover {
-		text-decoration: none;
 		color: var(--vk-color-text-link-hover);
+		text-decoration-color:var(--vk-color-text-link-hover);
 	}
 }
 
@@ -103,4 +104,15 @@ textarea {
 }
 input[type=file] {
 	margin:0.5rem 0;
+}
+input[type=submit]{
+	border:1px solid var(--vk-color-primary-dark);
+	background-color:var(--vk-color-primary);
+	color:#fff;
+	padding: 0.8em 2em;
+	border-radius: var(--vk-size-radius-compo);
+	&:hover {
+		cursor: pointer;
+		background-color:var(--vk-color-primary-dark);
+	}
 }
