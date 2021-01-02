@@ -11,7 +11,7 @@
 	<?php if ( $is_single_item_display ) : ?>
 
 		<header class="<?php lightning_the_class_name( 'entry-header' ); ?>">
-			<?php lightning_get_template_part( 'template-parts/post/meta', get_post_type() ); ?>
+			<?php lightning_get_template_part( 'template-parts/entry-meta', get_post_type() ); ?>
 				<h1 class="entry-title">
 					<?php if ( is_single() ) : ?>
 						<?php the_title(); ?>
@@ -64,7 +64,7 @@
 			$taxnomiesHtml = '';
 			if ( $taxonomies ) {
 				foreach ( $taxonomies as $key => $value ) {
-					$taxnomiesHtml .= '<div class="entry-meta--data-list">' . $value . '</div>';
+					$taxnomiesHtml .= '<div class="entry-meta-data-list">' . $value . '</div>';
 				} // foreach
 			} // if ($taxonomies)
 			$taxnomiesHtml = apply_filters( 'lightning_taxnomiesHtml', $taxnomiesHtml );
@@ -73,7 +73,7 @@
 			// tag list
 			$tags_list = get_the_tag_list();
 			if ( $tags_list ) { ?>
-				<div class="entry-meta--data-list">
+				<div class="entry-meta-data-list">
 					<dl>
 					<dt><?php _e( 'Tags', 'lightning' ); ?></dt>
 					<dd class="tagcloud"><?php echo $tags_list; ?></dd>

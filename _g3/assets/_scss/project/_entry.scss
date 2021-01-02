@@ -2,7 +2,31 @@
     margin-bottom: var(--vk-margin-section-bottom);
 }
 
-.entry-meta--data-list {
+.entry-meta{
+	font-size: var(--vk-size-text-sm);
+	&-item{
+		margin-right:0.8em;
+		position: relative;
+		&-author{
+			&-image{
+				position: relative;
+				top:0.2em;
+				margin-right:0.4em;
+				width:1.4em;
+				border-radius: 50%;
+				overflow: hidden;
+				display: inline-block;
+				img {
+					width:100%;
+					height:auto;
+					display:block; overflow:hidden;
+				}
+			}
+		}
+	}
+}
+
+.entry-meta-data-list {
 	display: block;
 	overflow: hidden;
 	padding-top: 3px;

@@ -86,7 +86,7 @@ blockquote {
 }
 
 i {
-	margin-right: 0.5em;
+	margin-right: 0.4em;
 }
 
 input[type=text],
@@ -98,6 +98,7 @@ input[type=date],
 select,
 textarea {
 	border:1px solid var(--vk-color-border-form);
+	border-radius: var(--vk-size-radius-compo);
 	padding:0.8em 1em;
 	margin:0.5rem 0;
 	width:100%;

@@ -5,7 +5,7 @@ else :
 	if ( have_posts() ) :
 		while ( have_posts() ) :
             the_post();
-				lightning_get_template_part( 'template-parts/article', get_post_type() );
+				lightning_get_template_part( 'template-parts/entry', get_post_type() );
 		endwhile;
 	endif; // if ( have_posts() ) :
 endif; // if ( apply_filters( 'is_lightning_extend_single', false ) ) :

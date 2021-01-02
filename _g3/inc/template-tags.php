@@ -84,6 +84,47 @@ function lightning_the_class_name( $position = '' ) {
     echo esc_attr( lightning_get_class_name( $position ) );
 }
 
+
+
+
+/*
+  Theme default options
+/*-------------------------------------------*/
+function lightning_get_theme_options_default() {
+	$theme_options_default = array(
+		'front_pr_display'              => true,
+		'top_slide_time'                => 4000,
+		'top_slide_image_1'             => get_template_directory_uri() . '/assets/images/top_image_1.jpg',
+		'top_slide_url_1'               => __( 'https://lightning.nagoya/', 'lightning' ),
+		'top_slide_text_title_1'        => __( 'Simple and Customize easy <br>WordPress theme.', 'lightning' ),
+		'top_slide_text_caption_1'      => __( '100% GPL Lisence  and adopting the bootstrap', 'lightning' ),
+		'top_slide_text_btn_1'          => __( 'READ MORE', 'lightning' ),
+		'top_slide_text_align_1'        => 'left',
+		'top_slide_text_color_1'        => '#000',
+		'top_slide_text_shadow_use_1'   => true,
+		'top_slide_text_shadow_color_1' => '#fff',
+		'top_slide_image_2'             => get_template_directory_uri() . '/assets/images/top_image_2.jpg',
+		'top_slide_url_2'               => esc_url( home_url() ),
+		'top_slide_text_title_2'        => __( 'Johnijirou On Snow', 'lightning' ),
+		'top_slide_text_caption_2'      => __( 'Growing up everyday', 'lightning' ),
+		'top_slide_text_btn_2'          => __( 'READ MORE', 'lightning' ),
+		'top_slide_text_align_2'        => 'left',
+		'top_slide_text_color_2'        => '#000',
+		'top_slide_text_shadow_use_2'   => true,
+		'top_slide_text_shadow_color_2' => '#fff',
+	);
+	return $theme_options_default;
+}
+
+/*
+  lightning_get_theme_options()
+/*-------------------------------------------*/
+function lightning_get_theme_options() {
+	$lightning_theme_options_default = lightning_get_theme_options_default();
+	$lightning_theme_options         = get_option( 'lightning_theme_options', $lightning_theme_options_default );
+	return $lightning_theme_options;
+}
+
 /*
   Head logo
 /*-------------------------------------------*/
@@ -115,13 +156,14 @@ function lightning_the_footer_copyight() {
 
 }
 
-
 function lightning_get_theme_name() {
 	return apply_filters( 'lightning_theme_name', 'Lightning' );
 }
+
 function lightning_get_theme_name_short() {
 	return apply_filters( 'lightning_get_theme_name_short', 'LTG' );
 }
+
 function lightning_get_prefix() {
 	$prefix = apply_filters( 'lightning_get_prefix', 'LTG' );
 	if ( $prefix ) {
@@ -129,6 +171,7 @@ function lightning_get_prefix() {
 	}
 	return $prefix;
 }
+
 function lightning_get_prefix_customize_panel() {
 	$prefix_customize_panel = apply_filters( 'lightning_get_prefix_customize_panel', 'Lightning' );
 	if ( $prefix_customize_panel ) {
