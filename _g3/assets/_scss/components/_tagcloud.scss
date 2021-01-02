@@ -6,7 +6,9 @@
     padding: 3px 0 1px;
     margin-right:0.8em;
     font-size:var(--vk-size-text-xs) !important;
-    line-height: 2.4em;
     white-space: nowrap;
     text-decoration: none;
+}
+.widget .tagcloud a {
+    line-height: 2.4em;
 }
