@@ -31,9 +31,9 @@ if ( $author ) {
 	$profile_image_id = get_the_author_meta( 'user_profile_image' );
 	if ( $profile_image_id ) {
 		$profile_image_src = wp_get_attachment_image_src( $profile_image_id, 'thumbnail' );
-		echo'<img class="entry-meta-item-author-image-src" src="' . $profile_image_src[0] . '" alt="' . esc_attr( $author ) . '" />';
+		echo'<img src="' . $profile_image_src[0] . '" alt="' . esc_attr( $author ) . '" />';
 	} else {
-		echo get_avatar( get_the_author_meta( 'email' ), 100 );
+		echo get_avatar( get_the_author_meta( 'email' ), 30 );
 	}
 ?>
 
