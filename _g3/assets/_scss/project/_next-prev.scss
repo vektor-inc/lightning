@@ -1,0 +1,15 @@
+.next-prev {
+    .vk_post_imgOuter_singleTermLabel {
+        background-color: var(--vk-color-primary);
+        color:#fff;
+    }
+    &-prev{
+        .vk_post_imgOuter_singleTermLabel {
+            left:0;
+            right:auto;
+        } 
+    }
+    .vk_post_imgOuter:before{
+        padding-top:50%;
+    }
+}

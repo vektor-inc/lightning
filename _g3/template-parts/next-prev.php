@@ -10,10 +10,11 @@ $post_previous = get_previous_post( $in_same_term, $excluded_terms, $taxonomy );
 $post_next     = get_next_post( $in_same_term, $excluded_terms, $taxonomy );
 if ( $post_previous || $post_next ) {
 	$options = array(
-		'layout'                     => 'card-horizontal',
+		'layout'                     => 'card-intext',
 		'display_image'              => true,
-		'display_image_overlay_term' => true,
+		'display_image_overlay_term' => false,
 		'display_excerpt'            => false,
+		'display_title'               => false,
 		'display_date'               => true,
 		'display_btn'                => false,
 		'image_default_url'          => get_template_directory_uri() . '/assets/images/no-image.png',
@@ -23,12 +24,13 @@ if ( $post_previous || $post_next ) {
 	);
 	?>
 
-<div class="vk_posts postNextPrev">
+<div class="vk_posts next-prev">
 
 	<?php
 	if ( $post_previous ) {
-		$options['body_prepend'] = '<p class="postNextPrev_label">' . __( 'Previous article', 'lightning' ) . '</p>';
-		$options['class_outer']  = 'card-sm vk_post-col-xs-12 vk_post-col-sm-12 vk_post-col-md-6';
+		
+		$options['overlay'] = '<span class="vk_post_imgOuter_singleTermLabel">' . __( 'Previous article', 'lightning' ) . '</span>';
+		$options['class_outer']  = 'vk_post-col-xs-12 vk_post-col-sm-12 vk_post-col-md-6 next-prev-prev';
 		$options                 = apply_filters( 'lightning_next_prev_options', $options );
 		$options                 = apply_filters( 'lightning_next_prev_options_prev', $options );
 		$post                    = $post_previous;
@@ -45,8 +47,8 @@ if ( $post_previous || $post_next ) {
 
 	<?php
 	if ( $post_next ) {
-		$options['body_prepend'] = '<p class="postNextPrev_label">' . __( 'Next article', 'lightning' ) . '</p>';
-		$options['class_outer']  = 'card-sm vk_post-col-xs-12 vk_post-col-sm-12 vk_post-col-md-6 card-horizontal-reverse postNextPrev_next';
+		$options['overlay'] = '<span class="vk_post_imgOuter_singleTermLabel">' . __( 'Next article', 'lightning' ) . '</span>';
+		$options['class_outer']  = 'vk_post-col-xs-12 vk_post-col-sm-12 vk_post-col-md-6 next-prev-next';
 		$options                 = apply_filters( 'lightning_next_prev_options', $options );
 		$options                 = apply_filters( 'lightning_next_prev_options_next', $options );
 		$post                    = $post_next;
