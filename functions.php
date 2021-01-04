@@ -208,6 +208,13 @@ require get_parent_theme_file_path( '/functions-compatible.php' );
 require get_parent_theme_file_path( '/inc/tgm-plugin-activation/tgm-config.php' );
 
 /*
+  Load Custom template tags for this theme.
+/*-------------------------------------------*/
+require get_parent_theme_file_path( '/inc/template-tags.php' );
+require get_parent_theme_file_path( '/inc/template-tags-old.php' );
+require get_parent_theme_file_path( '/inc/class-vk-helpers.php' );
+
+/*
   Load Theme Customizer additions.
 /*-------------------------------------------*/
 require get_parent_theme_file_path( '/inc/customize/customize.php' );
@@ -219,13 +226,6 @@ require get_parent_theme_file_path( '/inc/customize/customize-functions.php' );
   Load allow customize modules
 /*-------------------------------------------*/
 get_template_part( 'inc/vk-mobile-nav/vk-mobile-nav-config' );
-
-/*
-  Load Custom template tags for this theme.
-/*-------------------------------------------*/
-require get_parent_theme_file_path( '/inc/template-tags.php' );
-require get_parent_theme_file_path( '/inc/template-tags-old.php' );
-require get_parent_theme_file_path( '/inc/class-vk-helpers.php' );
 
 /*
   Load modules

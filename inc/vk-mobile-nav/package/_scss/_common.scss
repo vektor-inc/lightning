@@ -70,7 +70,8 @@ body.device-mobile {
 }
 
 /* 現状 .mobile-nav-btn-right は AdvUnit より body class に追加している */
-.mobile-nav-btn-right .vk-mobile-nav-menu-btn {
+.mobile-nav-btn-right .vk-mobile-nav-menu-btn,
+.vk-mobile-nav-menu-btn.position-right {
 	left: inherit;
 	right: $manu_btn_margin;
 }
@@ -79,21 +80,16 @@ body.device-mobile {
 /* .vk-mobile-nav
 /*-------------------------------------------*/
 $margin-section-bottom: 1.5em;
-// メニューボタンがタップされてたら
-.vk-mobile-nav.vk-mobile-nav-open {
-	top: 0;
-}
 
 .vk-mobile-nav {
 	position: fixed;
-	top: -2000px;
 	z-index: 2000;
 	width: 100%;
 	height: 100%;
 	display: block;
 	padding: 45px 10px;
 	overflow: scroll;
-	transition: top $time_transition ease-out;
+	transition: all $time_transition ease-out;
 	.vk-mobile-nav-menu-outer {
 		margin-bottom: $margin-section-bottom;
 	}
@@ -124,6 +120,34 @@ $margin-section-bottom: 1.5em;
 		}
 	}
 }
+
+
+.vk-mobile-nav.vk-mobile-nav-drop-in {
+	top: -2000px;
+}
+.vk-mobile-nav.vk-mobile-nav-left-in {
+	top: 0;
+	left:-100%;
+}
+.vk-mobile-nav.vk-mobile-nav-right-in {
+	top: 0;
+	left: 100%;
+}
+// メニューボタンがタップされてたら
+.vk-mobile-nav.vk-mobile-nav-open {
+	&.vk-mobile-nav-drop-in {
+		top: 0;
+	}
+	&.vk-mobile-nav-left-in {
+		top: 0;
+		left: 0;
+	}
+	&.vk-mobile-nav-right-in {
+		top: 0;
+		left: 0;
+	}
+}
+
 .vk-mobile-nav-widget {
 	margin-bottom: $margin-section-bottom;
 }

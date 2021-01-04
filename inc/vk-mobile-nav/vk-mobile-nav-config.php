@@ -15,6 +15,9 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 	global $vk_mobile_nav_inline_style_handle;
 	$vk_mobile_nav_inline_style_handle = 'lightning-common-style';
 
+	global $vk_mobile_nav_prefix;
+	$vk_mobile_nav_prefix = lightning_get_prefix_customize_panel();
+
 	// Default Vk Mobile Nav HTML was exported to footer.
 	// But Originally it is desirable to output with a header
 	// remove_action( 'wp_footer', array( 'Vk_Mobile_Nav', 'menu_set_html' ) );
