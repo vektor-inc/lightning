@@ -18,6 +18,9 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 	global $vk_mobile_nav_prefix;
 	$vk_mobile_nav_prefix = lightning_get_prefix_customize_panel();
 
+	global $vk_mobile_nav_priority;
+	$vk_mobile_nav_priority = 550;
+
 	// Default Vk Mobile Nav HTML was exported to footer.
 	// But Originally it is desirable to output with a header
 	// remove_action( 'wp_footer', array( 'Vk_Mobile_Nav', 'menu_set_html' ) );
