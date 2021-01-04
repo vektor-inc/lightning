@@ -8,7 +8,7 @@ https://github.com/vektor-inc/vektor-wp-libraries
 if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 	class Vk_Mobile_Nav {
 
-		public static $version = '0.0.1';
+		public static $version = '0.1.0';
 
 		public function __construct() {
 			/* Can not call get_called_class() on PHP5.2 */
@@ -18,6 +18,8 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 				add_action( 'wp_footer', array( get_called_class(), 'menu_set_html' ) );
 				add_action( 'wp_enqueue_scripts', array( get_called_class(), 'add_script' ) );
 				add_action( 'wp_enqueue_scripts', array( get_called_class(), 'add_inline_css' ),30 );
+
+				add_action( 'customize_register', array( $this, 'customize_register' ) ); // $thisじゃないとエラーになる
 			}
 			add_filter( 'body_class', array( $this, 'add_body_class_mobile_device' ) );
 		}
@@ -77,19 +79,29 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 			);
 		}
 
+
+
 		public static function menu_set_html() {
 
-			if ( class_exists( 'Vk_Mobile_Fix_Nav' ) ) {
-				$options = Vk_Mobile_Fix_Nav::get_options();
-				// fixナビにメニュー展開ボタンを表示しない || fixナビ自体を表示しない
-				if ( ! $options['add_menu_btn'] || $options['hidden'] ) {
-					echo '<div id="vk-mobile-nav-menu-btn" class="vk-mobile-nav-menu-btn">MENU</div>';
-				}
-			} else {
-				echo '<div id="vk-mobile-nav-menu-btn" class="vk-mobile-nav-menu-btn">MENU</div>';
+			$option = self::get_option();
+			$btn_additional_class = '';
+			if ( $option['position'] == 'right' ){
+				$btn_additional_class = ' position-right';
 			}
 
-			echo '<div class="vk-mobile-nav" id="vk-mobile-nav">';
+			$menu_btn = '<div id="vk-mobile-nav-menu-btn" class="vk-mobile-nav-menu-btn' . $btn_additional_class . '">MENU</div>';
+
+			if ( class_exists( 'Vk_Mobile_Fix_Nav' ) ) {
+				$fix_nav_options = Vk_Mobile_Fix_Nav::get_options();
+				// fixナビ内にメニュー展開ボタンを表示しない || fixナビ自体を表示しない
+				if ( ! $fix_nav_options['add_menu_btn'] || $fix_nav_options['hidden'] ) {
+					echo $menu_btn;
+				}
+			} else {
+				echo $menu_btn;
+			}
+
+			echo '<div class="vk-mobile-nav vk-mobile-nav-' . esc_attr( $option['slide_type'] ) . '" id="vk-mobile-nav">';
 			if ( is_active_sidebar( 'vk-mobile-nav-upper' ) ) {
 				dynamic_sidebar( 'vk-mobile-nav-upper' );
 			} else {
@@ -105,7 +117,7 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 				array(
 					'theme_location' => 'vk-mobile-nav',
 					'container'      => '',
-					'items_wrap'     => '<nav class="global-nav" role="navigation"><ul id="%1$s" class="vk-menu-acc  %2$s">%3$s</ul></nav>',
+					'items_wrap'     => '<nav class="vk-mobile-nav-menu-outer" role="navigation"><ul id="%1$s" class="vk-menu-acc %2$s">%3$s</ul></nav>',
 					'fallback_cb'    => '',
 					'echo'           => false,
 					// 'depth'          => 1,
@@ -116,7 +128,7 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 				array(
 					'theme_location' => $default_nav,
 					'container'      => '',
-					'items_wrap'     => '<nav class="global-nav"><ul id="%1$s" class="vk-menu-acc  %2$s">%3$s</ul></nav>',
+					'items_wrap'     => '<nav class="vk-mobile-nav-menu-outer" role="navigation"><ul id="%1$s" class="vk-menu-acc %2$s">%3$s</ul></nav>',
 					'fallback_cb'    => '',
 					'echo'           => false,
 					// 'depth'          => 1,
@@ -186,6 +198,115 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 			global $vk_mobile_nav_inline_style_handle;
 			wp_add_inline_style( $vk_mobile_nav_inline_style_handle, $dynamic_css );
 		}
+
+
+		public static function get_option() {
+			$option = get_option( 'vk_mobile_nav_options' );
+			$option = wp_parse_args( $option, self::default_options() );
+			return $option;
+		}
+
+		public static function default_options() {
+			$default_options = array(
+				'position'       => 'left',
+				'slide_type'     => 'drop-in',
+			);
+			return $default_options;
+		}
+
+		/*
+		  Customizer
+		/*-------------------------------------------*/
+
+		public function customize_register( $wp_customize ) {
+
+			// セクション、テーマ設定、コントロールを追加
+			global $vk_mobile_nav_prefix;
+			global $vk_mobile_nav_priority;
+			if ( ! $vk_mobile_nav_priority ){
+				$vk_mobile_nav_priority = 900;
+			}
+
+			$default_options = $this->default_options();
+
+			// セクション追加
+			$wp_customize->add_section(
+				'vk_mobile_nav_setting',
+				array(
+					'title'    => $vk_mobile_nav_prefix . __( 'Mobile Nav', 'lightning-pro' ),
+					'priority' => $vk_mobile_nav_priority,
+				)
+			);
+
+			// position セッティング
+			$wp_customize->add_setting(
+				'vk_mobile_nav_options[position]',
+				array(
+					'default'           => $default_options['position'],
+					'type'              => 'option', // 保存先 option or theme_mod
+					'capability'        => 'edit_theme_options', // サイト編集者
+					'sanitize_callback' => 'sanitize_text_field',
+				)
+			);
+
+			// position コントロール
+			$wp_customize->add_control(
+				'vk_mobile_nav_options[position]',
+				array(
+					'label'    => __( 'Menu button position', 'lightning' ),
+					'section'  => 'vk_mobile_nav_setting',
+					'settings' => 'vk_mobile_nav_options[position]',
+					'type'     => 'radio',
+					'choices'  => array(
+						'left'   => __( 'Left', 'lightning' ),
+						'right'  => __( 'Right', 'lightning' ),
+					),
+				)
+			);
+
+			// slide_type セッティング
+			$wp_customize->add_setting(
+				'vk_mobile_nav_options[slide_type]',
+				array(
+					'default'           => $default_options['slide_type'],
+					'type'              => 'option', // 保存先 option or theme_mod
+					'capability'        => 'edit_theme_options', // サイト編集者
+					'sanitize_callback' => 'sanitize_text_field',
+				)
+			);
+
+			// slide_type コントロール
+			$wp_customize->add_control(
+				'vk_mobile_nav_options[slide_type]',
+				array(
+					'label'    => __( 'Menu slide direction', 'lightning' ),
+					'section'  => 'vk_mobile_nav_setting',
+					'settings' => 'vk_mobile_nav_options[slide_type]',
+					'type'     => 'radio',
+					'choices'  => array(
+						'drop-in'   => __( 'Drop', 'lightning' ),
+						'left-in'  => __( 'Left -> Right', 'lightning' ),
+						'right-in'  => __( 'Right -> Left', 'lightning' ),
+					),
+				)
+			);
+
+			/*
+			  Add Edit Customize Link Btn
+			/*-------------------------------------------*/
+			$wp_customize->selective_refresh->add_partial(
+				'vk_mobile_nav_options[position]',
+				array(
+					'selector'        => '.vk-mobile-nav-menu-btn',
+					'render_callback' => '',
+				)
+			);
+
+		} // function customize_register( $wp_customize ) {
+
+
+
+
 
 	} // class Vk_Mobile_Nav
 
