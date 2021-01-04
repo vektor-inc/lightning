@@ -3,18 +3,23 @@
 /*-------------------------------------------*/
 /*  Load modules
 /*-------------------------------------------*/
-
 if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
-	require LIG_G3_DIR_PATH . '/inc/vk-mobile-nav/package/class-vk-mobile-nav.php';
+	require get_parent_theme_file_path( LIG_G3_DIR . '/inc/vk-mobile-nav/package/class-vk-mobile-nav.php' );
 
 	global $default_nav;
-	$default_nav = 'global-nav';
+	$default_nav = 'Header';
 
 	global $library_url;
 	$library_url = get_template_directory_uri() . '/inc/vk-mobile-nav/package/';
 
 	global $vk_mobile_nav_inline_style_handle;
 	$vk_mobile_nav_inline_style_handle = 'lightning-common-style';
+
+	global $vk_mobile_nav_prefix;
+	$vk_mobile_nav_prefix = lightning_get_prefix_customize_panel();
+
+	global $vk_mobile_nav_priority;
+	$vk_mobile_nav_priority = 550;
 
 	// Default Vk Mobile Nav HTML was exported to footer.
 	// But Originally it is desirable to output with a header
