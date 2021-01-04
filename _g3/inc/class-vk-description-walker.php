@@ -20,9 +20,9 @@ class VK_Description_Walker extends Walker_Nav_Menu {
 		$attributes .= ! empty( $item->xfn ) ? ' rel="' . esc_attr( $item->xfn ) . '"' : '';
 		$attributes .= ! empty( $item->url ) ? ' href="' . esc_attr( $item->url ) . '"' : '';
 
-		$prepend     = '<strong class="global-nav__name">';
+		$prepend     = '<strong class="global-nav-name">';
 		$append      = '</strong>';
-		$description = ! empty( $item->description ) ? '<span class="global-nav_description">' . esc_attr( $item->description ) . '</span>' : '';
+		$description = ! empty( $item->description ) ? '<span class="global-nav-description">' . esc_attr( $item->description ) . '</span>' : '';
 
 		if ( $depth != 0 ) {
 			$description = $append = $prepend = '';

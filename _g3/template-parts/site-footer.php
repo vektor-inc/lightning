@@ -25,7 +25,7 @@
 	}
 	?>
 	<?php if ( true === $footer_widget_exists ) : ?>
-		<div class="container site-footer__content">
+		<div class="container site-footer-content">
 			<div class="row">
 				<?php
 				// Area setting
@@ -58,7 +58,7 @@
 
 	<?php do_action( 'lightning_copyright_before' ); ?>
 
-	<div class="container site-footer__copyright">
+	<div class="container site-footer-copyright">
 			<?php lightning_the_footer_copyight(); ?>
 	</div>
 </footer> 

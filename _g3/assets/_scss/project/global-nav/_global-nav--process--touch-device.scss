@@ -9,7 +9,7 @@
 /*-------------------------------------------*/
 /*	PCとタッチデバイスでのプルダウンボタンなどの表示切り替え処理
 /*-------------------------------------------*/
-.global-nav__list {
+.global-nav-list {
 	& > li {
 		// PC端末の場合 ////
 		.device-pc & {
@@ -35,7 +35,7 @@
 		// liに余白をつけて、リンク対象は文字部分だけにする
 		.device-mobile & {
 			padding: $menu_padding_vertical 2.5em;
-			.global-nav__name {
+			.global-nav-name {
 				font-size: 12px;
 			}
 			//PC端末でaタグにつけていた余白がモバイル端末で出現するので打ち消し&inline-block化

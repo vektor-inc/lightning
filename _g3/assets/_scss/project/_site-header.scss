@@ -1,16 +1,16 @@
 .site-header {
     padding-top:1.5rem;
     &--center {
-        .site-header__logo {
+        .site-header-logo {
             margin:0 auto;
             text-align: center;
         }
-        .global-nav__list {
+        .global-nav-list {
             // text-align: center;
             justify-content: center;
         }
     }
-    &__logo{
+    &-logo{
         img {
             max-height:65px;
         }

@@ -13,7 +13,7 @@
 }
 
 .global-nav {
-	&__list{
+	&-list{
 		a:hover,
 		a:active,
 		a:focus {
@@ -41,7 +41,7 @@
 		/*-------------------------------------------*/
 		& > li {
 			text-align: center;
-			.global-nav__name {
+			.global-nav-name {
 				font-size: $g_nav_font_size;
 				display: block;
 				/*
@@ -54,7 +54,7 @@
 				*/
 				white-space: nowrap;
 			}
-			.global-nav__description {
+			.global-nav-description {
 				display: block;
 				overflow: hidden;
 				font-size: 10px;
@@ -125,10 +125,4 @@
 			}
 		}
 	}
-}
-.global-nav__list {
-
-
-
-
 }
