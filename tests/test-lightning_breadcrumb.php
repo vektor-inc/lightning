@@ -262,8 +262,8 @@ class LightningBreadCrumbTest extends WP_UnitTestCase {
 					'show_on_front' =>'page',
 					'page_for_posts' => $home_page_id,
 				),
-				'target_url'        => home_url().'/?post_type=post&year=2020' ,
-				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/?page_id='.$home_page_id.'"><span itemprop="name">post_top</span></a></li><li><span>2020</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
+				'target_url'        => home_url().'/?post_type=post&year='.date('Y').'' ,
+				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/?page_id='.$home_page_id.'"><span itemprop="name">post_top</span></a></li><li><span>'.date('Y').'</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
             ),
 
             // トップページに固定ページ / 投稿トップページ無指定 / 年別アーカイブ 
@@ -274,8 +274,8 @@ class LightningBreadCrumbTest extends WP_UnitTestCase {
 					'show_on_front' =>'page',
 					'page_for_posts' => null,
 				),
-				'target_url'        => home_url('/').'?post_type=post&year=2020' ,
-				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li><span>2020</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
+				'target_url'        => home_url('/').'?post_type=post&year='.date('Y').'' ,
+				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li><span>'.date('Y').'</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
             ),
 
             // カスタム投稿タイプトップ 
@@ -295,8 +295,8 @@ class LightningBreadCrumbTest extends WP_UnitTestCase {
             // カスタム投稿タイプ / 年別アーカイブ
 			// HOME > 投稿タイプ名 > アーカイブ名
 			array(
-				'target_url'        => home_url().'/?post_type=event&year=2020' ,
-				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.get_post_type_archive_link( 'event' ).'"><span itemprop="name">event</span></a></li><li><span>2020</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
+				'target_url'        => home_url().'/?post_type=event&year='.date('Y').'' ,
+				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.get_post_type_archive_link( 'event' ).'"><span itemprop="name">event</span></a></li><li><span>'.date('Y').'</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
             ),
  
             // カスタム投稿タイプ / 記事詳細
