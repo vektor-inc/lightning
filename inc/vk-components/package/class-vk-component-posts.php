@@ -280,6 +280,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 
 				$html .= '</div><!-- [ /.vk_post_imgOuter ] -->';
 			} // if ( $options['display_image'] ) {
+
 			return $html;
 		}
 
