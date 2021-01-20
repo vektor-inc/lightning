@@ -3,3 +3,11 @@
 select.form-control {
 	padding-left:0.75em;
 }
+
+// VKボタンブロック 標準色primaryの場合のfocus時のbox-shadow
+.btn-primary:focus,
+.btn-primary:not(:disabled):not(.disabled):active:focus,
+.btn-outline-primary:focus,
+.btn-outline-primary:not(:disabled):not(.disabled):active:focus { 
+	box-shadow: 0 0 0 0.2rem rgba(171, 184, 195, 0.25);
+}

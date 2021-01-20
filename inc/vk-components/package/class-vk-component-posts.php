@@ -280,6 +280,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 
 				$html .= '</div><!-- [ /.vk_post_imgOuter ] -->';
 			} // if ( $options['display_image'] ) {
+
 			return $html;
 		}
 
@@ -479,15 +480,25 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				'class_image' => 'card-img-top',
 			);
 
-			if ( $options['layout'] == 'card-intext' ){
-				$html .= '<a href="' . get_the_permalink( $post->ID ) . '" class="card-intext-inner">';
-			}
-
-			$html .= self::get_thumbnail_image( $post, $options, $attr );
-			$html .= self::get_view_body( $post, $options );
+			$html_body = '';
+			$html_body .= self::get_thumbnail_image( $post, $options, $attr );
+			$html_body .= self::get_view_body( $post, $options );
 
 			if ( $options['layout'] == 'card-intext' ){
+
+				$html .= '<a href="' . esc_url( get_the_permalink( $post->ID ) ) . '" class="card-intext-inner">';
+
+				// aタグ内にaタグがあるとChromeなどはその時点で一旦aタグを閉じてしまって表示が崩れるので、aタグをspanに変換する
+				$html_body = str_replace( "<a", "<span", $html_body );
+				$html_body = str_replace( "href=", "data-url=", $html_body );
+				$html_body = str_replace( "a>", "span>", $html_body );
+
+				$html .= $html_body;
+
 				$html .= '</a>';
+
+			} else {
+				$html .= $html_body;
 			}
 
 			$html .= '</div><!-- [ /.card ] -->';
