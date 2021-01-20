@@ -199,8 +199,14 @@ function lightning_get_post_type() {
 		$taxonomy         = get_queried_object()->taxonomy;
 		$postType['slug'] = get_taxonomy( $taxonomy )->object_type[0];
 	} else {
+		// Cope with bbpress search result
+		if ( ! empty( $wp_query->query_vars['bbp_search'] ) ){
+			$postType['slug'] = 'forum';
+
 		// This is necessary that when no posts.
-		$postType['slug'] = 'post';
+		} else {
+			$postType['slug'] = 'post';
+		}
 	}
 
 	// Get custom post type name
