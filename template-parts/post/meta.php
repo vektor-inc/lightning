@@ -1,7 +1,9 @@
 <?php global $lightning_theme_options; ?>
 <div class="entry-meta">
 
-<?php if ( get_post_type() != 'product' ) : ?>
+<?php 
+$post_type_info = lightning_get_post_type();
+if ( $post_type_info['slug'] != 'product' && $post_type_info['slug'] != 'forum' ) : ?>
 
 <span class="published entry-meta_items"><?php echo esc_html( get_the_date() ); ?></span>
 <?php
