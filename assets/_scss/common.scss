@@ -187,6 +187,8 @@ iframe {
 	}
 }
 
+/* ↓ G3 リリース待機中？ ↓ */
+
 /* --- 1/14以降に foundation を複製したスキンをリリースしたら削除 --- */
 .media .media-body .media-heading {
     font-size: 20px;
@@ -204,4 +206,13 @@ iframe {
     font-size: 14px;
     line-height: 150%;
 }
+
 /* --- foundation を複製したスキンをリリースしたら削除 --- */
+
+/* ↑ G3 リリース待機中？ ↑ */
+
+/*  ヘッダーロゴの文字の太さを統一 開始  */
+.siteHeader_logo {
+	font-weight: 500;
+}
+/*  ヘッダーロゴの文字の太さを統一 終了  */
