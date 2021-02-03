@@ -64,7 +64,7 @@ function lightning_customize_register_design( $wp_customize ) {
 				'label'            => __( 'Color Setting', 'lightning' ),
 				'section'          => 'lightning_design',
 				'type'             => 'text',
-				'custom_title_sub' => __( 'Key Color', 'lightning' ),
+				// 'custom_title_sub' => __( 'Key Color', 'lightning' ),
 				'custom_html'      => '',
 				'priority'         => 600,
 			)
@@ -93,7 +93,6 @@ function lightning_customize_register_design( $wp_customize ) {
 			)
 		)
 	);
-
 }
 
 /**
@@ -110,7 +109,7 @@ function lightning_get_common_inline_css() {
     }
     $color_key_dark = VK_Helpers::color_auto_modifi( $color_key, 0.8 );
 	$dynamic_css    = '
-	/* aaaaaa */
+	/* Lightning */
 	:root {
 		--vk-color-primary:' . $color_key . ';
 		--vk-color-primary-dark:' . $color_key_dark . ';
