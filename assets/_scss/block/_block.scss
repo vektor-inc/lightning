@@ -1,3 +1,9 @@
+:root {
+    --vk-font-size-xs: 11px;
+    --vk-color-text-body: #333;
+    --vk-color-text-light: #666;
+}
+
 .alignfull {
 	width: 100vw;
 	margin-left: calc(50% - 50vw);
@@ -126,4 +132,37 @@
 		margin-bottom: 0;
 	}
 
+}
+
+/*-------------------------------------------*/
+/*  「RSS」ブロック
+/*-------------------------------------------*/
+.wp-block-rss{
+	padding: 0;
+	list-style: none;
+	&__item{
+		margin-bottom:0;
+		padding: 0.8rem 0 .7rem;
+		border-bottom: 1px solid rgba(0,0,0,.12);
+		&-title{
+			a{
+				color: var(--text-color);
+			}
+		}
+		&-publish-date{
+			margin-right: .5em;
+		}
+		&-publish-date,
+		&-author{
+			font-size: var(--vk-font-size-xs);
+			display:inline-block;
+		}
+		&-excerpt{
+			font-size: .8125em;
+			line-height: 1.65em;
+			color: var(--vk-color-text-light);
+			
+		}
+		
+	}
 }
