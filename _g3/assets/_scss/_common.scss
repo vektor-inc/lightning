@@ -45,7 +45,7 @@ p + h3,
 p + h4,
 p + h5,
 p + h6 {
-	margin-top:2em;
+	margin-top:2rem;
 }
 h1,h2,h3,h4,h5,h6 {
 	margin-top:0;
@@ -115,5 +115,16 @@ input[type=submit]{
 	&:hover {
 		cursor: pointer;
 		background-color:var(--vk-color-primary-dark);
+	}
+}
+figure {
+	margin:0;
+}
+table {
+	border-top:1px solid var(--vk-color-border-hr);
+	th,td {
+		border:1px solid var(--vk-color-border-hr);
+		padding:0.5rem 1rem;
+		font-size:var(--vk-size-text-sm);
 	}
 }

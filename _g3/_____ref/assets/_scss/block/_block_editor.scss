@@ -3,9 +3,6 @@
 /* メインのカラム幅 */
 // .editor-block-list__layout > .wp-block,
 .wp-block {
-	// display: block; // これを指定してしまうと メディアと文章ブロックで display:grid; が効かなくなる
-	width: calc(100% - 2rem);
-	max-width: 1110px;
 	// WP 5.5 以降 標準ボタンブロックで複数配置 したときに外側と出力HTMLが異なってセンター揃えにならない
 	&[data-align=center]{
 		text-align: center;

@@ -1,0 +1,20 @@
+/* メインのカラム幅 */
+.wp-block {
+	// display: block; // display: block;を指定してしまうと メディアと文章ブロックで display:grid; が効かなくなる
+	width: var(--vk-width-container);
+    max-width: var(--vk-width-container);
+}
+.is-sidebar-opened {
+    .editor-styles-wrapper { // .wp-block の前にclassがあると .editor-styles-wrapper が自動的につかないため
+        .wp-block {
+            width: calc( var(--vk-width-container)  - 280px );
+            max-width: calc( var(--vk-width-container)  - 280px );
+        }
+    }
+}
+
+.wp-block-table {
+	thead {
+		border:none;
+    }
+}

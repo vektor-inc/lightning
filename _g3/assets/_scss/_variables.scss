@@ -13,7 +13,7 @@ $containter-padding:15px;
 :root {
     --vk-color-text-body : #444444;
     --vk-color-text-link : #555555;
-    --vk-color-text-link-hover : #0000ff;
+    --vk-color-text-link-hover : #1e73be;
     --vk-color-text-header : #444444;
     --vk-color-border-hr : #efefef;
     --vk-color-border-form : rgba(0,0,0,0.2);
@@ -40,6 +40,21 @@ $containter-padding:15px;
 
     --vk-line-height: 1.7em;
     --vk-line-height-low: 1.5em;
+}
+@media (min-width: $sm-min) {
+    :root{
+        --vk-width-container : 540px;
+    }
+}
+@media (min-width: $md-min) {
+    :root{
+        --vk-width-container : 720px;
+    }
+}
+@media (min-width: $lg-min) {
+    :root{
+        --vk-width-container : 960px;
+    }
 }
 @media (min-width: $xl-min) {
     :root{

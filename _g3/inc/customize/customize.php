@@ -22,8 +22,8 @@ function lightning_add_customize_class( $wp_customize ) {
 	/*
 	  Add text control description
 	/*-------------------------------------------*/
-	if ( ! class_exists( 'Custom_Text_Control' ) ) {
-		class Custom_Text_Control extends WP_Customize_Control {
+	if ( ! class_exists( 'VK_Custom_Text_Control' ) ) {
+		class VK_Custom_Text_Control extends WP_Customize_Control {
 			public $type         = 'customtext';
 			public $description  = ''; // we add this for the extra description
 			public $input_before = '';
@@ -42,7 +42,7 @@ function lightning_add_customize_class( $wp_customize ) {
 		</label>
 				<?php
 			} // public function render_content() {
-		} // class Custom_Text_Control extends WP_Customize_Control
+		} // class VK_Custom_Text_Control extends WP_Customize_Control
 	}
 
 	if ( ! class_exists( 'Custom_Html_Control' ) ) {

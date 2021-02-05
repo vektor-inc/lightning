@@ -57,7 +57,7 @@ function lightning_customize_register_design( $wp_customize ) {
 		)
 	);
 	$wp_customize->add_control(
-		new Custom_Html_Control(
+		new VK_Custom_Html_Control(
 			$wp_customize,
 			'color_header',
 			array(
@@ -101,7 +101,7 @@ function lightning_customize_register_design( $wp_customize ) {
  * @return string
  */
 function lightning_get_common_inline_css() {
-    $options        = get_option( 'lightning_theme_options' );
+    $options        = lightning_get_theme_options();
     if ( ! empty( $options['color_key'] ) ){
         $color_key = esc_html( $options['color_key'] );
     } else {
