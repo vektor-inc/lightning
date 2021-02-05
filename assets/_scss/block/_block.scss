@@ -151,17 +151,35 @@
 		}
 		&-publish-date{
 			margin-right: .5em;
+			&:before {
+				font-family: "Font Awesome 5 Free";
+				font-weight: 900;
+				margin-right: 5px;
+				margin-left: 0;
+				content: "\f073";
+			}
+		}
+		&-author{
+			&:before {
+				font-family: "Font Awesome 5 Free";
+				font-weight: 900;
+				margin-right: 5px;
+				margin-left: 0;
+				content: "\f303";
+			}
 		}
 		&-publish-date,
 		&-author{
 			font-size: var(--vk-font-size-xs);
+			color: var(--vk-color-text-light);
 			display:inline-block;
+			margin-top: .2em;
 		}
 		&-excerpt{
 			font-size: .8125em;
 			line-height: 1.65em;
 			color: var(--vk-color-text-light);
-			
+			margin-top: .2em;
 		}
 		
 	}
