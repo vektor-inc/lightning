@@ -98,7 +98,7 @@ function lightning_load_css_action() {
 
 function lightning_common_style() {
 	// wp_enqueue_style( 'lightning-common-style', get_template_directory_uri() . '/assets/css/style.css', array(), LIGHTNING_THEME_VERSION );
-	wp_enqueue_style( 'lightning-common-style', get_template_directory_uri() . '/assets/css/style.css', array(), get_the_date("YmdHis") );
+	wp_enqueue_style( 'lightning-common-style', get_template_directory_uri() . '/assets/css/style.css', array(), date("YmdHis") );
 }
 function lightning_theme_style() {
 	wp_enqueue_style( 'lightning-theme-style', get_stylesheet_uri(), array(), LIGHTNING_THEME_VERSION );
