@@ -142,8 +142,8 @@
 	list-style: none;
 	&__item{
 		margin-bottom:0;
-		padding: 0.8rem 0 .7rem;
-		border-bottom: 1px solid rgba(0,0,0,.12);
+		padding: 0.8rem 0;
+		border-bottom: 1px solid rgba(0,0,0,.05);
 		&-title{
 			a{
 				color: var(--text-color);
@@ -173,10 +173,10 @@
 			font-size: var(--vk-font-size-xs);
 			color: var(--vk-color-text-light);
 			display:inline-block;
-			margin-top: .2em;
+			margin-top: .5em;
 		}
 		&-excerpt{
-			font-size: .8125em;
+			font-size: .813em;
 			line-height: 1.65em;
 			color: var(--vk-color-text-light);
 			margin-top: .2em;
