@@ -13,13 +13,13 @@ body {
 }
 html,
 body {
-	font-size: 14px;
+	font-size: var(--vk-size-text);
 }
 
-@media (min-width: $lg-min) {
+@media (max-width: $md-max) {
 	html,
 	body {
-		font-size: 16px;
+		font-size: calc( var(--vk-size-text) * 0.875 );
 	}
 }
 
