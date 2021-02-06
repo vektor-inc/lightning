@@ -1,4 +1,5 @@
 .btn {
+    border-radius: var(--vk-size-radius);
     &-primary{
         background-color: var(--vk-color-primary);
         border-color: var(--vk-color-primary-dark);
@@ -12,5 +13,8 @@
         &:hover{
             background-color: var(--vk-color-accent-bg);
         }
+    }
+    &-sm{
+        border-radius: var(--vk-size-radius-sm);
     }
 }
