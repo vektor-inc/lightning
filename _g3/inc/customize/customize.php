@@ -45,8 +45,8 @@ function lightning_add_customize_class( $wp_customize ) {
 		} // class VK_Custom_Text_Control extends WP_Customize_Control
 	}
 
-	if ( ! class_exists( 'Custom_Html_Control' ) ) {
-		class Custom_Html_Control extends WP_Customize_Control {
+	if ( ! class_exists( 'VK_Custom_Html_Control' ) ) {
+		class VK_Custom_Html_Control extends WP_Customize_Control {
 			public $type             = 'customtext';
 			public $custom_title_sub = ''; // we add this for the extra custom_html
 			public $custom_html      = ''; // we add this for the extra custom_html
