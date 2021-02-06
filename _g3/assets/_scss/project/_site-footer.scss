@@ -1,5 +1,8 @@
 .site-footer {
     display:block; overflow:hidden;
+    &-content {
+        padding-top: var(--vk-margin-section-bottom);
+    }
     &-copyright {
         padding:1rem;
         p {

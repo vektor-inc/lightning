@@ -22,11 +22,12 @@
 }
 
 .widget_link_list > ul,
-.widget_nav_menu > ul,
+.widget_nav_menu > div > ul,
 .widget_archive > ul,
 .widget_categories > ul,
 .widget_pages > ul,
 .widget_postlist > ul,
+.widget .localNavi, 
 .localNavi {
     border-top:1px solid var(--vk-color-border-hr); 
     padding: 0;
