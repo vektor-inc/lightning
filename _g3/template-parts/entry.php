@@ -1,4 +1,10 @@
-<article id="post-<?php the_ID(); ?>" <?php post_class( apply_filters( 'lightning_article_outer_class', 'entry entry-full' ) ); ?>>
+<?php if ( is_page() ){
+	$tag = 'div';
+} else {
+	$tag = 'article';
+}
+?>
+<<?php echo $tag;?> id="post-<?php the_ID(); ?>" <?php post_class( apply_filters( 'lightning_article_outer_class', 'entry entry-full' ) ); ?>>
 
 	<?php 
 	// check single or loop that true
@@ -89,4 +95,4 @@
 		<?php comments_template( '', true ); ?>
 	<?php do_action( 'lightning_comment_after' ); ?>
 
-</article><!-- [ /#post-<?php the_ID(); ?> ] -->
+</<?php echo $tag;?>><!-- [ /#post-<?php the_ID(); ?> ] -->
