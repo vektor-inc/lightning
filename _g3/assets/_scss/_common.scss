@@ -40,13 +40,31 @@ p {
 	margin:0 0 var(--vk-margin-element-bottom);
 }
 
-p + h2,
-p + h3,
-p + h4,
-p + h5,
-p + h6 {
-	margin-top:2rem;
+// p + h2,
+// p + h3,
+// p + h4,
+// p + h5,
+// p + h6 {
+
+// }
+
+ul,
+ol,
+dl,
+table,
+figure,
+p {
+	& + h1,
+	& + h2,
+	& + h3,
+	& + h4,
+	& + h5,
+	& + h6{
+		margin-top:2rem;
+	}
 }
+
+
 h1,h2,h3,h4,h5,h6 {
 	margin-top:0;
 	margin-bottom:1.2em;
@@ -122,6 +140,9 @@ figure {
 }
 table {
 	border-top:1px solid var(--vk-color-border-hr);
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: 100%;
 	th,td {
 		border:1px solid var(--vk-color-border-hr);
 		padding:0.5rem 1rem;

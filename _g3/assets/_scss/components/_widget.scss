@@ -1,4 +1,5 @@
 :root{
+    --vk-margin-list-menu-left-first:0;
     --vk-margin-list-menu-left:1em;
 }
 
@@ -37,16 +38,17 @@
     li {
         list-style: none;
         margin: 0;
+        font-size: var(--vk-size-text-sm);
         a {
             display:block;
             padding-top: 0.7em;
             padding-bottom: 0.7em;
-            padding-left: var(--vk-margin-list-menu-left);
+            padding-left: var(--vk-margin-list-menu-left-first);
             border-bottom:1px solid var(--vk-color-border-hr); 
             text-decoration: none;
-            &:hover{
-                background-color: var(--vk-color-accent-bg);
-            }
+            // &:hover{
+            //     background-color: var(--vk-color-accent-bg);
+            // }
         }
         &.current-cat > a,
         &.current_page_item > a {
@@ -54,25 +56,25 @@
         }
     }
     li li a {
-        padding-left: calc( var(--vk-margin-list-menu-left) * 2 );
+        padding-left: calc( var(--vk-margin-list-menu-left-first) + var(--vk-margin-list-menu-left) );
     }
     li li li a {
-        padding-left: calc( var(--vk-margin-list-menu-left) * 3 );
+        padding-left: calc( var(--vk-margin-list-menu-left-first) + var(--vk-margin-list-menu-left) * 2 );
     }
     li li li li a {
-        padding-left: calc( var(--vk-margin-list-menu-left) * 4 );
+        padding-left: calc( var(--vk-margin-list-menu-left-first) + var(--vk-margin-list-menu-left) * 3 );
     }
     li li li li li a {
-        padding-left: calc( var(--vk-margin-list-menu-left) * 5 );
+        padding-left: calc( var(--vk-margin-list-menu-left-first) + var(--vk-margin-list-menu-left) * 4 );
     }
     li li li li li li a {
-        padding-left: calc( var(--vk-margin-list-menu-left) * 6 );
+        padding-left: calc( var(--vk-margin-list-menu-left-first) + var(--vk-margin-list-menu-left) * 5 );
     }
     li li li li li li li a {
-        padding-left: calc( var(--vk-margin-list-menu-left) * 7 );
+        padding-left: calc( var(--vk-margin-list-menu-left-first) + var(--vk-margin-list-menu-left) * 6 );
     }
     li li li li li li li li a {
-        padding-left: calc( var(--vk-margin-list-menu-left) * 8 );
+        padding-left: calc( var(--vk-margin-list-menu-left-first) + var(--vk-margin-list-menu-left) * 7 );
     }
 }
 

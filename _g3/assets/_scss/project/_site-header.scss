@@ -1,18 +1,24 @@
 .site-header {
     padding-top:1.5rem;
+    &-logo{
+        img {
+            max-height:60px;
+        }
+        display:block; overflow:hidden;
+        margin-bottom:1rem;
+    }
     &--center {
         .site-header-logo {
-            margin:0 auto;
+            margin:0.5rem auto 1rem;
             text-align: center;
+            img {
+                display: block;
+                margin: 0 auto;
+            }
         }
         .global-nav-list {
             // text-align: center;
             justify-content: center;
-        }
-    }
-    &-logo{
-        img {
-            max-height:65px;
         }
     }
 }
