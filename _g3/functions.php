@@ -20,6 +20,7 @@ require get_parent_theme_file_path( LIG_G3_DIR . '/inc/vk-mobile-nav/config.php'
 require get_parent_theme_file_path( LIG_G3_DIR . '/inc/vk-breadcrumb/config.php' );
 require get_parent_theme_file_path( LIG_G3_DIR . '/inc/widget-area.php' );
 require get_parent_theme_file_path( LIG_G3_DIR . '/inc/font-awesome/config.php' );
+require get_parent_theme_file_path( LIG_G3_DIR . '/inc/term-color/config.php' );
 
 /*
   Theme setup
