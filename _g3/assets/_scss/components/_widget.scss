@@ -51,6 +51,7 @@
             //     background-color: var(--vk-color-accent-bg);
             // }
         }
+        a:hover,
         &.current-cat > a,
         &.current_page_item > a {
             background-color: var(--vk-color-accent-bg);
