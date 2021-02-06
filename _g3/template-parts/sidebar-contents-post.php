@@ -12,7 +12,7 @@ $post_loop = new WP_Query(
 
 <?php if ( $post_loop->have_posts() ) : ?>
 <aside class="widget widget_media">
-<h4 class="sub-section__title"><?php echo __( 'Recent posts', 'lightning' ); ?></h4>
+<h4 class="sub-section-title"><?php echo __( 'Recent posts', 'lightning' ); ?></h4>
 <div class="vk_posts">
 <?php
 while ( $post_loop->have_posts() ) :
@@ -46,14 +46,14 @@ endwhile; ?>
 <?php wp_reset_query(); ?>
 
 <aside class="widget widget_link_list">
-<h4 class="sub-section__title"><?php _e( 'Category', 'lightning' ); ?></h4>
+<h4 class="sub-section-title"><?php _e( 'Category', 'lightning' ); ?></h4>
 <ul>
 	<?php wp_list_categories( 'title_li=' ); ?>
 </ul>
 </aside>
 
 <aside class="widget widget_link_list">
-<h4 class="sub-section__title"><?php _e( 'Archive', 'lightning' ); ?></h4>
+<h4 class="sub-section-title"><?php _e( 'Archive', 'lightning' ); ?></h4>
 <ul>
 	<?php
 	$args = array(

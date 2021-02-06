@@ -11,7 +11,7 @@ if ( ! function_exists( 'lightning_widgets_init' ) ) {
 				'id'            => 'front-side-top-widget-area',
 				'before_widget' => '<aside class="widget %2$s" id="%1$s">',
 				'after_widget'  => '</aside>',
-				'before_title'  => '<h4 class="widget-title sub-section__title">',
+				'before_title'  => '<h4 class="widget-title sub-section-title">',
 				'after_title'   => '</h4>',
 			)
 		);
@@ -21,7 +21,7 @@ if ( ! function_exists( 'lightning_widgets_init' ) ) {
                 'id'            => 'common-side-top-widget-area',
                 'before_widget' => '<aside class="widget %2$s" id="%1$s">',
                 'after_widget'  => '</aside>',
-                'before_title'  => '<h4 class="widget-title sub-section__title">',
+                'before_title'  => '<h4 class="widget-title sub-section-title">',
                 'after_title'   => '</h4>',
             )
         );
@@ -31,7 +31,7 @@ if ( ! function_exists( 'lightning_widgets_init' ) ) {
                 'id'            => 'common-side-bottom-widget-area',
                 'before_widget' => '<aside class="widget %2$s" id="%1$s">',
                 'after_widget'  => '</aside>',
-                'before_title'  => '<h4 class="widget-title sub-section__title">',
+                'before_title'  => '<h4 class="widget-title sub-section-title">',
                 'after_title'   => '</h4>',
             )
         );
@@ -76,7 +76,7 @@ if ( ! function_exists( 'lightning_widgets_init' ) ) {
 						'description'   => $sidebar_description,
 						'before_widget' => '<aside class="widget %2$s" id="%1$s">',
 						'after_widget'  => '</aside>',
-						'before_title'  => '<h4 class="widget-title sub-section__title">',
+						'before_title'  => '<h4 class="widget-title sub-section-title">',
 						'after_title'   => '</h4>',
 					)
 				);
@@ -105,7 +105,7 @@ if ( ! function_exists( 'lightning_widgets_init' ) ) {
 					'id'            => 'footer-upper-widget-1',
 					'before_widget' => '<aside class="widget %2$s" id="%1$s">',
 					'after_widget'  => '</aside>',
-					'before_title'  => '<h4 class="widget-title sub-section__title">',
+					'before_title'  => '<h4 class="widget-title sub-section-title">',
 					'after_title'   => '</h4>',
 				)
 			);
@@ -122,7 +122,7 @@ if ( ! function_exists( 'lightning_widgets_init' ) ) {
 					'id'            => 'footer-widget-' . $i,
 					'before_widget' => '<aside class="widget %2$s" id="%1$s">',
 					'after_widget'  => '</aside>',
-					'before_title'  => '<h4 class="widget-title sub-section__title">',
+					'before_title'  => '<h4 class="widget-title sub-section-title">',
 					'after_title'   => '</h4>',
 				)
 			);

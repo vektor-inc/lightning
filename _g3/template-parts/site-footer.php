@@ -7,7 +7,7 @@
                 'theme_location'    => 'footer-nav',
                 'container'         => 'nav',
                 'container_class'	=> 'footer-nav',
-                'items_wrap'        => '<div class="container"><ul id="%1$s" class="%2$s ' . lightning_get_class_name( 'footer-nav__list  nav nav--line' ) . '">%3$s</div></ul>',
+                'items_wrap'        => '<div class="container"><ul id="%1$s" class="%2$s ' . lightning_get_class_name( 'footer-nav-list  nav nav--line' ) . '">%3$s</div></ul>',
                 'fallback_cb'       => '',
                 'depth'             => 1,
             )

@@ -7,8 +7,8 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
         'id_outer' => 'breadcrumb',
         'class_outer' => 'breadcrumb',
         'class_inner' => 'container',
-        'class_list' => 'breadcrumb__list',
-        'class_list_item' => 'breadcrumb__list__item',
+        'class_list' => 'breadcrumb-list',
+        'class_list_item' => 'breadcrumb-list__item',
     );
 
     require get_parent_theme_file_path( LIG_G3_DIR . '/inc/vk-breadcrumb/package/class-vk-breadcrumb.php' );

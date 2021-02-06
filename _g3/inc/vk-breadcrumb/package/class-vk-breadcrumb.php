@@ -34,7 +34,7 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
                     'name'             => $front_page_name,
                     'id'               => '',
                     'url'              => home_url(),
-                    'class'            => 'breadcrumb__list__item--home',
+                    'class'            => 'breadcrumb-list__item--home',
                 ),
             );
         
