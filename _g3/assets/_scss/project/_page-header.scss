@@ -5,6 +5,9 @@
 	margin-top: 0;
 	margin-bottom: 0;
 	padding-bottom: 0;
+	display:block; overflow:hidden;
+	position: relative;
+	z-index: 1;
 
 	/* If text-align setting write to .page-header_pageTitle that page-header align function not work */
     text-align: center;
