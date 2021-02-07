@@ -18,4 +18,8 @@ h1.page-header-title {
 	margin: 1.5em 0;
 	font-size: 1.75rem;
 	line-height: 1.1;
+	position:relative;
+
+	// Cope with Page header customize cover color
+	z-index: 5;
 }

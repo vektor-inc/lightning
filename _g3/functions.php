@@ -6,22 +6,7 @@ define( 'LIG_G3_DIR', '_g3' );
 $theme_opt = wp_get_theme( get_template() );
 
 define( 'LIGHTNING_THEME_VERSION', $theme_opt->Version );
-
-require get_parent_theme_file_path( LIG_G3_DIR . '/inc/class-vk-helpers.php' );
-require get_parent_theme_file_path( LIG_G3_DIR . '/inc/class-design-manager.php' );
-require get_parent_theme_file_path( LIG_G3_DIR . '/inc/class-vk-description-walker.php' );
-require get_parent_theme_file_path( LIG_G3_DIR . '/inc/class-ltg-template-redirect.php' );
-require get_parent_theme_file_path( LIG_G3_DIR . '/inc/template-tags.php' );
-require get_parent_theme_file_path( LIG_G3_DIR . '/inc/customize/customize.php' );
-require get_parent_theme_file_path( LIG_G3_DIR . '/inc/customize/customize-design.php' );
-require get_parent_theme_file_path( LIG_G3_DIR . '/inc/layout-controller/layout-controller.php' );
-require get_parent_theme_file_path( LIG_G3_DIR . '/inc/vk-components/config.php' );
-require get_parent_theme_file_path( LIG_G3_DIR . '/inc/vk-mobile-nav/config.php' );
-require get_parent_theme_file_path( LIG_G3_DIR . '/inc/vk-breadcrumb/config.php' );
-require get_parent_theme_file_path( LIG_G3_DIR . '/inc/widget-area.php' );
-require get_parent_theme_file_path( LIG_G3_DIR . '/inc/font-awesome/config.php' );
-require get_parent_theme_file_path( LIG_G3_DIR . '/inc/term-color/config.php' );
-
+// date("YmdHis")
 /*
   Theme setup
 /*-------------------------------------------*/
@@ -84,9 +69,24 @@ function lightning_theme_setup() {
 	/*-------------------------------------------*/
 	add_theme_support( 'woocommerce' );
 
-
 }
 
+require get_parent_theme_file_path( LIG_G3_DIR . '/inc/class-vk-helpers.php' );
+require get_parent_theme_file_path( LIG_G3_DIR . '/inc/class-ltg-template-redirect.php' );
+
+require get_parent_theme_file_path( LIG_G3_DIR . '/inc/class-design-manager.php' );
+require get_parent_theme_file_path( LIG_G3_DIR . '/inc/class-vk-description-walker.php' );
+require get_parent_theme_file_path( LIG_G3_DIR . '/inc/template-tags.php' );
+require get_parent_theme_file_path( LIG_G3_DIR . '/inc/customize/customize.php' );
+require get_parent_theme_file_path( LIG_G3_DIR . '/inc/customize/customize-design.php' );
+require get_parent_theme_file_path( LIG_G3_DIR . '/inc/layout-controller/layout-controller.php' );
+require get_parent_theme_file_path( LIG_G3_DIR . '/inc/vk-components/config.php' );
+require get_parent_theme_file_path( LIG_G3_DIR . '/inc/vk-mobile-nav/config.php' );
+require get_parent_theme_file_path( LIG_G3_DIR . '/inc/vk-breadcrumb/config.php' );
+require get_parent_theme_file_path( LIG_G3_DIR . '/inc/widget-area.php' );
+require get_parent_theme_file_path( LIG_G3_DIR . '/inc/font-awesome/config.php' );
+require get_parent_theme_file_path( LIG_G3_DIR . '/inc/term-color/config.php' );
+require get_parent_theme_file_path( LIG_G3_DIR . '/inc/vk-css-optimize/config.php' );
 
 /*
   Load CSS
@@ -99,7 +99,7 @@ function lightning_load_css_action() {
 
 function lightning_common_style() {
 	// wp_enqueue_style( 'lightning-common-style', get_template_directory_uri() . '/assets/css/style.css', array(), LIGHTNING_THEME_VERSION );
-	wp_enqueue_style( 'lightning-common-style', get_template_directory_uri() . '/assets/css/style.css', array(), date("YmdHis") );
+	wp_enqueue_style( 'lightning-common-style', get_template_directory_uri() . '/assets/css/style.css', array(), LIGHTNING_THEME_VERSION );
 }
 function lightning_theme_style() {
 	wp_enqueue_style( 'lightning-theme-style', get_stylesheet_uri(), array(), LIGHTNING_THEME_VERSION );
@@ -113,7 +113,7 @@ function lightning_load_common_editor_css() {
 	/*
 	 Notice : Use url then if you use local environment https has error that bring to get css error and don't refrected */
 	/* Notice : add_editor_style() is only one args. */
-	add_editor_style( '_g3/assets/css/editor.css' );
+	add_editor_style( LIG_G3_DIR . '/assets/css/editor.css' );
 }
 
 /*
