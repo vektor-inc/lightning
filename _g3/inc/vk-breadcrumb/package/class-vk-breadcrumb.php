@@ -53,15 +53,6 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
                     'url'              => '',
                     'class'            => '',
                 );
-
-            } elseif ( is_search() ) {
-                $breadcrumb_array[] = array(
-                    'name'             => sprintf( __( 'Search Results for : %s', 'lightning' ), get_search_query() ),
-                    'id'               => '',
-                    'url'              => '',
-                    'class'            => '',
-                );
-
             } elseif ( is_attachment() ) {
                 $breadcrumb_array[] = array(
                     'name'             => get_the_title(),
@@ -293,6 +284,21 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
                     'class'            => '',
                 );
             } // is_single
+
+            // For filter search term & keywords or term & no keyword
+            if ( is_search() ) {
+                if ( get_search_query() ){
+                    $name = sprintf( __( 'Search Results for : %s', 'lightning' ), get_search_query() );
+                } else {
+                    $name = __( 'Search Results', 'lightning' );
+                }
+                $breadcrumb_array[] = array(
+                    'name'             => $name,
+                    'id'               => '',
+                    'url'              => '',
+                    'class'            => '',
+                );
+            }
 
             return $breadcrumb_array = apply_filters( 'vk_breadcrumb_array', $breadcrumb_array );
 
