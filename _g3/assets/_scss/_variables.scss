@@ -15,6 +15,7 @@ $containter-padding:15px;
     --vk-color-text-link : #555555;
     --vk-color-text-link-hover : #1e73be;
     --vk-color-text-header : #444444;
+    --vk-color-text-meta : #555555;
     --vk-color-border-hr : rgba(0,0,0,0.06);
     --vk-color-border-form : rgba(0,0,0,0.2);
     --vk-color-primary : #c00;
@@ -37,8 +38,8 @@ $containter-padding:15px;
     --vk-size-text-xs: 0.75rem;
 
     --vk-size-radius: 5px;
-    --vk-size-radius-sm: calc( var( --vk-size-radius) * 0.5 );
-    --vk-size-radius-lg: calc( var( --vk-size-radius) * 1.5 );
+    --vk-size-radius-sm: calc( var( --vk-size-radius ) * 0.5 );
+    --vk-size-radius-lg: calc( var( --vk-size-radius ) * 1.5 );
 
     --vk-line-height: 1.7em;
     --vk-line-height-low: 1.5em;
