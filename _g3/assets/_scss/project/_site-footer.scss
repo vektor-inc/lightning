@@ -1,5 +1,7 @@
 .site-footer {
+    --vk-size-text-sm : 12px;
     display:block; overflow:hidden;
+    font-size:var(--vk-size-text-sm);
     &-content {
         position: relative; // これがないとカスタマイズショートカットの位置調整が効かない
         padding-top: var(--vk-margin-section-bottom);
@@ -22,7 +24,6 @@
 .footer-nav {
     padding:1em;
     line-height: 1;
-    font-size:var(--vk-size-text-sm);
     li {
         padding :0 1.5em;
     }

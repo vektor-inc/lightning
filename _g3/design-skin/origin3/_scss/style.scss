@@ -13,8 +13,10 @@
     border-bottom:1px solid var(--vk-color-border-hr);
 }
 .site-footer {
-    border-top:1px solid var(--vk-color-border-hr);
-    font-size:var(--vk-size-text-sm);
+    border-top:1px solid var(--vk-color-primary);
+}
+.footer-nav {
+    border-bottom:1px solid var(--vk-color-border-hr);
 }
 .footer-nav-list{
     li {
