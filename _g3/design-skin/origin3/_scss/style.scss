@@ -18,13 +18,9 @@
 }
 .footer-nav-list{
     li {
-        border-right:1px solid var(--vk-color-border-hr);
+        border-right:1px solid var(--vk-color-text-body);
         &:first-child {
-            border-left:1px solid var(--vk-color-border-hr);
+            border-left:1px solid var(--vk-color-text-body);
         }
     }
-}
-
-.list-nav {
-    
 }

@@ -1,7 +1,14 @@
 .site-footer {
     display:block; overflow:hidden;
     &-content {
+        position: relative; // これがないとカスタマイズショートカットの位置調整が効かない
         padding-top: var(--vk-margin-section-bottom);
+
+        & > .customize-partial-edit-shortcut{
+            position: absolute;
+            left:-30px;
+        }
+
     }
     &-copyright {
         padding:1rem;
@@ -13,7 +20,8 @@
     }
 }
 .footer-nav {
-    padding:0.6em;
+    padding:1em;
+    line-height: 1;
     font-size:var(--vk-size-text-sm);
     li {
         padding :0 1.5em;
