@@ -67,7 +67,7 @@ function lightning_get_class_names( $position = '' ) {
         $class_names['main-section'] .= ' main-section--margin-vertical--off';
     }
 
-    return apply_filters( "lightning_get_the_class_names", $class_names );
+    return apply_filters( "lightning_get_class_names", $class_names );
 }
 
 function lightning_get_the_class_name( $position = '' ){
