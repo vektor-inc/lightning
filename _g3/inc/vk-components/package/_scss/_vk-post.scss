@@ -14,6 +14,8 @@ $margin_post_item_element_narrow: 0.4rem;
 	--vk-font-size-xs:11px;
 	--vk-color-link-text: #c00;
 	--vk-color-link-text-hover: #c00;
+	--vk-color-text-body: #333;
+	--vk-color-text-light: #666;
 	--vk-color-border-hr: #e5e5e5;
 	--vk-line-height-low: 1.5em;
 }
@@ -180,7 +182,7 @@ $xxl-min: 1400px;
 		font-weight: bold;
 		margin-bottom: 0;
 		a {
-			color: #333;
+			color: var(--vk-color-text-body);
 		}
 	}
 	&_title_new {
@@ -198,7 +200,7 @@ $xxl-min: 1400px;
 	& &_date {
 		font-size: var(--vk-font-size-xs);
 		margin-top: $margin_post_item_element_narrow;
-		color: #666;
+		color: var(--vk-color-text-light);
 	}
 	&_author {
 		margin: $margin_post_item_element 0;

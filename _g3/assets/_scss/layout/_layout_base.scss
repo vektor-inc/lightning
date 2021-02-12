@@ -16,6 +16,14 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 /* Full Wide Title Offset ( 安定したら別ファイルに分離 )
 /*-------------------------------------------*/
 
+$base-padding-xs: 1.4rem;
+$base-padding-sm: 1.7rem;
+$base-padding-md: 2rem;
+$base-padding-lg: 2.4rem;
+
+$base-padding-side-lg: 1.7rem;
+$base-padding-side-xl: 2rem;
+
 /*-------------------------------------------*/
 /* FsiteContent
 /*-------------------------------------------*/
@@ -28,17 +36,6 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 	}
 	& > .container > .row {
 		margin: 0;
-	}
-}
-
-.page-template-page-lp-builder,
-.page-template-page-lp {
-	.siteContent.siteContent-base-on {
-		.mainSection-base-on {
-			padding-top: 0;
-			border-top-left-radius: 0;
-			border-top-right-radius: 0;
-		}
 	}
 }
 

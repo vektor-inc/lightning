@@ -33,57 +33,54 @@ function lightning_get_template_part( $slug, $name = null, $args = array() ) {
     }
 }
 
-function lightning_get_class_name( $position = '' ) {
-    
-    $class_name = apply_filters( "lightning_get_class_name_{$position}", $position );
+function lightning_get_class_names( $position = '' ) {
 
-    if ( lightning_is_layout_onecolumn() ) {
-        if ( $position === 'main-section' ){
-            if ( lightning_is_subsection() ) {
-                $class_name = $class_name . ' main-section--margin-bottom--on';
-            }
-        }
+    $class_names = array(
+        'site-body' => 'site-body',
+        'main-section' => 'main-section',
+        'sub-section' => 'sub-section',
+    );
+
+    if ( $position ){
+        $class_names[$position] = $position;
+    }
+
+    if ( lightning_is_layout_onecolumn() && lightning_is_subsection() ) {
+
+        $class_names['main-section'] .= ' main-section--margin-bottom--on';
 
     } elseif ( ! lightning_is_layout_onecolumn() ) {
-        if ( $position === 'main-section' ){
-            $class_name = $class_name . ' main-section--col--two';
-        }
-        if ( $position === 'sub-section' ){
-            $class_name = $class_name . ' sub-section--col--two';
-        }
+
+        $class_names['main-section'] .= ' main-section--col--two';
+        $class_names['sub-section'] .= ' sub-section--col--two';
         // 2 column
         $options = get_option( 'lightning_theme_options' );
         // sidebar-position
         if ( isset( $options['sidebar_position'] ) && $options['sidebar_position'] === 'left' ) {
-            if ( $position === 'main-section' ){
-                $class_name = $class_name . ' main-section--pos--right';
-            }
-            if ( $position === 'sub-section' ){
-                $class_name = $class_name . ' sub-section--pos--left';
-            }
+            $class_names['main-section'] .= ' main-section--pos--right';
+            $class_names['sub-section'] .= ' sub-section--pos--left';
         }
     }
 
     if ( lightning_is_site_body_padding_off() ) {
-        if ( $position === 'site-body' ){
-            $class_name = $class_name . ' site-body--padding-vertical--off';
-        }
-        if ( $position === 'main-section' ){
-            $class_name = $class_name . ' main-section--margin-vertical--off';
-        }
+        $class_names['site-body'] .= ' site-body--padding-vertical--off';
+        $class_names['main-section'] .= ' main-section--margin-vertical--off';
     }
 
-    if ( is_array( $class_name ) ){
-        $classname = implode( " ", $classname );
+    return apply_filters( "lightning_get_the_class_names", $class_names );
+}
+
+function lightning_get_the_class_name( $position = '' ){
+    $class_names = lightning_get_class_names();
+    if ( $position && empty( $class_names[$position] ) ){
+        $class_names[$position] = $position;
     }
-
-    return $class_name;
+    return esc_attr( $class_names[$position] );
 }
 
-function lightning_the_class_name( $position = '' ) {
-    echo esc_attr( lightning_get_class_name( $position ) );
+function lightning_the_class_name( $position = '' ){
+    echo lightning_get_the_class_name( $position );
 }
-
 
 
 

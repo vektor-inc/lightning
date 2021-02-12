@@ -20,7 +20,8 @@
 /* Outer */
 
 @import "variables";
-@import "layout";
+@import "layout/layout";
+@import "layout/layout_base";
 @import "components/widget";
 @import "components/page-link";
 @import "components/tagcloud";

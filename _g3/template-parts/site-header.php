@@ -23,7 +23,7 @@
 			'container'      	=> 'nav',
 			'container_class'	=> 'global-nav',
 			'container_id'		=> 'global-nav',
-			'items_wrap'     	=> '<ul id="%1$s" class="%2$s vk-menu-acc ' . lightning_get_class_name( 'global-nav-list nav' ) . '">%3$s</ul>',
+			'items_wrap'     	=> '<ul id="%1$s" class="%2$s vk-menu-acc global-nav-list nav">%3$s</ul>',
 			'fallback_cb'    	=> '',
 			'echo'           	=> true,
 			'walker'         	=> new VK_Description_Walker(),
