@@ -10,12 +10,17 @@
 @import "variables";
 @import "common";
 @import "utils";
+
+@import "block/block.scss";
+
 @import "components/nav";
 @import "components/searchform";
+
 @import "overwrite/vk-components";
 @import "overwrite/button";
 @import "overwrite/veu_contact";
 @import "overwrite/card";
+
 
 /* Outer */
 

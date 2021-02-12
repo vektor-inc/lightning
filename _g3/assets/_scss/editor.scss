@@ -10,9 +10,12 @@
 @import "variables";
 @import "common";
 @import "utils";
+
+@import "block/block";
+@import "block/block-editor";
+
 @import "components/nav";
 @import "components/searchform";
 @import "overwrite/vk-components";
 @import "overwrite/button";
 
-@import "block/block-editor";

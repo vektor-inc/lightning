@@ -57,7 +57,7 @@
 	}
 
 	.sub-section--col--two {
-		width: calc(100% - var(--vk-width-col-2-main) - var(--vk-width-col-2-gap));
+		width: var(--vk-width-col-2-sub);
 		float: right;
 	}
 
