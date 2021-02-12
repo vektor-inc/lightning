@@ -15,8 +15,8 @@ $containter-padding:15px;
     --vk-color-text-link : #555555;
     --vk-color-text-link-hover : #1e73be;
     --vk-color-text-header : #444444;
-    --vk-color-text-meta : #555555;/* 一旦非推奨 */
-    --vk-color-text-light : #555555;
+    --vk-color-text-meta : #666666;/* 一旦非推奨 */
+    --vk-color-text-light : #666666;
     --vk-color-border-hr : rgba(0,0,0,0.06);
     --vk-color-border-form : rgba(0,0,0,0.2);
     --vk-color-primary : #c00;
@@ -29,6 +29,7 @@ $containter-padding:15px;
     --vk-width-col-2-main : 66.6%;
     --vk-width-col-2-sub : 27%;
 
+    --vk-margin-meta : 0.5rem;
     --vk-margin-element-bottom : 1rem;
     --vk-margin-block-bottom : 2rem;
     --vk-margin-section-bottom : 3em;

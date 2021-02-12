@@ -51,36 +51,59 @@
 	margin: 0;
 	padding: 0;
 	list-style-type: none;
+    //グリット表示の場合
 	&.is-grid {
-		//グリット表示の場合
-		margin-left: -8px;
-		margin-right: -8px;
 		li {
-			margin: 0 8px 0 8px;
+			// margin: 0 8px 0 8px;
 			padding: 0.5rem;
 			border-bottom: none;
 		}
 	}
-	&__featured-image {
-		margin-bottom: 1em;
-	}
 	li {
 		margin: 0;
 		padding: 1rem 0;
-		border-bottom: 1px dotted #666;
-
-		a {
+		border-bottom: 1px solid var(--vk-color-border-hr);
+		& > a {
 			color: var(--vk-color-text-body);
             text-decoration: none;
-			@media (max-width: 768px) {
-				font-size: 1rem;
-			}
+            display:block; overflow:hidden;
+            margin-bottom:var(--vk-margin-meta);
+            &:hover{
+                text-decoration: underline;
+            }
 		}
-
-		time {
-			color: #d44950;
-		}
+        &:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
 	}
+    &__post-author,
+    &__post-date {
+        color: var(--vk-color-text-light);
+        font-size: var(--vk-size-text-sm);
+    }
+	&__featured-image {
+		margin-bottom: var(--vk-margin-meta);
+        display: block;
+        width: auto;
+        max-width: 100%;
+        img {
+            border: 1px solid var(--vk-color-border-hr);
+            max-width: 100%;
+        }
+        &.alignleft {
+            float:left;
+        }
+        &.alignright {
+            float:right;
+        }
+	}
+    &__post-excerpt {
+        font-size: var(--vk-size-text-sm);
+        margin-top:var(--vk-margin-meta);
+        color:var(--vk-color-text-body);
+    }
 }
 
 @media (max-width: 600px){
@@ -99,34 +122,6 @@
 }
 
 /*-------------------------------------------*/
-/*  「検索」ブロック
-/*-------------------------------------------*/
-.wp-block-search {
-	.wp-block-search__label{
-		display: none;
-	}
-	.wp-block-search__button{
-		width: 33%;
-		color: #fff;
-		border: none;
-		padding: 6px;
-		font-size: 16px;
-		box-shadow:none;
-		text-align: center;
-	}
-	input.wp-block-search__input {
-		max-width: initial;
-		width: 64%;
-		border: 1px solid #ccc;
-		padding: 6px 12px;
-		font-size: 14px;
-		margin-right: 0;
-		margin-bottom: 0;
-	}
-
-}
-
-/*-------------------------------------------*/
 /*  「RSS」ブロック
 /*-------------------------------------------*/
 .wp-block-rss{
@@ -137,6 +132,7 @@
 		padding: 0.8rem 0;
 		border-bottom: 1px solid rgba(0,0,0,.05);
 		&-title{
+            margin-bottom: var(--vk-margin-meta);
 			a{
 				color: var(--vk-color-text-body);
                 text-decoration: none;
@@ -169,11 +165,46 @@
 			margin-top: .5em;
 		}
 		&-excerpt{
-			font-size: .813em;
-			line-height: 1.65em;
+			font-size: var(--vk-size-text-xs);
 			color: var(--vk-color-text-light);
-			margin-top: .2em;
+			margin-top: var(--vk-margin-meta);
 		}
 		
 	}
+    &.is-grid {
+        justify-content: space-between;
+        li {
+            margin-left:0;
+            margin-right:0;
+        }
+    }
+}
+
+
+/*-------------------------------------------*/
+/*  「検索」ブロック
+/*-------------------------------------------*/
+.wp-block-search {
+	.wp-block-search__label{
+		display: none;
+	}
+	.wp-block-search__button{
+		width: 33%;
+		color: #fff;
+		border: none;
+		padding: 6px;
+		font-size: 16px;
+		box-shadow:none;
+		text-align: center;
+	}
+	input.wp-block-search__input {
+		max-width: initial;
+		width: 64%;
+		border: 1px solid #ccc;
+		padding: 6px 12px;
+		font-size: 14px;
+		margin-right: 0;
+		margin-bottom: 0;
+	}
+
 }
