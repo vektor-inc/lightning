@@ -40,6 +40,7 @@
 .sub-section--base--on {
 	background-color: #fff;
 	padding: var(--vk-width-base-padding);
+	border-radius: var(--vk-size-radius-lg);
 }
 
 // サイドバーの方が幅が狭いので、同じ余白を取ると錯覚でサイドバーの余白の方が広く見えてしまうため、余白を小さく設定してある

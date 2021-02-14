@@ -108,7 +108,7 @@ input[type=date],
 select,
 textarea {
 	border:1px solid var(--vk-color-border-form);
-	border-radius: var(--vk-size-radius-sm);
+	border-radius: var(--vk-size-radius);
 	padding:0.8em 1em;
 	margin:0.5rem 0;
 	width:100%;
@@ -121,7 +121,7 @@ input[type=submit]{
 	background-color:var(--vk-color-primary);
 	color:#fff;
 	padding: 0.8em 2em;
-	border-radius: var(--vk-size-radius-sm);
+	border-radius: var(--vk-size-radius);
 	&:hover {
 		cursor: pointer;
 		background-color:var(--vk-color-primary-dark);
