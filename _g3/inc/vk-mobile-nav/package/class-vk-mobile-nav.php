@@ -233,7 +233,7 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 			$wp_customize->add_section(
 				'vk_mobile_nav_setting',
 				array(
-					'title'    => $vk_mobile_nav_prefix . __( 'Mobile Nav', 'lightning-pro' ),
+					'title'    => $vk_mobile_nav_prefix . __( 'Mobile Nav', 'vk_mobile_nav_textdomain' ),
 					'priority' => $vk_mobile_nav_priority,
 				)
 			);
@@ -258,8 +258,8 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 					'settings' => 'vk_mobile_nav_options[position]',
 					'type'     => 'radio',
 					'choices'  => array(
-						'left'   => __( 'Left', 'lightning' ),
-						'right'  => __( 'Right', 'lightning' ),
+						'left'   => __( 'Left', 'vk_mobile_nav_textdomain' ),
+						'right'  => __( 'Right', 'vk_mobile_nav_textdomain' ),
 					),
 				)
 			);
@@ -284,9 +284,9 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 					'settings' => 'vk_mobile_nav_options[slide_type]',
 					'type'     => 'radio',
 					'choices'  => array(
-						'drop-in'   => __( 'Drop', 'lightning' ),
-						'left-in'  => __( 'Left -> Right', 'lightning' ),
-						'right-in'  => __( 'Right -> Left', 'lightning' ),
+						'drop-in'   => __( 'Drop', 'vk_mobile_nav_textdomain' ),
+						'left-in'  => __( 'Left -> Right', 'vk_mobile_nav_textdomain' ),
+						'right-in'  => __( 'Right -> Left', 'vk_mobile_nav_textdomain' ),
 					),
 				)
 			);

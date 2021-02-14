@@ -11,22 +11,6 @@ $admin_bar_height_mobile: 46px;
 
 $manu_btn_margin: 5px;
 
-/* body.admin-bar にすると継承が強すぎて fix nav などで上書きしにくいため */
-.admin-bar {
-	.vk-mobile-nav-menu-btn {
-		top: calc(#{$admin_bar_height_pc} + #{$manu_btn_margin});
-		@media screen and (max-width: 782px) {
-			top: calc(#{$admin_bar_height_mobile} + #{$manu_btn_margin});
-		}
-	}
-	.vk-mobile-nav.vk-mobile-nav-open {
-		top: $admin_bar_height_pc;
-		@media screen and (max-width: 782px) {
-			top: $admin_bar_height_mobile;
-		}
-	}
-}
-
 body.device-pc {
 	// PCで画面が広い時に非表示
 	@media  ( min-width: 992px) {
@@ -39,11 +23,19 @@ body.device-pc {
 	}
 }
 
-// Lightning 全スキンBS4対応終了したら削除
-body.device-mobile {
-	/* モバイル端末では画面サイズ関係なく表示 */
+/* body.admin-bar にすると継承が強すぎて fix nav などで上書きしにくいため */
+.admin-bar {
 	.vk-mobile-nav-menu-btn {
-		display: block;
+		top: calc(#{$admin_bar_height_pc} + #{$manu_btn_margin});
+		@media (max-width: 782px) {
+			top: calc(#{$admin_bar_height_mobile} + #{$manu_btn_margin});
+		}
+	}
+	.vk-mobile-nav {
+		top: $admin_bar_height_pc;
+		@media (max-width: 782px) {
+			top: $admin_bar_height_mobile;
+		}
 	}
 }
 
@@ -123,29 +115,35 @@ $margin-section-bottom: 1.5em;
 
 
 .vk-mobile-nav.vk-mobile-nav-drop-in {
-	top: -2000px;
+	&,
+	.admin-bar & {
+		top: -2000px;
+	}
 }
 .vk-mobile-nav.vk-mobile-nav-left-in {
 	transition: all 0.2s ease-out;
-	top: 0;
 	left:-100%;
 }
 .vk-mobile-nav.vk-mobile-nav-right-in {
 	transition: all 0.2s ease-out;
-	top: 0;
 	left: 100%;
 }
 // メニューボタンがタップされてたら
 .vk-mobile-nav.vk-mobile-nav-open {
-	&.vk-mobile-nav-drop-in {
-		top: 0;
-	}
-	&.vk-mobile-nav-left-in {
-		top: 0;
-		left: 0;
-	}
+	&.vk-mobile-nav-drop-in,
+	&.vk-mobile-nav-left-in,
 	&.vk-mobile-nav-right-in {
 		top: 0;
+		.admin-bar & {
+			top: $admin_bar_height_pc;
+			@media screen and (max-width: 782px) {
+				top: $admin_bar_height_mobile;
+			}
+		}
+	}
+	&.vk-mobile-nav-right-in,
+	&.vk-mobile-nav-left-in {
+		transition: all $time_transition ease-out;
 		left: 0;
 	}
 }
