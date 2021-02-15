@@ -71,7 +71,7 @@ function lightning_get_class_names( $position = '' ) {
 }
 
 function lightning_get_the_class_name( $position = '' ){
-    $class_names = lightning_get_class_names();
+    $class_names = lightning_get_class_names( $position );
     if ( $position && empty( $class_names[$position] ) ){
         $class_names[$position] = $position;
     }
