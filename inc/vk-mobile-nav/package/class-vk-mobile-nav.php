@@ -59,7 +59,7 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 
 			register_sidebar(
 				array(
-					'name'          => __( 'Mobile Nav Upper', 'vk_mobile_nav_textdomain' ),
+					'name'          => __( 'Mobile Nav Upper', 'lightning' ),
 					'id'            => 'vk-mobile-nav-upper',
 					'before_widget' => '<aside class="widget vk-mobile-nav-widget %2$s" id="%1$s">',
 					'after_widget'  => '</aside>',
@@ -69,7 +69,7 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 			);
 			register_sidebar(
 				array(
-					'name'          => __( 'Mobile Nav Bottom', 'vk_mobile_nav_textdomain' ),
+					'name'          => __( 'Mobile Nav Bottom', 'lightning' ),
 					'id'            => 'vk-mobile-nav-bottom',
 					'before_widget' => '<aside class="widget vk-mobile-nav-widget %2$s" id="%1$s">',
 					'after_widget'  => '</aside>',
@@ -107,8 +107,8 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 			} else {
 				if ( current_user_can( 'edit_theme_options' ) ) {
 					echo '<div class="veu_adminEdit alert alert-info">';
-					echo '<p>' . sprintf( __( 'This is the widget area.<br>You can set widget item from [ <a href="%s">Appearance > Customize</a> ] Page -> "Widgets" panel -> "Mobile Nav Upper" Panel.', 'vk_mobile_nav_textdomain' ), admin_url( 'customize.php' ) ) . '</p>';
-					echo '<p>' . __( '* This message is displayed only to users with editing authority.', 'vk_mobile_nav_textdomain' ) . '</p>';
+					echo '<p>' . sprintf( __( 'This is the widget area.<br>You can set widget item from [ <a href="%s">Appearance > Customize</a> ] Page -> "Widgets" panel -> "Mobile Nav Upper" Panel.', 'lightning' ), admin_url( 'customize.php' ) ) . '</p>';
+					echo '<p>' . __( '* This message is displayed only to users with editing authority.', 'lightning' ) . '</p>';
 					echo '</div>';
 				}
 			}
@@ -141,8 +141,8 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 			} else {
 				if ( current_user_can( 'edit_theme_options' ) ) {
 					echo '<div class="veu_adminEdit alert alert-danger">';
-					echo '<p>' . sprintf( __( 'Menu is not set.<br>Please set menu from [ <a href="%s">Appearance > Customize</a> ] Page -> "Menus" panel -> Menu Locations "Mobile Navigation".', 'vk_mobile_nav_textdomain' ), admin_url( 'customize.php' ) ) . '</p>';
-					echo '<p>' . __( '* This message is displayed only to users with editing authority.', 'vk_mobile_nav_textdomain' ) . '</p>';
+					echo '<p>' . sprintf( __( 'Menu is not set.<br>Please set menu from [ <a href="%s">Appearance > Customize</a> ] Page -> "Menus" panel -> Menu Locations "Mobile Navigation".', 'lightning' ), admin_url( 'customize.php' ) ) . '</p>';
+					echo '<p>' . __( '* This message is displayed only to users with editing authority.', 'lightning' ) . '</p>';
 					echo '</div>';
 				}
 			}
@@ -152,8 +152,8 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 			} else {
 				if ( current_user_can( 'edit_theme_options' ) ) {
 					echo '<div class="veu_adminEdit alert alert-info">';
-					echo '<p>' . sprintf( __( 'This is the widget area.<br>You can set widget item from [ <a href="%s">Appearance > Customize</a> ] Page -> "Widgets" panel -> "Mobile Nav Bottom" Panel.', 'vk_mobile_nav_textdomain' ), admin_url( 'customize.php' ) ) . '</p>';
-					echo '<p>' . __( '* This message is displayed only to users with editing authority.', 'vk_mobile_nav_textdomain' ) . '</p>';
+					echo '<p>' . sprintf( __( 'This is the widget area.<br>You can set widget item from [ <a href="%s">Appearance > Customize</a> ] Page -> "Widgets" panel -> "Mobile Nav Bottom" Panel.', 'lightning' ), admin_url( 'customize.php' ) ) . '</p>';
+					echo '<p>' . __( '* This message is displayed only to users with editing authority.', 'lightning' ) . '</p>';
 					echo '</div>';
 				}
 			}
@@ -233,7 +233,7 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 			$wp_customize->add_section(
 				'vk_mobile_nav_setting',
 				array(
-					'title'    => $vk_mobile_nav_prefix . __( 'Mobile Nav', 'vk_mobile_nav_textdomain' ),
+					'title'    => $vk_mobile_nav_prefix . __( 'Mobile Nav', 'lightning' ),
 					'priority' => $vk_mobile_nav_priority,
 				)
 			);
@@ -253,13 +253,13 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 			$wp_customize->add_control(
 				'vk_mobile_nav_options[position]',
 				array(
-					'label'    => __( 'Menu button position', 'vk_mobile_nav_textdomain' ),
+					'label'    => __( 'Menu button position', 'lightning' ),
 					'section'  => 'vk_mobile_nav_setting',
 					'settings' => 'vk_mobile_nav_options[position]',
 					'type'     => 'radio',
 					'choices'  => array(
-						'left'   => __( 'Left', 'vk_mobile_nav_textdomain' ),
-						'right'  => __( 'Right', 'vk_mobile_nav_textdomain' ),
+						'left'   => __( 'Left', 'lightning' ),
+						'right'  => __( 'Right', 'lightning' ),
 					),
 				)
 			);
@@ -279,14 +279,14 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 			$wp_customize->add_control(
 				'vk_mobile_nav_options[slide_type]',
 				array(
-					'label'    => __( 'Menu slide direction', 'vk_mobile_nav_textdomain' ),
+					'label'    => __( 'Menu slide direction', 'lightning' ),
 					'section'  => 'vk_mobile_nav_setting',
 					'settings' => 'vk_mobile_nav_options[slide_type]',
 					'type'     => 'radio',
 					'choices'  => array(
-						'drop-in'   => __( 'Drop', 'vk_mobile_nav_textdomain' ),
-						'left-in'  => __( 'Left -> Right', 'vk_mobile_nav_textdomain' ),
-						'right-in'  => __( 'Right -> Left', 'vk_mobile_nav_textdomain' ),
+						'drop-in'   => __( 'Drop', 'lightning' ),
+						'left-in'  => __( 'Left -> Right', 'lightning' ),
+						'right-in'  => __( 'Right -> Left', 'lightning' ),
 					),
 				)
 			);
