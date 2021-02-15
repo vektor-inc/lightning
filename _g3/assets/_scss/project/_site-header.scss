@@ -1,5 +1,4 @@
 .site-header {
-    padding-top:1.5rem;
     z-index: 10;
     &-logo{
         img {
@@ -10,7 +9,7 @@
     }
     &--center {
         .site-header-logo {
-            margin:0.5rem auto 1rem;
+            margin:1rem auto;
             text-align: center;
             img {
                 display: block;
