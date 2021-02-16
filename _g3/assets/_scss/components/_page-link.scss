@@ -4,6 +4,7 @@
 .page-link {
 	display: flex;
 	line-height: 1.65em;
+	margin:var(--vk-margin-block-bottom) 0;
 	a {
         text-decoration: none;
     }
