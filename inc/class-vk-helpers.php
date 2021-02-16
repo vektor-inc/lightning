@@ -11,6 +11,86 @@ if ( ! class_exists( 'VK_Helpers' ) ) {
 	 */
 	class VK_Helpers {
 
+        public static function get_post_top_info() {
+
+            $post_top_info = array();
+
+            // Get post top page by setting display page.
+            $post_top_info['id'] = get_option( 'page_for_posts' );
+        
+            // Set use post top page flag.
+            $post_top_info['use'] = ( $post_top_info['id'] ) ? true : false;
+        
+            // When use post top page that get post top page name.
+            $post_top_info['name'] = ( $post_top_info['use'] ) ? get_the_title( $post_top_info['id'] ) : '';
+
+            $post_top_info['url'] = ( $post_top_info['use'] ) ? get_permalink( $post_top_info['id'] ) : '';
+        
+            return $post_top_info;
+        }
+
+        public static function get_post_type_info() {
+            // Check use post top page
+            $post_top_info = self::get_post_top_info();
+        
+            $woocommerce_shop_page_id = get_option( 'woocommerce_shop_page_id' );
+        
+            // Get post type slug
+            /*
+            -------------------------------------------*/
+            // When WooCommerce taxonomy archive page , get_post_type() is does not work properly
+            // $post_type_info['slug'] = get_post_type();
+        
+            global $wp_query;
+            if ( is_page() ){
+                $post_type_info['slug'] = 'page';
+            } elseif ( ! empty( $wp_query->query_vars['post_type'] ) ) {
+        
+                $post_type_info['slug'] = $wp_query->query_vars['post_type'];
+                // Maybe $wp_query->query_vars['post_type'] is usually an array...
+                if ( is_array( $post_type_info['slug'] ) ) {
+                    $post_type_info['slug'] = current( $post_type_info['slug'] );
+                }
+            } elseif ( is_tax() ) {
+                // Case of tax archive and no posts
+                $taxonomy         = get_queried_object()->taxonomy;
+                $post_type_info['slug'] = get_taxonomy( $taxonomy )->object_type[0];
+            } else {
+                // This is necessary that when no posts.
+                $post_type_info['slug'] = 'post';
+            }
+        
+            // Get custom post type name
+            /*-------------------------------------------*/
+            $post_type_object = get_post_type_object( $post_type_info['slug'] );
+            if ( $post_type_object ) {
+                $allowed_html = array(
+                    'span' => array( 'class' => array() ),
+                    'b'    => array(),
+                );
+                if ( $post_top_info['use'] && $post_type_info['slug'] == 'post' ) {
+                    $post_type_info['name'] = wp_kses( get_the_title( $post_top_info['id'] ), $allowed_html );
+                } elseif ( $woocommerce_shop_page_id && $post_type_info['slug'] == 'product' ) {
+                    $post_type_info['name'] = wp_kses( get_the_title( $woocommerce_shop_page_id ), $allowed_html );
+                } else {
+                    $post_type_info['name'] = esc_html( $post_type_object->labels->name );
+                }
+            }
+        
+            // Get custom post type archive url
+            /*-------------------------------------------*/
+            if ( $post_top_info['use'] && $post_type_info['slug'] == 'post' ) {
+                $post_type_info['url'] = esc_url( get_the_permalink( $post_top_info['id'] ) );
+            } elseif ( $woocommerce_shop_page_id && $post_type_info['slug'] == 'product' ) {
+                $post_type_info['url'] = esc_url( get_the_permalink( $woocommerce_shop_page_id ) );
+            } else {
+                $post_type_info['url'] = esc_url( get_post_type_archive_link( $post_type_info['slug'] ) );
+            }
+        
+            $post_type_info = apply_filters( 'lightning_postType_custom', $post_type_info );
+            return $post_type_info;
+        }
+
 		/**
 		 * Sanitize Check Box
 		 *
