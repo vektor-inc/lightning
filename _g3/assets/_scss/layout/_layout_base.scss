@@ -45,7 +45,8 @@
 
 // サイドバーの方が幅が狭いので、同じ余白を取ると錯覚でサイドバーの余白の方が広く見えてしまうため、余白を小さく設定してある
 .sub-section--base--on {
-	--vk-width-col-2-sub: 30%;
+	// サイドバーがjsでfixedにすると、ストレートな幅指定だと基準がウィンドウになってしまうため、コンテナ基準にしている
+	--vk-width-col-2-sub: calc( var(--vk-width-container) * 0.3 );
 	padding: var(--vk-width-base-padding) var(--vk-width-base-padding-side);
 }
 

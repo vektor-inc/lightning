@@ -27,7 +27,8 @@ $containter-padding:15px;
 
     --vk-width-container : 90%;
     --vk-width-col-2-main : 66.6%;
-    --vk-width-col-2-sub : 27%;
+    // サイドバーがjsでfixedにすると、ストレートな幅指定だと基準がウィンドウになってしまうため、コンテナ基準にしている
+	--vk-width-col-2-sub: calc( var(--vk-width-container) * 0.27 );
 
     --vk-margin-meta : 0.5rem;
     --vk-margin-element-bottom : 1rem;

@@ -67,7 +67,6 @@
 		sideSection.style.bottom = null;
 		sideSection.style.left = null;
 		sideSection.style.right = null;
-		sideSection.style.width = null;
     }
 
 	function sidebar_top_margin(){
@@ -120,8 +119,10 @@
 
 			// サイドバーの高さ
 			let sidebar_height = sideSection.offsetHeight
-			// サイドバーの幅
-			let sidebar_width = sideSection.offsetWidth
+
+			// サイドバーの幅（サイドバーの幅は横幅によって可変するので本来jsで指定しない方が良い）
+			// let sidebar_width = sideSection.offsetWidth
+
             // サイドバー下端までの距離 = コンテンツエリア開始位置 + サイドバーの高さ
 			let sidebar_position_bottom_default = content_position_top + sidebar_height;
 			
@@ -208,12 +209,12 @@
 					sideSection.style.position = "fixed";
 					sideSection.style.top = sidebar_top_margin() + "px";
 					sideSection.style.left = sidebar_position_left_default + "px";
-					sideSection.style.width = sidebar_width + "px";
+
 					// 固定解除
 					if ( is_sidebar_top_stop_release ){
 						sideSection.style.position = null;
 						sideSection.style.left = null;
-						sideSection.style.width = null;
+
 						// 固定解除したときににサイドバー上部に余白を付与
 						sideSection.style.top = diff_content_and_sidebar_bottom + "px";
 					}
@@ -231,7 +232,6 @@
 					sideSection.style.position = "fixed";
 					sideSection.style.bottom = "30px";
 					sideSection.style.left = sidebar_position_left_default + "px";
-					sideSection.style.width = sidebar_width + "px";
 					
 					// コンテンツエリア下端が表示されたら
 					if ( is_content_bottom_display ){
