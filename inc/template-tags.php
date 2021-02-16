@@ -45,7 +45,7 @@ function lightning_get_the_class_name( $position = '' ) {
 			'header_logo'     => 'navbar-brand siteHeader_logo',
 			'nav_menu_header' => 'gMenu vk-menu-acc',
 			'siteContent'     => 'section siteContent',
-			'mainSection'     => 'col mainSection mainSection-col-two baseSection',
+			'mainSection'     => 'col mainSection mainSection-col-two baseSection vk_posts-mainSection',
 			'sideSection'     => 'col subSection sideSection sideSection-col-two baseSection',
 			'siteFooter'      => 'section siteFooter',
 		);
@@ -199,8 +199,14 @@ function lightning_get_post_type() {
 		$taxonomy         = get_queried_object()->taxonomy;
 		$postType['slug'] = get_taxonomy( $taxonomy )->object_type[0];
 	} else {
+		// Cope with bbpress search result
+		if ( ! empty( $wp_query->query_vars['bbp_search'] ) ){
+			$postType['slug'] = 'forum';
+
 		// This is necessary that when no posts.
-		$postType['slug'] = 'post';
+		} else {
+			$postType['slug'] = 'post';
+		}
 	}
 
 	// Get custom post type name

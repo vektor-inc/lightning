@@ -63,7 +63,7 @@ if ( apply_filters( 'lightning_default_slide_display', true ) ) {
 	">
 
 				<?php if ( lightning_is_slide_outer_link( $lightning_theme_options, $i ) ) : ?>
-						<a href="<?php echo esc_url( $lightning_theme_options[ 'top_slide_url_' . $i ] ); ?>"<?php echo $link_target; ?>>
+					<a href="<?php echo esc_url( $lightning_theme_options[ 'top_slide_url_' . $i ] ); ?>"<?php echo $link_target; ?>>
 				<?php endif; ?>
 
 				<picture>
@@ -87,9 +87,7 @@ if ( apply_filters( 'lightning_default_slide_display', true ) ) {
 					}
 					?>
 
-					<?php if ( lightning_is_slide_outer_link( $lightning_theme_options, $i ) ) : ?>
-						</a>
-					<?php endif; ?>
+
 
 					<div class="slide-text-set mini-content">
 
@@ -150,6 +148,10 @@ if ( apply_filters( 'lightning_default_slide_display', true ) ) {
 					<?php VK_Component_Mini_Contents::the_view( $mini_content_args ); ?>
 
 					</div><!-- .mini-content -->
+
+					<?php if ( lightning_is_slide_outer_link( $lightning_theme_options, $i ) ) : ?>
+						</a>
+					<?php endif; ?>
 			  </div><!-- [ /.item ] -->
 
 				<?php } // if ( $top_slide_image_src ) { ?>
