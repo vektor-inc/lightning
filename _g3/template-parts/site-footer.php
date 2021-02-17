@@ -31,15 +31,15 @@
 				// Area setting
 				$footer_widget_area = array(
 					// Use 1 widget area
-					1 => array( 'class' => 'col-md-12' ),
+					1 => array( 'class' => 'col-lg-12' ),
 					// Use 2 widget area
-					2 => array( 'class' => 'col-md-6' ),
+					2 => array( 'class' => 'col-lg-6 col-md-6' ),
 					// Use 3 widget area
-					3 => array( 'class' => 'col-md-4' ),
+					3 => array( 'class' => 'col-lg-4 col-md-6' ),
 					// Use 4 widget area
-					4 => array( 'class' => 'col-md-3' ),
+					4 => array( 'class' => 'col-lg-3 col-md-6' ),
 					// Use 6 widget area
-					6 => array( 'class' => 'col-md-2' ),
+					6 => array( 'class' => 'col-lg-2 col-md-6' ),
 				);
 
 				// Print widget area

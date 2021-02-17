@@ -59,7 +59,8 @@ p {
 
 h1,h2,h3,h4,h5,h6 {
 	margin-top:0;
-	margin-bottom:1.2em;
+	margin-bottom:var(--vk-margin-headding-bottom);
+	line-height: var(--vk-line-height-low);
 	a {
 		text-decoration: none;
 	}
