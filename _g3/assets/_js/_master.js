@@ -17,8 +17,8 @@
     if(lightningOpt.header_scrool){
         let body_class_timer = false;
         let body_class_lock = false;
-        let header_scrool_func = ()=>{
-            if(!body_class_lock && window.pageYOffset > 160){
+        let header_scrool_func = ()=>{ 
+            if(!body_class_lock && window.pageYOffset > siteHeader.offsetHeight){
                 document.body.classList.add('header_scrolled')
             }else{
                 document.body.classList.remove('header_scrolled')
