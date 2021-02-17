@@ -34,8 +34,15 @@ function lightning_add_customize_class( $wp_customize ) {
 			<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
 				<?php $style = ( $this->input_before || $this->input_after ) ? ' style="width:50%"' : ''; ?>
 			<div>
-				<?php echo wp_kses_post( $this->input_before ); ?>
-			<input type="text" value="<?php echo esc_attr( $this->value() ); ?>"<?php echo $style; ?> <?php $this->link(); ?> />
+				<?php 
+				echo wp_kses_post( $this->input_before );
+				if ( $this->type === 'number' ){
+					$imput_type = 'number';
+				} else {
+					$imput_type = 'text';
+				}
+				?>
+				<input type="<?php echo $imput_type; ?>" value="<?php echo esc_attr( $this->value() ); ?>"<?php echo $style; ?> <?php $this->link(); ?> />
 				<?php echo wp_kses_post( $this->input_after ); ?>
 			</div>
 			<div><?php echo $this->description; ?></div>
