@@ -17,7 +17,6 @@
   lightning_check_color_mode
 /*-------------------------------------------*/
 
-
 /*
   lightning_get_the_class_name
 /*-------------------------------------------*/
@@ -88,7 +87,11 @@ function lightning_the_class_name( $position = '', $extend = array() ) {
 	echo lightning_get_the_class_name( $position, $extend );
 }
 
-
+// add_action( 'lightning_header_append', 'lightning_debug_active' );
+function lightning_debug_active(){
+	$option = get_option('lightning_theme_options');
+	print '<pre style="text-align:left">';print_r($option);print '</pre>';
+}
 
 /*
   Theme default options
@@ -115,6 +118,9 @@ function lightning_get_theme_options_default() {
 		'top_slide_text_color_2'        => '#000',
 		'top_slide_text_shadow_use_2'   => true,
 		'top_slide_text_shadow_color_2' => '#fff',
+		'layout'        				=> array(
+			'front-page'				=> 'col-one-no-subsection',
+		)
 	);
 	return $theme_options_default;
 }
@@ -128,8 +134,7 @@ function lightning_theme_options_default() {
   lightning_get_theme_options()
 /*-------------------------------------------*/
 function lightning_get_theme_options() {
-	$lightning_theme_options_default = lightning_get_theme_options_default();
-	$lightning_theme_options         = get_option( 'lightning_theme_options', $lightning_theme_options_default );
+	$lightning_theme_options         = get_option( 'lightning_theme_options', lightning_get_theme_options_default() );
 	// It use then display default text to old user ... orz
 	// $lightning_theme_options         = wp_parse_args( $lightning_theme_options, $lightning_theme_options_default );
 	return $lightning_theme_options;
