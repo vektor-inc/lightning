@@ -39,25 +39,21 @@ do_action( 'lightning_header_before' );
 			</a>
 			</<?php echo $title_tag; ?>>
 			<?php do_action( 'lightning_header_logo_after' ); ?>
-			<?php
-			$gMenu = wp_nav_menu( array(
-				'theme_location' => 'Header',
-				'container'      => 'nav',
-				'items_wrap'     => '<ul id="%1$s" class="%2$s ' . lightning_get_the_class_name( 'nav_menu_header' ) . '">%3$s</ul>',
-				'fallback_cb'    => '',
-				'echo'           => false,
-				'walker'         => new description_walker(),
-			) );
-			?>
 		</div>
 
-		<?php
-		if ( $gMenu ) {
-			echo '<div id="gMenu_outer" class="gMenu_outer">';
-			echo $gMenu;
-			echo '</div>';
-		}
-		?>
+		<?php if ( has_nav_menu( 'Header' ) ) : ?>
+			<div id="gMenu_outer" class="gMenu_outer">
+				<?php 
+				wp_nav_menu( array(
+					'theme_location' => 'Header',
+					'container'      => 'nav',
+					'items_wrap'     => '<ul id="%1$s" class="%2$s ' . lightning_get_the_class_name( 'nav_menu_header' ) . '">%3$s</ul>',
+					'fallback_cb'    => '',
+					'walker'         => new description_walker(),
+				) );
+				?>
+			</div>
+		<?php endif; ?>
 	</div>
 	<?php do_action( 'lightning_header_append' ); ?>
 </header>
