@@ -7,4 +7,4 @@ thumbs.db
 ._.DS_Store
 .*.before
 vendor/
-
+.*/.*.map
