@@ -14,9 +14,79 @@ function lightning_add_starter_content(){
 				'post_content' => join(
 					'',
 					array(
-						'<!-- wp:vk-blocks/pr-blocks {"url1":"/service/","icon1":"far fa-file-alt","color1":"#1e73be","bgType1":"1","url2":"/company/","icon2":"far fa-building","color2":"#1e73be","bgType2":"1","url3":"/company/recruit/","icon3":"fas fa-user-tie","color3":"#1e73be","bgType3":"1"} -->
-						<div class="wp-block-vk-blocks-pr-blocks vk_prBlocks row"><div class="vk_prBlocks_item col-sm-4"><a href="/service/" class="vk_prBlocks_item_link" target="_self" rel="noopener noreferrer"><div class="vk_prBlocks_item_icon_outer" style="background-color:transparent;border:1px solid #1e73be"><i style="color:#1e73be" class="far vk_prBlocks_item_icon fa-file-alt"></i></div><h3 class="vk_prBlocks_item_title vk_prBlocks_item_title-1">サービス案内</h3><p class="vk_prBlocks_item_summary vk_prBlocks_item_summary-1">弊社が提供するサービス＆ソリューションについてご紹介しています。経験豊富なスタッフがこだわりを持って取り組んでいます。</p></a></div><div class="vk_prBlocks_item col-sm-4"><a href="/company/" class="vk_prBlocks_item_link" target="_self" rel="noopener noreferrer"><div class="vk_prBlocks_item_icon_outer" style="background-color:transparent;border:1px solid #1e73be"><i style="color:#1e73be" class="far vk_prBlocks_item_icon fa-building"></i></div><h3 class="vk_prBlocks_item_title vk_prBlocks_item_title-2">会社案内</h3><p class="vk_prBlocks_item_summary vk_prBlocks_item_summary-2">弊社代表挨拶や会社の基本情報について記載しています。また、弊社の歴史なども紹介していますので是非ご覧ください。</p></a></div><div class="vk_prBlocks_item col-sm-4"><a href="/company/recruit/" class="vk_prBlocks_item_link" target="_self" rel="noopener noreferrer"><div class="vk_prBlocks_item_icon_outer" style="background-color:transparent;border:1px solid #1e73be"><i style="color:#1e73be" class="fas vk_prBlocks_item_icon fa-user-tie"></i></div><h3 class="vk_prBlocks_item_title vk_prBlocks_item_title-3">採用情報</h3><p class="vk_prBlocks_item_summary vk_prBlocks_item_summary-3">株式会社サンプルでは一緒に働く仲間を募集しています。自分で考えていろいろな事にチャレンジできるやりがいのある仕事です。</p></a></div></div>
-						<!-- /wp:vk-blocks/pr-blocks -->',
+						'<!-- wp:columns -->
+						<div class="wp-block-columns"><!-- wp:column -->
+						<div class="wp-block-column"><!-- wp:image {"id":812,"sizeSlug":"large","linkDestination":"media","className":"is-style-vk-image-border"} -->
+						<figure class="wp-block-image size-large is-style-vk-image-border"><a href="http://localhost:8888/wp-content/uploads/2018/02/ipad-820272_1920.jpg"><img src="http://localhost:8888/wp-content/uploads/2018/02/ipad-820272_1920-1024x683.jpg" alt="" class="wp-image-812"/></a></figure>
+						<!-- /wp:image -->
+						
+						<!-- wp:heading {"level":5} -->
+						<h5>About Lightning</h5>
+						<!-- /wp:heading -->
+						
+						<!-- wp:paragraph -->
+						<p>Lightning is a free WordPress theme developed to make it easy to create a business site without specialized knowledge of web production.</p>
+						<!-- /wp:paragraph -->
+						
+						<!-- wp:buttons -->
+						<div class="wp-block-buttons"><!-- wp:button {"borderRadius":0,"className":"is-style-outline"} -->
+						<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://wordpress.org">Read more</a></div>
+						<!-- /wp:button --></div>
+						<!-- /wp:buttons -->
+						
+						<!-- wp:spacer {"height":20} -->
+						<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+						<!-- /wp:spacer --></div>
+						<!-- /wp:column -->
+						
+						<!-- wp:column -->
+						<div class="wp-block-column"><!-- wp:image {"id":812,"sizeSlug":"large","linkDestination":"media","className":"is-style-vk-image-border"} -->
+						<figure class="wp-block-image size-large is-style-vk-image-border"><a href="http://localhost:8888/wp-content/uploads/2018/02/ipad-820272_1920.jpg"><img src="http://localhost:8888/wp-content/uploads/2018/02/ipad-820272_1920-1024x683.jpg" alt="" class="wp-image-812"/></a></figure>
+						<!-- /wp:image -->
+						
+						<!-- wp:heading {"level":5} -->
+						<h5>ExUnit</h5>
+						<!-- /wp:heading -->
+						
+						<!-- wp:paragraph -->
+						<p>By using the plug-in "VK All in One Expansion Unit (free)", you can use the various functions and rich widgets.</p>
+						<!-- /wp:paragraph -->
+						
+						<!-- wp:buttons -->
+						<div class="wp-block-buttons"><!-- wp:button {"borderRadius":0,"className":"is-style-outline"} -->
+						<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://wordpress.org">Read more</a></div>
+						<!-- /wp:button --></div>
+						<!-- /wp:buttons -->
+						
+						<!-- wp:spacer {"height":20} -->
+						<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+						<!-- /wp:spacer --></div>
+						<!-- /wp:column -->
+						
+						<!-- wp:column -->
+						<div class="wp-block-column"><!-- wp:image {"id":812,"sizeSlug":"large","linkDestination":"media","className":"is-style-vk-image-border"} -->
+						<figure class="wp-block-image size-large is-style-vk-image-border"><a href="http://localhost:8888/wp-content/uploads/2018/02/ipad-820272_1920.jpg"><img src="http://localhost:8888/wp-content/uploads/2018/02/ipad-820272_1920-1024x683.jpg" alt="" class="wp-image-812"/></a></figure>
+						<!-- /wp:image -->
+						
+						<!-- wp:heading {"level":5} -->
+						<h5>VK Blocks</h5>
+						<!-- /wp:heading -->
+						
+						<!-- wp:paragraph -->
+						<p>Plugin VK Blocks (free) is a block library that adds various blocks that are useful for building business sites.</p>
+						<!-- /wp:paragraph -->
+						
+						<!-- wp:buttons -->
+						<div class="wp-block-buttons"><!-- wp:button {"borderRadius":0,"className":"is-style-outline"} -->
+						<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://wordpress.org">Read more</a></div>
+						<!-- /wp:button --></div>
+						<!-- /wp:buttons -->
+						
+						<!-- wp:spacer {"height":20} -->
+						<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+						<!-- /wp:spacer --></div>
+						<!-- /wp:column --></div>
+						<!-- /wp:columns -->',
 						'<!-- wp:heading -->',
 						'<h2>News &amp; Information</h2>',
 						'<!-- /wp:heading -->',
@@ -28,49 +98,44 @@ function lightning_add_starter_content(){
 			'contact',
 			'blog',
 			'sitemap' => array(
-				'post_title'   => __( 'Site Map', 'lightning' ),
-				'post_content' => join(
+				'post_type'		=> 'page',
+				'post_title'	=> __( 'Site Map', 'lightning' ),
+				'post_name'		=> 'sitemap',
+				'post_content'	=> join(
 					'',
 					array(
 						'<!-- wp:vk-blocks/sitemap /-->',
 					)
 				),
 			),
-			'post1' => array(
+			'renew-release' => array(
 				'post_type'    => 'post',
-				'post_title'   => '投稿1です',
+				'post_title'   => 'The website was renewed.',
 				'thumbnail'    => '{{image-opening}}',
 				'post_content' => join(
 					'',
 					array(
 						'<!-- wp:paragraph -->',
-						'<p>投稿サンプルです。</p>',
+						'<p>We have renewed our website.</p>',
+						'<!-- /wp:paragraph -->',
+						'<!-- wp:paragraph -->',
+						'<p>With this renewal, we have redesigned the website so that it is easier to see and convey information to everyone.</p>',
+						'<!-- /wp:paragraph -->',
+						'<!-- wp:paragraph -->',
+						'<p>Thank you for your continued patronage.</p>',
 						'<!-- /wp:paragraph -->',
 					)
 				),
 			),
-			'post2' => array(
+			'hellow-lightning' => array(
 				'post_type'    => 'post',
-				'post_title'   => '重要なお知らせ',
+				'post_title'   => 'Hellow Lightning',
 				'thumbnail'    => '{{image-opening}}',
 				'post_content' => join(
 					'',
 					array(
 						'<!-- wp:paragraph -->',
-						'<p>投稿サンプルです。</p>',
-						'<!-- /wp:paragraph -->',
-					)
-				),
-			),
-			'post3' => array(
-				'post_type'    => 'post',
-				'post_title'   => '制作実績を更新しました',
-				'thumbnail'    => '{{image-opening}}',
-				'post_content' => join(
-					'',
-					array(
-						'<!-- wp:paragraph -->',
-						'<p>投稿サンプルです。</p>',
+						'<p>Lightning is includes to a variety of ideas for making it easier to business site. Please experience the ease of use of the Lightning.</p>',
 						'<!-- /wp:paragraph -->',
 					)
 				),
@@ -78,8 +143,8 @@ function lightning_add_starter_content(){
 		),
 		'widgets' => array(
 			'common-side-bottom-widget-area' => array(
-				'meta_custom' => array( 'meta', array(
-					'title' => 'Pre-hydrated meta widget.',
+				'search' => array( 'meta', array(
+					'title' => '',
 				) ),
 			),
 		),
@@ -105,12 +170,7 @@ function lightning_add_starter_content(){
 				'name'  => __( 'Footer Nav', 'lightning' ),
 				'items' => array(
 					'page_contact',
-					'page_sitemap',
 				),
-				// 'items' => array(
-				// 	// 'page_privacy',
-				// 	'page_sitemap',
-				// ),
 			),
 		),
 	);
