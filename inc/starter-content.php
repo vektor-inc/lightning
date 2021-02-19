@@ -14,6 +14,9 @@ function lightning_add_starter_content(){
 				'post_content' => join(
 					'',
 					array(
+						'<!-- wp:vk-blocks/pr-blocks {"url1":"/service/","icon1":"far fa-file-alt","color1":"#1e73be","bgType1":"1","url2":"/company/","icon2":"far fa-building","color2":"#1e73be","bgType2":"1","url3":"/company/recruit/","icon3":"fas fa-user-tie","color3":"#1e73be","bgType3":"1"} -->
+						<div class="wp-block-vk-blocks-pr-blocks vk_prBlocks row"><div class="vk_prBlocks_item col-sm-4"><a href="/service/" class="vk_prBlocks_item_link" target="_self" rel="noopener noreferrer"><div class="vk_prBlocks_item_icon_outer" style="background-color:transparent;border:1px solid #1e73be"><i style="color:#1e73be" class="far vk_prBlocks_item_icon fa-file-alt"></i></div><h3 class="vk_prBlocks_item_title vk_prBlocks_item_title-1">サービス案内</h3><p class="vk_prBlocks_item_summary vk_prBlocks_item_summary-1">弊社が提供するサービス＆ソリューションについてご紹介しています。経験豊富なスタッフがこだわりを持って取り組んでいます。</p></a></div><div class="vk_prBlocks_item col-sm-4"><a href="/company/" class="vk_prBlocks_item_link" target="_self" rel="noopener noreferrer"><div class="vk_prBlocks_item_icon_outer" style="background-color:transparent;border:1px solid #1e73be"><i style="color:#1e73be" class="far vk_prBlocks_item_icon fa-building"></i></div><h3 class="vk_prBlocks_item_title vk_prBlocks_item_title-2">会社案内</h3><p class="vk_prBlocks_item_summary vk_prBlocks_item_summary-2">弊社代表挨拶や会社の基本情報について記載しています。また、弊社の歴史なども紹介していますので是非ご覧ください。</p></a></div><div class="vk_prBlocks_item col-sm-4"><a href="/company/recruit/" class="vk_prBlocks_item_link" target="_self" rel="noopener noreferrer"><div class="vk_prBlocks_item_icon_outer" style="background-color:transparent;border:1px solid #1e73be"><i style="color:#1e73be" class="fas vk_prBlocks_item_icon fa-user-tie"></i></div><h3 class="vk_prBlocks_item_title vk_prBlocks_item_title-3">採用情報</h3><p class="vk_prBlocks_item_summary vk_prBlocks_item_summary-3">株式会社サンプルでは一緒に働く仲間を募集しています。自分で考えていろいろな事にチャレンジできるやりがいのある仕事です。</p></a></div></div>
+						<!-- /wp:vk-blocks/pr-blocks -->',
 						'<!-- wp:heading -->',
 						'<h2>News &amp; Information</h2>',
 						'<!-- /wp:heading -->',
@@ -25,7 +28,6 @@ function lightning_add_starter_content(){
 			'contact',
 			'blog',
 			'sitemap' => array(
-				'post_type'    => 'page',
 				'post_title'   => __( 'Site Map', 'lightning' ),
 				'post_content' => join(
 					'',
@@ -96,6 +98,7 @@ function lightning_add_starter_content(){
 					'page_about',
 					'page_blog',
 					'page_contact',
+					'page_page-name',
 				),
 			),
 			'Footer'  => array(
