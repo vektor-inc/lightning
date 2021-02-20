@@ -529,7 +529,7 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 				$wp_customize->add_setting(
 					'vk_advanced_slider_option[top_slide_text_title_' . $i . ']',
 					array(
-						'default'           => $customize_default['top_slide_text_title'],
+						'default'           => $default_options['top_slide_text_title_' . $i],
 						'type'              => 'option',
 						'capability'        => 'edit_theme_options',
 						'sanitize_callback' => 'wp_kses_post',
