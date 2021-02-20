@@ -4,16 +4,16 @@
 
 html,
 body {
-	overflow-x: hidden;
+	// overflow-x: hidden; // 管理画面側ででつけるとツールバーの位置が変動する
+}
+html,
+body {
+	font-size: var(--vk-size-text);
 	padding: 0;
 	margin:0;
 	font-family: 'Lato', 'Noto Sans JP', 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
 	-ms-word-wrap: break-word;
 	word-wrap: break-word;
-}
-html,
-body {
-	font-size: var(--vk-size-text);
 }
 
 @media (max-width: $md-max) {
