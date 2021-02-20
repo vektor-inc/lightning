@@ -90,25 +90,6 @@ function lightning_the_class_name( $position = '' ){
 function lightning_get_theme_options_default() {
 	$theme_options_default = array(
 		'front_pr_display'              => true,
-		'top_slide_time'                => 4000,
-		'top_slide_image_1'             => get_template_directory_uri() . '/assets/images/top_image_1.jpg',
-		'top_slide_url_1'               => __( 'https://lightning.nagoya/', 'lightning' ),
-		'top_slide_text_title_1'        => __( 'Simple and Customize easy <br>WordPress theme.', 'lightning' ),
-		'top_slide_text_caption_1'      => __( '100% GPL Lisence  and adopting the bootstrap', 'lightning' ),
-		'top_slide_text_btn_1'          => __( 'READ MORE', 'lightning' ),
-		'top_slide_text_align_1'        => 'left',
-		'top_slide_text_color_1'        => '#000',
-		'top_slide_text_shadow_use_1'   => true,
-		'top_slide_text_shadow_color_1' => '#fff',
-		'top_slide_image_2'             => get_template_directory_uri() . '/assets/images/top_image_2.jpg',
-		'top_slide_url_2'               => esc_url( home_url() ),
-		'top_slide_text_title_2'        => __( 'Johnijirou On Snow', 'lightning' ),
-		'top_slide_text_caption_2'      => __( 'Growing up everyday', 'lightning' ),
-		'top_slide_text_btn_2'          => __( 'READ MORE', 'lightning' ),
-		'top_slide_text_align_2'        => 'left',
-		'top_slide_text_color_2'        => '#000',
-		'top_slide_text_shadow_use_2'   => true,
-		'top_slide_text_shadow_color_2' => '#fff',
 	);
 	return $theme_options_default;
 }

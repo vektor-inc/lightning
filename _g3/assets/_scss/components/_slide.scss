@@ -1,0 +1,96 @@
+@charset "utf-8";
+
+.slide {
+	&-cover {
+		position: absolute;
+		top: 0;
+		display: block;
+		overflow: hidden;
+		width: 100%;
+		// height: 100%;
+	}
+	&-text-set {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translateY(-50%) translateX(-50%);
+		width: 100%;
+		&--align--left {
+			.slide-text-title {
+				text-align: left;
+			}
+		}
+		&--align--center {
+			.slide-text-title {
+				text-align: center;
+			}
+		}
+		&--align--right {
+			.slide-text-title {
+				text-align: right;
+			}
+		}
+	}
+	&-text-title {
+		font-size: 1.31rem;
+
+		//見出しデザインリセット（見出しデザイン指定にまけないように）
+		background-color:unset;
+		position: relative;
+		border:none;
+		padding:unset;
+		margin-left: unset;
+		margin-right: unset;
+		border-radius:unset;
+		outline: unset;
+		outline-offset: unset;
+		box-shadow: unset;
+		content:none;
+		overflow: unset;
+		// display:inline; がないとh3の見出しデザインで左右線を選ばれた時に flax を指定されてるので文字の中央揃えなどが効かなくなる
+		display: inline;
+		&::after,&::before{
+			content: none;
+		}
+		@media (min-width: $md-min) {
+			font-size: 28px;
+		}
+		@media (min-width: $lg-min) {
+			font-size: 34px;
+		}
+	}
+	&-text-caption {
+		// タイトル側が margin-bottom 指定が効かないのでこちらで指定
+		margin-top: 0.7em;
+		@media (min-width: $sm-min) {
+		}
+		@media (min-width: $lg-min) {
+		}
+	}
+	picture img {
+		width: 100%;
+		height: auto;
+	}
+	
+	.slide-text-set .btn-ghost {
+		font-size: 16px;
+		margin-top: 1.5em;
+		padding: 0.5em 2.2em;
+		color: var(--vk-color-text-body);
+		border: 1px solid var(--vk-color-text-body);
+		@media (min-width: $md-min) {
+			// font-size: 18px;
+		}
+		&:hover{
+			border-color: var(--vk-color-primary);
+			background-color: var(--vk-color-primary);
+		}
+	}
+	.swiper-button-prev:after,
+	.swiper-button-next:after {
+		@media (max-width: $xs-max) {
+			display: none;
+		}
+		font-size: 1.5em;
+	}
+}

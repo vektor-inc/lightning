@@ -87,6 +87,8 @@ require get_parent_theme_file_path( LIG_G3_DIR . '/inc/widget-area.php' );
 require get_parent_theme_file_path( LIG_G3_DIR . '/inc/font-awesome/config.php' );
 require get_parent_theme_file_path( LIG_G3_DIR . '/inc/term-color/config.php' );
 require get_parent_theme_file_path( LIG_G3_DIR . '/inc/vk-css-optimize/config.php' );
+require get_parent_theme_file_path( LIG_G3_DIR . '/inc/vk-swiper/config.php' );
+require get_parent_theme_file_path( LIG_G3_DIR . '/inc/vk-advanced-slider/config.php' );
 
 /*
   Load CSS

@@ -8,6 +8,10 @@ if ( apply_filters( 'lightning_is_site-header', true ) ){
 do_action( 'lightning_site-header_after' );
 ?>
 
+<?php if ( is_front_page() ) {
+    VK_Advanced_Slider::display_html();
+} ?>
+
 <?php if ( ! is_front_page() ) : ?>
 
 <?php 
