@@ -67,7 +67,7 @@ function lightning_get_class_names( $position = '' ) {
         $class_names['main-section'] .= ' main-section--margin-vertical--off';
     }
 
-    return apply_filters( "lightning_get_class_names", $class_names );
+    return apply_filters( "lightning_get_class_names", $class_names, $position );
 }
 
 function lightning_get_the_class_name( $position = '' ){
@@ -75,7 +75,7 @@ function lightning_get_the_class_name( $position = '' ){
     if ( $position && empty( $class_names[$position] ) ){
         $class_names[$position] = $position;
     }
-    return esc_attr( $class_names[$position] );
+    return esc_attr( apply_filters( "lightning_get_the_class_name", $class_names[$position], $position ) );
 }
 
 function lightning_the_class_name( $position = '' ){

@@ -1,4 +1,4 @@
-<header class="<?php lightning_the_class_name( 'site-header' ); ?> site-header--center">
+<header class="<?php lightning_the_class_name( 'site-header' ); ?>">
 	<?php do_action( 'lightning_site-header_prepend' ); ?>
 	<div class="site-header-container container">
 
