@@ -1,7 +1,8 @@
 <?php
 add_filter( 'body_class', 'lightning_body_class_origin3' );
 function lightning_body_class_origin3( $class ) {
-	$class[] = 'body--header-layout--nav-float';
+	// $class[] = 'body--global-nav-layout--float';
+	$class[] = 'body--global-nav-layout--penetration';
 	return $class;
 }
 
@@ -13,10 +14,10 @@ function lightning_body_class_origin3( $class ) {
 //     return $class_names;
 // }
 
-add_filter( "lightning_get_the_class_name", 'lightning_add_class_name_site_header_origin3', 10, 2 );
-function lightning_add_class_name_site_header_origin3( $class_name, $position ){
-    if ( $position === 'site-header' ){
-        $class_name .= ' site-header--layout--nav-float';
-    }
-    return $class_name;
-}
+// add_filter( "lightning_get_the_class_name", 'lightning_add_class_name_site_header_origin3', 10, 2 );
+// function lightning_add_class_name_site_header_origin3( $class_name, $position ){
+//     if ( $position === 'site-header' ){
+//         $class_name .= ' site-header--layout--nav-float';
+//     }
+//     return $class_name;
+// }
