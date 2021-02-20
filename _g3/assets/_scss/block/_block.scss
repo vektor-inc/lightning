@@ -16,6 +16,19 @@
 	}
 }
 
+.has-small-font-size {
+	/* 12px */
+	font-size: 0.75rem;
+}
+.has-large-font-size{
+	/* 21px */
+	font-size: 1.313rem;
+}
+.has-huge-font-size{
+	/* 28px */
+	font-size: 1.75rem;
+}
+
 /* カラム（水平）で点線と余白ができる */
 .vk_post .row {
 	margin: 0;

@@ -38,6 +38,30 @@ function lightning_theme_setup() {
 	// Block Editor custom unit @since WordPress 5.5
 	add_theme_support( 'custom-units', 'px', 'em', 'rem', 'vw', 'vh' );
 
+	add_theme_support( 'editor-font-sizes', array(
+		array(
+			'name' => esc_attr__( 'Small', 'lightning' ),
+			'size' => 12,
+			'slug' => 'small'
+		),
+		array(
+			'name' => esc_attr__( 'Regular', 'lightning' ),
+			'size' => 16,
+			'slug' => 'regular'
+		),
+		array(
+			'name' => esc_attr__( 'Large', 'lightning' ),
+			'size' => 21,
+			'slug' => 'large'
+		),
+		array(
+			'name' => esc_attr__( 'Huge', 'lightning' ),
+			'size' => 28,
+			'slug' => 'huge'
+		)
+	) );
+
+
 	/*
 	  cope with page excerpt
 	/*-------------------------------------------*/
