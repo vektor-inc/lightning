@@ -11,7 +11,7 @@ function lightning_customize_register_panel( $wp_customize ) {
 			'priority'       => 503,
 			'capability'     => 'edit_theme_options',
 			'theme_supports' => '',
-			'title'          => __( 'Lightning Layoout Settings', 'vk-all-in-one-expansion-unit' ),
+			'title'          => __( 'Lightning Layout Settings', 'lightning' ),
 		)
 	);
 }
