@@ -5,6 +5,11 @@ define( 'LIG_G3_DIR', '_g3' );
 
 $theme_opt = wp_get_theme( get_template() );
 
+// add_action( 'lightning_site-header_append', function(){
+// 	$options = get_option( 'lightning_theme_options' );
+// 	print '<pre style="text-align:left">';print_r( $options );print '</pre>';
+// } );
+
 define( 'LIGHTNING_THEME_VERSION', $theme_opt->Version );
 // date("YmdHis")
 /*

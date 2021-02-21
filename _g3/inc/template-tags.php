@@ -82,8 +82,6 @@ function lightning_the_class_name( $position = '' ){
     echo lightning_get_the_class_name( $position );
 }
 
-
-
 /*
   Theme default options
 /*-------------------------------------------*/
