@@ -1,3 +1,4 @@
+$header_vertical_margin:1rem;
 .site-header {
     width:100%;
     z-index: 1000;
@@ -10,8 +11,8 @@
             margin-bottom:0.5rem;
         } 
         @media ( min-width: $lg-min ){
-            margin-top:1rem;
-            margin-bottom:1rem;
+            margin-top:$header_vertical_margin;
+            margin-bottom:$header_vertical_margin;
         }
         img {
             max-height:60px;
@@ -54,6 +55,7 @@
         }
     }
 }
+
 .body--global-nav-layout--penetration{
     .global-nav {
         width:100vw;
@@ -73,4 +75,61 @@
             }
         }
     }
+}
+
+/*-------------------------------------------*/
+/*	.site-header-sub
+/*-------------------------------------------*/
+.body--site-header-sub--active {
+    @media ( min-width:$lg-min ){
+        .site-header-logo{
+            float:left;
+        }
+    }
+}
+.site-header-sub {
+	@media (max-width: 991px) {
+		display: none;
+	}
+    margin-top:$header_vertical_margin;
+    margin-bottom:$header_vertical_margin;
+	float: right;
+	display: flex;
+    padding-left:2em;
+	.contact-txt {
+		line-height: 1.3em;
+		text-align: left;
+        margin-bottom: 0;
+		span {
+			display: block;
+		}
+    }
+    .contact-txt-catch,
+    .contact-txt-time {
+        font-size: 11px;
+    }
+    .contact-txt-tel {
+        font-size: 24px;
+        letter-spacing: 1px;
+        font-weight: bold;
+    }
+    .contact-txt-tel_icon {
+        margin-right: 0.3rem;
+    }
+	.contact-btn {
+		padding-left: 2em;
+		a {
+			height: 90%;
+			display: flex;
+			box-sizing: border-box;
+			align-items: center;
+			padding: 0 1.5em;
+			margin: 2px 0 2px;
+			font-size: 16px;
+		}
+		i,
+		svg {
+			margin-right: 7px;
+		}
+	}
 }

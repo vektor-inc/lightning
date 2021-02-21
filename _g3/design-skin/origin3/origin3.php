@@ -3,6 +3,7 @@ add_filter( 'body_class', 'lightning_body_class_origin3' );
 function lightning_body_class_origin3( $class ) {
 	// $class[] = 'body--global-nav-layout--float';
 	$class[] = 'body--global-nav-layout--penetration';
+    $class[] = 'body--site-header-sub--active';
 	return $class;
 }
 
