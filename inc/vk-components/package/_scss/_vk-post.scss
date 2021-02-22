@@ -11,7 +11,7 @@ $margin_post_item_element: 0.8rem;
 $margin_post_item_element_narrow: 0.4rem;
 
 :root {
-	--vk-font-size-xs:11px;
+	--vk-size-text-xs:11px;
 	--vk-color-link-text: #c00;
 	--vk-color-link-text-hover: #c00;
 	--vk-color-text-body: #333;
@@ -198,7 +198,7 @@ $xxl-min: 1400px;
 		opacity: 0.8;
 	}
 	& &_date {
-		font-size: var(--vk-font-size-xs);
+		font-size: var(--vk-size-text-xs);
 		margin-top: $margin_post_item_element_narrow;
 		color: var(--vk-color-text-light);
 	}
@@ -215,7 +215,7 @@ $xxl-min: 1400px;
 			}
 		}
 		&_name{
-			font-size:var(--vk-font-size-xs);
+			font-size:var(--vk-size-text-xs);
 		}
 	}
 	&_taxonomies {
@@ -225,7 +225,7 @@ $xxl-min: 1400px;
 		display: flex;
 		flex-direction: row;
 		margin: 0;
-		font-size: var(--vk-font-size-xs);
+		font-size: var(--vk-size-text-xs);
 		&:first-child {
 			margin-top:0;
 		}
