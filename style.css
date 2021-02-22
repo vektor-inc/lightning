@@ -5,7 +5,7 @@ Theme URI: https://lightning.nagoya
 Description: Lightning is a very simple & easy to customize theme which is based on the Bootstrap. It is also very friendly with custom post types and custom taxonomies. When you add a new one, the breadcrumbs will be adjusted and posts will look beautifully without editing or adding a template files.
 Author: Vektor,Inc.
 Author URI: https://www.vektor-inc.co.jp
-Version: 13.7.2
+Version: 13.8.0
 Requires at least: 5.3
 Tested up to: 5.6.0
 Requires PHP: 5.6.0
@@ -13,7 +13,20 @@ Tags: blog, one-column, custom-background, custom-colors, custom-logo, custom-me
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-
-Lightning WordPress theme, Copyright (C) 2015-2019 Vektor,Inc.
+Lightning WordPress theme, Copyright (C) 2015-2021 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
+
+Lightning WordPress Theme bundles the following third-party resources:
+
+Font Awesome icon font, Copyright 2012 Fonticons, Inc.
+its fonts are licensed under the terms of the SIL OFL License 1.1, and its code is licensed under the terms of the MIT license
+Source: https://fontawesome.com/
+
+Bootstrap framework, Copyright 2011 Bootstrap Authors and Twitter, Inc.
+Bootstrap is licensed under the terms of the MIT license
+Source: https://getbootstrap.com/
+
+CSS Simple Tree Shaking
+CSS Simple Tree Shaking is licensed under the terms of the GNU General Public License v2 license
+Source: https://celtislab.net/
 */

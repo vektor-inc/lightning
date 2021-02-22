@@ -1,7 +1,7 @@
-:root {
-    --vk-font-size-xs: 11px;
-    --vk-color-text-body: #333;
-    --vk-color-text-light: #666;
+div[class*="__inner-container"]{
+	max-width: calc( var(--vk-width-container)  - 15px - 15px );
+	margin-left:auto;
+	margin-right:auto;
 }
 
 .alignfull {
@@ -29,9 +29,6 @@
 
 .wp-block-image {
 	max-width: 100%;
-	// &.figure {
-	// 	max-width: 100%;
-	// }
 	/* 編集画面専用 */
 	.components-resizable-box__container {
 		max-width: 100%;
@@ -40,6 +37,12 @@
 		text-align: center;
 		font-size: 0.75rem;
 	}
+}
+
+.wp-block-button__link {
+	font-size: 1rem;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em; 
 }
 
 /*-------------------------------------------*/
@@ -60,35 +63,59 @@
 	margin: 0;
 	padding: 0;
 	list-style-type: none;
+    //グリット表示の場合
 	&.is-grid {
-		//グリット表示の場合
-		margin-left: -8px;
-		margin-right: -8px;
 		li {
-			margin: 0 8px 0 8px;
+			// margin: 0 8px 0 8px;
 			padding: 0.5rem;
 			border-bottom: none;
 		}
 	}
-	&__featured-image {
-		margin-bottom: 1em;
-	}
 	li {
 		margin: 0;
 		padding: 1rem 0;
-		border-bottom: 1px dotted #666;
-
-		a {
-			color: #464646;
-			@media (max-width: 768px) {
-				font-size: 1rem;
-			}
+		border-bottom: 1px solid var(--vk-color-border-hr);
+		& > a {
+			color: var(--vk-color-text-body);
+            text-decoration: none;
+            display:block; overflow:hidden;
+            margin-bottom:var(--vk-margin-meta);
+            &:hover{
+                text-decoration: underline;
+            }
 		}
-
-		time {
-			color: #d44950;
-		}
+        &:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
 	}
+    &__post-author,
+    &__post-date {
+        color: var(--vk-color-text-light);
+        font-size: var(--vk-size-text-sm);
+    }
+	&__featured-image {
+		margin-bottom: var(--vk-margin-meta);
+        display: block;
+        width: auto;
+        max-width: 100%;
+        img {
+            border: 1px solid var(--vk-color-border-hr);
+            max-width: 100%;
+        }
+        &.alignleft {
+            float:left;
+        }
+        &.alignright {
+            float:right;
+        }
+	}
+    &__post-excerpt {
+        font-size: var(--vk-size-text-sm);
+        margin-top:var(--vk-margin-meta);
+        color:var(--vk-color-text-body);
+    }
 }
 
 @media (max-width: 600px){
@@ -105,6 +132,66 @@
 		}
 	}
 }
+
+/*-------------------------------------------*/
+/*  「RSS」ブロック
+/*-------------------------------------------*/
+.wp-block-rss{
+	padding: 0;
+	list-style: none;
+	&__item{
+		margin-bottom:0;
+		padding: 0.8rem 0;
+		border-bottom: 1px solid rgba(0,0,0,.05);
+		&-title{
+            margin-bottom: var(--vk-margin-meta);
+			a{
+				color: var(--vk-color-text-body);
+                text-decoration: none;
+			}
+		}
+		&-publish-date{
+			margin-right: .5em;
+			&:before {
+				font-family: "Font Awesome 5 Free";
+				font-weight: 900;
+				margin-right: 5px;
+				margin-left: 0;
+				content: "\f073";
+			}
+		}
+		&-author{
+			&:before {
+				font-family: "Font Awesome 5 Free";
+				font-weight: 900;
+				margin-right: 5px;
+				margin-left: 0;
+				content: "\f303";
+			}
+		}
+		&-publish-date,
+		&-author{
+			font-size: var(--vk-size-text-xs);
+			color: var(--vk-color-text-light);
+			display:inline-block;
+			margin-top: .5em;
+		}
+		&-excerpt{
+			font-size: var(--vk-size-text-xs);
+			color: var(--vk-color-text-light);
+			margin-top: var(--vk-margin-meta);
+		}
+		
+	}
+    &.is-grid {
+        justify-content: space-between;
+        li {
+            margin-left:0;
+            margin-right:0;
+        }
+    }
+}
+
 
 /*-------------------------------------------*/
 /*  「検索」ブロック
@@ -132,55 +219,4 @@
 		margin-bottom: 0;
 	}
 
-}
-
-/*-------------------------------------------*/
-/*  「RSS」ブロック
-/*-------------------------------------------*/
-.wp-block-rss{
-	padding: 0;
-	list-style: none;
-	&__item{
-		margin-bottom:0;
-		padding: 0.8rem 0;
-		border-bottom: 1px solid rgba(0,0,0,.05);
-		&-title{
-			a{
-				color: var(--text-color);
-			}
-		}
-		&-publish-date{
-			margin-right: .5em;
-			&:before {
-				font-family: "Font Awesome 5 Free";
-				font-weight: 900;
-				margin-right: 5px;
-				margin-left: 0;
-				content: "\f073";
-			}
-		}
-		&-author{
-			&:before {
-				font-family: "Font Awesome 5 Free";
-				font-weight: 900;
-				margin-right: 5px;
-				margin-left: 0;
-				content: "\f303";
-			}
-		}
-		&-publish-date,
-		&-author{
-			font-size: var(--vk-font-size-xs);
-			color: var(--vk-color-text-light);
-			display:inline-block;
-			margin-top: .5em;
-		}
-		&-excerpt{
-			font-size: .813em;
-			line-height: 1.65em;
-			color: var(--vk-color-text-light);
-			margin-top: .2em;
-		}
-		
-	}
 }
