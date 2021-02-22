@@ -187,8 +187,7 @@ function lighting_front_pr_default_array() {
 
 add_action( 'lightning_home_content_top_widget_area_before', 'lightning_front_pr_blocks_add' );
 function lightning_front_pr_blocks_add() {
-	global $lightning_theme_options;
-	$options = $lightning_theme_options;
+	$options = lightning_get_theme_options();
 	/*
 	!isset( $options['front_pr_display'] ) ... Users from conventional / New install
 	$options['front_pr_display'] ... User setted hidden
