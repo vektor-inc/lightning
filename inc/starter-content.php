@@ -207,6 +207,7 @@ function lightning_add_starter_content(){
 			'show_on_front'  => 'page',
 			'page_on_front'  => '{{front}}',
 			'page_for_posts' => '{{blog}}',
+			'lightning_theme_options' => lightning_get_theme_options(),
 		),
 		// Set up nav menus for each of the two areas registered in the theme.
 		'nav_menus'   => array(
