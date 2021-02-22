@@ -16,8 +16,9 @@ function lightning_add_starter_content(){
 					array(
 						'<!-- wp:columns -->
 						<div class="wp-block-columns"><!-- wp:column -->
-						<div class="wp-block-column"><!-- wp:image {"id":812,"sizeSlug":"large","linkDestination":"media","className":"is-style-vk-image-border"} -->
-						<figure class="wp-block-image size-large is-style-vk-image-border"><a href="http://localhost:8888/wp-content/uploads/2018/02/ipad-820272_1920.jpg"><img src="http://localhost:8888/wp-content/uploads/2018/02/ipad-820272_1920-1024x683.jpg" alt="" class="wp-image-812"/></a></figure>
+						<div class="wp-block-column">
+						<!-- wp:image {"className":"border"} -->
+						<figure class="wp-block-image border"><img src="' . esc_url( get_template_directory_uri() ) . '/assets/images/logo_Lightning.png" alt=""/></figure>
 						<!-- /wp:image -->
 						
 						<!-- wp:heading {"level":5} -->
@@ -25,7 +26,7 @@ function lightning_add_starter_content(){
 						<!-- /wp:heading -->
 						
 						<!-- wp:paragraph -->
-						<p>Lightning is a free WordPress theme developed to make it easy to create a business site without specialized knowledge of web production.</p>
+						<p>Lightning is a WordPress theme designed to facilitate the creation of a website without specialized knowledge of web production.</p>
 						<!-- /wp:paragraph -->
 						
 						<!-- wp:buttons -->
@@ -40,8 +41,9 @@ function lightning_add_starter_content(){
 						<!-- /wp:column -->
 						
 						<!-- wp:column -->
-						<div class="wp-block-column"><!-- wp:image {"id":812,"sizeSlug":"large","linkDestination":"media","className":"is-style-vk-image-border"} -->
-						<figure class="wp-block-image size-large is-style-vk-image-border"><a href="http://localhost:8888/wp-content/uploads/2018/02/ipad-820272_1920.jpg"><img src="http://localhost:8888/wp-content/uploads/2018/02/ipad-820272_1920-1024x683.jpg" alt="" class="wp-image-812"/></a></figure>
+						<div class="wp-block-column">
+						<!-- wp:image {"className":"border"} -->
+						<figure class="wp-block-image border"><img src="' . esc_url( get_template_directory_uri() ) . '/assets/images/logo_ExUnit.png" alt=""/></figure>
 						<!-- /wp:image -->
 						
 						<!-- wp:heading {"level":5} -->
@@ -49,7 +51,7 @@ function lightning_add_starter_content(){
 						<!-- /wp:heading -->
 						
 						<!-- wp:paragraph -->
-						<p>By using the plug-in "VK All in One Expansion Unit (free)", you can use the various functions and rich widgets.</p>
+						<p>By using the multi-function plug-in "VK All in One Expansion Unit (free)", you can use the various useful functions and rich widgets.</p>
 						<!-- /wp:paragraph -->
 						
 						<!-- wp:buttons -->
@@ -64,8 +66,9 @@ function lightning_add_starter_content(){
 						<!-- /wp:column -->
 						
 						<!-- wp:column -->
-						<div class="wp-block-column"><!-- wp:image {"id":812,"sizeSlug":"large","linkDestination":"media","className":"is-style-vk-image-border"} -->
-						<figure class="wp-block-image size-large is-style-vk-image-border"><a href="http://localhost:8888/wp-content/uploads/2018/02/ipad-820272_1920.jpg"><img src="http://localhost:8888/wp-content/uploads/2018/02/ipad-820272_1920-1024x683.jpg" alt="" class="wp-image-812"/></a></figure>
+						<div class="wp-block-column">
+						<!-- wp:image {"className":"border"} -->
+						<figure class="wp-block-image border"><img src="' . esc_url( get_template_directory_uri() ) . '/assets/images/logo_VK_Blocks.png" alt=""/></figure>
 						<!-- /wp:image -->
 						
 						<!-- wp:heading {"level":5} -->
@@ -73,7 +76,7 @@ function lightning_add_starter_content(){
 						<!-- /wp:heading -->
 						
 						<!-- wp:paragraph -->
-						<p>Plugin VK Blocks (free) is a block library that adds various blocks that are useful for building business sites.</p>
+						<p>Plugin VK Blocks is a block library that adds various blocks and styles and functions that are useful for building your business websites.</p>
 						<!-- /wp:paragraph -->
 						
 						<!-- wp:buttons -->
@@ -86,18 +89,19 @@ function lightning_add_starter_content(){
 						<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
 						<!-- /wp:spacer --></div>
 						<!-- /wp:column -->
-
+						
 						<!-- wp:column -->
-						<div class="wp-block-column"><!-- wp:image {"id":812,"sizeSlug":"large","linkDestination":"media","className":"is-style-vk-image-border"} -->
-						<figure class="wp-block-image size-large is-style-vk-image-border"><a href="http://localhost:8888/wp-content/uploads/2018/02/ipad-820272_1920.jpg"><img src="http://localhost:8888/wp-content/uploads/2018/02/ipad-820272_1920-1024x683.jpg" alt="" class="wp-image-812"/></a></figure>
+						<div class="wp-block-column">
+						<!-- wp:image {"className":"border"} -->
+						<figure class="wp-block-image border"><img src="' . esc_url( get_template_directory_uri() ) . '/assets/images/logo_FilterSearch.png" alt=""/></figure>
 						<!-- /wp:image -->
 						
 						<!-- wp:heading {"level":5} -->
-						<h5>VK Blocks</h5>
+						<h5>VK Filter Search</h5>
 						<!-- /wp:heading -->
 						
 						<!-- wp:paragraph -->
-						<p>Plugin VK Blocks (free) is a block library that adds various blocks that are useful for building business sites.</p>
+						<p>Plugin VK Filter Search (free) can create the Filter Serach Block on your edit screen. It enable to filter search on post type and terms.</p>
 						<!-- /wp:paragraph -->
 						
 						<!-- wp:buttons -->
@@ -110,12 +114,40 @@ function lightning_add_starter_content(){
 						<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
 						<!-- /wp:spacer --></div>
 						<!-- /wp:column --></div>
-						<!-- /wp:columns -->',
+						<!-- /wp:columns -->
+						
+						<!-- wp:cover {"customOverlayColor":"#f3f3f3","minHeight":250,"contentPosition":"center center","align":"full"} -->
+						<div class="wp-block-cover alignfull has-background-dim" style="background-color:#f3f3f3;min-height:250px"><div class="wp-block-cover__inner-container"><!-- wp:spacer {"height":40} -->
+						<div style="height:40px" aria-hidden="true" class="wp-block-spacer"></div>
+						<!-- /wp:spacer -->
+						
+						<!-- wp:columns {"verticalAlignment":"center"} -->
+						<div class="wp-block-columns are-vertically-aligned-center"><!-- wp:column {"verticalAlignment":"center","width":"33.33%"} -->
+						<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:33.33%"><!-- wp:image {"align":"center"} -->
+						<div class="wp-block-image"><figure class="aligncenter size-large"><img src="' . esc_url( get_template_directory_uri() ) . '/assets/images/logo_Lightning.png" alt="" /></figure></div>
+						<!-- /wp:image --></div>
+						<!-- /wp:column -->
+						
+						<!-- wp:column {"verticalAlignment":"center","width":"66.66%"} -->
+						<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:66.66%"><!-- wp:heading {"level":4,"textColor":"black"} -->
+						<h4 class="has-black-color has-text-color">Layout Control</h4>
+						<!-- /wp:heading -->
+						
+						<!-- wp:paragraph {"textColor":"black"} -->
+						<p class="has-black-color has-text-color">Lightning has column control function that you can secific column number from "Appearance &gt; Customize &gt; Lightning Design Setting" and specific post edit screen.</p>
+						<!-- /wp:paragraph --></div>
+						<!-- /wp:column --></div>
+						<!-- /wp:columns --></div></div>
+						<!-- /wp:cover -->
 
-						'<!-- wp:heading -->',
-						'<h2>News &amp; Information</h2>',
-						'<!-- /wp:heading -->',
-						'<!-- wp:latest-posts {"displayPostContent":true,"displayPostDate":true,"displayFeaturedImage":true,"featuredImageAlign":"left","addLinkToFeaturedImage":true} /-->',
+						<!-- wp:spacer {"height":30} -->
+						<div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
+						<!-- /wp:spacer -->
+
+						<!-- wp:heading -->
+						<h2>News &amp; Information</h2>
+						<!-- /wp:heading -->
+						<!-- wp:latest-posts {"displayPostContent":true,"displayPostDate":true,"displayFeaturedImage":true,"featuredImageAlign":"left","addLinkToFeaturedImage":true} /-->',
 					)
 				),
 			),
@@ -167,6 +199,12 @@ function lightning_add_starter_content(){
 			),
 		),
 		'widgets' => array(
+			'vk-mobile-nav-upper' => array(
+				'search_custom' => array( 'search', array(
+					'title' => '',
+				) ),
+			),
+
 			'common-side-bottom-widget-area' => array(
 				'search_custom' => array( 'search', array(
 					'title' => '',

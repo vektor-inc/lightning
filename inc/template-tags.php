@@ -118,9 +118,9 @@ function lightning_get_theme_options_default() {
 		'top_slide_text_color_2'        => '#000',
 		'top_slide_text_shadow_use_2'   => true,
 		'top_slide_text_shadow_color_2' => '#fff',
-		// 'layout'        				=> array(
-		// 	'front-page'				=> 'col-one-no-subsection',
-		// )
+		'layout'        				=> array(
+			'front-page'				=> 'col-one-no-subsection',
+		)
 	);
 	return $theme_options_default;
 }
