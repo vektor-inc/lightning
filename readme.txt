@@ -39,6 +39,9 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v13.8.4
+[ Other ] Reload Starter content
+
 v13.8.3
 [ Other ] Add Starter initial
 [ Other ] Remove Starter content
