@@ -109,6 +109,7 @@ function lightning_theme_setup() {
 	  Admin page _ Eye catch
 	/*-------------------------------------------*/
 	add_theme_support( 'post-thumbnails' );
+	set_post_thumbnail_size( 320, 180, true );
 
 	/*
 	  Custom menu
@@ -130,6 +131,30 @@ function lightning_theme_setup() {
 	  WooCommerce
 	/*-------------------------------------------*/
 	add_theme_support( 'woocommerce' );
+
+	/*
+	  Set content width
+	/* 	(Auto set up to media max with.)
+	/*-------------------------------------------*/
+	global $content_width;
+	if ( ! isset( $content_width ) ) {
+		$content_width = 1140;
+	}
+
+	load_theme_textdomain( 'lightning', get_template_directory() . '/languages' );
+
+	/*
+	  Option init
+	/*-------------------------------------------*/
+	/*
+	Save default option first time.
+	When only customize default that, Can't save default value.
+	*/
+	$theme_options_default = lightning_theme_options_default();
+	if ( ! get_option( 'lightning_theme_options' ) ) {
+		add_option( 'lightning_theme_options', $theme_options_default );
+		$lightning_theme_options = $theme_options_default;
+	}
 
 }
 

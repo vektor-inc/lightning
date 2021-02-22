@@ -48,87 +48,17 @@ define( 'LIGHTNING_SHORT_NAME', 'LTG THEME' );
   Add defer first aid
 /*-------------------------------------------*/
 
-
-/*
-  Theme setup
-/*-------------------------------------------*/
-add_action( 'after_setup_theme', 'lightning_theme_setup' );
-function lightning_theme_setup() {
-
-	get_option();
-
-	global $content_width;
-
-
-	set_post_thumbnail_size( 320, 180, true );
-
-
-	load_theme_textdomain( 'lightning', get_template_directory() . '/languages' );
-
-	/*
-	  Set content width
-	/* 	(Auto set up to media max with.)
-	/*-------------------------------------------*/
-	if ( ! isset( $content_width ) ) {
-		$content_width = 1140;
-	}
-
-	/*
-	  Option init
-	/*-------------------------------------------*/
-	/*
-	Save default option first time.
-	When only customize default that, Can't save default value.
-	*/
-	$theme_options_default = lightning_theme_options_default();
-	if ( ! get_option( 'lightning_theme_options' ) ) {
-		add_option( 'lightning_theme_options', $theme_options_default );
-		$lightning_theme_options = $theme_options_default;
-	}
-
-}
-
-
-
-
-
-
-
-require get_parent_theme_file_path( '/functions-compatible.php' );
-
-
 /*
   Load tga(Plugin install)
 /*-------------------------------------------*/
 require get_parent_theme_file_path( '/inc/tgm-plugin-activation/tgm-config.php' );
 
 /*
-  Load Theme Customizer additions.
-/*-------------------------------------------*/
-require get_parent_theme_file_path( '/inc/customize/customize.php' );
-require get_parent_theme_file_path( '/inc/customize/customize-design.php' );
-require get_parent_theme_file_path( '/inc/customize/customize-top-slide.php' );
-require get_parent_theme_file_path( '/inc/customize/customize-functions.php' );
-
-/*
-  Load allow customize modules
-/*-------------------------------------------*/
-get_template_part( 'inc/vk-mobile-nav/vk-mobile-nav-config' );
-
-/*
   Load modules
 /*-------------------------------------------*/
 require get_parent_theme_file_path( '/inc/package-manager.php' );
-require get_parent_theme_file_path( '/inc/class-design-manager.php' );
-require get_parent_theme_file_path( '/inc/font-awesome/font-awesome-config.php' );
-require get_parent_theme_file_path( '/inc/term-color/term-color-config.php' );
-require get_parent_theme_file_path( '/inc/vk-components/vk-components-config.php' );
-require get_parent_theme_file_path( '/inc/template-redirect.php' );
-require get_parent_theme_file_path( '/inc/layout-controller/layout-controller.php' );
-require get_parent_theme_file_path( '/inc/vk-footer-customize/vk-footer-customize-config.php' );
-require get_parent_theme_file_path( '/inc/vk-old-options-notice/vk-old-options-notice-config.php' );
-require get_parent_theme_file_path( '/inc/vk-css-optimize/vk-css-optimize-config.php' );
 
+require get_parent_theme_file_path( '/inc/vk-old-options-notice/vk-old-options-notice-config.php' );
 
 /*
   Plugin support
@@ -164,37 +94,6 @@ function lightning_list_categories( $output, $args ) {
 }
 add_filter( 'wp_list_categories', 'lightning_list_categories', 10, 2 );
 
-/*
-  headfix enable
-/*-------------------------------------------*/
-add_filter( 'body_class', 'lightning_body_class' );
-function lightning_body_class( $class ) {
-	// header fix
-	if ( apply_filters( 'lightning_headfix_enable', true ) ) {
-		$class[] = 'headfix';
-	}
-	// header height changer
-	if ( apply_filters( 'lightning_header_height_changer_enable', true ) ) {
-		$class[] = 'header_height_changer';
-	}
-	return $class;
-}
-
-// lightning headfix disabel sample
-/*
-add_filter( 'lightning_headfix_enable', 'lightning_headfix_disabel');
-function lightning_headfix_disabel(){
-	return false;
-}
-*/
-
-// lightning header height changer disabel sample
-/*
-add_filter( 'lightning_header_height_changer_enable', 'lightning_header_height_changer_disabel');
-function lightning_header_height_changer_disabel(){
-	return false;
-}
-*/
 
 /*
   Tag Cloud _ Change font size
