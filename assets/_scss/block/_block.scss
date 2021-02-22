@@ -1,3 +1,9 @@
+div[class*="__inner-container"]{
+	max-width: calc( var(--vk-width-container)  - 15px - 15px );
+	margin-left:auto;
+	margin-right:auto;
+}
+
 .alignfull {
 	width: 100vw;
 	margin-left: calc(50% - 50vw);
