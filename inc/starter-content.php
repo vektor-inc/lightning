@@ -1,5 +1,4 @@
 <?php
-update_option( 'fresh_site', 1 );
 add_action( 'after_setup_theme', 'lightning_add_starter_content' );
 if ( is_customize_preview() ) {
     add_theme_support( 'starter-content', lightning_add_starter_content() );
