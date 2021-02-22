@@ -44,7 +44,6 @@ define( 'LIGHTNING_SHORT_NAME', 'LTG THEME' );
   Add defer first aid
 /*-------------------------------------------*/
 
-
 /*
   Theme setup
 /*-------------------------------------------*/
@@ -241,6 +240,18 @@ require get_parent_theme_file_path( '/inc/vk-footer-customize/vk-footer-customiz
 require get_parent_theme_file_path( '/inc/vk-old-options-notice/vk-old-options-notice-config.php' );
 require get_parent_theme_file_path( '/inc/vk-css-optimize/vk-css-optimize-config.php' );
 
+/**
+ * Load Starter Content
+ * 
+ * since 13.8
+ * 
+ * Caution! 
+ * Actually WordPress possess check option of first install or not ('fresh_site' )
+ * But lightning 13.8.0 - 13.8.1 was changed to "true" that check by lightning_theme_options.
+ */
+if ( ! get_option( 'lightning_theme_options' ) ) {
+	require get_parent_theme_file_path( '/inc/starter-content.php' );
+}
 
 /*
   Plugin support

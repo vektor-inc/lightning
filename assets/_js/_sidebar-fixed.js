@@ -120,8 +120,12 @@
 
 			// サイドバーの高さ
 			let sidebar_height = sideSection.offsetHeight
+
 			// サイドバーの幅
+			sideSection.style.position = null; /* ポジションをリセットしないと元の幅が取得できないためリセット */
+			sideSection.style.width = null; /*  一旦widthをリセットしないとサイド幅がxlサイズのままlgになる */
 			let sidebar_width = sideSection.offsetWidth
+
             // サイドバー下端までの距離 = コンテンツエリア開始位置 + サイドバーの高さ
 			let sidebar_position_bottom_default = content_position_top + sidebar_height;
 			

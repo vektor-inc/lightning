@@ -233,7 +233,7 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 			$wp_customize->add_section(
 				'vk_mobile_nav_setting',
 				array(
-					'title'    => $vk_mobile_nav_prefix . __( 'Mobile Nav', 'lightning-pro' ),
+					'title'    => $vk_mobile_nav_prefix . __( 'Mobile Nav', 'lightning' ),
 					'priority' => $vk_mobile_nav_priority,
 				)
 			);

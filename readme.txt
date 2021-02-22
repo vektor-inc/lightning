@@ -2,7 +2,7 @@
 Lightning WordPress theme, Copyright (C) 2015-2020 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
 Tested up to: 5.6.0
-Stable tag: 13.4.2
+Stable tag: 13.8.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,6 +38,50 @@ https://www.vektor-inc.co.jp/inquiry/
 
 
 == Changelog ==
+
+v13.8.4
+[ Other ] Reload Starter content
+
+v13.8.3
+[ Other ] Add Starter initial
+[ Other ] Remove Starter content
+
+v13.8.2
+[ Bug fix ] Fix Starter customize initial
+
+v13.8.1
+[ Other ] Fix Starter content
+
+v13.8.0
+[ Specification Change ] Editor screen edit width tuning
+[ Specification Change ] Slider Text size tuning
+[ Bug fix ] Fix cover block and group block inner container width
+[ Other ] Add starter content
+
+v13.7.2
+[ Bug fix ] Fix js of slider fix 
+
+v13.7.1
+[ Bug fix ] Fix slider customize icon can not click
+
+v13.7.0
+[ Specification Change ] Fix slider link area bug
+
+v13.6.0
+[ Specification Change ] Add RSS Block Style
+
+v13.5.5
+[ bug fix ] unify header logo font-weight.
+
+v13.5.5
+[ bug fix ] fix post type judgement on bbPress search result page.
+
+v13.5.1
+[ Design bug fix ] Fix font size default post list title
+
+v13.5.0
+[ Add Function ][ Mobile Nav ] Add setting of button position and slide direction
+[ Specification Change ] update vk-post component
 
 v13.4.2
 [ Bug fix ][ OriginII ] fix in case of 13.4 appear vain border bottom

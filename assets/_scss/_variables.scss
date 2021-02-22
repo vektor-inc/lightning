@@ -1,0 +1,70 @@
+$xs-max: 575.98px;
+$sm-max: 767.98px;
+$md-max: 991.98px;
+$lg-max: 1199.98px;
+
+$sm-min: 576px;
+$md-min: 768px;
+$lg-min: 992px;
+$xl-min: 1200px;
+
+$containter-padding:15px;
+
+:root {
+    --vk-color-text-body : #444444;
+    --vk-color-text-link : #555555;
+    --vk-color-text-link-hover : #1e73be;
+    --vk-color-text-header : #444444;
+    --vk-color-text-meta : #666666;/* 一旦非推奨 */
+    --vk-color-text-light : #666666;
+    --vk-color-border-hr : rgba(0,0,0,0.06);
+    --vk-color-border-form : rgba(0,0,0,0.2);
+    --vk-color-primary : #c00;
+    --vk-color-primary-dark : #b00;
+    --vk-color-accent-bg : rgba( 0,0,0,0.02 );
+    --vk-color-header-bg : #fff;
+    --vk-color-footer-bg : #f5f5f5;
+
+    --vk-width-container : 90%;
+	--vk-width-col-2-main : 66.6%;
+    // サイドバーがjsでfixedにすると、ストレートな幅指定だと基準がウィンドウになってしまうため、コンテナ基準にしている
+	--vk-width-col-2-sub: calc( var(--vk-width-container) * 0.27 );
+
+    --vk-margin-meta : 0.5rem;
+    --vk-margin-headding-bottom : 1.2em;
+    --vk-margin-element-bottom : 1rem;
+    --vk-margin-block-bottom : 2rem;
+    --vk-margin-section-bottom : 3rem;
+
+    --vk-size-text: 16px;
+    --vk-size-text-meta: 0.75rem;
+    --vk-size-text-sm: 0.875rem;
+    --vk-size-text-xs: 0.75rem;
+
+    --vk-size-radius: 5px;
+    --vk-size-radius-sm: calc( var( --vk-size-radius ) * 0.5 );
+    --vk-size-radius-lg: calc( var( --vk-size-radius ) * 1.5 );
+
+    --vk-line-height: 1.7em;
+    --vk-line-height-low: 1.5em;
+}
+@media (min-width: $sm-min) {
+    :root{
+        --vk-width-container : 540px;
+    }
+}
+@media (min-width: $md-min) {
+    :root{
+        --vk-width-container : 720px;
+    }
+}
+@media (min-width: $lg-min) {
+    :root{
+        --vk-width-container : 960px;
+    }
+}
+@media (min-width: $xl-min) {
+    :root{
+        --vk-width-container : 1140px;
+    }
+}
