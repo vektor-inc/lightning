@@ -26,12 +26,12 @@ function lightning_add_starter_content(){
 						<!-- /wp:heading -->
 						
 						<!-- wp:paragraph -->
-						<p>Lightning is a WordPress theme designed to facilitate the creation of a website without specialized knowledge of web production.</p>
+						<p>' . esc_html_x( 'Lightning is a WordPress theme designed to facilitate the creation of a website without specialized knowledge of web production.', 'Theme starter content', 'lightning' ) . '</p>
 						<!-- /wp:paragraph -->
 						
 						<!-- wp:buttons -->
 						<div class="wp-block-buttons"><!-- wp:button {"borderRadius":0,"className":"is-style-outline"} -->
-						<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://wordpress.org">Read more</a></div>
+						<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://wordpress.org/themes/lightning/">Read more</a></div>
 						<!-- /wp:button --></div>
 						<!-- /wp:buttons -->
 						
@@ -51,12 +51,12 @@ function lightning_add_starter_content(){
 						<!-- /wp:heading -->
 						
 						<!-- wp:paragraph -->
-						<p>By using the multi-function plug-in "VK All in One Expansion Unit (free)", you can use the various useful functions and rich widgets.</p>
+						<p>' . esc_html_x( 'By using the multi-function plug-in "VK All in One Expansion Unit (free)", you can use the various useful functions and rich widgets.', 'Theme starter content', 'lightning' ) . '</p>
 						<!-- /wp:paragraph -->
 						
 						<!-- wp:buttons -->
 						<div class="wp-block-buttons"><!-- wp:button {"borderRadius":0,"className":"is-style-outline"} -->
-						<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://wordpress.org">Read more</a></div>
+						<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://wordpress.org/plugins/vk-all-in-one-expansion-unit/">Read more</a></div>
 						<!-- /wp:button --></div>
 						<!-- /wp:buttons -->
 						
@@ -76,12 +76,12 @@ function lightning_add_starter_content(){
 						<!-- /wp:heading -->
 						
 						<!-- wp:paragraph -->
-						<p>Plugin VK Blocks is a block library that adds various blocks and styles and functions that are useful for building your business websites.</p>
+						<p>' . esc_html_x( 'Plugin VK Blocks is a block library that adds various blocks and styles and functions that are useful for building your business websites.', 'Theme starter content', 'lightning' ) . '</p>
 						<!-- /wp:paragraph -->
 						
 						<!-- wp:buttons -->
 						<div class="wp-block-buttons"><!-- wp:button {"borderRadius":0,"className":"is-style-outline"} -->
-						<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://wordpress.org">Read more</a></div>
+						<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://wordpress.org/plugins/vk-blocks/">Read more</a></div>
 						<!-- /wp:button --></div>
 						<!-- /wp:buttons -->
 						
@@ -101,12 +101,12 @@ function lightning_add_starter_content(){
 						<!-- /wp:heading -->
 						
 						<!-- wp:paragraph -->
-						<p>Plugin VK Filter Search (free) can create the Filter Serach Block on your edit screen. It enable to filter search on post type and terms.</p>
+						<p>' . esc_html_x( 'Plugin VK Filter Search (free) can create the Filter Serach Block on your edit screen. It enable to filter search on post type and terms.', 'Theme starter content', 'lightning' ) . '</p>
 						<!-- /wp:paragraph -->
 						
 						<!-- wp:buttons -->
 						<div class="wp-block-buttons"><!-- wp:button {"borderRadius":0,"className":"is-style-outline"} -->
-						<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://wordpress.org">Read more</a></div>
+						<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://wordpress.org/plugins/vk-filter-search">Read more</a></div>
 						<!-- /wp:button --></div>
 						<!-- /wp:buttons -->
 						
@@ -134,7 +134,7 @@ function lightning_add_starter_content(){
 						<!-- /wp:heading -->
 						
 						<!-- wp:paragraph {"textColor":"black"} -->
-						<p class="has-black-color has-text-color">Lightning has column control function that you can secific column number from "Appearance &gt; Customize &gt; Lightning Design Setting" and specific post edit screen.</p>
+						<p class="has-black-color has-text-color">' . esc_html_x( 'Lightning has column control function that you can secific column number from "Appearance &gt; Customize &gt; Lightning Design Setting" and specific post edit screen.', 'Theme starter content', 'lightning' ) . '</p>
 						<!-- /wp:paragraph --></div>
 						<!-- /wp:column --></div>
 						<!-- /wp:columns --></div></div>
@@ -165,38 +165,6 @@ function lightning_add_starter_content(){
 					)
 				),
 			),
-			'renew-release' => array(
-				'post_type'    => 'post',
-				'post_title'   => 'The website was renewed.',
-				'thumbnail'    => '{{image-opening}}',
-				'post_content' => join(
-					'',
-					array(
-						'<!-- wp:paragraph -->',
-						'<p>We have renewed our website.</p>',
-						'<!-- /wp:paragraph -->',
-						'<!-- wp:paragraph -->',
-						'<p>With this renewal, we have redesigned the website so that it is easier to see and convey information to everyone.</p>',
-						'<!-- /wp:paragraph -->',
-						'<!-- wp:paragraph -->',
-						'<p>Thank you for your continued patronage.</p>',
-						'<!-- /wp:paragraph -->',
-					)
-				),
-			),
-			'hellow-lightning' => array(
-				'post_type'    => 'post',
-				'post_title'   => 'Hellow Lightning',
-				'thumbnail'    => '{{image-opening}}',
-				'post_content' => join(
-					'',
-					array(
-						'<!-- wp:paragraph -->',
-						'<p>Lightning is includes to a variety of ideas for making it easier to business site. Please experience the ease of use of the Lightning.</p>',
-						'<!-- /wp:paragraph -->',
-					)
-				),
-			),
 		),
 		'widgets' => array(
 			'vk-mobile-nav-upper' => array(
@@ -209,13 +177,6 @@ function lightning_add_starter_content(){
 				'search_custom' => array( 'search', array(
 					'title' => '',
 				) ),
-				'text_custom' => [
-					'text',
-					[
-						'title' => 'Layout Control',
-						'text' => 'Lightning has column control function that you can secific column number from "Appearance > Customize > Lightning Design Setting" and specific post edit page.'
-					]
-				],
 			),
 			'footer-widget-1' => array(
 				'text_custom' => array( 'text', array(
@@ -228,7 +189,7 @@ function lightning_add_starter_content(){
 						Monday–Friday: 9:00AM–5:00PM<br>
 						Saturday & Sunday: 11:00AM–3:00PM<br>
 						<br>
-						This area recommend replace to "VK Profile" widget. "VK Profile" widget is include in plugin "VK All in One expansion Unit".'
+						'.esc_html_x( 'This area recommend replace to "VK Profile" widget. "VK Profile" widget is include in plugin "VK All in One expansion Unit".', 'Theme starter content', 'lightning' ),
 				) ),
 			),
 			'footer-widget-2' => array(
