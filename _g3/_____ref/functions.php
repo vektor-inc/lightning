@@ -1,53 +1,5 @@
 <?php
 
-$current_skin = get_option( 'lightning_design_skin' );
-if ( $current_skin === 'origin3' ){
-	require get_parent_theme_file_path( '/_g3/functions.php' );
-	return;
-}
-
-
-define( 'LIGHTNING_SHORT_NAME', 'LTG THEME' );
-/*
-  Theme setup
-/*
-  Load JS
-/*
-  Load CSS
-/*
-  Load Theme Customizer additions.
-/*
-  Load Custom template tags for this theme.
-/*
-  Load widgets
-/*
-  Load designskin manager
-/*
-  Load tga(Plugin install)
-/*
-  Load Front PR Blocks
-/*
-  WidgetArea initiate
-/*
-  Year Artchive list 'year' and count insert to inner </a>
-/*
-  Category list 'count insert to inner </a>
-/*
-  Global navigation add cptions
-/*
-  headfix enable
-/*
-  Tag Cloud _ Change font size
-/*
-  HOME _ Default content hidden
-/*
-  Move jQuery to footer
-/*
-  disable_tgm_notification_except_admin
-/*
-  Add defer first aid
-/*-------------------------------------------*/
-
 /*
   Load tga(Plugin install)
 /*-------------------------------------------*/
