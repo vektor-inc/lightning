@@ -51,7 +51,9 @@
 
 	<?php if ( lightning_is_subsection_display() ) : ?>
 		<div class="<?php lightning_the_class_name( 'sideSection' ); ?>">
-		<?php get_sidebar( get_post_type() ); ?>
+			<?php do_action( 'lightning_sideSection_prepend' ); ?>
+			<?php get_sidebar( get_post_type() ); ?>
+			<?php do_action( 'lightning_sideSection_append' ); ?>
 		</div><!-- [ /.subSection ] -->
 	<?php endif; ?>
 
