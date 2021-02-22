@@ -248,6 +248,7 @@ require get_parent_theme_file_path( '/inc/vk-css-optimize/vk-css-optimize-config
  * Caution! 
  * Actually WordPress possess check option of first install or not ('fresh_site' )
  * But lightning 13.8.0 - 13.8.1 was changed to "true" that check by lightning_theme_options.
+ * If 2021.3.10 after that delete
  */
 if ( ! get_option( 'lightning_theme_options' ) ) {
 	require get_parent_theme_file_path( '/inc/starter-content.php' );
