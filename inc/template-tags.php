@@ -134,9 +134,10 @@ function lightning_theme_options_default() {
   lightning_get_theme_options()
 /*-------------------------------------------*/
 function lightning_get_theme_options() {
-	$lightning_theme_options         = get_option( 'lightning_theme_options', lightning_get_theme_options_default() );
-	// It use then display default text to old user ... orz
-	// $lightning_theme_options         = wp_parse_args( $lightning_theme_options, $lightning_theme_options_default );
+	$defaults = lightning_get_theme_options_default();
+	$lightning_theme_options         = get_option( 'lightning_theme_options' );
+	// Cope with https://wordpress.org/themes/lightning/ theme preview and so on
+	$lightning_theme_options         = wp_parse_args( $lightning_theme_options, $defaults );
 	return $lightning_theme_options;
 }
 
