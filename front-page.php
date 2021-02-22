@@ -25,6 +25,8 @@ do_action( 'lightning_top_slide_after');
 
 			<div class="<?php lightning_the_class_name( 'mainSection' ); ?>">
 
+			<?php do_action( 'lightning_mainSection_prepend' ); ?>
+
 			<?php do_action( 'lightning_home_content_top_widget_area_before' ); ?>
 
 			<?php if ( is_active_sidebar( 'home-content-top-widget-area' ) ) : ?>
@@ -63,6 +65,7 @@ do_action( 'lightning_top_slide_after');
 					<?php endwhile; ?>
 
 				<?php else : ?>
+					<?php do_action( 'lightning_loop_before' );?>
 
 					<div class="<?php lightning_the_class_name( 'postList' ); ?>">
 
@@ -114,6 +117,7 @@ do_action( 'lightning_top_slide_after');
 						?>
 
 					</div><!-- [ /.postList ] -->
+					<?php do_action( 'lightning_loop_after' ); ?>
 
 				<?php endif; // if ( 'page' == get_option('show_on_front') ) : ?>
 
@@ -130,7 +134,9 @@ do_action( 'lightning_top_slide_after');
 
 			<?php if ( lightning_is_subsection_display() ) : ?>
 				<div class="<?php lightning_the_class_name( 'sideSection' ); ?>">
+					<?php do_action( 'lightning_sideSection_prepend' ); ?>
 					<?php get_sidebar(); ?>
+					<?php do_action( 'lightning_sideSection_append' ); ?>
 				</div><!-- [ /.subSection ] -->
 			<?php endif; ?>
 
