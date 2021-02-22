@@ -41,6 +41,7 @@ https://www.vektor-inc.co.jp/inquiry/
 
 v13.8.3
 [ Other ] Add Starter initial
+[ Other ] Remove Starter content
 
 v13.8.2
 [ Bug fix ] Fix Starter customize initial
