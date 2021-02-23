@@ -13,23 +13,6 @@ require get_parent_theme_file_path( '/inc/package-manager.php' );
 require get_parent_theme_file_path( '/inc/vk-old-options-notice/vk-old-options-notice-config.php' );
 
 /*
-  Plugin support
-/*-------------------------------------------*/
-// Load woocommerce modules
-if ( class_exists( 'woocommerce' ) ) {
-	require get_parent_theme_file_path( '/plugin-support/woocommerce/functions-woo.php' );
-}
-// Load polylang modules
-include_once ABSPATH . 'wp-admin/includes/plugin.php';
-if ( is_plugin_active( 'polylang/polylang.php' ) ) {
-	require get_parent_theme_file_path( '/plugin-support/polylang/functions-polylang.php' );
-}
-if ( is_plugin_active( 'bbpress/bbpress.php' ) ) {
-	require get_parent_theme_file_path( '/plugin-support/bbpress/functions-bbpress.php' );
-}
-
-
-/*
   Year Artchive list 'year' and count insert to inner </a>
 /*-------------------------------------------*/
 function lightning_archives_link( $html ) {
@@ -56,17 +39,3 @@ function lightning_tag_cloud_filter( $args ) {
 	return $args;
 }
 add_filter( 'widget_tag_cloud_args', 'lightning_tag_cloud_filter' );
-
-/*
-  disable_tgm_notification_except_admin
-/*-------------------------------------------*/
-add_action( 'admin_head', 'lightning_disable_tgm_notification_except_admin' );
-function lightning_disable_tgm_notification_except_admin() {
-	if ( ! current_user_can( 'administrator' ) ) {
-		$allowed_html = array(
-			'style' => array( 'type' => array() ),
-		);
-		$text         = '<style>#setting-error-tgmpa { display:none; }</style>';
-		echo wp_kses( $text, $allowed_html );
-	}
-}

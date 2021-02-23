@@ -253,3 +253,20 @@ function lightning_embed_styles() {
 	wp_enqueue_style( 'wp-oembed-embed', get_template_directory_uri() . '/assets/css/wp-embed.css' );
 }
 add_action( 'embed_head', 'lightning_embed_styles' );
+
+/*
+  Plugin support
+/*-------------------------------------------*/
+// Load woocommerce modules
+if ( class_exists( 'woocommerce' ) ) {
+	require get_parent_theme_file_path( '/plugin-support/woocommerce/functions-woo.php' );
+}
+// Load polylang modules
+include_once ABSPATH . 'wp-admin/includes/plugin.php';
+if ( is_plugin_active( 'polylang/polylang.php' ) ) {
+	require get_parent_theme_file_path( '/plugin-support/polylang/functions-polylang.php' );
+}
+if ( is_plugin_active( 'bbpress/bbpress.php' ) ) {
+	require get_parent_theme_file_path( '/plugin-support/bbpress/functions-bbpress.php' );
+}
+
