@@ -36,14 +36,14 @@ function lightning_get_template_part( $slug, $name = null, $args = array() ) {
 function lightning_get_class_names( $position = '' ) {
 
     $class_names = array(
-        // 'site-header' => array( 
-        //     'site-header',
-        //     'site-header--layout--nav-float',
-        // ),
-        // 'global-nav' => array( 
-        //     'global-nav',
-        //     'global-nav--layout--float-right',
-        // ),
+        'site-header' => array( 
+            'site-header',
+            'site-header--layout--nav-float',
+        ),
+        'global-nav' => array( 
+            'global-nav',
+            'global-nav--layout--float-right',
+        ),
         'site-body' => array( 'site-body' ),
         'main-section' => array( 'main-section' ),
         'sub-section' => array( 'sub-section' ),
@@ -53,6 +53,10 @@ function lightning_get_class_names( $position = '' ) {
         $class_names[$position][] = $position;
     }
 
+    /**
+     * カラムでの配列操作
+     * （本来はカラムコントローラーからフックで処理するのが望ましい）
+     */
     if ( lightning_is_layout_onecolumn() && lightning_is_subsection() ) {
 
         $class_names['main-section'][] = 'main-section--margin-bottom--on';
@@ -81,11 +85,17 @@ function lightning_get_class_names( $position = '' ) {
 
 function lightning_get_the_class_name( $position = '' ){
     $class_names = lightning_get_class_names( $position );
+
+    // すべてのクラス名から単一のクラスを代入
     if ( $position && empty( $class_names[$position] ) ){
         $class_name = $position;    
     } else {
         $class_name = implode( " ",  $class_names[$position] );
     }
+
+    // 元の配列（lightning_get_class_names）はフック操作が少し難しいので単純に書き換えたい人用
+    $class_name = esc_attr( apply_filters( 'lightning_get_the_class_name_' . $position, $class_name ) );
+
     return esc_attr( apply_filters( "lightning_get_the_class_name", $class_name, $position ) );
 }
 
