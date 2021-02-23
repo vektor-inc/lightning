@@ -270,3 +270,16 @@ if ( is_plugin_active( 'bbpress/bbpress.php' ) ) {
 	require get_parent_theme_file_path( '/plugin-support/bbpress/functions-bbpress.php' );
 }
 
+/*
+  disable_tgm_notification_except_admin
+/*-------------------------------------------*/
+add_action( 'admin_head', 'lightning_disable_tgm_notification_except_admin' );
+function lightning_disable_tgm_notification_except_admin() {
+	if ( ! current_user_can( 'administrator' ) ) {
+		$allowed_html = array(
+			'style' => array( 'type' => array() ),
+		);
+		$text         = '<style>#setting-error-tgmpa { display:none; }</style>';
+		echo wp_kses( $text, $allowed_html );
+	}
+}
