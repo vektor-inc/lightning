@@ -27,17 +27,26 @@ $logo_bottom_margin:1rem;
         }
     }
 }
-
-/*-------------------------------------------*/
-/*	.site-header-sub
-/*-------------------------------------------*/
-.body--site-header-sub--active {
-    @media ( min-width:$lg-min ){
-        .site-header-logo{
+@media ( min-width: $lg-min ){
+    .site-header--layout--nav-float {
+        .site-header-container {
+            display: flex;
+            flex-direction: row;
+        }
+        .site-header-logo {
+            float:left;
+        }
+    }
+    .site-header--layout--sub-active {
+        .site-header-logo {
             float:left;
         }
     }
 }
+
+/*-------------------------------------------*/
+/*	.site-header-sub
+/*-------------------------------------------*/
 .site-header-sub {
 	@media (max-width: 991px) {
 		display: none;

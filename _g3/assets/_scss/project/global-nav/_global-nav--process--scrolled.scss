@@ -5,8 +5,8 @@
 /*-------------------------------------------*/
 /*
  一定量スクロールすると、jsでbody タグに .header_scrolled クラスが付与される
- .header_scrolled の付与処理は skin_active.php にjsが書いてある
- スクロールされた時にメニューがfixedになるが、メニューの高さ分 navbar-header の下にmargin-bottomを付与するので、ガクンとならない。
+ .header_scrolled の付与処理は master.jsに書いてある
+ スクロールされた時にメニューがfixedになるが、メニューの高さ分 .site-header-logo の下にmargin-bottomを付与するので、ガクンとならない。
 
 // スクロール後にメニューが上から落ちてくるアニメーション //////////
 1.	初期状態でメニューの高さ分である 63px をtopににオフセット

@@ -1,6 +1,6 @@
 <header class="<?php lightning_the_class_name( 'site-header' ); ?>">
 	<?php do_action( 'lightning_site-header_prepend' ); ?>
-	<div class="site-header-container container">
+	<div class="<?php lightning_the_class_name( 'site-header-container' ); ?> container">
 
 		<?php
 		if ( is_front_page() ) {
@@ -21,7 +21,7 @@
 		wp_nav_menu( array(
 			'theme_location' 	=> 'global-nav',
 			'container'      	=> 'nav',
-			'container_class'	=> 'global-nav',
+			'container_class'	=> lightning_get_the_class_name( 'global-nav' ),
 			'container_id'		=> 'global-nav',
 			'items_wrap'     	=> '<ul id="%1$s" class="%2$s vk-menu-acc global-nav-list nav">%3$s</ul>',
 			'fallback_cb'    	=> '',

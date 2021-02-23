@@ -36,12 +36,20 @@ function lightning_get_template_part( $slug, $name = null, $args = array() ) {
 function lightning_get_class_names( $position = '' ) {
 
     $class_names = array(
+        // 'site-header' => array( 
+        //     'site-header',
+        //     'site-header--layout--nav-float',
+        // ),
+        // 'global-nav' => array( 
+        //     'global-nav',
+        //     'global-nav--layout--float-right',
+        // ),
         'site-body' => array( 'site-body' ),
         'main-section' => array( 'main-section' ),
         'sub-section' => array( 'sub-section' ),
     );
 
-    if ( $position ){
+    if ( empty( $class_names[$position] ) ){
         $class_names[$position][] = $position;
     }
 
