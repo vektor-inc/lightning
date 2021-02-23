@@ -44,7 +44,6 @@ define( 'LIGHTNING_SHORT_NAME', 'LTG THEME' );
   Add defer first aid
 /*-------------------------------------------*/
 
-
 /*
   Theme setup
 /*-------------------------------------------*/
@@ -223,6 +222,11 @@ require get_parent_theme_file_path( '/inc/customize/customize-top-slide.php' );
 require get_parent_theme_file_path( '/inc/customize/customize-functions.php' );
 
 /*
+  Load allow customize modules
+/*-------------------------------------------*/
+get_template_part( 'inc/vk-mobile-nav/vk-mobile-nav-config' );
+
+/*
   Load modules
 /*-------------------------------------------*/
 require get_parent_theme_file_path( '/inc/package-manager.php' );
@@ -235,7 +239,20 @@ require get_parent_theme_file_path( '/inc/layout-controller/layout-controller.ph
 require get_parent_theme_file_path( '/inc/vk-footer-customize/vk-footer-customize-config.php' );
 require get_parent_theme_file_path( '/inc/vk-old-options-notice/vk-old-options-notice-config.php' );
 require get_parent_theme_file_path( '/inc/vk-css-optimize/vk-css-optimize-config.php' );
-require get_parent_theme_file_path( '/inc/vk-mobile-nav/vk-mobile-nav-config.php' );
+
+/**
+ * Load Starter Content
+ * 
+ * since 13.8
+ * 
+ * Caution! 
+ * Actually WordPress possess check option of first install or not ('fresh_site' )
+ * But lightning 13.8.0 - 13.8.1 was changed to "true" that check by lightning_theme_options.
+ * If 2021.3.10 after that delete
+ */
+if ( ! get_option( 'lightning_theme_options' ) ) {
+	require get_parent_theme_file_path( '/inc/starter-content.php' );
+}
 
 /*
   Plugin support

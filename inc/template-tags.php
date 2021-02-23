@@ -98,7 +98,10 @@ function lightning_debug_active(){
 /*-------------------------------------------*/
 function lightning_get_theme_options_default() {
 	$theme_options_default = array(
-		'front_pr_display'              => true,
+		'front_pr_display'              => false,
+		'layout'        				=> array(
+			'front-page'				=> 'col-one-no-subsection',
+		),
 		'top_slide_time'                => 4000,
 		'top_slide_image_1'             => get_template_directory_uri() . '/assets/images/top_image_1.jpg',
 		'top_slide_url_1'               => __( 'https://lightning.nagoya/', 'lightning' ),
@@ -118,9 +121,6 @@ function lightning_get_theme_options_default() {
 		'top_slide_text_color_2'        => '#000',
 		'top_slide_text_shadow_use_2'   => true,
 		'top_slide_text_shadow_color_2' => '#fff',
-		'layout'        				=> array(
-			'front-page'				=> 'col-one-no-subsection',
-		)
 	);
 	return $theme_options_default;
 }
@@ -134,9 +134,10 @@ function lightning_theme_options_default() {
   lightning_get_theme_options()
 /*-------------------------------------------*/
 function lightning_get_theme_options() {
-	$lightning_theme_options         = get_option( 'lightning_theme_options', lightning_get_theme_options_default() );
-	// It use then display default text to old user ... orz
-	// $lightning_theme_options         = wp_parse_args( $lightning_theme_options, $lightning_theme_options_default );
+	$defaults = lightning_get_theme_options_default();
+	$lightning_theme_options         = get_option( 'lightning_theme_options' );
+	// Cope with https://wordpress.org/themes/lightning/ theme preview and so on
+	$lightning_theme_options         = wp_parse_args( $lightning_theme_options, $defaults );
 	return $lightning_theme_options;
 }
 

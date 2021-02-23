@@ -70,6 +70,7 @@
 
 <?php if ( lightning_is_subsection_display() ) : ?>
 <div class="<?php lightning_the_class_name( 'sideSection' ); ?>">
+	<?php do_action( 'lightning_sideSection_prepend' ); ?>
 	<?php
 		/**
 		 * woocommerce_sidebar hook.
@@ -78,7 +79,8 @@
 		 */
 		do_action( 'woocommerce_sidebar' );
 	?>
-<?php get_sidebar( get_post_type() ); ?>
+	<?php get_sidebar( get_post_type() ); ?>
+	<?php do_action( 'lightning_sideSection_append' ); ?>
 </div><!-- [ /.subSection ] -->
 <?php endif; ?>
 

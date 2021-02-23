@@ -131,7 +131,7 @@
 
 	<?php else : // hove_posts() ?>
 
-  <div class="well"><p><?php echo wp_kses_post( apply_filters( 'lightning_no_posts_text', __( 'No posts.', 'lightning' ) ) ); ?></p></div>
+  <div class="well"><p><?php echo wp_kses_post( apply_filters( 'lightning_no_posts_text', __( 'No Posts.', 'lightning' ) ) ); ?></p></div>
 
 <?php endif; // have_post() ?>
 
@@ -143,7 +143,9 @@
 
 <?php if ( lightning_is_subsection_display() ){ ?>
 	<div class="<?php lightning_the_class_name( 'sideSection' ); ?>">
-	<?php get_sidebar( get_post_type() ); ?>
+		<?php do_action( 'lightning_sideSection_prepend' ); ?>
+		<?php get_sidebar( get_post_type() ); ?>
+		<?php do_action( 'lightning_sideSection_append' ); ?>
 	</div><!-- [ /.subSection ] -->
 <?php } ?>
 
