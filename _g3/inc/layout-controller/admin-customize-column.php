@@ -94,7 +94,7 @@ function lightning_customize_register_column( $wp_customize ) {
 	$wp_customize->selective_refresh->add_partial(
 		'lightning_theme_options[layout][front-page]',
 		array(
-			'selector'        => '.mainSection',
+			'selector'        => '.main-section',
 			'render_callback' => '',
 		)
 	);
