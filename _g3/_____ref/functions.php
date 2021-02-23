@@ -70,14 +70,3 @@ function lightning_disable_tgm_notification_except_admin() {
 		echo wp_kses( $text, $allowed_html );
 	}
 }
-
-/*
-  embed card
-/*-------------------------------------------*/
-
-remove_action( 'embed_footer', 'print_embed_sharing_dialog' );
-
-function lightning_embed_styles() {
-	wp_enqueue_style( 'wp-oembed-embed', get_template_directory_uri() . '/assets/css/wp-embed.css' );
-}
-add_action( 'embed_head', 'lightning_embed_styles' );

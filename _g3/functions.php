@@ -235,7 +235,21 @@ function lightning_comment_js() {
 	}
 }
 
+/*
+  Load Font
+/*-------------------------------------------*/
 function lightning_load_fonts(){
 	echo '<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">';
 }
 add_action( 'wp_head', 'lightning_load_fonts' );
+
+/*
+  Load embed card css
+/*-------------------------------------------*/
+
+remove_action( 'embed_footer', 'print_embed_sharing_dialog' );
+
+function lightning_embed_styles() {
+	wp_enqueue_style( 'wp-oembed-embed', get_template_directory_uri() . '/assets/css/wp-embed.css' );
+}
+add_action( 'embed_head', 'lightning_embed_styles' );

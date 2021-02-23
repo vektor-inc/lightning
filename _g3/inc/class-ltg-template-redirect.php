@@ -23,7 +23,7 @@ class LTG_Template_Redirect {
             'attachment'
         );
         foreach ( $ridirect_array as $key => $type ){
-            add_filter( "{$type}_template_hierarchy", array( __CLASS__, 'redirect_test' ) );
+            add_filter( "{$type}_template_hierarchy", array( __CLASS__, 'template_hierarchy_redirect' ) );
         }
         add_filter( 'template_directory_uri', array( __CLASS__, 'template_directory_uri' ) );
         add_filter( 'comments_template', array( __CLASS__, 'comments_template' ) );
@@ -31,7 +31,7 @@ class LTG_Template_Redirect {
         // add_filter( 'parent_theme_file_path', array( __CLASS__, 'parent_theme_file_path' ) );
     }
 
-    public static function redirect_test( $templates ){
+    public static function template_hierarchy_redirect( $templates ){
         foreach ( $templates as $key => $template){
             $templates[$key] = LIG_G3_DIR . '/' . $template;
         }
