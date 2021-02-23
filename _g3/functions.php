@@ -143,19 +143,6 @@ function lightning_theme_setup() {
 
 	load_theme_textdomain( 'lightning', get_template_directory() . '/languages' );
 
-	/*
-	  Option init
-	/*-------------------------------------------*/
-	/*
-	Save default option first time.
-	When only customize default that, Can't save default value.
-	*/
-	$theme_options_default = lightning_theme_options_default();
-	if ( ! get_option( 'lightning_theme_options' ) ) {
-		add_option( 'lightning_theme_options', $theme_options_default );
-		$lightning_theme_options = $theme_options_default;
-	}
-
 }
 
 require get_parent_theme_file_path( LIG_G3_DIR . '/inc/class-vk-helpers.php' );
