@@ -87,21 +87,12 @@ function lightning_the_class_name( $position = '', $extend = array() ) {
 	echo lightning_get_the_class_name( $position, $extend );
 }
 
-// add_action( 'lightning_header_append', 'lightning_debug_active' );
-function lightning_debug_active(){
-	$option = get_option('lightning_theme_options');
-	print '<pre style="text-align:left">';print_r($option);print '</pre>';
-}
-
 /*
   Theme default options
 /*-------------------------------------------*/
 function lightning_get_theme_options_default() {
 	$theme_options_default = array(
 		'front_pr_display'              => false,
-		'layout'        				=> array(
-			'front-page'				=> 'col-one-no-subsection',
-		),
 		'top_slide_time'                => 4000,
 		'top_slide_image_1'             => get_template_directory_uri() . '/assets/images/top_image_1.jpg',
 		'top_slide_url_1'               => __( 'https://lightning.nagoya/', 'lightning' ),
