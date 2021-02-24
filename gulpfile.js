@@ -253,6 +253,7 @@ gulp.task('copy_dist', function (done) {
       './library/**',
       './template-parts/**',
       './languages/**',
+      './_g3//inc/**',
       "!./vendor/**",
       "!./.vscode/**",
       "!./bin/**",
