@@ -5,10 +5,20 @@ $theme_opt = wp_get_theme( get_template() );
 define( 'LIGHTNING_THEME_VERSION', $theme_opt->Version );
 define( 'LIGHTNING_SHORT_NAME', 'LTG THEME' );
 
+/**
+ * Debug
+ */
 // add_action( 'lightning_header_append', 'lightning_debug_active' );
 function lightning_debug_active(){
-	$option = get_option('lightning_theme_options');
-	print '<pre style="text-align:left">';print_r($option);print '</pre>';
+
+	$options = get_option( 'lightning_theme_options' );
+
+	// $options['layout'] = null;
+	// update_option( 'lightning_theme_options', $options );
+	// $options = get_option( 'lightning_theme_options' );
+
+	print '<pre style="text-align:left">';print_r($options);print '</pre>';
+
 }
 
 /*

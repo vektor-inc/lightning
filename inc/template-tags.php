@@ -93,9 +93,6 @@ function lightning_the_class_name( $position = '', $extend = array() ) {
 function lightning_get_theme_options_default() {
 	$theme_options_default = array(
 		'front_pr_display'              => false,
-		'layout'        				=> array(
-			'front-page'				=> 'col-one-no-subsection',
-		),
 		'top_slide_time'                => 4000,
 		'top_slide_image_1'             => get_template_directory_uri() . '/assets/images/top_image_1.jpg',
 		'top_slide_url_1'               => __( 'https://lightning.nagoya/', 'lightning' ),
