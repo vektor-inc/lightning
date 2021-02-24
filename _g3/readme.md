@@ -6,6 +6,11 @@
 * page.phpなどのテンプレートファイル
 * template_directory_uri()
 
+変更できていないもの
+* get_stylesheet_directory()
+* get_parent_theme_file_path()
+* get_template_part()
+
 ## CSS命名規則
 
 基本形式

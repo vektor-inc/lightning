@@ -26,5 +26,5 @@ function lightning_term_color_taxonomies_custom( $taxonomies ) {
 
 add_action( 'init', 'lightning_load_term_color' );
 function lightning_load_term_color() {
-	require_once 'package/class.term-color.php';
+	require_once get_parent_theme_file_path( '/inc/term-color/package/class.term-color.php' );
 }
