@@ -87,12 +87,6 @@ function lightning_the_class_name( $position = '', $extend = array() ) {
 	echo lightning_get_the_class_name( $position, $extend );
 }
 
-// add_action( 'lightning_header_append', 'lightning_debug_active' );
-function lightning_debug_active(){
-	$option = get_option('lightning_theme_options');
-	print '<pre style="text-align:left">';print_r($option);print '</pre>';
-}
-
 /*
   Theme default options
 /*-------------------------------------------*/
