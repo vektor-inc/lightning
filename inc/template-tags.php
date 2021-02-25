@@ -125,10 +125,10 @@ function lightning_theme_options_default() {
   lightning_get_theme_options()
 /*-------------------------------------------*/
 function lightning_get_theme_options() {
-	$defaults = lightning_get_theme_options_default();
-	$lightning_theme_options         = get_option( 'lightning_theme_options' );
+	$lightning_theme_options         = get_option( 'lightning_theme_options', lightning_get_theme_options_default() );
 	// Cope with https://wordpress.org/themes/lightning/ theme preview and so on
-	$lightning_theme_options         = wp_parse_args( $lightning_theme_options, $defaults );
+	// 注意 : wp_parse_args() は「連想配列の上書き挙動要確認」「スライドテキストがnullの時に公開画面側にも表示されてしまう？」ので一旦不使用
+	// $lightning_theme_options         = wp_parse_args( $lightning_theme_options, $defaults );
 	return $lightning_theme_options;
 }
 
