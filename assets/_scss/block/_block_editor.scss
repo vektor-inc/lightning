@@ -1,5 +1,9 @@
 // editor only
 
+:root{
+	--vk-width-editor-sidebar:280px;
+}
+
 /* メインのカラム幅 */
 
 // .editor-block-list__layout > .wp-block,
@@ -10,13 +14,38 @@
 	&[data-align=center]{
 		text-align: center;
 	}
+	&[data-align=wide]{
+		max-width: calc( var(--vk-width-container) + ( 100vw - var(--vk-width-container) ) / 2 );
+		margin-left: calc( ( 100vw - var(--vk-width-container) ) / 4 );
+		margin-right: calc( ( 100vw - var(--vk-width-container) ) / 4 );
+	}
 }
 .is-sidebar-opened {
     .editor-styles-wrapper { // .wp-block の前にclassがあると .editor-styles-wrapper が自動的につかないため
         .wp-block {
-            max-width: calc( var(--vk-width-container)  - 280px );
+            max-width: calc( var(--vk-width-container) - var(--vk-width-editor-sidebar) );
         }
+		.wp-block[data-align="full"],
+		.alignfull {
+			max-width: calc( 100vw - var(--vk-width-editor-sidebar) );
+			width: calc( 100vw - var(--vk-width-editor-sidebar) );
+        }
+		.wp-block[data-align="full"]{
+			margin-left:0;
+			margin-right:0;
+		}
+		// .alignfull {
+		// 	margin-right:-10px;
+		// 	margin-left:-10px;
+		// }
     }
+	// .interface-interface-skeleton__content {
+	// 	border:1px solid #ff0000;
+	// 	max-width: calc( 100vw - var(--vk-width-editor-sidebar) );
+	// }
+	// .editor-styles-wrapper .block-editor-block-list__layout .wp-block[data-align=full]{
+	// 	max-width: calc( var(--vk-width-container)  - var(--vk-width-editor-sidebar) );
+	// }
 }
 
 .wp-block-table {
@@ -25,22 +54,22 @@
     }
 }
 
-@media (min-width: 600px) {
-	.block-editor-block-list__layout
-		.block-editor-block-list__block[data-align="full"] {
-		max-width: calc(100% + 46px + 46px);
-		width: calc(100% + 46px + 46px);
-		margin-left: -46px;
-		margin-right: -46px;
-	}
-}
-@media (min-width: 600px) {
-	.block-editor-block-list__layout
-		.block-editor-block-list__block[data-align="wide"] {
-		max-width: 100%;
-		width: 100%;
-	}
-}
+// @media (min-width: 600px) {
+// 	.block-editor-block-list__layout
+// 		.block-editor-block-list__block[data-align="full"] {
+// 		max-width: calc(100% + 46px + 46px);
+// 		width: calc(100% + 46px + 46px);
+// 		margin-left: -46px;
+// 		margin-right: -46px;
+// 	}
+// }
+// @media (min-width: 600px) {
+// 	.block-editor-block-list__layout
+// 		.block-editor-block-list__block[data-align="wide"] {
+// 		max-width: 100%;
+// 		width: 100%;
+// 	}
+// }
 
 .wp-block-latest-posts{
     margin-left:auto;
