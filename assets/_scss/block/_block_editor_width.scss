@@ -19,7 +19,7 @@
 }
 
 // 左管理メニュー非表示 / 右サイドバー非表示
-.is-fullscreen-mode .edit-post-layout:not(.is-sidebar-opened){
+.is-fullscreen-mode.folded .edit-post-layout:not(.is-sidebar-opened){
 	--vk-width-editor-container: var(--vk-width-container);
 	--vk-width-editor-full:100vw;
 	--vk-width-editor-full-horizontal-margin:calc( ( 100% - 100vw ) / 2 );
@@ -27,7 +27,7 @@
 	--vk-width-editor-wide-horizontal-margin:calc( ( 100% - 100vw ) / 4 );
 }
 // 左管理メニュー非表示 / 右サイドバー表示
-.is-fullscreen-mode .edit-post-layout.is-sidebar-opened{
+.is-fullscreen-mode.folded .edit-post-layout.is-sidebar-opened{
 	--vk-width-editor-container: calc( var(--vk-width-container) - var(--vk-width-editor-sidebar) );
 	--vk-width-editor-full: calc( 100vw - var(--vk-width-editor-sidebar) );
 	--vk-width-editor-full-horizontal-margin:calc( ( 100% + var(--vk-width-editor-sidebar) - 100vw ) / 2 );
