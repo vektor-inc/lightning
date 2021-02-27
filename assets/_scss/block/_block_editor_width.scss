@@ -50,6 +50,10 @@ body.folded .edit-post-layout.is-sidebar-opened{
 	--vk-width-editor-wide:calc( var( --vk-width-editor-container-body ) + ( 100vw - var( --vk-width-editor-container-body ) - var(--vk-width-editor-leftmenu-folded) - var(--vk-width-editor-sidebar) ) / 2 );
 }
 
+.wp-block.editor-post-title {
+	max-width:var(--vk-width-editor-container-body);
+}
+
 /**
 * 	normal block
 * 	.is-root-container > .wp-blockを公開画面のコンテナとして考える
@@ -102,6 +106,15 @@ div[data-align=full]
 		max-width:var(--vk-width-editor-full);
 		margin-left:-10px;
 		margin-right:-10px;
+		.wp-block[data-align=full]{
+			margin-left:0;
+			margin-right:0;
+		}
+		.alignfull {
+			width:var(--vk-width-editor-full);
+			margin-left:0;
+			margin-right:0;
+		}
 	}
 	& > .wp-block[data-align=wide],
 	& > div[data-align=wide]{
