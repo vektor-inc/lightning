@@ -947,7 +947,6 @@ div[class*="__inner-container"] {
 }
 
 body.is-fullscreen-mode .edit-post-layout:not(.is-sidebar-opened) {
-	border: 1px solid #0000ff;
 	--vk-width-editor-full: 100vw;
 	--vk-width-editor-container-body: calc( var(--vk-width-editor-container) - var(--vk-width-container-padding) * 2 );
 	--vk-width-editor-wide: calc( var(--vk-width-editor-container-body) + ( 100vw - var(--vk-width-editor-container-body) ) / 2 );
@@ -955,22 +954,23 @@ body.is-fullscreen-mode .edit-post-layout:not(.is-sidebar-opened) {
 }
 
 body.is-fullscreen-mode .edit-post-layout.is-sidebar-opened {
-	border: 1px solid #ff0000;
 	--vk-width-editor-full: calc( 100vw - 280px );
 	--vk-width-editor-wide: calc( 100vw - 280px - ( ( 100vw - 280px ) * ( 1 - 0.8 ) / 2 ) );
 	--vk-width-editor-container-body: calc(  ( 100vw - 280px ) * 0.8 - 30px );
 }
 
-body:not(.is-fullscreen-mode) .edit-post-layout:not(.is-sidebar-opened) {
-	--vk-width-editor-container: calc( var(--vk-width-container) - var(--vk-width-editor-leftmenu) );
-	--vk-width-editor-full: calc( 100vw - var(--vk-width-editor-leftmenu) );
-	--vk-width-editor-wide: calc( var( --vk-width-editor-container-body ) + ( 100vw - var( --vk-width-editor-container-body ) - var(--vk-width-editor-leftmenu) ) / 2 );
-}
-
 body:not(.is-fullscreen-mode) .edit-post-layout.is-sidebar-opened {
 	--vk-width-editor-container: calc( var(--vk-width-container) - var(--vk-width-editor-leftmenu) - var(--vk-width-editor-sidebar) );
+	--vk-width-editor-container-body: calc(  ( 100vw - 280px - 160px ) * 0.8 - 30px );
 	--vk-width-editor-full: calc( 100vw - var(--vk-width-editor-leftmenu) - var(--vk-width-editor-sidebar) );
 	--vk-width-editor-wide: calc( var( --vk-width-editor-container-body ) + ( 100vw - var( --vk-width-editor-container-body ) - var(--vk-width-editor-leftmenu) - var(--vk-width-editor-sidebar) ) / 2 );
+}
+
+body:not(.is-fullscreen-mode) .edit-post-layout:not(.is-sidebar-opened) {
+	--vk-width-editor-container: calc( var(--vk-width-container) - var(--vk-width-editor-leftmenu) );
+	--vk-width-editor-container-body: calc(  ( 100vw - 160px ) * 0.8 - 30px );
+	--vk-width-editor-full: calc( 100vw - var(--vk-width-editor-leftmenu) );
+	--vk-width-editor-wide: calc( var( --vk-width-editor-container-body ) + ( 100vw - var( --vk-width-editor-container-body ) - var(--vk-width-editor-leftmenu) ) / 2 );
 }
 
 body.folded .edit-post-layout:not(.is-sidebar-opened) {
@@ -1032,7 +1032,6 @@ div[data-align=full]
 
 .editor-styles-wrapper .is-root-container > .wp-block[data-align=full],
 .editor-styles-wrapper .is-root-container > div[data-align=full] {
-	border: 1px solid #ff0000;
 	width: var(--vk-width-editor-full);
 	max-width: var(--vk-width-editor-full);
 	margin-left: -10px;
@@ -1077,7 +1076,6 @@ div[data-align=full]
 .editor-styles-wrapper .is-root-container > div[data-align=full] > div > div[class*="__inner-container"],
 .editor-styles-wrapper .is-root-container > .wp-block[data-align=wide] > div > div[class*="__inner-container"],
 .editor-styles-wrapper .is-root-container > div[data-align=wide] > div > div[class*="__inner-container"] {
-	border: 1px solid #ff0000;
 	width: var(--vk-width-editor-container);
 	max-width: var(--vk-width-editor-container);
 }
