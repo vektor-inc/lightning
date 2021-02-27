@@ -973,13 +973,13 @@ body:not(.is-fullscreen-mode) .edit-post-layout:not(.is-sidebar-opened) {
 	--vk-width-editor-wide: calc( var( --vk-width-editor-container-body ) + ( 100vw - var( --vk-width-editor-container-body ) - var(--vk-width-editor-leftmenu) ) / 2 );
 }
 
-body.folded .edit-post-layout:not(.is-sidebar-opened) {
+body.folded:not(.is-fullscreen-mode) .edit-post-layout:not(.is-sidebar-opened) {
 	--vk-width-editor-container: calc( var(--vk-width-container) - var(--vk-width-editor-leftmenu-folded) );
 	--vk-width-editor-full: calc( 100vw - var(--vk-width-editor-leftmenu-folded) );
 	--vk-width-editor-wide: calc( var( --vk-width-editor-container-body ) + ( 100vw - var( --vk-width-editor-container-body ) - var(--vk-width-editor-leftmenu-folded) ) / 2 );
 }
 
-body.folded .edit-post-layout.is-sidebar-opened {
+body.folded:not(.is-fullscreen-mode) .edit-post-layout.is-sidebar-opened {
 	--vk-width-editor-container: calc( var(--vk-width-container) - var(--vk-width-editor-leftmenu-folded) - var(--vk-width-editor-sidebar) );
 	--vk-width-editor-full: calc( 100vw - var(--vk-width-editor-leftmenu-folded) - var(--vk-width-editor-sidebar) );
 	--vk-width-editor-wide: calc( var( --vk-width-editor-container-body ) + ( 100vw - var( --vk-width-editor-container-body ) - var(--vk-width-editor-leftmenu-folded) - var(--vk-width-editor-sidebar) ) / 2 );
