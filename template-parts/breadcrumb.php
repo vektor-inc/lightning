@@ -10,9 +10,8 @@ function lightning_bread_crumb() {
 	// Get Post top page info
 	/*-------------------------------------------*/
 	// get_post_type() だとtaxonomyページで該当の投稿がない時に投稿タイプを取得できないため lightning_get_post_type() を使用
-	$post_type        = lightning_get_post_type();
-	$post_type        = $post_type['slug'];
-	$post_type_object = get_post_type_object( $post_type );
+	// また、wooCommerceなどはショップトップの名称が投稿タイプ名と異なるので、そのあたりの処理も lightning_get_post_type() で対応済み
+	$post_type_info   = lightning_get_post_type();
 	$show_on_front    = get_option( 'show_on_front' );
 	$page_for_post    = get_option( 'page_for_posts' );
 	$post_top_name    = ! empty( $page_for_post ) ? get_the_title( $page_for_post ) : '';
@@ -54,7 +53,7 @@ function lightning_bread_crumb() {
 	/*-------------------------------*/
 	} elseif ( is_single() || is_page() ||is_category() || is_tag() || is_tax() || is_post_type_archive() || is_date() ) {
 
-		if ( 'post' === $post_type && 'page' === $show_on_front && $page_for_post ) { /* including single-post */
+		if ( 'post' === $post_type_info['slug'] && 'page' === $show_on_front && $page_for_post ) { /* including single-post */
 			$breadcrumb_html .= '<li' . $microdata_li . '>';
 			$breadcrumb_html .= '<a' . $microdata_li_a . ' href="' . esc_url( $post_top_url ) . '">';
 			$breadcrumb_html .= '<span' . $microdata_li_a_span . '>' . $post_top_name . '</span>';
@@ -62,12 +61,12 @@ function lightning_bread_crumb() {
 			$breadcrumb_html .= '</li>';
 		} elseif ( is_post_type_archive() && ! is_date() ) {
 			$breadcrumb_html .= '<li>';
-			$breadcrumb_html .= '<span>' . get_the_archive_title() . '</span>';
+			$breadcrumb_html .= '<span>' . wp_kses_post( $post_type_info['name'] ) . '</span>';
 			$breadcrumb_html .= '</li>';
-		} elseif ( 'post' !== $post_type && 'page' !== $post_type ) {
+		} elseif ( 'post' !== $post_type_info['slug'] && 'page' !== $post_type_info['slug'] ) {
 			$breadcrumb_html .= '<li' . $microdata_li . '>';
-			$breadcrumb_html .= '<a' . $microdata_li_a . ' href="' . get_post_type_archive_link( $post_type ) . '">';
-			$breadcrumb_html .= '<span' . $microdata_li_a_span . '>' . $post_type_object->label . '</span>';
+			$breadcrumb_html .= '<a' . $microdata_li_a . ' href="' . get_post_type_archive_link( $post_type_info['slug'] ) . '">';
+			$breadcrumb_html .= '<span' . $microdata_li_a_span . '>' . wp_kses_post( $post_type_info['name'] ) . '</span>';
 			$breadcrumb_html .= '</a>';
 			$breadcrumb_html .= '</li>';
 		}
