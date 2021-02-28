@@ -69,14 +69,22 @@ function lightning_woo_product_gallery_setup() {
 	add_theme_support( 'wc-product-gallery-slider' );
 }
 
-
-
+/**
+ * ショップトップページに指定している固定ページのデザイン設定を取得
+ */
 function lightning_woo_get_design_setting(){
+
+	// Woo Shop Top Page ( 'shop' is settted for Shop Top that it's not slug. )
 	$shop_page_id = wc_get_page_id( 'shop' );
-	$shop_page    = get_post( $shop_page_id );
+
+	// 固定ページで指定しているレイアウト情報などを取得
 	$option = get_post_meta( $shop_page_id, '_lightning_design_setting', true );
 	return $option;
 }
+
+/**
+ * ショップトップのページかどうか？
+ */
 function lightning_woo_is_shop_page(){
 	global $post;
 	if ( 'product' === get_post_type( $post ) && ! is_singular() ) {
@@ -85,7 +93,7 @@ function lightning_woo_is_shop_page(){
 }
 
 /**
- * 	カラム表示制御
+ * 	ショップトップページのカラム表示制御
  */
 function lightning_woo_is_layout_onecolumn( $return ){
 	if ( lightning_woo_is_shop_page() ) {
@@ -107,7 +115,7 @@ function lightning_woo_is_layout_onecolumn( $return ){
 add_filter( 'lightning_is_layout_onecolumn', 'lightning_woo_is_layout_onecolumn' );
 
 /**
- * 	サブサクション表示制御
+ * 	ショップトップページのサブサクション表示制御
  */
 function lightning_woo_is_subsection_display( $return ){
 	if ( lightning_woo_is_shop_page() ) {
@@ -132,18 +140,33 @@ function lightning_woo_is_subsection_display( $return ){
 add_filter( 'lightning_is_subsection_display', 'lightning_woo_is_subsection_display' );
 
 /**
- * 	ページヘッダーとパンくずの表示制御
+ * 	ショップトップページでのページヘッダーの表示制御
  */
-function lightning_woo_is_page_header_and_breadcrumb( $return ){
+function lightning_woo_is_page_header( $return ){
 	if ( lightning_woo_is_shop_page() ) {
 		$lightning_design_setting = lightning_woo_get_design_setting();
-		if ( ! empty( $lightning_design_setting['hidden_page_header_and_breadcrumb'] ) ) {
+		if ( ! empty( $lightning_design_setting['hidden_page_header'] ) ) {
 			$return = false;
 		}
 	}
 	return $return;
 }
-add_filter( 'lightning_is_page_header_and_breadcrumb', 'lightning_woo_is_page_header_and_breadcrumb' );
+add_filter( 'lightning_is_page_header', 'lightning_woo_is_page_header' );
+
+/**
+ * 	ショップトップページでのパンくずの表示制御
+ */
+function lightning_woo_is_breadcrumb( $return ){
+	if ( lightning_woo_is_shop_page() ) {
+		$lightning_design_setting = lightning_woo_get_design_setting();
+		if ( ! empty( $lightning_design_setting['hidden_breadcrumb'] ) ) {
+			$return = false;
+		}
+	}
+	return $return;
+}
+add_filter( 'lightning_is_breadcrumb', 'lightning_woo_is_breadcrumb' );
+
 
 /**
  * siteContent の上下余白
