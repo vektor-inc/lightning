@@ -79,7 +79,7 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 	);
 
 	$wp_customize->add_control(
-		new Custom_Text_Control(
+		new VK_Custom_Text_Control(
 			$wp_customize,
 			'top_slide_time',
 			array(
@@ -121,7 +121,7 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 		);
 		$priority = $priority + 1;
 		$wp_customize->add_control(
-			new Custom_Html_Control(
+			new VK_Custom_Html_Control(
 				$wp_customize,
 				'slide_title_' . $i,
 				array(
@@ -208,7 +208,7 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 
 		$priority = $priority + 1;
 		$wp_customize->add_control(
-			new Custom_Text_Control(
+			new VK_Custom_Text_Control(
 				$wp_customize,
 				'top_slide_alt_' . $i,
 				array(
@@ -258,7 +258,7 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 		);
 		$priority = $priority + 1;
 		$wp_customize->add_control(
-			new Custom_Text_Control(
+			new VK_Custom_Text_Control(
 				$wp_customize,
 				'top_slide_cover_opacity_' . $i,
 				array(
@@ -380,7 +380,7 @@ function lightning_customize_register_top_slide( $wp_customize ) {
 
 		$priority = $priority + 1;
 		$wp_customize->add_control(
-			new Custom_Text_Control(
+			new VK_Custom_Text_Control(
 				$wp_customize,
 				'top_slide_text_btn_' . $i,
 				array(

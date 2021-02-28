@@ -65,7 +65,7 @@ if ( ! class_exists( 'VK_Footer_Customize' ) ) {
 				)
 			);
 			$wp_customize->add_control(
-				new Custom_Html_Control(
+				new VK_Custom_Html_Control(
 					$wp_customize,
 					'footer-widget-setting',
 					array(

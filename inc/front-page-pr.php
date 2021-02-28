@@ -88,7 +88,7 @@ function lightning_front_pr_blocks_customize_register( $wp_customize ) {
 		}
 
 		$wp_customize->add_control(
-			new Custom_Text_Control(
+			new VK_Custom_Text_Control(
 				$wp_customize,
 				'front_pr_icon_' . $i,
 				array(

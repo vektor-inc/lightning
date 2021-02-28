@@ -22,7 +22,7 @@ function lightning_customize_register_sidebar( $wp_customize ) {
 		)
 	);
 	$wp_customize->add_control(
-		new Custom_Html_Control(
+		new VK_Custom_Html_Control(
 			$wp_customize,
 			'ltg_sidebar_setting',
 			array(
@@ -68,7 +68,7 @@ function lightning_customize_register_sidebar( $wp_customize ) {
 		)
 	);
 	$wp_customize->add_control(
-		new Custom_Html_Control(
+		new VK_Custom_Html_Control(
 			$wp_customize,
 			'ltg_sidebar_fix_setting_title',
 			array(

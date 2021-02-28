@@ -13,7 +13,7 @@ function lightning_woo_customize_register( $wp_customize ) {
 		)
 	);
 	$wp_customize->add_control(
-		new Custom_Html_Control(
+		new VK_Custom_Html_Control(
 			$wp_customize,
 			'ltg_woo_image_setting',
 			array(

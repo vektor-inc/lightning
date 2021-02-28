@@ -242,7 +242,7 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 			);
 
 			$wp_customize->add_control(
-				new Custom_Text_Control(
+				new VK_Custom_Text_Control(
 					$wp_customize,
 					'vk_advanced_slider_option[top_slide_speed]',
 					array(
@@ -382,7 +382,7 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 				);
 
 				$wp_customize->add_control(
-					new Custom_Text_Control(
+					new VK_Custom_Text_Control(
 						$wp_customize,
 						'vk_advanced_slider_option[top_slide_alt_' . $i . ']',
 						array(
@@ -428,7 +428,7 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 					)
 				);
 				$wp_customize->add_control(
-					new Custom_Text_Control(
+					new VK_Custom_Text_Control(
 						$wp_customize,
 						'vk_advanced_slider_option[top_slide_cover_opacity_' . $i . ']',
 						array(
@@ -540,7 +540,7 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 				);
 
 				$wp_customize->add_control(
-					new Custom_Text_Control(
+					new VK_Custom_Text_Control(
 						$wp_customize,
 						'vk_advanced_slider_option[top_slide_text_btn_' . $i . ']',
 						array(
