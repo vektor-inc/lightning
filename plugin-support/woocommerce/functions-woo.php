@@ -133,6 +133,8 @@ add_filter( 'lightning_is_subsection_display', 'lightning_woo_is_subsection_disp
 
 /**
  * 	ページヘッダーとパンくずの表示制御
+ *	
+ *  2021.2.28 現在不要と思われるので一旦動作停止(不具合報告がこなければ削除可)
  */
 function lightning_woo_is_page_header_and_breadcrumb( $return ){
 	if ( lightning_woo_is_shop_page() ) {
@@ -143,7 +145,7 @@ function lightning_woo_is_page_header_and_breadcrumb( $return ){
 	}
 	return $return;
 }
-add_filter( 'lightning_is_page_header_and_breadcrumb', 'lightning_woo_is_page_header_and_breadcrumb' );
+// add_filter( 'lightning_is_page_header_and_breadcrumb', 'lightning_woo_is_page_header_and_breadcrumb' );
 
 /**
  * siteContent の上下余白
