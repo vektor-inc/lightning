@@ -3,7 +3,7 @@
 /*
  * Template Name: No sidebar ( not recommended )
  */
-get_header(); ?>
+lightning_get_template_part('header'); ?>
 
 <?php
 // Dealing with old files.
@@ -76,4 +76,4 @@ do_action( 'lightning_breadcrumb_after' );
 </div><!-- [ /.container ] -->
 <?php do_action( 'lightning_siteContent_apepend' ); ?>
 </div><!-- [ /.siteContent ] -->
-<?php get_footer(); ?>
+<?php lightning_get_template_part('footer'); ?>

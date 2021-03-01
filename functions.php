@@ -43,9 +43,9 @@ class LTG_Template_Redirect {
 	public static function theme_directory(){
 		$current_skin = get_option( 'lightning_design_skin' );
 		if ( $current_skin === 'origin3' ){
-			$dir = '_g3';
+			$dir = LIG_G3_DIR;
 		} else {
-			$dir = '_g2';
+			$dir = LIG_G2_DIR;
 		}
 		return $dir;
 	}
@@ -70,7 +70,7 @@ class LTG_Template_Redirect {
     //     return $parent_theme_file_path . '/' . self::theme_directory();
     // }
     // public static function parent_theme_file_path( $parent_theme_file_path  ){
-    //     return $parent_theme_file_path . '/' . LIG_G3_DIR;
+    //     return $parent_theme_file_path . '/' . self::theme_directory();
     // }
 
 	public static function get_template_part_fallback( $slug, $name, $templates ){
@@ -107,7 +107,7 @@ class LTG_Template_Redirect {
 			 */
 
 			if ( get_stylesheet() !== get_template()  ){
-				print '<pre style="text-align:left">';print_r($slug);print '</pre>';
+
 				// 子テーマ直下に引数のファイルがあるか確認
 				// 親テーマの header.php など参照しないように子テーマの階層
 				if ( '' !== $name ) {
@@ -160,9 +160,35 @@ class LTG_Template_Redirect {
 
 new LTG_Template_Redirect();
 
+if ( function_exists( 'lightning_get_template_part' ) ){
+
+	function lightning_get_template_part( $slug, $name = null, $args = array() ) {
+		$current_skin = get_option( 'lightning_design_skin' );
+		if ( $current_skin === 'origin3' ){
+			$dir = LIG_G3_DIR;
+		} else {
+			$dir = LIG_G2_DIR;
+		}
+
+		/* Almost the same as the core */
+		$templates = array();
+		$name      = (string) $name;
+		if ( '' !== $name ) {
+			$templates[] = $dir . '/' . "{$slug}-{$name}.php";
+		}
+		
+		$templates[] = $dir . '/' . "{$slug}.php";
+		
+		if ( ! locate_template( $templates, true, false, $args ) ) {
+			return false;
+		}
+	}
+
+}
+
 $current_skin = get_option( 'lightning_design_skin' );
 if ( $current_skin === 'origin3' ){
-	require dirname( __FILE__ ) . '/_g3/functions.php';
+	require dirname( __FILE__ ) . '/' . LIG_G3_DIR . '/functions.php';
 } else {
-	require dirname( __FILE__ ) . '/_g2/functions.php';
+	require dirname( __FILE__ ) . '/' . LIG_G2_DIR . '/functions.php';
 }

@@ -2,7 +2,7 @@
 /*
  * Template Name: Landing Page for Page Builder ( not recommended )
  */
-get_header(); ?>
+lightning_get_template_part('header'); ?>
 
 <div class="<?php lightning_the_class_name( 'siteContent' ); ?>">
 <?php do_action( 'lightning_siteContent_prepend' ); ?>
@@ -40,4 +40,4 @@ endwhile;
 
 <?php do_action( 'lightning_siteContent_apepend' ); ?>
 </div><!-- [ /.siteContent ] -->
-<?php get_footer(); ?>
+<?php lightning_get_template_part('footer'); ?>

@@ -1,4 +1,4 @@
-<?php get_header(); ?>
+<?php lightning_get_template_part('header'); ?>
 
 <?php if ( lightning_is_page_header() ){
 	// Dealing with old files.
@@ -91,4 +91,4 @@
 </div><!-- [ /.container ] -->
 <?php do_action( 'lightning_siteContent_apepend' ); ?>
 </div><!-- [ /.siteContent ] -->
-<?php get_footer(); ?>
+<?php lightning_get_template_part('footer'); ?>
