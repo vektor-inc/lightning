@@ -25,17 +25,17 @@ function lightning_old_packages_array() {
 		'widget_full_wide_title'     => array(
 			'label'       => __( 'Full Wide Title Widget', 'lightning' ),
 			'description' => __( 'If you are using Lightning Pro that, You can use the same function by Outer Block and Title Block in Plugin VK Blocks.', 'lightning' ),
-			'path'        => get_parent_theme_file_path( '/inc/widgets/widget-full-wide-title.php' ),
+			'path'        => dirname( __FILE__ )  . '/widgets/widget-full-wide-title.php',
 		),
 		'widget_contents_area_posts' => array(
 			'label'       => __( 'Content Area Posts Widget', 'lightning' ),
 			'description' => __( 'If you are using Lightning Pro that, You can use the more powerful function by Media Posts BS4 Widget and Latest Posts Block in Plugin VK Blocks.', 'lightning' ),
-			'path'        => get_parent_theme_file_path( '/inc/widgets/widget-new-posts.php' ),
+			'path'        => dirname( __FILE__ )  . '/widgets/widget-new-posts.php',
 		),
 		'widget_front_pr'            => array(
 			'label'       => __( 'Front Page PR Block', 'lightning' ),
 			'description' => __( 'You can use same function by PR Block in Plugin VK Blocks', 'lightning' ),
-			'path'        => get_parent_theme_file_path( '/inc/front-page-pr.php' ),
+			'path'        => dirname( __FILE__ )  . '/front-page-pr.php',
 		),
 	);
 	return apply_filters( 'lightning_old_packages_array', $packages );
