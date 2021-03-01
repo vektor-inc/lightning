@@ -36,21 +36,23 @@ class LTG_Template_Redirect {
         add_filter( 'comments_template', array( __CLASS__, 'comments_template' ) );
         // parent_theme_file_path の書き換えはやろうと思えば出来るが危険なので保留
         // add_filter( 'parent_theme_file_path', array( __CLASS__, 'parent_theme_file_path' ) );
+
+		add_action( 'get_template_part', array( __CLASS__, 'get_template_part_fallback' ), 10, 3 );
     }
 
 	public static function theme_directory(){
 		$current_skin = get_option( 'lightning_design_skin' );
 		if ( $current_skin === 'origin3' ){
-			$dir = '_g3/';
+			$dir = '_g3';
 		} else {
-			$dir = '_g2/';
+			$dir = '_g2';
 		}
 		return $dir;
 	}
 
 	public static function template_hierarchy_redirect( $templates ){
         foreach ( $templates as $key => $template){
-            $templates[$key] = self::theme_directory() . $template;
+            $templates[$key] = self::theme_directory() . '/' . $template;
         }
         return $templates;
     }
@@ -60,7 +62,7 @@ class LTG_Template_Redirect {
     }
 
     public static function comments_template( $theme_template  ){
-        $theme_template = get_stylesheet_directory() . '/' . LIG_G3_DIR . '/comments.php';
+        $theme_template = get_stylesheet_directory() . '/' . self::theme_directory() . '/comments.php';
         return $theme_template;
     }
 	// public static function template_directory( $template_dir, $template, $theme_root  ){
@@ -70,6 +72,80 @@ class LTG_Template_Redirect {
     // public static function parent_theme_file_path( $parent_theme_file_path  ){
     //     return $parent_theme_file_path . '/' . LIG_G3_DIR;
     // }
+
+	public static function get_template_part_fallback( $slug, $name, $templates ){
+
+		/*
+		主に子テーマで get_template_part() で親ファイルを呼び出しているケースにおいて
+		親ファイルのパスが変更になっているので対応するための処理
+
+		1.引数にg階層が含まれない時に実行される
+		2.子テーマ内に該当ファイルがあればそのまま処理し。
+		3.ない場合は子テーマでg階層のパスを追加したファイルがあれば処理
+		4.なければ親階層にg階層をつけたファイルがあれば読み込む
+		*/
+
+		$g_dir = self::theme_directory();
+
+		// 引数でうけとったパスが _g2 _ g3 を含んでいるか
+		// preg_match( '/^'.LIG_G2_DIR.'/', $slug ,$matches );
+		if ( preg_match( '/^' . $g_dir . '/', $slug ) ){
+			// 含んでいるならそのまま標準処理で良いので return
+			return;
+		// 含んでいなかったら {
+		} else {
+
+			// 子テーマの場合のみ処理する
+			if ( get_stylesheet() !== get_template()  ){
+
+				// 子テーマ直下に引数のファイルがあるか確認
+				// 親テーマの header.php など参照しないように子テーマの階層
+				if ( '' !== $name ) {
+					$template_file_path = get_stylesheet_directory() . "/{$slug}-{$name}.php";
+				} else {
+					$template_file_path = get_stylesheet_directory() . "/{$slug}.php";
+				}
+				if ( file_exists( $template_file_path ) ){
+					// あれば標準処理で良いので何もせずに return
+					return;
+				}
+
+				/**
+				 * 独自階層を付与した階層にファイルがあるか確認
+				 * 
+				 * わかる人ならg階層をつけて get_template_part() 書きそうだが、
+				 * このリダイレクトが成功するなら本体も g階層つけずに get_template_part() 書けるので、
+				 * それを真似してg階層無しで書いてくる人用の処理 
+				 */
+				if ( '' !== $name ) {
+					$template_file_path = get_stylesheet_directory() . "/{$g_dir}/{$slug}-{$name}.php";
+				} else {
+					$template_file_path = get_stylesheet_directory() . "/{$g_dir}/{$slug}.php";
+				}
+				if ( file_exists( $template_file_path ) ){
+					// 階層を追加したファイルが存在する場合は、標準処理では見つからないので読み込み実行する
+					$require_once = false;
+					load_template( $template_file_path, $require_once );
+					// 後続処理しないようにリターン
+					return;
+				}
+				
+			}
+
+			// 親テーマに独自階層を付与した階層にファイルがあるか確認
+			if ( '' !== $name ) {
+				$template_file_path = get_template_directory() . "/{$g_dir}/{$slug}-{$name}.php";
+			} else {
+				$template_file_path = get_template_directory() . "/{$g_dir}/{$slug}.php";
+			}
+			if ( file_exists( $template_file_path ) ){
+				// 階層を追加したファイルが存在する場合は、標準処理では見つからないので読み込み実行する
+				$require_once = false;
+				load_template( $template_file_path, $require_once );
+			}
+		}
+    }
+
 }
 
 new LTG_Template_Redirect();

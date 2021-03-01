@@ -1,1 +1,1 @@
-<?php get_template_part( '_g2/footer.php' );?>
+<?php get_template_part( '_g2/footer' );?>
