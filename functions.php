@@ -89,6 +89,9 @@ class LTG_Template_Redirect {
 
 		// 引数でうけとったパスが _g2 _ g3 を含んでいるか
 		// preg_match( '/^'.LIG_G2_DIR.'/', $slug ,$matches );
+
+
+
 		if ( preg_match( '/^' . $g_dir . '/', $slug ) ){
 			// 含んでいるならそのまま標準処理で良いので return
 			return;
@@ -96,8 +99,15 @@ class LTG_Template_Redirect {
 		} else {
 
 			// 子テーマの場合のみ処理する
-			if ( get_stylesheet() !== get_template()  ){
+			
+			/**
+			 *  標準階層のファイル読み込みを先に処理している理由
+			 * 	
+			 * 	標準はファイルがあれば出力されるので、g階層のファイルとの二重出力となってしまうため
+			 */
 
+			if ( get_stylesheet() !== get_template()  ){
+				print '<pre style="text-align:left">';print_r($slug);print '</pre>';
 				// 子テーマ直下に引数のファイルがあるか確認
 				// 親テーマの header.php など参照しないように子テーマの階層
 				if ( '' !== $name ) {

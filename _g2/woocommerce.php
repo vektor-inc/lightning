@@ -79,7 +79,7 @@
 		 */
 		do_action( 'woocommerce_sidebar' );
 	?>
-	<?php get_sidebar( get_post_type() ); ?>
+	<?php get_template_part( 'sidebar', get_post_type() ); ?>
 	<?php do_action( 'lightning_sideSection_append' ); ?>
 </div><!-- [ /.subSection ] -->
 <?php endif; ?>
