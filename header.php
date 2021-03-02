@@ -1,1 +1,1 @@
-<?php get_template_part( '_g2/header' );?>
+<?php lightning_get_template_part( 'header' );?>

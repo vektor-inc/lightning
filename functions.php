@@ -98,6 +98,8 @@ class LTG_Template_Redirect {
 		// 含んでいなかったら {
 		} else {
 
+			$templates = array();
+
 			// 子テーマの場合のみ処理する
 			
 			/**
@@ -111,11 +113,11 @@ class LTG_Template_Redirect {
 				// 子テーマ直下に引数のファイルがあるか確認
 				// 親テーマの header.php など参照しないように子テーマの階層
 				if ( '' !== $name ) {
-					$template_file_path = get_stylesheet_directory() . "/{$slug}-{$name}.php";
+					$templates[] = get_stylesheet_directory() . "/{$slug}-{$name}.php";
 				} else {
-					$template_file_path = get_stylesheet_directory() . "/{$slug}.php";
+					$templates[] = get_stylesheet_directory() . "/{$slug}.php";
 				}
-				if ( file_exists( $template_file_path ) ){
+				if ( locate_template( $templates ) ){
 					// あれば標準処理で良いので何もせずに return
 					return;
 				}
@@ -128,14 +130,14 @@ class LTG_Template_Redirect {
 				 * それを真似してg階層無しで書いてくる人用の処理 
 				 */
 				if ( '' !== $name ) {
-					$template_file_path = get_stylesheet_directory() . "/{$g_dir}/{$slug}-{$name}.php";
+					$templates[] = get_stylesheet_directory() . "/{$g_dir}/{$slug}-{$name}.php";
 				} else {
-					$template_file_path = get_stylesheet_directory() . "/{$g_dir}/{$slug}.php";
+					$templates[] = get_stylesheet_directory() . "/{$g_dir}/{$slug}.php";
 				}
-				if ( file_exists( $template_file_path ) ){
+				if ( locate_template( $templates ) ){
 					// 階層を追加したファイルが存在する場合は、標準処理では見つからないので読み込み実行する
 					$require_once = false;
-					load_template( $template_file_path, $require_once );
+					locate_template( $templates, $load, $require_once );
 					// 後続処理しないようにリターン
 					return;
 				}
@@ -144,14 +146,15 @@ class LTG_Template_Redirect {
 
 			// 親テーマに独自階層を付与した階層にファイルがあるか確認
 			if ( '' !== $name ) {
-				$template_file_path = get_template_directory() . "/{$g_dir}/{$slug}-{$name}.php";
+				$templates[] = get_template_directory() . "/{$g_dir}/{$slug}-{$name}.php";
 			} else {
-				$template_file_path = get_template_directory() . "/{$g_dir}/{$slug}.php";
+				$templates[] = get_template_directory() . "/{$g_dir}/{$slug}.php";
 			}
-			if ( file_exists( $template_file_path ) ){
+			if ( locate_template( $templates ) ){
 				// 階層を追加したファイルが存在する場合は、標準処理では見つからないので読み込み実行する
+				$load = true;
 				$require_once = false;
-				load_template( $template_file_path, $require_once );
+				locate_template( $templates, $load, $require_once );
 			}
 		}
     }
