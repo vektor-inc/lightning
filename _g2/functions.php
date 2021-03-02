@@ -215,47 +215,47 @@ function lightning_load_common_editor_css_to_gutenberg() {
 }
 
 
-require get_parent_theme_file_path( LIG_G2_DIR . '/functions-compatible.php' );
+require dirname( __FILE__ ) . '/functions-compatible.php';
 
 
 /*
   Load tga(Plugin install)
 /*-------------------------------------------*/
-require get_parent_theme_file_path( LIG_G2_DIR . '/inc/tgm-plugin-activation/tgm-config.php' );
+require dirname( __FILE__ ) . '/inc/tgm-plugin-activation/tgm-config.php';
 
 /*
   Load Custom template tags for this theme.
 /*-------------------------------------------*/
-require get_parent_theme_file_path( LIG_G2_DIR . '/inc/template-tags.php' );
-require get_parent_theme_file_path( LIG_G2_DIR . '/inc/template-tags-old.php' );
-require get_parent_theme_file_path( LIG_G2_DIR . '/inc/class-vk-helpers.php' );
+require dirname( __FILE__ ) . '/inc/template-tags.php';
+require dirname( __FILE__ ) . '/inc/template-tags-old.php';
+require dirname( __FILE__ ) . '/inc/class-vk-helpers.php';
 
 /*
   Load Theme Customizer additions.
 /*-------------------------------------------*/
-require get_parent_theme_file_path( LIG_G2_DIR . '/inc/customize/customize.php' );
-require get_parent_theme_file_path( LIG_G2_DIR . '/inc/customize/customize-design.php' );
-require get_parent_theme_file_path( LIG_G2_DIR . '/inc/customize/customize-top-slide.php' );
-require get_parent_theme_file_path( LIG_G2_DIR . '/inc/customize/customize-functions.php' );
+require dirname( __FILE__ ) . '/inc/customize/customize.php';
+require dirname( __FILE__ ) . '/inc/customize/customize-design.php';
+require dirname( __FILE__ ) . '/inc/customize/customize-top-slide.php';
+require dirname( __FILE__ ) . '/inc/customize/customize-functions.php';
 
 /*
   Load allow customize modules
 /*-------------------------------------------*/
-get_template_part( 'inc/vk-mobile-nav/vk-mobile-nav-config' );
+require dirname( __FILE__ ) . '/inc/vk-mobile-nav/vk-mobile-nav-config';
 
 /*
   Load modules
 /*-------------------------------------------*/
-require get_parent_theme_file_path( LIG_G2_DIR . '/inc/package-manager.php' );
-require get_parent_theme_file_path( LIG_G2_DIR . '/inc/class-design-manager.php' );
-require get_parent_theme_file_path( LIG_G2_DIR . '/inc/font-awesome/font-awesome-config.php' );
-require get_parent_theme_file_path( LIG_G2_DIR . '/inc/term-color/term-color-config.php' );
-require get_parent_theme_file_path( LIG_G2_DIR . '/inc/vk-components/vk-components-config.php' );
-require get_parent_theme_file_path( LIG_G2_DIR . '/inc/template-redirect.php' );
-require get_parent_theme_file_path( LIG_G2_DIR . '/inc/layout-controller/layout-controller.php' );
-require get_parent_theme_file_path( LIG_G2_DIR . '/inc/vk-footer-customize/vk-footer-customize-config.php' );
-require get_parent_theme_file_path( LIG_G2_DIR . '/inc/vk-old-options-notice/vk-old-options-notice-config.php' );
-require get_parent_theme_file_path( LIG_G2_DIR . '/inc/vk-css-optimize/vk-css-optimize-config.php' );
+require dirname( __FILE__ ) . '/inc/package-manager.php';
+require dirname( __FILE__ ) . '/inc/class-design-manager.php';
+require dirname( __FILE__ ) . '/inc/font-awesome/font-awesome-config.php';
+require dirname( __FILE__ ) . '/inc/term-color/term-color-config.php';
+require dirname( __FILE__ ) . '/inc/vk-components/vk-components-config.php';
+require dirname( __FILE__ ) . '/inc/template-redirect.php';
+require dirname( __FILE__ ) . '/inc/layout-controller/layout-controller.php';
+require dirname( __FILE__ ) . '/inc/vk-footer-customize/vk-footer-customize-config.php';
+require dirname( __FILE__ ) . '/inc/vk-old-options-notice/vk-old-options-notice-config.php';
+require dirname( __FILE__ ) . '/inc/vk-css-optimize/vk-css-optimize-config.php';
 
 /**
  * Load Starter Content
@@ -268,7 +268,7 @@ require get_parent_theme_file_path( LIG_G2_DIR . '/inc/vk-css-optimize/vk-css-op
  * If 2021.3.10 after that delete
  */
 if ( ! get_option( 'lightning_theme_options' ) ) {
-	require get_parent_theme_file_path( LIG_G2_DIR . '/inc/starter-content.php' );
+	require dirname( __FILE__ ) . '/inc/starter-content.php';
 }
 
 /*
@@ -276,15 +276,15 @@ if ( ! get_option( 'lightning_theme_options' ) ) {
 /*-------------------------------------------*/
 // Load woocommerce modules
 if ( class_exists( 'woocommerce' ) ) {
-	require get_parent_theme_file_path( LIG_G2_DIR . '/plugin-support/woocommerce/functions-woo.php' );
+	require dirname( __FILE__ ) . '/plugin-support/woocommerce/functions-woo.php';
 }
 // Load polylang modules
 include_once ABSPATH . 'wp-admin/includes/plugin.php';
 if ( is_plugin_active( 'polylang/polylang.php' ) ) {
-	require get_parent_theme_file_path( LIG_G2_DIR . '/plugin-support/polylang/functions-polylang.php' );
+	require dirname( __FILE__ ) . '/plugin-support/polylang/functions-polylang.php';
 }
 if ( is_plugin_active( 'bbpress/bbpress.php' ) ) {
-	require get_parent_theme_file_path( LIG_G2_DIR . '/plugin-support/bbpress/functions-bbpress.php' );
+	require dirname( __FILE__ ) . '/plugin-support/bbpress/functions-bbpress.php';
 }
 
 /*
