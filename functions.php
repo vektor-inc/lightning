@@ -167,6 +167,100 @@ class LTG_Template_Redirect {
 
 new LTG_Template_Redirect();
 
+/**
+ * 最終的に各Gディレクトリに移動
+ */
+if ( ! function_exists( 'lightning_get_template_part' ) ){
+	function lightning_get_template_part( $slug, $name = null, $args = array() ) {
+
+		$current_skin = get_option( 'lightning_design_skin' );
+		if ( $current_skin === 'origin3' ){
+			$g_dir = '_g3';
+		} else {
+			$g_dir = '_g2';
+		}
+
+		/**
+		 * 読み込み優先度
+		 * 
+		 * 1.子テーマ g階層 nameあり
+		 * 2.子テーマ 直下 nameあり
+		 * 3.親テーマ g階層 nameあり
+		 * 
+		 * 4.子テーマ g階層 nameなし
+		 * 5.子テーマ 直下 nameなし
+		 * 6.親テーマ g階層 nameなし
+		 * 
+		 */
+
+		/* Almost the same as the core */
+		$template_path_array = array();
+		$name      = (string) $name;
+
+		// Child theme G directory
+		if ( preg_match( '/^' . $g_dir . '/', $slug ) ){
+			// 1. g階層がもともと含まれている場合
+			if ( '' !== $name ) {
+				$template_path_array[] = get_stylesheet_directory() . "/{$slug}-{$name}.php";
+			}
+		} else {
+			// g階層が含まれていない場合
+			
+			// 1. g階層付きのファイルパス
+			if ( '' !== $name ) {
+				$template_path_array[] = get_stylesheet_directory() . '/' . $g_dir . "/{$slug}-{$name}.php";
+			}
+			// 2. 直下のファイルパス
+			if ( '' !== $name ) {
+				$template_path_array[] = get_stylesheet_directory() . "/{$slug}-{$name}.php";
+			}
+		}
+
+		if ( preg_match( '/^' . $g_dir . '/', $slug ) ){
+			// 3. g階層がもともと含まれている場合
+			if ( '' !== $name ) {
+				$template_path_array[] = get_template_directory() . "/{$slug}-{$name}.php";
+			}
+		} else {
+			// 3. g階層がもともと含まれていない場合
+			if ( '' !== $name ) {
+				$template_path_array[] = get_template_directory() . '/' . $g_dir . "/{$slug}-{$name}.php";
+			}
+		}
+
+
+		// Child theme G directory
+		if ( preg_match( '/^' . $g_dir . '/', $slug ) ){
+			// 4. g階層がもともと含まれている場合
+			$template_path_array[] = get_stylesheet_directory() . "/{$slug}.php";
+		} else {
+			// g階層が含まれていない場合
+			// 4. g階層付きのファイルパス
+			$template_path_array[] = get_stylesheet_directory() . '/' . $g_dir . "/{$slug}.php";
+			// 5. 直下のファイルパス
+			$template_path_array[] = get_stylesheet_directory() . '/' . $g_dir . "/{$slug}.php";
+		}
+
+		if ( preg_match( '/^' . $g_dir . '/', $slug ) ){
+			// g階層がもともと含まれている場合
+			// 6. 親のg階層
+			$template_path_array[] = get_template_directory() . "/{$slug}.php";
+		} else {
+			// 6. 親のg階層
+			$template_path_array[] = get_template_directory() . '/' . $g_dir . "/{$slug}.php";
+		}
+
+		foreach( (array) $template_path_array as $template_path ){
+			if ( file_exists( $template_path ) ){
+				$require_once = false;
+				load_template( $template_path, $require_once );
+				break;
+			}
+		}
+
+	}
+}
+
 $current_skin = get_option( 'lightning_design_skin' );
 if ( $current_skin === 'origin3' ){
 	require dirname( __FILE__ ) . '/' . LIG_G3_DIR . '/functions.php';
