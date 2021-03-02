@@ -241,7 +241,7 @@ require dirname( __FILE__ ) . '/inc/customize/customize-functions.php';
 /*
   Load allow customize modules
 /*-------------------------------------------*/
-require dirname( __FILE__ ) . '/inc/vk-mobile-nav/vk-mobile-nav-config';
+require dirname( __FILE__ ) . '/inc/vk-mobile-nav/vk-mobile-nav-config.php';
 
 /*
   Load modules
