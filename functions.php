@@ -73,7 +73,12 @@ class LTG_Template_Redirect {
     //     return $parent_theme_file_path . '/' . self::theme_directory();
     // }
 
-	public static function get_template_part_fallback( $slug, $name, $templates ){
+	public static function get_template_part_fallback( $slug, $name, $template_names ){
+
+		/*
+		 $slug や $name は受け取れるが、$template_names が既に $slugの$nameを結合した配列を渡してくれているので、
+		 $template_names を処理すれば良い
+		 */
 
 		/*
 		主に子テーマで get_template_part() で親ファイルを呼び出しているケースにおいて
@@ -90,15 +95,11 @@ class LTG_Template_Redirect {
 		// 引数でうけとったパスが _g2 _ g3 を含んでいるか
 		// preg_match( '/^'.LIG_G2_DIR.'/', $slug ,$matches );
 
-
-
 		if ( preg_match( '/^' . $g_dir . '/', $slug ) ){
 			// 含んでいるならそのまま標準処理で良いので return
 			return;
 		// 含んでいなかったら {
 		} else {
-
-			$templates = array();
 
 			// 子テーマの場合のみ処理する
 			
@@ -112,14 +113,15 @@ class LTG_Template_Redirect {
 
 				// 子テーマ直下に引数のファイルがあるか確認
 				// 親テーマの header.php など参照しないように子テーマの階層
-				if ( '' !== $name ) {
-					$templates[] = get_stylesheet_directory() . "/{$slug}-{$name}.php";
-				} else {
-					$templates[] = get_stylesheet_directory() . "/{$slug}.php";
-				}
-				if ( locate_template( $templates ) ){
-					// あれば標準処理で良いので何もせずに return
-					return;
+
+				foreach( (array) $template_names as $template_name ){
+					if ( ! $template_name ) {
+						continue;
+					}
+					if ( file_exists( get_stylesheet_directory() . '/' . $template_name ) ) {
+						// あれば標準処理で良いので何もせずに return
+						return;
+					}
 				}
 
 				/**
@@ -129,32 +131,34 @@ class LTG_Template_Redirect {
 				 * このリダイレクトが成功するなら本体も g階層つけずに get_template_part() 書けるので、
 				 * それを真似してg階層無しで書いてくる人用の処理 
 				 */
-				if ( '' !== $name ) {
-					$templates[] = get_stylesheet_directory() . "/{$g_dir}/{$slug}-{$name}.php";
-				} else {
-					$templates[] = get_stylesheet_directory() . "/{$g_dir}/{$slug}.php";
+				foreach( (array) $template_names as $template_name ){
+					if ( ! $template_name ) {
+						continue;
+					}
+					$file_path = get_stylesheet_directory() . '/' . $g_dir . '/' . $template_name;
+					if ( file_exists( $file_path ) ) {
+						// 階層を追加したファイルが存在する場合は、標準処理では見つからないので読み込み実行する
+						$require_once = false;
+						load_template(  $file_path, $require_once );
+						// 後続処理しないようにリターン
+						return;
+					}
 				}
-				if ( locate_template( $templates ) ){
-					// 階層を追加したファイルが存在する場合は、標準処理では見つからないので読み込み実行する
-					$require_once = false;
-					locate_template( $templates, $load, $require_once );
-					// 後続処理しないようにリターン
-					return;
-				}
-				
 			}
 
 			// 親テーマに独自階層を付与した階層にファイルがあるか確認
-			if ( '' !== $name ) {
-				$templates[] = get_template_directory() . "/{$g_dir}/{$slug}-{$name}.php";
-			} else {
-				$templates[] = get_template_directory() . "/{$g_dir}/{$slug}.php";
-			}
-			if ( locate_template( $templates ) ){
-				// 階層を追加したファイルが存在する場合は、標準処理では見つからないので読み込み実行する
-				$load = true;
-				$require_once = false;
-				locate_template( $templates, $load, $require_once );
+			foreach( (array) $template_names as $template_name ){
+				if ( ! $template_name ) {
+					continue;
+				}
+				$file_path = get_template_directory() . '/' . $g_dir . '/' . $template_name;
+				if ( file_exists( $file_path ) ) {
+					// 階層を追加したファイルが存在する場合は、標準処理では見つからないので読み込み実行する
+					$require_once = false;
+					load_template(  $file_path, $require_once );
+					// 後続処理しないようにリターン
+					return;
+				}
 			}
 		}
     }
