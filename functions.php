@@ -167,32 +167,6 @@ class LTG_Template_Redirect {
 
 new LTG_Template_Redirect();
 
-if ( function_exists( 'lightning_get_template_part' ) ){
-
-	function lightning_get_template_part( $slug, $name = null, $args = array() ) {
-		$current_skin = get_option( 'lightning_design_skin' );
-		if ( $current_skin === 'origin3' ){
-			$dir = LIG_G3_DIR;
-		} else {
-			$dir = LIG_G2_DIR;
-		}
-
-		/* Almost the same as the core */
-		$templates = array();
-		$name      = (string) $name;
-		if ( '' !== $name ) {
-			$templates[] = $dir . '/' . "{$slug}-{$name}.php";
-		}
-		
-		$templates[] = $dir . '/' . "{$slug}.php";
-		
-		if ( ! locate_template( $templates, true, false, $args ) ) {
-			return false;
-		}
-	}
-
-}
-
 $current_skin = get_option( 'lightning_design_skin' );
 if ( $current_skin === 'origin3' ){
 	require dirname( __FILE__ ) . '/' . LIG_G3_DIR . '/functions.php';

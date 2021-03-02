@@ -19,6 +19,14 @@ g階層をを優先読み込みにしても、標準階層にもファイルが�
 
 locate_template( $templates, true, false );
 
+get_template_part() で header.php などをなどを読み込んでしまうと、
+g階層を読むようにフックしているので、子にg階層のがあったら読み込むが、
+直下の header.php も読み込んでしまうので、
+直下の header.php が g階層のファイルなど読み込むと２重表示になってしまう。
+
+→ ★ テーマディレクトリ直下にファイルがあるケースの場合は get_template_part() は使用せず、
+lightning_get_template_part() を使用する
+
 ### get_header() / get_footer() / get_sidebar()
 
 基本使わない。
@@ -36,6 +44,7 @@ get_header() を使われた場合は、フィルターがなく改変できな�
 直下の header.php を無駄に経由しないといけなくなる。
 
 → lightning_get_template_part() を使用する。
+
 
 ### 読み込み階層の変更
 
