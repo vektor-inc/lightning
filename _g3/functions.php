@@ -1,7 +1,7 @@
 <?php
 
 define( 'LIG_G3_DIR_PATH', get_parent_theme_file_path( '_g3/' ) );
-define( 'LIG_G3_DIR', '_g3' );
+// define( 'LIG_G3_DIR', '_g3' );
 
 $theme_opt = wp_get_theme( get_template() );
 
@@ -145,24 +145,24 @@ function lightning_theme_setup() {
 
 }
 
-require get_parent_theme_file_path( LIG_G3_DIR . '/inc/class-vk-helpers.php' );
-require get_parent_theme_file_path( LIG_G3_DIR . '/inc/class-ltg-template-redirect.php' );
+require  dirname( __FILE__ ) . '/inc/class-vk-helpers.php';
+// require  dirname( __FILE__ ) . '/inc/class-ltg-template-redirect.php';
 
-require get_parent_theme_file_path( LIG_G3_DIR . '/inc/class-design-manager.php' );
-require get_parent_theme_file_path( LIG_G3_DIR . '/inc/class-vk-description-walker.php' );
-require get_parent_theme_file_path( LIG_G3_DIR . '/inc/template-tags.php' );
-require get_parent_theme_file_path( LIG_G3_DIR . '/inc/customize/customize.php' );
-require get_parent_theme_file_path( LIG_G3_DIR . '/inc/customize/customize-design.php' );
-require get_parent_theme_file_path( LIG_G3_DIR . '/inc/layout-controller/layout-controller.php' );
-require get_parent_theme_file_path( LIG_G3_DIR . '/inc/vk-components/config.php' );
-require get_parent_theme_file_path( LIG_G3_DIR . '/inc/vk-mobile-nav/config.php' );
-require get_parent_theme_file_path( LIG_G3_DIR . '/inc/vk-breadcrumb/config.php' );
-require get_parent_theme_file_path( LIG_G3_DIR . '/inc/widget-area.php' );
-require get_parent_theme_file_path( LIG_G3_DIR . '/inc/font-awesome/config.php' );
-require get_parent_theme_file_path( LIG_G3_DIR . '/inc/term-color/config.php' );
-require get_parent_theme_file_path( LIG_G3_DIR . '/inc/vk-css-optimize/config.php' );
-require get_parent_theme_file_path( LIG_G3_DIR . '/inc/vk-swiper/config.php' );
-require get_parent_theme_file_path( LIG_G3_DIR . '/inc/vk-advanced-slider/config.php' );
+require  dirname( __FILE__ ) . '/inc/class-design-manager.php';
+require  dirname( __FILE__ ) . '/inc/class-vk-description-walker.php';
+require  dirname( __FILE__ ) . '/inc/template-tags.php';
+require  dirname( __FILE__ ) . '/inc/customize/customize.php';
+require  dirname( __FILE__ ) . '/inc/customize/customize-design.php';
+require  dirname( __FILE__ ) . '/inc/layout-controller/layout-controller.php';
+require  dirname( __FILE__ ) . '/inc/vk-components/config.php';
+require  dirname( __FILE__ ) . '/inc/vk-mobile-nav/config.php';
+require  dirname( __FILE__ ) . '/inc/vk-breadcrumb/config.php';
+require  dirname( __FILE__ ) . '/inc/widget-area.php';
+require  dirname( __FILE__ ) . '/inc/font-awesome/config.php';
+require  dirname( __FILE__ ) . '/inc/term-color/config.php';
+require  dirname( __FILE__ ) . '/inc/vk-css-optimize/config.php';
+require  dirname( __FILE__ ) . '/inc/vk-swiper/config.php';
+require  dirname( __FILE__ ) . '/inc/vk-advanced-slider/config.php';
 
 /*
   Load CSS
@@ -259,15 +259,15 @@ add_action( 'embed_head', 'lightning_embed_styles' );
 /*-------------------------------------------*/
 // Load woocommerce modules
 if ( class_exists( 'woocommerce' ) ) {
-	require get_parent_theme_file_path( '/plugin-support/woocommerce/functions-woo.php' );
+	require dirname( __FILE__ ) . '/plugin-support/woocommerce/functions-woo.php';
 }
 // Load polylang modules
 include_once ABSPATH . 'wp-admin/includes/plugin.php';
 if ( is_plugin_active( 'polylang/polylang.php' ) ) {
-	require get_parent_theme_file_path( '/plugin-support/polylang/functions-polylang.php' );
+	require dirname( __FILE__ ) . '/plugin-support/polylang/functions-polylang.php';
 }
 if ( is_plugin_active( 'bbpress/bbpress.php' ) ) {
-	require get_parent_theme_file_path( '/plugin-support/bbpress/functions-bbpress.php' );
+	require dirname( __FILE__ ) . '/plugin-support/bbpress/functions-bbpress.php';
 }
 
 /*
