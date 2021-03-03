@@ -27,7 +27,7 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 		// public static function register_sidebar() {
 		// 	register_sidebar(
 		// 		array(
-		// 			'name'          => __( 'Slide Widget Area', 'katawara' ),
+		// 			'name'          => __( 'Slide Widget Area', 'lightning' ),
 		// 			'id'            => 'slide-widget',
 		// 			'before_widget' => '<section class="widget %2$s l-container" id="%1$s">',
 		// 			'after_widget'  => '</section>',
@@ -168,7 +168,7 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 			$wp_customize->add_section(
 				'vk_advanced_slider',
 				array(
-					'title'    => $vk_advansed_slider_prefix . __( 'Home page slide show', 'katawara' ),
+					'title'    => $vk_advansed_slider_prefix . __( 'Home page slide show', 'lightning' ),
 					'priority' => 520,
 				)
 			);
@@ -187,14 +187,14 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 			$wp_customize->add_control(
 				'vk_advanced_slider_option[top_slide_display]',
 				array(
-					'label'    => __( 'Display Setting', 'katawara' ),
+					'label'    => __( 'Display Setting', 'lightning' ),
 					'section'  => 'vk_advanced_slider',
 					'settings' => 'vk_advanced_slider_option[top_slide_display]',
 					'type'     => 'select',
 					'choices'  => array(
-						'display' => __( 'Display Slides', 'katawara' ),
-						'widget'  => __( 'Display Widgets', 'katawara' ),
-						'hide'    => __( 'Hide Slide', 'katawara' ),
+						'display' => __( 'Display Slides', 'lightning' ),
+						'widget'  => __( 'Display Widgets', 'lightning' ),
+						'hide'    => __( 'Hide Slide', 'lightning' ),
 					),
 				)
 			);
@@ -213,7 +213,7 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 			$wp_customize->add_control(
 				'vk_advanced_slider_option[top_slide_effect]',
 				array(
-					'label'       => __( 'Slide effect', 'katawara' ),
+					'label'       => __( 'Slide effect', 'lightning' ),
 					'section'     => 'vk_advanced_slider',
 					'settings'    => 'vk_advanced_slider_option[top_slide_effect]',
 					'type'        => 'select',
@@ -246,13 +246,13 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 					$wp_customize,
 					'vk_advanced_slider_option[top_slide_speed]',
 					array(
-						'label'       => __( 'Slide transition time', 'katawara' ),
+						'label'       => __( 'Slide transition time', 'lightning' ),
 						'section'     => 'vk_advanced_slider',
 						'settings'    => 'vk_advanced_slider_option[top_slide_speed]',
 						'type'        => 'text',
 						'priority'    => 605,
 						'description' => '',
-						'input_after' => __( 'millisecond', 'katawara' ),
+						'input_after' => __( 'millisecond', 'lightning' ),
 					)
 				)
 			);
@@ -304,7 +304,7 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 						$wp_customize,
 						'slide_title_' . $i,
 						array(
-							'label'            => __( 'Slide', 'katawara' ) . ' [' . $i . ']',
+							'label'            => __( 'Slide', 'lightning' ) . ' [' . $i . ']',
 							'section'          => 'vk_advanced_slider',
 							'type'             => 'text',
 							'custom_title_sub' => '',
@@ -330,10 +330,10 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 						$wp_customize,
 						'vk_advanced_slider_option[top_slide_image_' . $i . ']',
 						array(
-							'label'       => '[' . $i . '] ' . __( 'Slide Image', 'katawara' ),
+							'label'       => '[' . $i . '] ' . __( 'Slide Image', 'lightning' ),
 							'section'     => 'vk_advanced_slider',
 							'settings'    => 'vk_advanced_slider_option[top_slide_image_' . $i . ']',
-							'description' => __( 'Recommended image size : 1900*1069px', 'katawara' ),
+							'description' => __( 'Recommended image size : 1900*1069px', 'lightning' ),
 						)
 					)
 				);
@@ -362,7 +362,7 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 						$wp_customize,
 						'vk_advanced_slider_option[top_slide_image_mobile_' . $i . ']',
 						array(
-							'label'       => '[' . $i . '] ' . __( 'Slide image for mobile', 'katawara' ) . ' (' . __( 'optional', 'katawara' ) . ')',
+							'label'       => '[' . $i . '] ' . __( 'Slide image for mobile', 'lightning' ) . ' (' . __( 'optional', 'lightning' ) . ')',
 							'section'     => 'vk_advanced_slider',
 							'settings'    => 'vk_advanced_slider_option[top_slide_image_mobile_' . $i . ']',
 							'description' => '',
@@ -386,11 +386,11 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 						$wp_customize,
 						'vk_advanced_slider_option[top_slide_alt_' . $i . ']',
 						array(
-							'label'       => '[' . $i . '] ' . __( 'Slide image alt', 'katawara' ),
+							'label'       => '[' . $i . '] ' . __( 'Slide image alt', 'lightning' ),
 							'section'     => 'vk_advanced_slider',
 							'settings'    => 'vk_advanced_slider_option[top_slide_alt_' . $i . ']',
 							'type'        => 'text',
-							'description' => __( 'This title text is print to alt tag.', 'katawara' ),
+							'description' => __( 'This title text is print to alt tag.', 'lightning' ),
 						)
 					)
 				);
@@ -410,7 +410,7 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 						$wp_customize,
 						'vk_advanced_slider_option[top_slide_cover_color_' . $i . ']',
 						array(
-							'label'    => '[' . $i . '] ' . __( 'Slide cover color', 'katawara' ) . ' (' . __( 'optional', 'katawara' ) . ')',
+							'label'    => '[' . $i . '] ' . __( 'Slide cover color', 'lightning' ) . ' (' . __( 'optional', 'lightning' ) . ')',
 							'section'  => 'vk_advanced_slider',
 							'settings' => 'vk_advanced_slider_option[top_slide_cover_color_' . $i . ']',
 						)
@@ -432,11 +432,11 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 						$wp_customize,
 						'vk_advanced_slider_option[top_slide_cover_opacity_' . $i . ']',
 						array(
-							'label'       => '[' . $i . '] ' . __( 'Slide cover opacity', 'katawara' ),
+							'label'       => '[' . $i . '] ' . __( 'Slide cover opacity', 'lightning' ),
 							'section'     => 'vk_advanced_slider',
 							'settings'    => 'vk_advanced_slider_option[top_slide_cover_opacity_' . $i . ']',
 							'type'        => 'text',
-							'description' => __( 'Please input 0 - 100 number', 'katawara' ),
+							'description' => __( 'Please input 0 - 100 number', 'lightning' ),
 							'input_after' => '%',
 						)
 					)
@@ -456,7 +456,7 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 				$wp_customize->add_control(
 					'vk_advanced_slider_option[top_slide_url_' . $i . ']',
 					array(
-						'label'    => '[' . $i . '] ' . __( 'Slide image link url', 'katawara' ),
+						'label'    => '[' . $i . '] ' . __( 'Slide image link url', 'lightning' ),
 						'section'  => 'vk_advanced_slider',
 						'settings' => 'vk_advanced_slider_option[top_slide_url_' . $i . ']',
 						'type'     => 'text',
@@ -477,7 +477,7 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 				$wp_customize->add_control(
 					'vk_advanced_slider_option[top_slide_link_blank_' . $i . ']',
 					array(
-						'label'    => __( 'Open in new window.', 'katawara' ),
+						'label'    => __( 'Open in new window.', 'lightning' ),
 						'section'  => 'vk_advanced_slider',
 						'settings' => 'vk_advanced_slider_option[top_slide_link_blank_' . $i . ']',
 						'type'     => 'checkbox',
@@ -498,7 +498,7 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 				$wp_customize->add_control(
 					'vk_advanced_slider_option[top_slide_text_title_' . $i . ']',
 					array(
-						'label'       => '[' . $i . '] ' . __( 'Slide title', 'katawara' ) . ' (' . __( 'optional', 'katawara' ) . ')',
+						'label'       => '[' . $i . '] ' . __( 'Slide title', 'lightning' ) . ' (' . __( 'optional', 'lightning' ) . ')',
 						'section'     => 'vk_advanced_slider',
 						'settings'    => 'vk_advanced_slider_option[top_slide_text_title_' . $i . ']',
 						'type'        => 'textarea',
@@ -520,7 +520,7 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 				$wp_customize->add_control(
 					'vk_advanced_slider_option[top_slide_text_caption_' . $i . ']',
 					array(
-						'label'       => '[' . $i . '] ' . __( 'Slide text', 'katawara' ) . ' (' . __( 'optional', 'katawara' ) . ')',
+						'label'       => '[' . $i . '] ' . __( 'Slide text', 'lightning' ) . ' (' . __( 'optional', 'lightning' ) . ')',
 						'section'     => 'vk_advanced_slider',
 						'settings'    => 'vk_advanced_slider_option[top_slide_text_caption_' . $i . ']',
 						'type'        => 'textarea',
@@ -544,11 +544,11 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 						$wp_customize,
 						'vk_advanced_slider_option[top_slide_text_btn_' . $i . ']',
 						array(
-							'label'       => '[' . $i . '] ' . __( 'Button text', 'katawara' ) . ' (' . __( 'optional', 'katawara' ) . ')',
+							'label'       => '[' . $i . '] ' . __( 'Button text', 'lightning' ) . ' (' . __( 'optional', 'lightning' ) . ')',
 							'section'     => 'vk_advanced_slider',
 							'settings'    => 'vk_advanced_slider_option[top_slide_text_btn_' . $i . ']',
 							'type'        => 'text',
-							'description' => __( 'If you do not fill in the link url and button text that, button is do not display.', 'katawara' ),
+							'description' => __( 'If you do not fill in the link url and button text that, button is do not display.', 'lightning' ),
 						)
 					)
 				);
@@ -567,14 +567,14 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 				$wp_customize->add_control(
 					'vk_advanced_slider_option[top_slide_text_align_' . $i . ']',
 					array(
-						'label'    => '[' . $i . '] ' . __( 'Position to display text', 'katawara' ) . ' (' . __( 'optional', 'katawara' ) . ')',
+						'label'    => '[' . $i . '] ' . __( 'Position to display text', 'lightning' ) . ' (' . __( 'optional', 'lightning' ) . ')',
 						'section'  => 'vk_advanced_slider',
 						'settings' => 'vk_advanced_slider_option[top_slide_text_align_' . $i . ']',
 						'type'     => 'radio',
 						'choices'  => array(
-							'left'   => __( 'Left', 'katawara' ),
-							'center' => __( 'Center', 'katawara' ),
-							'right'  => __( 'Right', 'katawara' ),
+							'left'   => __( 'Left', 'lightning' ),
+							'center' => __( 'Center', 'lightning' ),
+							'right'  => __( 'Right', 'lightning' ),
 						),
 					)
 				);
@@ -594,7 +594,7 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 						$wp_customize,
 						'vk_advanced_slider_option[top_slide_text_color_' . $i . ']',
 						array(
-							'label'    => '[' . $i . '] ' . __( 'Slide text color', 'katawara' ) . ' (' . __( 'optional', 'katawara' ) . ')',
+							'label'    => '[' . $i . '] ' . __( 'Slide text color', 'lightning' ) . ' (' . __( 'optional', 'lightning' ) . ')',
 							'section'  => 'vk_advanced_slider',
 							'settings' => 'vk_advanced_slider_option[top_slide_text_color_' . $i . ']',
 
@@ -615,7 +615,7 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 				$wp_customize->add_control(
 					'vk_advanced_slider_option[top_slide_text_shadow_use_' . $i . ']',
 					array(
-						'label'    => __( 'Use text shadow', 'katawara' ) . ' (' . __( 'optional', 'katawara' ) . ')',
+						'label'    => __( 'Use text shadow', 'lightning' ) . ' (' . __( 'optional', 'lightning' ) . ')',
 						'section'  => 'vk_advanced_slider',
 						'settings' => 'vk_advanced_slider_option[top_slide_text_shadow_use_' . $i . ']',
 						'type'     => 'checkbox',
@@ -637,7 +637,7 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 						$wp_customize,
 						'vk_advanced_slider_option[top_slide_text_shadow_color_' . $i . ']',
 						array(
-							'label'    => '[' . $i . '] ' . __( 'Text shadow color', 'katawara' ) . ' (' . __( 'optional', 'katawara' ) . ')',
+							'label'    => '[' . $i . '] ' . __( 'Text shadow color', 'lightning' ) . ' (' . __( 'optional', 'lightning' ) . ')',
 							'section'  => 'vk_advanced_slider',
 							'settings' => 'vk_advanced_slider_option[top_slide_text_shadow_color_' . $i . ']',
 						)
