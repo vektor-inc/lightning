@@ -51,9 +51,31 @@ class LTG_Template_Redirect {
 	}
 
 	public static function template_hierarchy_redirect( $templates ){
+		/**
+		 * page-{slug}.php などのように - つきのファイルについては、
+		 * 子テーマ内で g階層 がなくても親テーマより優先されなくてはならない。
+		 */  
+
+		 /**
+		  *     
+	// [0] => 子/_g2/page-service.php
+    // [1] => 子/_g2/page-9.php
+    // [2] => 子/_g2/page.php
+    // [3] => 子/page-service.php
+    // [4] => 子/page-9.php
+    // [5] => 子/page.php
+	// [0] => 親/_g2/page-service.php
+    // [1] => 親/_g2/page-9.php
+    // [2] => 親/_g2/page.php
+		  */
+		$templates_nomal = $templates;
         foreach ( $templates as $key => $template){
             $templates[$key] = self::theme_directory() . '/' . $template;
         }
+		foreach ( $templates_nomal as $key => $template){
+            $templates[] = $template;
+        }
+		print '<pre style="text-align:left">';print_r($templates);print '</pre>';
         return $templates;
     }
 
