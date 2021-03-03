@@ -1,0 +1,49 @@
+@charset "utf-8";
+
+@import "common";
+@import "sub_item_accordion";
+
+$border_primary: 1px solid #666;
+$color_font_default: rgba(255, 255, 255, 0.8);
+
+.vk-mobile-nav-menu-btn {
+	border-color: $color_font_default;
+	background: url("../images/vk-menu-close-white.svg") center 50% no-repeat
+		rgba(0, 0, 0, 0.8);
+}
+.vk-mobile-nav-menu-btn.menu-open {
+	border-color: $color_font_default;
+	background: url("../images/vk-menu-close-white.svg") center 50% no-repeat
+		rgba(0, 0, 0, 0.8);
+}
+
+.vk-mobile-nav {
+	background-color: #333;
+	border-bottom: 666;
+
+	// WordPress標準のカスタムメニュー
+	.widget_nav_menu ul.menu {
+		border-top: $border_primary;
+	}
+	// VK Mobile Nav 標準の埋め込みメニュー
+	nav > ul {
+		border-top: $border_primary;
+	}
+
+	.widget_nav_menu,
+	nav {
+		ul li a {
+			color: $color_font_default;
+			border-bottom: $border_primary;
+		}
+	}
+}
+
+.vk-menu-acc .acc-btn {
+	border: 1px solid $color_font_default;
+	background: url("../images/vk-menu-acc-icon-open-white.svg") center 50%
+		no-repeat;
+}
+.vk-menu-acc .acc-btn-close {
+	background: url("../images/vk-menu-close-white.svg") center 50% no-repeat;
+}

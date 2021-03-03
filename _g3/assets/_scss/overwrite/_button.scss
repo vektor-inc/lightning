@@ -1,0 +1,23 @@
+.btn {
+    border-radius: var(--vk-size-radius);
+    &-primary{
+        background-color: var(--vk-color-primary);
+        border-color: var(--vk-color-primary-dark);
+        &:hover{
+            background-color: var(--vk-color-primary-dark);
+            border-color: var(--vk-color-primary-dark);
+        }
+    }
+    &-default{
+        border:1px solid var(--vk-color-border-hr);
+        &:hover{
+            background-color: var(--vk-color-accent-bg);
+        }
+    }
+    &-sm{
+        border-radius: var(--vk-size-radius-sm);
+    } 
+}
+a.btn{
+    border: none;
+}

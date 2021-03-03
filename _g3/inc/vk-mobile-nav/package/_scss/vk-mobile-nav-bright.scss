@@ -1,0 +1,60 @@
+@charset "utf-8";
+
+@import "common";
+@import "sub_item_accordion";
+
+/* 
+css tree shaking にかけるとそのページ内にcssが読み込まれて、
+画像参照の相対パスが効かなくなるため、画像URLを絶対パスにするために画像URLの変数はphpからインラインで読み込んでいる 
+:root {
+	--vk-menu-acc-btn-border-color: #333;
+	--vk-mobile-nav-menu-btn-bg-src: url("../images/vk-menu-btn-black.svg");
+	--vk-mobile-nav-menu-btn-close-bg-src: url("../images/vk-menu-close-black.svg");
+	--vk-menu-acc-icon-open-black-bg-src: url("../images/vk-menu-acc-icon-open-black.svg");
+	--vk-menu-acc-icon-close-black-bg-src: url("../images/vk-menu-close-black.svg");
+}
+*/
+
+$border_primary: 1px solid #ccc;
+$color_font_default: #333;
+
+.vk-mobile-nav-menu-btn {
+	border-color: $color_font_default;
+	background: var(--vk-mobile-nav-menu-btn-bg-src) center 50% no-repeat
+		rgba(255, 255, 255, 0.8);
+}
+.vk-mobile-nav-menu-btn.menu-open {
+	border-color: $color_font_default;
+	background: var(--vk-mobile-nav-menu-btn-close-bg-src) center 50% no-repeat
+		rgba(255, 255, 255, 0.8);
+}
+
+.vk-mobile-nav {
+	background-color: #fff;
+	border-bottom: 1px solid #e5e5e5;
+
+	// WordPress標準のカスタムメニュー
+	.widget_nav_menu ul.menu {
+		border-top: $border_primary;
+	}
+	// VK Mobile Nav 標準の埋め込みメニュー
+	nav > ul {
+		border-top: $border_primary;
+	}
+
+	.widget_nav_menu,
+	nav {
+		ul li a {
+			color: $color_font_default;
+			border-bottom: $border_primary;
+		}
+	}
+}
+
+.vk-menu-acc .acc-btn {
+	border: 1px solid var(--vk-menu-acc-btn-border-color);
+	background: var(--vk-menu-acc-icon-open-black-bg-src) center 50% no-repeat;
+}
+.vk-menu-acc .acc-btn-close {
+	background: var(--vk-menu-acc-icon-close-black-bg-src) center 50% no-repeat;
+}

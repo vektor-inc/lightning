@@ -53,7 +53,7 @@ function lightning_customize_register_package( $wp_customize ) {
 		)
 	);
 	$wp_customize->add_control(
-		new Custom_Html_Control(
+		new VK_Custom_Html_Control(
 			$wp_customize, 'not_recommended_title', array(
 				'label'            => __( 'Not recommended functions', 'lightning' ),
 				'section'          => 'lightning_function',

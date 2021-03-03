@@ -1,0 +1,38 @@
+/*-------------------------------------------*/
+/* .page-link
+/*-------------------------------------------*/
+.page-link {
+	display: flex;
+	line-height: 1.65em;
+	margin:var(--vk-margin-block-bottom) 0;
+	a {
+        text-decoration: none;
+    }
+	dl {
+		margin: 0 auto;
+		dt{
+			display: none;
+		}
+		.post-page-numbers{
+			float: left;
+			padding: 6px 12px;
+			display: block;
+			border: 1px solid var(--vk-color-border-hr);
+			margin-left: -1px;
+			color: #464646;
+            &.current,
+            &:hover:not(span) {
+				color: #fff;
+				background-color: var(--vk-color-primary);
+			}
+			&:first-child {
+				border-top-left-radius: var(--vk-size-radius-compo);
+				border-bottom-left-radius: var(--vk-size-radius-compo);
+			}
+			&:last-child {
+				border-top-right-radius: var(--vk-size-radius-compo);
+				border-bottom-right-radius: var(--vk-size-radius-compo);
+			}
+		}
+	}
+}	

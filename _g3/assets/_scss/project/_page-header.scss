@@ -1,0 +1,25 @@
+/*-------------------------------------------*/
+/* .page-header
+/*-------------------------------------------*/
+.page-header {
+	margin-top: 0;
+	margin-bottom: 0;
+	padding-bottom: 0;
+	display:block; overflow:hidden;
+	position: relative;
+	z-index: 1;
+
+	/* If text-align setting write to .page-header_pageTitle that page-header align function not work */
+    text-align: center;
+}
+
+.page-header-title,
+h1.page-header-title {
+	margin: 1.5em 0;
+	font-size: 1.75rem;
+	line-height: 1.1;
+	position:relative;
+
+	// Cope with Page header customize cover color
+	z-index: 5;
+}

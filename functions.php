@@ -312,6 +312,8 @@ if ( ! function_exists( 'lightning_get_template_part' ) ){
 $current_skin = get_option( 'lightning_design_skin' );
 if ( $current_skin === 'origin3' ){
 	require dirname( __FILE__ ) . '/' . LIG_G3_DIR . '/functions.php';
+	return;
 } else {
 	require dirname( __FILE__ ) . '/' . LIG_G2_DIR . '/functions.php';
+	return;
 }

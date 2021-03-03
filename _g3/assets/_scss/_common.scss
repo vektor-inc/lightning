@@ -1,0 +1,144 @@
+*, ::before,::after{
+	box-sizing: border-box;
+}
+
+html,
+body {
+	// overflow-x: hidden; // 管理画面側ででつけるとツールバーの位置が変動する
+}
+html,
+body {
+	font-size: var(--vk-size-text);
+	padding: 0;
+	margin:0;
+	font-family: 'Lato', 'Noto Sans JP', 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+	-ms-word-wrap: break-word;
+	word-wrap: break-word;
+}
+
+@media (max-width: $md-max) {
+	html,
+	body {
+		font-size: calc( var(--vk-size-text) * 0.875 );
+	}
+}
+
+a {
+	color:var(--vk-color-text-link);
+	text-decoration-style: dotted;
+	text-underline-offset:2px;
+	text-decoration-color:rgba(0,0,0,0.3);
+	text-decoration-thickness: 1px;
+	&:hover {
+		color: var(--vk-color-text-link-hover);
+		text-decoration-color:var(--vk-color-text-link-hover);
+	}
+}
+
+p {
+	line-height: var(--vk-line-height);
+	margin:0 0 var(--vk-margin-element-bottom);
+}
+
+ul,
+ol,
+dl,
+table,
+figure,
+p {
+	& + h1,
+	& + h2,
+	& + h3,
+	& + h4,
+	& + h5,
+	& + h6{
+		margin-top:2rem;
+	}
+}
+
+
+h1,h2,h3,h4,h5,h6 {
+	margin-top:0;
+	margin-bottom:var(--vk-margin-headding-bottom);
+	line-height: var(--vk-line-height-low);
+	a {
+		text-decoration: none;
+	}
+}
+h1 {
+	font-size:2.4rem;
+}
+h2 {
+	font-size:2rem;
+}
+h3 {
+	font-size:1.5rem;
+}
+h4 {
+	font-size:1.33rem;
+}
+h5 {
+	font-size:1.2rem;
+}
+h6 {
+	font-size:1rem;
+}
+
+li {
+	margin-top:0.5em;
+	margin-bottom:0.5em;
+}
+
+blockquote {
+	margin:0;
+	padding:1em 1.5em;
+	border-left:1px solid var(--vk-color-primary);
+	background-color: var(--vk-color-accent-bg);
+}
+
+i {
+	margin-right: 0.4em;
+}
+
+input[type=text],
+input[type=number],
+input[type=email],
+input[type=tel],
+input[type=url],
+input[type=date],
+select,
+textarea {
+	border:1px solid var(--vk-color-border-form);
+	border-radius: var(--vk-size-radius);
+	padding:0.8em 1em;
+	margin:0.5rem 0;
+	width:100%;
+}
+input[type=file] {
+	margin:0.5rem 0;
+}
+input[type=submit]{
+	border:1px solid var(--vk-color-primary-dark);
+	background-color:var(--vk-color-primary);
+	color:#fff;
+	padding: 0.8em 2em;
+	border-radius: var(--vk-size-radius);
+	&:hover {
+		cursor: pointer;
+		background-color:var(--vk-color-primary-dark);
+	}
+}
+figure {
+	margin:0;
+}
+table {
+	border-top:1px solid var(--vk-color-border-hr);
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: 100%;
+	th,td {
+		border:1px solid var(--vk-color-border-hr);
+		padding:0.5rem 1rem;
+		font-size:var(--vk-size-text-sm);
+	}
+}

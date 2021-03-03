@@ -1,0 +1,63 @@
+@charset "utf-8";
+
+/*-------------------------------------------*/
+/*	.gMenu .PCでの上部固定グローバルメニュー 表示・非表示処理
+/*-------------------------------------------*/
+/*
+ 一定量スクロールすると、jsでbody タグに .header_scrolled クラスが付与される
+ .header_scrolled の付与処理は master.jsに書いてある
+ スクロールされた時にメニューがfixedになるが、メニューの高さ分 .site-header-logo の下にmargin-bottomを付与するので、ガクンとならない。
+
+// スクロール後にメニューが上から落ちてくるアニメーション //////////
+1.	初期状態でメニューの高さ分である 63px をtopににオフセット
+	しかしpositionを指定していないので、最初は効かず通常の位置で表示。
+	よってここは本来63pxでなくてもかまわない。
+2.  jsでbodyタグに .header_scrolled がつく
+3.	.global-nav の position は fixed になって -63pxの位置指定が効く。
+	しかし、先述の通りmargin-bottomが追加されるので、ガクンとはならない。
+4.	この時メニューは一旦 -63px の位置に移動するが、scrolled では 0 に指定されているので、
+	アニメーションで0の位置に移動する。
+*/
+
+@media (min-width: $lg-min) {
+	.global-nav {
+		top: -63px;
+		transition: top 1s;
+	}
+
+	.global-nav::after {
+		content: "";
+		clear: both;
+		display: block;
+	}
+	.header_scrolled {
+		.site-header-container {
+			width: 100%;
+		}
+		.site-header-logo{
+			padding-bottom: 63px;
+		}
+		&.admin-bar .global-nav {
+			top: 32px;
+		}
+		.global-nav {
+			clear: both;
+			z-index: 1000;
+			position: fixed;
+			top: 0px;
+			left: 0;
+			width: 100%;
+			min-height: unset;
+			background-color: var(--vk-color-header-bg);
+			box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+			nav {
+				display: block; /* Cope with setted table-sell such a OriginII  */
+				width: var(--vk-width-container);
+				margin-left: auto;
+				margin-right: auto;
+				// padding-left: 15px;
+				// padding-right: 15px;
+			}
+		}
+	}
+}

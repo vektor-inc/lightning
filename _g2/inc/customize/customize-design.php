@@ -62,7 +62,7 @@ function lightning_customize_register_design( $wp_customize ) {
 		)
 	);
 	$wp_customize->add_control(
-		new Custom_Html_Control(
+		new VK_Custom_Html_Control(
 			$wp_customize,
 			'color_header',
 			array(
@@ -129,7 +129,7 @@ function lightning_customize_register_design( $wp_customize ) {
 		)
 	);
 	$wp_customize->add_control(
-		new Custom_Html_Control(
+		new VK_Custom_Html_Control(
 			$wp_customize,
 			'link_color_header',
 			array(
@@ -227,7 +227,7 @@ function lightning_customize_register_design( $wp_customize ) {
 		)
 	);
 	$wp_customize->add_control(
-		new Custom_Html_Control(
+		new VK_Custom_Html_Control(
 			$wp_customize,
 			'layout',
 			array(
@@ -251,7 +251,7 @@ function lightning_customize_register_design( $wp_customize ) {
 		)
 	);
 	$wp_customize->add_control(
-		new Custom_Html_Control(
+		new VK_Custom_Html_Control(
 			$wp_customize,
 			'Others',
 			array(

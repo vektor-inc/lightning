@@ -1,0 +1,62 @@
+@charset "utf-8";
+
+.global-nav-list {
+	/*-------------------------------------------*/
+	/*	only first
+    /*-------------------------------------------*/
+	& > li {
+		float: left;
+		&:before {
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			content: "";
+			width: 0;
+			border-bottom: 1px solid var(--vk-color-primary-dark);
+			transition: all 0.5s ease-out;
+		}
+		&.menu-item-has-children::after {
+			transition: all 0.2s ease-out;
+			content: "";
+			position: absolute;
+			padding: 0;
+			bottom: -10px;
+			left: 50%;
+			transform: translateX(-50%);
+			border: 10px solid transparent;
+			z-index: 1000;
+			opacity: 0;
+			border-bottom-color: var(--vk-color-primary-dark);
+		}
+
+		.device-pc &.menu-item-has-children:hover::after,
+		&.acc-parent-open::after {
+			opacity: 1;
+			bottom: 0; // 0じゃないとJPNのタブレットで横線が上に入る
+		}
+
+		&.acc-parent-close::after {
+			opacity: 0;
+		}
+	}
+
+	/*-------------------------------------------*/
+	/*	2nd only
+	/*-------------------------------------------*/
+	& > li > ul.sub-menu {
+		// The reason for upping it by 1px is that active-border runs off the drop-down menu..
+		margin-top: -1px;
+	}
+	/*-------------------------------------------*/
+	/*	2nd after
+    /*-------------------------------------------*/
+	ul {
+		li {
+			a {
+				&:hover {
+					background-color: var(--vk-color-primary);
+				}
+			}
+		}
+	}
+}
