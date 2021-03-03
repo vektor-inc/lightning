@@ -123,11 +123,11 @@ if ( ! class_exists( 'LTG_Template_Redirect' ) ){
 		public static function parent_theme_file_path( $path, $file  ){
 			$file = ltrim( $file, '/' );
 			if ( empty( $file ) ) {
-				$path = get_template_directory();
+				$path = get_template_directory() . '/' . self::theme_directory();
 			} else {
-				$path = get_template_directory() . '/' . $file;
+				$path = get_template_directory() . '/' . self::theme_directory(). '/' . $file;
 			}
-		    return $path . '/' . self::theme_directory();
+		    return $path;
 		}
 	
 		public static function get_template_part_fallback( $slug, $name, $template_names ){
