@@ -30,14 +30,15 @@ if ( ! class_exists( 'LTG_Template_Redirect' ) ){
 				add_filter( "{$type}_template_hierarchy", array( __CLASS__, 'template_hierarchy_redirect' ) );
 			}
 	
-			// get_template_directory_uri() の書き換え
+			// get_template_directory_uri()
 			add_filter( 'template_directory_uri', array( __CLASS__, 'template_directory_uri' ) );
+
+			// get_parent_theme_file_path()
+			add_filter( 'parent_theme_file_path', array( __CLASS__, 'parent_theme_file_path' ), 10, 2 );
 	
 			// add_filter( 'template_directory', array( __CLASS__, 'template_directory' ), 10, 3 );
 			add_filter( 'comments_template', array( __CLASS__, 'comments_template' ) );
-			// parent_theme_file_path の書き換えはやろうと思えば出来るが危険なので保留
-			// add_filter( 'parent_theme_file_path', array( __CLASS__, 'parent_theme_file_path' ) );
-	
+
 			add_action( 'get_template_part', array( __CLASS__, 'get_template_part_fallback' ), 10, 3 );
 	
 			// woocommerce.php redirect
@@ -110,13 +111,24 @@ if ( ! class_exists( 'LTG_Template_Redirect' ) ){
 			$theme_template = get_stylesheet_directory() . '/' . self::theme_directory() . '/comments.php';
 			return $theme_template;
 		}
+
 		// public static function template_directory( $template_dir, $template, $theme_root  ){
 		// 	$template_dir = "$theme_root/$template";
 		//     return $parent_theme_file_path . '/' . self::theme_directory();
 		// }
-		// public static function parent_theme_file_path( $parent_theme_file_path  ){
-		//     return $parent_theme_file_path . '/' . self::theme_directory();
-		// }
+
+		/**
+		 * 
+		 */
+		public static function parent_theme_file_path( $path, $file  ){
+			$file = ltrim( $file, '/' );
+			if ( empty( $file ) ) {
+				$path = get_template_directory();
+			} else {
+				$path = get_template_directory() . '/' . $file;
+			}
+		    return $path . '/' . self::theme_directory();
+		}
 	
 		public static function get_template_part_fallback( $slug, $name, $template_names ){
 	

@@ -19,7 +19,7 @@ function lightning_css_tree_shaking_array( $vk_css_tree_shaking_array ){
 	$vk_css_tree_shaking_array[] = array(
 		'id'      => 'lightning-common-style',
 		'url'     => get_template_directory_uri() . '/assets/css/style.css',
-		'path'    => get_parent_theme_file_path() . '/' . LIG_G3_DIR .'/assets/css/style.css',
+		'path'    => get_parent_theme_file_path() . '/assets/css/style.css',
 		'version' => LIGHTNING_THEME_VERSION,
 	);
 

@@ -42,6 +42,7 @@ class Lightning_Design_Manager {
 				'callback'        => '',
 				'version'         => LIGHTNING_THEME_VERSION,
 			),
+
 			'origin2' => array(
 				'label'           => __( 'Origin II ( Bootstrap4 )', 'lightning' ),
 				'css_path'        => get_template_directory_uri() . '/design-skin/origin2/css/style.css',
@@ -182,7 +183,7 @@ class Lightning_Design_Manager {
 			// }
 			wp_enqueue_style( 'bootstrap-4-style', $bs4_css_url, array(), $bs4_version );
 
-			wp_enqueue_script( 'bootstrap-4-js', get_template_directory_uri() . 'library/bootstrap-4/js/bootstrap.min.js', array( 'jquery' ), $bs4_version, true );
+			wp_enqueue_script( 'bootstrap-4-js', get_template_directory_uri() . '/library/bootstrap-4/js/bootstrap.min.js', array( 'jquery' ), $bs4_version, true );
 
 			// load skin CSS ///////////////////////
 

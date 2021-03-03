@@ -11,7 +11,7 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
         'class_list_item' => 'breadcrumb-list__item',
     );
 
-    require get_parent_theme_file_path( LIG_G3_DIR . '/inc/vk-breadcrumb/package/class-vk-breadcrumb.php' );
+    require get_parent_theme_file_path( '/inc/vk-breadcrumb/package/class-vk-breadcrumb.php' );
 
 }
 
