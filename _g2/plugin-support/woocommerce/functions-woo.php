@@ -1,6 +1,6 @@
 <?php
 
-require get_parent_theme_file_path( '/plugin-support/woocommerce/customize.php' );
+require dirname( __FILE__ ) . '/customize.php';
 
 function lightning_add_woocommerce_support() {
 	add_theme_support( 'woocommerce' );

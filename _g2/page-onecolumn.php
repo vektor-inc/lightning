@@ -1,4 +1,3 @@
-
 <?php
 /*
  * Template Name: No sidebar ( not recommended )
