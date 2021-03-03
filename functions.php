@@ -56,27 +56,27 @@ class LTG_Template_Redirect {
 		 * 子テーマ内で g階層 がなくても親テーマより優先されなくてはならない。
 		 */  
 
-		 /**
-		  *     
-	// [0] => 子/_g2/page-service.php
-    // [1] => 子/_g2/page-9.php
-    // [2] => 子/_g2/page.php
-    // [3] => 子/page-service.php
-    // [4] => 子/page-9.php
-    // [5] => 子/page.php
-	// [0] => 親/_g2/page-service.php
-    // [1] => 親/_g2/page-9.php
-    // [2] => 親/_g2/page.php
-		  */
-		$templates_nomal = $templates;
+		/**
+		*     
+		* [] => child/_g2/page-service.php
+		* [] => child/page-service.php
+		* [] => parent/_g2/page-service.php
+
+		* [] => child/_g2/page-9.php
+		* [] => child/page-9.php
+		* [] => parent/_g2/page-9.php
+
+		* [] => child/_g2/page.php
+		* [] => child/page.php
+		* [] => parent/_g2/page.php
+		*/
+
+		$templates_new = array();
         foreach ( $templates as $key => $template){
-            $templates[$key] = self::theme_directory() . '/' . $template;
+            $templates_new[] = self::theme_directory() . '/' . $template;
+			$templates_new[] = $template;
         }
-		foreach ( $templates_nomal as $key => $template){
-            $templates[] = $template;
-        }
-		print '<pre style="text-align:left">';print_r($templates);print '</pre>';
-        return $templates;
+        return $templates_new;
     }
 
     public static function template_directory_uri( $template_dir_uri  ){
@@ -205,13 +205,13 @@ if ( ! function_exists( 'lightning_get_template_part' ) ){
 		/**
 		 * 読み込み優先度
 		 * 
-		 * 1.子テーマ g階層 nameあり
-		 * 2.子テーマ 直下 nameあり
-		 * 3.親テーマ g階層 nameあり
+		 * 1.child g階層 nameあり
+		 * 2.child 直下 nameあり
+		 * 3.parent g階層 nameあり
 		 * 
-		 * 4.子テーマ g階層 nameなし
-		 * 5.子テーマ 直下 nameなし
-		 * 6.親テーマ g階層 nameなし
+		 * 4.child g階層 nameなし
+		 * 5.child 直下 nameなし
+		 * 6.parent g階層 nameなし
 		 * 
 		 */
 
