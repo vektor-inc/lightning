@@ -143,7 +143,6 @@ function lightning_theme_setup() {
 }
 
 require  dirname( __FILE__ ) . '/inc/class-vk-helpers.php';
-// require  dirname( __FILE__ ) . '/inc/class-ltg-template-redirect.php';
 
 require  dirname( __FILE__ ) . '/inc/class-design-manager.php';
 require  dirname( __FILE__ ) . '/inc/class-vk-description-walker.php';
