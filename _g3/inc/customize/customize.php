@@ -74,7 +74,7 @@ function lightning_add_customize_class( $wp_customize ) {
 
 	// Fall back old class names
 	if ( ! class_exists( 'Custom_Text_Control' ) ) {
-		class Custom_Text_Control extends VK_Custom_Html_Control {
+		class Custom_Text_Control extends VK_Custom_Text_Control {
 
 		} // class VK_Custom_Text_Control extends WP_Customize_Control
 	}
