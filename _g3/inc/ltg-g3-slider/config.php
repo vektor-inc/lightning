@@ -5,14 +5,14 @@
  * @package Katawara
  */
 
-if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
+if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 
 	global $slide_otion_name;
 	$slide_otion_name = 'lightning_theme_options';
 	/**
 	 * Default Options
 	 */
-	function vk_advanced_slider_default_options() {
+	function lightning_g3_slider_default_options() {
 		$img_url = get_template_directory_uri() . '/assets/images/';
 		// $options = lighting_get_options();
 		$options = array(
@@ -49,11 +49,10 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 			'top_slide_text_shadow_use_2'   => true,
 			'top_slide_text_shadow_color_2' => '#fff',
 		);
-		$options = apply_filters( 'vk_advanced_slider_default_options', $options );
+		$options = apply_filters( 'lightning_g3_slider_default_options', $options );
 		return $options;
 	}
-	require_once dirname( __FILE__ ) . '/package/vk-sanitize.php';
-	require_once dirname( __FILE__ ) . '/package/class-vk-advanced-slider.php';
+	require_once dirname( __FILE__ ) . '/package/class-ltg-g3-slider.php';
 }
 
 global $vk_advansed_slider_prefix;

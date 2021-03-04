@@ -5,56 +5,34 @@
  * @package Lightning G3
  */
 
-if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
+if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 	/**
 	 * VK Advanced Slider
 	 */
-	class VK_Advanced_Slider {
+	class LTG_G3_Slider {
 
 		/**
 		 * Constructor
 		 */
 		public function __construct() {
 			add_action( 'customize_register', array( __CLASS__, 'register_customize' ) );
-			add_shortcode( 'vk_advanced_slider', array( __CLASS__, 'get_slide_html' ) );
 			add_action( 'wp_enqueue_scripts', array( __CLASS__, 'add_slide_script' ) );
-			// add_action( 'init', array( __CLASS__, 'register_sidebar' ) );
 		}
-
-		/**
-		 * Register Sidebar
-		 */
-		// public static function register_sidebar() {
-		// 	register_sidebar(
-		// 		array(
-		// 			'name'          => __( 'Slide Widget Area', 'lightning' ),
-		// 			'id'            => 'slide-widget',
-		// 			'before_widget' => '<section class="widget %2$s l-container" id="%1$s">',
-		// 			'after_widget'  => '</section>',
-		// 			'before_title'  => '',
-		// 			'after_title'   => '',
-		// 		)
-		// 	);
-		// }
 
 		/**
 		 * Display HTML
 		 */
 		public static function display_html() {
-			$options = get_option( 'vk_advanced_slider_option' );
-			$default = vk_advanced_slider_default_options();
+			$options = get_option( 'lightning_theme_options' );
+			$default = lightning_g3_slider_default_options();
 			$options = wp_parse_args( $options, $default );
 
 			if ( 'hide' !== $options['top_slide_display'] ) {
-				do_action( 'vk_advanced_slider_before' );
+				do_action( 'lightning_top_slide_before' );
 				if ( 'display' === $options['top_slide_display'] ) {
-					echo do_shortcode( '[vk_advanced_slider]' );
-				// } elseif ( 'widget' === $options['top_slide_display'] ) {
-				// 	if ( is_active_sidebar( 'slide-widget' ) ) {
-				// 		dynamic_sidebar( 'slide-widget' );
-				// 	}
+					echo self::get_slide_html();
 				}
-				do_action( 'vk_advanced_slider_after' );
+				do_action( 'lightning_top_slide_after' );
 			}
 		}
 
@@ -63,7 +41,7 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 		 */
 		public static function slide_count_max() {
 			$slide_count_max = 3;
-			$slide_count_max = apply_filters( 'vk_advanced_slider_count_max', $slide_count_max );
+			$slide_count_max = apply_filters( 'lightning_top_slide_count_max', $slide_count_max );
 			return $slide_count_max;
 		}
 
@@ -73,8 +51,8 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 		public static function slide_count() {
 			$slide_count     = 0;
 			$slide_count_max = self::slide_count_max();
-			$options = get_option( 'vk_advanced_slider_option' );
-			$default = vk_advanced_slider_default_options();
+			$options = get_option( 'lightning_theme_options' );
+			$default = lightning_g3_slider_default_options();
 			$options = wp_parse_args( $options, $default );
 
 			for ( $i = 1; $i <= $slide_count_max; $i++ ) {
@@ -91,8 +69,8 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 		 * @param int $i Slide Count.
 		 */
 		public static function is_slide_outer_link( $i ) {
-			$options = get_option( 'vk_advanced_slider_option' );
-			$default = vk_advanced_slider_default_options();
+			$options = get_option( 'lightning_theme_options' );
+			$default = lightning_g3_slider_default_options();
 			$options = wp_parse_args( $options, $default );
 
 			if ( ! empty( $options[ 'top_slide_url_' . $i ] ) && empty( $options[ 'top_slide_text_btn_' . $i ] ) ) {
@@ -108,8 +86,8 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 		 * @param int $i Slide Count.
 		 */
 		public static function slide_cover_style( $i ) {
-			$options = get_option( 'vk_advanced_slider_option' );
-			$default = vk_advanced_slider_default_options();
+			$options = get_option( 'lightning_theme_options' );
+			$default = lightning_g3_slider_default_options();
 			$options = wp_parse_args( $options, $default );
 
 			$cover_style = '';
@@ -166,7 +144,7 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 			global $vk_advansed_slider_prefix;
 
 			$wp_customize->add_section(
-				'vk_advanced_slider',
+				'ltg_g3_slider',
 				array(
 					'title'    => $vk_advansed_slider_prefix . __( 'Home page slide show', 'lightning' ),
 					'priority' => 520,
@@ -175,7 +153,7 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 
 			// Hide Slide.
 			$wp_customize->add_setting(
-				'vk_advanced_slider_option[top_slide_display]',
+				'lightning_theme_options[top_slide_display]',
 				array(
 					'default'           => 'display',
 					'type'              => 'option',
@@ -185,11 +163,11 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 			);
 
 			$wp_customize->add_control(
-				'vk_advanced_slider_option[top_slide_display]',
+				'lightning_theme_options[top_slide_display]',
 				array(
 					'label'    => __( 'Display Setting', 'lightning' ),
-					'section'  => 'vk_advanced_slider',
-					'settings' => 'vk_advanced_slider_option[top_slide_display]',
+					'section'  => 'ltg_g3_slider',
+					'settings' => 'lightning_theme_options[top_slide_display]',
 					'type'     => 'select',
 					'choices'  => array(
 						'display' => __( 'Display Slides', 'lightning' ),
@@ -201,7 +179,7 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 
 			// Slide interval time.
 			$wp_customize->add_setting(
-				'vk_advanced_slider_option[top_slide_effect]',
+				'lightning_theme_options[top_slide_effect]',
 				array(
 					'default'           => 'slide',
 					'type'              => 'option',
@@ -211,11 +189,11 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 			);
 
 			$wp_customize->add_control(
-				'vk_advanced_slider_option[top_slide_effect]',
+				'lightning_theme_options[top_slide_effect]',
 				array(
 					'label'       => __( 'Slide effect', 'lightning' ),
-					'section'     => 'vk_advanced_slider',
-					'settings'    => 'vk_advanced_slider_option[top_slide_effect]',
+					'section'     => 'ltg_g3_slider',
+					'settings'    => 'lightning_theme_options[top_slide_effect]',
 					'type'        => 'select',
 					'choices'     => array(
 						'slide'     => 'slide',
@@ -224,7 +202,6 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 						'coverflow' => 'coverflow',
 						'flip'      => 'flip',
 					),
-					'priority'    => 604,
 					'description' => '',
 					'input_after' => '',
 				)
@@ -232,7 +209,7 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 
 			// Slide transition time.
 			$wp_customize->add_setting(
-				'vk_advanced_slider_option[top_slide_speed]',
+				'lightning_theme_options[top_slide_speed]',
 				array(
 					'default'           => 2000,
 					'type'              => 'option',
@@ -244,25 +221,21 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 			$wp_customize->add_control(
 				new VK_Custom_Text_Control(
 					$wp_customize,
-					'vk_advanced_slider_option[top_slide_speed]',
+					'lightning_theme_options[top_slide_speed]',
 					array(
 						'label'       => __( 'Slide transition time', 'lightning' ),
-						'section'     => 'vk_advanced_slider',
-						'settings'    => 'vk_advanced_slider_option[top_slide_speed]',
+						'section'     => 'ltg_g3_slider',
+						'settings'    => 'lightning_theme_options[top_slide_speed]',
 						'type'        => 'text',
-						'priority'    => 605,
 						'description' => '',
 						'input_after' => __( 'millisecond', 'lightning' ),
 					)
 				)
 			);
 
-			// slide image.
-			$priority = 610;
-
 			$slide_count_max = self::slide_count_max();
 
-			$default_options = vk_advanced_slider_default_options();
+			$default_options = lightning_g3_slider_default_options();
 
 			$fields = array(
 				'top_slide_image',
@@ -305,18 +278,17 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 						'slide_title_' . $i,
 						array(
 							'label'            => __( 'Slide', 'lightning' ) . ' [' . $i . ']',
-							'section'          => 'vk_advanced_slider',
+							'section'          => 'ltg_g3_slider',
 							'type'             => 'text',
 							'custom_title_sub' => '',
 							'custom_html'      => '',
-							'priority'         => $priority,
 						)
 					)
 				);
 
 				// image.
 				$wp_customize->add_setting(
-					'vk_advanced_slider_option[top_slide_image_' . $i . ']',
+					'lightning_theme_options[top_slide_image_' . $i . ']',
 					array(
 						'default'           => $customize_default['top_slide_image'],
 						'type'              => 'option',
@@ -328,18 +300,18 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 				$wp_customize->add_control(
 					new WP_Customize_Image_Control(
 						$wp_customize,
-						'vk_advanced_slider_option[top_slide_image_' . $i . ']',
+						'lightning_theme_options[top_slide_image_' . $i . ']',
 						array(
 							'label'       => '[' . $i . '] ' . __( 'Slide Image', 'lightning' ),
-							'section'     => 'vk_advanced_slider',
-							'settings'    => 'vk_advanced_slider_option[top_slide_image_' . $i . ']',
+							'section'     => 'ltg_g3_slider',
+							'settings'    => 'lightning_theme_options[top_slide_image_' . $i . ']',
 							'description' => __( 'Recommended image size : 1900*1069px', 'lightning' ),
 						)
 					)
 				);
 
 				$wp_customize->selective_refresh->add_partial(
-					'vk_advanced_slider_option[top_slide_image_' . $i . ']',
+					'lightning_theme_options[top_slide_image_' . $i . ']',
 					array(
 						'selector'        => '.item-' . $i . ' picture',
 						'render_callback' => '',
@@ -348,7 +320,7 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 
 				// image mobile.
 				$wp_customize->add_setting(
-					'vk_advanced_slider_option[top_slide_image_mobile_' . $i . ']',
+					'lightning_theme_options[top_slide_image_mobile_' . $i . ']',
 					array(
 						'default'           => $customize_default['top_slide_image_mobile'],
 						'type'              => 'option',
@@ -360,11 +332,11 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 				$wp_customize->add_control(
 					new WP_Customize_Image_Control(
 						$wp_customize,
-						'vk_advanced_slider_option[top_slide_image_mobile_' . $i . ']',
+						'lightning_theme_options[top_slide_image_mobile_' . $i . ']',
 						array(
 							'label'       => '[' . $i . '] ' . __( 'Slide image for mobile', 'lightning' ) . ' (' . __( 'optional', 'lightning' ) . ')',
-							'section'     => 'vk_advanced_slider',
-							'settings'    => 'vk_advanced_slider_option[top_slide_image_mobile_' . $i . ']',
+							'section'     => 'ltg_g3_slider',
+							'settings'    => 'lightning_theme_options[top_slide_image_mobile_' . $i . ']',
 							'description' => '',
 						)
 					)
@@ -372,7 +344,7 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 
 				// alt.
 				$wp_customize->add_setting(
-					'vk_advanced_slider_option[top_slide_alt_' . $i . ']',
+					'lightning_theme_options[top_slide_alt_' . $i . ']',
 					array(
 						'default'           => $customize_default['top_slide_alt'],
 						'type'              => 'option',
@@ -384,11 +356,11 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 				$wp_customize->add_control(
 					new VK_Custom_Text_Control(
 						$wp_customize,
-						'vk_advanced_slider_option[top_slide_alt_' . $i . ']',
+						'lightning_theme_options[top_slide_alt_' . $i . ']',
 						array(
 							'label'       => '[' . $i . '] ' . __( 'Slide image alt', 'lightning' ),
-							'section'     => 'vk_advanced_slider',
-							'settings'    => 'vk_advanced_slider_option[top_slide_alt_' . $i . ']',
+							'section'     => 'ltg_g3_slider',
+							'settings'    => 'lightning_theme_options[top_slide_alt_' . $i . ']',
 							'type'        => 'text',
 							'description' => __( 'This title text is print to alt tag.', 'lightning' ),
 						)
@@ -397,7 +369,7 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 
 				// color.
 				$wp_customize->add_setting(
-					'vk_advanced_slider_option[top_slide_cover_color_' . $i . ']',
+					'lightning_theme_options[top_slide_cover_color_' . $i . ']',
 					array(
 						'default'           => $customize_default['top_slide_cover_color'],
 						'type'              => 'option',
@@ -408,18 +380,18 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 				$wp_customize->add_control(
 					new WP_Customize_Color_Control(
 						$wp_customize,
-						'vk_advanced_slider_option[top_slide_cover_color_' . $i . ']',
+						'lightning_theme_options[top_slide_cover_color_' . $i . ']',
 						array(
 							'label'    => '[' . $i . '] ' . __( 'Slide cover color', 'lightning' ) . ' (' . __( 'optional', 'lightning' ) . ')',
-							'section'  => 'vk_advanced_slider',
-							'settings' => 'vk_advanced_slider_option[top_slide_cover_color_' . $i . ']',
+							'section'  => 'ltg_g3_slider',
+							'settings' => 'lightning_theme_options[top_slide_cover_color_' . $i . ']',
 						)
 					)
 				);
 
 				// opacity.
 				$wp_customize->add_setting(
-					'vk_advanced_slider_option[top_slide_cover_opacity_' . $i . ']',
+					'lightning_theme_options[top_slide_cover_opacity_' . $i . ']',
 					array(
 						'default'           => $customize_default['top_slide_cover_opacity'],
 						'type'              => 'option',
@@ -430,11 +402,11 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 				$wp_customize->add_control(
 					new VK_Custom_Text_Control(
 						$wp_customize,
-						'vk_advanced_slider_option[top_slide_cover_opacity_' . $i . ']',
+						'lightning_theme_options[top_slide_cover_opacity_' . $i . ']',
 						array(
 							'label'       => '[' . $i . '] ' . __( 'Slide cover opacity', 'lightning' ),
-							'section'     => 'vk_advanced_slider',
-							'settings'    => 'vk_advanced_slider_option[top_slide_cover_opacity_' . $i . ']',
+							'section'     => 'ltg_g3_slider',
+							'settings'    => 'lightning_theme_options[top_slide_cover_opacity_' . $i . ']',
 							'type'        => 'text',
 							'description' => __( 'Please input 0 - 100 number', 'lightning' ),
 							'input_after' => '%',
@@ -444,7 +416,7 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 
 				// url.
 				$wp_customize->add_setting(
-					'vk_advanced_slider_option[top_slide_url_' . $i . ']',
+					'lightning_theme_options[top_slide_url_' . $i . ']',
 					array(
 						'default'           => $customize_default['top_slide_url'],
 						'type'              => 'option',
@@ -454,18 +426,18 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 				);
 
 				$wp_customize->add_control(
-					'vk_advanced_slider_option[top_slide_url_' . $i . ']',
+					'lightning_theme_options[top_slide_url_' . $i . ']',
 					array(
 						'label'    => '[' . $i . '] ' . __( 'Slide image link url', 'lightning' ),
-						'section'  => 'vk_advanced_slider',
-						'settings' => 'vk_advanced_slider_option[top_slide_url_' . $i . ']',
+						'section'  => 'ltg_g3_slider',
+						'settings' => 'lightning_theme_options[top_slide_url_' . $i . ']',
 						'type'     => 'text',
 					)
 				);
 
 				// link blank.
 				$wp_customize->add_setting(
-					'vk_advanced_slider_option[top_slide_link_blank_' . $i . ']',
+					'lightning_theme_options[top_slide_link_blank_' . $i . ']',
 					array(
 						'default'           => $customize_default['top_slide_link_blank'],
 						'type'              => 'option',
@@ -475,18 +447,18 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 				);
 
 				$wp_customize->add_control(
-					'vk_advanced_slider_option[top_slide_link_blank_' . $i . ']',
+					'lightning_theme_options[top_slide_link_blank_' . $i . ']',
 					array(
 						'label'    => __( 'Open in new window.', 'lightning' ),
-						'section'  => 'vk_advanced_slider',
-						'settings' => 'vk_advanced_slider_option[top_slide_link_blank_' . $i . ']',
+						'section'  => 'ltg_g3_slider',
+						'settings' => 'lightning_theme_options[top_slide_link_blank_' . $i . ']',
 						'type'     => 'checkbox',
 					)
 				);
 
 				// text title.
 				$wp_customize->add_setting(
-					'vk_advanced_slider_option[top_slide_text_title_' . $i . ']',
+					'lightning_theme_options[top_slide_text_title_' . $i . ']',
 					array(
 						'default'           => $customize_default['top_slide_text_title'],
 						'type'              => 'option',
@@ -496,11 +468,11 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 				);
 
 				$wp_customize->add_control(
-					'vk_advanced_slider_option[top_slide_text_title_' . $i . ']',
+					'lightning_theme_options[top_slide_text_title_' . $i . ']',
 					array(
 						'label'       => '[' . $i . '] ' . __( 'Slide title', 'lightning' ) . ' (' . __( 'optional', 'lightning' ) . ')',
-						'section'     => 'vk_advanced_slider',
-						'settings'    => 'vk_advanced_slider_option[top_slide_text_title_' . $i . ']',
+						'section'     => 'ltg_g3_slider',
+						'settings'    => 'lightning_theme_options[top_slide_text_title_' . $i . ']',
 						'type'        => 'textarea',
 						'description' => '',
 					)
@@ -508,7 +480,7 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 
 				// text caption.
 				$wp_customize->add_setting(
-					'vk_advanced_slider_option[top_slide_text_caption_' . $i . ']',
+					'lightning_theme_options[top_slide_text_caption_' . $i . ']',
 					array(
 						'default'           => $customize_default['top_slide_text_caption'],
 						'type'              => 'option',
@@ -518,11 +490,11 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 				);
 
 				$wp_customize->add_control(
-					'vk_advanced_slider_option[top_slide_text_caption_' . $i . ']',
+					'lightning_theme_options[top_slide_text_caption_' . $i . ']',
 					array(
 						'label'       => '[' . $i . '] ' . __( 'Slide text', 'lightning' ) . ' (' . __( 'optional', 'lightning' ) . ')',
-						'section'     => 'vk_advanced_slider',
-						'settings'    => 'vk_advanced_slider_option[top_slide_text_caption_' . $i . ']',
+						'section'     => 'ltg_g3_slider',
+						'settings'    => 'lightning_theme_options[top_slide_text_caption_' . $i . ']',
 						'type'        => 'textarea',
 						'description' => '',
 					)
@@ -530,7 +502,7 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 
 				// btn text.
 				$wp_customize->add_setting(
-					'vk_advanced_slider_option[top_slide_text_btn_' . $i . ']',
+					'lightning_theme_options[top_slide_text_btn_' . $i . ']',
 					array(
 						'default'           => $customize_default['top_slide_text_btn'],
 						'type'              => 'option',
@@ -542,11 +514,11 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 				$wp_customize->add_control(
 					new VK_Custom_Text_Control(
 						$wp_customize,
-						'vk_advanced_slider_option[top_slide_text_btn_' . $i . ']',
+						'lightning_theme_options[top_slide_text_btn_' . $i . ']',
 						array(
 							'label'       => '[' . $i . '] ' . __( 'Button text', 'lightning' ) . ' (' . __( 'optional', 'lightning' ) . ')',
-							'section'     => 'vk_advanced_slider',
-							'settings'    => 'vk_advanced_slider_option[top_slide_text_btn_' . $i . ']',
+							'section'     => 'ltg_g3_slider',
+							'settings'    => 'lightning_theme_options[top_slide_text_btn_' . $i . ']',
 							'type'        => 'text',
 							'description' => __( 'If you do not fill in the link url and button text that, button is do not display.', 'lightning' ),
 						)
@@ -555,7 +527,7 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 
 				// text position.
 				$wp_customize->add_setting(
-					'vk_advanced_slider_option[top_slide_text_align_' . $i . ']',
+					'lightning_theme_options[top_slide_text_align_' . $i . ']',
 					array(
 						'default'           => $customize_default['top_slide_text_align'],
 						'type'              => 'option',
@@ -565,11 +537,11 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 				);
 
 				$wp_customize->add_control(
-					'vk_advanced_slider_option[top_slide_text_align_' . $i . ']',
+					'lightning_theme_options[top_slide_text_align_' . $i . ']',
 					array(
 						'label'    => '[' . $i . '] ' . __( 'Position to display text', 'lightning' ) . ' (' . __( 'optional', 'lightning' ) . ')',
-						'section'  => 'vk_advanced_slider',
-						'settings' => 'vk_advanced_slider_option[top_slide_text_align_' . $i . ']',
+						'section'  => 'ltg_g3_slider',
+						'settings' => 'lightning_theme_options[top_slide_text_align_' . $i . ']',
 						'type'     => 'radio',
 						'choices'  => array(
 							'left'   => __( 'Left', 'lightning' ),
@@ -581,7 +553,7 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 
 				// color.
 				$wp_customize->add_setting(
-					'vk_advanced_slider_option[top_slide_text_color_' . $i . ']',
+					'lightning_theme_options[top_slide_text_color_' . $i . ']',
 					array(
 						'default'           => $customize_default['top_slide_text_color'],
 						'type'              => 'option',
@@ -592,11 +564,11 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 				$wp_customize->add_control(
 					new WP_Customize_Color_Control(
 						$wp_customize,
-						'vk_advanced_slider_option[top_slide_text_color_' . $i . ']',
+						'lightning_theme_options[top_slide_text_color_' . $i . ']',
 						array(
 							'label'    => '[' . $i . '] ' . __( 'Slide text color', 'lightning' ) . ' (' . __( 'optional', 'lightning' ) . ')',
-							'section'  => 'vk_advanced_slider',
-							'settings' => 'vk_advanced_slider_option[top_slide_text_color_' . $i . ']',
+							'section'  => 'ltg_g3_slider',
+							'settings' => 'lightning_theme_options[top_slide_text_color_' . $i . ']',
 
 						)
 					)
@@ -604,7 +576,7 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 
 				// top_slide_text_shadow_use.
 				$wp_customize->add_setting(
-					'vk_advanced_slider_option[top_slide_text_shadow_use_' . $i . ']',
+					'lightning_theme_options[top_slide_text_shadow_use_' . $i . ']',
 					array(
 						'default'           => $customize_default['top_slide_text_shadow_use'],
 						'type'              => 'option',
@@ -613,18 +585,18 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 					)
 				);
 				$wp_customize->add_control(
-					'vk_advanced_slider_option[top_slide_text_shadow_use_' . $i . ']',
+					'lightning_theme_options[top_slide_text_shadow_use_' . $i . ']',
 					array(
 						'label'    => __( 'Use text shadow', 'lightning' ) . ' (' . __( 'optional', 'lightning' ) . ')',
-						'section'  => 'vk_advanced_slider',
-						'settings' => 'vk_advanced_slider_option[top_slide_text_shadow_use_' . $i . ']',
+						'section'  => 'ltg_g3_slider',
+						'settings' => 'lightning_theme_options[top_slide_text_shadow_use_' . $i . ']',
 						'type'     => 'checkbox',
 					)
 				);
 
 				// top_slide_text_shadow_color.
 				$wp_customize->add_setting(
-					'vk_advanced_slider_option[top_slide_text_shadow_color_' . $i . ']',
+					'lightning_theme_options[top_slide_text_shadow_color_' . $i . ']',
 					array(
 						'default'           => $customize_default['top_slide_text_shadow_color'],
 						'type'              => 'option',
@@ -635,11 +607,11 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 				$wp_customize->add_control(
 					new WP_Customize_Color_Control(
 						$wp_customize,
-						'vk_advanced_slider_option[top_slide_text_shadow_color_' . $i . ']',
+						'lightning_theme_options[top_slide_text_shadow_color_' . $i . ']',
 						array(
 							'label'    => '[' . $i . '] ' . __( 'Text shadow color', 'lightning' ) . ' (' . __( 'optional', 'lightning' ) . ')',
-							'section'  => 'vk_advanced_slider',
-							'settings' => 'vk_advanced_slider_option[top_slide_text_shadow_color_' . $i . ']',
+							'section'  => 'ltg_g3_slider',
+							'settings' => 'lightning_theme_options[top_slide_text_shadow_color_' . $i . ']',
 						)
 					)
 				);
@@ -653,8 +625,8 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 			$slide_count_max = self::slide_count_max();
 			$slide_count     = self::slide_count();
 
-			$options = get_option( 'vk_advanced_slider_option' );
-			$default = vk_advanced_slider_default_options();
+			$options = get_option( 'lightning_theme_options' );
+			$default = lightning_g3_slider_default_options();
 			$options = wp_parse_args( $options, $default );
 
 			if ( $slide_count < 2 ) {
@@ -693,8 +665,8 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 			$slide_count_max = self::slide_count_max();
 			$slide_count     = self::slide_count();
 
-			$options = get_option( 'vk_advanced_slider_option' );
-			$default = vk_advanced_slider_default_options();
+			$options = get_option( 'lightning_theme_options' );
+			$default = lightning_g3_slider_default_options();
 			$options = wp_parse_args( $options, $default );
 			$slider_prefix = esc_html($options['top_slide_prefix']);
 
@@ -754,90 +726,63 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 							$slide_html .= '</a>';
 						}
 
-						// mini_content.
-						$mini_content_args['style_class']  = 'mini-content-' . $i;
-						$mini_content_args['align']        = ( ! empty( $options[ 'top_slide_text_align_' . $i ] ) ) ? $options[ 'top_slide_text_align_' . $i ] : '';
-						$mini_content_args['title']        = ( ! empty( $options[ 'top_slide_text_title_' . $i ] ) ) ? $options[ 'top_slide_text_title_' . $i ] : '';
-						$mini_content_args['caption']      = ( ! empty( $options[ 'top_slide_text_caption_' . $i ] ) ) ? $options[ 'top_slide_text_caption_' . $i ] : '';
-						$mini_content_args['text_color']   = ( ! empty( $options[ 'top_slide_text_color_' . $i ] ) ) ? $options[ 'top_slide_text_color_' . $i ] : '#333';
-						$mini_content_args['link_url']     = ( ! empty( $options[ 'top_slide_url_' . $i ] ) ) ? $options[ 'top_slide_url_' . $i ] : '';
-						$mini_content_args['link_target']  = ( ! empty( $options[ 'top_slide_link_blank_' . $i ] ) ) ? ' target="_blank"' : '';
-						$mini_content_args['btn_text']     = ( ! empty( $options[ 'top_slide_text_btn_' . $i ] ) ) ? $options[ 'top_slide_text_btn_' . $i ] : '';
-						$mini_content_args['btn_color']    = ( ! empty( $options[ 'top_slide_text_color_' . $i ] ) ) ? $options[ 'top_slide_text_color_' . $i ] : '#337ab7';
-						$mini_content_args['btn_bg_color'] = ( ! empty( $options['color_key'] ) ) ? $options['color_key'] : '#337ab7';
-						$mini_content_args['shadow_use']   = ( ! empty( $options[ 'top_slide_text_shadow_use_' . $i ] ) ) ? $options[ 'top_slide_text_shadow_use_' . $i ] : false;
-						$mini_content_args['shadow_color'] = ( ! empty( $options[ 'top_slide_text_shadow_color_' . $i ] ) ) ? $options[ 'top_slide_text_shadow_color_' . $i ] : '#fff';
-
-						$style = '';
-						$slide_text_class = '';
-						if ( $mini_content_args['align'] ) {
-							$style = ' style="text-align:' . esc_attr( $mini_content_args['align'] ) . '"';
-							$slide_text_class = 'slide-text-set--align--' . $mini_content_args['align'] . ' ';
+						/*
+						  mini_content
+						/*-------------------------------------------*/
+						$slide_html .= '<div class="slide-text-set mini-content">';
+						
+						$mini_content_args = array(
+							'outer_class'    => 'mini-content-container-' . $i . ' container',
+							'title_tag'      => 'h3',
+							'title_class'    => 'slide-text-title',
+							'caption_tag'    => 'div',
+							'caption_class'  => 'slide-text-caption',
+							'btn_class'      => 'btn btn-ghost',
+							'btn_ghost'      => true,
+							'btn_color_text' => '#333',
+							'btn_color_bg'   => '#337ab7',
+						);
+	
+						if ( ! empty( $options[ 'top_slide_text_color_' . $i ] ) ) {
+							$mini_content_args['text_color'] = $options[ 'top_slide_text_color_' . $i ];
 						}
-
-						$slide_html .= '<div class="slide-text-set ' . $slide_text_class . 'mini-content ' . esc_attr( $mini_content_args['style_class'] ) . '"' . $style . '>';
-						$slide_html .= '<div class="container">';
-
-						$font_style = '';
-						if ( $mini_content_args['text_color'] ) {
-							$font_style .= 'color:' . $mini_content_args['text_color'] . ';';
-						} else {
-							$font_style .= '';
+						if ( ! empty( $options[ 'top_slide_text_align_' . $i ] ) ) {
+							$mini_content_args['text_align'] = $options[ 'top_slide_text_align_' . $i ];
 						}
-
-						if ( $mini_content_args['shadow_use'] ) {
-							if ( $mini_content_args['shadow_color'] ) {
-								$font_style .= 'text-shadow:0 0 2px ' . $mini_content_args['shadow_color'];
-							} else {
-								$font_style .= 'text-shadow:0 0 2px #000';
-							}
+						if ( ! empty( $options[ 'top_slide_text_shadow_use_' . $i ] ) ) {
+							$mini_content_args['shadow_use'] = $options[ 'top_slide_text_shadow_use_' . $i ];
 						}
-
-						$font_style = ( $font_style ) ? ' style="' . esc_attr( $font_style ) . '"' : '';
-
-						// If Text Title exist.
-						if ( $mini_content_args['title'] ) {
-
-							$slide_html .= '<h3 class="slide-text-title"' . $font_style . '>';
-							$slide_html .= nl2br( wp_kses_post( $mini_content_args['title'] ) );
-							$slide_html .= '</h3>';
-
+	
+						if ( ! empty( $options[ 'top_slide_text_shadow_color_' . $i ] ) ) {
+							$mini_content_args['shadow_color'] = $options[ 'top_slide_text_shadow_color_' . $i ];
 						}
-
-						// If Text caption exist.
-						if ( $mini_content_args['caption'] ) {
-							$slide_html .= '<div class="slide-text-caption"' . $font_style . '>';
-							$slide_html .= nl2br( wp_kses_post( $mini_content_args['caption'] ) );
-							$slide_html .= '</div>';
+	
+						if ( ! empty( $options[ 'top_slide_text_title_' . $i ] ) ) {
+							$mini_content_args['title_text'] = $options[ 'top_slide_text_title_' . $i ];
 						}
-
-						// If Button exist.
-						if ( $mini_content_args['link_url'] && $mini_content_args['btn_text'] ) {
-							// Shadow.
-							$box_shadow  = '';
-							$text_shadow = '';
-							if ( $mini_content_args['shadow_use'] ) {
-								if ( $mini_content_args['shadow_color'] ) {
-									$box_shadow  = 'box-shadow:0 0 2px ' . $mini_content_args['shadow_color'] . ';';
-									$text_shadow = 'text-shadow:0 0 2px ' . $mini_content_args['shadow_color'] . ';';
-								} else {
-									$box_shadow  = 'box-shadow:0 0 2px #000;';
-									$text_shadow = 'text-shadow:0 0 2px #000;';
-								}
-							}
-
-							$style_class = esc_attr( $mini_content_args['style_class'] );
-							$slide_html .= '<style type="text/css">';
-							$slide_html .= '.' . $style_class . ' .btn-ghost { 
-								--vk-color-text-body: ' . $mini_content_args['text_color'] . ';' . $box_shadow . $text_shadow . ' }';
-							$slide_html .= '.' . $style_class . ' .btn-ghost:hover { border-color:' . $mini_content_args['btn_bg_color'] . '; background-color:' . $mini_content_args['btn_bg_color'] . '; color:#fff; text-shadow:none; }';
-							$slide_html .= '</style>';
-							$slide_html .= '<a class="btn btn-ghost" href="' . esc_url( $mini_content_args['link_url'] ) . '"' . $mini_content_args['link_target'] . '>' . wp_kses_post( $mini_content_args['btn_text'] ) . '</a>';
-
+						if ( ! empty( $options[ 'top_slide_text_caption_' . $i ] ) ) {
+							$mini_content_args['caption_text'] = $options[ 'top_slide_text_caption_' . $i ];
 						}
+						if ( ! empty( $options[ 'top_slide_text_btn_' . $i ] ) ) {
+							$mini_content_args['btn_text'] = $options[ 'top_slide_text_btn_' . $i ];
+						}
+						if ( ! empty( $options[ 'top_slide_url_' . $i ] ) ) {
+							$mini_content_args['btn_url'] = $options[ 'top_slide_url_' . $i ];
+						}
+						if ( ! empty( $options[ 'top_slide_link_blank_' . $i ] ) ) {
+							$mini_content_args['btn_target'] = '_blank';
+						}
+						if ( ! empty( $options[ 'top_slide_text_color_' . $i ] ) ) {
+							$mini_content_args['btn_color_text'] = $options[ 'top_slide_text_color_' . $i ];
+						}
+						if ( ! empty( $options['color_key'] ) ) {
+							$mini_content_args['btn_color_bg'] = $options['color_key'];
+						}
+	
+						$slide_html .= VK_Component_Mini_Contents::get_view( $mini_content_args );
+	
+						$slide_html .= '</div><!-- .mini-content -->';
 
-						$slide_html .= '</div><!-- .container -->';
-						$slide_html .= '</div><!-- [ /.slide-text-set.mini-content  ] -->';
 						$slide_html .= '</div><!-- [ /.item ] -->';
 
 					}
@@ -859,5 +804,5 @@ if ( ! class_exists( 'VK_Advanced_Slider' ) ) {
 			return $slide_html;
 		}
 	}
-	new VK_Advanced_Slider();
+	new LTG_G3_Slider();
 }

@@ -9,7 +9,7 @@ do_action( 'lightning_site-header_after' );
 ?>
 
 <?php if ( is_front_page() ) {
-    VK_Advanced_Slider::display_html();
+    LTG_G3_Slider::display_html();
 } ?>
 
 <?php if ( ! is_front_page() ) : ?>

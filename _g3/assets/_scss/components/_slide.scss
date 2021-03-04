@@ -47,8 +47,9 @@
 		box-shadow: unset;
 		content:none;
 		overflow: unset;
-		// display:inline; がないとh3の見出しデザインで左右線を選ばれた時に flax を指定されてるので文字の中央揃えなどが効かなくなる
-		display: inline;
+		margin-bottom:0;
+		// display:指定がないとh3の見出しデザインで左右線を選ばれた時に flax を指定されてるので文字の中央揃えなどが効かなくなる
+		display: block;
 		&::after,&::before{
 			content: none;
 		}
@@ -63,8 +64,7 @@
 		}
 	}
 	&-text-caption {
-		// タイトル側が margin-bottom 指定が効かないのでこちらで指定
-		margin-top: 0.7em;
+		margin-bottom: 0;
 		@media (min-width: $sm-min) {
 		}
 		@media (min-width: $lg-min) {
@@ -74,14 +74,21 @@
 			font-size:1.250rem;
 		}
 	}
+	&-text-title + &-text-caption {
+		margin-top: 0.7em;
+	}
+	.btn {
+		margin-top: 1em;
+	}
 	picture img {
 		width: 100%;
 		height: auto;
 	}
 	
-	.slide-text-set .btn-ghost {
+	// .slide-text-set を含めると 現状カスタマイザからの色指定ががインラインで上書きが効かなくなる
+	.btn-ghost {
 		// font-size: 16px;
-		margin-top: 1.5em;
+		// margin-top: 1.5em;
 		padding: 0.5em 2.2em;
 		color: var(--vk-color-text-body);
 		border: 1px solid var(--vk-color-text-body);

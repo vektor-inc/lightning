@@ -158,7 +158,7 @@ require  dirname( __FILE__ ) . '/inc/font-awesome/config.php';
 require  dirname( __FILE__ ) . '/inc/term-color/config.php';
 require  dirname( __FILE__ ) . '/inc/vk-css-optimize/config.php';
 require  dirname( __FILE__ ) . '/inc/vk-swiper/config.php';
-require  dirname( __FILE__ ) . '/inc/vk-advanced-slider/config.php';
+require  dirname( __FILE__ ) . '/inc/ltg-g3-slider/config.php';
 
 /*
   Load CSS
