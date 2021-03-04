@@ -1,8 +1,8 @@
 === Lightning ===
 Lightning WordPress theme, Copyright (C) 2015-2021 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
-Tested up to: 5.6.2
-Stable tag: 13.8.9
+Tested up to: 5.6.3
+Stable tag: 13.8.10
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,6 +38,9 @@ https://www.vektor-inc.co.jp/inquiry/
 
 
 == Changelog ==
+
+v13.8.10
+[ Bug fix ][ mobile nav ] fix image css path (//) only
 
 v13.8.9
 [ Bug fix ][ WooCommerce ] Fix Breadcrumb shop top name
