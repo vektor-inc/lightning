@@ -171,7 +171,6 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 					'type'     => 'select',
 					'choices'  => array(
 						'display' => __( 'Display Slides', 'lightning' ),
-						'widget'  => __( 'Display Widgets', 'lightning' ),
 						'hide'    => __( 'Hide Slide', 'lightning' ),
 					),
 				)
@@ -622,10 +621,16 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 		 * Add Sweier Setting
 		 */
 		public static function add_slide_script() {
+
 			$slide_count_max = self::slide_count_max();
 			$slide_count     = self::slide_count();
 
 			$options = get_option( 'lightning_theme_options' );
+
+			if ( 'hide' === isset( $options['top_slide_display'] ) ){
+				return;
+			}
+
 			$default = lightning_g3_slider_default_options();
 			$options = wp_parse_args( $options, $default );
 
@@ -730,7 +735,7 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 						  mini_content
 						/*-------------------------------------------*/
 						$slide_html .= '<div class="slide-text-set mini-content">';
-						
+
 						$mini_content_args = array(
 							'outer_class'    => 'mini-content-container-' . $i . ' container',
 							'title_tag'      => 'h3',
