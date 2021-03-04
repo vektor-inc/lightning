@@ -41,6 +41,7 @@ https://www.vektor-inc.co.jp/inquiry/
 
 v13.8.10
 [ Bug fix ][ mobile nav ] fix image css path (//) only
+[ Other ][ edit screen ] cope with 5.7
 
 v13.8.9
 [ Bug fix ][ WooCommerce ] Fix Breadcrumb shop top name
