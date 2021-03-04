@@ -60,7 +60,8 @@ body.folded:not(.is-fullscreen-mode) .edit-post-layout.is-sidebar-opened{
 */
 .editor-styles-wrapper .is-root-container {
 	// 一番外側のブロックのみ
-	& > .wp-block{
+	& > .wp-block,
+	& > div > .wp-block{
 		width:var(--vk-width-editor-container-body);
 		max-width:var(--vk-width-editor-container-body);
 		margin-left:auto;
