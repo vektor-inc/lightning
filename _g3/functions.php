@@ -154,7 +154,6 @@ require  dirname( __FILE__ ) . '/inc/vk-components/config.php';
 require  dirname( __FILE__ ) . '/inc/vk-mobile-nav/config.php';
 require  dirname( __FILE__ ) . '/inc/vk-breadcrumb/config.php';
 require  dirname( __FILE__ ) . '/inc/widget-area.php';
-require  dirname( __FILE__ ) . '/inc/font-awesome/config.php';
 require  dirname( __FILE__ ) . '/inc/term-color/config.php';
 require  dirname( __FILE__ ) . '/inc/vk-css-optimize/config.php';
 require  dirname( __FILE__ ) . '/inc/vk-swiper/config.php';
@@ -213,8 +212,6 @@ function lightning_addJs() {
 	wp_register_script( 'lightning-js', get_template_directory_uri() . '/assets/js/main.js', array(), LIGHTNING_THEME_VERSION, true );
 	wp_localize_script( 'lightning-js', 'lightningOpt', apply_filters( 'lightning_localize_options', array() ) );
 	wp_enqueue_script( 'lightning-js' );
-	// jsのjQuery依存はもう無いが、一応追加しておく
-	wp_enqueue_script( 'jquery' );
 }
 
 // fix global menu
@@ -229,6 +226,11 @@ function lightning_comment_js() {
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
+}
+
+add_action( 'wp_enqueue_scripts', 'lightning_fontawesome_js' );
+function lightning_fontawesome_js(){
+	wp_enqueue_script( 'vk-font-awesome-js', get_template_directory_uri() . '/assets/js/font-awesome/all.min.js', array(), LIGHTNING_THEME_VERSION, true );
 }
 
 /*
