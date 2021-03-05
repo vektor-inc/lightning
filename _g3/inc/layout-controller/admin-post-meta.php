@@ -99,7 +99,7 @@ function lightning_design_setting_meta_fields() {
 
 	$id    = '_lightning_design_setting[siteContent_padding]';
 	$name  = '_lightning_design_setting[siteContent_padding]';
-	$label = __( 'Delete siteContent padding', 'lightning' );
+	$label = __( 'Delete site-body padding', 'lightning' );
 
 	$form .= '<ul>';
 

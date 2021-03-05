@@ -58,10 +58,10 @@ do_action( 'lightning_site-header_after' );
 
     </div><!-- [ /.site-body-container ] -->
 
-    <?php if ( is_active_sidebar( 'footer-upper-widget-1' ) ) : ?>
+    <?php if ( is_active_sidebar( 'site-body-bottom-widget' ) ) : ?>
     <div class="site-body-bottom">
         <div class="container">
-            <?php dynamic_sidebar( 'footer-upper-widget-1' ); ?>
+            <?php dynamic_sidebar( 'site-body-bottom-widget' ); ?>
         </div>
     </div>
     <?php endif; ?>

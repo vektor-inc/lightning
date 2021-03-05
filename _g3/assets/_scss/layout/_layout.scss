@@ -79,7 +79,7 @@
 
 /*
 main-section だけにしているのはサブセクションが下に配置される場合にひっつかないように。
-そもそも外側の余白は .siteContent でつけられているので sub-section には不要
+そもそも外側の余白は .site-body でつけられているので sub-section には不要
 */
 .main-section {
 	&--margin-bottom--on {

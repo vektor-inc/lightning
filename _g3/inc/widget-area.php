@@ -84,31 +84,18 @@ if ( ! function_exists( 'lightning_widgets_init' ) ) {
 
 		} // foreach ($postTypes as $postType) {
 
-		// Home content top widget area
+		// Site body bottom widget area
 
-			register_sidebar(
-				array(
-					'name'          => __( 'Home content top', 'lightning' ),
-					'id'            => 'home-content-top-widget-area',
-					'before_widget' => '<div class="widget %2$s" id="%1$s">',
-					'after_widget'  => '</div>',
-					'before_title'  => '<h2 class="mainSection-title">',
-					'after_title'   => '</h2>',
-				)
-			);
-
-		// footer upper widget area
-
-			register_sidebar(
-				array(
-					'name'          => __( 'Widget area of upper footer', 'lightning' ),
-					'id'            => 'footer-upper-widget-1',
-					'before_widget' => '<aside class="widget %2$s" id="%1$s">',
-					'after_widget'  => '</aside>',
-					'before_title'  => '<h4 class="widget-title sub-section-title">',
-					'after_title'   => '</h4>',
-				)
-			);
+		register_sidebar(
+			array(
+				'name'          => __( 'Widget area of site body bottom', 'lightning' ),
+				'id'            => 'site-body-bottom-widget',
+				'before_widget' => '<aside class="widget %2$s" id="%1$s">',
+				'after_widget'  => '</aside>',
+				'before_title'  => '<h4 class="widget-title sub-section-title">',
+				'after_title'   => '</h4>',
+			)
+		);
 
 		// footer widget area
 
