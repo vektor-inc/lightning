@@ -39,6 +39,9 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v13.8.12
+[ Bug fix ] Fix inner block width(padding) bug.
+
 v13.8.11
 [ Bug fix ] Fix inner block width(padding) bug.
 
