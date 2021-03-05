@@ -1,9 +1,20 @@
-div[class*="__inner-container"]{
-	max-width: var(--vk-width-container);
-	padding-left:$containter-padding;
-	padding-right:$containter-padding;
-	margin-left:auto;
-	margin-right:auto;
+
+/** DOM example
+
+インナーブロックは全幅か幅広の時のみ指定
+そうでないと container-padding が余分についてしまう
+
+entry-body
+	wp-block-cover
+		wp-block-cover__inner-container
+*/
+.alignfull,
+.alignwide {
+	div[class*="__inner-container"]{
+		max-width: calc( var(--vk-width-container) - var(--vk-width-container-padding) * 2 );
+		margin-left:auto;
+		margin-right:auto;
+	}
 }
 
 .alignfull {
