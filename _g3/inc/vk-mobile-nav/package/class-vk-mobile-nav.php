@@ -167,9 +167,9 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 
 		public static function add_script() {
 			global $library_url;
-			wp_register_script( 'vk-mobile-nav-js', $library_url . 'js/vk-mobile-nav.min.js', array( 'jquery' ), self::$version );
+			wp_register_script( 'vk-mobile-nav-js', $library_url . '/js/vk-mobile-nav.min.js', array( 'jquery' ), self::$version );
 			wp_enqueue_script( 'vk-mobile-nav-js' );
-			wp_enqueue_style( 'vk-mobile-nav-css', $library_url . 'css/vk-mobile-nav-bright.css', array(), self::$version, 'all' );
+			wp_enqueue_style( 'vk-mobile-nav-css', $library_url . '/css/vk-mobile-nav-bright.css', array(), self::$version, 'all' );
 		}
 
 		/**
@@ -181,12 +181,12 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 			global $library_url;
 			$dynamic_css = '/* vk-mobile-nav */
 			:root {
-				--vk-mobile-nav-menu-btn-bg-src: url("'.esc_url( $library_url.'/images/vk-menu-btn-black.svg').'");
-				--vk-mobile-nav-menu-btn-close-bg-src: url("'.esc_url( $library_url.'/images/vk-menu-close-black.svg').'");
-				--vk-menu-acc-icon-open-black-bg-src: url("'.esc_url( $library_url.'/images/vk-menu-acc-icon-open-black.svg').'");
-				--vk-menu-acc-icon-open-white-bg-src: url("'.esc_url( $library_url.'/images/vk-menu-acc-icon-open-white.svg').'");
-				--vk-menu-acc-icon-close-black-bg-src: url("'.esc_url( $library_url.'/images/vk-menu-close-black.svg').'");
-				--vk-menu-acc-icon-close-white-bg-src: url("'.esc_url( $library_url.'/images/vk-menu-close-white.svg').'");
+				--vk-mobile-nav-menu-btn-bg-src: url("'.esc_url( $library_url . '/images/vk-menu-btn-black.svg').'");
+				--vk-mobile-nav-menu-btn-close-bg-src: url("'.esc_url( $library_url . '/images/vk-menu-close-black.svg').'");
+				--vk-menu-acc-icon-open-black-bg-src: url("'.esc_url( $library_url . '/images/vk-menu-acc-icon-open-black.svg').'");
+				--vk-menu-acc-icon-open-white-bg-src: url("'.esc_url( $library_url . '/images/vk-menu-acc-icon-open-white.svg').'");
+				--vk-menu-acc-icon-close-black-bg-src: url("'.esc_url( $library_url . '/images/vk-menu-close-black.svg').'");
+				--vk-menu-acc-icon-close-white-bg-src: url("'.esc_url( $library_url . '/images/vk-menu-close-white.svg').'");
 			}
 			';
 			// delete before after space
