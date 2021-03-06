@@ -39,7 +39,7 @@ function lightning_customize_register_basic( $wp_customize ) {
 	);
 
 	$wp_customize->add_setting(
-		'lightning_theme_options[generation]',
+		'lightning_theme_generation',
 		array(
 			'default'           => __( 'Current Generation', 'lightning' ),
 			'type'              => 'option',
@@ -49,11 +49,11 @@ function lightning_customize_register_basic( $wp_customize ) {
 	);
 
 	$wp_customize->add_control(
-		'lightning_theme_options[generation]',
+		'lightning_theme_generation',
 		array(
 			'label'    => '',
 			'section'  => 'lightning_basic',
-			'settings' => 'lightning_theme_options[generation]',
+			'settings' => 'lightning_theme_generation',
 			'type'     => 'select',
 			'choices'  => $choices,
 		)
