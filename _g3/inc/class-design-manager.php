@@ -30,7 +30,7 @@ class Lightning_Design_Manager {
 	static function get_skins() {
 		$skins = array(
 			'plain' => array(
-				'label'           => __( 'Plain', 'lightning' ),
+				'label'           => __( 'Plain (Beta)', 'lightning' ),
 				'css_path'        => '',
 				'editor_css_path' => '',
 				'php_path'        => '',
@@ -39,7 +39,7 @@ class Lightning_Design_Manager {
 				'bootstrap'       => '',
 			),
 			'origin3' => array(
-				'label'           => __( 'Origin III（Beta）', 'lightning' ),
+				'label'           => __( 'Origin III (Beta)', 'lightning' ),
 				'css_path'        => get_template_directory_uri() . '/design-skin/origin3/css/style.css',
 				'editor_css_path' => get_template_directory_uri() . '/design-skin/origin3/css/editor.css',
 				'php_path'        => get_parent_theme_file_path() . '/design-skin/origin3/origin3.php',
@@ -48,7 +48,7 @@ class Lightning_Design_Manager {
 				'bootstrap'       => '',
 			),
 		);
-		return apply_filters( 'lightning-design-skins', $skins );
+		return apply_filters( 'lightning-g3-skins', $skins );
 	}
 
 

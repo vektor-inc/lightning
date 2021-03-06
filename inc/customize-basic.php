@@ -28,7 +28,7 @@ function lightning_customize_register_basic( $wp_customize ) {
 				'section'          => 'lightning_basic',
 				'type'             => 'text',
 				'custom_title_sub' => '',
-				'custom_html'      => '<p>' . __( 'Switch of generation  is nearly switch of theme. Be sure to make a backup before switch of generation as it is not very compatible.', 'lightning') . '</p>',
+				'custom_html'      => '<p><span style="color:red;font-weight:bold;">' . __( 'Switch of generation  is nearly switch of theme.', 'lightning' ) . '</span></p>' . '<p>' . __( 'Be sure to make a backup before switch of generation as it is not very compatible.', 'lightning') . '</p>',
 			)
 		)
 	);

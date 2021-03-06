@@ -325,8 +325,7 @@ if ( ! function_exists( 'lightning_get_template_part' ) ){
 	}
 }
 
-$options = get_option( 'lightning_theme_options' );
-if ( isset($options['generation']) && 'g3' === $options['generation'] ){
+if ( lightning_is_g3() ){
 	require dirname( __FILE__ ) . '/' . LIG_G3_DIR . '/functions.php';
 } else {
 	require dirname( __FILE__ ) . '/' . LIG_G2_DIR . '/functions.php';
