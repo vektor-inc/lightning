@@ -54,17 +54,6 @@ class Lightning_Design_Manager {
 				'version'         => LIGHTNING_THEME_VERSION,
 				'bootstrap'       => 'bs4',
 			),
-			'origin3' => array(
-				'label'           => __( 'Origin III（Beta）', 'lightning' ),
-				'css_path'        => get_template_directory_uri() . '/design-skin/origin2/css/style.css',
-				'css_sv_path'     => get_parent_theme_file_path( '/design-skin/origin2/css/style.css' ),
-				'css_late_path'   => '',
-				'editor_css_path' => get_template_directory_uri() . '/design-skin/origin2/css/editor.css',
-				'php_path'        => get_parent_theme_file_path( '/design-skin/origin2/origin2.php' ),
-				'js_path'         => '',
-				'version'         => LIGHTNING_THEME_VERSION,
-				'bootstrap'       => '',
-			),
 		);
 		return apply_filters( 'lightning-design-skins', $skins );
 	}

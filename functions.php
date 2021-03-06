@@ -3,6 +3,13 @@
 define( 'LIG_G3_DIR', '_g3' );
 define( 'LIG_G2_DIR', '_g2' );
 
+function lightning_is_g3(){
+	$options = get_option( 'lightning_theme_options' );
+	if ( isset($options['generation']) && 'g3' === $options['generation'] ){
+		return true;
+	}
+}
+
 if ( ! class_exists( 'LTG_Template_Redirect' ) ){
 	class LTG_Template_Redirect {
 
@@ -47,8 +54,7 @@ if ( ! class_exists( 'LTG_Template_Redirect' ) ){
 		}
 	
 		public static function woocommerce_redirect( $default_file ){
-			$current_skin = get_option( 'lightning_design_skin' );
-			if ( $current_skin === 'origin3' ){
+			if ( lightning_is_g3() ){
 				$dir = LIG_G3_DIR;
 			} else {
 				$dir = LIG_G2_DIR;
@@ -65,8 +71,7 @@ if ( ! class_exists( 'LTG_Template_Redirect' ) ){
 		}
 	
 		public static function theme_directory(){
-			$current_skin = get_option( 'lightning_design_skin' );
-			if ( $current_skin === 'origin3' ){
+			if ( lightning_is_g3() ){
 				$dir = LIG_G3_DIR;
 			} else {
 				$dir = LIG_G2_DIR;
@@ -233,8 +238,7 @@ if ( ! class_exists( 'LTG_Template_Redirect' ) ){
 if ( ! function_exists( 'lightning_get_template_part' ) ){
 	function lightning_get_template_part( $slug, $name = null, $args = array() ) {
 
-		$current_skin = get_option( 'lightning_design_skin' );
-		if ( $current_skin === 'origin3' ){
+		if ( lightning_is_g3() ){
 			$g_dir = '_g3';
 		} else {
 			$g_dir = '_g2';
@@ -321,16 +325,12 @@ if ( ! function_exists( 'lightning_get_template_part' ) ){
 	}
 }
 
-$current_skin = get_option( 'lightning_design_skin' );
-if ( $current_skin === 'origin3' ){
+$options = get_option( 'lightning_theme_options' );
+if ( isset($options['generation']) && 'g3' === $options['generation'] ){
 	require dirname( __FILE__ ) . '/' . LIG_G3_DIR . '/functions.php';
-	return;
 } else {
 	require dirname( __FILE__ ) . '/' . LIG_G2_DIR . '/functions.php';
-	return;
 }
 
-/*
-  Load tga(Plugin install)
-/*-------------------------------------------*/
+require dirname( __FILE__ ) . '/inc/customize-basic.php';
 require dirname( __FILE__ ) . '/inc/tgm-plugin-activation/tgm-config.php';
