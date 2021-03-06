@@ -219,11 +219,6 @@ require dirname( __FILE__ ) . '/functions-compatible.php';
 
 
 /*
-  Load tga(Plugin install)
-/*-------------------------------------------*/
-require dirname( __FILE__ ) . '/inc/tgm-plugin-activation/tgm-config.php';
-
-/*
   Load Custom template tags for this theme.
 /*-------------------------------------------*/
 require dirname( __FILE__ ) . '/inc/template-tags.php';

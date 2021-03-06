@@ -329,3 +329,8 @@ if ( $current_skin === 'origin3' ){
 	require dirname( __FILE__ ) . '/' . LIG_G2_DIR . '/functions.php';
 	return;
 }
+
+/*
+  Load tga(Plugin install)
+/*-------------------------------------------*/
+require dirname( __FILE__ ) . '/inc/tgm-plugin-activation/tgm-config.php';
