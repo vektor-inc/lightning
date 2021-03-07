@@ -28,7 +28,7 @@ function lightning_customize_register_basic( $wp_customize ) {
 				'section'          => 'lightning_basic',
 				'type'             => 'text',
 				'custom_title_sub' => '',
-				'custom_html'      => '<p><span style="color:red;font-weight:bold;">' . __( 'Switch of generation  is nearly switch of theme.', 'lightning' ) . '</span></p>' . '<p>' . __( 'Be sure to make a backup before switch of generation as it is not very compatible.', 'lightning') . '</p>',
+				'custom_html'      => '<p><span style="color:red;font-weight:bold;">' . __( 'Switch of generations is nearly switch of theme.', 'lightning' ) . '</span></p>' . '<p>' . __( 'Be sure to make a backup before switch of generation as it is not very compatible.', 'lightning') . '</p>',
 			)
 		)
 	);
@@ -58,4 +58,26 @@ function lightning_customize_register_basic( $wp_customize ) {
 			'choices'  => $choices,
 		)
 	);
+
+	$wp_customize->add_setting(
+		'generation_reload_btn',
+		array(
+			'sanitize_callback' => 'sanitize_text_field',
+		)
+	);
+	$wp_customize->add_control(
+		new VK_Custom_Html_Control(
+			$wp_customize,
+			'generation_reload_btn',
+			array(
+				'label'            => '',
+				'section'          => 'lightning_basic',
+				'type'             => 'text',
+				'custom_title_sub' => '',
+				'custom_html'      => '<p>' . __( 'After switching generations, save and reload the page.', 'lightning' ) . '</p><a href="' . $_SERVER["REQUEST_URI"] . '" class="button button-primary button-block">再読み込み</a>',
+				// 'active_callback' => 'lightning_generation_reload_callback',
+			)
+		)
+	);
+
 }

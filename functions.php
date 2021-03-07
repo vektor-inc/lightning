@@ -116,39 +116,38 @@ require dirname( __FILE__ ) . '/inc/tgm-plugin-activation/tgm-config.php';
 /**
  * 世代切り替えした時に同時にスキンも変更する処理
  *  
- * 世代は lightning_theme_options['generation'] で管理している。
- * 
- * 世代変更前のスキンを保存しておく処理
+ * 世代は lightning_theme_generation で管理している。
  * 
  * 		generetionに変更がある場合
- * 			保存前のフィルター pre_update_option で今の世代でのスキン名を配列に格納しておく
- * 
+ * 			今の世代でのスキン名を lightning_theme_options の配列の中に格納しておく
+ * 			lightning_theme_option の中に格納されている新しい世代のスキンを取得
+ * 			スキンをアップデートする * 
  */
 
-// add_filter( 'pre_update_option_lightning_theme_options', 'lightning_save_previous_skin', 10, 3 );
-// function lightning_save_previous_skin( $value, $old_value, $option ){
-// 	if (  )
-// }
+function lightning_change_generation( $old_value, $value, $option ){
+	// 世代変更がある場合
+	if ( $value !== $old_value ){
+		// 現状のスキンを取得
+		$current_skin = get_option( 'lightning_design_skin' );
+		// オプションを取得
+		$options = get_option( 'lightning_theme_options' );
+		$options['previous_skin_' . $old_value] = $current_skin;
+		// 既存のスキンをオプションに保存
+		update_option( 'lightning_theme_options', $options );
 
-/**
- * 
- * 世代切り替えの再に自動的にスキンを変更する処理
- * 
- * 		アクションフック update_option_lightning_theme_options で実行
- * 		変更先の世代が g3 の場合
- * 		前のスキンが保存されていない場合
- * 			origin3 にする
-  * 
- */
+		// 前のスキンが保存されている場合
+		if ( ! empty( $options['previous_skin_' . $value] ) ){
+			$new_skin = esc_attr( $options['previous_skin_' . $value] );
 
-// function lightning_change_generation( $old_value, $value, $option ){
-// 	if ( empty( $old_value['generation'] ) ){
-// 		if ( $value['generation'] !== 'g3' ){
-// 			$old_skin = get_option( 'lightning_design_skin' );
-// 			update_option( 'lightning_design_skin', 'origin3' );
-// 		} elseif ( $) )
-	
-// 		}
-// 	} 
-// }
-// add_action( 'update_option_lightning_theme_options', 'lightning_change_generation', 10, 3 );
+		// 前のスキンが保存されていない場合
+		} else {
+			if ( 'g3' === $value ){
+				$new_skin = 'origin3';
+			} else {
+				$new_skin = 'origin2';
+			}
+		}
+		update_option( 'lightning_design_skin', $new_skin );
+	}
+}
+add_action( 'update_option_lightning_theme_generation', 'lightning_change_generation', 10, 3 );
