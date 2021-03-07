@@ -249,7 +249,6 @@ require dirname( __FILE__ ) . '/inc/vk-components/vk-components-config.php';
 require dirname( __FILE__ ) . '/inc/template-redirect.php';
 require dirname( __FILE__ ) . '/inc/layout-controller/layout-controller.php';
 require dirname( __FILE__ ) . '/inc/vk-footer-customize/vk-footer-customize-config.php';
-require dirname( __FILE__ ) . '/inc/vk-old-options-notice/vk-old-options-notice-config.php';
 require dirname( __FILE__ ) . '/inc/vk-css-optimize/vk-css-optimize-config.php';
 
 /**

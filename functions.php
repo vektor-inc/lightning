@@ -4,7 +4,8 @@ define( 'LIG_G3_DIR', '_g3' );
 define( 'LIG_G2_DIR', '_g2' );
 
 function lightning_is_g3(){
-	if ( 'g3' === get_option( 'lightning_theme_generation' ) ){
+	$default = 'g2';
+	if ( 'g3' === get_option( 'lightning_theme_generation', $default ) ){
 		return true;
 	}
 }
@@ -112,6 +113,7 @@ if ( lightning_is_g3() ){
 
 require dirname( __FILE__ ) . '/inc/customize-basic.php';
 require dirname( __FILE__ ) . '/inc/tgm-plugin-activation/tgm-config.php';
+require dirname( __FILE__ ) . '/inc/vk-old-options-notice/vk-old-options-notice-config.php';
 
 /**
  * 世代切り替えした時に同時にスキンも変更する処理
