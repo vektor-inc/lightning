@@ -17,16 +17,16 @@
 	<?php if ( $is_single_item_display ) : ?>
 
 		<header class="<?php lightning_the_class_name( 'entry-header' ); ?>">
+			<h1 class="entry-title">
+				<?php if ( is_single() ) : ?>
+					<?php the_title(); ?>
+				<?php else : ?>
+					<a href="<?php the_permalink(); ?>">
+					<?php the_title(); ?>
+					</a>
+				<?php endif; ?>
+			</h1>
 			<?php lightning_get_template_part( 'template-parts/entry-meta', get_post_type() ); ?>
-				<h1 class="entry-title">
-					<?php if ( is_single() ) : ?>
-						<?php the_title(); ?>
-					<?php else : ?>
-						<a href="<?php the_permalink(); ?>">
-						<?php the_title(); ?>
-						</a>
-					<?php endif; ?>
-				</h1>
 		</header>
 
 	<?php endif; ?>

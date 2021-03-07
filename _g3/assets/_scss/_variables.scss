@@ -11,8 +11,8 @@ $xl-min: 1200px;
 $containter-padding:15px;
 
 :root {
-    --vk-color-text-body : #444444;
-    --vk-color-text-link : #555555;
+    --vk-color-text-body : #555555;
+    --vk-color-text-link : #666666;
     --vk-color-text-link-hover : #1e73be;
     --vk-color-text-header : #444444;
     --vk-color-text-meta : #666666;/* 一旦非推奨 */
@@ -33,12 +33,14 @@ $containter-padding:15px;
 
     --vk-margin-meta : 0.5rem;
     --vk-margin-headding-bottom : 1.2em;
-    --vk-margin-element-bottom : 1rem;
+    --vk-margin-element-bottom : 1.5rem;
     --vk-margin-block-bottom : 2rem;
     --vk-margin-section-bottom : 3rem;
 
+
     --vk-size-text: 16px;
     --vk-size-text-meta: 0.75rem;
+    --vk-size-text-lg: 1.5rem;
     --vk-size-text-sm: 0.875rem;
     --vk-size-text-xs: 0.75rem;
 
