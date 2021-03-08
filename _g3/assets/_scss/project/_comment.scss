@@ -4,6 +4,12 @@
 .comments-area {
     content-visibility:auto;
     margin-bottom: var(--vk-margin-section-bottom);
+    a {
+        color: var(--vk-color-text-body);
+        &:hover {
+            text-decoration: none;
+        }
+    }
 }
 .comments-title {
 
