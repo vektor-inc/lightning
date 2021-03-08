@@ -80,4 +80,39 @@ function lightning_customize_register_basic( $wp_customize ) {
 		)
 	);
 
+    $wp_customize->add_setting( 'demo_radio_control', array(
+        'default'        => 'a',
+     ) );
+
+     $wp_customize->add_control( 'demo_radio_control', array(
+        'label'      => 'radio_control',
+        'section'    => 'lightning_basic',
+        'settings'   => 'demo_radio_control',
+        'type'       => 'radio',
+        'choices'    => array(
+        'a' => 'Choice A',
+        'b' => 'Choice B',
+        ),
+     ) );
+
+     $wp_customize->add_setting( 'choice_a_text', array(
+        'default' => '',
+     ) );
+
+     $wp_customize->add_control( 'choice_a_text', array(
+        'label'      => 'Choice A: ',
+        'section'    => 'lightning_basic',
+        'type'       => 'text',
+        'active_callback' => 'choice_a_callback',
+     ) );
+     function choice_a_callback( $control ) {
+        if ( $control->manager->get_setting('demo_radio_control')->value() == 'a' ) {
+           return true;
+        } else {
+           return false;
+        }
+     }
+
+
+
 }
