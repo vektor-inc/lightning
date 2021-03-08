@@ -1,4 +1,5 @@
 .sub-section{
+    content-visibility:auto;
     &-title{
         font-size: calc( var(--vk-size-text) * 1.125 );
         margin-bottom:0.8rem;
