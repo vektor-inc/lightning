@@ -96,7 +96,6 @@ function lightning_theme_setup() {
 
 	add_theme_support('custom-spacing');
 
-
 	/*
 	  cope with page excerpt
 	/*-------------------------------------------*/
