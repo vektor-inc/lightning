@@ -243,7 +243,7 @@ require dirname( __FILE__ ) . '/inc/vk-mobile-nav/vk-mobile-nav-config.php';
 /*-------------------------------------------*/
 require dirname( __FILE__ ) . '/inc/package-manager.php';
 require dirname( __FILE__ ) . '/inc/class-design-manager.php';
-require dirname( __FILE__ ) . '/inc/font-awesome/font-awesome-config.php';
+// require dirname( __FILE__ ) . '/inc/font-awesome/font-awesome-config.php';
 require dirname( __FILE__ ) . '/inc/term-color/term-color-config.php';
 require dirname( __FILE__ ) . '/inc/vk-components/vk-components-config.php';
 require dirname( __FILE__ ) . '/inc/template-redirect.php';

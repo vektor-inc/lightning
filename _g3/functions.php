@@ -228,10 +228,10 @@ function lightning_comment_js() {
 	}
 }
 
-add_action( 'wp_enqueue_scripts', 'lightning_fontawesome_js' );
-function lightning_fontawesome_js(){
-	wp_enqueue_script( 'vk-font-awesome-js', get_template_directory_uri() . '/assets/js/font-awesome/all.min.js', array(), LIGHTNING_THEME_VERSION, true );
-}
+// add_action( 'wp_enqueue_scripts', 'lightning_fontawesome_js' );
+// function lightning_fontawesome_js(){
+// 	wp_enqueue_script( 'vk-font-awesome-js', get_template_directory_uri() . '/assets/js/font-awesome/all.min.js', array(), LIGHTNING_THEME_VERSION, true );
+// }
 
 /*
   Load Font

@@ -74,45 +74,9 @@ function lightning_customize_register_basic( $wp_customize ) {
 				'section'          => 'lightning_basic',
 				'type'             => 'text',
 				'custom_title_sub' => '',
-				'custom_html'      => '<p>' . __( 'After switching generations, save and reload the page.', 'lightning' ) . '</p><a href="' . $_SERVER["REQUEST_URI"] . '" class="button button-primary button-block">再読み込み</a>',
+				'custom_html'      => '<p>' . __( 'After switching generations, save and reload the page.', 'lightning' ) . '</p><a href="' . esc_url( $_SERVER["REQUEST_URI"] ) . '" class="button button-primary button-block">' . __( 'Reload the page', 'lightning' ) . '</a>',
 				// 'active_callback' => 'lightning_generation_reload_callback',
 			)
 		)
 	);
-
-    $wp_customize->add_setting( 'demo_radio_control', array(
-        'default'        => 'a',
-     ) );
-
-     $wp_customize->add_control( 'demo_radio_control', array(
-        'label'      => 'radio_control',
-        'section'    => 'lightning_basic',
-        'settings'   => 'demo_radio_control',
-        'type'       => 'radio',
-        'choices'    => array(
-        'a' => 'Choice A',
-        'b' => 'Choice B',
-        ),
-     ) );
-
-     $wp_customize->add_setting( 'choice_a_text', array(
-        'default' => '',
-     ) );
-
-     $wp_customize->add_control( 'choice_a_text', array(
-        'label'      => 'Choice A: ',
-        'section'    => 'lightning_basic',
-        'type'       => 'text',
-        'active_callback' => 'choice_a_callback',
-     ) );
-     function choice_a_callback( $control ) {
-        if ( $control->manager->get_setting('demo_radio_control')->value() == 'a' ) {
-           return true;
-        } else {
-           return false;
-        }
-     }
-
-
-
 }
