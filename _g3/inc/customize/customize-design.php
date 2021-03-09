@@ -102,11 +102,7 @@ function lightning_customize_register_design( $wp_customize ) {
  */
 function lightning_get_common_inline_css() {
     $options        = lightning_get_theme_options();
-    if ( ! empty( $options['color_key'] ) ){
-        $color_key = esc_html( $options['color_key'] );
-    } else {
-        $color_key = esc_html( $options['#337ab7'] );
-    }
+	$color_key = ! empty( $options['color_key'] ) ? esc_html( $options['color_key'] ) : '#337ab7';
     $color_key_dark = VK_Helpers::color_auto_modifi( $color_key, 0.8 );
 	$dynamic_css    = '
 	/* Lightning */
