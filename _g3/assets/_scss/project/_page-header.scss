@@ -5,21 +5,31 @@
 	margin-top: 0;
 	margin-bottom: 0;
 	padding-bottom: 0;
-	display:block; overflow:hidden;
+	display: flex;
+	align-items: center;
+	// justify-content: center;
 	position: relative;
 	z-index: 1;
+	min-height:7rem;
 
 	/* If text-align setting write to .page-header_pageTitle that page-header align function not work */
     text-align: center;
+	
+	&-inner {
+		position:relative;
+		// Cope with Page header customize cover color
+		z-index: 5;
+		margin:1.5em auto;
+	}
+	&-subtext{
+		margin-top: var(--vk-margin-meta);
+		line-height: 1.05;
+	}
 }
 
 .page-header-title,
-h1.page-header-title {
-	margin: 1.5em 0;
+h1.page-header-title{
 	font-size: 1.75rem;
-	line-height: 1.1;
-	position:relative;
-
-	// Cope with Page header customize cover color
-	z-index: 5;
+	line-height: 1.05;
+	margin: 0;
 }

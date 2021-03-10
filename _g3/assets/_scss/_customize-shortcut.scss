@@ -1,3 +1,9 @@
+.page-header .customize-partial-edit-shortcut button {
+    top:-1em;
+    left:0.3em; /* 大きくするとコンテナ幅の下になって反応しなくなるので注意 */
+    z-index: 10000000;
+}
+
 .main-section .customize-partial-edit-shortcut-lightning_theme_options-layout-front-page > button {
     left:-4em;
 }

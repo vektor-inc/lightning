@@ -72,6 +72,9 @@ if ( is_search() ) {
 } elseif ( is_page() || is_attachment() ) {
 	$page_header_title = get_the_title();
 }
+
+$page_header_title_html = '<' . $page_title_tag . ' class="page-header-title">' . $page_header_title . '</' . $page_title_tag . '>';
+
 /*-------------------------------------------*/
 /*	print
 /*-------------------------------------------*/
@@ -84,9 +87,5 @@ $allowed_html = array(
 );
 ?>
 <div class="page-header"><div class="page-header-inner container">
-<?php do_action( 'lightning_ppage-header-title_before' );?>
-<<?php echo $page_title_tag ?> class="page-header-title">
-<?php echo wp_kses( $page_header_title , $allowed_html ); ?>
-</<?php echo $page_title_tag ?>>
-<?php do_action( 'lightning_ppage-header-title_after' );?>
+<?php echo wp_kses_post( apply_filters( 'lightning_page_header_title_html',  $page_header_title_html ) ) ;  ?>
 </div></div><!-- [ /.page-header ] -->
