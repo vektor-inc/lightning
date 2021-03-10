@@ -8,13 +8,13 @@
 
 	<?php 
 	// check single or loop that true
-	$is_single_item_display = false;
+	$is_entry_header_display = false;
 	if ( is_single() || is_archive() ){
-		$is_single_item_display = true;
+		$is_entry_header_display = apply_filters( 'lightning_is_entry_header_display', true );
 	}
 	?>
 
-	<?php if ( $is_single_item_display ) : ?>
+	<?php if ( $is_entry_header_display ) : ?>
 
 		<header class="<?php lightning_the_class_name( 'entry-header' ); ?>">
 			<h1 class="entry-title">
@@ -26,7 +26,7 @@
 					</a>
 				<?php endif; ?>
 			</h1>
-			<?php lightning_get_template_part( 'template-parts/entry-meta', get_post_type() ); ?>
+			<?php lightning_the_entry_meta(); ?>
 		</header>
 
 	<?php endif; ?>
@@ -54,7 +54,7 @@
 
 	<?php do_action( 'lightning_page_link_after' ); ?>
 
-	<?php if ( $is_single_item_display ) : ?>
+	<?php if ( $is_entry_header_display ) : ?>
 
 		<div class="<?php lightning_the_class_name( 'entry-footer' ); ?>">
 
