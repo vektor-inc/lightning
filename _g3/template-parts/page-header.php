@@ -8,27 +8,18 @@ $post_type_info = VK_Helpers::get_post_type_info();
 // Use post top page（ Archive title wrap to div ）
 if ( $post_top_info['use'] ) {
 	if ( is_category() || is_tag() || is_tax() || is_single() || is_date() ) {
-		$pageTitTag = 'div';
+		$page_title_tag = 'div';
 	} else {
-		$pageTitTag = 'h1';
+		$page_title_tag = 'h1';
 	}
 	// Don't use post top（　Archive title wrap to h1　）
 } else {
 	if ( ! is_single() ) {
-		$pageTitTag = 'h1';
+		$page_title_tag = 'h1';
 	} else {
-		$pageTitTag = 'div';
+		$page_title_tag = 'div';
 	}
 }
-
-/*-------------------------------------------*/
-/*	Set wrap tags
-/*-------------------------------------------*/
-$page_header_html_before  = '<div class="page-header"><div class="container">' . "\n";
-$page_header_html_before .= '<' . $pageTitTag . ' class="page-header-title">' . "\n";
-$page_header_html_after   = '</' . $pageTitTag . '>' . "\n";
-$page_header_html_after  .= '</div></div><!-- [ /.page-header ] -->' . "\n";
-
 /*-------------------------------------------*/
 /*	Set display title name
 /*-------------------------------------------*/
@@ -81,13 +72,12 @@ if ( is_search() ) {
 } elseif ( is_page() || is_attachment() ) {
 	$page_header_title = get_the_title();
 }
-$page_header_title = apply_filters( 'lightning_page_header_title', $page_header_title );
+
+$page_header_title_html = '<' . $page_title_tag . ' class="page-header-title">' . $page_header_title . '</' . $page_title_tag . '>';
 
 /*-------------------------------------------*/
 /*	print
 /*-------------------------------------------*/
-$page_header_html = $page_header_html_before;
-// allow tags
 $allowed_html = array(
 	'i'      => array(
 		'class' => array(),
@@ -95,8 +85,7 @@ $allowed_html = array(
 	'br'     => array(),
 	'strong' => array(),
 );
-$page_header_html .= wp_kses( $page_header_title , $allowed_html );
-$page_header_html .= $page_header_html_after;
-
-$page_header_html  = apply_filters( 'lightning_page_header_heml', $page_header_html );
-echo $page_header_html;
+?>
+<div class="page-header"><div class="page-header-inner container">
+<?php echo wp_kses_post( apply_filters( 'lightning_page_header_title_html',  $page_header_title_html ) ) ;  ?>
+</div></div><!-- [ /.page-header ] -->
