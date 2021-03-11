@@ -251,19 +251,7 @@ require dirname( __FILE__ ) . '/inc/layout-controller/layout-controller.php';
 require dirname( __FILE__ ) . '/inc/vk-footer-customize/vk-footer-customize-config.php';
 require dirname( __FILE__ ) . '/inc/vk-css-optimize/vk-css-optimize-config.php';
 
-/**
- * Load Starter Content
- * 
- * since 13.8
- * 
- * Caution! 
- * Actually WordPress possess check option of first install or not ('fresh_site' )
- * But lightning 13.8.0 - 13.8.1 was changed to "true" that check by lightning_theme_options.
- * If 2021.3.10 after that delete
- */
-if ( ! get_option( 'lightning_theme_options' ) ) {
-	require dirname( __FILE__ ) . '/inc/starter-content.php';
-}
+require dirname( __FILE__ ) . '/inc/starter-content.php';
 
 /*
   Plugin support
