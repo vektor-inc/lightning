@@ -285,6 +285,217 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 					)
 				);
 
+				$wp_customize->selective_refresh->add_partial(
+					'lightning_theme_options[top_slide_text_title_' . $i . ']',
+					array(
+						'selector'        => '.item-' . $i . ' picture',
+						'render_callback' => '',
+					)
+				);
+
+				// text title.
+				$wp_customize->add_setting(
+					'lightning_theme_options[top_slide_text_title_' . $i . ']',
+					array(
+						'default'           => $customize_default['top_slide_text_title'],
+						'type'              => 'option',
+						'capability'        => 'edit_theme_options',
+						'sanitize_callback' => 'wp_kses_post',
+					)
+				);
+
+				$wp_customize->add_control(
+					'lightning_theme_options[top_slide_text_title_' . $i . ']',
+					array(
+						'label'       => '[' . $i . '] ' . __( 'Slide title', 'lightning' ) . ' (' . __( 'optional', 'lightning' ) . ')',
+						'section'     => 'ltg_g3_slider',
+						'settings'    => 'lightning_theme_options[top_slide_text_title_' . $i . ']',
+						'type'        => 'textarea',
+						'description' => '',
+					)
+				);
+
+				// text caption.
+				$wp_customize->add_setting(
+					'lightning_theme_options[top_slide_text_caption_' . $i . ']',
+					array(
+						'default'           => $customize_default['top_slide_text_caption'],
+						'type'              => 'option',
+						'capability'        => 'edit_theme_options',
+						'sanitize_callback' => 'wp_kses_post',
+					)
+				);
+
+				$wp_customize->add_control(
+					'lightning_theme_options[top_slide_text_caption_' . $i . ']',
+					array(
+						'label'       => '[' . $i . '] ' . __( 'Slide text', 'lightning' ) . ' (' . __( 'optional', 'lightning' ) . ')',
+						'section'     => 'ltg_g3_slider',
+						'settings'    => 'lightning_theme_options[top_slide_text_caption_' . $i . ']',
+						'type'        => 'textarea',
+						'description' => '',
+					)
+				);
+
+				// btn text.
+				$wp_customize->add_setting(
+					'lightning_theme_options[top_slide_text_btn_' . $i . ']',
+					array(
+						'default'           => $customize_default['top_slide_text_btn'],
+						'type'              => 'option',
+						'capability'        => 'edit_theme_options',
+						'sanitize_callback' => 'wp_kses_post',
+					)
+				);
+
+				$wp_customize->add_control(
+					new VK_Custom_Text_Control(
+						$wp_customize,
+						'lightning_theme_options[top_slide_text_btn_' . $i . ']',
+						array(
+							'label'       => '[' . $i . '] ' . __( 'Button text', 'lightning' ) . ' (' . __( 'optional', 'lightning' ) . ')',
+							'section'     => 'ltg_g3_slider',
+							'settings'    => 'lightning_theme_options[top_slide_text_btn_' . $i . ']',
+							'type'        => 'text',
+							'description' => __( 'If you do not fill in the link url and button text that, button is do not display.', 'lightning' ),
+						)
+					)
+				);
+
+				// url.
+				$wp_customize->add_setting(
+					'lightning_theme_options[top_slide_url_' . $i . ']',
+					array(
+						'default'           => $customize_default['top_slide_url'],
+						'type'              => 'option',
+						'capability'        => 'edit_theme_options',
+						'sanitize_callback' => 'esc_url_raw',
+					)
+				);
+
+				$wp_customize->add_control(
+					'lightning_theme_options[top_slide_url_' . $i . ']',
+					array(
+						'label'    => '[' . $i . '] ' . __( 'Slide image link url', 'lightning' ),
+						'section'  => 'ltg_g3_slider',
+						'settings' => 'lightning_theme_options[top_slide_url_' . $i . ']',
+						'type'     => 'text',
+					)
+				);
+
+				// link blank.
+				$wp_customize->add_setting(
+					'lightning_theme_options[top_slide_link_blank_' . $i . ']',
+					array(
+						'default'           => $customize_default['top_slide_link_blank'],
+						'type'              => 'option',
+						'capability'        => 'edit_theme_options',
+						'sanitize_callback' => array( 'VK_Helpers', 'sanitize_checkbox' ),
+					)
+				);
+
+				$wp_customize->add_control(
+					'lightning_theme_options[top_slide_link_blank_' . $i . ']',
+					array(
+						'label'    => __( 'Open in new window.', 'lightning' ),
+						'section'  => 'ltg_g3_slider',
+						'settings' => 'lightning_theme_options[top_slide_link_blank_' . $i . ']',
+						'type'     => 'checkbox',
+					)
+				);
+
+
+				// text position.
+				$wp_customize->add_setting(
+					'lightning_theme_options[top_slide_text_align_' . $i . ']',
+					array(
+						'default'           => $customize_default['top_slide_text_align'],
+						'type'              => 'option',
+						'capability'        => 'edit_theme_options',
+						'sanitize_callback' => array( 'VK_Helpers', 'sanitize_choice' ),
+					)
+				);
+
+				$wp_customize->add_control(
+					'lightning_theme_options[top_slide_text_align_' . $i . ']',
+					array(
+						'label'    => '[' . $i . '] ' . __( 'Position to display text', 'lightning' ) . ' (' . __( 'optional', 'lightning' ) . ')',
+						'section'  => 'ltg_g3_slider',
+						'settings' => 'lightning_theme_options[top_slide_text_align_' . $i . ']',
+						'type'     => 'radio',
+						'choices'  => array(
+							'left'   => __( 'Left', 'lightning' ),
+							'center' => __( 'Center', 'lightning' ),
+							'right'  => __( 'Right', 'lightning' ),
+						),
+					)
+				);
+
+				// color.
+				$wp_customize->add_setting(
+					'lightning_theme_options[top_slide_text_color_' . $i . ']',
+					array(
+						'default'           => $customize_default['top_slide_text_color'],
+						'type'              => 'option',
+						'capability'        => 'edit_theme_options',
+						'sanitize_callback' => 'sanitize_hex_color',
+					)
+				);
+				$wp_customize->add_control(
+					new WP_Customize_Color_Control(
+						$wp_customize,
+						'lightning_theme_options[top_slide_text_color_' . $i . ']',
+						array(
+							'label'    => '[' . $i . '] ' . __( 'Slide text color', 'lightning' ) . ' (' . __( 'optional', 'lightning' ) . ')',
+							'section'  => 'ltg_g3_slider',
+							'settings' => 'lightning_theme_options[top_slide_text_color_' . $i . ']',
+
+						)
+					)
+				);
+
+				// top_slide_text_shadow_use.
+				$wp_customize->add_setting(
+					'lightning_theme_options[top_slide_text_shadow_use_' . $i . ']',
+					array(
+						'default'           => $customize_default['top_slide_text_shadow_use'],
+						'type'              => 'option',
+						'capability'        => 'edit_theme_options',
+						'sanitize_callback' => array( 'VK_Helpers', 'sanitize_checkbox' ),
+					)
+				);
+				$wp_customize->add_control(
+					'lightning_theme_options[top_slide_text_shadow_use_' . $i . ']',
+					array(
+						'label'    => __( 'Use text shadow', 'lightning' ) . ' (' . __( 'optional', 'lightning' ) . ')',
+						'section'  => 'ltg_g3_slider',
+						'settings' => 'lightning_theme_options[top_slide_text_shadow_use_' . $i . ']',
+						'type'     => 'checkbox',
+					)
+				);
+
+				// top_slide_text_shadow_color.
+				$wp_customize->add_setting(
+					'lightning_theme_options[top_slide_text_shadow_color_' . $i . ']',
+					array(
+						'default'           => $customize_default['top_slide_text_shadow_color'],
+						'type'              => 'option',
+						'capability'        => 'edit_theme_options',
+						'sanitize_callback' => 'sanitize_hex_color',
+					)
+				);
+				$wp_customize->add_control(
+					new WP_Customize_Color_Control(
+						$wp_customize,
+						'lightning_theme_options[top_slide_text_shadow_color_' . $i . ']',
+						array(
+							'label'    => '[' . $i . '] ' . __( 'Text shadow color', 'lightning' ) . ' (' . __( 'optional', 'lightning' ) . ')',
+							'section'  => 'ltg_g3_slider',
+							'settings' => 'lightning_theme_options[top_slide_text_shadow_color_' . $i . ']',
+						)
+					)
+				);
+
 				// image.
 				$wp_customize->add_setting(
 					'lightning_theme_options[top_slide_image_' . $i . ']',
@@ -306,14 +517,6 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 							'settings'    => 'lightning_theme_options[top_slide_image_' . $i . ']',
 							'description' => __( 'Recommended image size : 1900*1069px', 'lightning' ),
 						)
-					)
-				);
-
-				$wp_customize->selective_refresh->add_partial(
-					'lightning_theme_options[top_slide_image_' . $i . ']',
-					array(
-						'selector'        => '.item-' . $i . ' picture',
-						'render_callback' => '',
 					)
 				);
 
@@ -413,207 +616,6 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 					)
 				);
 
-				// url.
-				$wp_customize->add_setting(
-					'lightning_theme_options[top_slide_url_' . $i . ']',
-					array(
-						'default'           => $customize_default['top_slide_url'],
-						'type'              => 'option',
-						'capability'        => 'edit_theme_options',
-						'sanitize_callback' => 'esc_url_raw',
-					)
-				);
-
-				$wp_customize->add_control(
-					'lightning_theme_options[top_slide_url_' . $i . ']',
-					array(
-						'label'    => '[' . $i . '] ' . __( 'Slide image link url', 'lightning' ),
-						'section'  => 'ltg_g3_slider',
-						'settings' => 'lightning_theme_options[top_slide_url_' . $i . ']',
-						'type'     => 'text',
-					)
-				);
-
-				// link blank.
-				$wp_customize->add_setting(
-					'lightning_theme_options[top_slide_link_blank_' . $i . ']',
-					array(
-						'default'           => $customize_default['top_slide_link_blank'],
-						'type'              => 'option',
-						'capability'        => 'edit_theme_options',
-						'sanitize_callback' => array( 'VK_Helpers', 'sanitize_checkbox' ),
-					)
-				);
-
-				$wp_customize->add_control(
-					'lightning_theme_options[top_slide_link_blank_' . $i . ']',
-					array(
-						'label'    => __( 'Open in new window.', 'lightning' ),
-						'section'  => 'ltg_g3_slider',
-						'settings' => 'lightning_theme_options[top_slide_link_blank_' . $i . ']',
-						'type'     => 'checkbox',
-					)
-				);
-
-				// text title.
-				$wp_customize->add_setting(
-					'lightning_theme_options[top_slide_text_title_' . $i . ']',
-					array(
-						'default'           => $customize_default['top_slide_text_title'],
-						'type'              => 'option',
-						'capability'        => 'edit_theme_options',
-						'sanitize_callback' => 'wp_kses_post',
-					)
-				);
-
-				$wp_customize->add_control(
-					'lightning_theme_options[top_slide_text_title_' . $i . ']',
-					array(
-						'label'       => '[' . $i . '] ' . __( 'Slide title', 'lightning' ) . ' (' . __( 'optional', 'lightning' ) . ')',
-						'section'     => 'ltg_g3_slider',
-						'settings'    => 'lightning_theme_options[top_slide_text_title_' . $i . ']',
-						'type'        => 'textarea',
-						'description' => '',
-					)
-				);
-
-				// text caption.
-				$wp_customize->add_setting(
-					'lightning_theme_options[top_slide_text_caption_' . $i . ']',
-					array(
-						'default'           => $customize_default['top_slide_text_caption'],
-						'type'              => 'option',
-						'capability'        => 'edit_theme_options',
-						'sanitize_callback' => 'wp_kses_post',
-					)
-				);
-
-				$wp_customize->add_control(
-					'lightning_theme_options[top_slide_text_caption_' . $i . ']',
-					array(
-						'label'       => '[' . $i . '] ' . __( 'Slide text', 'lightning' ) . ' (' . __( 'optional', 'lightning' ) . ')',
-						'section'     => 'ltg_g3_slider',
-						'settings'    => 'lightning_theme_options[top_slide_text_caption_' . $i . ']',
-						'type'        => 'textarea',
-						'description' => '',
-					)
-				);
-
-				// btn text.
-				$wp_customize->add_setting(
-					'lightning_theme_options[top_slide_text_btn_' . $i . ']',
-					array(
-						'default'           => $customize_default['top_slide_text_btn'],
-						'type'              => 'option',
-						'capability'        => 'edit_theme_options',
-						'sanitize_callback' => 'wp_kses_post',
-					)
-				);
-
-				$wp_customize->add_control(
-					new VK_Custom_Text_Control(
-						$wp_customize,
-						'lightning_theme_options[top_slide_text_btn_' . $i . ']',
-						array(
-							'label'       => '[' . $i . '] ' . __( 'Button text', 'lightning' ) . ' (' . __( 'optional', 'lightning' ) . ')',
-							'section'     => 'ltg_g3_slider',
-							'settings'    => 'lightning_theme_options[top_slide_text_btn_' . $i . ']',
-							'type'        => 'text',
-							'description' => __( 'If you do not fill in the link url and button text that, button is do not display.', 'lightning' ),
-						)
-					)
-				);
-
-				// text position.
-				$wp_customize->add_setting(
-					'lightning_theme_options[top_slide_text_align_' . $i . ']',
-					array(
-						'default'           => $customize_default['top_slide_text_align'],
-						'type'              => 'option',
-						'capability'        => 'edit_theme_options',
-						'sanitize_callback' => array( 'VK_Helpers', 'sanitize_choice' ),
-					)
-				);
-
-				$wp_customize->add_control(
-					'lightning_theme_options[top_slide_text_align_' . $i . ']',
-					array(
-						'label'    => '[' . $i . '] ' . __( 'Position to display text', 'lightning' ) . ' (' . __( 'optional', 'lightning' ) . ')',
-						'section'  => 'ltg_g3_slider',
-						'settings' => 'lightning_theme_options[top_slide_text_align_' . $i . ']',
-						'type'     => 'radio',
-						'choices'  => array(
-							'left'   => __( 'Left', 'lightning' ),
-							'center' => __( 'Center', 'lightning' ),
-							'right'  => __( 'Right', 'lightning' ),
-						),
-					)
-				);
-
-				// color.
-				$wp_customize->add_setting(
-					'lightning_theme_options[top_slide_text_color_' . $i . ']',
-					array(
-						'default'           => $customize_default['top_slide_text_color'],
-						'type'              => 'option',
-						'capability'        => 'edit_theme_options',
-						'sanitize_callback' => 'sanitize_hex_color',
-					)
-				);
-				$wp_customize->add_control(
-					new WP_Customize_Color_Control(
-						$wp_customize,
-						'lightning_theme_options[top_slide_text_color_' . $i . ']',
-						array(
-							'label'    => '[' . $i . '] ' . __( 'Slide text color', 'lightning' ) . ' (' . __( 'optional', 'lightning' ) . ')',
-							'section'  => 'ltg_g3_slider',
-							'settings' => 'lightning_theme_options[top_slide_text_color_' . $i . ']',
-
-						)
-					)
-				);
-
-				// top_slide_text_shadow_use.
-				$wp_customize->add_setting(
-					'lightning_theme_options[top_slide_text_shadow_use_' . $i . ']',
-					array(
-						'default'           => $customize_default['top_slide_text_shadow_use'],
-						'type'              => 'option',
-						'capability'        => 'edit_theme_options',
-						'sanitize_callback' => array( 'VK_Helpers', 'sanitize_checkbox' ),
-					)
-				);
-				$wp_customize->add_control(
-					'lightning_theme_options[top_slide_text_shadow_use_' . $i . ']',
-					array(
-						'label'    => __( 'Use text shadow', 'lightning' ) . ' (' . __( 'optional', 'lightning' ) . ')',
-						'section'  => 'ltg_g3_slider',
-						'settings' => 'lightning_theme_options[top_slide_text_shadow_use_' . $i . ']',
-						'type'     => 'checkbox',
-					)
-				);
-
-				// top_slide_text_shadow_color.
-				$wp_customize->add_setting(
-					'lightning_theme_options[top_slide_text_shadow_color_' . $i . ']',
-					array(
-						'default'           => $customize_default['top_slide_text_shadow_color'],
-						'type'              => 'option',
-						'capability'        => 'edit_theme_options',
-						'sanitize_callback' => 'sanitize_hex_color',
-					)
-				);
-				$wp_customize->add_control(
-					new WP_Customize_Color_Control(
-						$wp_customize,
-						'lightning_theme_options[top_slide_text_shadow_color_' . $i . ']',
-						array(
-							'label'    => '[' . $i . '] ' . __( 'Text shadow color', 'lightning' ) . ' (' . __( 'optional', 'lightning' ) . ')',
-							'section'  => 'ltg_g3_slider',
-							'settings' => 'lightning_theme_options[top_slide_text_shadow_color_' . $i . ']',
-						)
-					)
-				);
 			}
 		}
 
