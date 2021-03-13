@@ -39,6 +39,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ Bug fix ] search block button bg
+
 v13.8.12
 [ Bug fix ] Fix inner block width(padding) bug.
 
