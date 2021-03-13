@@ -8,5 +8,5 @@ thumbs.db
 .*.before
 vendor/
 /vendor/
-.*/.*.map
+.*.map
 *.override.json
