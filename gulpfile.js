@@ -72,11 +72,11 @@ gulp.task('sass_common_dev', function (done) {
     .pipe(autoprefixer())
     .pipe(sourcemaps.write('./map/'))
     .pipe(gulp.dest('../lightning-pro/assets/css'))
-    .pipe(gulp.dest('./assets/css'))
+    .pipe(gulp.dest('./_g2/assets/css'))
   done()
 });
 gulp.task('sass_common', function (done) {
-  src(['./assets/_scss/**/*.scss'])
+  src(['./_g2/assets/_scss/**/*.scss'])
     .pipe(
       sass({
         includePaths: [
@@ -92,7 +92,7 @@ gulp.task('sass_common', function (done) {
     ))
     .pipe(autoprefixer())
     .pipe(cleanCss())
-    .pipe(gulp.dest('./assets/css'))
+    .pipe(gulp.dest('./_g2/assets/css'))
   done()
 });
 
@@ -226,13 +226,13 @@ gulp.task('dist_foundation', function (done) {
 // Watch
 gulp.task('watch', function (done) {
   error_stop = false
-  gulp.watch(['./assets/_scss/**','./_g2/inc/vk-mobile-nav/package/css/**','./_g2/inc/vk-components/**/*.css'], gulp.series('sass_common_dev'));
-  gulp.watch(['./plugin-support/woocommerce/_scss/**'], gulp.series('sass_woo'));
-  gulp.watch(['./plugin-support/bbpress/_scss/**'], gulp.series('sass_bbpress'));
-  gulp.watch(['./library/bootstrap-4/scss/**.scss'], gulp.series('sass_bs4'));
-  gulp.watch(['./design-skin/origin/_scss/**/*.scss'], gulp.series('sass_skin'));
-  gulp.watch(['./design-skin/origin2/_scss/**/*.scss'], gulp.series('sass_skin2_dev'));
-  gulp.watch(['./design-skin/foundation/_scss/**/*.scss'], gulp.series('sass_skin2', 'dist_foundation'));
+  gulp.watch(['./_g2/assets/_scss/**','./_g2/inc/vk-mobile-nav/package/css/**','./_g2/inc/vk-components/**/*.css'], gulp.series('sass_common_dev'));
+  gulp.watch(['./_g2/plugin-support/woocommerce/_scss/**'], gulp.series('sass_woo'));
+  gulp.watch(['./_g2/plugin-support/bbpress/_scss/**'], gulp.series('sass_bbpress'));
+  gulp.watch(['./_g2//library/bootstrap-4/scss/**.scss'], gulp.series('sass_bs4'));
+  gulp.watch(['./_g2/design-skin/origin/_scss/**/*.scss'], gulp.series('sass_skin'));
+  gulp.watch(['./_g2/design-skin/origin2/_scss/**/*.scss'], gulp.series('sass_skin2_dev'));
+  gulp.watch(['./_g2/design-skin/foundation/_scss/**/*.scss'], gulp.series('sass_skin2', 'dist_foundation'));
   done();
 });
 
