@@ -414,6 +414,7 @@ function lightning_print_css_common() {
 		$dynamic_css   .= '/* ltg common custom */
 		:root {
 			--vk-menu-acc-btn-border-color:#333;
+			--vk-color-primary:' . $color_key . ';
 			--color-key:' . $color_key . ';
 			--color-key-dark:' . $color_key_dark . ';
 		}
