@@ -48,7 +48,7 @@ class Lightning_Design_Manager {
 				'bootstrap'       => '',
 			),
 		);
-		return apply_filters( 'lightning-g3-skins', $skins );
+		return apply_filters( 'lightning_g3_skins', $skins );
 	}
 
 
