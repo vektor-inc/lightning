@@ -1,5 +1,5 @@
 <header class="<?php lightning_the_class_name( 'site-header' ); ?>">
-	<?php do_action( 'lightning_site-header_prepend' ); ?>
+	<?php do_action( 'lightning_site_header_prepend' ); ?>
 	<div class="<?php lightning_the_class_name( 'site-header-container' ); ?> container">
 
 		<?php
@@ -15,7 +15,7 @@
 		</a>
 		</<?php echo $title_tag; ?>>
 
-		<?php do_action( 'lightning_site-header-logo_after' ); ?>
+		<?php do_action( 'lightning_site_header_logo_after' ); ?>
 
 		<?php
 		wp_nav_menu( array(
@@ -30,5 +30,5 @@
 		) );
 		?>
 	</div>
-	<?php do_action( 'lightning_site-header_append' ); ?>
+	<?php do_action( 'lightning_site_header_append' ); ?>
 </header>

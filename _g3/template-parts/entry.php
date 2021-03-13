@@ -10,7 +10,7 @@
 	// check single or loop that true
 	$is_entry_header_display = false;
 	if ( is_single() || is_archive() ){
-		$is_entry_header_display = apply_filters( 'lightning_is_entry_header_display', true );
+		$is_entry_header_display = apply_filters( 'lightning_is_entry_header', true );
 	}
 	?>
 
@@ -34,9 +34,9 @@
 	<?php do_action( 'lightning_entry_body_before' ); ?>
 
 	<div class="<?php lightning_the_class_name( 'entry-body' ); ?>">
-		<?php do_action( 'lightning_content_before' ); ?>
+		<?php do_action( 'lightning_entry_body_prepend' ); ?>
 		<?php the_content(); ?>
-		<?php do_action( 'lightning_content_after' ); ?>
+		<?php do_action( 'lightning_entry_body_apppend' ); ?>
 	</div>
 
 	<?php do_action( 'lightning_entry_body_after' ); ?>
@@ -52,7 +52,7 @@
 	wp_link_pages( $args );
 	?>
 
-	<?php do_action( 'lightning_page_link_after' ); ?>
+	<?php do_action( 'lightning_entry_footer_before' ); ?>
 
 	<?php if ( $is_entry_header_display ) : ?>
 

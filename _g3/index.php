@@ -1,11 +1,11 @@
 <?php lightning_get_template_part( 'header' ); ?>
 
 <?php 
-do_action( 'lightning_site-header_before' );
-if ( apply_filters( 'lightning_is_site-header', true ) ){
+do_action( 'lightning_site_header_before' );
+if ( apply_filters( 'lightning_is_site_header', true ) ){
     lightning_get_template_part( 'template-parts/site-header' );
 }
-do_action( 'lightning_site-header_after' );
+do_action( 'lightning_site_header_after' );
 ?>
 
 <?php if ( is_front_page() ) {
@@ -15,11 +15,11 @@ do_action( 'lightning_site-header_after' );
 <?php if ( ! is_front_page() ) : ?>
 
 <?php 
-    do_action( 'lightning_page-header_before' );
+    do_action( 'lightning_page_header_before' );
     if ( lightning_is_page_header() ){
         lightning_get_template_part( 'template-parts/page-header' );
     }
-    do_action( 'lightning_page-header_after' );
+    do_action( 'lightning_page_header_after' );
     ?>
 
     <?php 
@@ -33,11 +33,11 @@ do_action( 'lightning_site-header_after' );
 <?php endif; ?>
 
 <div class="<?php lightning_the_class_name( 'site-body' ); ?>">
-    <?php do_action( 'lightning_site-body_prepend' ); ?>
+    <?php do_action( 'lightning_site_body_prepend' ); ?>
     <div class="<?php lightning_the_class_name( 'site-body-container' ); ?> container">
 
         <div class="<?php lightning_the_class_name( 'main-section' ); ?>" id="main" role="main">
-            <?php do_action( 'lightning_main-section_prepend' ); ?>
+            <?php do_action( 'lightning_main_section_prepend' ); ?>
 
             <?php if ( is_singular() ){
                 lightning_get_template_part( 'template-parts/main-singular' );
@@ -45,15 +45,15 @@ do_action( 'lightning_site-header_after' );
                 lightning_get_template_part( 'template-parts/main-archive' );
             } ?>
 
-            <?php do_action( 'lightning_main-section_append' ); ?>
+            <?php do_action( 'lightning_main_section_append' ); ?>
         </div><!-- [ /.main-section ] -->
 
         <?php 
-        do_action( 'lightning_sub-section_before' );
+        do_action( 'lightning_sub_section_before' );
         if ( lightning_is_subsection() ){ 
             lightning_get_template_part( 'sidebar', get_post_type() );
         }
-        do_action( 'lightning_sub-section_after' );
+        do_action( 'lightning_sub_section_after' );
         ?>
 
     </div><!-- [ /.site-body-container ] -->
@@ -66,16 +66,16 @@ do_action( 'lightning_site-header_after' );
     </div>
     <?php endif; ?>
 
-    <?php do_action( 'lightning_site-body_apepend' ); ?>
+    <?php do_action( 'lightning_site_body_apepend' ); ?>
 
 </div><!-- [ /.site-body ] -->
 
 <?php 
-do_action( 'lightning_site-footer_before' );
-if ( apply_filters( 'lightning_is_site-footer', true ) ) {
+do_action( 'lightning_site_footer_before' );
+if ( apply_filters( 'lightning_is_site_footer', true ) ) {
     lightning_get_template_part( 'template-parts/site-footer' );
 }
-do_action( 'lightning_site-footer_after' );
+do_action( 'lightning_site_footer_after' );
 ?>
 
 <?php lightning_get_template_part( 'footer' ); ?>

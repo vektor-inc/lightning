@@ -46,3 +46,9 @@ function lightning_add_class_name_site_header_origin3( $class_name, $position ){
     return $class_name;
 }
 ```
+
+## アクションフック / フィルターフック
+
+* フック名で単語の連結は _ のみで - は使用禁止。
+* アクションフック名にはプリフィックス lightning_ を付与。
+* プリフィックス名の次は該当箇所のクラス名を付与する。ただし、- は _ に変更する。
