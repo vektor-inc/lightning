@@ -58,9 +58,6 @@ entry-body
 	padding-top: 0.5em;
 	padding-bottom: 0.5em; 
 }
-.wp-block-search .wp-block-search__button{
-	background-color: var(--vk-color-primary);
-}
 
 .wp-block-quote cite {
 	font-size: var(--vk-size-text-xs);
@@ -224,6 +221,7 @@ entry-body
 	.wp-block-search__button{
 		width: 33%;
 		color: #fff;
+		background-color: var(--vk-color-primary);
 		border: none;
 		padding: 6px;
 		font-size: 16px;
@@ -239,5 +237,4 @@ entry-body
 		margin-right: 0;
 		margin-bottom: 0;
 	}
-
 }
