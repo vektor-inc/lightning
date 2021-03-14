@@ -275,7 +275,7 @@ function lightning_is_site_body_padding_off() {
 	$return = false;
 	if ( is_singular() ) {
 		global $post;
-		if ( ! empty( $post->_lightning_design_setting['siteContent_padding'] ) ) {
+		if ( ! empty( $post->_lightning_design_setting['site_body_padding'] ) ) {
 			$return = true;
 		}
 	}

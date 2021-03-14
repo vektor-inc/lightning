@@ -97,14 +97,14 @@ function lightning_design_setting_meta_fields() {
 	/*-------------------------------------------*/
 	$form .= '<h4>' . __( 'Padding and margin setting', 'lightning' ) . '</h4>';
 
-	$id    = '_lightning_design_setting[siteContent_padding]';
-	$name  = '_lightning_design_setting[siteContent_padding]';
+	$id    = '_lightning_design_setting[site_body_padding]';
+	$name  = '_lightning_design_setting[site_body_padding]';
 	$label = __( 'Delete site-body padding', 'lightning' );
 
 	$form .= '<ul>';
 
 	$checked = '';
-	if ( ! empty( $saved_post_meta['siteContent_padding'] ) ) {
+	if ( ! empty( $saved_post_meta['site_body_padding'] ) ) {
 		$checked = ' checked';
 	}
 

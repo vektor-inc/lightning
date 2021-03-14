@@ -148,16 +148,16 @@ add_filter( 'lightning_is_page_header_and_breadcrumb', 'lightning_woo_is_page_he
 /**
  * siteContent の上下余白
  */
-function lightning_woo_is_siteContent_padding_off( $return ){
+function lightning_woo_is_site_body_padding_off( $return ){
 	if ( lightning_woo_is_shop_page() ) {
 		$lightning_design_setting = lightning_woo_get_design_setting();
-		if ( ! empty ( $lightning_design_setting['siteContent_padding'] ) ) {
+		if ( ! empty ( $lightning_design_setting['site_body_padding'] ) ) {
 			$return = true;
 		}
 	}
 	return $return;
 }
-add_filter( 'lightning_is_siteContent_padding_off', 'lightning_woo_is_siteContent_padding_off' );
+add_filter( 'lightning_is_site_body_padding_off', 'lightning_woo_is_site_body_padding_off' );
 
 function lightning_exclude_term_list_woo( $exclusion ){
     $exclusion[] = 'product_type';
