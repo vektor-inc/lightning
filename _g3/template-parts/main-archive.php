@@ -39,7 +39,7 @@ do_action( 'lightning_loop_before' );
 
 <?php if ( have_posts() ) : ?>
 
-<?php if ( apply_filters( 'is_lightning_extend_loop', false ) ) { ?>
+<?php if ( apply_filters( 'lightning_is_extend_loop', false ) ) { ?>
 
     <?php do_action( 'lightning_extend_loop' ); ?>
 

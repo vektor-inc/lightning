@@ -2,7 +2,7 @@
 
 <?php 
 do_action( 'lightning_site_header_before' );
-if ( apply_filters( 'lightning_is_site_header', true ) ){
+if ( apply_filters( 'lightning_is_site_header', true , 'site_header' ) ){
     lightning_get_template_part( 'template-parts/site-header' );
 }
 do_action( 'lightning_site_header_after' );
@@ -16,7 +16,7 @@ do_action( 'lightning_site_header_after' );
 
 <?php 
     do_action( 'lightning_page_header_before' );
-    if ( lightning_is_page_header() ){
+    if ( apply_filters( 'lightning_is_page_header', true, 'page_header' ) ){
         lightning_get_template_part( 'template-parts/page-header' );
     }
     do_action( 'lightning_page_header_after' );
@@ -24,7 +24,7 @@ do_action( 'lightning_site_header_after' );
 
     <?php 
     do_action( 'lightning_breadcrumb_before' );
-    if ( lightning_is_breadcrumb() ){
+    if ( apply_filters( 'lightning_is_breadcrumb', true, 'breadcrumb' ) ){
         VK_Breadcrumb::the_breadcrumb();
     }
     do_action( 'lightning_breadcrumb_after' );
@@ -72,7 +72,7 @@ do_action( 'lightning_site_header_after' );
 
 <?php 
 do_action( 'lightning_site_footer_before' );
-if ( apply_filters( 'lightning_is_site_footer', true ) ) {
+if ( apply_filters( 'lightning_is_site_footer', true, 'site_footer' ) ) {
     lightning_get_template_part( 'template-parts/site-footer' );
 }
 do_action( 'lightning_site_footer_after' );

@@ -137,7 +137,7 @@ add_filter( 'lightning_is_subsection_display', 'lightning_woo_is_subsection_disp
 function lightning_woo_is_page_header_and_breadcrumb( $return ){
 	if ( lightning_woo_is_shop_page() ) {
 		$lightning_design_setting = lightning_woo_get_design_setting();
-		if ( ! empty( $lightning_design_setting['hidden_page_header_and_breadcrumb'] ) ) {
+		if ( ! empty( $lightning_design_setting['hide_page_header_and_breadcrumb'] ) ) {
 			$return = false;
 		}
 	}

@@ -229,48 +229,6 @@ function lightning_is_subsection() {
 	return apply_filters( 'lightning_is_subsection', $return );
 }
 
-/**
- * Page header Display or hidden
- * 
- * The purpose of preparing a unique function is to enable batch control using a filter hook.
- *
- * @since Lightning 13.0.0
- * @return boolean
- */
-function lightning_is_page_header() {
-	$return = true;
-	if ( is_singular() ) {
-		global $post;
-		if ( ! empty( $post->_lightning_design_setting['hidden_page_header'] ) ) {
-			$return = false;
-		}
-	} else if ( is_front_page() ) {
-		$return = false;
-	}
-	return apply_filters( 'lightning_is_page_header', $return );
-}
-
-/**
- * Breadcrumb Display or hidden
- * 
- * The purpose of preparing a unique function is to enable batch control using a filter hook.
- *
- * @since Lightning 13.0.0
- * @return boolean
- */
-function lightning_is_breadcrumb() {
-	$return = true;
-	if ( is_singular() ) {
-		global $post;
-		if ( ! empty( $post->_lightning_design_setting['hidden_breadcrumb'] ) ) {
-			$return = false;
-		}
-	} else if ( is_front_page() ) {
-		$return = false;
-	}
-	return apply_filters( 'lightning_is_breadcrumb', $return );
-}
-
 function lightning_is_site_body_padding_off() {
 	$return = false;
 	if ( is_singular() ) {
