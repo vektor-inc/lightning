@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Themes - Lightning\n"
-"POT-Creation-Date: 2021-03-15 15:10+0900\n"
-"PO-Revision-Date: 2021-03-15 15:12+0900\n"
+"POT-Creation-Date: 2021-03-15 15:12+0900\n"
+"PO-Revision-Date: 2021-03-15 21:45+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja_JP\n"
@@ -1590,7 +1590,7 @@ msgstr "プレーン（β）"
 #: _g3/inc/class-design-manager.php:42
 #: dist/lightning/_g3/inc/class-design-manager.php:42
 msgid "Origin III (Beta)"
-msgstr "Origin II ( β )"
+msgstr "Origin III ( β )"
 
 #: _g3/inc/layout-controller/admin-customize.php:14
 #: dist/lightning/_g3/inc/layout-controller/admin-customize.php:14
