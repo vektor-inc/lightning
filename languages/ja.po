@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Themes - Lightning\n"
-"POT-Creation-Date: 2021-03-15 11:19+0900\n"
-"PO-Revision-Date: 2021-03-15 11:40+0900\n"
+"POT-Creation-Date: 2021-03-15 14:28+0900\n"
+"PO-Revision-Date: 2021-03-15 14:29+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja_JP\n"
@@ -309,6 +309,7 @@ msgstr "固定ページのサイドバーに非アクティブな孫ページを
 
 #: _g2/inc/customize/customize-functions.php:9
 #: dist/lightning/_g2/inc/customize/customize-functions.php:9
+#: inc/customize-basic.php:11
 msgid "Function Settings"
 msgstr "機能設定"
 
@@ -1635,11 +1636,9 @@ msgstr "スライド画像"
 msgid "Recommended image size : 1900*1069px"
 msgstr "推奨画像サイズ: 1900×600px"
 
-#: _g3/inc/widget-area.php:91 dist/lightning/_g3/inc/widget-area.php:91
-#, fuzzy
-#| msgid "Widget area of upper footer"
-msgid "Widget area of site body bottom"
-msgstr "フッター上部"
+#: _g3/inc/widget-area.php:91
+msgid "Widget area of before footer"
+msgstr "フッター前"
 
 #: dist/lightning/_g2/inc/class-design-manager.php:58
 #: dist/lightning/_g3/inc/class-design-manager.php:51
@@ -2003,9 +2002,9 @@ msgstr "データベースを更新"
 msgid "Plain"
 msgstr "プレーン"
 
-#: inc/customize-basic.php:11
-msgid "Basic settings"
-msgstr "基本設定"
+#: dist/lightning/_g3/inc/widget-area.php:91
+msgid "Widget area of site body bottom"
+msgstr "フッター前"
 
 #: inc/customize-basic.php:27
 msgid "Generation Setting"
@@ -2023,23 +2022,23 @@ msgstr ""
 "互換性が低いため世代を切り替える際は事前に必ずバックアップを作成してくださ"
 "い。"
 
-#: inc/customize-basic.php:37
-msgid "Generation 2"
-msgstr ""
-
 #: inc/customize-basic.php:38
+msgid "Generation 2"
+msgstr "Generation 2"
+
+#: inc/customize-basic.php:39
 msgid "Generation 3 (Beta)"
 msgstr "Generation 3 (β)"
 
-#: inc/customize-basic.php:44
+#: inc/customize-basic.php:45
 msgid "Current Generation"
 msgstr "現在の世代"
 
-#: inc/customize-basic.php:77
+#: inc/customize-basic.php:79
 msgid "After switching generations, save and reload the page."
 msgstr "世代を変更した場合は一度保存してページを再読み込みしてください。"
 
-#: inc/customize-basic.php:77
+#: inc/customize-basic.php:79
 msgid "Reload the page"
 msgstr "ページを再読み込みする"
 
@@ -2050,6 +2049,9 @@ msgstr ""
 #: vendor/wp-phpunit/wp-phpunit/data/themedir1/internationalized-theme/functions.php:7
 msgid "This is a dummy theme"
 msgstr ""
+
+#~ msgid "Basic settings"
+#~ msgstr "基本設定"
 
 #~ msgid ""
 #~ "Lightning is a very simple & easy to customize theme which is based on "

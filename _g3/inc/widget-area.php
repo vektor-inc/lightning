@@ -88,8 +88,8 @@ if ( ! function_exists( 'lightning_widgets_init' ) ) {
 
 		register_sidebar(
 			array(
-				'name'          => __( 'Widget area of site body bottom', 'lightning' ),
-				'id'            => 'site-body-bottom-widget',
+				'name'          => __( 'Widget area of before footer', 'lightning' ),
+				'id'            => 'footer-before-widget',
 				'before_widget' => '<aside class="widget %2$s" id="%1$s">',
 				'after_widget'  => '</aside>',
 				'before_title'  => '<h4 class="widget-title sub-section-title">',

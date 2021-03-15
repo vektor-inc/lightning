@@ -58,17 +58,17 @@ do_action( 'lightning_site_header_after' );
 
     </div><!-- [ /.site-body-container ] -->
 
-    <?php if ( is_active_sidebar( 'site-body-bottom-widget' ) ) : ?>
-    <div class="site-body-bottom">
-        <div class="container">
-            <?php dynamic_sidebar( 'site-body-bottom-widget' ); ?>
-        </div>
-    </div>
-    <?php endif; ?>
-
     <?php do_action( 'lightning_site_body_apepend' ); ?>
 
 </div><!-- [ /.site-body ] -->
+
+<?php if ( is_active_sidebar( 'footer-before-widget' ) ) : ?>
+<div class="site-body-bottom">
+    <div class="container">
+        <?php dynamic_sidebar( 'footer-before-widget' ); ?>
+    </div>
+</div>
+<?php endif; ?>
 
 <?php 
 do_action( 'lightning_site_footer_before' );
