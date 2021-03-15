@@ -51,8 +51,8 @@ function lightning_design_setting_meta_fields() {
 	$options = array(
 		'default'               => __( 'Use common settings', 'lightning' ),
 		'col-two'               => __( '2 column', 'lightning' ),
-		'col-one'               => __( '1 column', 'lightning' ),
-		'col-one-no-subsection' => __( '1 column ( No sub section )', 'lightning' ),
+		'col-one-no-subsection' => __( '1 column', 'lightning' ),
+		'col-one'               => __( '1 column (with sidebar element)', 'lightning' ),
 	);
 	$options = apply_filters( 'lighghtning_columns_setting_choice', $options );
 
