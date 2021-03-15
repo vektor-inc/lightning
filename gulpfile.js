@@ -238,19 +238,22 @@ gulp.task('watch', function (done) {
 
 // copy dist ////////////////////////////////////////////////
 
+/* 実際には階層指定はあんまり効いてなくて拡張子だけでコピーされてる */
 gulp.task('copy_dist', function (done) {
   const files = gulp.src(
     [
-      './**/*.php',
-      './**/*.txt',
-      './**/*.css',
-      './**/*.png',
-      './inc/**',
-      './languages/**',
-      './_g2/**',
-      '!./_g2/assets/css/map/**',
-      './_g3//inc/**',
-      '!./_g3/assets/css/map/**',
+      "./**/*.php",
+      "./**/*.txt",
+      "./**/*.css",
+      "./**/*.png",
+      "./**/*.jpg",
+      "./inc/**",
+      "./languages/**",
+      "./_g2/inc/**",
+      "!./_g2/assets/css/map/**",
+      "!./_g3/node_modules/**/*.*",
+      "!./_g3/assets/css/map/**",
+      "./_g3/**",
       "!./vendor/**",
       "!./.vscode/**",
       "!./bin/**",
@@ -264,45 +267,6 @@ gulp.task('copy_dist', function (done) {
   files.pipe(gulp.dest("dist/lightning"));
   done();
 });
-
-// gulp.task('dist_pro', function () {
-//   const files = gulp.src(
-//     [
-//       './**/*.php',
-//       './**/*.txt',
-//       './**/*.css',
-//       './**/*.png',
-//       './assets/**',
-//       './design-skin/**',
-//       './_g2/inc/**',
-//       './_g2/plugin-support/**',
-//       './g2/library/**',
-//       './template-parts/**',
-//       './languages/**',
-//       "!./vendor/**",
-//       "!./assets/css/map/**",
-//       "!./design-skin/origin2/css/map/**",
-//       "!./.vscode/**",
-//       "!./bin/**",
-//       "!./dist/**",
-//       "!./node_modules/**/*.*",
-//       "!./tests/**",
-//       "!./dist/**",
-//       "!./readme.txt",
-//       "!./style.css",
-//       "!./screenshot.png",
-//       "!./inc/tgm-plugin-activation/**",
-//     ], {
-//       base: './'
-//     }
-//   )
-
-//   if (process.env.COPY_TO) {
-//     return files.pipe(gulp.dest(path.resolve(__dirname, process.env.COPY_TO)))
-//   }
-
-//   return files.pipe(gulp.dest('../lightning-pro/'))
-// });
 
 gulp.task('dist', gulp.series('text-domain','sass_common','sass_skin2','copy_dist'));
 gulp.task('default',  gulp.series('text-domain', 'watch'));
