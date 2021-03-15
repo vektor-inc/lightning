@@ -4,10 +4,17 @@ define( 'LIG_G3_DIR', '_g3' );
 define( 'LIG_G2_DIR', '_g2' );
 
 function lightning_is_g3(){
-	$default = 'g2';
+
+	if ( get_option( 'fresh_site' ) ){
+		$default = 'g3';
+	} else {
+		$default = 'g2';
+	}
+
 	if ( 'g3' === get_option( 'lightning_theme_generation', $default ) ){
 		return true;
 	}
+	
 }
 
 require dirname( __FILE__ ) . '/inc/class-ltg-template-redirect.php';
