@@ -257,7 +257,6 @@ gulp.task('copy_dist', function (done) {
       "!./dist/**",
       "!./node_modules/**/*.*",
       "!./tests/**",
-	  "!./dist/**",
     ], {
       base: './'
     }
