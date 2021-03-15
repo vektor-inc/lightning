@@ -53,6 +53,10 @@ entry-body
 	}
 }
 
+.wp-block-image img {
+	height:auto;
+}
+
 .wp-block-button__link {
 	font-size: 1rem;
 	padding-top: 0.5em;
