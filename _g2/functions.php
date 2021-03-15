@@ -87,7 +87,10 @@ function lightning_theme_setup() {
 	/*
 	  custom-background
 	/*-------------------------------------------*/
-	add_theme_support( 'custom-background' );
+	$args = array(
+		'default-color'          => '#ffffff',
+	);
+	add_theme_support( 'custom-background', $args );
 
 	// Block Editor line height @since WordPress 5.5
 	add_theme_support( 'custom-line-height' );
