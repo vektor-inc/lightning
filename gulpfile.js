@@ -245,6 +245,8 @@ gulp.task('copy_dist', function (done) {
       './**/*.txt',
       './**/*.css',
       './**/*.png',
+      './inc/**',
+      './languages/**',
       './_g2/**',
       '!./_g2/assets/css/map/**',
       './_g3//inc/**',
