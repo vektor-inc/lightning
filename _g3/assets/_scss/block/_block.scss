@@ -222,6 +222,10 @@ entry-body
 	.wp-block-search__label{
 		display: none;
 	}
+	&__input,
+	&__button{
+		border-radius: var(--vk-size-radius);
+	}
 	.wp-block-search__button{
 		width: 33%;
 		color: #fff;
