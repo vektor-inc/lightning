@@ -154,3 +154,8 @@ function lightning_change_generation( $old_value, $value, $option ){
 	}
 }
 add_action( 'update_option_lightning_theme_generation', 'lightning_change_generation', 10, 3 );
+
+add_action( 'after_setup_theme', 'lightning_load_language' );
+function lightning_load_language(){
+	load_theme_textdomain( 'lightning', get_template_directory(). '/languages' );
+}

@@ -1,0 +1,2280 @@
+# Translation of Themes - Lightning in Japanese
+# This file is distributed under the same license as the Themes - Lightning package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Themes - Lightning\n"
+"POT-Creation-Date: 2021-03-15 11:19+0900\n"
+"PO-Revision-Date: 2021-03-15 11:40+0900\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja_JP\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 2.4.1\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: node_modules\n"
+"X-Poedit-SearchPathExcluded-1: _g3/node_modules\n"
+
+#: _g2/comments.php:40 _g2/comments.php:63 _g3/comments.php:40
+#: _g3/comments.php:63 dist/lightning/_g2/comments.php:40
+#: dist/lightning/_g2/comments.php:63 dist/lightning/_g3/comments.php:40
+#: dist/lightning/_g3/comments.php:63
+msgid "Comment navigation"
+msgstr "コメントナビゲーション"
+
+#: _g2/comments.php:43 _g2/comments.php:66 _g3/comments.php:43
+#: _g3/comments.php:66 dist/lightning/_g2/comments.php:43
+#: dist/lightning/_g2/comments.php:66 dist/lightning/_g3/comments.php:43
+#: dist/lightning/_g3/comments.php:66
+msgid "Older Comments"
+msgstr "過去のコメント"
+
+#: _g2/comments.php:44 _g2/comments.php:67 _g3/comments.php:44
+#: _g3/comments.php:67 dist/lightning/_g2/comments.php:44
+#: dist/lightning/_g2/comments.php:67 dist/lightning/_g3/comments.php:44
+#: dist/lightning/_g3/comments.php:67
+msgid "Newer Comments"
+msgstr "新しいコメント"
+
+#: _g2/comments.php:79 _g3/comments.php:79 dist/lightning/_g2/comments.php:79
+#: dist/lightning/_g3/comments.php:79
+msgid "Comments are closed."
+msgstr "コメントは受け付けていません。"
+
+#: _g2/front-page.php:114 _g2/index.php:127
+#: _g3/template-parts/main-archive.php:76 dist/lightning/_g2/front-page.php:114
+#: dist/lightning/_g2/index.php:127
+#: dist/lightning/_g3/template-parts/main-archive.php:76
+msgid "Page"
+msgstr "固定ページ"
+
+#: _g2/front-page.php:126 _g3/template-parts/main-archive.php:83
+#: dist/lightning/_g2/front-page.php:126
+#: dist/lightning/_g3/template-parts/main-archive.php:83
+msgid "No posts."
+msgstr "投稿はありません。"
+
+#: _g2/functions.php:280 _g3/inc/widget-area.php:10
+#: dist/lightning/_g2/functions.php:298
+#: dist/lightning/_g3/inc/widget-area.php:10
+msgid "Sidebar(Home)"
+msgstr "サイドバー (トップページ)"
+
+#: _g2/functions.php:290 _g3/inc/widget-area.php:20
+#: dist/lightning/_g2/functions.php:308
+#: dist/lightning/_g3/inc/widget-area.php:20
+msgid "Sidebar(Common top)"
+msgstr "サイドバー (共通上部)"
+
+#: _g2/functions.php:300 _g3/inc/widget-area.php:30
+#: dist/lightning/_g2/functions.php:318
+#: dist/lightning/_g3/inc/widget-area.php:30
+msgid "Sidebar(Common bottom)"
+msgstr "サイドバー (共通下部)"
+
+#: _g2/functions.php:325 _g3/inc/widget-area.php:55
+#: dist/lightning/_g2/functions.php:343
+#: dist/lightning/_g3/inc/widget-area.php:55
+msgid ""
+"This widget area appears on the Posts page only. If you do not set any "
+"widgets in this area, this theme sets the following widgets \"Recent posts"
+"\", \"Category\", and \"Archive\" by default. These default widgets will be "
+"hidden, when you set any widgets. <br><br> If you installed our plugin VK "
+"All in One Expansion Unit (Free), you can use the following widgets, "
+"\"VK_Recent posts\",  \"VK_Categories\", and  \"VK_archive list\"."
+msgstr ""
+"このウィジェットエリアに何もセットされていない場合は、「最新記事リスト」「カ"
+"テゴリーリスト」「月別アーカイブリスト」が表示されます。しかし、このエリアに"
+"何かウィジェットを設定した場合には「最新記事リスト」「カテゴリーリスト」「月"
+"別アーカイブリスト」は非表示になります。<br><br>投稿コンテンツ（ 投稿の詳細"
+"ページ / カテゴリーアーカイブページ / 投稿の月別アーカイブページ / タグアーカ"
+"イブページ ）のサイドバーのみに何かを表示させたい場合や、投稿コンテンツのサイ"
+"ドバーに表示されている要素の順番を任意に設定したい時、非表示にしたい要素があ"
+"る場合は、このエリアに表示したいウィジェットを設定してください。ウィジェット"
+"で設定する場合は「VK 最新記事」「VK カテゴリー/カスタム分類」「VK アーカイブ"
+"リスト」ウィジェットで同様の表示をする事もできます。"
+
+#: _g2/functions.php:329 _g3/inc/widget-area.php:59
+#: dist/lightning/_g2/functions.php:347
+#: dist/lightning/_g3/inc/widget-area.php:59
+msgid ""
+"This widget area appears on the Pages page only. If you do not set any "
+"widgets in this area, this theme sets the \"Child pages list widget\" by "
+"default. This default widget will be hidden, when you set any widgets. "
+"<br><br> If you installed our plugin VK All in One Expansion Unit (Free), "
+"you can use the \"VK_ child page list\" widget for the alternative."
+msgstr ""
+"このウィジェットエリアに何もセットされていない場合は、現在表示されているペー"
+"ジの先祖階層からのページリストが表示されます。しかし、このエリアに何かウィ"
+"ジェットを設定した場合には非表示になります。<br><br>固定ページのサイドバーの"
+"みに何かを表示させたい場合は、このエリアに表示したいウィジェットを設定してく"
+"ださい。ウィジェットで設定する場合は「VK 子ページのリスト」ウィジェットで同様"
+"の表示をする事もできます。"
+
+#: _g2/functions.php:333 _g3/inc/widget-area.php:63
+#: dist/lightning/_g2/functions.php:351
+#: dist/lightning/_g3/inc/widget-area.php:63
+msgid "This widget area appears on the Media page only."
+msgstr "このウィジェットはメディアコンテンツでのみ表示されます。"
+
+#: _g2/functions.php:337 _g2/plugin-support/woocommerce/functions-woo.php:39
+#: _g3/inc/widget-area.php:67
+#: _g3/plugin-support/woocommerce/functions-woo.php:39
+#: dist/lightning/_g2/functions.php:355
+#: dist/lightning/_g2/plugin-support/woocommerce/functions-woo.php:39
+#: dist/lightning/_g3/inc/widget-area.php:67
+#: dist/lightning/_g3/plugin-support/woocommerce/functions-woo.php:39
+#, php-format
+msgid "This widget area appears on the %s contents page only."
+msgstr "このウィジェットは%sコンテンツでのみ表示されます。"
+
+#: _g2/functions.php:344 _g2/plugin-support/woocommerce/functions-woo.php:44
+#: _g3/inc/widget-area.php:74
+#: _g3/plugin-support/woocommerce/functions-woo.php:44
+#: dist/lightning/_g2/functions.php:362
+#: dist/lightning/_g2/plugin-support/woocommerce/functions-woo.php:44
+#: dist/lightning/_g3/inc/widget-area.php:74
+#: dist/lightning/_g3/plugin-support/woocommerce/functions-woo.php:44
+#, php-format
+msgid "Sidebar(%s)"
+msgstr "サイドバー (%s)"
+
+#: _g2/functions.php:361 dist/lightning/_g2/functions.php:379
+msgid "Home content top"
+msgstr "トップページコンテンツエリア上部"
+
+#: _g2/functions.php:374 dist/lightning/_g2/functions.php:392
+msgid "Widget area of upper footer"
+msgstr "フッター上部"
+
+#: _g2/functions.php:391 _g3/inc/widget-area.php:108
+#: dist/lightning/_g2/functions.php:409
+#: dist/lightning/_g3/inc/widget-area.php:108
+msgid "Footer widget area"
+msgstr "フッターウィジェットエリア "
+
+#: _g2/functions.php:418 dist/lightning/_g2/functions.php:436
+#, php-format
+msgid "LP widget \"%s\""
+msgstr "LP ウィジェット \"%s\""
+
+#: _g2/header.php:15 _g3/header.php:15 dist/lightning/_g2/header.php:15
+#: dist/lightning/_g3/header.php:15
+msgid "Skip to the content"
+msgstr "コンテンツへスキップ"
+
+#: _g2/header.php:16 _g3/header.php:16 dist/lightning/_g2/header.php:16
+#: dist/lightning/_g3/header.php:16
+msgid "Skip to the Navigation"
+msgstr "ナビゲーションに移動"
+
+#: _g2/inc/class-design-manager.php:35
+#: dist/lightning/_g2/inc/class-design-manager.php:35
+msgid "Origin ( Not recommended )"
+msgstr "Origin ( 非推奨 )"
+
+#: _g2/inc/class-design-manager.php:47
+#: dist/lightning/_g2/inc/class-design-manager.php:47
+#: dist/lightning/_g3/inc/class-design-manager.php:42
+msgid "Origin II ( Bootstrap4 )"
+msgstr "Origin II ( Bootstrap4 )"
+
+#: _g2/inc/class-design-manager.php:279 _g3/inc/class-design-manager.php:214
+#: dist/lightning/_g2/inc/class-design-manager.php:290
+#: dist/lightning/_g3/inc/class-design-manager.php:248
+msgid "Design skin"
+msgstr "デザインスキン"
+
+#: _g2/inc/class-design-manager.php:282 _g3/inc/class-design-manager.php:217
+#: dist/lightning/_g2/inc/class-design-manager.php:293
+#: dist/lightning/_g3/inc/class-design-manager.php:251
+msgid "If you change the skin, please save once and reload the page."
+msgstr ""
+"デザインスキンを変更した場合は一度保存してページを再読み込みしてください。"
+
+#: _g2/inc/class-design-manager.php:283 _g3/inc/class-design-manager.php:218
+#: dist/lightning/_g2/inc/class-design-manager.php:294
+#: dist/lightning/_g3/inc/class-design-manager.php:252
+msgid ""
+"If you reload after the saving, it will be displayed skin-specific "
+"configuration items."
+msgstr "保存した後で再読み込みをすると、スキン固有の設定項目が表示されます。"
+
+#: _g2/inc/class-design-manager.php:284 _g3/inc/class-design-manager.php:219
+#: dist/lightning/_g2/inc/class-design-manager.php:295
+#: dist/lightning/_g3/inc/class-design-manager.php:253
+msgid ""
+"*There is also a case where there is no skin-specific installation item."
+msgstr "※スキンによっては固有の設置項目がない場合もあります。"
+
+#: _g2/inc/customize/customize-design.php:11
+#: _g3/inc/customize/customize-design.php:11
+#: dist/lightning/_g2/inc/customize/customize-design.php:11
+#: dist/lightning/_g3/inc/customize/customize-design.php:11
+msgid "Design settings"
+msgstr "デザイン設定"
+
+#: _g2/inc/customize/customize-design.php:34
+#: _g3/inc/customize/customize-design.php:34
+#: dist/lightning/_g2/inc/customize/customize-design.php:34
+#: dist/lightning/_g3/inc/customize/customize-design.php:34
+msgid "Header logo image"
+msgstr "ヘッダーロゴ画像"
+
+#: _g2/inc/customize/customize-design.php:38
+#: _g3/inc/customize/customize-design.php:38
+#: dist/lightning/_g2/inc/customize/customize-design.php:38
+#: dist/lightning/_g3/inc/customize/customize-design.php:38
+msgid "Recommended image size : 280*60px"
+msgstr "推奨画像サイズ: 280×60px"
+
+#: _g2/inc/customize/customize-design.php:69
+#: _g3/inc/customize/customize-design.php:64
+#: dist/lightning/_g2/inc/customize/customize-design.php:69
+#: dist/lightning/_g3/inc/customize/customize-design.php:64
+msgid "Color Setting"
+msgstr "色設定"
+
+#: _g2/inc/customize/customize-design.php:72
+#: dist/lightning/_g2/inc/customize/customize-design.php:72
+msgid "Key Color"
+msgstr "キーカラー"
+
+#: _g2/inc/customize/customize-design.php:94
+#: _g3/inc/customize/customize-design.php:89
+#: dist/lightning/_g2/inc/customize/customize-design.php:94
+#: dist/lightning/_g3/inc/customize/customize-design.php:89
+msgid "Key color"
+msgstr "キーカラー"
+
+#: _g2/inc/customize/customize-design.php:116
+#: dist/lightning/_g2/inc/customize/customize-design.php:116
+msgid "Key color (dark)"
+msgstr "キーカラー (暗)"
+
+#: _g2/inc/customize/customize-design.php:139
+#: dist/lightning/_g2/inc/customize/customize-design.php:139
+msgid "Link text color"
+msgstr "リンクテキストカラー"
+
+#: _g2/inc/customize/customize-design.php:161
+#: dist/lightning/_g2/inc/customize/customize-design.php:161
+msgid "Link text color ( default )"
+msgstr "リンクテキストカラー ( 通常 )"
+
+#: _g2/inc/customize/customize-design.php:184
+#: dist/lightning/_g2/inc/customize/customize-design.php:184
+msgid "Link text color ( hover )"
+msgstr "リンクテキストカラー ( hover )"
+
+#: _g2/inc/customize/customize-design.php:234
+#: dist/lightning/_g2/inc/customize/customize-design.php:234
+msgid "Layout Setting"
+msgstr "レイアウト設定"
+
+#: _g2/inc/customize/customize-design.php:238
+#: dist/lightning/_g2/inc/customize/customize-design.php:238
+msgid "This setting field was moved to the \"Layout Setting\" panel."
+msgstr "この設定項目は「レイアウト設定」パネルに移動しました。"
+
+#: _g2/inc/customize/customize-design.php:258
+#: dist/lightning/_g2/inc/customize/customize-design.php:258
+msgid "Other Setting"
+msgstr "その他の設定"
+
+#: _g2/inc/customize/customize-design.php:289
+#: dist/lightning/_g2/inc/customize/customize-design.php:289
+msgid "Don't show default content(Post list or Front page) at home page"
+msgstr "トップページでデフォルトの投稿リストや固定ページを表示しない"
+
+#: _g2/inc/customize/customize-design.php:310
+#: dist/lightning/_g2/inc/customize/customize-design.php:310
+msgid "Hide modified date on single pages."
+msgstr "投稿詳細ページで最終更新日を表示しない"
+
+#: _g2/inc/customize/customize-design.php:331
+#: dist/lightning/_g2/inc/customize/customize-design.php:331
+msgid "Don't display post author on a single page"
+msgstr "投稿詳細ページで投稿者名を表示しない"
+
+#: _g2/inc/customize/customize-design.php:352
+#: dist/lightning/_g2/inc/customize/customize-design.php:352
+msgid "Don't display grandchild page of deactive page at page sidebar."
+msgstr "固定ページのサイドバーに非アクティブな孫ページを表示しない"
+
+#: _g2/inc/customize/customize-functions.php:9
+#: dist/lightning/_g2/inc/customize/customize-functions.php:9
+msgid "Function Settings"
+msgstr "機能設定"
+
+#: _g2/inc/customize/customize-top-slide.php:12
+#: _g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:149
+#: dist/lightning/_g2/inc/customize/customize-top-slide.php:12
+#: dist/lightning/_g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:149
+msgid "Home page slide show"
+msgstr "トップページスライドショー"
+
+#: _g2/inc/customize/customize-top-slide.php:32
+#: dist/lightning/_g2/inc/customize/customize-top-slide.php:32
+msgid "Hide slide"
+msgstr "スライドを非表示にする"
+
+#: _g2/inc/customize/customize-top-slide.php:55
+#: _g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:193
+#: dist/lightning/_g2/inc/customize/customize-top-slide.php:55
+#: dist/lightning/_g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:193
+msgid "Slide effect"
+msgstr "スライド効果"
+
+#: _g2/inc/customize/customize-top-slide.php:86
+#: dist/lightning/_g2/inc/customize/customize-top-slide.php:86
+msgid "Slide interval time"
+msgstr "スライド切り替え間隔"
+
+#: _g2/inc/customize/customize-top-slide.php:92
+#: _g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:230
+#: dist/lightning/_g2/inc/customize/customize-top-slide.php:92
+#: dist/lightning/_g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:230
+msgid "millisecond"
+msgstr "ミリ秒"
+
+#: _g2/inc/customize/customize-top-slide.php:128
+#: _g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:279
+#: dist/lightning/_g2/inc/customize/customize-top-slide.php:128
+#: dist/lightning/_g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:279
+msgid "Slide"
+msgstr "スライド"
+
+#: _g2/inc/customize/customize-top-slide.php:162
+#: _g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:310
+#: dist/lightning/_g2/inc/customize/customize-top-slide.php:337
+#: dist/lightning/_g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:472
+msgid "Slide title"
+msgstr "スライドタイトル"
+
+#: _g2/inc/customize/customize-top-slide.php:162
+#: _g2/inc/customize/customize-top-slide.php:186
+#: _g2/inc/customize/customize-top-slide.php:212
+#: _g2/inc/customize/customize-top-slide.php:283
+#: _g2/inc/customize/customize-top-slide.php:312
+#: _g2/inc/customize/customize-top-slide.php:334
+#: _g2/inc/customize/customize-top-slide.php:358
+#: _g2/inc/customize/customize-top-slide.php:409
+#: _g2/inc/customize/customize-top-slide.php:461
+#: _g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:310
+#: _g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:332
+#: _g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:356
+#: _g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:422
+#: _g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:449
+#: _g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:470
+#: _g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:492
+#: _g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:539
+#: _g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:587
+#: dist/lightning/_g2/inc/customize/customize-top-slide.php:189
+#: dist/lightning/_g2/inc/customize/customize-top-slide.php:241
+#: dist/lightning/_g2/inc/customize/customize-top-slide.php:337
+#: dist/lightning/_g2/inc/customize/customize-top-slide.php:361
+#: dist/lightning/_g2/inc/customize/customize-top-slide.php:387
+#: dist/lightning/_g2/inc/customize/customize-top-slide.php:412
+#: dist/lightning/_g2/inc/customize/customize-top-slide.php:441
+#: dist/lightning/_g2/inc/customize/customize-top-slide.php:463
+#: dist/lightning/_g2/inc/customize/customize-top-slide.php:487
+#: dist/lightning/_g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:336
+#: dist/lightning/_g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:384
+#: dist/lightning/_g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:472
+#: dist/lightning/_g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:494
+#: dist/lightning/_g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:518
+#: dist/lightning/_g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:541
+#: dist/lightning/_g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:568
+#: dist/lightning/_g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:589
+#: dist/lightning/_g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:611
+msgid "optional"
+msgstr "任意"
+
+#: _g2/inc/customize/customize-top-slide.php:186
+#: _g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:332
+#: dist/lightning/_g2/inc/customize/customize-top-slide.php:361
+#: dist/lightning/_g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:494
+msgid "Slide text"
+msgstr "スライドテキスト"
+
+#: _g2/inc/customize/customize-top-slide.php:212
+#: _g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:356
+#: dist/lightning/_g2/inc/customize/customize-top-slide.php:387
+#: dist/lightning/_g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:518
+msgid "Button text"
+msgstr "ボタンのテキスト"
+
+#: _g2/inc/customize/customize-top-slide.php:217
+#: _g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:360
+#: dist/lightning/_g2/inc/customize/customize-top-slide.php:392
+#: dist/lightning/_g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:522
+msgid ""
+"If you do not fill in the link url and button text that, button is do not "
+"display."
+msgstr ""
+"リンクの URL とボタンのテキストを入力しないと、ボタンは表示されません。"
+
+#: _g2/inc/customize/customize-top-slide.php:237
+msgid "Link url"
+msgstr "リンクURL"
+
+#: _g2/inc/customize/customize-top-slide.php:260
+#: _g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:400
+#: dist/lightning/_g2/inc/customize/customize-top-slide.php:314
+#: dist/lightning/_g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:451
+msgid "Open in new window."
+msgstr "リンク先を別ウィンドウで開く"
+
+#: _g2/inc/customize/customize-top-slide.php:283
+#: _g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:422
+#: dist/lightning/_g2/inc/customize/customize-top-slide.php:412
+#: dist/lightning/_g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:541
+msgid "Position to display text"
+msgstr "位置"
+
+#: _g2/inc/customize/customize-top-slide.php:289
+#: _g2/inc/layout-controller/admin-customize-layout.php:162
+#: _g2/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:261
+#: _g3/inc/layout-controller/admin-customize-sidebar.php:58
+#: _g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:427
+#: _g3/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:261
+#: dist/lightning/_g2/inc/customize/customize-top-slide.php:418
+#: dist/lightning/_g2/inc/layout-controller/admin-customize-layout.php:162
+#: dist/lightning/_g2/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:261
+#: dist/lightning/_g3/inc/layout-controller/admin-customize-sidebar.php:58
+#: dist/lightning/_g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:546
+#: dist/lightning/_g3/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:261
+msgid "Left"
+msgstr "左"
+
+#: _g2/inc/customize/customize-top-slide.php:290
+#: _g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:428
+#: dist/lightning/_g2/inc/customize/customize-top-slide.php:419
+#: dist/lightning/_g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:547
+msgid "Center"
+msgstr "中央"
+
+#: _g2/inc/customize/customize-top-slide.php:291
+#: _g2/inc/layout-controller/admin-customize-layout.php:161
+#: _g2/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:262
+#: _g3/inc/layout-controller/admin-customize-sidebar.php:57
+#: _g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:429
+#: _g3/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:262
+#: dist/lightning/_g2/inc/customize/customize-top-slide.php:420
+#: dist/lightning/_g2/inc/layout-controller/admin-customize-layout.php:161
+#: dist/lightning/_g2/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:262
+#: dist/lightning/_g3/inc/layout-controller/admin-customize-sidebar.php:57
+#: dist/lightning/_g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:548
+#: dist/lightning/_g3/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:262
+msgid "Right"
+msgstr "右"
+
+#: _g2/inc/customize/customize-top-slide.php:312
+#: _g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:449
+#: dist/lightning/_g2/inc/customize/customize-top-slide.php:441
+#: dist/lightning/_g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:568
+msgid "Slide text color"
+msgstr "スライド上の文字色"
+
+#: _g2/inc/customize/customize-top-slide.php:334
+#: _g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:470
+#: dist/lightning/_g2/inc/customize/customize-top-slide.php:463
+#: dist/lightning/_g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:589
+msgid "Use text shadow"
+msgstr "文字に影をつける"
+
+#: _g2/inc/customize/customize-top-slide.php:358
+#: _g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:492
+#: dist/lightning/_g2/inc/customize/customize-top-slide.php:487
+#: dist/lightning/_g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:611
+msgid "Text shadow color"
+msgstr "文字の影の色"
+
+#: _g2/inc/customize/customize-top-slide.php:383
+#: dist/lightning/_g2/inc/customize/customize-top-slide.php:163
+msgid "Slide image"
+msgstr "スライド画像"
+
+#: _g2/inc/customize/customize-top-slide.php:387
+#: dist/lightning/_g2/inc/customize/customize-top-slide.php:167
+msgid "Recommended image size : 1900*600px"
+msgstr "推奨画像サイズ: 1900×600px"
+
+#: _g2/inc/customize/customize-top-slide.php:409
+#: _g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:539
+#: dist/lightning/_g2/inc/customize/customize-top-slide.php:189
+#: dist/lightning/_g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:336
+msgid "Slide image for mobile"
+msgstr "モバイル用スライド画像"
+
+#: _g2/inc/customize/customize-top-slide.php:435
+#: _g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:563
+#: dist/lightning/_g2/inc/customize/customize-top-slide.php:215
+#: dist/lightning/_g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:360
+msgid "Slide image alt"
+msgstr "スライド画像の代替テキスト"
+
+#: _g2/inc/customize/customize-top-slide.php:440
+#: _g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:567
+#: dist/lightning/_g2/inc/customize/customize-top-slide.php:220
+#: dist/lightning/_g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:364
+msgid "This title text is print to alt tag."
+msgstr "このテキストは alt に反映されます。"
+
+#: _g2/inc/customize/customize-top-slide.php:461
+#: _g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:587
+#: dist/lightning/_g2/inc/customize/customize-top-slide.php:241
+#: dist/lightning/_g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:384
+msgid "Slide cover color"
+msgstr "スライドに被せる色"
+
+#: _g2/inc/customize/customize-top-slide.php:485
+#: _g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:609
+#: dist/lightning/_g2/inc/customize/customize-top-slide.php:265
+#: dist/lightning/_g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:406
+msgid "Slide cover opacity"
+msgstr "スライドに被せる色の濃さ"
+
+#: _g2/inc/customize/customize-top-slide.php:490
+#: _g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:613
+#: dist/lightning/_g2/inc/customize/customize-top-slide.php:270
+#: dist/lightning/_g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:410
+msgid "Please input 0 - 100 number"
+msgstr "0-100の数値で入力してください"
+
+#: _g2/inc/front-page-pr.php:13 _g2/inc/package-manager.php:36
+#: dist/lightning/_g2/inc/front-page-pr.php:13
+#: dist/lightning/_g2/inc/package-manager.php:36
+msgid "Front Page PR Block"
+msgstr "トップページ PR Block"
+
+#: _g2/inc/front-page-pr.php:31 dist/lightning/_g2/inc/front-page-pr.php:31
+msgid "Display Front Page PR Block"
+msgstr "PR Block を表示する"
+
+#: _g2/inc/front-page-pr.php:36 dist/lightning/_g2/inc/front-page-pr.php:36
+msgid ""
+"* If you want to use the more advanced features and set a PR Block anywhere, "
+"please Install the WordPress official directory registration plug-in \"VK "
+"All in One Expansion Unit (Free)\" and use the \"VK PR Blocks widgets\". "
+msgstr ""
+"*PR Block を好きな場所に設定したり、より高度な機能を使いたい場合は、"
+"WordPress 公式ディレクトリ登録プラグイン「VK All in One Expansion Unit (無"
+"料)」をインストール・有効化して、ウィジェット「VK PR Blocks」をご利用くださ"
+"い。"
+
+#: _g2/inc/front-page-pr.php:95 dist/lightning/_g2/inc/front-page-pr.php:95
+msgid "Icon "
+msgstr "アイコン"
+
+#: _g2/inc/front-page-pr.php:108 dist/lightning/_g2/inc/front-page-pr.php:108
+msgid "PR Title"
+msgstr "タイトル"
+
+#: _g2/inc/front-page-pr.php:119 dist/lightning/_g2/inc/front-page-pr.php:119
+msgid "PR Text"
+msgstr "サブテキスト"
+
+#: _g2/inc/front-page-pr.php:130 dist/lightning/_g2/inc/front-page-pr.php:130
+msgid "PR Link URL"
+msgstr "リンク URL"
+
+#: _g2/inc/front-page-pr.php:169 dist/lightning/_g2/inc/front-page-pr.php:169
+msgid "For all purposes"
+msgstr "シンプル & 高汎用"
+
+#: _g2/inc/front-page-pr.php:170 dist/lightning/_g2/inc/front-page-pr.php:170
+msgid "Powerful features"
+msgstr "豊富で強力な機能"
+
+#: _g2/inc/front-page-pr.php:171 dist/lightning/_g2/inc/front-page-pr.php:171
+msgid "Surprisingly easy"
+msgstr "驚くほど簡単"
+
+#: _g2/inc/front-page-pr.php:174 dist/lightning/_g2/inc/front-page-pr.php:174
+msgid ""
+"Lightning is a simple and customize easy theme. It corresponds by the "
+"outstanding versatility to the all-round also in business sites and blogs."
+msgstr ""
+"ライトニングはシンプルでカスタマイズしやすい WordPress テーマです。抜群の拡張"
+"性でビジネスサイトにもブログにもオールラウンドに対応します。"
+
+#: _g2/inc/front-page-pr.php:175 dist/lightning/_g2/inc/front-page-pr.php:175
+msgid ""
+"By using the plug-in \"VK All in One Expansion Unit (free)\", you can use "
+"the various functions and rich widgets."
+msgstr ""
+"同時開発されたプラグイン「VK All in One Expansion Unit (無料)」を使用する事に"
+"より、様々な機能や豊富なウィジェットを利用する事ができます。"
+
+#: _g2/inc/front-page-pr.php:176 dist/lightning/_g2/inc/front-page-pr.php:176
+msgid ""
+"Lightning is includes to a variety of ideas for making it easier to business "
+"site. Please experience the ease of use of the Lightning."
+msgstr ""
+"Lightning にはビジネスサイトを簡単に作るための様々な工夫がしてあります。"
+"Lightning の使い易さを是非体験してください。"
+
+#: _g2/inc/layout-controller/admin-customize-layout.php:12
+#: dist/lightning/_g2/inc/layout-controller/admin-customize-layout.php:12
+msgid "Layout settings"
+msgstr "レイアウト設定"
+
+#: _g2/inc/layout-controller/admin-customize-layout.php:29
+#: _g3/inc/layout-controller/admin-customize-column.php:16
+#: _g3/inc/layout-controller/admin-customize-column.php:33
+#: dist/lightning/_g2/inc/layout-controller/admin-customize-layout.php:29
+#: dist/lightning/_g3/inc/layout-controller/admin-customize-column.php:16
+#: dist/lightning/_g3/inc/layout-controller/admin-customize-column.php:33
+msgid "Column Setting"
+msgstr "カラム設定"
+
+#: _g2/inc/layout-controller/admin-customize-layout.php:29
+#: _g3/inc/layout-controller/admin-customize-column.php:33
+#: dist/lightning/_g2/inc/layout-controller/admin-customize-layout.php:29
+#: dist/lightning/_g3/inc/layout-controller/admin-customize-column.php:33
+msgid "PC mode"
+msgstr "PC閲覧時"
+
+#: _g2/inc/layout-controller/admin-customize-layout.php:41
+#: _g3/inc/layout-controller/admin-customize-column.php:45
+#: dist/lightning/_g2/inc/layout-controller/admin-customize-layout.php:41
+#: dist/lightning/_g3/inc/layout-controller/admin-customize-column.php:45
+msgid "Home page"
+msgstr "トップページ"
+
+#: _g2/inc/layout-controller/admin-customize-layout.php:45
+#: _g3/inc/layout-controller/admin-customize-column.php:49
+#: dist/lightning/_g2/inc/layout-controller/admin-customize-layout.php:45
+#: dist/lightning/_g3/inc/layout-controller/admin-customize-column.php:49
+msgid "Search"
+msgstr "検索"
+
+#: _g2/inc/layout-controller/admin-customize-layout.php:48
+#: _g3/inc/layout-controller/admin-customize-column.php:52
+#: dist/lightning/_g2/inc/layout-controller/admin-customize-layout.php:48
+#: dist/lightning/_g3/inc/layout-controller/admin-customize-column.php:52
+msgid "404 page"
+msgstr "404ページ"
+
+#: _g2/inc/layout-controller/admin-customize-layout.php:51
+#: _g2/inc/layout-controller/admin-customize-layout.php:68
+#: _g3/inc/layout-controller/admin-customize-column.php:55
+#: _g3/inc/layout-controller/admin-customize-column.php:72
+#: dist/lightning/_g2/inc/layout-controller/admin-customize-layout.php:51
+#: dist/lightning/_g2/inc/layout-controller/admin-customize-layout.php:68
+#: dist/lightning/_g3/inc/layout-controller/admin-customize-column.php:55
+#: dist/lightning/_g3/inc/layout-controller/admin-customize-column.php:72
+msgid "Archive Page"
+msgstr "アーカイブページ"
+
+#: _g2/inc/layout-controller/admin-customize-layout.php:51
+#: _g3/inc/layout-controller/admin-customize-column.php:55
+#: dist/lightning/_g2/inc/layout-controller/admin-customize-layout.php:51
+#: dist/lightning/_g3/inc/layout-controller/admin-customize-column.php:55
+msgid "Author"
+msgstr "投稿者"
+
+#: _g2/inc/layout-controller/admin-customize-layout.php:77
+#: _g3/inc/layout-controller/admin-customize-column.php:81
+#: dist/lightning/_g2/inc/layout-controller/admin-customize-layout.php:77
+#: dist/lightning/_g3/inc/layout-controller/admin-customize-column.php:81
+msgid "Single Page"
+msgstr "個別投稿ページ"
+
+#: _g2/inc/layout-controller/admin-customize-layout.php:83
+#: _g3/inc/layout-controller/admin-customize-column.php:87
+#: dist/lightning/_g2/inc/layout-controller/admin-customize-layout.php:83
+#: dist/lightning/_g3/inc/layout-controller/admin-customize-column.php:87
+msgid "Unspecified"
+msgstr "指定なし"
+
+#: _g2/inc/layout-controller/admin-customize-layout.php:84
+#: _g2/inc/layout-controller/admin-post-meta.php:53
+#: _g2/inc/vk-footer-customize/package/class-vk-footer-customize.php:133
+#: _g3/inc/layout-controller/admin-customize-column.php:88
+#: _g3/inc/layout-controller/admin-post-meta.php:53
+#: dist/lightning/_g2/inc/layout-controller/admin-customize-layout.php:84
+#: dist/lightning/_g2/inc/layout-controller/admin-post-meta.php:53
+#: dist/lightning/_g2/inc/vk-footer-customize/package/class-vk-footer-customize.php:133
+#: dist/lightning/_g3/inc/layout-controller/admin-customize-column.php:88
+#: dist/lightning/_g3/inc/layout-controller/admin-post-meta.php:53
+msgid "2 column"
+msgstr "２カラム"
+
+#: _g2/inc/layout-controller/admin-customize-layout.php:85
+#: _g2/inc/layout-controller/admin-post-meta.php:54
+#: _g2/inc/vk-footer-customize/package/class-vk-footer-customize.php:132
+#: _g3/inc/layout-controller/admin-customize-column.php:89
+#: _g3/inc/layout-controller/admin-post-meta.php:54
+#: dist/lightning/_g2/inc/layout-controller/admin-customize-layout.php:85
+#: dist/lightning/_g2/inc/layout-controller/admin-post-meta.php:54
+#: dist/lightning/_g2/inc/vk-footer-customize/package/class-vk-footer-customize.php:132
+#: dist/lightning/_g3/inc/layout-controller/admin-customize-column.php:89
+#: dist/lightning/_g3/inc/layout-controller/admin-post-meta.php:54
+msgid "1 column"
+msgstr "１カラム"
+
+#: _g2/inc/layout-controller/admin-customize-layout.php:86
+#: _g2/inc/layout-controller/admin-post-meta.php:55
+#: _g3/inc/layout-controller/admin-customize-column.php:90
+#: _g3/inc/layout-controller/admin-post-meta.php:55
+msgid "1 column (with sidebar element)"
+msgstr "１カラム（サイドバー要素あり）"
+
+#: _g2/inc/layout-controller/admin-customize-layout.php:133
+#: _g3/inc/layout-controller/admin-customize-sidebar.php:14
+#: _g3/inc/layout-controller/admin-customize-sidebar.php:29
+#: dist/lightning/_g2/inc/layout-controller/admin-customize-layout.php:133
+#: dist/lightning/_g3/inc/layout-controller/admin-customize-sidebar.php:14
+#: dist/lightning/_g3/inc/layout-controller/admin-customize-sidebar.php:29
+msgid "Sidebar Setting"
+msgstr "サイドバーの設定"
+
+#: _g2/inc/layout-controller/admin-customize-layout.php:156
+#: _g3/inc/layout-controller/admin-customize-sidebar.php:52
+#: dist/lightning/_g2/inc/layout-controller/admin-customize-layout.php:156
+#: dist/lightning/_g3/inc/layout-controller/admin-customize-sidebar.php:52
+msgid "Sidebar position ( PC mode )"
+msgstr "サイドバーの位置 ( PC閲覧時 )"
+
+#: _g2/inc/layout-controller/admin-customize-layout.php:182
+#: _g3/inc/layout-controller/admin-customize-sidebar.php:78
+#: dist/lightning/_g2/inc/layout-controller/admin-customize-layout.php:182
+#: dist/lightning/_g3/inc/layout-controller/admin-customize-sidebar.php:78
+msgid "Sidebar fix"
+msgstr "サイドバーの固定"
+
+#: _g2/inc/layout-controller/admin-customize-layout.php:199
+#: _g3/inc/layout-controller/admin-customize-sidebar.php:95
+#: dist/lightning/_g2/inc/layout-controller/admin-customize-layout.php:199
+#: dist/lightning/_g3/inc/layout-controller/admin-customize-sidebar.php:95
+msgid "Sidebar fix setting"
+msgstr "サイドバー固定設定"
+
+#: _g2/inc/layout-controller/admin-customize-layout.php:204
+#: _g3/inc/layout-controller/admin-customize-sidebar.php:100
+#: dist/lightning/_g2/inc/layout-controller/admin-customize-layout.php:204
+#: dist/lightning/_g3/inc/layout-controller/admin-customize-sidebar.php:100
+msgid "Fix top priority"
+msgstr "上端固定優先"
+
+#: _g2/inc/layout-controller/admin-customize-layout.php:205
+#: _g3/inc/layout-controller/admin-customize-sidebar.php:101
+#: dist/lightning/_g2/inc/layout-controller/admin-customize-layout.php:205
+#: dist/lightning/_g3/inc/layout-controller/admin-customize-sidebar.php:101
+msgid "Fix bottom priority"
+msgstr "下端固定優先"
+
+#: _g2/inc/layout-controller/admin-customize-layout.php:206
+#: _g3/inc/layout-controller/admin-customize-sidebar.php:102
+#: dist/lightning/_g2/inc/layout-controller/admin-customize-layout.php:206
+#: dist/lightning/_g3/inc/layout-controller/admin-customize-sidebar.php:102
+msgid "Don't fix the sidebar"
+msgstr "サイドバーを固定しない"
+
+#: _g2/inc/layout-controller/admin-post-meta.php:18
+#: _g3/inc/layout-controller/admin-post-meta.php:18
+#: dist/lightning/_g2/inc/layout-controller/admin-post-meta.php:18
+#: dist/lightning/_g3/inc/layout-controller/admin-post-meta.php:18
+msgid "Lightning design setting"
+msgstr "Lightning デザイン設定"
+
+#: _g2/inc/layout-controller/admin-post-meta.php:40
+#: _g3/inc/layout-controller/admin-post-meta.php:40
+#: dist/lightning/_g2/inc/layout-controller/admin-post-meta.php:40
+#: dist/lightning/_g3/inc/layout-controller/admin-post-meta.php:40
+msgid "Layout setting"
+msgstr "レイアウト設定"
+
+#: _g2/inc/layout-controller/admin-post-meta.php:52
+#: _g3/inc/layout-controller/admin-post-meta.php:52
+#: dist/lightning/_g2/inc/layout-controller/admin-post-meta.php:52
+#: dist/lightning/_g3/inc/layout-controller/admin-post-meta.php:52
+msgid "Use common settings"
+msgstr "共通設定を適用"
+
+#: _g2/inc/layout-controller/admin-post-meta.php:72
+#: dist/lightning/_g2/inc/layout-controller/admin-post-meta.php:72
+#: dist/lightning/_g3/inc/layout-controller/admin-post-meta.php:72
+msgid "Page Header and Breadcrumb"
+msgstr "ページヘッダーとパンくずリスト"
+
+#: _g2/inc/layout-controller/admin-post-meta.php:82
+#: dist/lightning/_g2/inc/layout-controller/admin-post-meta.php:82
+#: dist/lightning/_g3/inc/layout-controller/admin-post-meta.php:82
+msgid "Don't display Page Header"
+msgstr "ページヘッダーを表示しない"
+
+#: _g2/inc/layout-controller/admin-post-meta.php:91
+#: dist/lightning/_g2/inc/layout-controller/admin-post-meta.php:91
+#: dist/lightning/_g3/inc/layout-controller/admin-post-meta.php:91
+msgid "Don't display Breadcrumb"
+msgstr "パンくずリストを表示しない"
+
+#: _g2/inc/layout-controller/admin-post-meta.php:98
+#: _g3/inc/layout-controller/admin-post-meta.php:72
+#: dist/lightning/_g2/inc/layout-controller/admin-post-meta.php:98
+#: dist/lightning/_g3/inc/layout-controller/admin-post-meta.php:98
+msgid "Padding and margin setting"
+msgstr "余白設定"
+
+#: _g2/inc/layout-controller/admin-post-meta.php:102
+#: dist/lightning/_g2/inc/layout-controller/admin-post-meta.php:102
+msgid "Delete siteContent padding"
+msgstr "siteContentの上下余白を無しにする"
+
+#: _g2/inc/package-manager.php:26 dist/lightning/_g2/inc/package-manager.php:26
+msgid "Full Wide Title Widget"
+msgstr "全幅見出しウィジェット"
+
+#: _g2/inc/package-manager.php:27 dist/lightning/_g2/inc/package-manager.php:27
+msgid ""
+"If you are using Lightning Pro that, You can use the same function by Outer "
+"Block and Title Block in Plugin VK Blocks."
+msgstr ""
+"Lightning Proを使用している場合、プラグイン VK Blocks の Outer ブロックと見出"
+"しブロックで同じ機能を利用できます。"
+
+#: _g2/inc/package-manager.php:31 _g2/inc/widgets/widget-new-posts.php:12
+#: dist/lightning/_g2/inc/package-manager.php:31
+#: dist/lightning/_g2/inc/widgets/widget-new-posts.php:12
+msgid "Content Area Posts Widget"
+msgstr "コンテンツエリア投稿ウィジェット"
+
+#: _g2/inc/package-manager.php:32 dist/lightning/_g2/inc/package-manager.php:32
+msgid ""
+"If you are using Lightning Pro that, You can use the more powerful function "
+"by Media Posts BS4 Widget and Latest Posts Block in Plugin VK Blocks."
+msgstr ""
+"Lightning Proを使用している場合、Media Posts BS4 ウィジェット および プラグイ"
+"ン VK Blocks の 新着記事ブロックにより、より強力な機能を使用できます。"
+
+#: _g2/inc/package-manager.php:37 dist/lightning/_g2/inc/package-manager.php:37
+msgid "You can use same function by PR Block in Plugin VK Blocks"
+msgstr "プラグイン VK Blocks の PR Block ブロックで同様の機能が利用できます。"
+
+#: _g2/inc/package-manager.php:58 dist/lightning/_g2/inc/package-manager.php:58
+msgid "Not recommended functions"
+msgstr "非推奨機能"
+
+#: _g2/inc/package-manager.php:62 dist/lightning/_g2/inc/package-manager.php:62
+msgid "These are old functions that already alternated to the new function."
+msgstr "これらの古い機能は新しい機能に置き換わります。"
+
+#: _g2/inc/package-manager.php:80 dist/lightning/_g2/inc/package-manager.php:80
+#, php-format
+msgid "Stop %s"
+msgstr "%s を停止"
+
+#: _g2/inc/starter-content.php:158
+#: dist/lightning/_g2/inc/starter-content.php:158
+msgid "Site Map"
+msgstr "サイトマップ"
+
+#: _g2/inc/starter-content.php:221
+#: dist/lightning/_g2/inc/starter-content.php:221
+msgid "Header Nav"
+msgstr "ヘッダーナビ"
+
+#: _g2/inc/starter-content.php:230
+#: dist/lightning/_g2/inc/starter-content.php:230
+msgid "Footer Nav"
+msgstr "フッターナビ"
+
+#: _g2/inc/template-tags.php:98 _g3/inc/ltg-g3-slider/config.php:25
+#: dist/lightning/_g2/inc/template-tags.php:98
+#: dist/lightning/_g3/inc/ltg-g3-slider/config.php:25
+msgid "https://lightning.nagoya/"
+msgstr "https://lightning.nagoya/"
+
+#: _g2/inc/template-tags.php:99 _g3/inc/ltg-g3-slider/config.php:27
+#: dist/lightning/_g2/inc/template-tags.php:99
+#: dist/lightning/_g3/inc/ltg-g3-slider/config.php:27
+msgid "Simple and Customize easy <br>WordPress theme."
+msgstr "シンプルでカスタマイズしやすい <br>WordPress テーマ"
+
+#: _g2/inc/template-tags.php:100 dist/lightning/_g2/inc/template-tags.php:100
+msgid "100% GPL Lisence  and adopting the bootstrap"
+msgstr "100% GPL ライセンス / Bootstrap ベース"
+
+#: _g2/inc/template-tags.php:101 _g2/inc/template-tags.php:110
+#: _g3/inc/ltg-g3-slider/config.php:29 _g3/inc/ltg-g3-slider/config.php:44
+#: dist/lightning/_g2/inc/template-tags.php:101
+#: dist/lightning/_g2/inc/template-tags.php:110
+#: dist/lightning/_g3/inc/ltg-g3-slider/config.php:29
+#: dist/lightning/_g3/inc/ltg-g3-slider/config.php:44
+msgid "READ MORE"
+msgstr "READ MORE"
+
+#: _g2/inc/template-tags.php:108 _g3/inc/ltg-g3-slider/config.php:42
+#: dist/lightning/_g2/inc/template-tags.php:108
+#: dist/lightning/_g3/inc/ltg-g3-slider/config.php:42
+msgid "Johnijirou On Snow"
+msgstr "Johnijirou On Snow"
+
+#: _g2/inc/template-tags.php:109 _g3/inc/ltg-g3-slider/config.php:43
+#: dist/lightning/_g2/inc/template-tags.php:109
+#: dist/lightning/_g3/inc/ltg-g3-slider/config.php:43
+msgid "Growing up everyday"
+msgstr "Growing up everyday"
+
+#: _g2/inc/template-tags.php:355 _g3/inc/template-tags.php:140
+#: dist/lightning/_g2/inc/template-tags.php:355
+msgid "Archives"
+msgstr "アーカイブ"
+
+#: _g2/inc/template-tags.php:368 _g3/inc/template-tags.php:150
+#: dist/lightning/_g2/inc/template-tags.php:368
+#: dist/lightning/_g3/inc/template-tags.php:113
+#, php-format
+msgid "Copyright &copy; %s All Rights Reserved."
+msgstr "Copyright &copy; %s All Rights Reserved."
+
+#: _g2/inc/template-tags.php:373 _g3/inc/template-tags.php:155
+#: dist/lightning/_g2/inc/template-tags.php:373
+#: dist/lightning/_g3/inc/template-tags.php:118
+msgid ""
+"<p>Powered by <a href=\"https://wordpress.org/\">WordPress</a> &amp; <a href="
+"\"https://lightning.nagoya\" target=\"_blank\" title=\"Free WordPress Theme "
+"Lightning\"> Lightning Theme</a> by Vektor,Inc. technology.</p>"
+msgstr ""
+"<p>Powered by <a href=\"https://wordpress.org/\">WordPress</a> &amp; <a href="
+"\"https://lightning.nagoya/ja/\" target=\"_blank\" title=\"Free WordPress "
+"Theme Lightning\"> Lightning Theme</a> by Vektor,Inc. technology.</p>"
+
+#: _g2/inc/term-color/package/class.term-color.php:41
+#: _g2/inc/term-color/package/class.term-color.php:56
+#: _g2/inc/term-color/package/class.term-color.php:130
+#: _g3/inc/term-color/package/class.term-color.php:41
+#: _g3/inc/term-color/package/class.term-color.php:56
+#: _g3/inc/term-color/package/class.term-color.php:130
+#: dist/lightning/_g2/inc/term-color/package/class.term-color.php:41
+#: dist/lightning/_g2/inc/term-color/package/class.term-color.php:56
+#: dist/lightning/_g2/inc/term-color/package/class.term-color.php:130
+#: dist/lightning/_g3/inc/term-color/package/class.term-color.php:41
+#: dist/lightning/_g3/inc/term-color/package/class.term-color.php:56
+#: dist/lightning/_g3/inc/term-color/package/class.term-color.php:130
+msgid "Color"
+msgstr "色"
+
+#: _g2/inc/vk-components/package/class-vk-component-posts.php:35
+#: _g2/template-parts/post/loop-layout-use-component-sample.php:12
+#: _g3/inc/vk-components/package/class-vk-component-posts.php:35
+#: _g3/template-parts/loop-item.php:12
+#: _g3/template-parts/sidebar-contents-post.php:31
+#: dist/lightning/_g2/inc/vk-components/package/class-vk-component-posts.php:35
+#: dist/lightning/_g2/template-parts/post/loop-layout-use-component-sample.php:12
+#: dist/lightning/_g3/inc/vk-components/package/class-vk-component-posts.php:35
+#: dist/lightning/_g3/template-parts/loop-item.php:12
+#: dist/lightning/_g3/template-parts/sidebar-contents-post.php:31
+msgid "Read more"
+msgstr "続きを読む"
+
+#: _g2/inc/vk-components/package/class-vk-component-posts.php:37
+#: _g2/template-parts/post/loop-layout-use-component-sample.php:14
+#: _g3/inc/vk-components/package/class-vk-component-posts.php:37
+#: _g3/template-parts/loop-item.php:14
+#: _g3/template-parts/sidebar-contents-post.php:33
+#: dist/lightning/_g2/inc/vk-components/package/class-vk-component-posts.php:37
+#: dist/lightning/_g2/template-parts/post/loop-layout-use-component-sample.php:14
+#: dist/lightning/_g3/inc/vk-components/package/class-vk-component-posts.php:37
+#: dist/lightning/_g3/template-parts/loop-item.php:14
+#: dist/lightning/_g3/template-parts/sidebar-contents-post.php:33
+msgid "New!!"
+msgstr "新着!!"
+
+#: _g2/inc/vk-components/package/class-vk-component-posts.php:446
+#: _g3/inc/vk-components/package/class-vk-component-posts.php:445
+#: dist/lightning/_g2/inc/vk-components/package/class-vk-component-posts.php:446
+#: dist/lightning/_g3/inc/vk-components/package/class-vk-component-posts.php:445
+msgid "Card"
+msgstr "カード"
+
+#: _g2/inc/vk-components/package/class-vk-component-posts.php:450
+#: _g3/inc/vk-components/package/class-vk-component-posts.php:449
+#: dist/lightning/_g2/inc/vk-components/package/class-vk-component-posts.php:450
+#: dist/lightning/_g3/inc/vk-components/package/class-vk-component-posts.php:449
+msgid "Card Noborder"
+msgstr "カード（線なし）"
+
+#: _g2/inc/vk-components/package/class-vk-component-posts.php:454
+#: _g3/inc/vk-components/package/class-vk-component-posts.php:453
+#: dist/lightning/_g2/inc/vk-components/package/class-vk-component-posts.php:454
+#: dist/lightning/_g3/inc/vk-components/package/class-vk-component-posts.php:453
+msgid "Card Horizontal"
+msgstr "カード（水平）"
+
+#: _g2/inc/vk-components/package/class-vk-component-posts.php:458
+#: _g3/inc/vk-components/package/class-vk-component-posts.php:457
+#: dist/lightning/_g2/inc/vk-components/package/class-vk-component-posts.php:458
+#: dist/lightning/_g3/inc/vk-components/package/class-vk-component-posts.php:457
+msgid "Media"
+msgstr "メディア"
+
+#: _g2/inc/vk-css-optimize/package/class-vk-css-optimize.php:39
+#: _g3/inc/vk-css-optimize/package/class-vk-css-optimize.php:39
+#: dist/lightning/_g2/inc/vk-css-optimize/package/class-vk-css-optimize.php:39
+#: dist/lightning/_g3/inc/vk-css-optimize/package/class-vk-css-optimize.php:39
+msgid "CSS Optimize ( Speed up ) Settings"
+msgstr "CSS最適化（高速化）設定"
+
+#: _g2/inc/vk-css-optimize/package/class-vk-css-optimize.php:58
+#: _g3/inc/vk-css-optimize/package/class-vk-css-optimize.php:58
+#: dist/lightning/_g2/inc/vk-css-optimize/package/class-vk-css-optimize.php:58
+#: dist/lightning/_g3/inc/vk-css-optimize/package/class-vk-css-optimize.php:58
+msgid "Tree shaking"
+msgstr "Tree shaking"
+
+#: _g2/inc/vk-css-optimize/package/class-vk-css-optimize.php:79
+#: _g3/inc/vk-css-optimize/package/class-vk-css-optimize.php:79
+#: dist/lightning/_g2/inc/vk-css-optimize/package/class-vk-css-optimize.php:79
+#: dist/lightning/_g3/inc/vk-css-optimize/package/class-vk-css-optimize.php:79
+msgid "Tree shaking activation settings"
+msgstr "Tree shaking 有効化設定"
+
+#: _g2/inc/vk-css-optimize/package/class-vk-css-optimize.php:83
+#: _g3/inc/vk-css-optimize/package/class-vk-css-optimize.php:83
+#: dist/lightning/_g2/inc/vk-css-optimize/package/class-vk-css-optimize.php:83
+#: dist/lightning/_g3/inc/vk-css-optimize/package/class-vk-css-optimize.php:83
+msgid "Output only the main CSS of the page inline"
+msgstr "主要なCSSのみインラインで出力します"
+
+#: _g2/inc/vk-css-optimize/package/class-vk-css-optimize.php:85
+#: _g2/inc/vk-css-optimize/package/class-vk-css-optimize.php:151
+#: _g2/inc/vk-footer-customize/package/class-vk-footer-customize.php:100
+#: _g3/inc/vk-css-optimize/package/class-vk-css-optimize.php:85
+#: _g3/inc/vk-css-optimize/package/class-vk-css-optimize.php:151
+#: dist/lightning/_g2/inc/vk-css-optimize/package/class-vk-css-optimize.php:85
+#: dist/lightning/_g2/inc/vk-css-optimize/package/class-vk-css-optimize.php:151
+#: dist/lightning/_g2/inc/vk-footer-customize/package/class-vk-footer-customize.php:100
+#: dist/lightning/_g3/inc/vk-css-optimize/package/class-vk-css-optimize.php:85
+#: dist/lightning/_g3/inc/vk-css-optimize/package/class-vk-css-optimize.php:151
+msgid "Nothing to do"
+msgstr "何もしない"
+
+#: _g2/inc/vk-css-optimize/package/class-vk-css-optimize.php:86
+#: _g3/inc/vk-css-optimize/package/class-vk-css-optimize.php:86
+#: dist/lightning/_g2/inc/vk-css-optimize/package/class-vk-css-optimize.php:86
+#: dist/lightning/_g3/inc/vk-css-optimize/package/class-vk-css-optimize.php:86
+msgid "Active Tree shaking (Recomend)"
+msgstr "Tree shaking を有効化（推奨）"
+
+#: _g2/inc/vk-css-optimize/package/class-vk-css-optimize.php:103
+#: _g3/inc/vk-css-optimize/package/class-vk-css-optimize.php:103
+#: dist/lightning/_g2/inc/vk-css-optimize/package/class-vk-css-optimize.php:103
+#: dist/lightning/_g3/inc/vk-css-optimize/package/class-vk-css-optimize.php:103
+msgid "Exclude class of Tree shaking"
+msgstr "CSSの軽量化から除外するCSSのclass名"
+
+#: _g2/inc/vk-css-optimize/package/class-vk-css-optimize.php:107
+#: _g3/inc/vk-css-optimize/package/class-vk-css-optimize.php:107
+#: dist/lightning/_g2/inc/vk-css-optimize/package/class-vk-css-optimize.php:107
+#: dist/lightning/_g3/inc/vk-css-optimize/package/class-vk-css-optimize.php:107
+msgid ""
+"If you choose \"Active Tree shaking\" that delete the useless css.If you "
+"using active css class that please fill in class name. Ex) btn-active,slide-"
+"active,scrolled"
+msgstr ""
+"Tree shaking を有効にしている場合、使用していないCSSは削除されます。もし使用"
+"している動的クラスがある場合はクラス名を入力してください。 例）btn-active,"
+"slide-active,scrolled"
+
+#: _g2/inc/vk-css-optimize/package/class-vk-css-optimize.php:124
+#: _g3/inc/vk-css-optimize/package/class-vk-css-optimize.php:124
+#: dist/lightning/_g2/inc/vk-css-optimize/package/class-vk-css-optimize.php:124
+#: dist/lightning/_g3/inc/vk-css-optimize/package/class-vk-css-optimize.php:124
+msgid "Preload CSS"
+msgstr "Preload CSS"
+
+#: _g2/inc/vk-css-optimize/package/class-vk-css-optimize.php:145
+#: _g3/inc/vk-css-optimize/package/class-vk-css-optimize.php:145
+#: dist/lightning/_g2/inc/vk-css-optimize/package/class-vk-css-optimize.php:145
+#: dist/lightning/_g3/inc/vk-css-optimize/package/class-vk-css-optimize.php:145
+msgid "Preload CSS activation settings"
+msgstr "Preload CSS 有効化設定"
+
+#: _g2/inc/vk-css-optimize/package/class-vk-css-optimize.php:148
+#: _g3/inc/vk-css-optimize/package/class-vk-css-optimize.php:148
+#: dist/lightning/_g2/inc/vk-css-optimize/package/class-vk-css-optimize.php:148
+#: dist/lightning/_g3/inc/vk-css-optimize/package/class-vk-css-optimize.php:148
+msgid "Preload css except for critical css"
+msgstr "クリティカルなCSSを除いてCSSをプリロードします"
+
+#: _g2/inc/vk-css-optimize/package/class-vk-css-optimize.php:152
+#: _g3/inc/vk-css-optimize/package/class-vk-css-optimize.php:152
+#: dist/lightning/_g2/inc/vk-css-optimize/package/class-vk-css-optimize.php:152
+#: dist/lightning/_g3/inc/vk-css-optimize/package/class-vk-css-optimize.php:152
+msgid "Active Preload CSS (Recomend)"
+msgstr "Preload CSS を有効化（推奨）"
+
+#: _g2/inc/vk-css-optimize/package/class-vk-css-optimize.php:169
+#: _g3/inc/vk-css-optimize/package/class-vk-css-optimize.php:169
+#: dist/lightning/_g2/inc/vk-css-optimize/package/class-vk-css-optimize.php:169
+#: dist/lightning/_g3/inc/vk-css-optimize/package/class-vk-css-optimize.php:169
+msgid "Exclude class of Preload CSS"
+msgstr "Preload CSSから除外するハンドル名"
+
+#: _g2/inc/vk-css-optimize/package/class-vk-css-optimize.php:173
+#: _g3/inc/vk-css-optimize/package/class-vk-css-optimize.php:173
+#: dist/lightning/_g2/inc/vk-css-optimize/package/class-vk-css-optimize.php:173
+#: dist/lightning/_g3/inc/vk-css-optimize/package/class-vk-css-optimize.php:173
+msgid ""
+"If you choose \"Active Preload CSS\" that css load timing was changed.If you "
+"have any do not want to preload css file that please fill in handle(id) "
+"name. Ex) pluginname_a-style,pluginname_b-css"
+msgstr ""
+"もし「Preload CSS を有効」に設定した場合、CSSの読み込みタイミングが変更されま"
+"す。プリロードしたくないファイルがある場合は、ハンドル名（id）を入力してくだ"
+"さい。\n"
+"例）pluginname_a-style,pluginname_b-css"
+
+#: _g2/inc/vk-footer-customize/package/class-vk-footer-customize.php:55
+#: dist/lightning/_g2/inc/vk-footer-customize/package/class-vk-footer-customize.php:55
+msgid "Footer settings"
+msgstr "フッター設定"
+
+#: _g2/inc/vk-footer-customize/package/class-vk-footer-customize.php:72
+#: dist/lightning/_g2/inc/vk-footer-customize/package/class-vk-footer-customize.php:72
+msgid "Footer Widget Setting"
+msgstr "フッターウィジェット設定"
+
+#: _g2/inc/vk-footer-customize/package/class-vk-footer-customize.php:95
+#: dist/lightning/_g2/inc/vk-footer-customize/package/class-vk-footer-customize.php:95
+msgid "Footer Upper Widget Padding"
+msgstr "フッター上部ウィジェットの余白"
+
+#: _g2/inc/vk-footer-customize/package/class-vk-footer-customize.php:101
+#: dist/lightning/_g2/inc/vk-footer-customize/package/class-vk-footer-customize.php:101
+msgid "Delete Padding"
+msgstr "余白を削除"
+
+#: _g2/inc/vk-footer-customize/package/class-vk-footer-customize.php:127
+#: dist/lightning/_g2/inc/vk-footer-customize/package/class-vk-footer-customize.php:127
+msgid "Footer Widget Area Count"
+msgstr "フッターウィジェットエリアの数"
+
+#: _g2/inc/vk-footer-customize/package/class-vk-footer-customize.php:134
+#: dist/lightning/_g2/inc/vk-footer-customize/package/class-vk-footer-customize.php:134
+msgid "3 column"
+msgstr "3カラム"
+
+#: _g2/inc/vk-footer-customize/package/class-vk-footer-customize.php:135
+#: dist/lightning/_g2/inc/vk-footer-customize/package/class-vk-footer-customize.php:135
+msgid "4 column"
+msgstr "4カラム"
+
+#: _g2/inc/vk-footer-customize/package/class-vk-footer-customize.php:136
+#: dist/lightning/_g2/inc/vk-footer-customize/package/class-vk-footer-customize.php:136
+msgid "6 column"
+msgstr "6カラム"
+
+#: _g2/inc/vk-footer-customize/package/class-vk-footer-customize.php:138
+#: dist/lightning/_g2/inc/vk-footer-customize/package/class-vk-footer-customize.php:138
+msgid ""
+"* If you save and reload after making changes, the number of the widget area "
+"setting panels  will increase or decrease."
+msgstr ""
+"変更後、保存してリロードすると、ウィジェット領域設定パネルの数が増減します。"
+
+#: _g2/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:62
+#: _g3/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:62
+#: dist/lightning/_g2/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:62
+#: dist/lightning/_g3/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:62
+msgid "Mobile Nav Upper"
+msgstr "モバイルナビ上部"
+
+#: _g2/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:72
+#: _g3/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:72
+#: dist/lightning/_g2/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:72
+#: dist/lightning/_g3/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:72
+msgid "Mobile Nav Bottom"
+msgstr "モバイルナビ下部"
+
+#: _g2/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:110
+#: _g3/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:110
+#: dist/lightning/_g2/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:110
+#: dist/lightning/_g3/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:110
+#, php-format
+msgid ""
+"This is the widget area.<br>You can set widget item from [ <a href=\"%s"
+"\">Appearance > Customize</a> ] Page -> \"Widgets\" panel -> \"Mobile Nav "
+"Upper\" Panel."
+msgstr ""
+"ここはウィジェットエリアです。<br>[ <a href=\"%s\">外観 > カスタマイズ</a> ] "
+"ページ -> 「ウィジェット」 パネル -> 「モバイルナビ上部」 パネルから設定でき"
+"ます。"
+
+#: _g2/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:111
+#: _g2/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:145
+#: _g2/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:156
+#: _g3/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:111
+#: _g3/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:145
+#: _g3/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:156
+#: dist/lightning/_g2/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:111
+#: dist/lightning/_g2/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:145
+#: dist/lightning/_g2/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:156
+#: dist/lightning/_g3/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:111
+#: dist/lightning/_g3/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:145
+#: dist/lightning/_g3/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:156
+msgid "* This message is displayed only to users with editing authority."
+msgstr "* このメッセージは編集権限のあるユーザーにのみ表示されています。"
+
+#: _g2/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:144
+#: _g3/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:144
+#: dist/lightning/_g2/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:144
+#: dist/lightning/_g3/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:144
+#, php-format
+msgid ""
+"Menu is not set.<br>Please set menu from [ <a href=\"%s\">Appearance > "
+"Customize</a> ] Page -> \"Menus\" panel -> Menu Locations \"Mobile Navigation"
+"\"."
+msgstr ""
+"メニューが設定されていません。<br>[ <a href=\"%s\">外観 > カスタマイズ</a> ] "
+"ページ ->「メニュー」 パネル -> メニューの位置「Mobile Navigation」より設定し"
+"てください。"
+
+#: _g2/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:155
+#: _g3/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:155
+#: dist/lightning/_g2/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:155
+#: dist/lightning/_g3/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:155
+#, php-format
+msgid ""
+"This is the widget area.<br>You can set widget item from [ <a href=\"%s"
+"\">Appearance > Customize</a> ] Page -> \"Widgets\" panel -> \"Mobile Nav "
+"Bottom\" Panel."
+msgstr ""
+"ここはウィジェットエリアです。<br>[ <a href=\"%s\">外観 > カスタマイズ</a> ] "
+"ページ -> 「ウィジェット」 パネル -> 「モバイルナビ上部」 パネルから設定でき"
+"ます。"
+
+#: _g2/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:236
+#: _g3/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:236
+#: dist/lightning/_g2/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:236
+#: dist/lightning/_g3/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:236
+msgid "Mobile Nav"
+msgstr "モバイルナビ"
+
+#: _g2/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:256
+#: _g3/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:256
+#: dist/lightning/_g2/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:256
+#: dist/lightning/_g3/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:256
+msgid "Menu button position"
+msgstr "メニューボタンの位置"
+
+#: _g2/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:282
+#: _g3/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:282
+#: dist/lightning/_g2/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:282
+#: dist/lightning/_g3/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:282
+msgid "Menu slide direction"
+msgstr "メニューのスライド方向"
+
+#: _g2/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:287
+#: _g3/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:287
+#: dist/lightning/_g2/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:287
+#: dist/lightning/_g3/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:287
+msgid "Drop"
+msgstr "ドロップ"
+
+#: _g2/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:288
+#: _g3/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:288
+#: dist/lightning/_g2/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:288
+#: dist/lightning/_g3/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:288
+msgid "Left -> Right"
+msgstr "左 → 右"
+
+#: _g2/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:289
+#: _g3/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:289
+#: dist/lightning/_g2/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:289
+#: dist/lightning/_g3/inc/vk-mobile-nav/package/class-vk-mobile-nav.php:289
+msgid "Right -> Left"
+msgstr "右 → 左"
+
+#: _g2/inc/widgets/widget-full-wide-title.php:9
+#: dist/lightning/_g2/inc/widgets/widget-full-wide-title.php:9
+msgid "Full Wide Title"
+msgstr "全幅見出し"
+
+#: _g2/inc/widgets/widget-full-wide-title.php:10
+#: dist/lightning/_g2/inc/widgets/widget-full-wide-title.php:10
+msgid "This widget is used for single column only."
+msgstr "このウィジェットは１カラムでのみ対応しています。"
+
+#: _g2/inc/widgets/widget-full-wide-title.php:44
+#: _g2/inc/widgets/widget-new-posts.php:172
+#: dist/lightning/_g2/inc/widgets/widget-full-wide-title.php:44
+#: dist/lightning/_g2/inc/widgets/widget-new-posts.php:172
+msgid "Title:"
+msgstr "タイトル:"
+
+#: _g2/inc/widgets/widget-full-wide-title.php:61
+#: dist/lightning/_g2/inc/widgets/widget-full-wide-title.php:61
+msgid "Sub title:"
+msgstr "サブタイトル :"
+
+#: _g2/inc/widgets/widget-full-wide-title.php:67
+#: dist/lightning/_g2/inc/widgets/widget-full-wide-title.php:67
+msgid "Text color of the title:"
+msgstr "見出しの文字色 :"
+
+#: _g2/inc/widgets/widget-full-wide-title.php:73
+#: dist/lightning/_g2/inc/widgets/widget-full-wide-title.php:73
+msgid "Text shadow"
+msgstr "文字の影"
+
+#: _g2/inc/widgets/widget-full-wide-title.php:77
+#: dist/lightning/_g2/inc/widgets/widget-full-wide-title.php:77
+msgid "Text shadow color:"
+msgstr "文字の影の色 :"
+
+#: _g2/inc/widgets/widget-full-wide-title.php:82
+#: dist/lightning/_g2/inc/widgets/widget-full-wide-title.php:82
+msgid "Title background color:"
+msgstr "タイトル背景色 :"
+
+#: _g2/inc/widgets/widget-full-wide-title.php:97
+#: dist/lightning/_g2/inc/widgets/widget-full-wide-title.php:97
+msgid "Set image"
+msgstr "画像を設定"
+
+#: _g2/inc/widgets/widget-full-wide-title.php:98
+#: dist/lightning/_g2/inc/widgets/widget-full-wide-title.php:98
+msgid "Delete image"
+msgstr "画像を削除"
+
+#: _g2/inc/widgets/widget-full-wide-title.php:142
+#: dist/lightning/_g2/inc/widgets/widget-full-wide-title.php:142
+msgid "Set to parallax"
+msgstr "パララックスにする"
+
+#: _g2/inc/widgets/widget-full-wide-title.php:145
+#: dist/lightning/_g2/inc/widgets/widget-full-wide-title.php:145
+msgid "Margin Top"
+msgstr "余白上部"
+
+#: _g2/inc/widgets/widget-full-wide-title.php:149
+#: _g2/inc/widgets/widget-full-wide-title.php:157
+#: dist/lightning/_g2/inc/widgets/widget-full-wide-title.php:149
+#: dist/lightning/_g2/inc/widgets/widget-full-wide-title.php:157
+msgid "Ex"
+msgstr "例"
+
+#: _g2/inc/widgets/widget-full-wide-title.php:153
+#: dist/lightning/_g2/inc/widgets/widget-full-wide-title.php:153
+msgid "Margin Bottom"
+msgstr "余白下部"
+
+#: _g2/inc/widgets/widget-new-posts.php:17
+#: dist/lightning/_g2/inc/widgets/widget-new-posts.php:17
+msgid "Displays a list of your most recent posts."
+msgstr "最近の投稿リストを表示します。"
+
+#: _g2/inc/widgets/widget-new-posts.php:49
+#: _g2/inc/widgets/widget-new-posts.php:142
+#: dist/lightning/_g2/inc/widgets/widget-new-posts.php:49
+#: dist/lightning/_g2/inc/widgets/widget-new-posts.php:142
+msgid "Recent Posts"
+msgstr "最近の投稿"
+
+#: _g2/inc/widgets/widget-new-posts.php:153
+#: dist/lightning/_g2/inc/widgets/widget-new-posts.php:153
+msgid "Display Format"
+msgstr "表示形式"
+
+#: _g2/inc/widgets/widget-new-posts.php:160
+#: dist/lightning/_g2/inc/widgets/widget-new-posts.php:160
+msgid "Thumbnail"
+msgstr "サムネイル"
+
+#: _g2/inc/widgets/widget-new-posts.php:160
+#: _g2/inc/widgets/widget-new-posts.php:167
+#: dist/lightning/_g2/inc/widgets/widget-new-posts.php:160
+#: dist/lightning/_g2/inc/widgets/widget-new-posts.php:167
+msgid "Date"
+msgstr "日付"
+
+#: _g2/inc/widgets/widget-new-posts.php:160
+#: _g2/inc/widgets/widget-new-posts.php:167 _g2/sidebar-post.php:57
+#: _g3/template-parts/sidebar-contents-post.php:49
+#: dist/lightning/_g2/inc/widgets/widget-new-posts.php:160
+#: dist/lightning/_g2/inc/widgets/widget-new-posts.php:167
+#: dist/lightning/_g2/sidebar-post.php:57
+#: dist/lightning/_g3/template-parts/sidebar-contents-post.php:49
+msgid "Category"
+msgstr "カテゴリー"
+
+#: _g2/inc/widgets/widget-new-posts.php:160
+#: _g2/inc/widgets/widget-new-posts.php:167
+#: dist/lightning/_g2/inc/widgets/widget-new-posts.php:160
+#: dist/lightning/_g2/inc/widgets/widget-new-posts.php:167
+msgid "Title"
+msgstr "タイトル"
+
+#: _g2/inc/widgets/widget-new-posts.php:160
+#: dist/lightning/_g2/inc/widgets/widget-new-posts.php:160
+msgid "Excerpt"
+msgstr "抜粋"
+
+#: _g2/inc/widgets/widget-new-posts.php:167
+#: dist/lightning/_g2/inc/widgets/widget-new-posts.php:167
+msgid "Content"
+msgstr "内容"
+
+#: _g2/inc/widgets/widget-new-posts.php:177
+#: dist/lightning/_g2/inc/widgets/widget-new-posts.php:177
+msgid "Display count"
+msgstr "表示件数"
+
+#: _g2/inc/widgets/widget-new-posts.php:182
+#: dist/lightning/_g2/inc/widgets/widget-new-posts.php:182
+msgid "Slug for the custom type you want to display"
+msgstr "表示したいカスタム投稿タイプのスラッグ"
+
+#: _g2/inc/widgets/widget-new-posts.php:187
+#: dist/lightning/_g2/inc/widgets/widget-new-posts.php:187
+msgid "taxonomy ID"
+msgstr "カスタム分類ID"
+
+#: _g2/inc/widgets/widget-new-posts.php:190
+#: dist/lightning/_g2/inc/widgets/widget-new-posts.php:190
+msgid "if you need filtering by term, add the term ID separate by \",\"."
+msgstr ""
+"カスタム分類で絞り込みをしたい場合はカスタム分類IDを入力してください。複数の"
+"カスタム分類を指定したい場合は , で区切って下さい。"
+
+#: _g2/inc/widgets/widget-new-posts.php:192
+#: dist/lightning/_g2/inc/widgets/widget-new-posts.php:192
+msgid "if empty this area, I will do not filtering."
+msgstr "未入力の場合はカスタム分類による絞り込みはされません。"
+
+#: _g2/inc/widgets/widget-new-posts.php:197
+#: dist/lightning/_g2/inc/widgets/widget-new-posts.php:197
+msgid "Destination URL:"
+msgstr "リンク先URL : "
+
+#: _g2/inc/widgets/widget-new-posts.php:200
+#: dist/lightning/_g2/inc/widgets/widget-new-posts.php:200
+msgid "Notation text:"
+msgstr "ボタンの文字 : "
+
+#: _g2/inc/widgets/widget-new-posts.php:201
+#: dist/lightning/_g2/inc/widgets/widget-new-posts.php:201
+msgid "Latest post list"
+msgstr "最近の投稿一覧"
+
+#: _g2/index.php:134 dist/lightning/_g2/index.php:134
+msgid "No Posts."
+msgstr "投稿はありません。"
+
+#: _g2/plugin-support/woocommerce/customize.php:20
+#: _g3/plugin-support/woocommerce/customize.php:20
+#: dist/lightning/_g2/plugin-support/woocommerce/customize.php:20
+#: dist/lightning/_g3/plugin-support/woocommerce/customize.php:20
+msgid "Border Setting"
+msgstr "枠線設定"
+
+#: _g2/plugin-support/woocommerce/customize.php:23
+#: _g3/plugin-support/woocommerce/customize.php:23
+#: dist/lightning/_g2/plugin-support/woocommerce/customize.php:23
+#: dist/lightning/_g3/plugin-support/woocommerce/customize.php:23
+msgid "Add border to item image"
+msgstr "画像に線をつける"
+
+#: _g2/plugin-support/woocommerce/customize.php:42
+#: _g3/plugin-support/woocommerce/customize.php:42
+#: dist/lightning/_g2/plugin-support/woocommerce/customize.php:42
+#: dist/lightning/_g3/plugin-support/woocommerce/customize.php:42
+msgid "Item list section"
+msgstr "商品リストセクション"
+
+#: _g2/plugin-support/woocommerce/customize.php:61
+#: _g3/plugin-support/woocommerce/customize.php:61
+#: dist/lightning/_g2/plugin-support/woocommerce/customize.php:61
+#: dist/lightning/_g3/plugin-support/woocommerce/customize.php:61
+msgid "Single page"
+msgstr "シングルページ"
+
+#: _g2/sidebar-post.php:26 _g3/template-parts/sidebar-contents-post.php:15
+#: dist/lightning/_g2/sidebar-post.php:26
+#: dist/lightning/_g3/template-parts/sidebar-contents-post.php:15
+msgid "Recent posts"
+msgstr "最近の投稿"
+
+#: _g2/sidebar-post.php:66 _g3/template-parts/sidebar-contents-post.php:56
+#: dist/lightning/_g2/sidebar-post.php:66
+#: dist/lightning/_g3/template-parts/sidebar-contents-post.php:56
+msgid "Archive"
+msgstr "アーカイブ"
+
+#: _g2/template-parts/breadcrumb.php:46 _g2/template-parts/page-header.php:39
+#: _g2/template-parts/page-header.php:46
+#: _g3/inc/vk-breadcrumb/package/class-vk-breadcrumb.php:291
+#: _g3/template-parts/page-header.php:30 _g3/template-parts/page-header.php:37
+#: dist/lightning/_g2/template-parts/breadcrumb.php:46
+#: dist/lightning/_g2/template-parts/page-header.php:39
+#: dist/lightning/_g2/template-parts/page-header.php:46
+#: dist/lightning/_g3/inc/vk-breadcrumb/package/class-vk-breadcrumb.php:291
+#: dist/lightning/_g3/template-parts/page-header.php:39
+#: dist/lightning/_g3/template-parts/page-header.php:46
+#, php-format
+msgid "Search Results for : %s"
+msgstr "\"%s\" の検索結果"
+
+#: _g2/template-parts/breadcrumb.php:48 _g2/template-parts/page-header.php:41
+#: _g3/inc/vk-breadcrumb/package/class-vk-breadcrumb.php:293
+#: _g3/template-parts/page-header.php:32
+#: dist/lightning/_g2/template-parts/breadcrumb.php:48
+#: dist/lightning/_g2/template-parts/page-header.php:41
+#: dist/lightning/_g3/inc/vk-breadcrumb/package/class-vk-breadcrumb.php:293
+#: dist/lightning/_g3/template-parts/page-header.php:41
+msgid "Search Results"
+msgstr "検索結果"
+
+#: _g2/template-parts/breadcrumb.php:201 _g2/template-parts/page-header.php:48
+#: _g3/inc/vk-breadcrumb/package/class-vk-breadcrumb.php:51
+#: _g3/template-parts/page-header.php:39
+#: dist/lightning/_g2/template-parts/breadcrumb.php:201
+#: dist/lightning/_g2/template-parts/page-header.php:48
+#: dist/lightning/_g3/inc/vk-breadcrumb/package/class-vk-breadcrumb.php:51
+#: dist/lightning/_g3/template-parts/page-header.php:48
+msgid "Not found"
+msgstr "ページが見つかりません"
+
+#: _g2/template-parts/post/article.php:60 _g3/template-parts/entry.php:66
+#: dist/lightning/_g2/template-parts/post/article.php:60
+#: dist/lightning/_g3/template-parts/entry.php:66
+msgid "<dl><dt>%s</dt><dd>%l</dd></dl>"
+msgstr "<dl><dt>%s</dt><dd>%l</dd></dl>"
+
+#: _g2/template-parts/post/article.php:78 _g3/template-parts/entry.php:84
+#: dist/lightning/_g2/template-parts/post/article.php:78
+#: dist/lightning/_g3/template-parts/entry.php:84
+msgid "Tags"
+msgstr "タグ"
+
+#: _g2/template-parts/post/meta.php:14 _g3/inc/template-tags.php:209
+#: dist/lightning/_g2/template-parts/post/meta.php:14
+#: dist/lightning/_g3/template-parts/entry-meta.php:13
+msgid "Last updated"
+msgstr "最終更新日時"
+
+#: _g2/template-parts/post/next-prev.php:38 _g3/template-parts/next-prev.php:32
+#: dist/lightning/_g2/template-parts/post/next-prev.php:38
+#: dist/lightning/_g3/template-parts/next-prev.php:32
+msgid "Previous article"
+msgstr "前の記事"
+
+#: _g2/template-parts/post/next-prev.php:56 _g3/template-parts/next-prev.php:50
+#: dist/lightning/_g2/template-parts/post/next-prev.php:56
+#: dist/lightning/_g3/template-parts/next-prev.php:50
+msgid "Next article"
+msgstr "次の記事"
+
+#: _g3/inc/class-design-manager.php:33
+msgid "Plain (Beta)"
+msgstr "プレーン（β）"
+
+#: _g3/inc/class-design-manager.php:42
+msgid "Origin III (Beta)"
+msgstr "Origin II ( β )"
+
+#: _g3/inc/layout-controller/admin-customize.php:14
+#: dist/lightning/_g3/inc/layout-controller/admin-customize.php:14
+msgid "Lightning Layout Settings"
+msgstr "レイアウト設定"
+
+#: _g3/inc/layout-controller/admin-post-meta.php:76
+#: dist/lightning/_g3/inc/layout-controller/admin-post-meta.php:102
+msgid "Delete site-body padding"
+msgstr "サイトコンテントの上下余白を無しにする"
+
+#: _g3/inc/ltg-g3-slider/config.php:28
+#: dist/lightning/_g3/inc/ltg-g3-slider/config.php:28
+msgid "100% GPL Lisence and adopting the bootstrap"
+msgstr "100% GPL ライセンス / Bootstrap ベース"
+
+#: _g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:168
+#: dist/lightning/_g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:168
+msgid "Display Setting"
+msgstr "表示設定"
+
+#: _g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:173
+#: dist/lightning/_g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:173
+msgid "Display Slides"
+msgstr "スライドを表示する"
+
+#: _g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:174
+#: dist/lightning/_g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:174
+msgid "Hide Slide"
+msgstr "スライドを非表示にする"
+
+#: _g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:225
+#: dist/lightning/_g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:225
+msgid "Slide transition time"
+msgstr "スライド切り替え間隔"
+
+#: _g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:379
+#: dist/lightning/_g2/inc/customize/customize-top-slide.php:291
+#: dist/lightning/_g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:430
+msgid "Slide image link url"
+msgstr "スライド画像リンク先 URL"
+
+#: _g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:515
+#: dist/lightning/_g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:304
+msgid "Slide Image"
+msgstr "スライド画像"
+
+#: _g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:518
+#: dist/lightning/_g3/inc/ltg-g3-slider/package/class-ltg-g3-slider.php:307
+msgid "Recommended image size : 1900*1069px"
+msgstr "推奨画像サイズ: 1900×600px"
+
+#: _g3/inc/widget-area.php:91 dist/lightning/_g3/inc/widget-area.php:91
+#, fuzzy
+#| msgid "Widget area of upper footer"
+msgid "Widget area of site body bottom"
+msgstr "フッター上部"
+
+#: dist/lightning/_g2/inc/class-design-manager.php:58
+#: dist/lightning/_g3/inc/class-design-manager.php:51
+msgid "Origin III（Beta）"
+msgstr ""
+
+#: dist/lightning/_g2/inc/font-awesome/package/class-vk-font-awesome-versions.php:42
+#: dist/lightning/_g2/inc/font-awesome/package/class-vk-font-awesome-versions.php:57
+#: inc/font-awesome/package/class-vk-font-awesome-versions.php:42
+#: inc/font-awesome/package/class-vk-font-awesome-versions.php:57
+msgid "Not recommended"
+msgstr "非推奨"
+
+#: dist/lightning/_g2/inc/font-awesome/package/class-vk-font-awesome-versions.php:89
+#: dist/lightning/_g2/inc/font-awesome/package/class-vk-font-awesome-versions.php:91
+#: inc/font-awesome/package/class-vk-font-awesome-versions.php:89
+#: inc/font-awesome/package/class-vk-font-awesome-versions.php:91
+msgid "Ex ) "
+msgstr "例)"
+
+#: dist/lightning/_g2/inc/font-awesome/package/class-vk-font-awesome-versions.php:200
+#: inc/font-awesome/package/class-vk-font-awesome-versions.php:200
+msgid "Font Awesome"
+msgstr "Font Awesome"
+
+#: dist/lightning/_g2/inc/font-awesome/package/class-vk-font-awesome-versions.php:223
+#: inc/font-awesome/package/class-vk-font-awesome-versions.php:223
+msgid "Font Awesome Version"
+msgstr "Font Awesome バージョン"
+
+#: dist/lightning/_g2/inc/font-awesome/package/class-vk-font-awesome-versions.php:226
+#: inc/font-awesome/package/class-vk-font-awesome-versions.php:226
+msgid "4.7 will be abolished in the near future."
+msgstr "4.7は将来的に廃止されます。"
+
+#: dist/lightning/_g2/inc/layout-controller/admin-customize-layout.php:86
+#: dist/lightning/_g2/inc/layout-controller/admin-post-meta.php:55
+#: dist/lightning/_g3/inc/layout-controller/admin-customize-column.php:90
+#: dist/lightning/_g3/inc/layout-controller/admin-post-meta.php:55
+msgid "1 column ( No sub section )"
+msgstr "１カラム (サブセクション無し)"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:333
+#: dist/lightning/_g2/inc/tgm-plugin-activation/tgm-config.php:95
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:333
+#: inc/tgm-plugin-activation/tgm-config.php:95
+msgid "Install Required Plugins"
+msgstr "必須プラグインをインストール"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:334
+#: dist/lightning/_g2/inc/tgm-plugin-activation/tgm-config.php:96
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:334
+#: inc/tgm-plugin-activation/tgm-config.php:96
+msgid "Install Plugins"
+msgstr "プラグインのインストール"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:335
+#: dist/lightning/_g2/inc/tgm-plugin-activation/tgm-config.php:97
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:335
+#: inc/tgm-plugin-activation/tgm-config.php:97
+#, php-format
+msgid "Installing Plugin: %s"
+msgstr "プラグインをインストール中: %s"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:336
+#: dist/lightning/_g2/inc/tgm-plugin-activation/tgm-config.php:98
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:336
+#: inc/tgm-plugin-activation/tgm-config.php:98
+msgid "Something went wrong with the plugin API."
+msgstr "プラグイン API で問題が発生しました。"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:397
+#: dist/lightning/_g2/inc/tgm-plugin-activation/tgm-config.php:159
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:397
+#: inc/tgm-plugin-activation/tgm-config.php:159
+msgid "Return to Required Plugins Installer"
+msgstr "必須プラグインのインストール画面に戻る"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:398
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:398
+msgid "Return to the dashboard"
+msgstr "ダッシュボードに戻る"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:399
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:3042
+#: dist/lightning/_g2/inc/tgm-plugin-activation/tgm-config.php:160
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:399
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:3042
+#: inc/tgm-plugin-activation/tgm-config.php:160
+msgid "Plugin activated successfully."
+msgstr "プラグインを有効化しました。"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:400
+#: dist/lightning/_g2/inc/tgm-plugin-activation/tgm-config.php:161
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:400
+#: inc/tgm-plugin-activation/tgm-config.php:161
+msgid "The following plugin was activated successfully:"
+msgstr "以下のプラグインを有効化しました:"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:401
+#: dist/lightning/_g2/inc/tgm-plugin-activation/tgm-config.php:162
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:401
+#: inc/tgm-plugin-activation/tgm-config.php:162
+#, php-format
+msgid "No action taken. Plugin %1$s was already active."
+msgstr "操作を実行しませんでした。プラグイン %1$s はすでに有効です。"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:402
+#: dist/lightning/_g2/inc/tgm-plugin-activation/tgm-config.php:163
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:402
+#: inc/tgm-plugin-activation/tgm-config.php:163
+#, php-format
+msgid ""
+"Plugin not activated. A higher version of %s is needed for this theme. "
+"Please update the plugin."
+msgstr ""
+"プラグインを有効化できませんでした。このテーマには上位バージョンの %s が必要"
+"です。プラグインを更新してください。"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:403
+#: dist/lightning/_g2/inc/tgm-plugin-activation/tgm-config.php:164
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:403
+#: inc/tgm-plugin-activation/tgm-config.php:164
+#, php-format
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr "すべてのプラグインをインストールし、有効化しました。%1$s"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:404
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:404
+msgid "Dismiss this notice"
+msgstr "この通知を無視"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:405
+#: dist/lightning/_g2/inc/tgm-plugin-activation/tgm-config.php:165
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:405
+#: inc/tgm-plugin-activation/tgm-config.php:165
+msgid "Please contact the administrator of this site for help."
+msgstr "ヘルプが必要な場合はこのサイトの管理者にお問い合わせください。"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2180
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2180
+msgid "Required"
+msgstr "必須"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2183
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2183
+msgid "Recommended"
+msgstr "推奨"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2199
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2199
+msgid "WordPress Repository"
+msgstr "WordPress リポジトリ"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2202
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2202
+msgid "External Source"
+msgstr "外部ソース"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2205
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2205
+msgid "Pre-Packaged"
+msgstr "パッケージ化済み"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2222
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2222
+msgid "Not Installed"
+msgstr "未インストール"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2226
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2226
+msgid "Installed But Not Activated"
+msgstr "インストール済み、停止中"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2228
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2228
+msgid "Active"
+msgstr "有効"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2234
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2234
+msgid "Required Update not Available"
+msgstr "必要な更新が利用できません"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2237
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2237
+msgid "Requires Update"
+msgstr "更新が必要です"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2240
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2240
+msgid "Update recommended"
+msgstr "更新が推奨されています"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2392
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2392
+msgid "Installed version:"
+msgstr "インストール済みバージョン:"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2400
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2400
+msgid "Minimum required version:"
+msgstr "最低必須バージョン:"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2412
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2412
+msgid "Available version:"
+msgstr "利用可能なバージョン:"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2435
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2435
+#, php-format
+msgid ""
+"No plugins to install, update or activate. <a href=\"%1$s\">Return to the "
+"Dashboard</a>"
+msgstr ""
+"インストール・更新・有効化が必要なプラグインはありません。<a href=\"%1$s\">"
+"ダッシュボードに戻る</a>"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2449
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2449
+msgid "Plugin"
+msgstr "プラグイン"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2450
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2450
+msgid "Source"
+msgstr "ソース"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2451
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2451
+msgid "Type"
+msgstr "タイプ"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2455
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2455
+msgid "Version"
+msgstr "バージョン"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2456
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2456
+msgid "Status"
+msgstr "ステータス"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2616
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2616
+msgid "Install"
+msgstr "インストール"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2622
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2622
+msgid "Update"
+msgstr "更新"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2625
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2625
+msgid "Activate"
+msgstr "有効化"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2656
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2656
+msgid "No plugins were selected to be installed. No action taken."
+msgstr ""
+"インストールするプラグインが選択されていません。何も実行しませんでした。"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2658
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2658
+msgid "No plugins were selected to be updated. No action taken."
+msgstr "更新するプラグインが選択されていません。何も実行しませんでした。"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2694
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2694
+msgid "No plugins are available to be installed at this time."
+msgstr "現在インストールできるプラグインはありません。"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2696
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:2696
+msgid "No plugins are available to be updated at this time."
+msgstr "現在更新できるプラグインはありません。"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:3041
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:3041
+msgid "Plugin activation failed."
+msgstr "プラグインの有効化に失敗しました。"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:3379
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:3379
+#, php-format
+msgid "Updating Plugin %1$s (%2$d/%3$d)"
+msgstr "%1$s プラグインを更新中 (%2$d/%3$d)"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:3381
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:3381
+#, php-format
+msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
+msgstr "<strong>%2$s</strong>%1$s のインストール中にエラーが発生しました。"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:3382
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:3382
+#, php-format
+msgid "The installation of %1$s failed."
+msgstr "%1$s のインストールに失敗しました。"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:3386
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:3386
+msgid ""
+"The installation and activation process is starting. This process may take a "
+"while on some hosts, so please be patient."
+msgstr ""
+"インストールと有効化プロセスを開始しています。サーバーによっては少し時間がか"
+"かるかもしれません。しばらくお待ちください。"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:3387
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:3387
+#, php-format
+msgid "%1$s installed and activated successfully."
+msgstr "%1$s のインストールと有効化が完了しました。"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:3388
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:3388
+msgid "All installations and activations have been completed."
+msgstr "すべてのインストールと有効化が完了しました。"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:3389
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:3389
+#, php-format
+msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
+msgstr "%1$s プラグインをインストール、有効化中 (%2$d/%3$d)"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:3392
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:3392
+msgid ""
+"The installation process is starting. This process may take a while on some "
+"hosts, so please be patient."
+msgstr ""
+"更新プロセスを開始しています。サーバーによっては少し時間がかかるかもしれませ"
+"ん。しばらくお待ちください。"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:3394
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:3394
+msgid "All installations have been completed."
+msgstr "すべてのインストールが完了しました。"
+
+#: dist/lightning/_g2/inc/tgm-plugin-activation/class-tgm-plugin-activation.php:3395
+#: inc/tgm-plugin-activation/class-tgm-plugin-activation.php:3395
+#, php-format
+msgid "Installing Plugin %1$s (%2$d/%3$d)"
+msgstr "プラグイン %1$s をインストール中 (%2$d/%3$d)"
+
+#: dist/lightning/_g2/inc/vk-old-options-notice/package/class-vk-old-options-notice.php:94
+#: inc/vk-old-options-notice/package/class-vk-old-options-notice.php:94
+msgid "Because old option is exists, you need to update database"
+msgstr "古いオプションが存在するため、データベースを更新する必要があります。"
+
+#: dist/lightning/_g2/inc/vk-old-options-notice/package/class-vk-old-options-notice.php:94
+#: inc/vk-old-options-notice/package/class-vk-old-options-notice.php:94
+msgid "Update database"
+msgstr "データベースを更新"
+
+#: dist/lightning/_g3/inc/class-design-manager.php:33
+msgid "Plain"
+msgstr "プレーン"
+
+#: inc/customize-basic.php:11
+msgid "Basic settings"
+msgstr "基本設定"
+
+#: inc/customize-basic.php:27
+msgid "Generation Setting"
+msgstr "世代設定"
+
+#: inc/customize-basic.php:31
+msgid "Switch of generations is nearly switch of theme."
+msgstr "世代変更はテーマ変更に近いです。"
+
+#: inc/customize-basic.php:31
+msgid ""
+"Be sure to make a backup before switch of generation as it is not very "
+"compatible."
+msgstr ""
+"互換性が低いため世代を切り替える際は事前に必ずバックアップを作成してくださ"
+"い。"
+
+#: inc/customize-basic.php:37
+msgid "Generation 2"
+msgstr ""
+
+#: inc/customize-basic.php:38
+msgid "Generation 3 (Beta)"
+msgstr "Generation 3 (β)"
+
+#: inc/customize-basic.php:44
+msgid "Current Generation"
+msgstr "現在の世代"
+
+#: inc/customize-basic.php:77
+msgid "After switching generations, save and reload the page."
+msgstr "世代を変更した場合は一度保存してページを再読み込みしてください。"
+
+#: inc/customize-basic.php:77
+msgid "Reload the page"
+msgstr "ページを再読み込みする"
+
+#: vendor/wp-phpunit/wp-phpunit/data/plugins/internationalized-plugin.php:11
+msgid "This is a dummy plugin"
+msgstr ""
+
+#: vendor/wp-phpunit/wp-phpunit/data/themedir1/internationalized-theme/functions.php:7
+msgid "This is a dummy theme"
+msgstr ""
+
+#~ msgid ""
+#~ "Lightning is a very simple & easy to customize theme which is based on "
+#~ "the Bootstrap. It is also very friendly with custom post types and custom "
+#~ "taxonomies. When you add a new one, the breadcrumbs will be adjusted and "
+#~ "posts will look beautifully without editing or adding a template files."
+#~ msgstr ""
+#~ "Lightning はとてもシンプルで簡単にカスタマイズできるテーマです。カスタム投"
+#~ "稿タイプやカスタム分類にとてもフレンドリーです。新しく追加すると、パンくず"
+#~ "リストが調整され、投稿はテンプレートファイルを編集、追加せずにきれいに見え"
+#~ "ます。"
+
+#~ msgid "Lightning"
+#~ msgstr "Lightning"
+
+#~ msgctxt "post list type"
+#~ msgid "Text 1 Column"
+#~ msgstr "テキスト 1 カラム"
+
+#~ msgid "Landing Page for Page Builder ( not recommended )"
+#~ msgstr "Landing Page for Page Builder (非推奨)"
+
+#~ msgid "Landing Page ( not recommended )"
+#~ msgstr "ランディングページ (非推奨)"
+
+#~ msgid "No sidebar ( not recommended )"
+#~ msgstr "サイドバーなし (非推奨)"
+
+#~ msgid ""
+#~ "This theme recommends the following plugin: %1$s.<br>Many additional "
+#~ "functions are available for free."
+#~ msgid_plural ""
+#~ "This theme recommends the following plugins: %1$s.<br>Many additional "
+#~ "functions are available for free."
+#~ msgstr[0] ""
+#~ "このテーマは次のプラグインを利用する事を推奨しています : %1$s.<br>この無料"
+#~ "のプラグインによって様々な機能を追加する事が出来ます。"
+
+#~ msgctxt "daily archives date format"
+#~ msgid "F j, Y"
+#~ msgstr "Y年n月j日"
+
+#~ msgctxt "monthly archives date format"
+#~ msgid "F Y"
+#~ msgstr "Y年n月"
+
+#~ msgctxt "yearly archives date format"
+#~ msgid "Y"
+#~ msgstr "Y年"
+
+#~ msgctxt "comments title"
+#~ msgid "One thought on &ldquo;%2$s&rdquo;"
+#~ msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+#~ msgstr[0] "&ldquo;%2$s&rdquo; に対して%1$s件のコメントがあります。"
+
+#~ msgid "%1$s installed successfully."
+#~ msgstr "%1$s のインストールを完了しました。"
+
+#~ msgid "Hide Details"
+#~ msgstr "詳細を非表示"
+
+#~ msgid "Show Details"
+#~ msgstr "詳細を表示"
+
+#~ msgid "No plugins are available to be activated at this time."
+#~ msgstr "現時点で有効化できるプラグインはありません。"
+
+#~ msgid "No plugins were selected to be activated. No action taken."
+#~ msgstr "有効化するプラグインが選択されていません。何も実行しませんでした。"
+
+#~ msgid "Upgrade message from the plugin author:"
+#~ msgstr "プラグイン作者からの更新メッセージ:"
+
+#~ msgctxt "%2$s = plugin name in screen reader markup"
+#~ msgid "Activate %2$s"
+#~ msgstr "%2$s を有効化"
+
+#~ msgctxt "%2$s = plugin name in screen reader markup"
+#~ msgid "Update %2$s"
+#~ msgstr "%2$s を更新"
+
+#~ msgctxt "%2$s = plugin name in screen reader markup"
+#~ msgid "Install %2$s"
+#~ msgstr "%2$s をインストール"
+
+#~ msgctxt "as in: \"version nr unknown\""
+#~ msgid "unknown"
+#~ msgstr "不明"
+
+#~ msgid "To Activate <span class=\"count\">(%s)</span>"
+#~ msgid_plural "To Activate <span class=\"count\">(%s)</span>"
+#~ msgstr[0] "未有効化 <span class=\"count\">(%s)</span>"
+
+#~ msgid "Update Available <span class=\"count\">(%s)</span>"
+#~ msgid_plural "Update Available <span class=\"count\">(%s)</span>"
+#~ msgstr[0] "利用可能な更新 <span class=\"count\">(%s)</span>"
+
+#~ msgid "To Install <span class=\"count\">(%s)</span>"
+#~ msgid_plural "To Install <span class=\"count\">(%s)</span>"
+#~ msgstr[0] "未インストール <span class=\"count\">(%s)</span>"
+
+#~ msgctxt "plugins"
+#~ msgid "All <span class=\"count\">(%s)</span>"
+#~ msgid_plural "All <span class=\"count\">(%s)</span>"
+#~ msgstr[0] "すべて <span class=\"count\">(%s)</span>"
+
+#~ msgctxt "%1$s = install status, %2$s = update status"
+#~ msgid "%1$s, %2$s"
+#~ msgstr "%1$s、%2$s"
+
+#~ msgctxt "%s = version number"
+#~ msgid "TGMPA v%s"
+#~ msgstr "TGMPA v%s"
+
+#~ msgctxt "plugin A *and* plugin B"
+#~ msgid "and"
+#~ msgstr "と"
+
+#~ msgid ""
+#~ "The remote plugin package consists of more than one file, but the files "
+#~ "are not packaged in a folder."
+#~ msgstr ""
+#~ "リモートプラグインパッケージは複数のファイルで構成されていますが、ファイル"
+#~ "が1つのフォルダー内にパッケージされていません。"
+
+#~ msgid ""
+#~ "Please contact the plugin provider and ask them to package their plugin "
+#~ "according to the WordPress guidelines."
+#~ msgstr ""
+#~ "プラグイン開発者に連絡し、WordPress のガイドラインに従ってプラグインをパッ"
+#~ "ケージ化するように依頼してください。"
+
+#~ msgid ""
+#~ "The remote plugin package does not contain a folder with the desired slug "
+#~ "and renaming did not work."
+#~ msgstr ""
+#~ "リモートプラグインパッケージには指定されたスラッグのフォルダーがないため、"
+#~ "名前の変更ができませんでした。"
+
+#~ msgid "Return to the Dashboard"
+#~ msgstr "ダッシュボードに戻る"
+
+#~ msgid "Set the parent_slug config variable instead."
+#~ msgstr "代わりに parent_slug の設定変数を設定してください。"
+
+#~ msgid "Update Required"
+#~ msgstr "更新が必要です"
+
+#~ msgid "This plugin needs to be updated to be compatible with your theme."
+#~ msgstr ""
+#~ "使用中のテーマとの互換性を保つため、このプラグインを更新する必要がありま"
+#~ "す。"
+
+#~ msgid "Begin activating plugin"
+#~ msgid_plural "Begin activating plugins"
+#~ msgstr[0] "プラグインの有効化を開始"
+
+#~ msgid "Begin updating plugin"
+#~ msgid_plural "Begin updating plugins"
+#~ msgstr[0] "プラグインの更新を開始"
+
+#~ msgid "Begin installing plugin"
+#~ msgid_plural "Begin installing plugins"
+#~ msgstr[0] "プラグインのインストールを開始"
+
+#~ msgid ""
+#~ "Sorry, but you do not have the correct permissions to activate the %1$s "
+#~ "plugin."
+#~ msgid_plural ""
+#~ "Sorry, but you do not have the correct permissions to activate the %1$s "
+#~ "plugins."
+#~ msgstr[0] "%1$s プラグインを有効化するための適切な権限がありません。"
+
+#~ msgid "The following recommended plugin is currently inactive: %1$s."
+#~ msgid_plural ""
+#~ "The following recommended plugins are currently inactive: %1$s."
+#~ msgstr[0] "以下のテーマ推奨プラグインは、現在有効化されていません: %1$s。"
+
+#~ msgid "The following required plugin is currently inactive: %1$s."
+#~ msgid_plural "The following required plugins are currently inactive: %1$s."
+#~ msgstr[0] "以下のテーマ必須プラグインは、現在有効化されていません: %1$s。"
+
+#~ msgid ""
+#~ "Sorry, but you do not have the correct permissions to update the %1$s "
+#~ "plugin."
+#~ msgid_plural ""
+#~ "Sorry, but you do not have the correct permissions to update the %1$s "
+#~ "plugins."
+#~ msgstr[0] "%1$s プラグインを更新する権限がありません。"
+
+#~ msgid "There is an update available for: %1$s."
+#~ msgid_plural "There are updates available for the following plugins: %1$s."
+#~ msgstr[0] "利用可能な更新があります: %1$s。"
+
+#~ msgid ""
+#~ "The following plugin needs to be updated to its latest version to ensure "
+#~ "maximum compatibility with this theme: %1$s."
+#~ msgid_plural ""
+#~ "The following plugins need to be updated to their latest version to "
+#~ "ensure maximum compatibility with this theme: %1$s."
+#~ msgstr[0] ""
+#~ "このテーマとの最大限の互換性を確保するため、以下のプラグインを最新バージョ"
+#~ "ンに更新する必要があります: %1$s。"
+
+#~ msgid ""
+#~ "Sorry, but you do not have the correct permissions to install the %1$s "
+#~ "plugin."
+#~ msgid_plural ""
+#~ "Sorry, but you do not have the correct permissions to install the %1$s "
+#~ "plugins."
+#~ msgstr[0] "%1$s プラグインをインストールするための適切な権限がありません。"
+
+#~ msgid "This theme recommends the following plugin: %1$s."
+#~ msgid_plural "This theme recommends the following plugins: %1$s."
+#~ msgstr[0] "このテーマは以下のプラグインを推奨しています: %1$s。"
+
+#~ msgid "This theme requires the following plugin: %1$s."
+#~ msgid_plural "This theme requires the following plugins: %1$s."
+#~ msgstr[0] "このテーマには以下のプラグインが必要です: %1$s。"
+
+#~ msgid "https://lightning.nagoya"
+#~ msgstr "https://lightning.nagoya"
+
+#~ msgid "https://www.vektor-inc.co.jp"
+#~ msgstr "http://www.vektor-inc.co.jp"
+
+#~ msgid "Vektor,Inc."
+#~ msgstr "Vektor,Inc."
