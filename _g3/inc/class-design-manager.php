@@ -31,7 +31,7 @@ class Lightning_Design_Manager {
 		$skins = array(
 			'plain' => array(
 				'label'           => __( 'Plain (Beta)', 'lightning' ),
-				'css_path'        => '',
+				'css_path'        => get_template_directory_uri() . '/design-skin/plain/css/style.css', // 空でも指定しないと lightning-design-style がが出力されずに インラインCSSが効かないため',
 				'editor_css_path' => '',
 				'php_path'        => '',
 				'js_path'         => '',
