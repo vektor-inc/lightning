@@ -39,6 +39,9 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v14.0.0
+Add Lightning Generation 3
+
 v13.8.12
 [ Bug fix ] Fix inner block width(padding) bug.
 
