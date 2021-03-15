@@ -1,6 +1,7 @@
 @charset "utf-8";
 
 @import "global-nav-effect";
+@import "common";
 
 .site-header {
     background-color: #fff;
@@ -27,4 +28,10 @@
             border-left:1px solid var(--vk-color-text-body);
         }
     }
+}
+
+.tagcloud a{
+    border:1px solid var(--vk-color-border-hr);
+    padding: 2px 0.6em;
+    margin-right:0.3em;
 }

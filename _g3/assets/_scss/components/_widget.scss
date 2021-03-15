@@ -9,6 +9,9 @@
     ul {
         padding-left:1.5em;
     }
+    &-title  ul {
+        margin-top:0;
+    }
     li {
         margin-top:0.8em;
         margin-top:0.8em;
@@ -24,64 +27,72 @@
 	display: block;
 }
 
-.widget_link_list > ul,
-.widget_nav_menu > div > ul,
-.widget_archive > ul,
-.widget_categories > ul,
-.widget_pages > ul,
-.widget_postlist > ul,
+.widget_link_list,
+.widget_nav_menu,
+.widget_archive,
+.widget_categories,
+.widget_pages,
+.widget_postlist,
 .widget .localNavi, 
 .localNavi {
-    border-top:1px solid var(--vk-color-border-hr); 
-    padding: 0;
-    margin:0;
-    ul {
+    & > .widget-title[class*="title"]{
+        margin-bottom:0;
+    }
+    & > ul,
+    &> div > ul {
         padding: 0;
-        margin:0; 
-    }
-    li {
-        list-style: none;
-        margin: 0;
-        font-size: var(--vk-size-text-sm);
-        a {
-            display:block;
-            padding-top: 0.7em;
-            padding-bottom: 0.7em;
-            padding-left: var(--vk-margin-list-menu-left-first);
-            border-bottom:1px solid var(--vk-color-border-hr); 
-            text-decoration: none;
-            // color:var(--vk-color-text-body);
-            // &:hover{
-            //     background-color: var(--vk-color-accent-bg);
-            // }
+        margin:0;
+        ul {
+            padding: 0;
+            margin:0; 
         }
-        a:hover,
-        &.current-cat > a,
-        &.current_page_item > a {
-            background-color: var(--vk-color-accent-bg);
+        li {
+            list-style: none;
+            margin: 0;
+            font-size: var(--vk-size-text-sm);
+            a {
+                display:block;
+                padding-top: 0.7em;
+                padding-bottom: 0.7em;
+                padding-left: var(--vk-margin-list-menu-left-first);
+                border-bottom:1px solid var(--vk-color-border-hr); 
+                text-decoration: none;
+                // color:var(--vk-color-text-body);
+                // &:hover{
+                //     background-color: var(--vk-color-accent-bg);
+                // }
+            }
+            a:hover,
+            &.current-cat > a,
+            &.current_page_item > a {
+                background-color: var(--vk-color-accent-bg);
+            }
+        }
+        li li a {
+            padding-left: calc( var(--vk-margin-list-menu-left-first) + var(--vk-margin-list-menu-left) );
+        }
+        li li li a {
+            padding-left: calc( var(--vk-margin-list-menu-left-first) + var(--vk-margin-list-menu-left) * 2 );
+        }
+        li li li li a {
+            padding-left: calc( var(--vk-margin-list-menu-left-first) + var(--vk-margin-list-menu-left) * 3 );
+        }
+        li li li li li a {
+            padding-left: calc( var(--vk-margin-list-menu-left-first) + var(--vk-margin-list-menu-left) * 4 );
+        }
+        li li li li li li a {
+            padding-left: calc( var(--vk-margin-list-menu-left-first) + var(--vk-margin-list-menu-left) * 5 );
+        }
+        li li li li li li li a {
+            padding-left: calc( var(--vk-margin-list-menu-left-first) + var(--vk-margin-list-menu-left) * 6 );
+        }
+        li li li li li li li li a {
+            padding-left: calc( var(--vk-margin-list-menu-left-first) + var(--vk-margin-list-menu-left) * 7 );
         }
     }
-    li li a {
-        padding-left: calc( var(--vk-margin-list-menu-left-first) + var(--vk-margin-list-menu-left) );
-    }
-    li li li a {
-        padding-left: calc( var(--vk-margin-list-menu-left-first) + var(--vk-margin-list-menu-left) * 2 );
-    }
-    li li li li a {
-        padding-left: calc( var(--vk-margin-list-menu-left-first) + var(--vk-margin-list-menu-left) * 3 );
-    }
-    li li li li li a {
-        padding-left: calc( var(--vk-margin-list-menu-left-first) + var(--vk-margin-list-menu-left) * 4 );
-    }
-    li li li li li li a {
-        padding-left: calc( var(--vk-margin-list-menu-left-first) + var(--vk-margin-list-menu-left) * 5 );
-    }
-    li li li li li li li a {
-        padding-left: calc( var(--vk-margin-list-menu-left-first) + var(--vk-margin-list-menu-left) * 6 );
-    }
-    li li li li li li li li a {
-        padding-left: calc( var(--vk-margin-list-menu-left-first) + var(--vk-margin-list-menu-left) * 7 );
-    }
+}
+.widget_vkexunit_post_list .widget-title[class*=title]{
+    margin-bottom:0;
 }
 
 .widget_archive,
