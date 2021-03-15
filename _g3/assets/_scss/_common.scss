@@ -14,6 +14,7 @@ body {
 	font-family: 'Lato', 'Noto Sans JP', 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
 	-ms-word-wrap: break-word;
 	word-wrap: break-word;
+	background-color: #fff; // カスタマイザでデフォルト#ffffffにしてもリセットしないと効かないため
 }
 
 @media (max-width: $md-max) {

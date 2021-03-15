@@ -253,7 +253,6 @@ gulp.task('copy_dist', function (done) {
       "!./_g2/assets/css/map/**",
       "!./_g3/node_modules/**/*.*",
       "!./_g3/assets/css/map/**",
-      "./_g3/**",
       "!./vendor/**",
       "!./.vscode/**",
       "!./bin/**",
