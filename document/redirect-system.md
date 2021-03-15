@@ -115,7 +115,7 @@ return apply_filters( 'template', get_option( 'template' ) );
 get_template_part() の中で実行される。
 load_template( $located, $require_once );
 
-### load_template(()
+### load_template()
 
 フックなし
 locate_template() の中で実行される。
