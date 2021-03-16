@@ -3,10 +3,6 @@
 define( 'LIG_G3_DIR', '_g3' );
 define( 'LIG_G2_DIR', '_g2' );
 
-update_option( 'fresh_site', 1 );
-delete_option( 'lightning_theme_options' );
-delete_option( 'lightning_theme_generation' );
-
 function lightning_generation_default(){
 	$options = get_option( 'lightning_theme_options' );
 	if ( get_option( 'fresh_site' ) || ! $options ){
