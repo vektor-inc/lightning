@@ -38,14 +38,16 @@ if ( ! class_exists( 'VK_Old_Options_Notice' ) ) {
 			foreach ( (array) $old_setting_array as $old_setting ) {
 				if ( 'option' === $old_setting['data_type'] ) {
 					$options     = get_option( $old_setting['target_field'] );
-					$old_options = $old_setting['old_value'];
-					foreach ( $options as $key => $options_value ) {
-						foreach ( $old_options as $old_key => $old_options_value ) {
-							if ( $options_value === $old_options_value ) {
-								if ( 'judge' === $arg ) {
-									return true;
-								} elseif ( 'update' === $arg ) {
-									call_user_func( $old_setting['callback'] );
+					if ( $options ){
+						$old_options = $old_setting['old_value'];
+						foreach ( $options as $key => $options_value ) {
+							foreach ( $old_options as $old_key => $old_options_value ) {
+								if ( $options_value === $old_options_value ) {
+									if ( 'judge' === $arg ) {
+										return true;
+									} elseif ( 'update' === $arg ) {
+										call_user_func( $old_setting['callback'] );
+									}
 								}
 							}
 						}
