@@ -75,7 +75,9 @@ function lightning_the_class_name( $position = '' ){
 /*-------------------------------------------*/
 function lightning_get_theme_options_default() {
 	$theme_options_default = array(
-		// 'front_pr_display'              => true,
+		'layout'       => array(
+			'front-page'	=> 'col-one-no-subsection',
+		),
 	);
 	return $theme_options_default;
 }

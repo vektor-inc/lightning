@@ -84,7 +84,7 @@ function lightning_customize_register_column( $wp_customize ) {
 	}
 
 	$choices = array(
-		'default'               => __( 'Unspecified', 'lightning' ),
+		'default'               => __( 'Please select', 'lightning' ),
 		'col-two'               => __( '2 column', 'lightning' ),
 		'col-one-no-subsection' => __( '1 column', 'lightning' ),
 		'col-one'               => __( '1 column (with sidebar element)', 'lightning' ),
@@ -100,10 +100,17 @@ function lightning_customize_register_column( $wp_customize ) {
 	);
 
 	foreach ( $page_types as $key => $value ) {
+
+		if ( 'front-page' === $key ){
+			$default = 'col-one-no-subsection';
+		} else {
+			$default = 'default';
+		}
+
 		$wp_customize->add_setting(
 			'lightning_theme_options[layout][' . $key . ']',
 			array(
-				'default'           => 'default',
+				'default'           => $default,
 				'type'              => 'option',
 				'capability'        => 'edit_theme_options',
 				'sanitize_callback' => 'sanitize_text_field',

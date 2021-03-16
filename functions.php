@@ -4,7 +4,8 @@ define( 'LIG_G3_DIR', '_g3' );
 define( 'LIG_G2_DIR', '_g2' );
 
 function lightning_generation_default(){
-	if ( get_option( 'fresh_site' ) ){
+	$options = get_option( 'lightning_theme_options' );
+	if ( get_option( 'fresh_site' ) || ! $options ){
 		$default = 'g3';
 	} else {
 		$default = 'g2';
@@ -114,7 +115,6 @@ if ( ! function_exists( 'lightning_get_template_part' ) ){
 }
 
 if ( lightning_is_g3() ){
-	echo '━━━━━━━━━━━━━━━━━━━━'."<br>\n";
 	require dirname( __FILE__ ) . '/' . LIG_G3_DIR . '/functions.php';
 } else {
 	require dirname( __FILE__ ) . '/' . LIG_G2_DIR . '/functions.php';

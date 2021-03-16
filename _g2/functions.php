@@ -12,12 +12,10 @@ define( 'LIGHTNING_SHORT_NAME', 'LTG THEME' );
 function lightning_debug_active(){
 
 	$options = get_option( 'lightning_theme_options' );
+	// print '<pre style="text-align:left">';print_r($options);print '</pre>';
 
-	// $options['layout'] = null;
-	// update_option( 'lightning_theme_options', $options );
-	// $options = get_option( 'lightning_theme_options' );
-
-	print '<pre style="text-align:left">';print_r($options);print '</pre>';
+	$generation = get_option( 'lightning_theme_generation' );
+	print '<pre style="text-align:left">';print_r($generation);print '</pre>';
 
 }
 

@@ -31,7 +31,7 @@ function lightning_layout_target_array() {
  */
 function lightning_is_layout_onecolumn() {
 	$onecolumn = false;
-	$options   = get_option( 'lightning_theme_options' );
+	$options   = lightning_get_theme_options( 'lightning_theme_options' );
 	global $wp_query;
 
 	$array = lightning_layout_target_array();
@@ -145,7 +145,7 @@ function lightning_is_layout_onecolumn() {
 function lightning_is_subsection() {
 	global $post;
 	$return  = true;
-	$options = get_option( 'lightning_theme_options' );
+	$options = lightning_get_theme_options();
 
 	$array = lightning_layout_target_array();
 

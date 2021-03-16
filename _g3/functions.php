@@ -2,9 +2,11 @@
 
 $theme_opt = wp_get_theme( get_template() );
 
-// add_action( 'lightning_site-header_append', function(){
-// 	$options = get_option( 'lightning_theme_options' );
+// add_action( 'lightning_site_header_append', function(){
+// 	$options = lightning_get_theme_options( 'lightning_theme_options' );
 // 	print '<pre style="text-align:left">';print_r( $options );print '</pre>';
+// 	$generation = get_option( 'lightning_theme_generation' );
+// 	print '<pre style="text-align:left">';print_r( $generation );print '</pre>';
 // } );
 
 define( 'LIGHTNING_THEME_VERSION', $theme_opt->Version );
@@ -144,22 +146,24 @@ function lightning_theme_setup() {
 
 }
 
-require  dirname( __FILE__ ) . '/inc/class-vk-helpers.php';
+require	dirname( __FILE__ ) . '/inc/class-vk-helpers.php';
 
-require  dirname( __FILE__ ) . '/inc/class-design-manager.php';
-require  dirname( __FILE__ ) . '/inc/class-vk-description-walker.php';
-require  dirname( __FILE__ ) . '/inc/template-tags.php';
-require  dirname( __FILE__ ) . '/inc/customize/customize.php';
-require  dirname( __FILE__ ) . '/inc/customize/customize-design.php';
-require  dirname( __FILE__ ) . '/inc/layout-controller/layout-controller.php';
-require  dirname( __FILE__ ) . '/inc/vk-components/config.php';
-require  dirname( __FILE__ ) . '/inc/vk-mobile-nav/config.php';
-require  dirname( __FILE__ ) . '/inc/vk-breadcrumb/config.php';
-require  dirname( __FILE__ ) . '/inc/widget-area.php';
-require  dirname( __FILE__ ) . '/inc/term-color/config.php';
-require  dirname( __FILE__ ) . '/inc/vk-css-optimize/config.php';
-require  dirname( __FILE__ ) . '/inc/vk-swiper/config.php';
-require  dirname( __FILE__ ) . '/inc/ltg-g3-slider/config.php';
+require	dirname( __FILE__ ) . '/inc/class-design-manager.php';
+require	dirname( __FILE__ ) . '/inc/class-vk-description-walker.php';
+require	dirname( __FILE__ ) . '/inc/template-tags.php';
+require	dirname( __FILE__ ) . '/inc/customize/customize.php';
+require	dirname( __FILE__ ) . '/inc/customize/customize-design.php';
+require	dirname( __FILE__ ) . '/inc/layout-controller/layout-controller.php';
+require	dirname( __FILE__ ) . '/inc/vk-components/config.php';
+require	dirname( __FILE__ ) . '/inc/vk-mobile-nav/config.php';
+require	dirname( __FILE__ ) . '/inc/vk-breadcrumb/config.php';
+require	dirname( __FILE__ ) . '/inc/widget-area.php';
+require	dirname( __FILE__ ) . '/inc/term-color/config.php';
+require	dirname( __FILE__ ) . '/inc/vk-css-optimize/config.php';
+require	dirname( __FILE__ ) . '/inc/vk-swiper/config.php';
+require	dirname( __FILE__ ) . '/inc/ltg-g3-slider/config.php';
+
+require	dirname( __FILE__ ) . '/inc/starter-content.php';
 
 /*
   Load CSS

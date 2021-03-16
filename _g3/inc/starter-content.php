@@ -1,4 +1,5 @@
 <?php
+// update_option( 'fresh_site', 1 );
 add_action( 'after_setup_theme', 'lightning_add_starter_content' );
 if ( is_customize_preview() ) {
     add_theme_support( 'starter-content', lightning_add_starter_content() );
@@ -208,7 +209,6 @@ function lightning_add_starter_content(){
 			'page_on_front'  => '{{front}}',
 			'page_for_posts' => '{{blog}}',
 			'lightning_theme_options' => array(
-				'front_pr_display'              => false,
 				'layout'        				=> array(
 					'front-page'				=> 'col-one-no-subsection',
 				),
