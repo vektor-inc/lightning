@@ -42,7 +42,7 @@ function lightning_customize_register_basic( $wp_customize ) {
 	$wp_customize->add_setting(
 		'lightning_theme_generation',
 		array(
-			'default'           => __( 'Current Generation', 'lightning' ),
+			'default'           => lightning_generation_default(),
 			'type'              => 'option',
 			'capability'        => 'edit_theme_options',
 			'sanitize_callback' => 'sanitize_text_field',

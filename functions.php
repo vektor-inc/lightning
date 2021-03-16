@@ -3,18 +3,19 @@
 define( 'LIG_G3_DIR', '_g3' );
 define( 'LIG_G2_DIR', '_g2' );
 
-function lightning_is_g3(){
-
+function lightning_generation_default(){
 	if ( get_option( 'fresh_site' ) ){
 		$default = 'g3';
 	} else {
 		$default = 'g2';
 	}
+	return $default;
+}
 
-	if ( 'g3' === get_option( 'lightning_theme_generation', $default ) ){
+function lightning_is_g3(){
+	if ( 'g3' === get_option( 'lightning_theme_generation', lightning_generation_default() ) ){
 		return true;
-	}
-	
+	}	
 }
 
 require dirname( __FILE__ ) . '/inc/class-ltg-template-redirect.php';
@@ -113,6 +114,7 @@ if ( ! function_exists( 'lightning_get_template_part' ) ){
 }
 
 if ( lightning_is_g3() ){
+	echo '━━━━━━━━━━━━━━━━━━━━'."<br>\n";
 	require dirname( __FILE__ ) . '/' . LIG_G3_DIR . '/functions.php';
 } else {
 	require dirname( __FILE__ ) . '/' . LIG_G2_DIR . '/functions.php';
