@@ -1,5 +1,4 @@
 <?php
-// update_option( 'fresh_site', 1 );
 add_action( 'after_setup_theme', 'lightning_add_starter_content' );
 if ( is_customize_preview() ) {
     add_theme_support( 'starter-content', lightning_add_starter_content() );
@@ -134,7 +133,7 @@ function lightning_add_starter_content(){
 						<!-- /wp:heading -->
 						
 						<!-- wp:paragraph {"textColor":"black"} -->
-						<p class="has-black-color has-text-color">' . esc_html_x( 'Lightning has column control function that you can specific column number from "Appearance &gt; Customize &gt; Lightning Design Setting" and specific post edit screen.', 'Theme starter content', 'lightning' ) . '</p>
+						<p class="has-black-color has-text-color">' . esc_html_x( 'Lightning has column control function that you can specific column number from "Appearance &gt; Customize &gt; Lightning Layout Setting" and specific post edit screen.', 'Theme starter content', 'lightning' ) . '</p>
 						<!-- /wp:paragraph --></div>
 						<!-- /wp:column --></div>
 						<!-- /wp:columns --></div></div>
