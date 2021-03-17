@@ -39,7 +39,7 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
-v14.0.0
+v14.0.1
 Add Lightning Generation 3
 
 v13.8.12
