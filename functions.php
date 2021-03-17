@@ -123,6 +123,7 @@ if ( lightning_is_g3() ){
 require dirname( __FILE__ ) . '/inc/customize-basic.php';
 require dirname( __FILE__ ) . '/inc/tgm-plugin-activation/tgm-config.php';
 require dirname( __FILE__ ) . '/inc/vk-old-options-notice/vk-old-options-notice-config.php';
+require dirname( __FILE__ ) . '/inc/functions-compatible.php';
 require dirname( __FILE__ ) . '/inc/font-awesome/font-awesome-config.php';
 
 /**
