@@ -23,8 +23,8 @@ function lightning_css_tree_shaking_array( $vk_css_tree_shaking_array ){
 		'version' => LIGHTNING_THEME_VERSION,
 	);
 
-	$skin_css_url  = ! empty( $skin_info['css_path'] ) ? $skin_info['css_path'] : '';
-	$skin_css_path = ! empty( $skin_info['css_sv_path'] ) ? $skin_info['css_sv_path'] : '';
+	$skin_css_url  = ! empty( $skin_info['css_url'] ) ? $skin_info['css_url'] : '';
+	$skin_css_path = ! empty( $skin_info['css_path'] ) ? $skin_info['css_path'] : '';
 	$skin_version  = ! empty( $skin_info['version'] ) ? $skin_info['version'] : '';
 
 	if ( ! empty( $skin_css_url ) && ! empty( $skin_version ) ) {

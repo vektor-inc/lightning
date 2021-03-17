@@ -31,8 +31,9 @@ class Lightning_Design_Manager {
 		$skins = array(
 			'plain' => array(
 				'label'           => __( 'Plain (Beta)', 'lightning' ),
-				'css_path'        => get_template_directory_uri() . '/design-skin/plain/css/style.css', // 空でも指定しないと lightning-design-style がが出力されずに インラインCSSが効かないため',
-				'editor_css_path' => '',
+				'css_url'         => get_template_directory_uri() . '/design-skin/plain/css/style.css', // 空でも指定しないと lightning-design-style がが出力されずに インラインCSSが効かないため',
+				'css_path'        => get_parent_theme_file_path( '/design-skin/plain/css/style.css' ),
+				'editor_css_url'  => '',
 				'php_path'        => '',
 				'js_path'         => '',
 				'version'         => LIGHTNING_THEME_VERSION,
@@ -40,8 +41,9 @@ class Lightning_Design_Manager {
 			),
 			'origin3' => array(
 				'label'           => __( 'Origin III (Beta)', 'lightning' ),
-				'css_path'        => get_template_directory_uri() . '/design-skin/origin3/css/style.css',
-				'editor_css_path' => get_template_directory_uri() . '/design-skin/origin3/css/editor.css',
+				'css_url'         => get_template_directory_uri() . '/design-skin/origin3/css/style.css',
+				'css_path'     	  => get_parent_theme_file_path( '/design-skin/origin3/css/style.css' ),
+				'editor_css_url'  => get_template_directory_uri() . '/design-skin/origin3/css/editor.css',
 				'php_path'        => get_parent_theme_file_path() . '/design-skin/origin3/origin3.php',
 				'js_path'         => '',
 				'version'         => LIGHTNING_THEME_VERSION,
@@ -137,8 +139,8 @@ class Lightning_Design_Manager {
 		$skin_info = self::get_current_skin();
 
 		$skin_css_url = '';
-		if ( ! empty( $skin_info['css_path'] ) ) {
-			$skin_css_url = $skin_info['css_path'];
+		if ( ! empty( $skin_info['css_url'] ) ) {
+			$skin_css_url = $skin_info['css_url'];
 		}
 
 		wp_enqueue_style( 'lightning-design-style', $skin_css_url, array( 'lightning-common-style' ), $skin_info['version'] );
@@ -158,8 +160,8 @@ class Lightning_Design_Manager {
 	 */
 	static function load_skin_editor_css() {
 		$skin_info = self::get_current_skin();
-		if ( ! empty( $skin_info['editor_css_path'] ) ) {
-			add_editor_style( $skin_info['editor_css_path'] );
+		if ( ! empty( $skin_info['editor_css_url'] ) ) {
+			add_editor_style( $skin_info['editor_css_url'] );
 		}
 	}
 
@@ -167,10 +169,10 @@ class Lightning_Design_Manager {
 	// It's aleady don't need function that add_editor_style() become covered gutenberg more better.
 	static function load_skin_gutenberg_css() {
 		$skin_info = self::get_current_skin();
-		if ( ! empty( $skin_info['gutenberg_css_path'] ) ) {
+		if ( ! empty( $skin_info['gutenberg_css_url'] ) ) {
 			wp_enqueue_style(
 				'lightning-gutenberg-editor',
-				$skin_info['gutenberg_css_path'],
+				$skin_info['gutenberg_css_url'],
 				array( 'wp-edit-blocks' ),
 				$skin_info['version']
 			);
