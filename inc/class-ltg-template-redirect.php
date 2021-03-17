@@ -72,28 +72,36 @@ if ( ! class_exists( 'LTG_Template_Redirect' ) ){
 			/**
 			 * page-{slug}.php などのように - つきのファイルについては、
 			 * 子テーマ内で g階層 がなくても親テーマより優先されなくてはならない。
+			 * 
+			 * １つ目のテンプレートで 子->親で探し、なかったら
+			 * ２つ目のテンプレートで 子->親で探すので、
 			 */  
 	
 			/**
-			*     
-			* [] => child/_g2/page-service.php
+			*
 			* [] => child/page-service.php
-			* [] => parent/_g2/page-service.php
+			* [] => parent/page-service.php -> not exist
+			* [] => child/_g2/page-service.php
+			* [] => parent/_g2/page-service.php -> not exist
 	
-			* [] => child/_g2/page-9.php
 			* [] => child/page-9.php
-			* [] => parent/_g2/page-9.php
+			* [] => parent/page-9.php -> not exist
+			* [] => child/_g2/page-9.php
+			* [] => parent/_g2/page-9.php -> not exist
 	
-			* [] => child/_g2/page.php
 			* [] => child/page.php
-			* [] => parent/_g2/page.php
+			* [] => parent/page.php -> not exist
+			* [] => child/_g2/page.php
+			* [] => parent/_g2/page.php -> not exist
 			*/
-	
+			// print '<pre style="text-align:left">';print_r($templates);print '</pre>';
 			$templates_new = array();
 			foreach ( $templates as $key => $template){
-				$templates_new[] = self::theme_directory() . '/' . $template;
 				$templates_new[] = $template;
+				$templates_new[] = self::theme_directory() . '/' . $template;
+				
 			}
+			// print '<pre style="text-align:left">';print_r($templates_new);print '</pre>';
 			return $templates_new;
 		}
 	

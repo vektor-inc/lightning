@@ -1,3 +1,7 @@
 <?php 
-/* Actually this file is not loading because already redirected */
-get_template_part( '_g2/index' ); ?>
+/** 
+* テンプレート g階層を読み込むようにしているが、
+* g階層じゃないファイルを先に読み込むようにしないと子テーマに複製している既存ユーザーが反映されなくなるので、
+* 直下が優先になっている。よって、直下にあるこのファイル（index.php）は一旦必ず読み込まれる
+*/
+lightning_get_template_part( 'index' ); ?>
