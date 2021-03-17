@@ -105,3 +105,28 @@ function lightning_pageheader_and_breadcrumb_compatible(){
 		}
 	}
 }
+
+/**
+ * テーア直下の固定ページテンプレートファイルが選択されている時にg2ディレクトリ参照に切り替える
+ * 
+ * 本当はデフォルト指定にして meta 情報でレイアウト指定に切り替えたいが、子テーマに複製してカスタマイズしている人もいるため。
+ */
+function lightning_g2_template_compatible(){
+	$args = array(
+		'post_type' => 'page',
+		'posts_per_page' => -1
+	);
+	$wp_query = new WP_Query( $args );
+	foreach ( $wp_query->posts as $post ){
+		$template = get_post_meta( $post->ID, '_wp_page_template', true );
+		if ( 'page-onecolumn.php' === $template ){
+			update_post_meta( $post->ID, '_wp_page_template', '_g2/page-onecolumn.php' );
+		} elseif ( 'page-lp.php' === $template ) {
+			update_post_meta( $post->ID, '_wp_page_template', '_g2/page-lp.php' );
+		} elseif ( 'page-lp-builder.php' === $template ) {
+			update_post_meta( $post->ID, '_wp_page_template', '_g2/page-lp-builder.php' );
+		}
+	}
+	wp_reset_postdata();
+	wp_reset_query();	
+}

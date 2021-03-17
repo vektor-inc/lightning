@@ -23,6 +23,7 @@ if ( ! class_exists( 'VK_Old_Options_Notice' ) ) {
 	global $vk_update_link;
 	$vk_update_link = 'lightning-update-link';
 
+	// 現存する変更が必要な古い情報の配列
 	global $old_setting_array;
 	$old_setting_array = array(
 		array(
@@ -119,6 +120,11 @@ if ( ! class_exists( 'VK_Old_Options_Notice' ) ) {
 			'data_type'    => 'meta',
 			'check_version' => '0.1.0',
 			'callback'     => 'lightning_pageheader_and_breadcrumb_compatible',
+		),
+		array(
+			'data_type'    => 'meta',
+			'check_version' => '0.1.2',
+			'callback'     => 'lightning_g2_template_compatible',
 		),
 	);
 
