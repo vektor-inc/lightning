@@ -13,7 +13,7 @@ if ( ! class_exists( 'LTG_Template_Redirect' ) ){
 				'taxonomy', 
 				'date', 
 				'home', 
-				'front-page', 
+				'frontpage', 
 				'privacypolicy', 
 				'page',
 				'search',

@@ -123,7 +123,7 @@ if ( ! class_exists( 'VK_Old_Options_Notice' ) ) {
 		),
 		array(
 			'data_type'    => 'meta',
-			'check_version' => '0.1.2',
+			'check_version' => '0.1.1',
 			'callback'     => 'lightning_g2_template_compatible',
 		),
 	);

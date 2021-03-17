@@ -88,6 +88,7 @@ function lightning_pageheader_and_breadcrumb_compatible(){
  * テーア直下の固定ページテンプレートファイルが選択されている時にg2ディレクトリ参照に切り替える
  * 
  * 本当はテンプレートはデフォルト指定にして meta 情報でレイアウト指定に切り替えたいが、子テーマに複製してカスタマイズしている人もいるため。
+ * → G3に変更されるとヘッダーやフッターが困るが、そもそもG2からG3への切り替えは互換性が無いと告知しているので手動で切り替えてもらう
  */
 function lightning_g2_template_compatible(){
 	$args = array(
