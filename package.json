@@ -28,11 +28,11 @@
 	},
 	"homepage": "https://lightning.nagoya/",
 	"devDependencies": {
-		"@babel/core": "^7.12.10",
-		"@babel/preset-env": "^7.12.11",
-		"@wordpress/env": "^3.0.0",
+		"@babel/core": "^7.13.10",
+		"@babel/preset-env": "^7.13.10",
+		"@wordpress/env": "^4.0.0",
 		"babel-loader": "^8.2.2",
-		"grpc": "^1.24.4",
+		"grpc": "^1.24.6",
 		"gulp": "^4.0.2",
 		"gulp-autoprefixer": "^7.0.1",
 		"gulp-clean-css": "^4.3.0",
@@ -44,15 +44,15 @@
 		"gulp-replace": "^1.0.0",
 		"gulp-sass": "^4.1.0",
 		"gulp-sourcemaps": "^3.0.0",
-		"npm-check-updates": "^10.2.5",
+		"npm-check-updates": "^11.3.0",
 		"run-sequence": "^2.2.1",
-		"stylelint": "^13.8.0",
+		"stylelint": "^13.12.0",
 		"stylelint-config-wordpress": "^17.0.0",
-		"webpack": "^5.11.1",
-		"webpack-cli": "^4.3.1",
+		"webpack": "^5.26.3",
+		"webpack-cli": "^4.5.0",
 		"webpack-merge": "^5.7.3"
 	},
 	"dependencies": {
-		"is-mobile": "^2.2.2"
+		"is-mobile": "^3.0.0"
 	}
 }
