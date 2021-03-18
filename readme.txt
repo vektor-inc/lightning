@@ -1,7 +1,7 @@
 === Lightning ===
 Lightning WordPress theme, Copyright (C) 2015-2021 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
-Tested up to: 5.6.3
+Tested up to: 5.7.0
 Stable tag: 13.8.11
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -39,7 +39,7 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
-v14.0.1
+v14.0.2
 Add Lightning Generation 3
 
 v13.8.12
