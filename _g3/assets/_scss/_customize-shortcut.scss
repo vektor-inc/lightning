@@ -1,14 +1,12 @@
-.page-header .customize-partial-edit-shortcut button {
-    top:-1em;
-    left:0.3em; /* 大きくするとコンテナ幅の下になって反応しなくなるので注意 */
+.page-header .customize-partial-edit-shortcut{
+    top:2em;
+    left:3em; /* 大きくするとコンテナ幅の下になって反応しなくなるので注意 */
     z-index: 10000000;
 }
-.page-header .customize-partial-edit-shortcut.customize-partial-edit-shortcut-vk_page_header-common-text_color button {
-    top:-3em;
-    left:0.3em; /* 大きくするとコンテナ幅の下になって反応しなくなるので注意 */
-    z-index: 10000000;
+.page-header span[class*="common"]{
+    top:4em;
+    border:1px solid #00ff00;
 }
-
 .main-section .customize-partial-edit-shortcut-lightning_theme_options-layout-front-page > button {
     left:-4em;
 }
