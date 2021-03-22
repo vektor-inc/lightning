@@ -1,12 +1,12 @@
 .customize-partial-edit-shortcut{
     z-index: 10000000;
 }
-.page-header .customize-partial-edit-shortcut{
-    top:2em;
-    left:3em; /* 大きくするとコンテナ幅の下になって反応しなくなるので注意 */
-}
 .page-header span[class*="common"]{
+    top:2em;
+}
+.page-header .customize-partial-edit-shortcut{
     top:4em;
+    left:3em; /* 大きくするとコンテナ幅の下になって反応しなくなるので注意 */
 }
 .main-section .customize-partial-edit-shortcut-lightning_theme_options-layout-front-page > button {
     left:-4em;
