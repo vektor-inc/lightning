@@ -14,7 +14,7 @@
         );
         ?>
 	<?php endif; ?>
-
+	
 	<?php
 	$footer_widget_area_count = apply_filters( 'lightning_footer_widget_area_count', 3 );
 	$footer_widget_exists = false;
@@ -26,6 +26,7 @@
 	?>
 	<?php if ( true === $footer_widget_exists ) : ?>
 		<div class="container site-footer-content">
+		<?php do_action( 'lightning_site_footer_content_prepend' ); ?>
 			<div class="row">
 				<?php
 				// Area setting
@@ -53,6 +54,7 @@
 				}
 				?>
 			</div>
+		<?php do_action( 'lightning_site_footer_content_append' ); ?>
 		</div>
 	<?php endif; ?>
 

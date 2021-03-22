@@ -1,5 +1,5 @@
 <div class="<?php lightning_the_class_name( 'sub-section' ); ?>">
-
+<?php do_action( 'lightning_sub_section_prepend' ); ?>
 <?php
 if ( is_active_sidebar( 'common-side-top-widget-area' ) ) {
 	dynamic_sidebar( 'common-side-top-widget-area' );
@@ -25,5 +25,5 @@ if ( is_front_page() ) {
 if ( is_active_sidebar( 'common-side-bottom-widget-area' ) ) {
 	dynamic_sidebar( 'common-side-bottom-widget-area' );
 } ?>
-
+ <?php do_action( 'lightning_sub_section_append' ); ?>
 </div><!-- [ /.sub-section ] -->
