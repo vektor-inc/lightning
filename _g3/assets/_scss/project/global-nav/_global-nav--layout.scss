@@ -20,6 +20,7 @@
     width:100vw;
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
+    clear: both;
     .global-nav-list {
         width:calc( var(--vk-width-container) - var(--vk-width-container-padding) * 2 );
         display: flex;
