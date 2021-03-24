@@ -212,7 +212,6 @@ function lightning_load_common_editor_css_to_gutenberg() {
 /*
   Load JS
 /*-------------------------------------------*/
-
 add_action( 'wp_enqueue_scripts', 'lightning_addJs' );
 function lightning_addJs() {
 	wp_register_script( 'lightning-js', get_template_directory_uri() . '/assets/js/main.js', array(), LIGHTNING_THEME_VERSION, true );
@@ -233,11 +232,6 @@ function lightning_comment_js() {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
-
-// add_action( 'wp_enqueue_scripts', 'lightning_fontawesome_js' );
-// function lightning_fontawesome_js(){
-// 	wp_enqueue_script( 'vk-font-awesome-js', get_template_directory_uri() . '/assets/js/font-awesome/all.min.js', array(), LIGHTNING_THEME_VERSION, true );
-// }
 
 /*
   Load Font
