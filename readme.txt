@@ -39,6 +39,9 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ Design Bug fix ] Fix Slider image margin
+[ Design Bug fix ] Fix iOS search button
+
 v14.0.3
 Add Lightning Generation 3
 
