@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-.slide {
+.slide-main {
 	&-cover {
 		position: absolute;
 		top: 0;
@@ -80,11 +80,15 @@
 	.btn {
 		margin-top: 1em;
 	}
-	picture img {
+	picture {
 		width: 100%;
-		height: auto;
-	}
-	
+		height: auto;	
+		img {
+			width: 100%;
+			height: auto;
+			display: block;
+		}	
+	}	
 	// .slide-text-set を含めると 現状カスタマイザからの色指定ががインラインで上書きが効かなくなる
 	.btn-ghost {
 		// font-size: 16px;
