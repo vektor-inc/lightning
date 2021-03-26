@@ -9,7 +9,7 @@ $logo_bottom_margin:1rem;
         text-align: center;
         font-weight: 700; // cope with not all page h1
         font-size:1.5rem;
-        width:100%; // cope with not image
+        white-space: nowrap;
         @media ( max-width: $md-max ){
             margin-top:0.5rem;
             margin-bottom:0.5rem;
@@ -38,8 +38,8 @@ $logo_bottom_margin:1rem;
         }
     }
 }
-@media ( min-width: $lg-min ){
-    .site-header--layout--nav-float {
+.site-header--layout--nav-float {
+    @media ( min-width: $lg-min ){
         .site-header-container {
             display: flex;
             flex-direction: row;
@@ -48,7 +48,10 @@ $logo_bottom_margin:1rem;
             float:left;
         }
     }
-    .site-header--layout--sub-active {
+}
+
+.site-header--layout--sub-active {
+    @media ( min-width: $lg-min ){
         .site-header-logo {
             float:left;
         }
