@@ -12,8 +12,8 @@ function lightning_add_customize_class( $wp_customize ) {
 	/*
 	  Add text control description
 	/*-------------------------------------------*/
-	if ( ! class_exists( 'Custom_Text_Control' ) ) {
-		class Custom_Text_Control extends WP_Customize_Control {
+	if ( ! class_exists( 'VK_Custom_Text_Control' ) ) {
+		class VK_Custom_Text_Control extends WP_Customize_Control {
 			public $type         = 'customtext';
 			public $description  = ''; // we add this for the extra description
 			public $input_before = '';
@@ -35,8 +35,8 @@ function lightning_add_customize_class( $wp_customize ) {
 		} // class Custom_Text_Control extends WP_Customize_Control
 	}
 
-	if ( ! class_exists( 'Custom_Html_Control' ) ) {
-		class Custom_Html_Control extends WP_Customize_Control {
+	if ( ! class_exists( 'VK_Custom_Html_Control' ) ) {
+		class VK_Custom_Html_Control extends WP_Customize_Control {
 			public $type             = 'customtext';
 			public $custom_title_sub = ''; // we add this for the extra custom_html
 			public $custom_html      = ''; // we add this for the extra custom_html
@@ -55,13 +55,16 @@ function lightning_add_customize_class( $wp_customize ) {
 		} // class Custom_Html_Control extends WP_Customize_Control {
 	}
 
-	/*
-	  Lightning Panel
-	/*-------------------------------------------*/
-	// $wp_customize->add_panel( 'lightning_setting', array(
-	// 'priority'       => 25,
-	// 'capability'     => 'edit_theme_options',
-	// 'theme_supports' => '',
-	// 'title'          => __( 'Lightning settings', 'lightning' ),
-	// ));
+	// Fall back old class names
+	if ( ! class_exists( 'Custom_Text_Control' ) ) {
+		class Custom_Text_Control extends VK_Custom_Text_Control {
+
+		} // class VK_Custom_Text_Control extends WP_Customize_Control
+	}
+
+	if ( ! class_exists( 'Custom_Html_Control' ) ) {
+		class Custom_Html_Control extends VK_Custom_Html_Control {
+
+		} // class Custom_Html_Control extends WP_Customize_Control {
+	}
 }
