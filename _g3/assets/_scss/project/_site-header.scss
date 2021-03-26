@@ -7,6 +7,9 @@ $logo_bottom_margin:1rem;
         margin-left:auto;
         margin-right:auto;
         text-align: center;
+        font-weight: 700; // cope with not all page h1
+        font-size:1.5rem;
+        width:100%; // cope with not image
         @media ( max-width: $md-max ){
             margin-top:0.5rem;
             margin-bottom:0.5rem;
@@ -24,6 +27,14 @@ $logo_bottom_margin:1rem;
         }
         a {
             color:var(--vk-color-text-body);
+            text-decoration: none;
+        }
+    }
+    // モバイルの時にヘッダーの高さを正しく検出しない対策
+    &-container{
+        @media (max-width: $md-max) {
+            display: block;
+            overflow: hidden;
         }
     }
 }
