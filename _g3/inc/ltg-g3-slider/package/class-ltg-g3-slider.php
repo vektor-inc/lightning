@@ -681,8 +681,8 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 
 			if ( $slide_count ) {
 
-				$slide_html .= '<div class="' . $slider_prefix . 'swiper-container swiper-container slide slide-main">';
-				$slide_html .= '<div class="swiper-wrapper slide-inner">';
+				$slide_html .= '<div class="' . $slider_prefix . 'swiper-container swiper-container ltg-slide">';
+				$slide_html .= '<div class="swiper-wrapper ltg-slide-inner">';
 
 				// Why end point is $slide_count_max that not $slide_count, image exist 1,2,5.
 				for ( $i = 1; $i <= $slide_count_max; $i++ ) {
@@ -718,15 +718,15 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 							$slide_html .= '<source media="(max-width: 767px)" srcset="' . esc_attr( $options[ 'top_slide_image_mobile_' . $i ] ) . '">';
 						}
 
-						$slide_html .= '<img src="' . esc_attr( $options[ 'top_slide_image_' . $i ] ) . '" alt="' . esc_attr( $slide_alt ) . '" class="slide-item-img">';
+						$slide_html .= '<img src="' . esc_attr( $options[ 'top_slide_image_' . $i ] ) . '" alt="' . esc_attr( $slide_alt ) . '" class="ltg-slide-item-img">';
 						$slide_html .= '</picture>';
 
-						// slide-cover.
+						// ltg-slide-cover.
 						$cover_style = self::slide_cover_style( $i );
 
 						if ( $cover_style ) {
 							$cover_style = ( $cover_style ) ? ' style="' . $cover_style . '"' : '';
-							$slide_html .= '<div class="slide-cover"' . $cover_style . '></div>';
+							$slide_html .= '<div class="ltg-slide-cover"' . $cover_style . '></div>';
 						}
 
 						if ( self::is_slide_outer_link( $i ) ) {
@@ -736,14 +736,14 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 						/*
 						  mini_content
 						/*-------------------------------------------*/
-						$slide_html .= '<div class="slide-text-set mini-content">';
+						$slide_html .= '<div class="ltg-slide-text-set mini-content">';
 
 						$mini_content_args = array(
 							'outer_class'    => 'mini-content-container-' . $i . ' container',
 							'title_tag'      => 'h3',
-							'title_class'    => 'slide-text-title',
+							'title_class'    => 'ltg-slide-text-title',
 							'caption_tag'    => 'div',
-							'caption_class'  => 'slide-text-caption',
+							'caption_class'  => 'ltg-slide-text-caption',
 							'btn_class'      => 'btn btn-ghost',
 							'btn_ghost'      => true,
 							'btn_color_text' => '#333',
