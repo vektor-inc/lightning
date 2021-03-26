@@ -59,11 +59,15 @@
 	.alignfull,
 	.alignwide {
 		width: calc(100% + var(--vk-width-base-padding) + var(--vk-width-base-padding));
-		margin-left: - var(--vk-width-base-padding);
-		margin-right: - var(--vk-width-base-padding);
+		margin-left: calc( var(--vk-width-base-padding) * -1 );
+		margin-right: calc( var(--vk-width-base-padding) * -1 );
 		&.wp-block-image {
 			width: calc(100% + var(--vk-width-base-padding) + var(--vk-width-base-padding));
 		}
+	}
+	.wp-block-cover.alignfull{
+		padding-left:var(--vk-width-base-padding);
+		padding-right:var(--vk-width-base-padding);
 	}
 }
 .sub-section--base--on.sub-section--col--two {
