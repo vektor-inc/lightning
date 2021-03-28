@@ -35,7 +35,8 @@
 .widget_postlist,
 .widget .localNavi, 
 .localNavi {
-    & > .widget-title[class*="title"]{
+    & > .widget-title[class*="title"],
+    & > .sub-section-title{
         margin-bottom:0;
     }
     & > ul,
