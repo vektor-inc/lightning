@@ -80,7 +80,7 @@ the_posts_pagination(
 
 <?php else : // hove_posts() ?>
 
-<div class="well"><p><?php echo wp_kses_post( apply_filters( 'lightning_no_posts_text', __( 'No posts.', 'lightning' ) ) ); ?></p></div>
+<div class="main-section-no-posts"><p><?php echo wp_kses_post( apply_filters( 'lightning_no_posts_text', __( 'No posts.', 'lightning' ) ) ); ?></p></div>
 
 <?php endif; // have_post() ?>
 

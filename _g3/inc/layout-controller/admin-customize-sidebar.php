@@ -11,7 +11,7 @@ function lightning_customize_register_sidebar( $wp_customize ) {
 	$wp_customize->add_section(
 		'lightning_sidebar',
 		array(
-			'title'    	=> lightning_get_prefix_customize_panel() . __( 'Sidebar Setting', 'lightning' ),
+			'title'    	=> __( 'Sidebar Setting', 'lightning' ),
 			'panel'		=> 'lightning_layout',
 		)
 	);

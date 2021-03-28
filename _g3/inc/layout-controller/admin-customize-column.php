@@ -13,7 +13,7 @@ function lightning_customize_register_column( $wp_customize ) {
 	$wp_customize->add_section(
 		'lightning_column',
 		array(
-			'title'    	=> lightning_get_prefix_customize_panel() . __( 'Column Setting', 'lightning' ),
+			'title'    	=> __( 'Main column setting', 'lightning' ),
 			'panel'		=> 'lightning_layout',
 		)
 	);
@@ -30,7 +30,7 @@ function lightning_customize_register_column( $wp_customize ) {
 			$wp_customize,
 			'ltg_column_setting',
 			array(
-				'label'            => __( 'Column Setting', 'lightning' ) . ' ( ' . __( 'PC mode', 'lightning' ) . ' )',
+				'label'            => __( 'Main column setting', 'lightning' ) . ' ( ' . __( 'PC mode', 'lightning' ) . ' )',
 				'section'          => 'lightning_column',
 				'type'             => 'text',
 				'custom_title_sub' => '',
