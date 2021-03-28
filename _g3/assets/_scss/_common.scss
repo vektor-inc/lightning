@@ -106,7 +106,7 @@ i {
 /* Reset iOS Style */
 input[type="submit"],
 input[type="button"] {
-	-webkit-box-sizing: content-box;
+	-webkit-box-sizing: border-box;
 	-webkit-appearance: button;
 	appearance: button;
 	&::-webkit-search-decoration {
