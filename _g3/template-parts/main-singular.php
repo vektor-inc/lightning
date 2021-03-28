@@ -13,6 +13,10 @@ else :
 				lightning_get_template_part( 'template-parts/entry', get_post_type() );
 			}
 
+			do_action( 'lightning_comment_before' );
+			comments_template( '', true );
+			do_action( 'lightning_comment_after' );
+
 			if ( is_single() ) {
 				lightning_get_template_part( 'template-parts/next-prev', get_post_type() );
 			}

@@ -91,8 +91,4 @@
 	
 	<?php endif; ?>
 
-	<?php do_action( 'lightning_comment_before' ); ?>
-		<?php comments_template( '', true ); ?>
-	<?php do_action( 'lightning_comment_after' ); ?>
-
 </<?php echo $tag;?>><!-- [ /#post-<?php the_ID(); ?> ] -->
