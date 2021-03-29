@@ -8,7 +8,7 @@
 
 	<?php 
 	// check single or loop that true
-	$is_entry_header_display = false;
+	$is_entry_header_display = false;// is_page()
 	if ( is_single() || is_archive() ){
 		$is_entry_header_display = apply_filters( 'lightning_is_entry_header', true );
 	}
