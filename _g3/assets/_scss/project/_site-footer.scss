@@ -2,6 +2,8 @@
     --vk-size-text-sm : 12px;
     display:block; overflow:hidden;
     font-size:var(--vk-size-text-sm);
+    content-visibility:auto;
+    contain-intrinsic-size: 370px;
     &-content {
         position: relative; // これがないとカスタマイズショートカットの位置調整が効かない
         padding-top: var(--vk-margin-section-bottom);

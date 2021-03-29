@@ -237,7 +237,8 @@ function lightning_comment_js() {
   Load Font
 /*-------------------------------------------*/
 function lightning_load_fonts(){
-	echo '<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">';
+	// echo '<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">';
+	echo '<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="preload">';
 }
 add_action( 'wp_footer', 'lightning_load_fonts' );
 
