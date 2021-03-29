@@ -148,7 +148,7 @@ class Lightning_Design_Manager {
 		// load JS ///////////////////////
 
 		if ( ! empty( $skin_info['js_path'] ) ) {
-			wp_enqueue_script( 'lightning-design-js', $skin_info['js_path'], array( 'jquery' ), $skin_info['version'], true );
+			wp_enqueue_script( 'lightning-design-js', $skin_info['js_path'], array(), $skin_info['version'], true );
 		}
 
 	}
