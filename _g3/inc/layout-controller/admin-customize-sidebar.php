@@ -106,7 +106,7 @@ function lightning_customize_register_sidebar( $wp_customize ) {
 	$wp_customize->selective_refresh->add_partial(
 		'lightning_theme_options[sidebar_fix]',
 		array(
-			'selector'        => '.sideSection',
+			'selector'        => '.sub-section',
 			'render_callback' => '',
 		)
 	);

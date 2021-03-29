@@ -1,10 +1,15 @@
 .sub-section{
-    content-visibility:auto;
+    // レンダリングを抑えて高速化するが、そもそもcontain-intrinsic-sizeを指定する必要があり、汎用テーマにおいてこの高さは変動するので無理
+    // content-visibility:auto;
+    // contain-intrinsic-size: 500px;
     &-title{
         font-size: calc( var(--vk-size-text) * 1.125 );
         margin-bottom:0.8rem;
         a {
             color: inherit;
         }
+    }
+    img {
+        max-width:100%;
     }
 }
