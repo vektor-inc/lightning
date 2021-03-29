@@ -17,7 +17,11 @@
 }
 
 .global-nav--layout--penetration {
-    width:100vw;
+    /* 
+    100vwはWindowsでスクロールバーも含んで横スクロールバーが出てしまうので極力使用しない
+    が、結局 calc(50% - 50vw); でも出てしまうので、bodyで overflow-x:hidden; している。
+     */
+    width:auto;
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
     clear: both;

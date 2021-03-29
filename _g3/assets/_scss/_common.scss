@@ -3,7 +3,10 @@
 }
 html,
 body {
-	// overflow-x: hidden; // 管理画面側ででつけるとツールバーの位置が変動する
+	// overflow-x: hidden; がないとWindowsで 100vw がスクロールを含むので全幅で横スクロールが表示されてしまうため
+	// overflow-x: hidden; で回避しているが極力 100vw は使わない方が望ましい
+	// overflow-x: hidden; をつけると編集画面のブロックのツールバーの位置が変動するバグが以前あった。2021年7月で問題なければこの行のコメントは削除可
+	overflow-x: hidden; 
 }
 html,
 body {
