@@ -2,7 +2,7 @@
 Lightning WordPress theme, Copyright (C) 2015-2021 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
 Tested up to: 5.7.0
-Stable tag: 14.0.3
+Stable tag: 14.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -39,8 +39,14 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
-[ Design Bug fix ] Fix Slider image margin
-[ Design Bug fix ] Fix iOS search button
+v14.0.4
+[ Origin III ][ Design Bug fix ] Fix cope with section base and full content_width
+[ Origin III ][ Design Bug fix ] comment title size
+[ Origin III ][ Design Bug fix ] Side title add nowrap
+[ Origin III ][ Design Bug fix ] Fix Page header title css under set the ancestor display ( from pro )
+[ Origin III ][ Design Bug fix ] Fix scroll-x on windows
+[ Origin III ][ Design Bug fix ] Fix Slider image margin
+[ Origin III ][ Design Bug fix ] Fix iOS search button
 
 v14.0.3
 Add Lightning Generation 3
