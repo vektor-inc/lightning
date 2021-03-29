@@ -167,7 +167,7 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 
 		public static function add_script() {
 			global $library_url;
-			wp_register_script( 'vk-mobile-nav-js', $library_url . '/js/vk-mobile-nav.min.js', array( 'jquery' ), self::$version );
+			wp_register_script( 'vk-mobile-nav-js', $library_url . '/js/vk-mobile-nav.min.js', array(), self::$version );
 			wp_enqueue_script( 'vk-mobile-nav-js' );
 			wp_enqueue_style( 'vk-mobile-nav-css', $library_url . '/css/vk-mobile-nav-bright.css', array(), self::$version, 'all' );
 		}
