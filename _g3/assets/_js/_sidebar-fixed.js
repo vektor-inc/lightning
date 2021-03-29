@@ -199,7 +199,6 @@
 				is_content_bottom_display = true;
 			}
 
-
 			/*-------------------------------------------*/
 			// DOM操作（上端優先）
 			/*-------------------------------------------*/
@@ -230,7 +229,7 @@
 				// サイドバー下端が表示されたら
 				if ( is_sidebar_bottom_display ){
 					sideSection.style.position = "fixed";
-					sideSection.style.bottom = "30px";
+					sideSection.style.bottom = "5px";
 					sideSection.style.left = sidebar_position_left_default + "px";
 					
 					// コンテンツエリア下端が表示されたら
@@ -243,7 +242,11 @@
 
 						// 右サイトバーの時は absolute になるので right = 0 を付与しないといけなくなる
 						if ( sideSection.classList.contains('sub-section--pos--left') != true ){
-							sideSection.style.right = 0;
+							sideSection.style.right = "15px";
+						}
+					} else {
+						if ( sideSection.classList.contains('sub-section--pos--left') != true ){
+							sideSection.style.right = null;
 						}
 					}
 				} else {
