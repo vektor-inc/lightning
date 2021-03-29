@@ -9,9 +9,10 @@
         }
     }
     &-default{
-        border:1px solid var(--vk-color-border-hr);
+        border:1px solid var(--vk-color-text-link);
         &:hover{
-            background-color: var(--vk-color-accent-bg);
+            color:#fff;
+            background-color: var(--vk-color-text-link);
         }
     }
     &-sm{
@@ -19,5 +20,5 @@
     } 
 }
 a.btn{
-    border: none;
+    text-decoration: none;
 }
