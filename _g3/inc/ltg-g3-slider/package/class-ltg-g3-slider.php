@@ -661,7 +661,7 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 			$slider_prefix = esc_html($options['top_slide_prefix']);
 
 			$tag = 'var ' . $slider_prefix . 'swiper = new Swiper(\'.' . $slider_prefix . 'swiper-container\', ' . $swiper_paras . ');';
-			wp_add_inline_script( 'vk-blocks-swiper', $tag, 'after' );
+			wp_add_inline_script( 'vk-swiper-script', $tag, 'after' );
 		}
 
 		/**
