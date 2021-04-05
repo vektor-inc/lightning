@@ -35,15 +35,18 @@ if ( ! class_exists( 'VK_Swiper' ) ) {
 		 * Load Swiper
 		 */
 		public static function load_swiper() {
-			wp_enqueue_style( 'vk-swiper-style', plugin_dir_url( __FILE__ ) . 'assets/css/swiper.min.css', array(), SWIPER_VERSION );
-			wp_enqueue_script( 'vk-swiper-script', plugin_dir_url( __FILE__ ) . 'assets/js/swiper.min.js', array(), SWIPER_VERSION, true );
+			global $vk_swiper_url;
+			wp_enqueue_style( 'vk-swiper-style', $vk_swiper_url . 'assets/css/swiper.min.css', array(), SWIPER_VERSION );
+			wp_enqueue_script( 'vk-swiper-script', $vk_swiper_url . 'assets/js/swiper.min.js', array(), SWIPER_VERSION, true );
 		}
 
 		public static function css_tree_shaking_array( $vk_css_tree_shaking_array ){
+			global $vk_swiper_url;
+			global $vk_swiper_path;
 			$vk_css_tree_shaking_array[] = array(
 				'id'      => 'vk-swiper-style',
-				'url'     => plugin_dir_url( __FILE__ ) . 'assets/css/swiper.min.css',
-				'path'    => plugin_dir_path( __FILE__ ) . 'assets/css/swiper.min.css',
+				'url'     => $vk_swiper_url . 'assets/css/swiper.min.css',
+				'path'    => $vk_swiper_path . 'assets/css/swiper.min.css',
 				'version' => SWIPER_VERSION,
 			);
 			return $vk_css_tree_shaking_array;
