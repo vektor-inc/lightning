@@ -8,14 +8,10 @@
 /**
  * Swiper is used only on the front page.
  * If you do not use the slider on the front page, Swiper will not be loaded.
- *
- *
  */
-$options = get_option( 'vk_advanced_slider_option' );
-$default = vk_advanced_slider_default_options();
-$options = wp_parse_args( $options, $default );
 
-if ( 'hide' !== $options['top_slide_display'] ) {
+$options = get_option( 'lightning_theme_options' );
+if ( 'hide' === isset( $options['top_slide_display'] ) ){
 	return;
 }
 
