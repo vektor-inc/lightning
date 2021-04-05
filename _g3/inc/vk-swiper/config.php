@@ -11,7 +11,7 @@
  */
 
 $options = get_option( 'lightning_theme_options' );
-if ( 'hide' === isset( $options['top_slide_display'] ) ){
+if ( isset( $options['top_slide_display'] ) && 'hide' === $options['top_slide_display'] ) {
 	return;
 }
 
