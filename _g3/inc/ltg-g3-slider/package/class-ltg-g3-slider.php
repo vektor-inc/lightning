@@ -176,6 +176,32 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 				)
 			);
 
+			// Stop time.
+			$wp_customize->add_setting(
+				'lightning_theme_options[top_slide_time]',
+				array(
+					'default'           => 4000,
+					'type'              => 'option',
+					'capability'        => 'edit_theme_options',
+					'sanitize_callback' => array( 'VK_Helpers', 'sanitize_number' ),
+				)
+			);
+
+			$wp_customize->add_control(
+				new VK_Custom_Text_Control(
+					$wp_customize,
+					'lightning_theme_options[top_slide_time]',
+					array(
+						'label'       => __( 'Slide rest time', 'lightning' ),
+						'section'     => 'ltg_g3_slider',
+						'settings'    => 'lightning_theme_options[top_slide_time]',
+						'type'        => 'text',
+						'description' => '',
+						'input_after' => __( 'millisecond', 'lightning' ),
+					)
+				)
+			);
+
 			// Slide interval time.
 			$wp_customize->add_setting(
 				'lightning_theme_options[top_slide_effect]',
