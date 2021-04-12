@@ -2,7 +2,7 @@
 /**
  * VK Swiper
  *
- * @package Katawara
+ * @package VK Swiper
  */
 
 /*
