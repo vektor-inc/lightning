@@ -39,6 +39,9 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ Add function ] Add Slider rest time
+[ G3 ][ Bug fix ] ReFix Slider (cope with VK Blocks Pro 1.1.0)
+
 v14.0.5
 [ G3 ][ Bug fix ] Fix Slider (cope with VK Blocks Pro 1.1.0)
 
