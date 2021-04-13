@@ -60,6 +60,12 @@ if ( ! class_exists( 'VK_Swiper' ) ) {
 	 */
 	public static function css_tree_shaking_exclude_class( $inidata ) {
 	$exclude_classes_array = array(
+		'swiper-container-fade',
+		'swiper-container-coverflow',
+		'swiper-container-flip',
+		'swiper-container-3d',
+		'swiper-container-initialized',
+		'swiper-container-horizontal',
 		'swiper-slide',
 		'swiper-slide-prev',
 		'swiper-slide-next',
