@@ -20,3 +20,13 @@
 @import "overwrite/vk-components";
 @import "overwrite/button";
 
+.edit-post-meta-boxes-area {
+    h4 {
+        display: block;
+        overflow: hidden;
+        font-size:14px;
+        margin-top: 1em;
+        margin-bottom: 0.3em;
+        padding-bottom: 0;
+    }
+}
