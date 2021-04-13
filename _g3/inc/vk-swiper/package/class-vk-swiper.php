@@ -63,6 +63,7 @@ if ( ! class_exists( 'VK_Swiper' ) ) {
 		'swiper-container-fade',
 		'swiper-container-coverflow',
 		'swiper-container-flip',
+		'swiper-container-cube',
 		'swiper-container-3d',
 		'swiper-container-initialized',
 		'swiper-container-horizontal',
