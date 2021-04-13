@@ -32,7 +32,7 @@
 		}
 	}
 	&-text-title {
-		font-size: 1.31rem;
+		font-size: 18px;
 
 		//見出しデザインリセット（見出しデザイン指定にまけないように）
 		background-color:unset;
@@ -65,6 +65,7 @@
 	}
 	&-text-caption {
 		margin-bottom: 0;
+		font-size:12px;
 		@media (min-width: $sm-min) {
 		}
 		@media (min-width: $lg-min) {
@@ -79,6 +80,9 @@
 	}
 	.btn {
 		margin-top: 1em;
+		@media (max-width: $sm-max) {
+			font-size:12px;
+		}
 	}
 	picture {
 		width: 100%;
