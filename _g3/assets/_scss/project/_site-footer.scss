@@ -4,6 +4,11 @@
     font-size:var(--vk-size-text-sm);
     content-visibility:auto;
     contain-intrinsic-size: 370px;
+    .mobile-fix-nav_enable & {
+        @media ( max-width: $md-max ) {
+            padding-bottom:70px;
+        }
+    }
     &-content {
         position: relative; // これがないとカスタマイズショートカットの位置調整が効かない
         padding-top: var(--vk-margin-section-bottom);
