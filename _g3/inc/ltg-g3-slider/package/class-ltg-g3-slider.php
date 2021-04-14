@@ -202,7 +202,26 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 				)
 			);
 
-			// Slide interval time.
+			// Allow cube effect or not. (bool) true or false
+			$ltg_g3_swiper_allow_cube = apply_filters( 'ltg_g3_swiper_allow_cube', false );
+
+			$ltg_g3_swiper_effects =  array(
+				'slide'     => 'slide',
+				'fade'      => 'fade',
+				'coverflow' => 'coverflow',
+				'flip'      => 'flip',
+			);
+
+			if ( true === $ltg_g3_swiper_allow_cube ) {
+				$ltg_g3_swiper_effects = array_merge(
+					$ltg_g3_swiper_effects,
+					array(
+						'cube' => 'cube'
+					)
+				);
+			}
+
+			// Slide interval effect.
 			$wp_customize->add_setting(
 				'lightning_theme_options[top_slide_effect]',
 				array(
@@ -220,13 +239,7 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 					'section'     => 'ltg_g3_slider',
 					'settings'    => 'lightning_theme_options[top_slide_effect]',
 					'type'        => 'select',
-					'choices'     => array(
-						'slide'     => 'slide',
-						'fade'      => 'fade',
-						// 'cube'      => 'cube',
-						'coverflow' => 'coverflow',
-						'flip'      => 'flip',
-					),
+					'choices'     => $ltg_g3_swiper_effects,
 					'description' => '',
 					'input_after' => '',
 				)
