@@ -258,7 +258,10 @@ $xxl-min: 1400px;
 	& &_btn {
 		font-size: 12px;
 		text-decoration: none;
-		
+		// カードの幅が狭い時にボタンが改行されてボタンの上のテキストと重なるため、通常のボタンより左右の余白を狭く変更
+		padding-left:1rem;
+		padding-right:1rem;
+		white-space: nowrap;
 	}
 }
 
