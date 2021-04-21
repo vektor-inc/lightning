@@ -9,7 +9,9 @@ do_action( 'lightning_site_header_after' );
 ?>
 
 <?php if ( is_front_page() ) {
-    LTG_G3_Slider::display_html();
+	if ( apply_filters( 'lightning_default_slide_display', true ) ) { 
+    	LTG_G3_Slider::display_html(); 
+	}
 } ?>
 
 <?php if ( ! is_front_page() ) : ?>
