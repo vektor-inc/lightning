@@ -39,6 +39,9 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ Design Bug fix ] Fix Editor CSS not refrected
+[ G3 ][ Design Bug fix ] Fix scrolled g-nav bgcolor
+
 v14.0.7
 [ G3 ][ Design Bug fix ] Footer nav on mobile screen
 [ G3 ][ Design Bug fix ] Fix mobile fix nav covered footer bottom

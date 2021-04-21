@@ -31,7 +31,7 @@ class Lightning_Design_Manager {
 		$skins = array(
 			'plain'   => array(
 				'label'          => __( 'Plain (Beta)', 'lightning' ),
-				'css_url'        => get_template_directory_uri() . '/design-skin/plain/css/style.css', // 空でも指定しないと lightning-design-style がが出力されずに インラインCSSが効かないため',
+				'css_url'        => get_template_directory_uri() . '/design-skin/plain/css/style.css', // 中身が空でも指定しないと lightning-design-style がが出力されずに インラインCSSが効かないため',
 				'css_path'       => get_parent_theme_file_path( '/design-skin/plain/css/style.css' ),
 				'editor_css_url' => '',
 				'php_path'       => '',
@@ -40,14 +40,15 @@ class Lightning_Design_Manager {
 				'bootstrap'      => '',
 			),
 			'origin3' => array(
-				'label'          => __( 'Origin III (Beta)', 'lightning' ),
-				'css_url'        => get_template_directory_uri() . '/design-skin/origin3/css/style.css',
-				'css_path'       => get_parent_theme_file_path( '/design-skin/origin3/css/style.css' ),
-				'editor_css_url' => get_template_directory_uri() . '/design-skin/origin3/css/editor.css',
-				'php_path'       => get_parent_theme_file_path() . '/design-skin/origin3/origin3.php',
-				'js_path'        => '',
-				'version'        => LIGHTNING_THEME_VERSION,
-				'bootstrap'      => '',
+				'label'                    => __( 'Origin III (Beta)', 'lightning' ),
+				'css_url'                  => get_template_directory_uri() . '/design-skin/origin3/css/style.css',
+				'css_path'                 => get_parent_theme_file_path( '/design-skin/origin3/css/style.css' ),
+				'editor_css_path_relative' => '_g3/design-skin/origin3/css/editor.css',
+				'editor_css_url'           => get_template_directory_uri() . '/design-skin/origin3/css/editor.css',
+				'php_path'                 => get_parent_theme_file_path() . '/design-skin/origin3/origin3.php',
+				'js_path'                  => '',
+				'version'                  => LIGHTNING_THEME_VERSION,
+				'bootstrap'                => '',
 			),
 		);
 		return apply_filters( 'lightning_g3_skins', $skins );
@@ -160,7 +161,9 @@ class Lightning_Design_Manager {
 	 */
 	static function load_skin_editor_css() {
 		$skin_info = self::get_current_skin();
-		if ( ! empty( $skin_info['editor_css_url'] ) ) {
+		if ( ! empty( $skin_info['editor_css_path_relative'] ) ) {
+			add_editor_style( $skin_info['editor_css_path_relative'] );
+		} else if ( ! empty( $skin_info['editor_css_url'] ) ) {
 			add_editor_style( $skin_info['editor_css_url'] );
 		}
 	}
