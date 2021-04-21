@@ -19,45 +19,45 @@
 	アニメーションで0の位置に移動する。
 */
 
-@media (min-width: $lg-min) {
-	.global-nav {
+.global-nav {
+	@media (min-width: $lg-min) {
 		top: -63px;
 		transition: top 1s;
 	}
+}
 
-	.global-nav::after {
-		content: "";
-		clear: both;
-		display: block;
+.global-nav::after {
+	content: "";
+	clear: both;
+	display: block;
+}
+.header_scrolled {
+	.site-header-container {
+		width: 100%;
 	}
-	.header_scrolled {
-		.site-header-container {
-			width: 100%;
-		}
-		.site-header-logo{
-			padding-bottom: 63px;
-		}
-		&.admin-bar .global-nav {
-			top: 32px;
-		}
-		.global-nav {
-			clear: both;
-			z-index: 1000;
-			position: fixed;
-			top: 0px;
-			left: 0;
-			width: 100%;
-			min-height: unset;
-			background-color: var(--vk-color-header-bg);
-			box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-			nav {
-				display: block; /* Cope with setted table-sell such a OriginII  */
-				width: var(--vk-width-container);
-				margin-left: auto;
-				margin-right: auto;
-				// padding-left: 15px;
-				// padding-right: 15px;
-			}
+	.site-header-logo{
+		padding-bottom: 63px;
+	}
+	&.admin-bar .global-nav {
+		top: 32px;
+	}
+	.global-nav {
+		clear: both;
+		z-index: 1000;
+		position: fixed;
+		top: 0px;
+		left: 0;
+		width: 100%;
+		min-height: unset;
+		background-color: var(--vk-color-header-bg);
+		box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+		nav {
+			display: block; /* Cope with setted table-sell such a OriginII  */
+			width: var(--vk-width-container);
+			margin-left: auto;
+			margin-right: auto;
+			// padding-left: 15px;
+			// padding-right: 15px;
 		}
 	}
 }
