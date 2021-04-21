@@ -29,25 +29,25 @@ class Lightning_Design_Manager {
 	 */
 	static function get_skins() {
 		$skins = array(
-			'plain' => array(
-				'label'           => __( 'Plain (Beta)', 'lightning' ),
-				'css_url'         => get_template_directory_uri() . '/design-skin/plain/css/style.css', // 空でも指定しないと lightning-design-style がが出力されずに インラインCSSが効かないため',
-				'css_path'        => get_parent_theme_file_path( '/design-skin/plain/css/style.css' ),
-				'editor_css_url'  => '',
-				'php_path'        => '',
-				'js_path'         => '',
-				'version'         => LIGHTNING_THEME_VERSION,
-				'bootstrap'       => '',
+			'plain'   => array(
+				'label'          => __( 'Plain (Beta)', 'lightning' ),
+				'css_url'        => get_template_directory_uri() . '/design-skin/plain/css/style.css', // 空でも指定しないと lightning-design-style がが出力されずに インラインCSSが効かないため',
+				'css_path'       => get_parent_theme_file_path( '/design-skin/plain/css/style.css' ),
+				'editor_css_url' => '',
+				'php_path'       => '',
+				'js_path'        => '',
+				'version'        => LIGHTNING_THEME_VERSION,
+				'bootstrap'      => '',
 			),
 			'origin3' => array(
-				'label'           => __( 'Origin III (Beta)', 'lightning' ),
-				'css_url'         => get_template_directory_uri() . '/design-skin/origin3/css/style.css',
-				'css_path'     	  => get_parent_theme_file_path( '/design-skin/origin3/css/style.css' ),
-				'editor_css_url'  => get_template_directory_uri() . '/design-skin/origin3/css/editor.css',
-				'php_path'        => get_parent_theme_file_path() . '/design-skin/origin3/origin3.php',
-				'js_path'         => '',
-				'version'         => LIGHTNING_THEME_VERSION,
-				'bootstrap'       => '',
+				'label'          => __( 'Origin III (Beta)', 'lightning' ),
+				'css_url'        => get_template_directory_uri() . '/design-skin/origin3/css/style.css',
+				'css_path'       => get_parent_theme_file_path( '/design-skin/origin3/css/style.css' ),
+				'editor_css_url' => get_template_directory_uri() . '/design-skin/origin3/css/editor.css',
+				'php_path'       => get_parent_theme_file_path() . '/design-skin/origin3/origin3.php',
+				'js_path'        => '',
+				'version'        => LIGHTNING_THEME_VERSION,
+				'bootstrap'      => '',
 			),
 		);
 		return apply_filters( 'lightning_g3_skins', $skins );
