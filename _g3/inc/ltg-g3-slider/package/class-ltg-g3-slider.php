@@ -202,24 +202,14 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 				)
 			);
 
-			// Allow cube effect or not. (bool) true or false
-			$ltg_g3_swiper_allow_cube = apply_filters( 'ltg_g3_swiper_allow_cube', false );
-
+			// Array of allowed swiper effects by kurudrive
 			$ltg_g3_swiper_effects =  array(
 				'slide'     => 'slide',
 				'fade'      => 'fade',
 				'coverflow' => 'coverflow',
 				'flip'      => 'flip',
 			);
-
-			if ( true === $ltg_g3_swiper_allow_cube ) {
-				$ltg_g3_swiper_effects = array_merge(
-					$ltg_g3_swiper_effects,
-					array(
-						'cube' => 'cube'
-					)
-				);
-			}
+			$ltg_g3_swiper_effects = apply_filters( 'ltg_g3_swiper_effects', $ltg_g3_swiper_effects );
 
 			// Slide interval effect.
 			$wp_customize->add_setting(
