@@ -202,7 +202,16 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 				)
 			);
 
-			// Slide interval time.
+			// Array of allowed swiper effects by kurudrive
+			$ltg_g3_swiper_effects =  array(
+				'slide'     => 'slide',
+				'fade'      => 'fade',
+				'coverflow' => 'coverflow',
+				'flip'      => 'flip',
+			);
+			$ltg_g3_swiper_effects = apply_filters( 'ltg_g3_swiper_effects', $ltg_g3_swiper_effects );
+
+			// Slide interval effect.
 			$wp_customize->add_setting(
 				'lightning_theme_options[top_slide_effect]',
 				array(
@@ -220,13 +229,7 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 					'section'     => 'ltg_g3_slider',
 					'settings'    => 'lightning_theme_options[top_slide_effect]',
 					'type'        => 'select',
-					'choices'     => array(
-						'slide'     => 'slide',
-						'fade'      => 'fade',
-						// 'cube'      => 'cube',
-						'coverflow' => 'coverflow',
-						'flip'      => 'flip',
-					),
+					'choices'     => $ltg_g3_swiper_effects,
 					'description' => '',
 					'input_after' => '',
 				)
