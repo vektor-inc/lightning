@@ -47,7 +47,13 @@
 		position: fixed;
 		top: 0px;
 		left: 0;
-		width: 100%;
+
+		/* 
+		100vwはWindowsでスクロールバーも含んで横スクロールバーが出てしまうので極力使用しない
+		が、結局 calc(50% - 50vw); でも出てしまうので、bodyで overflow-x:hidden; している。
+		*/
+		width:100vw;
+
 		min-height: unset;
 		background-color: var(--vk-color-header-bg);
 		box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
