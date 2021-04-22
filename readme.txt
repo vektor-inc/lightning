@@ -2,7 +2,7 @@
 Lightning WordPress theme, Copyright (C) 2015-2021 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
 Tested up to: 5.7.0
-Stable tag: 14.0.7
+Stable tag: 14.0.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -39,6 +39,7 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v14.0.8
 [ G3 ][ Design Bug fix ] Fix scrolled g-nav margin on windows
 [ G3 ][ Design Bug fix ] Fix Editor CSS not refrected
 [ G3 ][ Design Bug fix ] Fix scrolled g-nav bgcolor
