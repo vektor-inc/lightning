@@ -163,7 +163,7 @@ class Lightning_Design_Manager {
 		$skin_info = self::get_current_skin();
 		if ( ! empty( $skin_info['editor_css_path_relative'] ) ) {
 			add_editor_style( $skin_info['editor_css_path_relative'] );
-		} else if ( ! empty( $skin_info['editor_css_url'] ) ) {
+		} elseif ( ! empty( $skin_info['editor_css_url'] ) ) {
 			add_editor_style( $skin_info['editor_css_url'] );
 		}
 	}
