@@ -39,6 +39,7 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ Design Bug fix ] Fix scrolled g-nav margin on windows
 [ G3 ][ Design Bug fix ] Fix Editor CSS not refrected
 [ G3 ][ Design Bug fix ] Fix scrolled g-nav bgcolor
 
