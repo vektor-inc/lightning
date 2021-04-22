@@ -35,7 +35,7 @@ class Lightning_Design_Manager {
 				'css_path'       => get_parent_theme_file_path( '/design-skin/plain/css/style.css' ),
 				'editor_css_url' => '',
 				'php_path'       => '',
-				'js_path'        => '',
+				'js_url'         => '',
 				'version'        => LIGHTNING_THEME_VERSION,
 				'bootstrap'      => '',
 			),
@@ -46,7 +46,7 @@ class Lightning_Design_Manager {
 				'editor_css_path_relative' => '_g3/design-skin/origin3/css/editor.css',
 				'editor_css_url'           => get_template_directory_uri() . '/design-skin/origin3/css/editor.css',
 				'php_path'                 => get_parent_theme_file_path() . '/design-skin/origin3/origin3.php',
-				'js_path'                  => '',
+				'js_url'                   => '',
 				'version'                  => LIGHTNING_THEME_VERSION,
 				'bootstrap'                => '',
 			),
@@ -148,8 +148,8 @@ class Lightning_Design_Manager {
 
 		// load JS ///////////////////////
 
-		if ( ! empty( $skin_info['js_path'] ) ) {
-			wp_enqueue_script( 'lightning-design-js', $skin_info['js_path'], array(), $skin_info['version'], true );
+		if ( ! empty( $skin_info['js_url'] ) ) {
+			wp_enqueue_script( 'lightning-design-js', esc_url( $skin_info['js_url'] ), array(), $skin_info['version'], true );
 		}
 
 	}
