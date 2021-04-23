@@ -80,3 +80,67 @@ function lightning_bbp_add_topic_title() {
 	}
 }
 add_action( 'bbp_template_before_single_topic', 'lightning_bbp_add_topic_title' );
+
+/**
+ * ユーザープロフィールページのページヘッダー
+ */
+function lightning_bbp_page_header_title( $page_title ) {
+	if ( bbp_is_single_user() ) {
+		$page_title = __( 'User Profile', 'lightning' );
+	}
+	return $page_title;
+}
+add_filter( 'lightning_pageTitCustom', 'lightning_bbp_page_header_title' );
+
+/**
+ * ユーザープロフィールページのパンくず
+ */
+function lightning_bbp_breadcrumb( $breadcrumb_html ) {
+	// Microdata
+	// http://schema.org/BreadcrumbList
+	/*-------------------------------------------*/
+	$microdata_li        = ' itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"';
+	$microdata_li_a      = ' itemprop="item"';
+	$microdata_li_a_span = ' itemprop="name"';
+	if ( bbp_is_single_user() ) {
+
+		// パンくず開始
+		$breadcrumb_html  = '<!-- [ .breadSection ] -->';
+		$breadcrumb_html .= '<div class="section breadSection">';
+		$breadcrumb_html .= '<div class="container">';
+		$breadcrumb_html .= '<div class="row">';
+		$breadcrumb_html .= '<ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList">';
+
+		// Home
+		$breadcrumb_html .= '<li id="panHome"' . $microdata_li . '>';
+		$breadcrumb_html .= '<a' . $microdata_li_a . ' href="' . home_url( '/' ) . '">';
+		$breadcrumb_html .= '<span' . $microdata_li_a_span . '><i class="fa fa-home"></i> HOME</span>';
+		$breadcrumb_html .= '</a>';
+		$breadcrumb_html .= '</li>';
+
+		// ユーザー名
+		$breadcrumb_html .= '<li>';
+		$breadcrumb_html .= '<span>' . bbp_get_displayed_user_field( 'display_name' ) . '</span>';
+		$breadcrumb_html .= '</li>';
+
+		// パンくず終了
+		$breadcrumb_html .= '</ol>';
+		$breadcrumb_html .= '</div>';
+		$breadcrumb_html .= '</div>';
+		$breadcrumb_html .= '</div>';
+		$breadcrumb_html .= '<!-- [ /.breadSection ] -->';
+	}
+	return $breadcrumb_html;
+}
+add_filter( 'lightning_panListHtml', 'lightning_bbp_breadcrumb' );
+
+/**
+ * ユーザープロフィールページの投稿タイプ
+ */
+function lightning_bbp_get_post_type( $post_type ) {
+	if ( bbp_is_single_user() ) {
+		$post_type['slug'] = 'bbp_user';
+	}
+	return $post_type;
+}
+add_filter( 'lightning_postType_custom', 'lightning_bbp_get_post_type' );

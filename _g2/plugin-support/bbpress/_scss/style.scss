@@ -28,8 +28,6 @@
 		vertical-align: unset;
 	}
 }
-
-
 /*-------------------------------------------*/
 /*	リンク設定ポップアップ修正
 /*-------------------------------------------*/
@@ -200,5 +198,27 @@ div.bbp-submit-wrapper {
 .single-forum {
 	.vk_posts.postNextPrev{
 		display: none;
+	}
+}
+
+/*-------------------------------------------*/
+/*	ユーザープロフィール
+/*-------------------------------------------*/
+.bbp-user-page {
+	.entry-header {
+		display: none;
+	}
+	#bbp-user-body .bbp-search-form{
+		display: none;
+	}
+	#bbpress-forums #bbp-user-wrapper{
+		h2.entry-title {
+			padding: 0.8em 0;
+			font-size:1.4em;
+			margin-bottom:2em;
+		}
+		h3 {
+			font-size:16px;
+		}
 	}
 }
