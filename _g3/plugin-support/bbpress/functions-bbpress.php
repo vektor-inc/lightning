@@ -5,6 +5,13 @@
  * @package         Lightning
  */
 
+function lightning_bbp_is_singular( $return ){
+	if ( bbp_is_single_user() ){
+		$return = true;
+	}
+	return $return;
+}
+add_filter( 'lightning_is_singular', 'lightning_bbp_is_singular');
 
 function lightning_bbpress_extension_deactive() {
 	include_once ABSPATH . 'wp-admin/includes/plugin.php';
