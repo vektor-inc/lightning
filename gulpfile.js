@@ -182,6 +182,16 @@ gulp.task('sass_bbpress', function (done) {
 	  .pipe(gulp.dest('./_g2/plugin-support/bbpress/css/'))
 	  .pipe(gulp.dest('../lightning-pro/plugin-support/bbpress/css/'));
   });
+  gulp.task('sass_bbpress_g3', function (done) {
+    return src(['./_g3/plugin-support/bbpress/_scss/**.scss'])
+      .pipe(sass())
+      .pipe(cmq({
+      log: true
+      }))
+      .pipe(autoprefixer())
+      .pipe(cleanCss())
+      .pipe(gulp.dest('./_g3/plugin-support/bbpress/css/'));
+    });
 
 // gulp.task('components_copy', function (done) {
 //   return gulp.src(['inc/components/*.php'])
@@ -233,6 +243,7 @@ gulp.task('watch', function (done) {
   gulp.watch(['./_g2/design-skin/origin/_scss/**/*.scss'], gulp.series('sass_skin'));
   gulp.watch(['./_g2/design-skin/origin2/_scss/**/*.scss'], gulp.series('sass_skin2_dev'));
   gulp.watch(['./_g2/design-skin/foundation/_scss/**/*.scss'], gulp.series('sass_skin2', 'dist_foundation'));
+  gulp.watch(['./_g3/plugin-support/bbpress/_scss/**'], gulp.series('sass_bbpress_g3'));
   done();
 });
 
