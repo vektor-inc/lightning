@@ -40,6 +40,8 @@ if ( ! class_exists( 'LTG_Template_Redirect' ) ) {
 			// woocommerce.php redirect
 			add_filter( 'woocommerce_template_loader_files', array( __CLASS__, 'woocommerce_redirect' ), 10, 2 );
 
+			// Cope with bbPress
+			add_filter( 'template_include', array( __CLASS__, 'bbpress_redirect' ) );
 		}
 
 		public static function woocommerce_redirect( $default_file ) {
@@ -224,6 +226,42 @@ if ( ! class_exists( 'LTG_Template_Redirect' ) ) {
 				}
 			}
 		}
+
+		/**
+		 * bbPressが独自にテンプレート階層を上書きしてしまってg階層を経由しないため上書き
+		 * bbp_get_theme_compat_templates();
+		 */
+		public static function bbpress_redirect( $template ) {
+			if ( function_exists( 'bbp_get_query_template' ) ) {
+
+				$body_class = get_body_class();
+				if ( in_array( 'bbpress', $body_class ) ) {
+					if ( lightning_is_g3() ) {
+						$dir = LIG_G3_DIR;
+					} else {
+						$dir = LIG_G2_DIR;
+					}
+					$templates = array(
+						'plugin-bbpress.php',
+						'bbpress.php',
+						'forums.php',
+						'forum.php',
+						'generic.php',
+						$dir . '/page.php',
+						$dir . '/single.php',
+						$dir . '/singular.php',
+						$dir . '/singular.php',
+						$dir . '/index.php',
+					);
+					return bbp_get_query_template( 'bbpress', $templates );
+				} else {
+					return $template;
+				}
+			} else {
+				return $template;
+			}
+		}
+
 	}
 
 	new LTG_Template_Redirect();

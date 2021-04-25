@@ -41,7 +41,8 @@ do_action( 'lightning_site_header_after' );
         <div class="<?php lightning_the_class_name( 'main-section' ); ?>" id="main" role="main">
             <?php do_action( 'lightning_main_section_prepend' ); ?>
 
-            <?php if ( is_singular() ){
+            <?php 
+            if ( apply_filters( 'lightning_is_singular', is_singular() ) ){
                 lightning_get_template_part( 'template-parts/main-singular' );
             } else {
                 lightning_get_template_part( 'template-parts/main-archive' );

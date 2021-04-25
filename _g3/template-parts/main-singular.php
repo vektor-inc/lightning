@@ -17,7 +17,7 @@ else :
 			comments_template( '', true );
 			do_action( 'lightning_comment_after' );
 
-			if ( is_single() ) {
+			if ( apply_filters( 'lightning_is_next_prev', true, 'next_prev' ) ) {
 				lightning_get_template_part( 'template-parts/next-prev', get_post_type() );
 			}
 		endwhile;
