@@ -114,8 +114,19 @@ if ( ! class_exists( 'VK_Helpers' ) ) {
 				$post_id = $post->ID;
 			}
 			$taxonomies = get_the_taxonomies( $post_id, $args );
-			$exclusion  = array( 'post_tag', 'product_type' );
-			$exclusion  = apply_filters( 'vk_get_display_taxonomies_exclusion', $exclusion );
+
+			// 非公開のタクソノミーを自動的に除外
+			foreach ( $taxonomies as $taxonomy => $value ) {
+				$taxonomy_info = get_taxonomy( $taxonomy );
+				if ( empty( $taxonomy_info->public ) ) {
+					unset( $taxonomies[ $taxonomy ] );
+				}
+			}
+
+			// 上記を後で実装したので以下の処理は事実上不要と思われるが、
+			// 公開タクソノミーで意図的に表示したくないものもあるかもしれないのでフィルターは消さない
+			$exclusion = array( 'post_tag', 'product_type' );
+			$exclusion = apply_filters( 'vk_get_display_taxonomies_exclusion', $exclusion );
 			if ( is_array( $exclusion ) ) {
 				foreach ( $exclusion as $key => $value ) {
 					unset( $taxonomies[ $value ] );

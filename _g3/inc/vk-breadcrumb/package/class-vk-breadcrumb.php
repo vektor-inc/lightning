@@ -229,6 +229,15 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 
 					// Taxonomy of Single or Page.
 					$get_taxonomies = get_the_taxonomies();
+
+					// 非公開のタクソノミーを自動的に除外
+					foreach ( $get_taxonomies as $taxonomy => $value ) {
+						$taxonomy_info = get_taxonomy( $taxonomy );
+						if ( empty( $taxonomy_info->public ) ) {
+							unset( $get_taxonomies[ $taxonomy ] );
+						}
+					}
+
 					$taxonomies     = array();
 
 					// 一旦タクソノミーの文字列配列に変換しないと色々と面倒.
