@@ -455,6 +455,15 @@ function lightning_get_display_taxonomies( $post_id = null, $args = null ){
 		$post_id = $post->ID;
 	}
 	$taxonomies	= get_the_taxonomies( $post_id, $args );
+
+	// 非公開のタクソノミーを自動的に除外
+	foreach ( $taxonomies as $taxonomy => $value ) {
+		$taxonomy_info = get_taxonomy( $taxonomy );
+		if ( empty( $taxonomy_info->public ) ) {
+			unset( $taxonomies[ $taxonomy ] );
+		}
+	}
+
 	$exclusion	= array( 'post_tag', 'product_type' );
 	$exclusion	= apply_filters( 'vk_get_display_taxonomies_exclusion', $exclusion );
 	if ( is_array( $exclusion ) ){
