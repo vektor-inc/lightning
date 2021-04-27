@@ -25,8 +25,8 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 			if ( ! empty( $options['tree_shaking'] ) ) {
 				add_action( 'get_header', array( __CLASS__, 'get_html_start' ), 2147483647 );
 				add_action( 'shutdown', array( __CLASS__, 'get_html_end' ), 0 );
-			}			
-			
+			}
+
 			if ( ! empty( $options['preload'] ) ) {
 				add_filter( 'style_loader_tag', array( __CLASS__, 'css_preload' ), 10, 4 );
 			}
@@ -36,11 +36,11 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 			global $prefix_customize_panel;
 			$wp_customize->add_section(
 				'css_optimize', array(
-					'title'    => $prefix_customize_panel . __( 'CSS Optimize ( Speed up ) Settings', 'lightning' ),
+					'title'    => $prefix_customize_panel . __( 'CSS Optimize ( Speed up ) Settings', 'css_optimize_textdomain' ),
 					'priority' => 450,
 				)
 			);
-		
+
 			// Tree shaking
 			////////////////////////////////////////////////////////////////
 
@@ -51,43 +51,43 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 				)
 			);
 			$wp_customize->add_control(
-				new VK_Custom_Html_Control(
+				new Custom_Html_Control(
 					$wp_customize,
 					'tree_shaking_title',
 					array(
-						'label'            => __( 'Tree shaking', 'lightning' ),
+						'label'            => __( 'Tree shaking', 'css_optimize_textdomain' ),
 						'section'          => 'css_optimize',
 						'type'             => 'text',
 						'custom_title_sub' => '',
-						// 'custom_html'      => __( 'Move part of CSS and JS to the footer to improve display speed.', 'lightning' ),
+						// 'custom_html'      => __( 'Move part of CSS and JS to the footer to improve display speed.', 'css_optimize_textdomain' ),
 					)
 				)
 			);
-		
+
 			$wp_customize->add_setting(
 				'vk_css_optimize_options[tree_shaking]',
 				array(
 					'default'           => '',
 					'type'              => 'option',
 					'capability'        => 'edit_theme_options',
-					'sanitize_callback' => array( 'VK_Helpers', 'sanitize_choice' ),
+					'sanitize_callback' => 'sanitize_text_field',
 				)
 			);
 			$wp_customize->add_control(
 				'vk_css_optimize_options[tree_shaking]',
 				array(
-					'label'    		=> __( 'Tree shaking activation settings', 'lightning' ),
+					'label'    		=> __( 'Tree shaking activation settings', 'css_optimize_textdomain' ),
 					'section'  		=> 'css_optimize',
 					'settings' 		=> 'vk_css_optimize_options[tree_shaking]',
 					'type'     		=> 'select',
-					'description'	=> __( 'Output only the main CSS of the page inline', 'lightning' ),
+					'description'	=> __( 'Output only the main CSS of the page inline', 'css_optimize_textdomain' ),
 					'choices'  => array(
-						''			=> __( 'Nothing to do', 'lightning' ),
-						'active'	=> __( 'Active Tree shaking (Recomend)', 'lightning' ),
+						''			=> __( 'Nothing to do', 'css_optimize_textdomain' ),
+						'active'	=> __( 'Active Tree shaking (Recomend)', 'css_optimize_textdomain' ),
 					),
 				)
 			);
-		
+
 			$wp_customize->add_setting(
 				'vk_css_optimize_options[tree_shaking_class_exclude]',
 				array(
@@ -100,11 +100,11 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 			$wp_customize->add_control(
 				'vk_css_optimize_options[tree_shaking_class_exclude]',
 				array(
-					'label'       => __( 'Exclude class of Tree shaking', 'lightning' ),
+					'label'       => __( 'Exclude class of Tree shaking', 'css_optimize_textdomain' ),
 					'section'     => 'css_optimize',
 					'settings'    => 'vk_css_optimize_options[tree_shaking_class_exclude]',
 					'type'        => 'textarea',
-					'description' => __( 'If you choose "Active Tree shaking" that delete the useless css.If you using active css class that please fill in class name. Ex) btn-active,slide-active,scrolled', 'lightning' ),
+					'description' => __( 'If you choose "Active Tree shaking" that delete the useless css.If you using active css class that please fill in class name. Ex) btn-active,slide-active,scrolled', 'css_optimize_textdomain' ),
 				)
 			);
 
@@ -117,15 +117,15 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 				)
 			);
 			$wp_customize->add_control(
-				new VK_Custom_Html_Control(
+				new Custom_Html_Control(
 					$wp_customize,
 					'css_preload_title',
 					array(
-						'label'            => __( 'Preload CSS', 'lightning' ),
+						'label'            => __( 'Preload CSS', 'css_optimize_textdomain' ),
 						'section'          => 'css_optimize',
 						'type'             => 'text',
 						'custom_title_sub' => '',
-						// 'custom_html'      => __( 'Move part of CSS and JS to the footer to improve display speed.', 'lightning' ),
+						// 'custom_html'      => __( 'Move part of CSS and JS to the footer to improve display speed.', 'css_optimize_textdomain' ),
 					)
 				)
 			);
@@ -142,14 +142,14 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 			$wp_customize->add_control(
 				'vk_css_optimize_options[preload]',
 				array(
-					'label'       => __( 'Preload CSS activation settings', 'lightning' ),
+					'label'       => __( 'Preload CSS activation settings', 'css_optimize_textdomain' ),
 					'section'     => 'css_optimize',
 					'settings'    => 'vk_css_optimize_options[preload]',
-					'description' => __( 'Preload css except for critical css', 'lightning' ),
+					'description' => __( 'Preload css except for critical css', 'css_optimize_textdomain' ),
 					'type'        => 'select',
 					'choices'  => array(
-						''   	 	=> __( 'Nothing to do', 'lightning' ),
-						'active'    => __( 'Active Preload CSS (Recomend)', 'lightning' ),
+						''   	 	=> __( 'Nothing to do', 'css_optimize_textdomain' ),
+						'active'    => __( 'Active Preload CSS (Recomend)', 'css_optimize_textdomain' ),
 					),
 				)
 			);
@@ -166,11 +166,11 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 			$wp_customize->add_control(
 				'vk_css_optimize_options[preload_handle_exclude]',
 				array(
-					'label'       => __( 'Exclude class of Preload CSS', 'lightning' ),
+					'label'       => __( 'Exclude class of Preload CSS', 'css_optimize_textdomain' ),
 					'section'     => 'css_optimize',
 					'settings'    => 'vk_css_optimize_options[preload_handle_exclude]',
 					'type'        => 'textarea',
-					'description' => __( 'If you choose "Active Preload CSS" that css load timing was changed.If you have any do not want to preload css file that please fill in handle(id) name. Ex) pluginname_a-style,pluginname_b-css', 'lightning' ),
+					'description' => __( 'If you choose "Active Preload CSS" that css load timing was changed.If you have any do not want to preload css file that please fill in handle(id) name. Ex) pluginname_a-style,pluginname_b-css' ),
 				)
 			);
 
@@ -185,7 +185,7 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 		}
 
 		/**
-		 * 
+		 * CSS Optimize Options
 		 */
 		public static function get_css_optimize_options(){
 
@@ -230,7 +230,7 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 					}
 
 				}
-				
+
 			}
 			$vk_css_optimize_options = wp_parse_args( $vk_css_optimize_options, $vk_css_optimize_options_default );
 			if (
@@ -260,18 +260,24 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 			return $vk_css_tree_shaking_array;
 		}
 
+		public static function css_simple_minify_array() {
+			$vk_css_simple_minify_array = array();
+			$vk_css_simple_minify_array = apply_filters( 'vk_css_simple_minify_array', $vk_css_simple_minify_array );
+			return $vk_css_simple_minify_array;
+		}
+
 		public static function css_tree_shaking_buffer( $buffer ) {
-			
-			$options = VK_CSS_Optimize::get_css_optimize_options();
-			
+
+			$options = self::get_css_optimize_options();
+
 			// CSS Tree Shaking.
 			require_once dirname( __FILE__ ) . '/class-css-tree-shaking.php';
-			$vk_css_tree_shaking_array = VK_CSS_Optimize::css_tree_shaking_array();
+			$vk_css_tree_shaking_array  = self::css_tree_shaking_array();
+			$vk_css_simple_minify_array = self::css_simple_minify_array();
 
 			foreach ( $vk_css_tree_shaking_array as $vk_css_array ) {
-				$options['ssl']['verify_peer']      = false;
-				$options['ssl']['verify_peer_name'] = false;
 
+				// WP File System で CSS ファイルを読み込み
 				require_once(ABSPATH.'wp-admin/includes/file.php');
 				$path_name = $vk_css_array['path'];
 				if( WP_Filesystem() ){
@@ -293,16 +299,43 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 
 			}
 
+			foreach ( $vk_css_simple_minify_array as $vk_css_array ) {
+
+				// WP File System で CSS ファイルを読み込み
+				require_once(ABSPATH.'wp-admin/includes/file.php');
+				$path_name = $vk_css_array['path'];
+				if( WP_Filesystem() ){
+					global $wp_filesystem;
+					$css = $wp_filesystem->get_contents($path_name);
+				}
+
+
+				$css                                = celtislab\CSS_tree_shaking::simple_minify( $css );
+
+				$buffer                             = str_replace(
+					'<link rel=\'stylesheet\' id=\'' . $vk_css_array['id'] . '-css\'  href=\'' . $vk_css_array['url'] . '?ver=' . $vk_css_array['version'] . '\' type=\'text/css\' media=\'all\' />',
+					'<style id=\'' . $vk_css_array['id'] . '-css\' type=\'text/css\'>' . $css . '</style>',
+					$buffer
+				);
+				$buffer                             = str_replace(
+					'<link rel=\'stylesheet\' id=\'' . $vk_css_array['id'] . '-css\'  href=\'' . $vk_css_array['url'] . '\' type=\'text/css\' media=\'all\' />',
+					'<style id=\'' . $vk_css_array['id'] . '-css\' type=\'text/css\'>' . $css . '</style>',
+					$buffer
+				);
+
+			}
+
 			return $buffer;
 		}
 
 		public static function css_preload( $tag, $handle, $href, $media ) {
 
-			$vk_css_tree_shaking_array = VK_CSS_Optimize::css_tree_shaking_array();
+			$vk_css_tree_shaking_array  = self::css_tree_shaking_array();
+			$vk_css_simple_minify_array = self::css_tree_shaking_array();
 
 			$exclude_handles = array( 'woocommerce-layout', 'woocommerce-smallscreen', 'woocommerce-general' );
 
-			$options = VK_CSS_Optimize::get_css_optimize_options();
+			$options = self::get_css_optimize_options();
 
 			// tree shaking がかかっているものはpreloadから除外する
 			// でないと表示時に一瞬崩れて結局実用性に問題があるため
@@ -310,11 +343,17 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 				$exclude_handles[] = $vk_css_array['id'];
 			}
 
+			// Simple Minify がかかっているものはpreloadから除外する
+			// でないと表示時に一瞬崩れて結局実用性に問題があるため
+			foreach ( $vk_css_simple_minify_array as $vk_css_array ) {
+				$exclude_handles[] = $vk_css_array['id'];
+			}
+
 			if ( ! empty( $options['preload_handle_exclude'] ) ){
 				$exclude_array = explode(",", $options['preload_handle_exclude']);
 				$exclude_handles = array_merge( $exclude_array, $exclude_handles );
 			}
-			
+
 			$exclude_handles = apply_filters( 'vk_css_preload_exclude_handles', $exclude_handles );
 			// クリティカルじゃないCSS（tree shakingにかけているもの以外）をpreload
 			if ( ! in_array( $handle, $exclude_handles ) ){
