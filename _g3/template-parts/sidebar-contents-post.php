@@ -14,32 +14,33 @@ $post_loop = new WP_Query(
 <aside class="widget widget_media">
 <h4 class="sub-section-title"><?php echo __( 'Recent posts', 'lightning' ); ?></h4>
 <div class="vk_posts">
-<?php
-while ( $post_loop->have_posts() ) :
-	$post_loop->the_post();
+	<?php
+	while ( $post_loop->have_posts() ) :
+		$post_loop->the_post();
 
-    $options = array(
-        'layout'                     => 'media', // card , card-horizontal , media
-        'display_image'              => true,
-        'display_image_overlay_term' => true,
-        'display_excerpt'            => false,
-        'display_date'               => true,
-        'display_new'                => true,
-        'display_btn'                => false,
-        'image_default_url'          => false,
-        'overlay'                    => false,
-        'btn_text'                   => __( 'Read more', 'lightning' ),
-        'btn_align'                  => 'text-right',
-        'new_text'                   => __( 'New!!', 'lightning' ),
-        'new_date'                   => 7,
-        'class_outer'                => 'vk_post-col-sm-12 vk_post-col-lg-12 vk_post-col-xl-12',
-        'class_title'                => '',
-        'body_prepend'               => '',
-        'body_append'                => '',
-    );
-    wp_kses_post( VK_Component_Posts::the_view( $post, $options ) );
+		$options = array(
+			'layout'                     => 'media', // card , card-horizontal , media
+			'display_image'              => true,
+			'display_image_overlay_term' => true,
+			'display_excerpt'            => false,
+			'display_date'               => true,
+			'display_new'                => true,
+			'display_btn'                => false,
+			'image_default_url'          => false,
+			'overlay'                    => false,
+			'btn_text'                   => __( 'Read more', 'lightning' ),
+			'btn_align'                  => 'text-right',
+			'new_text'                   => __( 'New!!', 'lightning' ),
+			'new_date'                   => 7,
+			'class_outer'                => 'vk_post-col-sm-12 vk_post-col-lg-12 vk_post-col-xl-12',
+			'class_title'                => '',
+			'body_prepend'               => '',
+			'body_append'                => '',
+		);
+		wp_kses_post( VK_Component_Posts::the_view( $post, $options ) );
 
-endwhile; ?>
+endwhile;
+	?>
 </div>
 </aside>
 <?php endif; ?>
