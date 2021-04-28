@@ -224,12 +224,11 @@ require dirname( __FILE__ ) . '/functions-compatible.php';
 /*-------------------------------------------*/
 require dirname( __FILE__ ) . '/inc/template-tags.php';
 require dirname( __FILE__ ) . '/inc/template-tags-old.php';
-require dirname( __FILE__ ) . '/inc/class-vk-helpers.php';
+require dirname( __FILE__ ) . '/inc/vk-helpers/config.php';
 
 /*
   Load Theme Customizer additions.
 /*-------------------------------------------*/
-require dirname( __FILE__ ) . '/inc/customize/customize.php';
 require dirname( __FILE__ ) . '/inc/customize/customize-design.php';
 require dirname( __FILE__ ) . '/inc/customize/customize-top-slide.php';
 require dirname( __FILE__ ) . '/inc/customize/customize-functions.php';
