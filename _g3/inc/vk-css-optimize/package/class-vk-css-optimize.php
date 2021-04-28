@@ -51,7 +51,7 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 				)
 			);
 			$wp_customize->add_control(
-				new Custom_Html_Control(
+				new VK_Custom_Html_Control(
 					$wp_customize,
 					'tree_shaking_title',
 					array(
@@ -117,7 +117,7 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 				)
 			);
 			$wp_customize->add_control(
-				new Custom_Html_Control(
+				new VK_Custom_Html_Control(
 					$wp_customize,
 					'css_preload_title',
 					array(

@@ -5,11 +5,33 @@
  * @package VK Helpers
  */
 
+/*
+このファイルの元ファイルは
+https://github.com/vektor-inc/vektor-wp-libraries
+にあります。
+修正の際は上記リポジトリのデータを修正してください。
+編集権限を持っていない方で何か修正要望などありましたら
+各プラグインのリポジトリにプルリクエストで結構です。
+*/
+
 if ( ! class_exists( 'VK_Helpers' ) ) {
 	/**
 	 * VK Helpers
 	 */
 	class VK_Helpers {
+
+		public function __construct() {
+			add_action( 'customize_register', array( __CLASS__, 'add_customize_class' ), 0 );
+		}
+
+		public static function add_customize_class( $wp_customize ) {
+			if ( ! class_exists( 'VK_Custom_Html_Control' ) ) {
+				require_once dirname( __FILE__ ) . '/class-vk-custom-html-control.php';
+			}
+			if ( ! class_exists( 'VK_Custom_Text_Control' ) ) {
+				require_once dirname( __FILE__ ) . '/class-vk-custom-text-control.php';
+			}
+		}
 
         public static function get_post_top_info() {
 
@@ -17,35 +39,35 @@ if ( ! class_exists( 'VK_Helpers' ) ) {
 
             // Get post top page by setting display page.
             $post_top_info['id'] = get_option( 'page_for_posts' );
-        
+
             // Set use post top page flag.
             $post_top_info['use'] = ( $post_top_info['id'] ) ? true : false;
-        
+
             // When use post top page that get post top page name.
             $post_top_info['name'] = ( $post_top_info['use'] ) ? get_the_title( $post_top_info['id'] ) : '';
 
             $post_top_info['url'] = ( $post_top_info['use'] ) ? get_permalink( $post_top_info['id'] ) : '';
-        
+
             return $post_top_info;
         }
 
         public static function get_post_type_info() {
             // Check use post top page
             $post_top_info = self::get_post_top_info();
-        
+
             $woocommerce_shop_page_id = get_option( 'woocommerce_shop_page_id' );
-        
+
             // Get post type slug
             /*
             -------------------------------------------*/
             // When WooCommerce taxonomy archive page , get_post_type() is does not work properly
             // $post_type_info['slug'] = get_post_type();
-        
+
             global $wp_query;
             if ( is_page() ){
                 $post_type_info['slug'] = 'page';
             } elseif ( ! empty( $wp_query->query_vars['post_type'] ) ) {
-        
+
                 $post_type_info['slug'] = $wp_query->query_vars['post_type'];
                 // Maybe $wp_query->query_vars['post_type'] is usually an array...
                 if ( is_array( $post_type_info['slug'] ) ) {
@@ -59,7 +81,7 @@ if ( ! class_exists( 'VK_Helpers' ) ) {
                 // This is necessary that when no posts.
                 $post_type_info['slug'] = 'post';
             }
-        
+
             // Get custom post type name
             /*-------------------------------------------*/
             $post_type_object = get_post_type_object( $post_type_info['slug'] );
@@ -76,7 +98,7 @@ if ( ! class_exists( 'VK_Helpers' ) ) {
                     $post_type_info['name'] = esc_html( $post_type_object->labels->name );
                 }
             }
-        
+
             // Get custom post type archive url
             /*-------------------------------------------*/
             if ( $post_top_info['use'] && $post_type_info['slug'] == 'post' ) {
@@ -86,8 +108,8 @@ if ( ! class_exists( 'VK_Helpers' ) ) {
             } else {
                 $post_type_info['url'] = esc_url( get_post_type_archive_link( $post_type_info['slug'] ) );
             }
-        
-            $post_type_info = apply_filters( 'lightning_postType_custom', $post_type_info );
+
+            $post_type_info = apply_filters( 'vk_post_type_custom', $post_type_info );
             return $post_type_info;
         }
 
@@ -305,4 +327,7 @@ if ( ! class_exists( 'VK_Helpers' ) ) {
 		}
 
 	}
+	new VK_Helpers();
 }
+
+
