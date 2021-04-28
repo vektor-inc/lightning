@@ -20,8 +20,6 @@ if ( is_front_page() ) {
 	}
 }
 
-
-
 if ( is_active_sidebar( 'common-side-bottom-widget-area' ) ) {
 	dynamic_sidebar( 'common-side-bottom-widget-area' );
 }
