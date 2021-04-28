@@ -5,7 +5,7 @@
  * @package VK Helpers
  */
 
-/*
+ /*
 このファイルの元ファイルは
 https://github.com/vektor-inc/vektor-wp-libraries
 にあります。
@@ -20,6 +20,21 @@ if ( ! class_exists( 'VK_Helpers' ) ) {
 	 */
 	class VK_Helpers {
 
+		/*
+		get_post_top_info
+		get_post_type_info
+		sanitize_checkbox
+		sanitize_number_percentage
+		sanitize_choice
+		sanitize_textarea
+		sanitize_boolean
+		color_auto_modifi
+		color_adjust_under_ff
+		color_mode_check
+		color_convert_rgba
+		deactivate_plugin
+		*/
+
 		public function __construct() {
 			add_action( 'customize_register', array( __CLASS__, 'add_customize_class' ), 0 );
 		}
@@ -33,85 +48,114 @@ if ( ! class_exists( 'VK_Helpers' ) ) {
 			}
 		}
 
-        public static function get_post_top_info() {
+		public static function get_post_top_info() {
 
-            $post_top_info = array();
+			$post_top_info = array();
 
-            // Get post top page by setting display page.
-            $post_top_info['id'] = get_option( 'page_for_posts' );
+			// Get post top page by setting display page.
+			$post_top_info['id'] = get_option( 'page_for_posts' );
 
-            // Set use post top page flag.
-            $post_top_info['use'] = ( $post_top_info['id'] ) ? true : false;
+			// Set use post top page flag.
+			$post_top_info['use'] = ( $post_top_info['id'] ) ? true : false;
 
-            // When use post top page that get post top page name.
-            $post_top_info['name'] = ( $post_top_info['use'] ) ? get_the_title( $post_top_info['id'] ) : '';
+			// When use post top page that get post top page name.
+			$post_top_info['name'] = ( $post_top_info['use'] ) ? get_the_title( $post_top_info['id'] ) : '';
 
-            $post_top_info['url'] = ( $post_top_info['use'] ) ? get_permalink( $post_top_info['id'] ) : '';
+			$post_top_info['url'] = ( $post_top_info['use'] ) ? get_permalink( $post_top_info['id'] ) : '';
 
-            return $post_top_info;
-        }
+			return $post_top_info;
+		}
 
-        public static function get_post_type_info() {
-            // Check use post top page
-            $post_top_info = self::get_post_top_info();
 
-            $woocommerce_shop_page_id = get_option( 'woocommerce_shop_page_id' );
+		public static function get_post_type_info() {
+			// Check use post top page
+			$post_top_info = self::get_post_top_info();
 
-            // Get post type slug
-            /*
-            -------------------------------------------*/
-            // When WooCommerce taxonomy archive page , get_post_type() is does not work properly
-            // $post_type_info['slug'] = get_post_type();
+			$woocommerce_shop_page_id = get_option( 'woocommerce_shop_page_id' );
 
-            global $wp_query;
-            if ( is_page() ){
-                $post_type_info['slug'] = 'page';
-            } elseif ( ! empty( $wp_query->query_vars['post_type'] ) ) {
+			// Get post type slug
+			/*
+			-------------------------------------------*/
+			// When WooCommerce taxonomy archive page , get_post_type() is does not work properly
+			// $post_type_info['slug'] = get_post_type();
 
-                $post_type_info['slug'] = $wp_query->query_vars['post_type'];
-                // Maybe $wp_query->query_vars['post_type'] is usually an array...
-                if ( is_array( $post_type_info['slug'] ) ) {
-                    $post_type_info['slug'] = current( $post_type_info['slug'] );
-                }
-            } elseif ( is_tax() ) {
-                // Case of tax archive and no posts
-                $taxonomy         = get_queried_object()->taxonomy;
-                $post_type_info['slug'] = get_taxonomy( $taxonomy )->object_type[0];
-            } else {
-                // This is necessary that when no posts.
-                $post_type_info['slug'] = 'post';
-            }
+			global $wp_query;
+			if ( is_page() ) {
+				$post_type_info['slug'] = 'page';
+			} elseif ( ! empty( $wp_query->query_vars['post_type'] ) ) {
 
-            // Get custom post type name
-            /*-------------------------------------------*/
-            $post_type_object = get_post_type_object( $post_type_info['slug'] );
-            if ( $post_type_object ) {
-                $allowed_html = array(
-                    'span' => array( 'class' => array() ),
-                    'b'    => array(),
-                );
-                if ( $post_top_info['use'] && $post_type_info['slug'] == 'post' ) {
-                    $post_type_info['name'] = wp_kses( get_the_title( $post_top_info['id'] ), $allowed_html );
-                } elseif ( $woocommerce_shop_page_id && $post_type_info['slug'] == 'product' ) {
-                    $post_type_info['name'] = wp_kses( get_the_title( $woocommerce_shop_page_id ), $allowed_html );
-                } else {
-                    $post_type_info['name'] = esc_html( $post_type_object->labels->name );
-                }
-            }
+				$post_type_info['slug'] = $wp_query->query_vars['post_type'];
+				// Maybe $wp_query->query_vars['post_type'] is usually an array...
+				if ( is_array( $post_type_info['slug'] ) ) {
+					$post_type_info['slug'] = current( $post_type_info['slug'] );
+				}
+			} elseif ( is_tax() ) {
+				// Case of tax archive and no posts
+				$taxonomy               = get_queried_object()->taxonomy;
+				$post_type_info['slug'] = get_taxonomy( $taxonomy )->object_type[0];
+			} else {
+				// This is necessary that when no posts.
+				$post_type_info['slug'] = 'post';
+			}
 
-            // Get custom post type archive url
-            /*-------------------------------------------*/
-            if ( $post_top_info['use'] && $post_type_info['slug'] == 'post' ) {
-                $post_type_info['url'] = esc_url( get_the_permalink( $post_top_info['id'] ) );
-            } elseif ( $woocommerce_shop_page_id && $post_type_info['slug'] == 'product' ) {
-                $post_type_info['url'] = esc_url( get_the_permalink( $woocommerce_shop_page_id ) );
-            } else {
-                $post_type_info['url'] = esc_url( get_post_type_archive_link( $post_type_info['slug'] ) );
-            }
+			// Get custom post type name
+			/*-------------------------------------------*/
+			$post_type_object = get_post_type_object( $post_type_info['slug'] );
+			if ( $post_type_object ) {
+				$allowed_html = array(
+					'span' => array( 'class' => array() ),
+					'b'    => array(),
+				);
+				if ( $post_top_info['use'] && $post_type_info['slug'] == 'post' ) {
+					$post_type_info['name'] = wp_kses( get_the_title( $post_top_info['id'] ), $allowed_html );
+				} elseif ( $woocommerce_shop_page_id && $post_type_info['slug'] == 'product' ) {
+					$post_type_info['name'] = wp_kses( get_the_title( $woocommerce_shop_page_id ), $allowed_html );
+				} else {
+					$post_type_info['name'] = esc_html( $post_type_object->labels->name );
+				}
+			}
 
-            $post_type_info = apply_filters( 'vk_post_type_custom', $post_type_info );
-            return $post_type_info;
-        }
+			// Get custom post type archive url
+			/*-------------------------------------------*/
+			if ( $post_top_info['use'] && $post_type_info['slug'] == 'post' ) {
+				$post_type_info['url'] = esc_url( get_the_permalink( $post_top_info['id'] ) );
+			} elseif ( $woocommerce_shop_page_id && $post_type_info['slug'] == 'product' ) {
+				$post_type_info['url'] = esc_url( get_the_permalink( $woocommerce_shop_page_id ) );
+			} else {
+				$post_type_info['url'] = esc_url( get_post_type_archive_link( $post_type_info['slug'] ) );
+			}
+
+			$post_type_info = apply_filters( 'vk_get_post_type_info', $post_type_info );
+			return $post_type_info;
+		}
+
+
+		public static function get_display_taxonomies( $post_id = null, $args = null ) {
+			if ( ! $post_id ) {
+				global $post;
+				$post_id = $post->ID;
+			}
+			$taxonomies = get_the_taxonomies( $post_id, $args );
+
+			// 非公開のタクソノミーを自動的に除外
+			foreach ( $taxonomies as $taxonomy => $value ) {
+				$taxonomy_info = get_taxonomy( $taxonomy );
+				if ( empty( $taxonomy_info->public ) ) {
+					unset( $taxonomies[ $taxonomy ] );
+				}
+			}
+
+			// 上記を後で実装したので以下の処理は事実上不要と思われるが、
+			// 公開タクソノミーで意図的に表示したくないものもあるかもしれないのでフィルターは消さない
+			$exclusion = array( 'post_tag', 'product_type' );
+			$exclusion = apply_filters( 'vk_get_display_taxonomies_exclusion', $exclusion );
+			if ( is_array( $exclusion ) ) {
+				foreach ( $exclusion as $key => $value ) {
+					unset( $taxonomies[ $value ] );
+				}
+			}
+			return $taxonomies;
+		}
 
 		/**
 		 * Sanitize Check Box
@@ -209,7 +253,7 @@ if ( ! class_exists( 'VK_Helpers' ) ) {
 		 */
 		public static function color_auto_modifi( $color, $change_rate = 1 ) {
 
-			if ( ! $color ){
+			if ( ! $color ) {
 				return;
 			}
 
@@ -329,5 +373,3 @@ if ( ! class_exists( 'VK_Helpers' ) ) {
 	}
 	new VK_Helpers();
 }
-
-
