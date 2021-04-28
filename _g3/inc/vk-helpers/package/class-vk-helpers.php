@@ -5,7 +5,7 @@
  * @package VK Helpers
  */
 
- /*
+/*
 このファイルの元ファイルは
 https://github.com/vektor-inc/vektor-wp-libraries
 にあります。
