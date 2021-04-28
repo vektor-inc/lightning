@@ -15,15 +15,16 @@ if ( is_front_page() ) {
 	$widdget_area_name = $post_type_info['slug'] . '-side-widget-area';
 	if ( is_active_sidebar( $widdget_area_name ) ) {
 		dynamic_sidebar( $widdget_area_name );
-    } else {
-        lightning_get_template_part( 'template-parts/sidebar-contents', $post_type_info['slug'] );
-    }
+	} else {
+		lightning_get_template_part( 'template-parts/sidebar-contents', $post_type_info['slug'] );
+	}
 }
 
 
 
 if ( is_active_sidebar( 'common-side-bottom-widget-area' ) ) {
 	dynamic_sidebar( 'common-side-bottom-widget-area' );
-} ?>
+}
+?>
  <?php do_action( 'lightning_sub_section_append' ); ?>
 </div><!-- [ /.sub-section ] -->
