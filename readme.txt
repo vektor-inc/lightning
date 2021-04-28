@@ -39,6 +39,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ Design Bug fix ] Fix sidebar normal post list on xs window.
+
 v14.0.9
 [ G3 ][ Specification Change ] Change array name of skin specific js
 
