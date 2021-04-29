@@ -134,7 +134,9 @@ textarea {
 	border:1px solid var(--vk-color-border-form);
 	border-radius: var(--vk-size-radius);
 	padding:0.8em 1em;
-	margin:0.5rem 0;
+	// bottomはすぐ下にキャプションつけたりする場合があるので若干余白をもたせた方が良いが、
+	// 上部に余白をつけるとWooCommerceなどすぐとなりにボタンがある場合など段差ができるので上部に余白はつけない
+	margin:0 0 0.5rem;
 	width:100%;
 }
 input[type=file] {
