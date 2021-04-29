@@ -4,7 +4,7 @@
 /*-------------------------------------------*/
 if ( ! function_exists( 'lightning_widgets_init' ) ) {
 	function lightning_widgets_init() {
-        // sidebar widget area 
+		// sidebar widget area
 		register_sidebar(
 			array(
 				'name'          => __( 'Sidebar(Home)', 'lightning' ),
@@ -15,26 +15,26 @@ if ( ! function_exists( 'lightning_widgets_init' ) ) {
 				'after_title'   => '</h4>',
 			)
 		);
-        register_sidebar(
-            array(
-                'name'          => __( 'Sidebar(Common top)', 'lightning' ),
-                'id'            => 'common-side-top-widget-area',
-                'before_widget' => '<aside class="widget %2$s" id="%1$s">',
-                'after_widget'  => '</aside>',
-                'before_title'  => '<h4 class="widget-title sub-section-title">',
-                'after_title'   => '</h4>',
-            )
-        );
-        register_sidebar(
-            array(
-                'name'          => __( 'Sidebar(Common bottom)', 'lightning' ),
-                'id'            => 'common-side-bottom-widget-area',
-                'before_widget' => '<aside class="widget %2$s" id="%1$s">',
-                'after_widget'  => '</aside>',
-                'before_title'  => '<h4 class="widget-title sub-section-title">',
-                'after_title'   => '</h4>',
-            )
-        );
+		register_sidebar(
+			array(
+				'name'          => __( 'Sidebar(Common top)', 'lightning' ),
+				'id'            => 'common-side-top-widget-area',
+				'before_widget' => '<aside class="widget %2$s" id="%1$s">',
+				'after_widget'  => '</aside>',
+				'before_title'  => '<h4 class="widget-title sub-section-title">',
+				'after_title'   => '</h4>',
+			)
+		);
+		register_sidebar(
+			array(
+				'name'          => __( 'Sidebar(Common bottom)', 'lightning' ),
+				'id'            => 'common-side-bottom-widget-area',
+				'before_widget' => '<aside class="widget %2$s" id="%1$s">',
+				'after_widget'  => '</aside>',
+				'before_title'  => '<h4 class="widget-title sub-section-title">',
+				'after_title'   => '</h4>',
+			)
+		);
 
 		// Sidebar( post_type )
 
@@ -99,8 +99,8 @@ if ( ! function_exists( 'lightning_widgets_init' ) ) {
 
 		// footer widget area
 
-        $footer_widget_area_count = 3;
-        $footer_widget_area_count = apply_filters( 'lightning_footer_widget_area_count', $footer_widget_area_count );
+		$footer_widget_area_count = 3;
+		$footer_widget_area_count = apply_filters( 'lightning_footer_widget_area_count', $footer_widget_area_count );
 
 		for ( $i = 1; $i <= $footer_widget_area_count; ) {
 			register_sidebar(
