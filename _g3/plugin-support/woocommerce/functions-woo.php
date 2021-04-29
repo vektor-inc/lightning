@@ -66,8 +66,8 @@ function lightning_widgets_init_product() {
 			'description'   => $sidebar_description,
 			'before_widget' => '<aside class="widget %2$s" id="%1$s">',
 			'after_widget'  => '</aside>',
-			'before_title'  => '<h1 class="widget-title subSection-title">',
-			'after_title'   => '</h1>',
+			'before_title'  => '<h4 class="widget-title sub-section-title">',
+			'after_title'   => '</h4>',
 		)
 	);
 
