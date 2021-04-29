@@ -1,15 +1,15 @@
-<?php if ( is_page() ){
+<?php if ( is_page() ) {
 	$tag = 'div';
 } else {
 	$tag = 'article';
 }
 ?>
-<<?php echo $tag;?> id="post-<?php the_ID(); ?>" <?php post_class( apply_filters( 'lightning_article_outer_class', 'entry entry-full' ) ); ?>>
+<<?php echo $tag; ?> id="post-<?php the_ID(); ?>" <?php post_class( apply_filters( 'lightning_article_outer_class', 'entry entry-full' ) ); ?>>
 
-	<?php 
+	<?php
 	// check single or loop that true
 	$is_entry_header_display = false;// is_page()
-	if ( is_single() || is_archive() ){
+	if ( is_single() || is_archive() ) {
 		$is_entry_header_display = apply_filters( 'lightning_is_entry_header', true );
 	}
 	?>
@@ -66,7 +66,7 @@
 				'template'      => __( '<dl><dt>%s</dt><dd>%l</dd></dl>', 'lightning' ),
 				'term_template' => '<a href="%1$s">%2$s</a>',
 			);
-			$taxonomies	= VK_Helpers::get_display_taxonomies( get_the_ID(), $args );
+			$taxonomies    = VK_Helpers::get_display_taxonomies( get_the_ID(), $args );
 			$taxnomiesHtml = '';
 			if ( $taxonomies ) {
 				foreach ( $taxonomies as $key => $value ) {
@@ -78,7 +78,8 @@
 
 			// tag list
 			$tags_list = get_the_tag_list();
-			if ( $tags_list ) { ?>
+			if ( $tags_list ) {
+				?>
 				<div class="entry-meta-data-list">
 					<dl>
 					<dt><?php _e( 'Tags', 'lightning' ); ?></dt>
@@ -91,4 +92,4 @@
 	
 	<?php endif; ?>
 
-</<?php echo $tag;?>><!-- [ /#post-<?php the_ID(); ?> ] -->
+</<?php echo $tag; ?>><!-- [ /#post-<?php the_ID(); ?> ] -->
