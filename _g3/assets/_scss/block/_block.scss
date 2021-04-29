@@ -56,14 +56,18 @@ entry-body
 	height:auto;
 }
 
+.wp-block-quote cite {
+	font-size: var(--vk-size-text-xs);
+}
+
+/*-------------------------------------------*/
+/*  Button Block
+/*-------------------------------------------*/
 .wp-block-button__link {
 	font-size: 1rem;
 	padding-top: 0.5em;
 	padding-bottom: 0.5em; 
-}
-
-.wp-block-quote cite {
-	font-size: var(--vk-size-text-xs);
+	border-radius: var(--vk-size-radius);
 }
 
 /*-------------------------------------------*/
