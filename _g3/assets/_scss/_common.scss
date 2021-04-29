@@ -108,6 +108,10 @@ i {
 	margin-right: 0.4em;
 }
 
+hr {
+	border:1px solid var(--vk-color-border-hr);
+}
+
 /* Reset iOS Style */
 input[type="submit"],
 input[type="button"] {
