@@ -39,6 +39,7 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ Other ] Cope with WooCommerce
 [ G3 ][ Apecification Change ] Add home icon to breadcrumb
 [ G3 ][ Design Bug fix ] Fix sidebar normal post list on xs window.
 
