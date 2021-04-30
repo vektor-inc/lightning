@@ -7,8 +7,6 @@ function lightning_is_g3() {
 	$g = get_option( 'lightning_theme_generation' );
 	if ( 'g3' === $g ) {
 		return true;
-	} elseif ( 'g2' === $g ){
-		return false;
 	}
 
 	$options = get_option( 'lightning_theme_options' );
