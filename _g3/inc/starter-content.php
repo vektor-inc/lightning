@@ -231,7 +231,7 @@ function lightning_add_starter_content() {
 		// Set up nav menus for each of the two areas registered in the theme.
 		'nav_menus' => array(
 			// Assign a menu to the "primary" location.
-			'Header' => array(
+			'global-nav' => array(
 				'name'  => __( 'Header Nav', 'lightning' ),
 				'items' => array(
 					'link_home', // Note that the core "home" page is actually a link in case a static front page is not used.
@@ -240,7 +240,7 @@ function lightning_add_starter_content() {
 					'page_contact',
 				),
 			),
-			'Footer' => array(
+			'footer-nav' => array(
 				'name'  => __( 'Footer Nav', 'lightning' ),
 				'items' => array(
 					'page_contact',
