@@ -39,6 +39,10 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ Other ] Add CSS variable --vk-color-primary-vivid
+[ G3 ][ Design Specification Change ] Add Core Button Block hover color
+[ G3 ][ Design Specification Change ] margin tuning of html tag
+
 v14.0.12 ( Beta Release )
 [ Bug fix ] Fix Starter Content Menu not refrected
 
