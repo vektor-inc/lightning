@@ -27,6 +27,16 @@ body {
 	}
 }
 
+p,
+ul,
+ol,
+table,
+dl,
+blockquote,
+iframe {
+	margin-bottom:var(--vk-margin-element-bottom);
+}
+
 a {
 	color:var(--vk-color-text-link);
 	text-decoration-style: dotted;
@@ -41,7 +51,7 @@ a {
 
 p {
 	line-height: var(--vk-line-height);
-	margin:0 0 var(--vk-margin-element-bottom);
+	margin-block-start:0;
 }
 
 ul,
