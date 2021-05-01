@@ -45,7 +45,7 @@ function lightning_customize_register_design( $wp_customize ) {
 			'selector'        => '.site-header-logo',
 			'render_callback' => '',
 		)
-    );
+	);
 
 	/*
 	  Color Setting
@@ -61,12 +61,12 @@ function lightning_customize_register_design( $wp_customize ) {
 			$wp_customize,
 			'color_header',
 			array(
-				'label'            => __( 'Color Setting', 'lightning' ),
-				'section'          => 'lightning_design',
-				'type'             => 'text',
+				'label'       => __( 'Color Setting', 'lightning' ),
+				'section'     => 'lightning_design',
+				'type'        => 'text',
 				// 'custom_title_sub' => __( 'Key Color', 'lightning' ),
-				'custom_html'      => '',
-				'priority'         => 600,
+				'custom_html' => '',
+				'priority'    => 600,
 			)
 		)
 	);
@@ -101,9 +101,9 @@ function lightning_customize_register_design( $wp_customize ) {
  * @return string
  */
 function lightning_get_common_inline_css() {
-    $options        = lightning_get_theme_options();
-	$color_key = ! empty( $options['color_key'] ) ? esc_html( $options['color_key'] ) : '#337ab7';
-    $color_key_dark = VK_Helpers::color_auto_modifi( $color_key, 0.8 );
+	$options        = lightning_get_theme_options();
+	$color_key      = ! empty( $options['color_key'] ) ? esc_html( $options['color_key'] ) : '#337ab7';
+	$color_key_dark = VK_Helpers::color_auto_modifi( $color_key, 0.8 );
 	$dynamic_css    = '
 	/* Lightning */
 	:root {
@@ -128,7 +128,7 @@ function lightning_add_common_dynamic_css() {
 	$dynamic_css = lightning_get_common_inline_css();
 	wp_add_inline_style( 'lightning-common-style', $dynamic_css );
 }
-add_action( 'wp_enqueue_scripts', 'lightning_add_common_dynamic_css',11 );
+add_action( 'wp_enqueue_scripts', 'lightning_add_common_dynamic_css', 11 );
 
 function lightning_add_common_dynamic_css_to_editor() {
 	$dynamic_css = lightning_get_common_inline_css();
