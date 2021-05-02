@@ -3,10 +3,10 @@
 $theme_opt = wp_get_theme( get_template() );
 
 // add_action( 'lightning_site_header_append', function(){
-// 	$options = lightning_get_theme_options( 'lightning_theme_options' );
-// 	print '<pre style="text-align:left">';print_r( $options );print '</pre>';
-// 	$generation = get_option( 'lightning_theme_generation' );
-// 	print '<pre style="text-align:left">';print_r( $generation );print '</pre>';
+// $options = lightning_get_theme_options( 'lightning_theme_options' );
+// print '<pre style="text-align:left">';print_r( $options );print '</pre>';
+// $generation = get_option( 'lightning_theme_generation' );
+// print '<pre style="text-align:left">';print_r( $generation );print '</pre>';
 // } );
 
 define( 'LIGHTNING_THEME_VERSION', $theme_opt->Version );
@@ -30,13 +30,13 @@ function lightning_theme_setup() {
 	// When this support that printed front css and it's overwrite skin table style and so on
 	// add_theme_support( 'wp-block-styles' );
 
-    add_theme_support( 'align-wide' );
+	add_theme_support( 'align-wide' );
 
 	/*
 	  custom-background
 	/*-------------------------------------------*/
 	$args = array(
-		'default-color'          => '#ffffff',
+		'default-color' => '#ffffff',
 	);
 	add_theme_support( 'custom-background', $args );
 
@@ -45,28 +45,31 @@ function lightning_theme_setup() {
 	// Block Editor custom unit @since WordPress 5.5
 	add_theme_support( 'custom-units', 'px', 'em', 'rem', 'vw', 'vh' );
 
-	add_theme_support( 'editor-font-sizes', array(
+	add_theme_support(
+		'editor-font-sizes',
 		array(
-			'name' => esc_attr__( 'Small', 'lightning' ),
-			'size' => 12,
-			'slug' => 'small'
-		),
-		array(
-			'name' => esc_attr__( 'Regular', 'lightning' ),
-			'size' => 16,
-			'slug' => 'regular'
-		),
-		array(
-			'name' => esc_attr__( 'Large', 'lightning' ),
-			'size' => 21,
-			'slug' => 'large'
-		),
-		array(
-			'name' => esc_attr__( 'Huge', 'lightning' ),
-			'size' => 28,
-			'slug' => 'huge'
+			array(
+				'name' => esc_attr__( 'Small', 'lightning' ),
+				'size' => 12,
+				'slug' => 'small',
+			),
+			array(
+				'name' => esc_attr__( 'Regular', 'lightning' ),
+				'size' => 16,
+				'slug' => 'regular',
+			),
+			array(
+				'name' => esc_attr__( 'Large', 'lightning' ),
+				'size' => 21,
+				'slug' => 'large',
+			),
+			array(
+				'name' => esc_attr__( 'Huge', 'lightning' ),
+				'size' => 28,
+				'slug' => 'huge',
+			),
 		)
-	) );
+	);
 
 	add_theme_support(
 		'editor-gradient-presets',
@@ -74,12 +77,12 @@ function lightning_theme_setup() {
 			array(
 				'name'     => esc_attr__( 'Vivid cyan blue to vivid purple', 'themeLangDomain' ),
 				'gradient' => 'linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%)',
-				'slug'     => 'vivid-cyan-blue-to-vivid-purple'
+				'slug'     => 'vivid-cyan-blue-to-vivid-purple',
 			),
 			array(
 				'name'     => esc_attr__( 'Vivid green cyan to vivid cyan blue', 'themeLangDomain' ),
 				'gradient' => 'linear-gradient(135deg,rgba(0,208,132,1) 0%,rgba(6,147,227,1) 100%)',
-				'slug'     =>  'vivid-green-cyan-to-vivid-cyan-blue',
+				'slug'     => 'vivid-green-cyan-to-vivid-cyan-blue',
 			),
 			array(
 				'name'     => esc_attr__( 'Light green cyan to vivid green cyan', 'themeLangDomain' ),
@@ -99,7 +102,7 @@ function lightning_theme_setup() {
 		)
 	);
 
-	add_theme_support('custom-spacing');
+	add_theme_support( 'custom-spacing' );
 
 	/*
 	  cope with page excerpt
@@ -146,22 +149,22 @@ function lightning_theme_setup() {
 
 }
 
-require	dirname( __FILE__ ) . '/inc/vk-helpers/config.php';
-require	dirname( __FILE__ ) . '/inc/class-design-manager.php';
-require	dirname( __FILE__ ) . '/inc/class-vk-description-walker.php';
-require	dirname( __FILE__ ) . '/inc/template-tags.php';
-require	dirname( __FILE__ ) . '/inc/customize/customize-design.php';
-require	dirname( __FILE__ ) . '/inc/layout-controller/layout-controller.php';
-require	dirname( __FILE__ ) . '/inc/vk-components/config.php';
-require	dirname( __FILE__ ) . '/inc/vk-mobile-nav/config.php';
-require	dirname( __FILE__ ) . '/inc/vk-breadcrumb/config.php';
-require	dirname( __FILE__ ) . '/inc/widget-area.php';
-require	dirname( __FILE__ ) . '/inc/term-color/config.php';
-require	dirname( __FILE__ ) . '/inc/vk-css-optimize/config.php';
-require	dirname( __FILE__ ) . '/inc/vk-swiper/config.php';
-require	dirname( __FILE__ ) . '/inc/ltg-g3-slider/config.php';
+require dirname( __FILE__ ) . '/inc/vk-helpers/config.php';
+require dirname( __FILE__ ) . '/inc/class-design-manager.php';
+require dirname( __FILE__ ) . '/inc/class-vk-description-walker.php';
+require dirname( __FILE__ ) . '/inc/template-tags.php';
+require dirname( __FILE__ ) . '/inc/customize/customize-design.php';
+require dirname( __FILE__ ) . '/inc/layout-controller/layout-controller.php';
+require dirname( __FILE__ ) . '/inc/vk-components/config.php';
+require dirname( __FILE__ ) . '/inc/vk-mobile-nav/config.php';
+require dirname( __FILE__ ) . '/inc/vk-breadcrumb/config.php';
+require dirname( __FILE__ ) . '/inc/widget-area.php';
+require dirname( __FILE__ ) . '/inc/term-color/config.php';
+require dirname( __FILE__ ) . '/inc/vk-css-optimize/config.php';
+require dirname( __FILE__ ) . '/inc/vk-swiper/config.php';
+require dirname( __FILE__ ) . '/inc/ltg-g3-slider/config.php';
 
-require	dirname( __FILE__ ) . '/inc/starter-content.php';
+require dirname( __FILE__ ) . '/inc/starter-content.php';
 
 /*
   Load CSS
@@ -234,7 +237,7 @@ function lightning_comment_js() {
 /*
   Load Font
 /*-------------------------------------------*/
-function lightning_load_fonts(){
+function lightning_load_fonts() {
 	echo '<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">';
 	// echo '<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="preload">';
 }
@@ -271,13 +274,14 @@ add_action( 'embed_head', 'lightning_embed_styles' );
 
 /*
   Plugin support
-/*-------------------------------------------*/
+/*
+-------------------------------------------*/
 // Load woocommerce modules
 if ( class_exists( 'woocommerce' ) ) {
 	require dirname( __FILE__ ) . '/plugin-support/woocommerce/functions-woo.php';
 }
 // Load polylang modules
-include_once ABSPATH . 'wp-admin/includes/plugin.php';
+require_once ABSPATH . 'wp-admin/includes/plugin.php';
 if ( is_plugin_active( 'polylang/polylang.php' ) ) {
 	require dirname( __FILE__ ) . '/plugin-support/polylang/functions-polylang.php';
 }
