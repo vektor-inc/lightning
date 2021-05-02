@@ -43,7 +43,7 @@ if ( ! class_exists( 'VK_Swiper' ) ) {
 		/**
 		 * Simple Minify Array
 		 */
-		public function css_simple_minify_array( $vk_css_simple_minify_array ) {
+		public static function css_simple_minify_array( $vk_css_simple_minify_array ) {
 			global $vk_swiper_url;
 			global $vk_swiper_path;
 			$vk_css_simple_minify_array[] = array(
