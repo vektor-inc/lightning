@@ -1,20 +1,29 @@
 <?php
+/**
+ * VK CSS Optimize
+ * 
+ * @package VK CSS Optimize
+ */
+
 /*
 The original of this file is located at:
 https://github.com/vektor-inc/vektor-wp-libraries
 If you want to change this file, please change the original file.
 */
 
+
 /**
  * VK CSS Optimize
  */
-
-/**
- * VK CSS Tree Shaking Class
- */
 if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
+	/**
+	 * VK CSS Optimize
+	 */
 	class VK_CSS_Optimize {
 
+		/**
+		 * Constructor
+		 */
 		public function __construct() {
 			add_action( 'customize_register', array( __CLASS__, 'customize_register' ) );
 			add_filter( 'css_tree_shaking_exclude', array( __CLASS__, 'tree_shaking_exclude' ) );
@@ -31,6 +40,9 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 			}
 		}
 
+		/**
+		 * Customize Register
+		 */
 		public static function customize_register( $wp_customize ) {
 			global $prefix_customize_panel;
 			$wp_customize->add_section(
@@ -176,6 +188,9 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 
 		}
 
+		/**
+		 * CSS Optimize Default Options
+		 */
 		public static function get_css_optimize_options_default() {
 			$vk_css_optimize_options_default = array(
 				'tree_shaking' => '',
@@ -242,37 +257,57 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 			return $vk_css_optimize_options;
 		}
 
+		/**
+		 * Get HTML Document Start
+		 */
 		public static function get_html_start() {
 			ob_start( 'VK_CSS_Optimize::css_tree_shaking_buffer' );
 		}
 
+		/**
+		 * Get HTML Document End
+		 */
 		public static function get_html_end() {
 			if ( ob_get_length() ) {
 				ob_end_flush();
 			}
 		}
 
+		/**
+		 * Array of Apply Tree Shaking
+		 */
 		public static function css_tree_shaking_array() {
 			$vk_css_tree_shaking_array = array();
 			$vk_css_tree_shaking_array = apply_filters( 'vk_css_tree_shaking_array', $vk_css_tree_shaking_array );
 			return $vk_css_tree_shaking_array;
 		}
 
+		/**
+		 * Array of Apply Simple Minify
+		 */
 		public static function css_simple_minify_array() {
 			$vk_css_simple_minify_array = array();
 			$vk_css_simple_minify_array = apply_filters( 'vk_css_simple_minify_array', $vk_css_simple_minify_array );
 			return $vk_css_simple_minify_array;
 		}
 
+		/**
+		 * Change Buffer of HTML Document
+		 *
+		 * @param string $buffer Gotten HTML Document
+		 */
 		public static function css_tree_shaking_buffer( $buffer ) {
 
 			$options = self::get_css_optimize_options();
 
-			// CSS Tree Shaking.
+			// Lode Modules
 			require_once dirname( __FILE__ ) . '/class-css-tree-shaking.php';
+
+			// Load Arrays
 			$vk_css_tree_shaking_array  = self::css_tree_shaking_array();
 			$vk_css_simple_minify_array = self::css_simple_minify_array();
 
+			// CSS Tree Shaking.
 			foreach ( $vk_css_tree_shaking_array as $vk_css_array ) {
 
 				// WP File System で CSS ファイルを読み込み
@@ -297,6 +332,7 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 
 			}
 
+			// CSS Simply Minify.
 			foreach ( $vk_css_simple_minify_array as $vk_css_array ) {
 
 				// WP File System で CSS ファイルを読み込み
@@ -328,7 +364,7 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 		public static function css_preload( $tag, $handle, $href, $media ) {
 
 			$vk_css_tree_shaking_array  = self::css_tree_shaking_array();
-			$vk_css_simple_minify_array = self::css_tree_shaking_array();
+			$vk_css_simple_minify_array = self::css_simple_minify_array();
 
 			$exclude_handles = array( 'woocommerce-layout', 'woocommerce-smallscreen', 'woocommerce-general' );
 
