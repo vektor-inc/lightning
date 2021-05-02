@@ -256,3 +256,15 @@ function lightning_get_entry_meta( $options = array() ){
 function lightning_the_entry_meta( $options = array() ){
 	echo wp_kses_post( lightning_get_entry_meta() );
 }
+
+
+function lightning_is_woo_page(){
+	if ( ! class_exists( 'woocommerce' ) ){
+		return false;
+	}
+	$post_type_info = VK_Helpers::get_post_type_info();
+	if ( isset( $post_type_info['slug'] ) && 'product' === $post_type_info['slug'] ){
+		return true;
+	}
+	return false;
+}

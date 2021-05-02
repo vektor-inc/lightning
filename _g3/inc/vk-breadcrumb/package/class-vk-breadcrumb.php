@@ -36,6 +36,7 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 					'id'    => '',
 					'url'   => home_url(),
 					'class' => 'breadcrumb-list__item--home',
+					'icon'  => 'fas fa-fw fa-home',
 				),
 			);
 
@@ -45,6 +46,7 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 					'id'    => '',
 					'url'   => '',
 					'class' => '',
+					'icon'  => '',
 				);
 
 			} elseif ( is_404() ) {
@@ -53,6 +55,7 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 					'id'    => '',
 					'url'   => '',
 					'class' => '',
+					'icon'  => '',
 				);
 			} elseif ( is_attachment() ) {
 				$breadcrumb_array[] = array(
@@ -60,6 +63,7 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 					'id'    => '',
 					'url'   => '',
 					'class' => '',
+					'icon'  => '',
 				);
 
 			} elseif ( is_author() ) {
@@ -69,6 +73,7 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 					'id'    => '',
 					'url'   => '',
 					'class' => '',
+					'icon'  => '',
 				);
 
 			} elseif ( is_page() ) {
@@ -80,6 +85,7 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 						'id'    => '',
 						'url'   => '',
 						'class' => '',
+						'icon'  => '',
 					);
 				} else {
 					// 子階層がある場合
@@ -92,6 +98,7 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 								'id'    => '',
 								'url'   => get_permalink( $ancestor ),
 								'class' => '',
+								'icon'  => '',
 							);
 						} else {
 							$breadcrumb_array[] = array(
@@ -99,6 +106,7 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 								'id'    => '',
 								'url'   => '',
 								'class' => '',
+								'icon'  => '',
 							);
 						} // if ( $ancestor != end( $ancestors ) ) {
 					} // foreach ( $ancestors as $ancestor ) {
@@ -110,6 +118,7 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 					'id'    => '',
 					'url'   => '',
 					'class' => '',
+					'icon'  => '',
 				);
 			}
 
@@ -119,6 +128,7 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 					'id'    => '',
 					'url'   => $post_type_info['url'],
 					'class' => '',
+					'icon'  => '',
 				);
 			}
 
@@ -128,6 +138,7 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 					'id'    => '',
 					'url'   => '',
 					'class' => '',
+					'icon'  => '',
 				);
 
 			} elseif ( is_tag() ) {
@@ -136,6 +147,7 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 					'id'    => '',
 					'url'   => '',
 					'class' => '',
+					'icon'  => '',
 				);
 
 			} elseif ( is_category() ) {
@@ -158,6 +170,7 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 							'id'    => '',
 							'url'   => get_category_link( $ancestor ),
 							'class' => '',
+							'icon'  => '',
 						);
 					endforeach;
 				}
@@ -166,6 +179,7 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 					'id'    => '',
 					'url'   => '',
 					'class' => '',
+					'icon'  => '',
 				);
 
 			} elseif ( is_tax() ) {
@@ -189,6 +203,7 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 							'id'    => '',
 							'url'   => get_term_link( $ancestor, $now_taxonomy ),
 							'class' => '',
+							'icon'  => '',
 						);
 					endforeach;
 					endif;
@@ -197,6 +212,7 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 					'id'    => '',
 					'url'   => '',
 					'class' => '',
+					'icon'  => '',
 				);
 
 			} elseif ( is_single() ) {
@@ -220,6 +236,7 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 							'id'    => '',
 							'url'   => $term_url,
 							'class' => '',
+							'icon'  => '',
 						);
 					}
 
@@ -277,6 +294,7 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 									'id'    => '',
 									'url'   => get_term_link( $ancestor, $taxonomy ),
 									'class' => '',
+									'icon'  => '',
 								);
 							}
 						} // if ( 0 != $term->parent ) {
@@ -286,6 +304,7 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 							'id'    => '',
 							'url'   => $term_url,
 							'class' => '',
+							'icon'  => '',
 						);
 					} // if ( $taxonomies ) {
 				} // if ( $post_type_info['slug'] == 'post' ) {
@@ -295,6 +314,7 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 					'id'    => '',
 					'url'   => '',
 					'class' => '',
+					'icon'  => '',
 				);
 			} // is_single
 
@@ -310,6 +330,7 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 					'id'    => '',
 					'url'   => '',
 					'class' => '',
+					'icon'  => '',
 				);
 			}
 
@@ -353,6 +374,10 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 
 				if ( $value['url'] ) {
 					$breadcrumb_html .= '<a href="' . esc_url( $value['url'] ) . '"' . $microdata_li_a . '>';
+				}
+
+				if ( ! empty( $value['icon'] ) ) {
+					$breadcrumb_html .= '<i class="' . $value['icon'] . '"></i>';
 				}
 
 				$breadcrumb_html .= '<span' . $microdata_li_a_span . '>' . esc_html( $value['name'] ) . '</span>';

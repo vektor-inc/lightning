@@ -3,19 +3,18 @@
 define( 'LIG_G3_DIR', '_g3' );
 define( 'LIG_G2_DIR', '_g2' );
 
-function lightning_generation_default() {
+function lightning_is_g3() {
+	$g = get_option( 'lightning_theme_generation' );
+	if ( 'g3' === $g ) {
+		return true;
+	}
+
 	$options = get_option( 'lightning_theme_options' );
 	if ( get_option( 'fresh_site' ) || ! $options ) {
-		$default = 'g3';
-	} else {
-		$default = 'g2';
-	}
-	return $default;
-}
-
-function lightning_is_g3() {
-	if ( 'g3' === get_option( 'lightning_theme_generation', lightning_generation_default() ) ) {
+		update_option( 'lightning_theme_generation', 'g3' );
 		return true;
+	} else {
+		return false;
 	}
 }
 

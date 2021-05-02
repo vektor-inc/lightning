@@ -16,6 +16,7 @@ const cssmin = require('gulp-cssmin')
 const cmq = require('gulp-merge-media-queries')
 const path = require('path')
 var sourcemaps = require('gulp-sourcemaps');
+const aliases = require('gulp-style-aliases')
 
 let error_stop = true
 
@@ -118,6 +119,9 @@ gulp.task('sass_common', function (done) {
 
 gulp.task('sass_bs4', function (done) {
   src(['./_g2/library/bootstrap-4/scss/**.scss'])
+    .pipe(aliases({
+      "@bootstrap": "./node_modules/bootstrap/scss"
+    }))
     .pipe(sass())
     .pipe(cmq(
       {
@@ -132,7 +136,7 @@ gulp.task('sass_bs4', function (done) {
       }
     ))
     .pipe(gulp.dest('./_g2/library/bootstrap-4/css/'))
-    .pipe(gulp.dest('../lightning-pro/library/bootstrap-4/css/'));
+    // .pipe(gulp.dest('../lightning-pro/library/bootstrap-4/css/'));
   done();
 });
 
