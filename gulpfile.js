@@ -28,28 +28,48 @@ function src(list) {
 }
 
 gulp.task('text-domain', function (done) {
+	// font-awesome
 	gulp.src(['./_g2/inc/font-awesome/package/*.php'])
-	.pipe(replace(', \'vk_font_awesome_version_textdomain\'', ', \'lightning\''))
-	.pipe(gulp.dest('./_g2/inc/font-awesome/package/'));
+		.pipe(replace(', \'vk_font_awesome_version_textdomain\'', ', \'lightning\''))
+		.pipe(gulp.dest('./_g2/inc/font-awesome/package/'));
+	gulp.src(['./_g3/inc/font-awesome/package/*.php'])
+		.pipe(replace(', \'vk_font_awesome_version_textdomain\'', ', \'lightning\''))
+		.pipe(gulp.dest('./_g3/inc/font-awesome/package/'));
+	// vk-components
 	gulp.src(['./_g2/inc/vk-components/package/*.php'])
-	.pipe(replace(', \'vk_components_textdomain\'', ', \'lightning\''))
-	.pipe(gulp.dest('./_g2/inc/vk-components/package/'));
+		.pipe(replace(', \'vk_components_textdomain\'', ', \'lightning\''))
+		.pipe(gulp.dest('./_g2/inc/vk-components/package/'));
+	gulp.src(['./_g3/inc/vk-components/package/*.php'])
+		.pipe(replace(', \'vk_components_textdomain\'', ', \'lightning\''))
+		.pipe(gulp.dest('./_g3/inc/vk-components/package/'));
+	// vk-mobile-nav
 	gulp.src(['./_g2/inc/vk-mobile-nav/package/*.php'])
-	.pipe(replace('vk_mobile_nav_textdomain', 'lightning'))
-	.pipe(gulp.dest('./_g2/inc/vk-mobile-nav/package/'));
+		.pipe(replace('vk_mobile_nav_textdomain', 'lightning'))
+		.pipe(gulp.dest('./_g2/inc/vk-mobile-nav/package/'));
+	gulp.src(['./_g3/inc/vk-mobile-nav/package/*.php'])
+		.pipe(replace('vk_mobile_nav_textdomain', 'lightning'))
+		.pipe(gulp.dest('./_g3/inc/vk-mobile-nav/package/'));
+	// term-color
 	gulp.src(['./_g2/inc/term-color/package/*'])
-	.pipe(replace('vk_term_color_textdomain', 'lightning'))
-  .pipe(gulp.dest('./_g2/inc/term-color/package/'));
-	gulp.src(['./_g2/inc/term-color/package/*'])
-	.pipe(replace('vk_term_color_textdomain', 'lightning'))
-  .pipe(gulp.dest('./_g2/inc/term-color/package/'));
+		.pipe(replace('vk_term_color_textdomain', 'lightning'))
+		.pipe(gulp.dest('./_g2/inc/term-color/package/'));
+	gulp.src(['./_g3/inc/term-color/package/*'])
+		.pipe(replace('vk_term_color_textdomain', 'lightning'))
+		.pipe(gulp.dest('./_g3/inc/term-color/package/'));
+	// vk-css-optimize
 	gulp.src(['./_g2/inc/vk-css-optimize/package/*'])
 		.pipe(replace("css_optimize_textdomain", 'lightning'))
 		.pipe(gulp.dest('./_g2/inc/vk-css-optimize/package/'));
-		// vk-footer-customize.
-		gulp.src(['./_g2/inc/vk-footer-customize/package/*.php'])
+	gulp.src(['./_g3/inc/vk-css-optimize/package/*'])
+		.pipe(replace("css_optimize_textdomain", 'lightning'))
+		.pipe(gulp.dest('./_g3/inc/vk-css-optimize/package/'));
+	// vk-footer-customize.
+	gulp.src(['./_g2/inc/vk-footer-customize/package/*.php'])
 		.pipe(replace("vk-footer-customize-textdomain",'lightning'))
-		.pipe(gulp.dest('./_g2/inc/vk-footer-customize/package/'))
+		.pipe(gulp.dest('./_g2/inc/vk-footer-customize/package/'));
+	gulp.src(['./_g3/inc/vk-footer-customize/package/*.php'])
+		.pipe(replace("vk-footer-customize-textdomain",'lightning'))
+		.pipe(gulp.dest('./_g3/inc/vk-footer-customize/package/'));
 	done();
 });
 
