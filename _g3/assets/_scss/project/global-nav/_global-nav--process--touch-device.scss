@@ -46,6 +46,10 @@
 				display: inline-block;
 				padding:0;	
 			}
+			// これがないよ mobile-nav が出してくる余白に負ける
+			&.menu-item-has-children>a {
+				padding:0;
+			}
 			.acc-btn {
 				border-width:1px;
 				border-style: solid;

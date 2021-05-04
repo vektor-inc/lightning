@@ -27,8 +27,7 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 	}
 
 	.acc-btn {
-		color: vat(--vk-color-text-header);
-		border-color: vat(--vk-color-text-header);
+		color: var(--vk-color-text-header);
 		background-image: var(--g_nav_main_acc_icon_open_url);
 		&.acc-btn-close {
 			background-image: var(--g_nav_main_acc_icon_close_url);
@@ -45,7 +44,6 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 	.sub-menu {
 		.acc-btn {
 			background-image: var(--g_nav_sub_acc_icon_open_url);
-			border: 1px solid $g_nav_sub_font_color;
 			&.acc-btn-close {
 				background-image: var(--g_nav_sub_acc_icon_close_url);
 			}
