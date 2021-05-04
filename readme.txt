@@ -41,7 +41,6 @@ https://www.vektor-inc.co.jp/inquiry/
 
 v14.0.13 ( Beta Release )
 [ G3 ][ Bug fix ] Gix global nav mobile mode
-[ G3 ][ Design tuning ] Add button block(core) hover color
 [ G3 ][ Other ] Add CSS variable --vk-color-primary-vivid
 [ G3 ][ Design Specification Change ] Add Core Button Block hover color
 [ G3 ][ Design Specification Change ] margin tuning of html tag
