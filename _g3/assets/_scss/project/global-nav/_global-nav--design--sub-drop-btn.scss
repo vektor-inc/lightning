@@ -29,6 +29,7 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 	.acc-btn {
 		color: var(--vk-color-text-header);
 		background-image: var(--g_nav_main_acc_icon_open_url);
+		--vk-menu-acc-btn-border-color:var(--vk-color-border-hr);
 		&.acc-btn-close {
 			background-image: var(--g_nav_main_acc_icon_close_url);
 		}
