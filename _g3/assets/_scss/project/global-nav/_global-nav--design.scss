@@ -99,11 +99,11 @@
 			li {
 				a,
 				a:hover {
-					color: $g_nav_sub_font_color;
+					color: #fff;
 				}
 				a {
 					padding: $menu_padding_vertical $menu_padding_horizontal;
-					border-bottom: $g_nav_sub_separator;
+					border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 					display: block;
 					&:hover {
 						background-color: var(--vk-color-primary);
