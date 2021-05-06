@@ -2,69 +2,60 @@
 /**
  * ブログカード
 */
-
 /**
-* WordPressで作られたサイト用
-* 埋め込み用のフィルターフックoembed_dataparse
+* WordPress独自のブログカード生成時のフィルターフックembed_oembed_html
+* File: wp-includes/class-wp-oembed.php
 * esc_url_raw は & などがはいってもエスケープさせないため
+* 管理画面側のHTMLも適応される
 */
-function wrap_oembed_dataparse($output) {
-  if ( preg_match('/<blockquote class="wp-embedded-content".*?><a href="(.+?)"/i', $output, $match) !== 1 ) 
-  return $output;
+function vk_embed_oembed_html( $output ) {
+  $pattern = '/<blockquote class="wp-embedded-content".*?><a href="(.+?)"/i';
+  if ( ! preg_match( $pattern, $output, $match ) )  {
+    return $output;
+  }
   $url = esc_url_raw($match[1]);
-  $content = get_blog_card($url);
+  $content = vk_get_blog_card($url);
   return $content;
 }
-add_filter( 'oembed_dataparse', 'wrap_oembed_dataparse' );
+add_filter( 'embed_oembed_html', 'vk_embed_oembed_html' );
 
 /**
- * 外部リンク用
- * URLから自動でブログカード化外部リンク用
- * the_contentからURLを探して置き換え
+ * WordPress独自のブログカードで生成出来ないもの
+ * 「埋め込み URL このコンテンツを埋め込めませんでした。」 
+ * と表示されるものに実行
+ * 管理画面側のHTMLは適応されない
  */
-function external_link_embed_content($content) {
-  $res = preg_match_all('/^(<p>)?(<a[^>]+?>)?https?:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+(<\/a>)?(?!.*<br *\/?>).*?(<\/p>)?/im', $content, $matches);
-  if ( empty($res) ) {
-    return $content;
-  }
-  foreach ($matches[0] as $match) {
-    $url = esc_url_raw( strip_tags($match) );
-    $content = preg_replace('{^'.preg_quote($match, '{}').'}im', get_blog_card($url), $content, 1);
-  }
+function vk_embed_maybe_make_link( $output, $url ) {
+  $content = vk_get_blog_card($url);
   return $content;
 }
-add_filter('the_content', 'external_link_embed_content' );
+add_filter( 'embed_maybe_make_link', 'vk_embed_maybe_make_link', 9, 2 );
 
 /*
-wp_remote_getで外部リンク、WordPress以外のサイトでも取得出来る形にする
+ブログカードのHTML生成
+urlを渡すとHTMLが返ってくる
+wp_remote_getでリンク先のHTMLを取得
 */
-function get_blog_card($url) {
-  // $url = "https://www.vektor-inc.co.jp/";
+function vk_get_blog_card( $url ) {
   $response = wp_remote_get( $url );
   // URLのHTMLを$bodyに入れる
   $body = $response['body'];
 
-  //正規表現でマッチするものを取得する 後に関数化
+  //正規表現でマッチするものを取得する
   if ( preg_match( '/<title>(.+?)<\/title>/is', $body, $matches ) ) {
     $title = $matches[1];
   }
 
   if ( preg_match( '/<meta.+?property=["\']og:image["\'][^\/>]*?content=["\']([^"\']+?)["\'].*?\/?>/is', $body, $matches ) ) {
     $og_image = $matches[1];
-  } else {
-    $og_image = $matches[1];
-  }
+  } 
 
   if ( preg_match( '/<meta.+?property=["\']og:description["\'][^\/>]*?content=["\']([^"\']+?)["\'].*?\/?>/is', $body, $matches ) ) {
     $og_description = $matches[1];
   }
-
-  if ( preg_match( '/<link [^>]*?rel=["\']icon["\'][^\/>]*? href=["\']([^"\']+?)["\'][^\/>]*?\/?>/si', $body, $matches ) ) {
-    $favicon = $matches[1];
-  }
   
   /*
-  スタイルは一旦Horizontalカード
+  スタイルは一旦Horizontalカードを使用
   https://getbootstrap.jp/docs/4.2/components/card/#horizontal
   */
   $content = <<<EOF
