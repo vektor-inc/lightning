@@ -235,14 +235,6 @@ function lightning_comment_js() {
 }
 
 /*
-  Load Font
-/*-------------------------------------------*/
-function lightning_load_fonts() {
-    wp_enqueue_style( 'add_google_fonts', 'https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap', false );
-}
-add_action( 'wp_footer', 'lightning_load_fonts' );
-
-/*
   Year Artchive list 'year' and count insert to inner </a>
 /*-------------------------------------------*/
 function lightning_archives_link( $html ) {
