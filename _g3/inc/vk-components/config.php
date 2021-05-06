@@ -12,6 +12,5 @@ if ( ! class_exists( 'VK_Component_Mini_Contents' ) ) {
 if ( ! class_exists( 'VK_Component_Posts' ) ) {
 	require dirname( __FILE__ ) . '/package/class-vk-component-posts.php';
 }
-require dirname( __FILE__ ) . '/package/class-vk-wp-oembed-blog-card.php';
 global $vk_components_textdomain;
 $vk_components_textdomain = 'lightning';

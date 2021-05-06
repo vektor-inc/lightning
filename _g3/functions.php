@@ -163,6 +163,7 @@ require dirname( __FILE__ ) . '/inc/term-color/config.php';
 require dirname( __FILE__ ) . '/inc/vk-css-optimize/config.php';
 require dirname( __FILE__ ) . '/inc/vk-swiper/config.php';
 require dirname( __FILE__ ) . '/inc/ltg-g3-slider/config.php';
+require dirname( __FILE__ ) . '/inc/vk-wp-oembed-blog-card/config.php';
 
 require dirname( __FILE__ ) . '/inc/starter-content.php';
 
