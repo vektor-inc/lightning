@@ -83,6 +83,6 @@ function get_blog_card($url) {
       </div>
     </a>
   </div>
-  EOF;
+EOF;
   return $content;
 }
