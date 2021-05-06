@@ -39,6 +39,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ Specification Change ] Remove Google Fonts and load only OriginIII
+
 v14.0.14 ( Beta Release )
 [ OriginIII ][ Design Specification Change ] Change global navigation hover color
 
