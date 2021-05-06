@@ -11,6 +11,7 @@ body {
 html,
 body {
 	font-size: var(--vk-size-text);
+	color:var(--vk-color-text-body);
 	padding: 0;
 	margin:0;
 	font-family: 'Lato', 'Noto Sans JP', 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
@@ -24,6 +25,16 @@ body {
 	body {
 		font-size: calc( var(--vk-size-text) * 0.875 );
 	}
+}
+
+p,
+ul,
+ol,
+table,
+dl,
+blockquote,
+iframe {
+	margin-bottom:var(--vk-margin-element-bottom);
 }
 
 a {
@@ -40,7 +51,7 @@ a {
 
 p {
 	line-height: var(--vk-line-height);
-	margin:0 0 var(--vk-margin-element-bottom);
+	margin-block-start:0;
 }
 
 ul,
@@ -107,6 +118,10 @@ i {
 	margin-right: 0.4em;
 }
 
+hr {
+	border:1px solid var(--vk-color-border-hr);
+}
+
 /* Reset iOS Style */
 input[type="submit"],
 input[type="button"] {
@@ -133,7 +148,9 @@ textarea {
 	border:1px solid var(--vk-color-border-form);
 	border-radius: var(--vk-size-radius);
 	padding:0.8em 1em;
-	margin:0.5rem 0;
+	// bottomはすぐ下にキャプションつけたりする場合があるので若干余白をもたせた方が良いが、
+	// 上部に余白をつけるとWooCommerceなどすぐとなりにボタンがある場合など段差ができるので上部に余白はつけない
+	margin:0 0 0.5rem;
 	width:100%;
 }
 input[type=file] {
@@ -166,4 +183,12 @@ table {
 }
 iframe {
 	border: none;
+}
+
+dt {
+	font-weight: bold;
+	margin-bottom:0.5em;
+}
+dd {
+	margin-left:0;
 }

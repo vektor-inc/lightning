@@ -16,6 +16,7 @@ const cssmin = require('gulp-cssmin')
 const cmq = require('gulp-merge-media-queries')
 const path = require('path')
 var sourcemaps = require('gulp-sourcemaps');
+const aliases = require('gulp-style-aliases')
 
 let error_stop = true
 
@@ -28,28 +29,48 @@ function src(list) {
 }
 
 gulp.task('text-domain', function (done) {
+	// font-awesome
 	gulp.src(['./_g2/inc/font-awesome/package/*.php'])
-	.pipe(replace(', \'vk_font_awesome_version_textdomain\'', ', \'lightning\''))
-	.pipe(gulp.dest('./_g2/inc/font-awesome/package/'));
+		.pipe(replace(', \'vk_font_awesome_version_textdomain\'', ', \'lightning\''))
+		.pipe(gulp.dest('./_g2/inc/font-awesome/package/'));
+	gulp.src(['./_g3/inc/font-awesome/package/*.php'])
+		.pipe(replace(', \'vk_font_awesome_version_textdomain\'', ', \'lightning\''))
+		.pipe(gulp.dest('./_g3/inc/font-awesome/package/'));
+	// vk-components
 	gulp.src(['./_g2/inc/vk-components/package/*.php'])
-	.pipe(replace(', \'vk_components_textdomain\'', ', \'lightning\''))
-	.pipe(gulp.dest('./_g2/inc/vk-components/package/'));
+		.pipe(replace(', \'vk_components_textdomain\'', ', \'lightning\''))
+		.pipe(gulp.dest('./_g2/inc/vk-components/package/'));
+	gulp.src(['./_g3/inc/vk-components/package/*.php'])
+		.pipe(replace(', \'vk_components_textdomain\'', ', \'lightning\''))
+		.pipe(gulp.dest('./_g3/inc/vk-components/package/'));
+	// vk-mobile-nav
 	gulp.src(['./_g2/inc/vk-mobile-nav/package/*.php'])
-	.pipe(replace('vk_mobile_nav_textdomain', 'lightning'))
-	.pipe(gulp.dest('./_g2/inc/vk-mobile-nav/package/'));
+		.pipe(replace('vk_mobile_nav_textdomain', 'lightning'))
+		.pipe(gulp.dest('./_g2/inc/vk-mobile-nav/package/'));
+	gulp.src(['./_g3/inc/vk-mobile-nav/package/*.php'])
+		.pipe(replace('vk_mobile_nav_textdomain', 'lightning'))
+		.pipe(gulp.dest('./_g3/inc/vk-mobile-nav/package/'));
+	// term-color
 	gulp.src(['./_g2/inc/term-color/package/*'])
-	.pipe(replace('vk_term_color_textdomain', 'lightning'))
-  .pipe(gulp.dest('./_g2/inc/term-color/package/'));
-	gulp.src(['./_g2/inc/term-color/package/*'])
-	.pipe(replace('vk_term_color_textdomain', 'lightning'))
-  .pipe(gulp.dest('./_g2/inc/term-color/package/'));
+		.pipe(replace('vk_term_color_textdomain', 'lightning'))
+		.pipe(gulp.dest('./_g2/inc/term-color/package/'));
+	gulp.src(['./_g3/inc/term-color/package/*'])
+		.pipe(replace('vk_term_color_textdomain', 'lightning'))
+		.pipe(gulp.dest('./_g3/inc/term-color/package/'));
+	// vk-css-optimize
 	gulp.src(['./_g2/inc/vk-css-optimize/package/*'])
 		.pipe(replace("css_optimize_textdomain", 'lightning'))
 		.pipe(gulp.dest('./_g2/inc/vk-css-optimize/package/'));
-		// vk-footer-customize.
-		gulp.src(['./_g2/inc/vk-footer-customize/package/*.php'])
+	gulp.src(['./_g3/inc/vk-css-optimize/package/*'])
+		.pipe(replace("css_optimize_textdomain", 'lightning'))
+		.pipe(gulp.dest('./_g3/inc/vk-css-optimize/package/'));
+	// vk-footer-customize.
+	gulp.src(['./_g2/inc/vk-footer-customize/package/*.php'])
 		.pipe(replace("vk-footer-customize-textdomain",'lightning'))
-		.pipe(gulp.dest('./_g2/inc/vk-footer-customize/package/'))
+		.pipe(gulp.dest('./_g2/inc/vk-footer-customize/package/'));
+	gulp.src(['./_g3/inc/vk-footer-customize/package/*.php'])
+		.pipe(replace("vk-footer-customize-textdomain",'lightning'))
+		.pipe(gulp.dest('./_g3/inc/vk-footer-customize/package/'));
 	done();
 });
 
@@ -98,6 +119,9 @@ gulp.task('sass_common', function (done) {
 
 gulp.task('sass_bs4', function (done) {
   src(['./_g2/library/bootstrap-4/scss/**.scss'])
+    .pipe(aliases({
+      "@bootstrap": "./node_modules/bootstrap/scss"
+    }))
     .pipe(sass())
     .pipe(cmq(
       {
@@ -112,7 +136,7 @@ gulp.task('sass_bs4', function (done) {
       }
     ))
     .pipe(gulp.dest('./_g2/library/bootstrap-4/css/'))
-    .pipe(gulp.dest('../lightning-pro/library/bootstrap-4/css/'));
+    // .pipe(gulp.dest('../lightning-pro/library/bootstrap-4/css/'));
   done();
 });
 
@@ -182,6 +206,16 @@ gulp.task('sass_bbpress', function (done) {
 	  .pipe(gulp.dest('./_g2/plugin-support/bbpress/css/'))
 	  .pipe(gulp.dest('../lightning-pro/plugin-support/bbpress/css/'));
   });
+  gulp.task('sass_bbpress_g3', function (done) {
+    return src(['./_g3/plugin-support/bbpress/_scss/**.scss'])
+      .pipe(sass())
+      .pipe(cmq({
+      log: true
+      }))
+      .pipe(autoprefixer())
+      .pipe(cleanCss())
+      .pipe(gulp.dest('./_g3/plugin-support/bbpress/css/'));
+    });
 
 // gulp.task('components_copy', function (done) {
 //   return gulp.src(['inc/components/*.php'])
@@ -233,6 +267,7 @@ gulp.task('watch', function (done) {
   gulp.watch(['./_g2/design-skin/origin/_scss/**/*.scss'], gulp.series('sass_skin'));
   gulp.watch(['./_g2/design-skin/origin2/_scss/**/*.scss'], gulp.series('sass_skin2_dev'));
   gulp.watch(['./_g2/design-skin/foundation/_scss/**/*.scss'], gulp.series('sass_skin2', 'dist_foundation'));
+  gulp.watch(['./_g3/plugin-support/bbpress/_scss/**'], gulp.series('sass_bbpress_g3'));
   done();
 });
 

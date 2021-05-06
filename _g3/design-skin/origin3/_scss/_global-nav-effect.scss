@@ -1,18 +1,26 @@
 @charset "utf-8";
+.global-nav-description {
 
+}
 .global-nav-list {
 	/*-------------------------------------------*/
 	/*	only first
     /*-------------------------------------------*/
 	& > li {
 		float: left;
+		&:hover,
+		&[class*="current"]{
+			.global-nav-description{
+				color:var(--vk-color-primary-vivid);
+			}
+		}
 		&:before {
 			position: absolute;
 			left: 0;
 			bottom: 0;
 			content: "";
 			width: 0;
-			border-bottom: 1px solid var(--vk-color-primary-dark);
+			border-bottom: 1px solid var(--vk-color-primary);
 			transition: all 0.5s ease-out;
 		}
 		&.menu-item-has-children::after {
@@ -32,7 +40,7 @@
 		.device-pc &.menu-item-has-children:hover::after,
 		&.acc-parent-open::after {
 			opacity: 1;
-			bottom: 0; // 0じゃないとJPNのタブレットで横線が上に入る
+			bottom: 1px;
 		}
 
 		&.acc-parent-close::after {
@@ -46,6 +54,7 @@
 	& > li > ul.sub-menu {
 		// The reason for upping it by 1px is that active-border runs off the drop-down menu..
 		margin-top: -1px;
+
 	}
 	/*-------------------------------------------*/
 	/*	2nd after

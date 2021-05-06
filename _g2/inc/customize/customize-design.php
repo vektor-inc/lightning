@@ -415,11 +415,10 @@ function lightning_print_css_common() {
 		:root {
 			--vk-menu-acc-btn-border-color:#333;
 			--vk-color-primary:' . $color_key . ';
+			--vk-color-primary-dark:' . $color_key_dark . ';
 			--color-key:' . $color_key . ';
 			--color-key-dark:' . $color_key_dark . ';
 		}
-		.bbp-submit-wrapper .button.submit { background-color:' . $color_key_dark . ' ; }
-		.bbp-submit-wrapper .button.submit:hover { background-color:' . $color_key . ' ; }
 		.veu_color_txt_key { color:' . $color_key_dark . ' ; }
 		.veu_color_bg_key { background-color:' . $color_key_dark . ' ; }
 		.veu_color_border_key { border-color:' . $color_key_dark . ' ; }

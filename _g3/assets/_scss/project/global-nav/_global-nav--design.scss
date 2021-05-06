@@ -77,7 +77,7 @@
 		/*	2nd only
 		/*-------------------------------------------*/
 		& > li > ul.sub-menu {
-			background-color: $g_nav_sub_bg_color;
+			background-color: var(--vk-color-primary-dark);
 			box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 
 			// 横位置
@@ -99,11 +99,11 @@
 			li {
 				a,
 				a:hover {
-					color: $g_nav_sub_font_color;
+					color: #fff;
 				}
 				a {
 					padding: $menu_padding_vertical $menu_padding_horizontal;
-					border-bottom: $g_nav_sub_separator;
+					border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 					display: block;
 					&:hover {
 						background-color: var(--vk-color-primary);
