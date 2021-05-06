@@ -4,8 +4,8 @@
         background-color: var(--vk-color-primary);
         border-color: var(--vk-color-primary-dark);
         &:hover{
-            background-color: var(--vk-color-primary-dark);
-            border-color: var(--vk-color-primary-dark);
+            background-color: var(--vk-color-primary-vivid);
+            border-color: var(--vk-color-primary);
         }
     }
     &-default{
