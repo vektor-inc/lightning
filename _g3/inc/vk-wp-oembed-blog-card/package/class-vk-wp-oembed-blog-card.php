@@ -10,7 +10,7 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
      * Constructor
      */
     public function __construct() {
-      add_filter( 'embed_oembed_html', array( __CLASS__, 'vk_embed_oembed_html' ) , 11 );
+      add_filter( 'embed_oembed_html', array( __CLASS__, 'vk_embed_oembed_html' ) );
       add_filter( 'embed_maybe_make_link', array( __CLASS__, 'vk_embed_maybe_make_link' ) , 9, 2 );
     }
 
@@ -25,7 +25,7 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
         return $output;
       }
       $url = esc_url_raw($match[1]);
-      $content = static::vk_get_blog_card($url);
+      $content = static::get_blog_card($url);
       return $content;
     }
 
@@ -35,7 +35,7 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
      * と表示されるものに実行
      */
     public static function vk_embed_maybe_make_link( $output, $url ) {
-      $content = static::vk_get_blog_card($url);
+      $content = static::get_blog_card($url);
       return $content;
     }
 
@@ -44,7 +44,7 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
     urlを渡すとHTMLが返ってくる
     wp_remote_getでリンク先のHTMLを取得
     */
-    public static function vk_get_blog_card( $url ) {
+    public static function get_blog_card( $url ) {
       $response = wp_remote_get( $url );
       // URLのHTMLを$bodyに入れる
       $body = $response['body'];
@@ -65,12 +65,26 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
         <a href="<?php echo esc_url( $url ); ?>">
           <div class="row no-gutters">
             <div class="col-md-4">
-              <img class="bd-placeholder-img" width="486" height="290" src="<?php echo esc_url( $og_image ); ?>" alt="">
+              <?php if ( $og_image ) : ?>
+                <img class="bd-placeholder-img" src="<?php echo esc_url( $og_image ); ?>" alt="">
+              <?php endif; ?>
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <h5 class="card-title"><?php echo esc_html( $title ); ?></h5>
-                <p class="card-text"><?php echo esc_html( $og_description ); ?></p>
+                <?php if ( $title ) : ?>
+                  <h5 class="card-title"><?php echo esc_html( $title ); ?></h5>
+                <?php endif; ?>
+                <?php if ( $og_description ) : ?>
+                  <p class="card-text">
+                    <?php
+                    if ( function_exists( 'mb_strimwidth' ) ) {
+                      echo esc_html( mb_strimwidth( $og_description, 0, 160, '…', 'utf-8' ) );
+                    } else {
+                      echo esc_html( $og_description ); 
+                    }
+                    ?>
+                  </p>
+                <?php endif; ?>
               </div>
             </div>
           </div>
@@ -79,41 +93,55 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
       <?
       $content = ob_get_clean();
       $content = apply_filters( 'lightning_wp_oembed_blog_card_template', $content );
-      return $content;
-    }
+      return static::_strip_newlines( $content );
+      // return $content;
+		}
 
     /**
-     * タイトルを取得
+     * Remove newlines.
      *
-    */
-    public static function get_site_title( $body ) {
-      if ( preg_match( '/<title>(.+?)<\/title>/is', $body, $matches ) ) {
-        return $matches[1];
-      }
-      return '';
+     * @param string $string The string.
+     * @return string
+     */
+    protected static function _strip_newlines( $string ) {
+      return str_replace( array( "\r", "\n", "\t" ), '', $string );
     }
 
-    /**
-     * サムネイルを取得
-     *
-    */
-    public static function get_site_thumbnail( $body ) {
-      if ( preg_match( '/<meta.+?property=["\']og:image["\'][^\/>]*?content=["\']([^"\']+?)["\'].*?\/?>/is', $body, $matches ) ) {
-        return $matches[1];
-      }
-      return '';
-    }
+		/**
+		 * タイトルを取得
+		 *
+		 * @return string
+		 */
+		public static function get_site_title( $body ) {
+			if ( preg_match( '/<title>(.+?)<\/title>/is', $body, $matches ) ) {
+				return $matches[1];
+			}
+			return '';
+		}
+
+		/**
+		 * サムネイルを取得
+		 *
+		 * @return string
+		 */
+		public static function get_site_thumbnail( $body ) {
+			if ( preg_match( '/<meta.+?property=["\']og:image["\'][^\/>]*?content=["\']([^"\']+?)["\'].*?\/?>/is', $body, $matches ) ) {
+				return $matches[1];
+			}
+			return '';
+		}
 
     /**
-     * 説明文を取得
-     *
-    */
-    public static function get_site_description( $body ) {
-      if ( preg_match( '/<meta.+?property=["\']og:description["\'][^\/>]*?content=["\']([^"\']+?)["\'].*?\/?>/is', $body, $matches ) ) {
-        return $matches[1];
-      }
-      return '';
-    }
-  }
-  new VK_WP_Oembed_Blog_Card();
+		 * 説明文を取得
+		 *
+		 * @return string
+		 */
+		public static function get_site_description( $body ) {
+			if ( preg_match( '/<meta.+?property=["\']og:description["\'][^\/>]*?content=["\']([^"\']+?)["\'].*?\/?>/is', $body, $matches ) ) {
+				return $matches[1];
+			}
+			return '';
+		}
+	}
+	new VK_WP_Oembed_Blog_Card();
 }
