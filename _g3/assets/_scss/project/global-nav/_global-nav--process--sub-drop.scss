@@ -14,6 +14,7 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 .global-nav-list > li {
 	& > ul.sub-menu {
 		position: absolute;
+		z-index: 10; /* これがないとスライドの下などに隠れる */
 	}
 	
 	/*

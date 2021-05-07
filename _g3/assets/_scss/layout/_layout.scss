@@ -3,7 +3,9 @@
 /*-------------------------------------------*/
 /* clearfix
 /*-------------------------------------------*/
-.site-header,
+/*
+Don't add position to .site-header to be scroll fixed
+*/
 .site-body,
 .site-body-container,
 .site-footer,

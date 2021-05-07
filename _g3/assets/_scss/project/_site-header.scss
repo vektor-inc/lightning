@@ -2,6 +2,7 @@ $logo_top_margin:1.1rem;
 $logo_bottom_margin:1rem;
 .site-header {
     width:100%;
+    overflow: visible;
     z-index: 1000;
     &-logo{
         margin-left:auto;
@@ -13,6 +14,9 @@ $logo_bottom_margin:1rem;
         @media ( max-width: $md-max ){
             margin-top:0.5rem;
             margin-bottom:0.5rem;
+            img {
+                max-height:50px;
+            }
         } 
         @media ( min-width: $lg-min ){
             margin-top:$logo_top_margin;

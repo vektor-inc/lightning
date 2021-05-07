@@ -16,8 +16,8 @@
 
     if(lightningOpt.header_scrool){
 
-        // ヘッダーのコンテナ部分の元の高さを取得
-        const siteHeaderContainerHeight = document.getElementById('site-header-container').offsetHeight;
+        // ヘッダーの元の高さを取得
+        const siteHeaderContainerHeight = document.getElementById('site-header').offsetHeight;
 
         let body_class_timer = false;
         let body_class_lock = false;
@@ -25,15 +25,16 @@
         let header_scrool_func = ()=>{ 
 
             let siteHeader = document.getElementById('site-header');
+            let siteHeaderNext = siteHeader.nextElementSibling;
 
             if( ! body_class_lock && window.pageYOffset > siteHeaderContainerHeight ){
                 // ヘッダースクロール識別用のclass追加
                 document.body.classList.add('header_scrolled')
-                // コンテナ部分をfixedにするので、ガクンとならないようにヘッダーの高さ分余白を追加する
-                siteHeader.style.marginBottom = siteHeaderContainerHeight + "px";
+                // コンテナ部分をfixedにするので、ガクンとならないように、ヘッダーの次の要素にヘッダーの高さ分余白を追加する 
+                siteHeaderNext.style.marginTop = siteHeaderContainerHeight + "px";
             } else {
                 document.body.classList.remove('header_scrolled')
-                siteHeader.style.marginBottom = null;
+                siteHeaderNext.style.marginTop = null;
             }
         }
 
