@@ -32,6 +32,10 @@
 	display: block;
 }
 .header_scrolled {
+    .site-header-logo,
+    .site-header-sub {
+        display: none;
+    }
 	&.admin-bar .site-header-container {
 		top: 32px;
 	}

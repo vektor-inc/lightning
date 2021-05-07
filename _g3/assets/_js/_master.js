@@ -15,14 +15,25 @@
     window.addEventListener('DOMContentLoaded', bodyClass, false)
 
     if(lightningOpt.header_scrool){
+
+        // ヘッダーのコンテナ部分の元の高さを取得
+        const siteHeaderContainerHeight = document.getElementById('site-header-container').offsetHeight;
+
         let body_class_timer = false;
         let body_class_lock = false;
-        // siteHeader.offsetHeight
+
         let header_scrool_func = ()=>{ 
-            if( ! body_class_lock && window.pageYOffset > 160 ){
+
+            let siteHeader = document.getElementById('site-header');
+
+            if( ! body_class_lock && window.pageYOffset > siteHeaderContainerHeight ){
+                // ヘッダースクロール識別用のclass追加
                 document.body.classList.add('header_scrolled')
-            }else{
+                // コンテナ部分をfixedにするので、ガクンとならないようにヘッダーの高さ分余白を追加する
+                siteHeader.style.marginBottom = siteHeaderContainerHeight + "px";
+            } else {
                 document.body.classList.remove('header_scrolled')
+                siteHeader.style.marginBottom = null;
             }
         }
 

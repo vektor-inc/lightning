@@ -1,6 +1,6 @@
-<header class="<?php lightning_the_class_name( 'site-header' ); ?>">
+<header id="site-header" class="<?php lightning_the_class_name( 'site-header' ); ?>">
 	<?php do_action( 'lightning_site_header_prepend' ); ?>
-	<div class="<?php lightning_the_class_name( 'site-header-container' ); ?> container">
+	<div id="site-header-container" class="<?php lightning_the_class_name( 'site-header-container' ); ?> container">
 
 		<?php
 		if ( is_front_page() ) {
