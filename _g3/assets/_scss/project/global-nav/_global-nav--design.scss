@@ -14,13 +14,6 @@
 
 .global-nav {
 	&-list{
-		a:hover,
-		a:active,
-		a:focus {
-			// background-color: var(--vk-color-primary);
-			// transition: background-color 0.4s;
-			// color: var(--vk-color-text-header);
-		}
 		margin: 0 auto;
 		padding: 0;
 		display: flex;
