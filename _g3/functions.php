@@ -224,6 +224,7 @@ function lightning_addJs() {
 add_filter( 'lightning_localize_options', 'lightning_global_nav_fix', 10, 1 );
 function lightning_global_nav_fix( $options ) {
 	$options['header_scrool'] = true;
+	$options['add_header_offset_margin'] = true;
 	return $options;
 }
 

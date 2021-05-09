@@ -30,11 +30,15 @@
             if( ! body_class_lock && window.pageYOffset > siteHeaderContainerHeight ){
                 // ヘッダースクロール識別用のclass追加
                 document.body.classList.add('header_scrolled')
-                // コンテナ部分をfixedにするので、ガクンとならないように、ヘッダーの次の要素にヘッダーの高さ分余白を追加する 
-                siteHeaderNext.style.marginTop = siteHeaderContainerHeight + "px";
+                if(lightningOpt.add_header_offset_margin){
+                    // コンテナ部分をfixedにするので、ガクンとならないように、ヘッダーの次の要素にヘッダーの高さ分余白を追加する 
+                    siteHeaderNext.style.marginTop = siteHeaderContainerHeight + "px";
+                }
             } else {
                 document.body.classList.remove('header_scrolled')
-                siteHeaderNext.style.marginTop = null;
+                if(lightningOpt.add_header_offset_margin){
+                    siteHeaderNext.style.marginTop = null;
+                }
             }
         }
 
@@ -68,6 +72,8 @@
         window.addEventListener('scroll', header_scrool_func, true)
         window.addEventListener('DOMContentLoaded', header_scrool_func, false)
     }
+
+
 
    /*-------------------------------------------*/
     /*  iframeのレスポンシブ対応
