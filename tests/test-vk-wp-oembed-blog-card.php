@@ -42,8 +42,9 @@ class BlogCardTest extends WP_UnitTestCase {
 		the_contentをapply_filtersした時と比べてあげる
 		*/
 		foreach ( $test_array as $key => $value ) {
+			remove_filter('the_content', 'wpautop');
 			$filter_correct = trim( apply_filters( 'the_content',  $value['correct'] ) );
-			$filter_correct = str_replace( '<p></p>', '', $filter_correct );
+			add_filter('the_content', 'new_wpautop',  5);
 			
 			$result = VK_WP_Oembed_Blog_Card::get_blog_card( $value['url'] );
 			
