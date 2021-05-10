@@ -1,7 +1,4 @@
 @charset "utf-8";
-.global-nav-description {
-
-}
 .global-nav-list {
 	/*-------------------------------------------*/
 	/*	only first
@@ -11,7 +8,9 @@
 		&:hover,
 		&[class*="current"]{
 			.global-nav-description{
-				color:var(--vk-color-primary-vivid);
+				// 色をつけない Don't specific the color
+				// ナビ背景が濃い時やナビ背景は薄いけどヘッダー背景が濃い時、ヘッダー透過の時などの処理がカオスになる。
+				opacity: 1;
 			}
 		}
 		&:before {
@@ -34,7 +33,7 @@
 			border: 10px solid transparent;
 			z-index: 1000;
 			opacity: 0;
-			border-bottom-color: var(--vk-color-primary-dark);
+			border-bottom-color: var(--vk-color-primary);
 		}
 
 		.device-pc &.menu-item-has-children:hover::after,

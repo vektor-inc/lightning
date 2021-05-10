@@ -2,7 +2,7 @@
 Lightning WordPress theme, Copyright (C) 2015-2021 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
 Tested up to: 5.7.1
-Stable tag: 14.0.14
+Stable tag: 14.0.17
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,6 +38,16 @@ https://www.vektor-inc.co.jp/inquiry/
 
 
 == Changelog ==
+
+v14.0.17 ( Beta Release )
+[ G3 ][ Bug fix ] Fix header fixed system and css on header trans(ProUnit)
+
+v14.0.16 ( Beta Release )
+[ G3 ][ Specification Change ] Change header fix system and css
+
+v14.0.15 ( Beta Release )
+[ G3 ][ Specification Change ] Change Global nav sub menu hover bg color and btn-primary:hover 
+[ G3 ][ Specification Change ] Remove Google Fonts and load only OriginIII
 
 v14.0.14 ( Beta Release )
 [ OriginIII ][ Design Specification Change ] Change global navigation hover color
