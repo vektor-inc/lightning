@@ -19,7 +19,7 @@
 		display: flex;
 		list-style: none;
 		position: relative;
-		justify-content: center;
+		height:100%; // スクロールメニューで必要
 		a {
 			color: var(--vk-color-text-header);
 		}
@@ -35,9 +35,19 @@
 		/*-------------------------------------------*/
 		& > li {
 			text-align: center;
+			& > a {
+				position: relative;
+
+				display: flex;
+				flex-wrap: wrap; // 要素が2つの場合があるので必要
+				justify-content: center;
+				align-items: center;
+
+			}
 			.global-nav-name {
 				font-size: $g_nav_font_size;
 				display: block;
+				width:100%;
 				/*
 				メニューは
 				・必要なら <br> でユーザーが改行指定できる
