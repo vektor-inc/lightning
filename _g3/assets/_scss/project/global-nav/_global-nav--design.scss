@@ -19,7 +19,9 @@
 		display: flex;
 		list-style: none;
 		position: relative;
-		height:100%; // スクロールメニューで必要
+		.header_scrolled & {
+			height:100%; // スクロールメニューで必要
+		}
 		a {
 			color: var(--vk-color-text-header);
 		}
@@ -38,6 +40,7 @@
 			& > a {
 				position: relative;
 
+				// サブテキスト有無関係なく上下中央になるように
 				display: flex;
 				flex-wrap: wrap; // 要素が2つの場合があるので必要
 				justify-content: center;
