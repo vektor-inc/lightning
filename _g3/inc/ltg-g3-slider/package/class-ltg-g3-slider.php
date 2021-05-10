@@ -829,8 +829,8 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 					// Add Pagination.
 					$slide_html .= '<div class="swiper-pagination swiper-pagination-white"></div>';
 					// Add Arrows.
-					$slide_html .= '<div class="swiper-button-next swiper-button-white"></div>';
-					$slide_html .= '<div class="swiper-button-prev swiper-button-white"></div>';
+					$slide_html .= '<div class="ltg-slide-button-next swiper-button-next swiper-button-white"></div>';
+					$slide_html .= '<div class="ltg-slide-button-prev swiper-button-prev swiper-button-white"></div>';
 				}
 
 				$slide_html .= '</div><!-- [ /.swiper-container ] -->';
