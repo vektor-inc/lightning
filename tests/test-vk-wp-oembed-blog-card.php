@@ -20,7 +20,7 @@
  */
 class BlogCardTest extends WP_UnitTestCase {
 
-	function test_get_blog_card() {
+	function test_vk_get_blog_card() {
 		// the_contentのフィルターフックで自動に入るpタグを削除
 		remove_filter( 'the_content', 'wpautop' );
 		$test_array = array(
@@ -45,7 +45,7 @@ class BlogCardTest extends WP_UnitTestCase {
 		WordPressが自動で入れるpタグを除外
 		*/
 		foreach ( $test_array as $key => $value ) {
-			$result = VK_WP_Oembed_Blog_Card::get_blog_card( $value['url'] );
+			$result = VK_WP_Oembed_Blog_Card::vk_get_blog_card( $value['url'] );
 			$this->assertEquals( $value['correct'], $result );
 		}
 		// wpautopフィルターフックを戻す

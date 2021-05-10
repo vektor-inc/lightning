@@ -29,7 +29,7 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 				return $output;
 			}
 			$url = esc_url_raw( $match[1] );
-			$content = static::get_blog_card( $url );
+			$content = static::vk_get_blog_card( $url );
 			return $content;
 		}
 
@@ -39,7 +39,7 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 		 * と表示されるものに実行
 		 */
 		public static function vk_embed_maybe_make_link( $output, $url ) {
-			$content = static::get_blog_card( $url );
+			$content = static::vk_get_blog_card( $url );
 			return $content;
 		}
 
@@ -48,7 +48,7 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 		 * urlを渡すとHTMLが返ってくる
 		 * wp_remote_getでリンク先のHTMLを取得
 		 */
-		public static function get_blog_card( $url ) {
+		public static function vk_get_blog_card( $url ) {
 			$response = wp_remote_get( $url );
 			// URLのHTMLを$bodyに入れる
 			$body = $response['body'];
