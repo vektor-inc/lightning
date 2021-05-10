@@ -2,7 +2,7 @@
 /**
  * Class BlogCardTest
  *
- * @package VK_Component_Button
+ * @package VK_WP_Oembed_Blog_Card
  *
  * cd /app
  * bash setup-phpunit.sh
@@ -21,35 +21,35 @@
 class BlogCardTest extends WP_UnitTestCase {
 
 	function test_get_blog_card() {
+		// the_contentのフィルターフックで自動に入るpタグを削除
+		remove_filter( 'the_content', 'wpautop' );
 		$test_array = array(
 			// WordPressで作られたサイト トップページ
 			array(
-				'url'         => 'https://www.vektor-inc.co.jp/',
-				'correct'       => '[embed]https://www.vektor-inc.co.jp/[/embed]',
+				'url'     => 'https://www.vektor-inc.co.jp/',
+				'correct' => apply_filters( 'the_content', '[embed]https://www.vektor-inc.co.jp/[/embed]' ),
 			),
 			// WordPressで作られたサイト 下層ページ
-			// array(
-			// 	'url'         => 'https://www.vektor-inc.co.jp/service/',
-			// 	'correct'       => '[embed]https://www.vektor-inc.co.jp/service/[/embed]',
-			// ),
+			array(
+				'url'     => 'https://www.vektor-inc.co.jp/service/',
+				'correct' => apply_filters( 'the_content', '[embed]https://www.vektor-inc.co.jp/service/[/embed]' ),
+			),
 			// WordPressでは作られていないサイト
-			// array(
-			// 	'url'         => 'https://github.com/vektor-inc/lightning',
-			// 	'correct'       => '[embed]https://github.com/vektor-inc/lightning[/embed]',
-			// ),
+			array(
+				'url'     => 'https://github.com/vektor-inc/lightning',
+				'correct' => apply_filters( 'the_content', '[embed]https://github.com/vektor-inc/lightning[/embed]' ),
+			),
 		);
 		/*
 		the_contentをapply_filtersした時と比べてあげる
+		WordPressが自動で入れるpタグを除外
 		*/
 		foreach ( $test_array as $key => $value ) {
-			remove_filter('the_content', 'wpautop');
-			$filter_correct = trim( apply_filters( 'the_content',  $value['correct'] ) );
-			add_filter('the_content', 'new_wpautop',  5);
-			
 			$result = VK_WP_Oembed_Blog_Card::get_blog_card( $value['url'] );
-			
-			$this->assertEquals( trim( $filter_correct ), trim( $result ) );
+			$this->assertEquals( $value['correct'], $result );
 		}
+		// wpautopフィルターフックを戻す
+		add_filter( 'the_content', 'wpautop' );
 	}
 
 }
