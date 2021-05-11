@@ -26,7 +26,11 @@
 				height:100%;
 				// PC端末時は下階層展開ボタンを表示しないので左右余白小さめ
 				@media ( min-width: $lg-min ) { // media指定がないと vk-menu-acc 指定の余白に負けるため指定
-					padding: $menu_padding_vertical $g_nav_padding_horizontal_pc;
+					padding: $menu_padding_vertical 1.5em;
+				}
+				@media ( min-width: $xl-min ) {
+					padding-left: 1.8em;
+					padding-right: 1.8em;
 				}
 			}
 		}

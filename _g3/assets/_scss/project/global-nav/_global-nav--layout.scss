@@ -13,6 +13,12 @@
     }
 }
 
+.global-nav--layout--center{
+    width:auto;
+    .global-nav-list {
+        justify-content: center;
+    }
+}
 .global-nav--layout--penetration {
     /* 
     100vwはWindowsでスクロールバーも含んで横スクロールバーが出てしまうので極力使用しない
