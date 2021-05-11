@@ -8,8 +8,8 @@
 	@media (max-width: $md-max) {
 		display: none;
 	}
-	// position: relative; をここで指定してしまうと、スクロール時にすっと下がるモーションが付けられない
-	width: 100%; /* If not this specification that not center on Charm  */
+	// width:100%があるとスクロール時に 中央揃えにならない
+	// width: 100%;
 }
 
 .global-nav {
