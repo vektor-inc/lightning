@@ -255,7 +255,7 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 						}
 					}
 
-					$taxonomies     = array();
+					$taxonomies = array();
 
 					// 一旦タクソノミーの文字列配列に変換しないと色々と面倒.
 					foreach ( $get_taxonomies as $key => $value ) {
@@ -390,7 +390,7 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 
 			}
 
-				$breadcrumb_html .= '</ul>';
+				$breadcrumb_html .= '</ol>';
 				$breadcrumb_html .= '</div>
                 </div>
                 <!-- [ /#' . esc_attr( $breadcrumb_options['class_outer'] ) . ' ] -->
