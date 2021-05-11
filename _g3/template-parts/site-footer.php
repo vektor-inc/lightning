@@ -1,23 +1,23 @@
 <footer class="<?php lightning_the_class_name( 'site-footer' ); ?>">
 
 	<?php if ( has_nav_menu( 'footer-nav' ) ) : ?>
-        <?php
-        wp_nav_menu(
-            array(
-                'theme_location'    => 'footer-nav',
-                'container'         => 'nav',
-                'container_class'	=> 'footer-nav',
-                'items_wrap'        => '<div class="container"><ul id="%1$s" class="%2$s footer-nav-list nav nav--line">%3$s</div></ul>',
-                'fallback_cb'       => '',
-                'depth'             => 1,
-            )
-        );
-        ?>
+		<?php
+		wp_nav_menu(
+			array(
+				'theme_location'  => 'footer-nav',
+				'container'       => 'nav',
+				'container_class' => 'footer-nav',
+				'items_wrap'      => '<div class="container"><ul id="%1$s" class="%2$s footer-nav-list nav nav--line">%3$s</ul></div>',
+				'fallback_cb'     => '',
+				'depth'           => 1,
+			)
+		);
+		?>
 	<?php endif; ?>
 	
 	<?php
 	$footer_widget_area_count = apply_filters( 'lightning_footer_widget_area_count', 3 );
-	$footer_widget_exists = false;
+	$footer_widget_exists     = false;
 	for ( $i = 1; $i <= $footer_widget_area_count; $i++ ) {
 		if ( is_active_sidebar( 'footer-widget-' . $i ) ) {
 			$footer_widget_exists = true;
