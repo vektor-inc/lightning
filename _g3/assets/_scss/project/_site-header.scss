@@ -11,9 +11,11 @@ $logo_bottom_margin:1rem;
         font-weight: 700; // cope with not all page h1
         font-size:1.5rem;
         white-space: nowrap;
-        a {
-            display:block; overflow:hidden;
-        }
+        // a {
+        //  ロゴが画像じゃない時ののalignが効かなくなる
+        //  display:block; 
+        //  overflow:hidden;
+        // }
         @media ( max-width: $md-max ){
             margin-top:0.5rem;
             margin-bottom:0.5rem;
@@ -22,6 +24,7 @@ $logo_bottom_margin:1rem;
             }
         } 
         @media ( min-width: $lg-min ){
+            text-align: left;
             margin-top:$logo_top_margin;
             margin-bottom:$logo_bottom_margin;
             margin-left:0;
@@ -47,6 +50,13 @@ $logo_bottom_margin:1rem;
     }
 }
 
+.site-header--layout--center {
+    @media ( min-width: $lg-min ){
+        .site-header-logo {
+            text-align: center;
+        }
+    }
+}
 .site-header--layout--nav-float {
     @media ( min-width: $lg-min ){
         .site-header-container {
