@@ -51,9 +51,9 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 		public static function slide_count() {
 			$slide_count     = 0;
 			$slide_count_max = self::slide_count_max();
-			$options = get_option( 'lightning_theme_options' );
-			$default = lightning_g3_slider_default_options();
-			$options = wp_parse_args( $options, $default );
+			$options         = get_option( 'lightning_theme_options' );
+			$default         = lightning_g3_slider_default_options();
+			$options         = wp_parse_args( $options, $default );
 
 			for ( $i = 1; $i <= $slide_count_max; $i++ ) {
 				if ( ! empty( $options[ 'top_slide_image_' . $i ] ) ) {
@@ -203,7 +203,7 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 			);
 
 			// Array of allowed swiper effects by kurudrive
-			$ltg_g3_swiper_effects =  array(
+			$ltg_g3_swiper_effects = array(
 				'slide'     => 'slide',
 				'fade'      => 'fade',
 				'coverflow' => 'coverflow',
@@ -279,16 +279,16 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 				'top_slide_text_align',
 				'top_slide_text_color',
 				'top_slide_text_shadow_use',
-				'top_slide_text_shadow_color'
+				'top_slide_text_shadow_color',
 			);
 
 			for ( $i = 1; $i <= $slide_count_max; $i++ ) {
 
-				foreach ( $fields as $k => $v ){
-					if ( ! empty( $default_options[$v . '_' . $i] ) ){
-						$customize_default[$v] = $default_options[$v . '_' . $i];
+				foreach ( $fields as $k => $v ) {
+					if ( ! empty( $default_options[ $v . '_' . $i ] ) ) {
+						$customize_default[ $v ] = $default_options[ $v . '_' . $i ];
 					} else {
-						$customize_default[$v] = '';
+						$customize_default[ $v ] = '';
 					}
 				}
 
@@ -433,7 +433,6 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 					)
 				);
 
-
 				// text position.
 				$wp_customize->add_setting(
 					'lightning_theme_options[top_slide_text_align_' . $i . ']',
@@ -544,7 +543,7 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 							'label'       => '[' . $i . '] ' . __( 'Slide Image', 'lightning' ),
 							'section'     => 'ltg_g3_slider',
 							'settings'    => 'lightning_theme_options[top_slide_image_' . $i . ']',
-							'description' => __( 'Recommended image size : 1900*1069px', 'lightning' ),
+							'description' => __( 'Recommended image size : 1900*600px', 'lightning' ),
 						)
 					)
 				);
@@ -658,7 +657,7 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 
 			$options = get_option( 'lightning_theme_options' );
 
-			if ( 'hide' === isset( $options['top_slide_display'] ) ){
+			if ( 'hide' === isset( $options['top_slide_display'] ) ) {
 				return;
 			}
 
@@ -687,7 +686,7 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 
 			$swiper_paras = self::swiper_paras_json( $paras );
 
-			$slider_prefix = esc_html($options['top_slide_prefix']);
+			$slider_prefix = esc_html( $options['top_slide_prefix'] );
 
 			$tag = 'var ' . $slider_prefix . 'swiper = new Swiper(\'.' . $slider_prefix . 'swiper-container\', ' . $swiper_paras . ');';
 			wp_add_inline_script( 'vk-swiper-script', $tag, 'after' );
@@ -701,10 +700,10 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 			$slide_count_max = self::slide_count_max();
 			$slide_count     = self::slide_count();
 
-			$options = get_option( 'lightning_theme_options' );
-			$default = lightning_g3_slider_default_options();
-			$options = wp_parse_args( $options, $default );
-			$slider_prefix = esc_html($options['top_slide_prefix']);
+			$options       = get_option( 'lightning_theme_options' );
+			$default       = lightning_g3_slider_default_options();
+			$options       = wp_parse_args( $options, $default );
+			$slider_prefix = esc_html( $options['top_slide_prefix'] );
 
 			$slide_html = '';
 
@@ -778,7 +777,7 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 							'btn_color_text' => '#333',
 							'btn_color_bg'   => '#337ab7',
 						);
-	
+
 						if ( ! empty( $options[ 'top_slide_text_color_' . $i ] ) ) {
 							$mini_content_args['text_color'] = $options[ 'top_slide_text_color_' . $i ];
 						}
@@ -788,11 +787,11 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 						if ( ! empty( $options[ 'top_slide_text_shadow_use_' . $i ] ) ) {
 							$mini_content_args['shadow_use'] = $options[ 'top_slide_text_shadow_use_' . $i ];
 						}
-	
+
 						if ( ! empty( $options[ 'top_slide_text_shadow_color_' . $i ] ) ) {
 							$mini_content_args['shadow_color'] = $options[ 'top_slide_text_shadow_color_' . $i ];
 						}
-	
+
 						if ( ! empty( $options[ 'top_slide_text_title_' . $i ] ) ) {
 							$mini_content_args['title_text'] = $options[ 'top_slide_text_title_' . $i ];
 						}
@@ -814,9 +813,9 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 						if ( ! empty( $options['color_key'] ) ) {
 							$mini_content_args['btn_color_bg'] = $options['color_key'];
 						}
-	
+
 						$slide_html .= VK_Component_Mini_Contents::get_view( $mini_content_args );
-	
+
 						$slide_html .= '</div><!-- .mini-content -->';
 
 						$slide_html .= '</div><!-- [ /.item ] -->';
