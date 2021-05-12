@@ -183,6 +183,7 @@ function lightning_add_starter_content() {
 					),
 				),
 			),
+			'footer-before-widget'           => array(),
 			'footer-widget-1'                => array(
 				'text_custom' => array(
 					'text',
