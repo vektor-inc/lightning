@@ -5,17 +5,20 @@
         align-items: center; // 上下中央
     }
     .global-nav--layout--float-right {
-        .global-nav-list{
-            margin-right:0;
-        }
-        margin-bottom:0;
-        .device-pc & .global-nav-list>li>a {
-            padding-left: 1em;
-            padding-right: 1em;
-        }
+      /*
+      .global-nav の幅は 
+      .site-header--layout--nav-float .site-header-logo の部分が
+      幅100%でついているので押し込まれる形で最小サイズになるのでここでは特に指定していない
+      */
     }
 }
 
+.global-nav--layout--center{
+    width:auto;
+    .global-nav-list {
+        justify-content: center;
+    }
+}
 .global-nav--layout--penetration {
     /* 
     100vwはWindowsでスクロールバーも含んで横スクロールバーが出てしまうので極力使用しない

@@ -8,8 +8,11 @@
     margin-bottom: var(--vk-margin-block-bottom);
     ul {
         padding-left:1.5em;
+        &.wp-block-social-links {
+            padding-left:0;
+        }
     }
-    &-title  ul {
+    &-title ul {
         margin-top:0;
     }
     li {
