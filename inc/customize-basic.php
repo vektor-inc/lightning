@@ -35,7 +35,7 @@ function lightning_customize_register_basic( $wp_customize ) {
 	);
 
 	$choices = array(
-		'g2' => __( 'Generation 2', 'lightning' ),
+		'g2' => __( 'Generation 2 ( ~ version 13.x )', 'lightning' ),
 		'g3' => __( 'Generation 3', 'lightning' ),
 	);
 
