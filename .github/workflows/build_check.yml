@@ -19,60 +19,60 @@ jobs:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v1
       with:
-        node-version: 12.x
+        node-version: 14.x
 
-    - run: cp assets/js/lightning.min.js lightning.min.js.before
-    - run: cp assets/css/common.css common.css.before
-    - run: cp assets/css/common_editor.css common_editor.css.before
-    - run: cp assets/css/wp-embed.css wp-embed.css.before
+    - run: cp _g2/assets/js/lightning.min.js lightning.min.js.before
+    - run: cp _g2/assets/css/common.css common.css.before
+    - run: cp _g2/assets/css/common_editor.css common_editor.css.before
+    - run: cp _g2/assets/css/wp-embed.css wp-embed.css.before
 
-    - run: cp library/bootstrap-4/css/bootstrap.css bootstrap4.css.before
-    - run: cp library/bootstrap-3/css/bootstrap.css bootstrap3.css.before
+    - run: cp _g2/library/bootstrap-4/css/bootstrap.css bootstrap4.css.before
+    - run: cp _g2/library/bootstrap-3/css/bootstrap.css bootstrap3.css.before
 
-    - run: cp design-skin/origin/css/style.css origin.style.css.before
-    - run: cp design-skin/origin/css/editor.css origin.editor.css.before
+    - run: cp _g2/design-skin/origin/css/style.css origin.style.css.before
+    - run: cp _g2/design-skin/origin/css/editor.css origin.editor.css.before
 
-    - run: cp design-skin/origin2/css/style.css origin2.style.css.before
-    - run: cp design-skin/origin2/css/editor.css origin2.editor.css.before
+    - run: cp _g2/design-skin/origin2/css/style.css origin2.style.css.before
+    - run: cp _g2/design-skin/origin2/css/editor.css origin2.editor.css.before
 
-    - run: cp plugin-support/woocommerce/css/woo.css woo.css.before
+    - run: cp _g2/plugin-support/woocommerce/css/woo.css woo.css.before
 
     - run: npm install -D
 
     # js forget compile check
     - name: build Javascript
       run: npm run build:script
-    - run: diff assets/js/lightning.min.js lightning.min.js.before
+    - run: diff _g2/assets/js/lightning.min.js lightning.min.js.before
 
     # common css forget compile check
     - name: build Common StyleSheet
       run: npm run gulp sass_common
-    - run: diff assets/css/common.css common.css.before
-    - run: diff assets/css/common_editor.css common_editor.css.before
-    - run: diff assets/css/wp-embed.css wp-embed.css.before
+    - run: diff _g2/assets/css/common.css common.css.before
+    - run: diff _g2/assets/css/common_editor.css common_editor.css.before
+    - run: diff _g2/assets/css/wp-embed.css wp-embed.css.before
 
     # sass_bs4
     - name: build Bootstrap StyleSheet
       run: npm run gulp sass_bs4
-    - run: diff library/bootstrap-4/css/bootstrap.css bootstrap4.css.before
-    - run: diff library/bootstrap-3/css/bootstrap.css bootstrap3.css.before
+    - run: diff _g2/library/bootstrap-4/css/bootstrap.css bootstrap4.css.before
+    - run: diff _g2/library/bootstrap-3/css/bootstrap.css bootstrap3.css.before
 
     # origin scss forget compile check
     - name: build Skin StyleSheet
       run: npm run gulp sass_skin
-    - run: diff design-skin/origin/css/style.css origin.style.css.before
-    - run: diff design-skin/origin/css/editor.css origin.editor.css.before
+    - run: diff _g2/design-skin/origin/css/style.css origin.style.css.before
+    - run: diff _g2/design-skin/origin/css/editor.css origin.editor.css.before
 
     # origin2 scss forget compile check
     - name: build Skin2 StyleSheet
       run: npm run gulp sass_skin2
-    - run: diff design-skin/origin2/css/style.css origin2.style.css.before
-    - run: diff design-skin/origin2/css/editor.css origin2.editor.css.before
+    - run: diff _g2/design-skin/origin2/css/style.css origin2.style.css.before
+    - run: diff _g2/design-skin/origin2/css/editor.css origin2.editor.css.before
 
     # woocommerce scsss forget compile check
     - name: build woocomeerce StyleSheet
       run: npm run gulp sass_woo
-    - run: diff plugin-support/woocommerce/css/woo.css woo.css.before
+    - run: diff _g2/plugin-support/woocommerce/css/woo.css woo.css.before
 
   php_unit:
     name: php unittest
@@ -94,7 +94,7 @@ jobs:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v1
       with:
-        node-version: 12.x
+        node-version: 14.x
     - name: Cache multiple paths
       uses: actions/cache@v2
       with:
