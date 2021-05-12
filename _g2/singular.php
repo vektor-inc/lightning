@@ -1,6 +1,7 @@
-<?php lightning_get_template_part('header'); ?>
+<?php lightning_get_template_part( 'header' ); ?>
 
-<?php if ( lightning_is_page_header() ){
+<?php
+if ( lightning_is_page_header() ) {
 	// Dealing with old files.
 	// Actually, it's ok to only use get_template_part().
 	/*
@@ -12,11 +13,13 @@
 	} else {
 		get_template_part( 'template-parts/page-header' );
 	}
-} ?>
+}
+?>
 
 <?php do_action( 'lightning_breadcrumb_before' ); ?>
 
-<?php if ( lightning_is_breadcrumb() ){
+<?php
+if ( lightning_is_breadcrumb() ) {
 	/*
 	 BreadCrumb
 	/*-------------------------------------------*/
@@ -26,7 +29,8 @@
 	} else {
 		get_template_part( 'template-parts/breadcrumb' );
 	}
-} ?>
+}
+?>
 
 <?php do_action( 'lightning_breadcrumb_after' ); ?>
 
@@ -38,14 +42,15 @@
 
 	<div class="<?php lightning_the_class_name( 'mainSection' ); ?>" id="main" role="main">
 		<?php do_action( 'lightning_mainSection_prepend' ); ?>
-		<?php 
-		$template = 'template-parts/post/content-' . esc_attr( $post->post_name ).'.php';
-		$return = locate_template( $template );
-		if ( $return && $post->post_name != get_post_type() ){
+		<?php
+		$template = 'template-parts/post/content-' . esc_attr( $post->post_name ) . '.php';
+		$return   = locate_template( $template );
+		if ( $return && $post->post_name != get_post_type() ) {
 			locate_template( $template, true );
 		} else {
 			get_template_part( 'template-parts/post/content', get_post_type() );
-		} ?>
+		}
+		?>
 		<?php do_action( 'lightning_mainSection_append' ); ?>
 	</div><!-- [ /.mainSection ] -->
 
@@ -65,4 +70,4 @@
 <?php do_action( 'lightning_siteContent_apepend' ); ?>
 </div><!-- [ /.siteContent ] -->
 
-<?php lightning_get_template_part('footer'); ?>
+<?php lightning_get_template_part( 'footer' ); ?>
