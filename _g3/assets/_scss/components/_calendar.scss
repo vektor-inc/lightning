@@ -1,0 +1,26 @@
+/*-------------------------------------------*/
+/*	calendar
+/*-------------------------------------------*/
+.wp-calendar-table {
+	border-top-color: #e5e5e5;
+	caption {
+		caption-side: top;
+		color: inherit;
+        margin: var(--vk-margin-meta);
+	}
+	th {
+		font-weight: bold;
+	}
+	th,
+	td {
+		padding-left: 0;
+		padding-right: 0;
+		text-align: center;
+		border-bottom-color: #e5e5e5;
+	}
+}
+.wp-calendar-nav {
+	margin: 0.7em 0 1.5em;
+	display: flex;
+	justify-content: space-between;
+}

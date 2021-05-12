@@ -1,0 +1,83 @@
+@charset "utf-8";
+
+:root {
+	--vk-width-base-padding:1.4rem;
+	--vk-width-base-padding-side : var(--vk-width-base-padding);
+	@media (min-width: $sm-min) {
+		--vk-width-base-padding:1.7rem;
+	}
+	@media (min-width: $md-min) {
+		--vk-width-base-padding:2rem;
+	}
+	@media (min-width: $lg-min) {
+		--vk-width-base-padding:2.4rem;
+		--vk-width-base-padding-side:1.7rem;
+	}
+	@media (min-width: $xl-min) {
+		--vk-width-base-padding-side:2rem;
+	}
+}
+
+/*-------------------------------------------*/
+/* siteContent
+/*-------------------------------------------*/
+.site-body.site-body--base--on {
+	@media (min-width: $md-min) {
+		padding: 2rem 0 3.5rem;
+	}
+	.home & {
+		padding-top: 3.5rem;
+	}
+	& > .container > .row {
+		margin: 0;
+	}
+}
+
+/*-------------------------------------------*/
+/* baseSection
+/*-------------------------------------------*/
+.main-section--base--on,
+.sub-section--base--on {
+	background-color: #fff;
+	padding: var(--vk-width-base-padding);
+	border-radius: var(--vk-size-radius-lg);
+}
+
+// サイドバーの方が幅が狭いので、同じ余白を取ると錯覚でサイドバーの余白の方が広く見えてしまうため、余白を小さく設定してある
+.sub-section--base--on {
+	// サイドバーがjsでfixedにすると、ストレートな幅指定だと基準がウィンドウになってしまうため、コンテナ基準にしている
+	--vk-width-col-2-sub: calc( var(--vk-width-container) * 0.3 );
+	padding: var(--vk-width-base-padding) var(--vk-width-base-padding-side);
+}
+
+/*-------------------------------------------*/
+/* Block Core alignwide
+/*-------------------------------------------*/
+.main-section--base--on,
+.sub-section--base--on {
+	.vk_outer-width-full,
+	.alignfull,
+	.alignwide {
+		width: calc(100% + var(--vk-width-base-padding) + var(--vk-width-base-padding));
+		margin-left: calc( var(--vk-width-base-padding) * -1 );
+		margin-right: calc( var(--vk-width-base-padding) * -1 );
+		&.wp-block-image {
+			width: calc(100% + var(--vk-width-base-padding) + var(--vk-width-base-padding));
+		}
+	}
+	.wp-block-cover.alignfull{
+		padding-left:var(--vk-width-base-padding);
+		padding-right:var(--vk-width-base-padding);
+	}
+}
+.sub-section--base--on.sub-section--col--two {
+	.vk_outer-width-full,
+	.alignfull,
+	.alignwide {
+		margin-left: - var(--vk-width-base-padding-side);
+		margin-right: - var(--vk-width-base-padding-side);
+		&.wp-block-image {
+			width: calc(100% + var(--vk-width-base-padding-side) + var(--vk-width-base-padding-side));
+		}
+	}
+}

@@ -1,0 +1,118 @@
+@charset "utf-8";
+
+.ltg-slide {
+	&-cover {
+		position: absolute;
+		top: 0;
+		display: block;
+		overflow: hidden;
+		width: 100%;
+		height: 100%; // これがないと色が被せられない
+	}
+	&-text-set {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translateY(-50%) translateX(-50%);
+		width: 100%;
+		&--align--left {
+			.slide-text-title {
+				text-align: left;
+			}
+		}
+		&--align--center {
+			.slide-text-title {
+				text-align: center;
+			}
+		}
+		&--align--right {
+			.slide-text-title {
+				text-align: right;
+			}
+		}
+	}
+	&-text-title {
+		font-size: 18px;
+
+		//見出しデザインリセット（見出しデザイン指定にまけないように）
+		background-color:unset;
+		position: relative;
+		border:none;
+		padding:unset;
+		margin-left: unset;
+		margin-right: unset;
+		border-radius:unset;
+		outline: unset;
+		outline-offset: unset;
+		box-shadow: unset;
+		content:none;
+		overflow: unset;
+		margin-bottom:0;
+		// display:指定がないとh3の見出しデザインで左右線を選ばれた時に flax を指定されてるので文字の中央揃えなどが効かなくなる
+		display: block;
+		&::after,&::before{
+			content: none;
+		}
+		@media (min-width: $md-min) {
+			font-size: 24px;
+		}
+		@media (min-width: $lg-min) {
+			font-size: 28px;
+		}
+		@media (min-width: $xl-min) {
+			font-size: 32px;
+		}
+	}
+	&-text-caption {
+		margin-bottom: 0;
+		font-size:12px;
+		@media (min-width: $sm-min) {
+		}
+		@media (min-width: $lg-min) {
+			font-size:1.125rem;
+		}
+		@media (min-width: $xl-min) {
+			font-size:1.250rem;
+		}
+	}
+	&-text-title + &-text-caption {
+		margin-top: 0.7em;
+	}
+	.btn {
+		margin-top: 1em;
+		@media (max-width: $sm-max) {
+			font-size:12px;
+		}
+	}
+	picture {
+		width: 100%;
+		height: auto;
+		img {
+			width: 100%;
+			height: auto;
+			display: block;
+		}	
+	}	
+	// .slide-text-set を含めると 現状カスタマイザからの色指定ががインラインで上書きが効かなくなる
+	.btn-ghost {
+		// font-size: 16px;
+		// margin-top: 1.5em;
+		padding: 0.5em 2.2em;
+		color: var(--vk-color-text-body);
+		border: 1px solid var(--vk-color-text-body);
+		@media (min-width: $md-min) {
+			// font-size: 18px;
+		}
+		&:hover{
+			border-color: var(--vk-color-primary);
+			background-color: var(--vk-color-primary);
+		}
+	}
+	.swiper-button-prev:after,
+	.swiper-button-next:after {
+		@media (max-width: $xs-max) {
+			display: none;
+		}
+		font-size: 1.5em;
+	}
+}

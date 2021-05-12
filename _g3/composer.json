@@ -1,0 +1,5 @@
+{
+    "require": {
+        "ircmaxell/random-lib": "1.0.0"
+    }
+}

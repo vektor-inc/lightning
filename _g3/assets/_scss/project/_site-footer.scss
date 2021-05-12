@@ -1,0 +1,32 @@
+.site-footer {
+    --vk-size-text-sm : 12px; /* 変数指定しないとナビゲーションウィジェットなどの文字サイズが上書きできない */
+    display:block; overflow:hidden;
+    font-size:var(--vk-size-text-sm);
+    content-visibility:auto;
+    contain-intrinsic-size: 370px;
+    .mobile-fix-nav_enable & {
+        @media ( max-width: $md-max ) {
+            padding-bottom:70px;
+        }
+    }
+    &-content {
+        position: relative; // これがないとカスタマイズショートカットの位置調整が効かない
+        padding-top: var(--vk-margin-section-bottom);
+
+        & > .customize-partial-edit-shortcut{
+            position: absolute;
+            left:-30px;
+        }
+    }
+    &-title{
+        font-size: 1rem;
+    }
+    &-copyright {
+        padding:1rem;
+        p {
+            text-align: center;
+            margin:0.5rem;
+            font-size:var(--vk-size-text-xs);
+        }
+    }
+}

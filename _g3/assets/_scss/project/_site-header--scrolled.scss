@@ -1,0 +1,87 @@
+@charset "utf-8";
+
+/*-------------------------------------------*/
+/*	.gMenu .PCでの上部固定グローバルメニュー 表示・非表示処理
+/*-------------------------------------------*/
+/*
+ 一定量スクロールすると、jsでbody タグに .header_scrolled クラスが付与される
+ .header_scrolled の付与処理は master.jsに書いてある
+ スクロールされた時にメニューがfixedになるが、メニューの高さ分 .site-header-logo の下にmargin-bottomを付与するので、ガクンとならない。
+
+// スクロール後にメニューが上から落ちてくるアニメーション //////////
+1.	初期状態でメニューの高さ分である 63px をtopににオフセット
+	しかしpositionを指定していないので、最初は効かず通常の位置で表示。
+	よってここは本来63pxでなくてもかまわない。
+2.  jsでbodyタグに .header_scrolled がつく
+3.	この時アニメーションで一旦上に-63pcほどオフセットしてから0の位置まで下ろしている。
+*/
+
+.site-header::after {
+	content: "";
+	clear: both;
+	display: block;
+}
+.header_scrolled {
+    .header-top,
+    .vk-campaign-text,
+    .site-header-logo,
+    .site-header-sub {
+        display: none;
+    }
+	&.admin-bar .site-header {
+		top: 32px;
+	}
+    .site-header {
+        background-color: var(--vk-color-header-bg);
+    }
+    @media (min-width: $lg-min) {
+        .site-header {
+            clear: both;
+            z-index: 1000;
+            position: fixed;
+            top: 0px;
+            left: 0;
+
+            /* 
+            100vwはWindowsでスクロールバーも含んで横スクロールバーが出てしまうので極力使用しない
+            が、結局 calc(50% - 50vw); でも出てしまうので、bodyで overflow-x:hidden; している。
+            */
+            width:100vw;
+            max-width:100vw;
+
+            min-height: unset;
+            box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+
+            animation: header_drop 0.5s ease-out 0s 1 alternate none running;
+
+            .global-nav {
+                display: block; /* Cope with setted table-sell such a OriginII  */
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+    }
+    &.admin-bar .site-header {
+        @media (min-width: $lg-min) {
+            animation: header_drop_admin 0.5s ease-out 0s 1 alternate none running;
+        }
+	}
+}
+@keyframes header_drop {
+    // 上から落とすために一旦マイナスオフセット
+    0% {
+      top:-63px;
+    }
+    100% {
+      top:0px;
+    }
+}
+@keyframes header_drop_admin {
+    // 上から落とすために一旦マイナスオフセット
+    0% {
+      top:-31px;
+    }
+    100% {
+      top:32px;
+    }
+}

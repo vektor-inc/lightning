@@ -1,0 +1,96 @@
+/*-------------------------------------------*/
+/* .comments-area
+/*-------------------------------------------*/
+.comments-area {
+    content-visibility:auto;
+    margin-bottom: var(--vk-margin-section-bottom);
+    a {
+        color: var(--vk-color-text-body);
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
+.comments-title {
+    font-size:1.250rem;
+}
+.comment-reply-title {
+    font-size:1.125rem;
+}
+
+ol.comment-list {
+	padding: 0;
+    margin-top: 0;
+    & > .comment {
+        padding: 1.5rem;
+        border: 1px solid var(--vk-color-border-hr);
+        border-radius: var(--vk-size-radius-compo);
+        margin-bottom: var(--vk-margin-element-bottom);
+    }
+}
+
+li.comment {
+    margin:0;
+	list-style: none;
+	ol.children {
+        padding-left: 1em;
+        .comment {
+            margin-top: var(--vk-margin-element-bottom);
+            border: none;
+            padding-right:0;
+            padding-left:0;
+        }
+	}
+}
+.comment {
+    &-body{
+        margin-bottom:var(--vk-margin-element-bottom);
+    }
+    &-meta {
+        display: block;
+        overflow: hidden;
+        margin-bottom: var(--vk-margin-element-bottom);
+        font-size:var(--vk-size-text-sm);
+    }
+    &-author {
+        margin-bottom: 5px;
+        font-size:var(--vk-size-text-sm);
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        img {
+            border:2px solid var(--vk-color-border-hr);
+            border-radius: var(--vk-size-radius-compo);
+            margin-right:0.5em;
+        }
+        cite,
+        span{
+            vertical-align: middle;
+        }
+    }
+    &.bypostauthor {
+        & > .comment-body > .comment-author > img {
+            border-color:var(--vk-color-primary);
+        }
+    }
+    &-awaiting-moderation {
+        margin-bottom: var(--vk-margin-element-bottom);
+    }
+    .children {
+        border-top:1px solid var(--vk-color-border-hr);
+    }
+}
+
+li.pingback {
+	margin: 0 0 1em;
+	list-style: none;
+	border-bottom: 1px dotted #999;
+}
+
+p.no-comments {
+	background-color: #f3f3f3;
+	border: 1px solid #e5e5e5;
+	text-align: center;
+	padding: 2em;
+}
+

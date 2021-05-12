@@ -1,0 +1,32 @@
+@import "@bootstrap/functions";
+@import "bootstrap_variables";
+@import "@bootstrap/mixins";
+@import "@bootstrap/grid";
+@import "@bootstrap/buttons";
+@import "@bootstrap/card";
+@import "@bootstrap/alert";
+@import "@bootstrap/media";
+@import "../../inc/vk-components/package/_scss/vk-components.scss";
+@import "variables";
+@import "common";
+@import "utils";
+
+@import "block/block";
+@import "block/block-editor";
+@import "block/block_editor_width";
+
+@import "components/nav";
+@import "components/searchform";
+@import "overwrite/vk-components";
+@import "overwrite/button";
+
+.edit-post-meta-boxes-area {
+    h4 {
+        display: block;
+        overflow: hidden;
+        font-size:14px;
+        margin-top: 1em;
+        margin-bottom: 0.3em;
+        padding-bottom: 0;
+    }
+}

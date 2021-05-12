@@ -1,0 +1,143 @@
+// editor only
+
+:root{
+	--vk-width-editor-container:calc(100vw * 0.8);
+	--vk-width-container-padding:15px;
+	--vk-width-editor-sidebar:280px;
+	--vk-width-editor-leftmenu:160px;
+	--vk-width-editor-leftmenu-folded:36px;
+}
+
+// 左管理メニュー非表示 / 右サイドバー非表示
+body.is-fullscreen-mode .edit-post-layout:not(.is-sidebar-opened){
+	--vk-width-editor-full:100vw;
+	--vk-width-editor-container-body:calc( var(--vk-width-editor-container) - var(--vk-width-container-padding) * 2 );
+	--vk-width-editor-wide:calc( var(--vk-width-editor-container-body) + ( 100vw - var(--vk-width-editor-container-body) ) / 2 );
+	--vk-width-editor-wide-nega-margin:calc( ( var(--vk-width-editor-container-body) - 100vw ) / 4 );
+}
+// 左管理メニュー非表示 / 右サイドバー表示
+body.is-fullscreen-mode .edit-post-layout.is-sidebar-opened{
+	--vk-width-editor-full:calc( 100vw - 280px );
+	--vk-width-editor-wide:calc( 100vw - 280px - ( ( 100vw - 280px ) * ( 1 - 0.8 ) / 2 ) );
+	--vk-width-editor-container-body:calc(  ( 100vw - 280px ) * 0.8 - 30px );
+}
+
+// 左管理メニュー表示（ 展開 ） / 右サイドバー展開
+body:not(.is-fullscreen-mode) .edit-post-layout.is-sidebar-opened{
+	--vk-width-editor-container:calc( var(--vk-width-container) - var(--vk-width-editor-leftmenu) - var(--vk-width-editor-sidebar) );
+	--vk-width-editor-container-body:calc(  ( 100vw - 280px - 160px ) * 0.8 - 30px );
+	--vk-width-editor-full:calc( 100vw - var(--vk-width-editor-leftmenu) - var(--vk-width-editor-sidebar) );
+	--vk-width-editor-wide:calc( var( --vk-width-editor-container-body ) + ( 100vw - var( --vk-width-editor-container-body ) - var(--vk-width-editor-leftmenu) - var(--vk-width-editor-sidebar) ) / 2 );
+}
+// 左管理メニュー表示（ 展開 ） / 右サイドバー非表示
+body:not(.is-fullscreen-mode) .edit-post-layout:not(.is-sidebar-opened){
+	--vk-width-editor-container:calc( var(--vk-width-container) - var(--vk-width-editor-leftmenu) );
+	--vk-width-editor-container-body:calc(  ( 100vw - 160px ) * 0.8 - 30px );
+	--vk-width-editor-full:calc( 100vw - var(--vk-width-editor-leftmenu) );
+	--vk-width-editor-wide:calc( var( --vk-width-editor-container-body ) + ( 100vw - var( --vk-width-editor-container-body ) - var(--vk-width-editor-leftmenu) ) / 2 );
+}
+
+// 左管理メニュー表示（ 縮小 ） / 右サイドバー非表示
+body.folded:not(.is-fullscreen-mode) .edit-post-layout:not(.is-sidebar-opened){
+	--vk-width-editor-container:calc( var(--vk-width-container) - var(--vk-width-editor-leftmenu-folded) );
+	--vk-width-editor-full:calc( 100vw - var(--vk-width-editor-leftmenu-folded) );
+	--vk-width-editor-wide:calc( var( --vk-width-editor-container-body ) + ( 100vw - var( --vk-width-editor-container-body ) - var(--vk-width-editor-leftmenu-folded) ) / 2 );
+}
+// 左管理メニュー表示（ 縮小 ） / 右サイドバー展開
+body.folded:not(.is-fullscreen-mode) .edit-post-layout.is-sidebar-opened{
+	--vk-width-editor-container:calc( var(--vk-width-container) - var(--vk-width-editor-leftmenu-folded) - var(--vk-width-editor-sidebar) );
+	--vk-width-editor-full:calc( 100vw - var(--vk-width-editor-leftmenu-folded) - var(--vk-width-editor-sidebar) );
+	--vk-width-editor-wide:calc( var( --vk-width-editor-container-body ) + ( 100vw - var( --vk-width-editor-container-body ) - var(--vk-width-editor-leftmenu-folded) - var(--vk-width-editor-sidebar) ) / 2 );
+}
+
+.wp-block.editor-post-title {
+	max-width:var(--vk-width-editor-container-body);
+}
+
+/**
+* 	normal block
+* 	.is-root-container > .wp-blockを公開画面のコンテナとして考える
+*/
+.editor-styles-wrapper .is-root-container {
+	// 一番外側のブロックのみ
+	& > .wp-block,
+	& > div > .wp-block{
+		width:var(--vk-width-editor-container-body);
+		max-width:var(--vk-width-editor-container-body);
+		margin-left:auto;
+		margin-right:auto;
+	}
+	.wp-block {
+		max-width:var(--vk-width-editor-container-body);
+	}
+}
+
+/*****
+
+Editor div structure
+
+* Image Block 
+************************************
+
+.wp-block[data-align=full]
+
+* Gallery Block ( full and wide is same ) 
+************************************
+
+div[data-align=full]
+	.wp-block[data-align=full]
+		figure.alignfull
+
+* Cover
+************************************
+.wp-block[data-align=full]
+	.wp-block-cover
+		div[class*="__inner-container"]
+
+
+*/
+
+.editor-styles-wrapper .is-root-container {
+	& > .wp-block[data-align=full],
+	& > div[data-align=full]{
+		width:var(--vk-width-editor-full);
+		max-width:var(--vk-width-editor-full);
+		margin-left:-10px;
+		margin-right:-10px;
+		.wp-block[data-align=full]{
+			margin-left:0;
+			margin-right:0;
+		}
+		.alignfull {
+			width:var(--vk-width-editor-full);
+			margin-left:0;
+			margin-right:0;
+		}
+	}
+	& > .wp-block[data-align=wide],
+	& > div[data-align=wide]{
+		width:var(--vk-width-editor-wide);
+		max-width:var(--vk-width-editor-wide);
+		margin-left:auto;
+		margin-right:auto;
+		.wp-block[data-align=wide]{
+			margin-left:0;
+			margin-right:0;
+		}
+		.alignwide{
+			width:var(--vk-width-editor-wide);
+			margin-left:auto;
+			margin-right:auto;
+		}
+	}
+	// __inner-container
+	& > .wp-block[data-align=full],
+	& > div[data-align=full],
+	& > .wp-block[data-align=wide],
+	& > div[data-align=wide]{
+		& > div > div[class*="__inner-container"]{
+			width:var(--vk-width-editor-container);
+			max-width:var(--vk-width-editor-container);
+		}
+	}
+}

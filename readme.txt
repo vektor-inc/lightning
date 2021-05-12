@@ -1,8 +1,8 @@
 === Lightning ===
 Lightning WordPress theme, Copyright (C) 2015-2021 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
-Tested up to: 5.6.3
-Stable tag: 13.8.13
+Tested up to: 5.7.1
+Stable tag: 14.1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -39,8 +39,81 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
-v13.8.13
-[ Bug fix ] search block button bg / tel color
+v14.1.3
+[ Other ] remove beta label
+
+v14.1.2
+[ G2 ][ Bug fix ] Fix Front page widget not work
+
+v14.1.1
+[ G3 ][ Bug fix ] BreadCrumb HTML grammer
+[ G3 ][ Bug fix ] footer nav HTML grammer
+[ G3 ][ Design bug fix ] fix widget ul.wp-block-social-links padding
+
+v14.1.0
+[ G3 ][ Bug fix ] Fix header css
+
+v14.0.17 ( Beta Release )
+[ G3 ][ Bug fix ] Fix header fixed system and css on header trans(ProUnit)
+
+v14.0.16 ( Beta Release )
+[ G3 ][ Specification Change ] Change header fix system and css
+
+v14.0.15 ( Beta Release )
+[ G3 ][ Specification Change ] Change Global nav sub menu hover bg color and btn-primary:hover 
+[ G3 ][ Specification Change ] Remove Google Fonts and load only OriginIII
+
+v14.0.14 ( Beta Release )
+[ OriginIII ][ Design Specification Change ] Change global navigation hover color
+
+v14.0.13 ( Beta Release )
+[ G3 ][ Bug fix ] Gix global nav mobile mode
+[ G3 ][ Other ] Add CSS variable --vk-color-primary-vivid
+[ G3 ][ Design Specification Change ] Add Core Button Block hover color
+[ G3 ][ Design Specification Change ] margin tuning of html tag
+
+v14.0.12 ( Beta Release )
+[ Bug fix ] Fix Starter Content Menu not refrected
+
+v14.0.11 ( Beta Release )
+[ Bug fix ] Fix Generation judgement
+
+v14.0.10 ( Beta Release )
+[ G3 ][ Other ] Cope with WooCommerce
+[ G3 ][ Specification Change ] Add home icon to breadcrumb
+[ G3 ][ Design Bug fix ] Fix sidebar normal post list on xs window.
+
+v14.0.9 ( Beta Release )
+[ G3 ][ Specification Change ] Change array name of skin specific js
+
+v14.0.8 ( Beta Release )
+[ G3 ][ Design Bug fix ] Fix scrolled g-nav margin on windows
+[ G3 ][ Design Bug fix ] Fix Editor CSS not refrected
+[ G3 ][ Design Bug fix ] Fix scrolled g-nav bgcolor
+
+v14.0.7 ( Beta Release )
+[ G3 ][ Design Bug fix ] Footer nav on mobile screen
+[ G3 ][ Design Bug fix ] Fix mobile fix nav covered footer bottom
+
+v14.0.6 ( Beta Release )
+[ G3 ][ Design Bug fix ] Fix slide text size on mobile
+[ G3 ][ Add function ] Add Slider rest time
+[ G3 ][ Bug fix ] ReFix Slider (cope with VK Blocks Pro 1.1.0)
+
+v14.0.5 ( Beta Release )
+[ G3 ][ Bug fix ] Fix Slider (cope with VK Blocks Pro 1.1.0)
+
+v14.0.4 ( Beta Release )
+[ Origin III ][ Design Bug fix ] Fix cope with section base and full content_width
+[ Origin III ][ Design Bug fix ] comment title size
+[ Origin III ][ Design Bug fix ] Side title add nowrap
+[ Origin III ][ Design Bug fix ] Fix Page header title css under set the ancestor display ( from pro )
+[ Origin III ][ Design Bug fix ] Fix scroll-x on windows
+[ Origin III ][ Design Bug fix ] Fix Slider image margin
+[ Origin III ][ Design Bug fix ] Fix iOS search button
+
+v14.0.3 ( Beta Release )
+Add Lightning Generation 3
 
 v13.8.12
 [ Bug fix ] Fix inner block width(padding) bug.

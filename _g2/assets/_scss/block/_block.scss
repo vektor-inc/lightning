@@ -1,0 +1,235 @@
+
+/** DOM example
+
+インナーブロックは全幅か幅広の時のみ指定
+そうでないと container-padding が余分についてしまう
+
+entry-body
+	wp-block-cover
+		wp-block-cover__inner-container
+*/
+.alignfull,
+.alignwide {
+	div[class*="__inner-container"]{
+		max-width: calc( var(--vk-width-container) - var(--vk-width-container-padding) * 2 );
+		margin-left:auto;
+		margin-right:auto;
+	}
+}
+
+.alignfull {
+	width: 100vw;
+	margin-left: calc(50% - 50vw);
+	margin-right: calc(50% - 50vw);
+	&.wp-block-image {
+		// Default block style overwrite
+		width: 100vw;
+		max-width: 100vw;
+	}
+}
+.alignwide {
+	width: calc( 100% + ( 100vw - 100% ) / 2 );
+	margin-left: calc( ( var(--vk-width-container) - 100vw ) / 4 );
+	margin-right: calc( ( var(--vk-width-container) - 100vw ) / 4 );
+	&.wp-block-image {
+		max-width: 100vw;
+	}
+}
+
+/* カラム（水平）で点線と余白ができる */
+.vk_post .row {
+	margin: 0;
+}
+
+.wp-block-image {
+	max-width: 100%;
+	/* 編集画面専用 */
+	.components-resizable-box__container {
+		max-width: 100%;
+	}
+	figcaption {
+		text-align: center;
+		font-size: 0.75rem;
+	}
+}
+
+.wp-block-button__link {
+	font-size: 1rem;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em; 
+}
+/*-------------------------------------------*/
+/*  Table Block
+/*-------------------------------------------*/
+.wp-block-table {
+	figcaption {
+		margin-top: 0.4rem;
+		text-align: center;
+		font-size: 0.75rem;
+	}
+}
+
+/*-------------------------------------------*/
+/*  「最新の記事」ブロック
+/*-------------------------------------------*/
+.wp-block-latest-posts {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+    //グリット表示の場合
+	&.is-grid {
+		li {
+			// margin: 0 8px 0 8px;
+			padding: 0.5rem;
+			border-bottom: none;
+		}
+	}
+	li {
+		margin: 0;
+		padding: 1rem 0;
+		border-bottom: 1px solid var(--vk-color-border-hr);
+		& > a {
+			color: var(--vk-color-text-body);
+            text-decoration: none;
+            display:block; overflow:hidden;
+            margin-bottom:var(--vk-margin-meta);
+            &:hover{
+                text-decoration: underline;
+            }
+		}
+        &:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+	}
+    &__post-author,
+    &__post-date {
+        color: var(--vk-color-text-light);
+        font-size: var(--vk-size-text-sm);
+    }
+	&__featured-image {
+		margin-bottom: var(--vk-margin-meta);
+        display: block;
+        width: auto;
+        max-width: 100%;
+        img {
+            border: 1px solid var(--vk-color-border-hr);
+            max-width: 100%;
+        }
+        &.alignleft {
+            float:left;
+        }
+        &.alignright {
+            float:right;
+        }
+	}
+    &__post-excerpt {
+        font-size: var(--vk-size-text-sm);
+        margin-top:var(--vk-margin-meta);
+        color:var(--vk-color-text-body);
+    }
+}
+
+@media (max-width: 600px){
+	.wp-block-media-text {
+		&.is-stacked-on-mobile{
+			.wp-block-media-text__media {
+				margin-bottom:1.6rem;
+			}
+			&.has-media-on-the-right {
+				.wp-block-media-text__media {
+					margin-top:1.6rem;
+				}
+			}
+		}
+	}
+}
+
+/*-------------------------------------------*/
+/*  「RSS」ブロック
+/*-------------------------------------------*/
+.wp-block-rss{
+	padding: 0;
+	list-style: none;
+	&__item{
+		margin-bottom:0;
+		padding: 0.8rem 0;
+		border-bottom: 1px solid rgba(0,0,0,.05);
+		&-title{
+            margin-bottom: var(--vk-margin-meta);
+			a{
+				color: var(--vk-color-text-body);
+                text-decoration: none;
+			}
+		}
+		&-publish-date{
+			margin-right: .5em;
+			&:before {
+				font-family: "Font Awesome 5 Free";
+				font-weight: 900;
+				margin-right: 5px;
+				margin-left: 0;
+				content: "\f073";
+			}
+		}
+		&-author{
+			&:before {
+				font-family: "Font Awesome 5 Free";
+				font-weight: 900;
+				margin-right: 5px;
+				margin-left: 0;
+				content: "\f303";
+			}
+		}
+		&-publish-date,
+		&-author{
+			font-size: var(--vk-size-text-xs);
+			color: var(--vk-color-text-light);
+			display:inline-block;
+			margin-top: .5em;
+		}
+		&-excerpt{
+			font-size: var(--vk-size-text-xs);
+			color: var(--vk-color-text-light);
+			margin-top: var(--vk-margin-meta);
+		}
+		
+	}
+    &.is-grid {
+        justify-content: space-between;
+        li {
+            margin-left:0;
+            margin-right:0;
+        }
+    }
+}
+
+
+/*-------------------------------------------*/
+/*  「検索」ブロック
+/*-------------------------------------------*/
+.wp-block-search {
+	.wp-block-search__label{
+		display: none;
+	}
+	.wp-block-search__button{
+		width: 33%;
+		color: #fff;
+		background-color: var(--vk-color-primary);
+		border: none;
+		padding: 6px;
+		font-size: 16px;
+		box-shadow:none;
+		text-align: center;
+	}
+	input.wp-block-search__input {
+		max-width: initial;
+		width: 64%;
+		border: 1px solid #ccc;
+		padding: 6px 12px;
+		font-size: 14px;
+		margin-right: 0;
+		margin-bottom: 0;
+	}
+}

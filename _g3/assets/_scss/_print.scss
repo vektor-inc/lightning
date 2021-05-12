@@ -1,0 +1,20 @@
+/*-------------------------------------------*/
+/*	Print
+/*-------------------------------------------*/
+@media print {
+	#page_top {
+		display: none !important;
+	}
+	.vk-mobile-nav-menu-btn,
+	.vk-mobile-nav,
+	.mobile-fix-nav {
+		display: none;
+	}
+	a {
+		text-decoration: none !important;
+	}
+	a[href]:after,
+	abbr[title]:after {
+		content: "" !important;
+	}
+}

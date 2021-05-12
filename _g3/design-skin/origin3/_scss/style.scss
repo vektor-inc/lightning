@@ -1,0 +1,44 @@
+@charset "utf-8";
+
+/**
+* public page css
+*/
+
+@import "variables";
+@import "global-nav-effect";
+@import "common";
+
+.site-header {
+    background-color: #fff;
+}
+.page-header {
+    color:#ffffff;
+    background-color: var(--vk-color-primary);
+}
+.breadcrumb {
+    border-top:1px solid var(--vk-color-border-hr);
+    border-bottom:1px solid var(--vk-color-border-hr);
+}
+
+.site-footer {
+    border-top:1px solid var(--vk-color-primary);
+}
+.footer-nav {
+    border-bottom:1px solid var(--vk-color-border-hr);
+    @media ( max-width: $sm-max ){
+        border-bottom:none;
+    }
+}
+.footer-nav-list{
+    border-left:1px solid var(--vk-color-text-body);
+    li {
+        border-right:1px solid var(--vk-color-text-body);
+    }
+    @media ( max-width: $sm-max ){
+        border-left:none;
+        li {
+            border-right:none;
+            border-bottom:1px solid var(--vk-color-border-hr);
+        }
+    }
+}
