@@ -2,15 +2,8 @@
 
 $theme_opt = wp_get_theme( get_template() );
 
-// add_action( 'lightning_site_header_append', function(){
-// $options = lightning_get_theme_options( 'lightning_theme_options' );
-// print '<pre style="text-align:left">';print_r( $options );print '</pre>';
-// $generation = get_option( 'lightning_theme_generation' );
-// print '<pre style="text-align:left">';print_r( $generation );print '</pre>';
-// } );
-
 define( 'LIGHTNING_THEME_VERSION', $theme_opt->Version );
-// date("YmdHis")
+
 /*
   Theme setup
 /*-------------------------------------------*/
@@ -223,7 +216,7 @@ function lightning_addJs() {
 // fix global menu
 add_filter( 'lightning_localize_options', 'lightning_global_nav_fix', 10, 1 );
 function lightning_global_nav_fix( $options ) {
-	$options['header_scrool'] = true;
+	$options['header_scrool']            = true;
 	$options['add_header_offset_margin'] = true;
 	return $options;
 }
