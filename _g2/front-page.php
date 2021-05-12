@@ -1,4 +1,4 @@
-<?php lightning_get_template_part('header'); ?>
+<?php lightning_get_template_part( 'header' ); ?>
 
 <?php
 do_action( 'lightning_top_slide_before' );
@@ -14,7 +14,7 @@ if ( empty( $lightning_theme_options['top_slide_hide'] ) ) {
 		get_template_part( 'template-parts/slide', 'bs4' );
 	}
 }
-do_action( 'lightning_top_slide_after');
+do_action( 'lightning_top_slide_after' );
 ?>
 
 <div class="<?php lightning_the_class_name( 'siteContent' ); ?>">
@@ -47,11 +47,11 @@ do_action( 'lightning_top_slide_after');
 							?>
 
 						<article id="post-<?php the_ID(); ?>" <?php post_class( apply_filters( 'lightning_article_outer_class', '' ) ); ?>>
-						<?php do_action( 'lightning_entry_body_before' ); ?>
+							<?php do_action( 'lightning_entry_body_before' ); ?>
 						<div class="<?php lightning_the_class_name( 'entry-body' ); ?>">
 							<?php the_content(); ?>
 						</div>
-						<?php do_action( 'lightning_entry_body_after' ); ?>
+							<?php do_action( 'lightning_entry_body_after' ); ?>
 							<?php
 							wp_link_pages(
 								array(
@@ -65,7 +65,7 @@ do_action( 'lightning_top_slide_after');
 					<?php endwhile; ?>
 
 				<?php else : ?>
-					<?php do_action( 'lightning_loop_before' );?>
+					<?php do_action( 'lightning_loop_before' ); ?>
 
 					<div class="<?php lightning_the_class_name( 'postList' ); ?>">
 
@@ -81,7 +81,7 @@ do_action( 'lightning_top_slide_after');
 						 * Actually, it's ok to only use get_template_part().
 						 * It is measure for before version 7.0 that loaded module_loop_***.php.
 						 */
-						$postType = lightning_get_post_type();
+						$postType        = lightning_get_post_type();
 						$old_file_name[] = 'module_loop_' . $postType['slug'] . '.php';
 						$old_file_name[] = 'module_loop_post.php';
 						$require_once    = false;
@@ -102,7 +102,8 @@ do_action( 'lightning_top_slide_after');
 							do_action( 'lightning_loop_item_after' );
 
 						endwhile;
-					endif; ?>
+					endif;
+					?>
 
 					<?php
 						the_posts_pagination(
@@ -114,7 +115,7 @@ do_action( 'lightning_top_slide_after');
 								'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'lightning' ) . ' </span>',
 							)
 						);
-						?>
+					?>
 
 					</div><!-- [ /.postList ] -->
 					<?php do_action( 'lightning_loop_after' ); ?>
@@ -147,4 +148,4 @@ do_action( 'lightning_top_slide_after');
 </div><!-- [ /.container ] -->
 <?php do_action( 'lightning_siteContent_apepend' ); ?>
 </div><!-- [ /.siteContent ] -->
-<?php lightning_get_template_part('footer'); ?>
+<?php lightning_get_template_part( 'footer' ); ?>
