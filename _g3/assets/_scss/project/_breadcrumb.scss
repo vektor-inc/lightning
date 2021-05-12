@@ -1,0 +1,25 @@
+/*-------------------------------------------*/
+/* .breadcrumb
+/*-------------------------------------------*/
+.breadcrumb {
+    font-size: 12px;
+    &-list {
+        margin:0;
+        padding: 6px 0;  
+        li {
+            display: inline-block;
+            margin: 0;
+            list-style: none;
+            &:after {
+                content : '/';
+                margin-left:0.5em;
+                margin-right:0.5em;
+            }
+            &:last-child:after {
+                content : '';
+                margin-left:0;
+                margin-right:0;
+            }
+        }
+    }
+}

@@ -1,0 +1,35 @@
+/*-------------------------------------------*/
+/*	Download Manager
+/*-------------------------------------------*/
+.wpdm-download-link {
+	margin-top: 5px;
+}
+.w3eden {
+	margin-bottom:2rem;
+	.media {
+		padding:0;
+		border:none;
+		& > div {
+			width:auto;
+		}
+	}
+	.media-body {
+		margin-right: 1em;
+		margin-bottom: 0.5em;
+		flex: unset;
+	}
+	.package-title:after {
+		border: none;
+	}
+}
+@media (max-width: 575.98px) {
+	.w3eden {
+		.media {
+			display: block !important;
+		}
+		.link-template-default.thumbnail .wpdm-download-link.btn {
+			display: block;
+			margin-top: 10px;
+		}
+	}
+}

@@ -1,0 +1,134 @@
+$logo_top_margin:1.1rem;
+$logo_bottom_margin:1rem;
+.site-header {
+    width:100%;
+    overflow: visible;
+    z-index: 1000;
+    position: relative;
+    box-shadow:0px 1px 3px rgba(0,0,0,0.05);
+    &-logo{
+        text-align: center;
+        font-weight: 700; // cope with not all page h1
+        font-size:1.5rem;
+        white-space: nowrap;
+        // a {
+        //  ロゴが画像じゃない時ののalignが効かなくなる
+        //  display:block; 
+        //  overflow:hidden;
+        // }
+        @media ( max-width: $md-max ){
+            margin-top:0.5rem;
+            margin-bottom:0.5rem;
+            img {
+                max-height:50px;
+            }
+        } 
+        @media ( min-width: $lg-min ){
+            text-align: left;
+            margin-top:$logo_top_margin;
+            margin-bottom:$logo_bottom_margin;
+            margin-left:0;
+        }
+        img {
+            max-height:60px;
+            max-width: 100%;
+            display: block;
+            margin-left:auto;
+            margin-right:auto;
+        }
+        a {
+            color:var(--vk-color-text-body);
+            text-decoration: none;
+        }
+    }
+    // モバイルの時にヘッダーの高さを正しく検出しない対策
+    &-container{
+        @media (max-width: $md-max) {
+            display: block;
+            overflow: hidden;
+        }
+    }
+}
+
+.site-header--layout--center {
+    @media ( min-width: $lg-min ){
+        .site-header-logo {
+            text-align: center;
+        }
+    }
+}
+.site-header--layout--nav-float {
+    @media ( min-width: $lg-min ){
+        .site-header-container {
+            display: flex;
+            flex-direction: row;
+        }
+        .site-header-logo {
+            margin-right:2em;
+            width:100%; // この指定がないとFlexでナビ部分の幅が余分になるためナビ項目に余分な左右余白ができる
+            img {
+                margin-left:0;
+            }
+        }
+    }
+}
+
+.site-header--layout--sub-active {
+    @media ( min-width: $lg-min ){
+        .site-header-logo {
+            float:left;
+        }
+    }
+}
+
+/*-------------------------------------------*/
+/*	.site-header-sub
+/*-------------------------------------------*/
+.site-header-sub {
+	@media (max-width: 991px) {
+		display: none;
+	}
+    margin-top:$logo_top_margin;
+    margin-bottom:$logo_bottom_margin;
+	float: right;
+	display: flex;
+    padding-left:2em;
+	.contact-txt {
+		line-height: 1.3em;
+		text-align: left;
+        margin-bottom: 0;
+		span {
+			display: block;
+		}
+    }
+    .contact-txt-catch,
+    .contact-txt-time {
+        font-size: 11px;
+        color: var(--vk-color-text-body);
+    }
+    .contact-txt-tel {
+        font-size: 24px;
+        letter-spacing: 1px;
+        font-weight: bold;
+        color:var(--vk-color-primary-dark);
+    }
+    .contact-txt-tel_icon {
+        margin-right: 0.3rem;
+    }
+	.contact-btn {
+		padding-left: 2em;
+		a {
+			height: 90%;
+			display: flex;
+			box-sizing: border-box;
+			align-items: center;
+			padding: 0 1.5em;
+			margin: 2px 0 2px;
+			font-size: 16px;
+		}
+		i,
+		svg {
+			margin-right: 7px;
+		}
+	}
+}

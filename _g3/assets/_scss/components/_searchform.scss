@@ -1,0 +1,22 @@
+.searchform {
+    div {
+        display: flex;
+    }
+    input {
+        margin: 0;
+    }
+    input[type=text]{
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0; 
+    }
+    input[type=submit]{
+        border:1px solid var(--vk-color-border-form);
+        border-left:none;
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        letter-spacing: 1px;
+        width: 30%;
+    }
+}

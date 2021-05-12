@@ -1,0 +1,37 @@
+/*-------------------------------------------*/
+/* .page-header
+/*-------------------------------------------*/
+.page-header {
+	margin-top: 0;
+	margin-bottom: 0;
+	padding-bottom: 0;
+	display: flex;
+	align-items: center;
+	// justify-content: center;
+	position: relative;
+	z-index: 1;
+	min-height:8rem;
+
+	/* If text-align setting write to .page-header_pageTitle that page-header align function not work */
+    text-align: center;
+	
+	&-inner {
+		position:relative;
+		// Cope with Page header customize cover color
+		z-index: 5;
+		margin:1.5em auto;
+	}
+	&-subtext{
+		margin-top: var(--vk-margin-meta);
+		line-height: 1.05;
+		font-size: var(--vk-size-text-sm);
+	}
+}
+
+.page-header-title,
+h1.page-header-title{
+	font-size: 2rem;
+	font-weight: 700;
+	line-height: var(--vk-line-height-low);
+	margin: 0;
+}

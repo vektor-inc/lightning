@@ -1,0 +1,21 @@
+.next-prev {
+    content-visibility:auto;
+    .vk_post_imgOuter_singleTermLabel {
+        background-color: var(--vk-color-primary);
+        color:#fff;
+    }
+    &-prev{
+        .vk_post_imgOuter_singleTermLabel {
+            left:0;
+            right:auto;
+        } 
+    }
+    .vk_post_imgOuter:before{
+        padding-top:50%;
+    }
+    @media ( min-width: $md-max ) {
+        .vk_post.card{
+            margin-bottom:0;
+        } 
+    }
+}

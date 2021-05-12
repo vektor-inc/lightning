@@ -1,0 +1,97 @@
+@charset "utf-8";
+
+/*-------------------------------------------*/
+/* clearfix
+/*-------------------------------------------*/
+/*
+Don't add position to .site-header to be scroll fixed
+*/
+.site-body,
+.site-body-container,
+.site-footer,
+.main-section,
+.sub-section {
+	position: relative;
+	&:after {
+		content: "";
+		display: block;
+		clear: both;
+	}
+}
+
+.site-body{
+	padding: 2rem $containter-padding 2rem;
+	@media (min-width: $md-min) {
+		padding: 2.5rem $containter-padding 2.5rem;
+	}
+	@media (min-width: $lg-min) {
+		padding: 3rem $containter-padding 3.5rem;
+	}
+	@media (min-width: $xl-min) {
+		padding: 3.5rem $containter-padding 4rem;
+	}
+	&.site-body--padding-vertical--off,
+	&.site-body--padding-vertical--off.siteContent-base-on {
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+}
+
+/*-------------------------------------------*/
+/* .siteContent
+/*-------------------------------------------*/
+.main-section,
+.sub-section {
+	& > aside:last-child,
+	& > div:last-child {
+		margin-bottom: 0;
+	}
+	@media (max-width: $md-max) {
+		width: 100%;
+		flex-basis: unset;
+	}
+}
+
+@media (min-width: $lg-min) {
+	.main-section--col--two {
+		width: var(--vk-width-col-2-main);
+		float: left;
+	}
+
+	.sub-section--col--two {
+		width: var(--vk-width-col-2-sub);
+		float: right;
+	}
+
+	// sidebar-left
+	.sub-section--pos--left {
+		float: left;
+	}
+
+	.main-section--pos--right {
+		float: right;
+	}
+
+	// one-column
+	.main-section--col--one,
+	.sub-section--col--one {
+		width: 100%;
+	}
+}
+
+/*
+main-section だけにしているのはサブセクションが下に配置される場合にひっつかないように。
+そもそも外側の余白は .site-body でつけられているので sub-section には不要
+*/
+.main-section {
+	&--margin-bottom--on {
+		margin-bottom: 3rem;
+	}
+	@media (max-width: $md-max) {
+		margin-bottom: 2rem;
+	}
+	&.main-section--margin-vertical--off {
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+}

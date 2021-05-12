@@ -1,0 +1,19 @@
+.sub-section{
+    // content-visibility:auto;はレンダリングを抑えて高速化するが、そもそもcontain-intrinsic-sizeを指定する必要があり、汎用テーマにおいてこの高さは変動するので無理
+    content-visibility:auto;
+    contain-intrinsic-size: 500px;
+    // content-visibility:auto; のままだとカスタマイズ画面でショートカットアイコンが表示されない
+    .customize-partial-edit-shortcuts-shown & {
+        content-visibility:visible;
+    }
+    &-title{
+        font-size: calc( var(--vk-size-text) * 1.125 );
+        margin-bottom:0.8rem;
+        a {
+            color: inherit;
+        }
+    }
+    img {
+        max-width:100%;
+    }
+}
