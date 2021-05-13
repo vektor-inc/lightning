@@ -1,5 +1,6 @@
 module.exports = {
   mode: 'production',
+  devtool: false,
   entry: [
     './assets/_js/_common.js',
     './assets/_js/_master.js',
@@ -12,7 +13,6 @@ module.exports = {
       path: __dirname + '/assets/js',
       filename: 'main.js',
   },
-  devtool: "source-map",
   module: {
     // babel-loaderの設定
     rules: [
