@@ -98,6 +98,11 @@ function lightning_theme_setup() {
 	add_theme_support( 'custom-spacing' );
 
 	/*
+	 cope with responsive-embeds
+	/*-------------------------------------------*/
+	add_theme_support( 'responsive-embeds' );
+
+	/*
 	  cope with page excerpt
 	/*-------------------------------------------*/
 	add_post_type_support( 'page', 'excerpt' );
