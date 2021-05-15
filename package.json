@@ -5,8 +5,9 @@
 	"main": "gulpfile.js",
 	"scripts": {
 		"gulp": "gulp",
-		"build": "npm run build:script && npm run build:style && npm run build:text-domain",
+		"build": "npm run build:script && npm run build:style && npm run build:text-domain && npm run file-delete",
 		"dist": "gulp dist",
+		"file-delete": "rimraf ./_g3/**/*.map",
 		"build:script": "webpack --config webpack.g2prod.js && webpack --config webpack.g3prod.js",
 		"build:style": "gulp sass_common && gulp sass_bs4 && gulp sass_skin && gulp sass_skin2 && gulp sass_woo",
 		"build:text-domain": "gulp text-domain",
@@ -48,6 +49,7 @@
 		"gulp-sourcemaps": "^3.0.0",
 		"gulp-style-aliases": "^1.1.11",
 		"npm-check-updates": "^11.5.11",
+		"rimraf": "^3.0.2",
 		"run-sequence": "^2.2.1",
 		"stylelint": "^13.13.1",
 		"stylelint-config-wordpress": "^17.0.0",
