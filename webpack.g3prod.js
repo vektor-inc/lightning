@@ -1,5 +1,6 @@
 module.exports = {
   mode: 'production',
+  devtool: false,
   entry: [
     './_g3/assets/_js/_common.js',
     './_g3/assets/_js/_master.js',

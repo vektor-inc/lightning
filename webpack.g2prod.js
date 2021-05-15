@@ -2,6 +2,7 @@ const path = require('path');
 
 module.exports = {
   mode: 'production',
+  devtool: false,
   entry: [
     './_g2/assets/_js/_common.js',
     './_g2/assets/_js/_master.js',
