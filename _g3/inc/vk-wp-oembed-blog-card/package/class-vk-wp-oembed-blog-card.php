@@ -52,6 +52,7 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 			$response = wp_remote_get( $url );
 			// URLのHTMLを$bodyに入れる
 			$body = $response['body'];
+			$body = static::encode( $body );
 
 			//ブログカードに必要な情報を取得
 			$title = static::get_title( $body );
@@ -108,7 +109,7 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 		public static function get_title( $body ) {
 			if ( preg_match( '/<title>(.+?)<\/title>/is', $body, $matches ) ) {
 				return $matches[1];
-			}
+			} 
 			return '';
 		}
 
@@ -134,6 +135,31 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 				return $matches[1];
 			}
 			return '';
+		}
+
+		/**
+		 * Encode.
+		 * body部分をエンコードする
+		 * 参考：https://github.com/inc2734/wp-oembed-blog-card/blob/HEAD/src/App/Model/Requester.php#L146
+		 */
+		public static function encode( $body ) {
+			if ( ! function_exists( 'mb_convert_encoding' ) || ! $body ) {
+				return $body;
+			}
+
+			foreach ( array( 'UTF-8', 'SJIS', 'EUC-JP', 'ASCII', 'JIS' ) as $encode ) {
+				$encoded_content = mb_convert_encoding( $body, $encode, $encode );
+				if ( strcmp( $body, $encoded_content ) === 0 ) {
+					$from_encode = $encode;
+					break;
+				}
+			}
+
+			if ( empty( $from_encode ) ) {
+				return $body;
+			}
+
+			return mb_convert_encoding( $body, get_bloginfo( 'charset' ), $from_encode );
 		}
 	}
 	new VK_WP_Oembed_Blog_Card();
