@@ -39,6 +39,16 @@ class BlogCardTest extends WP_UnitTestCase {
 				'url'     => 'https://github.com/vektor-inc/lightning',
 				'correct' => apply_filters( 'the_content', '[embed]https://github.com/vektor-inc/lightning[/embed]' ),
 			),
+			// 外部からの接続を拒否しているサイト
+			array(
+				'url'     => 'https://www.whitehouse.gov/',
+				'correct' => apply_filters( 'the_content', '[embed]https://www.whitehouse.gov/[/embed]' ),
+			),
+			// HTMLの文字コードが異なるサイト
+			array(
+				'url'     => 'http://abehiroshi.la.coocan.jp/',
+				'correct' => apply_filters( 'the_content', '[embed]http://abehiroshi.la.coocan.jp/[/embed]' ),
+			),
 		);
 		/*
 		the_contentをapply_filtersした時と比べてあげる
