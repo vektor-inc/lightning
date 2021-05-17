@@ -30,7 +30,7 @@ class Lightning_Design_Manager {
 	static function get_skins() {
 		$skins = array(
 			'plain'   => array(
-				'label'          => __( 'Plain (Beta)', 'lightning' ),
+				'label'          => __( 'Plain', 'lightning' ),
 				'css_url'        => get_template_directory_uri() . '/design-skin/plain/css/style.css', // 中身が空でも指定しないと lightning-design-style がが出力されずに インラインCSSが効かないため',
 				'css_path'       => get_parent_theme_file_path( '/design-skin/plain/css/style.css' ),
 				'editor_css_url' => '',
@@ -40,7 +40,7 @@ class Lightning_Design_Manager {
 				'bootstrap'      => '',
 			),
 			'origin3' => array(
-				'label'                    => __( 'Origin III (Beta)', 'lightning' ),
+				'label'                    => __( 'Origin III', 'lightning' ),
 				'css_url'                  => get_template_directory_uri() . '/design-skin/origin3/css/style.css',
 				'css_path'                 => get_parent_theme_file_path( '/design-skin/origin3/css/style.css' ),
 				'editor_css_path_relative' => '_g3/design-skin/origin3/css/editor.css',
