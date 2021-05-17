@@ -50,8 +50,16 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 		 */
 		public static function vk_get_blog_card( $url ) {
 			$response = wp_remote_get( $url );
+			//HTTP レスポンスステータスコードで条件分岐
+			$status_code = wp_remote_retrieve_response_code( $response );
+			if ( 200 !== $status_code  && 304 !== $status_code ) {
+				$content = static::get_url_template( $url );
+				return $content;
+			}
+
 			// URLのHTMLを$bodyに入れる
 			$body = $response['body'];
+			// 取得したHTMLを今のサイトの文字コードにencode
 			$body = static::encode( $body );
 
 			//ブログカードに必要な情報を取得
@@ -98,6 +106,21 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 			<?
 			$content = ob_get_clean();
 			$content = apply_filters( 'lightning_wp_oembed_blog_card_template', $content );
+			return $content;
+		}
+
+		/**
+		 * HTTP レスポンスステータスコードで200以外のHTML
+		 */
+		public static function get_url_template( $url ) {
+			ob_start();
+			?>
+			<p class="lightning-wp-oembed-blog-card-url-template">
+				<a href="<?php echo esc_url( $url ); ?>"><?php echo esc_url( $url ); ?></a>
+			</p>
+			<?php
+			$content = ob_get_clean();
+			$content = apply_filters( 'lightning_wp_oembed_url_card_template', $content, $url );
 			return $content;
 		}
 
