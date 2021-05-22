@@ -44,15 +44,15 @@ if ( is_front_page() ) {
 			<?php do_action( 'lightning_main_section_prepend' ); ?>
 
 			<?php
-            if ( lightning_is_woo_page() ) {
-                lightning_get_template_part( 'template-parts/main-woocommerce' );
-            } else {
+			if ( lightning_is_woo_page() ) {
+				lightning_get_template_part( 'template-parts/main-woocommerce' );
+			} else {
 				if ( apply_filters( 'lightning_is_singular', is_singular() ) ) {
 					lightning_get_template_part( 'template-parts/main-singular' );
 				} else {
 					lightning_get_template_part( 'template-parts/main-archive' );
 				}
-            }
+			}
 			?>
 
 			<?php do_action( 'lightning_main_section_append' ); ?>
@@ -61,7 +61,7 @@ if ( is_front_page() ) {
 		<?php
 		do_action( 'lightning_sub_section_before' );
 		if ( lightning_is_subsection() ) {
-            if ( lightning_is_woo_page() ){
+			if ( lightning_is_woo_page() ) {
 				do_action( 'woocommerce_sidebar' );
 			} else {
 				lightning_get_template_part( 'sidebar', get_post_type() );
