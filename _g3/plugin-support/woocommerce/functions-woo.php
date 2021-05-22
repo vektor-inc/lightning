@@ -16,7 +16,7 @@ function lightning_woo_css() {
 add_action( 'wp_enqueue_scripts', 'lightning_woo_css' );
 
 function lightning_add_woocommerce_css_to_editor() {
-	add_editor_style( '/plugin-support/woocommerce/css/woo.css' );
+	add_editor_style( '/_g3/plugin-support/woocommerce/css/woo.css' );
 }
 add_action( 'after_setup_theme', 'lightning_add_woocommerce_css_to_editor' );
 
