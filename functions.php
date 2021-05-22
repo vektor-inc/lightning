@@ -6,16 +6,17 @@ define( 'LIG_G2_DIR', '_g2' );
 function lightning_is_g3() {
 	$g = get_option( 'lightning_theme_generation' );
 	if ( 'g3' === $g ) {
-		return true;
-	}
-
-	$options = get_option( 'lightning_theme_options' );
-	if ( get_option( 'fresh_site' ) || ! $options ) {
-		update_option( 'lightning_theme_generation', 'g3' );
-		return true;
+		$return = true;
 	} else {
-		return false;
+		$options = get_option( 'lightning_theme_options' );
+		if ( get_option( 'fresh_site' ) || ! $options ) {
+			update_option( 'lightning_theme_generation', 'g3' );
+			$return = true;
+		} else {
+			$return = false;
+		}
 	}
+	return apply_filters( 'lightning_is_g3', $return );
 }
 
 require dirname( __FILE__ ) . '/inc/class-ltg-template-redirect.php';
