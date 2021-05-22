@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - test/phpunit
   pull_request:
     branches:
       - master
@@ -108,5 +109,7 @@ jobs:
       run: ./node_modules/@wordpress/env/bin/wp-env start
     - name: install composer packages
       run: ./node_modules/@wordpress/env/bin/wp-env run composer 'composer install'
-    - name: php unit test
-      run: ./node_modules/@wordpress/env/bin/wp-env run phpunit 'phpunit -c /var/www/html/wp-content/themes/lightning/phpunit.xml.dist --verbose'
+    - name: php unit test G2
+      run: ./node_modules/@wordpress/env/bin/wp-env run phpunit 'phpunit -c /var/www/html/wp-content/themes/lightning/phpunit.g2.xml --verbose'
+    - name: php unit test G3
+      run: ./node_modules/@wordpress/env/bin/wp-env run phpunit 'phpunit -c /var/www/html/wp-content/themes/lightning/phpunit.g3.xml --verbose'
