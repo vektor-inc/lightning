@@ -127,7 +127,7 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 					} // foreach ( $ancestors as $ancestor ) {
 				} // if ( $post->post_parent == 0 ) {
 
-			} elseif ( is_post_type_archive() ) {
+			} elseif ( is_post_type_archive() && ! is_date() ) {
 				$breadcrumb_array[] = array(
 					'name'  => $post_type_info['name'],
 					'id'    => '',
@@ -135,16 +135,16 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 					'class' => '',
 					'icon'  => '',
 				);
-			}
-
-			if ( ( is_single() || is_archive() ) && ! is_post_type_archive() && ! is_search() ) {
-				$breadcrumb_array[] = array(
-					'name'  => $post_type_info['name'],
-					'id'    => '',
-					'url'   => $post_type_info['url'],
-					'class' => '',
-					'icon'  => '',
-				);
+			} else if ( ( is_single() || is_archive() ) || is_date() && ! is_post_type_archive() && ! is_search() ) {
+				if ( $post_type_info['slug'] !== 'post' || $post_top_info['use'] ){
+					$breadcrumb_array[] = array(
+						'name'  => $post_type_info['name'],
+						'id'    => '',
+						'url'   => $post_type_info['url'],
+						'class' => '',
+						'icon'  => '',
+					);
+				}
 			}
 
 			if ( is_date() ) {
