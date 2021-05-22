@@ -14,7 +14,10 @@
     window.addEventListener('scroll', bodyClass, false)
     window.addEventListener('DOMContentLoaded', bodyClass, false)
 
-    if(lightningOpt.header_scrool){
+    // ヘッダー要素がない場合の判別
+    const siteHeader = document.getElementById('site-header');
+
+    if( lightningOpt.header_scrool && siteHeader ){
 
         // ヘッダーの元の高さを取得
         const siteHeaderContainerHeight = document.getElementById('site-header').offsetHeight;

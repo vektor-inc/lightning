@@ -63,7 +63,7 @@ $color-key-dark-default: #2e6da4;
 
 .woocommerce-product-search {
 	button[type="submit"] {
-		background-color: var(--color-key, $color-key-default);
+		background-color: var(--vk-color-primary-vivid, $color-key-default);
 	}
 }
 
@@ -142,12 +142,12 @@ $color-key-dark-default: #2e6da4;
 }
 
 .wp-block-product-category .wp-block-button__link {
-	background-color: var(--color-key-dark, $color-key-dark-default);
+	background-color: var(--vk-color-primary, $color-key-dark-default);
 }
 
 .wp-block-product-category .wp-block-button__link:hover {
 	text-decoration: none;
-	background-color: var(--color-key, $color-key-default);
+	background-color: var(--vk-color-primary-vivid, $color-key-default);
 }
 
 .wc-block-grid__product-add-to-cart .add_to_cart_button,
@@ -156,7 +156,7 @@ $color-key-dark-default: #2e6da4;
 .woocommerce button.button,
 .woocommerce input.button {
 	color: #fff;
-	background-color: var(--color-key-dark, $color-key-dark-default);
+	background-color: var(--vk-color-primary, $color-key-dark-default);
 }
 
 .wc-block-grid__product-add-to-cart .add_to_cart_button:hover,
@@ -165,7 +165,7 @@ $color-key-dark-default: #2e6da4;
 .woocommerce button.button:hover,
 .woocommerce input.button:hover {
 	color: #fff;
-	background-color: var(--color-key, $color-key-default);
+	background-color: var(--vk-color-primary-vivid, $color-key-default);
 	text-decoration: none;
 }
 
@@ -175,7 +175,7 @@ $color-key-dark-default: #2e6da4;
 .woocommerce button.button.alt,
 .woocommerce input.button.alt {
 	color: #fff;
-	background-color: var(--color-key-dark, $color-key-dark-default);
+	background-color: var(--vk-color-primary, $color-key-dark-default);
 }
 
 .wc-block-grid__product-add-to-cart .add_to_cart_button.alt:hover,
@@ -184,7 +184,7 @@ $color-key-dark-default: #2e6da4;
 .woocommerce button.button.alt:hover,
 .woocommerce input.button.alt:hover {
 	color: #fff;
-	background-color: var(--color-key, $color-key-default);
+	background-color: var(--vk-color-primary-vivid, $color-key-default);
 }
 
 .woocommerce #respond input#submit.disabled,
@@ -215,7 +215,7 @@ $color-key-dark-default: #2e6da4;
 .woocommerce input.button:disabled:hover,
 .woocommerce input.button:disabled[disabled]:hover {
 	color: #fff;
-	background-color: var(--color-key, $color-key-default);
+	background-color: var(--vk-color-primary-vivid, $color-key-default);
 }
 
 .product,
@@ -237,8 +237,8 @@ div[class*="wp-block-product"] {
 		&:hover {
 			text-decoration: none;
 			color: #fff;
-			background-color: var(--color-key, #337ab7);
-			border-color: var(--color-key-dark, #2e6da4);
+			background-color: var(--vk-color-primary-vivid, #337ab7);
+			border-color: var(--vk-color-primary, #2e6da4);
 		}
 	}
 }
@@ -305,7 +305,7 @@ div[class*="wp-block-product"] {
 
 				img {
 					border-color: #337ab7;
-					border-color: var(--color-key, $color-key-default);
+					border-color: var(--vk-color-primary-vivid, $color-key-default);
 				}
 			}
 		}

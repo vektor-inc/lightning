@@ -68,6 +68,7 @@
 				line-height: 14px;
 				opacity: 0.6;
 				text-align: center;
+				white-space: nowrap;
 			}
 			/* Class is necessarily to the * because class was added to many other class name that first class is not necessarily "current"  */
 			&:hover,

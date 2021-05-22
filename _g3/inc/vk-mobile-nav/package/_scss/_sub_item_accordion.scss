@@ -64,7 +64,8 @@
 	}
 	ul.acc-child-open {
 		transition: all $time_transition ease-in;
-		max-height: 1000px;
+		max-height: 80vh;
+		overflow-y: auto;
 		opacity: 1;
 	}
 	ul.acc-child-close {

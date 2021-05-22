@@ -1,16 +1,16 @@
 module.exports = {
-  mode: 'production',
-  devtool: false,
+  mode: 'development',
   entry: [
-    './assets/_js/_common.js',
-    './assets/_js/_master.js',
-    './assets/_js/_sidebar-fixed.js',
-    './inc/vk-mobile-nav/package/js/vk-mobile-nav.js',
+    './_g3/assets/_js/_common.js',
+    './_g3/assets/_js/_master.js',
+    './_g3/assets/_js/_sidebar-fixed.js',
+    './_g3/inc/vk-mobile-nav/package/js/vk-mobile-nav.js',
   ],
   output: {
-      path: __dirname + '/assets/js',
+      path: __dirname + '/_g3/assets/js',
       filename: 'main.js',
   },
+  devtool: "source-map",
   module: {
     // babel-loaderの設定
     rules: [

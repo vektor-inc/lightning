@@ -76,6 +76,21 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 					'icon'  => '',
 				);
 
+				// For filter search term & keywords or term & no keyword
+			} elseif ( is_search() ) {
+				if ( get_search_query() ) {
+					$name = sprintf( __( 'Search Results for : %s', 'lightning' ), get_search_query() );
+				} else {
+					$name = __( 'Search Results', 'lightning' );
+				}
+				$breadcrumb_array[] = array(
+					'name'  => $name,
+					'id'    => '',
+					'url'   => '',
+					'class' => '',
+					'icon'  => '',
+				);
+
 			} elseif ( is_page() ) {
 				$post = $wp_query->get_queried_object();
 				// 第一階層
@@ -122,7 +137,7 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 				);
 			}
 
-			if ( ( is_single() || is_archive() ) && ! is_post_type_archive() ) {
+			if ( ( is_single() || is_archive() ) && ! is_post_type_archive() && ! is_search() ) {
 				$breadcrumb_array[] = array(
 					'name'  => $post_type_info['name'],
 					'id'    => '',
@@ -317,22 +332,6 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 					'icon'  => '',
 				);
 			} // is_single
-
-			// For filter search term & keywords or term & no keyword
-			if ( is_search() ) {
-				if ( get_search_query() ) {
-					$name = sprintf( __( 'Search Results for : %s', 'lightning' ), get_search_query() );
-				} else {
-					$name = __( 'Search Results', 'lightning' );
-				}
-				$breadcrumb_array[] = array(
-					'name'  => $name,
-					'id'    => '',
-					'url'   => '',
-					'class' => '',
-					'icon'  => '',
-				);
-			}
 
 			return $breadcrumb_array = apply_filters( 'vk_breadcrumb_array', $breadcrumb_array );
 

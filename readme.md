@@ -99,7 +99,7 @@ $ docker-compose run wp
 	- Windows の場合
 	```npm run phpunit:win```
 	- Mac の場合
-	```npm run phpunit:mac```
+	```npm run phpunit```
 
 
 
