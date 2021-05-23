@@ -131,7 +131,7 @@ function lightning_get_the_archive_title() {
 	} elseif ( is_tax() ) {
 		$title = single_term_title( '', false );
 	} elseif ( is_home() && ! is_front_page() ) {
-		$lightning_page_for_posts = lightning_get_page_for_posts();
+		$lightning_page_for_posts = VK_Helpers::get_page_for_posts();
 		$title                    = $lightning_page_for_posts['post_top_name'];
 	} else {
 		global $wp_query;
