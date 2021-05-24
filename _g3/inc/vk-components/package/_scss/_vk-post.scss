@@ -204,14 +204,20 @@ $xxl-min: 1400px;
 	}
 	&_author {
 		margin: $margin_post_item_element 0;
+		&_image,
+		&_name {
+			display: inline-block;
+			vertical-align: middle;
+		}
 		&_image {
-			margin-right:10px;
+			margin-right:0.5rem;
 			img{
 				width:24px;
 				height:24px;
 				object-fit:cover;
 				border-radius:50%;
 				object-position:0px 0px;
+				display: block;
 			}
 		}
 		&_name{
