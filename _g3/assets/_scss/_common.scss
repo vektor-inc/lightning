@@ -38,14 +38,22 @@ iframe {
 }
 
 a {
+	text-decoration: none;
 	color:var(--vk-color-text-link);
-	text-decoration-style: dotted;
-	text-underline-offset:2px;
-	text-decoration-color:rgba(0,0,0,0.3);
-	text-decoration-thickness: 1px;
 	&:hover {
 		color: var(--vk-color-text-link-hover);
 		text-decoration-color:var(--vk-color-text-link-hover);
+	}
+	p &,
+	li &{
+		text-decoration: underline;
+		text-decoration-style: dotted;
+		text-underline-offset:2px;
+		text-decoration-color:rgba(0,0,0,0.3);
+		text-decoration-thickness: 1px;
+		&:hover {
+			text-decoration: none;
+		}
 	}
 }
 
@@ -94,7 +102,7 @@ h5 {
 	font-size:1.2rem;
 }
 h6 {
-	font-size:1rem;
+	font-size:1.125rem;
 }
 
 li {
