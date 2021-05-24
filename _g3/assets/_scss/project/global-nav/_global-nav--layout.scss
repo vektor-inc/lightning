@@ -9,7 +9,9 @@
       .global-nav の幅は 
       .site-header--layout--nav-float .site-header-logo の部分が
       幅100%でついているので押し込まれる形で最小サイズになるのでここでは特に指定していない
+      と、思いきや Description があると無駄に広くなるので最小に指定
       */
+      width:min-content;
     }
 }
 
@@ -17,6 +19,7 @@
     width:auto;
     .global-nav-list {
         justify-content: center;
+        width:min-content;
     }
 }
 .global-nav--layout--penetration {

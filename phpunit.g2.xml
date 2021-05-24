@@ -1,5 +1,6 @@
+<?xml version="1.0"?>
 <phpunit
-	bootstrap="tests/bootstrap.php"
+	bootstrap="_g2/tests/bootstrap.php"
 	backupGlobals="false"
 	colors="true"
 	convertErrorsToExceptions="true"
@@ -7,8 +8,9 @@
 	convertWarningsToExceptions="true"
 	>
 	<testsuites>
-		<testsuite name="lightning">
-			<directory prefix="test-" suffix=".php">./tests/</directory>
+		<testsuite>
+			<directory prefix="test-" suffix=".php">./_g2/tests/</directory>
+			<exclude>./tests/test-sample.php</exclude>
 		</testsuite>
 	</testsuites>
 </phpunit>

@@ -1,8 +1,8 @@
 === Lightning ===
 Lightning WordPress theme, Copyright (C) 2015-2021 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
-Tested up to: 5.7.1
-Stable tag: 14.1.6
+Tested up to: 5.7.2
+Stable tag: 14.2.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,6 +38,30 @@ https://www.vektor-inc.co.jp/inquiry/
 
 
 == Changelog ==
+
+v14.2.3
+[ Specification Change ] Stop exclude CSS Var by Tree shaking
+
+v14.2.2
+[ G3 ][ Bug fix ] Fix archive title PHP critical error
+
+v14.2.1
+[ G3 ][ Bug fix ] Fix Bread Crumb under case of post top page is not specificated
+
+v14.2.0
+[ G3 ][ other ] add args of do_action name
+[ G3 ][ Btg fix ] Fix WooCommerce css on edit screen
+
+v14.1.9
+[ G3 ][ Bug fix ] Fix global nav not refrect under case of mobile nav not specificed
+[ G3 ][ Btg fix ] Fix can't click too many menu item
+[ G3 ][ Btg fix ] Fix WooCommerce Btn color not refrect
+
+v14.1.8
+[ Bug fix ] Fix Header Navigation Padding
+
+v14.1.7
+[ Bug fix ] Fix BreadCrumb under case of filter search result
 
 v14.1.6
 [ Bug fix ] fix no header error ( for Pro Unit )

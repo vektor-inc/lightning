@@ -11,13 +11,15 @@ class Lightning_Design_Manager {
 
 		add_action( 'wp', array( __CLASS__, 'load_skin_callback' ) );
 
-		// Don't use following action point.
-		// wp : become do not load css.
-		add_action( 'after_setup_theme', array( __CLASS__, 'load_skin_editor_css' ) );
 
 		add_action( 'customize_register', array( __CLASS__, 'customize_register' ) );
 
-		// This method is planned to be removed.
+		/**
+		 * 編集画面において enqueue_block_editor_assets は上部で add_editor_style は下部で読み込まれる
+		 * -> 両方書くと enqueue_block_editor_assets で定義した CSS に wp_add_inline_style で引っ掛けても効かない
+		 * -> add_editor_style は Classic Editor 専用にすることで解決
+		 */
+		add_action( 'after_setup_theme', array( __CLASS__, 'load_skin_editor_css' ) );
 		add_action( 'enqueue_block_editor_assets', array( __CLASS__, 'load_skin_gutenberg_css' ) );
 
 	}
