@@ -11,10 +11,6 @@ https://github.com/vektor-inc/vektor-wp-libraries
 If you want to change this file, please change the original file.
 */
 
-
-/**
- * VK CSS Optimize
- */
 if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 	/**
 	 * VK CSS Optimize
