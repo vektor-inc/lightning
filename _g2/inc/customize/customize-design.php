@@ -552,7 +552,7 @@ add_action( 'wp_enqueue_scripts', 'lightning_add_common_dynamic_css' );
 
 function lightning_add_common_dynamic_css_to_editor() {
 	$dynamic_css = lightning_get_common_inline_css();
-	wp_add_inline_style( 'lightning-common-editor-gutenberg', $dynamic_css );
+	wp_add_inline_style( 'lightning-common-editor-gutenberg', $dynamic_css, 11 );
 }
 add_action( 'enqueue_block_editor_assets', 'lightning_add_common_dynamic_css_to_editor' );
 
