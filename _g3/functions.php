@@ -191,7 +191,6 @@ function lightning_load_common_editor_css() {
 	/* Notice : add_editor_style() is only one args. */
 	/* add_editor_style is for Classic Editor Only. */
 	if ( function_exists( 'use_block_editor_for_post' ) && use_block_editor_for_post( $post ) ) {
-	if ( function_exists( 'use_block_editor_for_post' ) && use_block_editor_for_post( $post ) ) {
 		add_editor_style( LIG_G3_DIR . '/assets/css/editor.css' );
 	}
 }
