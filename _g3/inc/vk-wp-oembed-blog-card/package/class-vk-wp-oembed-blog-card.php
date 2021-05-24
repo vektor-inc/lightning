@@ -14,8 +14,8 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 		public function __construct() {
 			//ハイフンなどの特殊文字を勝手に変換させない
 			add_filter( 'run_wptexturize', '__return_false');
-			add_filter( 'embed_oembed_html', array( __CLASS__, 'vk_embed_oembed_html' ) );
-			add_filter( 'embed_maybe_make_link', array( __CLASS__, 'vk_embed_maybe_make_link' ) , 9, 2 );
+			add_filter( 'embed_oembed_html', array( __CLASS__, 'oembed_html' ) );
+			add_filter( 'embed_maybe_make_link', array( __CLASS__, 'maybe_make_link' ) , 9, 2 );
 			add_action( 'after_setup_theme', array( __CLASS__, 'add_style' ) );
 		}
 
@@ -29,7 +29,7 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 		 * File: wp-includes/class-wp-oembed.php
 		 * esc_url_raw は & などがはいってもエスケープさせないため
 		 */
-		public static function vk_embed_oembed_html( $output ) {
+		public static function oembed_html( $output ) {
 			$pattern = '/<blockquote class="wp-embedded-content".*?><a href="(.+?)"/i';
 			if ( ! preg_match( $pattern, $output, $match ) )  {
 				return $output;
@@ -44,7 +44,7 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 		 * 「埋め込み URL このコンテンツを埋め込めませんでした。」 
 		 * と表示されるものに実行
 		 */
-		public static function vk_embed_maybe_make_link( $output, $url ) {
+		public static function maybe_make_link( $output, $url ) {
 			$content = static::vk_get_blog_card( $url );
 			return $content;
 		}
