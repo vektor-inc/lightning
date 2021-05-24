@@ -115,7 +115,7 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 		public static function get_url_template( $url ) {
 			ob_start();
 			?>
-			<p class="lightning-wp-oembed-blog-card-url-template">
+			<p class="vk-wp-oembed-blog-card-url-template">
 				<a href="<?php echo esc_url( $url ); ?>"><?php echo esc_url( $url ); ?></a>
 			</p>
 			<?php
