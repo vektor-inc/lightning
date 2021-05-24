@@ -105,7 +105,7 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 			</div>
 			<?
 			$content = ob_get_clean();
-			$content = apply_filters( 'lightning_wp_oembed_blog_card_template', $content );
+			$content = apply_filters( 'vk_wp_oembed_blog_card_template', $content );
 			return $content;
 		}
 
