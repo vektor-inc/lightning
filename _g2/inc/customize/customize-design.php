@@ -548,7 +548,7 @@ function lightning_add_common_dynamic_css() {
 	$dynamic_css = lightning_get_common_inline_css();
 	wp_add_inline_style( 'lightning-design-style', $dynamic_css );
 }
-add_action( 'wp_enqueue_scripts', 'lightning_add_common_dynamic_css' );
+add_action( 'wp_enqueue_scripts', 'lightning_add_common_dynamic_css', 11 );
 
 function lightning_add_common_dynamic_css_to_editor() {
 	$dynamic_css = lightning_get_common_inline_css();
