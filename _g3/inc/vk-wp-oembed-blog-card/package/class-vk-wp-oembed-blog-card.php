@@ -16,7 +16,7 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 			add_filter( 'run_wptexturize', '__return_false');
 			add_filter( 'embed_oembed_html', array( __CLASS__, 'oembed_html' ) );
 			add_filter( 'embed_maybe_make_link', array( __CLASS__, 'maybe_make_link' ) , 9, 2 );
-			add_action( 'after_setup_theme', array( __CLASS__, 'add_style' ) );
+			add_action( 'wp_enqueue_scripts', array( __CLASS__, 'add_style' ) );
 		}
 
 		public static function add_style(){
