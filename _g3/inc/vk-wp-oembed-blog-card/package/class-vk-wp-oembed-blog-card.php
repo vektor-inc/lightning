@@ -16,8 +16,14 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 			add_filter( 'run_wptexturize', '__return_false');
 			add_filter( 'embed_oembed_html', array( __CLASS__, 'vk_embed_oembed_html' ) );
 			add_filter( 'embed_maybe_make_link', array( __CLASS__, 'vk_embed_maybe_make_link' ) , 9, 2 );
+			add_action( 'after_setup_theme', array( __CLASS__, 'add_style' ) );
 		}
 
+		public static function add_style(){
+			global $vk_embed_dir_uri;
+			wp_enqueue_style( 'vk-blog-card', $vk_embed_dir_uri . 'css/blog-card.css' );
+		}
+		
 		/**
 		 * WordPress独自のブログカード生成時のフィルターフックembed_oembed_html
 		 * File: wp-includes/class-wp-oembed.php
