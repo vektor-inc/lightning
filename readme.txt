@@ -39,6 +39,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ Bug fix ] Fix customize shortcut icon don't display
+
 v14.3.0
 [ Bug fix ] Fix vk_post post author image and name vertical-align
 [ Bug fix ] To be refrect key color on edit screen
