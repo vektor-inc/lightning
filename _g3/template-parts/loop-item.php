@@ -7,6 +7,7 @@ $options = array(
 	'display_excerpt'            => true,
 	'display_date'               => true,
 	'display_new'                => true,
+	'display_taxonomies'         => false,
 	'display_btn'                => true,
 	'image_default_url'          => false,
 	'overlay'                    => false,
