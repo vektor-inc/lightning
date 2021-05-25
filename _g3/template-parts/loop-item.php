@@ -1,6 +1,7 @@
 <?php
 $options = array(
-	'layout'                     => 'media', // card , card-horizontal , media
+	// card, card-noborder, card-intext, card-horizontal , media, postListText
+	'layout'                     => 'media',
 	'display_image'              => true,
 	'display_image_overlay_term' => true,
 	'display_excerpt'            => true,
