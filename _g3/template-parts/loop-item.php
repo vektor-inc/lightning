@@ -1,11 +1,13 @@
 <?php
 $options = array(
-	'layout'                     => 'media', // card , card-horizontal , media
+	// card, card-noborder, card-intext, card-horizontal , media, postListText
+	'layout'                     => 'media',
 	'display_image'              => true,
 	'display_image_overlay_term' => true,
 	'display_excerpt'            => true,
 	'display_date'               => true,
 	'display_new'                => true,
+	'display_taxonomies'         => false,
 	'display_btn'                => true,
 	'image_default_url'          => false,
 	'overlay'                    => false,
@@ -18,4 +20,4 @@ $options = array(
 	'body_prepend'               => '',
 	'body_append'                => '',
 );
-wp_kses_post( VK_Component_Posts::the_view( $post, $options ) );
+VK_Component_Posts::the_view( $post, $options );

@@ -361,7 +361,8 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 					$html .= '<span class="vk_post_author_image">';
 					if ( $profile_image_id ) {
 						$profile_image_src = wp_get_attachment_image_src( $profile_image_id, 'thumbnail' );
-						$html      .= '<img class="vk_post_author_image" src="' . $profile_image_src[0] . '" alt="' . esc_attr( $author ) . '" />';
+						// Gravater の時はクラス名つけられないので、こちらにもつけないこと。
+						$html             .= '<img src="' . $profile_image_src[0] . '" alt="' . esc_attr( $author ) . '" />';
 					} else {
 						$html .= get_avatar( get_the_author_meta( 'email' ), 100 );
 					}

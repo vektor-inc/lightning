@@ -2,7 +2,7 @@
 Lightning WordPress theme, Copyright (C) 2015-2021 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
 Tested up to: 5.7.2
-Stable tag: 14.2.3
+Stable tag: 14.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -39,7 +39,15 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
-v14.2.3
+
+v14.3.1
+[ G3 ][ Bug fix ] Fix customize shortcut icon don't display
+[ G3 ][ Other ] Change recommend logo size
+
+v14.3.0
+[ Bug fix ] Fix vk_post post author image and name vertical-align
+[ Bug fix ] To be refrect key color on edit screen
+[ Design Specification Change ] remove a tag underline with the exception of p and li tag
 [ Specification Change ] Stop exclude CSS Var by Tree shaking
 
 v14.2.2
