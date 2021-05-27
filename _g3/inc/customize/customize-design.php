@@ -35,7 +35,7 @@ function lightning_customize_register_design( $wp_customize ) {
 				'section'     => 'lightning_design',
 				'settings'    => 'lightning_theme_options[head_logo]',
 				'priority'    => 501,
-				'description' => __( 'Recommended image size : 280*60px', 'lightning' ),
+				'description' => __( 'Recommended image size : 500*120px', 'lightning' ),
 			)
 		)
 	);
