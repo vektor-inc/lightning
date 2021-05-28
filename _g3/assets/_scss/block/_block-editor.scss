@@ -8,3 +8,8 @@
 .wp-block-search .wp-block-search__button{
     background-color: #007bff;
 }
+
+// 編集画面で画像の左に発生する余白を削除（何のための余白か不明）
+.edit-post-visual-editor .editor-styles-wrapper .is-root-container figure.wp-block-image.wp-block {
+    margin-left:0;
+}
