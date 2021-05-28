@@ -30,7 +30,7 @@ function lightning_customize_register_column( $wp_customize ) {
 			$wp_customize,
 			'ltg_column_setting',
 			array(
-				'label'            => __( 'Main column setting', 'lightning' ) . ' ( ' . __( 'PC mode', 'lightning' ) . ' )',
+				'label'            => __( 'Column setting', 'lightning' ) . ' ( ' . __( 'PC mode', 'lightning' ) . ' )',
 				'section'          => 'lightning_column',
 				'type'             => 'text',
 				'custom_title_sub' => '',
