@@ -20,10 +20,18 @@
  */
 class BlogCardTest extends WP_UnitTestCase {
 
-	function test_vk_get_blog_card() {
+	/**
+	 * oembed_html 内部リンク、WordPressで作られたサイトのテスト 
+	 */
+	function test_vk_get_post_data_blog_card() {
 		// the_contentのフィルターフックで自動に入るpタグを削除
 		remove_filter( 'the_content', 'wpautop' );
 		$test_array = array(
+			// WordPressで作られたサイト トップページ
+			array(
+				'url'     => 'http://localhost:8888/hello-world/',
+				'correct' => apply_filters( 'the_content', '[embed]http://localhost:8888/hello-world/[/embed]' ),
+			),
 			// WordPressで作られたサイト トップページ
 			array(
 				'url'     => 'https://www.vektor-inc.co.jp/',
@@ -34,6 +42,23 @@ class BlogCardTest extends WP_UnitTestCase {
 				'url'     => 'https://www.vektor-inc.co.jp/service/',
 				'correct' => apply_filters( 'the_content', '[embed]https://www.vektor-inc.co.jp/service/[/embed]' ),
 			),
+		);
+		foreach ( $test_array as $key => $value ) {
+			$cache = "";
+			$result = VK_WP_Oembed_Blog_Card::oembed_html( $cache, $value['url'] );
+			$this->assertEquals( $value['correct'], $result );
+		}
+		// wpautopフィルターフックを戻す
+		add_filter( 'the_content', 'wpautop' );
+	}
+
+	/**
+	 * embed_maybe_make_link 外部リンクのテスト
+	 */
+	function test_vk_get_blog_card() {
+		// the_contentのフィルターフックで自動に入るpタグを削除
+		remove_filter( 'the_content', 'wpautop' );
+		$test_array = array(
 			// WordPressでは作られていないサイト
 			array(
 				'url'     => 'https://github.com/vektor-inc/lightning',
@@ -50,10 +75,6 @@ class BlogCardTest extends WP_UnitTestCase {
 				'correct' => apply_filters( 'the_content', '[embed]http://abehiroshi.la.coocan.jp/[/embed]' ),
 			),
 		);
-		/*
-		the_contentをapply_filtersした時と比べてあげる
-		WordPressが自動で入れるpタグを除外
-		*/
 		foreach ( $test_array as $key => $value ) {
 			$result = VK_WP_Oembed_Blog_Card::vk_get_blog_card( $value['url'] );
 			$this->assertEquals( $value['correct'], $result );
