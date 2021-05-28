@@ -13,7 +13,7 @@ function lightning_customize_register_column( $wp_customize ) {
 	$wp_customize->add_section(
 		'lightning_column',
 		array(
-			'title' => __( 'Main column setting', 'lightning' ),
+			'title' => __( 'Column setting', 'lightning' ),
 			'panel' => 'lightning_layout',
 		)
 	);
