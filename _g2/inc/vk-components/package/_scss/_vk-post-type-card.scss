@@ -50,9 +50,6 @@ https://github.com/vektor-inc/vektor-wp-libraries
 /*-------------------------------------------*/
 /* .card-noborder
 /*-------------------------------------------*/
-:root {
-	--vk-color-border-hr: #e5e5e5;
-}
 .card-noborder {
 	&.card {
 		/*.card.card-noborder にしないと負ける */
@@ -60,7 +57,7 @@ https://github.com/vektor-inc/vektor-wp-libraries
 		background: none;
 	}
 	.vk_post_imgOuter {
-		border : 1px solid var(--vk-color-border-hr);
+		border : 1px solid var(--vk-color-border-image);
 	}
 	.card-body {
 		padding-left: 0;

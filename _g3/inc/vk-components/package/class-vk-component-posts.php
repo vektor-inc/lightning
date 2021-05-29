@@ -154,6 +154,14 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 
 			endif;
 
+			/* 
+			wp_reset_query() がないとトップページでショートコードなどから呼び出した場合に
+			固定ページのトップ指定が解除されて投稿一覧が表示される
+			→ と言いたい所だが、そもそも global $wp_query を上書きするなという話で、
+			wp_reset_query()をするという事は余分に1回クエリが走る事になるので、
+			$wp_query を上書きしないルールにしてここでは wp_reset_query() を走らせない
+			*/
+			// wp_reset_query();
 			wp_reset_postdata();
 			return $loop;
 		}
@@ -238,7 +246,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 
 				$html .= '<div class="vk_post_imgOuter' . $classes['class_outer'] . '"' . $style . '>';
 
-				if ( $options['layout'] != 'card-intext' ){
+				if ( $options['layout'] != 'card-intext' ) {
 					$html .= '<a href="' . get_the_permalink( $post->ID ) . '">';
 				}
 
@@ -274,7 +282,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 					$html .= '<img src="' . esc_url( $options['image_default_url'] ) . '" alt="" class="' . $image_class . '" loading="lazy" />';
 				}
 
-				if ( $options['layout'] != 'card-intext' ){
+				if ( $options['layout'] != 'card-intext' ) {
 					$html .= '</a>';
 				}
 
@@ -314,7 +322,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			カードインテキストの場合、リンクの中にリンクがあるとブラウザでDOMが書き換えられるので
 			中のリンクを解除する必要がある。
 			*/
-			if ( $options['layout'] == 'card-intext' ){
+			if ( $options['layout'] == 'card-intext' ) {
 				$options['textlink'] = false;
 			}
 
@@ -358,7 +366,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 
 					// VK Post Author Display の画像を取得
 					$profile_image_id = get_the_author_meta( 'user_profile_image' );
-					$html .= '<span class="vk_post_author_image">';
+					$html            .= '<span class="vk_post_author_image">';
 					if ( $profile_image_id ) {
 						$profile_image_src = wp_get_attachment_image_src( $profile_image_id, 'thumbnail' );
 						// Gravater の時はクラス名つけられないので、こちらにもつけないこと。
@@ -375,18 +383,18 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			}
 
 			if ( $options['display_taxonomies'] ) {
-				$args          = array(
+				$args       = array(
 					'template'      => '<dt class="vk_post_taxonomy_title"><span class="vk_post_taxonomy_title_inner">%s</span></dt><dd class="vk_post_taxonomy_terms">%l</dd>',
 					'term_template' => '<a href="%1$s">%2$s</a>',
 				);
-				$taxonomies	= get_the_taxonomies( $post->ID, $args );
-				$exclusion	= array( 'product_type' );
+				$taxonomies = get_the_taxonomies( $post->ID, $args );
+				$exclusion  = array( 'product_type' );
 				// このフィルター名は投稿詳細でも使っているので注意
-				$exclusion	= apply_filters( 'vk_get_display_taxonomies_exclusion', $exclusion );
+				$exclusion = apply_filters( 'vk_get_display_taxonomies_exclusion', $exclusion );
 
-				if ( is_array( $exclusion ) ){
-					foreach ( $exclusion as $key => $value ){
-						unset( $taxonomies[$value] );
+				if ( is_array( $exclusion ) ) {
+					foreach ( $exclusion as $key => $value ) {
+						unset( $taxonomies[ $value ] );
 					}
 				}
 				if ( $taxonomies ) {
@@ -423,7 +431,6 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 					$html .= VK_Component_Button::get_view( $button_options );
 					$html .= '</div>';
 				}
-
 			}
 
 			if ( ! empty( $options['body_append'] ) ) {
@@ -447,7 +454,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 					'label'             => __( 'Card', 'lightning' ),
 					'class_posts_outer' => '',
 				),
-				'card-noborder'            => array(
+				'card-noborder'   => array(
 					'label'             => __( 'Card Noborder', 'lightning' ),
 					'class_posts_outer' => '',
 				),
@@ -481,18 +488,18 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				'class_image' => 'card-img-top',
 			);
 
-			$html_body = '';
+			$html_body  = '';
 			$html_body .= self::get_thumbnail_image( $post, $options, $attr );
 			$html_body .= self::get_view_body( $post, $options );
 
-			if ( $options['layout'] == 'card-intext' ){
+			if ( $options['layout'] == 'card-intext' ) {
 
 				$html .= '<a href="' . esc_url( get_the_permalink( $post->ID ) ) . '" class="card-intext-inner">';
 
 				// aタグ内にaタグがあるとChromeなどはその時点で一旦aタグを閉じてしまって表示が崩れるので、aタグをspanに変換する
-				$html_body = str_replace( "<a", "<span", $html_body );
-				$html_body = str_replace( "href=", "data-url=", $html_body );
-				$html_body = str_replace( "a>", "span>", $html_body );
+				$html_body = str_replace( '<a', '<span', $html_body );
+				$html_body = str_replace( 'href=', 'data-url=', $html_body );
+				$html_body = str_replace( 'a>', 'span>', $html_body );
 
 				$html .= $html_body;
 
@@ -639,8 +646,8 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			} elseif ( $input_col == 6 ) {
 				$col = 2;
 			} else {
-                $col = 4;
-            }
+				$col = 4;
+			}
 			return strval( $col );
 		}
 

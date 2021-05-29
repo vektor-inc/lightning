@@ -6,17 +6,19 @@ https://github.com/vektor-inc/vektor-wp-libraries
 
 /* Bootstrap Adjuster */
 $border_primary: 1px solid var(--vk-color-border-hr,#e5e5e5 );
+$border_image: 1px solid var(--vk-color-border-image);
 $color_font_default: #464646;
 $margin_post_item_element: 0.8rem;
 $margin_post_item_element_narrow: 0.4rem;
 
 :root {
-	--vk-size-text-xs:11px;
+	--vk-font-size-xs:11px;
 	--vk-color-link-text: #c00;
 	--vk-color-link-text-hover: #c00;
 	--vk-color-text-body: #333;
 	--vk-color-text-light: #666;
 	--vk-color-border-hr: #e5e5e5;
+	--vk-color-border-image: #e5e5e5;
 	--vk-line-height-low: 1.5em;
 }
 
@@ -198,24 +200,30 @@ $xxl-min: 1400px;
 		opacity: 0.8;
 	}
 	& &_date {
-		font-size: var(--vk-size-text-xs);
+		font-size: var(--vk-font-size-xs);
 		margin-top: $margin_post_item_element_narrow;
 		color: var(--vk-color-text-light);
 	}
 	&_author {
 		margin: $margin_post_item_element 0;
+		&_image,
+		&_name {
+			display: inline-block;
+			vertical-align: middle;
+		}
 		&_image {
-			margin-right:10px;
+			margin-right:0.5rem;
 			img{
 				width:24px;
 				height:24px;
 				object-fit:cover;
 				border-radius:50%;
 				object-position:0px 0px;
+				display: block;
 			}
 		}
 		&_name{
-			font-size:var(--vk-size-text-xs);
+			font-size:var(--vk-font-size-xs);
 		}
 	}
 	&_taxonomies {
@@ -225,7 +233,7 @@ $xxl-min: 1400px;
 		display: flex;
 		flex-direction: row;
 		margin: 0;
-		font-size: var(--vk-size-text-xs);
+		font-size: var(--vk-font-size-xs);
 		&:first-child {
 			margin-top:0;
 		}
@@ -258,7 +266,10 @@ $xxl-min: 1400px;
 	& &_btn {
 		font-size: 12px;
 		text-decoration: none;
-		
+		// カードの幅が狭い時にボタンが改行されてボタンの上のテキストと重なるため、通常のボタンより左右の余白を狭く変更
+		padding-left:1rem;
+		padding-right:1rem;
+		white-space: nowrap;
 	}
 }
 
@@ -270,7 +281,7 @@ $xxl-min: 1400px;
 		position: relative;
 		background-size: cover;
 		background-position: center 50%;
-		border-bottom: $border_primary;
+		border-bottom: $border_image;
 		& > a::after {
 			content: "";
 			position: absolute;
@@ -305,7 +316,7 @@ $xxl-min: 1400px;
 		.vk_post_imgOuter {
 			height: 100%;
 			border-bottom: none;
-			border-right:$border_primary;
+			border-right:$border_image;
 			&:before {
 				padding-top: 0;
 			}
@@ -313,7 +324,7 @@ $xxl-min: 1400px;
 		&.card-horizontal-reverse {
 			.vk_post_imgOuter {
 				border-right:none;
-				border-left:$border_primary;
+				border-left:$border_image;
 			}
 		}
 	}
