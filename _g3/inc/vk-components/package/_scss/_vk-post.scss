@@ -6,6 +6,7 @@ https://github.com/vektor-inc/vektor-wp-libraries
 
 /* Bootstrap Adjuster */
 $border_primary: 1px solid var(--vk-color-border-hr,#e5e5e5 );
+$border_image: 1px solid var(--vk-color-border-image);
 $color_font_default: #464646;
 $margin_post_item_element: 0.8rem;
 $margin_post_item_element_narrow: 0.4rem;
@@ -17,6 +18,7 @@ $margin_post_item_element_narrow: 0.4rem;
 	--vk-color-text-body: #333;
 	--vk-color-text-light: #666;
 	--vk-color-border-hr: #e5e5e5;
+	--vk-color-border-image: #e5e5e5;
 	--vk-line-height-low: 1.5em;
 }
 
@@ -279,7 +281,7 @@ $xxl-min: 1400px;
 		position: relative;
 		background-size: cover;
 		background-position: center 50%;
-		border-bottom: $border_primary;
+		border-bottom: $border_image;
 		& > a::after {
 			content: "";
 			position: absolute;
@@ -314,7 +316,7 @@ $xxl-min: 1400px;
 		.vk_post_imgOuter {
 			height: 100%;
 			border-bottom: none;
-			border-right:$border_primary;
+			border-right:$border_image;
 			&:before {
 				padding-top: 0;
 			}
@@ -322,7 +324,7 @@ $xxl-min: 1400px;
 		&.card-horizontal-reverse {
 			.vk_post_imgOuter {
 				border-right:none;
-				border-left:$border_primary;
+				border-left:$border_image;
 			}
 		}
 	}
