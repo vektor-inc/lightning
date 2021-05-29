@@ -2,7 +2,7 @@
 Lightning WordPress theme, Copyright (C) 2015-2021 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
 Tested up to: 5.7.2
-Stable tag: 14.3.1
+Stable tag: 14.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -39,6 +39,11 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v14.3.2
+[ G3 ][ Specification Change ] Add --vk-color-border / --vk-color-border-image
+[ G3 ][ Bug fix ] Fix image 1px padding
+[ G3 ][ Bug fix ] Fix Footer Widget margin bottom ( add )
+[ G3 ][ Bug fix ] Fix not intent image margin on edit screen
 
 v14.3.1
 [ G3 ][ Bug fix ] Fix customize shortcut icon don't display
