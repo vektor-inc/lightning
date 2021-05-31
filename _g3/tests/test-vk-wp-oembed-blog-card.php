@@ -36,7 +36,7 @@ class BlogCardTest extends WP_UnitTestCase {
 		// the_contentのフィルターフックで自動に入るpタグを削除
 		remove_filter( 'the_content', 'wpautop' );
 		$test_array = array(
-			// WordPressで作られたサイト トップページ
+			// WordPressで作られたサイト サイト内記事
 			array(
 				'url'     => get_permalink( $post_id ),
 				'correct' => apply_filters( 'the_content', '[embed]' . get_permalink( $post_id ) .'[/embed]' ),

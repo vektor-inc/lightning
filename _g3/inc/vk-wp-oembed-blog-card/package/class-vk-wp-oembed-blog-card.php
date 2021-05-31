@@ -101,7 +101,7 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 			$blog_card_data['url']         = $url;
 			$blog_card_data['title']       = static::get_title( $body );
 			$blog_card_data['thumbnail']   = static::get_thumbnail( $body );
-		  $blog_card_data['description'] = static::get_description( $body );
+			$blog_card_data['description'] = static::get_description( $body );
 
 			/**
 			 * ブログカードHTMLを生成
@@ -120,7 +120,7 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 			$blog_card_data['url']         = get_permalink( $post_id );
 			$blog_card_data['title']       = get_the_title( $post_id );
 			$blog_card_data['thumbnail']   = get_the_post_thumbnail( $post_id );
-		  $blog_card_data['description'] = get_the_excerpt( $post_id );
+			$blog_card_data['description'] = get_the_excerpt( $post_id );
 
 			/**
 			 * ブログカードHTMLを生成
