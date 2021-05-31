@@ -39,7 +39,7 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 			wp_enqueue_style( 'wp-embed-template', includes_url() . 'css/wp-embed-template.min.css' );
 
 			/**
-			 * lightinig用のCSSを読み込む
+			 * Lightning用のCSSを読み込む
 			 * 被リンクされた時にiframe内で読み込まれる
 			 */
 			wp_enqueue_style( 'wp-embed', get_template_directory_uri() . '/assets/css/wp-embed.css' );
@@ -52,12 +52,12 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 			$post_id = url_to_postid( $url );
 			if ( $post_id ) {
 				/**
-				 * 内部サイトの場合
+				 * $post_idが取得できる場合
 				 */
 				$content = static::vk_get_post_data_blog_card( $post_id );
 			} else {
 				/**
-				 * 外部サイトの場合
+				 * $post_idが取得できない場合
 				 */
 				$content = static::vk_get_blog_card( $url );
 			}
