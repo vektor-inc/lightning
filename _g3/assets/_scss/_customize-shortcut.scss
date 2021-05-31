@@ -18,3 +18,8 @@
 .ltg-slide .customize-partial-edit-shortcut button{
     left:3em;
 }
+
+// If this specific don't exist that become over flow hidden
+.customize-partial-edit-shortcuts-shown .sub-section{
+    content-visibility:unset;
+}

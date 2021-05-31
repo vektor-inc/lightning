@@ -3,6 +3,21 @@
 define( 'LIG_G3_DIR', '_g3' );
 define( 'LIG_G2_DIR', '_g2' );
 
+define( 'LIG_DEBUG', false );
+
+if ( true === LIG_DEBUG ) {
+	function lightning_debug_mode() {
+		$options = lightning_get_theme_options();
+		// $options = get_option( 'lightning_theme_options' );
+		// unset( $options['layout'] );
+		// update_option( 'lightning_theme_options', $options );
+		print '<pre style="text-align:left">';
+		print_r( $options );
+		print '</pre>';
+	}
+	add_action( 'lightning_site_header_after', 'lightning_debug_mode' );
+}
+
 function lightning_is_g3() {
 	$g = get_option( 'lightning_theme_generation' );
 	if ( 'g3' === $g ) {
