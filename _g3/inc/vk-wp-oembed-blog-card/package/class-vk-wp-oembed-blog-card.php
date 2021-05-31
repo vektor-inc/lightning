@@ -31,6 +31,18 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 		public static function add_style(){
 			global $vk_embed_dir_uri;
 			wp_enqueue_style( 'vk-blog-card', $vk_embed_dir_uri . 'css/blog-card.css' );
+
+			/**
+			 * WordPress標準のCSSを読み込む
+			 * wp-includes/css/wp-embed-template.min.css
+			 */
+			wp_enqueue_style( 'wp-embed-template', includes_url() . 'css/wp-embed-template.min.css' );
+
+			/**
+			 * lightinig用のCSSを読み込む
+			 * 被リンクされた時にiframe内で読み込まれる
+			 */
+			wp_enqueue_style( 'wp-embed', get_template_directory_uri() . '/assets/css/wp-embed.css' );
 		}
 		
 		/**
@@ -214,43 +226,32 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 			 * 画像
 			 */
 			$thumbnail = $blog_card_data['thumbnail'];
-			/*
-			スタイルは一旦Horizontalカードを使用
-			https://getbootstrap.jp/docs/4.2/components/card/#horizontal
-			HTMLがカスタマイズ出来る形にする
-			*/
 			ob_start();
 			?>
-			<div class="blog-card">
-				<div class="blog-card-body-outer">
-					<div class="blog-card-body">
-						<?php if ( $title ) : ?>
-							<h5 class="blog-card-title">
-								<a href="<?php echo esc_url( $url ); ?>"><?php echo esc_html( $title ); ?></a>
-							</h5>
-						<?php endif; ?>
-						<?php if ( $description ) : ?>
-							<p class="blog-card-text">
-								<?php
-								if ( function_exists( 'mb_strimwidth' ) ) {
-									echo esc_html( mb_strimwidth( $description, 0, 160, '…', 'utf-8' ) );
-								} else {
-									echo esc_html( $description ); 
-								}
-								?>
-							</p>
-						<?php endif; ?>
-					</div>
-				</div>
+			<div class="wp-embed format-standard">
 				<?php if ( $thumbnail ) : ?>
-					<div class="blog-card-image-outer">
-						<a href="<?php echo esc_url( $url ); ?>" class="blog-card-image-frame">
-						<img class="blog-card-image-src" src="<?php echo esc_url( $thumbnail ); ?>" alt="">
+					<div class="wp-embed-featured-image rectangular">
+						<a href="<?php echo esc_url( $url ); ?>" target="_top">
+							<img width="320" height="180" src="<?php echo esc_url( $thumbnail ); ?>" class="attachment-post-thumbnail size-post-thumbnail" alt="" loading="lazy">
 						</a>
 					</div>
 				<?php endif; ?>
+				<p class="wp-embed-heading">
+					<a href="<?php echo esc_url( $url ); ?>" target="_top"><?php echo esc_html( $title ); ?></a>
+				</p>
+				<?php if ( $description ) : ?>
+					<div class="wp-embed-excerpt">
+						<p><?php
+						if ( function_exists( 'mb_strimwidth' ) ) {
+							echo esc_html( mb_strimwidth( $description, 0, 160, '…', 'utf-8' ) );
+						} else {
+							echo esc_html( $description ); 
+						}
+						?></p>
+					</div>
+				<?php endif; ?>
 			</div>
-			<?
+			<?php
 			$content = ob_get_clean();
 			$content = apply_filters( 'vk_wp_oembed_blog_card_template', $content );
 			return $content;
