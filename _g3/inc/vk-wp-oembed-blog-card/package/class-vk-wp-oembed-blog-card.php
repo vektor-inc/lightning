@@ -119,7 +119,7 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 			//ブログカードに必要な情報を取得
 			$blog_card_data['url']         = get_permalink( $post_id );
 			$blog_card_data['title']       = get_the_title( $post_id );
-			$blog_card_data['thumbnail']   = get_the_post_thumbnail( $post_id );
+			$blog_card_data['thumbnail']   = get_the_post_thumbnail_url( $post_id , 'medium' );
 			$blog_card_data['description'] = get_the_excerpt( $post_id );
 
 			/**
