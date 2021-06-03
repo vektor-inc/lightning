@@ -3,7 +3,7 @@
  * ブログカード
  * blockquoteがついたembedのHTMLとオリジナルURLの時に実行
  * YouTubeのリンクなどには実行されない
-*/
+ */
 
 if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 
@@ -12,8 +12,8 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 		 * Constructor
 		 */
 		public function __construct() {
-			//ハイフンなどの特殊文字を勝手に変換させない
-			add_filter( 'run_wptexturize', '__return_false');
+			// ハイフンなどの特殊文字を勝手に変換させない
+			add_filter( 'run_wptexturize', '__return_false' );
 
 			/**
 			 * 内部リンク,WordPressで作られたサイトの場合
@@ -23,12 +23,12 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 			/**
 			 * 外部URLリンク の場合
 			 */
-			add_filter( 'embed_maybe_make_link', array( __CLASS__, 'maybe_make_link' ) , 9, 2 );
+			add_filter( 'embed_maybe_make_link', array( __CLASS__, 'maybe_make_link' ), 9, 2 );
 
 			add_action( 'wp_enqueue_scripts', array( __CLASS__, 'add_style' ) );
 		}
 
-		public static function add_style(){
+		public static function add_style() {
 			global $vk_embed_dir_uri;
 			wp_enqueue_style( 'vk-blog-card', $vk_embed_dir_uri . 'css/blog-card.css' );
 
@@ -44,7 +44,7 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 			 */
 			wp_enqueue_style( 'wp-embed', get_template_directory_uri() . '/assets/css/wp-embed.css' );
 		}
-		
+
 		/**
 		 * WordPress独自のブログカード生成時のフィルターフック
 		 */
@@ -85,7 +85,7 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 			 * HTTP レスポンスステータスコードで条件分岐
 			 */
 			$status_code = wp_remote_retrieve_response_code( $response );
-			if ( 200 !== $status_code  && 304 !== $status_code ) {
+			if ( 200 !== $status_code && 304 !== $status_code ) {
 				$content = static::get_url_template( $url );
 				return $content;
 			}
@@ -107,7 +107,7 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 			 * ブログカードHTMLを生成
 			 */
 			$content = static::vk_blog_card_html( $blog_card_data );
-			
+
 			return $content;
 		}
 
@@ -116,17 +116,17 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 		 */
 		public static function vk_get_post_data_blog_card( $post_id ) {
 
-			//ブログカードに必要な情報を取得
+			// ブログカードに必要な情報を取得
 			$blog_card_data['url']         = get_permalink( $post_id );
 			$blog_card_data['title']       = get_the_title( $post_id );
-			$blog_card_data['thumbnail']   = get_the_post_thumbnail_url( $post_id , 'medium' );
+			$blog_card_data['thumbnail']   = get_the_post_thumbnail_url( $post_id, 'medium' );
 			$blog_card_data['description'] = get_the_excerpt( $post_id );
 
 			/**
 			 * ブログカードHTMLを生成
 			 */
 			$content = static::vk_blog_card_html( $blog_card_data );
-			
+
 			return $content;
 		}
 
@@ -153,7 +153,7 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 		public static function get_title( $body ) {
 			if ( preg_match( '/<title>(.+?)<\/title>/is', $body, $matches ) ) {
 				return $matches[1];
-			} 
+			}
 			return '';
 		}
 
@@ -169,7 +169,7 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 			return '';
 		}
 
-    /**
+		/**
 		 * 説明文を取得
 		 *
 		 * @return string
@@ -241,13 +241,15 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 				</p>
 				<?php if ( $description ) : ?>
 					<div class="wp-embed-excerpt">
-						<p><?php
+						<p>
+						<?php
 						if ( function_exists( 'mb_strimwidth' ) ) {
 							echo esc_html( mb_strimwidth( $description, 0, 160, '…', 'utf-8' ) );
 						} else {
-							echo esc_html( $description ); 
+							echo esc_html( $description );
 						}
-						?></p>
+						?>
+						</p>
 					</div>
 				<?php endif; ?>
 			</div>
