@@ -48,6 +48,7 @@ add_filter( 'vk_css_tree_shaking_array', 'lightning_css_tree_shaking_array' );
 function lightning_css_tree_shaking_exclude_class( $inidata ) {
 	$exclude_classes_array = array(
 		'customize-partial-edit-shortcut',
+		'customize-partial-edit-shortcuts-shown',
 		'vk_post',
 		'card',
 		'card-noborder',

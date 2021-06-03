@@ -21,6 +21,9 @@
     &-title{
         font-size: 1rem;
     }
+    .widget:last-child(){
+        margin-bottom:var(--vk-margin-block-bottom);
+    }
     &-copyright {
         padding:1rem;
         p {
