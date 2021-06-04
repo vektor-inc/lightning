@@ -24,6 +24,36 @@ function lightning_layout_target_array() {
 }
 
 /**
+ * lightning_layout_by_single
+ */
+function lightning_layout_by_single() {
+	$column = false;
+	if ( is_singular() ){
+		global $post;
+		if ( is_page() ) {
+			$template           = get_post_meta( $post->ID, '_wp_page_template', true );
+			$template_onecolumn = array(
+				'page-onecolumn.php',
+				'page-lp.php',
+			);
+			if ( in_array( $template, $template_onecolumn, true ) ) {
+				$column = 'col-one';
+			}
+		}
+		if ( isset( $post->_lightning_design_setting['layout'] ) ) {
+			if ( 'col-two' === $post->_lightning_design_setting['layout'] ) {
+				$column = 'col-two';
+			} elseif ( 'col-one-no-subsection' === $post->_lightning_design_setting['layout'] ) {
+				$column = 'col-one';
+			} elseif ( 'col-one' === $post->_lightning_design_setting['layout'] ) {
+				$column = 'col-one';
+			}
+		}
+	}
+	return $column;
+}
+
+/**
  * Lightning Is Layout One Column
  *
  * @since Lightning 9.0.0
@@ -35,6 +65,14 @@ function lightning_is_layout_onecolumn() {
 	global $wp_query;
 
 	$array = lightning_layout_target_array();
+
+	$additional_post_types = get_post_types(
+		array(
+			'public'   => true,
+			'_builtin' => false,
+		),
+		'names'
+	);
 
 	foreach ( $array as $key => $value ) {
 		if ( call_user_func( $value['function'] ) ) {
@@ -61,6 +99,9 @@ function lightning_is_layout_onecolumn() {
 				}
 			}
 		}
+		if ( 'col-one' === lightning_layout_by_single() ){
+			$onecolumn = true;
+		}
 	// show_on_front 'posts' case
 	} elseif ( is_front_page() && is_home() ) {
 		if ( isset( $options['layout']['front-page'] ) ) {
@@ -78,20 +119,7 @@ function lightning_is_layout_onecolumn() {
 				$onecolumn = true;
 			}
 		}
-	}
-
-	$additional_post_types = get_post_types(
-		array(
-			'public'   => true,
-			'_builtin' => false,
-		),
-		'names'
-	);
-
-	/**
-	 * アーカイブページの場合
-	 */
-	if ( is_archive() && ! is_search() && ! is_author() ) {
+	} else if ( is_archive() && ! is_search() && ! is_author() ) {
 		$current_post_type_info = lightning_get_post_type();
 		$archive_post_types = array( 'post' ) + $additional_post_types;
 		foreach ( $archive_post_types as $archive_post_type ) {
@@ -101,10 +129,7 @@ function lightning_is_layout_onecolumn() {
 				}
 			}
 		}
-	}
-
-	if ( is_singular() ) {
-		global $post;
+	} else if ( is_singular() ) {
 		$single_post_types = array( 'post', 'page' ) + $additional_post_types;
 		foreach ( $single_post_types as $single_post_type ) {
 			if ( isset( $options['layout'][ 'single-' . $single_post_type ] ) && get_post_type() === $single_post_type ) {
@@ -113,24 +138,8 @@ function lightning_is_layout_onecolumn() {
 				}
 			}
 		}
-		if ( is_page() ) {
-			$template           = get_post_meta( $post->ID, '_wp_page_template', true );
-			$template_onecolumn = array(
-				'page-onecolumn.php',
-				'page-lp.php',
-			);
-			if ( in_array( $template, $template_onecolumn, true ) ) {
-				$onecolumn = true;
-			}
-		}
-		if ( isset( $post->_lightning_design_setting['layout'] ) ) {
-			if ( 'col-two' === $post->_lightning_design_setting['layout'] ) {
-				$onecolumn = false;
-			} elseif ( 'col-one-no-subsection' === $post->_lightning_design_setting['layout'] ) {
-				$onecolumn = true;
-			} elseif ( 'col-one' === $post->_lightning_design_setting['layout'] ) {
-				$onecolumn = true;
-			}
+		if ( 'col-one' === lightning_layout_by_single() ){
+			$onecolumn = true;
 		}
 	}
 	return apply_filters( 'lightning_is_layout_onecolumn', $onecolumn );
