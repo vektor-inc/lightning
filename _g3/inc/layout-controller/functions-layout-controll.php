@@ -10,13 +10,13 @@
  */
 function lightning_layout_target_array() {
 	$array = array(
-		'error404' => array(
+		'error404'       => array(
 			'function' => 'is_404',
 		),
-		'search'   => array(
+		'search'         => array(
 			'function' => 'is_search',
 		),
-		'archive-author'   => array(
+		'archive-author' => array(
 			'function' => 'is_archive',
 		),
 	);
@@ -61,7 +61,7 @@ function lightning_is_layout_onecolumn() {
 				}
 			}
 		}
-	// show_on_front 'posts' case
+		// show_on_front 'posts' case
 	} elseif ( is_front_page() && is_home() ) {
 		if ( isset( $options['layout']['front-page'] ) ) {
 			if ( 'col-one' === $options['layout']['front-page'] || 'col-one-no-subsection' === $options['layout']['front-page'] ) {
@@ -93,7 +93,7 @@ function lightning_is_layout_onecolumn() {
 	 */
 	if ( is_archive() && ! is_search() && ! is_author() ) {
 		$current_post_type_info = VK_Helpers::get_post_type_info();
-		$archive_post_types = array( 'post' ) + $additional_post_types;
+		$archive_post_types     = array( 'post' ) + $additional_post_types;
 		foreach ( $archive_post_types as $archive_post_type ) {
 			if ( isset( $options['layout'][ 'archive-' . $archive_post_type ] ) && $current_post_type_info['slug'] === $archive_post_type ) {
 				if ( 'col-one' === $options['layout'][ 'archive-' . $archive_post_type ] || 'col-one-no-subsection' === $options['layout'][ 'archive-' . $archive_post_type ] ) {
@@ -168,7 +168,7 @@ function lightning_is_subsection() {
 	);
 	// break and hidden.
 	if ( is_front_page() && ! is_home() ) {
-		
+
 		if ( isset( $options['layout']['front-page'] ) && 'col-one-no-subsection' === $options['layout']['front-page'] ) {
 			$return = false;
 		}
@@ -184,7 +184,6 @@ function lightning_is_subsection() {
 				}
 			}
 		}
-
 	} elseif ( is_front_page() && is_home() ) {
 		if ( isset( $options['layout']['front-page'] ) && 'col-one-no-subsection' === $options['layout']['front-page'] ) {
 			$return = false;
@@ -197,7 +196,7 @@ function lightning_is_subsection() {
 		}
 	} elseif ( is_archive() && ! is_search() && ! is_author() ) {
 		$current_post_type_info = VK_Helpers::get_post_type_info();
-		$archive_post_types = array( 'post' ) + $additional_post_types;
+		$archive_post_types     = array( 'post' ) + $additional_post_types;
 		foreach ( $archive_post_types as $archive_post_type ) {
 
 			if ( isset( $options['layout'][ 'archive-' . $archive_post_type ] ) && $current_post_type_info['slug'] === $archive_post_type ) {
