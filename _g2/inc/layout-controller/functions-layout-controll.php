@@ -262,7 +262,6 @@ function lightning_is_subsection_display() {
 				$return = true;
 			}
 		}
-		print '<pre style="text-align:left">= ';print_r($return);print ' =</pre>';
 	}
 	return apply_filters( 'lightning_is_subsection_display', $return );
 }
