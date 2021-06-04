@@ -513,111 +513,111 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 
 			// Front page _ old one column setting
 			array(
-			'options'           => array(
-			'top_sidebar_hidden' => true,
-			),
-			'target_url'        => home_url( '/' ),
-			'correct'           => true,
+				'options'    => array(
+					'top_sidebar_hidden' => true,
+				),
+				'target_url' => home_url( '/' ),
+				'correct'    => true,
 			),
 			// Front page _ old one column setting
 			// トップ１カラム指定が古い状態で万が一残ってたとしても新しい設定が2カラムなら2カラムにする
 			array(
-			'options'           => array(
-			'top_sidebar_hidden' => true,
-			'layout'             => array(
-			'front-page' => 'col-two',
-			),
-			),
-			'target_url'        => home_url( '/' ),
-			'correct'           => false,
+				'options'    => array(
+					'top_sidebar_hidden' => true,
+					'layout'             => array(
+						'front-page' => 'col-two',
+					),
+				),
+				'target_url' => home_url( '/' ),
+				'correct'    => false,
 			),
 
 			// Post type archive（ Old specification parameter ）
 			array(
-			'options'           => array(
-			'layout' => array(
-			'archive' => 'col-one',
-			),
-			),
-			'target_url'        => home_url( '/' ) . '?post_type=post',
-			'correct'           => true,
+				'options'    => array(
+					'layout' => array(
+						'archive' => 'col-one',
+					),
+				),
+				'target_url' => home_url( '/' ) . '?post_type=post',
+				'correct'    => true,
 			),
 			array(
-			'options'           => array(
-			'layout' => array(
-			'archive' => 'col-one-no-subsection',
-			),
-			),
-			'target_url'        => home_url( '/' ) . '?post_type=post',
-			'correct'           => true,
+				'options'    => array(
+					'layout' => array(
+						'archive' => 'col-one-no-subsection',
+					),
+				),
+				'target_url' => home_url( '/' ) . '?post_type=post',
+				'correct'    => true,
 			),
 			// Post type archive（ Old specification parameter ）
 			array(
-			'options'           => array(
-			'layout' => array(
-			'archive' => 'col-one',
-			),
-			),
-			'target_url'        => home_url( '/' ) . '?post_type=event',
-			'correct'           => true,
+				'options'    => array(
+					'layout' => array(
+						'archive' => 'col-one',
+					),
+				),
+				'target_url' => home_url( '/' ) . '?post_type=event',
+				'correct'    => true,
 			),
 			// Post type archive（ New parameter with Old specification parameter ）
 			array(
-			'options'           => array(
-			'layout' => array(
-			'archive' => 'col-two',
-			'archive-event' => 'col-one',
-			),
-			),
-			'target_url'        => home_url( '/' ) . '?post_type=event',
-			'correct'           => true,
+				'options'    => array(
+					'layout' => array(
+						'archive'       => 'col-two',
+						'archive-event' => 'col-one',
+					),
+				),
+				'target_url' => home_url( '/' ) . '?post_type=event',
+				'correct'    => true,
 			),
 
 			// is_category()
 			array(
-			'options'           => array(
-			'layout' => array(
-			'archive' => 'col-one',
-			),
-			),
-			'target_url'        => get_term_link( $data['cate_id'] ),
-			'correct'           => true,
+				'options'    => array(
+					'layout' => array(
+						'archive' => 'col-one',
+					),
+				),
+				'target_url' => get_term_link( $data['cate_id'] ),
+				'correct'    => true,
 			),
 
 			// Page（ Old specification parameter ）
 			array(
-			'options'           => array(
-			'layout' => array(
-			'page' => 'col-one',
-			),
-			),
-			'target_url'        => get_permalink( $data['normal_page_id'] ),
-			'correct'           => true,
+				'options'    => array(
+					'layout' => array(
+						'page' => 'col-one',
+					),
+				),
+				'target_url' => get_permalink( $data['normal_page_id'] ),
+				'correct'    => true,
 			),
 			// Page（ Old specification parameter with post_meta ）
 			array(
-			'options'                   => array(
-			'layout' => array(
-			'page' => 'col-one',
-			),
-			),
-			'_wp_page_template'         => '',
-			'_lightning_design_setting' => array(
-			'layout' => 'col-two',
-			),
-			'post_id'                   => $data['normal_page_id'],
-			'target_url'                => get_permalink( $data['normal_page_id'] ),
-			'correct'                   => false,
+				'options'                   => array(
+					'layout' => array(
+						'page' => 'col-one',
+					),
+				),
+				'_wp_page_template'         => '',
+				'_lightning_design_setting' => array(
+					'layout' => 'col-two',
+				),
+				'post_id'                   => $data['normal_page_id'],
+				'target_url'                => get_permalink( $data['normal_page_id'] ),
+				'correct'                   => false,
 			),
 			// Single（ Old specification parameter ）
 			array(
-			'options'           => array(
-			'layout' => array(
-			'single' => 'col-one',
-			),
-			),
-			'target_url'        => get_permalink( $data['post_id'] ),
-			'correct'           => true,
+				'options'    => array(
+					'layout' => array(
+						'single' => 'col-one',
+					),
+				),
+				'target_url' => get_permalink( $data['post_id'] ),
+				'correct'    => true,
 			),
 		);
 
