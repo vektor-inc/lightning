@@ -25,6 +25,9 @@ function lightning_layout_target_array() {
 
 /**
  * lightning_layout_by_single
+ * 
+ *  @since Lightning 14.3.3
+ *	@return false / col-two / col-one / col-one-no-subsection
  */
 function lightning_layout_by_single() {
 	$layout = false;
@@ -138,8 +141,14 @@ function lightning_is_layout_onecolumn() {
 				}
 			}
 		}
-		if ( 'col-one' === lightning_layout_by_single() || 'col-one-no-subsection' === lightning_layout_by_single() ){
-			$onecolumn = true;
+		
+		$lightning_layout_by_single = lightning_layout_by_single();
+		if ( $lightning_layout_by_single ){
+			if ( 'col-one' === $lightning_layout_by_single || 'col-one-no-subsection' === $lightning_layout_by_single ){
+				$onecolumn = true;
+			} else {
+				$onecolumn = false;
+			}
 		}
 	}
 	return apply_filters( 'lightning_is_layout_onecolumn', $onecolumn );
@@ -253,6 +262,7 @@ function lightning_is_subsection_display() {
 				$return = true;
 			}
 		}
+		print '<pre style="text-align:left">= ';print_r($return);print ' =</pre>';
 	}
 	return apply_filters( 'lightning_is_subsection_display', $return );
 }
