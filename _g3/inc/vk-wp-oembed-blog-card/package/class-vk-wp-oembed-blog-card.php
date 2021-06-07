@@ -34,9 +34,15 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 
 			/**
 			 * WordPress標準のCSSを読み込む
-			 * wp-includes/css/wp-embed-template.min.css
+			 * wp-includes/css/wp-embed-template.css
 			 */
-			wp_enqueue_style( 'wp-embed-template', includes_url() . 'css/wp-embed-template.min.css' );
+			wp_enqueue_style( 'wp-embed-template', includes_url() . 'css/wp-embed-template.css' );
+
+			/**
+			 * WordPress標準のJSを読み込む
+			 * wp-includes/js/wp-embed-template.js
+			 */
+			wp_enqueue_script( 'vk-blog-card-js', $vk_embed_dir_uri . 'js/wp-embed-template.js' );
 
 			/**
 			 * Lightning用のCSSを読み込む
@@ -102,6 +108,9 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 			$blog_card_data['title']       = static::get_title( $body );
 			$blog_card_data['thumbnail']   = static::get_thumbnail( $body );
 			$blog_card_data['description'] = static::get_description( $body );
+			$blog_card_data['favicon']     = static::get_favicon($body);
+			$blog_card_data['site_name']   = static::get_site_name( $body );
+			$blog_card_data['domain']      = static::get_domain( $url );
 
 			/**
 			 * ブログカードHTMLを生成
@@ -121,6 +130,9 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 			$blog_card_data['title']       = get_the_title( $post_id );
 			$blog_card_data['thumbnail']   = get_the_post_thumbnail_url( $post_id, 'medium' );
 			$blog_card_data['description'] = get_the_excerpt( $post_id );
+			$blog_card_data['favicon']     = get_site_icon_url( 32, includes_url( 'images/w-logo-blue.png' ) );
+			$blog_card_data['site_name']   = get_bloginfo( 'name' );
+			$blog_card_data['domain']      = site_url();
 
 			/**
 			 * ブログカードHTMLを生成
@@ -182,6 +194,44 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 		}
 
 		/**
+		 * ファビコンを取得
+		 *
+		 * @return string
+		 * 
+		 */
+		public static function get_favicon( $body ) {
+			if ( preg_match( '/<link [^>]*?rel=["\']icon["\'][^\/>]*? href=["\']([^"\']+?)["\'][^\/>]*?\/?>/si', $body, $matches ) ) {
+				return $matches[1];
+			}
+			if ( preg_match( '/<link [^>]*?rel=["\']shortcut icon["\'][^\/>]*? href=["\']([^"\']+?)["\'][^\/>]*?\/?>/si', $body, $matches ) ) {
+				return $matches[1];
+			}
+			return '';
+		}
+
+		/**
+		 * サイト名
+		 *
+		 * @return string
+		 */
+		public static function get_site_name( $body ) {
+			if ( preg_match( '/<meta.+?property=["\']og:site_name["\'][^\/>]*?content=["\']([^"\']+?)["\'].*?\/?>/is', $body, $matches ) ) {
+				return $matches[1];
+			}
+			return '';
+		}
+
+		/**
+		 * ドメイン
+		 *
+		 * @return string
+		 */
+		public static function get_domain( $url ) {
+			$domain = wp_parse_url( $url, PHP_URL_HOST );
+			return $domain;
+		}
+
+		/**
 		 * Encode.
 		 * body部分をエンコードする
 		 * 参考：https://github.com/inc2734/wp-oembed-blog-card/blob/HEAD/src/App/Model/Requester.php#L146
@@ -226,9 +276,25 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 			 * 画像
 			 */
 			$thumbnail = $blog_card_data['thumbnail'];
+			/**
+			 * 画像
+			 */
+			$thumbnail = $blog_card_data['thumbnail'];
+			/**
+			 * ファビコン
+			 */
+			$favicon = $blog_card_data['favicon'];
+			/**
+			 * サイト名
+			 */
+			$site_name = $blog_card_data['site_name'];
+			/**
+			 * ドメイン
+			 */
+			$domain = $blog_card_data['domain'];
 			ob_start();
 			?>
-			<div class="wp-embed format-standard">
+			<div class="wp-embed format-standard js">
 				<?php if ( $thumbnail ) : ?>
 					<div class="wp-embed-featured-image rectangular">
 						<a href="<?php echo esc_url( $url ); ?>" target="_top">
@@ -252,6 +318,31 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 						</p>
 					</div>
 				<?php endif; ?>
+				<div class="wp-embed-footer">
+					<div class="wp-embed-site-title">
+						<a href="<?php echo esc_url( $url ); ?>" target="_top">
+							<?php if ( $favicon ) : ?>
+								<img src="<?php echo esc_url( $favicon ); ?>" width="32" height="32" alt="" class="wp-embed-site-icon">
+							<?php endif; ?>
+							<span>
+								<?php 
+								if ( $site_name ) {
+									echo esc_html( $site_name ); 
+								} else {
+									echo esc_url( $domain );
+								}
+								?>
+							</span>
+						</a>
+					</div>
+					<div class="wp-embed-meta">
+						<div class="wp-embed-share">
+							<button type="button" class="wp-embed-share-dialog-open" aria-label="共有ダイアログを開く" value="<?php echo $url; ?>" onclick="vk_wp_oembed_blog_card_copy_url(this.value)">
+								<span class="dashicons dashicons-share"></span>
+							</button>
+						</div>
+					</div>
+				</div>
 			</div>
 			<?php
 			$content = ob_get_clean();
