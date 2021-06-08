@@ -54,7 +54,7 @@
 
 	<?php do_action( 'lightning_entry_footer_before' ); ?>
 
-	<?php if ( $is_entry_header_display ) : ?>
+	<?php if ( apply_filters( 'lightning_is_entry_footer', true ) ) : ?>
 
 		<div class="<?php lightning_the_class_name( 'entry-footer' ); ?>">
 
