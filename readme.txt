@@ -43,7 +43,8 @@ v14.3.4
 [ Bug fix ] Fix entry footer hidden logic
 
 v14.3.3
-[ Bug fix ] Fix front page column layout
+[ G3 ][ Bug fix ] Fix front page column layout
+[ G3 ][ Bug fix ] Fix calendar and font size in edit screen inspector and so on
 
 v14.3.2
 [ G3 ][ Specification Change ] Add --vk-color-border / --vk-color-border-image
