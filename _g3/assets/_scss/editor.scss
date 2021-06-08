@@ -30,3 +30,17 @@
         padding-bottom: 0;
     }
 }
+
+//common.scssで編集画面のCSSが打ち消されるので以下追加
+.interface-interface-skeleton__sidebar{
+    font-size: 13px;
+}
+table.CalendarMonth_table td { 
+    padding: 0; 
+    border:none;
+}
+.components-datetime__time-field-day-input[type=number],
+.components-datetime__time-field-hours-input[type=number], 
+.components-datetime__time-field-minutes-input[type=number] {
+    width: 35px;
+}
