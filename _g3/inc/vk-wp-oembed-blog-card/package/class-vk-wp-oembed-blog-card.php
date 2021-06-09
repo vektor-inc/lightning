@@ -55,12 +55,30 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 		 * WordPress独自のブログカード生成時のフィルターフック
 		 */
 		public static function oembed_html( $cache, $url ) {
-			$post_id = url_to_postid( $url );
+
+			/**
+			 * WordPressが許可しているデフォルトの埋め込み方法はそれに従う
+			 * https://runebook.dev/ja/docs/wordpress/functions/wp_filter_oembed_result
+			 */
+			$wp_oembed = _wp_oembed_get_object();
+			if ( false !== $wp_oembed->get_provider( $url, array( 'discover' => false ) ) ) {
+				return $cache;
+			}
+
+			$post_id       = url_to_postid( $url );
+			$front_page_id = get_option( 'page_on_front' );
 			if ( $post_id ) {
 				/**
-				 * $post_idが取得できる場合
+				 * フロントページのときはブログカードが展開されないのでidから生成
 				 */
-				$content = static::vk_get_post_data_blog_card( $post_id );
+				if ( $front_page_id == $post_id ) {
+					$content = static::vk_get_post_data_blog_card( $post_id );
+				} else {
+					/**
+					 * それ以外のときは共有リンクを使用したいためデフォルトの表示
+					 */
+					$content = $cache;
+				}
 			} else {
 				/**
 				 * $post_idが取得できない場合
@@ -261,37 +279,15 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 		 */
 		public static function vk_blog_card_html( $blog_card_data ) {
 			/**
-			 * URL
+			 * 必要な値を用意する
 			 */
-			$url = $blog_card_data['url'];
-			/**
-			 * タイトル
-			 */
-			$title = $blog_card_data['title'];
-			/**
-			 * 概要
-			 */
+			$url         = $blog_card_data['url'];
+			$title       = $blog_card_data['title'];
 			$description = $blog_card_data['description'];
-			/**
-			 * 画像
-			 */
-			$thumbnail = $blog_card_data['thumbnail'];
-			/**
-			 * 画像
-			 */
-			$thumbnail = $blog_card_data['thumbnail'];
-			/**
-			 * ファビコン
-			 */
-			$favicon = $blog_card_data['favicon'];
-			/**
-			 * サイト名
-			 */
-			$site_name = $blog_card_data['site_name'];
-			/**
-			 * ドメイン
-			 */
-			$domain = $blog_card_data['domain'];
+			$thumbnail   = $blog_card_data['thumbnail'];
+			$favicon     = $blog_card_data['favicon'];
+			$site_name   = $blog_card_data['site_name'];
+			$domain      = $blog_card_data['domain'];
 			ob_start();
 			?>
 			<div class="wp-embed format-standard js">
@@ -320,9 +316,9 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 				<?php endif; ?>
 				<div class="wp-embed-footer">
 					<div class="wp-embed-site-title">
-						<a href="<?php echo esc_url( $url ); ?>" target="_top">
+						<a href="<?php echo esc_url( $url ); ?>">
 							<?php if ( $favicon ) : ?>
-								<img src="<?php echo esc_url( $favicon ); ?>" width="32" height="32" alt="" class="wp-embed-site-icon">
+								<img loading="lazy" src="<?php echo esc_url( $favicon ); ?>" width="32" height="32" alt="" class="wp-embed-site-icon">
 							<?php endif; ?>
 							<span>
 								<?php 
