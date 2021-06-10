@@ -44,6 +44,7 @@ function lightning_customize_register_column( $wp_customize ) {
 		'front-page'     => array(
 			'label'       => __( 'Home page', 'lightning' ),
 			'description' => '',
+			'default'     => 'col-one-no-subsection',
 		),
 		'search'         => array(
 			'label' => __( 'Search', 'lightning' ),
@@ -101,7 +102,11 @@ function lightning_customize_register_column( $wp_customize ) {
 
 	foreach ( $page_types as $key => $value ) {
 
-		$default = 'default';
+		if ( isset( $value['default'] ) ) {
+			$default = $value['default'];
+		} else {
+			$default = 'default';
+		}
 
 		$wp_customize->add_setting(
 			'lightning_theme_options[layout][' . $key . ']',

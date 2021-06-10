@@ -54,11 +54,9 @@
 
 	<?php do_action( 'lightning_entry_footer_before' ); ?>
 
-	<?php if ( $is_entry_header_display ) : ?>
+	<?php if ( apply_filters( 'lightning_is_entry_footer', true ) ) : ?>
 
-		<div class="<?php lightning_the_class_name( 'entry-footer' ); ?>">
-
-			<?php
+		<?php
 			/*
 			Category and tax data
 			/*-------------------------------------------*/
@@ -68,27 +66,35 @@
 			);
 			$taxonomies    = VK_Helpers::get_display_taxonomies( get_the_ID(), $args );
 			$taxnomiesHtml = '';
-			if ( $taxonomies ) {
-				foreach ( $taxonomies as $key => $value ) {
-					$taxnomiesHtml .= '<div class="entry-meta-data-list">' . $value . '</div>';
-				} // foreach
-			} // if ($taxonomies)
-			$taxnomiesHtml = apply_filters( 'lightning_taxnomiesHtml', $taxnomiesHtml );
-			echo $taxnomiesHtml;
 
-			// tag list
-			$tags_list = get_the_tag_list();
-			if ( $tags_list ) {
+			if ( $taxonomies ) :
 				?>
-				<div class="entry-meta-data-list">
-					<dl>
-					<dt><?php _e( 'Tags', 'lightning' ); ?></dt>
-					<dd class="tagcloud"><?php echo $tags_list; ?></dd>
-					</dl>
-				</div><!-- [ /.entry-tag ] -->
-			<?php } // if ( $tags_list ) { ?>
 
-		</div><!-- [ /.entry-footer ] -->
+				<div class="<?php lightning_the_class_name( 'entry-footer' ); ?>">
+
+					<?php
+					foreach ( $taxonomies as $key => $value ) {
+						$taxnomiesHtml .= '<div class="entry-meta-data-list">' . $value . '</div>';
+					} // foreach
+
+					$taxnomiesHtml = apply_filters( 'lightning_taxnomiesHtml', $taxnomiesHtml );
+					echo $taxnomiesHtml;
+
+					// tag list
+					$tags_list = get_the_tag_list();
+					if ( $tags_list ) {
+						?>
+						<div class="entry-meta-data-list">
+							<dl>
+							<dt><?php _e( 'Tags', 'lightning' ); ?></dt>
+							<dd class="tagcloud"><?php echo $tags_list; ?></dd>
+							</dl>
+						</div><!-- [ /.entry-tag ] -->
+					<?php } // if ( $tags_list ) { ?>
+
+				</div><!-- [ /.entry-footer ] -->
+
+		<?php endif;  // if ($taxonomies) ?>
 	
 	<?php endif; ?>
 
