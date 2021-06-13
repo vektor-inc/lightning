@@ -122,6 +122,7 @@ function lightning_add_starter_content() {
 						
 						<!-- wp:columns {"verticalAlignment":"center"} -->
 						<div class="wp-block-columns are-vertically-aligned-center"><!-- wp:column {"verticalAlignment":"center","width":"33.33%"} -->
+						<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:33.33%">
 						<!-- wp:image {"align":"center"} -->
 						<div class="wp-block-image"><figure class="aligncenter"><img src="' . esc_url( get_template_directory_uri() ) . '/assets/images/logo_Lightning.png" alt=""/></figure></div>
 						<!-- /wp:image -->
