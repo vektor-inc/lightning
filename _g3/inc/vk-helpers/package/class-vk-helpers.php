@@ -129,19 +129,6 @@ if ( ! class_exists( 'VK_Helpers' ) ) {
 			return $post_type_info;
 		}
 
-		public static function get_page_for_posts() {
-			// Get post top page by setting display page.
-			$page_for_posts['post_top_id'] = get_option( 'page_for_posts' );
-
-			// Set use post top page flag.
-			$page_for_posts['post_top_use'] = ( $page_for_posts['post_top_id'] ) ? true : false;
-
-			// When use post top page that get post top page name.
-			$page_for_posts['post_top_name'] = ( $page_for_posts['post_top_use'] ) ? get_the_title( $page_for_posts['post_top_id'] ) : '';
-
-			return $page_for_posts;
-		}
-
 		public static function get_display_taxonomies( $post_id = null, $args = null ) {
 			if ( ! $post_id ) {
 				global $post;

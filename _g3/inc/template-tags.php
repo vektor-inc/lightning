@@ -114,6 +114,7 @@ function lightning_print_headlogo() {
 /*-------------------------------------------*/
 add_filter( 'get_the_archive_title', 'lightning_get_the_archive_title' );
 function lightning_get_the_archive_title() {
+	$title = '';
 	if ( is_category() ) {
 		$title = single_cat_title( '', false );
 	} elseif ( is_tag() ) {
@@ -131,8 +132,11 @@ function lightning_get_the_archive_title() {
 	} elseif ( is_tax() ) {
 		$title = single_term_title( '', false );
 	} elseif ( is_home() && ! is_front_page() ) {
-		$lightning_page_for_posts = VK_Helpers::get_page_for_posts();
-		$title                    = $lightning_page_for_posts['post_top_name'];
+		// Get post top page by setting display page.
+		$post_top_id = get_option( 'page_for_posts' );
+		if ( $post_top_id ) {
+			$title = get_the_title( $post_top_id );
+		}
 	} else {
 		global $wp_query;
 		// get post type
