@@ -39,6 +39,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ Cope with WP 5.8 ][ Mobile Nav ] change html hook point
+
 v14.3.8
 [ Bug fix ] Fix VK_Helpers::get_page_for_posts fatal error
 
