@@ -15,7 +15,8 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 			if ( function_exists( 'get_called_class' ) ) {
 				add_action( 'after_setup_theme', array( get_called_class(), 'setup_menu' ) );
 				add_action( 'widgets_init', array( get_called_class(), 'setup_widget' ) );
-				add_action( 'wp_footer', array( get_called_class(), 'menu_set_html' ) );
+				$vk_mobile_nav_html_hook_point = apply_filters( 'vk_mobile_nav_html_hook_point', 'wp_footer' );
+				add_action( $vk_mobile_nav_html_hook_point, array( get_called_class(), 'menu_set_html' ) );
 				add_action( 'wp_enqueue_scripts', array( get_called_class(), 'add_script' ) );
 				add_action( 'wp_enqueue_scripts', array( get_called_class(), 'add_inline_css' ), 30 );
 
