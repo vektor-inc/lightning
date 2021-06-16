@@ -34,6 +34,17 @@ entry-body
 		max-width: 100vw;
 	}
 }
+.main-section--col--two {
+	.alignfull,
+	.alignwide {
+		margin-left:0;
+		margin-right:0;
+		&.wp-block-image {
+			// Default block style overwrite
+			max-width: 100%;
+		}
+	}
+}
 
 /* カラム（水平）で点線と余白ができる */
 .vk_post .row {
