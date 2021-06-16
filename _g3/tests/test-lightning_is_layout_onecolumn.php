@@ -198,6 +198,28 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 
 			// Front page //////////////////////////////////////////////////////
 
+			// Front page _ トップ : 固定ページ指定
+			// Front page _ カスタマイザー : 保存値なし
+			// Front page _ 固定ページデザイン設定 : 指定し
+			// Front page _ 返り値 : 1カラム
+			array(
+				'options'    => array(),
+				'target_url' => home_url( '/' ),
+				'correct'    => true,
+			),
+
+			// Front page _ トップ : 固定ページ指定
+			// Front page _ カスタマイザー : レイアウトキーはあるが保存値なし
+			// Front page _ 固定ページデザイン設定 : 指定し
+			// Front page _ 返り値 : 1カラム
+			array(
+				'options'    => array(
+					'layout' => array(),
+				),
+				'target_url' => home_url( '/' ),
+				'correct'    => true,
+			),
+
 			// Front page _ カスタマイザの設定のみ
 			array(
 				'options'    => array(
