@@ -64,7 +64,7 @@
 	}
 	ul.acc-child-open {
 		transition: all $time_transition ease-in;
-		max-height: 80vh;
+		max-height: 80vh; // 項目が多い時に切れないように
 		overflow-y: auto;
 		opacity: 1;
 	}

@@ -94,6 +94,8 @@ function lightning_is_layout_onecolumn() {
 			if ( 'col-one' === $options['layout']['front-page'] || 'col-one-no-subsection' === $options['layout']['front-page'] ) {
 				$onecolumn = true;
 			}
+		} else {
+			$onecolumn = true;
 		}
 		if ( 'col-one' === lightning_layout_by_single() || 'col-one-no-subsection' === lightning_layout_by_single() ) {
 			$onecolumn = true;

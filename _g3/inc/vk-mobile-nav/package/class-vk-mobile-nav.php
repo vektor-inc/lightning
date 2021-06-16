@@ -15,9 +15,10 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 			if ( function_exists( 'get_called_class' ) ) {
 				add_action( 'after_setup_theme', array( get_called_class(), 'setup_menu' ) );
 				add_action( 'widgets_init', array( get_called_class(), 'setup_widget' ) );
-				add_action( 'wp_footer', array( get_called_class(), 'menu_set_html' ) );
+				$vk_mobile_nav_html_hook_point = apply_filters( 'vk_mobile_nav_html_hook_point', 'wp_footer' );
+				add_action( $vk_mobile_nav_html_hook_point, array( get_called_class(), 'menu_set_html' ) );
 				add_action( 'wp_enqueue_scripts', array( get_called_class(), 'add_script' ) );
-				add_action( 'wp_enqueue_scripts', array( get_called_class(), 'add_inline_css' ),30 );
+				add_action( 'wp_enqueue_scripts', array( get_called_class(), 'add_inline_css' ), 30 );
 
 				add_action( 'customize_register', array( $this, 'customize_register' ) ); // $thisじゃないとエラーになる
 			}
@@ -83,9 +84,9 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 
 		public static function menu_set_html() {
 
-			$option = self::get_option();
+			$option               = self::get_option();
 			$btn_additional_class = '';
-			if ( $option['position'] == 'right' ){
+			if ( $option['position'] == 'right' ) {
 				$btn_additional_class = ' position-right';
 			}
 
@@ -177,16 +178,16 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 		 *
 		 * @return void
 		 */
-		public static function add_inline_css(){
+		public static function add_inline_css() {
 			global $library_url;
 			$dynamic_css = '/* vk-mobile-nav */
 			:root {
-				--vk-mobile-nav-menu-btn-bg-src: url("'.esc_url( $library_url . '/images/vk-menu-btn-black.svg').'");
-				--vk-mobile-nav-menu-btn-close-bg-src: url("'.esc_url( $library_url . '/images/vk-menu-close-black.svg').'");
-				--vk-menu-acc-icon-open-black-bg-src: url("'.esc_url( $library_url . '/images/vk-menu-acc-icon-open-black.svg').'");
-				--vk-menu-acc-icon-open-white-bg-src: url("'.esc_url( $library_url . '/images/vk-menu-acc-icon-open-white.svg').'");
-				--vk-menu-acc-icon-close-black-bg-src: url("'.esc_url( $library_url . '/images/vk-menu-close-black.svg').'");
-				--vk-menu-acc-icon-close-white-bg-src: url("'.esc_url( $library_url . '/images/vk-menu-close-white.svg').'");
+				--vk-mobile-nav-menu-btn-bg-src: url("' . esc_url( $library_url . '/images/vk-menu-btn-black.svg' ) . '");
+				--vk-mobile-nav-menu-btn-close-bg-src: url("' . esc_url( $library_url . '/images/vk-menu-close-black.svg' ) . '");
+				--vk-menu-acc-icon-open-black-bg-src: url("' . esc_url( $library_url . '/images/vk-menu-acc-icon-open-black.svg' ) . '");
+				--vk-menu-acc-icon-open-white-bg-src: url("' . esc_url( $library_url . '/images/vk-menu-acc-icon-open-white.svg' ) . '");
+				--vk-menu-acc-icon-close-black-bg-src: url("' . esc_url( $library_url . '/images/vk-menu-close-black.svg' ) . '");
+				--vk-menu-acc-icon-close-white-bg-src: url("' . esc_url( $library_url . '/images/vk-menu-close-white.svg' ) . '");
 			}
 			';
 			// delete before after space
@@ -208,8 +209,8 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 
 		public static function default_options() {
 			$default_options = array(
-				'position'       => 'left',
-				'slide_type'     => 'drop-in',
+				'position'   => 'left',
+				'slide_type' => 'drop-in',
 			);
 			return $default_options;
 		}
@@ -223,7 +224,7 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 			// セクション、テーマ設定、コントロールを追加
 			global $vk_mobile_nav_prefix;
 			global $vk_mobile_nav_priority;
-			if ( ! $vk_mobile_nav_priority ){
+			if ( ! $vk_mobile_nav_priority ) {
 				$vk_mobile_nav_priority = 900;
 			}
 
@@ -258,8 +259,8 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 					'settings' => 'vk_mobile_nav_options[position]',
 					'type'     => 'radio',
 					'choices'  => array(
-						'left'   => __( 'Left', 'lightning' ),
-						'right'  => __( 'Right', 'lightning' ),
+						'left'  => __( 'Left', 'lightning' ),
+						'right' => __( 'Right', 'lightning' ),
 					),
 				)
 			);
@@ -284,9 +285,9 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 					'settings' => 'vk_mobile_nav_options[slide_type]',
 					'type'     => 'radio',
 					'choices'  => array(
-						'drop-in'   => __( 'Drop', 'lightning' ),
+						'drop-in'  => __( 'Drop', 'lightning' ),
 						'left-in'  => __( 'Left -> Right', 'lightning' ),
-						'right-in'  => __( 'Right -> Left', 'lightning' ),
+						'right-in' => __( 'Right -> Left', 'lightning' ),
 					),
 				)
 			);
