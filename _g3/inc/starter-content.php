@@ -122,9 +122,11 @@ function lightning_add_starter_content() {
 						
 						<!-- wp:columns {"verticalAlignment":"center"} -->
 						<div class="wp-block-columns are-vertically-aligned-center"><!-- wp:column {"verticalAlignment":"center","width":"33.33%"} -->
-						<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:33.33%"><!-- wp:image {"align":"center"} -->
-						<div class="wp-block-image"><figure class="aligncenter size-large"><img src="' . esc_url( get_template_directory_uri() ) . '/assets/images/logo_Lightning.png" alt="" /></figure></div>
-						<!-- /wp:image --></div>
+						<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:33.33%">
+						<!-- wp:image {"align":"center"} -->
+						<div class="wp-block-image"><figure class="aligncenter"><img src="' . esc_url( get_template_directory_uri() ) . '/assets/images/logo_Lightning.png" alt=""/></figure></div>
+						<!-- /wp:image -->
+						</div>
 						<!-- /wp:column -->
 						
 						<!-- wp:column {"verticalAlignment":"center","width":"66.66%"} -->
@@ -139,8 +141,8 @@ function lightning_add_starter_content() {
 						<!-- /wp:columns --></div></div>
 						<!-- /wp:cover -->
 
-						<!-- wp:spacer {"height":30} -->
-						<div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
+						<!-- wp:spacer {"height":60} -->
+						<div style="height:60px" aria-hidden="true" class="wp-block-spacer"></div>
 						<!-- /wp:spacer -->
 
 						<!-- wp:heading -->

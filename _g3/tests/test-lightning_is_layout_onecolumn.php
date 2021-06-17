@@ -122,60 +122,60 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 	}
 
 	// function test_lightning_layout_by_single() {
-	// 	print PHP_EOL;
-	// 	print '------------------------------------' . PHP_EOL;
-	// 	print 'lightning_layout_by_single' . PHP_EOL;
-	// 	print '------------------------------------' . PHP_EOL;
+	// print PHP_EOL;
+	// print '------------------------------------' . PHP_EOL;
+	// print 'lightning_layout_by_single' . PHP_EOL;
+	// print '------------------------------------' . PHP_EOL;
 
-	// 	$data = self::setup_data();
-	// 	/*
-	// 	 Test Array
-	// 	/*--------------------------------*/
-	// 	$test_array = array(
+	// $data = self::setup_data();
+	// *
+	// Test Array
+	// *--------------------------------*/
+	// $test_array = array(
 
-	// 		// Single page //////////////////////////////////////////////////////
-	// 		array(
-	// 			'options'                   => array(
-	// 				'layout' => array(
-	// 					'single-post' => 'col-one',
-	// 				),
-	// 			),
-	// 			'_wp_page_template'         => '',
-	// 			'_lightning_design_setting' => array(
-	// 				'layout' => 'col-two',
-	// 			),
-	// 			'post_id'                   => $data['post_id'],
-	// 			'target_url'                => get_permalink( $data['post_id'] ),
-	// 			'correct'                   => 'col-two',
-	// 		),
-	// 	);
-	// 	foreach ( $test_array as $value ) {
+	// Single page //////////////////////////////////////////////////////
+	// array(
+	// 'options'                   => array(
+	// 'layout' => array(
+	// 'single-post' => 'col-one',
+	// ),
+	// ),
+	// '_wp_page_template'         => '',
+	// '_lightning_design_setting' => array(
+	// 'layout' => 'col-two',
+	// ),
+	// 'post_id'                   => $data['post_id'],
+	// 'target_url'                => get_permalink( $data['post_id'] ),
+	// 'correct'                   => 'col-two',
+	// ),
+	// );
+	// foreach ( $test_array as $value ) {
 
-	// 		self::setup_single_data( $value, $data );
+	// self::setup_single_data( $value, $data );
 
-	// 		// 古いセッティング値のコンバート（実際にはfunctions-compatible.phpで after_setup_theme で実行されている）
-	// 		lightning_options_compatible();
+	// 古いセッティング値のコンバート（実際にはfunctions-compatible.phpで after_setup_theme で実行されている）
+	// lightning_options_compatible();
 
-	// 		// Move to test page
-	// 		$this->go_to( $value['target_url'] );
+	// Move to test page
+	// $this->go_to( $value['target_url'] );
 
-	// 		$return = lightning_layout_by_single();
-	// 		print PHP_EOL;
-	// 		print 'url     :' . $_SERVER['REQUEST_URI'] . PHP_EOL;
-	// 		print 'return  :' . $return . PHP_EOL;
-	// 		print 'correct :' . $value['correct'] . PHP_EOL;
-	// 		if ( isset( $value['charck_key'] ) ) {
-	// 			print 'charck_key :' . $value['charck_key'] . PHP_EOL;
-	// 		}
-	// 		$this->assertEquals( $value['correct'], $return );
+	// $return = lightning_layout_by_single();
+	// print PHP_EOL;
+	// print 'url     :' . $_SERVER['REQUEST_URI'] . PHP_EOL;
+	// print 'return  :' . $return . PHP_EOL;
+	// print 'correct :' . $value['correct'] . PHP_EOL;
+	// if ( isset( $value['charck_key'] ) ) {
+	// print 'charck_key :' . $value['charck_key'] . PHP_EOL;
+	// }
+	// $this->assertEquals( $value['correct'], $return );
 
-	// 		if ( ! empty( $value['_wp_page_template'] ) ) {
-	// 			delete_post_meta( $value['post_id'], '_wp_page_template' );
-	// 		}
-	// 		if ( isset( $value['_lightning_design_setting'] ) ) {
-	// 			delete_post_meta( $value['post_id'], '_lightning_design_setting' );
-	// 		}
-	// 	}
+	// if ( ! empty( $value['_wp_page_template'] ) ) {
+	// delete_post_meta( $value['post_id'], '_wp_page_template' );
+	// }
+	// if ( isset( $value['_lightning_design_setting'] ) ) {
+	// delete_post_meta( $value['post_id'], '_lightning_design_setting' );
+	// }
+	// }
 	// }
 
 	function test_lightning_is_layout_onecolumn() {
@@ -198,6 +198,28 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 
 			// Front page //////////////////////////////////////////////////////
 
+			// Front page _ トップ : 固定ページ指定
+			// Front page _ カスタマイザー : 保存値なし
+			// Front page _ 固定ページデザイン設定 : 指定し
+			// Front page _ 返り値 : 1カラム
+			array(
+				'options'    => array(),
+				'target_url' => home_url( '/' ),
+				'correct'    => true,
+			),
+
+			// Front page _ トップ : 固定ページ指定
+			// Front page _ カスタマイザー : レイアウトキーはあるが保存値なし
+			// Front page _ 固定ページデザイン設定 : 指定し
+			// Front page _ 返り値 : 1カラム
+			array(
+				'options'    => array(
+					'layout' => array(),
+				),
+				'target_url' => home_url( '/' ),
+				'correct'    => true,
+			),
+
 			// Front page _ カスタマイザの設定のみ
 			array(
 				'options'    => array(
@@ -218,34 +240,6 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 				'correct'    => true,
 			),
 
-			// Front page _ トップ : 固定ページ指定
-			// Front page _ カスタマイザー : 未指定
-			// Front page _ 固定ページ属性 : １カラムテンプレートが選択（非推奨）
-			// Front page _ 返り値 : １カラム
-			array(
-				'show_on_front'     => 'page',
-				'options'           => array(),
-				'_wp_page_template' => 'page-onecolumn.php',
-				'post_id'           => $data['front_page_id'],
-				'target_url'        => home_url( '/' ),
-				'correct'           => true,
-			),
-			// Front page _ トップ : 固定ページ指定
-			// Front page _ カスタマイザー : ２カラム指定
-			// Front page _ 固定ページ属性 : １カラムテンプレートが選択（非推奨）
-			// Front page _ 返り値 : １カラム
-			array(
-				'show_on_front'     => 'page',
-				'options'           => array(
-					'layout' => array(
-						'front-page' => 'col-two',
-					),
-				),
-				'_wp_page_template' => 'page-onecolumn.php',
-				'post_id'           => $data['front_page_id'],
-				'target_url'        => home_url( '/' ),
-				'correct'           => true,
-			),
 			// Front page _ トップ : 固定ページ指定
 			// Front page _ カスタマイザー : １カラム指定
 			// Front page _ 固定ページ属性 : デフォルトテンプレートが選択
@@ -308,6 +302,35 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 				),
 				'target_url'    => home_url( '/' ),
 				'correct'       => true,
+			),
+
+			// Front page _ トップ : 固定ページ指定
+			// Front page _ カスタマイザー : 未指定
+			// Front page _ 固定ページ属性 : １カラムテンプレートが選択（非推奨）
+			// Front page _ 返り値 : １カラム
+			array(
+				'show_on_front'     => 'page',
+				'options'           => array(),
+				'_wp_page_template' => 'page-onecolumn.php',
+				'post_id'           => $data['front_page_id'],
+				'target_url'        => home_url( '/' ),
+				'correct'           => true,
+			),
+			// Front page _ トップ : 固定ページ指定
+			// Front page _ カスタマイザー : ２カラム指定
+			// Front page _ 固定ページ属性 : １カラムテンプレートが選択（非推奨）
+			// Front page _ 返り値 : １カラム
+			array(
+				'show_on_front'     => 'page',
+				'options'           => array(
+					'layout' => array(
+						'front-page' => 'col-two',
+					),
+				),
+				'_wp_page_template' => 'page-onecolumn.php',
+				'post_id'           => $data['front_page_id'],
+				'target_url'        => home_url( '/' ),
+				'correct'           => true,
 			),
 
 			// // Post index（ is_home() ） //////////////////////////////////////////////////////
