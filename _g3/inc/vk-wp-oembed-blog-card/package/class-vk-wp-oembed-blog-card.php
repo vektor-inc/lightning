@@ -31,24 +31,6 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 		public static function add_style() {
 			global $vk_embed_dir_uri;
 			wp_enqueue_style( 'vk-blog-card', $vk_embed_dir_uri . 'css/blog-card.css' );
-
-			/**
-			 * WordPress標準のCSSを読み込む
-			 * wp-includes/css/wp-embed-template.css
-			 */
-			wp_enqueue_style( 'wp-embed-template', includes_url() . 'css/wp-embed-template.css' );
-
-			/**
-			 * WordPress標準のJSを読み込む
-			 * wp-includes/js/wp-embed-template.js
-			 */
-			wp_enqueue_script( 'vk-blog-card-js', $vk_embed_dir_uri . 'js/wp-embed-template.js' );
-
-			/**
-			 * Lightning用のCSSを読み込む
-			 * 被リンクされた時にiframe内で読み込まれる
-			 */
-			wp_enqueue_style( 'wp-embed', get_template_directory_uri() . '/assets/css/wp-embed.css' );
 		}
 
 		/**
@@ -57,7 +39,7 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 		public static function oembed_html( $cache, $url ) {
 
 			/**
-			 * WordPressが許可しているデフォルトの埋め込み方法はそれに従う
+			 * YouTubeなどのWordPressが許可している埋め込み方法はそれに従う
 			 * https://runebook.dev/ja/docs/wordpress/functions/wp_filter_oembed_result
 			 */
 			$wp_oembed = _wp_oembed_get_object();
@@ -69,16 +51,9 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 			$front_page_id = get_option( 'page_on_front' );
 			if ( $post_id ) {
 				/**
-				 * フロントページのときはブログカードが展開されないのでidから生成
+				 * $post_idが取得できる時
 				 */
-				if ( $front_page_id == $post_id ) {
-					$content = static::vk_get_post_data_blog_card( $post_id );
-				} else {
-					/**
-					 * それ以外のときは共有リンクを使用したいためデフォルトの表示
-					 */
-					$content = $cache;
-				}
+				$content = static::vk_get_post_data_blog_card( $post_id );
 			} else {
 				/**
 				 * $post_idが取得できない場合
@@ -146,7 +121,7 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 			// ブログカードに必要な情報を取得
 			$blog_card_data['url']         = get_permalink( $post_id );
 			$blog_card_data['title']       = get_the_title( $post_id );
-			$blog_card_data['thumbnail']   = get_the_post_thumbnail_url( $post_id, 'medium' );
+			$blog_card_data['thumbnail']   = get_the_post_thumbnail_url( $post_id, 'large' );
 			$blog_card_data['description'] = get_the_excerpt( $post_id );
 			$blog_card_data['favicon']     = get_site_icon_url( 32, includes_url( 'images/w-logo-blue.png' ) );
 			$blog_card_data['site_name']   = get_bloginfo( 'name' );
@@ -290,56 +265,50 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 			$domain      = $blog_card_data['domain'];
 			ob_start();
 			?>
-			<div class="wp-embed format-standard js">
-				<?php if ( $thumbnail ) : ?>
-					<div class="wp-embed-featured-image rectangular">
-						<a href="<?php echo esc_url( $url ); ?>" target="_top">
-							<img width="320" height="180" src="<?php echo esc_url( $thumbnail ); ?>" class="attachment-post-thumbnail size-post-thumbnail" alt="" loading="lazy">
-						</a>
-					</div>
-				<?php endif; ?>
-				<p class="wp-embed-heading">
-					<a href="<?php echo esc_url( $url ); ?>" target="_top"><?php echo esc_html( $title ); ?></a>
-				</p>
-				<?php if ( $description ) : ?>
-					<div class="wp-embed-excerpt">
-						<p>
-						<?php
-						if ( function_exists( 'mb_strimwidth' ) ) {
-							echo esc_html( mb_strimwidth( $description, 0, 160, '…', 'utf-8' ) );
-						} else {
-							echo esc_html( $description );
-						}
-						?>
-						</p>
-					</div>
-				<?php endif; ?>
-				<div class="wp-embed-footer">
-					<div class="wp-embed-site-title">
-						<a href="<?php echo esc_url( $url ); ?>">
-							<?php if ( $favicon ) : ?>
-								<img loading="lazy" src="<?php echo esc_url( $favicon ); ?>" width="32" height="32" alt="" class="wp-embed-site-icon">
-							<?php endif; ?>
-							<span>
+			<div class="blog-card">
+				<div class="blog-card-body-outer">
+					<div class="blog-card-body">
+						<?php if ( $title ) : ?>
+							<h5 class="blog-card-title">
+								<a href="<?php echo esc_url( $url ); ?>"><?php echo esc_html( $title ); ?></a>
+							</h5>
+						<?php endif; ?>
+						<?php if ( $description ) : ?>
+							<p class="blog-card-text">
+								<?php
+								if ( function_exists( 'mb_strimwidth' ) ) {
+									echo esc_html( mb_strimwidth( $description, 0, 160, '…', 'utf-8' ) );
+								} else {
+									echo esc_html( $description );
+								}
+								?>
+							</p>
+						<?php endif; ?>
+						<div class="blog-card-site-title">
+							<a href="<?php echo esc_url( $domain ); ?>">
+								<?php if ( $favicon ) : ?>
+									<img src="<?php echo esc_url( $favicon ); ?>" width="16" height="16" alt="" class="wp-embed-site-icon">
+								<?php endif; ?>
 								<?php 
 								if ( $site_name ) {
-									echo esc_html( $site_name ); 
+									echo esc_html( $site_name );
 								} else {
 									echo esc_url( $domain );
 								}
 								?>
-							</span>
-						</a>
-					</div>
-					<div class="wp-embed-meta">
-						<div class="wp-embed-share">
-							<button type="button" class="wp-embed-share-dialog-open" aria-label="共有ダイアログを開く" value="<?php echo $url; ?>" onclick="vk_wp_oembed_blog_card_copy_url(this.value)">
-								<span class="dashicons dashicons-share"></span>
-							</button>
+							</a>
 						</div>
 					</div>
 				</div>
+				<?php if ( $thumbnail ) : ?>
+					<div class="blog-card-image-outer">
+						<a href="<?php echo esc_url( $url ); ?>" class="blog-card-image-frame">
+						<img class="blog-card-image-src" src="<?php echo esc_url( $thumbnail ); ?>" alt="">
+						</a>
+					</div>
+				<?php endif; ?>
 			</div>
+
 			<?php
 			$content = ob_get_clean();
 			$content = apply_filters( 'vk_wp_oembed_blog_card_template', $content );

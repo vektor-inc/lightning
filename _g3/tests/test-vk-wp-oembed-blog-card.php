@@ -25,10 +25,24 @@ class BlogCardTest extends WP_UnitTestCase {
 	 * cache は 管理画面URLを貼り付けた時に自動で変換される文字列
 	 */
 	function test_vk_get_post_data_blog_card() {
+		// Create test post
+		$post    = array(
+			'post_title'    => 'test',
+			'post_content'  => 'content',
+			'post_name'     => 'test',
+			'post_status'   => 'publish',
+		);
+		$post_id = wp_insert_post( $post );
 
 		// the_contentのフィルターフックで自動に入るpタグを削除
 		remove_filter( 'the_content', 'wpautop' );
 		$test_array = array(
+			// WordPressで作られたサイト サイト内記事
+			array(
+				'url'     => get_permalink( $post_id ),
+				'cache'   => '[embed]' . get_permalink( $post_id ) .'[/embed]',
+				'correct' => apply_filters( 'the_content', '[embed]' . get_permalink( $post_id ) .'[/embed]' ),
+			),
 			// WordPressで作られたサイト トップページ
 			array(
 				'url'     => 'https://www.vektor-inc.co.jp/',
@@ -54,6 +68,7 @@ class BlogCardTest extends WP_UnitTestCase {
 		}
 		// wpautopフィルターフックを戻す
 		add_filter( 'the_content', 'wpautop' );
+		wp_delete_post( $post_id );
 	}
 
 	/**

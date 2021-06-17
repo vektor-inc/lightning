@@ -4,7 +4,7 @@ $sm-min: 576px;
     border-radius: var(--vk-size-radius);
     display:flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: wrap-reverse;
     &-image-outer,
     &-body-outer {
         padding:1.5rem;
@@ -15,7 +15,9 @@ $sm-min: 576px;
         }
     }
     &-body-outer {
+        padding-top: 0;
         @media( min-width: $sm-min ){
+            padding:1.5rem;
             width:calc( 100% / 3 * 2 );
         }
     }
@@ -34,5 +36,13 @@ $sm-min: 576px;
     &-image-src {
         display: block;
     }
-
+    &-site-title {
+        a {
+            display: flex;
+            align-items: center;
+            img {
+                margin-right: 10px;
+            }
+        }
+    }
 }
