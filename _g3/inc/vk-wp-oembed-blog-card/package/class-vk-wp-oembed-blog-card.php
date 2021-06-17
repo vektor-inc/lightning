@@ -287,7 +287,7 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 						<div class="blog-card-site-title">
 							<a href="<?php echo esc_url( $domain ); ?>">
 								<?php if ( $favicon ) : ?>
-									<img src="<?php echo esc_url( $favicon ); ?>" width="16" height="16" alt="" class="wp-embed-site-icon">
+									<img loading="lazy" src="<?php echo esc_url( $favicon ); ?>" width="16" height="16" alt="" class="wp-embed-site-icon">
 								<?php endif; ?>
 								<?php 
 								if ( $site_name ) {
