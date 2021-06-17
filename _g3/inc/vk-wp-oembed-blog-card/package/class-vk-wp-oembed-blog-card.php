@@ -101,7 +101,7 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 			$blog_card_data['title']       = static::get_title( $body );
 			$blog_card_data['thumbnail']   = static::get_thumbnail( $body );
 			$blog_card_data['description'] = static::get_description( $body );
-			$blog_card_data['favicon']     = static::get_favicon($body);
+			$blog_card_data['favicon']     = static::get_favicon( $body );
 			$blog_card_data['site_name']   = static::get_site_name( $body );
 			$blog_card_data['domain']      = static::get_domain( $url );
 
@@ -287,7 +287,7 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 						<div class="blog-card-site-title">
 							<a href="<?php echo esc_url( $domain ); ?>">
 								<?php if ( $favicon ) : ?>
-									<img loading="lazy" src="<?php echo esc_url( $favicon ); ?>" width="16" height="16" alt="" class="wp-embed-site-icon">
+									<img loading="lazy" src="<?php echo esc_url( $favicon ); ?>" width="16" height="16" alt="" >
 								<?php endif; ?>
 								<?php 
 								if ( $site_name ) {
@@ -303,7 +303,7 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 				<?php if ( $thumbnail ) : ?>
 					<div class="blog-card-image-outer">
 						<a href="<?php echo esc_url( $url ); ?>" class="blog-card-image-frame">
-						<img class="blog-card-image-src" src="<?php echo esc_url( $thumbnail ); ?>" alt="">
+							<img class="blog-card-image-src" src="<?php echo esc_url( $thumbnail ); ?>" alt="">
 						</a>
 					</div>
 				<?php endif; ?>
