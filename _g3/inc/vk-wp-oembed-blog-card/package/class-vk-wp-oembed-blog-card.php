@@ -124,7 +124,7 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 			$blog_card_data['description'] = get_the_excerpt( $post_id );
 			$blog_card_data['favicon']     = get_site_icon_url( 32 );
 			$blog_card_data['site_name']   = get_bloginfo( 'name' );
-			$blog_card_data['domain']      = site_url();
+			$blog_card_data['domain']      = home_url();
 
 			/**
 			 * ブログカードHTMLを生成
