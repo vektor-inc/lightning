@@ -47,7 +47,7 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 				return $cache;
 			}
 
-			$post_id       = url_to_postid( $url );
+			$post_id = url_to_postid( $url );
 			if ( $post_id ) {
 				/**
 				 * $post_idが取得できる時
@@ -124,7 +124,7 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 			$blog_card_data['description'] = get_the_excerpt( $post_id );
 			$blog_card_data['favicon']     = get_site_icon_url( 32 );
 			$blog_card_data['site_name']   = get_bloginfo( 'name' );
-			$blog_card_data['domain']      = site_url();
+			$blog_card_data['domain']      = home_url();
 
 			/**
 			 * ブログカードHTMLを生成
@@ -155,7 +155,7 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 		 * @return string
 		 */
 		public static function get_title( $body ) {
-			if ( preg_match( '/<title>(.+?)<\/title>/is', $body, $matches ) ) {
+			if ( preg_match( '/title>(.+?)<\/title/is', $body, $matches ) ) {
 				return $matches[1];
 			}
 			return '';
@@ -189,7 +189,6 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 		 * ファビコンを取得
 		 *
 		 * @return string
-		 * 
 		 */
 		public static function get_favicon( $body ) {
 			if ( preg_match( '/<link [^>]*?rel=["\']icon["\'][^\/>]*? href=["\']([^"\']+?)["\'][^\/>]*?\/?>/si', $body, $matches ) ) {
@@ -288,7 +287,7 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 								<?php if ( $favicon ) : ?>
 									<img loading="lazy" src="<?php echo esc_url( $favicon ); ?>" width="16" height="16" alt="" >
 								<?php endif; ?>
-								<?php 
+								<?php
 								if ( $site_name ) {
 									echo esc_html( $site_name );
 								} else {
