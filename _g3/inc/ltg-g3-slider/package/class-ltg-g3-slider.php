@@ -757,10 +757,6 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 							$slide_html .= '<div class="ltg-slide-cover"' . $cover_style . '></div>';
 						}
 
-						if ( self::is_slide_outer_link( $i ) ) {
-							$slide_html .= '</a>';
-						}
-
 						/*
 						  mini_content
 						/*-------------------------------------------*/
@@ -817,6 +813,10 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 						$slide_html .= VK_Component_Mini_Contents::get_view( $mini_content_args );
 
 						$slide_html .= '</div><!-- .mini-content -->';
+
+						if ( self::is_slide_outer_link( $i ) ) {
+							$slide_html .= '</a>';
+						}
 
 						$slide_html .= '</div><!-- [ /.item ] -->';
 

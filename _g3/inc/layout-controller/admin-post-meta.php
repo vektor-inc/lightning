@@ -7,6 +7,13 @@ add_action( 'admin_menu', 'lightning_add_design_meta_box' );
 // add meta_box
 function lightning_add_design_meta_box() {
 
+	// 投稿トップは固定ページでなくアーカイプページ判定されるので、
+	// 投稿トップにわりあてた固定ページで指定したカラム数は反映されない。
+	// よって、誤解を避けるためにレイアウト設定を含む Lightningデザイン設定のmetabox自体表示しないようにする
+	if ( isset( $_GET['post'] ) && $_GET['post'] === get_option( 'page_for_posts' ) && 'page' === get_option( 'show_on_front' ) ){
+		return;
+	}
+
 	$args       = array(
 		'public' => true,
 	);
