@@ -161,6 +161,7 @@ require dirname( __FILE__ ) . '/inc/term-color/config.php';
 require dirname( __FILE__ ) . '/inc/vk-css-optimize/config.php';
 require dirname( __FILE__ ) . '/inc/vk-swiper/config.php';
 require dirname( __FILE__ ) . '/inc/ltg-g3-slider/config.php';
+require dirname( __FILE__ ) . '/inc/vk-wp-oembed-blog-card/config.php';
 
 require dirname( __FILE__ ) . '/inc/starter-content.php';
 
@@ -259,7 +260,8 @@ add_filter( 'wp_list_categories', 'lightning_list_categories', 10, 2 );
   Load embed card css
 /*-------------------------------------------*/
 
-remove_action( 'embed_footer', 'print_embed_sharing_dialog' );
+// ↓ 何を意図して remove_action() したのか不明なので一旦コメントアウト
+// remove_action( 'embed_footer', 'print_embed_sharing_dialog' );
 
 function lightning_embed_styles() {
 	wp_enqueue_style( 'wp-oembed-embed', get_template_directory_uri() . '/assets/css/wp-embed.css' );
