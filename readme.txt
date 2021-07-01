@@ -41,6 +41,7 @@ https://www.vektor-inc.co.jp/inquiry/
 
 v14.5.0
 [ Add Function ][ OriginIII ] Cope with vertical menu
+[ Bug fix ] Fix NextPrev don't display under case of bbPress active.
 
 v14.4.2
 [ Bug fix ] Fix image block fit to left bug
