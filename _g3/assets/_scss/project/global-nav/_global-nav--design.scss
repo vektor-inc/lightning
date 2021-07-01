@@ -70,15 +70,6 @@
 				text-align: center;
 				white-space: nowrap;
 			}
-			/* Class is necessarily to the * because class was added to many other class name that first class is not necessarily "current"  */
-			&:hover,
-			&[class*="current"] {
-				// transition: all 0.5s ease-out;
-				// background-color: var(--vk-color-primary);
-				&:before {
-					width: 100%;
-				}
-			}
 		}
 		/*-------------------------------------------*/
 		/*	2nd only
