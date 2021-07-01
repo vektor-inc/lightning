@@ -200,6 +200,28 @@ class Lightning_Design_Manager {
 	}
 
 	static function customize_register( $wp_customize ) {
+
+		$wp_customize->add_setting(
+			'skin_header',
+			array(
+				'sanitize_callback' => 'sanitize_text_field',
+			)
+		);
+		$wp_customize->add_control(
+			new VK_Custom_Html_Control(
+				$wp_customize,
+				'skin_header',
+				array(
+					'label'       => __( 'Design skin', 'lightning' ),
+					'section'     => 'lightning_design',
+					'type'        => 'text',
+					'custom_title_sub' => '',
+					'custom_html' => '<span style="color:red;font-weight:bold;">' . __( 'If you change the skin, please save once and reload the page.', 'lightning' ) . '</span>',
+					'priority'    => 100,
+				)
+			)
+		);
+
 		$wp_customize->add_setting(
 			'lightning_design_skin',
 			array(
@@ -218,12 +240,10 @@ class Lightning_Design_Manager {
 		$wp_customize->add_control(
 			'lightning_design_skin',
 			array(
-				'label'       => __( 'Design skin', 'lightning' ),
+				'label'       => '',
 				'section'     => 'lightning_design',
 				'settings'    => 'lightning_design_skin',
-				'description' => '<span style="color:red;font-weight:bold;">' . __( 'If you change the skin, please save once and reload the page.', 'lightning' ) . '</span><br/>' .
-					__( 'If you reload after the saving, it will be displayed skin-specific configuration items.', 'lightning' ) . '<br/> ' .
-					__( '*There is also a case where there is no skin-specific installation item.', 'lightning' ),
+				'description' => '',
 				'type'        => 'select',
 				'priority'    => 100,
 				'choices'     => $skins,

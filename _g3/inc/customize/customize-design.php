@@ -14,7 +14,26 @@ function lightning_customize_register_design( $wp_customize ) {
 		)
 	);
 
-	// Add setting
+	$wp_customize->add_setting(
+		'logo_header',
+		array(
+			'sanitize_callback' => 'sanitize_text_field',
+		)
+	);
+	$wp_customize->add_control(
+		new VK_Custom_Html_Control(
+			$wp_customize,
+			'logo_header',
+			array(
+				'label'       => __( 'Header logo image', 'lightning' ),
+				'section'     => 'lightning_design',
+				'type'        => 'text',
+				'custom_title_sub' => '',
+				'custom_html' => __( 'Recommended image size : 500*120px', 'lightning' ),
+				'priority'    => 501,
+			)
+		)
+	);
 
 	// head logo
 	$wp_customize->add_setting(
@@ -31,11 +50,11 @@ function lightning_customize_register_design( $wp_customize ) {
 			$wp_customize,
 			'head_logo',
 			array(
-				'label'       => __( 'Header logo image', 'lightning' ),
+				'label'       => '',
 				'section'     => 'lightning_design',
 				'settings'    => 'lightning_theme_options[head_logo]',
 				'priority'    => 501,
-				'description' => __( 'Recommended image size : 500*120px', 'lightning' ),
+				'description' => '',
 			)
 		)
 	);
