@@ -5,19 +5,19 @@
  * @package         Lightning
  */
 
-function lightning_is_bbpress(){
+function lightning_is_bbpress() {
 	$body_class = get_body_class();
-    if ( in_array('bbpress', $body_class )) {
+	if ( in_array( 'bbpress', $body_class ) ) {
 		return true;
-    }
+	}
 }
-function lightning_bbp_is_singular( $return ){
-	if ( bbp_is_single_user() || lightning_is_bbpress() ){
+function lightning_bbp_is_singular( $return ) {
+	if ( bbp_is_single_user() || lightning_is_bbpress() ) {
 		$return = true;
 	}
 	return $return;
 }
-add_filter( 'lightning_is_singular', 'lightning_bbp_is_singular');
+add_filter( 'lightning_is_singular', 'lightning_bbp_is_singular' );
 
 /*
   CSS読み込み
@@ -63,51 +63,55 @@ add_filter( 'vk_get_post_type_info', 'lightning_bbp_get_post_type' );
 /**
  * bbPressのユーザーページでだけ使える表示名
  */
-function lightning_the_bbp_display_name(){
+function lightning_the_bbp_display_name() {
 	global $wp_query;
 	$users = get_users( array( 'search' => $wp_query->query['bbp_user'] ) );
-	foreach ( $users as $user ){
-		if ( $user->data->user_login === $wp_query->query['bbp_user'] ){
+	foreach ( $users as $user ) {
+		if ( $user->data->user_login === $wp_query->query['bbp_user'] ) {
 			$display_name = $user->data->display_name;
 		}
 	}
 	return esc_html( $display_name );
 }
 
-function lightning_bbp_breadcrumb_array( $array ){
+function lightning_bbp_breadcrumb_array( $array ) {
 	if ( bbp_is_single_user() ) {
 
 		global $wp_query;
 		$users = get_users( array( 'search' => $wp_query->query['bbp_user'] ) );
-		foreach ( $users as $user ){
-			if ( $user->data->user_login === $wp_query->query['bbp_user'] ){
+		foreach ( $users as $user ) {
+			if ( $user->data->user_login === $wp_query->query['bbp_user'] ) {
 				$display_name = $user->data->display_name;
 			}
 		}
-		$array[] = [
-			'name'             => lightning_the_bbp_display_name(),
-			'id'               => '',
-			'url'              => '',
-			'class'            => '',
-		];
+		$array[] = array(
+			'name'  => lightning_the_bbp_display_name(),
+			'id'    => '',
+			'url'   => '',
+			'class' => '',
+		);
 	}
 	return $array;
 
 }
 add_filter( 'vk_breadcrumb_array', 'lightning_bbp_breadcrumb_array' );
 
-function lightning_bbp_hide_element( $return ){
-	if ( lightning_is_bbpress() ){
-		return false;
+function lightning_bbp_hide_element( $return ) {
+	if ( lightning_is_bbpress() ) {
+		$post_type = get_post_type();
+		if ( 'topic' === $post_type || 'forum' === $post_type ) {
+			$return = false;
+		}
 	}
+	return $return;
 }
 add_filter( 'lightning_is_next_prev', 'lightning_bbp_hide_element' );
 add_filter( 'lightning_is_entry_header', 'lightning_bbp_hide_element' );
 
-function lightning_bbp_get_displayed_user_field( $value, $field, $filter ){
-	if ( 'user_nicename' === $field ){
+function lightning_bbp_get_displayed_user_field( $value, $field, $filter ) {
+	if ( 'user_nicename' === $field ) {
 		$value = lightning_the_bbp_display_name();
 	}
 	return $value;
 }
-add_filter( 'bbp_get_displayed_user_field', 'lightning_bbp_get_displayed_user_field', 10,3 );
+add_filter( 'bbp_get_displayed_user_field', 'lightning_bbp_get_displayed_user_field', 10, 3 );

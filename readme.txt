@@ -2,12 +2,12 @@
 Lightning WordPress theme, Copyright (C) 2015-2021 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
 Tested up to: 5.7.2
-Stable tag: 14.4.2
+Stable tag: 14.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
-Lightning is a very simple theme that built by Bootstrap.
+Lightning is a very simple theme.
 Official site : https://lightning.nagoya
 Sample site : https://demo.lightning.nagoya/
 
@@ -38,6 +38,10 @@ https://www.vektor-inc.co.jp/inquiry/
 
 
 == Changelog ==
+
+v14.5.0
+[ Add Function ][ OriginIII ] Cope with vertical menu
+[ Bug fix ] Fix NextPrev don't display under case of bbPress active.
 
 v14.4.2
 [ Bug fix ] Fix image block fit to left bug

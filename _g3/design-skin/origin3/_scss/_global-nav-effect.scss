@@ -5,12 +5,16 @@
     /*-------------------------------------------*/
 	& > li {
 		float: left;
+		/* Class is necessarily to the * because class was added to many other class name that first class is not necessarily "current"  */
 		&:hover,
 		&[class*="current"]{
 			.global-nav-description{
 				// 色をつけない Don't specific the color
 				// ナビ背景が濃い時やナビ背景は薄いけどヘッダー背景が濃い時、ヘッダー透過の時などの処理がカオスになる。
 				opacity: 1;
+			}
+			&:before {
+				width: 100%;
 			}
 		}
 		&:before {
@@ -46,7 +50,6 @@
 			opacity: 0;
 		}
 	}
-
 	/*-------------------------------------------*/
 	/*	2nd only
 	/*-------------------------------------------*/
@@ -63,6 +66,51 @@
 			a {
 				&:hover {
 					background-color: var(--vk-color-primary);
+				}
+			}
+		}
+	}
+}
+
+body:not(.header_scrolled){
+	.global-nav--text-layout--vertical {
+		.global-nav-list > li{
+			/* Right Border */
+			&:before {
+				left:unset;
+				bottom:unset;
+				border-bottom: none;
+				border-right: 1px solid var(--vk-color-primary);
+				top:14px;
+				right:0;
+				height:0;
+			}
+			&.menu-item-has-children:hover::after,
+			&.acc-parent-open::after {
+				bottom:0;
+			}
+		}
+	}
+	&.device-pc {
+		.global-nav--text-layout--vertical {
+			.global-nav-list > li{
+				&:hover,
+				&[class*="current"]{
+					&:before {
+						height:calc( 100% - 14px - 14px );
+					}
+				}
+			}
+		}
+	}
+	&.device-mobile {
+		.global-nav--text-layout--vertical {
+			.global-nav-list > li{
+				&.acc-parent-open,
+				&[class*="current"]{
+					&:before {
+						height:calc( 100% - 14px - 3em );
+					}
 				}
 			}
 		}
