@@ -98,8 +98,12 @@ add_filter( 'vk_breadcrumb_array', 'lightning_bbp_breadcrumb_array' );
 
 function lightning_bbp_hide_element( $return ) {
 	if ( lightning_is_bbpress() ) {
-		return false;
+		$post_type = get_post_type();
+		if ( 'topic' === $post_type || 'forum' === $post_type ) {
+			$return = false;
+		}
 	}
+	return $return;
 }
 add_filter( 'lightning_is_next_prev', 'lightning_bbp_hide_element' );
 add_filter( 'lightning_is_entry_header', 'lightning_bbp_hide_element' );
