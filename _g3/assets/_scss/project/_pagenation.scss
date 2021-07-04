@@ -33,7 +33,8 @@ ul.page-numbers {
             text-decoration: none;
 		}
 
-        &:first-child a {
+        &:first-child a,
+		&:first-child span.page-numbers {
 			margin-left: 0;
 		}
 
@@ -45,25 +46,15 @@ ul.page-numbers {
 			color: #fff;
 			background-color: var(--vk-color-primary);
 		}
-
-		&:first-child > a {
-			border-top-left-radius: 4px;
-			border-bottom-left-radius: 4px;
-		}
-
-		&:last-child > a {
-			border-top-right-radius: 4px;
-			border-bottom-right-radius: 4px;
-		}
 	}
 
 	li:first-child > .page-numbers {
-		border-top-left-radius: 4px;
-		border-bottom-left-radius: 4px;
+		border-top-left-radius: var(--vk-size-radius);
+		border-bottom-left-radius: var(--vk-size-radius);
 	}
 
 	li:last-child > .page-numbers {
-		border-top-right-radius: 4px;
-		border-bottom-right-radius: 4px;
+		border-top-right-radius: var(--vk-size-radius);
+		border-bottom-right-radius: var(--vk-size-radius);
 	}
 }
