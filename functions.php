@@ -138,6 +138,7 @@ require dirname( __FILE__ ) . '/inc/tgm-plugin-activation/tgm-config.php';
 require dirname( __FILE__ ) . '/inc/vk-old-options-notice/vk-old-options-notice-config.php';
 require dirname( __FILE__ ) . '/inc/functions-compatible.php';
 require dirname( __FILE__ ) . '/inc/font-awesome/font-awesome-config.php';
+require dirname( __FILE__ ) . '/inc/old-page-template.php';
 
 /**
  * 世代切り替えした時に同時にスキンも変更する処理
