@@ -37,7 +37,7 @@
     input[type=url], 
     select,
     textarea {
-        width:auto;
+        box-sizing: border-box;
     }
 }
 
