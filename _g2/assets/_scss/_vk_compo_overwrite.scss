@@ -1,11 +1,6 @@
-.vk_post_imgOuter_singleTermLabel {
-    padding:0.7em 1.2em;
-}
-.card.card-noborder {
-    border-radius: 0;
-}
-
-.main-section {
+@charset "utf-8";
+@import "../../design-skin/foundation/_scss/variables";
+.mainSection {
     .vk_post-col-sm-12 {
         @media (min-width: $sm-min) {
             .vk_post_title {
