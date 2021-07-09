@@ -29,6 +29,16 @@
         margin-bottom: 0.3em;
         padding-bottom: 0;
     }
+    input[type=date], 
+    input[type=email], 
+    input[type=number], 
+    input[type=tel], 
+    input[type=text], 
+    input[type=url], 
+    select,
+    textarea {
+        box-sizing: border-box;
+    }
 }
 
 //common.scssで編集画面のCSSが打ち消されるので以下追加
