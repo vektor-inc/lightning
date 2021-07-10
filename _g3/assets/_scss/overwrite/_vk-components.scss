@@ -5,8 +5,10 @@
     border-radius: 0;
 }
 
-.main-section {
-    .vk_post-col-sm-12 {
+// メインセクション直下の投稿リストで1カラムの時だけ文字を大きくする
+.main-section > .vk_posts,
+.entry-body > .vk_posts{
+    & > .vk_post-col-sm-12 {
         @media (min-width: $sm-min) {
             .vk_post_title {
                 font-size: 16px;
@@ -16,7 +18,7 @@
             }
         }
     }
-    .vk_post-col-md-12 {
+    & > .vk_post-col-md-12 {
         @media (min-width: $md-min) {
             .vk_post_title {
                 font-size: 18px;
@@ -26,7 +28,7 @@
             }
         }
     }
-    .vk_post-col-lg-12 {
+    & > .vk_post-col-lg-12 {
         @media (min-width: $lg-min) {
             .vk_post_title {
                 font-size: 18px;
@@ -36,7 +38,7 @@
             }
         }
     }
-    .vk_post-col-xl-12 {
+    & > .vk_post-col-xl-12 {
         @media (min-width: $xl-min) {
             .vk_post_title {
                 font-size: 21px;
@@ -46,7 +48,7 @@
             }
         }
     }
-    .vk_post-col-xxl-12 {
+    & > .vk_post-col-xxl-12 {
         @media (min-width: $xxl-min) {
             .vk_post_title {
                 font-size: 26px;
@@ -56,7 +58,7 @@
             }
         }
     }
-    .media {
+    & > .media {
         &.vk_post-col-sm-12 {
             @media (min-width: $sm-min) {
                 padding: 1.5rem 0;
