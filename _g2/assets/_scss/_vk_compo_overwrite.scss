@@ -3,7 +3,7 @@
 
 // メインセクション直下の投稿リストで1カラムの時だけ文字を大きくする
 .mainSection > .vk_posts,
-.mainSection .entry-body > .vk_posts{
+.entry-body > .vk_posts{
     & > .vk_post-col-sm-12 {
         @media (min-width: $sm-min) {
             .vk_post_title {
