@@ -41,4 +41,4 @@ function lightning_page_templates( $page_templates, $theme, $post, $post_type ) 
 	return $page_templates;
 
 }
-add_filter( 'theme_page_templates', 'lightning_page_templates', 10, 4 );
+add_filter( 'theme_page_templates', 'lightning_exclude_old_page_templates', 10, 4 );
