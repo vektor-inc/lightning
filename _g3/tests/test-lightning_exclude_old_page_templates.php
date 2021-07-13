@@ -109,11 +109,13 @@ class LightningExcludeOldPageTemplates extends WP_UnitTestCase {
 			$return = lightning_exclude_old_page_templates( $old_templates, $theme, $post, 'page' );
 			print $value['label'];
 			print PHP_EOL;
+			print PHP_EOL;
 			print 'return  :';
+			print PHP_EOL;
 			var_dump( $return );
 			print PHP_EOL;
-			print PHP_EOL;
 			print 'correct  :';
+			print PHP_EOL;
 			var_dump( $value['correct'] );
 			print PHP_EOL;
 			$this->assertEquals( $value['correct'], $return );
