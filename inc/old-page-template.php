@@ -7,7 +7,7 @@
  * @param WP_Post|null $post 記事のオブジェクト
  * @param @param string $post_type 投稿タイプ
  */
-function lightning_page_templates( $page_templates, $theme, $post, $post_type ) {
+function lightning_exclude_old_page_templates( $page_templates, $theme, $post, $post_type ) {
 
 
 	// 現在のテンプレートを取得
