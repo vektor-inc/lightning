@@ -32,7 +32,7 @@ function lightning_exclude_old_page_templates( $page_templates, $theme, $post, $
 	}
 
 	// 世代が G3 かつ古いテンプレートを使っていない場合
-	if ( ! empty( $generation ) && 'g2' !== $generation && false === $old_template_using ) {
+	if ( lightning_is_g3() && false === $old_template_using ) {
 		// 古いテンプレートを除外
 		$page_templates = array_diff_assoc( $page_templates, $old_templates );
 	}
