@@ -43,7 +43,7 @@ class LightningExcludeOldPageTemplates extends WP_UnitTestCase {
 				'label'   => 'G2 かつデフォルトテンプレート',
 				'post_id' => $data['page_id'],
 				'options' => 'g2',
-				'correct' => array(),
+				'correct' => $old_templates,
 			),
 			// G3 かつ page-lp-builder
 			array(
