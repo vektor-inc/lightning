@@ -30,8 +30,8 @@ function lightning_exclude_old_page_templates( $page_templates, $theme, $post, $
 		}
 	}
 
-	// 世代が G3 かつ古いテンプレートを使っていない場合
-	if ( lightning_is_g3() && false === $old_template_using ) {
+	// 世代が G2 ではなく古いテンプレートを使っていない場合
+	if ( ! empty( $generation ) && 'g2' !== $generation && false === $old_template_using ) {
 		// 古いテンプレートを除外 （ array_diff_assoc の場合 $value 部分が片方翻訳されていないと効かないため ）
 		// ※ 事実上全消ししているので $page_templates = array() してしまうとユーザー独自で追加している場合に困る
 		foreach ( $page_templates as $key => $value ) {
