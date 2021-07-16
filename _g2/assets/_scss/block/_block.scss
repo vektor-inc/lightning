@@ -53,11 +53,25 @@ entry-body
 	}
 }
 
-.wp-block-button__link {
-	font-size: 1rem;
-	padding-top: 0.5em;
-	padding-bottom: 0.5em; 
-}
+/*-------------------------------------------*/
+/*  Button Block
+/*-------------------------------------------*/
+.wp-block-button {
+	&__link {
+		font-size: 1rem;
+		padding-top: 0.5em;
+		padding-bottom: 0.5em; 
+		border-radius: var(--vk-size-radius);
+		transition: all 0.1s ease-in;
+	}
+	.wp-block-button__link:hover {
+		background-color: var(--vk-color-primary-vivid);
+		border-color: var(--vk-color-primary-vivid);
+		color:#fff;
+	}
+} 
+
+
 /*-------------------------------------------*/
 /*  Table Block
 /*-------------------------------------------*/
