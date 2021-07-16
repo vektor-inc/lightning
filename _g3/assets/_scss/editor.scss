@@ -54,3 +54,9 @@ table.CalendarMonth_table td {
 .components-datetime__time-field-minutes-input[type=number] {
     width: 35px;
 }
+// カスタマイズ画面にまで公開の input が適用されて padding が余計についてしまうので調整
+.wp-full-overlay-sidebar-content {
+    input[type=date], input[type=email], input[type=number], input[type=tel], input[type=text], input[type=url], select, textarea {
+        padding:.2em .5em;
+    }
+}
