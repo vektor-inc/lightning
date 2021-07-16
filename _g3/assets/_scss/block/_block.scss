@@ -39,6 +39,7 @@ entry-body
 	.alignwide {
 		margin-left:0;
 		margin-right:0;
+		max-width: 100%;
 		&.wp-block-image {
 			// Default block style overwrite
 			max-width: 100%;
