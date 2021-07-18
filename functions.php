@@ -162,6 +162,9 @@ function lightning_change_generation( $old_value, $value, $option ) {
 		$current_skin = get_option( 'lightning_design_skin' );
 		// オプションを取得
 		$options                                  = get_option( 'lightning_theme_options' );
+		if ( ! $options || ! is_array( $options ) ){
+			$options = array();
+		}
 		$options[ 'previous_skin_' . $old_value ] = $current_skin;
 		// 既存のスキンをオプションに保存
 		update_option( 'lightning_theme_options', $options );
