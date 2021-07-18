@@ -19,6 +19,7 @@
 		"composer:install:mac": "wp-env run composer 'composer install'",
 		"phpunit": "wp-env run phpunit 'phpunit -c /var/www/html/wp-content/themes/lightning/phpunit.g3.xml --verbose'",
 		"phpunit:g2": "wp-env run phpunit 'phpunit -c /var/www/html/wp-content/themes/lightning/phpunit.g2.xml --verbose'",
+		"phpunit:root": "wp-env run phpunit 'phpunit -c /var/www/html/wp-content/themes/lightning/phpunit.root.xml --verbose'",
 		"phpunit:win": "wp-env run phpunit \"phpunit -c /var/www/html/wp-content/themes/lightning/phpunit.g3.xml --verbose\""
 	},
 	"repository": {
