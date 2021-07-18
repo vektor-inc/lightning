@@ -277,3 +277,8 @@ entry-body
 		margin-bottom: 0;
 	}
 }
+
+hr.wp-block-separator {
+	border-color: var(--vk-color-border-hr);
+	border-bottom:none;
+}
