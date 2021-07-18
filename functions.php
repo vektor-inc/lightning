@@ -27,12 +27,23 @@ function lightning_is_g3() {
 	} elseif ( 'g2' === $g ) {
 		$return = false;
 	} else {
+		$skin = get_option( 'lightning_design_skin' );
 		$options = get_option( 'lightning_theme_options' );
-		if ( get_option( 'fresh_site' ) || ! $options ) {
-			update_option( 'lightning_theme_generation', 'g3' );
-			$return = true;
-		} else {
+		if ( 'origin2' === $skin ) {
 			$return = false;
+			update_option( 'lightning_theme_generation', 'g2' );
+		} elseif ( 'origin3' === $skin ) {
+			$return = true;
+			update_option( 'lightning_theme_generation', 'g3' );
+
+		} elseif ( get_option( 'fresh_site' ) || ! $options ) {
+			// 新規サイトでオプション非保存ならまぁG3っしょ
+			$return = true;
+			update_option( 'lightning_theme_generation', 'g3' );
+		} else {
+			// これ以外は従来ユーザーの可能性が高いのでG2
+			$return = false;
+			update_option( 'lightning_theme_generation', 'g2' );
 		}
 	}
 	return apply_filters( 'lightning_is_g3', $return );
