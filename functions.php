@@ -158,16 +158,20 @@ require dirname( __FILE__ ) . '/inc/old-page-template.php';
 function lightning_change_generation( $old_value, $value, $option ) {
 	// 世代変更がある場合
 	if ( $value !== $old_value ) {
+
 		// 現状のスキンを取得
 		$current_skin = get_option( 'lightning_design_skin' );
-		// オプションを取得
-		$options                                  = get_option( 'lightning_theme_options' );
-		if ( ! $options || ! is_array( $options ) ){
-			$options = array();
+
+		if ( $current_skin ) {
+			// オプションを取得
+			$options = get_option( 'lightning_theme_options' );
+			if ( ! $options || ! is_array( $options ) ) {
+				$options = array();
+			}
+			$options[ 'previous_skin_' . $old_value ] = $current_skin;
+			// 既存のスキンをオプションに保存
+			update_option( 'lightning_theme_options', $options );
 		}
-		$options[ 'previous_skin_' . $old_value ] = $current_skin;
-		// 既存のスキンをオプションに保存
-		update_option( 'lightning_theme_options', $options );
 
 		// 前のスキンが保存されている場合
 		if ( ! empty( $options[ 'previous_skin_' . $value ] ) ) {
