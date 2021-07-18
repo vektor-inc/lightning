@@ -19,9 +19,13 @@ if ( true === LIG_DEBUG ) {
 }
 
 function lightning_is_g3() {
-	$g = get_option( 'lightning_theme_generation' );
+
+	$return = true;
+	$g      = get_option( 'lightning_theme_generation' );
 	if ( 'g3' === $g ) {
 		$return = true;
+	} elseif ( 'g2' === $g ) {
+		$return = false;
 	} else {
 		$options = get_option( 'lightning_theme_options' );
 		if ( get_option( 'fresh_site' ) || ! $options ) {
