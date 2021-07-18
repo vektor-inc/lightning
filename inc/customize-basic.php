@@ -38,11 +38,16 @@ function lightning_customize_register_basic( $wp_customize ) {
 		'g2' => __( 'Generation 2 ( ~ version 13.x )', 'lightning' ),
 		'g3' => __( 'Generation 3', 'lightning' ),
 	);
+	if ( lightning_is_g3() ){
+		$default = 'g3';
+	} else {
+		$default = 'g2';
+	}
 
 	$wp_customize->add_setting(
 		'lightning_theme_generation',
 		array(
-			'default'           => lightning_is_g3(),
+			'default'           => $default,
 			'type'              => 'option',
 			'capability'        => 'edit_theme_options',
 			'sanitize_callback' => 'sanitize_text_field',
