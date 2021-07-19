@@ -27,8 +27,10 @@ entry-body
 	}
 }
 .alignwide {
-	width: calc( 100% + ( 100vw - 100% ) / 2 );
-	margin-left: calc( ( var(--vk-width-container) - 100vw ) / 4 );
+	// --vk-width-container != 100% なので注意 （ --vk-width-container == 100% + 2 * --vk-width-container-padding ）
+	width: calc( var(--vk-width-container) + ( 100vw - var(--vk-width-container) ) / 2 );
+	// 画面全幅 - コンテナ幅 = 左右の通常余白 / 4 = 
+	margin-left: calc( ( var(--vk-width-container) - 100vw ) / 4 - var(--vk-width-container-padding) );
 	margin-right: calc( ( var(--vk-width-container) - 100vw ) / 4 );
 	&.wp-block-image {
 		max-width: 100vw;
@@ -39,6 +41,7 @@ entry-body
 	.alignwide {
 		margin-left:0;
 		margin-right:0;
+		max-width: 100%;
 		&.wp-block-image {
 			// Default block style overwrite
 			max-width: 100%;
@@ -273,4 +276,9 @@ entry-body
 		margin-right: 0;
 		margin-bottom: 0;
 	}
+}
+
+hr.wp-block-separator {
+	border-color: var(--vk-color-border-hr);
+	border-bottom:none;
 }

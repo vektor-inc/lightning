@@ -59,14 +59,6 @@ body.folded:not(.is-fullscreen-mode) .edit-post-layout.is-sidebar-opened{
 * 	.is-root-container > .wp-blockを公開画面のコンテナとして考える
 */
 .editor-styles-wrapper .is-root-container {
-	// 一番外側のブロックのみ
-	& > .wp-block,
-	& > div > .wp-block{
-		width:var(--vk-width-editor-container-body);
-		max-width:var(--vk-width-editor-container-body);
-		margin-left:auto;
-		margin-right:auto;
-	}
 	.wp-block {
 		max-width:var(--vk-width-editor-container-body);
 	}

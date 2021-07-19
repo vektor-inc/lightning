@@ -1,8 +1,8 @@
 === Lightning ===
 Lightning WordPress theme, Copyright (C) 2015-2021 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
-Tested up to: 5.7.2
-Stable tag: 14.5.2
+Tested up to: 5.8.0
+Stable tag: 14.5.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,6 +38,14 @@ https://www.vektor-inc.co.jp/inquiry/
 
 
 == Changelog ==
+
+v14.5.3
+[ G3/G2 ] WordPress 5.8 対応調整
+[ G3 ][ Bug fix ] Wide layout minor bug fix
+[ G3 ][ Bug fix ] Wide layout Cope with 2 column
+[ G3 ][ Bug fix ] Fix search block submit button bgcolor
+[ G3 ][ Bug fix ] Fix VK Blocks Post List Block Font size
+[ G3 ][ Other ] Disable old templates on edit screen
 
 v14.5.2
 [ Bug fix ] Fix Post list Font Size under case of post 1 column

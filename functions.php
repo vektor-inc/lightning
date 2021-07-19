@@ -19,16 +19,31 @@ if ( true === LIG_DEBUG ) {
 }
 
 function lightning_is_g3() {
-	$g = get_option( 'lightning_theme_generation' );
+
+	$return = true;
+	$g      = get_option( 'lightning_theme_generation' );
 	if ( 'g3' === $g ) {
 		$return = true;
+	} elseif ( 'g2' === $g ) {
+		$return = false;
 	} else {
+		$skin = get_option( 'lightning_design_skin' );
 		$options = get_option( 'lightning_theme_options' );
-		if ( get_option( 'fresh_site' ) || ! $options ) {
-			update_option( 'lightning_theme_generation', 'g3' );
-			$return = true;
-		} else {
+		if ( 'origin2' === $skin ) {
 			$return = false;
+			update_option( 'lightning_theme_generation', 'g2' );
+		} elseif ( 'origin3' === $skin ) {
+			$return = true;
+			update_option( 'lightning_theme_generation', 'g3' );
+
+		} elseif ( get_option( 'fresh_site' ) || ! $options ) {
+			// 新規サイトでオプション非保存ならまぁG3っしょ
+			$return = true;
+			update_option( 'lightning_theme_generation', 'g3' );
+		} else {
+			// これ以外は従来ユーザーの可能性が高いのでG2
+			$return = false;
+			update_option( 'lightning_theme_generation', 'g2' );
 		}
 	}
 	return apply_filters( 'lightning_is_g3', $return );
@@ -138,6 +153,7 @@ require dirname( __FILE__ ) . '/inc/tgm-plugin-activation/tgm-config.php';
 require dirname( __FILE__ ) . '/inc/vk-old-options-notice/vk-old-options-notice-config.php';
 require dirname( __FILE__ ) . '/inc/functions-compatible.php';
 require dirname( __FILE__ ) . '/inc/font-awesome/font-awesome-config.php';
+require dirname( __FILE__ ) . '/inc/old-page-template.php';
 
 /**
  * 世代切り替えした時に同時にスキンも変更する処理
@@ -153,13 +169,20 @@ require dirname( __FILE__ ) . '/inc/font-awesome/font-awesome-config.php';
 function lightning_change_generation( $old_value, $value, $option ) {
 	// 世代変更がある場合
 	if ( $value !== $old_value ) {
+
 		// 現状のスキンを取得
 		$current_skin = get_option( 'lightning_design_skin' );
-		// オプションを取得
-		$options                                  = get_option( 'lightning_theme_options' );
-		$options[ 'previous_skin_' . $old_value ] = $current_skin;
-		// 既存のスキンをオプションに保存
-		update_option( 'lightning_theme_options', $options );
+
+		if ( $current_skin ) {
+			// オプションを取得
+			$options = get_option( 'lightning_theme_options' );
+			if ( ! $options || ! is_array( $options ) ) {
+				$options = array();
+			}
+			$options[ 'previous_skin_' . $old_value ] = $current_skin;
+			// 既存のスキンをオプションに保存
+			update_option( 'lightning_theme_options', $options );
+		}
 
 		// 前のスキンが保存されている場合
 		if ( ! empty( $options[ 'previous_skin_' . $value ] ) ) {
