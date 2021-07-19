@@ -17,9 +17,9 @@ body {
 	font-family: 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
 	-ms-word-wrap: break-word;
 	word-wrap: break-word;
-	word-break: keep-all;
-	line-break: strict;
-	overflow-wrap: break-word;
+	// word-break: keep-all;
+	// line-break: strict;
+	// overflow-wrap: break-word;
 	background-color: #fff; // カスタマイザでデフォルト#ffffffにしてもリセットしないと効かないため
 }
 
