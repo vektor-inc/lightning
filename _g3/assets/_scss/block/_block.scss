@@ -89,6 +89,7 @@ entry-body
 		padding-bottom: 0.5em; 
 		border-radius: var(--vk-size-radius);
 		transition: all 0.1s ease-in;
+		background-color: var(--vk-color-primary);
 	}
 	.wp-block-button__link:hover {
 		background-color: var(--vk-color-primary-vivid);
