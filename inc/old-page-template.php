@@ -24,14 +24,16 @@ function lightning_exclude_old_page_templates( $page_templates, $theme, $post, $
 
 	// 古いテンプレートを使用しているか
 	$old_template_using = false;
-	foreach ( $current_templates as $current_template ) {
-		if ( array_key_exists( $current_template, $old_templates ) ) {
-			$old_template_using = true;
+	if ( ! empty( $current_templates ) ) {
+		foreach ( $current_templates as $current_template ) {
+			if ( array_key_exists( $current_template, $old_templates ) ) {
+				$old_template_using = true;
+			}
 		}
 	}
 
 	// 世代が G2 ではなく古いテンプレートを使っていない場合
-	if ( ! empty( $generation ) && 'g2' !== $generation && false === $old_template_using ) {
+	if ( ! empty( $generation ) && 'g2' !== $generation && false === $old_template_using && ! empty( $page_templates ) ) {
 		// 古いテンプレートを除外 （ array_diff_assoc の場合 $value 部分が片方翻訳されていないと効かないため ）
 		// ※ 事実上全消ししているので $page_templates = array() してしまうとユーザー独自で追加している場合に困る
 		foreach ( $page_templates as $key => $value ) {
