@@ -80,6 +80,20 @@ entry-body
 }
 
 /*-------------------------------------------*/
+/*  Gallery Block
+/*-------------------------------------------*/
+.wp-block-gallery {
+	&.aligncenter {
+		justify-content:center;
+	}
+	/* left right はコアで max-width:420px 指定が入っている */
+	&.alignright{
+		margin-left:auto;
+		margin-right:0;
+	}
+}
+
+/*-------------------------------------------*/
 /*  Button Block
 /*-------------------------------------------*/
 .wp-block-button {
