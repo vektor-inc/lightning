@@ -2,10 +2,10 @@
     z-index: 10000000;
 }
 .page-header span[class*="common"]{
-    top:2em;
+    bottom:4em;
 }
 .page-header .customize-partial-edit-shortcut{
-    top:4em;
+    bottom:7em;
     left:3em; /* 大きくするとコンテナ幅の下になって反応しなくなるので注意 */
 }
 .main-section .customize-partial-edit-shortcut-lightning_theme_options-layout-front-page > button {
