@@ -16,7 +16,7 @@ $options = array(
 	'new_text'                   => __( 'New!!', 'lightning' ),
 	'new_date'                   => 7,
 	// col-ld-12 used in font size and so on
-	'class_outer'                => 'vk_post-col-sm-12 vk_post-col-lg-12',
+	'class_outer'                => 'vk_post-col-xs-12 vk_post-col-sm-12 vk_post-col-lg-12',
 	'class_title'                => '',
 	'body_prepend'               => '',
 	'body_append'                => '',
