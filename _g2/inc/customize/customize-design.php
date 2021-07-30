@@ -409,6 +409,9 @@ function lightning_print_css_common() {
 	$color_key      = $colors['color_key'];
 	$color_key_dark = $colors['color_key_dark'];
 
+	$vk_helpers      = new VK_Helpers();
+	$color_key_vivid = $vk_helpers->color_auto_modifi( $color_key, 1.1 );
+
 	if ( ! empty( $options['color_key'] ) || ! empty( $options['color_key_dark'] ) ) {
 
 		$dynamic_css .= '/* ltg common custom */
@@ -416,6 +419,7 @@ function lightning_print_css_common() {
 			--vk-menu-acc-btn-border-color:#333;
 			--vk-color-primary:' . $color_key . ';
 			--vk-color-primary-dark:' . $color_key_dark . ';
+			--vk-color-primary-vivid:' . $color_key_vivid . ';
 			--color-key:' . $color_key . ';
 			--color-key-dark:' . $color_key_dark . ';
 		}
