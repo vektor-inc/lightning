@@ -59,18 +59,29 @@ entry-body
 .wp-block-button {
 	&__link {
 		font-size: 1rem;
-		padding-top: 0.5em;
-		padding-bottom: 0.5em; 
 		border-radius: var(--vk-size-radius);
 		transition: all 0.1s ease-in;
+		background-color: var(--vk-color-primary);
 	}
 	.wp-block-button__link:hover {
-		background-color: var(--vk-color-primary-vivid);
-		border-color: var(--vk-color-primary-vivid);
+		text-decoration: none;
+		background-color: var(--vk-color-primary-dark);
+		border-color: var(--vk-color-primary-dark);
 		color:#fff;
 	}
-} 
-
+}
+.wp-block-button__link {
+	padding-top: calc( 0.5em + 1px );
+	padding-bottom: calc( 0.5em + 1px );
+}
+.is-style-outline>.wp-block-button__link,
+.wp-block-button__link.is-style-outline{
+	padding-top: 0.5em;
+	padding-bottom: 0.5em; 
+}
+.is-style-outline>.wp-block-button__link{
+	border-width: 1px;
+}
 
 /*-------------------------------------------*/
 /*  Table Block

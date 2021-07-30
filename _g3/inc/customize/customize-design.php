@@ -25,12 +25,12 @@ function lightning_customize_register_design( $wp_customize ) {
 			$wp_customize,
 			'logo_header',
 			array(
-				'label'       => __( 'Header logo image', 'lightning' ),
-				'section'     => 'lightning_design',
-				'type'        => 'text',
+				'label'            => __( 'Header logo image', 'lightning' ),
+				'section'          => 'lightning_design',
+				'type'             => 'text',
 				'custom_title_sub' => '',
-				'custom_html' => __( 'Recommended image size : 500*120px', 'lightning' ),
-				'priority'    => 501,
+				'custom_html'      => __( 'Recommended image size : 500*120px', 'lightning' ),
+				'priority'         => 501,
 			)
 		)
 	);

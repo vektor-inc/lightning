@@ -41,9 +41,16 @@ h5 {
     border-bottom:1px solid var(--vk-color-border-hr)
 }
 
-.wp-block-button {
-	&__link {
-		padding-top: 0.5em;
-		padding-bottom: 0.5em; 
-	}
+.wp-block-button__link {
+	padding-top: calc( 0.6em + 2px );
+	padding-bottom: calc( 0.6em + 2px );
+}
+.vk_button {
+	margin-top:0;
+}
+.vk_button .vk_button_link.btn,
+.wp-block-button.is-style-outline .wp-block-button__link {
+	border-width: 1px;
+	padding-top: 0.6em;
+	padding-bottom: 0.6em;
 }
