@@ -191,25 +191,25 @@ function lightning_customize_register_design( $wp_customize ) {
 
 	// Link Text Color ( Visited ).
 	// $wp_customize->add_setting(
-	// 	'lightning_theme_options[link_text_color_visited]',
-	// 	array(
-	// 		'default'           => '',
-	// 		'type'              => 'option',
-	// 		'capability'        => 'edit_theme_options',
-	// 		'sanitize_callback' => 'sanitize_hex_color',
-	// 	)
+	// 'lightning_theme_options[link_text_color_visited]',
+	// array(
+	// 'default'           => '',
+	// 'type'              => 'option',
+	// 'capability'        => 'edit_theme_options',
+	// 'sanitize_callback' => 'sanitize_hex_color',
+	// )
 	// );
 	// $wp_customize->add_control(
-	// 	new WP_Customize_Color_Control(
-	// 		$wp_customize,
-	// 		'lightning_theme_options[link_text_color_visited]',
-	// 		array(
-	// 			'label'    => __( 'Link text color ( visited )', 'lightning' ),
-	// 			'section'  => 'lightning_design',
-	// 			'settings' => 'lightning_theme_options[link_text_color_visited]',
-	// 			'priority' => 600,
-	// 		)
-	// 	)
+	// new WP_Customize_Color_Control(
+	// $wp_customize,
+	// 'lightning_theme_options[link_text_color_visited]',
+	// array(
+	// 'label'    => __( 'Link text color ( visited )', 'lightning' ),
+	// 'section'  => 'lightning_design',
+	// 'settings' => 'lightning_theme_options[link_text_color_visited]',
+	// 'priority' => 600,
+	// )
+	// )
 	// );
 
 	/*
@@ -401,17 +401,17 @@ function lightning_output_keycolor_css() {
 add_action( 'wp_enqueue_scripts', 'lightning_print_css_common', 20 );
 
 function lightning_print_css_common() {
-	$options     	= get_option( 'lightning_theme_options' );
-	$skin_info   	= Lightning_Design_Manager::get_current_skin();
-	$dynamic_css 	= '';
+	$options     = get_option( 'lightning_theme_options' );
+	$skin_info   = Lightning_Design_Manager::get_current_skin();
+	$dynamic_css = '';
 
-	$colors 		= lightning_get_colors();
-	$color_key		= $colors['color_key'];
+	$colors         = lightning_get_colors();
+	$color_key      = $colors['color_key'];
 	$color_key_dark = $colors['color_key_dark'];
 
 	if ( ! empty( $options['color_key'] ) || ! empty( $options['color_key_dark'] ) ) {
 
-		$dynamic_css   .= '/* ltg common custom */
+		$dynamic_css .= '/* ltg common custom */
 		:root {
 			--vk-menu-acc-btn-border-color:#333;
 			--vk-color-primary:' . $color_key . ';
@@ -432,10 +432,10 @@ function lightning_print_css_common() {
 		.btn-primary:not(:disabled):not(.disabled):active,
 		.btn-primary:focus,
 		.btn-primary:hover { background-color:' . $color_key_dark . ';border-color:' . $color_key . '; }
-		.btn-outline-primary { color : ' . $color_key  . ' ; border-color:' . $color_key .'; }
+		.btn-outline-primary { color : ' . $color_key . ' ; border-color:' . $color_key . '; }
 		.btn-outline-primary:not(:disabled):not(.disabled):active,
 		.btn-outline-primary:focus,
-		.btn-outline-primary:hover { color : #fff; background-color:' . $color_key .';border-color:' . $color_key_dark  .'; }
+		.btn-outline-primary:hover { color : #fff; background-color:' . $color_key . ';border-color:' . $color_key_dark . '; }
 		';
 	} // if ( isset($options['color_key'] && isset($options['color_key_dark'] ) {
 
@@ -448,7 +448,7 @@ function lightning_print_css_common() {
 		$dynamic_css .= 'a:hover { color:' . $link_text_color_hover . '; }';
 	}
 	// if ( ! empty( $link_text_color_visited ) ) {
-	// 	$dynamic_css .= 'a:visited { color:' . $link_text_color_visited . '; }';
+	// $dynamic_css .= 'a:visited { color:' . $link_text_color_visited . '; }';
 	// }
 
 	/*
