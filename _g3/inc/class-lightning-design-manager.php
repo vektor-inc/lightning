@@ -8,7 +8,7 @@
 /**
  * Lightning_Design_Manager
  */
-class Ltg_Design_Manager {
+class Lightning_Design_Manager {
 
 	/**
 	 * Construct
@@ -283,4 +283,4 @@ class Ltg_Design_Manager {
 	}
 }
 
-$lightning_design_manager = new Ltg_Design_Manager();
+$lightning_design_manager = new Lightning_Design_Manager();
