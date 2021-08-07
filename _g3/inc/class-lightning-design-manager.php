@@ -56,6 +56,8 @@ class Lightning_Design_Manager {
 			'origin3' => array(
 				'label'          => __( 'Origin III', 'lightning' ),
 				'css_url'        => get_template_directory_uri() . '/design-skin/origin3/css/style.css',
+				// path use for tree shaking.
+				'css_path'       => get_parent_theme_file_path( '/design-skin/origin3/css/style.css' ),
 				'editor_css_url' => get_template_directory_uri() . '/design-skin/origin3/css/editor.css',
 				'php_path'       => get_parent_theme_file_path() . '/design-skin/origin3/origin3.php',
 				'js_url'         => '',
