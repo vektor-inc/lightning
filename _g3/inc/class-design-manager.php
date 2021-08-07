@@ -1,12 +1,18 @@
 <?php
+/**
+ * Lightning design skin sistem
+ */
+
+/**
+ * Lightning_Design_Manager
+ */
 class Lightning_Design_Manager {
 
-	static function init() {
+	public static function init() {
 
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'load_skin_css_and_js' ) );
 
-		// Don't use following action point.
-		// wp : Bring to phpunit test error
+		// Don't use following action point "wp" that bring to phpunit test error.
 		add_action( 'after_setup_theme', array( __CLASS__, 'load_skin_php' ) );
 
 		add_action( 'wp', array( __CLASS__, 'load_skin_callback' ) );
@@ -29,7 +35,7 @@ class Lightning_Design_Manager {
 	 *
 	 * @return array スキン固有で読み込むファイル情報の配列
 	 */
-	static function get_skins() {
+	public static function get_skins() {
 		$skins = array(
 			'plain'   => array(
 				'label'          => __( 'Plain', 'lightning' ),
@@ -62,7 +68,7 @@ class Lightning_Design_Manager {
 	 *
 	 * @return [array] Return plugin url to activate check.
 	 */
-	static function get_skins_info() {
+	public static function get_skins_info() {
 		$skins = array(
 			'variety'               => array(
 				'plugin_path' => 'lightning-skin-variety/lightning_skin_variety.php',
@@ -182,17 +188,26 @@ class Lightning_Design_Manager {
 				$skin_info['version']
 			);
 		}
-
 	}
 
-	static function load_skin_php() {
+	/**
+	 * Load skin's php file
+	 *
+	 * @return void
+	 */
+	public static function load_skin_php() {
 		$skin_info = self::get_current_skin();
 		if ( ! empty( $skin_info['php_path'] ) && file_exists( $skin_info['php_path'] ) ) {
 			require $skin_info['php_path'];
 		}
 	}
 
-	static function load_skin_callback() {
+	/**
+	 * Load skin callback function
+	 *
+	 * @return void
+	 */
+	public static function load_skin_callback() {
 		$skin_info = self::get_current_skin();
 		if ( ! empty( $skin_info['callback'] ) and $skin_info['callback'] ) {
 			call_user_func_array( $skin_info['callback'], array() );
