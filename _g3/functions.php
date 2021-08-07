@@ -148,7 +148,7 @@ function lightning_theme_setup() {
 }
 
 require dirname( __FILE__ ) . '/inc/vk-helpers/config.php';
-require dirname( __FILE__ ) . '/inc/class-lightning-design-manager.php';
+require dirname( __FILE__ ) . '/inc/class-ltg-design-manager.php';
 require dirname( __FILE__ ) . '/inc/class-vk-description-walker.php';
 require dirname( __FILE__ ) . '/inc/template-tags.php';
 require dirname( __FILE__ ) . '/inc/customize/customize-design.php';
@@ -189,7 +189,8 @@ add_action( 'admin_enqueue_scripts', 'lightning_load_common_editor_css' );
 function lightning_load_common_editor_css() {
 	/*
 	 Notice : Use url then if you use local environment https has error that bring to get css error and don't refrected */
-	/* Notice : add_editor_style() is only one args. */
+	/*
+	 Notice : add_editor_style() is only one args. */
 	/* add_editor_style is for Classic Editor Only. */
 	global $post;
 	if ( ! function_exists( 'use_block_editor_for_post' ) || ! use_block_editor_for_post( $post ) ) {

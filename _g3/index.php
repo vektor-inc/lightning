@@ -1,3 +1,12 @@
+<?php
+/**
+ * Lightning G3 index.php common template-file
+ *
+ * @package Lightning G3
+ */
+
+?>
+
 <?php lightning_get_template_part( 'header' ); ?>
 
 <?php
