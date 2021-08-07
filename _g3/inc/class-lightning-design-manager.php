@@ -1,25 +1,36 @@
 <?php
+/**
+ * Lightning design skin sistem
+ *
+ * @package Lightning G3
+ */
+
+/**
+ * Lightning_Design_Manager
+ */
 class Lightning_Design_Manager {
 
-	static function init() {
+	/**
+	 * Construct
+	 */
+	public function __construct() {
 
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'load_skin_css_and_js' ) );
 
-		// Don't use following action point.
-		// wp : Bring to phpunit test error
+		// Don't use following action point "wp" that bring to phpunit test error.
 		add_action( 'after_setup_theme', array( __CLASS__, 'load_skin_php' ) );
 
 		add_action( 'wp', array( __CLASS__, 'load_skin_callback' ) );
-
 
 		add_action( 'customize_register', array( __CLASS__, 'customize_register' ) );
 
 		/**
 		 * 編集画面において enqueue_block_editor_assets は上部で add_editor_style は下部で読み込まれる
 		 * -> 両方書くと enqueue_block_editor_assets で定義した CSS に wp_add_inline_style で引っ掛けても効かない
-		 * -> add_editor_style は Classic Editor 専用にすることで解決
 		 */
+		// add_editor_style は Classic Editor 専用に.
 		add_action( 'after_setup_theme', array( __CLASS__, 'load_skin_editor_css' ) );
+		// add_editor_style はテーマ外（プラグインなど）の https 以外のcss読み込みが効かないので、編集画面のcssは全部 enqueue_block_editor_assets で処理する.
 		add_action( 'enqueue_block_editor_assets', array( __CLASS__, 'load_skin_gutenberg_css' ) );
 
 	}
@@ -29,11 +40,12 @@ class Lightning_Design_Manager {
 	 *
 	 * @return array スキン固有で読み込むファイル情報の配列
 	 */
-	static function get_skins() {
+	public static function get_skins() {
 		$skins = array(
 			'plain'   => array(
 				'label'          => __( 'Plain', 'lightning' ),
-				'css_url'        => get_template_directory_uri() . '/design-skin/plain/css/style.css', // 中身が空でも指定しないと lightning-design-style がが出力されずに インラインCSSが効かないため',
+				// plainは空だが中身が空でも指定しないと lightning-design-style がが出力されずに インラインCSSが効かないため'.
+				'css_url'        => get_template_directory_uri() . '/design-skin/plain/css/style.css',
 				'css_path'       => get_parent_theme_file_path( '/design-skin/plain/css/style.css' ),
 				'editor_css_url' => '',
 				'php_path'       => '',
@@ -42,15 +54,13 @@ class Lightning_Design_Manager {
 				'bootstrap'      => '',
 			),
 			'origin3' => array(
-				'label'                    => __( 'Origin III', 'lightning' ),
-				'css_url'                  => get_template_directory_uri() . '/design-skin/origin3/css/style.css',
-				'css_path'                 => get_parent_theme_file_path( '/design-skin/origin3/css/style.css' ),
-				'editor_css_path_relative' => '_g3/design-skin/origin3/css/editor.css',
-				'editor_css_url'           => get_template_directory_uri() . '/design-skin/origin3/css/editor.css',
-				'php_path'                 => get_parent_theme_file_path() . '/design-skin/origin3/origin3.php',
-				'js_url'                   => '',
-				'version'                  => LIGHTNING_THEME_VERSION,
-				'bootstrap'                => '',
+				'label'          => __( 'Origin III', 'lightning' ),
+				'css_url'        => get_template_directory_uri() . '/design-skin/origin3/css/style.css',
+				'editor_css_url' => get_template_directory_uri() . '/design-skin/origin3/css/editor.css',
+				'php_path'       => get_parent_theme_file_path() . '/design-skin/origin3/origin3.php',
+				'js_url'         => '',
+				'version'        => LIGHTNING_THEME_VERSION,
+				'bootstrap'      => '',
 			),
 		);
 		return apply_filters( 'lightning_g3_skins', $skins );
@@ -62,7 +72,7 @@ class Lightning_Design_Manager {
 	 *
 	 * @return [array] Return plugin url to activate check.
 	 */
-	static function get_skins_info() {
+	public static function get_skins_info() {
 		$skins = array(
 			'variety'               => array(
 				'plugin_path' => 'lightning-skin-variety/lightning_skin_variety.php',
@@ -119,7 +129,7 @@ class Lightning_Design_Manager {
 		}
 
 		// If selected skin plugin is deactive that, set to default skin.
-		if ( $current_skin != 'origin3' ) {
+		if ( 'origin3' !== $current_skin ) {
 			include_once ABSPATH . 'wp-admin/includes/plugin.php';
 			$skins_info = self::get_skins_info();
 			if ( isset( $skins_info[ $current_skin ]['plugin_path'] ) && ! is_plugin_active( $skins_info[ $current_skin ]['plugin_path'] ) ) {
@@ -136,9 +146,9 @@ class Lightning_Design_Manager {
 	/**
 	 * Load skin CSS and JavaScript
 	 *
-	 * @return [type] [description]
+	 * @return void
 	 */
-	static function load_skin_css_and_js() {
+	public static function load_skin_css_and_js() {
 		$skin_info = self::get_current_skin();
 
 		$skin_css_url = '';
@@ -148,7 +158,7 @@ class Lightning_Design_Manager {
 
 		wp_enqueue_style( 'lightning-design-style', $skin_css_url, array( 'lightning-common-style' ), $skin_info['version'] );
 
-		// load JS ///////////////////////
+		// load JS ///////////////////////.
 
 		if ( ! empty( $skin_info['js_url'] ) ) {
 			wp_enqueue_script( 'lightning-design-js', esc_url( $skin_info['js_url'] ), array(), $skin_info['version'], true );
@@ -159,47 +169,68 @@ class Lightning_Design_Manager {
 	/**
 	 * Load skin Editor CSS
 	 *
-	 * @return [type] [description]
+	 * @return void
 	 */
-	static function load_skin_editor_css() {
+	public static function load_skin_editor_css() {
 		$skin_info = self::get_current_skin();
-		if ( ! empty( $skin_info['editor_css_path_relative'] ) ) {
-			add_editor_style( $skin_info['editor_css_path_relative'] );
-		} elseif ( ! empty( $skin_info['editor_css_url'] ) ) {
+		if ( ! empty( $skin_info['editor_css_url'] ) ) {
 			add_editor_style( $skin_info['editor_css_url'] );
 		}
 	}
 
-	// This method is planned to be removed.
-	// It's aleady don't need function that add_editor_style() become covered gutenberg more better.
-	static function load_skin_gutenberg_css() {
+	/**
+	 * Load_skin_gutenberg_css
+	 *
+	 * @return void
+	 */
+	public static function load_skin_gutenberg_css() {
+
+		// カスタマイズ画面でも読み込んでしまうので抹殺.
+		if ( is_customize_preview() ) {
+			return;
+		}
 		$skin_info = self::get_current_skin();
-		if ( ! empty( $skin_info['gutenberg_css_url'] ) ) {
+		if ( ! empty( $skin_info['editor_css_url'] ) ) {
 			wp_enqueue_style(
 				'lightning-gutenberg-editor',
-				$skin_info['gutenberg_css_url'],
+				$skin_info['editor_css_url'],
 				array( 'wp-edit-blocks' ),
 				$skin_info['version']
 			);
 		}
-
 	}
 
-	static function load_skin_php() {
+	/**
+	 * Load skin's php file
+	 *
+	 * @return void
+	 */
+	public static function load_skin_php() {
 		$skin_info = self::get_current_skin();
 		if ( ! empty( $skin_info['php_path'] ) && file_exists( $skin_info['php_path'] ) ) {
 			require $skin_info['php_path'];
 		}
 	}
 
-	static function load_skin_callback() {
+	/**
+	 * Load skin callback function
+	 *
+	 * @return void
+	 */
+	public static function load_skin_callback() {
 		$skin_info = self::get_current_skin();
-		if ( ! empty( $skin_info['callback'] ) and $skin_info['callback'] ) {
+		if ( ! empty( $skin_info['callback'] ) && $skin_info['callback'] ) {
 			call_user_func_array( $skin_info['callback'], array() );
 		}
 	}
 
-	static function customize_register( $wp_customize ) {
+	/**
+	 * Skin select customize
+	 *
+	 * @param array $wp_customize ...
+	 * @return void
+	 */
+	public static function customize_register( $wp_customize ) {
 
 		$wp_customize->add_setting(
 			'skin_header',
@@ -212,12 +243,12 @@ class Lightning_Design_Manager {
 				$wp_customize,
 				'skin_header',
 				array(
-					'label'       => __( 'Design skin', 'lightning' ),
-					'section'     => 'lightning_design',
-					'type'        => 'text',
+					'label'            => __( 'Design skin', 'lightning' ),
+					'section'          => 'lightning_design',
+					'type'             => 'text',
 					'custom_title_sub' => '',
-					'custom_html' => '<span style="color:red;font-weight:bold;">' . __( 'If you change the skin, please save once and reload the page.', 'lightning' ) . '</span>',
-					'priority'    => 100,
+					'custom_html'      => '<span style="color:red;font-weight:bold;">' . __( 'If you change the skin, please save once and reload the page.', 'lightning' ) . '</span>',
+					'priority'         => 100,
 				)
 			)
 		);
@@ -252,4 +283,4 @@ class Lightning_Design_Manager {
 	}
 }
 
-Lightning_Design_Manager::init();
+$lightning_design_manager = new Lightning_Design_Manager();
