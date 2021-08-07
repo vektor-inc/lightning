@@ -148,7 +148,7 @@ function lightning_theme_setup() {
 }
 
 require dirname( __FILE__ ) . '/inc/vk-helpers/config.php';
-require dirname( __FILE__ ) . '/inc/class-design-manager.php';
+require dirname( __FILE__ ) . '/inc/class-lightning-design-manager.php';
 require dirname( __FILE__ ) . '/inc/class-vk-description-walker.php';
 require dirname( __FILE__ ) . '/inc/template-tags.php';
 require dirname( __FILE__ ) . '/inc/customize/customize-design.php';

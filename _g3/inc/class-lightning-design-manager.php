@@ -1,6 +1,8 @@
 <?php
 /**
  * Lightning design skin sistem
+ *
+ * @package Lightning G3
  */
 
 /**
