@@ -135,8 +135,8 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 					'class' => '',
 					'icon'  => '',
 				);
-			} else if ( ( is_single() || is_archive() ) || is_date() && ! is_post_type_archive() && ! is_search() ) {
-				if ( $post_type_info['slug'] !== 'post' || $post_top_info['use'] ){
+			} elseif ( ( is_single() || is_archive() ) || is_date() && ! is_post_type_archive() && ! is_search() ) {
+				if ( $post_type_info['slug'] !== 'post' || $post_top_info['use'] ) {
 					$breadcrumb_array[] = array(
 						'name'  => $post_type_info['name'],
 						'id'    => '',
@@ -379,7 +379,15 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 					$breadcrumb_html .= '<i class="' . $value['icon'] . '"></i>';
 				}
 
-				$breadcrumb_html .= '<span' . $microdata_li_a_span . '>' . esc_html( $value['name'] ) . '</span>';
+				$breadclumb_post_title_allowed_html = array(
+					'i'    => array(
+						'id'    => array(),
+						'class' => array(),
+					),
+					'ruby' => array(),
+					'rt' => array(),
+				);
+				$breadcrumb_html .= '<span' . $microdata_li_a_span . '>' . wp_kses( $value['name'], $breadclumb_post_title_allowed_html ) . '</span>';
 
 				if ( $value['url'] ) {
 					$breadcrumb_html .= '</a>';
@@ -436,6 +444,8 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 						'id'    => array(),
 						'class' => array(),
 					),
+					'ruby' => array(),
+					'rt'   => array(),
 				);
 
 				$breadcrumb_html = wp_kses( $breadcrumb_html, $allowed_html );
