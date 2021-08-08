@@ -39,12 +39,15 @@ define( 'GUTENBERG_LOAD_VENDOR_SCRIPTS', false );
  * Manually load the plugin being tested.
  */
 function _manually_load_plugin() {
-	register_theme_directory( dirname( __FILE__ ) . '/../../../' ); 
+	register_theme_directory( dirname( __FILE__ ) . '/../../../' );
 	search_theme_directories();
-	add_filter( 'lightning_is_g3', function(){
-		return true;
-	});
-	switch_theme('lightning');
+	add_filter(
+		'lightning_is_g3',
+		function() {
+			return true;
+		}
+	);
+	switch_theme( 'lightning' );
 }
 tests_add_filter( 'muplugins_loaded', '_manually_load_plugin' );
 
