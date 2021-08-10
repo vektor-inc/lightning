@@ -9,7 +9,7 @@ define( 'LIGHTNING_SHORT_NAME', 'LTG THEME' );
  * Debug
  */
 // add_action( 'lightning_header_append', 'lightning_debug_active' );
-function lightning_debug_active(){
+function lightning_debug_active() {
 
 	$options = get_option( 'lightning_theme_options' );
 	// print '<pre style="text-align:left">';print_r($options);print '</pre>';
@@ -86,7 +86,7 @@ function lightning_theme_setup() {
 	  custom-background
 	/*-------------------------------------------*/
 	$args = array(
-		'default-color'          => '#ffffff',
+		'default-color' => '#ffffff',
 	);
 	add_theme_support( 'custom-background', $args );
 
