@@ -213,16 +213,20 @@ function lightning_load_common_editor_css_to_gutenberg() {
 	);
 }
 
-
-/*
-  Load JS
-/*-------------------------------------------*/
-add_action( 'wp_enqueue_scripts', 'lightning_addJs' );
-function lightning_addJs() {
+/**
+ * Load JavaScript
+ *
+ * @return void
+ */
+function lightning_add_script() {
+	if ( filter_input( INPUT_GET, 'legacy-widget-preview', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY ) ) {
+		return;
+	}
 	wp_register_script( 'lightning-js', get_template_directory_uri() . '/assets/js/main.js', array(), LIGHTNING_THEME_VERSION, true );
 	wp_localize_script( 'lightning-js', 'lightningOpt', apply_filters( 'lightning_localize_options', array() ) );
 	wp_enqueue_script( 'lightning-js' );
 }
+add_action( 'wp_enqueue_scripts', 'lightning_add_script' );
 
 // fix global menu
 add_filter( 'lightning_localize_options', 'lightning_global_nav_fix', 10, 1 );
