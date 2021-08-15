@@ -7,6 +7,11 @@
         }
     ],
     "require": {},
+    "autoload": {
+        "psr-4": {
+            "vktestphperror\\": "_g3/inc/vk-test-php-error/"
+        }
+    },
     "require-dev": {
 		"sirbrillig/phpcs-variable-analysis": "^2.8",
 		"wp-phpunit/wp-phpunit": "^5.4"
