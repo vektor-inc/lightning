@@ -26,7 +26,7 @@ function lightning_exclude_old_page_templates( $page_templates, $theme, $post, $
 	$old_template_using = false;
 	if ( ! empty( $current_templates ) ) {
 		foreach ( $current_templates as $current_template ) {
-			if ( ! empty( $current_template ) && array_key_exists( $current_template, $old_templates ) ) {
+			if ( array_key_exists( $current_template, $old_templates ) ) {
 				$old_template_using = true;
 			}
 		}
