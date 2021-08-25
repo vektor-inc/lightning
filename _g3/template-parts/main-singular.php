@@ -1,4 +1,10 @@
 <?php
+/**
+ * Singular main template
+ *
+ * @package Lightning G3
+ */
+
 if ( apply_filters( 'lightning_is_extend_single', false ) ) :
 	do_action( 'lightning_extend_single' );
 else :
@@ -7,7 +13,7 @@ else :
 			the_post();
 			$template = 'template-parts/entry-' . esc_attr( $post->post_name ) . '.php';
 			$return   = locate_template( $template );
-			if ( $return && $post->post_name != get_post_type() ) {
+			if ( $return && get_post_type() !== $post->post_name ) {
 				locate_template( $template, true );
 			} else {
 				lightning_get_template_part( 'template-parts/entry', get_post_type() );
@@ -21,6 +27,5 @@ else :
 				lightning_get_template_part( 'template-parts/next-prev', get_post_type() );
 			}
 		endwhile;
-	endif; // if ( have_posts() ) :
-endif; // if ( apply_filters( 'lightning_is_extend_single', false ) ) :
-
+	endif;
+endif;

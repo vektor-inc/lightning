@@ -93,6 +93,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 		 * @return void
 		 */
 		public static function the_view( $post, $options ) {
+
 			echo wp_kses_post( self::get_view( $post, $options ) );
 		}
 
@@ -203,7 +204,71 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 		 * @param array  $options_loop loop options.
 		 */
 		public static function the_loop( $wp_query, $options, $options_loop = array() ) {
-			echo wp_kses_post( self::get_loop( $wp_query, $options, $options_loop ) );
+			$allowed_html = self::vk_kses_post();
+			echo wp_kses( self::get_loop( $wp_query, $options, $options_loop ), $allowed_html );
+		}
+
+		/**
+		 * Kses Escape
+		 *
+		 * It's need for wp_kses_post escape ruby and rt that cope with ruby and rt.
+		 *
+		 * @return array $allowed_html
+		 */
+		public static function vk_kses_post() {
+			$common_attr = array(
+				'id'    => array(),
+				'class' => array(),
+				'role'  => array(),
+				'style' => array(),
+			);
+			$tags        = array(
+				'div',
+				'section',
+				'article',
+				'header',
+				'footer',
+				'span',
+				'h1',
+				'h2',
+				'h3',
+				'h4',
+				'h5',
+				'h6',
+				'button',
+				'p',
+				'i',
+				'a',
+				'b',
+				'strong',
+				'table',
+				'thead',
+				'tbody',
+				'tfoot',
+				'th',
+				'tr',
+				'td',
+				'tr',
+				'ol',
+				'ul',
+				'li',
+				'dl',
+				'dt',
+				'dd',
+				'img',
+				'ruby',
+				'rt',
+			);
+			foreach ( $tags as $tag ) {
+				$allowed_html[ $tag ] = $common_attr;
+			}
+			$allowed_html['a']['href']    = array();
+			$allowed_html['a']['target']  = array();
+			$allowed_html['img']['src']   = array();
+			$allowed_html['img']['sizes'] = array();
+			$allowed_html['ruby']         = array();
+			$allowed_html['rt']           = array();
+			return $allowed_html;
 		}
 
 
