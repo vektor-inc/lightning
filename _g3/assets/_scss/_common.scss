@@ -160,7 +160,8 @@ textarea {
 	font-size: 1rem;
 	border:1px solid var(--vk-color-border-form);
 	border-radius: var(--vk-size-radius);
-	padding: .625rem .75rem;
+	padding: 0.375rem 0.8rem;
+	min-height: calc(1.5rem + 1rem);
 	// bottomはすぐ下にキャプションつけたりする場合があるので若干余白をもたせた方が良いが、
 	// 上部に余白をつけるとWooCommerceなどすぐとなりにボタンがある場合など段差ができるので上部に余白はつけない
 	margin:0 0 0.5rem;
