@@ -30,7 +30,7 @@ function lightning_admin_mail_checker() {
 
 	// 警告文.
 	$notice  = '<div class="notice notice-warning"><p>';
-	$notice .= __( 'The administrator email address contains "' . $check_string . '". Please change immediately as you will not receive any inquiries.', 'lightning' );
+	$notice .= sprintf( __( 'The administrator email address contains "%s". Please change immediately as you will not receive any inquiries.', 'lightning' ), $check_string );
 	$notice .= ' <a href="' . $option_link . '" class="button button-primary">' . __( 'Change email Now!', 'lightning' ) . '</a>';
 	$notice .= '</p></div>';
 
