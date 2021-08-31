@@ -10,6 +10,12 @@
  */
 function lightning_admin_mail_checker() {
 
+	global $hook_suffix;
+
+	if ( 'options-general.php' === $hook_suffix ){
+		return;
+	}
+
 	// 現在の管理者メールアドレス.
 	$admin_email = get_option( 'admin_email' );
 
