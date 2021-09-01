@@ -23,7 +23,7 @@ class PHP_Fatal_Error_Test extends WP_UnitTestCase {
 		print '------------------------------------' . PHP_EOL;
 		print PHP_EOL;
 
-		/*** ↓↓ テスト用事前データ設定（ test_lightning_is_layout_onecolumn と test_lightning_is_subsection_display 共通 ) */
+		/*** ↓↓ テスト用事前データ設定 */
 
 		register_post_type(
 			'event',
