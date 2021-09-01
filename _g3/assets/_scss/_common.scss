@@ -160,8 +160,7 @@ textarea {
 	font-size: 1rem;
 	border:1px solid var(--vk-color-border-form);
 	border-radius: var(--vk-size-radius);
-	padding: 0.375rem 0.8rem;
-	min-height: calc(1.5rem + 1rem);
+	padding:0.8em 1em;
 	// bottomはすぐ下にキャプションつけたりする場合があるので若干余白をもたせた方が良いが、
 	// 上部に余白をつけるとWooCommerceなどすぐとなりにボタンがある場合など段差ができるので上部に余白はつけない
 	margin:0 0 0.5rem;
@@ -175,7 +174,7 @@ input[type=submit]{
 	border:1px solid var(--vk-color-primary-dark);
 	background-color:var(--vk-color-primary);
 	color:#fff;
-	padding: 0.75em 2em;
+	padding: 0.8em 2em;
 	border-radius: var(--vk-size-radius);
 	&:hover {
 		cursor: pointer;
