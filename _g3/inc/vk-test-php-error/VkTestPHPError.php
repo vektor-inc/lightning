@@ -10,9 +10,13 @@ namespace vktestphperror;
 /**
  * PHP_Fatal_Error_Test
  */
-// class VkTestPHPError extends WP_UnitTestCase {
 class VkTestPHPError {
 
+	/**
+	 * Display post title
+	 *
+	 * @return void
+	 */
 	public static function test_title() {
 		print PHP_EOL;
 		print '------------------------------------' . PHP_EOL;
@@ -21,6 +25,11 @@ class VkTestPHPError {
 		print PHP_EOL;
 	}
 
+	/**
+	 * Insert Test Environment Post
+	 *
+	 * @return array $test_posts : test post data
+	 */
 	public static function create_test_posts() {
 		/*** ↓↓ テスト用事前データ設定 */
 
@@ -135,7 +144,6 @@ class VkTestPHPError {
 	/****************************************
 	 * Test Array
 	 */
-
 	public static function get_test_array() {
 
 		$test_posts = self::create_test_posts();
