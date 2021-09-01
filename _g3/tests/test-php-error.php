@@ -24,11 +24,7 @@ class PHP_Fatal_Error_Test extends WP_UnitTestCase {
 
 		$vk_test_php_error = new VkTestPHPError();
 
-		print PHP_EOL;
-		print '------------------------------------' . PHP_EOL;
-		print 'PHP Fatal Error Check' . PHP_EOL;
-		print '------------------------------------' . PHP_EOL;
-		print PHP_EOL;
+		$vk_test_php_error->test_title;
 
 		$test_array = $vk_test_php_error->get_test_array();
 
@@ -38,6 +34,8 @@ class PHP_Fatal_Error_Test extends WP_UnitTestCase {
 					update_option( $option_key, $option_value );
 				}
 			}
+
+			// tree shaking を有効化した状態になるように.
 			$vk_css_tree_shaking_array = array();
 			lightning_css_tree_shaking_array( $vk_css_tree_shaking_array );
 

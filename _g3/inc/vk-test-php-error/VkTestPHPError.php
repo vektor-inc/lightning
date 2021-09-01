@@ -13,8 +13,16 @@ namespace vktestphperror;
 // class VkTestPHPError extends WP_UnitTestCase {
 class VkTestPHPError {
 
-	public static function create_test_posts(){
-		/*** ↓↓ テスト用事前データ設定（ test_lightning_is_layout_onecolumn と test_lightning_is_subsection_display 共通 ) */
+	public static function test_title() {
+		print PHP_EOL;
+		print '------------------------------------' . PHP_EOL;
+		print 'PHP Fatal Error Check' . PHP_EOL;
+		print '------------------------------------' . PHP_EOL;
+		print PHP_EOL;
+	}
+
+	public static function create_test_posts() {
+		/*** ↓↓ テスト用事前データ設定 */
 
 		register_post_type(
 			'event',
@@ -37,31 +45,31 @@ class VkTestPHPError {
 		$test_posts = array();
 
 		// Create test category.
-		$catarr             = array(
+		$catarr                           = array(
 			'cat_name' => 'parent_category',
 		);
 		$test_posts['parent_category_id'] = wp_insert_category( $catarr );
 
-		$catarr            = array(
+		$catarr                          = array(
 			'cat_name'        => 'child_category',
 			'category_parent' => $test_posts['parent_category_id'],
 		);
 		$test_posts['child_category_id'] = wp_insert_category( $catarr );
 
-		$catarr              = array(
+		$catarr                            = array(
 			'cat_name' => 'no_post_category',
 		);
 		$test_posts['no_post_category_id'] = wp_insert_category( $catarr );
 
 		// Create test term.
-		$args          = array(
+		$args                        = array(
 			'slug' => 'event_category_name',
 		);
-		$term_info     = wp_insert_term( 'event_category_name', 'event_cat', $args );
+		$term_info                   = wp_insert_term( 'event_category_name', 'event_cat', $args );
 		$test_posts['event_term_id'] = $term_info['term_id'];
 
 		// Create test post.
-		$post    = array(
+		$post                  = array(
 			'post_title'    => 'test',
 			'post_status'   => 'publish',
 			'post_content'  => 'content',
@@ -72,7 +80,7 @@ class VkTestPHPError {
 		wp_set_object_terms( $test_posts['post_id'], 'child_category', 'category' );
 
 		// Create test page.
-		$post           = array(
+		$post                         = array(
 			'post_title'   => 'parent_page',
 			'post_type'    => 'page',
 			'post_status'  => 'publish',
@@ -91,7 +99,7 @@ class VkTestPHPError {
 		$test_posts['child_page_id'] = wp_insert_post( $post );
 
 		// Create test home page.
-		$post         = array(
+		$post                       = array(
 			'post_title'   => 'post_top',
 			'post_type'    => 'page',
 			'post_status'  => 'publish',
@@ -100,7 +108,7 @@ class VkTestPHPError {
 		$test_posts['home_page_id'] = wp_insert_post( $post );
 
 		// Create test home page.
-		$post          = array(
+		$post                        = array(
 			'post_title'   => 'front_page',
 			'post_type'    => 'page',
 			'post_status'  => 'publish',
@@ -109,7 +117,7 @@ class VkTestPHPError {
 		$test_posts['front_page_id'] = wp_insert_post( $post );
 
 		// custom post type.
-		$post          = array(
+		$post                        = array(
 			'post_title'   => 'event-test-post',
 			'post_type'    => 'event',
 			'post_status'  => 'publish',
@@ -128,7 +136,7 @@ class VkTestPHPError {
 	 * Test Array
 	 */
 
-	public static function get_test_array(){
+	public static function get_test_array() {
 
 		$test_posts = self::create_test_posts();
 
