@@ -84,8 +84,11 @@ do_action( 'lightning_loop_before' );
 
 <?php else : ?>
 
-<div class="main-section-no-posts"><p><?php echo wp_kses_post( apply_filters( 'lightning_no_posts_text', __( 'No posts.', 'lightning' ) ) ); ?></p></div>
-
+<div class="main-section-no-posts">
+	<p>
+		<?php echo wp_kses_post( lightning_get_no_post_text() ); ?>
+	</p>
+</div>
 <?php endif; ?>
 
 <?php do_action( 'lightning_loop_after' ); ?>
