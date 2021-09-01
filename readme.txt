@@ -23,7 +23,6 @@ Bootstrap based,Supports customizer, Responsive Layout, Page Navigation, Breadcr
 The Theme has 9 widget areas.
 You can use these area to customize the content of your website.
 
-
 == License ==
 Unless otherwise specified, all the theme files, scripts and images are licensed under GNU General Public License version 2, see file license.txt.
 The exceptions to this license are as follows:
@@ -40,7 +39,8 @@ https://www.vektor-inc.co.jp/inquiry/
 == Changelog ==
 
 v14.8.0
-[ G3 ][ Bug fix ] fix design css load priority on edit screen
+[ G3 ][ Other ] No post message cope with post type 
+[ G3 ][ Bug fix ] fix form font size
 
 v14.7.1
 [ G3 ][ Bug fix ] fix design css load priority on edit screen
