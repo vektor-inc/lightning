@@ -1,4 +1,23 @@
 <?php
+function lightning_get_no_post_text() {
+
+	$post_type_info = VK_Helpers::get_post_type_info();
+
+	if ( empty( $post_type_info['name'] ) ) {
+		$name = __( 'Post', 'lightning' );
+	} else {
+		$name = $post_type_info['name'];
+	}
+
+	if ( is_search() ) {
+		/* translators: %s: post type name */
+		$message = sprintf( __( 'There is no corresponding no %s.', 'lightning' ), $name );
+	} else {
+		/* translators: %s: post type name */
+		$message = sprintf( __( 'There are no %ss.', 'lightning' ), $name );
+	}
+	return apply_filters( 'lightning_no_posts_text', $message );
+}
 
 function lightning_get_class_names( $position = '' ) {
 
@@ -34,7 +53,7 @@ function lightning_get_class_names( $position = '' ) {
 		$class_names['sub-section'][]  = 'sub-section--col--two';
 		// 2 column
 		$options = get_option( 'lightning_theme_options' );
-		// sidebar-position
+		// sidebar-position.
 		if ( isset( $options['sidebar_position'] ) && $options['sidebar_position'] === 'left' ) {
 			$class_names['main-section'][] = 'main-section--pos--right';
 			$class_names['sub-section'][]  = 'sub-section--pos--left';
