@@ -38,12 +38,16 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v14.8.1
+[ G3 ][ Bug fix ] Add change filter hook name fall back ( lightning_archive-header -> lightning_archive_header )
+
 v14.8.0
 [ G3 ][ Other ] No post message cope with post type 
 [ G3 ][ Bug fix ] fix form font size
 
 v14.7.1
 [ G3 ][ Bug fix ] fix design css load priority on edit screen
+[ G3 ][ Change Filter Hook Name] lightning_archive-header -> lightning_archive_header
 
 v14.7.0
 [ G2/G3 ][ Bug fix ] Fix Widget setting page JavaScript Error
