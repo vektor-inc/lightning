@@ -19,7 +19,6 @@ class PHP_Fatal_Error_Test extends WP_UnitTestCase {
 	 *
 	 * @return void
 	 */
-
 	public function test_php_faral_error() {
 
 		$vk_test_php_error = new VkTestPHPError();

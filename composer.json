@@ -6,11 +6,8 @@
             "email": "info@vektor-inc.co.jp"
         }
     ],
-    "require": {},
-    "autoload": {
-        "psr-4": {
-            "vktestphperror\\": "_g3/inc/vk-test-php-error/"
-        }
+    "require": {
+        "vektor-inc/vk-test-php-error": "^0.1.0"
     },
     "require-dev": {
 		"sirbrillig/phpcs-variable-analysis": "^2.8",
