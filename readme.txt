@@ -40,6 +40,7 @@ https://www.vektor-inc.co.jp/inquiry/
 
 v14.8.1
 [ G3 ][ Bug fix ] Add change filter hook name fall back ( lightning_archive-header -> lightning_archive_header )
+[ G3 ][ Other ] PHPUnit test Refactoring
 
 v14.8.0
 [ G3 ][ Other ] No post message cope with post type 
