@@ -7,12 +7,7 @@
         }
     ],
     "require": {
-        "vektor-inc/vk-test-php-error": "^0.2.0"
-    },
-    "autoload": {
-        "psr-4": {
-            "VK_WP_Unit_Test_Tools\\": "vendor/vektor-inc/vk-wp-unit-test-tools/src/"
-        }
+        "vektor-inc/vk-wp-unit-test-tools": "^0.6.0"
     },
     "require-dev": {
 		"sirbrillig/phpcs-variable-analysis": "^2.8",
