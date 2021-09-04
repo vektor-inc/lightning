@@ -4,26 +4,26 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "efa9dd68630755a508e58b3878a7daf4",
+    "content-hash": "14d11ec9dea4b7c32fe973757e804bf7",
     "packages": [
         {
-            "name": "vektor-inc/vk-test-php-error",
-            "version": "0.1.0",
+            "name": "vektor-inc/vk-wp-unit-test-tools",
+            "version": "0.10.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/vektor-inc/vk-test-php-error.git",
-                "reference": "b3b4a23c8cc30a13cc9dedb516b6c156bbf8a24b"
+                "url": "https://github.com/vektor-inc/vk-wp-unit-test-tools.git",
+                "reference": "5ce9eb397ba1ec76193664e6877288ffa22b9422"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vektor-inc/vk-test-php-error/zipball/b3b4a23c8cc30a13cc9dedb516b6c156bbf8a24b",
-                "reference": "b3b4a23c8cc30a13cc9dedb516b6c156bbf8a24b",
+                "url": "https://api.github.com/repos/vektor-inc/vk-wp-unit-test-tools/zipball/5ce9eb397ba1ec76193664e6877288ffa22b9422",
+                "reference": "5ce9eb397ba1ec76193664e6877288ffa22b9422",
                 "shasum": ""
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "vktestphperror\\": "src/vk-test-php-error/"
+                    "VK_WP_Unit_Test_Tools\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -36,35 +36,35 @@
                     "email": "kurudrive@gmail.com"
                 }
             ],
-            "description": "WordPress PHP error unit test tools",
+            "description": "WordPress PHPUnit test tools",
             "support": {
-                "issues": "https://github.com/vektor-inc/vk-test-php-error/issues",
-                "source": "https://github.com/vektor-inc/vk-test-php-error/tree/0.1.0"
+                "issues": "https://github.com/vektor-inc/vk-wp-unit-test-tools/issues",
+                "source": "https://github.com/vektor-inc/vk-wp-unit-test-tools/tree/0.10.0"
             },
-            "time": "2021-09-01T19:06:22+00:00"
+            "time": "2021-09-03T10:14:12+00:00"
         }
     ],
     "packages-dev": [
         {
             "name": "sirbrillig/phpcs-variable-analysis",
-            "version": "v2.8.3",
+            "version": "v2.11.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sirbrillig/phpcs-variable-analysis.git",
-                "reference": "00b4fa3130faa26762c929989e3d958086c627f1"
+                "reference": "3fad28475bfbdbf8aa5c440f8a8f89824983d85e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sirbrillig/phpcs-variable-analysis/zipball/00b4fa3130faa26762c929989e3d958086c627f1",
-                "reference": "00b4fa3130faa26762c929989e3d958086c627f1",
+                "url": "https://api.github.com/repos/sirbrillig/phpcs-variable-analysis/zipball/3fad28475bfbdbf8aa5c440f8a8f89824983d85e",
+                "reference": "3fad28475bfbdbf8aa5c440f8a8f89824983d85e",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.4.0",
-                "squizlabs/php_codesniffer": "^3.1"
+                "squizlabs/php_codesniffer": "^3.5"
             },
             "require-dev": {
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.4.4 || ^0.5 || ^0.6",
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
                 "limedeck/phpunit-detailed-printer": "^3.1 || ^4.0 || ^5.0",
                 "phpstan/phpstan": "^0.11.8",
                 "phpunit/phpunit": "^5.0 || ^6.5 || ^7.0 || ^8.0",
@@ -91,20 +91,25 @@
                 }
             ],
             "description": "A PHPCS sniff to detect problems with variables.",
-            "time": "2020-07-11T23:32:06+00:00"
+            "support": {
+                "issues": "https://github.com/sirbrillig/phpcs-variable-analysis/issues",
+                "source": "https://github.com/sirbrillig/phpcs-variable-analysis",
+                "wiki": "https://github.com/sirbrillig/phpcs-variable-analysis/wiki"
+            },
+            "time": "2021-07-06T23:45:17+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.5.6",
+            "version": "3.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "e97627871a7eab2f70e59166072a6b767d5834e0"
+                "reference": "ffced0d2c8fa8e6cdc4d695a743271fab6c38625"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/e97627871a7eab2f70e59166072a6b767d5834e0",
-                "reference": "e97627871a7eab2f70e59166072a6b767d5834e0",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/ffced0d2c8fa8e6cdc4d695a743271fab6c38625",
+                "reference": "ffced0d2c8fa8e6cdc4d695a743271fab6c38625",
                 "shasum": ""
             },
             "require": {
@@ -142,20 +147,25 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2020-08-10T04:50:15+00:00"
+            "support": {
+                "issues": "https://github.com/squizlabs/PHP_CodeSniffer/issues",
+                "source": "https://github.com/squizlabs/PHP_CodeSniffer",
+                "wiki": "https://github.com/squizlabs/PHP_CodeSniffer/wiki"
+            },
+            "time": "2021-04-09T00:54:41+00:00"
         },
         {
             "name": "wp-phpunit/wp-phpunit",
-            "version": "5.5.1",
+            "version": "5.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-phpunit/wp-phpunit.git",
-                "reference": "763121e752594664c150643e05c991a0acf3800a"
+                "reference": "da3f6fc3bc5cae2c76af6f9a260620fc4f8d9f90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-phpunit/wp-phpunit/zipball/763121e752594664c150643e05c991a0acf3800a",
-                "reference": "763121e752594664c150643e05c991a0acf3800a",
+                "url": "https://api.github.com/repos/wp-phpunit/wp-phpunit/zipball/da3f6fc3bc5cae2c76af6f9a260620fc4f8d9f90",
+                "reference": "da3f6fc3bc5cae2c76af6f9a260620fc4f8d9f90",
                 "shasum": ""
             },
             "type": "library",
@@ -185,7 +195,12 @@
                 "test",
                 "wordpress"
             ],
-            "time": "2020-09-02T15:53:50+00:00"
+            "support": {
+                "docs": "https://github.com/wp-phpunit/docs",
+                "issues": "https://github.com/wp-phpunit/issues",
+                "source": "https://github.com/wp-phpunit/wp-phpunit"
+            },
+            "time": "2021-07-27T09:32:49+00:00"
         }
     ],
     "aliases": [],

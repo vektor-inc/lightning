@@ -7,7 +7,7 @@
         }
     ],
     "require": {
-        "vektor-inc/vk-test-php-error": "^0.1.0"
+        "vektor-inc/vk-wp-unit-test-tools": "^0.10.0"
     },
     "require-dev": {
 		"sirbrillig/phpcs-variable-analysis": "^2.8",

@@ -12,10 +12,15 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 	require_once dirname( __FILE__ ) . '/package/class-vk-css-optimize.php';
 }
 
-function lightning_css_tree_shaking_array( $vk_css_tree_shaking_array ){
+/**
+ * Register tree shaking css
+ *
+ * @param array $vk_css_tree_shaking_array : recieve array.
+ * @return array $vk_css_tree_shaking_array : return modefied array.
+ */
+function lightning_css_tree_shaking_array( $vk_css_tree_shaking_array ) {
 
-	$skin_info = Lightning_Design_Manager::get_current_skin();
-
+	// Register common css.
 	$vk_css_tree_shaking_array[] = array(
 		'id'      => 'lightning-common-style',
 		'url'     => get_template_directory_uri() . '/assets/css/style.css',
@@ -23,6 +28,8 @@ function lightning_css_tree_shaking_array( $vk_css_tree_shaking_array ){
 		'version' => LIGHTNING_THEME_VERSION,
 	);
 
+	// Register design css.
+	$skin_info     = Lightning_Design_Manager::get_current_skin();
 	$skin_css_url  = ! empty( $skin_info['css_url'] ) ? $skin_info['css_url'] : '';
 	$skin_css_path = ! empty( $skin_info['css_path'] ) ? $skin_info['css_path'] : '';
 	$skin_version  = ! empty( $skin_info['version'] ) ? $skin_info['version'] : '';
@@ -81,11 +88,16 @@ function lightning_css_tree_shaking_exclude_class( $inidata ) {
 }
 add_filter( 'css_tree_shaking_exclude', 'lightning_css_tree_shaking_exclude_class' );
 
-
+/**
+ * CSS Optimize option default
+ *
+ * @param array $vk_css_optimize_options_default : recieve array.
+ * @return array $vk_css_optimize_options_default : return modefied array.
+ */
 function lightning_css_optimize_options_default( $vk_css_optimize_options_default ) {
 	$vk_css_optimize_options_default = array(
-		'tree_shaking'	=> 'active',
-		'preload' 		=> '',
+		'tree_shaking' => 'active',
+		'preload'      => '',
 	);
 	return $vk_css_optimize_options_default;
 }
