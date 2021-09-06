@@ -3,6 +3,7 @@
  * VK Components Posts
  *
  * @package VK Component
+ * @version 1.1.0
  *
  * *********************** CAUTION ***********************
  * The original of this file is located at:
@@ -30,11 +31,13 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 
 		/**
 		 * Get Loop Post View Options
+		 * 
+		 * @since 1.1.0 Added the `post` parameter.
 		 *
 		 * @param array $options options array.
 		 * @return array options
 		 */
-		public static function get_loop_post_view_options( $options ) {
+		public static function get_loop_post_view_options( $options, $post ) {
 			$default = array(
 				'layout'                     => 'card',
 				'display_image'              => true,
@@ -57,7 +60,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				'body_prepend'               => '',
 				'body_append'                => '',
 			);
-			$return  = apply_filters( 'vk_post_options', wp_parse_args( $options, $default ) );
+			$return  = apply_filters( 'vk_post_options', wp_parse_args( $options, $default ), $post );
 			return $return;
 		}
 
@@ -71,7 +74,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 		 */
 		public static function get_view( $post, $options ) {
 
-			$options = self::get_loop_post_view_options( $options );
+			$options = self::get_loop_post_view_options( $options, $post );
 
 			if ( 'card-horizontal' === $options['layout'] ) {
 				$html = self::get_view_type_card_horizontal( $post, $options );
@@ -82,7 +85,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			} else {
 				$html = self::get_view_type_card( $post, $options );
 			}
-			return $html;
+			return apply_filters( 'vk_post_view', $html, $post, $options );
 		}
 
 		/**
@@ -165,6 +168,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 
 				$loop .= '<div class="vk_posts ' . esc_attr( $loop_outer_class ) . ' ' . esc_attr( implode( ' ', $hidden_class ) ) . '">';
 
+				// for infeed Ads Customize.
 				global $vk_posts_loop_item_count;
 				$vk_posts_loop_item_count = 0;
 
@@ -182,7 +186,15 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 
 				$loop .= '</div>';
 
-				endif;
+				if ( ! empty( $options_loop['display_pagination'] ) ) {
+					$args = array();
+					if ( ! empty( $options_loop['pagination_mid_size'] ) ) {
+						$args['mid_size'] = $options_loop['pagination_mid_size'];
+					}
+					$loop .= self::get_pagenation( $wp_query, $args );
+				}
+
+			endif;
 
 			/*
 			Caution
@@ -209,6 +221,108 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 		}
 
 		/**
+		 * Pagenation
+		 *
+		 * @param object $wp_query : post query.
+		 * @param array  $args : setting parametors.
+		 * @return string $html
+		 */
+		public static function get_pagenation( $wp_query, $args = array() ) {
+
+			$args = wp_parse_args(
+				$args,
+				array(
+					'mid_size'           => 1,
+					'prev_text'          => '&laquo;',
+					'next_text'          => '&raquo;',
+					'screen_reader_text' => __( 'Posts navigation' ),
+					'aria_label'         => __( 'Posts' ),
+					'class'              => 'pagination',
+					'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'lightning' ) . ' </span>',
+					'type'               => 'list',
+				)
+			);
+
+			$showitems = ( $args['mid_size'] * 2 ) + 1;
+
+			$html = '';
+
+			global $paged;
+
+			// 最後のページ.
+			$max_num_pages = $wp_query->max_num_pages;
+			if ( ! $max_num_pages ) {
+				$max_num_pages = 1;
+			}
+
+			if ( 1 !== $max_num_pages ) {
+				$html .= '<nav class="navigation ' . $args['class'] . '" role="navigation" aria-label="' . $args['aria_label'] . '">';
+				$html .= '<h2 class="screen-reader-text">' . $args['screen_reader_text'] . '</h2>';
+				$html .= '<div class="nav-links"><ul class="page-numbers">';
+
+				// Prevリンク
+				// 現在のページが２ページ目以降の場合.
+				if ( $paged > 1 ) {
+					$html .= '<li><a class="prev page-numbers" href="' . get_pagenum_link( $paged - 1 ) . '">' . $args['prev_text'] . '</a></li>';
+				}
+
+				// 今のページから mid_size を引いて2以上ある場合 && 最大表示アイテム数より最第ページ数が大きい場合
+				// （ mid_size 数のすぐ次の場合は表示する）
+				// 1...３４５.
+				if ( $paged - $args['mid_size'] >= 2 && $max_num_pages > $showitems ) {
+					$html .= '<li><a class="page-numbers" href="' . get_pagenum_link( 1 ) . '">1</a></li>';
+				}
+				// 今のページから mid_size を引いて3以上ある場合 && 最大表示アイテム数より最第ページ数が大きい場合.
+				if ( $paged - $args['mid_size'] >= 3 && $max_num_pages > $showitems ) {
+					$html .= '<li><span class="page-numbers dots">&hellip;</span></li>';
+				}
+
+				// mid_size より前に追加する数.
+				$add_prev_count = $paged + $args['mid_size'] - $max_num_pages;
+				// mid_size より後に追加する数.
+				$add_next_count = -( $paged - 1 - $args['mid_size'] ); // 今のページ数を遡ってカウントするために-1.
+
+				for ( $i = 1; $i <= $max_num_pages; $i++ ) {
+					$html .= '<li>';
+					// 表示するアイテム.
+					if ( $paged === $i ) {
+						$page_item = '<span aria-current="page" class="page-numbers current">' . $i . '</span>';
+					} else {
+						$page_item = '<a href="' . get_pagenum_link( $i ) . '" class="page-numbers">' . $i . '</a>';
+					}
+
+					// 今のページから mid_size を引いた数～今のページから mid_size を足した数まで || 最大ページ数が最大表示アイテム数以下の場合.
+					if ( ( $paged - $args['mid_size'] <= $i && $i <= $paged + $args['mid_size'] ) || $max_num_pages <= $showitems ) {
+						$html .= $page_item;
+						// 今のページから mid_size を引くと負数になる場合 && 今のページ+ mid_size +負数を mid_size に加算した数まで.
+					} elseif ( $paged - 1 - $args['mid_size'] < 0 && $paged + $args['mid_size'] + $add_next_count >= $i ) {
+						$html .= $page_item;
+						// 今のページから mid_size を足すと　最後のページよりも大きくなる場合 && 今のページ+ mid_size +負数を mid_size に加算した数まで.
+					} elseif ( $paged + $args['mid_size'] > $max_num_pages && $paged - $args['mid_size'] - $add_prev_count <= $i ) {
+						$html .= $page_item;
+					}
+					$html .= '</li>';
+				}
+
+				// 現在のページに mid_size を足しても最後のページ数より２以上小さい時 && 最大表示アイテム数より最第ページ数が大きい場合.
+				if ( $paged + $args['mid_size'] <= $max_num_pages - 2 && $max_num_pages > $showitems ) {
+					$html .= '<li><span class="page-numbers dots">&hellip;</span></li>';
+				}
+				if ( $paged + $args['mid_size'] <= $max_num_pages - 1 && $max_num_pages > $showitems ) {
+					$html .= '<li><a href="' . get_pagenum_link( $max_num_pages ) . '">' . $max_num_pages . '</a></li>';
+				}
+				// Nextリンク.
+				if ( $paged < $max_num_pages ) {
+					$html .= '<li><a class="next page-numbers" href="' . get_pagenum_link( $paged + 1 ) . '">' . $args['next_text'] . '</a></li>';
+				}
+				$html .= '</ul>';
+				$html .= '</div>';
+				$html .= '</nav>';
+			}
+			return $html;
+		}
+
+		/**
 		 * Kses Escape
 		 *
 		 * It's need for wp_kses_post escape ruby and rt that cope with ruby and rt.
@@ -229,6 +343,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				'header',
 				'footer',
 				'span',
+				'nav',
 				'h1',
 				'h2',
 				'h3',
