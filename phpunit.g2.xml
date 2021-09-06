@@ -10,6 +10,7 @@
 	<testsuites>
 		<testsuite>
 			<directory prefix="test-" suffix=".php">./_g2/tests/</directory>
+			<directory prefix="test-" suffix=".php">./vendor/vektor-inc/vk-wp-unit-test-tools/src/tests/</directory>
 			<exclude>./tests/test-sample.php</exclude>
 		</testsuite>
 	</testsuites>
