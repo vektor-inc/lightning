@@ -20,7 +20,7 @@ function lightning_admin_mail_checker() {
 	$admin_email = get_option( 'admin_email' );
 
 	// URL.
-	$url = plugin_dir_url( __FILE__ );
+	$url = home_url( '/' );
 
 	// チェックしたい文字列.
 	$check_string = 'vektor-inc';
