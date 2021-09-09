@@ -18,6 +18,10 @@ if ( ! is_search() ) {
 		if ( is_year() || is_month() || is_day() || is_tag() || is_tax() || is_category() ) {
 			$archive_title       = get_the_archive_title();
 			$archive_header_html = '<header class="archive-header"><h1 class="archive-header-title">' . $archive_title . '</h1></header>';
+
+			// Warning : 'lightning_archive-header' is old hook name that this line is old filter name fall back.
+			$archive_header_html = apply_filters( 'lightning_archive-header', $archive_header_html );
+
 			echo wp_kses_post( apply_filters( 'lightning_archive_header', $archive_header_html ) );
 		}
 	}
@@ -84,8 +88,11 @@ do_action( 'lightning_loop_before' );
 
 <?php else : ?>
 
-<div class="main-section-no-posts"><p><?php echo wp_kses_post( apply_filters( 'lightning_no_posts_text', __( 'No posts.', 'lightning' ) ) ); ?></p></div>
-
+<div class="main-section-no-posts">
+	<p>
+		<?php echo wp_kses_post( lightning_get_no_post_text() ); ?>
+	</p>
+</div>
 <?php endif; ?>
 
 <?php do_action( 'lightning_loop_after' ); ?>
