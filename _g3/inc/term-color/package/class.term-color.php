@@ -277,7 +277,7 @@ if ( ! class_exists( 'Vk_term_color' ) ) {
 				}
 
 			endif;
-			return apply_filters( 'vk_get_single_term_with_color', $single_term_with_color, $post );
+			return apply_filters( 'vk_get_single_term_with_color', $single_term_with_color, $post, $args );
 		}
 
 		/**
