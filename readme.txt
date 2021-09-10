@@ -39,7 +39,7 @@ https://www.vektor-inc.co.jp/inquiry/
 == Changelog ==
 
 v14.9.0
-[ G3 ][ Specification Change ]
+[ G3 ][ Specification Change ] Add filter vk_term_color_taxonomy / vk_get_single_term_with_color / vk_post_view
 
 v14.8.2
 [ G3 ][ Bug fix ] Header logo margin-top -> padding-top ( Cope width add site-header background-color ) 
