@@ -31,7 +31,7 @@ class Lightning_Design_Manager {
 		// add_editor_style は Classic Editor 専用に.
 		add_action( 'after_setup_theme', array( __CLASS__, 'load_skin_editor_css' ) );
 		// add_editor_style はテーマ外（プラグインなど）の https 以外のcss読み込みが効かないので、編集画面のcssは全部 enqueue_block_editor_assets で処理する.
-		// 読み込み順の 11 指定は共通CSSより後に読み込まれるようにするため
+		// 読み込み順の 11 指定は共通CSSより後に読み込まれるようにするため.
 		add_action( 'enqueue_block_editor_assets', array( __CLASS__, 'load_skin_gutenberg_css' ), 11 );
 
 	}

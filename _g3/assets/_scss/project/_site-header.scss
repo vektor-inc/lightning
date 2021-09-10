@@ -20,7 +20,7 @@ $logo_bottom_margin:1rem;
             /* 
             margin-top にするとヘッダー背景に着色した場合にヘッダーの上に余白が貫通してしまう
             ※ 親要素に overflow:hidden; を指定すれば突き抜けないが、
-            サブメニュー展開の都合 上hidden 指定できない
+            サブメニュー展開の都合上 hidden 指定できない
             */
             padding-top:0.5rem; 
             margin-bottom:0.5rem;
@@ -33,7 +33,7 @@ $logo_bottom_margin:1rem;
             /* 
             margin-top にするとヘッダー背景に着色した場合にヘッダーの上に余白が貫通してしまう
             ※ 親要素に overflow:hidden; を指定すれば突き抜けないが、
-            サブメニュー展開の都合 上hidden 指定できない
+            サブメニュー展開の都合上 hidden 指定できない
             */
             padding-top:$logo_top_margin;
             margin-bottom:$logo_bottom_margin;
