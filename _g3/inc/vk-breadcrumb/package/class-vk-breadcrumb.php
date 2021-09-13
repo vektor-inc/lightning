@@ -232,33 +232,31 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 
 			} elseif ( is_single() ) {
 
-				/*
-				 Single
-				/*-------------------------------*/
+				/**********************************
+				 * Single
+				 */
 
-				// Case of post
-
+				// Case of post.
 				if ( $post_type_info['slug'] == 'post' ) {
 					$category = get_the_category();
-					// get parent category info
-					$parents = array_reverse( get_ancestors( $category[0]->term_id, 'category', 'taxonomy' ) );
-					array_push( $parents, $category[0]->term_id );
-					foreach ( $parents as $parent_term_id ) {
-						$parent_obj         = get_term( $parent_term_id, 'category' );
-						$term_url           = get_term_link( $parent_obj->term_id, $parent_obj->taxonomy );
-						$breadcrumb_array[] = array(
-							'name'  => $parent_obj->name,
-							'id'    => '',
-							'url'   => $term_url,
-							'class' => '',
-							'icon'  => '',
-						);
+					if ( $category ) {
+						// get parent category info.
+						$parents = array_reverse( get_ancestors( $category[0]->term_id, 'category', 'taxonomy' ) );
+						array_push( $parents, $category[0]->term_id );
+						foreach ( $parents as $parent_term_id ) {
+							$parent_obj         = get_term( $parent_term_id, 'category' );
+							$term_url           = get_term_link( $parent_obj->term_id, $parent_obj->taxonomy );
+							$breadcrumb_array[] = array(
+								'name'  => $parent_obj->name,
+								'id'    => '',
+								'url'   => $term_url,
+								'class' => '',
+								'icon'  => '',
+							);
+						}
 					}
-
-					// Case of custom post type
-
 				} else {
-
+					// Case of custom post type.
 					// Taxonomy of Single or Page.
 					$get_taxonomies = get_the_taxonomies();
 
@@ -385,9 +383,9 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 						'class' => array(),
 					),
 					'ruby' => array(),
-					'rt' => array(),
+					'rt'   => array(),
 				);
-				$breadcrumb_html .= '<span' . $microdata_li_a_span . '>' . wp_kses( $value['name'], $breadclumb_post_title_allowed_html ) . '</span>';
+				$breadcrumb_html                   .= '<span' . $microdata_li_a_span . '>' . wp_kses( $value['name'], $breadclumb_post_title_allowed_html ) . '</span>';
 
 				if ( $value['url'] ) {
 					$breadcrumb_html .= '</a>';
