@@ -15,7 +15,9 @@ function lightning_debug_active() {
 	// print '<pre style="text-align:left">';print_r($options);print '</pre>';
 
 	$generation = get_option( 'lightning_theme_generation' );
-	print '<pre style="text-align:left">';print_r($generation);print '</pre>';
+	print '<pre style="text-align:left">';
+	print_r( $generation );
+	print '</pre>';
 
 }
 
@@ -93,7 +95,7 @@ function lightning_theme_setup() {
 	// Block Editor line height @since WordPress 5.5
 	add_theme_support( 'custom-line-height' );
 	// Block Editor custom unit @since WordPress 5.5
-	add_theme_support( 'custom-units', 'px', 'em', 'rem', 'vw', 'vh' );
+	add_theme_support( 'custom-units' );
 
 	/*
 	  cope with page excerpt
@@ -198,7 +200,8 @@ add_action( 'admin_enqueue_scripts', 'lightning_load_common_editor_css' );
 function lightning_load_common_editor_css() {
 	/*
 	 Notice : Use url then if you use local environment https has error that bring to get css error and don't refrected */
-	/* Notice : add_editor_style() is only one args. */
+	/*
+	 Notice : add_editor_style() is only one args. */
 	/* add_editor_style is for Classic Editor Only. */
 	global $post;
 	if ( ! function_exists( 'use_block_editor_for_post' ) || ! use_block_editor_for_post( $post ) ) {
@@ -262,13 +265,14 @@ require dirname( __FILE__ ) . '/inc/starter-content.php';
 
 /*
   Plugin support
-/*-------------------------------------------*/
+/*
+-------------------------------------------*/
 // Load woocommerce modules
 if ( class_exists( 'woocommerce' ) ) {
 	require dirname( __FILE__ ) . '/plugin-support/woocommerce/functions-woo.php';
 }
 // Load polylang modules
-include_once ABSPATH . 'wp-admin/includes/plugin.php';
+require_once ABSPATH . 'wp-admin/includes/plugin.php';
 if ( is_plugin_active( 'polylang/polylang.php' ) ) {
 	require dirname( __FILE__ ) . '/plugin-support/polylang/functions-polylang.php';
 }

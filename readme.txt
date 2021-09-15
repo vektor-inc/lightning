@@ -1,8 +1,8 @@
 === Lightning ===
 Lightning WordPress theme, Copyright (C) 2015-2021 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
-Tested up to: 5.8.0
-Stable tag: 14.8.2
+Tested up to: 5.8.1
+Stable tag: 14.9.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,6 +37,15 @@ https://www.vektor-inc.co.jp/inquiry/
 
 
 == Changelog ==
+
+v14.9.2
+[ G3 ][ Bug fix ] fix missing textdomain
+
+v14.9.1
+[ G3 / G2 ][ Bug fix ] Cope with custom unit "%"
+
+v14.9.0
+[ G3 ][ Specification Change ] Add filter vk_term_color_taxonomy / vk_get_single_term_with_color / vk_post_view
 
 v14.8.2
 [ G3 ][ Bug fix ] Header logo margin-top -> padding-top ( Cope width add site-header background-color ) 
