@@ -1,14 +1,21 @@
-<?php if ( is_page() ) {
-	$tag = 'div';
+<?php
+/**
+ * Singular entry template
+ *
+ * @package lightning
+ */
+
+if ( is_page() ) {
+	$entry_tag = 'div';
 } else {
-	$tag = 'article';
+	$entry_tag = 'article';
 }
 ?>
-<<?php echo $tag; ?> id="post-<?php the_ID(); ?>" <?php post_class( apply_filters( 'lightning_article_outer_class', 'entry entry-full' ) ); ?>>
+<<?php echo esc_attr( $entry_tag ); ?> id="post-<?php the_ID(); ?>" <?php post_class( apply_filters( 'lightning_article_outer_class', 'entry entry-full' ) ); ?>>
 
 	<?php
-	// check single or loop that true
-	$is_entry_header_display = false;// is_page()
+	// check single or loop that true.
+	$is_entry_header_display = false; // is_page() and so on .
 	if ( is_single() || is_archive() ) {
 		$is_entry_header_display = apply_filters( 'lightning_is_entry_header', true );
 	}
@@ -57,15 +64,16 @@
 	<?php if ( apply_filters( 'lightning_is_entry_footer', true ) ) : ?>
 
 		<?php
-			/*
-			Category and tax data
-			/*-------------------------------------------*/
-			$args          = array(
-				'template'      => __( '<dl><dt>%s</dt><dd>%l</dd></dl>', 'lightning' ),
+			/**********************************************
+			 * Category and tax data
+			 */
+			$args           = array(
+				// translators: taxonomy name.
+				'template'      => __( '<dl><dt>%s</dt><dd>%l</dd></dl>', 'lightning' ), // phpcs:ignore
 				'term_template' => '<a href="%1$s">%2$s</a>',
 			);
-			$taxonomies    = VK_Helpers::get_display_taxonomies( get_the_ID(), $args );
-			$taxnomiesHtml = '';
+			$taxonomies     = VK_Helpers::get_display_taxonomies( get_the_ID(), $args );
+			$taxnomies_html = '';
 
 			if ( $taxonomies ) :
 				?>
@@ -74,28 +82,28 @@
 
 					<?php
 					foreach ( $taxonomies as $key => $value ) {
-						$taxnomiesHtml .= '<div class="entry-meta-data-list">' . $value . '</div>';
+						$taxnomies_html .= '<div class="entry-meta-data-list">' . $value . '</div>';
 					} // foreach
 
-					$taxnomiesHtml = apply_filters( 'lightning_taxnomiesHtml', $taxnomiesHtml );
-					echo $taxnomiesHtml;
+					$taxnomies_html = apply_filters( 'lightning_taxnomiesHtml', $taxnomies_html ); // phpcs:ignore
+					echo wp_kses_post( $taxnomies_html );
 
-					// tag list
+					// tag list.
 					$tags_list = get_the_tag_list();
 					if ( $tags_list ) {
 						?>
 						<div class="entry-meta-data-list">
 							<dl>
-							<dt><?php _e( 'Tags', 'lightning' ); ?></dt>
-							<dd class="tagcloud"><?php echo $tags_list; ?></dd>
+							<dt><?php esc_html_e( 'Tags', 'lightning' ); ?></dt>
+							<dd class="tagcloud"><?php echo wp_kses_post( $tags_list ); ?></dd>
 							</dl>
 						</div><!-- [ /.entry-tag ] -->
-					<?php } // if ( $tags_list ) { ?>
+					<?php } ?>
 
 				</div><!-- [ /.entry-footer ] -->
 
-		<?php endif;  // if ($taxonomies) ?>
-	
+		<?php endif; ?>
+
 	<?php endif; ?>
 
-</<?php echo $tag; ?>><!-- [ /#post-<?php the_ID(); ?> ] -->
+</<?php echo esc_attr( $entry_tag ); ?>><!-- [ /#post-<?php the_ID(); ?> ] -->
