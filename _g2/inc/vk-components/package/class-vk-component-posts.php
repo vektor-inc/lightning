@@ -31,7 +31,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 
 		/**
 		 * Get Loop Post View Options
-		 * 
+		 *
 		 * @since 1.1.0 Added the `post` parameter.
 		 *
 		 * @param array $options options array.
@@ -235,8 +235,8 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 					'mid_size'           => 1,
 					'prev_text'          => '&laquo;',
 					'next_text'          => '&raquo;',
-					'screen_reader_text' => __( 'Posts navigation' ),
-					'aria_label'         => __( 'Posts' ),
+					'screen_reader_text' => __( 'Posts navigation', 'lightning' ),
+					'aria_label'         => __( 'Posts', 'lightning' ),
 					'class'              => 'pagination',
 					'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'lightning' ) . ' </span>',
 					'type'               => 'list',
