@@ -3,13 +3,25 @@
     &-primary{
         background-color: var(--vk-color-primary);
         border-color: var(--vk-color-primary-dark);
+        &:not(:disabled):not(.disabled):active,
+        &:focus,
+        &:active,
         &:hover{
             background-color: var(--vk-color-primary-vivid);
             border-color: var(--vk-color-primary);
         }
+        &:not(:disabled):not(.disabled):focus,
+        &:not(:disabled):not(.disabled).active:focus,
+        &:not(:disabled):not(.disabled):active:focus,
+        &:active,
+        &:focus {
+            box-shadow: 0 0 0 0.2rem rgba( 0,0,0,0.1 );
+        }
     }
     &-default{
         border:1px solid var(--vk-color-text-link);
+        &:focus,
+        &:active,
         &:hover{
             color:#fff;
             background-color: var(--vk-color-text-link);
