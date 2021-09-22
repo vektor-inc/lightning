@@ -44,7 +44,7 @@ function lightning_css_tree_shaking_array( $vk_css_tree_shaking_array ) {
 	}
 	return $vk_css_tree_shaking_array;
 }
-add_filter( 'vk_css_tree_shaking_array', 'lightning_css_tree_shaking_array' );
+add_filter( 'vk_css_simple_minify_array', 'lightning_css_tree_shaking_array' );
 
 
 /**
