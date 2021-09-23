@@ -152,6 +152,7 @@ require dirname( __FILE__ ) . '/inc/class-lightning-design-manager.php';
 require dirname( __FILE__ ) . '/inc/class-vk-description-walker.php';
 require dirname( __FILE__ ) . '/inc/template-tags.php';
 require dirname( __FILE__ ) . '/inc/customize/customize-design.php';
+require dirname( __FILE__ ) . '/inc/class-vk-add-color-palettes.php';
 require dirname( __FILE__ ) . '/inc/layout-controller/layout-controller.php';
 require dirname( __FILE__ ) . '/inc/vk-components/config.php';
 require dirname( __FILE__ ) . '/inc/vk-mobile-nav/config.php';
