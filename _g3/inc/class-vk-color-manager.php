@@ -1,14 +1,14 @@
 <?php
 /**
- * VK add color palettes
+ * VK Color Manager
  *
- * @package vk-add-color-palettes
+ * @package vk-color-manager
  */
 
 /**
- * VK_Add_Color_Palette
+ * VK_Color_Manager
  */
-class VK_Add_Color_Palette {
+class VK_Color_Manager {
 
 	/**
 	 * Constructor
@@ -27,29 +27,10 @@ class VK_Add_Color_Palette {
 	 * @param object $wp_customize : customize object.
 	 */
 	public static function customize_register( $wp_customize ) {
-		$wp_customize->add_setting(
-			'color_palette',
-			array(
-				'sanitize_callback' => 'sanitize_text_field',
-			)
-		);
-		$wp_customize->add_control(
-			new VK_Custom_Html_Control(
-				$wp_customize,
-				'color_palette',
-				array(
-					// 'label'            => __( 'Color palettes', 'lightning' ),
-					'section'          => 'colors',
-					'type'             => 'text',
-					'custom_title_sub' => __( 'Colors to add to the color palette', 'lightning' ),
-					'custom_html'      => '',
-					'priority'         => 600,
-				)
-			)
-		);
-		for ( $i = 1; $i <= 3; $i++ ) {
+
+		for ( $i = 1; $i <= 5; $i++ ) {
 			$wp_customize->add_setting(
-				'vk_add_color_palette_options[color_custom_' . $i . ']',
+				'vk_color_manager_options[color_custom_' . $i . ']',
 				array(
 					'default'           => '',
 					'type'              => 'option',
@@ -57,14 +38,18 @@ class VK_Add_Color_Palette {
 					'sanitize_callback' => 'sanitize_hex_color',
 				)
 			);
+			$label = __( 'Custom color', 'lightning' ) . ' ' . $i;
+			if ( 1 === $i ) {
+				$label .= ' ( ' . __( 'Key color', 'lightning' ) . ' )';
+			}
 			$wp_customize->add_control(
 				new WP_Customize_Color_Control(
 					$wp_customize,
-					'vk_add_color_palette_options[color_custom_' . $i . ']',
+					'vk_color_manager_options[color_custom_' . $i . ']',
 					array(
-						'label'    => __( 'Custom color', 'lightning' ) . ' ' . $i,
+						'label'    => $label,
 						'section'  => 'colors',
-						'settings' => 'vk_add_color_palette_options[color_custom_' . $i . ']',
+						'settings' => 'vk_color_manager_options[color_custom_' . $i . ']',
 						'priority' => 600,
 					)
 				)
@@ -81,8 +66,7 @@ class VK_Add_Color_Palette {
 	 * @return array $editor_settings :  editor_settings.
 	 */
 	public static function additional_color_palette( $editor_settings, $block_editor_context ) {
-		$options         = lightning_get_theme_options();
-		$color_key       = ! empty( $options['color_key'] ) ? esc_html( $options['color_key'] ) : '#337ab7';
+		$color_key       = self::get_color_key();
 		$vk_helpers      = new VK_Helpers();
 		$color_key_dark  = $vk_helpers->color_auto_modifi( $color_key, 0.8 );
 		$color_key_vivid = $vk_helpers->color_auto_modifi( $color_key, 1.1 );
@@ -104,9 +88,9 @@ class VK_Add_Color_Palette {
 			),
 		);
 
-		$options_color = get_option( 'vk_add_color_palette_options' );
+		$options_color = get_option( 'vk_color_manager_options' );
 		if ( $options_color ) {
-			for ( $i = 1; $i <= 3; $i++ ) {
+			for ( $i = 2; $i <= 5; $i++ ) {
 				if ( ! empty( $options_color[ 'color_custom_' . $i ] ) ) {
 					$add_color[] = array(
 						'name'  => __( 'Custom color', 'lightning' ) . ' ' . $i,
@@ -125,13 +109,47 @@ class VK_Add_Color_Palette {
 	}
 
 	/**
+	 * Get Key Color
+	 *
+	 * @return string $color_key
+	 */
+	public static function get_color_key() {
+		$options_old   = lightning_get_theme_options();
+		$color_key_old = ! empty( $options['color_key'] ) ? esc_html( $options['color_key'] ) : '';
+
+		$options_color = get_option( 'vk_color_manager_options' );
+		if ( ! empty( $options_color['color_custom_1'] ) ) {
+			$color_key = $options_color['color_custom_1'];
+		} elseif ( $color_key_old ) {
+			$color_key = $color_key_old;
+		} else {
+			$color_key = '#337ab7';
+		}
+		return $color_key;
+	}
+
+	/**
 	 * Create color palettes css
 	 *
 	 * @return string
 	 */
 	public static function inline_css() {
-		$dynamic_css = '
-        /* VK Color Palettes */
+		$options_color = get_option( 'vk_color_manager_options' );
+		$color_key     = self::get_color_key();
+
+		$vk_helpers      = new VK_Helpers();
+		$color_key_dark  = $vk_helpers->color_auto_modifi( $color_key, 0.8 );
+		$color_key_vivid = $vk_helpers->color_auto_modifi( $color_key, 1.1 );
+
+		$dynamic_css  = '
+		/* VK Color Palettes */
+		:root {
+			--vk-color-primary:' . $color_key . ';
+			--vk-color-primary-dark:' . $color_key_dark . ';
+			--vk-color-primary-vivid:' . $color_key_vivid . ';
+		}
+		';
+		$dynamic_css .= '
         .has-vk-primary-color {
             color:var(--vk-color-primary);
         }
@@ -152,9 +170,8 @@ class VK_Add_Color_Palette {
         }
         ';
 
-		$options_color = get_option( 'vk_add_color_palette_options' );
 		if ( $options_color ) {
-			for ( $i = 1; $i <= 3; $i++ ) {
+			for ( $i = 2; $i <= 5; $i++ ) {
 				if ( ! empty( $options_color[ 'color_custom_' . $i ] ) ) {
 					$dynamic_css .= ':root{
 						--vk-color-custom-' . $i . ':' . $options_color[ 'color_custom_' . $i ] . '
@@ -187,7 +204,8 @@ class VK_Add_Color_Palette {
 	 */
 	public static function add_color_palettet_css() {
 		$dynamic_css = self::inline_css();
-		wp_add_inline_style( 'wp-block-library', $dynamic_css );
+		wp_add_inline_style( 'lightning-design-style', $dynamic_css );
+		// wp_add_inline_style( 'wp-block-library', $dynamic_css );
 	}
 
 	/**
@@ -202,4 +220,4 @@ class VK_Add_Color_Palette {
 
 }
 
-$vk_add_color_palette = new VK_Add_Color_Palette();
+$vk_color_manager = new VK_Color_Manager();

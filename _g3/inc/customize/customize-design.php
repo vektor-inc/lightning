@@ -10,7 +10,6 @@ function lightning_customize_register_design( $wp_customize ) {
 		array(
 			'title'    => lightning_get_prefix_customize_panel() . __( 'Design settings', 'lightning' ),
 			'priority' => 501,
-		// 'panel'				=> 'lightning_setting',
 		)
 	);
 
@@ -35,7 +34,7 @@ function lightning_customize_register_design( $wp_customize ) {
 		)
 	);
 
-	// head logo
+	// head logo.
 	$wp_customize->add_setting(
 		'lightning_theme_options[head_logo]',
 		array(
@@ -66,9 +65,9 @@ function lightning_customize_register_design( $wp_customize ) {
 		)
 	);
 
-	/*
-	  Color Setting
-	/*-------------------------------------------*/
+	/*********************************************
+	 * Color Setting
+	 */
 	$wp_customize->add_setting(
 		'color_header',
 		array(
@@ -84,31 +83,8 @@ function lightning_customize_register_design( $wp_customize ) {
 				'section'     => 'lightning_design',
 				'type'        => 'text',
 				// 'custom_title_sub' => __( 'Key Color', 'lightning' ),
-				'custom_html' => '',
+				'custom_html' => __( 'Key color settings have been moved to the "Colors" panel.', 'lightning' ),
 				'priority'    => 600,
-			)
-		)
-	);
-
-	// color
-	$wp_customize->add_setting(
-		'lightning_theme_options[color_key]',
-		array(
-			'default'           => '#337ab7',
-			'type'              => 'option',
-			'capability'        => 'edit_theme_options',
-			'sanitize_callback' => 'sanitize_hex_color',
-		)
-	);
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'color_key',
-			array(
-				'label'    => __( 'Key color', 'lightning' ),
-				'section'  => 'lightning_design',
-				'settings' => 'lightning_theme_options[color_key]',
-				'priority' => 600,
 			)
 		)
 	);
@@ -120,28 +96,20 @@ function lightning_customize_register_design( $wp_customize ) {
  * @return string
  */
 function lightning_get_common_inline_css() {
-	$options         = lightning_get_theme_options();
-	$color_key       = ! empty( $options['color_key'] ) ? esc_html( $options['color_key'] ) : '#337ab7';
-	$vk_helpers      = new VK_Helpers();
-	$color_key_dark  = $vk_helpers->color_auto_modifi( $color_key, 0.8 );
-	$color_key_vivid = $vk_helpers->color_auto_modifi( $color_key, 1.1 );
 	$dynamic_css     = '
 	/* Lightning */
 	:root {
-		--vk-color-primary:' . $color_key . ';
-		--vk-color-primary-dark:' . $color_key_dark . ';
-		--vk-color-primary-vivid:' . $color_key_vivid . ';
 		--g_nav_main_acc_icon_open_url:url(' . get_template_directory_uri() . '/inc/vk-mobile-nav/package/images/vk-menu-acc-icon-open-black.svg);
 		--g_nav_main_acc_icon_close_url: url(' . get_template_directory_uri() . '/inc/vk-mobile-nav/package/images/vk-menu-close-black.svg);
 		--g_nav_sub_acc_icon_open_url: url(' . get_template_directory_uri() . '/inc/vk-mobile-nav/package/images/vk-menu-acc-icon-open-white.svg);
 		--g_nav_sub_acc_icon_close_url: url(' . get_template_directory_uri() . '/inc/vk-mobile-nav/package/images/vk-menu-close-white.svg);
 	}
 	';
-	// delete before after space
+	// delete before after space.
 	$dynamic_css = trim( $dynamic_css );
-	// convert tab and br to space
+	// convert tab and br to space.
 	$dynamic_css = preg_replace( '/[\n\r\t]/', '', $dynamic_css );
-	// Change multiple spaces to single space
+	// Change multiple spaces to single space.
 	$dynamic_css = preg_replace( '/\s(?=\s)/', '', $dynamic_css );
 	return $dynamic_css;
 }
