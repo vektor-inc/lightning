@@ -35,17 +35,17 @@ class VK_Add_Color_Palettes {
 		$color_key_vivid = $vk_helpers->color_auto_modifi( $color_key, 1.1 );
 		$add_color       = array(
 			array(
-				'name'  => __( 'Primary', 'lightning' ),
+				'name'  => __( 'Key color', 'lightning' ),
 				'slug'  => 'vk-primary',
 				'color' => $color_key,
 			),
 			array(
-				'name'  => __( 'Primary dark', 'lightning' ),
+				'name'  => __( 'Key color (dark)', 'lightning' ),
 				'slug'  => 'vk-primary-dark',
 				'color' => $color_key_dark,
 			),
 			array(
-				'name'  => __( 'Primary vivid', 'lightning' ),
+				'name'  => __( 'Key color (vivid)', 'lightning' ),
 				'slug'  => 'vk-primary-vivid',
 				'color' => $color_key_vivid,
 			),
