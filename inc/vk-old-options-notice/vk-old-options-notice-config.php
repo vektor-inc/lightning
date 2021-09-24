@@ -7,10 +7,9 @@
 
 /**
  * Logic of display warnning
- * 
+ *
  * 1. option : get option automatically and check
  * 2. post meta and so on : compale last chack version and now check version
- * 
  */
 
 if ( ! class_exists( 'VK_Old_Options_Notice' ) ) {
@@ -116,14 +115,14 @@ if ( ! class_exists( 'VK_Old_Options_Notice' ) ) {
 			'callback'     => 'lightning_options_compatible',
 		),
 		array(
-			'data_type'    => 'meta',
+			'data_type'     => 'meta',
 			'check_version' => '0.1.0',
-			'callback'     => 'lightning_pageheader_and_breadcrumb_compatible',
+			'callback'      => 'lightning_pageheader_and_breadcrumb_compatible',
 		),
 		array(
-			'data_type'    => 'meta',
+			'data_type'     => 'meta',
 			'check_version' => '0.1.1',
-			'callback'     => 'lightning_g2_template_compatible',
+			'callback'      => 'lightning_g2_template_compatible',
 		),
 	);
 
