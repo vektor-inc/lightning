@@ -5,25 +5,24 @@
  * @package Lightning
  */
 
-/*
-
- ## Logic of display warnning
-
-1. option : get option automatically and check
-2. post meta and so on : compale last chack version and now check version
-
-*/
+/**
+ * Logic of display warnning
+ * 
+ * 1. option : get option automatically and check
+ * 2. post meta and so on : compale last chack version and now check version
+ * 
+ */
 
 if ( ! class_exists( 'VK_Old_Options_Notice' ) ) {
 
-	// アップデート状況識別用のoption値保存名
+	// アップデート状況識別用のoption値保存名.
 	global $vk_old_options_name;
 	$vk_old_options_name = 'lightning_old_options';
 
 	global $vk_update_link;
 	$vk_update_link = 'lightning-update-link';
 
-	// 現存する変更が必要な古い情報の配列
+	// 現存する変更が必要な古い情報の配列.
 	global $old_setting_array;
 	$old_setting_array = array(
 		array(
