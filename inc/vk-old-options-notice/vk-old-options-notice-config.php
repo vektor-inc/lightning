@@ -22,8 +22,8 @@ if ( ! class_exists( 'VK_Old_Options_Notice' ) ) {
 	$vk_update_link = 'lightning-update-link';
 
 	// 現存する変更が必要な古い情報の配列.
-	global $old_setting_array;
-	$old_setting_array = array(
+	global $lightning_old_setting_array;
+	$lightning_old_setting_array = array(
 		array(
 			'data_type'    => 'option',
 			'target_field' => 'lightning_theme_options',

@@ -49,8 +49,8 @@ if ( ! class_exists( 'VK_Old_Options_Notice' ) ) {
 			}
 
 			// 古い情報の保存先・内容・それに対するコールバック関数の配列をループして処理する.
-			global $old_setting_array;
-			foreach ( (array) $old_setting_array as $old_setting ) {
+			global $lightning_old_setting_array;
+			foreach ( (array) $lightning_old_setting_array as $old_setting ) {
 				// 確認対象が option 値の場合.
 				if ( 'option' === $old_setting['data_type'] ) {
 					$options = get_option( $old_setting['target_field'] );
