@@ -53,10 +53,19 @@ if ( ! class_exists( 'VK_Old_Options_Notice' ) ) {
 			foreach ( (array) $lightning_old_setting_array as $old_setting ) {
 				// 確認対象が option 値の場合.
 				if ( 'option' === $old_setting['data_type'] ) {
+
+					// 今保存されている option 値を取得
+					// Get saved option value.
 					$options = get_option( $old_setting['target_field'] );
-					if ( $options ) {
+
+					if ( $options && is_array( $options ) ) {
+
+						// 置換ずべき古いオプション値
+						// Sould comvert old option value.
 						$old_options = $old_setting['old_value'];
+
 						foreach ( $options as $key => $options_value ) {
+
 							foreach ( $old_options as $old_key => $old_options_value ) {
 								if ( $options_value === $old_options_value ) {
 									if ( 'judge' === $arg ) {
@@ -105,7 +114,7 @@ if ( ! class_exists( 'VK_Old_Options_Notice' ) ) {
 			global $vk_update_link;
 			if ( 'index.php' === $pagenow ) {
 				if ( self::option_judgment( 'judge' ) ) {
-					echo '<div class="notice notice-warning"><p><strong>Lightning : </strong> ' . __( 'Because old option is exists, you need to update database', 'lightning' ) . ' <a href="?' . $vk_update_link . '" class="button button-primary">' . __( 'Update database', 'lightning' ) . '</a></p></div>';
+					echo wp_kses_post( '<div class="notice notice-warning"><p><strong>Lightning : </strong> ' . __( 'Because old option is exists, you need to update database', 'lightning' ) . ' <a href="?' . $vk_update_link . '" class="button button-primary">' . __( 'Update database', 'lightning' ) . '</a></p></div>' );
 				}
 			}
 		}
@@ -122,4 +131,3 @@ if ( ! class_exists( 'VK_Old_Options_Notice' ) ) {
 	}
 	new VK_Old_Options_Notice();
 }
-
