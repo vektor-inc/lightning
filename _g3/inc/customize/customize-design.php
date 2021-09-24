@@ -96,7 +96,7 @@ function lightning_customize_register_design( $wp_customize ) {
  * @return string
  */
 function lightning_get_common_inline_css() {
-	$dynamic_css     = '
+	$dynamic_css = '
 	/* Lightning */
 	:root {
 		--g_nav_main_acc_icon_open_url:url(' . get_template_directory_uri() . '/inc/vk-mobile-nav/package/images/vk-menu-acc-icon-open-black.svg);
