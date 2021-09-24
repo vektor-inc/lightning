@@ -36,7 +36,7 @@ if ( ! class_exists( 'VK_Old_Options_Notice' ) ) {
 			$default = array(
 				'saved_version' => '0.0.0',
 			);
-			// 保存されているアップデート識別用バージョンを取得
+			// 保存されているアップデート識別用バージョンを取得.
 			global $vk_old_options_name;
 			$vk_saved_options = get_option( $vk_old_options_name, $default );
 
