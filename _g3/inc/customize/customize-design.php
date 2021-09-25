@@ -83,7 +83,7 @@ function lightning_customize_register_design( $wp_customize ) {
 				'section'     => 'lightning_design',
 				'type'        => 'text',
 				// 'custom_title_sub' => __( 'Key Color', 'lightning' ),
-				'custom_html' => __( 'Key color settings have been moved to the "Colors" panel.', 'lightning' ),
+				'custom_html' => __( 'Color settings have been moved to the "Colors" panel.', 'lightning' ),
 				'priority'    => 600,
 			)
 		)
