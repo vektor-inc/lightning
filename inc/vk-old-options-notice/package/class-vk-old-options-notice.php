@@ -60,7 +60,7 @@ if ( ! class_exists( 'VK_Old_Options_Notice' ) ) {
 
 					if ( $options && is_array( $options ) ) {
 
-						// 置換ずべき古いオプション値
+						// 置換すべき古いオプション値
 						// Sould comvert old option value.
 						$old_options = $old_setting['old_value'];
 
