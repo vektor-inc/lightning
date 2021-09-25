@@ -1,0 +1,17 @@
+{
+    "name": "vektor-inc/vk-color-palette-manager",
+    "description": "Manage color palette for Gutenberg",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "VK_Color_Palette_Manager\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "kurudrive",
+            "email": "kurudrive@gmail.com"
+        }
+    ],
+    "require": {}
+}

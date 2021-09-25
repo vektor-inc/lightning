@@ -1,14 +1,18 @@
 <?php
 /**
- * VK Color Manager
+ * VkColorPaletteManager
  *
- * @package vk-color-manager
+ * @package vk-color-palette-manager
  */
 
+namespace VK_Color_Palette_Manager;
+
+use WP_Customize_Color_Control;
+
 /**
- * VK_Color_Manager
+ * VkColorPaletteManager
  */
-class VK_Color_Manager {
+class VkColorPaletteManager {
 
 	/**
 	 * Constructor
@@ -16,9 +20,9 @@ class VK_Color_Manager {
 	public function __construct() {
 		add_action( 'customize_register', array( __CLASS__, 'customize_register' ) );
 		add_filter( 'block_editor_settings_all', array( __CLASS__, 'additional_color_palette' ), 10, 2 );
-		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'add_color_palettet_css' ), 11 );
+		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'add_color_palette_css' ), 11 );
 		// 11 指定が無いと先に読み込んでしまって効かない
-		add_action( 'enqueue_block_editor_assets', array( __CLASS__, 'add_color_palettet_css_to_editor' ), 11 );
+		add_action( 'enqueue_block_editor_assets', array( __CLASS__, 'add_color_palette_css_to_editor' ), 11 );
 	}
 
 	/**
@@ -123,7 +127,7 @@ class VK_Color_Manager {
 	 *
 	 * @return void
 	 */
-	public static function add_color_palettet_css() {
+	public static function add_color_palette_css() {
 		$dynamic_css = self::inline_css();
 		wp_add_inline_style( 'wp-block-library', $dynamic_css );
 	}
@@ -133,11 +137,9 @@ class VK_Color_Manager {
 	 *
 	 * @return void
 	 */
-	public static function add_color_palettet_css_to_editor() {
+	public static function add_color_palette_css_to_editor() {
 		$dynamic_css = self::inline_css();
 		wp_add_inline_style( 'wp-edit-blocks', $dynamic_css, 11 );
 	}
 
 }
-
-$vk_color_manager = new VK_Color_Manager();
