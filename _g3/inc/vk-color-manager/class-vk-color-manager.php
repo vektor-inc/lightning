@@ -39,9 +39,6 @@ class VK_Color_Manager {
 				)
 			);
 			$label = __( 'Custom color', 'lightning' ) . ' ' . $i;
-			if ( 1 === $i ) {
-				$label .= ' ( ' . __( 'Key color', 'lightning' ) . ' )';
-			}
 			$wp_customize->add_control(
 				new WP_Customize_Color_Control(
 					$wp_customize,
@@ -50,7 +47,7 @@ class VK_Color_Manager {
 						'label'    => $label,
 						'section'  => 'colors',
 						'settings' => 'vk_color_manager_options[color_custom_' . $i . ']',
-						'priority' => 600,
+						'priority' => 1000,
 					)
 				)
 			);
