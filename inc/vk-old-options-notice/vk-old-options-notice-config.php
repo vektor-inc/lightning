@@ -2,7 +2,7 @@
 /**
  * VK Old Options Notice Config
  *
- * @package Lightning
+ * @package lightning
  */
 
 /**
