@@ -69,7 +69,7 @@ function lightning_customize_register_design( $wp_customize ) {
 	 * Color Setting
 	 */
 	$wp_customize->add_setting(
-		'color_header',
+		'lightning_design[color_header]',
 		array(
 			'sanitize_callback' => 'sanitize_text_field',
 		)
@@ -77,13 +77,15 @@ function lightning_customize_register_design( $wp_customize ) {
 	$wp_customize->add_control(
 		new VK_Custom_Html_Control(
 			$wp_customize,
-			'color_header',
+			'lightning_design[color_header]',
 			array(
 				'label'       => __( 'Color Setting', 'lightning' ),
 				'section'     => 'lightning_design',
 				'type'        => 'text',
-				// 'custom_title_sub' => __( 'Key Color', 'lightning' ),
-				// 'custom_html' => __( 'Color settings have been moved to the "Colors" panel.', 'lightning' ),
+				'custom_html' => __(
+					'Color settings can be made from the Appearance > Customize > Color panel.',
+					'lightning'
+				),
 				'priority'    => 600,
 			)
 		)
@@ -104,9 +106,9 @@ function lightning_customize_register_design( $wp_customize ) {
 			'color_key',
 			array(
 				'label'    => __( 'Key color', 'lightning' ),
-				'section'  => 'lightning_design',
+				'section'  => 'colors',
 				'settings' => 'lightning_theme_options[color_key]',
-				'priority' => 600,
+				'priority' => 500,
 			)
 		)
 	);
