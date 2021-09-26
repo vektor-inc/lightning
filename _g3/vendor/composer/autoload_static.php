@@ -9,12 +9,12 @@ class ComposerStaticInit29c246610cca58a19b9912c638b957d5
     public static $prefixLengthsPsr4 = array (
         'V' => 
         array (
-            'VK_Color_Palette_Manager\\' => 25,
+            'VektorInc\\VK_Color_Palette_Manager\\' => 35,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'VK_Color_Palette_Manager\\' => 
+        'VektorInc\\VK_Color_Palette_Manager\\' => 
         array (
             0 => __DIR__ . '/..' . '/vektor-inc/vk-color-palette-manager/src',
         ),

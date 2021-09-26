@@ -2,7 +2,7 @@
 
 require_once dirname( dirname( dirname( __FILE__ ) ) ) . '/vendor/autoload.php';
 
-use VK_Color_Palette_Manager\VkColorPaletteManager;
+use VektorInc\VK_Color_Palette_Manager\VkColorPaletteManager;
 
 $vk_color_palette_manager = new VkColorPaletteManager();
 
