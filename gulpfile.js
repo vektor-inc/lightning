@@ -71,6 +71,9 @@ gulp.task('text-domain', function (done) {
 	gulp.src(['./_g3/inc/vk-footer-customize/package/*.php'])
 		.pipe(replace("vk-footer-customize-textdomain",'lightning'))
 		.pipe(gulp.dest('./_g3/inc/vk-footer-customize/package/'));
+  gulp.src(['./_g3/vendor/vektor-inc/vk-color-palette-manager/src/*.php'])
+		.pipe(replace("vcpm_textdomain",'lightning'))
+		.pipe(gulp.dest('./_g3/vendor/vektor-inc/vk-color-palette-manager/src/'));
 	done();
 });
 

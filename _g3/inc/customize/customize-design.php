@@ -10,7 +10,6 @@ function lightning_customize_register_design( $wp_customize ) {
 		array(
 			'title'    => lightning_get_prefix_customize_panel() . __( 'Design settings', 'lightning' ),
 			'priority' => 501,
-		// 'panel'				=> 'lightning_setting',
 		)
 	);
 
@@ -35,7 +34,7 @@ function lightning_customize_register_design( $wp_customize ) {
 		)
 	);
 
-	// head logo
+	// head logo.
 	$wp_customize->add_setting(
 		'lightning_theme_options[head_logo]',
 		array(
@@ -66,11 +65,11 @@ function lightning_customize_register_design( $wp_customize ) {
 		)
 	);
 
-	/*
-	  Color Setting
-	/*-------------------------------------------*/
+	/*********************************************
+	 * Color Setting
+	 */
 	$wp_customize->add_setting(
-		'color_header',
+		'lightning_design[color_header]',
 		array(
 			'sanitize_callback' => 'sanitize_text_field',
 		)
@@ -78,19 +77,20 @@ function lightning_customize_register_design( $wp_customize ) {
 	$wp_customize->add_control(
 		new VK_Custom_Html_Control(
 			$wp_customize,
-			'color_header',
+			'lightning_design[color_header]',
 			array(
 				'label'       => __( 'Color Setting', 'lightning' ),
 				'section'     => 'lightning_design',
 				'type'        => 'text',
-				// 'custom_title_sub' => __( 'Key Color', 'lightning' ),
-				'custom_html' => '',
+				'custom_html' => __(
+					'Color settings can be made from the Appearance > Customize > Color panel.',
+					'lightning'
+				),
 				'priority'    => 600,
 			)
 		)
 	);
 
-	// color
 	$wp_customize->add_setting(
 		'lightning_theme_options[color_key]',
 		array(
@@ -106,12 +106,13 @@ function lightning_customize_register_design( $wp_customize ) {
 			'color_key',
 			array(
 				'label'    => __( 'Key color', 'lightning' ),
-				'section'  => 'lightning_design',
+				'section'  => 'colors',
 				'settings' => 'lightning_theme_options[color_key]',
-				'priority' => 600,
+				'priority' => 500,
 			)
 		)
 	);
+
 }
 
 /**
@@ -137,11 +138,11 @@ function lightning_get_common_inline_css() {
 		--g_nav_sub_acc_icon_close_url: url(' . get_template_directory_uri() . '/inc/vk-mobile-nav/package/images/vk-menu-close-white.svg);
 	}
 	';
-	// delete before after space
+	// delete before after space.
 	$dynamic_css = trim( $dynamic_css );
-	// convert tab and br to space
+	// convert tab and br to space.
 	$dynamic_css = preg_replace( '/[\n\r\t]/', '', $dynamic_css );
-	// Change multiple spaces to single space
+	// Change multiple spaces to single space.
 	$dynamic_css = preg_replace( '/\s(?=\s)/', '', $dynamic_css );
 	return $dynamic_css;
 }
