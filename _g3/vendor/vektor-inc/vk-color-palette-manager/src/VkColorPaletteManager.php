@@ -43,7 +43,7 @@ class VkColorPaletteManager {
 					'sanitize_callback' => 'sanitize_hex_color',
 				)
 			);
-			$label = __( 'Custom color', 'vcpm_textdomain' ) . ' ' . $i;
+			$label = __( 'Custom color', 'lightning' ) . ' ' . $i;
 			$wp_customize->add_control(
 				new WP_Customize_Color_Control(
 					$wp_customize,
@@ -69,7 +69,7 @@ class VkColorPaletteManager {
 			for ( $i = 1; $i <= 5; $i++ ) {
 				if ( ! empty( $options_color[ 'color_custom_' . $i ] ) ) {
 					$vcm_add_color_array[] = array(
-						'name'  => __( 'Custom color', 'vcpm_textdomain' ) . ' ' . $i,
+						'name'  => __( 'Custom color', 'lightning' ) . ' ' . $i,
 						'slug'  => 'vk-color-custom-' . $i,
 						'color' => $options_color[ 'color_custom_' . $i ],
 					);
