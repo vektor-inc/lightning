@@ -148,7 +148,8 @@ function lightning_the_class_name( $position = '' ) {
  */
 function lightning_get_theme_options_default() {
 	$theme_options_default = array(
-		'layout' => array(
+		'color_key' => '#337ab7',
+		'layout'    => array(
 			'front-page' => 'col-one-no-subsection',
 		),
 	);
