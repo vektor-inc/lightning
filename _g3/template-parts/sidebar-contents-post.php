@@ -1,4 +1,18 @@
 <?php
+/**
+ * Sidebar for post
+ *
+ * This file is sidebar fot post.
+ * But, if the widget or block is placed in the sitebar widget area (post),
+ * This file will not be read.
+ *
+ * 投稿タイプ post 用のサイドバーです。
+ * しかし、サイトバーウィジェットエリア（投稿）にウィジェットかブロックが配置されている場合、
+ * このファイルは読み込まれなくなります。
+ *
+ * @package vektor-inc/lightning
+ */
+
 $post_loop = new WP_Query(
 	array(
 		'post_type'              => 'post',
