@@ -10,7 +10,7 @@ if ( is_front_page() ) {
 		dynamic_sidebar( 'front-side-top-widget-area' );
 	}
 } else {
-	// Display post type widget area
+	// Display post type widget area.
 	$post_type_info    = VK_Helpers::get_post_type_info();
 	$widdget_area_name = $post_type_info['slug'] . '-side-widget-area';
 	if ( is_active_sidebar( $widdget_area_name ) ) {
