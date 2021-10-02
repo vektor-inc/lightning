@@ -139,30 +139,30 @@ class LightningBreadCrumbTest extends WP_UnitTestCase {
 			
 			// array(
 			// 	'target_url'        => home_url( '/' ),
-			// 	'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li></ol></div></div></div><!-- [ /.breadSection ] -->.',
+			// 	'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a><meta itemprop="position" content="1" /></li></ol></div></div></div><!-- [ /.breadSection ] -->.',
             // ),
 
             // 404ページ
 			array(
 				'target_url'        => home_url( '/?name=aaaaa' ),
-				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li><span>Not found</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
+				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a><meta itemprop="position" content="1" /></li><li><span>Not found</span><meta itemprop="position" content="2" /></li></ol></div></div></div><!-- [ /.breadSection ] -->',
             ),
             // 検索結果（検索キーワードなし）
 			array(
 				'target_url'        => home_url( '/?s=' ),
-				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li><span>Search Results</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
+				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a><meta itemprop="position" content="1" /></li><li><span>Search Results</span><meta itemprop="position" content="2" /></li></ol></div></div></div><!-- [ /.breadSection ] -->',
             ),
             // 検索結果（検索キーワード:aaa）
 			array(
 				'target_url'        => home_url( '/?s=aaa' ),
-				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li><span>Search Results for : aaa</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
+				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a><meta itemprop="position" content="1" /></li><li><span>Search Results for : aaa</span><meta itemprop="position" content="2" /></li></ol></div></div></div><!-- [ /.breadSection ] -->',
 			),
 
             // 固定ページ
             // HOME > 固定ページ名
 			array(
 				'target_url'        => get_permalink( $normal_page_id ),
-				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li><span>normal page</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
+				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a><meta itemprop="position" content="1" /></li><li><span>normal page</span><meta itemprop="position" content="2" /></li></ol></div></div></div><!-- [ /.breadSection ] -->',
 			),
 			
 
@@ -175,14 +175,14 @@ class LightningBreadCrumbTest extends WP_UnitTestCase {
 					'page_for_posts' => $home_page_id,
 				),
 				'target_url'        => get_permalink( $normal_page_id ),
-				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li><span>normal page</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
+				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a><meta itemprop="position" content="1" /></li><li><span>normal page</span><meta itemprop="position" content="2" /></li></ol></div></div></div><!-- [ /.breadSection ] -->',
             ),
 
             // 固定ページの子ページ
 			// HOME > 親ページ > 子ページ
 			array(
 				'target_url'        => get_permalink( $child_page_id ),
-				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.get_permalink( $normal_page_id ).'"><span itemprop="name">normal page</span></a></li><li><span>child page</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
+				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a><meta itemprop="position" content="1" /></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.get_permalink( $normal_page_id ).'"><span itemprop="name">normal page</span></a><meta itemprop="position" content="2" /></li><li><span>child page</span><meta itemprop="position" content="3" /></li></ol></div></div></div><!-- [ /.breadSection ] -->',
 			),
 			
 			// トップページに固定ページ / 投稿トップに特定の固定ページ指定
@@ -195,7 +195,7 @@ class LightningBreadCrumbTest extends WP_UnitTestCase {
 					'page_for_posts' => $home_page_id,
 				),
 				'target_url'        => get_permalink( $child_page_id ),
-				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.get_permalink( $normal_page_id ).'"><span itemprop="name">normal page</span></a></li><li><span>child page</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
+				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a><meta itemprop="position" content="1" /></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.get_permalink( $normal_page_id ).'"><span itemprop="name">normal page</span></a><meta itemprop="position" content="2" /></li><li><span>child page</span><meta itemprop="position" content="3" /></li></ol></div></div></div><!-- [ /.breadSection ] -->',
             ),
 
             // トップページに最新の投稿（投稿トップ未指定） / 子カテゴリー 
@@ -205,7 +205,7 @@ class LightningBreadCrumbTest extends WP_UnitTestCase {
 					'page_for_posts' => null,
 				),
 				'target_url'        => get_term_link( $cate_child_id, 'category' ),
-				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.get_term_link( $cate_id, 'category' ).'"><span itemprop="name">test_category</span></a></li><li><span>test_category_child</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
+				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a><meta itemprop="position" content="1" /></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.get_term_link( $cate_id, 'category' ).'"><span itemprop="name">test_category</span></a><meta itemprop="position" content="2" /></li><li><span>test_category_child</span><meta itemprop="position" content="3" /></li></ol></div></div></div><!-- [ /.breadSection ] -->',
             ),
 
             // トップページに最新の投稿 / 投稿トップページ無指定 / 記事ページ
@@ -215,7 +215,7 @@ class LightningBreadCrumbTest extends WP_UnitTestCase {
 					'page_for_posts' => null,
 				),
 				'target_url'        => get_permalink( $post_id ),
-				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.get_term_link( $cate_id, 'category' ).'"><span itemprop="name">test_category</span></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.get_term_link( $cate_child_id, 'category' ).'"><span itemprop="name">test_category_child</span></a></li><li><span>test</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
+				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a><meta itemprop="position" content="1" /></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.get_term_link( $cate_id, 'category' ).'"><span itemprop="name">test_category</span></a><meta itemprop="position" content="2" /></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.get_term_link( $cate_child_id, 'category' ).'"><span itemprop="name">test_category_child</span></a><meta itemprop="position" content="3" /></li><li><span>test</span><meta itemprop="position" content="4" /></li></ol></div></div></div><!-- [ /.breadSection ] -->',
             ),
 
             // トップページに固定ページ / 投稿トップに特定の固定ページ指定
@@ -227,7 +227,7 @@ class LightningBreadCrumbTest extends WP_UnitTestCase {
 					'page_for_posts' => $home_page_id,
 				),
 				'target_url'        => get_permalink( $home_page_id ),
-				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li><span>post_top</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
+				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a><meta itemprop="position" content="1" /></li><li><span>post_top</span><meta itemprop="position" content="2" /></li></ol></div></div></div><!-- [ /.breadSection ] -->',
             ),
 
             // トップページに固定ページ / 投稿トップに特定の固定ページ指定 / 子カテゴリー 
@@ -239,7 +239,7 @@ class LightningBreadCrumbTest extends WP_UnitTestCase {
 					'page_for_posts' => $home_page_id,
 				),
 				'target_url'        => get_term_link( $cate_child_id, 'category' ),
-				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/?page_id='.$home_page_id.'"><span itemprop="name">post_top</span></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.get_term_link( $cate_id, 'category' ).'"><span itemprop="name">test_category</span></a></li><li><span>test_category_child</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
+				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a><meta itemprop="position" content="1" /></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/?page_id='.$home_page_id.'"><span itemprop="name">post_top</span></a><meta itemprop="position" content="2" /></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.get_term_link( $cate_id, 'category' ).'"><span itemprop="name">test_category</span></a><meta itemprop="position" content="3" /></li><li><span>test_category_child</span><meta itemprop="position" content="4" /></li></ol></div></div></div><!-- [ /.breadSection ] -->',
             ),
 
             // トップページに固定ページ / 投稿トップに特定の固定ページ指定 / 投稿のないカテゴリーアーカイブページ
@@ -251,7 +251,7 @@ class LightningBreadCrumbTest extends WP_UnitTestCase {
 					'page_for_posts' => $home_page_id,
 				),
 				'target_url'        => get_term_link( $cate_no_post_id, 'category' ),
-				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/?page_id='.$home_page_id.'"><span itemprop="name">post_top</span></a></li><li><span>no_post_category</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
+				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a><meta itemprop="position" content="1" /></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/?page_id='.$home_page_id.'"><span itemprop="name">post_top</span></a><meta itemprop="position" content="2" /></li><li><span>no_post_category</span><meta itemprop="position" content="3" /></li></ol></div></div></div><!-- [ /.breadSection ] -->',
             ),
 
             // トップページに固定ページ / 投稿トップに特定の固定ページ指定 / 年別アーカイブ
@@ -263,7 +263,7 @@ class LightningBreadCrumbTest extends WP_UnitTestCase {
 					'page_for_posts' => $home_page_id,
 				),
 				'target_url'        => home_url().'/?post_type=post&year='.date('Y').'' ,
-				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/?page_id='.$home_page_id.'"><span itemprop="name">post_top</span></a></li><li><span>'.date('Y').'</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
+				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a><meta itemprop="position" content="1" /></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/?page_id='.$home_page_id.'"><span itemprop="name">post_top</span></a><meta itemprop="position" content="2" /></li><li><span>'.date('Y').'</span><meta itemprop="position" content="3" /></li></ol></div></div></div><!-- [ /.breadSection ] -->',
             ),
 
             // トップページに固定ページ / 投稿トップページ無指定 / 年別アーカイブ 
@@ -275,35 +275,35 @@ class LightningBreadCrumbTest extends WP_UnitTestCase {
 					'page_for_posts' => null,
 				),
 				'target_url'        => home_url('/').'?post_type=post&year='.date('Y').'' ,
-				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li><span>'.date('Y').'</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
+				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a><meta itemprop="position" content="1" /></li><li><span>'.date('Y').'</span><meta itemprop="position" content="2" /></li></ol></div></div></div><!-- [ /.breadSection ] -->',
             ),
 
             // カスタム投稿タイプトップ 
 			// HOME > 投稿タイプ名
 			array(
 				'target_url'        => home_url().'/?post_type=event',
-				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li><span>event</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
+				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a><meta itemprop="position" content="1" /></li><li><span>event</span><meta itemprop="position" content="2" /></li></ol></div></div></div><!-- [ /.breadSection ] -->',
             ),
 
             // カスタム投稿タイプ / カスタム分類アーカイブ
 			// HOME > 投稿タイプ名 > カスタム分類
 			array(
 				'target_url'        => get_term_link( $event_term_id ),
-				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.get_post_type_archive_link( 'event' ).'"><span itemprop="name">event</span></a></li><li><span>event_category_name</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
+				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a><meta itemprop="position" content="1" /></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.get_post_type_archive_link( 'event' ).'"><span itemprop="name">event</span></a><meta itemprop="position" content="2" /></li><li><span>event_category_name</span><meta itemprop="position" content="3" /></li></ol></div></div></div><!-- [ /.breadSection ] -->',
             ),
 
             // カスタム投稿タイプ / 年別アーカイブ
 			// HOME > 投稿タイプ名 > アーカイブ名
 			array(
 				'target_url'        => home_url().'/?post_type=event&year='.date('Y').'' ,
-				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.get_post_type_archive_link( 'event' ).'"><span itemprop="name">event</span></a></li><li><span>'.date('Y').'</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
+				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a><meta itemprop="position" content="1" /></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.get_post_type_archive_link( 'event' ).'"><span itemprop="name">event</span></a><meta itemprop="position" content="2" /></li><li><span>'.date('Y').'</span><meta itemprop="position" content="3" /></li></ol></div></div></div><!-- [ /.breadSection ] -->',
             ),
  
             // カスタム投稿タイプ / 記事詳細
 			// HOME > 投稿タイプ名 > カスタム分類 > 記事タイトル
 			array(
 				'target_url'        => get_permalink( $event_post_id ),
-				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.get_post_type_archive_link( 'event' ).'"><span itemprop="name">event</span></a></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.get_term_link( $event_term_id ).'"><span itemprop="name">event_category_name</span></a></li><li><span>event-test-post</span></li></ol></div></div></div><!-- [ /.breadSection ] -->',
+				'correct'           => '<!-- [ .breadSection ] --><div class="section breadSection"><div class="container"><div class="row"><ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList"><li id="panHome" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.home_url().'/"><span itemprop="name"><i class="fa fa-home"></i> HOME</span></a><meta itemprop="position" content="1" /></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.get_post_type_archive_link( 'event' ).'"><span itemprop="name">event</span></a><meta itemprop="position" content="2" /></li><li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a itemprop="item" href="'.get_term_link( $event_term_id ).'"><span itemprop="name">event_category_name</span></a><meta itemprop="position" content="3" /></li><li><span>event-test-post</span><meta itemprop="position" content="4" /></li></ol></div></div></div><!-- [ /.breadSection ] -->',
             ),
 
 		);
