@@ -32,6 +32,7 @@ if ( ! function_exists( 'lightning_bread_crumb' ) ) {
 		$microdata_li        = ' itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"';
 		$microdata_li_a      = ' itemprop="item"';
 		$microdata_li_a_span = ' itemprop="name"';
+		$position            = 0;
 
 		$breadcrumb_html  = '<!-- [ .breadSection ] -->';
 		$breadcrumb_html .= '<div class="section breadSection">';
@@ -43,6 +44,8 @@ if ( ! function_exists( 'lightning_bread_crumb' ) ) {
 		$breadcrumb_html .= '<a' . $microdata_li_a . ' href="' . home_url( '/' ) . '">';
 		$breadcrumb_html .= '<span' . $microdata_li_a_span . '><i class="fa fa-home"></i> HOME</span>';
 		$breadcrumb_html .= '</a>';
+		++$position;
+		$breadcrumb_html .= '<meta itemprop="position" content="' . $position . '" />';
 		$breadcrumb_html .= '</li>';
 
 		/********************************************
@@ -55,7 +58,10 @@ if ( ! function_exists( 'lightning_bread_crumb' ) ) {
 			} else {
 				$search_text = __( 'Search Results', 'lightning' );
 			}
-			$breadcrumb_html .= '<li><span>' . $search_text . '</span></li>';
+			$breadcrumb_html .= '<li><span>' . $search_text . '</span>';
+			++$position;
+			$breadcrumb_html .= '<meta itemprop="position" content="' . $position . '" />';
+			$breadcrumb_html .= '</li>';
 
 			/********************************************
 			 * Post type
@@ -66,16 +72,22 @@ if ( ! function_exists( 'lightning_bread_crumb' ) ) {
 				$breadcrumb_html .= '<a' . $microdata_li_a . ' href="' . esc_url( $post_top_url ) . '">';
 				$breadcrumb_html .= '<span' . $microdata_li_a_span . '>' . $post_top_name . '</span>';
 				$breadcrumb_html .= '</a>';
+				++$position;
+				$breadcrumb_html .= '<meta itemprop="position" content="' . $position . '" />';
 				$breadcrumb_html .= '</li>';
 			} elseif ( is_post_type_archive() && ! is_date() ) {
 				$breadcrumb_html .= '<li>';
 				$breadcrumb_html .= '<span>' . wp_kses_post( $post_type_info['name'] ) . '</span>';
+				++$position;
+				$breadcrumb_html .= '<meta itemprop="position" content="' . $position . '" />';
 				$breadcrumb_html .= '</li>';
 			} elseif ( 'post' !== $post_type_info['slug'] && 'page' !== $post_type_info['slug'] ) {
 				$breadcrumb_html .= '<li' . $microdata_li . '>';
 				$breadcrumb_html .= '<a' . $microdata_li_a . ' href="' . get_post_type_archive_link( $post_type_info['slug'] ) . '">';
 				$breadcrumb_html .= '<span' . $microdata_li_a_span . '>' . wp_kses_post( $post_type_info['name'] ) . '</span>';
 				$breadcrumb_html .= '</a>';
+				++$position;
+				$breadcrumb_html .= '<meta itemprop="position" content="' . $position . '" />';
 				$breadcrumb_html .= '</li>';
 			}
 
@@ -124,6 +136,8 @@ if ( ! function_exists( 'lightning_bread_crumb' ) ) {
 							$breadcrumb_html .= '<a' . $microdata_li_a . ' href="' . get_term_link( $ancestor, $taxonomy ) . '">';
 							$breadcrumb_html .= '<span' . $microdata_li_a_span . '>' . esc_html( $pan_term->name ) . '</span>';
 							$breadcrumb_html .= '</a>';
+							++$position;
+							$breadcrumb_html .= '<meta itemprop="position" content="' . $position . '" />';
 							$breadcrumb_html .= '</li>';
 						}
 					}
@@ -132,6 +146,8 @@ if ( ! function_exists( 'lightning_bread_crumb' ) ) {
 					$breadcrumb_html .= '<a' . $microdata_li_a . ' href="' . $term_url . '">';
 					$breadcrumb_html .= '<span' . $microdata_li_a_span . '>' . $term->name . '</span>';
 					$breadcrumb_html .= '</a>';
+					++$position;
+					$breadcrumb_html .= '<meta itemprop="position" content="' . $position . '" />';
 					$breadcrumb_html .= '</li>';
 				}
 			}
@@ -146,6 +162,8 @@ if ( ! function_exists( 'lightning_bread_crumb' ) ) {
 						$breadcrumb_html .= '<a' . $microdata_li_a . ' href="' . get_permalink( $ancestor ) . '">';
 						$breadcrumb_html .= '<span' . $microdata_li_a_span . '>' . get_the_title( $ancestor ) . '</span>';
 						$breadcrumb_html .= '</a>';
+						++$position;
+						$breadcrumb_html .= '<meta itemprop="position" content="' . $position . '" />';
 						$breadcrumb_html .= '</li>';
 					}
 				}
@@ -153,6 +171,8 @@ if ( ! function_exists( 'lightning_bread_crumb' ) ) {
 				// The Single or Page.
 				$breadcrumb_html .= '<li>';
 				$breadcrumb_html .= '<span>' . get_the_title() . '</span>';
+				++$position;
+				$breadcrumb_html .= '<meta itemprop="position" content="' . $position . '" />';
 				$breadcrumb_html .= '</li>';
 			} elseif ( is_category() || is_tag() || is_tax() ) {
 				/**
@@ -172,20 +192,28 @@ if ( ! function_exists( 'lightning_bread_crumb' ) ) {
 						$breadcrumb_html .= '<a' . $microdata_li_a . ' href="' . get_term_link( $ancestor, $now_taxonomy ) . '">';
 						$breadcrumb_html .= '<span' . $microdata_li_a_span . '>' . esc_html( $pan_term->name ) . '</span>';
 						$breadcrumb_html .= '</a>';
+						++$position;
+						$breadcrumb_html .= '<meta itemprop="position" content="' . $position . '" />';
 						$breadcrumb_html .= '</li>';
 					}
 				}
 				$breadcrumb_html .= '<li>';
 				$breadcrumb_html .= '<span>' . esc_html( single_cat_title( '', '', false ) ) . '</span>';
+				++$position;
+				$breadcrumb_html .= '<meta itemprop="position" content="' . $position . '" />';
 				$breadcrumb_html .= '</li>';
 			} elseif ( is_date() ) {
 				$breadcrumb_html .= '<li>';
 				$breadcrumb_html .= '<span>' . get_the_archive_title() . '</span>';
+				++$position;
+				$breadcrumb_html .= '<meta itemprop="position" content="' . $position . '" />';
 				$breadcrumb_html .= '</li>';
 			}
 		} elseif ( is_home() && ! is_front_page() ) {
 			$breadcrumb_html .= '<li>';
 			$breadcrumb_html .= '<span>' . $post_top_name . '</span>';
+			++$position;
+			$breadcrumb_html .= '<meta itemprop="position" content="' . $position . '" />';
 			$breadcrumb_html .= '</li>';
 		} elseif ( is_author() ) {
 			$author_id        = get_the_author_meta( 'ID' );
@@ -194,15 +222,22 @@ if ( ! function_exists( 'lightning_bread_crumb' ) ) {
 			$breadcrumb_html .= '<a' . $microdata_li_a . ' href="' . $author_url . '">';
 			$breadcrumb_html .= '<span' . $microdata_li_a_span . '>' . get_the_archive_title() . '</span>';
 			$breadcrumb_html .= '</a>';
+			++$position;
+			$breadcrumb_html .= '<meta itemprop="position" content="' . $position . '" />';
 			$breadcrumb_html .= '</li>';
 		} elseif ( is_attachment() ) {
 			$breadcrumb_html .= '<li' . $microdata_li . '>';
 			$breadcrumb_html .= '<a' . $microdata_li_a . ' href="' . get_attachment_link() . '">';
 			$breadcrumb_html .= '<span' . $microdata_li_a_span . '>' . get_the_title() . '</span>';
 			$breadcrumb_html .= '</a>';
+			++$position;
+			$breadcrumb_html .= '<meta itemprop="position" content="' . $position . '" />';
 			$breadcrumb_html .= '</li>';
 		} elseif ( is_404() ) {
-			$breadcrumb_html .= '<li><span>' . __( 'Not found', 'lightning' ) . '</span></li>';
+			$breadcrumb_html .= '<li><span>' . __( 'Not found', 'lightning' ) . '</span>';
+			++$position;
+			$breadcrumb_html .= '<meta itemprop="position" content="' . $position . '" />';
+			$breadcrumb_html .= '</li>';
 		}
 		$breadcrumb_html .= '</ol>';
 		$breadcrumb_html .= '</div>';
@@ -256,6 +291,10 @@ $allowed_html    = array(
 		'itemprop'  => array(),
 		'itemscope' => array(),
 		'itemtype'  => array(),
+	),
+	'meta' => array(
+		'itemprop' => array(),
+		'content'  => array(),
 	),
 	'i'    => array(
 		'id'    => array(),

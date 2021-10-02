@@ -1,20 +1,26 @@
 <?php
+/**
+ * Bread Crumb
+ *
+ * @package vektor-inc/lightning
+ */
 
 if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 
+	/**
+	 * Bread Crumb
+	 */
 	class VK_Breadcrumb {
 
 		/**
-		 *
+		 * Bread Crumb Array
 		 */
 		public static function get_array() {
 
 			global $wp_query;
 
 			// Get Post top page info
-			/*
-			-------------------------------------------*/
-			// get_post_type() だとtaxonomyページで該当の投稿がない時に投稿タイプを取得できないため VK_Helpers::get_post_type_info() を使用
+			// get_post_type() だとtaxonomyページで該当の投稿がない時に投稿タイプを取得できないため VK_Helpers::get_post_type_info() を使用.
 			$post_type_info = VK_Helpers::get_post_type_info();
 			$post_top_info  = VK_Helpers::get_post_top_info();
 			$post_type      = $post_type_info['slug'];
@@ -22,7 +28,7 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 			$page_on_front  = get_option( 'page_on_front' );
 			$post           = $wp_query->get_queried_object();
 
-			// Home
+			// Home.
 			$front_page_name = 'HOME';
 			$page_on_front   = get_option( 'page_on_front' );
 
@@ -76,9 +82,10 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 					'icon'  => '',
 				);
 
-				// For filter search term & keywords or term & no keyword
+				// For filter search term & keywords or term & no keyword.
 			} elseif ( is_search() ) {
 				if ( get_search_query() ) {
+					// translators: search keyword .
 					$name = sprintf( __( 'Search Results for : %s', 'lightning' ), get_search_query() );
 				} else {
 					$name = __( 'Search Results', 'lightning' );
@@ -93,8 +100,8 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 
 			} elseif ( is_page() ) {
 				$post = $wp_query->get_queried_object();
-				// 第一階層
-				if ( $post->post_parent == 0 ) {
+				// 第一階層.
+				if ( 0 === $post->post_parent ) {
 					$breadcrumb_array[] = array(
 						'name'  => strip_tags( apply_filters( 'single_post_title', get_the_title() ) ),
 						'id'    => '',
@@ -103,11 +110,11 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 						'icon'  => '',
 					);
 				} else {
-					// 子階層がある場合
+					// 子階層がある場合.
 					$ancestors = array_reverse( get_post_ancestors( $post->ID ) );
 					array_push( $ancestors, $post->ID );
 					foreach ( $ancestors as $ancestor ) {
-						if ( $ancestor != end( $ancestors ) ) {
+						if ( end( $ancestors ) !== $ancestor ) {
 							$breadcrumb_array[] = array(
 								'name'  => strip_tags( apply_filters( 'single_post_title', get_the_title( $ancestor ) ) ),
 								'id'    => '',
@@ -123,10 +130,9 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 								'class' => '',
 								'icon'  => '',
 							);
-						} // if ( $ancestor != end( $ancestors ) ) {
-					} // foreach ( $ancestors as $ancestor ) {
-				} // if ( $post->post_parent == 0 ) {
-
+						}
+					}
+				}
 			} elseif ( is_post_type_archive() && ! is_date() ) {
 				$breadcrumb_array[] = array(
 					'name'  => $post_type_info['name'],
@@ -136,7 +142,7 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 					'icon'  => '',
 				);
 			} elseif ( ( is_single() || is_archive() ) || is_date() && ! is_post_type_archive() && ! is_search() ) {
-				if ( $post_type_info['slug'] !== 'post' || $post_top_info['use'] ) {
+				if ( 'post' !== $post_type_info['slug'] || $post_top_info['use'] ) {
 					$breadcrumb_array[] = array(
 						'name'  => $post_type_info['name'],
 						'id'    => '',
@@ -167,18 +173,18 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 
 			} elseif ( is_category() ) {
 
-				/*
-				 Category
-				/*-------------------------------*/
+				/*****************************************
+				 *  Category
+				 */
 
-				// Get category information & insert to $cat
+				// Get category information & insert to $cat.
 				$cat = get_queried_object();
 
-				// parent != 0  >>>  Parent exist
-				if ( $cat->parent != 0 ) {
-					// 祖先のカテゴリー情報を逆順で取得
+				// parent !== 0  >>>  Parent exist.
+				if ( 0 !== $cat->parent ) {
+					// 祖先のカテゴリー情報を逆順で取得.
 					$ancestors = array_reverse( get_ancestors( $cat->cat_ID, 'category' ) );
-					// 祖先階層の配列回数分ループ
+					// 祖先階層の配列回数分ループ.
 					foreach ( $ancestors as $ancestor ) :
 						$breadcrumb_array[] = array(
 							'name'  => get_cat_name( $ancestor ),
@@ -199,18 +205,18 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 
 			} elseif ( is_tax() ) {
 
-				/*
-				 term
-				/*-------------------------------*/
+				/*****************************************
+				 * Term
+				 */
 				$now_term        = $wp_query->queried_object->term_id;
 				$now_term_parent = $wp_query->queried_object->parent;
 				$now_taxonomy    = $wp_query->queried_object->taxonomy;
 
-				// parent が !0 の場合 = 親カテゴリーが存在する場合
-				if ( $now_term_parent != 0 ) :
-					// 祖先のカテゴリー情報を逆順で取得
+				// parent が !0 の場合 = 親カテゴリーが存在する場合.
+				if ( 0 !== $now_term_parent ) {
+					// 祖先のカテゴリー情報を逆順で取得.
 					$ancestors = array_reverse( get_ancestors( $now_term, $now_taxonomy ) );
-					// 祖先階層の配列回数分ループ
+					// 祖先階層の配列回数分ループ.
 					foreach ( $ancestors as $ancestor ) :
 						$pan_term           = get_term( $ancestor, $now_taxonomy );
 						$breadcrumb_array[] = array(
@@ -221,7 +227,7 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 							'icon'  => '',
 						);
 					endforeach;
-					endif;
+				}
 				$breadcrumb_array[] = array(
 					'name'  => single_cat_title( '', '', false ),
 					'id'    => '',
@@ -237,7 +243,7 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 				 */
 
 				// Case of post.
-				if ( $post_type_info['slug'] == 'post' ) {
+				if ( 'post' == $post_type_info['slug'] ) {
 					$category = get_the_category();
 					if ( $category ) {
 						// get parent category info.
@@ -260,7 +266,7 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 					// Taxonomy of Single or Page.
 					$get_taxonomies = get_the_taxonomies();
 
-					// 非公開のタクソノミーを自動的に除外
+					// 非公開のタクソノミーを自動的に除外.
 					foreach ( $get_taxonomies as $taxonomy => $value ) {
 						$taxonomy_info = get_taxonomy( $taxonomy );
 						if ( empty( $taxonomy_info->public ) ) {
@@ -293,13 +299,13 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 
 						$terms = get_the_terms( get_the_ID(), $taxonomy );
 
-						// keeps only the first term (categ)
+						// keeps only the first term (categ).
 						$term = reset( $terms );
 						if ( 0 != $term->parent ) {
 
-							// Get term ancestors info
+							// Get term ancestors info.
 							$ancestors = array_reverse( get_ancestors( $term->term_id, $taxonomy ) );
-							// Print loop term ancestors
+							// Print loop term ancestors.
 							foreach ( $ancestors as $ancestor ) {
 								$pan_term           = get_term( $ancestor, $taxonomy );
 								$breadcrumb_array[] = array(
@@ -310,7 +316,7 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 									'icon'  => '',
 								);
 							}
-						} // if ( 0 != $term->parent ) {
+						}
 						$term_url           = get_term_link( $term->term_id, $taxonomy );
 						$breadcrumb_array[] = array(
 							'name'  => $term->name,
@@ -319,8 +325,8 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 							'class' => '',
 							'icon'  => '',
 						);
-					} // if ( $taxonomies ) {
-				} // if ( $post_type_info['slug'] == 'post' ) {
+					}
+				}
 
 				$breadcrumb_array[] = array(
 					'name'  => get_the_title(),
@@ -331,13 +337,13 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 				);
 			} // is_single
 
-			return $breadcrumb_array = apply_filters( 'vk_breadcrumb_array', $breadcrumb_array );
+			return apply_filters( 'vk_breadcrumb_array', $breadcrumb_array );
 
 		}
 
 
 		/**
-		 *
+		 * Print Bread Crumb
 		 */
 		public static function the_breadcrumb() {
 
@@ -346,7 +352,7 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 				global $breadcrumb_options;
 
 				// Microdata
-				// http://schema.org/BreadcrumbList
+				// Refference http://schema.org/BreadcrumbList .
 				/*-------------------------------------------*/
 				$microdata_li        = ' itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"';
 				$microdata_li_a      = ' itemprop="item"';
@@ -357,6 +363,7 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 				$breadcrumb_html .= '<div class="' . esc_attr( $breadcrumb_options['class_inner'] ) . '">';
 				$breadcrumb_html .= '<ol class="' . esc_attr( $breadcrumb_options['class_list'] ) . '">';
 
+			$position = 0;
 			foreach ( $breadcrumb_array as $key => $value ) {
 
 				$id = ( $value['id'] ) ? ' id="' . esc_attr( $value['id'] ) . '"' : '';
@@ -390,6 +397,8 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 				if ( $value['url'] ) {
 					$breadcrumb_html .= '</a>';
 				}
+				++$position;
+				$breadcrumb_html .= '<meta itemprop="position" content="' . $position . '" />';
 
 				$breadcrumb_html .= '</li>';
 
@@ -442,12 +451,14 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 						'id'    => array(),
 						'class' => array(),
 					),
+					'meta' => array(
+						'itemprop' => array(),
+						'content'  => array(),
+					),
 					'ruby' => array(),
 					'rt'   => array(),
 				);
-
-				$breadcrumb_html = wp_kses( $breadcrumb_html, $allowed_html );
-				echo $breadcrumb_html;
+				echo wp_kses( $breadcrumb_html, $allowed_html );
 
 		}
 

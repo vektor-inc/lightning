@@ -1,9 +1,16 @@
 <?php
+/**
+ * WooCommerce Customize Function
+ *
+ * @package vektor-inc/lightning
+ */
 
-/*
-  customize_register
-/*-------------------------------------------*/
-add_action( 'customize_register', 'lightning_woo_customize_register' );
+/**
+ * Customize_register
+ *
+ * @param object $wp_customize customize object.
+ * @return void
+ */
 function lightning_woo_customize_register( $wp_customize ) {
 
 	$wp_customize->add_setting(
@@ -17,10 +24,10 @@ function lightning_woo_customize_register( $wp_customize ) {
 			$wp_customize,
 			'ltg_woo_image_setting',
 			array(
-				'label'            => __( 'Border Setting', 'lightning' ) .' ('.lightning_get_theme_name().')',
+				'label'            => __( 'Border Setting', 'lightning' ) . ' (' . lightning_get_theme_name() . ')',
 				'section'          => 'woocommerce_product_images',
 				'type'             => 'text',
-				'custom_title_sub' => __( 'Add border to item image', 'lightning' ), 
+				'custom_title_sub' => __( 'Add border to item image', 'lightning' ),
 				'custom_html'      => '',
 				'priority'         => 600,
 			)
@@ -66,26 +73,31 @@ function lightning_woo_customize_register( $wp_customize ) {
 		)
 	);
 }
+add_action( 'customize_register', 'lightning_woo_customize_register' );
 
-
+/**
+ * Print css
+ *
+ * @return void
+ */
 function lightning_woo_add_common_dynamic_css() {
 	$dynamic_css = '';
-	$options = get_option('lightning_woo_options');
-	if ( ! empty( $options['image_border_archive'] ) ){
+	$options     = get_option( 'lightning_woo_options' );
+	if ( ! empty( $options['image_border_archive'] ) ) {
 		$dynamic_css .= '.woocommerce ul.products li.product a img {
 			border:1px solid var( --color-woo-image-border );
 		}';
 	}
-	if ( ! empty( $options['image_border_single'] ) ){
+	if ( ! empty( $options['image_border_single'] ) ) {
 		$dynamic_css .= '.woocommerce .woocommerce-product-gallery__image {
 			border:1px solid var( --color-woo-image-border );
 		}';
 	}
-	// delete before after space
+	// delete before after space.
 	$dynamic_css = trim( $dynamic_css );
-	// convert tab and br to space
+	// convert tab and br to space.
 	$dynamic_css = preg_replace( '/[\n\r\t]/', '', $dynamic_css );
-	// Change multiple spaces to single space
+	// Change multiple spaces to single space.
 	$dynamic_css = preg_replace( '/\s(?=\s)/', '', $dynamic_css );
 	wp_add_inline_style( 'lightning-design-style', $dynamic_css );
 }
