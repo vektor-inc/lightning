@@ -363,6 +363,7 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 				$breadcrumb_html .= '<div class="' . esc_attr( $breadcrumb_options['class_inner'] ) . '">';
 				$breadcrumb_html .= '<ol class="' . esc_attr( $breadcrumb_options['class_list'] ) . '">';
 
+			$position = 0;
 			foreach ( $breadcrumb_array as $key => $value ) {
 
 				$id = ( $value['id'] ) ? ' id="' . esc_attr( $value['id'] ) . '"' : '';
@@ -396,6 +397,8 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 				if ( $value['url'] ) {
 					$breadcrumb_html .= '</a>';
 				}
+				++$position;
+				$breadcrumb_html .= '<meta itemprop="position" content="' . $position . '" />';
 
 				$breadcrumb_html .= '</li>';
 
@@ -447,6 +450,10 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 					'i'    => array(
 						'id'    => array(),
 						'class' => array(),
+					),
+					'meta' => array(
+						'itemprop' => array(),
+						'content'  => array(),
 					),
 					'ruby' => array(),
 					'rt'   => array(),
