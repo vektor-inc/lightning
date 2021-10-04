@@ -4,8 +4,9 @@
 
 Lightning is a very simple & easy to customize theme which is based on the Bootstrap. It is also very friendly with custom post types and custom taxonomies. When you add a new one, the breadcrumbs will be adjusted and posts will look beautifully without editing or adding a template files.
 
-* [Official Web Site](http://lightning.nagoya/)
+* [Official Web Site](http://lightning.vektor-inc.co.jp/)
 * [wordpress.org](https://wordpress.org/themes/lightning/)
+* [GitHub](https://github.com/vektor-inc/lightning)
 
 ---
 
@@ -14,7 +15,7 @@ Lightning is a very simple & easy to customize theme which is based on the Boots
 Lightningにはデザインスキンを外部から切り替える機能があります。
 追加でスキンを作成する場合は下記のファイルを参考にしてください。
 
-https://github.com/kurudrive/lightning-skin-sample
+https://github.com/vektor-inc/lightning-g3-skin-sample
 
 
 ### CSS 読み込み順（正確ではない覚書）
@@ -33,46 +34,7 @@ https://github.com/kurudrive/lightning-skin-sample
 | wp_head | 200 | ExUnit CSSカスタマイズ 共通 |
 | wp_head | 201 | ExUnit CSSカスタマイズ 投稿 |
 
-
-lightning-late-load-style : 以下のハンドルに依存
-
-* lightning-design-style
-* lightning-common-style
-* vk-font-awesome
-* vk-blocks-build-css
-
 ---
-
-## Customize panel priority
-
-```
-$wp_customize->add_section(
-```
-
-* 400 | License key
-* 450 | 機能設定
-* 501 | デザイン設定
-* 502 | フォント設定
-* 510 | ヘッダー上部設定
-* 511 | ヘッダー設定
-* 513 | キャンペーンテキスト設定
-* 520 | トップページスライドショー設定
-* 521 | トップページPR BLock設定
-* 530 | ページヘッダー設定
-* 532 | レイアウト設定
-* 535 | アーカイブページ設定
-* 536 | アーカイブページレイアウト
-* 538 | 詳細ページ設定
-* 540 | フッター設定
-* 543 | コピーライト設定
-* 550 | モバイルナビ
-* 551 | モバイル固定ナビ
-* 555 | ウィジェットエリア設定（フッター設定に統合したい）
-* 556 | Googleタグマネージャー
-* 560 | Font Awesome
-
----
-
 ## UnitTest
 このテーマにはPHP Unit Testを用意しています。
 下記コマンドで動作してください。
@@ -202,3 +164,32 @@ PHPUnitでテストが書けるものはテストを書くようにしてくだ�
 通常ライブラリから各プロジェクトに複製してプロジェクト毎にテキストドメイン置換などを行うので、Lightningなど利用先側で変更コミットしてもライブラリに戻すのが面倒です。  
 親のライブラリで編集したいライブラリのgulpのwatchを走らせながら作業して、親のライブラリを先にコミットするようにしてください。  
 そうでないと子を修正しても親からの複製で先祖帰りするため。  
+
+---
+## Customize panel priority
+
+```
+$wp_customize->add_section(
+```
+
+* 400 | License key
+* 450 | 機能設定
+* 501 | デザイン設定
+* 502 | フォント設定
+* 510 | ヘッダー上部設定
+* 511 | ヘッダー設定
+* 513 | キャンペーンテキスト設定
+* 520 | トップページスライドショー設定
+* 521 | トップページPR BLock設定
+* 530 | ページヘッダー設定
+* 532 | レイアウト設定
+* 535 | アーカイブページ設定
+* 536 | アーカイブページレイアウト
+* 538 | 詳細ページ設定
+* 540 | フッター設定
+* 543 | コピーライト設定
+* 550 | モバイルナビ
+* 551 | モバイル固定ナビ
+* 555 | ウィジェットエリア設定（フッター設定に統合したい）
+* 556 | Googleタグマネージャー
+* 560 | Font Awesome
