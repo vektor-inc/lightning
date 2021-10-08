@@ -1,6 +1,12 @@
 @charset "utf-8";
 
 .ltg-slide {
+	.swiper-slide {
+		& > a {
+			width:100%;
+			height:auto;
+		}
+	}
 	&-cover {
 		position: absolute;
 		top: 0;
