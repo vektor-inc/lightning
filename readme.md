@@ -10,32 +10,21 @@ Lightning is a very simple & easy to customize theme which is based on the Boots
 
 ---
 
-### デザインスキン機能について
+## Lightning G3 ./_g3/
 
-Lightningにはデザインスキンを外部から切り替える機能があります。
-追加でスキンを作成する場合は下記のファイルを参考にしてください。
+[Please check ./_g3/readme.md](https://github.com/vektor-inc/lightning/blob/master/_g3/readme.md)
 
-https://github.com/vektor-inc/lightning-g3-skin-sample
+### sass build
 
-
-### CSS 読み込み順（正確ではない覚書）
-
-|  読み込みポイント  | Priority |  読み込みファイル  | 備考 |
-| ---- | ---- | ---- | ---- |
-| wp_enqueue_scripts | | vkExUnit_common_style-css | |
-| wp_enqueue_scripts | | vkExUnit_common_style-inline-css | |
-| wp_enqueue_scripts | | Bootstrap | |
-| wp_enqueue_scripts | | lightning-common-style | 全スキン共通CSS |
-| wp_enqueue_scripts | | lightning-design-style | デザインスキン |
-| wp_enqueue_scripts | | lightning-design-style wp_add_inline_style | デザインスキン |
-| wp_enqueue_scripts | | lightning-theme-style | 子テーマでカスタマイズされるのでなるべく後ろである必要がある |
-| wp_enqueue_scripts | | vk-font-awesome-css |
-| wp_head | 50 | HeaderColorManagerでカスタマイズから指定された色 |
-| wp_head | 200 | ExUnit CSSカスタマイズ 共通 |
-| wp_head | 201 | ExUnit CSSカスタマイズ 投稿 |
+```
+cd _g3
+npm install
+npx gulp
+```
 
 ---
 ## UnitTest
+
 このテーマにはPHP Unit Testを用意しています。
 下記コマンドで動作してください。
 
@@ -193,3 +182,28 @@ $wp_customize->add_section(
 * 555 | ウィジェットエリア設定（フッター設定に統合したい）
 * 556 | Googleタグマネージャー
 * 560 | Font Awesome
+
+---
+### デザインスキン機能について
+
+Lightningにはデザインスキンを外部から切り替える機能があります。
+追加でスキンを作成する場合は下記のファイルを参考にしてください。
+
+https://github.com/vektor-inc/lightning-g3-skin-sample
+
+---
+### CSS 読み込み順（正確ではない覚書）
+
+|  読み込みポイント  | Priority |  読み込みファイル  | 備考 |
+| ---- | ---- | ---- | ---- |
+| wp_enqueue_scripts | | vkExUnit_common_style-css | |
+| wp_enqueue_scripts | | vkExUnit_common_style-inline-css | |
+| wp_enqueue_scripts | | Bootstrap | |
+| wp_enqueue_scripts | | lightning-common-style | 全スキン共通CSS |
+| wp_enqueue_scripts | | lightning-design-style | デザインスキン |
+| wp_enqueue_scripts | | lightning-design-style wp_add_inline_style | デザインスキン |
+| wp_enqueue_scripts | | lightning-theme-style | 子テーマでカスタマイズされるのでなるべく後ろである必要がある |
+| wp_enqueue_scripts | | vk-font-awesome-css |
+| wp_head | 50 | HeaderColorManagerでカスタマイズから指定された色 |
+| wp_head | 200 | ExUnit CSSカスタマイズ 共通 |
+| wp_head | 201 | ExUnit CSSカスタマイズ 投稿 |
