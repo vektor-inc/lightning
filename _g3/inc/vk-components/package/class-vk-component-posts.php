@@ -572,7 +572,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 
 			if ( $options['display_excerpt'] ) {
 				$html .= '<p class="vk_post_excerpt ' . $layout_type . '-text">';
-				$html .= wp_kses_post( get_the_excerpt( $post->ID ) );
+				$html .= wp_kses_post( nl2br( get_the_excerpt( $post->ID ) ) );
 				$html .= '</p>';
 			}
 
