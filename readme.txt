@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G2/G3 ][ Bug fix ][ vk-compo ] Cope with br
+
 v14.11.4
 [ G3 ][ Bug fix ][ Slide ] Fix slide no btn link bug
 
