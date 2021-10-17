@@ -72,6 +72,8 @@ function lightning_theme_setup() {
 	add_theme_support( 'custom-line-height' );
 	// Block Editor custom unit @since WordPress 5.5.
 	add_theme_support( 'custom-units' );
+	// Block Editor custom unit @since WordPress 5.8.
+	add_theme_support( 'custom-spacing' );
 
 	// Add page excerpt.
 	add_post_type_support( 'page', 'excerpt' );
