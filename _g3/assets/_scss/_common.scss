@@ -21,6 +21,8 @@ body {
 	// line-break: strict;
 	// overflow-wrap: break-word;
 	background-color: #fff; // カスタマイザでデフォルト#ffffffにしてもリセットしないと効かないため
+	// ページ内リンク時の上部余白（スムーススクロールなどを有効にした場合は効かないので、スムーススクロール側で調整）
+	scroll-padding-top:90px;
 }
 
 @media (max-width: $md-max) {
