@@ -8,7 +8,6 @@ define( 'LIGHTNING_SHORT_NAME', 'LTG THEME' );
 /**
  * Debug
  */
-// add_action( 'lightning_header_append', 'lightning_debug_active' );
 function lightning_debug_active() {
 
 	$options = get_option( 'lightning_theme_options' );
@@ -18,48 +17,30 @@ function lightning_debug_active() {
 	print '<pre style="text-align:left">';
 	print_r( $generation );
 	print '</pre>';
-
 }
+// add_action( 'lightning_header_append', 'lightning_debug_active' );
 
 /*
   Theme setup
-/*
   Load JS
-/*
   Load CSS
-/*
   Load Theme Customizer additions.
-/*
   Load Custom template tags for this theme.
-/*
   Load widgets
-/*
   Load designskin manager
-/*
   Load tga(Plugin install)
-/*
   Load Front PR Blocks
-/*
   WidgetArea initiate
-/*
   Year Artchive list 'year' and count insert to inner </a>
-/*
   Category list 'count insert to inner </a>
-/*
   Global navigation add cptions
-/*
   headfix enable
-/*
   Tag Cloud _ Change font size
-/*
   HOME _ Default content hidden
-/*
   Move jQuery to footer
-/*
   disable_tgm_notification_except_admin
-/*
   Add defer first aid
-/*-------------------------------------------*/
+  */
 
 /*
   Theme setup
@@ -69,57 +50,41 @@ function lightning_theme_setup() {
 
 	global $content_width;
 
-	/*
-	  Title tag
-	/*-------------------------------------------*/
 	add_theme_support( 'title-tag' );
-
-	/*
-	  editor-styles
-	/*-------------------------------------------*/
 	add_theme_support( 'editor-styles' );
+	add_theme_support( 'align-wide' );
+	add_theme_support( 'post-thumbnails' );
+	add_theme_support( 'automatic-feed-links' );
+	add_theme_support( 'woocommerce' );
+
+	set_post_thumbnail_size( 320, 180, true );
 
 	// When this support that printed front css and it's overwrite skin table style and so on
 	// add_theme_support( 'wp-block-styles' );
 
-	add_theme_support( 'align-wide' );
-
-	/*
-	  custom-background
-	/*-------------------------------------------*/
+	// custom-background.
 	$args = array(
 		'default-color' => '#ffffff',
 	);
 	add_theme_support( 'custom-background', $args );
 
-	// Block Editor line height @since WordPress 5.5
+	// Block Editor line height @since WordPress 5.5.
 	add_theme_support( 'custom-line-height' );
-	// Block Editor custom unit @since WordPress 5.5
+	// Block Editor custom unit @since WordPress 5.5.
 	add_theme_support( 'custom-units' );
+	// Block Editor custom unit @since WordPress 5.8.
+	add_theme_support( 'custom-spacing' );
 
-	/*
-	  cope with page excerpt
-	/*-------------------------------------------*/
+	// Add page excerpt.
 	add_post_type_support( 'page', 'excerpt' );
 
-	/*
-	  Admin page _ Eye catch
-	/*-------------------------------------------*/
-	add_theme_support( 'post-thumbnails' );
-	set_post_thumbnail_size( 320, 180, true );
-
-	/*
-	  Custom menu
-	/*-------------------------------------------*/
+	// Custom menu.
 	register_nav_menus( array( 'Header' => 'Header Navigation' ) );
 	register_nav_menus( array( 'Footer' => 'Footer Navigation' ) );
 
 	load_theme_textdomain( 'lightning', get_template_directory() . '/languages' );
 
-	/*
-	  Set content width
-	/* 	(Auto set up to media max with.)
-	/*-------------------------------------------*/
+	// Set content width 	(Auto set up to media max with.).
 	if ( ! isset( $content_width ) ) {
 		$content_width = 1140;
 	}
@@ -128,16 +93,6 @@ function lightning_theme_setup() {
 	  Add theme support for selective refresh for widgets.
 	/*-------------------------------------------*/
 	add_theme_support( 'customize-selective-refresh-widgets' );
-
-	/*
-	  Feed Links
-	/*-------------------------------------------*/
-	add_theme_support( 'automatic-feed-links' );
-
-	/*
-	  WooCommerce
-	/*-------------------------------------------*/
-	add_theme_support( 'woocommerce' );
 
 	/*
 	  Option init
@@ -521,14 +476,6 @@ function lightning_headfix_disabel(){
 }
 */
 
-// lightning header height changer disabel sample
-/*
-add_filter( 'lightning_header_height_changer_enable', 'lightning_header_height_changer_disabel');
-function lightning_header_height_changer_disabel(){
-	return false;
-}
-*/
-
 /*
   Tag Cloud _ Change font size
 /*-------------------------------------------*/
@@ -566,25 +513,8 @@ function lightning_disable_tgm_notification_except_admin() {
 }
 
 /*
-  Add defer first aid
-// function lightning_add_defer_to_scripts( $tag, $handle ) {
-// if ( ! preg_match( '/\b(async|defer)\b/', $tag ) ) {
-// return str_replace( ' src', ' defer src', $tag );
-// }
-// return $tag;
-// }
-//
-// if ( ! is_admin() ) {
-// add_filter( 'script_loader_tag', 'lightning_add_defer_to_scripts', 10, 2 );
-// }
-
-*/
-
-
-/*
   embed card
 /*-------------------------------------------*/
-
 remove_action( 'embed_footer', 'print_embed_sharing_dialog' );
 
 function lightning_embed_styles() {

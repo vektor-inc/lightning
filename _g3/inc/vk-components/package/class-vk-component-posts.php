@@ -31,7 +31,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 
 		/**
 		 * Get Loop Post View Options
-		 * 
+		 *
 		 * @since 1.1.0 Added the `post` parameter.
 		 *
 		 * @param array $options options array.
@@ -355,6 +355,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				'i',
 				'a',
 				'b',
+				'br',
 				'strong',
 				'table',
 				'thead',
@@ -571,7 +572,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 
 			if ( $options['display_excerpt'] ) {
 				$html .= '<p class="vk_post_excerpt ' . $layout_type . '-text">';
-				$html .= wp_kses_post( get_the_excerpt( $post->ID ) );
+				$html .= wp_kses_post( nl2br( get_the_excerpt( $post->ID ) ) );
 				$html .= '</p>';
 			}
 
@@ -672,6 +673,10 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				),
 				'card-noborder'   => array(
 					'label'             => __( 'Card Noborder', 'lightning' ),
+					'class_posts_outer' => '',
+				),
+				'card-intext'     => array(
+					'label'             => __( 'Card Intext', 'lightning' ),
 					'class_posts_outer' => '',
 				),
 				'card-horizontal' => array(

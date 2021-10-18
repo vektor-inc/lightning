@@ -50,7 +50,6 @@ $containter-padding:15px;
     --vk-size-radius: 5px;
     --vk-size-radius-sm: calc( var( --vk-size-radius ) * 0.5 );
     --vk-size-radius-lg: calc( var( --vk-size-radius ) * 1.5 );
-
     --vk-line-height: 1.7em;
     --vk-line-height-low: 1.4em;
 }
@@ -72,6 +71,17 @@ $containter-padding:15px;
 @media (min-width: $xl-min) {
     :root{
         --vk-width-container : 1140px;
+    }
+}
+
+
+
+:root{
+    --vk-size-admin-bar : 46px;
+}
+@media (min-width: 783px) {
+    :root{
+        --vk-size-admin-bar : 32px;
     }
 }
 
