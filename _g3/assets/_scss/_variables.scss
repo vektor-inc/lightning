@@ -77,11 +77,11 @@ $containter-padding:15px;
 
 
 :root{
---vk-size-admin-bar : 46px;
+    --vk-size-admin-bar : 46px;
 }
-@media (min-width: $xl-min) {
+@media (min-width: 783px) {
     :root{
-    --vk-size-admin-bar : 32px;
+        --vk-size-admin-bar : 32px;
     }
 }
 
