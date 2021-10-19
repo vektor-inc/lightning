@@ -25,7 +25,7 @@
         let body_class_timer = false;
         let body_class_lock = false;
 
-        let header_scrool_func = ()=>{ 
+        let header_scrool_func = ()=>{
 
             let siteHeader = document.getElementById('site-header');
             let siteHeaderNext = siteHeader.nextElementSibling;
