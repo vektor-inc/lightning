@@ -8,6 +8,19 @@ entry-body
 	wp-block-cover
 		wp-block-cover__inner-container
 */
+.has-small-font-size {
+	font-size : var(--vk-size-text-sm); /* 14px */
+}
+.has-regular-font-size {
+	font-size : var(--vk-size-text);
+}
+.has-large-font-size {
+	font-size : var(--vk-size-text-lg); /* 24px */
+}
+.has-huge-font-size {
+	font-size : 36px;
+}
+
 .alignfull,
 .alignwide {
 	div[class*="__inner-container"]{
