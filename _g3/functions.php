@@ -43,7 +43,7 @@ function lightning_theme_setup() {
 		array(
 			array(
 				'name' => esc_attr__( 'Small', 'lightning' ),
-				'size' => 12,
+				'size' => 14,
 				'slug' => 'small',
 			),
 			array(
@@ -53,12 +53,12 @@ function lightning_theme_setup() {
 			),
 			array(
 				'name' => esc_attr__( 'Large', 'lightning' ),
-				'size' => 18,
+				'size' => 24,
 				'slug' => 'large',
 			),
 			array(
 				'name' => esc_attr__( 'Huge', 'lightning' ),
-				'size' => 21,
+				'size' => 36,
 				'slug' => 'huge',
 			),
 		)
