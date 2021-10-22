@@ -225,8 +225,8 @@ class Lightning_Design_Manager {
 
 		if ( isset( $skin_info['bootstrap'] ) && 'bs4' === $skin_info['bootstrap'] ) {
 			// Bootstrap4 skin.
-			/*
-			 Notice : Use url then if you use local environment https has error that bring to get css error and don't refrected */
+			/**
+			 * Notice : Use url then if you use local environment https has error that bring to get css error and don't refrected */
 			/* Notice : add_editor_style() is only one args. */
 			add_editor_style( 'library/bootstrap-4/css/bootstrap.min.css' );
 		}
@@ -243,6 +243,24 @@ class Lightning_Design_Manager {
 	 */
 	public static function load_skin_gutenberg_css() {
 		$skin_info = self::get_current_skin();
+
+		if ( isset( $skin_info['bootstrap'] ) && 'bs4' === $skin_info['bootstrap'] ) {
+			wp_enqueue_style(
+				'lightning-bootstrap-editor',
+				get_template_directory_uri() . '/library/bootstrap-4/css/bootstrap.min.css',
+				array( 'wp-edit-blocks' ),
+				$skin_info['version']
+			);
+			if ( ! empty( $skin_info['editor_css_path'] ) ) {
+				wp_enqueue_style(
+					'lightning-gutenberg-editor',
+					$skin_info['editor_css_path'],
+					array( 'wp-edit-blocks' ),
+					$skin_info['version']
+				);
+			}
+		}
+
 		if ( ! empty( $skin_info['gutenberg_css_path'] ) ) {
 			wp_enqueue_style(
 				'lightning-gutenberg-editor',
