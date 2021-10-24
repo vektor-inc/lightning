@@ -6,24 +6,3 @@
 @import "block/block_editor_width";
 
 @import "bootstrap_overwrite";
-
-/*
-メインのCSSがパネル部分に干渉するので打ち消し
-編集エリアだけに効くように .editor-styles-wrapper するのも良いが、
-bodyなど除外してcssを生成するより編集関連のCSSを上書きした方が結局楽
-*/
-
-.components-panel__body,
-.edit-post-meta-boxes-area {
-    h2 {
-        border:none;
-    }
-    h4 {
-        margin-top:1em;
-        font-size:14px;
-    }
-    a { 
-        color:#666;
-        text-decoration: dotted;
-    }
-}
