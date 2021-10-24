@@ -27,7 +27,6 @@ class Lightning_Design_Manager {
 
 		add_action( 'customize_register', array( __CLASS__, 'customize_register' ) );
 
-		// This method is planned to be removed.
 		add_action( 'enqueue_block_editor_assets', array( __CLASS__, 'load_skin_gutenberg_css' ) );
 
 	}
@@ -222,15 +221,6 @@ class Lightning_Design_Manager {
 	 */
 	public static function load_skin_editor_css() {
 		$skin_info = self::get_current_skin();
-
-		if ( isset( $skin_info['bootstrap'] ) && 'bs4' === $skin_info['bootstrap'] ) {
-			// Bootstrap4 skin.
-			/**
-			 * Notice : Use url then if you use local environment https has error that bring to get css error and don't refrected */
-			/* Notice : add_editor_style() is only one args. */
-			add_editor_style( 'library/bootstrap-4/css/bootstrap.min.css' );
-		}
-
 		if ( ! empty( $skin_info['editor_css_path'] ) ) {
 			add_editor_style( $skin_info['editor_css_path'] );
 		}

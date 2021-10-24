@@ -4,3 +4,37 @@
 		border:none;
     }
 }
+
+.wp-block-search .wp-block-search__button{
+    background-color: var(--vk-color-primary);
+}
+
+/*
+メインのCSSがパネル部分に干渉するので打ち消し
+編集エリアだけに効くように .editor-styles-wrapper するのも良いが、
+bodyなど除外してcssを生成するより編集関連のCSSを上書きした方が結局楽
+*/
+
+.components-panel__body,
+.interface-complementary-area,
+.edit-post-meta-boxes-area {
+	font-size:14px;
+    h2 {
+        border:none;
+    }
+	h3,
+    h4 {
+		border:none;
+		margin-top:1em;
+		margin-bottom:0.5em;
+        font-size:14px;
+		&::before,
+		&::after{
+			border:none;
+		}
+    }
+    a { 
+        color:#666;
+        text-decoration: dotted;
+    }
+}

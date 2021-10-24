@@ -18,21 +18,34 @@ entry-body
 }
 
 .alignfull {
-	width: 100vw;
+	width:auto; /* Don't use 100vw!! cope with windows */
 	margin-left: calc(50% - 50vw);
 	margin-right: calc(50% - 50vw);
 	&.wp-block-image {
 		// Default block style overwrite
-		width: 100vw;
 		max-width: 100vw;
 	}
 }
 .alignwide {
-	width: calc( 100% + ( 100vw - 100% ) / 2 );
-	margin-left: calc( ( var(--vk-width-container) - 100vw ) / 4 );
+	// --vk-width-container != 100% なので注意 （ --vk-width-container == 100% + 2 * --vk-width-container-padding ）
+	width: calc( var(--vk-width-container) + ( 100vw - var(--vk-width-container) ) / 2 );
+	// 画面全幅 - コンテナ幅 = 左右の通常余白 / 4 = 
+	margin-left: calc( ( var(--vk-width-container) - 100vw ) / 4 - var(--vk-width-container-padding) );
 	margin-right: calc( ( var(--vk-width-container) - 100vw ) / 4 );
 	&.wp-block-image {
 		max-width: 100vw;
+	}
+}
+.main-section--col--two {
+	.alignfull,
+	.alignwide {
+		margin-left:0;
+		margin-right:0;
+		max-width: 100%;
+		&.wp-block-image {
+			// Default block style overwrite
+			max-width: 100%;
+		}
 	}
 }
 
@@ -51,6 +64,19 @@ entry-body
 		text-align: center;
 		font-size: 0.75rem;
 	}
+}
+
+.wp-block-quote cite {
+	font-size: var(--vk-size-text-xs);
+}
+
+/*-------------------------------------------*/
+/*  Image Block
+/*-------------------------------------------*/
+.wp-block-image img {
+	height:auto;
+	// block にしないと枠線スタイルで画像下部に意図しない余白ができてしまう
+	display: block;
 }
 
 /*-------------------------------------------*/
@@ -82,6 +108,7 @@ entry-body
 .is-style-outline>.wp-block-button__link{
 	border-width: 1px;
 }
+
 
 /*-------------------------------------------*/
 /*  Table Block
@@ -237,6 +264,10 @@ entry-body
 .wp-block-search {
 	.wp-block-search__label{
 		display: none;
+	}
+	&__input,
+	&__button{
+		border-radius: var(--vk-size-radius);
 	}
 	.wp-block-search__button{
 		width: 33%;

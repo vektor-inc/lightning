@@ -2,13 +2,13 @@
 Lightning WordPress theme, Copyright (C) 2015-2021 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
 Tested up to: 5.8.1
-Stable tag: 14.11.8
+Stable tag: 14.11.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 Lightning is a very simple theme.
-Official site : https://lightning.nagoya
+Official site : https://lightning.vektor-inc.co.jp
 Sample site : https://demo.lightning.nagoya/
 
 === Tags ===
@@ -37,6 +37,9 @@ https://www.vektor-inc.co.jp/inquiry/
 
 
 == Changelog ==
+
+v14.11.9
+[ G2 ][ Bug fix ] Fix edit screen css
 
 v14.11.8
 [ G2 ][ Bug fix ] Fix edit screen css
