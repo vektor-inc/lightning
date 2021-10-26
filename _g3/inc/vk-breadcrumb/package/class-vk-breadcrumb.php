@@ -361,7 +361,7 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 				$breadcrumb_html  = '<!-- [ #' . esc_attr( $breadcrumb_options['class_outer'] ) . ' ] -->';
 				$breadcrumb_html .= '<div id="' . esc_attr( $breadcrumb_options['class_outer'] ) . '" class="' . esc_attr( $breadcrumb_options['class_outer'] ) . '">';
 				$breadcrumb_html .= '<div class="' . esc_attr( $breadcrumb_options['class_inner'] ) . '">';
-				$breadcrumb_html .= '<ol class="' . esc_attr( $breadcrumb_options['class_list'] ) . '">';
+				$breadcrumb_html .= '<ol class="' . esc_attr( $breadcrumb_options['class_list'] ) . '" itemscope itemtype="https://schema.org/BreadcrumbList">';
 
 			$position = 0;
 			foreach ( $breadcrumb_array as $key => $value ) {

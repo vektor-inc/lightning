@@ -38,7 +38,7 @@ if ( ! function_exists( 'lightning_bread_crumb' ) ) {
 		$breadcrumb_html .= '<div class="section breadSection">';
 		$breadcrumb_html .= '<div class="container">';
 		$breadcrumb_html .= '<div class="row">';
-		$breadcrumb_html .= '<ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList">';
+		$breadcrumb_html .= '<ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">';
 
 		$breadcrumb_html .= '<li id="panHome"' . $microdata_li . '>';
 		$breadcrumb_html .= '<a' . $microdata_li_a . ' href="' . home_url( '/' ) . '">';
