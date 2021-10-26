@@ -232,6 +232,12 @@ class Lightning_Design_Manager {
 	 * @return void
 	 */
 	public static function load_skin_gutenberg_css() {
+
+		// カスタマイズ画面でも読み込んでしまうので抹殺.
+		if ( is_customize_preview() ) {
+			return;
+		}
+
 		$skin_info = self::get_current_skin();
 
 		if ( isset( $skin_info['bootstrap'] ) && 'bs4' === $skin_info['bootstrap'] ) {
