@@ -22,6 +22,9 @@ if ( ! class_exists( 'VK_Swiper' ) ) {
 	$vk_swiper_path = get_parent_theme_file_path( 'inc/vk-swiper/package/' );
 	require_once dirname( __FILE__ ) . '/package/class-vk-swiper.php';
 	// Load Swiper js and css (all pages).
-	VK_Swiper::enqueue_swiper();
+	$vk_swiper = new VK_Swiper();
+	// enqueue_swiper がないバージョンの vk swiper は 内部で enqueue している.
+	if ( method_exists( $vk_swiper, 'enqueue_swiper' ) ) {
+		$vk_swiper->enqueue_swiper();
+	}
 }
-
