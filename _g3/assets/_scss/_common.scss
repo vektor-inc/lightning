@@ -181,6 +181,7 @@ input[type=submit]{
 	padding: 0.8em 2em;
 	border-radius: var(--vk-size-radius);
 	&:hover {
+		color:#fff;
 		cursor: pointer;
 		background-color:var(--vk-color-primary-dark);
 	}

@@ -17,7 +17,7 @@ https://github.com/vektor-inc/vektor-wp-libraries
 if ( ! class_exists( 'VK_Swiper' ) ) {
 
 	// Set version number.
-	define( 'SWIPER_VERSION', '5.4.5' );
+	define( 'SWIPER_VERSION', '6.8.0' );
 
 	/**
 	 * VK Swiper
@@ -27,17 +27,31 @@ if ( ! class_exists( 'VK_Swiper' ) ) {
 		 * Init
 		 */
 		public static function init() {
-			add_action( 'wp_enqueue_scripts', array( __CLASS__, 'load_swiper' ) );
+			add_action( 'wp_enqueue_scripts', array( __CLASS__, 'register_swiper' ) );
 			add_filter( 'vk_css_simple_minify_array', array( __CLASS__, 'css_simple_minify_array' ) );
 		}
 
 		/**
 		 * Load Swiper
 		 */
-		public static function load_swiper() {
+		public static function register_swiper() {
 			global $vk_swiper_url;
-			wp_enqueue_style( 'vk-swiper-style', $vk_swiper_url . 'assets/css/swiper.min.css', array(), SWIPER_VERSION );
-			wp_enqueue_script( 'vk-swiper-script', $vk_swiper_url . 'assets/js/swiper.min.js', array(), SWIPER_VERSION, true );
+			wp_register_style( 'vk-swiper-style', $vk_swiper_url . 'assets/css/swiper-bundle.min.css', array(), SWIPER_VERSION );
+			wp_register_script( 'vk-swiper-script', $vk_swiper_url . 'assets/js/swiper-bundle.min.js', array(), SWIPER_VERSION, true );
+		}
+
+		/**
+		 * Enque Swiper
+		 * テーマなどの vk-swiper/config.php から必要に応じて読み込む
+		 */
+		public static function enqueue_swiper() {
+			add_action(
+				'wp_enqueue_scripts',
+				function() {
+					wp_enqueue_style( 'vk-swiper-style' );
+					wp_enqueue_script( 'vk-swiper-script' );
+				}
+			);
 		}
 
 		/**
@@ -48,8 +62,8 @@ if ( ! class_exists( 'VK_Swiper' ) ) {
 			global $vk_swiper_path;
 			$vk_css_simple_minify_array[] = array(
 				'id'      => 'vk-swiper-style',
-				'url'     => $vk_swiper_url . 'assets/css/swiper.min.css',
-				'path'    => $vk_swiper_path . 'assets/css/swiper.min.css',
+				'url'     => $vk_swiper_url . 'assets/css/swiper-bundle.min.css',
+				'path'    => $vk_swiper_path . 'assets/css/swiper-bundle.min.css',
 				'version' => SWIPER_VERSION,
 			);
 			return $vk_css_simple_minify_array;
