@@ -3,7 +3,17 @@
     line-height: 1;
     li {
         padding :0 1.5em;
-    } 
+    }
+	@media ( min-width: $md-min ){
+		&-list--align {
+			&--center{
+				text-align: center;
+			}
+			&--right{
+				text-align: right;
+			}
+		}
+	}
     @media ( max-width: $sm-max ){
         padding:0;
         &-list{

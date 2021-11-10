@@ -30,7 +30,9 @@
     }
 }
 .footer-nav-list{
-    border-left:1px solid var(--vk-color-border);
+	li:first-child{
+		border-left:1px solid var(--vk-color-border);
+	}
     li {
         border-right:1px solid var(--vk-color-border);
     }

@@ -42,6 +42,7 @@ if ( ! class_exists( 'VK_Swiper' ) ) {
 
 		/**
 		 * Enque Swiper
+		 * テーマなどの vk-swiper/config.php から必要に応じて読み込む
 		 */
 		public static function enqueue_swiper() {
 			add_action(
