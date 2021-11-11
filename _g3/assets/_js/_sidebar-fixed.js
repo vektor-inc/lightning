@@ -76,6 +76,11 @@
 		let gmenu = document.getElementById('global-nav')
 		let gmenuHeight = gmenu ? gmenu.getBoundingClientRect().bottom: 0;
 
+		// ヘッダーが固定じゃないと gmenuHeight が - になるので 0 に補正
+		if ( gmenuHeight < 0 ){
+			gmenuHeight = 0;
+		}
+
 		// 固定部分の下に追加する余白
 		margin = gmenuHeight + 40;
 
