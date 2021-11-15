@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ Other ] meta box CSS tuning on edit screen
+
 v14.12.1
 [ G3 ][ Bug fix ] Fix side bar position fix in case of header position unlock.
 
