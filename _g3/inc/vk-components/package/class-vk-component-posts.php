@@ -3,7 +3,7 @@
  * VK Components Posts
  *
  * @package VK Component
- * @version 1.1.0
+ * @version 1.2.0
  *
  * *********************** CAUTION ***********************
  * The original of this file is located at:
@@ -17,6 +17,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 	 * VK Component for Posts
 	 */
 	class VK_Component_Posts {
+
 
 		/***********************************************
 		 * Basic method
@@ -35,6 +36,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 		 * @since 1.1.0 Added the `post` parameter.
 		 *
 		 * @param array $options options array.
+		 * @param array $post post object.
 		 * @return array options
 		 */
 		public static function get_loop_post_view_options( $options, $post ) {
@@ -65,6 +67,23 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 		}
 
 		/**
+		 * Loop options
+		 *
+		 * @param array  $loop_options : loop options.
+		 * @param object $wp_query : object.
+		 * @return array $loop_options
+		 */
+		public static function get_loop_options( $loop_options, $wp_query ) {
+			$default = array(
+				'pagination_display'   => false,
+				'archive_link_display' => false,
+				'class_loop_outer'     => null,
+			);
+			$return  = apply_filters( 'vk_posts_loop_options', wp_parse_args( $loop_options, $default ), $wp_query );
+			return $return;
+		}
+
+		/**
 		 * Post View
 		 *
 		 * @param object $post global post object.
@@ -73,7 +92,6 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 		 * @return string $html
 		 */
 		public static function get_view( $post, $options ) {
-
 			$options = self::get_loop_post_view_options( $options, $post );
 
 			if ( 'card-horizontal' === $options['layout'] ) {
@@ -96,7 +114,6 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 		 * @return void
 		 */
 		public static function the_view( $post, $options ) {
-
 			echo wp_kses_post( self::get_view( $post, $options ) );
 		}
 
@@ -105,12 +122,11 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 		 *
 		 * @param object $wp_query query object.
 		 * @param array  $options display options.
-		 * @param array  $options_loop loop options.
+		 * @param array  $loop_options loop options.
 		 *
 		 * @var [type]
 		 */
-		public static function get_loop( $wp_query, $options, $options_loop = array() ) {
-
+		public static function get_loop( $wp_query, $options, $loop_options = array() ) {
 			// Outer Post Type classes.
 			$patterns                    = self::get_patterns();
 			$loop_outer_class_post_types = array();
@@ -131,8 +147,10 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			// Additional loop option.
 			$loop_outer_class = implode( ' ', $loop_outer_class_post_types );
 
-			if ( ! empty( $options_loop['class_loop_outer'] ) ) {
-				$loop_outer_class .= ' ' . $options_loop['class_loop_outer'];
+			$loop_options = self::get_loop_options( $loop_options, $wp_query );
+
+			if ( ! empty( $loop_options['class_loop_outer'] ) ) {
+				$loop_outer_class .= ' ' . $loop_options['class_loop_outer'];
 			}
 
 			// Set post item outer col class.
@@ -173,7 +191,6 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				$vk_posts_loop_item_count = 0;
 
 				while ( $wp_query->have_posts() ) {
-
 					$vk_posts_loop_item_count++;
 
 					$wp_query->the_post();
@@ -181,17 +198,16 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 					$loop .= self::get_view( $post, $options );
 
 					$loop .= apply_filters( 'vk_posts_loop_item_after', '', $options );
-
 				}
 
 				$loop .= '</div>';
 
-				if ( ! empty( $options_loop['display_pagination'] ) ) {
-					$args = array();
-					if ( ! empty( $options_loop['pagination_mid_size'] ) ) {
-						$args['mid_size'] = $options_loop['pagination_mid_size'];
-					}
-					$loop .= self::get_pagenation( $wp_query, $args );
+				if ( ! empty( $loop_options['archive_link_display'] ) ) {
+					$loop .= self::get_archive_link_btn( $wp_query );
+				}
+
+				if ( ! empty( $loop_options['pagination_display'] ) ) {
+					$loop .= self::get_pagenation( $wp_query );
 				}
 
 			endif;
@@ -213,22 +229,53 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 		 *
 		 * @param object $wp_query query object.
 		 * @param array  $options display options.
-		 * @param array  $options_loop loop options.
+		 * @param array  $loop_options loop options.
 		 */
-		public static function the_loop( $wp_query, $options, $options_loop = array() ) {
+		public static function the_loop( $wp_query, $options, $loop_options = array() ) {
 			$allowed_html = self::vk_kses_post();
-			echo wp_kses( self::get_loop( $wp_query, $options, $options_loop ), $allowed_html );
+			echo wp_kses( self::get_loop( $wp_query, $options, $loop_options ), $allowed_html );
 		}
 
 		/**
-		 * Pagenation
+		 * Archive Link (Experimental)
+		 *
+		 * @param object $wp_query : post query.
+		 * @param array  $args : setting parametors.
+		 * @return string $html
+		 */
+		public static function get_archive_link_btn( $wp_query, $args = array() ) {
+
+			$default = array(
+				'btn_text'        => __( 'More', 'lightning' ),
+				'btn_position'    => 'right',
+				'btn_style'       => 'normal', // text / normal
+				'btn_icon_before' => '<i class="far fa-arrow-alt-circle-right"></i>',
+				'btn_icon_after'  => '',
+			);
+
+			$args = apply_filters( 'vk_posts_archive_link_btn', wp_parse_args( $args, $default ), $wp_query );
+
+			$btn_class = 'btn btn-primary';
+			if ( 'text' === $args['btn_style'] ) {
+				$btn_class = '';
+			}
+
+			$post_type = get_post_type();
+			$link      = get_post_type_archive_link( $post_type );
+
+			$html = '';
+			$html = '<div class="text-' . $args['btn_position'] . '"><a class="' . $btn_class . '" href="' . $link . '">' . $args['btn_icon_before'] . '<span class="vk_button_link_txt">' . $args['btn_text'] . '</span>' . $args['btn_icon_after'] . '</a></div>';
+			return $html;
+		}
+
+		/**
+		 * Pagenation (Experimental)
 		 *
 		 * @param object $wp_query : post query.
 		 * @param array  $args : setting parametors.
 		 * @return string $html
 		 */
 		public static function get_pagenation( $wp_query, $args = array() ) {
-
 			$args = wp_parse_args(
 				$args,
 				array(
@@ -243,78 +290,93 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				)
 			);
 
-			$showitems = ( $args['mid_size'] * 2 ) + 1;
-
 			$html = '';
 
 			global $paged;
+			$current_page = $paged;
 
 			// 最後のページ.
-			$max_num_pages = $wp_query->max_num_pages;
+			$max_num_pages = intval( $wp_query->max_num_pages );
 			if ( ! $max_num_pages ) {
 				$max_num_pages = 1;
 			}
 
 			if ( 1 !== $max_num_pages ) {
 				$html .= '<nav class="navigation ' . $args['class'] . '" role="navigation" aria-label="' . $args['aria_label'] . '">';
-				$html .= '<h2 class="screen-reader-text">' . $args['screen_reader_text'] . '</h2>';
+				$html .= '<h4 class="screen-reader-text">' . $args['screen_reader_text'] . '</h4>';
 				$html .= '<div class="nav-links"><ul class="page-numbers">';
 
-				// Prevリンク
+				if ( 0 === $paged ) {
+					$current_page = 1;
+				}
+
+				// [ << ]
 				// 現在のページが２ページ目以降の場合.
-				if ( $paged > 1 ) {
+				if ( $current_page > 1 ) {
 					$html .= '<li><a class="prev page-numbers" href="' . get_pagenum_link( $paged - 1 ) . '">' . $args['prev_text'] . '</a></li>';
 				}
 
-				// 今のページから mid_size を引いて2以上ある場合 && 最大表示アイテム数より最第ページ数が大きい場合
-				// （ mid_size 数のすぐ次の場合は表示する）
-				// 1...３４５.
-				if ( $paged - $args['mid_size'] >= 2 && $max_num_pages > $showitems ) {
+				// [ 1 ]
+				if ( 1 === $current_page ) {
+					$html .= '<li><span aria-current="page" class="page-numbers current">1</span></li>';
+				} else {
 					$html .= '<li><a class="page-numbers" href="' . get_pagenum_link( 1 ) . '">1</a></li>';
 				}
-				// 今のページから mid_size を引いて3以上ある場合 && 最大表示アイテム数より最第ページ数が大きい場合.
-				if ( $paged - $args['mid_size'] >= 3 && $max_num_pages > $showitems ) {
-					$html .= '<li><span class="page-numbers dots">&hellip;</span></li>';
+
+				// [ … ]
+				// 今のページから mid_size を引いて3以上ある場合
+				if ( $current_page - $args['mid_size'] >= 3 ) {
+					// レンジの前 === 2 の場合 ... ではなく 2 を表示する.
+					if ( 2 === $current_page - $args['mid_size'] - 1 ) {
+						$html .= '<li><a href="' . get_pagenum_link( 2 ) . '" class="page-numbers">2</a></li>';
+					} else {
+						$html .= '<li><span class="page-numbers dots">&hellip;</span></li>';
+					}
 				}
 
-				// mid_size より前に追加する数.
-				$add_prev_count = $paged + $args['mid_size'] - $max_num_pages;
-				// mid_size より後に追加する数.
-				$add_next_count = -( $paged - 1 - $args['mid_size'] ); // 今のページ数を遡ってカウントするために-1.
-
-				for ( $i = 1; $i <= $max_num_pages; $i++ ) {
+				// 1 と 最後は除外してループ
+				for ( $i = 2; $i < $max_num_pages; $i++ ) {
 					$html .= '<li>';
+
 					// 表示するアイテム.
-					if ( $paged === $i ) {
+					if ( $current_page === $i ) {
 						$page_item = '<span aria-current="page" class="page-numbers current">' . $i . '</span>';
 					} else {
 						$page_item = '<a href="' . get_pagenum_link( $i ) . '" class="page-numbers">' . $i . '</a>';
 					}
 
-					// 今のページから mid_size を引いた数～今のページから mid_size を足した数まで || 最大ページ数が最大表示アイテム数以下の場合.
-					if ( ( $paged - $args['mid_size'] <= $i && $i <= $paged + $args['mid_size'] ) || $max_num_pages <= $showitems ) {
-						$html .= $page_item;
-						// 今のページから mid_size を引くと負数になる場合 && 今のページ+ mid_size +負数を mid_size に加算した数まで.
-					} elseif ( $paged - 1 - $args['mid_size'] < 0 && $paged + $args['mid_size'] + $add_next_count >= $i ) {
-						$html .= $page_item;
-						// 今のページから mid_size を足すと　最後のページよりも大きくなる場合 && 今のページ+ mid_size +負数を mid_size に加算した数まで.
-					} elseif ( $paged + $args['mid_size'] > $max_num_pages && $paged - $args['mid_size'] - $add_prev_count <= $i ) {
+					// 現在のページ番号 - レンジ < $i < 現在のページ番号 + レンジ .
+					if ( ( $current_page - $args['mid_size'] <= $i ) && ( $i <= $current_page + $args['mid_size'] ) ) {
 						$html .= $page_item;
 					}
+
 					$html .= '</li>';
 				}
 
-				// 現在のページに mid_size を足しても最後のページ数より２以上小さい時 && 最大表示アイテム数より最第ページ数が大きい場合.
-				if ( $paged + $args['mid_size'] <= $max_num_pages - 2 && $max_num_pages > $showitems ) {
-					$html .= '<li><span class="page-numbers dots">&hellip;</span></li>';
+				// [ … ]
+				// 最後のページ数 - 今のページ - mid_size を引いて3以上ある場合
+				if ( $max_num_pages - $current_page - $args['mid_size'] >= 2 ) {
+					// 最後のページの一個前 === レンジの次 の場合、 ... ではなく数字を表示する.
+					if ( $max_num_pages - 1 === $current_page + $args['mid_size'] + 1 ) {
+						$i     = $max_num_pages - 1;
+						$html .= '<li><a href="' . get_pagenum_link( $i ) . '" class="page-numbers">' . $i . '</a></li>';
+					} else {
+						$html .= '<li><span class="page-numbers dots">&hellip;</span></li>';
+					}
 				}
-				if ( $paged + $args['mid_size'] <= $max_num_pages - 1 && $max_num_pages > $showitems ) {
-					$html .= '<li><a href="' . get_pagenum_link( $max_num_pages ) . '">' . $max_num_pages . '</a></li>';
+
+				// [ 最後 ]
+				if ( $max_num_pages === $current_page ) {
+					$html .= '<li><span aria-current="page" class="page-numbers current">' . $max_num_pages . '</span></li>';
+				} else {
+					$html .= '<li><a class="page-numbers" href="' . get_pagenum_link( $max_num_pages ) . '">' . $max_num_pages . '</a></li>';
 				}
-				// Nextリンク.
-				if ( $paged < $max_num_pages ) {
-					$html .= '<li><a class="next page-numbers" href="' . get_pagenum_link( $paged + 1 ) . '">' . $args['next_text'] . '</a></li>';
+
+				// [ >> ]
+				if ( $current_page < $max_num_pages ) {
+					$html .= '<li><a class="next page-numbers" href="' . get_pagenum_link( $current_page + 1 ) . '">' . $args['next_text'] . '</a></li>';
 				}
+
 				$html .= '</ul>';
 				$html .= '</div>';
 				$html .= '</nav>';
@@ -442,7 +504,6 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 		 * @return string
 		 */
 		public static function get_thumbnail_image( $post, $options, $attr = array() ) {
-
 			$default = array(
 				'class_outer' => '',
 				'class_image' => '',
@@ -474,7 +535,6 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				}
 
 				if ( $options['display_image_overlay_term'] ) {
-
 					$html     .= '<div class="card-img-overlay">';
 					$term_args = array(
 						'class' => 'vk_post_imgOuter_singleTermLabel',
@@ -483,7 +543,6 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 						$html .= Vk_term_color::get_single_term_with_color( $post, $term_args );
 					}
 					$html .= '</div>';
-
 				}
 				if ( $classes['class_image'] ) {
 					$image_class = 'vk_post_imgOuter_img ' . $classes['class_image'];
@@ -516,7 +575,6 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 		 * @param array  $options component options.
 		 */
 		public static function get_view_body( $post, $options ) {
-
 			$layout_type = $options['layout'];
 			if ( 'card-horizontal' === $layout_type ||
 				'card-noborder' === $layout_type ||
@@ -624,7 +682,6 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			}
 
 			if ( $options['textlink'] ) {
-
 				if ( $options['display_btn'] ) {
 					$button_options = array(
 						'outer_id'       => '',
@@ -665,7 +722,6 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 		 * @return array $patterns Post Layout pattern array
 		 */
 		public static function get_patterns() {
-
 			$patterns = array(
 				'card'            => array(
 					'label'             => __( 'Card', 'lightning' ),
@@ -715,7 +771,6 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			$html_body .= self::get_view_body( $post, $options );
 
 			if ( 'card-intext' === $options['layout'] ) {
-
 				$html .= '<a href="' . esc_url( get_the_permalink( $post->ID ) ) . '" class="card-intext-inner">';
 
 				// aタグ内にaタグがあるとChromeなどはその時点で一旦aタグを閉じてしまって表示が崩れるので、aタグをspanに変換する.
@@ -726,7 +781,6 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				$html .= $html_body;
 
 				$html .= '</a>';
-
 			} else {
 				$html .= $html_body;
 			}
@@ -798,7 +852,6 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 		 * @param array  $options component options.
 		 */
 		public static function get_view_type_text( $post, $options ) {
-
 			$layout_type = $options['layout'];
 
 			$html  = '';
@@ -886,6 +939,5 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			$col_class = implode( ' ', $col_class_array );
 			return $col_class;
 		}
-
 	}
 }
