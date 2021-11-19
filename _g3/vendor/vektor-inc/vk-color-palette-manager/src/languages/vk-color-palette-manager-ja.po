@@ -1,0 +1,29 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Color Palette Manager\n"
+"POT-Creation-Date: 2021-11-18 15:43+0900\n"
+"PO-Revision-Date: 2021-11-18 17:04+0900\n"
+"Last-Translator: \n"
+"Language-Team: Vektor,Inc.\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: VkColorPaletteManager.php\n"
+
+#: VkColorPaletteManager.php:55
+msgid "Color Palette Setting"
+msgstr "カラーパレット設定"
+
+#: VkColorPaletteManager.php:56
+msgid "This color is reflected in the block editor's color palette."
+msgstr "この色はエディターのカラーパレットに反映されます。"
+
+#: VkColorPaletteManager.php:73 VkColorPaletteManager.php:99
+msgid "Custom color"
+msgstr "カスタムカラー"

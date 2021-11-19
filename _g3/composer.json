@@ -1,6 +1,6 @@
 {
     "require": {
         "ircmaxell/random-lib": "1.0.0",
-        "vektor-inc/vk-color-palette-manager": "^0.0.11"
+        "vektor-inc/vk-color-palette-manager": "^0.0.14"
     }
 }
