@@ -13,3 +13,18 @@
 .editor-styles-wrapper .is-root-container .block-editor-block-list__block > figure.wp-block-image.wp-block {
     margin-left:0;
 }
+
+// 編集パネルにメインの装飾が干渉する打ち消し
+.components-panel,
+.edit-post-meta-boxes-area {
+	h2{
+		padding-top:0;
+		border:none;
+	}
+	h3::after {
+		border:none;
+	}
+	input[type=date], input[type=email], input[type=number], input[type=password], input[type=tel], input[type=text], input[type=url], select, textarea{
+		padding:5px;
+	}
+}

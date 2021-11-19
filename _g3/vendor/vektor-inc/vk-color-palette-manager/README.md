@@ -1,5 +1,5 @@
 # VK Color Palette Manager
 
 ```
-composer require vektor-inc/vk-color-palette-manager
+composer require --no-dev vektor-inc/vk-color-palette-manager
 ```
