@@ -2,7 +2,7 @@
 /**
  * Lightning G3 index.php common template-file
  *
- * @package Lightning G3
+ * @package vektor-inc/lightning
  */
 
 ?>
@@ -53,13 +53,19 @@ if ( is_front_page() ) {
 			<?php do_action( 'lightning_main_section_prepend', 'lightning_main_section_prepend' ); ?>
 
 			<?php
-			if ( lightning_is_woo_page() ) {
-				lightning_get_template_part( 'template-parts/main-woocommerce' );
-			} else {
-				if ( apply_filters( 'lightning_is_singular', is_singular() ) ) {
-					lightning_get_template_part( 'template-parts/main-singular' );
+			if ( apply_filters('lightning_is_main_section_template', true, 'main_section_template' ) ){
+				if ( lightning_is_woo_page() ) {
+					lightning_get_template_part( 'template-parts/main-woocommerce' );
 				} else {
-					lightning_get_template_part( 'template-parts/main-archive' );
+					if ( apply_filters( 'lightning_is_singular', is_singular() ) ) {
+						lightning_get_template_part( 'template-parts/main-singular' );
+					} else {
+						if ( is_404() ) {
+							lightning_get_template_part( 'template-parts/main-404' );
+						} else {
+							lightning_get_template_part( 'template-parts/main-archive' );
+						}
+					}
 				}
 			}
 			?>
