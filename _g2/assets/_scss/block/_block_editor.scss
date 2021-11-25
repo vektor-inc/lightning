@@ -15,7 +15,7 @@
 bodyなど除外してcssを生成するより編集関連のCSSを上書きした方が結局楽
 */
 
-.components-panel__body,
+.components-panel,
 .interface-complementary-area,
 .edit-post-meta-boxes-area {
 	font-size:14px;
@@ -37,4 +37,11 @@ bodyなど除外してcssを生成するより編集関連のCSSを上書きし�
         color:#666;
         text-decoration: dotted;
     }
+
+}
+table.CalendarMonth_table{
+	th,td {
+		padding: 3px;
+		border-bottom:none;
+	}
 }
