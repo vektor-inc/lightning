@@ -2,6 +2,11 @@
     "name": "vektor-inc/font-awesome",
     "description": "Font Awesome",
     "license": "GPL-2.0-or-later",
+    "autoload": {
+        "psr-4": {
+            "VektorInc\\Vk_Font_Awesome_Versions\\": "src/"
+        }
+    },
     "authors": [
         {
             "name": "Vektor,Inc",
