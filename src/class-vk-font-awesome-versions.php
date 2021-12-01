@@ -1,16 +1,16 @@
 <?php
 /**
- * Vk_Font_Awesome_Versions
+ * VK_Font_Awesome_Versions
  *
  * @package vektor-inc/font-awesome
  * @license GPL-2.0+
  *
- * @version 1.0.2
+ * @version 0.0.1
  */
 
-namespace VektorInc\Vk_Font_Awesome_Versions;
+namespace VektorInc\VK_Font_Awesome_Versions;
 
-class Vk_Font_Awesome_Versions {
+class VK_Font_Awesome_Versions {
 
 	private static $version_default = '5_WebFonts_CSS';
 
@@ -233,6 +233,4 @@ class Vk_Font_Awesome_Versions {
 		);
 	} // static function customize_register( $wp_customize ) {
 
-} // Vk_Font_Awesome_Versions
-
-$vk_font_awesome_versions = new Vk_Font_Awesome_Versions();
+} // VK_Font_Awesome_Versions
