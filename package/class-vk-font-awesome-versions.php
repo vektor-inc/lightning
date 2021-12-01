@@ -21,7 +21,10 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 			add_action( 'after_setup_theme', array( __CLASS__, 'load_css_action' ) );
 
 			add_action( 'customize_register', array( __CLASS__, 'customize_register' ) );
-			add_action( 'admin_init', array( __CLASS__, 'load_admin_font_awesome' ) );
+
+			/* admin init だと use_block_editor_for_post が効かない */
+			add_action( 'admin_enqueue_scripts', array( __CLASS__, 'load_admin_font_awesome' ) );
+
 			add_action( 'enqueue_block_editor_assets', array( __CLASS__, 'load_gutenberg_font_awesome' ) );
 			add_action( 'wp_head', array( __CLASS__, 'dynamic_css' ), 3 );
 			add_filter( 'body_class', array( __CLASS__, 'add_body_class_fa_version' ) );
@@ -36,8 +39,8 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 			global $font_awesome_directory_uri;
 			$versions = array(
 				'5_SVG_JS'       => array(
-					'label'   => '5 SVG with JS ( ' . __( 'Not recommended', 'vk_font_awesome_version_textdomain' ) . ' )',
-					'version' => '5.13.0',
+					'label'   => '5 SVG with JS ( ' . __( 'Not recommended', 'vk-blocks' ) . ' )',
+					'version' => '5.15.1',
 					'type'    => 'svg-with-js',
 					/* [ Notice ] use editor css*/
 					'url_css' => $font_awesome_directory_uri . 'versions/5/css/all.min.css',
@@ -45,13 +48,13 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 				),
 				'5_WebFonts_CSS' => array(
 					'label'   => '5 Web Fonts with CSS',
-					'version' => '5.13.0',
+					'version' => '5.15.1',
 					'type'    => 'web-fonts-with-css',
 					'url_css' => $font_awesome_directory_uri . 'versions/5/css/all.min.css',
 					'url_js'  => '',
 				),
 				'4.7'            => array(
-					'label'   => '4.7 ( ' . __( 'Not recommended', 'vk_font_awesome_version_textdomain' ) . ' )',
+					'label'   => '4.7 ( ' . __( 'Not recommended', 'vk-blocks' ) . ' )',
 					'version' => '4.7',
 					'type'    => 'web-fonts-with-css',
 					'url_css' => $font_awesome_directory_uri . 'versions/4.7.0/css/font-awesome.min.css',
@@ -83,9 +86,9 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 		public static function ex_and_link() {
 			$current_option = self::get_option_fa();
 			if ( $current_option == '5_WebFonts_CSS' || $current_option == '5_SVG_JS' ) {
-				$ex_and_link = '<strong>Font Awesome 5</strong><br>' . __( 'Ex ) ', 'vk_font_awesome_version_textdomain' ) . 'far fa-file-alt [ <a href="//fontawesome.com/icons?d=gallery&m=free" target="_blank">Icon list</a> ]';
+				$ex_and_link = '<strong>Font Awesome 5</strong><br>' . __( 'Ex ) ', 'vk-blocks' ) . 'far fa-file-alt [ <a href="//fontawesome.com/icons?d=gallery&m=free" target="_blank">Icon list</a> ]';
 			} else {
-				$ex_and_link = '<strong>Font Awesome 4.7</strong><br>' . __( 'Ex ) ', 'vk_font_awesome_version_textdomain' ) . 'fa-file-text-o [ <a href="//fontawesome.com/v4.7.0/icons/" target="_blank">Icon list</a> ]';
+				$ex_and_link = '<strong>Font Awesome 4.7</strong><br>' . __( 'Ex ) ', 'vk-blocks' ) . 'fa-file-text-o [ <a href="//fontawesome.com/v4.7.0/icons/" target="_blank">Icon list</a> ]';
 			}
 			return $ex_and_link;
 		}
@@ -115,9 +118,12 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 			}
 		}
 
-		static function load_admin_font_awesome() {
+		static function load_admin_font_awesome( $post ) {
 			$current = self::current_info();
-			add_editor_style( $current['url_css'] );
+			// ブロックエディタでこれがあるとコンソールでエラー吐かれるのでclassicエディタのときだけ読み込み
+			if ( ! function_exists( 'use_block_editor_for_post' ) || ! use_block_editor_for_post( $post ) ) {
+				add_editor_style( $current['url_css'] );
+			}
 		}
 
 		static function load_gutenberg_font_awesome() {
@@ -191,7 +197,7 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 			$wp_customize->add_section(
 				'VK Font Awesome',
 				array(
-					'title'    => $vk_font_awesome_version_prefix_customize_panel . __( 'Font Awesome', 'lightning' ),
+					'title'    => $vk_font_awesome_version_prefix_customize_panel . __( 'Font Awesome', 'vk-blocks' ),
 					'priority' => $vk_font_awesome_version_priority,
 				)
 			);
@@ -214,10 +220,10 @@ if ( ! class_exists( 'Vk_Font_Awesome_Versions' ) ) {
 			$wp_customize->add_control(
 				'vk_font_awesome_version',
 				array(
-					'label'       => __( 'Font Awesome Version', 'vk_font_awesome_version_textdomain' ),
+					'label'       => __( 'Font Awesome Version', 'vk-blocks' ),
 					'section'     => 'VK Font Awesome',
 					'settings'    => 'vk_font_awesome_version',
-					'description' => __( '4.7 will be abolished in the near future.', 'vk_font_awesome_version_textdomain' ),
+					'description' => __( '4.7 will be abolished in the near future.', 'vk-blocks' ),
 					'type'        => 'select',
 					'priority'    => '',
 					'choices'     => $choices,
