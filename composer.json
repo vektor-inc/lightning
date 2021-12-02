@@ -4,7 +4,7 @@
     "license": "GPL-2.0-or-later",
     "autoload": {
         "psr-4": {
-            "VektorInc\\Vk_Font_Awesome_Versions\\": "src/"
+            "VektorInc\\VK_Font_Awesome_Versions\\": "src/"
         }
     },
     "authors": [
