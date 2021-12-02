@@ -5,7 +5,7 @@
  * @package vektor-inc/font-awesome-versions
  * @license GPL-2.0+
  *
- * @version 0.0.3
+ * @version 0.0.2
  */
 
 namespace VektorInc\VK_Font_Awesome_Versions;
