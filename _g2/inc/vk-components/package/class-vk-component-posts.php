@@ -167,17 +167,23 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			$hidden_class = array();
 			if ( ! empty( $options['vkb_hidden'] ) ) {
 				array_push( $hidden_class, 'vk_hidden' );
-			} elseif ( ! empty( $options['vkb_hidden_xxl'] ) ) {
+			}
+			if ( ! empty( $options['vkb_hidden_xxl'] ) ) {
 				array_push( $hidden_class, 'vk_hidden-xxl' );
-			} elseif ( ! empty( $options['vkb_hidden_xl'] ) ) {
+			}
+			if ( ! empty( $options['vkb_hidden_xl'] ) || ! empty( $options['vkb_hidden_xl_v2'] ) ) {
 				array_push( $hidden_class, 'vk_hidden-xl' );
-			} elseif ( ! empty( $options['vkb_hidden_lg'] ) ) {
+			}
+			if ( ! empty( $options['vkb_hidden_lg'] ) ) {
 				array_push( $hidden_class, 'vk_hidden-lg' );
-			} elseif ( ! empty( $options['vkb_hidden_md'] ) ) {
+			}
+			if ( ! empty( $options['vkb_hidden_md'] ) ) {
 				array_push( $hidden_class, 'vk_hidden-md' );
-			} elseif ( ! empty( $options['vkb_hidden_sm'] ) ) {
+			}
+			if ( ! empty( $options['vkb_hidden_sm'] ) ) {
 				array_push( $hidden_class, 'vk_hidden-sm' );
-			} elseif ( ! empty( $options['vkb_hidden_xs'] ) ) {
+			}
+			if ( ! empty( $options['vkb_hidden_xs'] ) ) {
 				array_push( $hidden_class, 'vk_hidden-xs' );
 			}
 
