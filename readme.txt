@@ -38,6 +38,9 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v14.13.3
+[ G3 ][ Bug fix ] Fix Slider bug ( attribute from VK Blocks 1.20 - )
+
 v14.13.2
 [ G2 ][ Bug fix ] Fix editor css
 
