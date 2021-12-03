@@ -28,3 +28,19 @@ if ( ! class_exists( 'VK_Swiper' ) ) {
 		$vk_swiper->enqueue_swiper();
 	}
 }
+
+/**
+ * Enqueue swiper scripts
+ *
+ * vk_blocksで設定したload_separate_optionが設定されトップページスライドショーがオンの時swiperを読み込む
+ */
+function lightning_enqueue_swiper() {
+	// $options = get_option( 'vk_blocks_options' );
+	if ( is_front_page() || isset( $options['load_separate_option'] ) ) {
+		if ( apply_filters( 'lightning_default_slide_display', true ) ) {
+			wp_enqueue_style( 'vk-swiper-style' );
+			wp_enqueue_script( 'vk-swiper-script' );
+		}
+	}
+}
+add_action( 'wp_enqueue_scripts', 'lightning_enqueue_swiper' );

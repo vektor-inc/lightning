@@ -11,6 +11,7 @@ https://github.com/vektor-inc/vektor-wp-libraries
 	 */
 	&.media {
 		// width: 100%; // ここに迂闊に幅指定するとカラム指定が効かなくなる
+		display: flex;
 		padding: 1em 0;
 		margin: 0 15px;
 		border-bottom: $border_primary;
