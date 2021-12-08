@@ -169,6 +169,16 @@ $xxl-min: 1400px;
 	}
 	&_imgOuter {
 		position: relative;
+		overflow:hidden;
+		/* 
+		overflow:hidden; がないと
+		* G3
+		* メディアレイアウト
+		* フッターウィジェット無し
+		* 投稿リストの最後の投稿の抜粋文字数が少ない
+		の条件下で、画像が見えないエリアでhtmlエリアをはみ出して、
+		htmlエリアがスクロール反応してしまい、下端にスクロールした時の挙動が不安定になる
+		*/
 		&_singleTermLabel {
 			font-size: 10px;
 			padding: 0.3em 0.8em;
