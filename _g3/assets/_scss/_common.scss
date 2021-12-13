@@ -69,7 +69,6 @@ ul,
 ol,
 dl,
 table,
-figure,
 p {
 	& + h1,
 	& + h2,
@@ -78,6 +77,18 @@ p {
 	& + h5,
 	& + h6{
 		margin-top:2em;
+	}
+}
+figure {
+	& + h1,
+	& + h2,
+	& + h3 {
+		margin-top:2em;
+	}
+	& + h4,
+	& + h5,
+	& + h6 {
+		margin-top:var(--vk-margin-headding-bottom);
 	}
 }
 
