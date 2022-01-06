@@ -37,7 +37,9 @@
         border-right:1px solid var(--vk-color-border);
     }
     @media ( max-width: $sm-max ){
-        border-left:none;
+		li:first-child{
+        	border-left:none;
+		}
         li {
             border-right:none;
             border-bottom:1px solid var(--vk-color-border-hr);
