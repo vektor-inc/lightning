@@ -28,3 +28,9 @@
 		padding:5px;
 	}
 }
+
+.is-root-container > .wp-block,
+.is-root-container > :where(div:not(.wp-block)) > .wp-block {
+	margin-left:auto;
+	margin-right:auto;
+}
