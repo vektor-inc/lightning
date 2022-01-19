@@ -2,6 +2,13 @@
     "$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/trunk/schemas/json/theme.json",
 	"version": 2,
     "settings": {
+		"spacing": {
+			"blockGap": false
+		},
+        "layout": {
+            "contentSize": "var(--vk-width-container)",
+            "wideSize": "calc( var(--vk-width-container) + ( 100vw - var(--vk-width-container) ) / 2 )"
+        },
         "border": {
             "color": true,
             "radius": true,

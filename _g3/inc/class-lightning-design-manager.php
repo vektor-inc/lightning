@@ -24,16 +24,23 @@ class Lightning_Design_Manager {
 
 		add_action( 'customize_register', array( __CLASS__, 'customize_register' ) );
 
+		/*
+		Caution
+		add_editor_style はテーマ外（スキンプラグインなど）の https 以外のcss読み込みが効かない
+		add_editor_style は .editor-styles-wrapper を付与するので詳細が高くなってしまう
+		-> 編集画面のcssは全部 enqueue_block_editor_assets で処理する.
+		*/
+
+		// 読み込み順の 11 指定は共通CSSより後に読み込まれるようにするため.
+		add_action( 'enqueue_block_editor_assets', array( __CLASS__, 'load_skin_gutenberg_css' ), 11 );
+
 		/**
 		 * 編集画面において enqueue_block_editor_assets は上部で add_editor_style は下部で読み込まれる
 		 * -> 両方書くと enqueue_block_editor_assets で定義した CSS に wp_add_inline_style で引っ掛けても効かない
 		 */
 		// add_editor_style は Classic Editor 専用に.
-		add_action( 'after_setup_theme', array( __CLASS__, 'load_skin_editor_css' ) );
-		// add_editor_style はテーマ外（プラグインなど）の https 以外のcss読み込みが効かないので、編集画面のcssは全部 enqueue_block_editor_assets で処理する.
-		// 読み込み順の 11 指定は共通CSSより後に読み込まれるようにするため.
-		add_action( 'enqueue_block_editor_assets', array( __CLASS__, 'load_skin_gutenberg_css' ), 11 );
-
+		// ※ 5.9 では enqueue_block_editor_assets より後に読み込まれる.
+		add_action( 'admin_init', array( __CLASS__, 'load_skin_editor_css' ) );
 	}
 
 	/**

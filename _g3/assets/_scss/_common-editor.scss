@@ -15,3 +15,7 @@
 		}
 	}
 }
+
+html :where(.editor-styles-wrapper){
+	font-family: var(--vk-font-family);
+}

@@ -14,13 +14,14 @@ body {
 	color:var(--vk-color-text-body);
 	padding: 0;
 	margin:0;
-	font-family: 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+	font-family: var(--vk-font-family);
 	-ms-word-wrap: break-word;
 	word-wrap: break-word;
 	// word-break: keep-all;
 	// line-break: strict;
 	// overflow-wrap: break-word;
 	background-color: #fff; // カスタマイザでデフォルト#ffffffにしてもリセットしないと効かないため
+	--vk-font-family :  'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif
 }
 
 @media (max-width: $md-max) {
