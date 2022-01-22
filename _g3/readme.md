@@ -52,3 +52,18 @@ function lightning_add_class_name_site_header_origin3( $class_name, $position ){
 * フック名で単語の連結は _ のみで - は使用禁止。
 * アクションフック名にはプリフィックス lightning_ を付与。
 * プリフィックス名の次は該当箇所のクラス名を付与する。ただし、- は _ に変更する。
+
+---
+
+## G3 
+
+5.9での 管理画面CSS読み込み順
+
+| CSS | フックポイント | プライオリティ | 読み込み方法 | 依存ハンドル | ハンドル |
+| ---- | ---- | ---- | ---- | ---- | ---- |
+| 共通CSS | enqueue_block_editor_assets | - | wp_enqueue_style | wp-edit-blocks | lightning-common-editor-gutenberg |
+| スキン | enqueue_block_editor_assets | 11 | wp_enqueue_style | wp-edit-blocks | lightning-gutenberg-editor |
+| 見出しデザイン | enqueue_block_editor_assets | 1２ | wp_add_inline_style | wp-edit-blocks | lightning-common-editor-gutenberg |
+| VK Blocks |
+| 共通CSS* | admin_enqueue_scripts | - | add_editor_style |  |  | 
+| スキン* | admin_enqueue_scripts | - | add_editor_style | | |
