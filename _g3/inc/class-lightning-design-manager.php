@@ -40,7 +40,8 @@ class Lightning_Design_Manager {
 		 */
 		// add_editor_style は Classic Editor 専用に.
 		// ※ 5.9 では enqueue_block_editor_assets より後に読み込まれる.
-		add_action( 'admin_init', array( __CLASS__, 'load_skin_editor_css' ) );
+		// ※ 5.9 では admin_enqueue_scripts なら add_editor_style でクラシックエディタでちゃんと読み込まれる.
+		add_action( 'admin_enqueue_scripts', array( __CLASS__, 'load_skin_editor_css' ), 11 );
 	}
 
 	/**
