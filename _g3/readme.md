@@ -63,7 +63,8 @@ function lightning_add_class_name_site_header_origin3( $class_name, $position ){
 | ---- | ---- | ---- | ---- | ---- | ---- |
 | 共通CSS | enqueue_block_editor_assets | - | wp_enqueue_style | wp-edit-blocks | lightning-common-editor-gutenberg |
 | スキン | enqueue_block_editor_assets | 11 | wp_enqueue_style | wp-edit-blocks | lightning-gutenberg-editor |
-| 見出しデザイン | enqueue_block_editor_assets | 1２ | wp_add_inline_style | wp-edit-blocks | lightning-common-editor-gutenberg |
+| 見出しデザイン | enqueue_block_editor_assets | 1２ | wp_add_inline_style | lightning-common-editor-gutenberg | インライン |
+| フォント切り替え | enqueue_block_editor_assets | 1２ | wp_add_inline_style | lightning-common-editor-gutenberg | インライン |
 | VK Blocks |
 | 共通CSS* | admin_enqueue_scripts | - | add_editor_style |  |  | 
 | スキン* | admin_enqueue_scripts | - | add_editor_style | | |
