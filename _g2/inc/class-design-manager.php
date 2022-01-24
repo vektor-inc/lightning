@@ -23,7 +23,7 @@ class Lightning_Design_Manager {
 
 		// Don't use following action point.
 		// wp : become do not load css.
-		add_action( 'after_setup_theme', array( __CLASS__, 'load_skin_editor_css' ) );
+		add_action( 'admin_enqueue_scripts', array( __CLASS__, 'load_skin_editor_css' ), 11 );
 
 		add_action( 'customize_register', array( __CLASS__, 'customize_register' ) );
 
