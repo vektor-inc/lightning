@@ -1,0 +1,6 @@
+{
+    "phpcs.autoConfigSearch": false,
+    "php-cs-fixer.formatHtml": false, // フォーマッター実行時にHMTLも整形する
+    "php-cs-fixer.onsave": true, // 保存時に整形を実行する
+    "phpcbf.onsave": true,
+}

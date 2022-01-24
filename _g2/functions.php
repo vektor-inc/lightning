@@ -120,7 +120,7 @@ function lightning_addJs() {
 	}
 	wp_register_script( 'lightning-js', get_template_directory_uri() . '/assets/js/lightning.min.js', array(), LIGHTNING_THEME_VERSION, true );
 	wp_localize_script( 'lightning-js', 'lightningOpt', apply_filters( 'lightning_localize_options', array() ) );
-	// jsのjQuery依存はもう無いが、一応追加しておく
+	// jsのjQuery依存はもう無いが、一応追加しておく.
 	wp_enqueue_script( 'jquery' );
 	wp_enqueue_script( 'lightning-js' );
 }
@@ -222,7 +222,7 @@ require dirname( __FILE__ ) . '/inc/starter-content.php';
   Plugin support
 /*
 -------------------------------------------*/
-// Load woocommerce modules
+// Load woocommerce modules.
 if ( class_exists( 'woocommerce' ) ) {
 	require dirname( __FILE__ ) . '/plugin-support/woocommerce/functions-woo.php';
 }
@@ -240,7 +240,7 @@ if ( is_plugin_active( 'bbpress/bbpress.php' ) ) {
 /*-------------------------------------------*/
 if ( ! function_exists( 'lightning_widgets_init' ) ) {
 	function lightning_widgets_init() {
-		// sidebar widget area
+		// sidebar widget area.
 		register_sidebar(
 			array(
 				'name'          => __( 'Sidebar(Home)', 'lightning' ),
@@ -272,7 +272,7 @@ if ( ! function_exists( 'lightning_widgets_init' ) ) {
 				)
 			);
 
-		// Sidebar( post_type )
+		// Sidebar( post_type ).
 
 		$postTypes = get_post_types( array( 'public' => true ) );
 
@@ -333,7 +333,7 @@ if ( ! function_exists( 'lightning_widgets_init' ) ) {
 				)
 			);
 
-		// footer upper widget area
+		// footer upper widget area.
 
 			register_sidebar(
 				array(
@@ -346,7 +346,7 @@ if ( ! function_exists( 'lightning_widgets_init' ) ) {
 				)
 			);
 
-		// footer widget area
+		// footer widget area.
 
 			$footer_widget_area_count = 3;
 			$footer_widget_area_count = apply_filters( 'lightning_footer_widget_area_count', $footer_widget_area_count );
@@ -365,7 +365,7 @@ if ( ! function_exists( 'lightning_widgets_init' ) ) {
 			$i++;
 		}
 
-		// LP widget area
+		// LP widget area.
 
 			$args  = array(
 				'post_type'      => 'page',
