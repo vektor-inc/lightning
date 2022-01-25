@@ -31,21 +31,26 @@ entry-body
 }
 
 .alignfull {
-	width:auto; /* Don't use 100vw!! cope with windows */
-	margin-left: calc(50% - 50vw);
-	margin-right: calc(50% - 50vw);
-	&.wp-block-image {
-		// Default block style overwrite
+	&,
+	&.wp-block-image,
+	&.wp-block-cover-image,
+	&.wp-block-cover {
+		width:auto; /* Don't use 100vw!! cope with windows */
+		margin-left: calc(50% - 50vw);
+		margin-right: calc(50% - 50vw);
 		max-width: 100vw;
 	}
 }
 .alignwide {
-	// --vk-width-container != 100% なので注意
-	// Lightningの幅広 = コンテナの「表示エリア（100%）	」 + 左右余白分の丁度半分
-	width: calc( 100% + ( 100vw - 100% ) / 2 );
-	margin-left: calc( ( 100% - 100vw ) / 4 );
-	margin-right: calc( ( 100% - 100vw ) / 4 );
-	&.wp-block-image {
+	&,
+	&.wp-block-image,
+	&.wp-block-cover-image,
+	&.wp-block-cover {
+		// --vk-width-container != 100% なので注意
+		// Lightningの幅広 = コンテナの「表示エリア（100%）	」 + 左右余白分の丁度半分
+		width: calc( 100% + ( 100vw - 100% ) / 2 );
+		margin-left: calc( ( 100% - 100vw ) / 4 );
+		margin-right: calc( ( 100% - 100vw ) / 4 );
 		max-width: 100vw;
 	}
 }
