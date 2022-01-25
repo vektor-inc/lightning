@@ -12,9 +12,11 @@ Lightning is a very simple & easy to customize theme which is based on the Boots
 
 ## Lightning G3 ./_g3/
 
+G3 は別途ドキュメントがあるのでそちらを参照
+
 [Please check ./_g3/readme.md](https://github.com/vektor-inc/lightning/blob/master/_g3/readme.md)
 
-### sass build
+### G3 sass build
 
 ```
 cd _g3
@@ -57,24 +59,30 @@ $ docker-compose run wp
 
 ## 各種コマンド
 
-### ビルド
+### G2 開発
+
+```
+npx gulp watch
+```
+
+### G2 ビルド
 
 js,scss,テキストドメインのビルドをすべて行う
 ```
 $ npm run build
 ```
 
-#### jsビルド
+#### G2 jsビルド
 ```
 $ npm run build:script
 ```
 
-#### scssビルド
+#### G2 scssビルド
 ```
 $ npm run build:style
 ```
 
-#### テキストドメイン書き換え
+#### G2 テキストドメイン書き換え
 ```
 $ npm run build:text-domain
 ```
