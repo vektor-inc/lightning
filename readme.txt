@@ -38,6 +38,9 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v14.14.1
+[ G3 / G2 ][ Bug fix ] Fix layout bug come rise from "should_load_separate_assets" css load order
+
 v14.14.0
 [ G3 / G2 ] Cope with WordPress 5.9
 
