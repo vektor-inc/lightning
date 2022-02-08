@@ -1,7 +1,7 @@
 <?php //phpcs:ignore
 /**
  * VK_Font_Awesome_Versions
- * 
+ *
  *
  * @package vektor-inc/font-awesome-versions
  * @license GPL-2.0+
@@ -59,7 +59,6 @@ class VkFontAwesomeVersions {
 
 		$moFile = $domain . '-' . $locale . '.mo';
 		$path = realpath(dirname(__FILE__) . '/languages');
-
 		if ($path && file_exists($path)) {
 			load_textdomain($domain, $path . '/' . $moFile);
 		}
@@ -223,9 +222,9 @@ class VkFontAwesomeVersions {
 		$current_option = self::get_option_fa();
 		if ( '4.7' === $current_option ) {
 			$old_notice .='<div class="error">';
-			$old_notice .= __( 'An older version of Font Awesome is selected. This version will be removed by August 2022.', 'font-awesome-versions' ) . PHP_EOL;
-			$old_notice .= __( 'Plesee change the version of FontAwesome on the Appearance > Customize screen.', 'font-awesome-versions' ) . PHP_EOL;
-			$old_notice .= __( '* It is necessary to reset the icon font in the place where Font Awesome is used.', 'font-awesome-versions' ) . PHP_EOL;
+			$old_notice .= '<p>' . __( 'An older version of Font Awesome is selected. This version will be removed by August 2022.', 'font-awesome-versions' ) . '</p>';
+			$old_notice .= '<p>' . __( 'Plesee change the version of FontAwesome on the Appearance > Customize screen.', 'font-awesome-versions' )  . '</p>';
+			$old_notice .= '<p>' . __( '* It is necessary to reset the icon font in the place where Font Awesome is used.', 'font-awesome-versions' )  . '</p>';
 			$old_notice .= '</div>';
 		}
 		echo wp_kses_post( $old_notice );
