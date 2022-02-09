@@ -145,6 +145,8 @@ class Lightning_Design_Manager {
 			$skins_info = self::get_skins_info();
 			if ( isset( $skins_info[ $current_skin ]['plugin_path'] ) && ! is_plugin_active( $skins_info[ $current_skin ]['plugin_path'] ) ) {
 				$current_skin = 'origin3';
+			} elseif ( 'origin2' === $current_skin ) {
+				$current_skin = 'origin3';
 			}
 		}
 
