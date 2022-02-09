@@ -9,6 +9,8 @@ $theme_opt = wp_get_theme( get_template() );
 
 define( 'LIGHTNING_THEME_VERSION', $theme_opt->Version ); // phpcs:ignore
 
+require_once dirname( __FILE__ ) . '/vendor/autoload.php';
+
 /*********************************************
  * Set up theme
  */
@@ -120,13 +122,13 @@ require dirname( __FILE__ ) . '/inc/vk-color-palette-manager/config.php';
 require dirname( __FILE__ ) . '/inc/layout-controller/layout-controller.php';
 require dirname( __FILE__ ) . '/inc/vk-components/config.php';
 require dirname( __FILE__ ) . '/inc/vk-mobile-nav/config.php';
-require dirname( __FILE__ ) . '/inc/vk-breadcrumb/config.php';
 require dirname( __FILE__ ) . '/inc/widget-area.php';
 require dirname( __FILE__ ) . '/inc/term-color/config.php';
 require dirname( __FILE__ ) . '/inc/vk-css-optimize/config.php';
 require dirname( __FILE__ ) . '/inc/vk-swiper/config.php';
 require dirname( __FILE__ ) . '/inc/ltg-g3-slider/config.php';
 require dirname( __FILE__ ) . '/inc/vk-wp-oembed-blog-card/config.php';
+require dirname( __FILE__ ) . '/inc/vk-breadcrumb/config.php'; // fall back alias.
 
 require dirname( __FILE__ ) . '/inc/starter-content.php';
 
