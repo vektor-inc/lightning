@@ -43,6 +43,21 @@ class VkFontAwesomeVersions {
 	static function versions() {
 		global $font_awesome_directory_uri;
 		$versions = array(
+			'6_SVG_JS'       => array(
+				'label'   => '5 SVG with JS ( ' . __( 'Not recommended', 'vk-blocks' ) . ' )',
+				'version' => '5.15.1',
+				'type'    => 'svg-with-js',
+				/* [ Notice ] use editor css*/
+				'url_css' => $font_awesome_directory_uri . 'versions/6/css/all.min.css',
+				'url_js'  => $font_awesome_directory_uri . 'versions/6/js/all.min.js',
+			),
+			'6_WebFonts_CSS' => array(
+				'label'   => '5 Web Fonts with CSS',
+				'version' => '5.15.1',
+				'type'    => 'web-fonts-with-css',
+				'url_css' => $font_awesome_directory_uri . 'versions/6/css/all.min.css',
+				'url_js'  => '',
+			),
 			'5_SVG_JS'       => array(
 				'label'   => '5 SVG with JS ( ' . __( 'Not recommended', 'vk-blocks' ) . ' )',
 				'version' => '5.15.1',
@@ -90,7 +105,9 @@ class VkFontAwesomeVersions {
 
 	public static function ex_and_link() {
 		$current_option = self::get_option_fa();
-		if ( $current_option == '5_WebFonts_CSS' || $current_option == '5_SVG_JS' ) {
+		if ( $current_option == '6_WebFonts_CSS' || $current_option == '6_SVG_JS' ) {
+			$ex_and_link = '<strong>Font Awesome 6</strong><br>' . __( 'Ex ) ', 'vk-blocks' ) . 'fa-solid fa-file [ <a href="//fontawesome.com/icons?d=gallery&m=free" target="_blank">Icon list</a> ]';
+		} elseif ( $current_option == '5_WebFonts_CSS' || $current_option == '5_SVG_JS' ) {
 			$ex_and_link = '<strong>Font Awesome 5</strong><br>' . __( 'Ex ) ', 'vk-blocks' ) . 'far fa-file-alt [ <a href="//fontawesome.com/icons?d=gallery&m=free" target="_blank">Icon list</a> ]';
 		} else {
 			$ex_and_link = '<strong>Font Awesome 4.7</strong><br>' . __( 'Ex ) ', 'vk-blocks' ) . 'fa-file-text-o [ <a href="//fontawesome.com/v4.7.0/icons/" target="_blank">Icon list</a> ]';
@@ -149,6 +166,10 @@ class VkFontAwesomeVersions {
 			$class[] = 'fa_v5_css';
 		} elseif ( $current_option == '5_SVG_JS' ) {
 			$class[] = 'fa_v5_svg';
+		} elseif ( $current_option == '6_WebFonts_CSS' ) {
+			$class[] = 'fa_v6_css';
+		} elseif ( $current_option == '6_SVG_JS' ) {
+			$class[] = 'fa_v6_svg';
 		}
 		return $class;
 	}
@@ -167,6 +188,10 @@ class VkFontAwesomeVersions {
 			$dynamic_css = '.tagcloud a:before { font-family: "Font Awesome 5 Free";content: "\f02b";font-weight: bold; }';
 		} elseif ( $current == '5_SVG_JS' ) {
 			$dynamic_css = '.tagcloud a:before { content:"" }';
+		} elseif ( $current == '6_WebFonts_CSS' ) {
+			$dynamic_css = '.tagcloud a:before { font-family: "Font Awesome 5 Free";content: "\f02b";font-weight: bold; }';
+		} elseif ( $current == '6_SVG_JS' ) {
+			$dynamic_css = '.tagcloud a:before { content:"" }';
 		}
 		// delete before after space
 		$dynamic_css = trim( $dynamic_css );
@@ -179,9 +204,11 @@ class VkFontAwesomeVersions {
 		wp_add_inline_style( $set_enqueue_handle_style, $dynamic_css );
 	}
 
-	public static function class_switch( $class_v4 = '', $class_v5 = '' ) {
+	public static function class_switch( $class_v4 = '', $class_v5 = '', $class_v6 = '' ) {
 		$current_option = self::get_option_fa();
-		if ( $current_option == '5_WebFonts_CSS' || $current_option == '5_SVG_JS' ) {
+		if ( $current_option == '6_WebFonts_CSS' || $current_option == '6_SVG_JS' ) {
+			return $class_v6;
+		}elseif ( $current_option == '5_WebFonts_CSS' || $current_option == '5_SVG_JS' ) {
 			return $class_v5;
 		} else {
 			return $class_v4;
