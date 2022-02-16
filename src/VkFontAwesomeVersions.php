@@ -44,16 +44,16 @@ class VkFontAwesomeVersions {
 		global $font_awesome_directory_uri;
 		$versions = array(
 			'6_SVG_JS'       => array(
-				'label'   => '5 SVG with JS ( ' . __( 'Not recommended', 'vk-blocks' ) . ' )',
-				'version' => '5.15.1',
+				'label'   => '6 SVG with JS ( ' . __( 'Not recommended', 'vk-blocks' ) . ' )',
+				'version' => '6.0.0',
 				'type'    => 'svg-with-js',
 				/* [ Notice ] use editor css*/
 				'url_css' => $font_awesome_directory_uri . 'versions/6/css/all.min.css',
 				'url_js'  => $font_awesome_directory_uri . 'versions/6/js/all.min.js',
 			),
 			'6_WebFonts_CSS' => array(
-				'label'   => '5 Web Fonts with CSS',
-				'version' => '5.15.1',
+				'label'   => '6 Web Fonts with CSS',
+				'version' => '6.0.0',
 				'type'    => 'web-fonts-with-css',
 				'url_css' => $font_awesome_directory_uri . 'versions/6/css/all.min.css',
 				'url_js'  => '',
