@@ -1,0 +1,57 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-02-08T00:50:52+00:00\n"
+"PO-Revision-Date: 2022-02-08 10:14+0900\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.0.1\n"
+"X-Domain: font-awesome-versions\n"
+
+#: src/VkFontAwesomeVersions.php:67 src/VkFontAwesomeVersions.php:82
+msgid "Not recommended"
+msgstr "非推奨"
+
+#: src/VkFontAwesomeVersions.php:114 src/VkFontAwesomeVersions.php:116
+msgid "Ex ) "
+msgstr "例) "
+
+#: src/VkFontAwesomeVersions.php:216
+msgid ""
+"An older version of Font Awesome is selected. This version will be removed "
+"by August 2022."
+msgstr ""
+"Font Awesomeの古いバージョンが選択されています。このバージョンは2022年8月ま"
+"でに削除される予定です。"
+
+#: src/VkFontAwesomeVersions.php:217
+msgid ""
+"Plesee change the version of FontAwesome on the Appearance > Customize "
+"screen."
+msgstr "外観＞カスタマイズ画面で、FontAwesomeのバージョンを変更してください。"
+
+#: src/VkFontAwesomeVersions.php:218
+msgid ""
+"* It is necessary to reset the icon font in the place where Font Awesome is "
+"used."
+msgstr ""
+"* Font Awesomeを使用している場所のアイコンフォントを再設定する必要がありま"
+"す。"
+
+#: src/VkFontAwesomeVersions.php:238
+msgid "Font Awesome"
+msgstr "Font Awesome"
+
+#: src/VkFontAwesomeVersions.php:261
+msgid "Font Awesome Version"
+msgstr "Font Awesome バージョン"
+
+#: src/VkFontAwesomeVersions.php:264
+msgid "4.7 will be abolished in the near future."
+msgstr "4.7は将来的に廃止されます。"

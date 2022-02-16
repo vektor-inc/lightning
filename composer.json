@@ -16,5 +16,10 @@
     "require": {
         "php": ">=5.6.0"
     },
-    "require-dev": {}
+    "require-dev": {},
+    "scripts": {
+		"translate": [
+			"wp i18n make-pot --skip-js . src/languages/font-awesome-versioons.pot"
+		]
+	}
 }
