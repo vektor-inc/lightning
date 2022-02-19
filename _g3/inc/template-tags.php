@@ -249,7 +249,7 @@ function lightning_the_footer_copyight() {
 	echo wp_kses_post( apply_filters( 'lightning_footerCopyRightCustom', $lightning_footer_copy_right ) );
 
 	// Powered.
-	$lightning_footer_powered = __( '<p>Powered by <a href="https://wordpress.org/">WordPress</a> &amp; <a href="https://lightning.nagoya" target="_blank" title="Free WordPress Theme Lightning"> Lightning Theme</a> by Vektor,Inc. technology.</p>', 'lightning' );
+	$lightning_footer_powered = __( '<p>Powered by <a href="https://wordpress.org/">WordPress</a> &amp; <a href="https://lightning.vektor-inc.co.jp/en" target="_blank" title="Free WordPress Theme Lightning"> Lightning Theme</a> by Vektor,Inc. technology.</p>', 'lightning' );
 	echo wp_kses_post( apply_filters( 'lightning_footerPoweredCustom', $lightning_footer_powered ) );
 
 }

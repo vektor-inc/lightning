@@ -8,7 +8,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 Lightning is a very simple theme.
-Official site : https://lightning.vektor-inc.co.jp
+Official site : https://lightning.vektor-inc.co.jp/en
 Sample site : https://demo.lightning.nagoya/
 
 === Tags ===

@@ -95,7 +95,7 @@ function lightning_get_theme_options_default() {
 		'front_pr_display'              => false,
 		'top_slide_time'                => 4000,
 		'top_slide_image_1'             => get_template_directory_uri() . '/assets/images/top_image_1.jpg',
-		'top_slide_url_1'               => __( 'https://lightning.nagoya/', 'lightning' ),
+		'top_slide_url_1'               => __( 'https://lightning.vektor-inc.co.jp/en/', 'lightning' ),
 		'top_slide_text_title_1'        => __( 'Simple and Customize easy <br>WordPress theme.', 'lightning' ),
 		'top_slide_text_caption_1'      => __( '100% GPL Lisence  and adopting the bootstrap', 'lightning' ),
 		'top_slide_text_btn_1'          => __( 'READ MORE', 'lightning' ),
@@ -370,7 +370,7 @@ function lightning_the_footerCopyRight() {
 
 	// Powered
 	/*------------------*/
-	$lightning_footerPowered = __( '<p>Powered by <a href="https://wordpress.org/">WordPress</a> &amp; <a href="https://lightning.nagoya" target="_blank" title="Free WordPress Theme Lightning"> Lightning Theme</a> by Vektor,Inc. technology.</p>', 'lightning' );
+	$lightning_footerPowered = __( '<p>Powered by <a href="https://wordpress.org/">WordPress</a> &amp; <a href="https://lightning.vektor-inc.co.jp/en" target="_blank" title="Free WordPress Theme Lightning"> Lightning Theme</a> by Vektor,Inc. technology.</p>', 'lightning' );
 	echo apply_filters( 'lightning_footerPoweredCustom', $lightning_footerPowered );
 
 }
