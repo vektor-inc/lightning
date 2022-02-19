@@ -1,22 +1,22 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => 'dev-master',
-        'version' => 'dev-master',
+        'pretty_version' => 'dev-develop',
+        'version' => 'dev-develop',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '3e18d1f7c86ebaded1f497b21e03ee443cdb680e',
+        'reference' => 'b9b939056658c50c4cb210fa675f0717470ac6d4',
         'name' => '__root__',
         'dev' => true,
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
+            'pretty_version' => 'dev-develop',
+            'version' => 'dev-develop',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '3e18d1f7c86ebaded1f497b21e03ee443cdb680e',
+            'reference' => 'b9b939056658c50c4cb210fa675f0717470ac6d4',
             'dev_requirement' => false,
         ),
         'ircmaxell/random-lib' => array(
