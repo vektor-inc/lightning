@@ -5,12 +5,13 @@
  * VK_Breadcrumb is instead to VkBreadcrumb composer lib.
  * But some user probably using VK_Breadcrumb in childe themes that
  * this is fall back alias
+ *
+ * Original file is bellow
+ * lightning/_g3/vendor/vektor-inc/vk-breadcrumb/src/VkBreadcrumb.php
+ *
+ *  @since 14.16.2
  */
 
-/**
- * Original file is bellow
- * vendor/vektor-inc/vk-breadcrumb/src/VkBreadcrumb.php
- */
 use VektorInc\VK_Breadcrumb\VkBreadcrumb;
 
 if ( ! class_exists( 'VK_Breadcrumb' ) ) {
@@ -23,4 +24,3 @@ if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 	}
 
 }
-
