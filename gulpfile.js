@@ -281,6 +281,7 @@ gulp.task('copy_dist', function (done) {
   const files = gulp.src(
     [
       "./LICENSE",
+	  "./**/*.php",
       "./**/*.txt",
       "./**/*.css",
       "./**/*.png",
