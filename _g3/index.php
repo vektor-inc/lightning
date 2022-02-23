@@ -6,7 +6,7 @@
  */
 
 use VektorInc\VK_Breadcrumb\VkBreadcrumb;
-$vk_breadcrumb = new VkBreadcrumb();
+
 ?>
 
 <?php lightning_get_template_part( 'header' ); ?>
@@ -39,15 +39,18 @@ if ( is_front_page() ) {
 
 	<?php
 	do_action( 'lightning_breadcrumb_before', 'lightning_breadcrumb_before' );
-	if ( apply_filters( 'lightning_is_breadcrumb', true, 'breadcrumb' ) ) {
-		$breadcrumb_options = array(
-			'id_outer'        => 'breadcrumb',
-			'class_outer'     => 'breadcrumb',
-			'class_inner'     => 'container',
-			'class_list'      => 'breadcrumb-list',
-			'class_list_item' => 'breadcrumb-list__item',
-		);
-		$vk_breadcrumb->the_breadcrumb( $breadcrumb_options );
+	if ( apply_filters( 'lightning_is_breadcrumb_position_normal', true, 'breadcrumb_position_normal' ) ) {
+		if ( apply_filters( 'lightning_is_breadcrumb', true, 'breadcrumb' ) ) {
+			$vk_breadcrumb      = new VkBreadcrumb();
+			$breadcrumb_options = array(
+				'id_outer'        => 'breadcrumb',
+				'class_outer'     => 'breadcrumb',
+				'class_inner'     => 'container',
+				'class_list'      => 'breadcrumb-list',
+				'class_list_item' => 'breadcrumb-list__item',
+			);
+			$vk_breadcrumb->the_breadcrumb( $breadcrumb_options );
+		}
 	}
 	do_action( 'lightning_breadcrumb_after', 'lightning_breadcrumb_after' );
 	?>
