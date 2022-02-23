@@ -96,23 +96,23 @@ class LightningTest extends WP_UnitTestCase {
 			// ),
 			array(
 				'options' => array(
-					'top_slide_image_1' => 'https://lightning.nagoya/images/sample.jpg',
-					'top_slide_image_2' => 'https://lightning.nagoya/images/sample.jpg',
+					'top_slide_image_1' => 'https://lightning.vektor-inc.co.jp/en/images/sample.jpg',
+					'top_slide_image_2' => 'https://lightning.vektor-inc.co.jp/en/images/sample.jpg',
 				),
 				'correct' => 2,
 			),
 			array(
 				'options' => array(
-					'top_slide_image_1' => 'https://lightning.nagoya/images/sample.jpg',
-					'top_slide_image_5' => 'https://lightning.nagoya/images/sample.jpg',
+					'top_slide_image_1' => 'https://lightning.vektor-inc.co.jp/en/images/sample.jpg',
+					'top_slide_image_5' => 'https://lightning.vektor-inc.co.jp/en/images/sample.jpg',
 				),
 				'correct' => 2,
 			),
 			array(
 				'options' => array(
-					'top_slide_image_1' => 'https://lightning.nagoya/images/sample.jpg',
+					'top_slide_image_1' => 'https://lightning.vektor-inc.co.jp/en/images/sample.jpg',
 					'top_slide_image_2' => '',
-					'top_slide_image_5' => 'https://lightning.nagoya/images/sample.jpg',
+					'top_slide_image_5' => 'https://lightning.vektor-inc.co.jp/en/images/sample.jpg',
 				),
 				'correct' => 2,
 			),
@@ -181,11 +181,11 @@ class LightningTest extends WP_UnitTestCase {
 	 */
 	function test_lightninig_top_slide_image() {
 		$lightning_theme_options                             = get_option( 'lightning_theme_options' );
-		$lightning_theme_options['top_slide_image_1']        = 'https://lightning.nagoya/images/sample.jpg';
-		$lightning_theme_options['top_slide_image_mobile_1'] = 'https://lightning.nagoya/images/sample_mobile.jpg';
+		$lightning_theme_options['top_slide_image_1']        = 'https://lightning.vektor-inc.co.jp/en/images/sample.jpg';
+		$lightning_theme_options['top_slide_image_mobile_1'] = 'https://lightning.vektor-inc.co.jp/en/images/sample_mobile.jpg';
 		$lightning_theme_options['top_slide_image_2']        = '';
-		$lightning_theme_options['top_slide_image_mobile_2'] = 'https://lightning.nagoya/images/sample_mobile.jpg';
-		$lightning_theme_options['top_slide_image_3']        = 'https://lightning.nagoya/images/sample.jpg';
+		$lightning_theme_options['top_slide_image_mobile_2'] = 'https://lightning.vektor-inc.co.jp/en/images/sample_mobile.jpg';
+		$lightning_theme_options['top_slide_image_3']        = 'https://lightning.vektor-inc.co.jp/en/images/sample.jpg';
 		update_option( 'lightning_theme_options', $lightning_theme_options );
 
 		// ユーザーエージェントがとれない時は is_mobileはfalseを返す

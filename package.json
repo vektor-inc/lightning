@@ -31,7 +31,7 @@
 	"bugs": {
 		"url": "https://github.com/vektor-inc/Lightning/issues"
 	},
-	"homepage": "https://lightning.nagoya/",
+	"homepage": "https://lightning.vektor-inc.co.jp/en/",
 	"devDependencies": {
 		"@babel/core": "^7.14.2",
 		"@babel/preset-env": "^7.14.2",

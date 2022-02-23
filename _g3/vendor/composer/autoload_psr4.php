@@ -6,5 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'VektorInc\\VK_Helpers\\' => array($vendorDir . '/vektor-inc/vk-helpers/src'),
     'VektorInc\\VK_Color_Palette_Manager\\' => array($vendorDir . '/vektor-inc/vk-color-palette-manager/src'),
+    'VektorInc\\VK_Breadcrumb\\' => array($vendorDir . '/vektor-inc/vk-breadcrumb/src'),
 );

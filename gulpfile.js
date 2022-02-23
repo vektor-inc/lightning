@@ -280,7 +280,7 @@ gulp.task('watch', function (done) {
 gulp.task('copy_dist', function (done) {
   const files = gulp.src(
     [
-      "./**/*.php",
+      "./LICENSE",
       "./**/*.txt",
       "./**/*.css",
       "./**/*.png",

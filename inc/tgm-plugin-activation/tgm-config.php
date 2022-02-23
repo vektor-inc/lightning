@@ -67,6 +67,11 @@ function lightning_register_required_plugins() {
 				'slug'     => 'vk-blocks', // The plugin slug (typically the folder name).
 				'required' => false, // If false, the plugin is only 'recommended' instead of required.
 			),
+			array(
+				'name'     => 'VK Block Patterns', // The plugin name.
+				'slug'     => 'vk-block-patterns', // The plugin slug (typically the folder name).
+				'required' => false, // If false, the plugin is only 'recommended' instead of required.
+			),
 		);
 	}
 

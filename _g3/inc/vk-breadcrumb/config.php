@@ -1,17 +1,26 @@
-<?php
+<?php // phpcs:ignore
+/**
+ * VK_Breadcrumb fall back alias
+ *
+ * VK_Breadcrumb is instead to VkBreadcrumb composer lib.
+ * But some user probably using VK_Breadcrumb in childe themes that
+ * this is fall back alias
+ *
+ * Original file is bellow
+ * lightning/_g3/vendor/vektor-inc/vk-breadcrumb/src/VkBreadcrumb.php
+ *
+ *  @since 14.16.2
+ */
+
+use VektorInc\VK_Breadcrumb\VkBreadcrumb;
 
 if ( ! class_exists( 'VK_Breadcrumb' ) ) {
 
-    global $breadcrumb_options;
-    $breadcrumb_options = array(
-        'id_outer' => 'breadcrumb',
-        'class_outer' => 'breadcrumb',
-        'class_inner' => 'container',
-        'class_list' => 'breadcrumb-list',
-        'class_list_item' => 'breadcrumb-list__item',
-    );
+	/**
+	 * VK_Breadcrumb alias
+	 */
+	class VK_Breadcrumb extends VkBreadcrumb {
 
-    require get_parent_theme_file_path( '/inc/vk-breadcrumb/package/class-vk-breadcrumb.php' );
+	}
 
 }
-

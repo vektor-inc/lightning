@@ -14,105 +14,103 @@ function lightning_add_starter_content() {
 					'',
 					array(
 						'<!-- wp:columns -->
-						<div class="wp-block-columns"><!-- wp:column -->
-						<div class="wp-block-column">
-						<!-- wp:image {"className":"border"} -->
-						<figure class="wp-block-image border"><img src="' . esc_url( get_template_directory_uri() ) . '/assets/images/logo_Lightning.png" alt=""/></figure>
+						<div class="wp-block-columns">
+						<!-- wp:column -->
+						<div class="wp-block-column"><!-- wp:image {"sizeSlug":"full","linkDestination":"none"} -->
+						<figure class="wp-block-image size-full"><img src="' . esc_url( get_template_directory_uri() ) . '/assets/images/sample-image-gray.png" alt="" /></figure>
 						<!-- /wp:image -->
 						
-						<!-- wp:heading {"level":5} -->
-						<h5>About Lightning</h5>
+						<!-- wp:heading {"level":5,"style":{"spacing":{"margin":{"top":"1.5rem","bottom":"1rem"}}}} -->
+						<h5 id="vk-blocks" style="margin-top:1.5rem;margin-bottom:1rem">' . esc_html__( 'Title Text', 'lightning' ) . '</h5>
 						<!-- /wp:heading -->
 						
 						<!-- wp:paragraph -->
-						<p>' . esc_html_x( 'Lightning is a WordPress theme designed to facilitate the creation of a website without specialized knowledge of web production.', 'Theme starter content', 'lightning' ) . '</p>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 						<!-- /wp:paragraph -->
 						
 						<!-- wp:buttons -->
-						<div class="wp-block-buttons"><!-- wp:button {"borderRadius":0,"className":"is-style-outline"} -->
-						<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://wordpress.org/themes/lightning/">Read more</a></div>
+						<div class="wp-block-buttons"><!-- wp:button {"style":{"spacing":{"padding":{"top":"0.3em","bottom":"0.3em","left":"1em","right":"1em"}}},"className":"is-style-outline","fontSize":"small"} -->
+						<div class="wp-block-button has-custom-font-size is-style-outline has-small-font-size"><a class="wp-block-button__link" href="" style="padding-top:0.3em;padding-right:1em;padding-bottom:0.3em;padding-left:1em">' . esc_html__( 'Read more', 'lightning' ) . '</a></div>
 						<!-- /wp:button --></div>
 						<!-- /wp:buttons -->
 						
-						<!-- wp:spacer {"height":20} -->
-						<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+						<!-- wp:spacer {"height":30} -->
+						<div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
 						<!-- /wp:spacer --></div>
 						<!-- /wp:column -->
 						
 						<!-- wp:column -->
-						<div class="wp-block-column">
-						<!-- wp:image {"className":"border"} -->
-						<figure class="wp-block-image border"><img src="' . esc_url( get_template_directory_uri() ) . '/assets/images/logo_ExUnit.png" alt=""/></figure>
+						<div class="wp-block-column"><!-- wp:image {"sizeSlug":"full","linkDestination":"none"} -->
+						<figure class="wp-block-image size-full"><img src="' . esc_url( get_template_directory_uri() ) . '/assets/images/sample-image-gray.png" alt="" /></figure>
 						<!-- /wp:image -->
 						
-						<!-- wp:heading {"level":5} -->
-						<h5>ExUnit</h5>
+						<!-- wp:heading {"level":5,"style":{"spacing":{"margin":{"top":"1.5rem","bottom":"1rem"}}}} -->
+						<h5 id="vk-blocks" style="margin-top:1.5rem;margin-bottom:1rem">' . esc_html__( 'Title Text', 'lightning' ) . '</h5>
 						<!-- /wp:heading -->
 						
 						<!-- wp:paragraph -->
-						<p>' . esc_html_x( 'By using the multi-function plug-in "VK All in One Expansion Unit (free)", you can use the various useful functions and rich widgets.', 'Theme starter content', 'lightning' ) . '</p>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 						<!-- /wp:paragraph -->
 						
 						<!-- wp:buttons -->
-						<div class="wp-block-buttons"><!-- wp:button {"borderRadius":0,"className":"is-style-outline"} -->
-						<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://wordpress.org/plugins/vk-all-in-one-expansion-unit/">Read more</a></div>
+						<div class="wp-block-buttons"><!-- wp:button {"style":{"spacing":{"padding":{"top":"0.3em","bottom":"0.3em","left":"1em","right":"1em"}}},"className":"is-style-outline","fontSize":"small"} -->
+						<div class="wp-block-button has-custom-font-size is-style-outline has-small-font-size"><a class="wp-block-button__link" href="" style="padding-top:0.3em;padding-right:1em;padding-bottom:0.3em;padding-left:1em">' . esc_html__( 'Read more', 'lightning' ) . '</a></div>
 						<!-- /wp:button --></div>
 						<!-- /wp:buttons -->
 						
-						<!-- wp:spacer {"height":20} -->
-						<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+						<!-- wp:spacer {"height":30} -->
+						<div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
 						<!-- /wp:spacer --></div>
 						<!-- /wp:column -->
-						
+					
 						<!-- wp:column -->
-						<div class="wp-block-column">
-						<!-- wp:image {"className":"border"} -->
-						<figure class="wp-block-image border"><img src="' . esc_url( get_template_directory_uri() ) . '/assets/images/logo_VK_Blocks.png" alt=""/></figure>
+						<div class="wp-block-column"><!-- wp:image {"sizeSlug":"full","linkDestination":"none"} -->
+						<figure class="wp-block-image size-full"><img src="' . esc_url( get_template_directory_uri() ) . '/assets/images/sample-image-gray.png" alt="" /></figure>
 						<!-- /wp:image -->
 						
-						<!-- wp:heading {"level":5} -->
-						<h5>VK Blocks</h5>
+						<!-- wp:heading {"level":5,"style":{"spacing":{"margin":{"top":"1.5rem","bottom":"1rem"}}}} -->
+						<h5 id="vk-blocks" style="margin-top:1.5rem;margin-bottom:1rem">' . esc_html__( 'Title Text', 'lightning' ) . '</h5>
 						<!-- /wp:heading -->
 						
 						<!-- wp:paragraph -->
-						<p>' . esc_html_x( 'Plugin VK Blocks is a block library that adds various blocks and styles and functions that are useful for building your business websites.', 'Theme starter content', 'lightning' ) . '</p>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 						<!-- /wp:paragraph -->
 						
 						<!-- wp:buttons -->
-						<div class="wp-block-buttons"><!-- wp:button {"borderRadius":0,"className":"is-style-outline"} -->
-						<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://wordpress.org/plugins/vk-blocks/">Read more</a></div>
+						<div class="wp-block-buttons"><!-- wp:button {"style":{"spacing":{"padding":{"top":"0.3em","bottom":"0.3em","left":"1em","right":"1em"}}},"className":"is-style-outline","fontSize":"small"} -->
+						<div class="wp-block-button has-custom-font-size is-style-outline has-small-font-size"><a class="wp-block-button__link" href="" style="padding-top:0.3em;padding-right:1em;padding-bottom:0.3em;padding-left:1em">' . esc_html__( 'Read more', 'lightning' ) . '</a></div>
 						<!-- /wp:button --></div>
 						<!-- /wp:buttons -->
 						
-						<!-- wp:spacer {"height":20} -->
-						<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+						<!-- wp:spacer {"height":30} -->
+						<div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
 						<!-- /wp:spacer --></div>
 						<!-- /wp:column -->
-						
+					
 						<!-- wp:column -->
-						<div class="wp-block-column">
-						<!-- wp:image {"className":"border"} -->
-						<figure class="wp-block-image border"><img src="' . esc_url( get_template_directory_uri() ) . '/assets/images/logo_FilterSearch.png" alt=""/></figure>
+						<div class="wp-block-column"><!-- wp:image {"sizeSlug":"full","linkDestination":"none"} -->
+						<figure class="wp-block-image size-full"><img src="' . esc_url( get_template_directory_uri() ) . '/assets/images/sample-image-gray.png" alt="" /></figure>
 						<!-- /wp:image -->
 						
-						<!-- wp:heading {"level":5} -->
-						<h5>VK Filter Search</h5>
+						<!-- wp:heading {"level":5,"style":{"spacing":{"margin":{"top":"1.5rem","bottom":"1rem"}}}} -->
+						<h5 id="vk-blocks" style="margin-top:1.5rem;margin-bottom:1rem">' . esc_html__( 'Title Text', 'lightning' ) . '</h5>
 						<!-- /wp:heading -->
 						
 						<!-- wp:paragraph -->
-						<p>' . esc_html_x( 'Plugin VK Filter Search (free) can create the Filter Serach Block on your edit screen. It enable to filter search on post type and terms.', 'Theme starter content', 'lightning' ) . '</p>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 						<!-- /wp:paragraph -->
 						
 						<!-- wp:buttons -->
-						<div class="wp-block-buttons"><!-- wp:button {"borderRadius":0,"className":"is-style-outline"} -->
-						<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://wordpress.org/plugins/vk-filter-search">Read more</a></div>
+						<div class="wp-block-buttons"><!-- wp:button {"style":{"spacing":{"padding":{"top":"0.3em","bottom":"0.3em","left":"1em","right":"1em"}}},"className":"is-style-outline","fontSize":"small"} -->
+						<div class="wp-block-button has-custom-font-size is-style-outline has-small-font-size"><a class="wp-block-button__link" href="" style="padding-top:0.3em;padding-right:1em;padding-bottom:0.3em;padding-left:1em">' . esc_html__( 'Read more', 'lightning' ) . '</a></div>
 						<!-- /wp:button --></div>
 						<!-- /wp:buttons -->
 						
-						<!-- wp:spacer {"height":20} -->
-						<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+						<!-- wp:spacer {"height":30} -->
+						<div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
 						<!-- /wp:spacer --></div>
-						<!-- /wp:column --></div>
+						<!-- /wp:column -->
+						</div>
 						<!-- /wp:columns -->
 						
 						<!-- wp:cover {"customOverlayColor":"#f3f3f3","minHeight":250,"contentPosition":"center center","align":"full"} -->
