@@ -199,7 +199,7 @@ function lightning_add_script() {
 		return;
 	}
 	global $pagenow;
-	if ( 'widgets.php' !== $pagenow ) {
+	if ( 'widgets.php' === $pagenow ) {
 		return;
 	}
 	wp_register_script( 'lightning-js', get_template_directory_uri() . '/assets/js/main.js', array(), LIGHTNING_THEME_VERSION, true );
