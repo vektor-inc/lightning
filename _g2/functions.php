@@ -118,6 +118,10 @@ function lightning_addJs() {
 	if ( filter_input( INPUT_GET, 'legacy-widget-preview', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY ) ) {
 		return;
 	}
+	global $pagenow;
+	if ( 'widgets.php' !== $pagenow ) {
+		return;
+	}
 	wp_register_script( 'lightning-js', get_template_directory_uri() . '/assets/js/lightning.min.js', array(), LIGHTNING_THEME_VERSION, true );
 	wp_localize_script( 'lightning-js', 'lightningOpt', apply_filters( 'lightning_localize_options', array() ) );
 	// jsのjQuery依存はもう無いが、一応追加しておく.
