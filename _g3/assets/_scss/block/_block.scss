@@ -110,7 +110,7 @@ entry-body
 /*  Outer
 /*-------------------------------------------*/
 // To be no container area ( ex : lightning_site_footer_before hook )
-.vk_outer-width-full.vk_outer-paddingLR-none .vk_outer_container {
+.vk_outer-width-full.vk_outer-paddingLR-none > div > .vk_outer_container {
 	max-width:var(--vk-width-container);
 	padding-left:15px;
 	padding-right:15px;
