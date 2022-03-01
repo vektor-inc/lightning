@@ -5,7 +5,7 @@
  * @package vektor-inc/font-awesome-versions
  * @license GPL-2.0+
  *
- * @version 0.1.0
+ * @version 0.1.1
  */
 
 namespace VektorInc\VK_Font_Awesome_Versions;
@@ -15,7 +15,7 @@ namespace VektorInc\VK_Font_Awesome_Versions;
  */
 class VkFontAwesomeVersions {
 
-	private static $version_default = '5_WebFonts_CSS';
+	private static $version_default = '6_WebFonts_CSS';
 
 	function __construct() {
 
@@ -114,10 +114,10 @@ class VkFontAwesomeVersions {
 
 	public static function get_option_fa() {
 		$current = get_option( 'vk_font_awesome_version', self::$version_default );
-		if ( $current == '5.0_WebFonts_CSS' ) {
+		if ( '5.0_WebFonts_CSS' === $current ) {
 			update_option( 'vk_font_awesome_version', '5_WebFonts_CSS' );
 			$current = '5_WebFonts_CSS';
-		} elseif ( $current == '5.0_SVG_JS' ) {
+		} elseif ( '5.0_SVG_JS' === $current ) {
 			update_option( 'vk_font_awesome_version', '5_SVG_JS' );
 			$current = '5_SVG_JS';
 		}
@@ -133,9 +133,9 @@ class VkFontAwesomeVersions {
 
 	public static function ex_and_link() {
 		$current_option = self::get_option_fa();
-		if ( $current_option == '6_WebFonts_CSS' || $current_option == '6_SVG_JS' ) {
+		if ( '6_WebFonts_CSS' === $current_option || '6_SVG_JS' === $current_option ) {
 			$ex_and_link = '<strong>Font Awesome 6</strong><br>' . __( 'Ex ) ', 'vk-blocks' ) . 'fa-solid fa-file [ <a href="//fontawesome.com/icons?d=gallery&m=free" target="_blank">Icon list</a> ]';
-		} elseif ( $current_option == '5_WebFonts_CSS' || $current_option == '5_SVG_JS' ) {
+		} elseif ( '5_WebFonts_CSS' === $current_option || '5_SVG_JS' === $current_option ) {
 			$ex_and_link = '<strong>Font Awesome 5</strong><br>' . __( 'Ex ) ', 'vk-blocks' ) . 'far fa-file-alt [ <a href="//fontawesome.com/icons?d=gallery&m=free" target="_blank">Icon list</a> ]';
 		} else {
 			$ex_and_link = '<strong>Font Awesome 4.7</strong><br>' . __( 'Ex ) ', 'font-awesome-versions' ) . 'fa-file-text-o [ <a href="//fontawesome.com/v4.7.0/icons/" target="_blank">Icon list</a> ]';
@@ -151,7 +151,7 @@ class VkFontAwesomeVersions {
 	public static function print_fa() {
 		$fa             = '';
 		$current_option = self::get_option_fa();
-		if ( $current_option == '4.7' ) {
+		if ( '4.7' == $current_option ) {
 			$fa = 'fa ';
 		}
 		return $fa;
@@ -159,7 +159,7 @@ class VkFontAwesomeVersions {
 
 	static function load_font_awesome() {
 		$current = self::current_info();
-		if ( $current['type'] === 'svg-with-js' ) {
+		if ( 'svg-with-js' === $current['type'] ) {
 			wp_enqueue_script( 'vk-font-awesome-js', $current['url_js'], array(), $current['version'] );
 			// [ Danger ] This script now causes important errors
 			// wp_add_inline_script( 'font-awesome-js', 'FontAwesomeConfig = { searchPseudoElements: true };', 'before' );
