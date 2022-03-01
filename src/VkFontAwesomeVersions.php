@@ -2,11 +2,10 @@
 /**
  * VK_Font_Awesome_Versions
  *
- *
  * @package vektor-inc/font-awesome-versions
  * @license GPL-2.0+
  *
- * @version 0.0.3
+ * @version 0.1.0
  */
 
 namespace VektorInc\VK_Font_Awesome_Versions;
@@ -23,7 +22,7 @@ class VkFontAwesomeVersions {
 		/**
 		 * テキストドメイン
 		 */
-		if ( did_action('init') ) {
+		if ( did_action( 'init' ) ) {
 			$this->load_text_domain();
 		} else {
 			add_action( 'init', array( $this, 'load_text_domain' ) );
@@ -48,19 +47,19 @@ class VkFontAwesomeVersions {
 	}
 
 	public function load_text_domain() {
-		//We're not using load_plugin_textdomain() or its siblings because figuring out where
-		//the library is located (plugin, mu-plugin, theme, custom wp-content paths) is messy.
+		// We're not using load_plugin_textdomain() or its siblings because figuring out where
+		// the library is located (plugin, mu-plugin, theme, custom wp-content paths) is messy.
 		$domain = 'font-awesome-versions';
 		$locale = apply_filters(
 			'plugin_locale',
-			(is_admin() && function_exists('get_user_locale')) ? get_user_locale() : get_locale(),
+			( is_admin() && function_exists( 'get_user_locale' ) ) ? get_user_locale() : get_locale(),
 			$domain
 		);
 
 		$moFile = $domain . '-' . $locale . '.mo';
-		$path = realpath(dirname(__FILE__) . '/languages');
-		if ($path && file_exists($path)) {
-			load_textdomain($domain, $path . '/' . $moFile);
+		$path   = realpath( dirname( __FILE__ ) . '/languages' );
+		if ( $path && file_exists( $path ) ) {
+			load_textdomain( $domain, $path . '/' . $moFile );
 		}
 	}
 
@@ -237,7 +236,7 @@ class VkFontAwesomeVersions {
 		$current_option = self::get_option_fa();
 		if ( $current_option == '6_WebFonts_CSS' || $current_option == '6_SVG_JS' ) {
 			return $class_v6;
-		}elseif ( $current_option == '5_WebFonts_CSS' || $current_option == '5_SVG_JS' ) {
+		} elseif ( $current_option == '5_WebFonts_CSS' || $current_option == '5_SVG_JS' ) {
 			return $class_v5;
 		} else {
 			return $class_v4;
@@ -245,13 +244,13 @@ class VkFontAwesomeVersions {
 	}
 
 	public static function old_notice() {
-		$old_notice = '';
+		$old_notice     = '';
 		$current_option = self::get_option_fa();
 		if ( '4.7' === $current_option ) {
-			$old_notice .='<div class="error">';
+			$old_notice .= '<div class="error">';
 			$old_notice .= '<p>' . __( 'An older version of Font Awesome is selected. This version will be removed by August 2022.', 'font-awesome-versions' ) . '</p>';
-			$old_notice .= '<p>' . __( 'Plesee change the version of FontAwesome on the Appearance > Customize screen.', 'font-awesome-versions' )  . '</p>';
-			$old_notice .= '<p>' . __( '* It is necessary to reset the icon font in the place where Font Awesome is used.', 'font-awesome-versions' )  . '</p>';
+			$old_notice .= '<p>' . __( 'Plesee change the version of FontAwesome on the Appearance > Customize screen.', 'font-awesome-versions' ) . '</p>';
+			$old_notice .= '<p>' . __( '* It is necessary to reset the icon font in the place where Font Awesome is used.', 'font-awesome-versions' ) . '</p>';
 			$old_notice .= '</div>';
 		}
 		echo wp_kses_post( $old_notice );
