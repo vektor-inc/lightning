@@ -15,7 +15,7 @@ namespace VektorInc\VK_Font_Awesome_Versions;
  */
 class VkFontAwesomeVersions {
 
-	private static $version_default = '5_WebFonts_CSS';
+	private static $version_default = '6_WebFonts_CSS';
 
 	function __construct() {
 
