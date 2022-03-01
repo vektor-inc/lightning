@@ -4,8 +4,48 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "14d11ec9dea4b7c32fe973757e804bf7",
+    "content-hash": "dd2dd2b31adabe9a523f1351cd41e26a",
     "packages": [
+        {
+            "name": "vektor-inc/font-awesome-versions",
+            "version": "0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vektor-inc/font-awesome-versions.git",
+                "reference": "9c9d8ec2ec21d078079db277b9185403cdec8564"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vektor-inc/font-awesome-versions/zipball/9c9d8ec2ec21d078079db277b9185403cdec8564",
+                "reference": "9c9d8ec2ec21d078079db277b9185403cdec8564",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "VektorInc\\VK_Font_Awesome_Versions\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Vektor,Inc",
+                    "homepage": "https://www.vektor-inc.co.jp/"
+                }
+            ],
+            "description": "Font Awesome",
+            "support": {
+                "issues": "https://github.com/vektor-inc/font-awesome-versions/issues",
+                "source": "https://github.com/vektor-inc/font-awesome-versions/tree/0.1.1"
+            },
+            "time": "2022-03-01T17:14:48+00:00"
+        },
         {
             "name": "vektor-inc/vk-wp-unit-test-tools",
             "version": "0.10.0",

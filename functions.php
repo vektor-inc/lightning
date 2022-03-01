@@ -5,6 +5,8 @@ define( 'LIG_G2_DIR', '_g2' );
 
 define( 'LIG_DEBUG', false );
 
+require_once dirname( __FILE__ ) . '/vendor/autoload.php';
+
 if ( true === LIG_DEBUG ) {
 	function lightning_debug_mode() {
 		$options = lightning_get_theme_options();

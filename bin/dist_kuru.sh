@@ -1,5 +1,7 @@
 #!/bin/bash
 
+rm -r vendor
+composer install --optimize-autoloader --prefer-dist --no-dev
 npm run build
-gulp dist
+npx gulp dist
 windowszip dist/lightning

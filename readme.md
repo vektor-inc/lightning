@@ -19,6 +19,7 @@ G3 は別途ドキュメントがあるのでそちらを参照
 ### G3 sass build
 
 ```
+composer install
 cd _g3
 npm install
 npx gulp
@@ -102,8 +103,7 @@ $ npm run watch:style
 ### dist作成
 
 ```
-$ npm run build
-$ npm run dist
+$ bin/dist_kuru.sh
 ```
 
 `dist/`内に管理画面でのインポート用zipと、転送用のテーマディレクトリが作成されます。
