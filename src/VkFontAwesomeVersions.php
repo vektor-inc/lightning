@@ -2,11 +2,10 @@
 /**
  * VK_Font_Awesome_Versions
  *
- *
  * @package vektor-inc/font-awesome-versions
  * @license GPL-2.0+
  *
- * @version 0.0.3
+ * @version 0.1.0
  */
 
 namespace VektorInc\VK_Font_Awesome_Versions;
@@ -23,7 +22,7 @@ class VkFontAwesomeVersions {
 		/**
 		 * テキストドメイン
 		 */
-		if ( did_action('init') ) {
+		if ( did_action( 'init' ) ) {
 			$this->load_text_domain();
 		} else {
 			add_action( 'init', array( $this, 'load_text_domain' ) );
@@ -48,19 +47,19 @@ class VkFontAwesomeVersions {
 	}
 
 	public function load_text_domain() {
-		//We're not using load_plugin_textdomain() or its siblings because figuring out where
-		//the library is located (plugin, mu-plugin, theme, custom wp-content paths) is messy.
+		// We're not using load_plugin_textdomain() or its siblings because figuring out where
+		// the library is located (plugin, mu-plugin, theme, custom wp-content paths) is messy.
 		$domain = 'font-awesome-versions';
 		$locale = apply_filters(
 			'plugin_locale',
-			(is_admin() && function_exists('get_user_locale')) ? get_user_locale() : get_locale(),
+			( is_admin() && function_exists( 'get_user_locale' ) ) ? get_user_locale() : get_locale(),
 			$domain
 		);
 
 		$moFile = $domain . '-' . $locale . '.mo';
-		$path = realpath(dirname(__FILE__) . '/languages');
-		if ($path && file_exists($path)) {
-			load_textdomain($domain, $path . '/' . $moFile);
+		$path   = realpath( dirname( __FILE__ ) . '/languages' );
+		if ( $path && file_exists( $path ) ) {
+			load_textdomain( $domain, $path . '/' . $moFile );
 		}
 	}
 
@@ -72,6 +71,21 @@ class VkFontAwesomeVersions {
 	static function versions() {
 		global $font_awesome_directory_uri;
 		$versions = array(
+			'6_SVG_JS'       => array(
+				'label'   => '6 SVG with JS ( ' . __( 'Not recommended', 'vk-blocks' ) . ' )',
+				'version' => '6.0.0',
+				'type'    => 'svg-with-js',
+				/* [ Notice ] use editor css*/
+				'url_css' => $font_awesome_directory_uri . 'versions/6/css/all.min.css',
+				'url_js'  => $font_awesome_directory_uri . 'versions/6/js/all.min.js',
+			),
+			'6_WebFonts_CSS' => array(
+				'label'   => '6 Web Fonts with CSS',
+				'version' => '6.0.0',
+				'type'    => 'web-fonts-with-css',
+				'url_css' => $font_awesome_directory_uri . 'versions/6/css/all.min.css',
+				'url_js'  => '',
+			),
 			'5_SVG_JS'       => array(
 				'label'   => '5 SVG with JS ( ' . __( 'Not recommended', 'font-awesome-versions' ) . ' )',
 				'version' => '5.15.1',
@@ -119,8 +133,10 @@ class VkFontAwesomeVersions {
 
 	public static function ex_and_link() {
 		$current_option = self::get_option_fa();
-		if ( $current_option == '5_WebFonts_CSS' || $current_option == '5_SVG_JS' ) {
-			$ex_and_link = '<strong>Font Awesome 5</strong><br>' . __( 'Ex ) ', 'font-awesome-versions' ) . 'far fa-file-alt [ <a href="//fontawesome.com/icons?d=gallery&m=free" target="_blank">Icon list</a> ]';
+		if ( $current_option == '6_WebFonts_CSS' || $current_option == '6_SVG_JS' ) {
+			$ex_and_link = '<strong>Font Awesome 6</strong><br>' . __( 'Ex ) ', 'vk-blocks' ) . 'fa-solid fa-file [ <a href="//fontawesome.com/icons?d=gallery&m=free" target="_blank">Icon list</a> ]';
+		} elseif ( $current_option == '5_WebFonts_CSS' || $current_option == '5_SVG_JS' ) {
+			$ex_and_link = '<strong>Font Awesome 5</strong><br>' . __( 'Ex ) ', 'vk-blocks' ) . 'far fa-file-alt [ <a href="//fontawesome.com/icons?d=gallery&m=free" target="_blank">Icon list</a> ]';
 		} else {
 			$ex_and_link = '<strong>Font Awesome 4.7</strong><br>' . __( 'Ex ) ', 'font-awesome-versions' ) . 'fa-file-text-o [ <a href="//fontawesome.com/v4.7.0/icons/" target="_blank">Icon list</a> ]';
 		}
@@ -178,6 +194,10 @@ class VkFontAwesomeVersions {
 			$class[] = 'fa_v5_css';
 		} elseif ( $current_option == '5_SVG_JS' ) {
 			$class[] = 'fa_v5_svg';
+		} elseif ( $current_option == '6_WebFonts_CSS' ) {
+			$class[] = 'fa_v6_css';
+		} elseif ( $current_option == '6_SVG_JS' ) {
+			$class[] = 'fa_v6_svg';
 		}
 		return $class;
 	}
@@ -196,6 +216,10 @@ class VkFontAwesomeVersions {
 			$dynamic_css = '.tagcloud a:before { font-family: "Font Awesome 5 Free";content: "\f02b";font-weight: bold; }';
 		} elseif ( $current == '5_SVG_JS' ) {
 			$dynamic_css = '.tagcloud a:before { content:"" }';
+		} elseif ( $current == '6_WebFonts_CSS' ) {
+			$dynamic_css = '.tagcloud a:before { font-family: "Font Awesome 5 Free";content: "\f02b";font-weight: bold; }';
+		} elseif ( $current == '6_SVG_JS' ) {
+			$dynamic_css = '.tagcloud a:before { content:"" }';
 		}
 		// delete before after space
 		$dynamic_css = trim( $dynamic_css );
@@ -208,9 +232,11 @@ class VkFontAwesomeVersions {
 		wp_add_inline_style( $set_enqueue_handle_style, $dynamic_css );
 	}
 
-	public static function class_switch( $class_v4 = '', $class_v5 = '' ) {
+	public static function class_switch( $class_v4 = '', $class_v5 = '', $class_v6 = '' ) {
 		$current_option = self::get_option_fa();
-		if ( $current_option == '5_WebFonts_CSS' || $current_option == '5_SVG_JS' ) {
+		if ( $current_option == '6_WebFonts_CSS' || $current_option == '6_SVG_JS' ) {
+			return $class_v6;
+		} elseif ( $current_option == '5_WebFonts_CSS' || $current_option == '5_SVG_JS' ) {
 			return $class_v5;
 		} else {
 			return $class_v4;
@@ -218,13 +244,13 @@ class VkFontAwesomeVersions {
 	}
 
 	public static function old_notice() {
-		$old_notice = '';
+		$old_notice     = '';
 		$current_option = self::get_option_fa();
 		if ( '4.7' === $current_option ) {
-			$old_notice .='<div class="error">';
+			$old_notice .= '<div class="error">';
 			$old_notice .= '<p>' . __( 'An older version of Font Awesome is selected. This version will be removed by August 2022.', 'font-awesome-versions' ) . '</p>';
-			$old_notice .= '<p>' . __( 'Plesee change the version of FontAwesome on the Appearance > Customize screen.', 'font-awesome-versions' )  . '</p>';
-			$old_notice .= '<p>' . __( '* It is necessary to reset the icon font in the place where Font Awesome is used.', 'font-awesome-versions' )  . '</p>';
+			$old_notice .= '<p>' . __( 'Plesee change the version of FontAwesome on the Appearance > Customize screen.', 'font-awesome-versions' ) . '</p>';
+			$old_notice .= '<p>' . __( '* It is necessary to reset the icon font in the place where Font Awesome is used.', 'font-awesome-versions' ) . '</p>';
 			$old_notice .= '</div>';
 		}
 		echo wp_kses_post( $old_notice );
