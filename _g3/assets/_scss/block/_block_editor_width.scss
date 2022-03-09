@@ -27,9 +27,6 @@ body.is-fullscreen-mode .edit-post-layout.is-sidebar-opened{
 	--vk-width-editor-full:calc( 100vw - 280px );
 	--vk-width-editor-wide:calc( 100vw - 280px - ( ( 100vw - 280px ) * ( 1 - 0.8 ) / 2 ) );
 	--vk-width-editor-container-body:calc(  ( 100vw - 280px ) * 0.8 - 30px );
-	.vk_outer-paddingLR-use{
-		--vk-width-editor-container-body:calc( 100vw - var(--vk-width-editor-sidebar) - 8em );
-	}
 }
 
 // 左管理メニュー表示（ 展開 ） / 右サイドバー展開
@@ -38,9 +35,6 @@ body:not(.is-fullscreen-mode) .edit-post-layout.is-sidebar-opened{
 	--vk-width-editor-container-body:calc(  ( 100vw - 280px - 160px ) * 0.8 - 30px );
 	--vk-width-editor-full:calc( 100vw - var(--vk-width-editor-leftmenu) - var(--vk-width-editor-sidebar) );
 	--vk-width-editor-wide:calc( var( --vk-width-editor-container-body ) + ( 100vw - var( --vk-width-editor-container-body ) - var(--vk-width-editor-leftmenu) - var(--vk-width-editor-sidebar) ) / 2 );
-	.vk_outer-paddingLR-use{
-		--vk-width-editor-container-body:calc(  100vw - var(--vk-width-editor-sidebar) -  var(--vk-width-editor-leftmenu) - 8em );
-	}
 }
 // 左管理メニュー表示（ 展開 ） / 右サイドバー非表示
 body:not(.is-fullscreen-mode) .edit-post-layout:not(.is-sidebar-opened){
@@ -48,9 +42,6 @@ body:not(.is-fullscreen-mode) .edit-post-layout:not(.is-sidebar-opened){
 	--vk-width-editor-container-body:calc( ( 100vw - 160px ) * 0.8 - 30px );
 	--vk-width-editor-full:calc( 100vw - var(--vk-width-editor-leftmenu) );
 	--vk-width-editor-wide:calc( var( --vk-width-editor-container-body ) + ( 100vw - var( --vk-width-editor-container-body ) - var(--vk-width-editor-leftmenu) ) / 2 );
-	.vk_outer-paddingLR-use{
-		--vk-width-editor-container-body:calc(  ( 100vw - 160px ) - 8em );
-	}
 }
 
 // 左管理メニュー表示（ 縮小 ） / 右サイドバー非表示
@@ -58,9 +49,6 @@ body.folded:not(.is-fullscreen-mode) .edit-post-layout:not(.is-sidebar-opened){
 	--vk-width-editor-container:calc( var(--vk-width-container) - var(--vk-width-editor-leftmenu-folded) );
 	--vk-width-editor-full:calc( 100vw - var(--vk-width-editor-leftmenu-folded) );
 	--vk-width-editor-wide:calc( var( --vk-width-editor-container-body ) + ( 100vw - var( --vk-width-editor-container-body ) - var(--vk-width-editor-leftmenu-folded) ) / 2 );
-	.vk_outer-paddingLR-use{
-		--vk-width-editor-container-body:calc(  100vw - var(--vk-width-editor-leftmenu-folded) - 8em );
-	}
 }
 // 左管理メニュー表示（ 縮小 ） / 右サイドバー展開
 body.folded:not(.is-fullscreen-mode) .edit-post-layout.is-sidebar-opened{
@@ -160,6 +148,9 @@ html .edit-post-visual-editor :where(.editor-styles-wrapper) .block-editor-block
 		}
 		// Outer固有の微妙な余白使用
 		&.vk_outer-paddingLR-use{
+			.vk_outer_container{
+				--vk-width-editor-container-body:calc(  100vw - var(--vk-width-editor-sidebar) -  var(--vk-width-editor-leftmenu) - 8em );
+			}
 			:is(.wp-block[data-align=full] ){
 				width: auto;
 				margin-left: calc(50% - var(--vk-width-editor-full)/2);
