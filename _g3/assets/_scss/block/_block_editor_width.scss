@@ -138,9 +138,9 @@ html .edit-post-visual-editor :where(.editor-styles-wrapper) .block-editor-block
 	}
 	.vk_outer-width-full {
 		&:not(:is(.vk_outer-paddingLR-zero,.vk_outer-paddingLR-use)) {
-			// max が 1140px 指定だったりするので広げる
 			.vk_outer_container {
-				max-width:var(--vk-width-editor-container);
+				// max が 1140px 指定だったりするので広げる
+				max-width:var(--vk-width-editor-container-body);
 			}
 			.block-editor-inner-blocks{
 				max-width:var(--vk-width-editor-container-body);
