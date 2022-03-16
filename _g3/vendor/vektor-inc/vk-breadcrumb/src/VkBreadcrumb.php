@@ -5,7 +5,7 @@
  * @package vektor-inc/vk-breadcrumb
  * @license GPL-2.0+
  *
- * @version 0.0.4
+ * @version 0.1.0
  */
 
 namespace VektorInc\VK_Breadcrumb;
@@ -350,11 +350,11 @@ class VkBreadcrumb {
 
 
 	/**
-	 * Print Bread Crumb
+	 * Get Bread Crumb
 	 *
 	 * @param array $options
 	 */
-	public static function the_breadcrumb( $options = array() ) {
+	public static function get_breadcrumb( $options = array() ) {
 
 		if ( ! $options ) {
 			$options = array(
@@ -378,7 +378,7 @@ class VkBreadcrumb {
 		$microdata_li_a_span = ' itemprop="name"';
 
 		$breadcrumb_html  = '<!-- [ #' . esc_attr( $options['class_outer'] ) . ' ] -->';
-		$breadcrumb_html .= '<div id="' . esc_attr( $options['class_outer'] ) . '" class="' . esc_attr( $options['class_outer'] ) . '">';
+		$breadcrumb_html .= '<div id="' . esc_attr( $options['id_outer'] ) . '" class="' . esc_attr( $options['class_outer'] ) . '">';
 		$breadcrumb_html .= '<div class="' . esc_attr( $options['class_inner'] ) . '">';
 		$breadcrumb_html .= '<ol class="' . esc_attr( $options['class_list'] ) . '" itemscope itemtype="https://schema.org/BreadcrumbList">';
 
@@ -429,57 +429,65 @@ class VkBreadcrumb {
 			<!-- [ /#' . esc_attr( $options['class_outer'] ) . ' ] -->
 			';
 			$breadcrumb_html  = apply_filters( 'vk_breadcrumb_html', $breadcrumb_html );
-
-			$allowed_html = array(
-				'div'  => array(
-					'id'        => array(),
-					'class'     => array(),
-					'itemprop'  => array(),
-					'itemscope' => array(),
-					'itemtype'  => array(),
-				),
-				'ol'   => array(
-					'id'        => array(),
-					'class'     => array(),
-					'itemprop'  => array(),
-					'itemscope' => array(),
-					'itemtype'  => array(),
-				),
-				'li'   => array(
-					'id'        => array(),
-					'class'     => array(),
-					'itemprop'  => array(),
-					'itemscope' => array(),
-					'itemtype'  => array(),
-				),
-				'a'    => array(
-					'id'       => array(),
-					'class'    => array(),
-					'href'     => array(),
-					'target'   => array(),
-					'itemprop' => array(),
-				),
-				'span' => array(
-					'id'        => array(),
-					'class'     => array(),
-					'itemprop'  => array(),
-					'itemscope' => array(),
-					'itemtype'  => array(),
-				),
-				'i'    => array(
-					'id'    => array(),
-					'class' => array(),
-				),
-				'meta' => array(
-					'itemprop' => array(),
-					'content'  => array(),
-				),
-				'ruby' => array(),
-				'rt'   => array(),
-			);
-			echo wp_kses( $breadcrumb_html, $allowed_html );
+			return $breadcrumb_html;
 
 	}
+
+
+	/**
+	 * Print Bread Crumb
+	 */
+	public static function the_breadcrumb() {
+		$allowed_html = array(
+			'div'  => array(
+				'id'        => array(),
+				'class'     => array(),
+				'itemprop'  => array(),
+				'itemscope' => array(),
+				'itemtype'  => array(),
+			),
+			'ol'   => array(
+				'id'        => array(),
+				'class'     => array(),
+				'itemprop'  => array(),
+				'itemscope' => array(),
+				'itemtype'  => array(),
+			),
+			'li'   => array(
+				'id'        => array(),
+				'class'     => array(),
+				'itemprop'  => array(),
+				'itemscope' => array(),
+				'itemtype'  => array(),
+			),
+			'a'    => array(
+				'id'       => array(),
+				'class'    => array(),
+				'href'     => array(),
+				'target'   => array(),
+				'itemprop' => array(),
+			),
+			'span' => array(
+				'id'        => array(),
+				'class'     => array(),
+				'itemprop'  => array(),
+				'itemscope' => array(),
+				'itemtype'  => array(),
+			),
+			'i'    => array(
+				'id'    => array(),
+				'class' => array(),
+			),
+			'meta' => array(
+				'itemprop' => array(),
+				'content'  => array(),
+			),
+			'ruby' => array(),
+			'rt'   => array(),
+		);
+		echo wp_kses( self::get_breadcrumb(), $allowed_html );
+	}
+
 
 	/**
 	 * Scheme array

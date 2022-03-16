@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInite93017268da2e35f7d5078b1c29f76e0
+class ComposerStaticInit667036b00d789a8c28c93e5493d32c01
 {
     public static $prefixLengthsPsr4 = array (
         'V' => 
@@ -30,23 +30,6 @@ class ComposerStaticInite93017268da2e35f7d5078b1c29f76e0
         ),
     );
 
-    public static $prefixesPsr0 = array (
-        'S' => 
-        array (
-            'SecurityLib' => 
-            array (
-                0 => __DIR__ . '/..' . '/ircmaxell/security-lib/lib',
-            ),
-        ),
-        'R' => 
-        array (
-            'RandomLib' => 
-            array (
-                0 => __DIR__ . '/..' . '/ircmaxell/random-lib/lib',
-            ),
-        ),
-    );
-
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
     );
@@ -54,10 +37,9 @@ class ComposerStaticInite93017268da2e35f7d5078b1c29f76e0
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInite93017268da2e35f7d5078b1c29f76e0::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInite93017268da2e35f7d5078b1c29f76e0::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInite93017268da2e35f7d5078b1c29f76e0::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInite93017268da2e35f7d5078b1c29f76e0::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit667036b00d789a8c28c93e5493d32c01::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit667036b00d789a8c28c93e5493d32c01::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit667036b00d789a8c28c93e5493d32c01::$classMap;
 
         }, null, ClassLoader::class);
     }
