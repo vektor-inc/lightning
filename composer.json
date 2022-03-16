@@ -12,6 +12,7 @@
     },
     "require-dev": {
 		"sirbrillig/phpcs-variable-analysis": "^2.8",
-		"wp-phpunit/wp-phpunit": "^5.4"
+		"wp-phpunit/wp-phpunit": "^5.4",
+        "yoast/phpunit-polyfills": "^1.0"
     }
 }
