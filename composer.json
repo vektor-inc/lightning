@@ -7,10 +7,10 @@
         }
     ],
     "require": {
-        "vektor-inc/vk-wp-unit-test-tools": "^0.10.0",
         "vektor-inc/font-awesome-versions": "^0.1.1"
     },
     "require-dev": {
+		"vektor-inc/vk-wp-unit-test-tools": "^0.10.0",
 		"sirbrillig/phpcs-variable-analysis": "^2.8",
 		"wp-phpunit/wp-phpunit": "^5.4",
         "yoast/phpunit-polyfills": "^1.0"

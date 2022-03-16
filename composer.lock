@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "97ebe6c890811b2fac46e43d039ae3f7",
+    "content-hash": "f65431fd194803f28c86db0dcda8fb10",
     "packages": [
         {
             "name": "vektor-inc/font-awesome-versions",
@@ -45,43 +45,6 @@
                 "source": "https://github.com/vektor-inc/font-awesome-versions/tree/0.1.1"
             },
             "time": "2022-03-01T17:14:48+00:00"
-        },
-        {
-            "name": "vektor-inc/vk-wp-unit-test-tools",
-            "version": "0.10.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/vektor-inc/vk-wp-unit-test-tools.git",
-                "reference": "5ce9eb397ba1ec76193664e6877288ffa22b9422"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/vektor-inc/vk-wp-unit-test-tools/zipball/5ce9eb397ba1ec76193664e6877288ffa22b9422",
-                "reference": "5ce9eb397ba1ec76193664e6877288ffa22b9422",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "VK_WP_Unit_Test_Tools\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "kurudrive",
-                    "email": "kurudrive@gmail.com"
-                }
-            ],
-            "description": "WordPress PHPUnit test tools",
-            "support": {
-                "issues": "https://github.com/vektor-inc/vk-wp-unit-test-tools/issues",
-                "source": "https://github.com/vektor-inc/vk-wp-unit-test-tools/tree/0.10.0"
-            },
-            "time": "2021-09-03T10:14:12+00:00"
         }
     ],
     "packages-dev": [
@@ -2233,6 +2196,43 @@
                 }
             ],
             "time": "2021-07-28T10:34:58+00:00"
+        },
+        {
+            "name": "vektor-inc/vk-wp-unit-test-tools",
+            "version": "0.10.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vektor-inc/vk-wp-unit-test-tools.git",
+                "reference": "5ce9eb397ba1ec76193664e6877288ffa22b9422"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vektor-inc/vk-wp-unit-test-tools/zipball/5ce9eb397ba1ec76193664e6877288ffa22b9422",
+                "reference": "5ce9eb397ba1ec76193664e6877288ffa22b9422",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "VK_WP_Unit_Test_Tools\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "kurudrive",
+                    "email": "kurudrive@gmail.com"
+                }
+            ],
+            "description": "WordPress PHPUnit test tools",
+            "support": {
+                "issues": "https://github.com/vektor-inc/vk-wp-unit-test-tools/issues",
+                "source": "https://github.com/vektor-inc/vk-wp-unit-test-tools/tree/0.10.0"
+            },
+            "time": "2021-09-03T10:14:12+00:00"
         },
         {
             "name": "webmozart/assert",
