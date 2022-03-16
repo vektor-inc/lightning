@@ -106,12 +106,15 @@ jobs:
       run: npm install
     - name: wp-env start
       run: ./node_modules/@wordpress/env/bin/wp-env start
-    - name: install composer packages
-      run: | 
-      cd _g3
-      ./node_modules/@wordpress/env/bin/wp-env run composer 'composer install'
-      cd ../
-      ./node_modules/@wordpress/env/bin/wp-env run composer 'composer install'
+    - name: cd _g3
+      run: cd _g3
+    - name: install composer g3
+      run: ./node_modules/@wordpress/env/bin/wp-env run composer 'composer install'
+    - name: cd ../
+      run: cd ../
+    - name: install composer ./
+      run: ./node_modules/@wordpress/env/bin/wp-env run composer 'composer install'
+
     - name: php unit test G2
       run: ./node_modules/@wordpress/env/bin/wp-env run phpunit 'phpunit -c /var/www/html/wp-content/themes/lightning/phpunit.g2.xml --verbose'
     - name: php unit test G3
