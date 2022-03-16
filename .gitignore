@@ -7,5 +7,6 @@ thumbs.db
 ._.DS_Store
 .*.before
 /vendor/
+/_g3/vendor/
 **/*.map
 *.override.json
