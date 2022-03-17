@@ -9,7 +9,7 @@ $theme_opt = wp_get_theme( get_template() );
 
 define( 'LIGHTNING_THEME_VERSION', $theme_opt->Version ); // phpcs:ignore
 
-require_once dirname( __FILE__ ) . '/vendor/autoload.php';
+require_once dirname( dirname( __FILE__ ) ) . '/vendor/autoload.php';
 
 /*********************************************
  * Set up theme

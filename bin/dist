@@ -15,7 +15,8 @@ src_dir="${dist_dir}/${THEME_NAME}"
 ## distディレクトリを作成
 mkdir -p "${src_dir}"
 
-bin/dist-local.sh
+npm install
+npm run dist
 
 rsync -av "${PLUGIN_DIR}/" "${src_dir}/" --exclude-from=".svnignore" --exclude="dist/" --exclude="tmp/"
 
