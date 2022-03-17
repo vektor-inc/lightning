@@ -45,32 +45,28 @@ jobs:
 
     # common css forget compile check
     - name: build Common StyleSheet
-      run: npm run gulp sass_common_g2
+      run: npx gulp sass
     - run: diff _g2/assets/css/common.css common.css.before
     - run: diff _g2/assets/css/common_editor.css common_editor.css.before
     - run: diff _g2/assets/css/wp-embed.css wp-embed.css.before
 
     # sass_bs4
     - name: build Bootstrap StyleSheet
-      run: npm run gulp sass_bs4_g2
     - run: diff _g2/library/bootstrap-4/css/bootstrap.css bootstrap4.css.before
     - run: diff _g2/library/bootstrap-3/css/bootstrap.css bootstrap3.css.before
 
     # origin scss forget compile check
     - name: build Skin StyleSheet
-      run: npm run gulp sass_skin_g1
     - run: diff _g2/design-skin/origin/css/style.css origin.style.css.before
     - run: diff _g2/design-skin/origin/css/editor.css origin.editor.css.before
 
     # origin2 scss forget compile check
     - name: build Skin2 StyleSheet
-      run: npm run gulp sass_skin2_g2
     - run: diff _g2/design-skin/origin2/css/style.css origin2.style.css.before
     - run: diff _g2/design-skin/origin2/css/editor.css origin2.editor.css.before
 
     # woocommerce scsss forget compile check
     - name: build woocomeerce StyleSheet
-      run: npm run gulp sass_woo_g2
     - run: diff _g2/plugin-support/woocommerce/css/woo.css woo.css.before
 
   php_unit:
