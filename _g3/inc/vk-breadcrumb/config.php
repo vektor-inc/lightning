@@ -7,7 +7,7 @@
  * this is fall back alias
  *
  * Original file is bellow
- * lightning/_g3/vendor/vektor-inc/vk-breadcrumb/src/VkBreadcrumb.php
+ * lightning/vendor/vektor-inc/vk-breadcrumb/src/VkBreadcrumb.php
  *
  *  @since 14.16.2
  */

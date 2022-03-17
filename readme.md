@@ -10,20 +10,53 @@ Lightning is a very simple & easy to customize theme which is based on the Boots
 
 ---
 
+## 各種コマンド
+
+### sass watch
+
+```
+composer install
+npm install
+npx gulp
+```
+
+### ビルド
+
+js,scss,テキストドメインのビルドをすべて行う
+```
+$ npm run build
+```
+
+#### jsビルド
+```
+$ npm run build:script
+```
+#### テキストドメイン書き換え
+```
+$ npm run build:text-domain
+```
+
+### 開発モード
+
+#### js
+```
+$ npm run watch:script
+```
+
+### dist作成
+
+```
+$ npm run dist
+```
+
+`dist/`内に管理画面でのインポート用zipと、転送用のテーマディレクトリが作成されます。
+
 ## Lightning G3 ./_g3/
 
 G3 は別途ドキュメントがあるのでそちらを参照
 
 [Please check ./_g3/readme.md](https://github.com/vektor-inc/lightning/blob/master/_g3/readme.md)
 
-### G3 sass build
-
-```
-composer install
-cd _g3
-npm install
-npx gulp
-```
 
 ---
 ## UnitTest
@@ -55,60 +88,6 @@ $ docker-compose run wp
 	```npm run phpunit:win```
 	- Mac の場合
 	```npm run phpunit```
-
-
-
-## 各種コマンド
-
-### G2 開発
-
-```
-npx gulp watch
-```
-
-### G2 ビルド
-
-js,scss,テキストドメインのビルドをすべて行う
-```
-$ npm run build
-```
-
-#### G2 jsビルド
-```
-$ npm run build:script
-```
-
-#### G2 scssビルド
-```
-$ npm run build:style
-```
-
-#### G2 テキストドメイン書き換え
-```
-$ npm run build:text-domain
-```
-
-### 開発モード
-
-#### js
-```
-$ npm run watch:script
-```
-
-#### scss
-```
-$ npm run watch:style
-```
-
-### dist作成
-
-```
-$ bin/dist_kuru.sh
-```
-
-`dist/`内に管理画面でのインポート用zipと、転送用のテーマディレクトリが作成されます。
-
-
 
 ## プルリクエストを送る際の確認事項
 
