@@ -5,10 +5,9 @@
 	"main": "gulpfile.js",
 	"scripts": {
 		"gulp": "gulp",
-		"file-delete": "rimraf ./_g3/**/*.map",
-		"build": "npm run build:script && npm run build:text-domain && npx gulp sass && npm run file-delete",
+		"build": "npm run build:script && npm run build:text-domain && npx gulp sass",
 		"build:sass": "npx gulp sass",
-		"dist": "rimraf ./dist/ && rimraf ./vendor/ && composer install --optimize-autoloader --prefer-dist --no-dev && npm run build && rimraf ./dist/lightning/_g2/tests/ && rimraf ./dist/lightning/_g3/tests/ && cd dist && zip -r lightning.zip lightning",
+		"dist": "rimraf ./vendor/ && composer install --optimize-autoloader --prefer-dist --no-dev && npx gulp dist && rimraf ./dist/lightning/_g2/tests/ && rimraf ./dist/lightning/_g3/tests/ && cd dist && zip -r lightning.zip lightning",
 		"build:script": "webpack --config webpack.g2prod.js && webpack --config webpack.g3prod.js",
 		"build:text-domain": "gulp text-domain",
 		"watch:script": "webpack --config webpack.g3dev.js --watch",

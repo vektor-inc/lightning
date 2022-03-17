@@ -217,7 +217,6 @@ gulp.task('sass_common_g3', function (done) {
 	  sass({
 		includePaths: [
 		  './_g3/assets/scss',
-		  // './inc/vk-components/package/_scss'
 		]
 	  }
 	))
@@ -242,7 +241,6 @@ gulp.task('sass_common_g3', function (done) {
 	  sass({
 		includePaths: [
 		  './_g3/design-skin/origin3/_scss',
-		  // './_g3/inc/vk-components/package/_scss'
 		]
 	  }
 	))
