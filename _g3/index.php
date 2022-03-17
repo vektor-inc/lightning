@@ -7,9 +7,7 @@
 
 use VektorInc\VK_Breadcrumb\VkBreadcrumb;
 
-?>
-
-<?php lightning_get_template_part( 'header' ); ?>
+?><?php lightning_get_template_part( 'header' ); ?>
 
 <?php
 do_action( 'lightning_site_header_before', 'lightning_site_header_before' );

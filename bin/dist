@@ -1,16 +1,22 @@
 #! /bin/bash
 set -ex
 
-THEME_NAME='Lightning'
+THEME_NAME='lightning'
 PLUGIN_DIR=$(cd $(dirname $(dirname $0)); pwd)
 CURRENT_VERSION=$(cat "${PLUGIN_DIR}/style.css"|grep -i '^ *version *:'|head -n 1|sed -E 's/^[ *]*Version: *([^ ]*) *$/\1/i')
 
 dist_dir="${PLUGIN_DIR}/dist"
-ZIPBALL="${dist_dir}/${THEME_NAME}_v${CURRENT_VERSION}.zip"
+ZIPBALL="${dist_dir}/${THEME_NAME}.zip"
 src_dir="${dist_dir}/${THEME_NAME}"
 
+## 既存の対象ディレクトリを一旦削除
 [[ -e "${src_dir}" ]] && rm -rf "${src_dir}"
+
+## distディレクトリを作成
 mkdir -p "${src_dir}"
+
+npm install
+npm run dist
 
 rsync -av "${PLUGIN_DIR}/" "${src_dir}/" --exclude-from=".svnignore" --exclude="dist/" --exclude="tmp/"
 

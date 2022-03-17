@@ -4,10 +4,11 @@ on:
   push:
     branches:
       - master
+      - develop
   pull_request:
     branches:
       - master
-      - ^feature/.+
+      - develop
 
 jobs:
   buid_check:
@@ -44,32 +45,16 @@ jobs:
 
     # common css forget compile check
     - name: build Common StyleSheet
-      run: npm run gulp sass_common
+      run: npx gulp sass
     - run: diff _g2/assets/css/common.css common.css.before
     - run: diff _g2/assets/css/common_editor.css common_editor.css.before
     - run: diff _g2/assets/css/wp-embed.css wp-embed.css.before
-
-    # sass_bs4
-    - name: build Bootstrap StyleSheet
-      run: npm run gulp sass_bs4
     - run: diff _g2/library/bootstrap-4/css/bootstrap.css bootstrap4.css.before
     - run: diff _g2/library/bootstrap-3/css/bootstrap.css bootstrap3.css.before
-
-    # origin scss forget compile check
-    - name: build Skin StyleSheet
-      run: npm run gulp sass_skin
     - run: diff _g2/design-skin/origin/css/style.css origin.style.css.before
     - run: diff _g2/design-skin/origin/css/editor.css origin.editor.css.before
-
-    # origin2 scss forget compile check
-    - name: build Skin2 StyleSheet
-      run: npm run gulp sass_skin2
     - run: diff _g2/design-skin/origin2/css/style.css origin2.style.css.before
     - run: diff _g2/design-skin/origin2/css/editor.css origin2.editor.css.before
-
-    # woocommerce scsss forget compile check
-    - name: build woocomeerce StyleSheet
-      run: npm run gulp sass_woo
     - run: diff _g2/plugin-support/woocommerce/css/woo.css woo.css.before
 
   php_unit:
@@ -77,7 +62,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php: [7.2, 7.3, 7.4]
+        php: [7.3, 7.4]
     services:
       mysql:
         image: mysql:5.7
@@ -106,7 +91,7 @@ jobs:
       run: npm install
     - name: wp-env start
       run: ./node_modules/@wordpress/env/bin/wp-env start
-    - name: install composer packages
+    - name: install composer
       run: ./node_modules/@wordpress/env/bin/wp-env run composer 'composer install'
     - name: php unit test G2
       run: ./node_modules/@wordpress/env/bin/wp-env run phpunit 'phpunit -c /var/www/html/wp-content/themes/lightning/phpunit.g2.xml --verbose'

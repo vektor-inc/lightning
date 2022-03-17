@@ -1,5 +1,11 @@
-<?php do_action( 'get_header' ); ?>
-<!DOCTYPE html>
+<?php
+/**
+ * Lightning G3 Header
+ *
+ * @package vektor-inc/lightning
+ */
+
+do_action( 'get_header' ); ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
 <meta charset="utf-8">
