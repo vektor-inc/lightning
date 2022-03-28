@@ -52,3 +52,8 @@
 @import "overwrite/vk-mobile-nav";
 
 @import "customize-shortcut";
+
+// Cope with safari bug
+.swiper-slide {
+    transform: translate3d(0, 0, 0);
+}
