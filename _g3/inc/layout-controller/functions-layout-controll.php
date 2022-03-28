@@ -17,7 +17,7 @@ function lightning_layout_target_array() {
 			'function' => 'is_search',
 		),
 		'archive-author' => array(
-			'function' => 'is_archive',
+			'function' => 'is_author',
 		),
 	);
 	return $array;
@@ -75,8 +75,7 @@ function lightning_is_layout_onecolumn() {
 		),
 		'names'
 	);
-
-	$array = lightning_layout_target_array();
+	$array                 = lightning_layout_target_array();
 
 	foreach ( $array as $key => $value ) {
 		if ( call_user_func( $value['function'] ) ) {
@@ -120,9 +119,10 @@ function lightning_is_layout_onecolumn() {
 	} elseif ( is_archive() && ! is_search() && ! is_author() ) {
 		$current_post_type_info = VK_Helpers::get_post_type_info();
 		$archive_post_types     = array( 'post' ) + $additional_post_types;
-		foreach ( $archive_post_types as $archive_post_type ) {
-			if ( isset( $options['layout'][ 'archive-' . $archive_post_type ] ) && $current_post_type_info['slug'] === $archive_post_type ) {
-				if ( 'col-one' === $options['layout'][ 'archive-' . $archive_post_type ] || 'col-one-no-subsection' === $options['layout'][ 'archive-' . $archive_post_type ] ) {
+		if ( isset( $current_post_type_info['slug'] ) ) {
+			$current_post_type = $current_post_type_info['slug'];
+			if ( isset( $options['layout'][ 'archive-' . $current_post_type ] ) ) {
+				if ( 'col-one' === $options['layout'][ 'archive-' . $current_post_type ] || 'col-one-no-subsection' === $options['layout'][ 'archive-' . $current_post_type ] ) {
 					$onecolumn = true;
 				}
 			}
