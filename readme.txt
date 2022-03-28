@@ -40,6 +40,7 @@ https://www.vektor-inc.co.jp/inquiry/
 
 v14.18.2
 [ G3 ][ Bug fix ] Fix Column setting on archive page
+[ G3 ][ Bug fix ] Fix Slide(Swiper) bug on safari
 
 v14.18.1
 [ G3 ][ Bug fix ] fix html head
