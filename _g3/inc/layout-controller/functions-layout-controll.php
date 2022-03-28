@@ -17,7 +17,7 @@ function lightning_layout_target_array() {
 			'function' => 'is_search',
 		),
 		'archive-author' => array(
-			'function' => 'is_archive',
+			'function' => 'is_author',
 		),
 	);
 	return $array;
