@@ -258,7 +258,8 @@ div[class*="wp-block-product"] {
 				color: #333;
 			}
 
-			.add_to_cart_button {
+			.add_to_cart_button,
+			.button {
 				box-sizing: border-box;
 				width: 100%;
 				font-size: 12px;
@@ -447,7 +448,8 @@ div[class*="wp-block-product"] {
 		// bottom: 30px;
 	// }
 
-	.add_to_cart_button {
+	.add_to_cart_button,
+	.button {
 		text-align: center;
 		position: absolute;
 		bottom: 0;
@@ -682,8 +684,12 @@ tr.cart-discount td {
 /*-------------------------------------------*/
 /*	.wc-block-grid__products
 /*-------------------------------------------*/
+//wooのブロック調整
 .wc-block-grid__products {
 	.wc-block-grid__product {
+		display: flex;
+		flex-direction: column;//縦積みにする
+		margin-bottom: 16px;
 		&-image {
 			img{
 				border: 1px solid var(--color-woo-image-border);
@@ -704,8 +710,17 @@ tr.cart-discount td {
 				color: var(--text-color);
 			}
 		}
-
+		//セールアイコン
 		.wc-block-grid__product-onsale {
+			position: absolute;
+			top: -0.8em;
+			right:-0.8em;
+			width: 5em;
+			height: 5em;
+			border-radius: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
 			margin-top: 0;
 			background-color: $price_color;
 			color: #fff;
@@ -727,12 +742,15 @@ tr.cart-discount td {
 			}
 		}
 
-		&-add-to-cart {
-			.add_to_cart_button {
+		&-add-to-cart { //お買い物カゴに追加ボタン
+			margin-top: auto; //ボタンを下揃え
+			.add_to_cart_button,
+			button {
 				display: inline-block;
 				font-size: 0.875rem;
 				padding: 10px 1.5em;
 				width: 100%;
+				border: none; //buttonの場合に枠がつくので追加
 			}
 		}
 		&-price__value{
