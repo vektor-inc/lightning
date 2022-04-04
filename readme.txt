@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ Specification Change ] Delete table bottom margin
+
 v14.18.2
 [ G3 ][ Bug fix ] Fix Column setting on archive page
 [ G3 ][ Bug fix ] Fix Slide(Swiper) bug on safari
