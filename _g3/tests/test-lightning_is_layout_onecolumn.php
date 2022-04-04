@@ -440,7 +440,7 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 
 			// is_post_type_archive('event) _ カスタマイザー : ２カラム
 			// is_author _ カスタマイザー : １カラム
-			// is_post_type_archive('event) _ 返り値 : １カラム
+			// is_post_type_archive('event) _ 返り値 : ２カラム
 			array(
 				'options'    => array(
 					'layout' => array(
