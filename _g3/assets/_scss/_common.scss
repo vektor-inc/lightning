@@ -31,13 +31,13 @@ body {
 	}
 }
 
+.wp-block-table,
 p,
 ul,
 ol,
 dl,
 blockquote,
-iframe,
-.wp-block-table {
+iframe{
 	margin-bottom:var(--vk-margin-element-bottom);
 }
 
