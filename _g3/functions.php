@@ -198,15 +198,11 @@ function lightning_add_script() {
 	if ( filter_input( INPUT_GET, 'legacy-widget-preview', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY ) ) {
 		return;
 	}
-	// 現在の URL を取得
-	$current_url = parse_url( $_SERVER["REQUEST_URI"], PHP_URL_SCHEME );
-	$admin_url   = parse_url( admin_url() );
-	if ( 
-		// 現在の URL に widgets.php が含まれる
-		false !== strpos( $current_url['path'], 'widgets.php' ) && 
-		// 現在の URL に 管理画面の URL が含まれる
-		false !== strpos( $current_url['path'], admin_url() ) 
-	) {
+	global $pagenow;
+	if ( 'widgets.php' === $pagenow ) {
+		return;
+	}
+	if ( 'index.php' === $pagenow && false !== strpos( $_SERVER['REQUEST_URI'], 'rest_route' ) ) {
 		return;
 	}
 	
