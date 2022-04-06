@@ -38,6 +38,7 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ Bug fix ] fix action hook name 'lightning_site_body_apepend' -> 'lightning_site_body_append'
 [ Bug fix ] No Read Lightning Scripts on widget editor scrren.
 
 v14.19.0
