@@ -198,10 +198,11 @@ function lightning_add_script() {
 	if ( filter_input( INPUT_GET, 'legacy-widget-preview', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY ) ) {
 		return;
 	}
-	global $pagenow;
-	if ( 'widgets.php' === $pagenow ) {
+	$current_path = parse_url( $_SERVER["REQUEST_URI"]['path'] );
+	if ( false !== strpos( $current_path, 'widgets.php' ) ) {
 		return;
 	}
+	
 	wp_register_script( 'lightning-js', get_template_directory_uri() . '/assets/js/main.js', array(), LIGHTNING_THEME_VERSION, true );
 	wp_localize_script( 'lightning-js', 'lightningOpt', apply_filters( 'lightning_localize_options', array() ) );
 	wp_enqueue_script( 'lightning-js' );
