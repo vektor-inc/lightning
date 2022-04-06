@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ Bug fix ] No Read Lightning Scripts on widget editor scrren.
+
 v14.19.0
 [ G3 ][ Specification Change ] Delete table bottom margin
 [ G3 /G2 ][ Design tuning ] wooCommerce Design Tuning
