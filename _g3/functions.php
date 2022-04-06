@@ -199,12 +199,13 @@ function lightning_add_script() {
 		return;
 	}
 	// 現在の URL を取得
-	$current_url = parse_url( $_SERVER["REQUEST_URI"] );
+	$current_url = parse_url( $_SERVER["REQUEST_URI"], PHP_URL_SCHEME );
+	$admin_url   = parse_url( admin_url() );
 	if ( 
 		// 現在の URL に widgets.php が含まれる
-		false !== strpos( $current_url, 'widgets.php' ) && 
+		false !== strpos( $current_url['path'], 'widgets.php' ) && 
 		// 現在の URL に 管理画面の URL が含まれる
-		false !== strpos( $current_url, admin_url() ) 
+		false !== strpos( $current_url['path'], admin_url() ) 
 	) {
 		return;
 	}
