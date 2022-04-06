@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ Bug fix ] fix action hook name 'lightning_site_body_apepend' -> 'lightning_site_body_append'
+
 v14.19.0
 [ G3 ][ Specification Change ] Delete table bottom margin
 [ G3 /G2 ][ Design tuning ] wooCommerce Design Tuning
