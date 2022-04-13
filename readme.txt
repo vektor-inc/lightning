@@ -37,6 +37,7 @@ https://www.vektor-inc.co.jp/inquiry/
 
 
 == Changelog ==
+[ G3 ][ Design bug fix ] Fixed global navigation width
 
 v14.19.0
 [ G3 ][ Specification Change ] Delete table bottom margin
