@@ -24,6 +24,7 @@
 				text-align: center;
 				position: relative;
 				height:100%;
+				flex-direction: column; 
 				// PC端末時は下階層展開ボタンを表示しないので左右余白小さめ
 				@media ( min-width: $lg-min ) { // media指定がないと vk-menu-acc 指定の余白に負けるため指定
 					padding: $menu_padding_vertical 1.5em;

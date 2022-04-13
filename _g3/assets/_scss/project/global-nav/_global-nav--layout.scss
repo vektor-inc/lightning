@@ -13,6 +13,11 @@
       と、思いきや 最小に指定すると、メニューに画像を入れた場合、画像に幅指定をしないと幅サイズが無くなる(0)ことがわかったので初期値に変更
       */
       width:auto;
+      margin-left: auto; //グローバルナビを左寄せ用
+      .global-nav-list{
+          //中央に寄ってしまうので.global-nav-listのmargin:0 auto;を上書き用
+          margin:unset;
+      }
      
     }
 }
