@@ -21,7 +21,8 @@
     width:auto;
     .global-nav-list {
         justify-content: center;
-        width:min-content;
+        //最小に指定すると、メニューに画像を入れた場合、画像に幅指定をしないと幅サイズが無くなる(0)ことがわかったので初期値に変更
+        width:auto;
     }
 }
 .global-nav--layout--penetration {
