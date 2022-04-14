@@ -16,3 +16,7 @@ composer translate
 からの Poedit で翻訳
 
 
+---
+
+0.2.1
+* [ 不具合修正 ] Font Awesome へのリンクの設定例表記が間違っていたので修正

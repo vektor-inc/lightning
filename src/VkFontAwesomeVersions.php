@@ -5,7 +5,7 @@
  * @package vektor-inc/font-awesome-versions
  * @license GPL-2.0+
  *
- * @version 0.2.0
+ * @version 0.2.1
  */
 
 namespace VektorInc\VK_Font_Awesome_Versions;
@@ -131,16 +131,37 @@ class VkFontAwesomeVersions {
 		return $current_info;
 	}
 
-	public static function ex_and_link() {
+	/**
+	 * Display icon list link
+	 *
+	 * @param string $type = '' : クラス名のみ / $type = 'html' : i タグ表示.
+	 * @return string $ex_and_link
+	 */
+	public static function ex_and_link( $type = '' ) {
 		$current_option = self::get_option_fa();
 		if ( '6_WebFonts_CSS' === $current_option || '6_SVG_JS' === $current_option ) {
-			$ex_and_link = '<strong>Font Awesome 6</strong><br>' . __( 'Ex ) ', 'vk-blocks' ) . 'fa-solid fa-file [ <a href="//fontawesome.com/icons?d=gallery&m=free" target="_blank">Icon list</a> ]';
+			$version    = '6';
+			$link       = 'https://fontawesome.com/icons?d=gallery&m=free';
+			$icon_class = 'fa-regular fa-file-lines';
 		} elseif ( '5_WebFonts_CSS' === $current_option || '5_SVG_JS' === $current_option ) {
-			$ex_and_link = '<strong>Font Awesome 5</strong><br>' . __( 'Ex ) ', 'vk-blocks' ) . 'far fa-file-alt [ <a href="//fontawesome.com/icons?d=gallery&m=free" target="_blank">Icon list</a> ]';
+			$version    = '5';
+			$link       = 'https://fontawesome.com/v5/search?m=free';
+			$icon_class = 'far fa-file-alt';
 		} else {
-			$ex_and_link = '<strong>Font Awesome 4.7</strong><br>' . __( 'Ex ) ', 'font-awesome-versions' ) . 'fa-file-text-o [ <a href="//fontawesome.com/v4.7.0/icons/" target="_blank">Icon list</a> ]';
+			$version    = '4.7';
+			$link       = 'https://fontawesome.com/v4/icons/';
+			$icon_class = 'fa fa-file-text-o';
 		}
-		return $ex_and_link;
+
+		$ex_and_link  = '<div style="margin-top:5px"><strong>Font Awesome ' . $version . '</strong></div>';
+		$ex_and_link .= __( 'Ex ) ', 'vk-blocks' );
+		if ( 'html' === $type ) {
+			$ex_and_link .= esc_html( '<i class="' . $icon_class . '"></i>' );
+		} else {
+			$ex_and_link .= $icon_class;
+		}
+		$ex_and_link .= '<br>[ <a href="' . $link . '" target="_blank">Icon list</a> ]';
+		return wp_kses_post( $ex_and_link );
 	}
 
 	/**
