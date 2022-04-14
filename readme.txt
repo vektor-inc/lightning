@@ -2,7 +2,7 @@
 Lightning WordPress theme, Copyright (C) 2015-2022 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
 Tested up to: 5.9.3
-Stable tag: 14.19.1
+Stable tag: 14.19.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,6 +37,9 @@ https://www.vektor-inc.co.jp/inquiry/
 
 
 == Changelog ==
+
+v14.19.2
+[ G3 / G2 ] Fix Font Awesome Icon link
 
 v14.19.1
 [ G3 ][ Bug fix ] fix action hook name 'lightning_site_body_apepend' -> 'lightning_site_body_append'
