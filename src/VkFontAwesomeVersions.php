@@ -17,13 +17,24 @@ class VkFontAwesomeVersions {
 
 	private static $version_default = '6_WebFonts_CSS';
 
+	/**
+	 * 直接 new VkFontAwesomeVersions() している場所がありえるので fallback
+	 */
 	function __construct() {
+		self::init();
+	}
 
+	/**
+	 * Initialise
+	 *
+	 * @return void
+	 */
+	public static function init() {
 		/**
 		 * テキストドメイン
 		 */
 		if ( did_action( 'init' ) ) {
-			$this->load_text_domain();
+			self::load_text_domain();
 		} else {
 			add_action( 'init', array( __CLASS__, 'load_text_domain' ) );
 		}
@@ -43,7 +54,6 @@ class VkFontAwesomeVersions {
 		add_action( 'enqueue_block_editor_assets', array( __CLASS__, 'load_gutenberg_font_awesome' ) );
 		add_action( 'wp_head', array( __CLASS__, 'dynamic_css' ), 3 );
 		add_filter( 'body_class', array( __CLASS__, 'add_body_class_fa_version' ) );
-
 	}
 
 	public static function load_text_domain() {
@@ -108,7 +118,7 @@ class VkFontAwesomeVersions {
 		global $font_awesome_directory_uri;
 		$versions = array(
 			'6_SVG_JS'       => array(
-				'label'   => '6 SVG with JS ( ' . __( 'Not recommended', 'vk-blocks' ) . ' )',
+				'label'   => '6 SVG with JS ( ' . __( 'Not recommended', 'font-awesome-versions' ) . ' )',
 				'version' => '6.1.0',
 				'type'    => 'svg-with-js',
 				/* [ Notice ] use editor css*/
@@ -196,7 +206,7 @@ class VkFontAwesomeVersions {
 		}
 
 		$ex_and_link  = '<div style="margin-top:5px"><strong>Font Awesome ' . $version . '</strong></div>';
-		$ex_and_link .= __( 'Ex ) ', 'vk-blocks' );
+		$ex_and_link .= __( 'Ex ) ', 'font-awesome-versions' );
 		if ( 'html' === $type ) {
 			$ex_and_link .= esc_html( '<i class="' . $icon_class . '"></i>' );
 		} else {
@@ -214,7 +224,7 @@ class VkFontAwesomeVersions {
 	public static function print_fa() {
 		$fa             = '';
 		$current_option = self::get_option_fa();
-		if ( '4.7' == $current_option ) {
+		if ( '4.7' === $current_option ) {
 			$fa = 'fa ';
 		}
 		return $fa;
@@ -330,7 +340,7 @@ class VkFontAwesomeVersions {
 	/**
 	 * Customize_register
 	 *
-	 * @param object $wp_customize : customize object
+	 * @param object $wp_customize : customize object.
 	 * @return void
 	 */
 	public static function customize_register( $wp_customize ) {
@@ -376,6 +386,6 @@ class VkFontAwesomeVersions {
 				'choices'     => $choices,
 			)
 		);
-	} // static function customize_register( $wp_customize ) {
+	}
 
 }
