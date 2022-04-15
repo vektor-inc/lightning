@@ -192,7 +192,7 @@ class VkFontAwesomeVersions {
 		} else {
 			$version    = '4.7';
 			$link       = 'https://fontawesome.com/v4/icons/';
-			$icon_class = 'fa fa-file-text-o';
+			$icon_class = 'fa-file-text-o';
 		}
 
 		$ex_and_link  = '<div style="margin-top:5px"><strong>Font Awesome ' . $version . '</strong></div>';
