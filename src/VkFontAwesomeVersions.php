@@ -316,8 +316,8 @@ class VkFontAwesomeVersions {
 		// Change multiple spaces to single space.
 		$dynamic_css = preg_replace( '/\s(?=\s)/', '', $dynamic_css );
 
-		global $set_enqueue_handle_style;
-		wp_add_inline_style( $set_enqueue_handle_style, $dynamic_css );
+		global $vkfav_set_enqueue_handle_style;
+		wp_add_inline_style( $vkfav_set_enqueue_handle_style, $dynamic_css );
 	}
 
 	/**
@@ -360,17 +360,17 @@ class VkFontAwesomeVersions {
 	 */
 	public static function customize_register( $wp_customize ) {
 
-		global $vk_font_awesome_version_prefix_customize_panel;
-		global $vk_font_awesome_version_priority;
-		if ( ! $vk_font_awesome_version_priority ) {
-			$vk_font_awesome_version_priority = 450;
+		global $vkfav_customize_panel_prefix;
+		global $vkfav_customize_panel_priority;
+		if ( ! $vkfav_customize_panel_priority ) {
+			$vkfav_customize_panel_priority = 450;
 		}
 
 		$wp_customize->add_section(
 			'VK Font Awesome',
 			array(
-				'title'    => $vk_font_awesome_version_prefix_customize_panel . __( 'Font Awesome', 'font-awesome-versions' ),
-				'priority' => $vk_font_awesome_version_priority,
+				'title'    => $vkfav_customize_panel_prefix . __( 'Font Awesome', 'font-awesome-versions' ),
+				'priority' => $vkfav_customize_panel_priority,
 			)
 		);
 

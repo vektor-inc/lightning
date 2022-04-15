@@ -30,16 +30,15 @@ composer translate
 use VektorInc\VK_Font_Awesome_Versions\VkFontAwesomeVersions;
 
 VkFontAwesomeVersions::init();
-// global $font_awesome_directory_uri -> 0.2.2 以降不要
 
-global $vk_font_awesome_version_prefix_customize_panel;
-$vk_font_awesome_version_prefix_customize_panel = 'Lightning ';
+global $vkfav_customize_panel_prefix;
+$vkfav_customize_panel_prefix = 'Lightning ';
 
-global $set_enqueue_handle_style;
-$set_enqueue_handle_style = 'lightning-design-style';
+global $vkfav_customize_panel_priority;
+$vkfav_customize_panel_priority = 560;
 
-global $vk_font_awesome_version_priority;
-$vk_font_awesome_version_priority = 560;
+global $vkfav_set_enqueue_handle_style;
+$vkfav_set_enqueue_handle_style = 'lightning-design-style';
 ```
 
 
@@ -48,6 +47,7 @@ $vk_font_awesome_version_priority = 560;
 0.3.0
 * [ 機能追加 ] クラス名だけでも i タグに変換して出力するメソッド追加
 * [ 機能改善 ] ディレクトリ uri を グローバル変数で受け渡さなくても自動取得するように対応
+* [ 仕様変更 ] グローバル変数が不適切だったため調整
 
 0.2.1
 * [ 不具合修正 ] Font Awesome へのリンクの設定例表記が間違っていたので修正
