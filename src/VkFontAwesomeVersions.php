@@ -200,7 +200,7 @@ class VkFontAwesomeVersions {
 	/**
 	 * Display icon list link
 	 *
-	 * @param string $type = '' : クラス名のみ / $type = 'html' : i タグ表示.
+	 * @param string $type = 'class' : クラス名のみ / $type = 'html' : i タグ表示.
 	 * @return string $ex_and_link
 	 */
 	public static function ex_and_link( $type = '' ) {
@@ -221,12 +221,12 @@ class VkFontAwesomeVersions {
 
 		$ex_and_link  = '<div style="margin-top:5px"><strong>Font Awesome ' . $version . '</strong></div>';
 		$ex_and_link .= __( 'Ex ) ', 'font-awesome-versions' );
-		if ( 'html' === $type ) {
-			$ex_and_link .= esc_html( '<i class="' . $icon_class . '"></i>' );
-		} else {
+		if ( 'class' === $type ) {
 			$ex_and_link .= $icon_class;
+		} else {
+			$ex_and_link .= esc_html( '<i class="' . $icon_class . '"></i>' );
 		}
-		$ex_and_link .= '<br>[ -> <a href="' . $link . '" target="_blank">Font Awesome Icon list</a> ]';
+		$ex_and_link .= '<br>[ -> <a href="' . $link . '" target="_blank">' . __( 'Font Awesome Icon list', 'font-awesome-versions' ) . '</a> ]';
 
 		return wp_kses_post( $ex_and_link );
 	}

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-15T07:11:52+00:00\n"
-"PO-Revision-Date: 2022-04-15 16:12+0900\n"
+"POT-Creation-Date: 2022-04-15T16:27:56+00:00\n"
+"PO-Revision-Date: 2022-04-16 01:28+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -17,16 +17,20 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_x\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: src/VkFontAwesomeVersions.php:111 src/VkFontAwesomeVersions.php:126
-#: src/VkFontAwesomeVersions.php:141
+#: src/VkFontAwesomeVersions.php:135 src/VkFontAwesomeVersions.php:150
+#: src/VkFontAwesomeVersions.php:165
 msgid "Not recommended"
 msgstr "非推奨"
 
-#: src/VkFontAwesomeVersions.php:199
+#: src/VkFontAwesomeVersions.php:223
 msgid "Ex ) "
 msgstr "例) "
 
-#: src/VkFontAwesomeVersions.php:322
+#: src/VkFontAwesomeVersions.php:229
+msgid "Font Awesome Icon list"
+msgstr "Font Awesome アイコンリスト"
+
+#: src/VkFontAwesomeVersions.php:347
 msgid ""
 "An older version of Font Awesome is selected. This version will be removed "
 "by August 2022."
@@ -34,13 +38,13 @@ msgstr ""
 "Font Awesomeの古いバージョンが選択されています。このバージョンは2022年8月ま"
 "でに削除される予定です。"
 
-#: src/VkFontAwesomeVersions.php:323
+#: src/VkFontAwesomeVersions.php:348
 msgid ""
 "Plesee change the version of FontAwesome on the Appearance > Customize "
 "screen."
 msgstr "外観＞カスタマイズ画面で、FontAwesomeのバージョンを変更してください。"
 
-#: src/VkFontAwesomeVersions.php:324
+#: src/VkFontAwesomeVersions.php:349
 msgid ""
 "* It is necessary to reset the icon font in the place where Font Awesome is "
 "used."
@@ -48,14 +52,14 @@ msgstr ""
 "* Font Awesomeを使用している場所のアイコンフォントを再設定する必要がありま"
 "す。"
 
-#: src/VkFontAwesomeVersions.php:347
+#: src/VkFontAwesomeVersions.php:372
 msgid "Font Awesome"
 msgstr "Font Awesome"
 
-#: src/VkFontAwesomeVersions.php:370
+#: src/VkFontAwesomeVersions.php:395
 msgid "Font Awesome Version"
 msgstr "Font Awesome バージョン"
 
-#: src/VkFontAwesomeVersions.php:373
+#: src/VkFontAwesomeVersions.php:398
 msgid "4.7 will be abolished in the near future."
 msgstr "4.7は将来的に廃止されます。"
