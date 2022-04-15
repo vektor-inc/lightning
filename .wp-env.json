@@ -1,6 +1,6 @@
 {
 	"core": null,
 	"mappings": {
-	  "wp-content/plugins/font-awesome-versions": "./"
+		"wp-content/themes/lightning/vendor/font-awesome-versions": "./"
 	}
   }
