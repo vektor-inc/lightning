@@ -63,6 +63,31 @@ class VkFontAwesomeVersions {
 		}
 	}
 
+	/**
+	 * アイコンの class 名だけ保存されている場合も i タグに変換して出力する
+	 *
+	 * @param string $option : saved value.
+	 * @return string $icon_html : icon tag
+	 */
+	public static function get_icon_tag( $option = '' ) {
+		if ( empty( $option ) ) {
+			return;
+		}
+		if (
+			false !== strpos( $option, '<i' ) &&
+			false !== strpos( $option, '</i>' )
+		) {
+			$icon_html = $option;
+		} else {
+
+			// 4.7 fall back.
+			$print_fa = '';
+			$print_fa = self::print_fa();
+
+			$icon_html = '<i class="' . esc_attr( $print_fa ) . esc_attr( $option ) . '"></i>';
+		}
+		return $icon_html;
+	}
 	public static function load_css_action() {
 		$hook_point = apply_filters( 'vkfa_enqueue_point', 'wp_enqueue_scripts' );
 		add_action( $hook_point, array( __CLASS__, 'load_font_awesome' ) );
