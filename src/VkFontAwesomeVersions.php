@@ -25,7 +25,7 @@ class VkFontAwesomeVersions {
 		if ( did_action( 'init' ) ) {
 			$this->load_text_domain();
 		} else {
-			add_action( 'init', array( $this, 'load_text_domain' ) );
+			add_action( 'init', array( __CLASS__, 'load_text_domain' ) );
 		}
 
 		/**
@@ -46,7 +46,7 @@ class VkFontAwesomeVersions {
 
 	}
 
-	public function load_text_domain() {
+	public static function load_text_domain() {
 		// We're not using load_plugin_textdomain() or its siblings because figuring out where
 		// the library is located (plugin, mu-plugin, theme, custom wp-content paths) is messy.
 		$domain = 'font-awesome-versions';
@@ -56,10 +56,10 @@ class VkFontAwesomeVersions {
 			$domain
 		);
 
-		$moFile = $domain . '-' . $locale . '.mo';
-		$path   = realpath( dirname( __FILE__ ) . '/languages' );
+		$mo_file = $domain . '-' . $locale . '.mo';
+		$path    = realpath( dirname( __FILE__ ) . '/languages' );
 		if ( $path && file_exists( $path ) ) {
-			load_textdomain( $domain, $path . '/' . $moFile );
+			load_textdomain( $domain, $path . '/' . $mo_file );
 		}
 	}
 
@@ -302,9 +302,12 @@ class VkFontAwesomeVersions {
 		echo wp_kses_post( $old_notice );
 	}
 
-	/*
-		customize_register
-	/*-------------------------------------------*/
+	/**
+	 * Customize_register
+	 *
+	 * @param object $wp_customize : customize object
+	 * @return void
+	 */
 	public static function customize_register( $wp_customize ) {
 
 		global $vk_font_awesome_version_prefix_customize_panel;
