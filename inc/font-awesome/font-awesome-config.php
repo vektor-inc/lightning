@@ -6,20 +6,13 @@
  */
 
 use VektorInc\VK_Font_Awesome_Versions\VkFontAwesomeVersions;
+VkFontAwesomeVersions::init();
 
-new VkFontAwesomeVersions();
-global $font_awesome_directory_uri;
-// phpcs:ignore
-global $font_awesome_directory_uri;
-$template                   = 'lightning';
-$theme_root_uri             = get_theme_root_uri( $template );
-$font_awesome_directory_uri = "$theme_root_uri/$template/vendor/vektor-inc/font-awesome-versions/src/";
+global $vkfav_customize_panel_prefix;
+$vkfav_customize_panel_prefix = 'Lightning ';
 
-global $vk_font_awesome_version_prefix_customize_panel;
-$vk_font_awesome_version_prefix_customize_panel = 'Lightning ';
+global $vkfav_customize_panel_priority;
+$vkfav_customize_panel_priority = 560;
 
-global $set_enqueue_handle_style;
-$set_enqueue_handle_style = 'lightning-design-style';
-
-global $vk_font_awesome_version_priority;
-$vk_font_awesome_version_priority = 560;
+global $vkfav_set_enqueue_handle_style;
+$vkfav_set_enqueue_handle_style = 'lightning-design-style';
