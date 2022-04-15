@@ -74,6 +74,18 @@ class VkFontAwesomeVersions {
 	}
 
 	/**
+	 * Undocumented function
+	 *
+	 * @since 0.3.0
+	 * @return string $uri
+	 */
+	public static function get_directory_uri() {
+		$path = wp_normalize_path( dirname( __FILE__ ) );
+		$uri  = str_replace( wp_normalize_path( ABSPATH ), site_url() . '/', $path ) . '/';
+		return $uri;
+	}
+
+	/**
 	 * アイコンの class 名だけ保存されている場合も i タグに変換して出力する
 	 *
 	 * @param string $option : saved value.
@@ -115,7 +127,9 @@ class VkFontAwesomeVersions {
 	 * @return array $versions
 	 */
 	public static function versions() {
-		global $font_awesome_directory_uri;
+
+		$font_awesome_directory_uri = self::get_directory_uri();
+
 		$versions = array(
 			'6_SVG_JS'       => array(
 				'label'   => '6 SVG with JS ( ' . __( 'Not recommended', 'font-awesome-versions' ) . ' )',
@@ -213,6 +227,7 @@ class VkFontAwesomeVersions {
 			$ex_and_link .= $icon_class;
 		}
 		$ex_and_link .= '<br>[ -> <a href="' . $link . '" target="_blank">Font Awesome Icon list</a> ]';
+
 		return wp_kses_post( $ex_and_link );
 	}
 

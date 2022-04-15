@@ -29,13 +29,8 @@ composer translate
 
 use VektorInc\VK_Font_Awesome_Versions\VkFontAwesomeVersions;
 
-new VkFontAwesomeVersions();
-global $font_awesome_directory_uri;
-// phpcs:ignore
-global $font_awesome_directory_uri;
-$template                   = 'lightning';
-$theme_root_uri             = get_theme_root_uri( $template );
-$font_awesome_directory_uri = "$theme_root_uri/$template/vendor/vektor-inc/font-awesome-versions/src/";
+VkFontAwesomeVersions::init();
+// global $font_awesome_directory_uri -> 0.2.2 以降不要
 
 global $vk_font_awesome_version_prefix_customize_panel;
 $vk_font_awesome_version_prefix_customize_panel = 'Lightning ';
