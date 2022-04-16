@@ -6,7 +6,7 @@
  */
 
 use VektorInc\VK_Font_Awesome_Versions\VkFontAwesomeVersions;
-VkFontAwesomeVersions::init();
+new VkFontAwesomeVersions();
 
 global $vkfav_customize_panel_prefix;
 $vkfav_customize_panel_prefix = 'Lightning ';
