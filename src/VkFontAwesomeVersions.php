@@ -18,9 +18,18 @@ class VkFontAwesomeVersions {
 	private static $version_default = '6_WebFonts_CSS';
 
 	/**
-	 * Constructor
+	 * 直接 new VkFontAwesomeVersions() している場所がありえるので fallback
 	 */
 	function __construct() {
+		self::init();
+	}
+
+	/**
+	 * Initialise
+	 *
+	 * @return void
+	 */
+	public static function init() {
 		/**
 		 * テキストドメイン
 		 */
