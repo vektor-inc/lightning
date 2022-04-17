@@ -4,24 +4,28 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1ea564b10a40e5ddf22ee9ca9325a1df",
+    "content-hash": "050eec7d632e2916882e344c960f1d0f",
     "packages": [
         {
             "name": "vektor-inc/font-awesome-versions",
-            "version": "0.2.1",
+            "version": "0.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vektor-inc/font-awesome-versions.git",
-                "reference": "fef9d5d9f2f5a3094ae9ee8efbb35368dad9bc71"
+                "reference": "66dc60e1a1c2981d17f93832f4d7fc00324a47e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vektor-inc/font-awesome-versions/zipball/fef9d5d9f2f5a3094ae9ee8efbb35368dad9bc71",
-                "reference": "fef9d5d9f2f5a3094ae9ee8efbb35368dad9bc71",
+                "url": "https://api.github.com/repos/vektor-inc/font-awesome-versions/zipball/66dc60e1a1c2981d17f93832f4d7fc00324a47e5",
+                "reference": "66dc60e1a1c2981d17f93832f4d7fc00324a47e5",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "wp-phpunit/wp-phpunit": "^5.4",
+                "yoast/phpunit-polyfills": "^1.0"
             },
             "type": "library",
             "autoload": {
@@ -42,9 +46,9 @@
             "description": "Font Awesome",
             "support": {
                 "issues": "https://github.com/vektor-inc/font-awesome-versions/issues",
-                "source": "https://github.com/vektor-inc/font-awesome-versions/tree/0.2.1"
+                "source": "https://github.com/vektor-inc/font-awesome-versions/tree/0.3.3"
             },
-            "time": "2022-04-14T15:38:10+00:00"
+            "time": "2022-04-17T13:37:01+00:00"
         },
         {
             "name": "vektor-inc/vk-breadcrumb",
