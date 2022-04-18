@@ -201,22 +201,35 @@ class VkFontAwesomeVersions {
 	 * Display icon list link
 	 *
 	 * @param string $type = 'class' : クラス名のみ / $type = 'html' : i タグ表示.
+	 * @param string $example_class_array 例として表示するクラス名のバージョンごとの配列.
 	 * @return string $ex_and_link
 	 */
-	public static function ex_and_link( $type = '' ) {
+	public static function ex_and_link( $type = '', $example_class_array = array() ) {
 		$current_option = self::get_option_fa();
 		if ( '6_WebFonts_CSS' === $current_option || '6_SVG_JS' === $current_option ) {
-			$version    = '6';
-			$link       = 'https://fontawesome.com/icons?d=gallery&m=free';
-			$icon_class = 'fa-regular fa-file-lines';
+			$version = '6';
+			$link    = 'https://fontawesome.com/icons?d=gallery&m=free';
+			if ( ! empty( $example_class_array ['v6'] ) ) {
+				$icon_class = esc_attr( $example_class_array['v6'] );
+			} else {
+				$icon_class = 'fa-regular fa-file-lines';
+			}
 		} elseif ( '5_WebFonts_CSS' === $current_option || '5_SVG_JS' === $current_option ) {
-			$version    = '5';
-			$link       = 'https://fontawesome.com/v5/search?m=free';
-			$icon_class = 'far fa-file-alt';
+			$version = '5';
+			$link    = 'https://fontawesome.com/v5/search?m=free';
+			if ( ! empty( $example_class_array ['v5'] ) ) {
+				$icon_class = esc_attr( $example_class_array['v5'] );
+			} else {
+				$icon_class = 'far fa-file-alt';
+			}
 		} else {
-			$version    = '4.7';
-			$link       = 'https://fontawesome.com/v4/icons/';
-			$icon_class = 'fa-file-text-o';
+			$version = '4.7';
+			$link    = 'https://fontawesome.com/v4/icons/';
+			if ( ! empty( $example_class_array ['v4.7'] ) ) {
+				$icon_class = esc_attr( $example_class_array['v4.7'] );
+			} else {
+				$icon_class = 'fa-file-text-o';
+			}
 		}
 
 		$ex_and_link  = '<div style="margin-top:5px"><strong>Font Awesome ' . $version . '</strong></div>';
@@ -321,11 +334,11 @@ class VkFontAwesomeVersions {
 	}
 
 	/**
-	 * なんのためにどこで使っているのかイマイチ不明
+	 * 同じ絵柄のアイコンをバージョンによって出し分ける場合に切り替える
 	 *
-	 * @param string $class_v4
-	 * @param string $class_v5
-	 * @param string $class_v6
+	 * @param string $class_v4 : v4 の場合のアイコン
+	 * @param string $class_v5 : v5 の場合のアイコン
+	 * @param string $class_v6 : v6 の場合のアイコン
 	 * @return void
 	 */
 	public static function class_switch( $class_v4 = '', $class_v5 = '', $class_v6 = '' ) {
