@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ Others ] Update Bread crumb library
+
 v14.20.1
 [ G3 ][ Bug fix ] Fix site title nowrap on mobile
 [ G3 / G2 ][ Others ] Update Vektor Font Awesome library 0.4.0
