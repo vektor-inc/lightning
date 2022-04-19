@@ -9,7 +9,7 @@
     "require": {
         "vektor-inc/font-awesome-versions": "^0.4.0",
         "vektor-inc/vk-color-palette-manager": "^0.0.15",
-        "vektor-inc/vk-breadcrumb": "^0.2.1"
+        "vektor-inc/vk-breadcrumb": "^0.2.2"
     },
     "require-dev": {
 		"vektor-inc/vk-wp-unit-test-tools": "^0.10.0",
