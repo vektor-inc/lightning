@@ -24,6 +24,7 @@ $logo_bottom_margin:1rem;
             */
             padding-top:0.5rem; 
             margin-bottom:0.5rem;
+            white-space: normal; //タブレットサイズ以下でサイトタイトルテキストが長い場合見切れてしまうので追加
             img {
                 max-height:50px;
             }
