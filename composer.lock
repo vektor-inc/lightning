@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6a9869a99c484244b9eecdfdb3f2aaca",
+    "content-hash": "1df7cb8d13d8aae8967f9664e6c5aa89",
     "packages": [
         {
             "name": "vektor-inc/font-awesome-versions",
-            "version": "0.4.0",
+            "version": "0.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vektor-inc/font-awesome-versions.git",
-                "reference": "16b3f9fdf71cee93dafc01b56f190a463158bd30"
+                "reference": "3a993f14a96dbe8095b3a34813310778d32847e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vektor-inc/font-awesome-versions/zipball/16b3f9fdf71cee93dafc01b56f190a463158bd30",
-                "reference": "16b3f9fdf71cee93dafc01b56f190a463158bd30",
+                "url": "https://api.github.com/repos/vektor-inc/font-awesome-versions/zipball/3a993f14a96dbe8095b3a34813310778d32847e2",
+                "reference": "3a993f14a96dbe8095b3a34813310778d32847e2",
                 "shasum": ""
             },
             "require": {
@@ -46,9 +46,9 @@
             "description": "Font Awesome",
             "support": {
                 "issues": "https://github.com/vektor-inc/font-awesome-versions/issues",
-                "source": "https://github.com/vektor-inc/font-awesome-versions/tree/0.4.0"
+                "source": "https://github.com/vektor-inc/font-awesome-versions/tree/0.4.1"
             },
-            "time": "2022-04-18T06:21:29+00:00"
+            "time": "2022-04-24T06:53:01+00:00"
         },
         {
             "name": "vektor-inc/vk-breadcrumb",
