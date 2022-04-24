@@ -39,7 +39,7 @@ https://www.vektor-inc.co.jp/inquiry/
 == Changelog ==
 
 v14.20.3
-[ G3 / G2 ][ Gug Fix ] Fix load Font Awesome Files on WordPress.com
+[ G3 / G2 ][ Bug Fix ] Fix load Font Awesome Files on WordPress.com
 
 v14.20.2
 [ G3 ][ Others ] Update Breadcrumb composer library 0.2.2
