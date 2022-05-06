@@ -37,6 +37,7 @@ https://www.vektor-inc.co.jp/inquiry/
 
 
 == Changelog ==
+[ G3 ][ Design bug fix ] Fixed global navigation width
 
 v14.20.3
 [ G3 / G2 ][ Bug Fix ] Fix load Font Awesome Files on WordPress.com
