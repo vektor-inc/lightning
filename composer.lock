@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1df7cb8d13d8aae8967f9664e6c5aa89",
+    "content-hash": "401399049b0084cf330809c817433bbc",
     "packages": [
         {
             "name": "vektor-inc/font-awesome-versions",
@@ -52,16 +52,16 @@
         },
         {
             "name": "vektor-inc/vk-breadcrumb",
-            "version": "0.2.2",
+            "version": "0.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vektor-inc/vk-breadcrumb.git",
-                "reference": "c3c9f09522b2d5688e31dac235a925731bf70d46"
+                "reference": "6f78f52656f12d8eeaf25155f1c26218ea970c9e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vektor-inc/vk-breadcrumb/zipball/c3c9f09522b2d5688e31dac235a925731bf70d46",
-                "reference": "c3c9f09522b2d5688e31dac235a925731bf70d46",
+                "url": "https://api.github.com/repos/vektor-inc/vk-breadcrumb/zipball/6f78f52656f12d8eeaf25155f1c26218ea970c9e",
+                "reference": "6f78f52656f12d8eeaf25155f1c26218ea970c9e",
                 "shasum": ""
             },
             "require": {
@@ -90,9 +90,9 @@
             "description": "WordPress Bread Crumb Class",
             "support": {
                 "issues": "https://github.com/vektor-inc/vk-breadcrumb/issues",
-                "source": "https://github.com/vektor-inc/vk-breadcrumb/tree/0.2.2"
+                "source": "https://github.com/vektor-inc/vk-breadcrumb/tree/0.2.3"
             },
-            "time": "2022-04-19T07:08:07+00:00"
+            "time": "2022-05-07T11:54:48+00:00"
         },
         {
             "name": "vektor-inc/vk-color-palette-manager",
