@@ -3,7 +3,9 @@
 	"version": 2,
     "settings": {
 		"spacing": {
-			"blockGap": false
+			"blockGap": null,
+			"margin": true,
+            "padding": true
 		},
         "layout": {
             "contentSize": "var(--vk-width-container)",
@@ -14,6 +16,12 @@
             "radius": true,
             "style": true,
             "width": true
+        },
+        "blocks": {
+            "core/group": {
+                "custom": {
+                }
+            }
         }
     }
 }
