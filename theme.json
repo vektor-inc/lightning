@@ -19,8 +19,9 @@
         },
         "blocks": {
             "core/group": {
-                "custom": {
-                }
+				"spacing": {
+					"padding": true
+				}
             }
         }
     }
