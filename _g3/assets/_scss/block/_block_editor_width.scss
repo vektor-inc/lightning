@@ -1,7 +1,7 @@
 // editor only
-
+// 本文部分はcontainerのpaddingの中なので、編集エリアのコンテナ幅には左右の padding:15px は持たせない
 :root{
-	--vk-width-editor-container:calc(100vw * 0.8);
+	--vk-width-editor-container-body:calc(100vw * 0.8);
 	--vk-width-container-padding:15px;
 	--vk-width-editor-sidebar:280px;
 	--vk-width-editor-leftmenu:160px;
@@ -10,15 +10,36 @@
 .editor-styles-wrapper {
 	padding: 0;
 }
-.is-root-container {
+
+.container {
+	padding:0;
+	max-width:var(--vk-width-editor-container-body);
+	@media (min-width: 576px) {
+		max-width:var(--vk-width-editor-container-body);
+	}
+	@media (min-width: 768px) {
+		max-width:var(--vk-width-editor-container-body);
+	}
+	@media (min-width: 992px){
+		max-width:var(--vk-width-editor-container-body);
+	}
+	@media (min-width: 1200px) {
+		max-width:var(--vk-width-editor-container-body);
+	}
+}
+
+.is-root-container,
+.edit-post-visual-editor__content-area .editor-styles-wrapper .edit-post-visual-editor__post-title-wrapper > *, 
+.edit-post-visual-editor__content-area .editor-styles-wrapper .block-editor-block-list__layout.is-root-container > * {
 	width:var(--vk-width-editor-container-body);
+	max-width:var(--vk-width-editor-container-body);
 	margin-left:auto;
 	margin-right:auto;
 }
+
 // 左管理メニュー非表示 / 右サイドバー非表示
 body.is-fullscreen-mode .edit-post-layout:not(.is-sidebar-opened){
 	--vk-width-editor-full:100vw;
-	--vk-width-editor-container-body:calc( var(--vk-width-editor-container) - var(--vk-width-container-padding) * 2 );
 	--vk-width-editor-wide:calc( var(--vk-width-editor-container-body) + (var(--vk-width-editor-full) - var(--vk-width-editor-container-body) ) / 2 );
 	--vk-width-editor-wide-nega-margin:calc( ( var(--vk-width-editor-container-body) - 100vw ) / 4 );
 }
