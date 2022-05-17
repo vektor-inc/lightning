@@ -23,6 +23,7 @@ entry-body
 
 .alignfull,
 .alignwide {
+	& > * ,	// theme.json があると __inner-container のdiv は出力されなくなってしまうので注意 */
 	div[class*="__inner-container"]{
 		max-width: calc( var(--vk-width-container) - var(--vk-width-container-padding) * 2 );
 		margin-left:auto;

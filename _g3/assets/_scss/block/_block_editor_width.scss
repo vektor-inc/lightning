@@ -152,6 +152,7 @@ html .edit-post-visual-editor :where(.editor-styles-wrapper) .block-editor-block
 	& > div[data-align=full],
 	& > .wp-block[data-align=wide],
 	& > div[data-align=wide]{
+		& > .wp-block-group > *, // theme.json があると __inner-container のdiv は出力されなくなってしまうので & > .wp-block-group > * を追加
 		& > div > div[class*="__inner-container"]{
 			width:var(--vk-width-editor-container-body);
 			max-width:var(--vk-width-editor-container-body);
