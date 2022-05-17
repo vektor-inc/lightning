@@ -158,10 +158,10 @@ entry-body
 /*  Button Block
 /*-------------------------------------------*/
 .wp-block-button {
-	&__link {
+	&__link { // ボタンブロック単独のCSSの方が後に出力されるので負けてしまう
 		font-size: 1rem;
-		border-radius: var(--vk-size-radius);
 		transition: all 0.1s ease-in;
+		border-radius: var(--vk-size-radius);
 		background-color: var(--vk-color-primary);
 	}
 	.wp-block-button__link:hover {
