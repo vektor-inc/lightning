@@ -77,6 +77,12 @@
 		let gmenu = document.getElementById('gMenu_outer')
 		let gmenuHeight = gmenu ? gmenu.getBoundingClientRect().bottom: 0;
 
+		// ヘッダーが固定じゃないと gmenuHeight が - になるので 0 に補正
+		// ※ この指定がないと「下端優先」で目次ブロックからページ下部にページ内移動した時にサイドバーが追従しない
+		if ( gmenuHeight < 0 ){
+			gmenuHeight = 0;
+		}
+
 		// 固定部分の下に追加する余白
 		margin = gmenuHeight + 40;
 
