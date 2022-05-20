@@ -32,6 +32,7 @@ entry-body
 
 .alignfull {
 	&,
+	&.vk_slider,
 	&.wp-block-image,
 	&.wp-block-cover-image,
 	&.wp-block-cover {
@@ -43,6 +44,7 @@ entry-body
 }
 .alignwide {
 	&,
+	&.vk_slider,
 	&.wp-block-image,
 	&.wp-block-cover-image,
 	&.wp-block-cover {
