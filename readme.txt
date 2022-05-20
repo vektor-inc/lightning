@@ -38,11 +38,11 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
-
 [ G3 / G2 ][ Improvement ] Cope with theme.json
 [ G3 / G2 ][ Others ] Cope with WP6.0 
 [ G3 / G2 ][ Design bug fix ] Fix button default design
 [ G3 ][ Design bug fix ] Fixed global navigation width
+[ G3 ][ Design bug fix ] Fix Google Web Fonts Japanese display on Edge
 
 v14.20.3
 [ G3 / G2 ][ Bug Fix ] Fix load Font Awesome Files on WordPress.com
