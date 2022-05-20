@@ -97,13 +97,15 @@ entry-body
 /*  Button Block
 /*-------------------------------------------*/
 .wp-block-button {
+	.wp-block-buttons &__link,
 	&__link {
 		font-size: 1rem;
 		border-radius: var(--vk-size-radius);
-		transition: all 0.1s ease-in;
 		background-color: var(--vk-color-primary);
+		transition: all 0.1s ease-in;
 	}
-	.wp-block-button__link:hover {
+	.wp-block-button__link:hover,
+	.wp-block-button__link:hover:not(.has-background){
 		text-decoration: none;
 		background-color: var(--vk-color-primary-dark);
 		border-color: var(--vk-color-primary-dark);
