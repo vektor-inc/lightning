@@ -1,5 +1,4 @@
 @charset "utf-8";
-// @import "compass";
 
 $border_primary: 1px solid #666;
 $color_font_default: rgba(255, 255, 255, 0.8);
@@ -81,7 +80,8 @@ $margin-section-bottom: 1.5em;
 	display: block;
 	padding: 45px 10px;
 	overflow: scroll;
-	transition: all $time_transition ease-out;
+	top:0;
+	transition: all $time_transition ease-out; // 上下のドロップアニメーション
 	.vk-mobile-nav-menu-outer {
 		margin-bottom: $margin-section-bottom;
 	}
@@ -143,7 +143,6 @@ $margin-section-bottom: 1.5em;
 	}
 	&.vk-mobile-nav-right-in,
 	&.vk-mobile-nav-left-in {
-		transition: all $time_transition ease-out;
 		left: 0;
 	}
 }
