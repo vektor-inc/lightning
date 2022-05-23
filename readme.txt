@@ -2,7 +2,7 @@
 Lightning WordPress theme, Copyright (C) 2015-2022 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
 Tested up to: 5.9.3
-Stable tag: 14.20.3
+Stable tag: 14.21.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,9 +38,9 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
-[ G3 / G2 ][ Improvement ] Cope with theme.json
+v14.21.0
 [ G3 / G2 ][ Others ] Cope with WP6.0 
-[ G3 / G2 ][ Design bug fix ] Fix button default design
+[ G3 / G2 ][ Bug fix ] Fix button default design
 [ G3 / G2 ][ Bug fix ] Fix Mobile Nav close transform
 [ G3 ][ Bug fix ] Fixed global navigation item width
 [ G3 ][ Bug fix ] Fix Google Web Fonts Japanese display on Edge
