@@ -29,7 +29,7 @@ function lightning_is_g3() {
 	} elseif ( 'g2' === $g ) {
 		$return = false;
 	} else {
-		$skin = get_option( 'lightning_design_skin' );
+		$skin    = get_option( 'lightning_design_skin' );
 		$options = get_option( 'lightning_theme_options' );
 		if ( 'origin2' === $skin ) {
 			$return = false;

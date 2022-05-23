@@ -75,6 +75,16 @@ entry-body
 }
 
 /*-------------------------------------------*/
+/*  Column Block
+/*  6.0 から消えたので補正指定
+/*-------------------------------------------*/
+@media (min-width: 782px){
+	.wp-block-columns:not(.is-not-stacked-on-mobile) > .wp-block-column:not(:first-child) {
+		margin-left: var(--wp--style--block-gap, 2em);
+	}
+}
+
+/*-------------------------------------------*/
 /*  Image Block
 /*-------------------------------------------*/
 .wp-block-image img {
@@ -87,13 +97,15 @@ entry-body
 /*  Button Block
 /*-------------------------------------------*/
 .wp-block-button {
+	.wp-block-buttons &__link,
 	&__link {
 		font-size: 1rem;
 		border-radius: var(--vk-size-radius);
-		transition: all 0.1s ease-in;
 		background-color: var(--vk-color-primary);
+		transition: all 0.1s ease-in;
 	}
-	.wp-block-button__link:hover {
+	.wp-block-button__link:hover,
+	.wp-block-button__link:hover:not(.has-background){
 		text-decoration: none;
 		background-color: var(--vk-color-primary-dark);
 		border-color: var(--vk-color-primary-dark);

@@ -76,7 +76,7 @@ $logo_bottom_margin:1rem;
         }
         .site-header-logo {
             margin-right:2em;
-            width:100%; // この指定がないとFlexでナビ部分の幅が余分になるためナビ項目に余分な左右余白ができる
+            width: auto;
             img {
                 margin-left:0;
             }

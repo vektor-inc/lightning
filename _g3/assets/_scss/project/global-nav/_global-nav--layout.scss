@@ -5,13 +5,13 @@
         align-items: center; // 上下中央
     }
     .global-nav--layout--float-right {
-      /*
-      .global-nav の幅は 
-      .site-header--layout--nav-float .site-header-logo の部分が
-      幅100%でついているので押し込まれる形で最小サイズになるのでここでは特に指定していない
-      と、思いきや Description があると無駄に広くなるので最小に指定
-      */
-      width:min-content;
+      width:auto; //最小に指定すると、メニューに画像を入れた場合、画像に幅指定をしないと幅サイズが無くなる(0)ことがわかったので初期値に変更
+      margin-left: auto; //グローバルナビを左寄せ用
+      .global-nav-list{
+          //中央に寄ってしまうので.global-nav-listのmargin:0 auto;を上書き用
+          margin:unset;
+      }
+     
     }
 }
 
@@ -19,7 +19,8 @@
     width:auto;
     .global-nav-list {
         justify-content: center;
-        width:min-content;
+        //最小に指定すると、メニューに画像を入れた場合、画像に幅指定をしないと幅サイズが無くなる(0)ことがわかったので初期値に変更
+        width:auto;
     }
 }
 .global-nav--layout--penetration {

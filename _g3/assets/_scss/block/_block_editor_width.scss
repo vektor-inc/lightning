@@ -99,28 +99,30 @@ div[data-align=full]
 html .edit-post-visual-editor :where(.editor-styles-wrapper) .block-editor-block-list__layout.is-root-container{
 
 	// Outer Element : Full
-	:is( .wp-block[data-align=full], div[data-align=full], .vk_outer-width-full ) {
+	:is( .wp-block[data-align=full], .wp-block.alignfull, div[data-align=full], .vk_outer-width-full ) {
 		box-sizing: border-box;
 		width:var(--vk-width-editor-full);
 		max-width:var(--vk-width-editor-full);
-		margin-left: calc( var(--vk-width-editor-container-body) / 2 - var(--vk-width-editor-full) / 2 );
-		margin-right: calc( var(--vk-width-editor-container-body) / 2 - var(--vk-width-editor-full) / 2 );
+
+		// !important がないと theme.json を有効にした時 margin-left : auto !important; をつけられるので上書きする必要がある
+		margin-left: calc( var(--vk-width-editor-container-body) / 2 - var(--vk-width-editor-full) / 2 ) !important;
+		margin-right: calc( var(--vk-width-editor-container-body) / 2 - var(--vk-width-editor-full) / 2 ) !important;
 	}
 
 	// Outer Element : Wide
-	:is( .wp-block[data-align=wide], div[data-align=wide] ){
+	:is( .wp-block[data-align=wide], .wp-block.alignwide, div[data-align=wide] ){
 		width:var(--vk-width-editor-wide);
 		max-width:var(--vk-width-editor-wide); // max-width も指定しておかないと上書きできない
-		margin-left: calc( ( var(--vk-width-editor-container-body) - var(--vk-width-editor-full) ) / 4 );
-		margin-right: calc( ( var(--vk-width-editor-container-body) - var(--vk-width-editor-full) ) / 4 );
+		margin-left: calc( ( var(--vk-width-editor-container-body) - var(--vk-width-editor-full) ) / 4 ) !important;
+		margin-right: calc( ( var(--vk-width-editor-container-body) - var(--vk-width-editor-full) ) / 4 ) !important;
 		.wp-block[data-align=wide]{
 			margin-left: calc( ( var(--vk-width-editor-container-body) - var(--vk-width-editor-full) ) / 4 );
 			margin-right: calc( ( var(--vk-width-editor-container-body) - var(--vk-width-editor-full) ) / 4 );
 		}
 		.alignwide{
 			width:var(--vk-width-editor-wide);
-			margin-left:auto;
-			margin-right:auto;
+			margin-left:auto !important;
+			margin-right:auto !important;
 		}
 	}
 

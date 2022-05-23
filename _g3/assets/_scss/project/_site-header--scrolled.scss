@@ -53,11 +53,17 @@
             box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
 
             animation: header_drop 0.5s ease-out 0s 1 alternate none running;
+            //グローバルナビスクロール時のレイアウト 固定 ロゴ&ナビ回り込みと
+            //グローバルナビスクロール時のレイアウト 固定 ロゴ&ナビ回り込み全幅 
+            //width100%を上書き用　メニューに画像を入れた時に画像の幅が無くなるため追加
+            .site-header-container--scrolled--logo-and-nav-container .site-header-logo,
+            .site-header-container--scrolled--logo-and-nav-full .site-header-logo{
+                width: auto;
+            }
 
             .global-nav {
                 display: block; /* Cope with setted table-sell such a OriginII  */
-                margin-left: auto;
-                margin-right: auto;
+                margin-left: auto;//メニュー左寄せ用
             }
         }
     }
