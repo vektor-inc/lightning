@@ -19,6 +19,7 @@
 		display: flex;
 		list-style: none;
 		position: relative;
+		width:min-content; // この指定がないと文字の左右に無駄に余白が発生するので、う迂闊に消さない事
 		.header_scrolled & {
 			height:100%; // スクロールメニューで必要
 		}
@@ -31,6 +32,10 @@
 			line-height: 1.4;
 			font-size: 12px;
 			position: relative;
+			img {
+				// 画像を入れられた時に画像が見えなくなるのでとりあえず最小サイズ指定
+				min-width:80px;
+			}
 		}
 		/*-------------------------------------------*/
 		/*	only first
