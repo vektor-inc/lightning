@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ Bug fix ] Fix Global Menu Layout
+
 v14.21.1
 [ G3 ][ Bug fix ] Fix Global Menu
 
