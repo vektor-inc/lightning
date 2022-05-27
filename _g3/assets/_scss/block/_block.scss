@@ -158,21 +158,29 @@ entry-body
 /*  Button Block
 /*-------------------------------------------*/
 .wp-block-button {
-	.wp-block-buttons &__link,
-	&__link { // ボタンブロック単独のCSSの方が後に出力されるので負けてしまう
+	&__link { 
 		font-size: 1rem;
-		border-radius: var(--vk-size-radius);
 		background-color: var(--vk-color-primary);
 		transition: all 0.1s ease-in;	
+	}
+	.wp-block-buttons &__link{ // ボタンブロック単独のCSSの方が後に出力されるて負けるため
+		border-radius: var(--vk-size-radius);
 	}
 	.wp-block-button__link:hover,
 	.wp-block-button__link:hover:not(.has-background){
 		text-decoration: none;
 		background-color: var(--vk-color-primary-vivid);
 		border-color: var(--vk-color-primary-vivid);
-		color:#fff;
 	}
-} 
+	.wp-block-button__link.has-background:hover{
+		// コアのカラーパレットのCSSが !important 付けてくるのでやむなく !important
+		background-color: var(--vk-color-primary-vivid) !important;
+	}
+	.wp-block-button__link:hover:not(.has-background){
+		// コアのカラーパレットのCSSが !important 付けてくるのでやむなく !important
+		color:#fff !important;
+	}
+}
 
 /*-------------------------------------------*/
 /*  Table Block

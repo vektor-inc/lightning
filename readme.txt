@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 / G3 ][ Bug fix ] Fix WordPress core button color
+
 v14.21.4
 [ G3 ][ Bug fix ] Fix Global Menu Layout
 
