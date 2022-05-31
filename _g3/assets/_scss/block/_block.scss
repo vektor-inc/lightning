@@ -122,16 +122,6 @@ entry-body
 } 
 
 /*-------------------------------------------*/
-/*  Column Block
-/*  6.0 から消えたので補正指定
-/*-------------------------------------------*/
-@media (min-width: 782px){
-	.wp-block-columns:not(.is-not-stacked-on-mobile) > .wp-block-column:not(:first-child) {
-		margin-left: var(--wp--style--block-gap, 2em);
-	}
-}
-
-/*-------------------------------------------*/
 /*  Image Block
 /*-------------------------------------------*/
 .wp-block-image img {
