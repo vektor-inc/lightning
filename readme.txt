@@ -38,9 +38,10 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
-V14.21.5
+v14.21.5
 [ G2 ] Fix VK Slider block in case of full width
 [ G3 / G2 ][ Bug fix ] Fix WordPress core button color
+[ G3 / G2 ][ Bug fix / Specification Change ] Fix clumn gap
 
 v14.21.4
 [ G3 ][ Bug fix ] Fix Global Menu Layout
