@@ -403,6 +403,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				'class' => array(),
 				'role'  => array(),
 				'style' => array(),
+				'title' => array(),
 			);
 			$tags        = array(
 				'div',
@@ -458,6 +459,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			$allowed_html['iframe']['height']         = array();
 			$allowed_html['iframe']['loading']        = array();
 			$allowed_html['iframe']['referrerpolicy'] = array();
+			$allowed_html['iframe']['allow'] = array();
 			return $allowed_html;
 		}
 
