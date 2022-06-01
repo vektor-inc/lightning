@@ -442,16 +442,22 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				'img',
 				'ruby',
 				'rt',
+				'iframe',
 			);
 			foreach ( $tags as $tag ) {
 				$allowed_html[ $tag ] = $common_attr;
 			}
-			$allowed_html['a']['href']    = array();
-			$allowed_html['a']['target']  = array();
-			$allowed_html['img']['src']   = array();
-			$allowed_html['img']['sizes'] = array();
-			$allowed_html['ruby']         = array();
-			$allowed_html['rt']           = array();
+			$allowed_html['a']['href']                = array();
+			$allowed_html['a']['target']              = array();
+			$allowed_html['img']['src']               = array();
+			$allowed_html['img']['sizes']             = array();
+			$allowed_html['ruby']                     = array();
+			$allowed_html['rt']                       = array();
+			$allowed_html['iframe']['src']            = array();
+			$allowed_html['iframe']['width']          = array();
+			$allowed_html['iframe']['height']         = array();
+			$allowed_html['iframe']['loading']        = array();
+			$allowed_html['iframe']['referrerpolicy'] = array();
 			return $allowed_html;
 		}
 
