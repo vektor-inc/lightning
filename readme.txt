@@ -38,6 +38,9 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v14.22.0
+[ G3 / G2 ][ Specification Change ] Allow iframe tag on post list filter
+
 v14.21.5
 [ G2 ] Fix VK Slider block in case of full width
 [ G3 / G2 ][ Bug fix ] Fix WordPress core button color
