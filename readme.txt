@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ Bug fix ] Update Tree Shaking (CSS speeding)
+
 v14.22.1
 [ G3 / G2 ][ Specification Change ] Allow iframe tag on post list filter
 
