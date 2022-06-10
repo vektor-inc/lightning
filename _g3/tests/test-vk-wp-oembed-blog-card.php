@@ -58,7 +58,7 @@ class BlogCardTest extends WP_UnitTestCase {
 			// WordPressが許可しているプロバイダ−の場合
 			array(
 				'url'     => 'https://youtu.be/OCYupuj5HrQ',
-				'cache'   => '<iframe loading="lazy" title="Lightning G3 クイックスタート" width="1140" height="641" src="https://www.youtube.com/embed/OCYupuj5HrQ?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+				'cache'   => '<iframe loading="lazy" title="Lightning G3 クイックスタート【公式】" width="1140" height="641" src="https://www.youtube.com/embed/OCYupuj5HrQ?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
 				'correct' => apply_filters( 'the_content', '[embed]https://youtu.be/OCYupuj5HrQ[/embed]' ),
 			),
 		);
