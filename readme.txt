@@ -38,6 +38,7 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ Bug fix ] Fix editor CSS ( Cope with 6.0 )
 [ Bug fix ] Update Tree Shaking (CSS speeding)
 
 v14.22.1
