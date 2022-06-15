@@ -186,6 +186,12 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			if ( ! empty( $options['vkb_hidden_xs'] ) ) {
 				array_push( $hidden_class, 'vk_hidden-xs' );
 			}
+			if ( ! empty( $options['marginTop'] ) ) {
+				array_push( $hidden_class, $options['marginTop'] );
+			}
+			if ( ! empty( $options['marginBottom'] ) ) {
+				array_push( $hidden_class, $options['marginBottom'] );
+			}
 
 			$loop = '';
 			if ( $wp_query->have_posts() ) :
@@ -459,7 +465,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			$allowed_html['iframe']['height']         = array();
 			$allowed_html['iframe']['loading']        = array();
 			$allowed_html['iframe']['referrerpolicy'] = array();
-			$allowed_html['iframe']['allow'] = array();
+			$allowed_html['iframe']['allow']          = array();
 			return $allowed_html;
 		}
 

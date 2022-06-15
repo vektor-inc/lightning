@@ -1,7 +1,7 @@
 <?php
 /**
  * VK CSS Optimize
- * 
+ *
  * @package VK CSS Optimize
  */
 
@@ -27,8 +27,7 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 			$options = self::get_css_optimize_options();
 
 			if ( ! empty( $options['tree_shaking'] ) ) {
-				add_action( 'get_header', array( __CLASS__, 'get_html_start' ), 2147483647 );
-				add_action( 'shutdown', array( __CLASS__, 'get_html_end' ), 0 );
+				add_filter( 'wp_using_themes', array( __CLASS__, 'get_html_start' ), 1, 1 );
 			}
 
 			if ( ! empty( $options['preload'] ) ) {
@@ -38,6 +37,8 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 
 		/**
 		 * Customize Register
+		 *
+		 * @param object $wp_customize : wp custommize object .
 		 */
 		public static function customize_register( $wp_customize ) {
 			global $prefix_customize_panel;
@@ -49,9 +50,7 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 				)
 			);
 
-			// Tree shaking
-			//
-
+			// Tree shaking.
 			$wp_customize->add_setting(
 				'tree_shaking_title',
 				array(
@@ -67,7 +66,6 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 						'section'          => 'css_optimize',
 						'type'             => 'text',
 						'custom_title_sub' => '',
-						// 'custom_html'      => __( 'Move part of CSS and JS to the footer to improve display speed.', 'lightning' ),
 					)
 				)
 			);
@@ -116,8 +114,7 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 				)
 			);
 
-			// Preload
-			//
+			// Preload.
 			$wp_customize->add_setting(
 				'css_preload_title',
 				array(
@@ -133,7 +130,6 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 						'section'          => 'css_optimize',
 						'type'             => 'text',
 						'custom_title_sub' => '',
-						// 'custom_html'      => __( 'Move part of CSS and JS to the footer to improve display speed.', 'lightning' ),
 					)
 				)
 			);
@@ -186,6 +182,8 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 
 		/**
 		 * CSS Optimize Default Options
+		 *
+		 * @return array $vk_css_optimize_options_default .
 		 */
 		public static function get_css_optimize_options_default() {
 			$vk_css_optimize_options_default = array(
@@ -197,10 +195,15 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 
 		/**
 		 * CSS Optimize Options
+		 * 古いオプションやデフォルト値を結合して返す
+		 *
+		 * @return array $vk_css_optimize_options .
 		 */
 		public static function get_css_optimize_options() {
 
 			$theme_textdomain = wp_get_theme()->get( 'TextDomain' );
+
+			// CSS高速化を各テーマなどで保存していた頃の互換処理.
 			if ( 'lightning' === $theme_textdomain || 'lightning-pro' === $theme_textdomain ) {
 				$old_options = get_option( 'lightning_theme_options' );
 			} elseif ( 'katawara' === $theme_textdomain ) {
@@ -212,12 +215,11 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 			$vk_css_optimize_options         = get_option( 'vk_css_optimize_options' );
 			$vk_css_optimize_options_default = self::get_css_optimize_options_default();
 
-			// fall back function
-			// Actualy other array exist but optimize_css is most important
+			// 新しい保存値に保存されていない場合.
 			if ( ! isset( $vk_css_optimize_options['tree_shaking'] ) ) {
-
+				// 古い設定がある場合（互換処理）.
 				if ( isset( $old_options['optimize_css'] ) ) {
-					if ( $old_options['optimize_css'] === 'optomize-all-css' || $old_options['optimize_css'] === 'tree-shaking' ) {
+					if ( 'optomize-all-css' === $old_options['optimize_css'] || 'tree-shaking' === $old_options['optimize_css'] ) {
 						$vk_css_optimize_options['tree_shaking'] = 'active';
 					} else {
 						$vk_css_optimize_options['tree_shaking'] = '';
@@ -225,16 +227,19 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 				}
 			}
 
+			// 除外指定がない場合.
 			if ( ! isset( $vk_css_optimize_options['tree_shaking_class_exclude'] ) ) {
+				// 古いoption値で除外指定が存在する場合（互換処理）.
 				if ( ! empty( $old_options['tree_shaking_class_exclude'] ) ) {
 					$vk_css_optimize_options['tree_shaking_class_exclude'] = esc_html( $old_options['tree_shaking_class_exclude'] );
 				}
 			}
 
+			// プリロード指定がない場合.
 			if ( ! isset( $vk_css_optimize_options['preload'] ) ) {
-
+				// 古いoption値でプリロード設定が存在する場合（互換処理）.
 				if ( isset( $old_options['optimize_css'] ) ) {
-					if ( $old_options['optimize_css'] === 'optomize-all-css' ) {
+					if ( 'optomize-all-css' === $old_options['optimize_css'] ) {
 						$vk_css_optimize_options['preload'] = 'active';
 					} else {
 						$vk_css_optimize_options['preload'] = '';
@@ -255,22 +260,24 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 
 		/**
 		 * Get HTML Document Start
+		 *
+		 * @param bool $is_use_themes .
+		 * @return $is_use_themes;
 		 */
-		public static function get_html_start() {
-			ob_start( 'VK_CSS_Optimize::css_tree_shaking_buffer' );
-		}
-
-		/**
-		 * Get HTML Document End
-		 */
-		public static function get_html_end() {
-			if ( ob_get_length() ) {
-				ob_end_flush();
+		public static function get_html_start( $is_use_themes ) {
+			// template_redirect が呼ばれる前でのみ実行する .
+			if ( $is_use_themes && did_action( 'template_redirect' ) === 0 ) {
+				// バッファ開始.
+				ob_start( 'VK_CSS_Optimize::css_tree_shaking_buffer' );
 			}
+			return $is_use_themes;
 		}
 
 		/**
 		 * Array of Apply Tree Shaking
+		 * Tree Shaking にかけるCSS情報の配列
+		 *
+		 * @return array $vk_css_tree_shaking_array.
 		 */
 		public static function css_tree_shaking_array() {
 			$vk_css_tree_shaking_array = array();
@@ -280,6 +287,9 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 
 		/**
 		 * Array of Apply Simple Minify
+		 * 単純なCSS最小化にかけるCSS情報の配列
+		 *
+		 * @return array $vk_css_simple_minify_array
 		 */
 		public static function css_simple_minify_array() {
 			$vk_css_simple_minify_array = array();
@@ -291,35 +301,47 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 		 * Change Buffer of HTML Document
 		 *
 		 * @param string $buffer Gotten HTML Document
+		 * @return $buffer
 		 */
 		public static function css_tree_shaking_buffer( $buffer ) {
 
 			$options = self::get_css_optimize_options();
 
-			// Lode Modules
+			// Lode Modules.
+			// Tree shaking モジュール読み込み .
 			require_once dirname( __FILE__ ) . '/class-css-tree-shaking.php';
 
-			// Load Arrays
+			// Load CSS Arrays
+			// 軽量化するCSSの情報配列読み込み.
 			$vk_css_tree_shaking_array  = self::css_tree_shaking_array();
 			$vk_css_simple_minify_array = self::css_simple_minify_array();
 
-			// CSS Tree Shaking.
+			// WP_Filesystem() が使えるように読み込み.
+			require_once ABSPATH . 'wp-admin/includes/file.php';
+
+			// CSS Tree Shaking //////////////////////////////////////////// .
+
 			foreach ( $vk_css_tree_shaking_array as $vk_css_array ) {
 
-				// WP File System で CSS ファイルを読み込み
-				require_once ABSPATH . 'wp-admin/includes/file.php';
+				// 読み込むCSSファイルのパス.
 				$path_name = $vk_css_array['path'];
 				if ( WP_Filesystem() ) {
 					global $wp_filesystem;
+					// CSSのファイルの中身を取得.
 					$css = $wp_filesystem->get_contents( $path_name );
 				}
 
-				$css    = celtislab\CSS_tree_shaking::extended_minify( $css, $buffer );
+				// ree shaking を実行して再格納 .
+				$css = celtislab\v2_1\CSS_tree_shaking::extended_minify( celtislab\v2_1\CSS_tree_shaking::simple_minify( $css ), $buffer );
+
+				// ファイルで読み込んでいるCSSを直接出力に置換（バージョンパラメーターあり）.
 				$buffer = str_replace(
 					'<link rel=\'stylesheet\' id=\'' . $vk_css_array['id'] . '-css\'  href=\'' . $vk_css_array['url'] . '?ver=' . $vk_css_array['version'] . '\' type=\'text/css\' media=\'all\' />',
 					'<style id=\'' . $vk_css_array['id'] . '-css\' type=\'text/css\'>' . $css . '</style>',
 					$buffer
 				);
+
+				// ファイルで読み込んでいるCSSを直接出力に置換（バージョンパラメーターなし）.
 				$buffer = str_replace(
 					'<link rel=\'stylesheet\' id=\'' . $vk_css_array['id'] . '-css\'  href=\'' . $vk_css_array['url'] . '\' type=\'text/css\' media=\'all\' />',
 					'<style id=\'' . $vk_css_array['id'] . '-css\' type=\'text/css\'>' . $css . '</style>',
@@ -328,24 +350,25 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 
 			}
 
-			// CSS Simply Minify.
+			// CSS Simply Minify //////////////////////////////////////////// .
+
 			foreach ( $vk_css_simple_minify_array as $vk_css_array ) {
 
-				// WP File System で CSS ファイルを読み込み
-				require_once ABSPATH . 'wp-admin/includes/file.php';
 				$path_name = $vk_css_array['path'];
 				if ( WP_Filesystem() ) {
 					global $wp_filesystem;
 					$css = $wp_filesystem->get_contents( $path_name );
 				}
 
-				$css = celtislab\CSS_tree_shaking::simple_minify( $css );
+				$css = celtislab\v2_1\CSS_tree_shaking::simple_minify( $css );
 
+				// ファイルで読み込んでいるCSSを直接出力に置換（バージョンパラメーターあり）.
 				$buffer = str_replace(
 					'<link rel=\'stylesheet\' id=\'' . $vk_css_array['id'] . '-css\'  href=\'' . $vk_css_array['url'] . '?ver=' . $vk_css_array['version'] . '\' type=\'text/css\' media=\'all\' />',
 					'<style id=\'' . $vk_css_array['id'] . '-css\' type=\'text/css\'>' . $css . '</style>',
 					$buffer
 				);
+				// ファイルで読み込んでいるCSSを直接出力に置換（バージョンパラメーターなし）.
 				$buffer = str_replace(
 					'<link rel=\'stylesheet\' id=\'' . $vk_css_array['id'] . '-css\'  href=\'' . $vk_css_array['url'] . '\' type=\'text/css\' media=\'all\' />',
 					'<style id=\'' . $vk_css_array['id'] . '-css\' type=\'text/css\'>' . $css . '</style>',
@@ -357,6 +380,15 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 			return $buffer;
 		}
 
+		/**
+		 * Undocumented function
+		 *
+		 * @param string $tag .
+		 * @param string $handle .
+		 * @param string $href .
+		 * @param string $media .
+		 * @return string $tag .
+		 */
 		public static function css_preload( $tag, $handle, $href, $media ) {
 
 			$vk_css_tree_shaking_array  = self::css_tree_shaking_array();
@@ -367,25 +399,30 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 			$options = self::get_css_optimize_options();
 
 			// tree shaking がかかっているものはpreloadから除外する
-			// でないと表示時に一瞬崩れて結局実用性に問題があるため
+			// でないと表示時に一瞬崩れて結局実用性に問題があるため.
 			foreach ( $vk_css_tree_shaking_array as $vk_css_array ) {
 				$exclude_handles[] = $vk_css_array['id'];
 			}
 
 			// Simple Minify がかかっているものはpreloadから除外する
-			// でないと表示時に一瞬崩れて結局実用性に問題があるため
+			// でないと表示時に一瞬崩れて結局実用性に問題があるため.
 			foreach ( $vk_css_simple_minify_array as $vk_css_array ) {
 				$exclude_handles[] = $vk_css_array['id'];
 			}
 
+			// プリロードから除外するCSSハンドルが option で保存されている場合.
 			if ( ! empty( $options['preload_handle_exclude'] ) ) {
-				$exclude_array   = explode( ',', $options['preload_handle_exclude'] );
+				// 保存されているされている除外するCSSハンドルを配列に変換.
+				$exclude_array = explode( ',', $options['preload_handle_exclude'] );
+				// 除外するCSSハンドルの配列をマージ.
 				$exclude_handles = array_merge( $exclude_array, $exclude_handles );
 			}
 
 			$exclude_handles = apply_filters( 'vk_css_preload_exclude_handles', $exclude_handles );
-			// クリティカルじゃないCSS（tree shakingにかけているもの以外）をpreload
+
+			// クリティカルじゃないCSS（tree shakingにかけているもの以外）をpreload .
 			if ( ! in_array( $handle, $exclude_handles ) ) {
+				// preload を追加する.
 				$tag  = "<link rel='preload' id='" . $handle . "-css' href='" . $href . "' as='style' onload=\"this.onload=null;this.rel='stylesheet'\"/>\n";
 				$tag .= "<link rel='stylesheet' id='" . $handle . "-css' href='" . $href . "' media='print' onload=\"this.media='all'; this.onload=null;\">\n";
 			}
