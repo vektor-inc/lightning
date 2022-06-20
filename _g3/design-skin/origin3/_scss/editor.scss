@@ -4,6 +4,9 @@
 @import "common";
 
 // for gutenberg
-// .editor-styles-wrapper{
-//     @import "common";
-// }
+.editor-styles-wrapper{
+	@import "common";
+	.edit-post-visual-editor & {
+		font-family : 'Lato', 'Noto Sans JP', 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+	}
+}
