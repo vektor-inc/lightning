@@ -53,6 +53,11 @@
 
 @import "customize-shortcut";
 
+html,
+body {
+	font-family :  'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+}
+
 // Cope with safari bug
 .swiper-slide {
     transform: translate3d(0, 0, 0);

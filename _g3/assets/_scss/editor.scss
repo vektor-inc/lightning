@@ -77,3 +77,10 @@ input[type="text"].block-editor-media-placeholder__url-input-field{
 	border-radius: unset;
 	padding: 0.5em;
 }
+
+// フルスクリーンモードじゃない場合、「メニューを閉じる」の文字が大きくなるので補正
+#adminmenu{
+	.collapse-button-label {
+		font-size:14px;
+	}
+}
