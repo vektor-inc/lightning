@@ -9,10 +9,8 @@
 @import "@bootstrap/media";
 @import "../../inc/vk-components/package/_scss/vk-components.scss";
 @import "variables";
-@import "common";
-@import "common-editor";
-@import "utils";
 
+@import "utils";
 @import "block/block";
 @import "block/block-editor";
 @import "block/block_editor_width";
@@ -23,6 +21,11 @@
 @import "overwrite/button";
 @import "overwrite/swiper";
 @import "project/pagenation";
+
+.editor-styles-wrapper {
+	@import "common";
+}
+@import "common-editor";
 
 .edit-post-meta-boxes-area {
     h4 {
@@ -76,4 +79,11 @@ input[type="text"].block-editor-media-placeholder__url-input-field{
 	margin:0;
 	border-radius: unset;
 	padding: 0.5em;
+}
+
+// フルスクリーンモードじゃない場合、「メニューを閉じる」の文字が大きくなるので補正
+#adminmenu{
+	.collapse-button-label {
+		font-size:14px;
+	}
 }

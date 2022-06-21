@@ -1,36 +1,3 @@
-*, ::before,::after{
-	box-sizing: border-box;
-}
-html,
-body {
-	// overflow-x: hidden; がないとWindowsで 100vw がスクロールを含むので全幅で横スクロールが表示されてしまうため
-	// overflow-x: hidden; で回避しているが極力 100vw は使わない方が望ましい
-	// overflow-x: hidden; をつけると編集画面のブロックのツールバーの位置が変動するバグが以前あった。2021年7月で問題なければこの行のコメントは削除可
-	overflow-x: hidden; 
-}
-html,
-body {
-	font-size: var(--vk-size-text);
-	color:var(--vk-color-text-body);
-	padding: 0;
-	margin:0;
-	font-family: var(--vk-font-family);
-	-ms-word-wrap: break-word;
-	word-wrap: break-word;
-	// word-break: keep-all;
-	// line-break: strict;
-	// overflow-wrap: break-word;
-	background-color: #fff; // カスタマイザでデフォルト#ffffffにしてもリセットしないと効かないため
-	--vk-font-family :  'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif
-}
-
-@media (max-width: $md-max) {
-	html,
-	body {
-		font-size: calc( var(--vk-size-text) * 0.875 );
-	}
-}
-
 .wp-block-table, // If direct specific to table that can not delete margin
 p,
 ul,

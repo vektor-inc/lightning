@@ -1,19 +1,12 @@
 @charset "utf-8";
 
 // for classic editor
-@import "common";
+// @import "common";
 
 // for gutenberg
 .editor-styles-wrapper{
 	@import "common";
 	.edit-post-visual-editor & {
 		font-family : 'Lato', 'Noto Sans JP', 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
-	}
-}
-
-// フルスクリーンモードじゃない場合、「メニューを閉じる」の文字が大きくなるので補正
-#adminmenu{
-	.collapse-button-label {
-		font-size:14px;
 	}
 }
