@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ Bug fix ] Editor css
+
 v14.22.4
 [ G3 ][ Bug fix ] Fix Editor default font family  
 [ G3 ][ Bug fix ] Fix menu close font size on editor screen(not fullscreen mode)
