@@ -76,6 +76,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 		public static function get_loop_options( $loop_options, $wp_query ) {
 			$default = array(
 				'pagination_display'   => false,
+				'pagination_mid_size'  => 1,
 				'archive_link_display' => false,
 				'class_loop_outer'     => null,
 			);
@@ -128,6 +129,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 		 */
 		public static function get_loop( $wp_query, $options, $loop_options = array() ) {
 			// Outer Post Type classes.
+
 			$patterns                    = self::get_patterns();
 			$loop_outer_class_post_types = array();
 			if ( ! isset( $wp_query->query['post_type'] ) ) {
@@ -219,7 +221,11 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				}
 
 				if ( ! empty( $loop_options['pagination_display'] ) ) {
-					$loop .= self::get_pagenation( $wp_query );
+					$pagenation_args = array();
+					if ( ! empty( $loop_options['pagination_mid_size'] ) ) {
+						$pagenation_args['mid_size'] = $loop_options['pagination_mid_size'];
+					}
+					$loop .= self::get_pagenation( $wp_query, $pagenation_args );
 				}
 
 			endif;
@@ -291,7 +297,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			$args = wp_parse_args(
 				$args,
 				array(
-					'mid_size'           => 1,
+					'mid_size'           => 1, // get_loop では loop_options のデフォルト値で上書きされる.
 					'prev_text'          => '&laquo;',
 					'next_text'          => '&raquo;',
 					'screen_reader_text' => __( 'Posts navigation', 'lightning' ),
@@ -304,8 +310,18 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 
 			$html = '';
 
-			global $paged;
-			$current_page = $paged;
+			$paged = 0;
+			if ( is_singular() && isset( $wp_query->query_vars['page'] ) ) {
+				$paged = $wp_query->query_vars['page'];
+			} elseif ( isset( $wp_query->query_vars['paged'] ) ) {
+				$paged = $wp_query->query_vars['paged'];
+			}
+			// 1 ページ目は paged が 0 で返ってくるので 1 にする
+			if ( 0 === $paged ) {
+				$current_page = 1;
+			} else {
+				$current_page = $paged;
+			}
 
 			// 最後のページ.
 			$max_num_pages = intval( $wp_query->max_num_pages );
@@ -318,12 +334,8 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				$html .= '<h4 class="screen-reader-text">' . $args['screen_reader_text'] . '</h4>';
 				$html .= '<div class="nav-links"><ul class="page-numbers">';
 
-				if ( 0 === $paged ) {
-					$current_page = 1;
-				}
-
 				// [ << ]
-				// 現在のページが２ページ目以降の場合.
+				// 現在のページが２ページ目以降の場合 << を表示.
 				if ( $current_page > 1 ) {
 					$html .= '<li><a class="prev page-numbers" href="' . get_pagenum_link( $paged - 1 ) . '">' . $args['prev_text'] . '</a></li>';
 				}
@@ -385,6 +397,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				}
 
 				// [ >> ]
+				// paged が 最後のページより小さい場合に >> を表示.
 				if ( $current_page < $max_num_pages ) {
 					$html .= '<li><a class="next page-numbers" href="' . get_pagenum_link( $current_page + 1 ) . '">' . $args['next_text'] . '</a></li>';
 				}
