@@ -63,10 +63,14 @@
                 document.getElementsByTagName('a'),
                 (elem) => {
                     let href = elem.getAttribute('href')
+					// リンクアドレスの指定が無いか # で始まる場合
                     if(!href || href.indexOf('#') != 0) return;
-                    if (['tab', 'button'].indexOf(elem.getAttribute('role')) > 0) return;
+					// role="button" を含めると ボタンブロックのページ内リンクした時にリンク先の頭に固定ナビが上に被ってしまうので tab だけにしている
+                    // if (['tab', 'button'].indexOf(elem.getAttribute('role')) > 0) return;
+                    if (['tab'].indexOf(elem.getAttribute('role')) > 0) return;
                     if (elem.getAttribute('data-toggle')) return;
                     if (elem.getAttribute('carousel-control')) return;
+					// スクロール識別クラスを削除する
                     elem.addEventListener('click', remove_header)
                 }
             )
