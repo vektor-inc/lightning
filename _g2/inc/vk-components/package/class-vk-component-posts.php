@@ -222,7 +222,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 
 				if ( ! empty( $loop_options['pagination_display'] ) ) {
 					$pagenation_args = array();
-					if ( ! empty( $loop_options['pagination_mid_size'] ) ) {
+					if ( isset( $loop_options['pagination_mid_size'] ) && is_int( $loop_options['pagination_mid_size'] ) ) {
 						$pagenation_args['mid_size'] = $loop_options['pagination_mid_size'];
 					}
 					$loop .= self::get_pagenation( $wp_query, $pagenation_args );
