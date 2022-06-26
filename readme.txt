@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ Bug fix ] Fixed a bug that fixed header is covered when linking in the page with VK button block
+
 v14.22.5
 [ G3 ][ Bug fix ] Editor css
 
