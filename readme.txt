@@ -38,6 +38,9 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v14.22.7
+[ G3 ][ Bug fix ] Remove extra table margin
+
 v14.22.6
 [ G3 ][ Bug fix ] Fixed a bug that fixed header is covered when linking in the page with VK button block
 
