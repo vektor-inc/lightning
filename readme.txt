@@ -2,7 +2,7 @@
 Lightning WordPress theme, Copyright (C) 2015-2022 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
 Tested up to: 6.0.0
-Stable tag: 14.22.6
+Stable tag: 14.22.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,8 +38,11 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
-v14.22.7
+v14.22.8
 [ G3 ][ Bug fix ] Remove extra table margin
+
+v14.22.7
+[ G3 / G2 ][ Bug fix ] Fix slider text align
 
 v14.22.6
 [ G3 ][ Bug fix ] Fixed a bug that fixed header is covered when linking in the page with VK button block

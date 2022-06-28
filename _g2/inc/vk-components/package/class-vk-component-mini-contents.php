@@ -41,13 +41,15 @@ if ( ! class_exists( 'VK_Component_Mini_Contents' ) ) {
 			$html  = '';
 			$style = '';
 
+			$font_style         = '';
+			$mini_content_style = '';
 			if ( $options['text_align'] ) {
-				$style = ' style="text-align:' . esc_attr( $options['text_align'] ) . '"';
+				$mini_content_style = ' style="text-align:' . esc_attr( $options['text_align'] ) . '"';
+				$font_style        .= 'text-align:' . esc_attr( $options['text_align'] ) . ';';
 			}
 
-			$html .= '<div class="' . esc_attr( $options['outer_class'] ) . '"' . $style . '>';
+			$html .= '<div class="' . esc_attr( $options['outer_class'] ) . '"' . $mini_content_style . '>';
 
-			$font_style = '';
 			if ( $options['text_color'] ) {
 				$font_style .= 'color:' . $options['text_color'] . ';';
 			}
@@ -63,7 +65,7 @@ if ( ! class_exists( 'VK_Component_Mini_Contents' ) ) {
 				$font_style = ' style="' . esc_attr( $font_style ) . '"';
 			}
 
-			// If Text Title exist
+			// If Text Title exist.
 			if ( $options['title_text'] ) {
 				if ( $options['title_class'] ) {
 					$title_class = ' class="' . esc_attr( $options['title_class'] ) . '"';
@@ -73,7 +75,7 @@ if ( ! class_exists( 'VK_Component_Mini_Contents' ) ) {
 				$html .= '</' . esc_html( $options['title_tag'] ) . '>';
 			}
 
-			// If Text caption exist
+			// If Text caption exist.
 			if ( $options['caption_text'] ) {
 				if ( $options['caption_class'] ) {
 					$caption_class = ' class="' . esc_attr( $options['caption_class'] ) . '"';
