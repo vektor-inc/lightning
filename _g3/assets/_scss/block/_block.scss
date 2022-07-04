@@ -176,6 +176,9 @@ entry-body
 /*  Table Block
 /*-------------------------------------------*/
 .wp-block-table {
+	thead th.has-text-align-right {
+		text-align: center;
+	} 
 	figcaption {
 		margin-top: 0.4rem;
 		text-align: center;
@@ -261,7 +264,7 @@ entry-body
 }
 
 /*-------------------------------------------*/
-/*  「RSS」ブロック
+/*  RSS block
 /*-------------------------------------------*/
 .wp-block-rss{
 	padding: 0;
@@ -351,7 +354,9 @@ entry-body
 		margin-bottom: 0;
 	}
 }
-
+/*-------------------------------------------*/
+/*  hr block
+/*-------------------------------------------*/
 hr.wp-block-separator {
 	border-color: var(--vk-color-border-hr);
 	border-bottom:none;
