@@ -131,6 +131,9 @@ entry-body
 /*  Table Block
 /*-------------------------------------------*/
 .wp-block-table {
+	thead th.has-text-align-right {
+		text-align: center;
+	} 
 	figcaption {
 		margin-top: 0.4rem;
 		text-align: center;

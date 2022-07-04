@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G2 / G3 ][ table ] thead th specify to center
+
 v14.22.8
 [ G3 ][ Bug fix ] Remove extra table margin
 
