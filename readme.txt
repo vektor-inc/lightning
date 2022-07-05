@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ breadcrumb ] Fix in case of filter search result category & keyword
+
 v14.22.10
 [ G2 / G3 ][ table ] thead th specify to center on editor screen
 
