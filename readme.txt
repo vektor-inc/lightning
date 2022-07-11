@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G2 ][ Bug fix ] Author page layout setting
+
 v14.22.11
 [ G3 ][ Bug fix ] fix cope with All in One SEO Plugin
 [ G3 ][ breadcrumb ] Fix in case of filter search result category & keyword
