@@ -438,6 +438,19 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 				'target_url' => get_term_link( $data['term_id'] ),
 				'correct'    => false,
 			),
+			// is_post_type_archive('event) _ カスタマイザー : ２カラム
+			// is_author _ カスタマイザー : １カラム
+			// is_post_type_archive('event) _ 返り値 : １カラム
+			array(
+				'options'    => array(
+					'layout' => array(
+						'archive-event'  => 'col-two',
+						'archive-author' => 'col-one-no-subsection',
+					),
+				),
+				'target_url' => get_post_type_archive_link( 'event' ),
+				'correct'    => false,
+			),
 
 			// Singular //////////////////////////////////////////////////////
 
