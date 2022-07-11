@@ -55,6 +55,8 @@ if ( is_front_page() ) {
 
 <?php endif; ?>
 
+<?php do_action( 'lightning_site_body_before', 'lightning_site_body_before' ); ?>
+
 <div class="<?php lightning_the_class_name( 'site-body' ); ?>">
 	<?php do_action( 'lightning_site_body_prepend', 'lightning_site_body_prepend' ); ?>
 	<div class="<?php lightning_the_class_name( 'site-body-container' ); ?> container">
