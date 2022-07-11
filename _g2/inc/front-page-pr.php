@@ -1,15 +1,19 @@
 <?php
-/*-------------------------------------------*/
-/*	customize_register
+
+use VektorInc\VK_Font_Awesome_Versions\VkFontAwesomeVersions;
+
+/*
+  customize_register
 /*-------------------------------------------*/
 add_action( 'customize_register', 'lightning_front_pr_blocks_customize_register' );
 function lightning_front_pr_blocks_customize_register( $wp_customize ) {
 
-	/*-------------------------------------------*/
-	/*	Front PR
+	/*
+	  Front PR
 	/*-------------------------------------------*/
 	$wp_customize->add_section(
-		'lightning_front_pr', array(
+		'lightning_front_pr',
+		array(
 			'title'    => lightning_get_prefix_customize_panel() . __( 'Front Page PR Block', 'lightning' ),
 			'priority' => 521,
 		// 'panel'				=> 'lightning_setting',
@@ -17,7 +21,8 @@ function lightning_front_pr_blocks_customize_register( $wp_customize ) {
 	);
 
 	$wp_customize->add_setting(
-		'lightning_theme_options[front_pr_display]', array(
+		'lightning_theme_options[front_pr_display]',
+		array(
 			'default'           => true,
 			'type'              => 'option',
 			'capability'        => 'edit_theme_options',
@@ -27,7 +32,8 @@ function lightning_front_pr_blocks_customize_register( $wp_customize ) {
 
 	// Add control
 	$wp_customize->add_control(
-		'front_pr_display', array(
+		'front_pr_display',
+		array(
 			'label'       => __( 'Display Front Page PR Block', 'lightning' ),
 			'section'     => 'lightning_front_pr',
 			'settings'    => 'lightning_theme_options[front_pr_display]',
@@ -37,7 +43,8 @@ function lightning_front_pr_blocks_customize_register( $wp_customize ) {
 		)
 	);
 	$wp_customize->selective_refresh->add_partial(
-		'lightning_theme_options[front_pr_display]', array(
+		'lightning_theme_options[front_pr_display]',
+		array(
 			'selector'        => '.home .prBlocks-default',
 			'render_callback' => '',
 		)
@@ -48,7 +55,8 @@ function lightning_front_pr_blocks_customize_register( $wp_customize ) {
 	$priority = 1;
 	for ( $i = 1; $i <= 3; ) {
 		$wp_customize->add_setting(
-			'lightning_theme_options[front_pr_icon_' . $i . ']', array(
+			'lightning_theme_options[front_pr_icon_' . $i . ']',
+			array(
 				'default'           => $front_pr_default['icon'][ $i ],
 				'type'              => 'option',
 				'capability'        => 'edit_theme_options',
@@ -56,7 +64,8 @@ function lightning_front_pr_blocks_customize_register( $wp_customize ) {
 			)
 		);
 		$wp_customize->add_setting(
-			'lightning_theme_options[front_pr_title_' . $i . ']', array(
+			'lightning_theme_options[front_pr_title_' . $i . ']',
+			array(
 				'default'           => $front_pr_default['title'][ $i ],
 				'type'              => 'option',
 				'capability'        => 'edit_theme_options',
@@ -64,7 +73,8 @@ function lightning_front_pr_blocks_customize_register( $wp_customize ) {
 			)
 		);
 		$wp_customize->add_setting(
-			'lightning_theme_options[front_pr_summary_' . $i . ']', array(
+			'lightning_theme_options[front_pr_summary_' . $i . ']',
+			array(
 				'default'           => $front_pr_default['summary'][ $i ],
 				'type'              => 'option',
 				'capability'        => 'edit_theme_options',
@@ -72,7 +82,8 @@ function lightning_front_pr_blocks_customize_register( $wp_customize ) {
 			)
 		);
 		$wp_customize->add_setting(
-			'lightning_theme_options[front_pr_link_' . $i . ']', array(
+			'lightning_theme_options[front_pr_link_' . $i . ']',
+			array(
 				'default'           => $front_pr_default['link'][ $i ],
 				'type'              => 'option',
 				'capability'        => 'edit_theme_options',
@@ -83,8 +94,8 @@ function lightning_front_pr_blocks_customize_register( $wp_customize ) {
 		$priority ++;
 
 		$description = '';
-		if ( class_exists( 'Vk_Font_Awesome_Versions' ) ) {
-			$description = Vk_Font_Awesome_Versions::ex_and_link();
+		if ( class_exists( 'VkFontAwesomeVersions' ) ) {
+			$description = VkFontAwesomeVersions::ex_and_link();
 		}
 
 		$wp_customize->add_control(
@@ -196,8 +207,9 @@ function lightning_front_pr_blocks_add() {
 		echo '<div class="widget">';
 		echo '<div class="prBlocks prBlocks-default row">';
 
-		if ( class_exists( 'Vk_Font_Awesome_Versions' ) ) {
-			$fa = Vk_Font_Awesome_Versions::print_fa();
+		$fa = '';
+		if ( class_exists( 'VkFontAwesomeVersions' ) ) {
+			$fa = VkFontAwesomeVersions::print_fa();
 		}
 
 		for ( $i = 1; $i <= 3; ) {
