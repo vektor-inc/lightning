@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ Add action hook ] lightning_site_body_before
+
 v14.22.12
 [ G2 ][ Bug fix ] Fix PHP notice in Front Pr
 [ G2 ][ Bug fix ] Author page layout setting
