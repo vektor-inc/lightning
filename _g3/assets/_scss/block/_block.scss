@@ -361,3 +361,53 @@ hr.wp-block-separator {
 	border-color: var(--vk-color-border-hr);
 	border-bottom:none;
 }
+
+/*-------------------------------------------*/
+/*  Category / Archive block
+/*-------------------------------------------*/
+ul[class*="wp-block"][class*="-list"],
+ul[class*="vk_"][class*="-list"]{
+	padding: 0;
+	margin:0; 
+	ul {
+		padding: 0;
+		margin:0; 
+	}
+	li {
+		list-style: none;
+		margin: 0;
+		font-size: var(--vk-size-text-sm);
+		a {
+			display:block;
+			padding: 0.7em  var(--vk-margin-list-menu-left-first);
+			border-bottom:1px solid var(--vk-color-border-hr); 
+			text-decoration: none;
+		}
+		a:hover,
+		&.current-cat > a,
+		&.current_page_item > a {
+			background-color: var(--vk-color-accent-bg);
+		}
+	}
+	li li a {
+		padding-left: calc( var(--vk-margin-list-menu-left-first) + var(--vk-margin-list-menu-left) );
+	}
+	li li li a {
+		padding-left: calc( var(--vk-margin-list-menu-left-first) + var(--vk-margin-list-menu-left) * 2 );
+	}
+	li li li li a {
+		padding-left: calc( var(--vk-margin-list-menu-left-first) + var(--vk-margin-list-menu-left) * 3 );
+	}
+	li li li li li a {
+		padding-left: calc( var(--vk-margin-list-menu-left-first) + var(--vk-margin-list-menu-left) * 4 );
+	}
+	li li li li li li a {
+		padding-left: calc( var(--vk-margin-list-menu-left-first) + var(--vk-margin-list-menu-left) * 5 );
+	}
+	li li li li li li li a {
+		padding-left: calc( var(--vk-margin-list-menu-left-first) + var(--vk-margin-list-menu-left) * 6 );
+	}
+	li li li li li li li li a {
+		padding-left: calc( var(--vk-margin-list-menu-left-first) + var(--vk-margin-list-menu-left) * 7 );
+	}
+}
