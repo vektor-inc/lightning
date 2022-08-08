@@ -184,6 +184,18 @@ entry-body
 		text-align: center;
 		font-size: 0.75rem;
 	}
+	&.aligncenter {
+		margin-left: auto;
+		margin-right: auto;
+	}
+	&.alignleft{
+		margin-left:0;
+		margin-right:auto;
+	}
+	&.alignright{
+		margin-left:auto;
+		margin-right:0;
+	}
 }
 
 /*-------------------------------------------*/
