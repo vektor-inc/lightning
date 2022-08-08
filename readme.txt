@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ Bug fix ] Fix Table align not work
+
 v14.23.0
 [ G3 ][ Add action hook ] lightning_site_body_before
 
