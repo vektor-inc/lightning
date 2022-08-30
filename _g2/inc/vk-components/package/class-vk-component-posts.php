@@ -3,7 +3,7 @@
  * VK Components Posts
  *
  * @package VK Component
- * @version 1.3.0
+ * @version 1.3.1
  *
  * *********************** CAUTION ***********************
  * The original of this file is located at:
@@ -115,7 +115,8 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 		 * @return void
 		 */
 		public static function the_view( $post, $options ) {
-			echo wp_kses_post( self::get_view( $post, $options ) );
+			$allowed_html = self::vk_kses_post();
+			echo wp_kses( self::get_view( $post, $options ), $allowed_html );
 		}
 
 		/**
