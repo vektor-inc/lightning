@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 / G2 ] Update VK Compo
+
 v14.23.1
 [ G3 ][ Bug fix ] Fix Table align not work
 
