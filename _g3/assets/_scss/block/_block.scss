@@ -120,6 +120,13 @@ entry-body
 	margin-left:auto;
 	margin-right:auto;
 } 
+//セクションベースありにした時、全幅で余白（左右）がコンテンツエリアに合わせるの場合に、ブロック側のpaddingでデザインがおかしくなるので打ち消し
+.main-section--base--on{
+	.vk_outer-width-full.vk_outer-paddingLR-none{
+		padding-left:0;
+		padding-right:0;
+	}
+}
 
 /*-------------------------------------------*/
 /*  Image Block
