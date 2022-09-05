@@ -112,19 +112,19 @@ entry-body
 /*  Outer
 /*-------------------------------------------*/
 // To be no container area ( ex : lightning_site_footer_before hook )
-.vk_outer-width-full.vk_outer-paddingLR-none > div > .vk_outer_container {
-	max-width:var(--vk-width-container);
-	padding-left:15px;
-	padding-right:15px;
-	box-sizing: border-box;
-	margin-left:auto;
-	margin-right:auto;
-} 
-//セクションベースありにした時、全幅で余白（左右）がコンテンツエリアに合わせるの場合に、ブロック側のpaddingでデザインがおかしくなるので打ち消し
-.main-section--base--on{
-	.vk_outer-width-full.vk_outer-paddingLR-none{
-		padding-left:0;
-		padding-right:0;
+.vk_outer-width-full.vk_outer-paddingLR-none {
+	& > div > .vk_outer_container {
+		max-width:var(--vk-width-container);
+		padding-left:15px;
+		padding-right:15px;
+		box-sizing: border-box;
+		margin-left:auto;
+		margin-right:auto;
+	}
+	//セクションベースありにした時、全幅で余白（左右）がコンテンツエリアに合わせるの場合に、ブロック側のpaddingでデザインがおかしくなるので打ち消し
+	.main-section--base--on & {
+		padding-left: var(--vk-width-base-padding);
+		padding-right: var(--vk-width-base-padding);		
 	}
 }
 
