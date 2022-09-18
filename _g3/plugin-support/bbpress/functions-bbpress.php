@@ -67,11 +67,10 @@ add_filter( 'vk_get_post_type_info', 'lightning_bbp_get_post_type' );
  */
 function lightning_get_the_bbp_display_name() {
 	global $wp_query;
-	$users = get_users( array( 'search' => $wp_query->query['bbp_user'] ) );
-	foreach ( $users as $user ) {
-		if ( $user->data->user_login === $wp_query->query['bbp_user'] ) {
-			$display_name = $user->data->display_name;
-		}
+	$display_name = '';
+	if ( ! empty( $wp_query->query['bbp_user'] ) ){
+		$user = get_user_by( 'login', $wp_query->query['bbp_user']);
+		$display_name = $user->data->display_name;
 	}
 	return esc_html( $display_name );
 }
