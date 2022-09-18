@@ -62,8 +62,10 @@ add_filter( 'vk_get_post_type_info', 'lightning_bbp_get_post_type' );
 
 /**
  * bbPressのユーザーページでだけ使える表示名
+ * 
+ * @return string
  */
-function lightning_the_bbp_display_name() {
+function lightning_get_the_bbp_display_name() {
 	global $wp_query;
 	$users = get_users( array( 'search' => $wp_query->query['bbp_user'] ) );
 	foreach ( $users as $user ) {
@@ -85,7 +87,7 @@ function lightning_bbp_breadcrumb_array( $array ) {
 			}
 		}
 		$array[] = array(
-			'name'  => lightning_the_bbp_display_name(),
+			'name'  => lightning_get_the_bbp_display_name(),
 			'id'    => '',
 			'url'   => '',
 			'class' => '',
@@ -110,7 +112,7 @@ add_filter( 'lightning_is_entry_header', 'lightning_bbp_hide_element' );
 
 function lightning_bbp_get_displayed_user_field( $value, $field, $filter ) {
 	if ( 'user_nicename' === $field ) {
-		$value = lightning_the_bbp_display_name();
+		$value = lightning_get_the_bbp_display_name();
 	}
 	return $value;
 }
