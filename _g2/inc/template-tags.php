@@ -347,10 +347,10 @@ function lightning_get_the_archive_title() {
 		$title                    = $lightning_page_for_posts['post_top_name'];
 	} else {
 		global $wp_query;
-		// get post type
-		$postType = $wp_query->query_vars['post_type'];
-		if ( $postType ) {
-			$title = get_post_type_object( $postType )->labels->name;
+		// get post type.
+		if ( isset( $wp_query->query_vars['post_type'] ) ) { // cope with All in One SEO Plugin.
+			$post_type = $wp_query->query_vars['post_type'];
+			$title     = get_post_type_object( $post_type )->labels->name;
 		} else {
 			$title = __( 'Archives', 'lightning' );
 		}

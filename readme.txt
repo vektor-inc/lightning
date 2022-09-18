@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G2 ][ Bug fix ] fix cope with All in One SEO Plugin
+
 v14.23.2
 [ G3 ][ Bug fix ] Fix VK Blocks Pro Outer Block Full width on use Section Base
 [ G3 / G2 ] Update VK Component library
