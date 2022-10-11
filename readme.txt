@@ -38,6 +38,9 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v14.23.4
+[ G3 ][ Bug fix ] fix slider bug under no VK Blocks environment ( Swiper 8.0.7 -> 6.8.0 )
+
 v14.23.3
 [ G3 ][ Bug fix ] fix bbpress php warnning
 [ G2 ][ Bug fix ] fix cope with All in One SEO Plugin

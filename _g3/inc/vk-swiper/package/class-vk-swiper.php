@@ -17,7 +17,7 @@ https://github.com/vektor-inc/vektor-wp-libraries
 if ( ! class_exists( 'VK_Swiper' ) ) {
 
 	// Set version number.
-	define( 'SWIPER_VERSION', '8.0.7' );
+	define( 'SWIPER_VERSION', '6.8.0' );
 
 	/**
 	 * VK Swiper
