@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ Bug fix ] fix slider bug under no VK Blocks environment
+
 v14.23.3
 [ G3 ][ Bug fix ] fix bbpress php warnning
 [ G2 ][ Bug fix ] fix cope with All in One SEO Plugin
