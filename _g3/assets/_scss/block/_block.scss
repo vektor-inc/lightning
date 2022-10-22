@@ -155,27 +155,30 @@ entry-body
 /*  Button Block
 /*-------------------------------------------*/
 .wp-block-button {
-	&__link { 
+	&__link {
 		font-size: 1rem;
 		background-color: var(--vk-color-primary);
-		transition: all 0.1s ease-in;	
+		transition: all 0.1s ease-in;
+		&:hover {
+			text-decoration: none;
+			filter: brightness(1.1) saturate(2);
+		}
+		&,
+		&:hover {
+			color:#fff;
+		}
 	}
 	.wp-block-buttons &__link{ // ボタンブロック単独のCSSの方が後に出力されるて負けるため
 		border-radius: var(--vk-size-radius);
 	}
-	.wp-block-button__link:hover,
-	.wp-block-button__link:hover:not(.has-background){
-		text-decoration: none;
-		background-color: var(--vk-color-primary-vivid);
-		border-color: var(--vk-color-primary-vivid);
-	}
-	.wp-block-button__link.has-background:hover{
-		// コアのカラーパレットのCSSが !important 付けてくるのでやむなく !important
-		background-color: var(--vk-color-primary-vivid) !important;
-	}
-	.wp-block-button__link:hover:not(.has-background){
-		// コアのカラーパレットのCSSが !important 付けてくるのでやむなく !important
-		color:#fff !important;
+	&.is-style-outline {
+		& > .wp-block-button__link:hover {
+			// コアのカラーパレットのCSSが !important 付けてくるのでやむなく !important
+			filter: brightness(1) saturate(1);
+			color:#fff !important;
+			border-color: var(--vk-color-primary-vivid);
+			background-color: var(--vk-color-primary-vivid) !important;
+		}
 	}
 }
 

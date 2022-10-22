@@ -2,7 +2,7 @@
 Lightning WordPress theme, Copyright (C) 2015-2022 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
 Tested up to: 6.0
-Stable tag: 14.23.3
+Stable tag: 14.24.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,6 +37,10 @@ https://www.vektor-inc.co.jp/inquiry/
 
 
 == Changelog ==
+
+v14.24.0
+[ G3 ][ Specification Change / Bug fix ] The button hover color to be refrect the normal bg color
+[ G3 ][ Bug fix ] fix alphabet font weight too thin
 
 v14.23.4
 [ G3 ][ Bug fix ] fix slider bug under no VK Blocks environment ( Swiper 8.0.7 -> 6.8.0 )
