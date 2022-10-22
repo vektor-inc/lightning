@@ -38,6 +38,7 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ Specification Change / Bug fix ] The button hover color to be refrect the normal bg color
 [ G3 ][ Bug fix ] fix alphabet font weight too thin
 
 v14.23.4
