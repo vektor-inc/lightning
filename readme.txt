@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ Bug fix ] fix alphabet font weight too thin
+
 v14.23.4
 [ G3 ][ Bug fix ] fix slider bug under no VK Blocks environment ( Swiper 8.0.7 -> 6.8.0 )
 
