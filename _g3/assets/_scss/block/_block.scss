@@ -36,6 +36,7 @@ entry-body
 .alignfull {
 	&,
 	&.swiper-container,
+	&.vk_slider,
 	&.wp-block-image,
 	&.wp-block-cover-image,
 	&.wp-block-cover {
@@ -47,6 +48,7 @@ entry-body
 }
 .alignwide {
 	&,
+	&.vk_slider,
 	&.wp-block-image,
 	&.wp-block-cover-image,
 	&.wp-block-cover {
@@ -114,22 +116,19 @@ entry-body
 /*  Outer
 /*-------------------------------------------*/
 // To be no container area ( ex : lightning_site_footer_before hook )
-.vk_outer-width-full.vk_outer-paddingLR-none > div > .vk_outer_container {
-	max-width:var(--vk-width-container);
-	padding-left:15px;
-	padding-right:15px;
-	box-sizing: border-box;
-	margin-left:auto;
-	margin-right:auto;
-} 
-
-/*-------------------------------------------*/
-/*  Column Block
-/*  6.0 から消えたので補正指定
-/*-------------------------------------------*/
-@media (min-width: 782px){
-	.wp-block-columns:not(.is-not-stacked-on-mobile) > .wp-block-column:not(:first-child) {
-		margin-left: var(--wp--style--block-gap, 2em);
+.vk_outer-width-full.vk_outer-paddingLR-none {
+	& > div > .vk_outer_container {
+		max-width:var(--vk-width-container);
+		padding-left:15px;
+		padding-right:15px;
+		box-sizing: border-box;
+		margin-left:auto;
+		margin-right:auto;
+	}
+	//セクションベースありにした時、全幅で余白（左右）がコンテンツエリアに合わせるの場合に、ブロック側のpaddingでデザインがおかしくなるので打ち消し
+	.main-section--base--on & {
+		padding-left: var(--vk-width-base-padding);
+		padding-right: var(--vk-width-base-padding);		
 	}
 }
 
@@ -160,28 +159,56 @@ entry-body
 /*  Button Block
 /*-------------------------------------------*/
 .wp-block-button {
-	&__link { // ボタンブロック単独のCSSの方が後に出力されるので負けてしまう
+	&__link {
 		font-size: 1rem;
-		transition: all 0.1s ease-in;
-		border-radius: var(--vk-size-radius);
 		background-color: var(--vk-color-primary);
+		transition: all 0.1s ease-in;
+		&:hover {
+			text-decoration: none;
+			filter: brightness(1.1) saturate(2);
+		}
+		&,
+		&:hover {
+			color:#fff;
+		}
 	}
-	.wp-block-button__link:hover {
-		background-color: var(--vk-color-primary-vivid);
-		border-color: var(--vk-color-primary-vivid);
-		color:#fff;
+	.wp-block-buttons &__link{ // ボタンブロック単独のCSSの方が後に出力されるて負けるため
+		border-radius: var(--vk-size-radius);
 	}
-} 
-
+	&.is-style-outline {
+		& > .wp-block-button__link:hover {
+			// コアのカラーパレットのCSSが !important 付けてくるのでやむなく !important
+			filter: brightness(1) saturate(1);
+			color:#fff !important;
+			border-color: var(--vk-color-primary-vivid);
+			background-color: var(--vk-color-primary-vivid) !important;
+		}
+	}
+}
 
 /*-------------------------------------------*/
 /*  Table Block
 /*-------------------------------------------*/
 .wp-block-table {
+	thead th.has-text-align-right {
+		text-align: center;
+	} 
 	figcaption {
 		margin-top: 0.4rem;
 		text-align: center;
 		font-size: 0.75rem;
+	}
+	&.aligncenter {
+		margin-left: auto;
+		margin-right: auto;
+	}
+	&.alignleft{
+		margin-left:0;
+		margin-right:auto;
+	}
+	&.alignright{
+		margin-left:auto;
+		margin-right:0;
 	}
 }
 
@@ -263,7 +290,7 @@ entry-body
 }
 
 /*-------------------------------------------*/
-/*  「RSS」ブロック
+/*  RSS block
 /*-------------------------------------------*/
 .wp-block-rss{
 	padding: 0;
@@ -353,7 +380,9 @@ entry-body
 		margin-bottom: 0;
 	}
 }
-
+/*-------------------------------------------*/
+/*  hr block
+/*-------------------------------------------*/
 hr.wp-block-separator {
 	border-color: var(--vk-color-border-hr);
 	border-bottom:none;

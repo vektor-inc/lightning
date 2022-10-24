@@ -10,14 +10,14 @@
  */
 function lightning_layout_target_array() {
 	$array = array(
-		'error404' => array(
+		'error404'       => array(
 			'function' => 'is_404',
 		),
-		'search'   => array(
+		'search'         => array(
 			'function' => 'is_search',
 		),
-		'archive-author'   => array(
-			'function' => 'is_archive',
+		'archive-author' => array(
+			'function' => 'is_author',
 		),
 	);
 	return $array;
@@ -25,13 +25,13 @@ function lightning_layout_target_array() {
 
 /**
  * lightning_layout_by_single
- * 
+ *
  *  @since Lightning 14.3.3
- *	@return false / col-two / col-one / col-one-no-subsection
+ *  @return false / col-two / col-one / col-one-no-subsection
  */
 function lightning_layout_by_single() {
 	$layout = false;
-	if ( is_singular() ){
+	if ( is_singular() ) {
 		global $post;
 		if ( is_page() ) {
 			$template           = get_post_meta( $post->ID, '_wp_page_template', true );
@@ -102,10 +102,10 @@ function lightning_is_layout_onecolumn() {
 				}
 			}
 		}
-		if ( 'col-one' === lightning_layout_by_single() || 'col-one-no-subsection' === lightning_layout_by_single() ){
+		if ( 'col-one' === lightning_layout_by_single() || 'col-one-no-subsection' === lightning_layout_by_single() ) {
 			$onecolumn = true;
 		}
-	// show_on_front 'posts' case
+		// show_on_front 'posts' case
 	} elseif ( is_front_page() && is_home() ) {
 		if ( isset( $options['layout']['front-page'] ) ) {
 			if ( 'col-one' === $options['layout']['front-page'] || 'col-one-no-subsection' === $options['layout']['front-page'] ) {
@@ -122,9 +122,9 @@ function lightning_is_layout_onecolumn() {
 				$onecolumn = true;
 			}
 		}
-	} else if ( is_archive() && ! is_search() && ! is_author() ) {
+	} elseif ( is_archive() && ! is_search() && ! is_author() ) {
 		$current_post_type_info = lightning_get_post_type();
-		$archive_post_types = array( 'post' ) + $additional_post_types;
+		$archive_post_types     = array( 'post' ) + $additional_post_types;
 		foreach ( $archive_post_types as $archive_post_type ) {
 			if ( isset( $options['layout'][ 'archive-' . $archive_post_type ] ) && $current_post_type_info['slug'] === $archive_post_type ) {
 				if ( 'col-one' === $options['layout'][ 'archive-' . $archive_post_type ] || 'col-one-no-subsection' === $options['layout'][ 'archive-' . $archive_post_type ] ) {
@@ -132,7 +132,7 @@ function lightning_is_layout_onecolumn() {
 				}
 			}
 		}
-	} else if ( is_singular() ) {
+	} elseif ( is_singular() ) {
 		$single_post_types = array( 'post', 'page' ) + $additional_post_types;
 		foreach ( $single_post_types as $single_post_type ) {
 			if ( isset( $options['layout'][ 'single-' . $single_post_type ] ) && get_post_type() === $single_post_type ) {
@@ -141,10 +141,10 @@ function lightning_is_layout_onecolumn() {
 				}
 			}
 		}
-		
+
 		$lightning_layout_by_single = lightning_layout_by_single();
-		if ( $lightning_layout_by_single ){
-			if ( 'col-one' === $lightning_layout_by_single || 'col-one-no-subsection' === $lightning_layout_by_single ){
+		if ( $lightning_layout_by_single ) {
+			if ( 'col-one' === $lightning_layout_by_single || 'col-one-no-subsection' === $lightning_layout_by_single ) {
 				$onecolumn = true;
 			} else {
 				$onecolumn = false;
@@ -186,7 +186,7 @@ function lightning_is_subsection_display() {
 	);
 	// break and hidden.
 	if ( is_front_page() && ! is_home() ) {
-		
+
 		if ( isset( $options['layout']['front-page'] ) && 'col-one-no-subsection' === $options['layout']['front-page'] ) {
 			$return = false;
 		}
@@ -200,7 +200,7 @@ function lightning_is_subsection_display() {
 				$return = false;
 			}
 			if ( isset( $post->_lightning_design_setting['layout'] ) ) {
-				
+
 				if ( 'col-one-no-subsection' === $post->_lightning_design_setting['layout'] ) {
 					$return = false;
 				} elseif ( 'col-two' === $post->_lightning_design_setting['layout'] ) {
@@ -211,7 +211,6 @@ function lightning_is_subsection_display() {
 				}
 			}
 		}
-
 	} elseif ( is_front_page() && is_home() ) {
 		if ( isset( $options['layout']['front-page'] ) && 'col-one-no-subsection' === $options['layout']['front-page'] ) {
 			$return = false;
@@ -224,7 +223,7 @@ function lightning_is_subsection_display() {
 		}
 	} elseif ( is_archive() && ! is_search() && ! is_author() ) {
 		$current_post_type_info = lightning_get_post_type();
-		$archive_post_types = array( 'post' ) + $additional_post_types;
+		$archive_post_types     = array( 'post' ) + $additional_post_types;
 		foreach ( $archive_post_types as $archive_post_type ) {
 
 			if ( isset( $options['layout'][ 'archive-' . $archive_post_type ] ) && $current_post_type_info['slug'] === $archive_post_type ) {
@@ -268,7 +267,7 @@ function lightning_is_subsection_display() {
 
 /**
  * Page header Display or hidden
- * 
+ *
  * The purpose of preparing a unique function is to enable batch control using a filter hook.
  *
  * @since Lightning 13.0.0
@@ -283,14 +282,13 @@ function lightning_is_page_header() {
 		if ( ! empty( $post->_lightning_design_setting['hidden_page_header'] ) ) {
 			$return = false;
 		}
-
 	}
 	return apply_filters( 'lightning_is_page_header', $return );
 }
 
 /**
  * Breadcrumb Display or hidden
- * 
+ *
  * The purpose of preparing a unique function is to enable batch control using a filter hook.
  *
  * @since Lightning 13.0.0
@@ -305,7 +303,6 @@ function lightning_is_breadcrumb() {
 		if ( ! empty( $post->_lightning_design_setting['hidden_breadcrumb'] ) ) {
 			$return = false;
 		}
-
 	}
 	return apply_filters( 'lightning_is_breadcrumb', $return );
 }

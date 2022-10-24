@@ -63,7 +63,8 @@
 
             .global-nav {
                 display: block; /* Cope with setted table-sell such a OriginII  */
-                margin-left: auto;//メニュー左寄せ用
+                margin-left: auto;// メニュー左寄せ用
+				margin-right: auto;// auto指定しないとスクロール固定時に右によってしまう
             }
         }
     }

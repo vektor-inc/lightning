@@ -19,11 +19,7 @@
 		display: flex;
 		list-style: none;
 		position: relative;
-		//タブレットサイズで、メニューが多い場合にメニューに画像を入れた時に画像の幅が無くなるため折り返しの指定を追加
-		//PCサイズで折り返してしまうと、メニューが意図しないところで段落ちしてしまう人がいると思うので、タブレットサイズのみ折り返す
-		.device-mobile & {
-			flex-wrap:wrap;
-		}
+		width:min-content; // この指定がないと文字の左右に無駄に余白が発生するので、う迂闊に消さない事
 		.header_scrolled & {
 			height:100%; // スクロールメニューで必要
 		}
@@ -36,6 +32,10 @@
 			line-height: 1.4;
 			font-size: 12px;
 			position: relative;
+			img {
+				// 画像を入れられた時に画像が見えなくなるのでとりあえず最小サイズ指定
+				min-width:80px;
+			}
 		}
 		/*-------------------------------------------*/
 		/*	only first

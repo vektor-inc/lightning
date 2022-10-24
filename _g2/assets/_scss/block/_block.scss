@@ -18,6 +18,7 @@ entry-body
 }
 .alignfull {
 	&,
+	&.vk_slider,
 	&.wp-block-image,
 	&.wp-block-cover-image,
 	&.wp-block-cover {
@@ -29,6 +30,7 @@ entry-body
 }
 .alignwide {
 	&,
+	&.vk_slider,
 	&.wp-block-image,
 	&.wp-block-cover-image,
 	&.wp-block-cover {
@@ -75,16 +77,6 @@ entry-body
 }
 
 /*-------------------------------------------*/
-/*  Column Block
-/*  6.0 から消えたので補正指定
-/*-------------------------------------------*/
-@media (min-width: 782px){
-	.wp-block-columns:not(.is-not-stacked-on-mobile) > .wp-block-column:not(:first-child) {
-		margin-left: var(--wp--style--block-gap, 2em);
-	}
-}
-
-/*-------------------------------------------*/
 /*  Image Block
 /*-------------------------------------------*/
 .wp-block-image img {
@@ -99,15 +91,26 @@ entry-body
 .wp-block-button {
 	&__link {
 		font-size: 1rem;
-		border-radius: var(--vk-size-radius);
-		transition: all 0.1s ease-in;
 		background-color: var(--vk-color-primary);
+		transition: all 0.1s ease-in;
 	}
-	.wp-block-button__link:hover {
+	.wp-block-buttons &__link{ // ボタンブロック単独のCSSの方が後に出力されるて負けるため
+		border-radius: var(--vk-size-radius);
+	}
+	.wp-block-button__link:hover,
+	.wp-block-button__link:hover:not(.has-background){
 		text-decoration: none;
 		background-color: var(--vk-color-primary-dark);
 		border-color: var(--vk-color-primary-dark);
 		color:#fff;
+	}
+	.wp-block-button__link.has-background:hover{
+		// コアのカラーパレットのCSSが !important 付けてくるのでやむなく !important
+		background-color: var(--vk-color-primary-dark) !important;
+	}
+	.wp-block-button__link:hover:not(.has-background){
+		// コアのカラーパレットのCSSが !important 付けてくるのでやむなく !important
+		color:#fff !important;
 	}
 }
 .wp-block-button__link {
@@ -128,6 +131,9 @@ entry-body
 /*  Table Block
 /*-------------------------------------------*/
 .wp-block-table {
+	thead th.has-text-align-right {
+		text-align: center;
+	} 
 	figcaption {
 		margin-top: 0.4rem;
 		text-align: center;

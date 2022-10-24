@@ -24,12 +24,23 @@
 				text-align: center;
 				position: relative;
 				height:100%;
-				flex-direction: column; 
+				
+				// flex-direction: column; // 縦書きレイアウトで崩れるためコメントアウト
+
 				// PC端末時は下階層展開ボタンを表示しないので左右余白小さめ
 				@media ( min-width: $lg-min ) { // media指定がないと vk-menu-acc 指定の余白に負けるため指定
 					padding: $menu_padding_vertical 1.5em;
 				}
+
 			}
+
+			//タブレットサイズで、メニューが多い場合にメニューに画像を入れた時に画像の幅が無くなるため折り返しの指定を追加
+			//PCサイズで折り返してしまうと、メニューが意図しないところで段落ちしてしまう人がいると思うので、タブレットサイズのみ折り返す
+			// → ナビ貫通レイアウトの時にタブレットで１項目ずつ改行されてしまうのでコメントアウト
+			// .device-mobile & {
+			// 	flex-wrap:wrap;
+			// }
+
 		}
 
 		// モバイル端末の場合 /////

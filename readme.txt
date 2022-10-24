@@ -1,8 +1,8 @@
 === Lightning ===
 Lightning WordPress theme, Copyright (C) 2015-2022 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
-Tested up to: 5.9.3
-Stable tag: 14.20.3
+Tested up to: 6.0
+Stable tag: 14.24.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,9 +38,93 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
-[ G3 / G2 ][ Improvement ] Cope with theme.json
+v14.24.0
+[ G3 ][ Specification Change / Bug fix ] The button hover color to be refrect the normal bg color
+[ G3 ][ Bug fix ] fix alphabet font weight too thin
+
+v14.23.4
+[ G3 ][ Bug fix ] fix slider bug under no VK Blocks environment ( Swiper 8.0.7 -> 6.8.0 )
+
+v14.23.3
+[ G3 ][ Bug fix ] fix bbpress php warnning
+[ G2 ][ Bug fix ] fix cope with All in One SEO Plugin
+
+v14.23.2
+[ G3 ][ Bug fix ] Fix VK Blocks Pro Outer Block Full width on use Section Base
+[ G3 / G2 ] Update VK Component library
+
+v14.23.1
+[ G3 ][ Bug fix ] Fix Table align not work
+
+v14.23.0
+[ G3 ][ Add action hook ] lightning_site_body_before
+
+v14.22.12
+[ G2 ][ Bug fix ] Fix PHP notice in Front Pr
+[ G2 ][ Bug fix ] Author page layout setting
+
+v14.22.11
+[ G3 ][ Bug fix ] fix cope with All in One SEO Plugin
+[ G3 ][ breadcrumb ] Fix in case of filter search result category & keyword
+
+v14.22.10
+[ G2 / G3 ][ table ] thead th specify to center on editor screen
+
+v14.22.9
+[ G2 / G3 ][ table ] thead th specify to center
+
+v14.22.8
+[ G3 ][ Bug fix ] Remove extra table margin
+
+v14.22.7
+[ G3 / G2 ][ Bug fix ] Fix slider text align
+
+v14.22.6
+[ G3 ][ Bug fix ] Fixed a bug that fixed header is covered when linking in the page with VK button block
+
+v14.22.5
+[ G3 ][ Bug fix ] Editor css
+
+v14.22.4
+[ G3 ][ Bug fix ] Fix Editor default font family  
+[ G3 ][ Bug fix ] Fix menu close font size on editor screen(not fullscreen mode)
+
+v14.22.3
+[ G3 ][ Bug fix ] Fix editor color palette since 14.22.2
+
+v14.22.2
+[ Bug fix ] Fix editor CSS ( Cope with 6.0 )
+[ Bug fix ] Update Tree Shaking (CSS speeding)
+
+v14.22.1
+[ G3 / G2 ][ Specification Change ] Allow iframe tag on post list filter
+
+v14.22.0
+[ G3 / G2 ][ Specification Change ] Allow iframe tag on post list filter
+
+v14.21.5
+[ G2 ] Fix VK Slider block in case of full width
+[ G3 / G2 ][ Bug fix ] Fix WordPress core button color
+[ G3 / G2 ][ Bug fix / Specification Change ] Fix clumn gap
+
+v14.21.4
+[ G3 ][ Bug fix ] Fix Global Menu Layout
+
+v14.21.3
+[ G3 ][ Bug fix ] Fix Global Menu Layout
+
+v14.21.2
+[ G3 ][ Bug fix ] Fix Global Menu Layout
+
+v14.21.1
+[ G3 ][ Bug fix ] Fix Global Menu
+
+v14.21.0
 [ G3 / G2 ][ Others ] Cope with WP6.0 
-[ G3 ][ Design bug fix ] Fixed global navigation width
+[ G3 / G2 ][ Bug fix ] Fix button default design
+[ G3 / G2 ][ Bug fix ] Fix Mobile Nav close transform
+[ G3 ][ Bug fix ] Fixed global navigation item width
+[ G3 ][ Bug fix ] Fix Google Web Fonts Japanese display on Edge
 
 v14.20.3
 [ G3 / G2 ][ Bug Fix ] Fix load Font Awesome Files on WordPress.com

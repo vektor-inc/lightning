@@ -54,7 +54,7 @@
 		"run-sequence": "^2.2.1",
 		"stylelint": "^13.13.1",
 		"stylelint-config-wordpress": "^17.0.0",
-		"webpack": "^5.37.0",
+		"webpack": "^5.73.0",
 		"webpack-cli": "^4.7.0",
 		"webpack-merge": "^5.7.3"
 	},
@@ -62,6 +62,6 @@
 		"bootstrap": "^4.6.1",
 		"install": "^0.13.0",
 		"is-mobile": "^3.0.0",
-		"npm": "^8.5.4"
+		"npm": "^8.11.0"
 	}
 }
