@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ Bug fix ] Fix Outer Block in wid and full element width in editor screen.
+
 v14.24.0
 [ G3 ][ Specification Change / Bug fix ] The button hover color to be refrect the normal bg color
 [ G3 ][ Bug fix ] fix alphabet font weight too thin
