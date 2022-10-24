@@ -1,0 +1,28 @@
+{
+	"$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/trunk/schemas/json/theme.json",
+	"version": 2,
+	"settings": {
+		"spacing": {
+			"blockGap": null,
+			"margin": true,
+			"padding": true
+		},
+		"layout": {
+			"contentSize": "calc( var(--vk-width-container) - var(--vk-width-container-padding) * 2 )",
+			"wideSize": "calc( var(--vk-width-container) - var(--vk-width-container-padding) * 2 + ( 100vw - var(--vk-width-container) - var(--vk-width-container-padding) * 2 ) / 2 )"
+		},
+		"border": {
+			"color": true,
+			"radius": true,
+			"style": true,
+			"width": true
+		},
+		"blocks": {
+			"core/group": {
+				"spacing": {
+					"padding": true
+				}
+			}
+		}
+	}
+}

@@ -25,7 +25,7 @@ entry-body
 .alignwide {
 	// theme.json があると __inner-container のdiv は出力されなくなってしまうので & > * を追加
 	// しかし、背景色指定などのために追加される span タグなどは全幅で表示する必要があるため除外
-	& > *:where(:not([class*="wp-block-cover"])) ,	
+	// & > *:where(:not([class*="wp-block-cover"])) ,
 	div[class*="__inner-container"]{
 		max-width: calc( var(--vk-width-container) - var(--vk-width-container-padding) * 2 );
 		margin-left:auto;
