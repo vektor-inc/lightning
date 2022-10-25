@@ -53,8 +53,11 @@ body .container .is-layout-flex:where(:not(.wp-block-columns)) {
 	gap:0.5em;
 }
 // theme.json を追加すると a:where(:not(.wp-element-button)){ text-decoration: underline; } が追加されるため打ち消し
-a.vk_gridcolcard_item_container {
-	text-decoration: none;
+a{
+	&.postListText_singleTermLabel_inner,
+	&.vk_gridcolcard_item_container {
+		text-decoration: none;
+	}
 }
 .alignfull {
 	&,
