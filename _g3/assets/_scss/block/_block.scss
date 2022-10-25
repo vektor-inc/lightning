@@ -48,7 +48,14 @@ body .container .is-layout-flow > *,
 body .container .is-layout-flow > * + * {
     margin-block-start: 0;
 }
-
+// theme.json を追加すると 24px をつけられるので打ち消し
+body .container .is-layout-flex {
+	gap:0.5em;
+}
+// theme.json を追加すると a:where(:not(.wp-element-button)){ text-decoration: underline; } が追加されるため打ち消し
+a.vk_gridcolcard_item_container {
+	text-decoration: none;
+}
 .alignfull {
 	&,
 	&.swiper-container,
