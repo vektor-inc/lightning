@@ -3,7 +3,7 @@
 	"version": 2,
 	"settings": {
 		"spacing": {
-			"blockGap": null,
+			"blockGap": true,
 			"margin": true,
 			"padding": true
 		},
