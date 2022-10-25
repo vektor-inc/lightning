@@ -48,8 +48,8 @@ body .container .is-layout-flow > *,
 body .container .is-layout-flow > * + * {
     margin-block-start: 0;
 }
-// theme.json を追加すると 24px をつけられるので打ち消し
-body .container .is-layout-flex {
+// theme.json を追加すると gap:24px をつけられるので打ち消し
+body .container .is-layout-flex:where(:not(.wp-block-columns)) {
 	gap:0.5em;
 }
 // theme.json を追加すると a:where(:not(.wp-element-button)){ text-decoration: underline; } が追加されるため打ち消し
