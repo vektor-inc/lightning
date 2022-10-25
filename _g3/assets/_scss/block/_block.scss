@@ -43,6 +43,12 @@ entry-body
 		margin-right:auto;
 	}
 }
+// theme.json を追加すると body .container .is-layout-flow > * に margin-block-start: 24px;	が追加されるため打ち消し
+body .container .is-layout-flow > *,
+body .container .is-layout-flow > * + * {
+    margin-block-start: 0;
+}
+
 .alignfull {
 	&,
 	&.swiper-container,
