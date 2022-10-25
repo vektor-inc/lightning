@@ -320,7 +320,8 @@ add_action( 'admin_head', 'lightning_disable_tgm_notification_except_admin' );
 
 /**
  * Cope with wide and full width in inner block
- * theme.json があってもインナーブロックで幅広か全幅が使えるようにする
+ * theme.json があってもインナーブロックで幅広か全幅が使えるようにするための処理
+ * また、これがないと編集画面でブロック要素の左右に margin:auto !important をつけられてしまう
  */
 add_filter(
 	'block_editor_settings_all',
