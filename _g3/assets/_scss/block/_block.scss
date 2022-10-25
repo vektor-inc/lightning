@@ -34,6 +34,15 @@ entry-body
 	}
 }
 
+// theme.json を追加すると __inner-container が出力されなくなるので追加
+.alignfull,
+.alignwide {
+	&>* {
+		max-width: calc( var(--vk-width-container) - var(--vk-width-container-padding) * 2 );
+		margin-left:auto;
+		margin-right:auto;
+	}
+}
 .alignfull {
 	&,
 	&.swiper-container,
