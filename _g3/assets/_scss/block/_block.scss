@@ -49,6 +49,19 @@ body .container .is-layout-flow > * + * {
     margin-block-start: 0;
 	margin-block-end: unset;
 }
+// theme.json を追加すると body .container .is-layout-flow > * に margin-block-end: 0; が追加されるため打ち消し
+body .container .is-layout-flow {
+	.wp-block-table,
+	p,
+	ul,
+	ol,
+	dl,
+	blockquote,
+	iframe {
+		margin-block-end: var(--vk-margin-headding-bottom);
+	}
+}
+
 // theme.json を追加すると gap:24px をつけられるので打ち消し
 body .container .is-layout-flex:where(:not(.wp-block-columns)) {
 	gap:0.5em;
