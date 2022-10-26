@@ -47,6 +47,7 @@ entry-body
 body .container .is-layout-flow > *,
 body .container .is-layout-flow > * + * {
     margin-block-start: 0;
+	margin-block-end: unset;
 }
 // theme.json を追加すると gap:24px をつけられるので打ち消し
 body .container .is-layout-flex:where(:not(.wp-block-columns)) {
