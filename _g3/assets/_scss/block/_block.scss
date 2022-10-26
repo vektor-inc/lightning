@@ -26,8 +26,8 @@ entry-body
 	// theme.json があると __inner-container のdiv は出力されなくなってしまうので __inner-container 以外の直下要素を追加
 	div[class*="__inner-container"],
 	& > div[class*="wp-container-"],
-	& > div[class*="wp-block-"],
-	& > div[class*="vk_"]{
+	& > div[class*="wp-block-"]:where(:not(.vk_outer)),
+	& > div[class*="vk_"]:where(:not(.vk_outer)){
 		max-width: calc( var(--vk-width-container) - var(--vk-width-container-padding) * 2 );
 		margin-left:auto;
 		margin-right:auto;
@@ -37,7 +37,7 @@ entry-body
 // theme.json を追加すると __inner-container が出力されなくなるので追加
 .alignfull,
 .alignwide {
-	&>*:where(:not(.wp-block-cover__background,.swiper-wrapper,.swiper-pagination)) {
+	&>*:where(:not(.wp-block-cover__background,.swiper-wrapper,.swiper-pagination,.vk_outer)) {
 		max-width: calc( var(--vk-width-container) - var(--vk-width-container-padding) * 2 );
 		margin-left:auto;
 		margin-right:auto;
