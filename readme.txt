@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v15.0.0
+[ G3 ] Cope with theme.json
 [ G3 ][ Bug fix ] Fix Outer Block in wid and full element width in editor screen.
 
 v14.24.0
