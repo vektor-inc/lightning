@@ -315,6 +315,7 @@ gulp.task('dist', function (done) {
 	const files = gulp.src(
 	  [
 		"./LICENSE",
+		"./**/theme.json",
 		"./**/*.php",
 		"./**/*.txt",
 		"./**/*.css",
