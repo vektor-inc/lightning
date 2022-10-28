@@ -1,0 +1,68 @@
+/**
+ * Cope with theme.json
+ */
+
+ body .is-layout-flow > *:is(h1,h2,h3,h4,h5,h6 ) {
+	margin-block-end:var(--vk-margin-headding-bottom);
+}
+
+ .alignfull,
+ .alignwide {
+	 // theme.json があると __inner-container の div は出力されなくなってしまうので __inner-container 以外の直下要素を追加
+	 & > div[class*="wp-container-"],
+	 & > div[class*="wp-block-"]:where(:not(.vk_outer)),
+	 & > div[class*="vk_"]:where(:not(.vk_outer)){
+		 max-width: calc( var(--vk-width-container) - var(--vk-width-container-padding) * 2 );
+		 margin-left:auto;
+		 margin-right:auto;
+	 }
+ }
+
+
+// theme.json を追加すると __inner-container が出力されなくなるので追加
+.alignfull,
+.alignwide {
+	&>*:where(:not(.wp-block-cover__background,.swiper-wrapper,.swiper-pagination,.vk_outer)) {
+		max-width: calc( var(--vk-width-container) - var(--vk-width-container-padding) * 2 );
+		margin-left:auto;
+		margin-right:auto;
+	}
+}
+
+// theme.json を追加すると body .container .is-layout-flow > * に margin-block-start: 24px;	が追加されるため打ち消し
+body .container .is-layout-flow > *:where(:not(:is(h2,h3,h4,h5,h6))),
+body .container .is-layout-flow > * + * {
+    margin-block-start: 0;
+	margin-block-end: unset;
+}
+// theme.json を追加すると body .container .is-layout-flow > * に margin-block-end: 0; が追加されるため打ち消し
+body .container .is-layout-flow {
+	.wp-block-table,
+	p,
+	ul,
+	ol,
+	dl,
+	blockquote,
+	iframe {
+		margin-block-end: var(--vk-margin-headding-bottom);
+	}
+}
+.wp-block-column,
+.wp-block-group {
+	&[class*=wp-container-] > :is( * + * , * ) {
+		margin-block-start:unset;
+		margin-block-end:var(--vk-margin-element-bottom);
+	}
+}
+
+ // theme.json を追加すると gap:24px をつけられるので打ち消し
+body .container .is-layout-flex:where(:not(.wp-block-columns)) {
+	gap:0.5em;
+}
+ // theme.json を追加すると a:where(:not(.wp-element-button)){ text-decoration: underline; } が追加されるため打ち消し
+a{
+	&.postListText_singleTermLabel_inner,
+	&.vk_gridcolcard_item_container {
+		text-decoration: none;
+	}
+}
