@@ -61,6 +61,14 @@ body .container .is-layout-flow {
 		margin-block-end: var(--vk-margin-headding-bottom);
 	}
 }
+.wp-block-column,
+.wp-block-group {
+	&[class*=wp-container-] > :is( * + * , * ) {
+		border:1px solid #ff0000;
+		margin-block-start:unset;
+		margin-block-end:var(--vk-margin-element-bottom);
+	}
+}
 
 // theme.json を追加すると gap:24px をつけられるので打ち消し
 body .container .is-layout-flex:where(:not(.wp-block-columns)) {
