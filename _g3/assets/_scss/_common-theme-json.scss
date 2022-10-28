@@ -49,7 +49,7 @@ body .container .is-layout-flow {
 }
 .wp-block-column,
 .wp-block-group {
-	&[class*=wp-container-] > :is( * + * , * ) {
+	&[class*=wp-container-] > :is( * + * , *:where(:not(.vk_icon)) ) {
 		margin-block-start:unset;
 		margin-block-end:var(--vk-margin-element-bottom);
 	}
