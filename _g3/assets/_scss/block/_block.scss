@@ -64,7 +64,6 @@ body .container .is-layout-flow {
 .wp-block-column,
 .wp-block-group {
 	&[class*=wp-container-] > :is( * + * , * ) {
-		border:1px solid #ff0000;
 		margin-block-start:unset;
 		margin-block-end:var(--vk-margin-element-bottom);
 	}
