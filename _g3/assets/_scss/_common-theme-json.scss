@@ -47,9 +47,12 @@ body .container .is-layout-flow {
 		margin-block-end: var(--vk-margin-headding-bottom);
 	}
 }
+div[class*=wp-container-] > * + * {
+	margin-block-start:unset;
+}
 .wp-block-column,
 .wp-block-group {
-	&[class*=wp-container-] > :is( * + * , *:where(:not(div)) ) {
+	&[class*=wp-container-] > :is( *:where(:not(.vk_spacer,.vk_icon)) ) {
 		margin-block-start:unset;
 		margin-block-end:var(--vk-margin-element-bottom);
 	}
