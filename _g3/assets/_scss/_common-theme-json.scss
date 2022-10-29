@@ -55,7 +55,6 @@ div[class*=wp-container-] > * + * {
 	&[class*=wp-container-] > :is( *:where(:not(.vk_spacer,.vk_icon,.no-margin)) ) {
 		margin-block-start:unset;
 		margin-block-end:var(--vk-margin-element-bottom);
-		border:1px solid #ff0000;
 	}
 }
 
