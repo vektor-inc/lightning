@@ -38,15 +38,20 @@ body .container .is-layout-flow > * + * {
 // theme.json を追加すると body .container .is-layout-flow > * に margin-block-end: 0; が追加されるため打ち消し
 body .container .is-layout-flow {
 	.wp-block-table,
-	p:where(:not(:is(.no-margin,.vk_heading_subtext))),
+	p,
 	ul,
 	ol,
 	dl,
 	blockquote,
 	iframe {
-		margin-block-end: var(--vk-margin-headding-bottom);
+		margin-block-end: var(--vk-margin-element-bottom);
 	}
 }
+
+p:is(.postListText_title,.vk_heading_subtext,.no-margin ){
+	--vk-margin-element-bottom:0;
+}
+
 div[class*=wp-container-] > * + * {
 	margin-block-start:unset;
 }
