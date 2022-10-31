@@ -28,11 +28,14 @@
 		margin-right:auto;
 	}
 }
-
 // theme.json を追加すると body .is-layout-flow > * に margin-block-start: 24px; が追加されるため .container を追加して打ち消し
-body .container .is-layout-flow > *:where(:not(:is(h2,h3,h4,h5,h6,.vk_faq))),
-body .container .is-layout-flow > * + *:where(:not(:is(h2,h3,h4,h5,h6,.vk_faq))) {
-    margin-block-start: 0;
+body .container .is-layout-flow > * + * {
+	margin-block-start: unset;
+}
+// theme.json を追加すると body .is-layout-flow > * に margin-block-end:0; が追加されるため .container を追加して打ち消し
+// h タグには --vk-margin-headding-bottom 指定
+body .container .is-layout-flow > *:where(:not(:is(.vk_faq,h1,h2,h3,h4,h5,h6))),
+body .container .is-layout-flow > * + *:where(:not(:is(.vk_faq,h1,h2,h3,h4,h5,h6))) {
 	margin-block-end: unset;
 }
 // theme.json を追加すると body .container .is-layout-flow > * に margin-block-end: 0; が追加されるため打ち消し
