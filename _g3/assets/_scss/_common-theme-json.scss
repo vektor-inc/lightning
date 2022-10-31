@@ -1,7 +1,7 @@
 /**
  * Cope with theme.json
  */
-
+ div[class*=wp-container-]>*+*:is(h1,h2,h3,h4,h5,h6),
  body .is-layout-flow > *:is(h1,h2,h3,h4,h5,h6 ) {
 	margin-block-end:var(--vk-margin-headding-bottom);
 }
