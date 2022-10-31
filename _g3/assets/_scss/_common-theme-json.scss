@@ -29,7 +29,7 @@
 	}
 }
 
-// theme.json を追加すると body .container .is-layout-flow > * に margin-block-start: 24px;	が追加されるため打ち消し
+// theme.json を追加すると body .is-layout-flow > * に margin-block-start: 24px; が追加されるため .container を追加して打ち消し
 body .container .is-layout-flow > *:where(:not(:is(h2,h3,h4,h5,h6,.vk_faq))),
 body .container .is-layout-flow > * + *:where(:not(:is(h2,h3,h4,h5,h6,.vk_faq))) {
     margin-block-start: 0;
