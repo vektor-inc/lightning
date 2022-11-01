@@ -61,9 +61,16 @@ p:is(.postListText_title,.vk_heading_subtext,.no-margin ){
 div[class*=wp-container-] > * + * {
 	margin-block-start:unset;
 }
+// .wp-block-column,
+// .wp-block-group {
+// 	&[class*=wp-container-] > :is( *:where(:not(h1,h2,h3,h4,h5,h6,.no-margin,.vk_spacer,.vk_icon,.vk_button,[class*="vk-blocks-heading"] )) ) {
+// 		margin-block-start:unset;
+// 		margin-block-end:var(--vk-margin-element-bottom);
+// 	}
+// }
 .wp-block-column,
 .wp-block-group {
-	&[class*=wp-container-] > :is( *:where(:not(h1,h2,h3,h4,h5,h6,.no-margin,.vk_spacer,.vk_icon,.vk_button,[class*="vk-blocks-heading"] )) ) {
+	&[class*=wp-container-] > :is( p,ul,ol,dl ) {
 		margin-block-start:unset;
 		margin-block-end:var(--vk-margin-element-bottom);
 	}
