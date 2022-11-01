@@ -108,6 +108,15 @@ div[class*=wp-container-] > * + * {
 	margin-block-end:var(--vk-margin-headding-bottom);
 }
 
+// Core CSS /////////////////////////////
+// .wp-container-1 {
+//     display: flex;
+//     gap: var( --wp--style--block-gap, 0.5em );
+// }
+.wp-block-gallery {
+	--wp--style--block-gap:0.5em; // theme.json がないと24pxがはいるが、ない場合は 0.5em だったので継承するための補正
+}
+
 // 特定の独自ブロック・クラスの補正 *******************************************/
 
 p:is(.postListText_title,.vk_heading_subtext,.no-margin ){
