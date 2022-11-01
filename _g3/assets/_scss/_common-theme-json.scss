@@ -87,7 +87,7 @@ div[class*=wp-container-] > * + * {
 	margin-block-start:unset;
 }
 // h タグには --vk-margin-headding-bottom 指定追加
-div[class*=wp-container-] > * + *:is(h1,h2,h3,h4,h5,h6){
+*[class*=wp-container-] > * + *:is(h1,h2,h3,h4,h5,h6){
 	margin-block-end:var(--vk-margin-headding-bottom);
 }
 
@@ -102,6 +102,10 @@ div[class*=wp-container-] > * + *:is(h1,h2,h3,h4,h5,h6){
 		margin-block-start:unset;
 		margin-block-end:var(--vk-margin-element-bottom);
 	}
+}
+// h タグには --vk-margin-headding-bottom 指定追加
+*[class*=wp-container-] > *:is(h1,h2,h3,h4,h5,h6){
+	margin-block-end:var(--vk-margin-headding-bottom);
 }
 
 // 特定の独自ブロック・クラスの補正 *******************************************/
