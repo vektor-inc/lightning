@@ -208,9 +208,17 @@ add_action( 'update_option_lightning_theme_generation', 'lightning_change_genera
 function lightning_is_theme_json() {
 	$options = get_option( 'lightning_theme_options' );
 	if ( ! $options ) {
-		$return = false;
+		$return = true;
 	} elseif ( ! empty( $options['theme_json'] ) && true === $options['theme_json'] ) {
 		$return = true;
+	} else {
+		$return = false;
+	}
+	if ( $return ) {
+		$options['theme_json'] = true;
+		update_option( 'lightning_theme_options', $options );
+	} else {
+		unset( $options['theme_json'] );
 	}
 	return $return;
 }
