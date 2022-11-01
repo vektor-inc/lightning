@@ -93,6 +93,8 @@ jobs:
       run: ./node_modules/@wordpress/env/bin/wp-env start
     - name: install composer
       run: ./node_modules/@wordpress/env/bin/wp-env run composer 'composer install'
+    - name: php unit test root
+      run: ./node_modules/@wordpress/env/bin/wp-env run phpunit 'phpunit -c /var/www/html/wp-content/themes/lightning/phpunit.root.xml --verbose'
     - name: php unit test G2
       run: ./node_modules/@wordpress/env/bin/wp-env run phpunit 'phpunit -c /var/www/html/wp-content/themes/lightning/phpunit.g2.xml --verbose'
     - name: php unit test G3
