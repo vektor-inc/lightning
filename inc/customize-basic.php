@@ -13,6 +13,7 @@ function lightning_customize_register_basic( $wp_customize ) {
 		)
 	);
 
+	// Generation Setting ////////////////////////////////////////
 	$wp_customize->add_setting(
 		'generation_title',
 		array(
@@ -38,7 +39,7 @@ function lightning_customize_register_basic( $wp_customize ) {
 		'g2' => __( 'Generation 2 ( ~ version 13.x )', 'lightning' ),
 		'g3' => __( 'Generation 3', 'lightning' ),
 	);
-	if ( lightning_is_g3() ){
+	if ( lightning_is_g3() ) {
 		$default = 'g3';
 	} else {
 		$default = 'g2';
