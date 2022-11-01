@@ -203,3 +203,14 @@ function lightning_change_generation( $old_value, $value, $option ) {
 	}
 }
 add_action( 'update_option_lightning_theme_generation', 'lightning_change_generation', 10, 3 );
+
+
+function lightning_is_theme_json() {
+	$options = get_option( 'lightning_theme_options' );
+	if ( ! $options ) {
+		$return = false;
+	} elseif ( ! empty( $options['theme_json'] ) && true === $options['theme_json'] ) {
+		$return = true;
+	}
+	return $return;
+}
