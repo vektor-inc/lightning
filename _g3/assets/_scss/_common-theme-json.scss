@@ -123,9 +123,7 @@ p:is(.postListText_title,.vk_heading_subtext,.no-margin ){
 	--vk-margin-element-bottom:0;
 }
 
-// ★★★★★★★★★★★★★ vk_faq
-
  // ★★★★★★★★★★★★★★★★★ theme.json を追加すると gap:24px をつけられるので打ち消し
-body .container .is-layout-flex:where(:not(.wp-block-columns)) {
-	gap:0.5em;
-}
+// body .container .is-layout-flex:where(:not(.wp-block-columns)) {
+// 	gap:0.5em;
+// }
