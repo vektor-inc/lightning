@@ -3,27 +3,18 @@
  */
  .alignfull,
  .alignwide {
-	 // theme.json があると __inner-container の div は出力されなくなってしまうので __inner-container 以外の直下要素を追加
+	 // theme.json があると __inner-container の div は出力されなくなってしまうので max-width にコンテンツ幅を指定
+	 &,
 	 & > div[class*="wp-container-"],
 	 & > div[class*="wp-block-"],
 	 & > div[class*="vk_"]{
-		&:where(:not(.alignfull,.alignwide,.vk_outer)) {
+		&:where(:not(.alignfull,.alignwide,.wp-block-cover__background,.vk_outer,.swiper-wrapper,.swiper-pagination)) {
 			max-width: calc( var(--vk-width-container) - var(--vk-width-container-padding) * 2 );
 			margin-left:auto;
 			margin-right:auto;
 		}
 	 }
  }
-
-// theme.json を追加すると __inner-container が出力されなくなるので追加
-.alignfull,
-.alignwide {
-	&>*:where(:not(.alignfull,.alignwide,.wp-block-cover__background,.swiper-wrapper,.swiper-pagination,.vk_outer)) {
-		max-width: calc( var(--vk-width-container) - var(--vk-width-container-padding) * 2 );
-		margin-left:auto;
-		margin-right:auto;
-	}
-}
 
  // theme.json を追加すると a:where(:not(.wp-element-button)){ text-decoration: underline; } が追加されるため打ち消し
  a{
