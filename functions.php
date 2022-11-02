@@ -205,20 +205,49 @@ function lightning_change_generation( $old_value, $value, $option ) {
 add_action( 'update_option_lightning_theme_generation', 'lightning_change_generation', 10, 3 );
 
 
-function lightning_is_theme_json() {
+/**
+ * Activate theme.json for new install
+ *
+ *  @since 15.1.0
+ *  @return void
+ */
+function lightning_default_activate_theme_json() {
 	$options = get_option( 'lightning_theme_options' );
 	if ( ! $options ) {
-		$return = true;
-	} elseif ( ! empty( $options['theme_json'] ) && true === $options['theme_json'] ) {
-		$return = true;
-	} else {
-		$return = false;
-	}
-	if ( $return ) {
-		$options['theme_json'] = true;
+		$options = array(
+			'theme_json' => true,
+		);
 		update_option( 'lightning_theme_options', $options );
-	} else {
-		unset( $options['theme_json'] );
 	}
-	return $return;
 }
+add_action( 'upgrader_process_complete', 'lightning_default_activate_theme_json' );
+
+/**
+ * Rename theme.json file
+ * Before update option
+ *
+ * @since 15.1.0
+ * @return void
+ */
+function lightning_rename_theme_json() {
+	$options = get_option( 'lightning_theme_options' );
+	if ( ! $options || ( ! empty( $options['theme_json'] ) && true === $options['theme_json'] ) ) {
+		$is_theme_json = true;
+	} else {
+		$is_theme_json = false;
+	}
+	if ( $is_theme_json ) {
+		if ( is_readable( get_parent_theme_file_path( '_theme.json' ) ) ) {
+			rename( get_parent_theme_file_path( '_theme.json' ), get_parent_theme_file_path( 'theme.json' ) );
+		}
+	} else {
+		if ( is_readable( get_parent_theme_file_path( 'theme.json' ) ) ) {
+			rename( get_parent_theme_file_path( 'theme.json' ), get_parent_theme_file_path( '_theme.json' ) );
+		}
+	}
+}
+// update_option_lightning_theme_options は保存前に実行されてしまい
+// 判定が意図したものにならないため updated_option で処理.
+add_action( 'updated_option', 'lightning_rename_theme_json' );
+add_action( 'deleted_option', 'lightning_rename_theme_json' );
+add_action( 'upgrader_process_complete', 'lightning_rename_theme_json' );

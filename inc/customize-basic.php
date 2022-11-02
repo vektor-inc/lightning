@@ -5,6 +5,8 @@
 add_action( 'customize_register', 'lightning_customize_register_basic' );
 function lightning_customize_register_basic( $wp_customize ) {
 
+	lightning_is_theme_json();
+
 	$wp_customize->add_section(
 		'lightning_function',
 		array(
