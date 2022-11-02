@@ -131,6 +131,11 @@ entry-body
 /*-------------------------------------------*/
 /*  Image Block
 /*-------------------------------------------*/
+// 6.0 まで .wp-block-image に余白をつけていたのに対して、
+// 6.1 からは .wp-block-image figure では 余白 0 で上書きしてくるため補正
+body .wp-block-image figure {
+	margin-bottom:1em;
+}
 .wp-block-image img {
 	height:auto;
 	// block にしないと枠線スタイルで画像下部に意図しない余白ができてしまう
