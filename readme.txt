@@ -1,8 +1,8 @@
 === Lightning ===
 Lightning WordPress theme, Copyright (C) 2015-2022 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
-Tested up to: 6.0
-Stable tag: 14.24.0
+Tested up to: 6.1
+Stable tag: 14.25.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,6 +37,10 @@ https://www.vektor-inc.co.jp/inquiry/
 
 
 == Changelog ==
+
+v14.25.0
+[ G3 / G2 ] Cope with 6.0
+[ G3 ][ Bug fix ] Fix Outer Block in wid and full element width in editor screen.
 
 v14.24.0
 [ G3 ][ Specification Change / Bug fix ] The button hover color to be refrect the normal bg color
