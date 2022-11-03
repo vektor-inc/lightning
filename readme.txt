@@ -39,6 +39,7 @@ https://www.vektor-inc.co.jp/inquiry/
 == Changelog ==
 
 [ G3 ] Fix image 6.1 margin bottom
+[ G3 ] Fix iOS Form CSS
 
 v14.25.0
 [ G3 / G2 ] Cope with 6.1
