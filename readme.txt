@@ -38,8 +38,10 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ] Fix image 6.1 margin bottom
+
 v14.25.0
-[ G3 / G2 ] Cope with 6.0
+[ G3 / G2 ] Cope with 6.1
 [ G3 ][ Bug fix ] Fix Outer Block in wid and full element width in editor screen.
 
 v14.24.0
