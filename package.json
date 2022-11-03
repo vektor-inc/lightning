@@ -34,7 +34,7 @@
 	"devDependencies": {
 		"@babel/core": "^7.14.2",
 		"@babel/preset-env": "^7.14.2",
-		"@wordpress/env": "^4.0.3",
+		"@wordpress/env": "^4.9.0",
 		"babel-loader": "^8.2.2",
 		"grpc": "^1.24.6",
 		"gulp": "^4.0.2",
