@@ -38,6 +38,7 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ] Fix button color 6.1 on editor screen
 [ G3 ] Fix image 6.1 margin bottom
 [ G3 ] Fix iOS Form CSS
 
