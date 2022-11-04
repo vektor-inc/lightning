@@ -10,6 +10,12 @@
 	}
 }
 
+// 6.1 コアのボタンにデフォルトでテーマの色が当たらない対応打ち消し
+.editor-styles-wrapper .wp-block-buttons .wp-block-button__link {
+	background-color: var(--vk-color-primary);
+	border-radius: var(--vk-size-radius);
+}
+
 .wp-block-search .wp-block-search__button{
     background-color: var(--vk-color-primary);
 	text-align: center;
