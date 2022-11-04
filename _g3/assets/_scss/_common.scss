@@ -129,6 +129,11 @@ input[type="button"] {
 		outline-offset: -2px;
 	}
 }
+input:where(:not([type=checkbox],[type=radio])),
+select {
+	-webkit-appearance: none;
+	appearance: none;
+}
 /* / Reset iOS Style */
 
 input[type=text],
@@ -148,6 +153,8 @@ textarea {
 	// 上部に余白をつけるとWooCommerceなどすぐとなりにボタンがある場合など段差ができるので上部に余白はつけない
 	margin:0 0 0.5rem;
 	width:100%;
+	color: var(--vk-color-text-body); // iOS で文字色が hover 色にされるため上書き
+	background-color: #fff;
 }
 input[type=file] {
 	margin:0.5rem 0;
@@ -164,9 +171,6 @@ input[type=submit]{
 		cursor: pointer;
 		background-color:var(--vk-color-primary-dark);
 	}
-}
-figure {
-	margin:0;
 }
 table {
 	border-top:1px solid var(--vk-color-border-hr);
