@@ -29,9 +29,7 @@ if ( ! $_tests_dir ) {
 }
 
 // Give access to tests_add_filter() function.
-if ( file_exists( $_try_tests_dir . '/includes/functions.php' ) ) {
-	require_once $_tests_dir . '/includes/functions.php';
-}
+require_once $_tests_dir . '/includes/functions.php';
 
 // Do not try to load JavaScript files from an external URL - this takes a
 // while.
