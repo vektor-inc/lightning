@@ -3,23 +3,23 @@ if ( ! class_exists( 'LTG_Theme_Json_Activator' ) ) {
 	class LTG_Theme_Json_Activator {
 
 		public function __construct() {
-			add_action( 'upgrader_process_complete', array( __CLASS__, 'default_activate_theme_json' ) );
+			// New installation and update
+			add_action( 'upgrader_process_complete', array( __CLASS__, 'new_installation_and_update' ) );
 
 			// 'update_option_lightning_theme_options' は保存前に実行されてしまい、
 			// 判定が意図したものにならないため 'updated_option' で処理.
 			add_action( 'updated_option', array( __CLASS__, 'rename_theme_json' ) );
 			add_action( 'deleted_option', array( __CLASS__, 'rename_theme_json' ) );
-			// Theme Updated.
-			add_action( 'upgrader_process_complete', array( __CLASS__, 'rename_theme_json' ) );
 		}
 
 		/**
-		 * Activate theme.json for new install
+		 * Activate theme.json for new install and update.
 		 *
 		 *  @since 15.1.0
 		 *  @return void
 		 */
-		public static function default_activate_theme_json() {
+		public static function new_installation_and_update() {
+			// New installation *******************************.
 			$options = get_option( 'lightning_theme_options' );
 			if ( ! $options ) {
 				$options = array(
@@ -27,6 +27,8 @@ if ( ! class_exists( 'LTG_Theme_Json_Activator' ) ) {
 				);
 				update_option( 'lightning_theme_options', $options );
 			}
+			// New installation and Update *******************************.
+			self::rename_theme_json();
 		}
 
 
