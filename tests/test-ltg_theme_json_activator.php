@@ -1,16 +1,16 @@
 <?php
 /**
- * Class Lightning_Rename_Theme_Json_Test
+ * Class LTG_Theme_Json_Activator_Test
  *
  * @package vektor-inc/lightning
  */
 
 /**
- * Lightning_Rename_Theme_Json_Test.
+ * LTG_Theme_Json_Activator_Test.
  */
-class Lightning_Rename_Theme_Json_Test extends WP_UnitTestCase {
+class LTG_Theme_Json_Activator_Test extends WP_UnitTestCase {
 
-	function test_llightning_rename_theme_json() {
+	function test_lLTG_Theme_Json_Activator() {
 		$test_array = array(
 			// Lightning を初めてインストールする場合.
 			// lightning_theme_options 自体まだ存在しない.
@@ -43,7 +43,7 @@ class Lightning_Rename_Theme_Json_Test extends WP_UnitTestCase {
 		);
 		print PHP_EOL;
 		print '------------------------------------' . PHP_EOL;
-		print 'lightning_rename_theme_json()' . PHP_EOL;
+		print 'LTG_Theme_Json_Activator' . PHP_EOL;
 		print '------------------------------------' . PHP_EOL;
 
 		foreach ( $test_array as $key => $value ) {
@@ -59,9 +59,9 @@ class Lightning_Rename_Theme_Json_Test extends WP_UnitTestCase {
 				$expected_rename = '_theme.json';
 			}
 
-			$this->assertEquals( $value['expected'], lightning_is_theme_json() );
+			$this->assertEquals( $value['expected'], LTG_Theme_Json_Activator::is_theme_json() );
 
-			$actual = lightning_rename_theme_json();
+			$actual = LTG_Theme_Json_Activator::rename_theme_json();
 
 			// 対象の theme.json ファイルが存在するかどうか.
 			// $actual = is_readable( get_parent_theme_file_path( $file ) );

@@ -161,6 +161,7 @@ require dirname( __FILE__ ) . '/inc/admin-mail-checker.php';
 require dirname( __FILE__ ) . '/inc/functions-compatible.php';
 require dirname( __FILE__ ) . '/inc/font-awesome/font-awesome-config.php';
 require dirname( __FILE__ ) . '/inc/old-page-template.php';
+require dirname( __FILE__ ) . '/inc/class-ltg-theme-json-activator.php';
 
 /**
  * 世代切り替えした時に同時にスキンも変更する処理
@@ -207,78 +208,3 @@ function lightning_change_generation( $old_value, $value, $option ) {
 	}
 }
 add_action( 'update_option_lightning_theme_generation', 'lightning_change_generation', 10, 3 );
-
-
-/**
- * Activate theme.json for new install
- *
- *  @since 15.1.0
- *  @return void
- */
-function lightning_default_activate_theme_json() {
-	$options = get_option( 'lightning_theme_options' );
-	if ( ! $options ) {
-		$options = array(
-			'theme_json' => true,
-		);
-		update_option( 'lightning_theme_options', $options );
-	}
-}
-add_action( 'upgrader_process_complete', 'lightning_default_activate_theme_json' );
-
-/**
- * Judge theme.json file is active or not
- *
- * @since 15.1.0
- * @return bool $is_theme_json
- */
-function lightning_is_theme_json() {
-	$options = get_option( 'lightning_theme_options' );
-	if ( ! $options || ( ! empty( $options['theme_json'] ) && true === $options['theme_json'] ) ) {
-		$is_theme_json = true;
-	} else {
-		$is_theme_json = false;
-	}
-	return $is_theme_json;
-}
-/**
- * Rename theme.json file
- * Before update option
- *
- * @since 15.1.0
- * @return string : rename statue ( for PHPUnit test )
- */
-function lightning_rename_theme_json() {
-
-	$_theme_json_path = get_template_directory() . '/_theme.json';
-	$theme_json_path  = get_template_directory() . '/theme.json';
-	if ( lightning_is_theme_json() ) {
-		if ( is_readable( $_theme_json_path ) ) {
-			$rename = rename( $_theme_json_path, $theme_json_path );
-			if ( ! $rename ) {
-				return __( 'Rename failed.', 'lightning' );
-			}
-		}
-		$path = get_template_directory() . '/theme.json';
-		if ( is_readable( $path ) ) {
-			return 'theme.json';
-		}
-	} else {
-		if ( is_readable( $theme_json_path ) ) {
-			$rename = rename( $theme_json_path, $_theme_json_path );
-			if ( ! $rename ) {
-				return __( 'Rename failed.', 'lightning' );
-			}
-		}
-		$path = get_template_directory() . '/_theme.json';
-		if ( is_readable( $path ) ) {
-			return '_theme.json';
-		}
-	}
-}
-// 'update_option_lightning_theme_options' は保存前に実行されてしまい、
-// 判定が意図したものにならないため 'updated_option' で処理.
-add_action( 'updated_option', 'lightning_rename_theme_json' );
-add_action( 'deleted_option', 'lightning_rename_theme_json' );
-// Theme Updated.
-add_action( 'upgrader_process_complete', 'lightning_rename_theme_json' );
