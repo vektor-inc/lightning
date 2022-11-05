@@ -5,8 +5,6 @@
 add_action( 'customize_register', 'lightning_customize_register_basic' );
 function lightning_customize_register_basic( $wp_customize ) {
 
-	lightning_is_theme_json();
-
 	$wp_customize->add_section(
 		'lightning_function',
 		array(
@@ -40,6 +38,8 @@ function lightning_customize_register_basic( $wp_customize ) {
 	$wp_customize->add_setting(
 		'lightning_theme_options[theme_json]',
 		array(
+			// デフォルトを true にすると、既存ユーザーが他の箇所を変更した時に theme.json が有効になってしまうので false にしておく.
+			// If the default is true, theme.json will be valid when existing users change other parts, so set it to false.
 			'default'           => false,
 			'type'              => 'option',
 			'capability'        => 'edit_theme_options',
