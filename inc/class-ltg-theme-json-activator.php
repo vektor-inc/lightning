@@ -10,6 +10,11 @@ if ( ! class_exists( 'LTG_Theme_Json_Activator' ) ) {
 			// 判定が意図したものにならないため 'updated_option' で処理.
 			add_action( 'updated_option', array( __CLASS__, 'rename_theme_json' ) );
 			add_action( 'deleted_option', array( __CLASS__, 'rename_theme_json' ) );
+
+			//★★★ test ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+			add_action( 'admin_notice', function(){
+				echo get_option( 'lightning_update_test' );
+			} );
 		}
 
 		/**
@@ -29,6 +34,7 @@ if ( ! class_exists( 'LTG_Theme_Json_Activator' ) ) {
 			}
 			// New installation and Update *******************************.
 			self::rename_theme_json();
+			update_option( 'lightning_update_test', '001' );
 		}
 
 
