@@ -54,19 +54,21 @@ class Lightning_Rename_Theme_Json_Test extends WP_UnitTestCase {
 				delete_option( 'lightning_theme_options' );
 			}
 			if ( $value['expected'] ) {
-				$file = 'theme.json';
+				$expected_rename = 'theme.json';
 			} else {
-				$file = '_theme.json';
+				$expected_rename = '_theme.json';
 			}
 
-			lightning_rename_theme_json();
+			$this->assertEquals( $value['expected'], lightning_is_theme_json() );
+
+			$actual = lightning_rename_theme_json();
 
 			// 対象の theme.json ファイルが存在するかどうか.
-			$actual = is_readable( get_parent_theme_file_path( $file ) );
+			// $actual = is_readable( get_parent_theme_file_path( $file ) );
 
 			print 'return  :' . esc_attr( $actual ) . PHP_EOL;
-			print 'expected :' . esc_attr( $value['expected'] ) . PHP_EOL;
-			$this->assertEquals( $value['expected'], $actual );
+			print 'expected :' . esc_attr( $expected_rename ) . PHP_EOL;
+			$this->assertEquals( $expected_rename, $actual );
 		}
 	}
 
