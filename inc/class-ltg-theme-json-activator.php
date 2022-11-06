@@ -4,17 +4,15 @@ if ( ! class_exists( 'LTG_Theme_Json_Activator' ) ) {
 
 		public function __construct() {
 			// New installation and update
-			add_action( 'upgrader_process_complete', array( __CLASS__, 'new_installation_and_update' ) );
+			// add_action( 'upgrader_process_complete', array( __CLASS__, 'new_installation_and_update' ) );
 
 			// 'update_option_lightning_theme_options' は保存前に実行されてしまい、
 			// 判定が意図したものにならないため 'updated_option' で処理.
-			add_action( 'updated_option', array( __CLASS__, 'rename_theme_json' ) );
-			add_action( 'deleted_option', array( __CLASS__, 'rename_theme_json' ) );
+			// add_action( 'updated_option', array( __CLASS__, 'rename_theme_json' ) );
+			add_action( 'updated_option', array( __CLASS__, 'new_installation_and_update' ) );
+			// add_action( 'deleted_option', array( __CLASS__, 'rename_theme_json' ) );
 
-			//★★★ test ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
-			add_action( 'admin_notice', function(){
-				echo get_option( 'lightning_update_test' );
-			} );
+
 		}
 
 		/**
@@ -34,7 +32,7 @@ if ( ! class_exists( 'LTG_Theme_Json_Activator' ) ) {
 			}
 			// New installation and Update *******************************.
 			self::rename_theme_json();
-			update_option( 'lightning_update_test', '001' );
+			update_option( 'lightning_update_test', '003' );
 		}
 
 
@@ -92,3 +90,8 @@ if ( ! class_exists( 'LTG_Theme_Json_Activator' ) ) {
 
 	new LTG_Theme_Json_Activator();
 }
+
+			//★★★ test ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+			add_action( 'admin_notices', function(){
+				echo '+++ '.get_option( 'lightning_update_test' ) . ' +++';
+			} );
