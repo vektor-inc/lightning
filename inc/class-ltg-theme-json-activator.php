@@ -60,7 +60,7 @@ if ( ! class_exists( 'LTG_Theme_Json_Activator' ) ) {
 		public static function update_theme_action( $result, $hook_extra ) {
 			self::rename_theme_json();
 
-			$args = array( $update_actions, $theme );
+			$args = array( $result, $hook_extra );
 			// $args = 'うえーい';
 			update_option( 'lightning_update_test', $args );
 			// echo '<br />_|＼○_ﾋｬｯ ε=＼＿○ﾉ ﾎｰｳ!!'.'<br />'."\n";
