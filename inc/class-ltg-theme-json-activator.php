@@ -6,7 +6,11 @@ if ( ! class_exists( 'LTG_Theme_Json_Activator' ) ) {
 			// New installation and update
 			// add_action( 'upgrader_process_complete', array( __CLASS__, 'new_installation_and_update' ) );
 
-			add_filter( 'install_theme_complete_actions', array( __CLASS__, 'new_installation_and_update' ), 10, 4 );
+			// add_filter( 'install_theme_complete_actions', array( __CLASS__, 'new_installation_and_update' ), 10, 4 );
+			add_filter( 'install_theme_complete_actions', array( __CLASS__, 'install_theme_action' ), 10, 4 );
+			add_filter( 'update_theme_complete_actions', array( __CLASS__, 'update_theme_action' ), 10, 2 );
+
+			$update_actions = apply_filters( 'update_theme_complete_actions', $update_actions, $this->theme );
 
 			// 'update_option_lightning_theme_options' は保存前に実行されてしまい、
 			// 判定が意図したものにならないため 'updated_option' で処理.
@@ -16,40 +20,53 @@ if ( ! class_exists( 'LTG_Theme_Json_Activator' ) ) {
 		}
 
 		/**
-		 * Activate theme.json for new install and update.
+		 * Theme install filter action.
 		 *
-		 *  @since 15.1.0
-		 *  @return void
+		 * @since 15.1.0
+		 *
+		 * @param string[] $install_actions Array of theme action links.
+		 * @param object   $api             Object containing WordPress.org API theme data.
+		 * @param string   $stylesheet      Theme directory name.
+		 * @param WP_Theme $theme_info      Theme object.
+		 *
+		 * @return string[] $update_actions
 		 */
-		public static function new_installation_and_update( $install_actions, $api, $stylesheet, $theme_info ) {
-
+		public static function install_theme_action( $install_actions, $api, $stylesheet, $theme_info ) {
 			if ( 'lightning' === $stylesheet ) {
 				// New installation *******************************.
 				$options = get_option( 'lightning_theme_options' );
 				if ( ! $options ) {
 					$options = array(
-					'theme_json' => true,
+						'theme_json' => true,
 					);
 					update_option( 'lightning_theme_options', $options );
 				}
-				// New installation and Update *******************************.
 				self::rename_theme_json();
 
-				// $saved_option = get_option( 'lightning_update_test' );
-				$args = array($install_actions, $api, $stylesheet, $theme_info);
-				// if ( ! is_array( $saved_option ) ) {
-				// 	$saved_option = array();
-				// }
-				// array_push( $saved_option, $args );
-
-				// $theme_info->get_data();
-				// update_option( 'lightning_update_test', $theme_info->get_data() );
-				// update_option( 'lightning_update_test', $theme_info->get_data() );
+				$args = array( $install_actions, $api, $stylesheet, $theme_info );
 				update_option( 'lightning_update_test', $args );
 			}
+
 			return $install_actions;
 		}
+		/**
+		 * Theme update filter action.
+		 *
+		 * @since 15.1.0
+		 *
+		 * @param string[] $update_actions Array of theme action links.
+		 * @param string   $theme          Theme directory name.
+		 *
+		 * @return string[] $update_actions
+		 */
+		public static function update_theme_action( $update_actions, $theme ) {
+			self::rename_theme_json();
 
+			$args = array( $update_actions, $theme );
+			update_option( 'lightning_update_test', $args );
+
+			return $update_actions;
+		}
 
 		/**
 		 * Judge theme.json file is active or not
