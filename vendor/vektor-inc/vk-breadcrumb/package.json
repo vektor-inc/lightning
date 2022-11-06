@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "phpunit": "composer install && npx wp-env run phpunit \"phpunit -c /var/www/html/wp-content/plugins/vk-breadcrumb/phpunit.xml.dist --verbose\""
+  }
+}

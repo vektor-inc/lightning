@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "phpunit": "composer install && npx wp-env run phpunit \"phpunit -c /var/www/html/wp-content/themes/lightning/vendor/font-awesome-versions/phpunit.xml.dist --verbose\""
+  }
+}

@@ -1,0 +1,51 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2022-04-15T16:27:56+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.5.0-alpha-3f4c34b\n"
+"X-Domain: font-awesome-versions\n"
+
+#: src/VkFontAwesomeVersions.php:135
+#: src/VkFontAwesomeVersions.php:150
+#: src/VkFontAwesomeVersions.php:165
+msgid "Not recommended"
+msgstr ""
+
+#: src/VkFontAwesomeVersions.php:223
+msgid "Ex ) "
+msgstr ""
+
+#: src/VkFontAwesomeVersions.php:229
+msgid "Font Awesome Icon list"
+msgstr ""
+
+#: src/VkFontAwesomeVersions.php:347
+msgid "An older version of Font Awesome is selected. This version will be removed by August 2022."
+msgstr ""
+
+#: src/VkFontAwesomeVersions.php:348
+msgid "Please change the version of FontAwesome on the Appearance > Customize screen."
+msgstr ""
+
+#: src/VkFontAwesomeVersions.php:349
+msgid "* It is necessary to reset the icon font in the place where Font Awesome is used."
+msgstr ""
+
+#: src/VkFontAwesomeVersions.php:372
+msgid "Font Awesome"
+msgstr ""
+
+#: src/VkFontAwesomeVersions.php:395
+msgid "Font Awesome Version"
+msgstr ""
+
+#: src/VkFontAwesomeVersions.php:398
+msgid "4.7 will be abolished in the near future."
+msgstr ""

@@ -1,0 +1,180 @@
+{
+    "packages": [
+        {
+            "name": "vektor-inc/font-awesome-versions",
+            "version": "0.4.1",
+            "version_normalized": "0.4.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vektor-inc/font-awesome-versions.git",
+                "reference": "3a993f14a96dbe8095b3a34813310778d32847e2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vektor-inc/font-awesome-versions/zipball/3a993f14a96dbe8095b3a34813310778d32847e2",
+                "reference": "3a993f14a96dbe8095b3a34813310778d32847e2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "wp-phpunit/wp-phpunit": "^5.4",
+                "yoast/phpunit-polyfills": "^1.0"
+            },
+            "time": "2022-04-24T06:53:01+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "VektorInc\\VK_Font_Awesome_Versions\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Vektor,Inc",
+                    "homepage": "https://www.vektor-inc.co.jp/"
+                }
+            ],
+            "description": "Font Awesome",
+            "support": {
+                "issues": "https://github.com/vektor-inc/font-awesome-versions/issues",
+                "source": "https://github.com/vektor-inc/font-awesome-versions/tree/0.4.1"
+            },
+            "install-path": "../vektor-inc/font-awesome-versions"
+        },
+        {
+            "name": "vektor-inc/vk-breadcrumb",
+            "version": "0.2.4",
+            "version_normalized": "0.2.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vektor-inc/vk-breadcrumb.git",
+                "reference": "fbe1fb42d502ba24ae100e640e72b6091fac7c20"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vektor-inc/vk-breadcrumb/zipball/fbe1fb42d502ba24ae100e640e72b6091fac7c20",
+                "reference": "fbe1fb42d502ba24ae100e640e72b6091fac7c20",
+                "shasum": ""
+            },
+            "require": {
+                "vektor-inc/vk-helpers": "^0.0.2"
+            },
+            "require-dev": {
+                "wp-phpunit/wp-phpunit": "^5.4",
+                "yoast/phpunit-polyfills": "^1.0"
+            },
+            "time": "2022-07-05T07:30:47+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "VektorInc\\VK_Breadcrumb\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Vektor,Inc.",
+                    "email": "kurudrive@gmail.com"
+                }
+            ],
+            "description": "WordPress Bread Crumb Class",
+            "support": {
+                "issues": "https://github.com/vektor-inc/vk-breadcrumb/issues",
+                "source": "https://github.com/vektor-inc/vk-breadcrumb/tree/0.2.4"
+            },
+            "install-path": "../vektor-inc/vk-breadcrumb"
+        },
+        {
+            "name": "vektor-inc/vk-color-palette-manager",
+            "version": "0.0.15",
+            "version_normalized": "0.0.15.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vektor-inc/vk-color-palette-manager.git",
+                "reference": "699b1d6f99272631bb9978e1cd5bad04ac99e520"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vektor-inc/vk-color-palette-manager/zipball/699b1d6f99272631bb9978e1cd5bad04ac99e520",
+                "reference": "699b1d6f99272631bb9978e1cd5bad04ac99e520",
+                "shasum": ""
+            },
+            "time": "2021-12-02T17:00:03+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "VektorInc\\VK_Color_Palette_Manager\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "kurudrive",
+                    "email": "kurudrive@gmail.com"
+                }
+            ],
+            "description": "Manage color palette for Gutenberg",
+            "support": {
+                "issues": "https://github.com/vektor-inc/vk-color-palette-manager/issues",
+                "source": "https://github.com/vektor-inc/vk-color-palette-manager/tree/0.0.15"
+            },
+            "install-path": "../vektor-inc/vk-color-palette-manager"
+        },
+        {
+            "name": "vektor-inc/vk-helpers",
+            "version": "0.0.2",
+            "version_normalized": "0.0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vektor-inc/vk-helpers.git",
+                "reference": "320155b9df7f9f57a889e144dd8b379184ac15ec"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vektor-inc/vk-helpers/zipball/320155b9df7f9f57a889e144dd8b379184ac15ec",
+                "reference": "320155b9df7f9f57a889e144dd8b379184ac15ec",
+                "shasum": ""
+            },
+            "time": "2022-02-08T18:38:08+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "VektorInc\\VK_Helpers\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Vektor,Inc.",
+                    "email": "kurudrive@gmail.com"
+                }
+            ],
+            "description": "WordPress Helpers Class",
+            "support": {
+                "issues": "https://github.com/vektor-inc/vk-helpers/issues",
+                "source": "https://github.com/vektor-inc/vk-helpers/tree/0.0.2"
+            },
+            "install-path": "../vektor-inc/vk-helpers"
+        }
+    ],
+    "dev": false,
+    "dev-package-names": []
+}

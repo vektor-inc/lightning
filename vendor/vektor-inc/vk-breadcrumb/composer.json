@@ -1,0 +1,23 @@
+{
+    "name": "vektor-inc/vk-breadcrumb",
+    "description": "WordPress Bread Crumb Class",
+    "license": "GPL-2.0+",
+    "autoload": {
+        "psr-4": {
+            "VektorInc\\VK_Breadcrumb\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Vektor,Inc.",
+            "email": "kurudrive@gmail.com"
+        }
+    ],
+    "require": {
+        "vektor-inc/vk-helpers": "^0.0.2"
+    },
+    "require-dev": {
+        "wp-phpunit/wp-phpunit": "^5.4",
+        "yoast/phpunit-polyfills": "^1.0"
+    }
+}

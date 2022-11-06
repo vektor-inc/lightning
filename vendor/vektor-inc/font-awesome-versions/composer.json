@@ -1,0 +1,28 @@
+{
+    "name": "vektor-inc/font-awesome-versions",
+    "description": "Font Awesome",
+    "license": "GPL-2.0-or-later",
+    "autoload": {
+        "psr-4": {
+            "VektorInc\\VK_Font_Awesome_Versions\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Vektor,Inc",
+            "homepage": "https://www.vektor-inc.co.jp/"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.0"
+    },
+    "require-dev": {
+        "wp-phpunit/wp-phpunit": "^5.4",
+        "yoast/phpunit-polyfills": "^1.0"
+    },
+    "scripts": {
+		"translate": [
+			"wp i18n make-pot --skip-js . src/languages/font-awesome-versioons.pot"
+		]
+	}
+}
