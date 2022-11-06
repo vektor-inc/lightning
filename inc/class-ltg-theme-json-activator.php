@@ -10,8 +10,6 @@ if ( ! class_exists( 'LTG_Theme_Json_Activator' ) ) {
 			add_filter( 'install_theme_complete_actions', array( __CLASS__, 'install_theme_action' ), 10, 4 );
 			add_filter( 'update_theme_complete_actions', array( __CLASS__, 'update_theme_action' ), 10, 2 );
 
-			$update_actions = apply_filters( 'update_theme_complete_actions', $update_actions, $this->theme );
-
 			// 'update_option_lightning_theme_options' は保存前に実行されてしまい、
 			// 判定が意図したものにならないため 'updated_option' で処理.
 			// add_action( 'updated_option', array( __CLASS__, 'rename_theme_json' ) );
