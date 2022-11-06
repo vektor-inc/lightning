@@ -52,20 +52,19 @@ if ( ! class_exists( 'LTG_Theme_Json_Activator' ) ) {
 		 *
 		 * @since 15.1.0
 		 *
-		 * @param string[] $update_actions Array of theme action links.
-		 * @param string   $theme          Theme directory name.
+		 * @param array|WP_Error $result     Result from WP_Upgrader::install_package().
+		 * @param array          $hook_extra Extra arguments passed to hooked filters.
 		 *
 		 * @return string[] $update_actions
 		 */
-		public static function update_theme_action( $update_actions, $theme ) {
+		public static function update_theme_action( $result, $hook_extra ) {
 			self::rename_theme_json();
 
 			$args = array( $update_actions, $theme );
-			$args = 'うえーい';
+			// $args = 'うえーい';
 			update_option( 'lightning_update_test', $args );
-			echo '<br />_|＼○_ﾋｬｯ ε=＼＿○ﾉ ﾎｰｳ!!'.'<br />'."\n";
-			wp_die();
-			return $update_actions;
+			// echo '<br />_|＼○_ﾋｬｯ ε=＼＿○ﾉ ﾎｰｳ!!'.'<br />'."\n";
+			return $result;
 		}
 
 		/**
