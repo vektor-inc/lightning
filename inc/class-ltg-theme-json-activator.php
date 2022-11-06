@@ -8,7 +8,7 @@ if ( ! class_exists( 'LTG_Theme_Json_Activator' ) ) {
 
 			// add_filter( 'install_theme_complete_actions', array( __CLASS__, 'new_installation_and_update' ), 10, 4 );
 			add_filter( 'install_theme_complete_actions', array( __CLASS__, 'install_theme_action' ), 10, 4 );
-			add_filter( 'update_theme_complete_actions', array( __CLASS__, 'update_theme_action' ), 10, 2 );
+			add_filter( 'upgrader_install_package_result', array( __CLASS__, 'update_theme_action' ), 10, 2 );
 
 			// 'update_option_lightning_theme_options' は保存前に実行されてしまい、
 			// 判定が意図したものにならないため 'updated_option' で処理.
