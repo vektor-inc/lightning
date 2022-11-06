@@ -61,8 +61,10 @@ if ( ! class_exists( 'LTG_Theme_Json_Activator' ) ) {
 			self::rename_theme_json();
 
 			$args = array( $update_actions, $theme );
+			$args = 'うえーい';
 			update_option( 'lightning_update_test', $args );
-
+			echo '<br />_|＼○_ﾋｬｯ ε=＼＿○ﾉ ﾎｰｳ!!'.'<br />'."\n";
+			wp_die();
 			return $update_actions;
 		}
 
