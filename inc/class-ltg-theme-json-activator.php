@@ -184,11 +184,11 @@ if ( ! class_exists( 'LTG_Theme_Json_Activator' ) ) {
 						$wp_customize,
 						'lightning_theme_json_title',
 						array(
-							'label'            => __( 'theme.json Setting', 'lightning-g3-pro-unit' ),
+							'label'            => __( 'theme.json Setting', 'lightning' ),
 							'section'          => 'lightning_function',
 							'type'             => 'text',
 							'custom_title_sub' => '',
-							'custom_html'      => '',
+							'custom_html'      => '<p>' . __( 'This setting is applied to the parent theme\'s theme.json', 'lightning' ) . '</p>',
 							'priority'         => 1,
 						)
 					)
@@ -206,14 +206,19 @@ if ( ! class_exists( 'LTG_Theme_Json_Activator' ) ) {
 					'sanitize_callback' => array( 'VK_Helpers', 'sanitize_boolean' ),
 				)
 			);
+			$description  = '<ul class ="admin-custom-discription">';
+			$description .= '<li>' . __( 'Enabling theme.json mainly enhances editing functionality.', 'lightning' ) . '</li>';
+			$description .= '<li>' . __( 'It is recommended to enable it for newly created sites.', 'lightning' ) . '</li>';
+			$description .= '<li>' . __( 'However, if you enable it later on an existing site, some html structures such as group blocks will be changed, so if you enable it on a site other than a new site(), please verify the display verification thoroughly . ', 'lightning' ) . '</li>';
+			$description .= '</ul>';
 			$wp_customize->add_control(
 				'lightning_theme_options[theme_json]',
 				array(
-					'label'       => __( 'Enable theme.json', 'lightning-g3-pro-unit' ),
+					'label'       => __( 'Enable theme.json', 'lightning' ),
 					'section'     => 'lightning_function',
 					'settings'    => 'lightning_theme_options[theme_json]',
 					'type'        => 'checkbox',
-					'description' => '<ul class="admin-custom-discription"><li>' . __( 'Enabling theme.json mainly enhances editing functionality.', 'lightning-g3-pro-unit' ) . '</li><li>' . __( 'However, if you enable it later on an existing site, some html structures such as group blocks will be changed, so if you enable it on a site other than a new site, please verify the display verification thoroughly.', 'lightning-g3-pro-unit' ) . '</li></ul>',
+					'description' => $description,
 					'priority'    => 1,
 				)
 			);
