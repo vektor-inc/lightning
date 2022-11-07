@@ -65,8 +65,8 @@ if ( ! class_exists( 'LTG_Theme_Json_Activator' ) ) {
 		 */
 		public static function install_theme_action( $install_actions, $api, $stylesheet, $theme_info ) {
 
+			// Lightning のインストールの場合のみ実行.
 			if ( 'lightning' === $stylesheet ) {
-				// New installation *******************************.
 				// lightning_theme_options が存在しているかどうかで Lightning の新規インストールかどうかを判定.
 				$options = get_option( 'lightning_theme_options' );
 				if ( ! $options ) {
@@ -79,7 +79,7 @@ if ( ! class_exists( 'LTG_Theme_Json_Activator' ) ) {
 				// theme.json のリネームを実行.
 				self::rename_theme_json();
 
-				// 実際には利用しないがデバッグ用に保存.
+				// デバッグ用情報を保存（通常動作では利用しない）.
 				$args = array( $install_actions, $api, $stylesheet, $theme_info );
 				update_option( 'lightning_update_info', $args );
 			}
@@ -101,9 +101,10 @@ if ( ! class_exists( 'LTG_Theme_Json_Activator' ) ) {
 			// theme.json のリネームを実行.
 			self::rename_theme_json();
 
-			// 実際には利用しないがデバッグ用に保存.
+			// デバッグ用情報を保存（通常動作では利用しない）.
 			$args = array( $result, $hook_extra );
 			update_option( 'lightning_update_info', $args );
+
 			return $result;
 		}
 
