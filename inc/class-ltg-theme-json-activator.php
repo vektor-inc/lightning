@@ -53,7 +53,7 @@ if ( ! class_exists( 'LTG_Theme_Json_Activator' ) ) {
 					print '<pre style="text-align:left">';
 					print_r( $option );
 					print '</pre>';
-					echo '━━━━━━━━━━━━━━━━━━━━'."<br>\n";
+					echo '━━━━━━━━━━━━━━━━━━━━' . "<br>\n";
 					$option = get_option( 'lightning_update_info' );
 					print '<pre style="text-align:left">';
 					print_r( $option );
@@ -85,22 +85,22 @@ if ( ! class_exists( 'LTG_Theme_Json_Activator' ) ) {
 
 			// // Lightning のインストールの場合のみ実行.
 			// if ( 'lightning' === $stylesheet ) {
-			// 	// lightning_theme_options が存在しているかどうかで Lightning の新規インストールかどうかを判定.
-			// 	$options = get_option( 'lightning_theme_options' );
-			// 	// Lightning の新規インストールの場合のみ実行.
-			// 	if ( ! $options ) {
-			// 		$options = array(
-			// 			'theme_json' => true,
-			// 		);
-			// 		update_option( 'lightning_theme_options', $options );
-			// 	}
+			// lightning_theme_options が存在しているかどうかで Lightning の新規インストールかどうかを判定.
+			// $options = get_option( 'lightning_theme_options' );
+			// Lightning の新規インストールの場合のみ実行.
+			// if ( ! $options ) {
+			// $options = array(
+			// 'theme_json' => true,
+			// );
+			// update_option( 'lightning_theme_options', $options );
+			// }
 
-			// 	// theme.json のリネームを実行.
-			// 	self::rename_theme_json();
+			// theme.json のリネームを実行.
+			// self::rename_theme_json();
 
-			// 	// デバッグ用情報を保存（通常動作では利用しない）.
-			// 	$args = array( $install_actions, $api, $stylesheet, $theme_info );
-			// 	update_option( 'lightning_update_info', $args );
+			// デバッグ用情報を保存（通常動作では利用しない）.
+			// $args = array( $install_actions, $api, $stylesheet, $theme_info );
+			// update_option( 'lightning_update_info', $args );
 			// }
 
 			return $install_actions;
@@ -247,12 +247,23 @@ if ( ! class_exists( 'LTG_Theme_Json_Activator' ) ) {
 				);
 			}
 
+			// カスタマイズ画面での theme.json の設定は、デフォルトを true にすると、既存ユーザーが他の箇所を変更した時に theme.json が有効になってしまうので false にしておく.
+			// If the default is true, theme.json will be valid when existing users change other parts, so set it to false.
+			// ただし、Lightning をはじめてはじめて有効化するユーザーには true にしないと、
+			// カスタマイズ画面で一旦テーマを Lightning にした後に、そのまま他の項目を保存された場合、
+			// チェックが入っていないので theme.json が無効化されてしまう。
+			// そのため、以下のケースでは true にする必要がある
+			// * 最初にインストールしてそのままカスタマイズ画面に移動した場合.
+			// * カスタマイズ画面で他のテーマから Lightning に変更する場合（カスタマイズ画面ではLightningだが変更を未保存の状態）.
+			if ( get_option( 'fresh_site' ) || 'lightning' !== get_option( 'template' ) ) {
+				$default = true;
+			} else {
+				$default = false;
+			}
 			$wp_customize->add_setting(
 				'lightning_theme_options[theme_json]',
 				array(
-					// デフォルトを true にすると、既存ユーザーが他の箇所を変更した時に theme.json が有効になってしまうので false にしておく.
-					// If the default is true, theme.json will be valid when existing users change other parts, so set it to false.
-					'default'           => false,
+					'default'           => $default,
 					'type'              => 'option',
 					'capability'        => 'edit_theme_options',
 					'sanitize_callback' => array( 'VK_Helpers', 'sanitize_boolean' ),
