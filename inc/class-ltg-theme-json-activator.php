@@ -34,6 +34,8 @@ if ( ! class_exists( 'LTG_Theme_Json_Activator' ) ) {
 			// 'update_option_lightning_theme_options' は保存前に実行されてしまい、
 			// 判定・ファイル名の書き換えが意図したものにならないため 'updated_option' で処理.
 			add_action( 'updated_option', array( __CLASS__, 'update_option_action' ), 10, 1 );
+
+			add_action( 'customize_register', array( __CLASS__, 'customize_register' ), 11, 1 );
 		}
 
 		/**
@@ -163,6 +165,58 @@ if ( ! class_exists( 'LTG_Theme_Json_Activator' ) ) {
 					return '_theme.json';
 				}
 			}
+		}
+
+		/**
+		 * Customize register
+		 */
+		public static function customize_register( $wp_customize ) {
+
+			if ( class_exists( 'VK_Custom_Html_Control' ) ) {
+				$wp_customize->add_setting(
+					'lightning_theme_json_title',
+					array(
+						'sanitize_callback' => 'sanitize_text_field',
+					)
+				);
+				$wp_customize->add_control(
+					new VK_Custom_Html_Control(
+						$wp_customize,
+						'lightning_theme_json_title',
+						array(
+							'label'            => __( 'theme.json Setting', 'lightning-g3-pro-unit' ),
+							'section'          => 'lightning_function',
+							'type'             => 'text',
+							'custom_title_sub' => '',
+							'custom_html'      => '',
+							'priority'         => 1,
+						)
+					)
+				);
+			}
+
+			$wp_customize->add_setting(
+				'lightning_theme_options[theme_json]',
+				array(
+					// デフォルトを true にすると、既存ユーザーが他の箇所を変更した時に theme.json が有効になってしまうので false にしておく.
+					// If the default is true, theme.json will be valid when existing users change other parts, so set it to false.
+					'default'           => false,
+					'type'              => 'option',
+					'capability'        => 'edit_theme_options',
+					'sanitize_callback' => array( 'VK_Helpers', 'sanitize_boolean' ),
+				)
+			);
+			$wp_customize->add_control(
+				'lightning_theme_options[theme_json]',
+				array(
+					'label'       => __( 'Enable theme.json', 'lightning-g3-pro-unit' ),
+					'section'     => 'lightning_function',
+					'settings'    => 'lightning_theme_options[theme_json]',
+					'type'        => 'checkbox',
+					'description' => '<ul class="admin-custom-discription"><li>' . __( 'Enabling theme.json mainly enhances editing functionality.', 'lightning-g3-pro-unit' ) . '</li><li>' . __( 'However, if you enable it later on an existing site, some html structures such as group blocks will be changed, so if you enable it on a site other than a new site, please verify the display verification thoroughly.', 'lightning-g3-pro-unit' ) . '</li></ul>',
+					'priority'    => 1,
+				)
+			);
 		}
 	}
 
