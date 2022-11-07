@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ] Fix generation setting bug on starter data import.
+
 v14.25.1
 [ G3 ] Fix button color 6.1 on editor screen
 [ G3 ] Fix image 6.1 margin bottom
