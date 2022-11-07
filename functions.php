@@ -166,7 +166,9 @@ require dirname( __FILE__ ) . '/inc/admin-mail-checker.php';
 require dirname( __FILE__ ) . '/inc/functions-compatible.php';
 require dirname( __FILE__ ) . '/inc/font-awesome/font-awesome-config.php';
 require dirname( __FILE__ ) . '/inc/old-page-template.php';
+
 require dirname( __FILE__ ) . '/inc/class-ltg-theme-json-activator.php';
+new LTG_Theme_Json_Activator();
 
 /**
  * 世代切り替えした時に同時にスキンも変更する処理

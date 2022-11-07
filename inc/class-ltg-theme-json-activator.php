@@ -5,9 +5,16 @@
  *
  * このクラスは theme.json の有効化・無効化を制御します。
  *
- * 新規インストールには自動的に theme.json を有効化する
- * 既存のユーザーには自動的に theme.json が有効化されてはいけない
+ * 外観 > カスタマイズ > Lightning 機能設定 で theme.json を有効・無効を切り替えると、
+ * 初期状態で _theme.json で保存されているファイルが theme.json にリネームされます。
+ * 無効化するとその逆の処理をします。
  *
+ * 新規インストールには自動的に theme.json を有効化します。
+ * 既存のユーザーには自動的に theme.json が有効化されてはいけない。
+ *
+ * テーマがアップデートされた場合にも theme.json はアップデート前のファイル名を維持するように処理します。
+ *
+ * @since 15.1.0
  * @package vektor-inc/lighting
  */
 
@@ -169,6 +176,9 @@ if ( ! class_exists( 'LTG_Theme_Json_Activator' ) ) {
 
 		/**
 		 * Customize register
+		 *
+		 * @param object $wp_customize : customize object.
+		 * @return void
 		 */
 		public static function customize_register( $wp_customize ) {
 
@@ -224,6 +234,4 @@ if ( ! class_exists( 'LTG_Theme_Json_Activator' ) ) {
 			);
 		}
 	}
-
-	new LTG_Theme_Json_Activator();
 }
