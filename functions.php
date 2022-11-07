@@ -208,12 +208,3 @@ function lightning_change_generation( $old_value, $value, $option ) {
 	}
 }
 add_action( 'update_option_lightning_theme_generation', 'lightning_change_generation', 10, 3 );
-
-
-require 'inc/plugin-update-checker/plugin-update-checker.php';
-$myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
-	'https://github.com/vektor-inc/lightning/',
-	__FILE__, // Full path to the main plugin file or functions.php.
-	'lightning'
-);
-$myUpdateChecker->setBranch( 'test/update-action' );
