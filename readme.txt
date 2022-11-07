@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+Fix generation setting bug on starter data import.
+
 v15.0.0
 [ G3 ] Cope with theme.json
 
