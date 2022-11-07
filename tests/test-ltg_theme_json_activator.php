@@ -11,11 +11,24 @@
 class LTG_Theme_Json_Activator_Test extends WP_UnitTestCase {
 
 	/**
+	 * Reset theme json
+	 * テーマの theme.json は初期状態では _theme.json でなくてはならない。
+	 * テストの過程で theme.json に変更された場合、テスト後に _theme.json に戻す
+	 *
+	 * @return void
+	 */
+	public static function reset_theme_json() {
+		if ( is_readable( get_template_directory() . '/theme.json' ) ) {
+			$file_before = rename( get_template_directory() . '/theme.json', get_template_directory() . '/_theme.json' );
+		}
+	}
+
+	/**
 	 * LTG_Theme_Json_Activator test
 	 *
 	 * ファイルの書き換えが正常に実行されるかどうかをテスト
 	 */
-	function test_LTG_Theme_Json_Activator() {
+	public function test_LTG_Theme_Json_Activator() {
 		$test_array = array(
 			// Lightning を初めてインストールする場合.
 			// lightning_theme_options 自体まだ存在しない.
@@ -75,6 +88,8 @@ class LTG_Theme_Json_Activator_Test extends WP_UnitTestCase {
 			print 'expected :' . esc_attr( $expected_rename ) . PHP_EOL;
 			$this->assertEquals( $expected_rename, $actual );
 		}
+
+		self::reset_theme_json();
 	}
 
 	/**
@@ -141,5 +156,6 @@ class LTG_Theme_Json_Activator_Test extends WP_UnitTestCase {
 			$this->assertTrue( $actual );
 
 		}
+		self::reset_theme_json();
 	}
 }
