@@ -10,7 +10,12 @@
  */
 class LTG_Theme_Json_Activator_Test extends WP_UnitTestCase {
 
-	function test_lLTG_Theme_Json_Activator() {
+	/**
+	 * LTG_Theme_Json_Activator test
+	 *
+	 * ファイルの書き換えが正常に実行されるかどうかをテスト
+	 */
+	function test_LTG_Theme_Json_Activator() {
 		$test_array = array(
 			// Lightning を初めてインストールする場合.
 			// lightning_theme_options 自体まだ存在しない.
@@ -72,4 +77,69 @@ class LTG_Theme_Json_Activator_Test extends WP_UnitTestCase {
 		}
 	}
 
+	/**
+	 * オプション値のアップデートで lightning_theme_options を保存された場合のみファイルの書き換えが実行されるかどうか
+	 */
+	public function test_option_update_rename() {
+		$test_array = array(
+			// Do not rename case.
+			// lightning_theme_options じゃない保存値の場合はリネーム処理を実行しない.
+			array(
+				// 本当は有効化設定.
+				'lightning_theme_options' => array(
+					'theme_json' => true,
+				),
+				// ファイルは無効化状態(_theme.json).
+				'before_theme_json_file'  => false,
+				// テストでアップデート対象のオプション.
+				'update_option'           => array(
+					'test_option' => 'test_value',
+				),
+				// 実行後のファイル名 : lightning_theme_options の保存ではないので変更しない.
+				'expacted'                => '_theme.json',
+			),
+			// Rename case.
+			// lightning_theme_options のアップデートの場合にファイル名の書き換えを実行.
+			array(
+				'lightning_theme_options' => array(
+					'theme_json' => false,
+				),
+				// テスト実行前に _theme.json に設定.
+				'before_theme_json_file'  => false,
+				'update_option'           => array(
+					'lightning_theme_options' => array(
+						'theme_json' => true,
+					),
+				),
+				'expacted'                => 'theme.json',
+			),
+
+		);
+
+		foreach ( $test_array as $value ) {
+			// とりあえずテストする前の lightning_theme_options をセット.
+			update_option( 'lightning_theme_options', $value['lightning_theme_options'] );
+
+			// テスト実行前の theme.json のファイル名に設定.
+			if ( $value['before_theme_json_file'] ) {
+				$file_before      = get_template_directory() . '/theme.json';
+				$file_need_rename = get_template_directory() . '/_theme.json';
+			} else {
+				$file_before      = get_template_directory() . '/_theme.json';
+				$file_need_rename = get_template_directory() . '/theme.json';
+			}
+			if ( ! is_readable( $file_before ) ) {
+				$file_before = rename( $file_need_rename, $file_before );
+			}
+
+			// Do update option.
+			foreach ( $value['update_option'] as $option_key => $option_value ) {
+				update_option( $option_key, $option_value );
+			}
+
+			$actual = is_readable( get_template_directory() . '/' . $value['expacted'] );
+			$this->assertTrue( $actual );
+
+		}
+	}
 }
