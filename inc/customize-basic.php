@@ -13,6 +13,7 @@ function lightning_customize_register_basic( $wp_customize ) {
 		)
 	);
 
+	// Generation Setting ////////////////////////////////////////.
 	$wp_customize->add_setting(
 		'generation_title',
 		array(
@@ -29,7 +30,7 @@ function lightning_customize_register_basic( $wp_customize ) {
 				'type'             => 'text',
 				'custom_title_sub' => '',
 				'custom_html'      => '<p><span style="color:red;font-weight:bold;">' . __( 'Switch of generations is nearly switch of theme.', 'lightning' ) . '</span></p>' . '<p>' . __( 'Be sure to make a backup before switch of generation as it is not very compatible.', 'lightning' ) . '</p>',
-				'priority'         => 1,
+				'priority'         => 2,
 			)
 		)
 	);
@@ -38,7 +39,7 @@ function lightning_customize_register_basic( $wp_customize ) {
 		'g2' => __( 'Generation 2 ( ~ version 13.x )', 'lightning' ),
 		'g3' => __( 'Generation 3', 'lightning' ),
 	);
-	if ( lightning_is_g3() ){
+	if ( lightning_is_g3() ) {
 		$default = 'g3';
 	} else {
 		$default = 'g2';
@@ -62,7 +63,7 @@ function lightning_customize_register_basic( $wp_customize ) {
 			'settings' => 'lightning_theme_generation',
 			'type'     => 'select',
 			'choices'  => $choices,
-			'priority' => 1,
+			'priority' => 2,
 		)
 	);
 
@@ -83,7 +84,7 @@ function lightning_customize_register_basic( $wp_customize ) {
 				'custom_title_sub' => '',
 				'custom_html'      => '<p>' . __( 'After switching generations, save and reload the page.', 'lightning' ) . '</p><a href="' . esc_url( $_SERVER['REQUEST_URI'] ) . '" class="button button-primary button-block">' . __( 'Reload the page', 'lightning' ) . '</a>',
 				// 'active_callback' => 'lightning_generation_reload_callback',
-				'priority'         => 1,
+				'priority'         => 2,
 			)
 		)
 	);
