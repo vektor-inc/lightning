@@ -20,6 +20,11 @@ if ( true === LIG_DEBUG ) {
 	add_action( 'lightning_site_header_after', 'lightning_debug_mode' );
 }
 
+/**
+ * Check is G3
+ *
+ * @return bool
+ */
 function lightning_is_g3() {
 
 	$return = true;
@@ -35,7 +40,7 @@ function lightning_is_g3() {
 			$return = false;
 			// テストで呼び出される前にテーマのロード段階で一度呼ばれるために、
 			// これがあると g2 が保存されて g3 のテストが通らなくなるためコメントアウト
-			// update_option( 'lightning_theme_generation', 'g2' );
+			// update_option( 'lightning_theme_generation', 'g2' ); .
 		} elseif ( 'origin3' === $skin ) {
 			$return = true;
 			update_option( 'lightning_theme_generation', 'g3' );
@@ -45,7 +50,7 @@ function lightning_is_g3() {
 			$return = true;
 			// テストで呼び出される前にテーマのロード段階で一度呼ばれるために、
 			// これがあると g3 が保存されて g2 のテストが通らなくなるためコメントアウト
-			// update_option( 'lightning_theme_generation', 'g3' );
+			// update_option( 'lightning_theme_generation', 'g3' ); .
 		} else {
 			// これ以外は従来ユーザーの可能性が高いのでG2.
 			update_option( 'lightning_theme_generation', 'g2' );
