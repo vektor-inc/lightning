@@ -53,18 +53,18 @@ class LTG_Theme_Json_Activator_Test extends WP_UnitTestCase {
 			} else {
 				delete_option( 'lightning_theme_options' );
 			}
+
+			// とりあえず判定が正しいかどうかを確認.
+			$this->assertEquals( $value['expected'], LTG_Theme_Json_Activator::is_theme_json() );
+
+			// ファイル名が正しいかどうかを確認.
+			$actual = LTG_Theme_Json_Activator::rename_theme_json();
+
 			if ( $value['expected'] ) {
 				$expected_rename = 'theme.json';
 			} else {
 				$expected_rename = '_theme.json';
 			}
-
-			$this->assertEquals( $value['expected'], LTG_Theme_Json_Activator::is_theme_json() );
-
-			$actual = LTG_Theme_Json_Activator::rename_theme_json();
-
-			// 対象の theme.json ファイルが存在するかどうか.
-			// $actual = is_readable( get_parent_theme_file_path( $file ) );
 
 			print 'return  :' . esc_attr( $actual ) . PHP_EOL;
 			print 'expected :' . esc_attr( $expected_rename ) . PHP_EOL;
