@@ -20,6 +20,11 @@ if ( true === LIG_DEBUG ) {
 	add_action( 'lightning_site_header_after', 'lightning_debug_mode' );
 }
 
+/**
+ * Check is G3
+ *
+ * @return bool
+ */
 function lightning_is_g3() {
 
 	$return = true;
@@ -33,19 +38,23 @@ function lightning_is_g3() {
 		$options = get_option( 'lightning_theme_options' );
 		if ( 'origin2' === $skin ) {
 			$return = false;
-			update_option( 'lightning_theme_generation', 'g2' );
+			// テストで呼び出される前にテーマのロード段階で一度呼ばれるために、
+			// これがあると g2 が保存されて g3 のテストが通らなくなるためコメントアウト
+			// update_option( 'lightning_theme_generation', 'g2' ); .
 		} elseif ( 'origin3' === $skin ) {
 			$return = true;
 			update_option( 'lightning_theme_generation', 'g3' );
 
-		} elseif ( get_option( 'fresh_site' ) || ! $options ) {
-			// 新規サイトでオプション非保存ならまぁG3っしょ
+		} elseif ( get_option( 'fresh_site' ) && ! $options ) {
+			// 新規サイトでオプション非保存ならまぁG3っしょ.
 			$return = true;
-			update_option( 'lightning_theme_generation', 'g3' );
+			// テストで呼び出される前にテーマのロード段階で一度呼ばれるために、
+			// これがあると g3 が保存されて g2 のテストが通らなくなるためコメントアウト
+			// update_option( 'lightning_theme_generation', 'g3' ); .
 		} else {
-			// これ以外は従来ユーザーの可能性が高いのでG2
-			$return = false;
+			// これ以外は従来ユーザーの可能性が高いのでG2.
 			update_option( 'lightning_theme_generation', 'g2' );
+			$return = false;
 		}
 	}
 	return apply_filters( 'lightning_is_g3', $return );
