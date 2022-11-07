@@ -3,7 +3,7 @@
  *
  * LTG_Theme_Json_Activator
  *
- * このクラスは theme.json の有効化・無効化を制御する
+ * このクラスは theme.json の有効化・無効化を制御します。
  *
  * 新規インストールには自動的に theme.json を有効化する
  * 既存のユーザーには自動的に theme.json が有効化されてはいけない
@@ -18,6 +18,11 @@ if ( ! class_exists( 'LTG_Theme_Json_Activator' ) ) {
 	 */
 	class LTG_Theme_Json_Activator {
 
+		/**
+		 * Constructor
+		 *
+		 * @return void
+		 */
 		public function __construct() {
 
 			// New install action.
@@ -27,8 +32,8 @@ if ( ! class_exists( 'LTG_Theme_Json_Activator' ) ) {
 
 			// 設定を保存された時のアクション.
 			// 'update_option_lightning_theme_options' は保存前に実行されてしまい、
-			// 判定が意図したものにならないため 'updated_option' で処理.
-			add_action( 'updated_option', array( __CLASS__, 'rename_theme_json' ), 10, 1 );
+			// 判定・ファイル名の書き換えが意図したものにならないため 'updated_option' で処理.
+			add_action( 'updated_option', array( __CLASS__, 'update_option_action' ), 10, 1 );
 		}
 
 		/**
@@ -78,10 +83,8 @@ if ( ! class_exists( 'LTG_Theme_Json_Activator' ) ) {
 		 * 適切なアクションフックがなかったためフィルターを利用しているので、第一引数はそのまま返す
 		 *
 		 * @since 15.1.0
-		 *
 		 * @param array|WP_Error $result     Result from WP_Upgrader::install_package().
 		 * @param array          $hook_extra Extra arguments passed to hooked filters.
-		 *
 		 * @return string[] $result
 		 */
 		public static function update_theme_action( $result, $hook_extra ) {
@@ -110,6 +113,22 @@ if ( ! class_exists( 'LTG_Theme_Json_Activator' ) ) {
 			}
 			return $is_theme_json;
 		}
+
+		/**
+		 * Update option action.
+		 *
+		 * @since 15.1.0
+		 * @param string $option : Update option name.
+		 * @return void
+		 */
+		public static function update_option_action( $option = '' ) {
+			// lightning_theme_options が更新された場合のみリネームを実行.
+			if ( 'lightning_theme_options' === $option ) {
+				// theme.json のリネームを実行.
+				self::rename_theme_json();
+			}
+		}
+
 		/**
 		 * Rename theme.json file
 		 * Before update option
@@ -149,15 +168,3 @@ if ( ! class_exists( 'LTG_Theme_Json_Activator' ) ) {
 
 	new LTG_Theme_Json_Activator();
 }
-
-// ★★★ test ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
-add_action(
-	'admin_notices',
-	function() {
-		$option = get_option( 'lightning_update_info' );
-		print '<pre style="text-align:left">';
-		print_r( $option );
-		print '</pre>';
-		// echo '+++ '.get_option( 'lightning_update_test' ) . ' +++';
-	}
-);
