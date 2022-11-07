@@ -49,8 +49,9 @@ if ( ! class_exists( 'LTG_Theme_Json_Activator' ) ) {
 		 * Theme install filter action.
 		 *
 		 * Lightning をはじめてインストールされた場合には自動的に theme.json を有効化したい。
-		 * _theme.json ファイルを書き換えるだけだとカスタマイズ画面でアップデートされた時に無効化されてしまうので、
-		 * option(lightning_theme_options) にもその旨保存しておく。
+		 * _theme.json ファイルを書き換えるだけだと、後日カスタマイズ画面でアップデートされた時に、
+		 * lightning_theme_options['theme_json'] の値がないと自動的に _theme.json に戻されてしまうので、
+		 * lightning_theme_options['theme_json'] にもその旨保存しておく。
 		 *
 		 * 適切なアクションフックがなかったためフィルターを利用しているので、第一引数はそのまま返す
 		 *
@@ -69,6 +70,7 @@ if ( ! class_exists( 'LTG_Theme_Json_Activator' ) ) {
 			if ( 'lightning' === $stylesheet ) {
 				// lightning_theme_options が存在しているかどうかで Lightning の新規インストールかどうかを判定.
 				$options = get_option( 'lightning_theme_options' );
+				// Lightning の新規インストールの場合のみ実行.
 				if ( ! $options ) {
 					$options = array(
 						'theme_json' => true,
