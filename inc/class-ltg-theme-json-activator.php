@@ -157,7 +157,7 @@ if ( ! class_exists( 'LTG_Theme_Json_Activator' ) ) {
 		 */
 		public static function is_theme_json() {
 			$options = get_option( 'lightning_theme_options' );
-			if ( ! $options || ( ! empty( $options['theme_json'] ) && true === $options['theme_json'] ) ) {
+			if ( ! $options || ( ! empty( $options['theme_json'] ) ) ) {
 				$is_theme_json = true;
 			} else {
 				$is_theme_json = false;
