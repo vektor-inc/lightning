@@ -216,6 +216,32 @@ if ( ! class_exists( 'LTG_Theme_Json_Activator' ) ) {
 			}
 		}
 
+		// カスタマイズ画面での theme.json の設定は、デフォルトを true にすると、既存ユーザーが他の箇所を変更した時に theme.json が有効になってしまうので false にしておく.
+		// If the default is true, theme.json will be valid when existing users change other parts, so set it to false.
+		// ただし、Lightning をはじめてはじめて有効化するユーザーには true にしないと、
+		// カスタマイズ画面で一旦テーマを Lightning にした後に、そのまま他の項目を保存された場合、
+		// チェックが入っていないので theme.json が無効化されてしまう。
+		// そのため、以下のケースでは true にする必要がある
+		// * 最初にインストールしてそのままカスタマイズ画面に移動した場合.
+		// * カスタマイズ画面で他のテーマから Lightning に変更する場合（カスタマイズ画面ではLightningだが変更を未保存の状態）.
+		/**
+		 * カスタマイズ画面で、theme.json の初期値を true にするかどうか
+		 *
+		 * @return bool
+		 */
+		public static function is_theme_json_default_on_customizer() {
+			if ( get_option( 'fresh_site' ) ) {
+				// 新規サイトの場合は true.
+				$default = true;
+			} elseif ( 'lightning' !== get_option( 'template' ) ) {
+				// カスタマイズ画面を操作しているが まだ Lightning を有効にしていない状態.
+				$default = true;
+			} else {
+				$default = false;
+			}
+			return $default;
+		}
+
 		/**
 		 * Customize register
 		 *
@@ -247,23 +273,10 @@ if ( ! class_exists( 'LTG_Theme_Json_Activator' ) ) {
 				);
 			}
 
-			// カスタマイズ画面での theme.json の設定は、デフォルトを true にすると、既存ユーザーが他の箇所を変更した時に theme.json が有効になってしまうので false にしておく.
-			// If the default is true, theme.json will be valid when existing users change other parts, so set it to false.
-			// ただし、Lightning をはじめてはじめて有効化するユーザーには true にしないと、
-			// カスタマイズ画面で一旦テーマを Lightning にした後に、そのまま他の項目を保存された場合、
-			// チェックが入っていないので theme.json が無効化されてしまう。
-			// そのため、以下のケースでは true にする必要がある
-			// * 最初にインストールしてそのままカスタマイズ画面に移動した場合.
-			// * カスタマイズ画面で他のテーマから Lightning に変更する場合（カスタマイズ画面ではLightningだが変更を未保存の状態）.
-			if ( get_option( 'fresh_site' ) || 'lightning' !== get_option( 'template' ) ) {
-				$default = true;
-			} else {
-				$default = false;
-			}
 			$wp_customize->add_setting(
 				'lightning_theme_options[theme_json]',
 				array(
-					'default'           => $default,
+					'default'           => self::is_theme_json_default_on_customizer(),
 					'type'              => 'option',
 					'capability'        => 'edit_theme_options',
 					'sanitize_callback' => array( 'VK_Helpers', 'sanitize_boolean' ),
@@ -274,6 +287,7 @@ if ( ! class_exists( 'LTG_Theme_Json_Activator' ) ) {
 			$description .= '<li>' . __( 'It is recommended to enable it for newly created sites.', 'lightning' ) . '</li>';
 			$description .= '<li>' . __( 'However, if you enable it later on an existing site, some html structures such as group blocks will be changed, so if you enable it on a site other than a new site(), please verify the display verification thoroughly . ', 'lightning' ) . '</li>';
 			$description .= '</ul>';
+
 			$wp_customize->add_control(
 				'lightning_theme_options[theme_json]',
 				array(
