@@ -32,87 +32,31 @@ if ( ! class_exists( 'LTG_Theme_Json_Activator' ) ) {
 		 */
 		public function __construct() {
 
-			// New install action.
-			// add_filter( 'install_theme_complete_actions', array( __CLASS__, 'install_theme_action' ), 10, 4 );
-			// Lightning activate action.
+			// Lightning activate action /////.
 			add_action( 'after_switch_theme', array( __CLASS__, 'after_switch_theme_action' ) );
-			// Update action.
+			// Update action /////.
 			add_filter( 'upgrader_install_package_result', array( __CLASS__, 'update_theme_action' ), 10, 2 );
 
-			// 設定を保存された時のアクション.
+			// 設定を保存された時のアクション /////.
 			// 'update_option_lightning_theme_options' は保存前に実行されてしまい、
 			// 判定・ファイル名の書き換えが意図したものにならないため 'updated_option' で処理.
 			add_action( 'updated_option', array( __CLASS__, 'update_option_action' ), 10, 1 );
 
 			add_action( 'customize_register', array( __CLASS__, 'customize_register' ), 11, 1 );
 
-			add_action(
-				'admin_notices',
-				function() {
-					$option = get_option( 'lightning_theme_options' );
-					print '<pre style="text-align:left">';
-					print_r( $option );
-					print '</pre>';
-					echo '━━━━━━━━━━━━━━━━━━━━' . "<br>\n";
-					$option = get_option( 'lightning_update_info' );
-					print '<pre style="text-align:left">';
-					print_r( $option );
-					print '</pre>';
-				}
-			);
 		}
 
 		/**
-		 * Theme install filter action.
-		 *
-		 * Lightning をはじめてインストールされた場合には自動的に theme.json を有効化したい。
-		 * _theme.json ファイルを書き換えるだけだと、後日カスタマイズ画面でアップデートされた時に、
-		 * lightning_theme_options['theme_json'] の値がないと自動的に _theme.json に戻されてしまうので、
-		 * lightning_theme_options['theme_json'] にもその旨保存しておく。
-		 *
-		 * 適切なアクションフックがなかったためフィルターを利用しているので、第一引数はそのまま返す
+		 * はじめて Lightning が有効化された時に theme.json を有効化する
 		 *
 		 * @since 15.1.0
-		 *
-		 * @param string[] $install_actions Array of theme action links.
-		 * @param object   $api             Object containing WordPress.org API theme data.
-		 * @param string   $stylesheet      Theme directory name.
-		 * @param WP_Theme $theme_info      Theme object.
-		 *
-		 * @return string[] $update_actions
-		 */
-		public static function install_theme_action( $install_actions, $api, $stylesheet, $theme_info ) {
-
-			// // Lightning のインストールの場合のみ実行.
-			// if ( 'lightning' === $stylesheet ) {
-			// lightning_theme_options が存在しているかどうかで Lightning の新規インストールかどうかを判定.
-			// $options = get_option( 'lightning_theme_options' );
-			// Lightning の新規インストールの場合のみ実行.
-			// if ( ! $options ) {
-			// $options = array(
-			// 'theme_json' => true,
-			// );
-			// update_option( 'lightning_theme_options', $options );
-			// }
-
-			// theme.json のリネームを実行.
-			// self::rename_theme_json();
-
-			// デバッグ用情報を保存（通常動作では利用しない）.
-			// $args = array( $install_actions, $api, $stylesheet, $theme_info );
-			// update_option( 'lightning_update_info', $args );
-			// }
-
-			return $install_actions;
-		}
-
-		/**
 		 * @param string $stylesheet : theme slug.
+		 * @return void
 		 */
 		public static function after_switch_theme_action( $stylesheet ) {
 			// lightning_theme_options が存在しているかどうかで Lightning の新規インストールかどうかを判定.
 			$options = get_option( 'lightning_theme_options' );
-			// Lightning の新規インストールの場合のみ実行.
+
 			if ( ! $options ) {
 				$options = array(
 					'theme_json' => true,
@@ -122,6 +66,7 @@ if ( ! class_exists( 'LTG_Theme_Json_Activator' ) ) {
 
 			// theme.json のリネームを実行.
 			self::rename_theme_json();
+
 			// デバッグ用情報を保存（通常動作では利用しない）.
 			$args = array( 'after_switch_theme' => $stylesheet );
 			update_option( 'lightning_update_info', $args );
