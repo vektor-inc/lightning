@@ -25,6 +25,7 @@
 .editor-styles-wrapper {
 	@import "common";
 	@import "common-theme-json";
+	font-family :  var(--wp--preset--font-family--system-font);
 }
 @import "common-editor";
 
