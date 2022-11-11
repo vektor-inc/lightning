@@ -55,7 +55,7 @@
 
 html,
 body {
-	font-family :  'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+	font-family :  var(--wp--preset--font-family--system-font);
 }
 
 // Cope with safari bug
