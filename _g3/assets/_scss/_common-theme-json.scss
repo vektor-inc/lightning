@@ -1,6 +1,9 @@
 /**
  * Cope with theme.json
  */
+
+ // まず .is-root-container でメインエリアを定義している
+
  .alignfull,
  .alignwide {
 	 // theme.json があると __inner-container の div は出力されなくなってしまうので max-width にコンテンツ幅を指定
