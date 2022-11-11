@@ -78,11 +78,10 @@ $containter-padding:15px;
 
 :root{
     --vk-size-admin-bar : 46px;
+	--wp--preset--font-family--system-font: 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
 }
 @media (min-width: 783px) {
     :root{
         --vk-size-admin-bar : 32px;
     }
 }
-
-  
