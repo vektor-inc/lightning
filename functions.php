@@ -46,7 +46,7 @@ function lightning_is_g3() {
 			update_option( 'lightning_theme_generation', 'g3' );
 
 		} elseif ( get_option( 'fresh_site' ) ) {
-			// 新規サイトでオプション非保存ならまぁG3っしょ.
+			// 新規サイトの場合はG3に指定.
 			$return = true;
 			// テストで呼び出される前にテーマのロード段階で一度呼ばれるために、
 			// これがあると g3 が保存されて g2 のテストが通らなくなるためコメントアウト
