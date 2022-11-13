@@ -43,7 +43,7 @@ if ( ! class_exists( 'LTG_Theme_Json_Activator' ) ) {
 			add_action( 'updated_option', array( __CLASS__, 'update_option_action' ), 10, 1 );
 
 			add_action( 'customize_register', array( __CLASS__, 'customize_register' ), 11, 1 );
-
+			// add_action( 'admin_notice', array( __CLASS__, 'display_alert' ) );
 		}
 
 		/**
@@ -211,11 +211,49 @@ if ( ! class_exists( 'LTG_Theme_Json_Activator' ) ) {
 							'section'          => 'lightning_function',
 							'type'             => 'text',
 							'custom_title_sub' => '',
-							'custom_html'      => '<p>' . __( 'This setting is applied to the parent theme\'s theme.json', 'lightning' ) . '</p>',
+							'custom_html'      => '<p class="mb-0">' . __( 'This setting is applied to the parent theme\'s theme.json', 'lightning' ) . '</p>',
 							'priority'         => 1,
 						)
 					)
 				);
+
+				$wp_customize->add_setting(
+					'theme_json_alert',
+					array()
+				);
+				$wp_customize->add_control(
+					new VK_Custom_Html_Control(
+						$wp_customize,
+						'theme_json_alert',
+						array(
+							'label'            => '',
+							'section'          => 'lightning_function',
+							'type'             => 'text',
+							'custom_title_sub' => '',
+							'custom_html'      => '<p class="alert alert-danger mt-0 mb-0">' . __( 'There is no file for theme.json in your theme. Please reinstall Lightning.', 'lightning' ) . '</p>',
+							'priority'         => 1,
+							'active_callback'  => 'is_theme_json_file_exists_alert',
+						)
+					)
+				);
+
+				/**
+				 * Lightning の theme.json か _theme.json のファイルがないと、切り替えが正常に完了しないため、
+				 * 存在しない場合のアラートを表示するかしないかを返す
+				 *
+				 * @return bool $return : theme.json 用のファイルが存在するかどうか
+				 */
+				function is_theme_json_file_exists_alert() {
+					$return           = false;
+					$_theme_json_path = get_template_directory() . '/_theme.json';
+					$theme_json_path  = get_template_directory() . '/theme.json';
+					if ( is_readable( $theme_json_path ) || is_readable( $_theme_json_path ) ) {
+						$return = false;
+					} else {
+						$return = true;
+					}
+					return $return;
+				}
 			}
 
 			$wp_customize->add_setting(
