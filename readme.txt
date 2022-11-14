@@ -39,7 +39,8 @@ https://www.vektor-inc.co.jp/inquiry/
 == Changelog ==
 
 [ Add function ] Add theme.json activator
-Fix generation setting bug on starter data import.
+[ G3 ] Fix core button default bg color on 6.0
+[ G3 ] Fix generation setting bug on starter data import.
 
 v15.0.0
 [ G3 ] Cope with theme.json

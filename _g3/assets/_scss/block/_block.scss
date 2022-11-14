@@ -162,7 +162,11 @@ body .wp-block-image figure {
 .wp-block-button {
 	&__link {
 		font-size: 1rem;
-		background-color: var(--vk-color-primary);
+		// 6.0 でコアのデフォルトカラーに負けるため .wp-block-button & 指定.
+		// 6.1 ではこの指定ははしで、.wp-block-button__link だけで効くため 6.2 が出たら削除.
+		.wp-block-button & { 
+			background-color: var(--vk-color-primary);
+		}
 		transition: all 0.1s ease-in;
 		&:hover {
 			text-decoration: none;
