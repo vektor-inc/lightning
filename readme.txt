@@ -38,6 +38,7 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ] Fix core button default bg color on 6.0
 [ G3 ] Fix generation setting bug on starter data import.
 
 v14.25.1
