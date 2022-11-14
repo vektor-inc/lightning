@@ -134,31 +134,40 @@ if ( ! class_exists( 'LTG_Theme_Json_Activator' ) ) {
 		 */
 		public static function rename_theme_json() {
 
+			$return = false;
+
 			$_theme_json_path = get_template_directory() . '/_theme.json';
 			$theme_json_path  = get_template_directory() . '/theme.json';
-			if ( self::is_theme_json() ) {
-				if ( is_readable( $_theme_json_path ) ) {
-					$rename = rename( $_theme_json_path, $theme_json_path );
-					if ( ! $rename ) {
-						return __( 'Rename failed.', 'lightning' );
+
+			if ( self::is_for_theme_json_file_exists() ) {
+				if ( self::is_theme_json() ) {
+					if ( is_readable( $_theme_json_path ) ) {
+						// _theme.json -> theme.json
+						$rename = rename( $_theme_json_path, $theme_json_path );
+						if ( ! $rename ) {
+							$return = __( 'Rename failed.', 'lightning' );
+						}
 					}
-				}
-				$path = get_template_directory() . '/theme.json';
-				if ( is_readable( $path ) ) {
-					return 'theme.json';
+					$path = get_template_directory() . '/theme.json';
+					if ( is_readable( $path ) ) {
+						$return = 'theme.json';
+					}
+				} else {
+					if ( is_readable( $theme_json_path ) ) {
+						$rename = rename( $theme_json_path, $_theme_json_path );
+						if ( ! $rename ) {
+							$return = __( 'Rename failed.', 'lightning' );
+						}
+					}
+					$path = get_template_directory() . '/_theme.json';
+					if ( is_readable( $path ) ) {
+						$return = '_theme.json';
+					}
 				}
 			} else {
-				if ( is_readable( $theme_json_path ) ) {
-					$rename = rename( $theme_json_path, $_theme_json_path );
-					if ( ! $rename ) {
-						return __( 'Rename failed.', 'lightning' );
-					}
-				}
-				$path = get_template_directory() . '/_theme.json';
-				if ( is_readable( $path ) ) {
-					return '_theme.json';
-				}
+				$return = 'Missing theme.json file.';
 			}
+			return $return;
 		}
 
 		// カスタマイズ画面での theme.json の設定は、デフォルトを true にすると、既存ユーザーが他の箇所を変更した時に theme.json が有効になってしまうので false にしておく.
@@ -185,6 +194,38 @@ if ( ! class_exists( 'LTG_Theme_Json_Activator' ) ) {
 				$default = false;
 			}
 			return $default;
+		}
+
+		/**
+		 * Lightning の theme.json or _theme.json が存在するかどうか
+		 *
+		 * @return bool $return : theme.json or _theme.json is exist.
+		 */
+		public static function is_for_theme_json_file_exists() {
+			$return           = true;
+			$_theme_json_path = get_template_directory() . '/_theme.json';
+			$theme_json_path  = get_template_directory() . '/theme.json';
+			if ( is_readable( $theme_json_path ) || is_readable( $_theme_json_path ) ) {
+				$return = true;
+			} else {
+				$return = false;
+			}
+			return $return;
+		}
+
+		/**
+		 * Lightning の theme.json か _theme.json のファイルがないと、切り替えが正常に完了しないため、
+		 * 存在しない場合のアラートを表示するかしないかを返す
+		 *
+		 * @return bool $return : theme.json 用のファイルが存在するかどうか
+		 */
+		public static function is_theme_json_file_exists_alert() {
+			if ( self::is_for_theme_json_file_exists() ) {
+				$return = false;
+			} else {
+				$return = true;
+			}
+			return $return;
 		}
 
 		/**
@@ -232,28 +273,10 @@ if ( ! class_exists( 'LTG_Theme_Json_Activator' ) ) {
 							'custom_title_sub' => '',
 							'custom_html'      => '<p class="alert alert-danger mt-0 mb-0">' . __( 'There is no file for theme.json in your theme. Please reinstall Lightning.', 'lightning' ) . '</p>',
 							'priority'         => 1,
-							'active_callback'  => 'is_theme_json_file_exists_alert',
+							'active_callback'  => array( 'LTG_Theme_Json_Activator', 'is_theme_json_file_exists_alert' ),
 						)
 					)
 				);
-
-				/**
-				 * Lightning の theme.json か _theme.json のファイルがないと、切り替えが正常に完了しないため、
-				 * 存在しない場合のアラートを表示するかしないかを返す
-				 *
-				 * @return bool $return : theme.json 用のファイルが存在するかどうか
-				 */
-				function is_theme_json_file_exists_alert() {
-					$return           = false;
-					$_theme_json_path = get_template_directory() . '/_theme.json';
-					$theme_json_path  = get_template_directory() . '/theme.json';
-					if ( is_readable( $theme_json_path ) || is_readable( $_theme_json_path ) ) {
-						$return = false;
-					} else {
-						$return = true;
-					}
-					return $return;
-				}
 			}
 
 			$wp_customize->add_setting(

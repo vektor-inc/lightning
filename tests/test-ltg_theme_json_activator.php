@@ -90,6 +90,20 @@ class LTG_Theme_Json_Activator_Test extends WP_UnitTestCase {
 		}
 
 		self::reset_theme_json();
+
+		/*******************************************
+		 * Lightningの中に theme.json 用のファイルがない場合のテスト
+		 */
+
+		// Change theme.json file name for no file test.
+		$rename = rename( get_template_directory() . '/_theme.json', get_template_directory() . '/no_theme.json' );
+		if ( $rename ) {
+			$actual = LTG_Theme_Json_Activator::rename_theme_json();
+			$this->assertEquals( 'Missing theme.json file.', $actual );
+			// Set back file name.
+			$rename = rename( get_template_directory() . '/no_theme.json', get_template_directory() . '/_theme.json' );
+		}
+
 	}
 
 	/**
@@ -143,6 +157,7 @@ class LTG_Theme_Json_Activator_Test extends WP_UnitTestCase {
 				$file_before      = get_template_directory() . '/_theme.json';
 				$file_need_rename = get_template_directory() . '/theme.json';
 			}
+
 			if ( ! is_readable( $file_before ) ) {
 				$file_before = rename( $file_need_rename, $file_before );
 			}
