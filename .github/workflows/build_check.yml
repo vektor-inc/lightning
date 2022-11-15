@@ -10,6 +10,7 @@ on:
       - master
       - develop
 
+permissions: write-all
 jobs:
   buid_check:
     name: build test
