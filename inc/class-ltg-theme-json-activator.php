@@ -260,7 +260,9 @@ if ( ! class_exists( 'LTG_Theme_Json_Activator' ) ) {
 
 				$wp_customize->add_setting(
 					'theme_json_alert',
-					array()
+					array(
+						'sanitize_callback' => 'sanitize_text_field',
+					)
 				);
 				$wp_customize->add_control(
 					new VK_Custom_Html_Control(
