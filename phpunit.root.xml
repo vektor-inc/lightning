@@ -10,7 +10,7 @@
 	<testsuites>
 		<testsuite name="test-targets">
 			<directory prefix="test-" suffix=".php">./tests/</directory>
-			<exclude>./tests/test-ltg_theme_json_activator.php</exclude>
+			<!-- <exclude>./tests/test-ltg_theme_json_activator.php</exclude> -->
 		</testsuite>
 	</testsuites>
 </phpunit>
