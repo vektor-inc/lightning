@@ -45,8 +45,8 @@ function lightning_is_g3() {
 			$return = true;
 			update_option( 'lightning_theme_generation', 'g3' );
 
-		} elseif ( get_option( 'fresh_site' ) && ! $options ) {
-			// 新規サイトでオプション非保存ならまぁG3っしょ.
+		} elseif ( get_option( 'fresh_site' ) ) {
+			// 新規サイトの場合はG3に指定.
 			$return = true;
 			// テストで呼び出される前にテーマのロード段階で一度呼ばれるために、
 			// これがあると g3 が保存されて g2 のテストが通らなくなるためコメントアウト
@@ -166,6 +166,9 @@ require dirname( __FILE__ ) . '/inc/admin-mail-checker.php';
 require dirname( __FILE__ ) . '/inc/functions-compatible.php';
 require dirname( __FILE__ ) . '/inc/font-awesome/font-awesome-config.php';
 require dirname( __FILE__ ) . '/inc/old-page-template.php';
+
+require dirname( __FILE__ ) . '/inc/class-ltg-theme-json-activator.php';
+new LTG_Theme_Json_Activator();
 
 /**
  * 世代切り替えした時に同時にスキンも変更する処理
