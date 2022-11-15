@@ -43,7 +43,6 @@ if ( ! class_exists( 'LTG_Theme_Json_Activator' ) ) {
 			add_action( 'updated_option', array( __CLASS__, 'update_option_action' ), 10, 1 );
 
 			add_action( 'customize_register', array( __CLASS__, 'customize_register' ), 11, 1 );
-			// add_action( 'admin_notice', array( __CLASS__, 'display_alert' ) );
 		}
 
 		/**
