@@ -43,6 +43,11 @@ class Lightning_Is_G3_Test extends WP_UnitTestCase {
 				'lightning_theme_generation' => null,
 				'correct'                    => true,
 			),
+			array(
+				'lightning_theme_options'    => array( 'theme_json' => true ),
+				'lightning_theme_generation' => null,
+				'correct'                    => true,
+			),
 		);
 		print PHP_EOL;
 		print '------------------------------------' . PHP_EOL;

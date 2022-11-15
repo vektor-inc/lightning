@@ -1,0 +1,120 @@
+/**
+ * Cope with theme.json
+ */
+
+ // まず .is-root-container でメインエリアを定義している
+
+ .alignfull,
+ .alignwide {
+	 // theme.json があると __inner-container の div は出力されなくなってしまうので max-width にコンテンツ幅を指定
+	 &,
+	 & > div[class*="wp-container-"],
+	 & > div[class*="wp-block-"],
+	 & > div[class*="vk_"]{
+		&:where(:not(.alignfull,.alignwide,.wp-block-cover__background,.vk_outer,.swiper-wrapper,.swiper-pagination)) {
+			max-width: calc( var(--vk-width-container) - var(--vk-width-container-padding) * 2 );
+			margin-left:auto;
+			margin-right:auto;
+		}
+	 }
+ }
+
+ // theme.json を追加すると a:where(:not(.wp-element-button)){ text-decoration: underline; } が追加されるため打ち消し
+ a{
+	&.postListText_singleTermLabel_inner,
+	&.vk_gridcolcard_item_container {
+		text-decoration: none;
+	}
+}
+
+// 6.1 with theme.json CSS *******************************************/
+
+// Core CSS /////////////////////////////
+// body .is-layout-flow > * + * {
+//     margin-block-start: 24px;
+//     margin-block-end: 0;
+// }
+
+body .container .is-layout-flow > * + * {
+	margin-block-start: unset;
+}
+// h タグには --vk-margin-headding-bottom 指定
+body .container .is-layout-flow > * + *:where(:not(:is(h1,h2,h3,h4,h5,h6))) {
+	margin-block-end: unset;
+}
+
+// Core CSS /////////////////////////////
+// body .is-layout-flow > * {
+//     margin-block-start: 0;
+//     margin-block-end: 0;
+// }
+
+body .container .is-layout-flow > *:where(:not(:is(h1,h2,h3,h4,h5,h6))){
+	margin-block-end: unset;
+}
+// h タグには --vk-margin-headding-bottom 指定追加
+body .is-layout-flow > *:is(h1,h2,h3,h4,h5,h6 ) {
+	margin-block-end:var(--vk-margin-headding-bottom);
+}
+
+body .container .is-layout-flow {
+	.wp-block-table,
+	p,
+	ul,
+	ol,
+	dl,
+	blockquote,
+	iframe {
+		&:where(:not(:last-child)){
+			margin-block-end: var(--vk-margin-element-bottom);
+		}
+	}
+}
+
+// 6.0 with theme.json CSS *******************************************/
+
+// Core CSS /////////////////////////////
+// .wp-container-1 > * + * {
+//     margin-block-start: var( --wp--style--block-gap );
+//     margin-block-end: 0;
+// }
+
+div[class*=wp-container-] > * + * {
+	margin-block-start:unset;
+}
+// h タグには --vk-margin-headding-bottom 指定追加
+*[class*=wp-container-] > * + *:is(h1,h2,h3,h4,h5,h6){
+	margin-block-end:var(--vk-margin-headding-bottom);
+}
+
+// Core CSS /////////////////////////////
+// .wp-container-1 > * {
+//     margin-block-start: 0;
+//     margin-block-end: 0;
+// }
+.wp-block-column,
+.wp-block-group {
+	&[class*=wp-container-] > :is( p,ul,ol,dl ) {
+		margin-block-start:unset;
+		margin-block-end:var(--vk-margin-element-bottom);
+	}
+}
+// h タグには --vk-margin-headding-bottom 指定追加
+*[class*=wp-container-] > *:is(h1,h2,h3,h4,h5,h6){
+	margin-block-end:var(--vk-margin-headding-bottom);
+}
+
+// Core CSS /////////////////////////////
+// .wp-container-1 {
+//     display: flex;
+//     gap: var( --wp--style--block-gap, 0.5em );
+// }
+.wp-block-gallery {
+	--wp--style--block-gap:0.5em; // theme.json がないと24pxがはいるが、ない場合は 0.5em だったので継承するための補正
+}
+
+// 特定の独自ブロック・クラスの補正 *******************************************/
+
+p:is(.postListText_title,.vk_heading_subtext,.no-margin ){
+	--vk-margin-element-bottom:0;
+}

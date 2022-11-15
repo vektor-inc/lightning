@@ -24,8 +24,14 @@
 
 .editor-styles-wrapper {
 	@import "common";
+	@import "common-theme-json";
 	font-family :  var(--wp--preset--font-family--system-font);
+	&,
+	& p {
+		font-size : var(--vk-size-text);
+	}
 }
+
 @import "common-editor";
 
 .edit-post-meta-boxes-area {

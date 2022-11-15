@@ -227,6 +227,7 @@ function lightning_add_starter_content() {
 				'layout' => array(
 					'front-page' => 'col-one-no-subsection',
 				),
+				'theme_json' => true,
 			),
 			'lightning_theme_generation' => 'g3',
 		),
