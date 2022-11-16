@@ -14,6 +14,15 @@
 }
 
 /*-------------------------------------------*/
+/*	reset user agent style
+/*-------------------------------------------*/
+figure{
+	margin-inline-start: 0;
+	margin-inline-end: 0;
+	margin-block-end: 0;
+}
+
+/*-------------------------------------------*/
 /*	customize-partial-edit-shortcut-button
 /*-------------------------------------------*/
 .mainSection > span > .customize-partial-edit-shortcut-button {
