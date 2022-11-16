@@ -11,7 +11,15 @@
 	 & > div[class*="wp-container-"],
 	 & > div[class*="wp-block-"],
 	 & > div[class*="vk_"]{
-		&:where(:not(.alignfull,.alignwide,.wp-block-cover__background,.vk_outer,.swiper-wrapper,.swiper-pagination)) {
+		&:where(:not(
+			.alignfull,
+			.alignwide,
+			.wp-block-cover__background,
+			.wp-block-cover__image-background,
+			.vk_outer,
+			.swiper-wrapper,
+			.swiper-pagination
+			)) {
 			max-width: calc( var(--vk-width-container) - var(--vk-width-container-padding) * 2 );
 			margin-left:auto;
 			margin-right:auto;
