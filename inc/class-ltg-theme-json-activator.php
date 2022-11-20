@@ -137,8 +137,8 @@ if ( ! class_exists( 'LTG_Theme_Json_Activator' ) ) {
 
 			// $_theme_json_path = get_template_directory() . '/_theme.json';
 			// $theme_json_path  = get_template_directory() . '/theme.json';
-			$_theme_json_path = ABSPATH . '/wp-content/themes/lightning/_theme.json';
-			$theme_json_path  = ABSPATH . '/wp-content/themes/lightning/theme.json';
+			$_theme_json_path = ABSPATH . 'wp-content/themes/lightning/_theme.json';
+			$theme_json_path  = ABSPATH . 'wp-content/themes/lightning/theme.json';
 
 			if ( self::is_for_theme_json_file_exists() ) {
 				if ( self::is_theme_json() ) {
