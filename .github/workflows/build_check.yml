@@ -88,6 +88,10 @@ jobs:
       uses: shivammathur/setup-php@v2
       with:
         php-version: ${{ matrix.php }}
+    - name: Change file permission
+      run: |
+       chmod 777 /var/www/html/wp-content/themes/lightning/inc/class-ltg-theme-json-activator.php
+       chmod 777 /var/www/html/wp-content/themes/lightning/tests/test-ltg_theme_json_activator.php
     - name: install npm scripts
       run: npm install
     - name: wp-env start
