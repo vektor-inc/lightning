@@ -220,14 +220,16 @@ function lightning_add_starter_content() {
 			),
 		),
 		'options'   => array(
-			'show_on_front'           => 'page',
-			'page_on_front'           => '{{front}}',
-			'page_for_posts'          => '{{blog}}',
-			'lightning_theme_options' => array(
+			'show_on_front'              => 'page',
+			'page_on_front'              => '{{front}}',
+			'page_for_posts'             => '{{blog}}',
+			'lightning_theme_options'    => array(
 				'layout' => array(
 					'front-page' => 'col-one-no-subsection',
 				),
+				'theme_json' => true,
 			),
+			'lightning_theme_generation' => 'g3',
 		),
 		// Set up nav menus for each of the two areas registered in the theme.
 		'nav_menus' => array(

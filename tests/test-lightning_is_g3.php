@@ -43,32 +43,33 @@ class Lightning_Is_G3_Test extends WP_UnitTestCase {
 				'lightning_theme_generation' => null,
 				'correct'                    => true,
 			),
+			array(
+				'lightning_theme_options'    => array( 'theme_json' => true ),
+				'lightning_theme_generation' => null,
+				'correct'                    => true,
+			),
 		);
 		print PHP_EOL;
 		print '------------------------------------' . PHP_EOL;
 		print 'lightning_is_g3()' . PHP_EOL;
 		print '------------------------------------' . PHP_EOL;
 
-		delete_option( 'lightning_theme_generation' );
-
 		foreach ( $test_array as $key => $value ) {
+
+			delete_option( 'lightning_theme_options' );
+			delete_option( 'lightning_theme_generation' );
+			delete_option( 'lightning_design_skin' );
 
 			if ( ! empty( $value['lightning_theme_options'] ) ) {
 				update_option( 'lightning_theme_options', $value['lightning_theme_options'] );
-			} else {
-				delete_option( 'lightning_theme_options' );
 			}
-			
+
 			if ( ! empty( $value['lightning_theme_generation'] ) ) {
 				update_option( 'lightning_theme_generation', $value['lightning_theme_generation'] );
-			} else {
-				delete_option( 'lightning_theme_generation' );
 			}
 
 			if ( ! empty( $value['lightning_design_skin'] ) ) {
 				update_option( 'lightning_design_skin', $value['lightning_design_skin'] );
-			} else {
-				delete_option( 'lightning_design_skin' );
 			}
 
 			$result = lightning_is_g3();

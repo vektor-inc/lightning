@@ -1,12 +1,12 @@
 <?php
 add_action( 'after_setup_theme', 'lightning_add_starter_content' );
 if ( is_customize_preview() ) {
-    add_theme_support( 'starter-content', lightning_add_starter_content() );
+	add_theme_support( 'starter-content', lightning_add_starter_content() );
 }
-function lightning_add_starter_content(){
+function lightning_add_starter_content() {
 	$starter_content = array(
-		'posts'       => array(
-			'front' => array(
+		'posts'     => array(
+			'front'   => array(
 				'post_type'    => 'page',
 				'post_title'   => 'HOME',
 				'thumbnail'    => '{{image-opening}}',
@@ -154,10 +154,10 @@ function lightning_add_starter_content(){
 			'contact',
 			'blog',
 			'sitemap' => array(
-				'post_type'		=> 'page',
-				'post_title'	=> __( 'Site Map', 'lightning' ),
-				'post_name'		=> 'sitemap',
-				'post_content'	=> join(
+				'post_type'    => 'page',
+				'post_title'   => __( 'Site Map', 'lightning' ),
+				'post_name'    => 'sitemap',
+				'post_content' => join(
 					'',
 					array(
 						'<!-- wp:vk-blocks/sitemap /-->',
@@ -165,22 +165,30 @@ function lightning_add_starter_content(){
 				),
 			),
 		),
-		'widgets' => array(
-			'vk-mobile-nav-upper' => array(
-				'search_custom' => array( 'search', array(
-					'title' => '',
-				) ),
+		'widgets'   => array(
+			'vk-mobile-nav-upper'            => array(
+				'search_custom' => array(
+					'search',
+					array(
+						'title' => '',
+					),
+				),
 			),
 
 			'common-side-bottom-widget-area' => array(
-				'search_custom' => array( 'search', array(
-					'title' => '',
-				) ),
+				'search_custom' => array(
+					'search',
+					array(
+						'title' => '',
+					),
+				),
 			),
-			'footer-widget-1' => array(
-				'text_custom' => array( 'text', array(
+			'footer-widget-1'                => array(
+				'text_custom' => array(
+					'text',
+					array(
 						'title' => get_bloginfo( 'name' ),
-						'text' => '<b>Address</b><br>
+						'text'  => '<b>Address</b><br>
 						123 Main Street<br>
 						New York, NY 10001<br>
 						
@@ -188,36 +196,45 @@ function lightning_add_starter_content(){
 						Monday–Friday: 9:00AM–5:00PM<br>
 						Saturday & Sunday: 11:00AM–3:00PM<br>
 						<br>
-						'.esc_html_x( 'This area recommend replace to "VK Profile" widget. "VK Profile" widget is include in plugin "VK All in One expansion Unit".', 'Theme starter content', 'lightning' ),
-				) ),
+						' . esc_html_x( 'This area recommend replace to "VK Profile" widget. "VK Profile" widget is include in plugin "VK All in One expansion Unit".', 'Theme starter content', 'lightning' ),
+					),
+				),
 			),
-			'footer-widget-2' => array(
-				'nav_menu' => array( 'nav_menu', array(
-					'title' => 'Contents',
-					'nav_menu' => -1,
-				) ),
+			'footer-widget-2'                => array(
+				'nav_menu' => array(
+					'nav_menu',
+					array(
+						'title'    => 'Contents',
+						'nav_menu' => -1,
+					),
+				),
 			),
-			'footer-widget-3' => array(
-				'recent_entries' => array( 'recent-posts', array(
-					'title' => 'Recent Posts',
-				) ),
-			),
-		),
-		'options'     => array(
-			'show_on_front'  => 'page',
-			'page_on_front'  => '{{front}}',
-			'page_for_posts' => '{{blog}}',
-			'lightning_theme_options' => array(
-				'front_pr_display'              => false,
-				'layout'        				=> array(
-					'front-page'				=> 'col-one-no-subsection',
+			'footer-widget-3'                => array(
+				'recent_entries' => array(
+					'recent-posts',
+					array(
+						'title' => 'Recent Posts',
+					),
 				),
 			),
 		),
+		'options'   => array(
+			'show_on_front'              => 'page',
+			'page_on_front'              => '{{front}}',
+			'page_for_posts'             => '{{blog}}',
+			'lightning_theme_options'    => array(
+				'front_pr_display' => false,
+				'layout'           => array(
+					'front-page' => 'col-one-no-subsection',
+				),
+				'theme_json' => true,
+			),
+			'lightning_theme_generation' => 'g2',
+		),
 		// Set up nav menus for each of the two areas registered in the theme.
-		'nav_menus'   => array(
+		'nav_menus' => array(
 			// Assign a menu to the "primary" location.
-			'Header'  => array(
+			'Header' => array(
 				'name'  => __( 'Header Nav', 'lightning' ),
 				'items' => array(
 					'link_home', // Note that the core "home" page is actually a link in case a static front page is not used.
@@ -226,7 +243,7 @@ function lightning_add_starter_content(){
 					'page_contact',
 				),
 			),
-			'Footer'  => array(
+			'Footer' => array(
 				'name'  => __( 'Footer Nav', 'lightning' ),
 				'items' => array(
 					'page_contact',
@@ -234,5 +251,5 @@ function lightning_add_starter_content(){
 			),
 		),
 	);
-    return $starter_content;
+	return $starter_content;
 }

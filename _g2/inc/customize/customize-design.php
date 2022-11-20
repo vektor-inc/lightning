@@ -421,6 +421,7 @@ function lightning_print_css_common() {
 			--vk-color-primary-dark:' . $color_key_dark . ';
 			--vk-color-primary-vivid:' . $color_key_vivid . ';
 			--color-key:' . $color_key . ';
+			--wp--preset--color--vk-color-primary:' . $color_key . ';
 			--color-key-dark:' . $color_key_dark . ';
 		}
 		.veu_color_txt_key { color:' . $color_key_dark . ' ; }
@@ -536,6 +537,7 @@ function lightning_get_common_inline_css() {
 	$dynamic_css    = '
 	:root {
 		--color-key:' . $color_key . ';
+		--wp--preset--color--vk-color-primary:' . $color_key . ';
 		--color-key-dark:' . $color_key_dark . ';
 	}
 	';

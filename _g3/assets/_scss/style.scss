@@ -10,6 +10,7 @@
 @import "../../inc/vk-components/package/_scss/vk-components.scss";
 @import "variables";
 @import "common";
+@import "common-theme-json";
 @import "utils";
 @import "print";
 
@@ -55,7 +56,7 @@
 
 html,
 body {
-	font-family :  'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+	font-family :  var(--wp--preset--font-family--system-font);
 }
 
 // Cope with safari bug

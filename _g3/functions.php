@@ -205,7 +205,7 @@ function lightning_add_script() {
 	if ( 'index.php' === $pagenow && false !== strpos( $_SERVER['REQUEST_URI'], 'rest_route' ) ) {
 		return;
 	}
-	
+
 	wp_register_script( 'lightning-js', get_template_directory_uri() . '/assets/js/main.js', array(), LIGHTNING_THEME_VERSION, true );
 	wp_localize_script( 'lightning-js', 'lightningOpt', apply_filters( 'lightning_localize_options', array() ) );
 	wp_enqueue_script( 'lightning-js' );
@@ -317,3 +317,16 @@ function lightning_disable_tgm_notification_except_admin() {
 	}
 }
 add_action( 'admin_head', 'lightning_disable_tgm_notification_except_admin' );
+
+/**
+ * Cope with wide and full width in inner block
+ * theme.json があってもインナーブロックで幅広か全幅が使えるようにするための処理
+ * また、これがないと編集画面でブロック要素の左右に margin:auto !important をつけられてしまう
+ */
+add_filter(
+	'block_editor_settings_all',
+	function ( $editor_settings ) {
+		$editor_settings['supportsLayout'] = false;
+		return $editor_settings;
+	}
+);

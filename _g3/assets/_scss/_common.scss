@@ -1,3 +1,14 @@
+/*-------------------------------------------*/
+/*	reset user agent style
+/*-------------------------------------------*/
+figure{
+	margin-inline-start: 0;
+	margin-inline-end: 0;
+	margin-block-end: 0;
+}
+/*-------------------------------------------*/
+/*	common style
+/*-------------------------------------------*/
 .wp-block-table, // If direct specific to table that can not delete margin
 p,
 ul,
