@@ -9,7 +9,8 @@ on:
     branches:
       - master
       - develop
-
+permissions:
+  contents: write
 jobs:
   buid_check:
     name: build test
