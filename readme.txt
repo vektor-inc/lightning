@@ -38,6 +38,7 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v15.1.1
 [ G3 ] reset figure tag user agant style
 [ G2 ] Fix VK Button Block default bg color on VK Blocks 1.45.0
 
