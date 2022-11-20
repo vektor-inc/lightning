@@ -100,11 +100,15 @@ jobs:
       run: |
        ls -lha ./tests/
        ls -lha ./inc/
+      #  git update-index --chmod=+x ./inc/class-ltg-theme-json-activator.php
+      #  git update-index --chmod=+x ./tests/test-ltg_theme_json_activator.php
+      #  git update-index --chmod=+x ./tests/test-ltg_theme_json_activator.php
     - name: Change file permission
       run: |
-       git update-index --chmod=+x ./inc/class-ltg-theme-json-activator.php
-       git update-index --chmod=+x ./tests/test-ltg_theme_json_activator.php
-       git update-index --chmod=+x ./tests/test-ltg_theme_json_activator.php
+       chmod +x ./inc/class-ltg-theme-json-activator.php
+       chmod +x ./tests/test-ltg_theme_json_activator.php
+       chmod +x ./_theme.json
+       chmod +x ./theme.json
     - name: php unit test root
       run: ./node_modules/@wordpress/env/bin/wp-env run phpunit 'phpunit -c /var/www/html/wp-content/themes/lightning/phpunit.root.xml --verbose'
     - name: php unit test G2
