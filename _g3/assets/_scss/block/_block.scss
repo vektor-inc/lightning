@@ -195,6 +195,9 @@ body .wp-block-image figure {
 /*  Table Block
 /*-------------------------------------------*/
 .wp-block-table {
+	tr :is( th,td ) {
+		border-color:var(--vk-color-border-hr);
+	}
 	thead th.has-text-align-right {
 		text-align: center;
 	} 
