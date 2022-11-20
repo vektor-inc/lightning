@@ -108,7 +108,7 @@ jobs:
        chmod +x ./_theme.json
        chmod +x ./theme.json
        chmod +x ./
-       sudo chown -R $USER:$USER /home/github/actions-runner/_work/vektor-inc/lightning
+       sudo chown -R $USER:$USER ./
     - name: ls lha after
       run: |
        ls -lha ./tests/
