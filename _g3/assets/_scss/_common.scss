@@ -58,6 +58,9 @@ p {
 		margin-top:2em;
 	}
 }
+// theme.json 有効の場合、この指定はコアが出力する body .is-layout-flow > * + * { margin-block-start: 24px; } に負ける。
+// * 負けないように _common-theme-json.scss で強く追加指定すると、theme.json 未使用のユーザーが個別のCSSカスタマイズで margin-top を指定してある場合に、打ち消してしまうかもしれない。
+// * theme.json が有効の場合 = 新規サイトの前提なので、ユーザーが個別に margin 指定すれば良いためこの指定は負ける仕様で良い。
 figure {
 	& + h1,
 	& + h2,
