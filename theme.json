@@ -1,0 +1,64 @@
+{
+	"$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/trunk/schemas/json/theme.json",
+	"version": 2,
+	"settings": {
+		"spacing": {
+			"blockGap": true,
+			"margin": true,
+			"padding": true,
+			"spacingSizes": [
+				{
+					"//": "Why the choice of slugs in the 10,20,30 format: https://wp.me/p2AvED-pxv ",
+					"name": "XS",
+					"slug": "30",
+					"size": "var(--vk-margin-xs, 0.75rem)"
+				},
+				{
+					"name": "S",
+					"slug": "40",
+					"size": "var(--vk-margin-sm, 1.5rem)"
+				},
+				{
+					"name": "M",
+					"slug": "50",
+					"size": "var(--vk-margin-md, 2.4rem)"
+				},
+				{
+					"name": "L",
+					"slug": "60",
+					"size": "var(--vk-margin-lg, 4rem)"
+				},
+				{
+					"name": "XL",
+					"slug": "70",
+					"size": "var(--vk-margin-xl, 6rem)"
+				}
+			],
+			"units": [
+				"px",
+				"em",
+				"rem",
+				"vh",
+				"vw",
+				"%"
+			]
+		},
+		"layout": {
+			"contentSize": "calc( var(--vk-width-container) - var(--vk-width-container-padding) * 2 )",
+			"wideSize": "calc( var(--vk-width-container) - var(--vk-width-container-padding) * 2 + ( 100vw - var(--vk-width-container) - var(--vk-width-container-padding) * 2 ) / 2 )"
+		},
+		"border": {
+			"color": true,
+			"radius": true,
+			"style": true,
+			"width": true
+		},
+		"blocks": {
+			"core/group": {
+				"spacing": {
+					"padding": true
+				}
+			}
+		}
+	}
+}
