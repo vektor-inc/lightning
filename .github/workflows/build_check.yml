@@ -97,7 +97,9 @@ jobs:
     - name: whoami
       run: whoami
     - name: ls lha
-      run: ls -lha ./
+      run: |
+       ls -lha ./tests/
+       ls -lha ./inc/
     - name: Change file permission
       run: |
        git update-index --chmod=+x ./inc/class-ltg-theme-json-activator.php
