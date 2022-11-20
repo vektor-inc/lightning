@@ -10,7 +10,6 @@ on:
       - master
       - develop
 
-permissions: write-all
 jobs:
   buid_check:
     name: build test
@@ -59,6 +58,7 @@ jobs:
     - run: diff _g2/plugin-support/woocommerce/css/woo.css woo.css.before
 
   php_unit:
+    permissions: write-all
     name: php unittest
     runs-on: ubuntu-latest
     strategy:
