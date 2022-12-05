@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ Bug fix ] image align with theme.json
+
 v15.1.3
 [ G3 ][ Bug fix ] Fix table border color
 

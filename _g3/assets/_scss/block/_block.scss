@@ -136,10 +136,29 @@ entry-body
 body .wp-block-image figure {
 	margin-bottom:1em;
 }
-.wp-block-image img {
-	height:auto;
-	// block にしないと枠線スタイルで画像下部に意図しない余白ができてしまう
-	display: block;
+.wp-block-image {
+	img {
+		height:auto;
+		// block にしないと枠線スタイルで画像下部に意図しない余白ができてしまう
+		display: block;
+	}
+	// theme.json 有りの場合
+	&.aligncenter {
+		margin-right: auto;
+		margin-left: auto;
+	}
+	&.alignright {
+		float: right;
+		margin-right: 0;
+		margin-left: 1em;
+		margin-bottom: 0.5em;
+	}
+	&.alignleft {
+		float: left;
+		margin-right: 1em;
+		margin-left: 0;
+		margin-bottom: 0.5em;
+	}
 }
 
 /*-------------------------------------------*/
