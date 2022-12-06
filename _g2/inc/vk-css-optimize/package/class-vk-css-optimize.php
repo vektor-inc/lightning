@@ -310,23 +310,27 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 			$simple_minify_array = self::css_simple_minify_array(); 
 
 			foreach ( $tree_shaking_array as $css ) {
-				$options['tree_shaking_css'][$css] = array(
-					'id'      => $css,
-					'url'     => $registerd[ $css ]->src,
-					'path'    => str_replace( WP_CONTENT_URL, WP_CONTENT_DIR, $registerd[ $css ]->src ),
-					'version' => $registerd[ $css ]->ver,
-					'args'    => $registerd[ $css ]->args,
-				);
+				if ( ! empty( $registerd[ $css ] ) ) {
+					$options['tree_shaking_css'][$css] = array(
+						'id'      => $css,
+						'url'     => $registerd[ $css ]->src,
+						'path'    => str_replace( WP_CONTENT_URL, WP_CONTENT_DIR, $registerd[ $css ]->src ),
+						'version' => $registerd[ $css ]->ver,
+						'args'    => $registerd[ $css ]->args,
+					);
+				}
 			}
 
 			foreach ( $simple_minify_array as $css ) {
-				$options['simple_minify_css'][$css] = array(
-					'id'      => $css,
-					'url'     => $registerd[ $css ]->src,
-					'path'    => str_replace( WP_CONTENT_URL, WP_CONTENT_DIR, $registerd[ $css ]->src ),
-					'version' => $registerd[ $css ]->ver,
-					'args'    => $registerd[ $css ]->args,
-				);
+				if ( ! empty( $registerd[ $css ] ) ) {
+					$options['simple_minify_css'][$css] = array(
+						'id'      => $css,
+						'url'     => $registerd[ $css ]->src,
+						'path'    => str_replace( WP_CONTENT_URL, WP_CONTENT_DIR, $registerd[ $css ]->src ),
+						'version' => $registerd[ $css ]->ver,
+						'args'    => $registerd[ $css ]->args,
+					);
+				}
 			}
 
 			update_option( 'vk_css_optimize_options', $options );

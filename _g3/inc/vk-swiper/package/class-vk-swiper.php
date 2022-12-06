@@ -73,5 +73,3 @@ if ( ! class_exists( 'VK_Swiper' ) ) {
 	}
 	VK_Swiper::init();
 }
-
-
