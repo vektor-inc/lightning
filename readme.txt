@@ -38,6 +38,7 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ Bug fix ] Change to switch css on theme.json mode
 [ G3 ][ Bug fix ][ OriginIII ] Web font not reflect on edit screen.
 
 v15.1.4
