@@ -22,6 +22,7 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 		 */
 		public function __construct() {
 			add_action( 'customize_register', array( __CLASS__, 'customize_register' ) );
+			add_action( 'wp_enqueue_scripts', array(  __CLASS__, 'css_simple_minify_option' ), 2147483647 );
 			add_filter( 'css_tree_shaking_exclude', array( __CLASS__, 'tree_shaking_exclude' ) );
 
 			$options = self::get_css_optimize_options();
@@ -33,6 +34,8 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 			if ( ! empty( $options['preload'] ) ) {
 				add_filter( 'style_loader_tag', array( __CLASS__, 'css_preload' ), 10, 4 );
 			}
+
+
 		}
 
 		/**
@@ -187,8 +190,10 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 		 */
 		public static function get_css_optimize_options_default() {
 			$vk_css_optimize_options_default = array(
-				'tree_shaking' => '',
-				'preload'      => '',
+				'tree_shaking'     => '',
+				'preload'          => '',
+				'tree_shaking_css' => array(),
+				'simple_minify_css' => array(),
 			);
 			return apply_filters( 'vk_css_optimize_options_default', $vk_css_optimize_options_default );
 		}
@@ -297,6 +302,39 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 			return $vk_css_simple_minify_array;
 		}
 
+		public static function css_simple_minify_option() {
+
+			global $wp_styles;
+			$registerd = $wp_styles->registered;
+
+			$options             = self::get_css_optimize_options();
+			$tree_shaking_array  = self::css_tree_shaking_array();
+			$simple_minify_array = self::css_simple_minify_array(); 
+
+			foreach ( $tree_shaking_array as $css ) {
+				$options['tree_shaking_css'][$css] = array(
+					'id'      => $css,
+					'url'     => $registerd[ $css ]->src,
+					'path'    => str_replace( WP_CONTENT_URL, WP_CONTENT_DIR, $registerd[ $css ]->src ),
+					'version' => $registerd[ $css ]->ver,
+					'args'    => $registerd[ $css ]->args,
+				);
+			}
+
+			foreach ( $simple_minify_array as $css ) {
+				$options['simple_minify_css'][$css] = array(
+					'id'      => $css,
+					'url'     => $registerd[ $css ]->src,
+					'path'    => str_replace( WP_CONTENT_URL, WP_CONTENT_DIR, $registerd[ $css ]->src ),
+					'version' => $registerd[ $css ]->ver,
+					'args'    => $registerd[ $css ]->args,
+				);
+			}
+
+			update_option( 'vk_css_optimize_options', $options );
+
+		}
+
 		/**
 		 * Change Buffer of HTML Document
 		 *
@@ -313,11 +351,18 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 
 			// Load CSS Arrays
 			// 軽量化するCSSの情報配列読み込み.
-			$vk_css_tree_shaking_array  = self::css_tree_shaking_array();
-			$vk_css_simple_minify_array = self::css_simple_minify_array();
+			$vk_css_tree_shaking_array  = $options['tree_shaking_css'];
+			$vk_css_simple_minify_array = $options['simple_minify_css'];
 
 			// WP_Filesystem() が使えるように読み込み.
 			require_once ABSPATH . 'wp-admin/includes/file.php';
+
+			// href の前のスペースが２つから１つになったので差分を修正
+			$buffer = str_replace(
+				'  href',
+				' href',
+				$buffer
+			);
 
 			// CSS Tree Shaking //////////////////////////////////////////// .
 
@@ -336,14 +381,14 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 
 				// ファイルで読み込んでいるCSSを直接出力に置換（バージョンパラメーターあり）.
 				$buffer = str_replace(
-					'<link rel=\'stylesheet\' id=\'' . $vk_css_array['id'] . '-css\'  href=\'' . $vk_css_array['url'] . '?ver=' . $vk_css_array['version'] . '\' type=\'text/css\' media=\'all\' />',
+					'<link rel=\'stylesheet\' id=\'' . $vk_css_array['id'] . '-css\' href=\'' . $vk_css_array['url'] . '?ver=' . $vk_css_array['version'] . '\' type=\'text/css\' media=\'all\' />',
 					'<style id=\'' . $vk_css_array['id'] . '-css\' type=\'text/css\'>' . $css . '</style>',
 					$buffer
 				);
 
 				// ファイルで読み込んでいるCSSを直接出力に置換（バージョンパラメーターなし）.
 				$buffer = str_replace(
-					'<link rel=\'stylesheet\' id=\'' . $vk_css_array['id'] . '-css\'  href=\'' . $vk_css_array['url'] . '\' type=\'text/css\' media=\'all\' />',
+					'<link rel=\'stylesheet\' id=\'' . $vk_css_array['id'] . '-css\' href=\'' . $vk_css_array['url'] . '\' type=\'text/css\' media=\'all\' />',
 					'<style id=\'' . $vk_css_array['id'] . '-css\' type=\'text/css\'>' . $css . '</style>',
 					$buffer
 				);
@@ -364,13 +409,13 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 
 				// ファイルで読み込んでいるCSSを直接出力に置換（バージョンパラメーターあり）.
 				$buffer = str_replace(
-					'<link rel=\'stylesheet\' id=\'' . $vk_css_array['id'] . '-css\'  href=\'' . $vk_css_array['url'] . '?ver=' . $vk_css_array['version'] . '\' type=\'text/css\' media=\'all\' />',
+					'<link rel=\'stylesheet\' id=\'' . $vk_css_array['id'] . '-css\' href=\'' . $vk_css_array['url'] . '?ver=' . $vk_css_array['version'] . '\' type=\'text/css\' media=\'all\' />',
 					'<style id=\'' . $vk_css_array['id'] . '-css\' type=\'text/css\'>' . $css . '</style>',
 					$buffer
 				);
 				// ファイルで読み込んでいるCSSを直接出力に置換（バージョンパラメーターなし）.
 				$buffer = str_replace(
-					'<link rel=\'stylesheet\' id=\'' . $vk_css_array['id'] . '-css\'  href=\'' . $vk_css_array['url'] . '\' type=\'text/css\' media=\'all\' />',
+					'<link rel=\'stylesheet\' id=\'' . $vk_css_array['id'] . '-css\' href=\'' . $vk_css_array['url'] . '\' type=\'text/css\' media=\'all\' />',
 					'<style id=\'' . $vk_css_array['id'] . '-css\' type=\'text/css\'>' . $css . '</style>',
 					$buffer
 				);

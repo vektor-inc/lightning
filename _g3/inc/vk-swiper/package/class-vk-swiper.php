@@ -58,14 +58,15 @@ if ( ! class_exists( 'VK_Swiper' ) ) {
 		 * Simple Minify Array
 		 */
 		public static function css_simple_minify_array( $vk_css_simple_minify_array ) {
-			global $vk_swiper_url;
-			global $vk_swiper_path;
-			$vk_css_simple_minify_array[] = array(
-				'id'      => 'vk-swiper-style',
-				'url'     => $vk_swiper_url . 'assets/css/swiper-bundle.min.css',
-				'path'    => $vk_swiper_path . 'assets/css/swiper-bundle.min.css',
-				'version' => SWIPER_VERSION,
+
+			// Register common css.
+			$vk_css_simple_minify_array = array_merge(
+				$vk_css_simple_minify_array,
+				array(
+					'vk-swiper-style'
+				)
 			);
+			
 			return $vk_css_simple_minify_array;
 
 		}
