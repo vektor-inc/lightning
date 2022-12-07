@@ -310,6 +310,9 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 			$simple_minify_array = self::css_simple_minify_array(); 
 
 			foreach ( $tree_shaking_array as $css ) {
+				if ( is_array( $css ) && ! empty( $css['id'] ) ) {
+					$css = $css['id'];
+				}
 				if ( ! empty( $registerd[ $css ] ) ) {
 					$options['tree_shaking_css'][$css] = array(
 						'id'      => $css,
@@ -322,6 +325,9 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 			}
 
 			foreach ( $simple_minify_array as $css ) {
+				if ( is_array( $css ) && ! empty( $css['id'] ) ) {
+					$css = $css['id'];
+				}
 				if ( ! empty( $registerd[ $css ] ) ) {
 					$options['simple_minify_css'][$css] = array(
 						'id'      => $css,
