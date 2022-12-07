@@ -454,14 +454,20 @@ if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
 
 			// tree shaking がかかっているものはpreloadから除外する
 			// でないと表示時に一瞬崩れて結局実用性に問題があるため.
-			foreach ( $vk_css_tree_shaking_array as $vk_css_array ) {
-				$exclude_handles[] = $vk_css_array['id'];
+			foreach ( $vk_css_tree_shaking_array as $css ) {
+				if ( is_array( $css ) && ! empty( $css['id'] ) ) {
+					$css = $css['id'];
+				}
+				$exclude_handles[] = $css;
 			}
 
 			// Simple Minify がかかっているものはpreloadから除外する
 			// でないと表示時に一瞬崩れて結局実用性に問題があるため.
-			foreach ( $vk_css_simple_minify_array as $vk_css_array ) {
-				$exclude_handles[] = $vk_css_array['id'];
+			foreach ( $vk_css_simple_minify_array as $css ) {
+				if ( is_array( $css ) && ! empty( $css['id'] ) ) {
+					$css = $css['id'];
+				}
+				$exclude_handles[] = $css;
 			}
 
 			// プリロードから除外するCSSハンドルが option で保存されている場合.
