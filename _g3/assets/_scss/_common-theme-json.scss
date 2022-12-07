@@ -58,9 +58,6 @@ body .container .is-layout-flow > * + *:where(:not(:is(h1,h2,h3,h4,h5,h6))) {
 //     margin-block-end: 0;
 // }
 
-body .container .is-layout-flow > *:where(:not(:is(h1,h2,h3,h4,h5,h6))){
-	margin-block-end: unset;
-}
 // h タグには --vk-margin-headding-bottom 指定追加
 body .is-layout-flow > *:is(h1,h2,h3,h4,h5,h6 ) {
 	margin-block-end:var(--vk-margin-headding-bottom);

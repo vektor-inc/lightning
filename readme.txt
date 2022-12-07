@@ -39,6 +39,9 @@ https://www.vektor-inc.co.jp/inquiry/
 == Changelog ==
 
 [ Bug fix ][ CSS Optimize ] Fix Tree Shaking and Preload.
+[ G3 ][ Bug fix ] Change to switch css on theme.json mode
+[ G3 ][ Bug fix ][ OriginIII ] Web font not reflect on edit screen.
+
 
 v15.1.4
 [ G3 ][ Bug fix ] image align with theme.json
