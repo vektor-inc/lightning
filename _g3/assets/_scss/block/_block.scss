@@ -414,3 +414,10 @@ hr.wp-block-separator {
 	border-color: var(--vk-color-border-hr);
 	border-bottom:none;
 }
+
+/*-------------------------------------------*/
+/*  embed block
+/*-------------------------------------------*/
+.wp-block-embed {
+	margin-bottom:var( --vk-margin-element-bottom );
+}

@@ -38,6 +38,11 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v15.2.0
+[ G3 ][ Specification Change ] Change to switch css on theme.json mode
+[ G3 ][ Bug fix ] Fix blog card bottom margin
+[ G3 ][ Bug fix ][ OriginIII ] Web font not reflect on edit screen.
+
 v15.1.4
 [ G3 ][ Bug fix ] image align with theme.json
 
