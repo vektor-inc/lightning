@@ -194,6 +194,20 @@ function lightning_load_common_editor_css_to_gutenberg() {
 		array( 'wp-edit-blocks' ),
 		LIGHTNING_THEME_VERSION
 	);
+
+	/**
+	 * Add widget editor style
+	 *
+	 * @since 15.2.2
+	 */
+	if ( is_customize_preview() ) {
+		wp_enqueue_style(
+			'lightning-common-editor-widget',
+			get_template_directory_uri() . '/assets/css/editor-widget.css',
+			array( 'wp-edit-blocks' ),
+			LIGHTNING_THEME_VERSION
+		);
+	}
 }
 add_action( 'enqueue_block_editor_assets', 'lightning_load_common_editor_css_to_gutenberg' );
 
