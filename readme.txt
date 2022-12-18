@@ -38,6 +38,7 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v15.2.2
 [ G3 ][ Bug fix ] Fix Widget editor on customize preview screen.
 
 v15.2.1
