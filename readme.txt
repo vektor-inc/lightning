@@ -38,8 +38,10 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ Bug fix ] Fix Widget editor on customize preview screen.
+
 v15.2.1
-[ G3 ][ Bug fix ] figureタグの余白補正
+[ G3 ][ Bug fix ] Fix figure tag margin
 
 v15.2.0
 [ G3 ][ Specification Change ] Change to switch css on theme.json mode
