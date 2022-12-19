@@ -92,15 +92,6 @@ jobs:
         run: ./node_modules/@wordpress/env/bin/wp-env start
       - name: install composer
         run: ./node_modules/@wordpress/env/bin/wp-env run composer 'composer install'
-      - name: whoami
-        run: whoami
-      - name: ls lha
-        run: |
-          ls -lha ./tests/
-          ls -lha ./inc/
-        #  git update-index --chmod=+x ./inc/class-ltg-theme-json-activator.php
-        #  git update-index --chmod=+x ./tests/test-ltg_theme_json_activator.php
-        #  git update-index --chmod=+x ./tests/test-ltg_theme_json_activator.php
       - name: Change file permission
         run: |
           chmod +x ./inc/class-ltg-theme-json-activator.php
@@ -108,11 +99,6 @@ jobs:
           chmod 777 ./
           chmod 777 ./_theme.json
           sudo chown -R $USER:$USER ./
-      - name: ls lha after
-        run: |
-          ls -lha ./tests/
-          ls -lha ./inc/
-          ls -lha ./
       - name: php unit test root
         run: ./node_modules/@wordpress/env/bin/wp-env run phpunit 'phpunit -c /var/www/html/wp-content/themes/lightning/phpunit.root.xml --verbose'
       - name: php unit test G2
