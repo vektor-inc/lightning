@@ -104,6 +104,8 @@ class LTG_Theme_Json_Activator_Test extends WP_UnitTestCase {
 			$rename = rename( get_template_directory() . '/no_theme.json', get_template_directory() . '/_theme.json' );
 		}
 
+		self::reset_theme_json();
+
 	}
 
 	/**
