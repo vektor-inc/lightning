@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 / G2 ][ Bug fix ] Fix Navigation Walker
+
 v15.2.2
 [ G3 ][ Bug fix ] Fix Widget editor on customize preview screen.
 
