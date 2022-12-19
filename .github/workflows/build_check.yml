@@ -14,47 +14,47 @@ jobs:
     name: build test
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v1
-      with:
-        node-version: 14.x
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
 
-    - run: cp _g2/assets/js/lightning.min.js lightning.min.js.before
-    - run: cp _g2/assets/css/common.css common.css.before
-    - run: cp _g2/assets/css/common_editor.css common_editor.css.before
-    - run: cp _g2/assets/css/wp-embed.css wp-embed.css.before
+      - run: cp _g2/assets/js/lightning.min.js lightning.min.js.before
+      - run: cp _g2/assets/css/common.css common.css.before
+      - run: cp _g2/assets/css/common_editor.css common_editor.css.before
+      - run: cp _g2/assets/css/wp-embed.css wp-embed.css.before
 
-    - run: cp _g2/library/bootstrap-4/css/bootstrap.css bootstrap4.css.before
-    - run: cp _g2/library/bootstrap-3/css/bootstrap.css bootstrap3.css.before
+      - run: cp _g2/library/bootstrap-4/css/bootstrap.css bootstrap4.css.before
+      - run: cp _g2/library/bootstrap-3/css/bootstrap.css bootstrap3.css.before
 
-    - run: cp _g2/design-skin/origin/css/style.css origin.style.css.before
-    - run: cp _g2/design-skin/origin/css/editor.css origin.editor.css.before
+      - run: cp _g2/design-skin/origin/css/style.css origin.style.css.before
+      - run: cp _g2/design-skin/origin/css/editor.css origin.editor.css.before
 
-    - run: cp _g2/design-skin/origin2/css/style.css origin2.style.css.before
-    - run: cp _g2/design-skin/origin2/css/editor.css origin2.editor.css.before
+      - run: cp _g2/design-skin/origin2/css/style.css origin2.style.css.before
+      - run: cp _g2/design-skin/origin2/css/editor.css origin2.editor.css.before
 
-    - run: cp _g2/plugin-support/woocommerce/css/woo.css woo.css.before
+      - run: cp _g2/plugin-support/woocommerce/css/woo.css woo.css.before
 
-    - run: npm install -D
+      - run: npm install -D
 
-    # js forget compile check
-    - name: build Javascript
-      run: npm run build:script
-    - run: diff _g2/assets/js/lightning.min.js lightning.min.js.before
+      # js forget compile check
+      - name: build Javascript
+        run: npm run build:script
+      - run: diff _g2/assets/js/lightning.min.js lightning.min.js.before
 
-    # common css forget compile check
-    - name: build Common StyleSheet
-      run: npx gulp sass
-    - run: diff _g2/assets/css/common.css common.css.before
-    - run: diff _g2/assets/css/common_editor.css common_editor.css.before
-    - run: diff _g2/assets/css/wp-embed.css wp-embed.css.before
-    - run: diff _g2/library/bootstrap-4/css/bootstrap.css bootstrap4.css.before
-    - run: diff _g2/library/bootstrap-3/css/bootstrap.css bootstrap3.css.before
-    - run: diff _g2/design-skin/origin/css/style.css origin.style.css.before
-    - run: diff _g2/design-skin/origin/css/editor.css origin.editor.css.before
-    - run: diff _g2/design-skin/origin2/css/style.css origin2.style.css.before
-    - run: diff _g2/design-skin/origin2/css/editor.css origin2.editor.css.before
-    - run: diff _g2/plugin-support/woocommerce/css/woo.css woo.css.before
+      # common css forget compile check
+      - name: build Common StyleSheet
+        run: npx gulp sass
+      - run: diff _g2/assets/css/common.css common.css.before
+      - run: diff _g2/assets/css/common_editor.css common_editor.css.before
+      - run: diff _g2/assets/css/wp-embed.css wp-embed.css.before
+      - run: diff _g2/library/bootstrap-4/css/bootstrap.css bootstrap4.css.before
+      - run: diff _g2/library/bootstrap-3/css/bootstrap.css bootstrap3.css.before
+      - run: diff _g2/design-skin/origin/css/style.css origin.style.css.before
+      - run: diff _g2/design-skin/origin/css/editor.css origin.editor.css.before
+      - run: diff _g2/design-skin/origin2/css/style.css origin2.style.css.before
+      - run: diff _g2/design-skin/origin2/css/editor.css origin2.editor.css.before
+      - run: diff _g2/plugin-support/woocommerce/css/woo.css woo.css.before
 
   php_unit:
     name: php unittest
@@ -73,50 +73,49 @@ jobs:
           MYSQL_USER: wordpress
           MYSQL_PASSWORD: wordpress
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v1
-      with:
-        node-version: 14.x
-    - name: Cache multiple paths
-      uses: actions/cache@v2
-      with:
-        path: vendor
-        key: ${{ runner.os }}-php${{ matrix.php }}-${{ hashFiles('**/composer.lock') }}
-    - name: Setup PHP ${{ matrix.php }}
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: ${{ matrix.php }}
-    - name: install npm scripts
-      run: npm install
-    - name: wp-env start
-      run: ./node_modules/@wordpress/env/bin/wp-env start
-    - name: install composer
-      run: ./node_modules/@wordpress/env/bin/wp-env run composer 'composer install'
-    - name: whoami
-      run: whoami
-    - name: ls lha
-      run: |
-       ls -lha ./tests/
-       ls -lha ./inc/
-      #  git update-index --chmod=+x ./inc/class-ltg-theme-json-activator.php
-      #  git update-index --chmod=+x ./tests/test-ltg_theme_json_activator.php
-      #  git update-index --chmod=+x ./tests/test-ltg_theme_json_activator.php
-    - name: Change file permission
-      run: |
-       chmod +x ./inc/class-ltg-theme-json-activator.php
-       chmod +x ./tests/test-ltg_theme_json_activator.php
-       chmod +x ./_theme.json
-       chmod +x ./theme.json
-       chmod +x ./
-       sudo chown -R $USER:$USER ./
-    - name: ls lha after
-      run: |
-       ls -lha ./tests/
-       ls -lha ./inc/
-       ls -lha ./
-    - name: php unit test root
-      run: ./node_modules/@wordpress/env/bin/wp-env run phpunit 'phpunit -c /var/www/html/wp-content/themes/lightning/phpunit.root.xml --verbose'
-    - name: php unit test G2
-      run: ./node_modules/@wordpress/env/bin/wp-env run phpunit 'phpunit -c /var/www/html/wp-content/themes/lightning/phpunit.g2.xml --verbose'
-    - name: php unit test G3
-      run: ./node_modules/@wordpress/env/bin/wp-env run phpunit 'phpunit -c /var/www/html/wp-content/themes/lightning/phpunit.g3.xml --verbose'
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+      - name: Cache multiple paths
+        uses: actions/cache@v2
+        with:
+          path: vendor
+          key: ${{ runner.os }}-php${{ matrix.php }}-${{ hashFiles('**/composer.lock') }}
+      - name: Setup PHP ${{ matrix.php }}
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+      - name: install npm scripts
+        run: npm install
+      - name: wp-env start
+        run: ./node_modules/@wordpress/env/bin/wp-env start
+      - name: install composer
+        run: ./node_modules/@wordpress/env/bin/wp-env run composer 'composer install'
+      - name: whoami
+        run: whoami
+      - name: ls lha
+        run: |
+          ls -lha ./tests/
+          ls -lha ./inc/
+        #  git update-index --chmod=+x ./inc/class-ltg-theme-json-activator.php
+        #  git update-index --chmod=+x ./tests/test-ltg_theme_json_activator.php
+        #  git update-index --chmod=+x ./tests/test-ltg_theme_json_activator.php
+      - name: Change file permission
+        run: |
+          chmod +x ./inc/class-ltg-theme-json-activator.php
+          chmod +x ./tests/test-ltg_theme_json_activator.php
+          chmod 777 ./
+          chmod 777 ./_theme.json
+          sudo chown -R $USER:$USER ./
+      - name: ls lha after
+        run: |
+          ls -lha ./tests/
+          ls -lha ./inc/
+          ls -lha ./
+      - name: php unit test root
+        run: ./node_modules/@wordpress/env/bin/wp-env run phpunit 'phpunit -c /var/www/html/wp-content/themes/lightning/phpunit.root.xml --verbose'
+      - name: php unit test G2
+        run: ./node_modules/@wordpress/env/bin/wp-env run phpunit 'phpunit -c /var/www/html/wp-content/themes/lightning/phpunit.g2.xml --verbose'
+      - name: php unit test G3
+        run: ./node_modules/@wordpress/env/bin/wp-env run phpunit 'phpunit -c /var/www/html/wp-content/themes/lightning/phpunit.g3.xml --verbose'
