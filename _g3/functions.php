@@ -147,6 +147,14 @@ add_action( 'after_setup_theme', 'lightning_load_css_action' );
  * @return void
  */
 function lightning_common_style() {
+	$options = get_option( 'lightning_theme_options' );
+	if ( ! $options || ( ! empty( $options['theme_json'] ) ) ) {
+		// theme_json = true.
+		$style = get_template_directory_uri() . '/assets/css/style-theme-json.css';
+	} else {
+		// theme_json = false.
+		$style = get_template_directory_uri() . '/assets/css/style.css';
+	}
 	wp_enqueue_style( 'lightning-common-style', get_template_directory_uri() . '/assets/css/style.css', array(), LIGHTNING_THEME_VERSION );
 }
 
@@ -186,6 +194,20 @@ function lightning_load_common_editor_css_to_gutenberg() {
 		array( 'wp-edit-blocks' ),
 		LIGHTNING_THEME_VERSION
 	);
+
+	/**
+	 * Add widget editor style
+	 *
+	 * @since 15.2.2
+	 */
+	if ( is_customize_preview() ) {
+		wp_enqueue_style(
+			'lightning-common-editor-widget',
+			get_template_directory_uri() . '/assets/css/editor-widget.css',
+			array( 'wp-edit-blocks' ),
+			LIGHTNING_THEME_VERSION
+		);
+	}
 }
 add_action( 'enqueue_block_editor_assets', 'lightning_load_common_editor_css_to_gutenberg' );
 

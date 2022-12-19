@@ -56,3 +56,17 @@
 .editor-styles-wrapper .block-editor-block-list__layout .is-layout-flex:where(:not(.wp-block-columns)) {
 	gap:0.5em;
 }
+
+// theme.json 有効化した場合に画像の回り込み対応
+.editor-styles-wrapper {
+	.wp-block[data-align="right"] {
+		figure.wp-block-image {
+			float:right;
+		}
+	}
+	.wp-block[data-align="left"] {
+		figure.wp-block-image {
+			float:left;
+		}
+	}
+}

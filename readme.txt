@@ -2,7 +2,7 @@
 Lightning WordPress theme, Copyright (C) 2015-2022 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
 Tested up to: 6.1
-Stable tag: 14.25.1
+Stable tag: 15.2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,11 +38,31 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
-[ G3 ] reset figure tag user agant style
+v15.2.2
+[ G3 ][ Bug fix ] Fix Widget editor on customize preview screen.
+
+v15.2.1
+[ G3 ][ Bug fix ] Fix figure tag margin
+
+v15.2.0
+[ G3 ][ Specification Change ] Change to switch css on theme.json mode
+[ G3 ][ Bug fix ] Fix blog card bottom margin
+[ G3 ][ Bug fix ][ OriginIII ] Web font not reflect on edit screen.
+
+v15.1.4
+[ G3 ][ Bug fix ] image align with theme.json
+
+v15.1.3
+[ G3 ][ Bug fix ] Fix table border color
+
+v15.1.2
+[ G3 ][ Bug fix ] Fix Headding margin
+[ G3 ][ Bug fix ] Reset figure tag user agant style
+[ G2 ][ Bug fix ] Fix VK Button Block default bg color on VK Blocks 1.45.0
 
 v15.1.0
 [ Add function ] Add theme.json activator
-[ G3 ] Fix core button default bg color on 6.0
+[ G3 ] Fix core button default bg color on 6.1
 [ G3 ] Fix generation setting bug on starter data import.
 
 v15.0.0
