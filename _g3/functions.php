@@ -124,7 +124,6 @@ require dirname( __FILE__ ) . '/inc/vk-components/config.php';
 require dirname( __FILE__ ) . '/inc/vk-mobile-nav/config.php';
 require dirname( __FILE__ ) . '/inc/widget-area.php';
 require dirname( __FILE__ ) . '/inc/term-color/config.php';
-require dirname( __FILE__ ) . '/inc/vk-css-optimize/config.php';
 require dirname( __FILE__ ) . '/inc/vk-swiper/config.php';
 require dirname( __FILE__ ) . '/inc/ltg-g3-slider/config.php';
 require dirname( __FILE__ ) . '/inc/vk-wp-oembed-blog-card/config.php';
