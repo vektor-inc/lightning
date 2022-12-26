@@ -38,6 +38,9 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v15.2.4
+[ G3 / G2 ][ Other ] Update Breadcrumb/VkHelpers library
+
 v15.2.3
 [ G3 / G2 ][ Bug fix ] Fix Navigation Walker
 
