@@ -14,21 +14,21 @@ $prefix_customize_panel = lightning_get_prefix_customize_panel();
 /**
  * Register tree shaking css
  *
- * @param array $vk_css_tree_shaking_array : recieve array.
- * @return array $vk_css_tree_shaking_array : return modefied array.
+ * @param array $vk_css_tree_shaking_handles : recieve array.
+ * @return array $vk_css_tree_shaking_handles : return modefied array.
  */
-function lightning_css_tree_shaking_array( $vk_css_tree_shaking_array ) {
+function lightning_css_tree_shaking_handles( $vk_css_tree_shaking_handles ) {
 
-	$vk_css_tree_shaking_array = array_merge(
-		$vk_css_tree_shaking_array,
+	$vk_css_tree_shaking_handles = array_merge(
+		$vk_css_tree_shaking_handles,
 		array(
 			'lightning-common-style',
 			'lightning-design-style',
 		)
 	);
-	return $vk_css_tree_shaking_array;
+	return $vk_css_tree_shaking_handles;
 }
-add_filter( 'vk_css_tree_shaking_handles', 'lightning_css_tree_shaking_array' );
+add_filter( 'vk_css_tree_shaking_handles', 'lightning_css_tree_shaking_handles' );
 
 
 /**
