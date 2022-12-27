@@ -12,7 +12,7 @@ global $prefix_customize_panel;
 $prefix_customize_panel = lightning_get_prefix_customize_panel();
 
 /**
- * Register tree shaking css
+ * Register tree shaking css handles
  *
  * @param array $vk_css_tree_shaking_handles : recieve array.
  * @return array $vk_css_tree_shaking_handles : return modefied array.

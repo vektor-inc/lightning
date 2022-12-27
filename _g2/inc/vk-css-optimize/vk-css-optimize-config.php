@@ -2,56 +2,33 @@
 /**
  * VK CSS Tree Shaking Config
  *
- * @package Lightning
+ * @package vektor-inc/lightning
  */
+
+ use VektorInc\VK_CSS_Optimize\VkCssOptimize;
+ new VkCssOptimize();
 
 global $prefix_customize_panel;
 $prefix_customize_panel = lightning_get_prefix_customize_panel();
 
-if ( ! class_exists( 'VK_CSS_Optimize' ) ) {
-	require_once dirname( __FILE__ ) . '/package/class-vk-css-optimize.php';
-}
-
-function lightning_css_tree_shaking_array( $vk_css_tree_shaking_array ){
-
-	$skin_info = Lightning_Design_Manager::get_current_skin();
-
-	$bs4_css_url  = ( ! empty( $skin_info['bootstrap'] ) && 'bs4' === $skin_info['bootstrap'] ) ? get_template_directory_uri() . '/library/bootstrap-4/css/bootstrap.min.css' : '';
-	$bs4_css_path = ( ! empty( $skin_info['bootstrap'] ) && 'bs4' === $skin_info['bootstrap'] ) ? get_parent_theme_file_path( '/library/bootstrap-4/css/bootstrap.min.css' ) : '';
-	$bs4_version  = ( ! empty( $skin_info['bootstrap'] ) && 'bs4' === $skin_info['bootstrap'] ) ? '4.5.0' : '';
-
-	if ( ! empty( $bs4_css_url ) && ! empty( $bs4_version ) ) {
-		$vk_css_tree_shaking_array[] = array(
-			'id'      => 'bootstrap-4-style',
-			'url'     => $bs4_css_url,
-			'path'    => $bs4_css_path,
-			'version' => $bs4_version,
-		);
-	}
-
-	$vk_css_tree_shaking_array[] = array(
-		'id'      => 'lightning-common-style',
-		'url'     => get_template_directory_uri() . '/assets/css/common.css',
-		'path'    => get_parent_theme_file_path( '/assets/css/common.css' ),
-		'version' => LIGHTNING_THEME_VERSION,
+/**
+ * Register tree shaking css handles
+ *
+ * @param array $vk_css_tree_shaking_handles : recieve array.
+ * @return array $vk_css_tree_shaking_handles : return modefied array.
+ */
+function lightning_css_tree_shaking_handles( $vk_css_tree_shaking_handles ) {
+	$vk_css_tree_shaking_handles = array_merge(
+		$vk_css_tree_shaking_handles,
+		array(
+			'bootstrap-4-style',
+			'lightning-common-style',
+			'lightning-design-style',
+		)
 	);
-
-	$skin_css_url  = ! empty( $skin_info['css_path'] ) ? $skin_info['css_path'] : '';
-	$skin_css_path = ! empty( $skin_info['css_sv_path'] ) ? $skin_info['css_sv_path'] : '';
-	$skin_version  = ! empty( $skin_info['version'] ) ? $skin_info['version'] : '';
-
-	if ( ! empty( $skin_css_url ) && ! empty( $skin_version ) ) {
-		$vk_css_tree_shaking_array[] = array(
-			'id'      => 'lightning-design-style',
-			'url'     => $skin_css_url,
-			'path'    => $skin_css_path,
-			'version' => $skin_version,
-		);
-	}
-	return $vk_css_tree_shaking_array;
+	return $vk_css_tree_shaking_handles;
 }
-add_filter( 'vk_css_tree_shaking_array', 'lightning_css_tree_shaking_array' );
-
+add_filter( 'vk_css_tree_shaking_handles', 'lightning_css_tree_shaking_handles' );
 
 /**
  * CSS Tree Shaking Exclude
