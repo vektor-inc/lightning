@@ -10,3 +10,7 @@ thumbs.db
 /_g3/vendor/
 **/*.map
 *.override.json
+
+/test-results/
+/playwright-report/
+/playwright/.cache/

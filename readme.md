@@ -89,6 +89,46 @@ $ docker-compose run wp
 	- Mac の場合
 	```npm run phpunit```
 
+
+---
+
+## E2Eテスト
+
+### テストの実行
+
+全てのテストの実行
+
+まずテスト用のURLが `localhost:8889` 以外の場合、
+./tests/e2e/ に記載されているテスト先のURLを自身の環境に応じて変更してください。
+
+```
+npm install
+wp-env start
+```
+
+からの
+
+```
+npx playwright test
+```
+
+ブラウザは chrome だけで良い場合
+```
+npx playwright test --project=chromium
+```
+
+操作のスクリーンショットが見たい場合 --trace on を追加
+```
+npx playwright test --trace on
+```
+
+### レポートの確認
+```
+npx playwright show-report
+```
+
+---
+
 ## プルリクエストを送る際の確認事項
 
 #### 複数の内容を含まない
