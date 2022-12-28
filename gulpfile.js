@@ -7,7 +7,7 @@ const rename = require('gulp-rename')
 
 // エラーでも監視を続行させる
 const plumber = require('gulp-plumber')
-const sass = require('gulp-sass');
+const sass = require('gulp-sass')(require('sass'));
 const autoprefixer = require('gulp-autoprefixer')
 const cleanCss = require('gulp-clean-css')
 const cmq = require('gulp-merge-media-queries')
