@@ -119,13 +119,24 @@ npx playwright test --project=chromium
 
 操作のスクリーンショットが見たい場合 --trace on を追加
 ```
-npx playwright test --trace on
+npx playwright test --project=chromium --trace on
 ```
 
 ### レポートの確認
+
 ```
 npx playwright show-report
 ```
+
+### テストの追加
+
+例えばWordPressのログイン画面からの動作テストを作る場合は以下のようになります。
+
+```
+npx playwright codegen "http://localhost:8889/wp-login.php"
+```
+
+表示されるコードの必要な箇所を tests/e2e/ の spec.js に追加する
 
 ---
 
