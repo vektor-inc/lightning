@@ -15,6 +15,11 @@ test('test', async ({ page }) => {
 	await page.getByRole('navigation', { name: 'Main menu' }).getByRole('link', { name: 'Customize' }).click();
 	// CSS最適化パネルを開く
 	await page.getByRole('heading', { name: 'Lightning CSS Optimize ( Speed up ) Settings Press return or enter to open this section ' }).click();
+
+	// _customize-input-vk_css_optimize_options[tree_shaking] が active なら処理しない
+	// #save が disabled なら処理しない
+	// というようにしたいが、現状では成功していないため、代替でいったん 何もしない を選択されるようにしている
+	await page.getByRole('combobox', { name: 'Tree shaking activation settings' }).selectOption('');
 	// Tree Shaking を有効化
 	await page.getByRole('combobox', { name: 'Tree shaking activation settings' }).selectOption('active');
 	// 公開ボタンをクリック
@@ -24,7 +29,7 @@ test('test', async ({ page }) => {
 	await page.goto('http://localhost:8889/');
 
 	// style#lightning-common-style-css を取得
-	// ※ Tree Shakingが効いていない場合は style#lightning-common-style-css が存在しない
+	// ※ Tree Shakingが効いていない場合は style#lightning-common-style-css 自体が存在しないため、それをテスト対象としている
 	const locator = page.locator('style#lightning-common-style-css');
 	// type="text/css" が存在することを確認
 	await expect(locator).toHaveAttribute('type', 'text/css');
