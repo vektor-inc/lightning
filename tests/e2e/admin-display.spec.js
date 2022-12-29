@@ -21,7 +21,7 @@ test('test', async ({ page }) => {
 	await page.getByRole('button', { name: 'Publish' }).filter({ hasText: 'Publish' }).click();
 
 	// 公開画面に移動
-	await page.goto('http://localhost:1122/');
+	await page.goto('http://localhost:8889/');
 
 	// style#lightning-common-style-css を取得
 	// ※ Tree Shakingが効いていない場合は style#lightning-common-style-css が存在しない
