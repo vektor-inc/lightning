@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ Specification Change ] Delete default vertical block margin on Editor Screen.
+
 v15.2.4
 [ G3 / G2 ][ Other ] Update Breadcrumb/VkHelpers library
 
