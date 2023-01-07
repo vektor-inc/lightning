@@ -94,3 +94,8 @@ input[type="text"].block-editor-media-placeholder__url-input-field{
 		font-size:14px;
 	}
 }
+
+html :where(.wp-block) {
+	margin-top:0;
+	margin-bottom:0;
+}
