@@ -155,7 +155,7 @@ function lightning_common_style() {
 		// theme_json = false.
 		$style = get_template_directory_uri() . '/assets/css/style.css';
 	}
-	wp_enqueue_style( 'lightning-common-style', get_template_directory_uri() . '/assets/css/style.css', array(), LIGHTNING_THEME_VERSION );
+	wp_enqueue_style( 'lightning-common-style', $style, array(), LIGHTNING_THEME_VERSION );
 }
 
 /**
