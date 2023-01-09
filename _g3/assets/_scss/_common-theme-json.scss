@@ -43,13 +43,11 @@
 //     margin-block-end: 0;
 // }
 
-// h タグには _common.scss で margin 指定されてるので除外
-// theme.json 有効の場合、common.scss でおこなっている h タグに対するmargin指定はコアが出力する body .is-layout-flow > * + * { margin-block-start: 24px; } に負ける。
-// 負けないように上書き出来るように強く追加指定すると、theme.json 未使用のユーザーが個別のCSSカスタマイズで margin-top を指定してある場合に、打ち消してしまうかもしれない。
-// theme.json が有効の場合 = 新規サイトの前提なので、ユーザーが個別に margin 指定すれば良いため、 _common.scss の h タグに対する margin 指定は負ける仕様で良い。
-body .container .is-layout-flow > * + *:where(:not(:is(h1,h2,h3,h4,h5,h6))) {
+body .container .is-layout-flow > * + * {
 	margin-block-start: unset;
-	margin-block-end: unset;
+	&:where(:not(:is(h1,h2,h3,h4,h5,h6))){
+		margin-block-end: unset;
+	}
 }
 
 // Core CSS /////////////////////////////
