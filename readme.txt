@@ -38,8 +38,11 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 theme.json ][ Bug fix ] Delete non-intentional heading margin-top
+[ G3 theme.json ][ Bug fix ] Fix don't reflect max-width for full width innner headding
+
 v15.2.5
-[ G3 ][ Bug fix ] fix wontent width not work propery on theme.json mode ( from 15.2.0 )
+[ G3 theme.json ][ Bug fix ] fix content width not work propery on theme.json mode ( from 15.2.0 )
 [ G3 ][ Specification Change ] Delete default vertical block margin on Editor Screen.
 
 v15.2.4
