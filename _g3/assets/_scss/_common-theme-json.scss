@@ -10,7 +10,8 @@
 	 &,
 	 & > div[class*="wp-container-"],
 	 & > div[class*="wp-block-"],
-	 & > div[class*="vk_"]{
+	 & > div[class*="vk_"],
+	 & > :where(:is(h1,h2,h3,h4,h5,h6)){
 		&:where(:not(
 			.alignfull,
 			.alignwide,
