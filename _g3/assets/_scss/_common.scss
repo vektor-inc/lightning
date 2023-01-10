@@ -188,17 +188,25 @@ input[type=submit]{
 	}
 }
 table {
-	border-top:1px solid var(--vk-color-border-hr);
-	border-bottom:none;
 	border-collapse: collapse;
 	border-spacing: 0;
 	width: 100%;
 	th,td {
-		border:1px solid var(--vk-color-border-hr);
 		padding:0.5rem 1rem;
-		font-size:var(--vk-size-text-sm);
 	}
 }
+// Custom HTML and Classic Editor
+*:where(:not(.wp-block-table) ) > table {
+	border:1px solid var(--vk-color-border-hr);
+	:is(th,td) {
+		border:1px solid;
+		font-size:var(--vk-size-text-sm);
+	}
+	:is(thead,tbody,tfoot,th,td) {
+		border-color:inherit;
+	}
+}
+
 iframe {
 	border: none;
 }

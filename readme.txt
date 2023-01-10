@@ -38,6 +38,9 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 theme.json ][ Bug fix / Improvement ] cope with table border color.
+[ G3 ][ Bug fix ] Fix table font size.
+
 v15.2.6
 [ G3 theme.json ][ Bug fix ] Delete non-intentional heading margin-top
 [ G3 theme.json ][ Bug fix ] Fix don't reflect max-width for full width innner headding
