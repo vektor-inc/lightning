@@ -218,9 +218,11 @@ body .wp-block-image figure {
 	// コアによって table の外の figure タグ（ .wp-block-table ）にされるため、
 	// th や td にCSSで指定すると、編集画面での指定が効かなくなる。
 	// その都合上 figure.wp-block-table に指定している。
-	font-size:var(--vk-size-text-sm);
+	&:where(:not([class*="font-size"])){
+		font-size:var(--vk-size-text-sm);
+	}
 	border-color:var(--vk-color-border-hr);
-	:is(
+	:is( 
 	table,
 	thead,
 	tbody,
