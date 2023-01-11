@@ -214,8 +214,22 @@ body .wp-block-image figure {
 /*  Table Block
 /*-------------------------------------------*/
 .wp-block-table {
-	tr :is( th,td ) {
-		border-color:var(--vk-color-border-hr);
+	// テーブルブロックの文字サイズなどのデザイン指定は、
+	// コアによって table の外の figure タグ（ .wp-block-table ）にされるため、
+	// th や td にCSSで指定すると、編集画面での指定が効かなくなる。
+	// その都合上 figure.wp-block-table に指定している。
+	&:where(:not([class*="font-size"])){
+		font-size:var(--vk-size-text-sm);
+	}
+	border-color:var(--vk-color-border-hr);
+	:is( 
+	table,
+	thead,
+	tbody,
+	tfoot,
+	th,
+	td ) {
+		border-color:inherit;
 	}
 	thead th.has-text-align-right {
 		text-align: center;
