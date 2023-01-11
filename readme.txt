@@ -2,7 +2,7 @@
 Lightning WordPress theme, Copyright (C) 2015-2022 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
 Tested up to: 6.1
-Stable tag: 15.2.6
+Stable tag: 15.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,7 +38,9 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
-[ G3 theme.json ][ Bug fix / Improvement ] cope with table border color.
+v15.3.0
+[ G3 / G2 ][ Bug fix / Specification Change ] Fix tree shaking & composer lib & add e2e test
+[ G3 theme.json ][ Bug fix / Improvement ] Cope with table border color.
 [ G3 ][ Bug fix ] Fix table font size.
 
 v15.2.6
