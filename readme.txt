@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ add filter ] lightning_pagenation_array
+
 v15.3.0
 [ G3 / G2 ][ Bug fix / Specification Change ] Fix tree shaking & composer lib & add e2e test
 [ G3 theme.json ][ Bug fix / Improvement ] Cope with table border color.
