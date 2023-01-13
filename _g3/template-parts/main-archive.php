@@ -75,15 +75,15 @@ do_action( 'lightning_loop_before' );
 <?php } ?>
 
 	<?php
-	the_posts_pagination(
-		array(
-			'mid_size'           => 1,
-			'prev_text'          => '&laquo;',
-			'next_text'          => '&raquo;',
-			'type'               => 'list',
-			'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'lightning' ) . ' </span>',
-		)
+	$args = array(
+		'mid_size'           => 1,
+		'prev_text'          => '&laquo;',
+		'next_text'          => '&raquo;',
+		'type'               => 'list',
+		'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'lightning' ) . ' </span>',
 	);
+	$args = apply_filters( 'lightning_pagenation_array', $args );
+	the_posts_pagination( $args );
 	?>
 
 <?php else : ?>
