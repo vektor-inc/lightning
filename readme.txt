@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 theme.json ][ Bug fix / Specification Change ] Delete margin-top from "body .is-layout-constrained > * + * "
+
 v15.4.0
 [ G3 ][ add filter ] lightning_pagenation_array
 
