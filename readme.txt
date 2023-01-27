@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ OriginIII ] Fix headding radius
+
 v15.5.0
 [ G3 theme.json ][ Bug fix / Specification Change ] Delete margin-top from "body .is-layout-constrained > * + * "
 
