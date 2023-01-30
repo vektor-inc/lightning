@@ -30,9 +30,8 @@ test('CSS Optimize', async ({ page }) => {
 
 	// style#lightning-common-style-css を取得
 	// ※ Tree Shakingが効いていない場合は style#lightning-common-style-css 自体が存在しないため、それをテスト対象としている
-	const locator = page.locator('style#lightning-common-style-css');
 	// **************** type="text/css" が存在することを確認
-	await expect(locator).toHaveAttribute('type', 'text/css');
+	await expect(page.locator('style#lightning-common-style-css')).toHaveAttribute('type', 'text/css');
 
 	await page.goto('http://localhost:8889/wp-admin/customize.php');
 	await page.getByRole('heading', { name: 'Lightning CSS Optimize ( Speed up ) Settings Press return or enter to open this section ' }).click();
