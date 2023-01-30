@@ -46,17 +46,50 @@ test('CSS Optimize', async ({ page }) => {
 	// しかし、Preload 有効にすると、id名に -pre がついている時点で preload の処理自体は動作している事が確認できるため、とりあえずOKとする
 	await expect(page.locator('#lightning-theme-style-css-preload')).toHaveAttribute('rel', 'stylesheet');
 
+
+	
+	// テスト前の状態に戻す ///////////////////////////////////////
 	// カスタマイズ画面に戻る
 	await page.goto('http://localhost:8889/wp-admin/customize.php');
 	await page.getByRole('heading', { name: 'Lightning CSS Optimize ( Speed up ) Settings Press return or enter to open this section ' }).click();
-
-	// Tree Shaking を無効化 ( テスト前の状態に戻す )
+	// Tree Shaking を無効化
 	await page.getByRole('combobox', { name: 'Tree shaking activation settings' }).selectOption('');
-	// Preload を有効化
+	// Preload を無効化
 	await page.getByRole('combobox', { name: 'Preload CSS activation settings' }).selectOption('');
-	// await page.getByRole('combobox', { name: 'Preload CSS activation settings' }).selectOption('active');
 	// 公開ボタンをクリック
 	await page.getByRole('button', { name: 'Publish' }).filter({ hasText: 'Publish' }).click();
-	// await page.waitForTimeout(1000);
+
+	// G2 ///////////////////////////////////////
+	// カスタマイズ画面に移動
+	await page.goto('http://localhost:8889/wp-admin/customize.php');
+	// CSS最適化パネルを開く
+	await page.getByRole('heading', { name: 'Lightning Function Settings Press return or enter to open this section ' }).click();
+	await page.locator('[id="_customize-input-lightning_theme_generation"]').selectOption('g2');
+	await page.getByRole('button', { name: 'Publish' }).filter({ hasText: 'Publish' }).click();
+	await page.getByRole('link', { name: 'Reload the page' }).click();
+	await page.getByRole('heading', { name: 'Lightning CSS Optimize ( Speed up ) Settings Press return or enter to open this section ' }).click();
+	await page.getByRole('combobox', { name: 'Tree shaking activation settings' }).selectOption('active');
+	await page.getByRole('combobox', { name: 'Preload CSS activation settings' }).selectOption('active');
+	await page.getByRole('button', { name: 'Publish' }).filter({ hasText: 'Publish' }).click();
+
+	// 公開画面に移動
+	await page.goto('http://localhost:8889/');
+
+	// テスト前の状態に戻す ///////////////////////////////////////
+	// カスタマイズ画面に戻る
+	await page.goto('http://localhost:8889/wp-admin/customize.php');
+	await page.getByRole('heading', { name: 'Lightning CSS Optimize ( Speed up ) Settings Press return or enter to open this section ' }).click();
+	// Tree Shaking を無効化
+	await page.getByRole('combobox', { name: 'Tree shaking activation settings' }).selectOption('');
+	// Preload を無効化
+	await page.getByRole('combobox', { name: 'Preload CSS activation settings' }).selectOption('');
+	// 公開ボタンをクリック
+	await page.getByRole('button', { name: 'Publish' }).filter({ hasText: 'Publish' }).click();
+
+	// G3 に戻す ///////////////////////////////////////
+	await page.goto('http://localhost:8889/wp-admin/customize.php');
+	await page.getByRole('heading', { name: 'Lightning Function Settings Press return or enter to open this section ' }).click();
+	await page.locator('[id="_customize-input-lightning_theme_generation"]').selectOption('g3');
+	await page.getByRole('button', { name: 'Publish' }).filter({ hasText: 'Publish' }).click();
 
 });
