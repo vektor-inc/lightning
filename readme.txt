@@ -38,6 +38,7 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ] Tree Shaking Update 2.2.0
 [ G3 ][ OriginIII ] Fix headding radius
 
 v15.5.0
