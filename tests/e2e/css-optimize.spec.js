@@ -46,17 +46,15 @@ test('CSS Optimize', async ({ page }) => {
 	// しかし、Preload 有効にすると、id名に -pre がついている時点で preload の処理自体は動作している事が確認できるため、とりあえずOKとする
 	await expect(page.locator('#lightning-theme-style-css-preload')).toHaveAttribute('rel', 'stylesheet');
 
+	// テスト前の状態に戻す ///////////////////////////////////////
 	// カスタマイズ画面に戻る
 	await page.goto('http://localhost:8889/wp-admin/customize.php');
 	await page.getByRole('heading', { name: 'Lightning CSS Optimize ( Speed up ) Settings Press return or enter to open this section ' }).click();
-
-	// Tree Shaking を無効化 ( テスト前の状態に戻す )
+	// Tree Shaking を無効化
 	await page.getByRole('combobox', { name: 'Tree shaking activation settings' }).selectOption('');
-	// Preload を有効化
+	// Preload を無効化
 	await page.getByRole('combobox', { name: 'Preload CSS activation settings' }).selectOption('');
-	// await page.getByRole('combobox', { name: 'Preload CSS activation settings' }).selectOption('active');
 	// 公開ボタンをクリック
 	await page.getByRole('button', { name: 'Publish' }).filter({ hasText: 'Publish' }).click();
-	// await page.waitForTimeout(1000);
 
 });
