@@ -102,4 +102,5 @@ test('CSS Optimize', async ({ page }) => {
 	await page.locator('[id="_customize-input-lightning_theme_generation"]').selectOption('g3');
 	await page.getByRole('button', { name: 'Publish' }).filter({ hasText: 'Publish' }).click();
 
+	
 });
