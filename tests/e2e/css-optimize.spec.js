@@ -1,6 +1,12 @@
 // @ts-check
 import { test, expect } from '@playwright/test';
 
+/*
+npx playwright test --project=chromium --trace on はローカルで試すとおそらく1度落ちるが、
+環境の都合なのでもう一度 npx playwright test --project=chromium --trace on すれば通る
+直せる人は直せるタイミングで対応いただけると助かります。
+*/
+
 test('CSS Optimize', async ({ page }) => {
 	await page.goto('http://localhost:8889/wp-login.php');
 	await page.getByLabel('Username or Email Address').click();
