@@ -47,7 +47,6 @@ test('CSS Optimize', async ({ page }) => {
 	await expect(page.locator('#lightning-theme-style-css-preload')).toHaveAttribute('rel', 'stylesheet');
 
 
-	
 	// テスト前の状態に戻す ///////////////////////////////////////
 	// カスタマイズ画面に戻る
 	await page.goto('http://localhost:8889/wp-admin/customize.php');
@@ -58,6 +57,7 @@ test('CSS Optimize', async ({ page }) => {
 	await page.getByRole('combobox', { name: 'Preload CSS activation settings' }).selectOption('');
 	// 公開ボタンをクリック
 	await page.getByRole('button', { name: 'Publish' }).filter({ hasText: 'Publish' }).click();
+
 
 	// G2 ///////////////////////////////////////
 	// カスタマイズ画面に移動
