@@ -46,7 +46,6 @@ test('CSS Optimize', async ({ page }) => {
 	// しかし、Preload 有効にすると、id名に -pre がついている時点で preload の処理自体は動作している事が確認できるため、とりあえずOKとする
 	await expect(page.locator('#lightning-theme-style-css-preload')).toHaveAttribute('rel', 'stylesheet');
 
-
 	// テスト前の状態に戻す ///////////////////////////////////////
 	// カスタマイズ画面に戻る
 	await page.goto('http://localhost:8889/wp-admin/customize.php');
