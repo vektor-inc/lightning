@@ -38,6 +38,7 @@ test('CSS Optimize', async ({ page }) => {
 
 	// 公開ボタンをクリック
 	await page.getByRole('button', { name: 'Publish' }).filter({ hasText: 'Publish' }).click();
+	await page.waitForTimeout(1000);
 
 	// 公開画面に移動
 	await page.goto('http://localhost:8889/');
