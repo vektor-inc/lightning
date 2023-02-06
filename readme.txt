@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 / G2 ] CSS Optimize Library Update 0.2.0
+
 v15.5.1
 [ G3 / G2 ] Tree Shaking Update 2.2.0
 [ G3 ][ OriginIII ] Fix headding radius
