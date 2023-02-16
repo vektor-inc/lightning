@@ -15,7 +15,7 @@ jobs:
     - uses: actions/checkout@v2
     - run: bash bin/dist
     - run: echo "DIST_VERSION=$(echo ${{ github.ref }} | sed -E 's/^refs\/tags\/v?(.*)$/\1/')" >> $GITHUB_ENV
-    - run: test -e dist/${{ env.dist_name }}_v${{ env.DIST_VERSION }}.zip
+    - run: test -e dist/${{ env.dist_name }}.zip
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
@@ -26,7 +26,7 @@ jobs:
         release_name: Release ${{ github.ref }}
         draft: false
         prerelease: false
-    - run : test -e dist/${{ env.dist_name }}_v${{ env.DIST_VERSION }}.zip
+    - run : test -e dist/${{ env.dist_name }}.zip
     - name: Upload Release Asset
       id: upload-release-asset
       uses: actions/upload-release-asset@v1.0.1
