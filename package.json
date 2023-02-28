@@ -60,10 +60,11 @@
 		"webpack-merge": "^5.7.3"
 	},
 	"dependencies": {
-		"bootstrap": "^4.6.1",
-		"install": "^0.13.0",
+		"bootstrap": "4.6.0",
 		"is-mobile": "^3.0.0",
-		"npm": "^8.11.0",
-		"sass": "^1.57.1"
+		"sass": "1.32.12"
+	},
+	"volta": {
+		"node": "14.21.3"
 	}
 }
