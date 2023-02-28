@@ -210,9 +210,9 @@ gulp.task('dist_g2',  gulp.series( 'text-domain', 'sass_g2', ));
 
 gulp.task('sass_common_g3', function (done) {
 	src(['./_g3/assets/_scss/**/*.scss'])
-	.pipe(aliases({
-	  "@bootstrap": "./node_modules/bootstrap/scss"
-	}))
+    .pipe(aliases({
+		"@bootstrap": "./node_modules/bootstrap/scss"
+	  }))
 	.pipe(
 	  sass({
 		includePaths: [
@@ -235,7 +235,7 @@ gulp.task('sass_common_g3', function (done) {
   gulp.task('sass_skin_g3', function (done) {
 	src(['./_g3/design-skin/origin3/_scss/**/*.scss'])
 	.pipe(aliases({
-	  "@bootstrap": "./_g3/node_modules/bootstrap/scss"
+	  "@bootstrap": "./node_modules/bootstrap/scss"
 	}))
 	.pipe(
 	  sass({
@@ -304,7 +304,7 @@ gulp.task('watch', function (done) {
   
 gulp.task('default',  gulp.series( 'watch'));
 // _g3/assets/_scss/style-theme-json.sass が _g3/assets/css/を読み込んでいるため２回まわしている.
-gulp.task('sass_g3',  gulp.series( 'sass_common_g3', 'sass_common_g3', 'sass_skin_g3', 'sass_woo_g3', 'sass_bbpress_g3' ));
+gulp.task('sass_g3',  gulp.series( 'sass_common_g3', 'sass_skin_g3', 'sass_woo_g3', 'sass_bbpress_g3' ));
 gulp.task('dist_g3',  gulp.series( 'text-domain', 'sass_g3' ));
 
 gulp.task('sass',  gulp.series( 'sass_g2', 'sass_g3' ));
