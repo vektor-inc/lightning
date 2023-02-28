@@ -8,14 +8,19 @@ npx playwright test --project=chromium --trace on はローカルで試すとお
 */
 
 test('CSS Optimize', async ({ page }) => {
+	// ログイン処理
 	await page.goto('http://localhost:8889/wp-login.php');
 	await page.getByLabel('Username or Email Address').click();
 	await page.getByLabel('Username or Email Address').fill('admin');
-	await page.getByLabel('Username or Email Address').press('Tab');
-	await page.getByLabel('Password').fill('password');
+	await page.getByLabel('Password', { exact: true }).click();
+	await page.getByLabel('Password', { exact: true }).fill('password');
+	await page.getByText('Remember Me').click();
 	await page.getByRole('button', { name: 'Log In' }).click();
+
+	// Lightning を有効化
 	await page.getByRole('link', { name: 'Appearance' }).click();
 	await expect(page).toHaveURL('http://localhost:8889/wp-admin/themes.php');
+	await page.getByRole('link', { name: 'Activate Lightning' }).click();
 
 	// カスタマイズ画面に移動
 	await page.getByRole('navigation', { name: 'Main menu' }).getByRole('link', { name: 'Customize' }).click();
@@ -26,18 +31,17 @@ test('CSS Optimize', async ({ page }) => {
 	// #save が disabled なら処理しない
 	// というようにしたいが、現状では成功していないため、代替で一旦 何もしない を選択されるようにしている
 
-	// Tree Shaking を一旦無効化
-	await page.getByRole('combobox', { name: 'Tree shaking activation settings' }).selectOption('');
 	// Tree Shaking を有効化
 	await page.getByRole('combobox', { name: 'Tree shaking activation settings' }).selectOption('active');
 
-	// Preload を一旦無効化
-	await page.getByRole('combobox', { name: 'Preload CSS activation settings' }).selectOption('');
 	// Preload を有効化
 	await page.getByRole('combobox', { name: 'Preload CSS activation settings' }).selectOption('active');
 
 	// 公開ボタンをクリック
 	await page.getByRole('button', { name: 'Publish' }).filter({ hasText: 'Publish' }).click();
+
+	// 保存が完了するまで時間稼ぎ
+	await page.waitForTimeout(1000);
 
 	// 公開画面に移動
 	await page.goto('http://localhost:8889/');
@@ -62,7 +66,8 @@ test('CSS Optimize', async ({ page }) => {
 	await page.getByRole('combobox', { name: 'Preload CSS activation settings' }).selectOption('');
 	// 公開ボタンをクリック
 	await page.getByRole('button', { name: 'Publish' }).filter({ hasText: 'Publish' }).click();
-
+	// 保存が完了するまで時間稼ぎ
+	await page.waitForTimeout(1000);
 
 	// G2 ///////////////////////////////////////
 	// カスタマイズ画面に移動
