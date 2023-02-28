@@ -348,7 +348,7 @@ function lightning_get_the_archive_title() {
 	} else {
 		global $wp_query;
 		// get post type.
-		if ( isset( $wp_query->query_vars['post_type'] ) ) { // cope with All in One SEO Plugin.
+		if ( ! empty( $wp_query->query_vars['post_type'] ) ) { // cope with All in One SEO Plugin.
 			$post_type = $wp_query->query_vars['post_type'];
 			$title     = get_post_type_object( $post_type )->labels->name;
 		} else {
