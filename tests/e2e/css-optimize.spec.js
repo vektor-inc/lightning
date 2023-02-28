@@ -20,7 +20,6 @@ test('CSS Optimize', async ({ page }) => {
 	// Lightning を有効化
 	await page.getByRole('link', { name: 'Appearance' }).click();
 	await expect(page).toHaveURL('http://localhost:8889/wp-admin/themes.php');
-	await page.getByRole('link', { name: 'Activate Lightning' }).click();
 
 	// カスタマイズ画面に移動
 	await page.getByRole('navigation', { name: 'Main menu' }).getByRole('link', { name: 'Customize' }).click();
