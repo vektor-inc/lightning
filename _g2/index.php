@@ -1,6 +1,7 @@
-<?php lightning_get_template_part('header'); ?>
+<?php lightning_get_template_part( 'header' ); ?>
 
-<?php if ( lightning_is_page_header() ){
+<?php
+if ( lightning_is_page_header() ) {
 	// Dealing with old files.
 	// Actually, it's ok to only use get_template_part().
 	/*
@@ -12,11 +13,13 @@
 	} else {
 		get_template_part( 'template-parts/page-header' );
 	}
-} ?>
+}
+?>
 
 <?php do_action( 'lightning_breadcrumb_before' ); ?>
 
-<?php if ( lightning_is_breadcrumb() ){
+<?php
+if ( lightning_is_breadcrumb() ) {
 	/*
 	 BreadCrumb
 	/*-------------------------------------------*/
@@ -26,7 +29,8 @@
 	} else {
 		get_template_part( 'template-parts/breadcrumb' );
 	}
-} ?>
+}
+?>
 
 <?php do_action( 'lightning_breadcrumb_after' ); ?>
 
@@ -40,7 +44,7 @@
 
 	<?php
 
-	// Excrude to in case of filter search
+	// Exclude to in case of filter search.
 	if ( ! is_search() ) {
 
 		/*
@@ -56,7 +60,7 @@
 			}
 		}
 		echo wp_kses_post( apply_filters( 'lightning_mainSection_archiveTitle', $archiveTitle_html ) );
-		
+
 		/*
 		Archive description
 		/*-------------------------------------------*/
@@ -69,7 +73,7 @@
 			}
 		}
 		echo wp_kses_post( apply_filters( 'lightning_mainSection_archiveDescription', $archiveDescription_html ) );
-		
+
 	} // if ( ! is_search() ) {
 
 	$postType = lightning_get_post_type();
@@ -141,7 +145,7 @@
 <?php do_action( 'lightning_mainSection_append' ); ?>
 </div><!-- [ /.mainSection ] -->
 
-<?php if ( lightning_is_subsection_display() ){ ?>
+<?php if ( lightning_is_subsection_display() ) { ?>
 	<div class="<?php lightning_the_class_name( 'sideSection' ); ?>">
 		<?php do_action( 'lightning_sideSection_prepend' ); ?>
 		<?php lightning_get_template_part( 'sidebar', get_post_type() ); ?>
@@ -156,4 +160,4 @@
 </div><!-- [ /.container ] -->
 <?php do_action( 'lightning_siteContent_apepend' ); ?>
 </div><!-- [ /.siteContent ] -->
-<?php lightning_get_template_part('footer'); ?>
+<?php lightning_get_template_part( 'footer' ); ?>
