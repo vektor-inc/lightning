@@ -2,5 +2,10 @@
 	"core": null,
 	"themes": [
 		"."
-	]
+	],
+	"config": {
+		"WP_DEBUG": true,
+		"SCRIPT_DEBUG": true,
+		"FS_METHOD": "direct"
+	}
 }
