@@ -5,7 +5,7 @@
  * @package Lightning G3
  */
 
-// Excrude to in case of filter search.
+// Exclude to in case of filter search.
 if ( ! is_search() ) {
 
 	/**

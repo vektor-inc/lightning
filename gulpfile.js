@@ -210,9 +210,9 @@ gulp.task('dist_g2',  gulp.series( 'text-domain', 'sass_g2', ));
 
 gulp.task('sass_common_g3', function (done) {
 	src(['./_g3/assets/_scss/**/*.scss'])
-	.pipe(aliases({
-	  "@bootstrap": "./node_modules/bootstrap/scss"
-	}))
+    .pipe(aliases({
+		"@bootstrap": "./node_modules/bootstrap/scss"
+	  }))
 	.pipe(
 	  sass({
 		includePaths: [
@@ -235,7 +235,7 @@ gulp.task('sass_common_g3', function (done) {
   gulp.task('sass_skin_g3', function (done) {
 	src(['./_g3/design-skin/origin3/_scss/**/*.scss'])
 	.pipe(aliases({
-	  "@bootstrap": "./_g3/node_modules/bootstrap/scss"
+	  "@bootstrap": "./node_modules/bootstrap/scss"
 	}))
 	.pipe(
 	  sass({
