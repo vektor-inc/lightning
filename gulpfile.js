@@ -304,7 +304,7 @@ gulp.task('watch', function (done) {
   
 gulp.task('default',  gulp.series( 'watch'));
 // _g3/assets/_scss/style-theme-json.sass が _g3/assets/css/を読み込んでいるため２回まわしている.
-gulp.task('sass_g3',  gulp.series( 'sass_common_g3', 'sass_skin_g3', 'sass_woo_g3', 'sass_bbpress_g3' ));
+gulp.task('sass_g3',  gulp.series( 'sass_common_g3', 'sass_common_g3', 'sass_skin_g3', 'sass_woo_g3', 'sass_bbpress_g3' ));
 gulp.task('dist_g3',  gulp.series( 'text-domain', 'sass_g3' ));
 
 gulp.task('sass',  gulp.series( 'sass_g2', 'sass_g3' ));
