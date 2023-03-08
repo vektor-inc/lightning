@@ -10,7 +10,7 @@
 		"vektor-inc/font-awesome-versions": "^0.4.1",
 		"vektor-inc/vk-color-palette-manager": "^0.0.15",
 		"vektor-inc/vk-breadcrumb": "^0.2.5",
-		"vektor-inc/vk-css-optimize": "^0.1.0"
+		"vektor-inc/vk-css-optimize": "^0.2.0"
 	},
 	"require-dev": {
 		"vektor-inc/vk-wp-unit-test-tools": "^0.10.0",

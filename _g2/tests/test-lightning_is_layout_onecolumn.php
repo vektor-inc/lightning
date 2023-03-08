@@ -672,7 +672,7 @@ class LightningIsLayoutOnecolmunTest extends WP_UnitTestCase {
 			/*--------------------------------*/
 			wp_delete_post( $data['post_id'] );
 			wp_delete_post( $data['home_page_id'] );
-			$data['cate_id'] = wp_delete_category( $catarr );
+			wp_delete_category( $data['cate_id'] );
 			update_option( 'lightning_theme_options', $before_option );
 			update_option( 'page_for_posts', $before_page_for_posts );
 			update_option( 'page_on_front', $before_page_on_front );
