@@ -104,7 +104,9 @@ $allowed_html = array(
 	'i'      => array(
 		'class' => array(),
 	),
-	'br'     => array(),
+	'br'     => array(
+		'class' => array(),
+	),
 	'strong' => array(),
 	'ruby'   => array(),
 	'rt'     => array(),

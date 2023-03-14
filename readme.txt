@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ Specification Change ] Allow class on br tag 
+
 v15.6.0
 [ G3 / G2 ][ Update ] VK mobile Nav ( add filter vk_mobile_nav_menu_btn_text )
 [ G3 / G2 ][ Update / Bugfix ] CSS Optimize ( Cope with PHP 8.1 warning )
