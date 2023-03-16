@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G2 ][ Bug fix ] Delete underline of button placed footer.
+
 v15.7.0
 [ G3 ][ Specification Change ][ Page Header ] Allow class on br tag 
 
