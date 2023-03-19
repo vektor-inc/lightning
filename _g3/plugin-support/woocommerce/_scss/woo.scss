@@ -123,7 +123,7 @@ $color-key-dark-default: #2e6da4;
 	}
 }
 
-.fa_v5_css {
+:is( .fa_v5_css,.fa_v6_css ) {
 	.wc-block-grid__product-add-to-cart .add_to_cart_button::after,
 	.wp-block-product-category .wp-block-button__link::after,
 	button.single_add_to_cart_button::after,
