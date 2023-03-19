@@ -38,6 +38,7 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ Bug fix ] Fix editor width of group inner on WP6.1
 [ G2 ][ Bug fix ] Delete underline of button placed footer.
 
 v15.7.0

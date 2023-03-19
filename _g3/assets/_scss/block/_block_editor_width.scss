@@ -11,6 +11,12 @@
 	padding: 0;
 }
 
+// Begin Cope with 6.1 Group Block ( If 6.4 Release, Delete this code. )
+.editor-styles-wrapper .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
+	--wp--style--global--content-size:var(--vk-width-editor-container-body);
+}
+// End Cope width 6.1 Group Block
+
 .container {
 	padding:0;
 	max-width:var(--vk-width-editor-container-body);
