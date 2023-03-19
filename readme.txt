@@ -38,9 +38,11 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
-[ G3 ] add css clear-float class
+v15.8.0
+[ G3 ][ Other ] add css clear-float class
 [ G3 ][ Bug fix ] Fix editor width of group inner on WP6.1
 [ G2 ][ Bug fix ] Delete underline of button placed footer.
+[ G3 / G2 ][ Bug fix ] Fix Font Awesome 6
 
 v15.7.0
 [ G3 ][ Specification Change ][ Page Header ] Allow class on br tag 
