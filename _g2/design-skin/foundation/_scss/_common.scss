@@ -168,8 +168,7 @@ blockquote {
 	font-size: 16px;
 }
 
-.fa_v4,
-.fa_v5_css {
+:is( .fa_v4, .fa_v5_css, .fa_v6_css ) {
 	blockquote {
 		padding: 35px 20px 30px;
 
@@ -202,10 +201,14 @@ blockquote {
 .fa_v4 blockquote:after {
 	font-family: FontAwesome;
 }
-
 .fa_v5_css blockquote:before,
 .fa_v5_css blockquote:after {
 	font-family: "Font Awesome 5 Free";
+	font-weight: bold;
+}
+.fa_v6_css blockquote:before,
+.fa_v6_css blockquote:after {
+	font-family: "Font Awesome 6 Free";
 	font-weight: bold;
 }
 

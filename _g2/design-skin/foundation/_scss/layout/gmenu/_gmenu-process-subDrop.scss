@@ -35,7 +35,8 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 
 		&:hover > .sub-menu {
 			opacity: 1;
-			max-height: 1000px;
+			max-height: 80vh;
+			overflow-y: auto;
 		}
 	}
 
@@ -47,7 +48,8 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 		}
 		& > .sub-menu.acc-child-open {
 			opacity: 1;
-			max-height: 1000px;
+			max-height: 80vh;
+			overflow-y: auto;
 		}
 	}
 }

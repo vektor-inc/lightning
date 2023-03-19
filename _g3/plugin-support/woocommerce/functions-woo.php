@@ -73,7 +73,7 @@ function lightning_widgets_init_product() {
 	$woocommerce_shop_page_id = get_option( 'woocommerce_shop_page_id' );
 	$label                    = get_the_title( $woocommerce_shop_page_id );
 	// translators: %s post type .
-	$sidebar_description      = sprintf( __( 'This widget area appears on the %s contents page only.', 'lightning' ), $label );
+	$sidebar_description = sprintf( __( 'This widget area appears on the %s contents page only.', 'lightning' ), $label );
 
 	// Set post type widget area.
 	register_sidebar(

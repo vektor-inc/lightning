@@ -307,6 +307,21 @@ h1.entry-title {
 		font-weight: 900;
 	}
 }
+.fa_v6_css {
+	.entry-meta_items.published::before {
+		margin-right: 5px;
+		font-family: "Font Awesome 6 Free";
+		content: "\f073";
+		font-weight: 900;
+	}
+
+	.entry-meta_items_author::before {
+		margin-right: 5px;
+		font-family: "Font Awesome 6 Free";
+		content: "\f303";
+		font-weight: 900;
+	}
+}
 
 .entry-body::after {
 	content: "";
