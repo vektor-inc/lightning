@@ -11,6 +11,7 @@ lightning_get_template_part( 'header' ); ?>
 /*
  Page Header
 /*-------------------------------------------*/
+$old_file_name   = array();
 $old_file_name[] = 'module_pageTit.php';
 if ( locate_template( $old_file_name, false, false ) ) {
 	locate_template( $old_file_name, true, false );
@@ -22,6 +23,7 @@ if ( locate_template( $old_file_name, false, false ) ) {
  BreadCrumb
 /*-------------------------------------------*/
 do_action( 'lightning_breadcrumb_before' );
+$old_file_name   = array();
 $old_file_name[] = 'module_panList.php';
 if ( locate_template( $old_file_name, false, false ) ) {
 	locate_template( $old_file_name, true, false );

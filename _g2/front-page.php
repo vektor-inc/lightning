@@ -4,6 +4,7 @@
 do_action( 'lightning_top_slide_before' );
 if ( empty( $lightning_theme_options['top_slide_hide'] ) ) {
 	if ( $bootstrap == '3' ) {
+		$old_file_name   = array();
 		$old_file_name[] = 'module_slide.php';
 		if ( locate_template( $old_file_name, false, false ) ) {
 			locate_template( $old_file_name, true, false );
@@ -82,6 +83,7 @@ do_action( 'lightning_top_slide_after' );
 						 * It is measure for before version 7.0 that loaded module_loop_***.php.
 						 */
 						$postType        = lightning_get_post_type();
+						$old_file_name   = array();
 						$old_file_name[] = 'module_loop_' . $postType['slug'] . '.php';
 						$old_file_name[] = 'module_loop_post.php';
 						$require_once    = false;
@@ -136,7 +138,7 @@ do_action( 'lightning_top_slide_after' );
 			<?php if ( lightning_is_subsection_display() ) : ?>
 				<div class="<?php lightning_the_class_name( 'sideSection' ); ?>">
 					<?php do_action( 'lightning_sideSection_prepend' ); ?>
-					<?php 
+					<?php
 					if ( is_front_page() ) {
 						lightning_get_template_part( 'sidebar' );
 					} else {
