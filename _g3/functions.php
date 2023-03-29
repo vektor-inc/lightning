@@ -200,6 +200,8 @@ function lightning_load_common_editor_css_to_gutenberg() {
 	 *
 	 * @since 15.2.2
 	 */
+	// カスタマイズ画面でのみ読み込む.ウィジェットエリアが狭いので content-width を補正する
+	// Read only on the customization screen.Widget area is narrow, so adjust content-width
 	if ( is_customize_preview() ) {
 		wp_enqueue_style(
 			'lightning-common-editor-widget',

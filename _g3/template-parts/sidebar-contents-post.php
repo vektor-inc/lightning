@@ -51,7 +51,7 @@ $post_loop = new WP_Query(
 			'body_prepend'               => '',
 			'body_append'                => '',
 		);
-		wp_kses_post( VK_Component_Posts::the_view( $post, $options ) );
+		VK_Component_Posts::the_view( $post, $options );
 
 endwhile;
 	?>
