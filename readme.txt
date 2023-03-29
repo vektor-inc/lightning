@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G2 ] Delete specification of margin 0 for figure
+
 v15.8.0
 [ G3 ][ Other ] add css clear-float class
 [ G3 ][ Bug fix ] Fix editor width of group inner on WP6.1
