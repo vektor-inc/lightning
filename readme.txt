@@ -38,6 +38,7 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G2 ] Fix loading old files
 [ G2 ] Delete specification of margin 0 for figure
 
 v15.8.0

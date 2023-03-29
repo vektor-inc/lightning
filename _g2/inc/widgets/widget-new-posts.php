@@ -94,6 +94,7 @@ class WP_Widget_ltg_post_list extends WP_Widget {
 					 * Actually, it's ok to only use get_template_part().
 					 * It is measure for before version 7.0 that loaded module_loop_***.php.
 					 */
+					$templates    = array();
 					$templates[]  = 'module_loop_' . $post_type . '.php';
 					$require_once = false;
 					if ( locate_template( $templates, false, $require_once ) ) {
