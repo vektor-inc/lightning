@@ -21,8 +21,8 @@ function lightning_redirect_module() {
 		add_action(
 			'get_template_part_module_loop_' . $postType,
 			function( $slug ) {
+				$templates   = array();
 				$templates[] = "{$slug}.php";
-
 				// If old name file is don't exist that load new name file.
 				if ( ! locate_template( $templates, false, false ) ) {
 					get_template_part( 'template-parts/post/loop', get_post_type() );
@@ -34,6 +34,7 @@ function lightning_redirect_module() {
 	add_action(
 		'get_template_part_module_loop_post_meta',
 		function( $slug ) {
+			$templates   = array();
 			$templates[] = "{$slug}.php";
 			if ( ! locate_template( $templates, false, false ) ) {
 				get_template_part( 'template-parts/post/meta' );
@@ -44,6 +45,7 @@ function lightning_redirect_module() {
 	add_action(
 		'get_template_part_module_slide',
 		function( $slug ) {
+			$templates   = array();
 			$templates[] = "{$slug}.php";
 			if ( ! locate_template( $templates, false, false ) ) {
 				get_template_part( 'template-parts/slide-bs3' );
@@ -54,6 +56,7 @@ function lightning_redirect_module() {
 	add_action(
 		'get_template_part_module_pageTit',
 		function( $slug ) {
+			$templates   = array();
 			$templates[] = "{$slug}.php";
 			if ( ! locate_template( $templates, false, false ) ) {
 				get_template_part( 'template-parts/page-header' );
@@ -64,6 +67,7 @@ function lightning_redirect_module() {
 	add_action(
 		'get_template_part_module_panList',
 		function( $slug ) {
+			$templates   = array();
 			$templates[] = "{$slug}.php";
 			if ( ! locate_template( $templates, false, false ) ) {
 				get_template_part( 'template-parts/breadcrumb' );
