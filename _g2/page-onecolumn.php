@@ -2,13 +2,14 @@
 /*
  * Template Name: No sidebar ( not recommended )
  */
-lightning_get_template_part('header'); ?>
+lightning_get_template_part( 'header' ); ?>
 
 <?php
 // Dealing with old files.
 // Actually, it's ok to only use get_template_part().
-/*-------------------------------------------*/
-/* Page Header
+
+/*
+ Page Header
 /*-------------------------------------------*/
 $old_file_name[] = 'module_pageTit.php';
 if ( locate_template( $old_file_name, false, false ) ) {
@@ -16,8 +17,9 @@ if ( locate_template( $old_file_name, false, false ) ) {
 } else {
 	get_template_part( 'template-parts/page-header' );
 }
-/*-------------------------------------------*/
-/* BreadCrumb
+
+/*
+ BreadCrumb
 /*-------------------------------------------*/
 do_action( 'lightning_breadcrumb_before' );
 $old_file_name[] = 'module_panList.php';
@@ -41,32 +43,32 @@ do_action( 'lightning_breadcrumb_after' );
 	if ( have_posts() ) {
 		while ( have_posts() ) :
 			the_post();
-		?>
+			?>
 
 			<article id="post-<?php the_ID(); ?>" <?php post_class( apply_filters( 'lightning_article_outer_class', '' ) ); ?>>
 
-	<?php do_action( 'lightning_entry_body_before' ); ?>
-	<div class="<?php lightning_the_class_name( 'entry-body' ); ?>">
-	<?php the_content(); ?>
-	</div>
-	<?php do_action( 'lightning_entry_body_after' ); ?>
+			<?php do_action( 'lightning_entry_body_before' ); ?>
+			<div class="<?php lightning_the_class_name( 'entry-body' ); ?>">
+			<?php the_content(); ?>
+			</div>
+			<?php do_action( 'lightning_entry_body_after' ); ?>
 
-	<?php
-	$args = array(
-		'before'      => '<nav class="page-link"><dl><dt>Pages :</dt><dd>',
-		'after'       => '</dd></dl></nav>',
-		'link_before' => '<span class="page-numbers">',
-		'link_after'  => '</span>',
-		'echo'        => 1,
-	);
+			<?php
+			$args = array(
+				'before'      => '<nav class="page-link"><dl><dt>Pages :</dt><dd>',
+				'after'       => '</dd></dl></nav>',
+				'link_before' => '<span class="page-numbers">',
+				'link_after'  => '</span>',
+				'echo'        => 1,
+			);
 			wp_link_pages( $args );
 			?>
 			</article><!-- [ /#post-<?php the_ID(); ?> ] -->
 
-	<?php
+			<?php
 	endwhile;
 	};
-?>
+	?>
 <?php do_action( 'lightning_mainSection_append' ); ?>
 </div><!-- [ /.mainSection ] -->
 
@@ -75,4 +77,4 @@ do_action( 'lightning_breadcrumb_after' );
 </div><!-- [ /.container ] -->
 <?php do_action( 'lightning_siteContent_apepend' ); ?>
 </div><!-- [ /.siteContent ] -->
-<?php lightning_get_template_part('footer'); ?>
+<?php lightning_get_template_part( 'footer' ); ?>
