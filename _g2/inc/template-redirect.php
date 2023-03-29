@@ -21,6 +21,9 @@ function lightning_redirect_module() {
 		add_action(
 			'get_template_part_module_loop_' . $postType,
 			function( $slug ) {
+				/**
+				 * note: $slug is provided from do_action( "get_template_part_{$slug}", $slug, $name );
+				 */
 				$templates   = array();
 				$templates[] = "{$slug}.php";
 				// If old name file is don't exist that load new name file.
