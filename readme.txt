@@ -2,7 +2,7 @@
 Lightning WordPress theme, Copyright (C) 2015-2022 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
 Tested up to: 6.1
-Stable tag: 15.7.0
+Stable tag: 15.8.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,9 +38,10 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
-[ G3 ] Fix Editor block
-[ G2 ] Fix loading old files
-[ G2 ] Delete specification of margin 0 for figure
+v15.8.1
+[ G3 ][ Bug fix ] Fix Editor block
+[ G2 ][ Bug fix ] Fix loading old files
+[ G2 ][ Bug fix ] Delete specification of margin 0 for figure
 
 v15.8.0
 [ G3 ][ Other ] add css clear-float class
