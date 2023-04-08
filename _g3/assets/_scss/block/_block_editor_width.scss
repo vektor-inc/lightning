@@ -95,6 +95,8 @@ body.folded:not(.is-fullscreen-mode) .edit-post-layout.is-sidebar-opened{
 .editor-styles-wrapper .is-root-container {
 	.wp-block {
 		max-width:var(--vk-width-editor-container-body);
+	}
+	> .wp-block {
 		// 6.0 / theme.json あり / Evergreen のオフセット背景の時に左によってしまうため
 		margin-left:auto;
 		margin-right:auto;
