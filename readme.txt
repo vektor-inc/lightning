@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ] fix editor screen block spacing
+
 v15.8.1
 [ G3 ][ Bug fix ] Fix Editor block
 [ G2 ][ Bug fix ] Fix loading old files

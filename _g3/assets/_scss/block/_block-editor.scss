@@ -69,3 +69,8 @@
 		}
 	}
 }
+
+// theme.json 有効にすると .editor-styles-wrapper .is-layout-flow > * + * { margin-block-start: 24px; } つけられるので打ち消し
+.editor-styles-wrapper .is-layout-flow > * + *:is([class*="wp-block"],[class*="vk_"]) {
+	margin-block-start: 0;
+}
