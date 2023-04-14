@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ] Fix theme.json setting for existing site 
+
 v15.8.2
 [ G3 ] fix editor screen block spacing
 
