@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ] Fix handling width of cope with theme.json
+
 v15.8.3
 [ G3 ] Fix theme.json setting for existing site 
 
