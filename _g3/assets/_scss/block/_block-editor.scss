@@ -79,14 +79,19 @@
  .editor-styles-wrapper .is-layout-flow > * { margin-block-end:0; } 
  つけられるので .common に記載と同じ指定で打ち消し
  */
-.editor-styles-wrapper .is-layout-flow > *:is(
-	.wp-block-table,
-	p,
-	ul,
-	ol,
-	dl,
-	blockquote,
-	iframe
-	) {
-	margin-block-end:var(--vk-margin-element-bottom);
+.editor-styles-wrapper .is-layout-flow > *{
+	&:is(
+		.wp-block-table,
+		p,
+		ul,
+		ol,
+		dl,
+		blockquote,
+		iframe
+		) {
+		margin-block-end:var(--vk-margin-element-bottom);
+	}
+	&:is( h1,h2,h3,h4,h5,h6 ) {
+		margin-bottom:var(--vk-margin-headding-bottom);
+	}
 }
