@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ] Fix heading bottom on editor
+
 v15.8.5
 [ G3 ] Fix element bottom on editor
 
