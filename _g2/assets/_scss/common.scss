@@ -14,12 +14,24 @@
 }
 
 /*-------------------------------------------*/
+/* .siteFooter
+/*-------------------------------------------*/
+// 本当は foundation/layput/_footer.scss で下線がつかないように改修済みだが、
+// デザインスキンに展開・リリースするのが手間なのでなのでテーマから上書き
+// 2023.3.17 以降にfoundation をアップデートしたスキンを全てリリースしたなら削除可
+.siteFooter a:is(.btn,.wp-block-button__link){
+	text-decoration: none;
+}
+
+/*-------------------------------------------*/
 /*	reset user agent style
 /*-------------------------------------------*/
 figure{
-	margin-inline-start: 0;
-	margin-inline-end: 0;
-	margin-block-end: 0;
+	// 一度 0 指定を追加した（Lightning Pro 8.17.8）が、既存サイトへの影響が大きかったため 
+	// Lightning 15.8.0 / Lightning 8.17.10 で再度削除
+	// margin-inline-start: 0;
+	// margin-inline-end: 0;
+	// margin-block-end: 0;
 }
 
 /*-------------------------------------------*/

@@ -1,8 +1,8 @@
 === Lightning ===
-Lightning WordPress theme, Copyright (C) 2015-2022 Vektor,Inc.
+Lightning WordPress theme, Copyright (C) 2015-2023 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
-Tested up to: 6.1
-Stable tag: 15.5.1
+Tested up to: 6.2
+Stable tag: 15.8.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,6 +37,39 @@ https://www.vektor-inc.co.jp/inquiry/
 
 
 == Changelog ==
+
+v15.8.6
+[ G3 ] Fix heading bottom on editor
+
+v15.8.5
+[ G3 ] Fix element bottom on editor
+
+v15.8.4
+[ G3 ] Fix handling width of cope with theme.json
+
+v15.8.3
+[ G3 ] Fix theme.json setting for existing site 
+
+v15.8.2
+[ G3 ] fix editor screen block spacing
+
+v15.8.1
+[ G3 ][ Bug fix ] Fix Editor block
+[ G2 ][ Bug fix ] Fix loading old files
+[ G2 ][ Bug fix ] Delete specification of margin 0 for figure
+
+v15.8.0
+[ G3 ][ Other ] add css clear-float class
+[ G3 ][ Bug fix ] Fix editor width of group inner on WP6.1
+[ G2 ][ Bug fix ] Delete underline of button placed footer.
+[ G3 / G2 ][ Bug fix ] Fix Font Awesome 6
+
+v15.7.0
+[ G3 ][ Specification Change ][ Page Header ] Allow class on br tag 
+
+v15.6.0
+[ G3 / G2 ][ Update ] VK mobile Nav ( add filter vk_mobile_nav_menu_btn_text )
+[ G3 / G2 ][ Update / Bugfix ] CSS Optimize ( Cope with PHP 8.1 warning )
 
 v15.5.1
 [ G3 / G2 ] Tree Shaking Update 2.2.0

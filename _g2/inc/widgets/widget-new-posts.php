@@ -1,7 +1,12 @@
 <?php
+/**
+ * Lightning
+ *
+ * @package vektor-inc/lightning
+ */
 
-/*-------------------------------------------*/
-/*  Side Post list widget
+/*
+  Side Post list widget
 /*-------------------------------------------*/
 class WP_Widget_ltg_post_list extends WP_Widget {
 
@@ -18,10 +23,10 @@ class WP_Widget_ltg_post_list extends WP_Widget {
 		);
 	}
 
+	/*
+	 More Link
 	/*-------------------------------------------*/
-	/* More Link
-	/*-------------------------------------------*/
-	static public function more_link_html( $instance ) {
+	public static function more_link_html( $instance ) {
 		if ( ! empty( $instance['more_text'] ) && ! empty( $instance['more_url'] ) ) {
 			$more_link_html  = '<div class="text-right" style="margin-top:1em;">';
 			$more_link_html .= '<a href="' . esc_url( $instance['more_url'] ) . '" class="btn btn-default btn-xs">' . wp_kses_post( $instance['more_text'] ) . '</a>';
@@ -89,6 +94,7 @@ class WP_Widget_ltg_post_list extends WP_Widget {
 					 * Actually, it's ok to only use get_template_part().
 					 * It is measure for before version 7.0 that loaded module_loop_***.php.
 					 */
+					$templates    = array();
 					$templates[]  = 'module_loop_' . $post_type . '.php';
 					$require_once = false;
 					if ( locate_template( $templates, false, $require_once ) ) {
@@ -102,7 +108,7 @@ class WP_Widget_ltg_post_list extends WP_Widget {
 			endwhile;
 		endif;
 
-		echo  $this->more_link_html( $instance );
+		echo $this->more_link_html( $instance );
 
 		echo '</div>';
 		echo $args['after_widget'];

@@ -8,7 +8,7 @@ https://github.com/vektor-inc/vektor-wp-libraries
 if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 	class Vk_Mobile_Nav {
 
-		public static $version = '0.1.0';
+		public static $version = '0.1.1';
 
 		public function __construct() {
 			/* Can not call get_called_class() on PHP5.2 */
@@ -86,20 +86,21 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 
 			$option               = self::get_option();
 			$btn_additional_class = '';
-			if ( $option['position'] == 'right' ) {
+			if ( 'right' === $option['position'] ) {
 				$btn_additional_class = ' position-right';
 			}
 
-			$menu_btn = '<div id="vk-mobile-nav-menu-btn" class="vk-mobile-nav-menu-btn' . $btn_additional_class . '">MENU</div>';
+			$menu_btn_text = apply_filters( 'vk_mobile_nav_menu_btn_text', __( 'MENU', 'vk-mobile-nav' ) );
+			$menu_btn      = '<div id="vk-mobile-nav-menu-btn" class="vk-mobile-nav-menu-btn' . $btn_additional_class . '">' . $menu_btn_text . '</div>';
 
 			if ( class_exists( 'Vk_Mobile_Fix_Nav' ) ) {
 				$fix_nav_options = Vk_Mobile_Fix_Nav::get_options();
 				// fixナビ内にメニュー展開ボタンを表示しない || fixナビ自体を表示しない
 				if ( ! $fix_nav_options['add_menu_btn'] || $fix_nav_options['hidden'] ) {
-					echo $menu_btn;
+					echo wp_kses_post( $menu_btn );
 				}
 			} else {
-				echo $menu_btn;
+				echo wp_kses_post( $menu_btn );
 			}
 
 			echo '<div class="vk-mobile-nav vk-mobile-nav-' . esc_attr( $option['slide_type'] ) . '" id="vk-mobile-nav">';

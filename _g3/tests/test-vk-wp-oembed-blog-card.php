@@ -38,6 +38,7 @@ class BlogCardTest extends WP_UnitTestCase {
 		remove_filter( 'the_content', 'wpautop' );
 		$test_array = array(
 			// WordPressで作られたサイト サイト内記事
+			
 			array(
 				'url'     => get_permalink( $post_id ),
 				'cache'   => '[embed]' . get_permalink( $post_id ) .'[/embed]',

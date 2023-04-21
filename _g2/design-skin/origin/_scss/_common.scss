@@ -105,6 +105,11 @@ blockquote { border:5px solid #eee; background-color:#fcfcfc;position:relative;f
 	font-family: "Font Awesome 5 Free";
 	font-weight: bold;
 }
+.fa_v6_css blockquote:before,
+.fa_v6_css blockquote:after {
+	font-family: "Font Awesome 6 Free";
+	font-weight: bold;
+}
 
 .table,
 table { border-collapse: collapse; border-spacing: 0;width:100%; border-top:$border_primary;
