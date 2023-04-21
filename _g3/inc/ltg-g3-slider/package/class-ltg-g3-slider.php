@@ -709,7 +709,7 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 
 			if ( $slide_count ) {
 
-				$slide_html .= '<div class="' . $slider_prefix . 'swiper-container swiper-container ltg-slide">';
+				$slide_html .= '<div class="' . $slider_prefix . 'swiper swiper-container ltg-slide">';
 				$slide_html .= '<div class="swiper-wrapper ltg-slide-inner">';
 
 				// Why end point is $slide_count_max that not $slide_count, image exist 1,2,5.

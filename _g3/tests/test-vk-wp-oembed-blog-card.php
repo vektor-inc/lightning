@@ -58,13 +58,16 @@ class BlogCardTest extends WP_UnitTestCase {
 			// WordPressが許可しているプロバイダ−の場合
 			array(
 				'url'     => 'https://youtu.be/OCYupuj5HrQ',
-				'cache'   => '<iframe loading="lazy" title="Lightning G3 クイックスタート【公式】" width="1140" height="641" src="https://www.youtube.com/embed/OCYupuj5HrQ?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+				'cache'   => '<iframe loading="lazy" title="Lightning G3 クイックスタート【公式】" width="1140" height="641" src="https://www.youtube.com/embed/OCYupuj5HrQ?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
 				'correct' => apply_filters( 'the_content', '[embed]https://youtu.be/OCYupuj5HrQ[/embed]' ),
 			),
 		);
 		foreach ( $test_array as $key => $value ) {
 			$result = VK_WP_Oembed_Blog_Card::oembed_html( $value['cache'], $value['url'] );
-			// $this->assertEquals( $value['correct'], $result );
+			if ( function_exists( 'wp_img_tag_add_decoding_attr') ) {
+				$result = wp_img_tag_add_decoding_attr( $result, 'custom' );
+			}	
+			$this->assertEquals( $value['correct'], $result );
 		}
 		// wpautopフィルターフックを戻す
 		add_filter( 'the_content', 'wpautop' );
@@ -97,7 +100,10 @@ class BlogCardTest extends WP_UnitTestCase {
 		foreach ( $test_array as $key => $value ) {
 			$output = "";
 			$result = VK_WP_Oembed_Blog_Card::maybe_make_link( $output, $value['url'] );
-			// $this->assertEquals( $value['correct'], $result );
+			if ( function_exists( 'wp_img_tag_add_decoding_attr') ) {
+				$result = wp_img_tag_add_decoding_attr( $result, 'custom' );
+			}	
+			$this->assertEquals( $value['correct'], $result );
 		}
 		// wpautopフィルターフックを戻す
 		add_filter( 'the_content', 'wpautop' );
