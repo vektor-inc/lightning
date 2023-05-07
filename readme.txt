@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ Design tuning ] Lightning design setting metabox UI
+
 v15.8.6
 [ G3 ] Fix heading bottom on editor
 
