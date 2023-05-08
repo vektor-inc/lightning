@@ -1,8 +1,8 @@
 <?php
 /**
- * VK Advanced Slider Config
+ * VK Slider Config
  *
- * @package Katawara
+ * @package vektor-inc/lightning
  */
 
 if ( ! class_exists( 'LTG_G3_Slider' ) ) {
