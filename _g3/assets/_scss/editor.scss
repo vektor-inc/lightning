@@ -33,31 +33,7 @@
 }
 
 @import "common-editor";
-
-.edit-post-meta-boxes-area {
-    h4 {
-        display: block;
-        overflow: hidden;
-        font-size:14px;
-        margin-top: 1em;
-        margin-bottom: 0.3em;
-        padding: 0;
-		background:none;
-    }
-	ul{
-		padding-left:0;
-	}
-    input[type=date], 
-    input[type=email], 
-    input[type=number], 
-    input[type=tel], 
-    input[type=text], 
-    input[type=url], 
-    select,
-    textarea {
-        box-sizing: border-box;
-    }
-}
+@import "editor-meta-fields";
 
 //common.scssで編集画面のCSSが打ち消されるので以下追加
 .interface-interface-skeleton__sidebar{
