@@ -38,7 +38,7 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
-[ G3 ][ Design bug fix ] Fix horizontal non-intentional padding at inner block
+[ G3 theme.json ][ Design bug fix ] Fix horizontal non-intentional padding at inner block
 [ G3 ][ Design tuning ] Lightning design setting metabox UI
 
 v15.8.6
