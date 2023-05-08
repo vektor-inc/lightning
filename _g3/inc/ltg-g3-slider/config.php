@@ -57,3 +57,15 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 
 global $vk_advansed_slider_prefix;
 $vk_advansed_slider_prefix = 'Lightning ';
+
+/**
+ * Adjustment swiper navigation allow color
+ * Swiper のナビゲーションが青色になってしまうので上書き指定
+ *
+ * @since vk swiper composer version
+ * @return void
+ */
+function lightning_add_swiper_adjustment_css() {
+	wp_add_inline_style( 'lightning-common-style', ':root{--swiper-navigation-color: #fff;}' );
+}
+add_action( 'wp_enqueue_scripts', 'lightning_add_swiper_adjustment_css', 11 );
