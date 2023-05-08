@@ -65,13 +65,17 @@ body .is-layout-constrained > * + * {
 //     margin-block-start: 0;
 //     margin-block-end: 0;
 // }
+// body .is-layout-constrained > * {
+//     margin-block-start: 0;
+//     margin-block-end: 0;
+// }
 
 // h タグには --vk-margin-headding-bottom 指定追加
-body .is-layout-flow > *:is(h1,h2,h3,h4,h5,h6 ) {
+body :is( .is-layout-flow, .is-layout-constrained ) > *:is(h1,h2,h3,h4,h5,h6 ) {
 	margin-block-end:var(--vk-margin-headding-bottom);
 }
 
-body .container .is-layout-flow {
+body .container :is( .is-layout-flow, .is-layout-constrained ) {
 	.wp-block-table,
 	p,
 	ul,
