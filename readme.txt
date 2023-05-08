@@ -38,7 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
-[ G3 theme.json ][ Design Bugfix ] Fix .is-layout-constrained margin-bottom
+[ G3 theme.json ][ Design Bug fix ] Fix .is-layout-constrained margin-bottom
+[ G3 theme.json ][ Design Bug fix ] Fix horizontal non-intentional padding at inner block
 [ G3 ][ Design tuning ] Lightning design setting metabox UI
 
 v15.8.6
