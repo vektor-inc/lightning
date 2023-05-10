@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e3c3afba94b5107ce948a776ae265570",
+    "content-hash": "e906ebf4b0194b89c5ed83f16ba1aef4",
     "packages": [
         {
             "name": "vektor-inc/font-awesome-versions",
@@ -211,16 +211,16 @@
         },
         {
             "name": "vektor-inc/vk-swiper",
-            "version": "0.1.0",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vektor-inc/vk-swiper.git",
-                "reference": "bb026fdb135a4a79cc178418a2c2b7d6a85a8307"
+                "reference": "ea0fbc8e6829e1879f17c6c0bf584de2e183a9ef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vektor-inc/vk-swiper/zipball/bb026fdb135a4a79cc178418a2c2b7d6a85a8307",
-                "reference": "bb026fdb135a4a79cc178418a2c2b7d6a85a8307",
+                "url": "https://api.github.com/repos/vektor-inc/vk-swiper/zipball/ea0fbc8e6829e1879f17c6c0bf584de2e183a9ef",
+                "reference": "ea0fbc8e6829e1879f17c6c0bf584de2e183a9ef",
                 "shasum": ""
             },
             "require-dev": {
@@ -246,9 +246,9 @@
             "description": "swiper for vektor",
             "support": {
                 "issues": "https://github.com/vektor-inc/vk-swiper/issues",
-                "source": "https://github.com/vektor-inc/vk-swiper/tree/0.1.0"
+                "source": "https://github.com/vektor-inc/vk-swiper/tree/0.2.0"
             },
-            "time": "2023-04-20T06:41:00+00:00"
+            "time": "2023-05-10T00:24:38+00:00"
         }
     ],
     "packages-dev": [
@@ -1269,16 +1269,16 @@
         },
         {
             "name": "sebastian/diff",
-            "version": "4.0.4",
+            "version": "4.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/diff.git",
-                "reference": "3461e3fccc7cfdfc2720be910d3bd73c69be590d"
+                "reference": "74be17022044ebaaecfdf0c5cd504fc9cd5a7131"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/3461e3fccc7cfdfc2720be910d3bd73c69be590d",
-                "reference": "3461e3fccc7cfdfc2720be910d3bd73c69be590d",
+                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/74be17022044ebaaecfdf0c5cd504fc9cd5a7131",
+                "reference": "74be17022044ebaaecfdf0c5cd504fc9cd5a7131",
                 "shasum": ""
             },
             "require": {
@@ -1323,7 +1323,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/diff/issues",
-                "source": "https://github.com/sebastianbergmann/diff/tree/4.0.4"
+                "source": "https://github.com/sebastianbergmann/diff/tree/4.0.5"
             },
             "funding": [
                 {
@@ -1331,7 +1331,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-10-26T13:10:38+00:00"
+            "time": "2023-05-07T05:35:17+00:00"
         },
         {
             "name": "sebastian/environment",
