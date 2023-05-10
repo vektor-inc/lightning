@@ -67,7 +67,7 @@ class BlogCardTest extends WP_UnitTestCase {
 			$result = VK_WP_Oembed_Blog_Card::oembed_html( $value['cache'], $value['url'] );
 			if ( function_exists( 'wp_img_tag_add_decoding_attr') ) {
 				$result = wp_img_tag_add_decoding_attr( $result, 'custom' );
-			}			
+			}	
 			$this->assertEquals( $value['correct'], $result );
 		}
 		// wpautopフィルターフックを戻す
