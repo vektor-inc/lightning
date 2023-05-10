@@ -710,6 +710,7 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 
 			if ( $slide_count ) {
 
+				// class 名の swiper が２つ記載してあるが意図的なものです。一つにすると表示が崩れるので注意.
 				$slide_html .= '<div class="' . $slider_prefix . 'swiper swiper swiper-container ltg-slide">';
 				$slide_html .= '<div class="swiper-wrapper ltg-slide-inner">';
 
