@@ -688,7 +688,8 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 
 			$slider_prefix = esc_html( $options['top_slide_prefix'] );
 
-			$tag = 'var ' . $slider_prefix . 'swiper = new Swiper(\'.' . $slider_prefix . 'swiper-container\', ' . $swiper_paras . ');';
+			$tag = 'var ' . $slider_prefix . 'swiper = new Swiper(\'.' . $slider_prefix . 'swiper\', ' . $swiper_paras . ');';
+
 			wp_add_inline_script( 'vk-swiper-script', $tag, 'after' );
 		}
 
@@ -709,7 +710,8 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 
 			if ( $slide_count ) {
 
-				$slide_html .= '<div class="' . $slider_prefix . 'swiper-container swiper-container ltg-slide">';
+				// class 名の swiper が２つ記載してあるように見えるが一つ目は $slider_prefix と結合される.
+				$slide_html .= '<div class="' . $slider_prefix . 'swiper swiper swiper-container ltg-slide">';
 				$slide_html .= '<div class="swiper-wrapper ltg-slide-inner">';
 
 				// Why end point is $slide_count_max that not $slide_count, image exist 1,2,5.

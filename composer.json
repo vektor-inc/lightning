@@ -7,13 +7,16 @@
 		}
 	],
 	"require": {
+		"vektor-inc/vk-swiper": "^0.2.0",
 		"vektor-inc/font-awesome-versions": "^0.4.1",
 		"vektor-inc/vk-color-palette-manager": "^0.0.15",
 		"vektor-inc/vk-breadcrumb": "^0.2.5",
 		"vektor-inc/vk-css-optimize": "^0.2.0"
 	},
 	"require-dev": {
-		"vektor-inc/vk-wp-unit-test-tools": "^0.10.0",
+		"doctrine/instantiator": "1.5.0",
+		"squizlabs/php_codesniffer": "*",
+		"vektor-inc/vk-wp-unit-test-tools": "^0.11.0",
 		"sirbrillig/phpcs-variable-analysis": "^2.8",
 		"wp-phpunit/wp-phpunit": "^5.4",
 		"yoast/phpunit-polyfills": "^1.0"
