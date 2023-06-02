@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ Bug fix ] Fixed file reference bug of slider under specific environment such as Windows ( Update Swiper 9.3.2 )
+
 v15.9.1
 [ G3 ] Fix slider navigation
 
