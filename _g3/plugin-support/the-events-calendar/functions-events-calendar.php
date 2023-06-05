@@ -29,7 +29,7 @@ function lightning_g3_tec_load_footer() {
 		lightning_get_template_part( 'template-parts/site-footer' );
 	}
 }
-add_action( 'wp_footer', 'lightning_g3_tec_load_footer' );
+add_action( 'wp_footer', 'lightning_g3_tec_load_footer', 1 );
 
 /**
  * Load CSS
