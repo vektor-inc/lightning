@@ -2,7 +2,7 @@
 Lightning WordPress theme, Copyright (C) 2015-2023 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
 Tested up to: 6.2
-Stable tag: 15.9.2
+Stable tag: 15.9.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,7 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
-[ G3 ][ Bug fix ] Cope with the Event Calender
+v15.9.3
+[ G3 ][ Other ] Cope with plugin the Event Calender
 [ G2 ][ Bug fix ] Fix fatal error arise from bootstrap version version judgement on slider
 
 v15.9.2
