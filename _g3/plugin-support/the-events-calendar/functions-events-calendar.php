@@ -31,6 +31,9 @@ function lightning_g3_tec_load_footer() {
 }
 add_action( 'wp_footer', 'lightning_g3_tec_load_footer' );
 
+/**
+ * Load CSS
+ */
 function lightning_tec_load_css() {
 	wp_enqueue_style( 'lightning-tec-extension-style', get_template_directory_uri() . '/plugin-support/the-events-calendar/css/style.css', array(), LIGHTNING_THEME_VERSION );
 }
