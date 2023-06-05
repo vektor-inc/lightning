@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G2 ][ Bug fix ] Fix fatal error arise from bootstrap version version judgement on slider
+
 v15.9.2
 [ G3 ][ Bug fix ] Fixed file reference bug of slider under specific environment such as Windows ( Update Swiper 9.3.2 )
 
