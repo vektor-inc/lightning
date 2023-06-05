@@ -3,7 +3,8 @@
 <?php
 do_action( 'lightning_top_slide_before' );
 if ( empty( $lightning_theme_options['top_slide_hide'] ) ) {
-	if ( $bootstrap == '3' ) {
+	global $bootstrap;
+	if ( '3' === $bootstrap || 3 === $bootstrap ) {
 		$old_file_name   = array();
 		$old_file_name[] = 'module_slide.php';
 		if ( locate_template( $old_file_name, false, false ) ) {

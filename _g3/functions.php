@@ -325,6 +325,11 @@ if ( is_plugin_active( 'polylang/polylang.php' ) ) {
 if ( is_plugin_active( 'bbpress/bbpress.php' ) ) {
 	require dirname( __FILE__ ) . '/plugin-support/bbpress/functions-bbpress.php';
 }
+// Load the-events-calendar modules.
+if ( is_plugin_active( 'the-events-calendar/the-events-calendar.php' ) ) {
+	// ※ If File name change to "functions-the-event-calendar.php" that fail to load.
+	require dirname( __FILE__ ) . '/plugin-support/the-events-calendar/functions-events-calendar.php';
+}
 
 /**
  * Disable_tgm_notification_except_admin
