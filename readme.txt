@@ -39,7 +39,7 @@ https://www.vektor-inc.co.jp/inquiry/
 == Changelog ==
 
 v15.9.3
-[ G3 ][ Other ] Cope with plugin the Event Calender
+[ G3 ][ Bug fix ] Cope with plugin the Event Calender
 [ G2 ][ Bug fix ] Fix fatal error arise from bootstrap version version judgement on slider
 
 v15.9.2
