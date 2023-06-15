@@ -3,7 +3,7 @@
  * VK Components Posts
  *
  * @package VK Component
- * @version 1.3.1
+ * @version 1.5.0
  *
  * *********************** CAUTION ***********************
  * The original of this file is located at:
@@ -52,6 +52,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				'display_btn'                => false,
 				'image_default_url'          => false,
 				'overlay'                    => false,
+				'title_tag'                  => 'h5',
 				'btn_text'                   => __( 'Read more', 'lightning' ),
 				'btn_align'                  => 'text-right',
 				'new_text'                   => __( 'New!!', 'lightning' ),
@@ -632,7 +633,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				$html .= $options['body_prepend'];
 			}
 
-			$html .= '<h5 class="vk_post_title ' . $layout_type . '-title">';
+			$html .= '<' . $options['title_tag'] . ' class="vk_post_title ' . $layout_type . '-title">';
 
 			/*
 			カードインテキストの場合、リンクの中にリンクがあるとブラウザでDOMが書き換えられるので
@@ -661,7 +662,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				$html .= '</a>';
 			}
 
-			$html .= '</h5>';
+			$html .= '</' . $options['title_tag'] . '>';
 
 			if ( $options['display_date'] ) {
 				$html .= '<div class="vk_post_date ' . $layout_type . '-date published">';

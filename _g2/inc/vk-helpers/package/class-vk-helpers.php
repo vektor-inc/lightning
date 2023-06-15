@@ -265,9 +265,9 @@ if ( ! class_exists( 'VK_Helpers' ) ) {
 
 			// 10進数の状態で変更レートを掛けて dechex で 16進数に戻す.
 			$color_array      = array();
-			$color_array['r'] = dechex( self::color_adjust_under_ff( $r * $change_rate ) );
-			$color_array['g'] = dechex( self::color_adjust_under_ff( $g * $change_rate ) );
-			$color_array['b'] = dechex( self::color_adjust_under_ff( $b * $change_rate ) );
+			$color_array['r'] = dechex( round( self::color_adjust_under_ff( $r * $change_rate ) ) );
+			$color_array['g'] = dechex( round( self::color_adjust_under_ff( $g * $change_rate ) ) );
+			$color_array['b'] = dechex( round( self::color_adjust_under_ff( $b * $change_rate ) ) );
 
 			$new_color = '#';
 
@@ -285,10 +285,14 @@ if ( ! class_exists( 'VK_Helpers' ) ) {
 
 		/**
 		 * 色の自動変更で255を越えてしまった時に255に強制的に抑える
+		 * ついでに小数点を四捨五入
 		 *
 		 * @param  [type] $num RGBの10進数の数値.
 		 */
 		public static function color_adjust_under_ff( $num ) {
+			// $num が整数でない場合 PHP8.1 でエラーになるので四捨五入.
+			// If $num is not an integer, an error will occur in PHP8.1, so it is rounded.
+			$num = round( $num );
 			if ( $num > 256 ) {
 				$num = 255;
 			}

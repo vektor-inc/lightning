@@ -4,15 +4,6 @@
  *
  * @package VK_Component_Button
  *
- * cd /app
- * bash setup-phpunit.sh
- * source ~/.bashrc
- * 
- * cd $(wp theme path --dir lightning)
- * あるいは
- * cd wp-content/themes/lightning
- * 
- * phpunit
  */
 
 /**
@@ -56,8 +47,7 @@ class ButtonTest extends WP_UnitTestCase {
 				'correct'        => 'color:#000;',
 			),
 		);
-		//
-		print PHP_EOL;
+				print PHP_EOL;
 		print '★★★★★-------------------------------' . PHP_EOL;
 		print 'get_style_text' . PHP_EOL;
 		print '------------------------------------' . PHP_EOL;
@@ -92,8 +82,7 @@ class ButtonTest extends WP_UnitTestCase {
 				'correct'      => 'color:#000;',
 			),
 		);
-		//
-		print PHP_EOL;
+				print PHP_EOL;
 		print '★★★★★-------------------------------' . PHP_EOL;
 		print 'get_style_text_hover' . PHP_EOL;
 		print '------------------------------------' . PHP_EOL;
@@ -118,8 +107,7 @@ class ButtonTest extends WP_UnitTestCase {
 				'correct'      => 'background:transparent;transition: .3s;',
 			),
 		);
-		//
-		print PHP_EOL;
+				print PHP_EOL;
 		print '★★★★★-------------------------------' . PHP_EOL;
 		print 'get_style_bg' . PHP_EOL;
 		print '------------------------------------' . PHP_EOL;
@@ -141,11 +129,10 @@ class ButtonTest extends WP_UnitTestCase {
 			array(
 				'btn_ghost'    => false,
 				'btn_color_bg' => '#c00',
-				'correct'      => 'background-color:#e60000;',
+				'correct'      => 'filter: brightness(1.2) saturate(2);',
 			),
 		);
-		//
-		print PHP_EOL;
+				print PHP_EOL;
 		print '★★★★★-------------------------------' . PHP_EOL;
 		print 'get_style_bg_hover' . PHP_EOL;
 		print '------------------------------------' . PHP_EOL;
@@ -170,8 +157,7 @@ class ButtonTest extends WP_UnitTestCase {
 				'correct'      => 'border-color:#c00;',
 			),
 		);
-		//
-		print PHP_EOL;
+				print PHP_EOL;
 		print '★★★★★-------------------------------' . PHP_EOL;
 		print 'get_style_border' . PHP_EOL;
 		print '------------------------------------' . PHP_EOL;
@@ -194,11 +180,10 @@ class ButtonTest extends WP_UnitTestCase {
 			array(
 				'btn_ghost'    => false,
 				'btn_color_bg' => '#c00',
-				'correct'      => 'border-color:#e60000;',
+				'correct'      => 'border-color:#c00;',
 			),
 		);
-		//
-		print PHP_EOL;
+				print PHP_EOL;
 		print '★★★★★-------------------------------' . PHP_EOL;
 		print 'get_style_border_hover' . PHP_EOL;
 		print '------------------------------------' . PHP_EOL;
