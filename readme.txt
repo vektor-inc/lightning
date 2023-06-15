@@ -38,6 +38,7 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 / G2 ][ Refactoring ] Update VK_Component
 [ G3 / G2 ][ Bug Fix ] Update VK_Helpers ( Cope with PHP8.2 )
 
 v15.9.3
