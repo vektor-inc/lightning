@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 / G2 ][ Bug Fix ] Update VK_Helpers ( Cope with PHP8.2 )
+
 v15.9.3
 [ G3 ][ Bug fix ] Cope with plugin the Event Calender
 [ G2 ][ Bug fix ] Fix fatal error arise from bootstrap version version judgement on slider
