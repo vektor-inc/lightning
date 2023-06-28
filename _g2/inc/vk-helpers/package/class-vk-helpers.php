@@ -246,7 +246,8 @@ if ( ! class_exists( 'VK_Helpers' ) ) {
 		}
 
 		/**
-		 * 色を比率で明るくしたり暗くする
+		 * [ 非推奨 ] 色を比率で明るくしたり暗くする
+		 * 既にCSSのfilterなどでなどで同じような事ができるため非推奨
 		 *
 		 * @param  string  $color       #あり16進数.
 		 * @param  integer $change_rate 1 が 100%.
@@ -263,40 +264,45 @@ if ( ! class_exists( 'VK_Helpers' ) ) {
 			$g = hexdec( substr( $color, 2, 2 ) );
 			$b = hexdec( substr( $color, 4, 2 ) );
 
-			// 10進数の状態で変更レートを掛けて dechex で 16進数に戻す.
-			$color_array      = array();
-			$color_array['r'] = dechex( round( self::color_adjust_under_ff( $r * $change_rate ) ) );
-			$color_array['g'] = dechex( round( self::color_adjust_under_ff( $g * $change_rate ) ) );
-			$color_array['b'] = dechex( round( self::color_adjust_under_ff( $b * $change_rate ) ) );
+			$color_array = array();
+			// 10進数の状態で変更レートを掛けて16進数で受け取る.
+			$color_array['r'] = self::color_auto_modifi_single( $r, $change_rate );
+			$color_array['g'] = self::color_auto_modifi_single( $g, $change_rate );
+			$color_array['b'] = self::color_auto_modifi_single( $b, $change_rate );
 
 			$new_color = '#';
 
 			foreach ( $color_array as $key => $value ) {
-				/*
-				桁数が１桁の場合2桁にする（ 16進数を sprintf( "%02x",$value ） しても 00 にされるため文字数が1文字のものに対して0を追加している
-				 */
-				if ( mb_strlen( $value ) < 2 ) {
-					$color_array[ $key ] = '0' . $value;
-				}
 				$new_color .= $color_array[ $key ];
 			}
 			return $new_color;
 		}
 
 		/**
-		 * 色の自動変更で255を越えてしまった時に255に強制的に抑える
-		 * ついでに小数点を四捨五入
+		 * [ 非推奨 ] RGBの個別の色をレートで変換して16進数で返す
+		 * color_auto_modifi でのみ使用されている
 		 *
-		 * @param  [type] $num RGBの10進数の数値.
+		 * @param  string  $color_num : RGBの単色の10進数の数値.
+		 * @param  integer $change_rate : 1 が 100%.
+		 * @return string $color : RGBの単色の16進数の数値.
 		 */
-		public static function color_adjust_under_ff( $num ) {
-			// $num が整数でない場合 PHP8.1 でエラーになるので四捨五入.
-			// If $num is not an integer, an error will occur in PHP8.1, so it is rounded.
-			$num = round( $num );
-			if ( $num > 256 ) {
-				$num = 255;
+		public static function color_auto_modifi_single( $color_num, $change_rate = 1 ) {
+
+			$color_num = $color_num * $change_rate;
+			if ( $color_num >= 255 ) {
+				$color_num = 255;
 			}
-			return $num;
+
+			// レートをかけて四捨五入.
+			$rounded = round( $color_num );
+
+			// 結果を16進数に変換.
+			$hex = dechex( $rounded );
+
+			// 結果がもし1桁なら2桁になるように0で埋める.
+			$color = str_pad( $hex, 2, '0', STR_PAD_LEFT );
+
+			return $color;
 		}
 
 		/**
