@@ -31,8 +31,7 @@ add_action( 'wp_enqueue_scripts', 'lightning_bbp_load_css' );
   トピックの内容の前にトピックタイトル追加
 /*-------------------------------------------*/
 function lightning_bbp_add_topic_title() {
-	$skin = get_option( 'lightning_design_skin' );
-	echo '<div><h2>' . get_the_title() . '</h2></div>';
+	echo '<div><h2>' . bbp_get_topic_title() . '</h2></div>';
 }
 add_action( 'bbp_template_before_single_topic', 'lightning_bbp_add_topic_title' );
 
