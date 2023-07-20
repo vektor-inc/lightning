@@ -11,8 +11,17 @@
             document.body.classList.remove('scrolled')
         }
     }
-    window.addEventListener('scroll', bodyClass, false)
-    window.addEventListener('DOMContentLoaded', bodyClass, false)
+
+	let initBodyClass = () => {
+		if (document.readyState !== "loading") { // If the document is not loading
+			bodyClass();
+		} else { // If the document is still loading
+			window.addEventListener("DOMContentLoaded", bodyClass, false);
+		}
+	}
+
+	window.addEventListener('scroll', bodyClass, false)
+	initBodyClass();
 
     // ヘッダー要素がない場合の判別
     const siteHeader = document.getElementById('site-header');
