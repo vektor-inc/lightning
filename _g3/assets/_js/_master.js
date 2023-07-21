@@ -75,31 +75,35 @@
         }
 
 		// ページ内リンクの場合に固定ヘッダーが被ってしまうのでスクロール識別クラスを削除する
-		window.addEventListener('DOMContentLoaded', () => {
-			// ページ内リンクを持つaタグを取得
-			Array.prototype.forEach.call(
-				document.getElementsByTagName('a'),
-				(elem) => {
-					let href = elem.getAttribute('href')
+		// ページ読み込み時に実行される処理
+		document.addEventListener('readystatechange', () => {
+			if (document.readyState === 'complete') {
+				// ページ内リンクを持つaタグを取得
+				Array.prototype.forEach.call(
+					document.getElementsByTagName('a'),
+					(elem) => {
+						let href = elem.getAttribute('href')
 
-					// ページ内リンク以外のリンクを無視する
-					if(!href || href.indexOf('#') != 0) return;
-					// role属性があり、属性の値がtabである場合には処理しない
-					// if (['tab', 'button']. のよう button を含めると、ボタンブロックのページ内リンクした時にリンク先の頭に固定ナビが上に被ってしまうので tab だけにしている
-					if (['tab'].indexOf(elem.getAttribute('role')) > 0) return;
-					// data-toggle属性を持つ場合は何もしない
-					if (elem.getAttribute('data-toggle')) return;
-					// carousel-control属性を持つ場合は何もしない
-					if (elem.getAttribute('carousel-control')) return;
+						// ページ内リンク以外のリンクを無視する
+						if(!href || href.indexOf('#') != 0) return;
+						// role属性があり、属性の値がtabである場合には処理しない
+						// if (['tab', 'button']. のよう button を含めると、ボタンブロックのページ内リンクした時にリンク先の頭に固定ナビが上に被ってしまうので tab だけにしている
+						if (['tab'].indexOf(elem.getAttribute('role')) > 0) return;
+						// data-toggle属性を持つ場合は何もしない
+						if (elem.getAttribute('data-toggle')) return;
+						// carousel-control属性を持つ場合は何もしない
+						if (elem.getAttribute('carousel-control')) return;
 
-					// a タグ（ページ内リンク）をクリックされたらスクロール識別クラスを削除する
-					elem.addEventListener('click', remove_header)
-				}
-			)
+						// a タグ（ページ内リンク）をクリックされたらスクロール識別クラスを削除する
+						elem.addEventListener('click', remove_header)
+					}
+				)
+			}
 		});
 
         window.addEventListener('scroll', header_scrool_func, true)
-        window.addEventListener('DOMContentLoaded', header_scrool_func, false)
+		// 高さを取得してから処理したいので document.readyState で判定せずに document.readyState のまま処理している
+        window.addEventListener('document.readyState', header_scrool_func, false)
     }
 
    /*-------------------------------------------*/
