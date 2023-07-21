@@ -39,19 +39,19 @@
             let siteHeader = document.getElementById('site-header');
             let siteHeaderNext = siteHeader.nextElementSibling;
 
-            if( ! body_class_lock && window.pageYOffset > siteHeaderContainerHeight ){
-                // ヘッダースクロール識別用のclass追加
-                document.body.classList.add('header_scrolled')
-                if(lightningOpt.add_header_offset_margin){
-                    // コンテナ部分をfixedにするので、ガクンとならないように、ヘッダーの次の要素にヘッダーの高さ分余白を追加する 
-                    siteHeaderNext.style.marginTop = siteHeaderContainerHeight + "px";
-                }
-            } else {
-                document.body.classList.remove('header_scrolled')
-                if(lightningOpt.add_header_offset_margin){
-                    siteHeaderNext.style.marginTop = null;
-                }
-            }
+			if( ! body_class_lock && window.scrollY > siteHeaderContainerHeight ){
+				// ヘッダースクロール識別用のclass追加
+				document.body.classList.add('header_scrolled')
+				if(lightningOpt.add_header_offset_margin){
+					// コンテナ部分をfixedにするので、ガクンとならないように、ヘッダーの次の要素にヘッダーの高さ分余白を追加する 
+					siteHeaderNext.style.marginTop = siteHeaderContainerHeight + "px";
+				}
+			} else {
+				document.body.classList.remove('header_scrolled')
+				if(lightningOpt.add_header_offset_margin){
+					siteHeaderNext.style.marginTop = null;
+				}
+			}
         }
 
         let remove_header = (e) => {
