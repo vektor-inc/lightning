@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ] Improving JavaScript Loading
+
 v15.9.5
 [ G3 / G2 ][ Bug Fix ] Fix VK_Helpers::color_auto_modifi() 
 
