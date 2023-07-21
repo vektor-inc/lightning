@@ -34,11 +34,15 @@
         let body_class_timer = false;
         let body_class_lock = false;
 
-        let header_scrool_func = ()=>{
+		// ヘッダースクロール時に実行される処理
+		let header_scrool_func = ()=>{
 
-            let siteHeader = document.getElementById('site-header');
-            let siteHeaderNext = siteHeader.nextElementSibling;
+			// サイトヘッダーの要素を取得
+			let siteHeader = document.getElementById('site-header');
+			// サイトヘッダーの次の要素を取得
+			let siteHeaderNext = siteHeader.nextElementSibling;
 
+			// ボディのクラスがロックされていない場合、かつスクロール量がサイトヘッダーの高さを超えた場合
 			if( ! body_class_lock && window.scrollY > siteHeaderContainerHeight ){
 				// ヘッダースクロール識別用のclass追加
 				document.body.classList.add('header_scrolled')
@@ -47,13 +51,16 @@
 					siteHeaderNext.style.marginTop = siteHeaderContainerHeight + "px";
 				}
 			} else {
+				// ヘッダースクロール識別用のclass削除
 				document.body.classList.remove('header_scrolled')
 				if(lightningOpt.add_header_offset_margin){
+					// ヘッダーの次の要素の余白を削除する
 					siteHeaderNext.style.marginTop = null;
 				}
 			}
-        }
+		}
 
+		// スクロール識別クラスを削除する 
         let remove_header = (e) => {
             document.body.classList.remove('header_scrolled')
             window.removeEventListener('scroll', header_scrool_func)
