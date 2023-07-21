@@ -4,13 +4,13 @@
     /*  scroll
     /*----------------------------------------------------------*/
     // Scroll function
-    let bodyClass = () => {
-        if(window.pageYOffset > 0){
-            document.body.classList.add('scrolled')
-        }else{
-            document.body.classList.remove('scrolled')
-        }
-    }
+	let bodyClass = () => {
+		if(window.scrollY > 0){
+			document.body.classList.add('scrolled')
+		}else{
+			document.body.classList.remove('scrolled')
+		}
+	}
 
 	let initBodyClass = () => {
 		if (document.readyState !== "loading") { // If the document is not loading
