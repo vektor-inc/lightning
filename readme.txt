@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 / G2 ][ Specification change ] Changed to get bbpress topic title from bbp_get_topic_title
+
 v15.9.5
 [ G3 / G2 ][ Bug Fix ] Fix VK_Helpers::color_auto_modifi() 
 
