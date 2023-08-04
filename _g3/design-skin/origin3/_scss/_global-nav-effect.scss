@@ -7,7 +7,7 @@
 		float: left;
 		/* Class is necessarily to the * because class was added to many other class name that first class is not necessarily "current"  */
 		&:hover,
-		&[class*="current"]{
+		&[class*="current"]:where(:not(.menu-item-anchor)) {
 			.global-nav-description{
 				// 色をつけない Don't specific the color
 				// ナビ背景が濃い時やナビ背景は薄いけどヘッダー背景が濃い時、ヘッダー透過の時などの処理がカオスになる。

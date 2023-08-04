@@ -265,6 +265,24 @@ function lightning_add_scroll_adjustment_css() {
 add_action( 'wp_enqueue_scripts', 'lightning_add_scroll_adjustment_css', 11 );
 
 /**
+ * ページ内リンクの場合は識別クラスを出力
+ * Add class to anchor link
+ *
+ * @since 15.10.0
+ *
+ * @param array  $classes : class list.
+ * @param object $item : menu item.
+ * @return array $classes : class list.
+ */
+function lightning_add_anchor_nav_class( $classes, $item ) {
+	if ( strpos( $item->url, '#' ) !== false ) {
+		$classes[] = 'menu-item-anchor';
+	}
+	return $classes;
+}
+add_filter( 'nav_menu_css_class', 'lightning_add_anchor_nav_class', 10, 2 );
+
+/**
  * Enqueue comment reply
  *
  * @return void
