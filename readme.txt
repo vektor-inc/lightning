@@ -38,10 +38,11 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 (no-theme.json) ] Support link color and border ( WordPress 6.3 ).
 [ G3 ] Add the 'menu-item-anchor' class to the in-page link in the navigation menu.
-[ G3 (no-theme.json) ] Support link color and border on WordPress 6.3.
-[ G3 / G2 ][ Specification change ] Changed to get bbpress topic title from bbp_get_topic_title.
 [ G3 ] Improving JavaScript Loading
+[ G3 / G2 ] Adjustments for the changes in the CSS of the cover block introduced by WordPress 6.3.
+[ G3 / G2 ][ Specification change ] Changed to get bbpress topic title from bbp_get_topic_title.
 
 v15.9.5
 [ G3 / G2 ][ Bug Fix ] Fix VK_Helpers::color_auto_modifi() 
