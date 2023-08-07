@@ -76,7 +76,7 @@ add_filter(
 function lightning_bbp_add_topic_title() {
 	$skin = get_option( 'lightning_design_skin' );
 	if ( $skin != 'Variety' ) {
-		echo '<div><h2>' . get_the_title() . '</h2></div>';
+		echo '<div><h2>' . bbp_get_topic_title() . '</h2></div>';
 	}
 }
 add_action( 'bbp_template_before_single_topic', 'lightning_bbp_add_topic_title' );

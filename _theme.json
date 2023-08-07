@@ -2,6 +2,11 @@
 	"$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/trunk/schemas/json/theme.json",
 	"version": 2,
 	"settings": {
+		"color": {
+			"background": true,
+			"text": true,
+			"link": true
+		},
 		"spacing": {
 			"blockGap": true,
 			"margin": true,
