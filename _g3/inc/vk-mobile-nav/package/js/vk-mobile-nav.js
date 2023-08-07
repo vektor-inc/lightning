@@ -75,9 +75,15 @@ If you want to change this file that, you have to change original file.
 		}
 
 		// モバイルナビの実行
-		window.addEventListener('DOMContentLoaded', () => {
+		if (document.readyState === 'loading') {
+			// ロード中の場合、DOMContentLoadedイベントを待つ
+			document.addEventListener('DOMContentLoaded', function() {
+				vk_mobile_nav_run(target);
+			});
+		} else {
+			// DOMはすでにロードされている場合、関数を実行する
 			vk_mobile_nav_run(target);
-		});
+		}
 
 	})(window, document, '.vk-mobile-nav-menu-btn');
 
@@ -199,15 +205,30 @@ If you want to change this file that, you have to change original file.
 
 		vk_menu_acc_resize()
 
-		document.addEventListener('DOMContentLoaded', vk_menu_acc_run)
+		if (document.readyState === 'loading') {
+			// ロード中の場合、DOMContentLoadedイベントを待つ
+			document.addEventListener('DOMContentLoaded', vk_menu_acc_run);
+		} else {
+			// DOMはすでにロードされている場合、関数を実行する
+			vk_menu_acc_run();
+		}
+
 	})(5000);
 })(window, document);
 
+// Node.js の端末判定モジュールである is-mobile を使用してモバイルデバイスかどうか判定
 const mobile = require('is-mobile');
-((document)=>{
-	window.addEventListener('DOMContentLoaded', ()=>{
-		const isMobile = mobile.isMobile({tablet:true})
-		;['device-mobile', 'device-pc'].forEach((m)=>document.body.classList.remove(m))
-		document.body.classList.add(isMobile? 'device-mobile': 'device-pc')
-	})
-})(document)
+
+((document) => {
+  const init = () => {
+    const isMobile = mobile.isMobile({ tablet: true });
+    ['device-mobile', 'device-pc'].forEach((m) => document.body.classList.remove(m));
+    document.body.classList.add(isMobile ? 'device-mobile' : 'device-pc');
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})(document);
