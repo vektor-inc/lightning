@@ -1,7 +1,7 @@
 ;
 ((window, document) => {
     /*----------------------------------------------------------*/
-    /*  scroll
+    /*  Add scrolled class
     /*----------------------------------------------------------*/
     // Scroll function
 	let bodyClass = () => {
@@ -23,6 +23,9 @@
 	window.addEventListener('scroll', bodyClass, false)
 	initBodyClass();
 
+	/*----------------------------------------------------------*/
+    /*  Add header_scrolled class
+    /*----------------------------------------------------------*/
     // ヘッダー要素がない場合の判別
     const siteHeader = document.getElementById('site-header');
 
@@ -60,7 +63,9 @@
 			}
 		}
 
-		// スクロール識別クラスを削除する 
+		// ページ内リンクの場合に固定ヘッダーが被ってしまうのでスクロール識別クラスを削除する //////////////////////////
+
+		// ページ内で#で始まるページ内リンク（ドメイン名を含まない）をクリックされた場合にスクロール識別クラスを削除する
         let remove_header = (e) => {
             document.body.classList.remove('header_scrolled')
             window.removeEventListener('scroll', header_scrool_func)
@@ -72,9 +77,8 @@
                 window.addEventListener('scroll', header_scrool_func, true)
                 body_class_lock = false
             }, 2000);
-        }
+		}
 
-		// ページ内リンクの場合に固定ヘッダーが被ってしまうのでスクロール識別クラスを削除する
 		// ページ読み込み時に実行される処理
 		document.addEventListener('readystatechange', () => {
 			if (document.readyState === 'complete') {
@@ -101,9 +105,24 @@
 			}
 		});
 
-        window.addEventListener('scroll', header_scrool_func, true)
+		// ページがロードされた時の処理
+		document.addEventListener('DOMContentLoaded', () => {
+			if (location.hash) {
+				// URLに#が含まれる場合、scrollイベントリスナーを一時的に無効化
+				window.removeEventListener('scroll', header_scrool_func);
+
+				// 一定時間後に再度イベントリスナーを有効化
+				setTimeout(() => {
+					window.addEventListener('scroll', header_scrool_func, false);
+				}, 500); // 例として500ms後に再度イベントリスナーを有効化する
+			} else {
+				window.addEventListener('scroll', header_scrool_func, false)
+			}
+		});
+
+
 		// 高さを取得してから処理したいので document.readyState で判定せずに document.readyState のまま処理している
-        window.addEventListener('document.readyState', header_scrool_func, false)
+        // window.addEventListener('document.readyState', header_scrool_func, false)
     }
 
 	/*-------------------------------------------*/
