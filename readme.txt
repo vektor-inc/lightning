@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ Bugfix ] Fix lightning_get_entry_meta function.
+
 v15.10.0
 [ G3 (no-theme.json) ] Support link color and border ( WordPress 6.3 ).
 [ G3 ][ Specification Change ] Add the 'menu-item-anchor' class to the in-page link in the navigation menu.
