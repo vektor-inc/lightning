@@ -89,7 +89,7 @@
 						let href = elem.getAttribute('href')
 
 						// ページ内リンク以外のリンクを無視する
-						if(!href || href.indexOf('#') != 0) return;
+						if(!href || href.indexOf('#') === -1) return;
 						// role属性があり、属性の値がtabである場合には処理しない
 						// if (['tab', 'button']. のよう button を含めると、ボタンブロックのページ内リンクした時にリンク先の頭に固定ナビが上に被ってしまうので tab だけにしている
 						if (['tab'].indexOf(elem.getAttribute('role')) > 0) return;
@@ -120,9 +120,6 @@
 			}
 		});
 
-
-		// 高さを取得してから処理したいので document.readyState で判定せずに document.readyState のまま処理している
-        // window.addEventListener('document.readyState', header_scrool_func, false)
     }
 
 	/*-------------------------------------------*/

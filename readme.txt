@@ -38,6 +38,7 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ Improvement ] Improvement to hide the fixed header when clicking on an anchor link URL from another page.
 [ G3 ][ Bugfix ] Fix lightning_get_entry_meta function.
 
 v15.10.0
