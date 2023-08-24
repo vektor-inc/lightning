@@ -2,7 +2,7 @@
 Lightning WordPress theme, Copyright (C) 2015-2023 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
 Tested up to: 6.2
-Stable tag: 15.10.0
+Stable tag: 15.10.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,6 +37,10 @@ https://www.vektor-inc.co.jp/inquiry/
 
 
 == Changelog ==
+
+v15.10.1
+[ G3 ][ Improvement ] Improvement to hide the fixed header when clicking on an anchor link URL from another page.
+[ G3 ][ Bugfix ] Fix lightning_get_entry_meta function.
 
 v15.10.0
 [ G3 (no-theme.json) ] Support link color and border ( WordPress 6.3 ).
