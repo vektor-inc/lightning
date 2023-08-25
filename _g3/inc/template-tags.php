@@ -339,8 +339,16 @@ function lightning_get_entry_meta( $options = array() ) {
 		if ( $option['author_name'] || $option['author_image'] ) {
 			// Post author
 			// For post type where author does not exist.
-			// get_the_author() がページヘッダーの段階で効いていなかったので少し遠回り
-			$author = get_userdata( get_post( get_the_id() )->post_author )->display_name;
+			// get_the_author() がページヘッダーで呼び出された時に効かないので、取得失敗した場合は一度 the_post() で取得する.
+			$author = get_the_author();
+			if ( ! $author ) {
+				if ( have_posts() ) :
+					while ( have_posts() ) :
+						the_post();
+						$author = get_the_author();
+					endwhile;
+				endif;
+			}
 			if ( $author ) {
 				$meta_hidden_author = ( ! empty( $options['postAuthor_hidden'] ) ) ? ' entry-meta_hidden' : '';
 
