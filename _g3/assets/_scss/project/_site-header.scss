@@ -11,6 +11,7 @@ $logo_bottom_margin:1rem;
         font-weight: 700; // cope with not all page h1
         font-size:1.5rem;
         white-space: nowrap;
+		line-height:var(--vk-line-height-low);
         // a {
         //  ロゴが画像じゃない時ののalignが効かなくなる
         //  display:block; 
