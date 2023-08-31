@@ -2,7 +2,7 @@
 Lightning WordPress theme, Copyright (C) 2015-2023 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
 Tested up to: 6.2
-Stable tag: 15.10.3
+Stable tag: 15.10.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,6 +37,9 @@ https://www.vektor-inc.co.jp/inquiry/
 
 
 == Changelog ==
+
+v15.10.4
+[ G3 / G2 ][ Bug fix ] Addressing the image ratio issue in WordPress 6.3.
 
 v15.10.3
 [ G3 ][ Bugfix ] Fixed a bug where the margin-top of the header site title differed slightly between the home page and other pages when no header logo image was specified.
