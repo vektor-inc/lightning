@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 / G2 ][ Bug fix ] Addressing the image ratio issue in WordPress 6.3.
+
 v15.10.3
 [ G3 ][ Bugfix ] Fixed a bug where the margin-top of the header site title differed slightly between the home page and other pages when no header logo image was specified.
 

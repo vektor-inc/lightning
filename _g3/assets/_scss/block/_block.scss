@@ -436,3 +436,13 @@ hr.wp-block-separator {
 .wp-block-cover:has( * > :is( .alignwide , .alignfull )){
 	overflow: visible;
 }
+
+/*-------------------------------------------*/
+/*  image Block
+/*-------------------------------------------*/
+// Addressing the image ratio issue in WordPress 6.3
+.wp-block-image {
+	img:not([style*='object-fit']) {
+		height: auto !important; // !important to override inline styles.
+	}
+}
