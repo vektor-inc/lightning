@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ] Fixed the bug that caused an unintentional margin at the top of the page header when clicking the 'page top' button.
+
 v15.10.4
 [ G3 / G2 ][ Bug fix ] Addressing the image ratio issue in WordPress 6.3.
 
