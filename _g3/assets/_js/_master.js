@@ -82,11 +82,24 @@
 		// ページ読み込み時に実行される処理
 		document.addEventListener('readystatechange', () => {
 			if (document.readyState === 'complete') {
+
+				// サイトヘッダーの要素を取得
+				let siteHeader = document.getElementById('site-header');
+				// サイトヘッダーの次の要素を取得
+				let siteHeaderNext = siteHeader.nextElementSibling;
+
 				// ページ内リンクを持つaタグを取得
 				Array.prototype.forEach.call(
 					document.getElementsByTagName('a'),
 					(elem) => {
 						let href = elem.getAttribute('href')
+
+						// ページトップをクリックされたときはページヘッダー上部に付与してある余白を削除する
+						if ( '#top' === href ){
+							elem.addEventListener('click', () => {
+								siteHeaderNext.style.marginTop = null;
+							})
+						}
 
 						// ページ内リンク以外のリンクを無視する
 						if(!href || href.indexOf('#') === -1) return;
@@ -109,7 +122,7 @@
 		document.addEventListener('DOMContentLoaded', () => {
 			if (location.hash) {
 				// URLに#が含まれる場合、scrollイベントリスナーを一時的に無効化
-				window.removeEventListener('scroll', header_scrool_func);
+				window.removeEventListener('scroll', header_scrool_func, false);
 
 				// 一定時間後に再度イベントリスナーを有効化
 				setTimeout(() => {
