@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ Bugfix ] fix editor width
+
 v15.11.0
 Update Font Awesome 6.4.2 ( Supports the icon font of X )
 

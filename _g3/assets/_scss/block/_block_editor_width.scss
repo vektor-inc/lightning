@@ -53,7 +53,7 @@ body.is-fullscreen-mode .edit-post-layout:not(.is-sidebar-opened){
 body.is-fullscreen-mode .edit-post-layout.is-sidebar-opened{
 	--vk-width-editor-full:calc( 100vw - 280px );
 	--vk-width-editor-wide:calc( 100vw - 280px - ( ( 100vw - 280px ) * ( 1 - 0.8 ) / 2 ) );
-	--vk-width-editor-container-body:calc(  ( 100vw - 280px ) * 0.8 - 30px );
+	--vk-width-editor-container-body:calc(  ( 100vw - 280px ) * 0.8 - 30px ) !important;
 }
 
 // 左管理メニュー表示（ 展開 ） / 右サイドバー展開
@@ -80,6 +80,7 @@ body.folded:not(.is-fullscreen-mode) .edit-post-layout:not(.is-sidebar-opened){
 // 左管理メニュー表示（ 縮小 ） / 右サイドバー展開
 body.folded:not(.is-fullscreen-mode) .edit-post-layout.is-sidebar-opened{
 	--vk-width-editor-container:calc( var(--vk-width-container) - var(--vk-width-editor-leftmenu-folded) - var(--vk-width-editor-sidebar) );
+	--vk-width-editor-container-body:calc(  ( 100vw - var(--vk-width-editor-sidebar) ) * 0.8 - 30px );
 	--vk-width-editor-full:calc( 100vw - var(--vk-width-editor-leftmenu-folded) - var(--vk-width-editor-sidebar) );
 	--vk-width-editor-wide:calc( var( --vk-width-editor-container-body ) + ( 100vw - var( --vk-width-editor-container-body ) - var(--vk-width-editor-leftmenu-folded) - var(--vk-width-editor-sidebar) ) / 2 );
 }
@@ -130,8 +131,13 @@ div[data-align=full]
 
 html .edit-post-visual-editor :where(.editor-styles-wrapper) .block-editor-block-list__layout.is-root-container{
 
-	// Outer Element : Full
-	:is( .wp-block[data-align=full], .wp-block.alignfull, div[data-align=full], .vk_outer-width-full ) {
+	// Outer Element : Full /////////////////////////////////////////////////////////////
+	:is( 
+		.wp-block[data-align=full], 
+		.wp-block.alignfull, 
+		div[data-align=full], 
+		.vk_outer-width-full:where(:not(.vk_outer-paddingLR-zero,.vk_outer-paddingLR-use))
+		) {
 		box-sizing: border-box;
 		width:var(--vk-width-editor-full);
 		max-width:var(--vk-width-editor-full);
@@ -139,32 +145,35 @@ html .edit-post-visual-editor :where(.editor-styles-wrapper) .block-editor-block
 		// ! important をつけると vk_outer-paddingLR-use の中に全幅要素を配置した時 編集画面で表示が崩れる
 		margin-left: calc( var(--vk-width-editor-container-body) / 2 - var(--vk-width-editor-full) / 2 );
 		margin-right: calc( var(--vk-width-editor-container-body) / 2 - var(--vk-width-editor-full) / 2 );
-		:is( .wp-block[data-align=full], .wp-block.alignfull, div[data-align=full], .vk_outer-width-full ) {
-			// ! important をつけないと コアが 
-			// .editor-styles-wrapper .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
-			// 		max-width: var(--wp--style--global--content-size);
-			// 		margin-left: auto !important;
-			// 		margin-right: auto !important;
-			// }
-			// をつけてくるので負ける
-			margin-left: calc( var(--vk-width-editor-container-body) / 2 - var(--vk-width-editor-full) / 2 ) !important;
-			margin-right: calc( var(--vk-width-editor-container-body) / 2 - var(--vk-width-editor-full) / 2 ) !important;
-		}
-		:is( .wp-block[data-align=wide], .wp-block.alignwide, div[data-align=wide], .vk_outer-width-wide ) {
-			// ! important をつけないと コアが 
-			// .editor-styles-wrapper .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
-			// 		max-width: var(--wp--style--global--content-size);
-			// 		margin-left: auto !important;
-			// 		margin-right: auto !important;
-			// }
-			// をつけてくるので負ける
-			margin-left: calc( ( var(--vk-width-editor-container-body) - var(--vk-width-editor-full) ) / 4 ) !important;
-			margin-right: calc( ( var(--vk-width-editor-container-body) - var(--vk-width-editor-full) ) / 4 ) !important;
-		}
 
+		// Outer ブロックの内側の余白機能は独特なので除外してインナー要素の全幅や幅広のネガティブマージンを指定する
+		&:where(:not(.vk_outer-paddingLR-zero,.vk_outer-paddingLR-use)){
+			:is( .wp-block[data-align=full], .wp-block.alignfull, div[data-align=full], .vk_outer-width-full ) {
+				// ! important をつけないと コアが 
+				// .editor-styles-wrapper .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
+				// 		max-width: var(--wp--style--global--content-size);
+				// 		margin-left: auto !important;
+				// 		margin-right: auto !important;
+				// }
+				// をつけてくるので負ける
+				margin-left: calc( var(--vk-width-editor-container-body) / 2 - var(--vk-width-editor-full) / 2 ) !important;
+				margin-right: calc( var(--vk-width-editor-container-body) / 2 - var(--vk-width-editor-full) / 2 ) !important;
+			}
+			:is( .wp-block[data-align=wide], .wp-block.alignwide, div[data-align=wide], .vk_outer-width-wide ) {
+				// ! important をつけないと コアが 
+				// .editor-styles-wrapper .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
+				// 		max-width: var(--wp--style--global--content-size);
+				// 		margin-left: auto !important;
+				// 		margin-right: auto !important;
+				// }
+				// をつけてくるので負ける
+				margin-left: calc( ( var(--vk-width-editor-container-body) - var(--vk-width-editor-full) ) / 4 ) !important;
+				margin-right: calc( ( var(--vk-width-editor-container-body) - var(--vk-width-editor-full) ) / 4 ) !important;
+			}
+		}
 	}
 
-	// Outer Element : Wide
+	// Outer Element : Wide /////////////////////////////////////////////////////////////
 	:is( .wp-block[data-align=wide], .wp-block.alignwide, div[data-align=wide] ){
 		width:var(--vk-width-editor-wide);
 		max-width:var(--vk-width-editor-wide); // max-width も指定しておかないと上書きできない
@@ -207,16 +216,16 @@ html .edit-post-visual-editor :where(.editor-styles-wrapper) .block-editor-block
 				max-width:var(--vk-width-editor-container-body);
 			}
 		}
-		// Outer固有の微妙な余白使用
+		// Outer固有の微妙な余白（左右それぞれ4em付与される）使用
 		&.vk_outer-paddingLR-use{
 			.vk_outer_container{
-				--vk-width-editor-container-body:calc(  100vw - var(--vk-width-editor-sidebar) -  var(--vk-width-editor-leftmenu) - 8em );
+				--vk-width-editor-container-body:calc( var(--vk-width-editor-full) -  8em );
 			}
 			:is(.wp-block[data-align=full] ){
 				width: auto;
 				margin-left: calc(50% - var(--vk-width-editor-full)/2);
 				margin-right: calc(50% - var(--vk-width-editor-full)/2);
-				max-width: 100vw;
+				max-width: var(--vk-width-editor-full);
 			}
 			:is(.wp-block[data-align=wide] ){
 				--vk-width-editor-wide : calc(var(--vk-width-editor-full) - 4em );
