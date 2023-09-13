@@ -139,6 +139,28 @@ html .edit-post-visual-editor :where(.editor-styles-wrapper) .block-editor-block
 		// ! important をつけると vk_outer-paddingLR-use の中に全幅要素を配置した時 編集画面で表示が崩れる
 		margin-left: calc( var(--vk-width-editor-container-body) / 2 - var(--vk-width-editor-full) / 2 );
 		margin-right: calc( var(--vk-width-editor-container-body) / 2 - var(--vk-width-editor-full) / 2 );
+		:is( .wp-block[data-align=full], .wp-block.alignfull, div[data-align=full], .vk_outer-width-full ) {
+			// ! important をつけないと コアが 
+			// .editor-styles-wrapper .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
+			// 		max-width: var(--wp--style--global--content-size);
+			// 		margin-left: auto !important;
+			// 		margin-right: auto !important;
+			// }
+			// をつけてくるので負ける
+			margin-left: calc( var(--vk-width-editor-container-body) / 2 - var(--vk-width-editor-full) / 2 ) !important;
+			margin-right: calc( var(--vk-width-editor-container-body) / 2 - var(--vk-width-editor-full) / 2 ) !important;
+		}
+		:is( .wp-block[data-align=wide], .wp-block.alignwide, div[data-align=wide], .vk_outer-width-wide ) {
+			// ! important をつけないと コアが 
+			// .editor-styles-wrapper .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
+			// 		max-width: var(--wp--style--global--content-size);
+			// 		margin-left: auto !important;
+			// 		margin-right: auto !important;
+			// }
+			// をつけてくるので負ける
+			margin-left: calc( ( var(--vk-width-editor-container-body) - var(--vk-width-editor-full) ) / 4 ) !important;
+			margin-right: calc( ( var(--vk-width-editor-container-body) - var(--vk-width-editor-full) ) / 4 ) !important;
+		}
 
 	}
 
