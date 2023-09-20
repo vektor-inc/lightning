@@ -41,6 +41,10 @@ entry-body
 		margin-right: calc( ( 100% - 100vw ) / 4 );
 		max-width: 100vw;
 	}
+	body .is-layout-constrained > &:where(:not(.alignleft):not(.alignright):not(.alignfull)) {
+		margin-left: calc( ( 100% - 100vw ) / 4 ) !important;
+		margin-right: calc( ( 100% - 100vw ) / 4 ) !important;
+	}
 }
 .main-section--col--two {
 	.alignfull,
