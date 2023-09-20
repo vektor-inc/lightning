@@ -50,7 +50,7 @@
 		},
 		"layout": {
 			"contentSize": "calc( var(--vk-width-container) - var(--vk-width-container-padding) * 2 )",
-			"wideSize": "calc( var(--vk-width-container) - var(--vk-width-container-padding) * 2 + ( 100vw - var(--vk-width-container) - var(--vk-width-container-padding) * 2 ) / 2 )"
+			"wideSize": "calc( var(--vk-width-container) - var(--vk-width-container-padding) * 2 + ( 100vw - ( var(--vk-width-container) - var(--vk-width-container-padding) * 2 ) ) / 2 )"
 		},
 		"border": {
 			"color": true,

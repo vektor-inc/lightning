@@ -173,6 +173,18 @@ html .edit-post-visual-editor :where(.editor-styles-wrapper) .block-editor-block
 		}
 	}
 
+	// 通常サイズの中に幅広対策
+	:is(.wp-block-cover,.wp-block-group):not(.alignfull,.alignwide){
+		& > .is-layout-constrained [data-align=full] {
+			margin-left: calc( var(--vk-width-editor-container-body) / 2 - var(--vk-width-editor-full) / 2 ) !important;
+			margin-right: calc( var(--vk-width-editor-container-body) / 2 - var(--vk-width-editor-full) / 2 ) !important;
+		}
+		& > .is-layout-constrained [data-align=wide] {
+			margin-left: calc( ( var(--vk-width-editor-container-body) - var(--vk-width-editor-full) ) / 4 ) !important;
+			margin-right: calc( ( var(--vk-width-editor-container-body) - var(--vk-width-editor-full) ) / 4 ) !important;
+		}
+	}
+
 	// Outer Element : Wide /////////////////////////////////////////////////////////////
 	:is( .wp-block[data-align=wide], .wp-block.alignwide, div[data-align=wide] ){
 		width:var(--vk-width-editor-wide);
