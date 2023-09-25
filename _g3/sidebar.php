@@ -9,6 +9,10 @@ if ( is_front_page() ) {
 	if ( is_active_sidebar( 'front-side-top-widget-area' ) ) {
 		dynamic_sidebar( 'front-side-top-widget-area' );
 	}
+} else if ( is_search() ) {
+	if ( is_active_sidebar( 'search-side-widget-area' ) ) {
+		dynamic_sidebar( 'search-side-widget-area' );
+	}
 } else {
 	// Display post type widget area.
 	$post_type_info    = VK_Helpers::get_post_type_info();

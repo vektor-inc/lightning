@@ -38,6 +38,7 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ Add function ] Add search result widget area
 [ G3 ][ Bugfix ] fix editor width
 
 v15.11.0
