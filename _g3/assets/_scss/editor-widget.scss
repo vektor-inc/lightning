@@ -1,4 +1,21 @@
 // Cope with stick out container width on customize preview widget edit
-.editor-styles-wrapper .is-root-container {
-	--vk-width-editor-container-body : auto;
+.editor-styles-wrapper {
+	.is-root-container {
+		--vk-width-editor-container-body : auto;
+	}
+	.wp-block-legacy-widget__edit-form .widget-inside {
+		h2.admin-custom-h2 {
+			font-size: 16px;
+		}
+		h3.admin-custom-h3 {
+			margin-top:1em;
+			font-weight: bold;
+			margin-bottom:8px;
+		}
+		&,p {
+			font-size: 14px;
+			line-height: 1.5;
+		}
+	}
 }
+

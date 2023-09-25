@@ -39,6 +39,7 @@ https://www.vektor-inc.co.jp/inquiry/
 == Changelog ==
 
 [ G3 ][ Fix ] Fixed the position of sidebar shortcut icon on the customize screen
+[ G3 ][ Fix ] Fixed the Widget edit UI on the customize screen
 
 v15.12.0
 [ G3 ][ Add function ] Add search result widget area
