@@ -35,6 +35,16 @@ if ( ! function_exists( 'lightning_widgets_init' ) ) {
 				'after_title'   => '</h4>',
 			)
 		);
+		register_sidebar(
+			array(
+				'name'          => __( 'Sidebar(Search Result)', 'lightning' ),
+				'id'            => 'search-side-widget-area',
+				'before_widget' => '<aside class="widget %2$s" id="%1$s">',
+				'after_widget'  => '</aside>',
+				'before_title'  => '<h4 class="widget-title sub-section-title">',
+				'after_title'   => '</h4>',
+			)
+		);
 
 		// Sidebar( post_type )
 
