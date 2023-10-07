@@ -82,7 +82,7 @@ if ( is_page() ) {
 
 					<?php
 					foreach ( $taxonomies as $key => $value ) {
-						$taxnomies_html .= '<div class="entry-meta-data-list">' . $value . '</div>';
+						$taxnomies_html .= '<div class="entry-meta-data-list ' . $key . '">' . $value . '</div>';
 					} // foreach
 
 					$taxnomies_html = apply_filters( 'lightning_taxnomiesHtml', $taxnomies_html ); // phpcs:ignore
@@ -92,7 +92,7 @@ if ( is_page() ) {
 					$tags_list = get_the_tag_list();
 					if ( $tags_list ) {
 						?>
-						<div class="entry-meta-data-list">
+						<div class="entry-meta-data-list post_tag">
 							<dl>
 							<dt><?php esc_html_e( 'Tags', 'lightning' ); ?></dt>
 							<dd class="tagcloud"><?php echo wp_kses_post( $tags_list ); ?></dd>
