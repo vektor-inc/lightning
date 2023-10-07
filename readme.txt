@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ Specification Change ] Add taxonomy name class to the post bottom taxonomy list.
+
 v15.12.1
 [ G3 ][ Fix ] Fixed the position of sidebar shortcut icon on the customize screen
 [ G3 ][ Fix ] Fixed the Widget edit UI on the customize screen
