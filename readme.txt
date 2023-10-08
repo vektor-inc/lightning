@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ Specification Change ] Change taxonomy name class of the post bottom taxonomy list.
+
 v15.13.0
 [ G3 ][ Specification Change ] Add taxonomy name class to the post bottom taxonomy list.
 
