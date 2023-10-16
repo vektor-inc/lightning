@@ -39,6 +39,7 @@ https://www.vektor-inc.co.jp/inquiry/
 == Changelog ==
 
 [ G3 ] Allow style for the span tag in the entry-meta of the page header.
+[ G2 ][ Bug fix ] Fix vk mobile nav library url.
 
 v15.14.1
 [ G3 ] change footer copyright
