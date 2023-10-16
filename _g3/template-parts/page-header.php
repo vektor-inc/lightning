@@ -92,6 +92,7 @@ $allowed_html = array(
 	),
 	'span'   => array(
 		'class' => array(),
+		'style' => array(),
 	),
 	'img'    => array(
 		'class'   => array(),
