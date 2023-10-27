@@ -38,7 +38,7 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
-[ G3 ][ Specification Change ] Update Swiper 11.0.2
+[ G3 ][ Specification Change ] Update Swiper 9.3.2 -> 11.0.2
 
 v15.14.2
 [ G3 ][ Specification Change ] Allow style for the span tag in the entry-meta of the page header.
