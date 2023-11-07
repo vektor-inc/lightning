@@ -1,8 +1,8 @@
 === Lightning ===
 Lightning WordPress theme, Copyright (C) 2015-2023 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
-Tested up to: 6.3
-Stable tag: 15.14.2
+Tested up to: 6.4
+Stable tag: 15.15.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,6 +37,10 @@ https://www.vektor-inc.co.jp/inquiry/
 
 
 == Changelog ==
+
+v15.15.0
+[ G3 ][ Specification Change ] Added support for the background image feature in Group blocks, introduced in WordPress 6.4.
+[ G3 ][ Specification Change ] Update Swiper 9.3.2 -> 11.0.2
 
 v15.14.2
 [ G3 ][ Specification Change ] Allow style for the span tag in the entry-meta of the page header.
