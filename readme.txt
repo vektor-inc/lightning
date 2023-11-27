@@ -2,7 +2,7 @@
 Lightning WordPress theme, Copyright (C) 2015-2023 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
 Tested up to: 6.4
-Stable tag: 15.15.0
+Stable tag: 15.15.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,6 +37,10 @@ https://www.vektor-inc.co.jp/inquiry/
 
 
 == Changelog ==
+
+v15.15.1
+[ G3 / G2 ][ Specification Change ] get_bloginfo( 'name' ) -> get_bloginfo( 'name', 'display' )
+[ G3 / G2 ][ Bug fix ] Fixed a JavaScript error that occurs when the mobile navigation setting is disabled.
 
 v15.15.0
 [ G3 ][ Specification Change ] Added support for the background image feature in Group blocks, introduced in WordPress 6.4.
