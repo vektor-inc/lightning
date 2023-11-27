@@ -38,6 +38,7 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 / G2 ][ Specification Change ] get_bloginfo( 'name' ) -> get_bloginfo( 'name', 'display' )
 [ G3 / G2 ][ Bug fix ] Fixed a JavaScript error that occurs when the mobile navigation setting is disabled.
 
 v15.15.0
