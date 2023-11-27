@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 / G2 ][ Bug fix ] Fixed a JavaScript error that occurs when the mobile navigation setting is disabled.
+
 v15.15.0
 [ G3 ][ Specification Change ] Added support for the background image feature in Group blocks, introduced in WordPress 6.4.
 [ G3 ][ Specification Change ] Update Swiper 9.3.2 -> 11.0.2
