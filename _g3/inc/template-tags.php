@@ -178,10 +178,10 @@ function lightning_get_print_headlogo() {
 	if ( ! empty( $options['head_logo'] ) ) {
 		$head_logo = apply_filters( 'lightning_head_logo_image_url', $options['head_logo'] );
 		if ( $head_logo ) {
-			return '<img src="' . esc_url( $head_logo ) . '" alt="' . esc_attr( get_bloginfo( 'name' ) ) . '" />';
+			return '<img src="' . esc_url( $head_logo ) . '" alt="' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '" />';
 		}
 	}
-	return get_bloginfo( 'name' );
+	return get_bloginfo( 'name', 'display' );
 }
 
 /**
@@ -245,7 +245,7 @@ function lightning_the_footer_copyight() {
 
 	// copyright.
 	/* translators: %s: site name */
-	$lightning_footer_copy_right = '<p>' . sprintf( __( 'Copyright &copy; %s All Rights Reserved.', 'lightning' ), get_bloginfo( 'name' ) ) . '</p>';
+	$lightning_footer_copy_right = '<p>' . sprintf( __( 'Copyright &copy; %s All Rights Reserved.', 'lightning' ), get_bloginfo( 'name', 'display' ) ) . '</p>';
 	echo wp_kses_post( apply_filters( 'lightning_footerCopyRightCustom', $lightning_footer_copy_right ) );
 
 	// Powered.

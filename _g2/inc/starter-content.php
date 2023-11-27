@@ -187,7 +187,7 @@ function lightning_add_starter_content() {
 				'text_custom' => array(
 					'text',
 					array(
-						'title' => get_bloginfo( 'name' ),
+						'title' => get_bloginfo( 'name', 'display' ),
 						'text'  => '<b>Address</b><br>
 						123 Main Street<br>
 						New York, NY 10001<br>
