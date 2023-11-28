@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 / G2 ] Modify the system so that it does not display an alert under certain conditions, even if the administrator's email address contains the string 'vektor-inc'.
+
 v15.15.1
 [ G3 / G2 ][ Specification Change ] get_bloginfo( 'name' ) -> get_bloginfo( 'name', 'display' )
 [ G3 / G2 ][ Bug fix ] Fixed a JavaScript error that occurs when the mobile navigation setting is disabled.

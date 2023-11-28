@@ -12,8 +12,23 @@ function lightning_admin_mail_checker() {
 
 	global $hook_suffix;
 
-	if ( 'options-general.php' === $hook_suffix ){
+	if ( 'options-general.php' === $hook_suffix ) {
 		return;
+	}
+
+	// 表示中のページのURLに localhost または instawp.xyz が含まれていたら処理を中止.
+	// チェックするドメインを配列に格納
+	$domains_to_check = ['localhost', 'instawp.xyz'];
+
+	// 現在のページのURLを取得
+	$current_url = home_url('/');
+
+	// 配列内の各ドメインについてチェック
+	foreach ($domains_to_check as $domain) {
+		if (strpos($current_url, $domain) !== false) {
+			// ドメインが見つかった場合は処理を中止
+			return;
+		}
 	}
 
 	// 現在の管理者メールアドレス.
