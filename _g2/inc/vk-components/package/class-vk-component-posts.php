@@ -3,7 +3,7 @@
  * VK Components Posts
  *
  * @package VK Component
- * @version 1.5.0
+ * @version 1.6.0
  *
  * *********************** CAUTION ***********************
  * The original of this file is located at:
@@ -840,17 +840,19 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 		public static function get_view_type_card_horizontal( $post, $options ) {
 			$html  = '';
 			$html .= self::get_view_first_div( $post, $options );
-			$html .= '<div class="row no-gutters card-horizontal-inner-row">';
+			$html .= '<div class="card-horizontal-inner-row">';
 
 			if ( $options['display_image'] ) {
-				$html .= '<div class="col-5 card-img-outer">';
+				// col-5 は古いクラス名 / 現在は vk_post-col-5 にスタイルをあてている
+				$html .= '<div class="vk_post-col-5 col-5 card-img-outer">';
 				$attr  = array(
 					'class_outer' => '',
 					'class_image' => 'card-img card-img-use-bg',
 				);
 				$html .= self::get_thumbnail_image( $post, $options, $attr );
 				$html .= '</div><!-- /.col -->';
-				$html .= '<div class="col-7">';
+				// col-7 は古いクラス名 / 現在は vk_post-col-7 にスタイルをあてている
+				$html .= '<div class="vk_post-col-7 col-7">';
 			}
 
 			$html .= self::get_view_body( $post, $options );

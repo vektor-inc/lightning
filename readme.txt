@@ -39,6 +39,7 @@ https://www.vektor-inc.co.jp/inquiry/
 == Changelog ==
 
 [ G3 / G2 ] Modify the system so that it does not display an alert under certain conditions, even if the administrator's email address contains the string 'vektor-inc'.
+[ G2 ][ Specification Change ] Change the implementation of the 'Card Horizontal' layout used for 'Previous Article' and 'Next Article' from being specified by Bootstrap to a custom specification (Update VK Components 1.6.0).
 
 v15.15.1
 [ G3 / G2 ][ Specification Change ] get_bloginfo( 'name' ) -> get_bloginfo( 'name', 'display' )
