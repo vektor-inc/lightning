@@ -2,7 +2,7 @@
 Lightning WordPress theme, Copyright (C) 2015-2023 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
 Tested up to: 6.4
-Stable tag: 15.15.1
+Stable tag: 15.16.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,9 +38,10 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
-[ G3 ] I have corrected the alignment behavior of horizontal blocks.
-[ G3 / G2 ] Modify the system so that it does not display an alert under certain conditions, even if the administrator's email address contains the string 'vektor-inc'.
+v15.16.0
+[ G3 / G2 ][ Specification Change ] Modify the system so that it does not display an alert under certain conditions, even if the administrator's email address contains the string 'vektor-inc'.
 [ G2 ][ Specification Change ] Change the implementation of the 'Card Horizontal' layout used for 'Previous Article' and 'Next Article' from being specified by Bootstrap to a custom specification (Update VK Components 1.6.0).
+[ G3 ][ Bug fix ] I have corrected the alignment behavior of horizontal blocks.
 
 v15.15.1
 [ G3 / G2 ][ Specification Change ] get_bloginfo( 'name' ) -> get_bloginfo( 'name', 'display' )
