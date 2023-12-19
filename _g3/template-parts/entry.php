@@ -98,8 +98,9 @@ if ( is_page() ) {
 							<dd class="tagcloud"><?php echo wp_kses_post( $tags_list ); ?></dd>
 							</dl>
 						</div><!-- [ /.entry-tag ] -->
-					<?php } ?>
-
+					<?php }
+					$html .= apply_filters( 'lightning_post_taxopnomies', '' ); 
+					?>
 				</div><!-- [ /.entry-footer ] -->
 
 		<?php endif; ?>
