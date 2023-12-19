@@ -65,8 +65,8 @@ class BlogCardTest extends WP_UnitTestCase {
 		);
 		foreach ( $test_array as $key => $value ) {
 			$result = VK_WP_Oembed_Blog_Card::oembed_html( $value['cache'], $value['url'] );
-			if ( function_exists( 'wp_img_tag_add_loading_optimization_attrs' ) ) {
-				$result = wp_img_tag_add_loading_optimization_attrs( $result, 'custom' );
+			if ( function_exists( 'wp_filter_content_tags' ) ) {
+				$result = wp_filter_content_tags( $result, null );
 			}
 			$this->assertEquals( $value['correct'], $result );
 		}
@@ -101,8 +101,8 @@ class BlogCardTest extends WP_UnitTestCase {
 		foreach ( $test_array as $key => $value ) {
 			$output = '';
 			$result = VK_WP_Oembed_Blog_Card::maybe_make_link( $output, $value['url'] );
-			if ( function_exists( 'wp_img_tag_add_loading_optimization_attrs' ) ) {
-				$result = wp_img_tag_add_loading_optimization_attrs( $result, 'custom' );
+			if ( function_exists( 'wp_filter_content_tags' ) ) {
+				$result = wp_filter_content_tags( $result, null );
 			}
 			$this->assertEquals( $value['correct'], $result );
 		}
