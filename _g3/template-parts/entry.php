@@ -99,7 +99,7 @@ if ( is_page() ) {
 							</dl>
 						</div><!-- [ /.entry-tag ] -->
 					<?php }
-					$html .= apply_filters( 'lightning_post_taxonomies_after', '' ); 
+					echo wp_kses_post( apply_filters( 'lightning_post_taxonomies_after', '' ) ); 
 					?>
 				</div><!-- [ /.entry-footer ] -->
 
