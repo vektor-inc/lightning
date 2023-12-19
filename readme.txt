@@ -38,6 +38,7 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ] Add filter hook after taxonomy list on single page.
 [ G3 ] Fixed a bug where the font size does not change in the editing screen's 'p' tag.
 
 v15.16.0
