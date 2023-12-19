@@ -99,7 +99,7 @@ if ( is_page() ) {
 							</dl>
 						</div><!-- [ /.entry-tag ] -->
 					<?php }
-					$html .= apply_filters( 'lightning_post_taxopnomies', '' ); 
+					$html .= apply_filters( 'lightning_post_taxonomies', '' ); 
 					?>
 				</div><!-- [ /.entry-footer ] -->
 
