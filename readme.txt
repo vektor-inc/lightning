@@ -41,6 +41,7 @@ https://www.vektor-inc.co.jp/inquiry/
 v15.17.0
 [ G3 ][ Add action hook ] lightning_entry_footer_append
 [ G3 ][ Specification Change ] Add nowrap CSS specification to post date block.
+[ G3 ][ Specification Change ] Delete padding from  Media and Text block that under the mobile stack mode
 [ G3 ][ Bug fix ] Fixed the issue where the sidebar shakes during scrolling. 
 [ G3 ][ Bug fix ] Fixed a bug where the font size does not change in the editing screen's 'p' tag.
 
