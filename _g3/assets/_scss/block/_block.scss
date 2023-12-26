@@ -345,8 +345,7 @@ body .wp-block-image figure {
 	.wp-block-media-text {
 		&.is-stacked-on-mobile{
 			.wp-block-media-text__content {
-				// 縦積みだと画像とテキストがひっついてしまうが、そこはスペーサーなどでユーザーが任意に指定するべき部分なので、
-				// テーマからは指定しない
+				// 縦積みだと画像とテキストがひっついてしまうが、本来スペーサーなどでユーザーが任意に指定するべき部分なのでテーマからは指定しない
 			}
 		}
 	}
