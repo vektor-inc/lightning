@@ -162,6 +162,9 @@
 			// サイドバー上端が画面上部にくるまでにスクロールしないといけない距離 = サイドバーの開始位置 - サイドバー上部に確保したい余白
 			let to_scroll_sidebar_top_stop = content_position_top - sidebar_top_margin();
 
+			// コンテンツエリア下端とウィンドウ下端の距離（スクロール量に応じて可変）
+			let content_position_bottom_from_window_bottom = window_height - ( content_position_bottom - window.pageYOffset );
+
             //  サイドバーがメインコンテンツよりも高い場合は処理しない
             if ( sidebar_height > content_height ){ return; }
 
@@ -239,20 +242,10 @@
 					
 					// コンテンツエリア下端が表示されたら
 					if ( is_content_bottom_display ){
-						sideSection.style.left = null;
-						parentSection.style.position = "relative";
-						sideSection.style.position = "absolute";
 						sideSection.style.top = null;
-						sideSection.style.bottom = 0;
-
-						// 右サイトバーの時は absolute になるので right = 0 を付与しないといけなくなる
-						if ( sideSection.classList.contains('sub-section--pos--left') != true ){
-							sideSection.style.right = "15px";
-						}
-					} else {
-						if ( sideSection.classList.contains('sub-section--pos--left') != true ){
-							sideSection.style.right = null;
-						}
+						// ウィンドウ下端からコンテンツエリア下端までの距離をサイドバーの bottom として指定
+						// ※下端が表示されるまで下部に 5px 余白が付与されているので、その分を引き続き付与
+						sideSection.style.bottom = content_position_bottom_from_window_bottom + 5 + "px";
 					}
 				} else {
 					sideFix_reset();
@@ -267,6 +260,7 @@
 			// console.log( 'is_content_bottom_display : ' + is_content_bottom_display);
 			// console.log( 'content_position_bottom : ' + content_position_bottom);
 			// console.log( 'content_position_bottom_to_scroll : ' + content_position_bottom_to_scroll);
+			// console.log( 'content_position_bottom_from_window_bottom : ' + content_position_bottom_from_window_bottom);
 			// console.log( 'sidebar_position_left_default : ' + sidebar_position_left_default);
 
         }
