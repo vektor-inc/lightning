@@ -38,10 +38,10 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
-[ G3 ] Fixed the issue where the sidebar shakes during scrolling. 
-[ G3 ] Fixed a bug where the font size does not change in the editing screen's 'p' tag.
 [ G3 ][ Add action hook ] lightning_entry_footer_append
 [ G3 ][ Specification Change ] Add nowrap CSS specification to post date block.
+[ G3 ][ Bug fix ] Fixed the issue where the sidebar shakes during scrolling. 
+[ G3 ][ Bug fix ] Fixed a bug where the font size does not change in the editing screen's 'p' tag.
 
 v15.16.0
 [ G3 / G2 ][ Specification Change ] Modify the system so that it does not display an alert under certain conditions, even if the administrator's email address contains the string 'vektor-inc'.
