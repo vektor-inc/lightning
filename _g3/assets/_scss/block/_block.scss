@@ -472,3 +472,10 @@ hr.wp-block-separator {
 		height: auto !important; // !important to override inline styles.
 	}
 }
+/*-------------------------------------------*/
+/*  Post Date Block
+/*-------------------------------------------*/
+// theme.json から指定可能になったらそちらに移行
+.wp-block-post-date time{
+	white-space:nowrap;
+}
