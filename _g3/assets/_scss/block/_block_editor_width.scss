@@ -64,7 +64,7 @@ body:not(.is-fullscreen-mode) .edit-post-layout.is-sidebar-opened{
 	--vk-width-editor-wide:calc( var( --vk-width-editor-container-body ) + ( 100vw - var( --vk-width-editor-container-body ) - var(--vk-width-editor-leftmenu) - var(--vk-width-editor-sidebar) ) / 2 );
 }
 // 左管理メニュー表示（ 展開 ） / 右サイドバー非表示
-body:not(.is-fullscreen-mode) .edit-post-layout:not(.is-sidebar-opened){
+body:not(:is(.is-fullscreen-mode,.auto-fold)) .edit-post-layout:not(.is-sidebar-opened){
 	--vk-width-editor-container:calc( var(--vk-width-container) - var(--vk-width-editor-leftmenu) );
 	--vk-width-editor-container-body:calc( ( 100vw - 160px ) * 0.8 - 30px );
 	--vk-width-editor-full:calc( 100vw - var(--vk-width-editor-leftmenu) );
@@ -78,7 +78,7 @@ body.folded:not(.is-fullscreen-mode) .edit-post-layout:not(.is-sidebar-opened){
 	--vk-width-editor-wide:calc( var( --vk-width-editor-container-body ) + ( 100vw - var( --vk-width-editor-container-body ) - var(--vk-width-editor-leftmenu-folded) ) / 2 );
 }
 // 左管理メニュー表示（ 縮小 ） / 右サイドバー展開
-body.folded:not(.is-fullscreen-mode) .edit-post-layout.is-sidebar-opened{
+body:is(.folded, .auto-fold ):not(.is-fullscreen-mode) .edit-post-layout.is-sidebar-opened{
 	--vk-width-editor-container:calc( var(--vk-width-container) - var(--vk-width-editor-leftmenu-folded) - var(--vk-width-editor-sidebar) );
 	--vk-width-editor-container-body:calc(  ( 100vw - var(--vk-width-editor-sidebar) ) * 0.8 - 30px );
 	--vk-width-editor-full:calc( 100vw - var(--vk-width-editor-leftmenu-folded) - var(--vk-width-editor-sidebar) );
