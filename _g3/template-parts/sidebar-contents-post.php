@@ -13,6 +13,10 @@
  * @package vektor-inc/lightning
  */
 
+ if ( function_exists( 'Lightning_customize_widget_area_alert' )) {
+	Lightning_customize_widget_area_alert( 'post' );
+ }
+
 $post_loop = new WP_Query(
 	array(
 		'post_type'              => 'post',

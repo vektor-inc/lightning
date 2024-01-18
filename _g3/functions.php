@@ -380,3 +380,41 @@ add_filter(
 		return $editor_settings;
 	}
 );
+
+/**
+ * Get Descriptions
+ * 同じ説明分を複数箇所で使うので関数化
+ *
+ * @since 15.18.0
+ * @param string $target : target name.
+ * @return array $descriptions
+ */
+function Lightning_get_descriptions( $target = '' ) {
+
+	$descriptions = array(
+		'post-side-widget-area'       => __( 'This widget area appears on the Posts page only. If you do not set any widgets in this area, this theme sets the following widgets "Recent posts", "Category", and "Archive" by default. These default widgets will be hidden, when you set any widgets. If you installed our plugin VK All in One Expansion Unit (Free), you can use the following widgets, "VK_Recent posts",  "VK_Categories", and  "VK_archive list".', 'lightning' ),
+		'page-side-widget-area'       => __( 'This widget area appears on the Pages page only. If you do not set any widgets in this area, this theme sets the "Child pages list widget" by default. This default widget will be hidden, when you set any widgets. <br><br> If you installed our plugin VK All in One Expansion Unit (Free), you can use the "VK_ child page list" widget for the alternative.', 'lightning' ),
+		'attachment-side-widget-area' => __( 'This widget area appears on the Media page only.', 'lightning' ),
+	);
+
+	return $descriptions[$target];
+}
+
+/**
+ * Alert message for customize widget area
+ * カスタマイズ画面でのみ表示するウィジェットエリアの説明文
+ *
+ * @since 15.18.0
+ * @param string $post_type : post type.
+ * @return void
+ */
+function  Lightning_customize_widget_area_alert( $post_type = 'post' ) {
+	if ( is_customize_preview()) {
+		$sidebar_description = Lightning_get_descriptions( $post_type . '-side-widget-area' );
+		$return = '<div class="alert alert-warning widget-area-description">';
+		$return .= '<p class="mb-2">' . $sidebar_description . '</p>';
+		$return .= '<p>* ' . __( 'This message is displayed only on the customization screen. It will not be displayed on the general public screen.', 'lightning' ) . '</p>';
+		$return .= '</div>';
+		echo wp_kses_post( $return );
+	}
+}
