@@ -2,7 +2,7 @@
 Lightning WordPress theme, Copyright (C) 2015-2023 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
 Tested up to: 6.4
-Stable tag: 15.17.1
+Stable tag: 15.18.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,6 +37,9 @@ https://www.vektor-inc.co.jp/inquiry/
 
 
 == Changelog ==
+
+v15.18.0
+[ G3 ][ Other ] Add widget area notice on customize screen.
 
 v15.17.1
 [ G3 ][ Bug fix ] Fixed a bug where the content area becomes extremely narrow on the editing screen when not in fullscreen mode and on devices with a narrow display, such as mobile phones.
