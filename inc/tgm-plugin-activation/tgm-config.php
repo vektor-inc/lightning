@@ -10,7 +10,7 @@
  *
  * @package    TGM-Plugin-Activation
  * @subpackage Example
- * @version    2.5.2
+ * @version    2.6.1
  * @author     Thomas Griffin, Gary Jones, Juliette Reinders Folmer
  * @copyright  Copyright (c) 2011, Thomas Griffin
  * @license    http://opensource.org/licenses/gpl-2.0.php GPL v2 or later
@@ -19,59 +19,42 @@
 
 /**
  * Include the TGM_Plugin_Activation class.
+ * ( now loading from composer )
  */
-require_once dirname( __FILE__ ) . '/class-tgm-plugin-activation.php';
+// require_once dirname( __FILE__ ) . '/class-tgm-plugin-activation.php';
 
-add_action( 'tgmpa_register', 'lightning_register_required_plugins' );
+add_action( 'tgmpa_register', 'lightning_theme_register_required_plugins' );
+
 /**
  * Register the required plugins for this theme.
  *
- * In this example, we register five plugins:
- * - one included with the TGMPA library
- * - two from an external source, one from an arbitrary source, one from a GitHub repository
- * - two from the .org repo, where one demonstrates the use of the `is_callable` argument
- *
- * The variable passed to tgmpa_register_plugins() should be an array of plugin
- * arrays.
+ *  <snip />
  *
  * This function is hooked into tgmpa_init, which is fired within the
  * TGM_Plugin_Activation class constructor.
  */
-function lightning_register_required_plugins() {
+function lightning_theme_register_required_plugins() {
 	/*
 	 * Array of plugin arrays. Required keys are name and slug.
 	 * If the source is NOT from the .org repo, then source is also required.
 	 */
-	$plugins = array();
-	if ( is_plugin_active( 'vk-blocks-pro/vk-blocks.php' ) ) {
-		$plugins = array(
-	
-			// This is an example of how to include a plugin bundled with a theme.
-			array(
-				'name'     => 'VK All in One Expansion Unit (Free)', // The plugin name.
-				'slug'     => 'vk-all-in-one-expansion-unit', // The plugin slug (typically the folder name).
-				'required' => false, // If false, the plugin is only 'recommended' instead of required.
-			),
-		);
-	} else {
-		$plugins = array(
-	
-			// This is an example of how to include a plugin bundled with a theme.
-			array(
-				'name'     => 'VK All in One Expansion Unit (Free)', // The plugin name.
-				'slug'     => 'vk-all-in-one-expansion-unit', // The plugin slug (typically the folder name).
-				'required' => false, // If false, the plugin is only 'recommended' instead of required.
-			),
-			array(
-				'name'     => 'VK Blocks (Free)', // The plugin name.
-				'slug'     => 'vk-blocks', // The plugin slug (typically the folder name).
-				'required' => false, // If false, the plugin is only 'recommended' instead of required.
-			),
-			array(
-				'name'     => 'VK Block Patterns', // The plugin name.
-				'slug'     => 'vk-block-patterns', // The plugin slug (typically the folder name).
-				'required' => false, // If false, the plugin is only 'recommended' instead of required.
-			),
+	$plugins = array(
+		array(
+			'name'     => 'VK All in One Expansion Unit (Free)', // The plugin name.
+			'slug'     => 'vk-all-in-one-expansion-unit', // The plugin slug (typically the folder name).
+			'required' => false, // If false, the plugin is only 'recommended' instead of required.
+		),
+		array(
+			'name'     => 'VK Block Patterns', // The plugin name.
+			'slug'     => 'vk-block-patterns', // The plugin slug (typically the folder name).
+			'required' => false, // If false, the plugin is only 'recommended' instead of required.
+		),
+	);
+	if ( ! is_plugin_active( 'vk-blocks-pro/vk-blocks.php' ) ) {
+		$plugins[] = array(
+			'name'     => 'VK Blocks (Free)', // The plugin name.
+			'slug'     => 'vk-blocks', // The plugin slug (typically the folder name).
+			'required' => false, // If false, the plugin is only 'recommended' instead of required.
 		);
 	}
 
@@ -95,82 +78,14 @@ function lightning_register_required_plugins() {
 		'dismiss_msg'  => '',                      // If 'dismissable' is false, this message will be output at top of nag.
 		'is_automatic' => false,                   // Automatically activate plugins after installation or not.
 		'message'      => '',                      // Message to output right before the plugins table.
-
+		/*
 		'strings'      => array(
-			'page_title'                      => __( 'Install Required Plugins', 'lightning' ),
-			'menu_title'                      => __( 'Install Plugins', 'lightning' ),
-			'installing'                      => __( 'Installing Plugin: %s', 'lightning' ), // %s = plugin name.
-			'oops'                            => __( 'Something went wrong with the plugin API.', 'lightning' ),
-			'notice_can_install_required'     => _n_noop(
-				'This theme requires the following plugin: %1$s.',
-				'This theme requires the following plugins: %1$s.',
-				'lightning'
-			), // %1$s = plugin name(s).
-			'notice_can_install_recommended'  => _n_noop(
-				'This theme recommends the following plugin: %1$s.<br>Many additional functions are available for free.',
-				'This theme recommends the following plugins: %1$s.<br>Many additional functions are available for free.',
-				'lightning'
-			), // %1$s = plugin name(s).
-			'notice_cannot_install'           => _n_noop(
-				'Sorry, but you do not have the correct permissions to install the %1$s plugin.',
-				'Sorry, but you do not have the correct permissions to install the %1$s plugins.',
-				'lightning'
-			), // %1$s = plugin name(s).
-			'notice_ask_to_update'            => _n_noop(
-				'The following plugin needs to be updated to its latest version to ensure maximum compatibility with this theme: %1$s.',
-				'The following plugins need to be updated to their latest version to ensure maximum compatibility with this theme: %1$s.',
-				'lightning'
-			), // %1$s = plugin name(s).
-			'notice_ask_to_update_maybe'      => _n_noop(
-				'There is an update available for: %1$s.',
-				'There are updates available for the following plugins: %1$s.',
-				'lightning'
-			), // %1$s = plugin name(s).
-			'notice_cannot_update'            => _n_noop(
-				'Sorry, but you do not have the correct permissions to update the %1$s plugin.',
-				'Sorry, but you do not have the correct permissions to update the %1$s plugins.',
-				'lightning'
-			), // %1$s = plugin name(s).
-			'notice_can_activate_required'    => _n_noop(
-				'The following required plugin is currently inactive: %1$s.',
-				'The following required plugins are currently inactive: %1$s.',
-				'lightning'
-			), // %1$s = plugin name(s).
-			'notice_can_activate_recommended' => _n_noop(
-				'The following recommended plugin is currently inactive: %1$s.',
-				'The following recommended plugins are currently inactive: %1$s.',
-				'lightning'
-			), // %1$s = plugin name(s).
-			'notice_cannot_activate'          => _n_noop(
-				'Sorry, but you do not have the correct permissions to activate the %1$s plugin.',
-				'Sorry, but you do not have the correct permissions to activate the %1$s plugins.',
-				'lightning'
-			), // %1$s = plugin name(s).
-			'install_link'                    => _n_noop(
-				'Begin installing plugin',
-				'Begin installing plugins',
-				'lightning'
-			),
-			'update_link'                     => _n_noop(
-				'Begin updating plugin',
-				'Begin updating plugins',
-				'lightning'
-			),
-			'activate_link'                   => _n_noop(
-				'Begin activating plugin',
-				'Begin activating plugins',
-				'lightning'
-			),
-			'return'                          => __( 'Return to Required Plugins Installer', 'lightning' ),
-			'plugin_activated'                => __( 'Plugin activated successfully.', 'lightning' ),
-			'activated_successfully'          => __( 'The following plugin was activated successfully:', 'lightning' ),
-			'plugin_already_active'           => __( 'No action taken. Plugin %1$s was already active.', 'lightning' ),  // %1$s = plugin name(s).
-			'plugin_needs_higher_version'     => __( 'Plugin not activated. A higher version of %s is needed for this theme. Please update the plugin.', 'lightning' ),  // %1$s = plugin name(s).
-			'complete'                        => __( 'All plugins installed and activated successfully. %1$s', 'lightning' ), // %s = dashboard link.
-			'contact_admin'                   => __( 'Please contact the administrator of this site for help.', 'lightning' ),
-
+			'page_title'                      => __( 'Install Required Plugins', 'theme-slug' ),
+			'menu_title'                      => __( 'Install Plugins', 'theme-slug' ),
+			// <snip>...</snip>
 			'nag_type'                        => 'updated', // Determines admin notice type - can only be 'updated', 'update-nag' or 'error'.
-		),
+		)
+		*/
 	);
 
 	tgmpa( $plugins, $config );
