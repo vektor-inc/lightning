@@ -13,6 +13,10 @@
  * @package vektor-inc/lightning
  */
 
+ if ( function_exists( 'Lightning_customize_widget_area_alert' )) {
+	Lightning_customize_widget_area_alert( 'page' );
+ }
+
 if ( $post->ancestors ) {
 	foreach ( $post->ancestors as $post_anc_id ) {
 		$ancestor_post_id = $post_anc_id;

@@ -33,10 +33,17 @@ If you want to change this file that, you have to change original file.
 		/*-------------------------------------*/
 		// メニューを閉じる
 		function vk_mobile_nav_close(target){
-			// ※ fix nav の方を押される事もある
-			document.getElementById('vk-mobile-nav-menu-btn').classList.remove('menu-open')
-			// メニュー本体から .vk-mobile-nav-open を削除
-			document.getElementById('vk-mobile-nav').classList.remove('vk-mobile-nav-open')
+			
+			let menuButton = document.getElementById('vk-mobile-nav-menu-btn');
+			if (menuButton) {
+				// ※ fix nav の方を押される事もある
+				menuButton.classList.remove('menu-open');
+			}
+			let mobileNav = document.getElementById('vk-mobile-nav');
+			if (mobileNav) {
+				// メニュー本体から .vk-mobile-nav-open を削除
+				mobileNav.classList.remove('vk-mobile-nav-open');
+			}
 		}
 
 		// 実行関数
@@ -47,14 +54,16 @@ If you want to change this file that, you have to change original file.
 			fontawesome のクラス名が返ってきて誤動作してしまうため、buttn に一旦格納
 			*/
 			let button = document.getElementById('vk-mobile-nav-menu-btn');
-			button.addEventListener('click', () => {
-				if( button.classList.contains('menu-open') ){
-					vk_mobile_nav_close(target);
-				}else{
-					addClass(target, 'menu-open')
-					document.getElementById('vk-mobile-nav').classList.add('vk-mobile-nav-open')
-				}
-			})
+			if (button) {
+				button.addEventListener('click', () => {
+					if( button.classList.contains('menu-open') ){
+						vk_mobile_nav_close(target);
+					}else{
+						addClass(target, 'menu-open')
+						document.getElementById('vk-mobile-nav').classList.add('vk-mobile-nav-open')
+					}
+				})
+			}
 
 			action('.vk-mobile-nav li > a', (elm) => {
 				elm.addEventListener('click', (e) => {

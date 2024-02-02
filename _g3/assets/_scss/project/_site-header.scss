@@ -63,6 +63,11 @@ $logo_bottom_margin:1rem;
 }
 
 .site-header--layout--center {
+	.site-header-logo {
+		width:fit-content;
+		margin-left:auto;
+		margin-right:auto;
+	}
     @media ( min-width: $lg-min ){
         .site-header-logo {
             text-align: center;

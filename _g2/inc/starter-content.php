@@ -187,7 +187,7 @@ function lightning_add_starter_content() {
 				'text_custom' => array(
 					'text',
 					array(
-						'title' => get_bloginfo( 'name' ),
+						'title' => get_bloginfo( 'name', 'display' ),
 						'text'  => '<b>Address</b><br>
 						123 Main Street<br>
 						New York, NY 10001<br>
@@ -227,7 +227,7 @@ function lightning_add_starter_content() {
 				'layout'           => array(
 					'front-page' => 'col-one-no-subsection',
 				),
-				'theme_json' => true,
+				'theme_json'       => true,
 			),
 			'lightning_theme_generation' => 'g2',
 		),

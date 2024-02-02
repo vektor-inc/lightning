@@ -99,7 +99,7 @@ if ( is_page() ) {
 							</dl>
 						</div><!-- [ /.entry-tag ] -->
 					<?php } ?>
-
+					<?php do_action( 'lightning_entry_footer_append' ); ?>
 				</div><!-- [ /.entry-footer ] -->
 
 		<?php endif; ?>

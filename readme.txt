@@ -1,8 +1,8 @@
 === Lightning ===
 Lightning WordPress theme, Copyright (C) 2015-2023 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
-Tested up to: 6.3
-Stable tag: 15.14.2
+Tested up to: 6.4
+Stable tag: 15.19.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,6 +37,38 @@ https://www.vektor-inc.co.jp/inquiry/
 
 
 == Changelog ==
+
+v15.19.1
+[ Bug Fix ] Fixed the logo link area issue when using the header logo center layout(G3 Pro Unit).
+
+v15.19.0
+[ Specification Change / Bug Fix ] Security update ( Update TGM & import from composer )
+
+v15.18.0
+[ G3 ][ Other ] Add widget area notice on customize screen.
+
+v15.17.1
+[ G3 ][ Bug fix ] Fixed a bug where the content area becomes extremely narrow on the editing screen when not in fullscreen mode and on devices with a narrow display, such as mobile phones.
+
+v15.17.0
+[ G3 ][ Add action hook ] lightning_entry_footer_append
+[ G3 ][ Specification Change ] Add nowrap CSS specification to post date block.
+[ G3 ][ Specification Change ] Delete padding from  Media and Text block that under the mobile stack mode
+[ G3 ][ Bug fix ] Fixed the issue where the sidebar shakes during scrolling. 
+[ G3 ][ Bug fix ] Fixed a bug where the font size does not change in the editing screen's 'p' tag.
+
+v15.16.0
+[ G3 / G2 ][ Specification Change ] Modify the system so that it does not display an alert under certain conditions, even if the administrator's email address contains the string 'vektor-inc'.
+[ G2 ][ Specification Change ] Change the implementation of the 'Card Horizontal' layout used for 'Previous Article' and 'Next Article' from being specified by Bootstrap to a custom specification (Update VK Components 1.6.0).
+[ G3 ][ Bug fix ] I have corrected the alignment behavior of horizontal blocks.
+
+v15.15.1
+[ G3 / G2 ][ Specification Change ] get_bloginfo( 'name' ) -> get_bloginfo( 'name', 'display' )
+[ G3 / G2 ][ Bug fix ] Fixed a JavaScript error that occurs when the mobile navigation setting is disabled.
+
+v15.15.0
+[ G3 ][ Specification Change ] Added support for the background image feature in Group blocks, introduced in WordPress 6.4.
+[ G3 ][ Specification Change ] Update Swiper 9.3.2 -> 11.0.2
 
 v15.14.2
 [ G3 ][ Specification Change ] Allow style for the span tag in the entry-meta of the page header.

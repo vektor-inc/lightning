@@ -123,7 +123,7 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 			$blog_card_data['thumbnail']   = get_the_post_thumbnail_url( $post_id, 'large' );
 			$blog_card_data['description'] = get_the_excerpt( $post_id );
 			$blog_card_data['favicon']     = get_site_icon_url( 32 );
-			$blog_card_data['site_name']   = get_bloginfo( 'name' );
+			$blog_card_data['site_name']   = get_bloginfo( 'name', 'display' );
 			$blog_card_data['domain']      = home_url();
 
 			/**

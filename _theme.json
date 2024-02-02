@@ -64,6 +64,9 @@
 					"padding": true
 				}
 			}
+		},
+		"background": {
+			"backgroundImage": true
 		}
 	}
 }

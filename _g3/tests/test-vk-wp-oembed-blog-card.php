@@ -7,11 +7,11 @@
  * cd /app
  * bash setup-phpunit.sh
  * source ~/.bashrc
- * 
+ *
  * cd $(wp theme path --dir lightning)
  * あるいは
  * cd wp-content/themes/lightning
- * 
+ *
  * phpunit
  */
 
@@ -21,16 +21,16 @@
 class BlogCardTest extends WP_UnitTestCase {
 
 	/**
-	 * oembed_html 内部リンク、WordPressで作られたサイトのテスト 
+	 * oembed_html 内部リンク、WordPressで作られたサイトのテスト
 	 * cache は 管理画面URLを貼り付けた時に自動で変換される文字列
 	 */
 	function test_vk_get_post_data_blog_card() {
 		// Create test post
 		$post    = array(
-			'post_title'    => 'test',
-			'post_content'  => 'content',
-			'post_name'     => 'test',
-			'post_status'   => 'publish',
+			'post_title'   => 'test',
+			'post_content' => 'content',
+			'post_name'    => 'test',
+			'post_status'  => 'publish',
 		);
 		$post_id = wp_insert_post( $post );
 
@@ -38,11 +38,11 @@ class BlogCardTest extends WP_UnitTestCase {
 		remove_filter( 'the_content', 'wpautop' );
 		$test_array = array(
 			// WordPressで作られたサイト サイト内記事
-			
+
 			array(
 				'url'     => get_permalink( $post_id ),
-				'cache'   => '[embed]' . get_permalink( $post_id ) .'[/embed]',
-				'correct' => apply_filters( 'the_content', '[embed]' . get_permalink( $post_id ) .'[/embed]' ),
+				'cache'   => '[embed]' . get_permalink( $post_id ) . '[/embed]',
+				'correct' => apply_filters( 'the_content', '[embed]' . get_permalink( $post_id ) . '[/embed]' ),
 			),
 			// WordPressで作られたサイト トップページ
 			array(
@@ -65,9 +65,9 @@ class BlogCardTest extends WP_UnitTestCase {
 		);
 		foreach ( $test_array as $key => $value ) {
 			$result = VK_WP_Oembed_Blog_Card::oembed_html( $value['cache'], $value['url'] );
-			if ( function_exists( 'wp_img_tag_add_decoding_attr') ) {
-				$result = wp_img_tag_add_decoding_attr( $result, 'custom' );
-			}	
+			if ( function_exists( 'wp_img_tag_add_loading_optimization_attrs' ) ) {
+				$result = wp_img_tag_add_loading_optimization_attrs( $result, 'custom' );
+			}
 			$this->assertEquals( $value['correct'], $result );
 		}
 		// wpautopフィルターフックを戻す
@@ -99,15 +99,14 @@ class BlogCardTest extends WP_UnitTestCase {
 			),
 		);
 		foreach ( $test_array as $key => $value ) {
-			$output = "";
+			$output = '';
 			$result = VK_WP_Oembed_Blog_Card::maybe_make_link( $output, $value['url'] );
-			if ( function_exists( 'wp_img_tag_add_decoding_attr') ) {
-				$result = wp_img_tag_add_decoding_attr( $result, 'custom' );
-			}	
+			if ( function_exists( 'wp_img_tag_add_loading_optimization_attrs' ) ) {
+				$result = wp_img_tag_add_loading_optimization_attrs( $result, 'custom' );
+			}
 			$this->assertEquals( $value['correct'], $result );
 		}
 		// wpautopフィルターフックを戻す
 		add_filter( 'the_content', 'wpautop' );
 	}
-
 }
