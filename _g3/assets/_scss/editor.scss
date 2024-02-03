@@ -11,9 +11,10 @@
 @import "variables";
 
 @import "utils";
+@import "block/block_width";
 @import "block/block";
-@import "block/block-editor";
-@import "block/block_editor_width";
+@import "block/block_width_editor";
+@import "block/block_editor";
 
 @import "components/nav";
 @import "components/searchform";
