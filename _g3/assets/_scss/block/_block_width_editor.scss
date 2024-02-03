@@ -7,6 +7,12 @@
 	--vk-width-editor-leftmenu:160px;
 	--vk-width-editor-leftmenu-folded:36px;
 }
+.alignfull,
+.alignwide {
+	div[class*="__inner-container"]{
+		max-width: var(--vk-width-editor-container-body);
+	}
+}
 .editor-styles-wrapper {
 	padding: 0;
 }
