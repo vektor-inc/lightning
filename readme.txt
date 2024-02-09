@@ -39,6 +39,7 @@ https://www.vektor-inc.co.jp/inquiry/
 == Changelog ==
 
 [ Specification Change ][ G3 ] Adjusting the preview mode for the VK Blocks Slider Block.
+[ Other ] Update CSS optimizer 0.2.2
 
 v15.19.1
 [ Bug Fix ] Fixed the logo link area issue when using the header logo center layout(G3 Pro Unit).
