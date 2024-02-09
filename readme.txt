@@ -37,7 +37,7 @@ https://www.vektor-inc.co.jp/inquiry/
 
 
 == Changelog ==
-
+[ Design Bug Fix ] Fixed to exclude hover decoration when submitbutton is disabled
 [ Specification Change ][ G3 ] Adjusting the preview mode for the VK Blocks Slider Block.
 
 v15.19.1
