@@ -86,6 +86,10 @@ $logo_bottom_margin:1rem;
             img {
                 margin-left:0;
             }
+            a {
+		display: block; // 「ヘッダーレイアウト」の「ナビゲーション回り込み」の時のロゴのリンクエリアが広くならないための設定 
+                width: fit-content; // 同上
+            }
         }
     }
 }
