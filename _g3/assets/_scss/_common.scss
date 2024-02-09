@@ -181,7 +181,7 @@ input[type=submit]{
 	color:#fff;
 	padding: 0.5em 2em;
 	border-radius: var(--vk-size-radius);
-	&:hover {
+	&:not(:disabled):hover { //ボタンが無効時は除外
 		color:#fff;
 		cursor: pointer;
 		background-color:var(--vk-color-primary-dark);
