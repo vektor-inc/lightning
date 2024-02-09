@@ -37,11 +37,14 @@ https://www.vektor-inc.co.jp/inquiry/
 
 
 == Changelog ==
-[ Design Bug Fix ] Fixed to exclude hover decoration when submitbutton is disabled
-[ Specification Change ][ G3 ] Adjusting the preview mode for the VK Blocks Slider Block.
+
+[ Design Bug Fix ][ G3 ] Fixed to exclude hover decoration when submitbutton is disabled
+[ Design Bug Fix ][ G3 ] Fixed the header layout where the logo link area is wider when the navigation wraps around.
+[ Other ][ G3 ] Adjusting the preview mode for the VK Blocks Slider Block.
+[ Other ] Update CSS optimizer 0.2.2
 
 v15.19.1
-[ Bug Fix ] Fixed the logo link area issue when using the header logo center layout(G3 Pro Unit).
+[ G3 ][ Bug Fix ] Fixed the logo link area issue when using the header logo center layout(G3 Pro Unit).
 
 v15.19.0
 [ Specification Change / Bug Fix ] Security update ( Update TGM & import from composer )

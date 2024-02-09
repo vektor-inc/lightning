@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "09bdd0c802d475a2721467cbbbbf0162",
+    "content-hash": "4d804a3311aae2dd50c6b9dcfe643767",
     "packages": [
         {
             "name": "vektor-inc/font-awesome-versions",
@@ -197,21 +197,21 @@
         },
         {
             "name": "vektor-inc/vk-css-optimize",
-            "version": "0.2.1",
+            "version": "0.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vektor-inc/vk-css-optimize.git",
-                "reference": "d2e027aad3ae32b5d6871215ea8ee951a93ce539"
+                "reference": "a7b2d30b9b54db80e0706c15f9a8005786e35335"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vektor-inc/vk-css-optimize/zipball/d2e027aad3ae32b5d6871215ea8ee951a93ce539",
-                "reference": "d2e027aad3ae32b5d6871215ea8ee951a93ce539",
+                "url": "https://api.github.com/repos/vektor-inc/vk-css-optimize/zipball/a7b2d30b9b54db80e0706c15f9a8005786e35335",
+                "reference": "a7b2d30b9b54db80e0706c15f9a8005786e35335",
                 "shasum": ""
             },
             "require-dev": {
                 "wp-phpunit/wp-phpunit": "^5.4",
-                "yoast/phpunit-polyfills": "^1.0"
+                "yoast/phpunit-polyfills": "^1.1.0"
             },
             "type": "library",
             "autoload": {
@@ -232,9 +232,9 @@
             "description": "WordPress CSS Optimize",
             "support": {
                 "issues": "https://github.com/vektor-inc/vk-css-optimize/issues",
-                "source": "https://github.com/vektor-inc/vk-css-optimize/tree/0.2.1"
+                "source": "https://github.com/vektor-inc/vk-css-optimize/tree/0.2.2"
             },
-            "time": "2023-08-25T07:58:11+00:00"
+            "time": "2024-02-07T09:07:23+00:00"
         },
         {
             "name": "vektor-inc/vk-helpers",
