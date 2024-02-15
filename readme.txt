@@ -41,12 +41,12 @@ https://www.vektor-inc.co.jp/inquiry/
 [ G3 ][ Design Bug Fix ][ OriginIII ] Fixed the issue where the OriginIII title design was incorrectly applied to the post title block.
 
 v15.20.1
-[ Design Bug Fix ][ G3 ] CSS Rebuild
+[ G3 ][ Design Bug Fix ] CSS Rebuild
 
 v15.20.0
-[ Design Bug Fix ][ G3 ] Fixed to exclude hover decoration when submitbutton is disabled
-[ Design Bug Fix ][ G3 ] Fixed the header layout where the logo link area is wider when the navigation wraps around.
-[ Other ] Adjusting the preview mode for the VK Blocks Slider Block.
+[ G3 ][ Design Bug Fix ] Fixed to exclude hover decoration when submitbutton is disabled
+[ G3 ][ Design Bug Fix ] Fixed the header layout where the logo link area is wider when the navigation wraps around.
+[ G3 ][ Other ] Adjusting the preview mode for the VK Blocks Slider Block.
 [ Other ] Update CSS optimizer 0.2.2
 
 v15.19.1
