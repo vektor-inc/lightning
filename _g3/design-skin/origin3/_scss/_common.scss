@@ -3,13 +3,13 @@ body {
 	font-family : 'Lato', 'Noto Sans JP', 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
 }
 .entry-title--post-type--page,
-h2 {
+h2:where(:not(.wp-block-post-title)) {
     padding:0.5em 0;
     border-top:2px solid var(--vk-color-primary);
     border-bottom:1px solid var(--vk-color-border-hr);
 }
 
-h3,
+h3:where(:not(.wp-block-post-title)),
 .sub-section-title,
 .site-footer-title {
 	position: relative;
@@ -18,7 +18,7 @@ h3,
     padding:0 0 0.5em;
 	border-radius: 0;
 }
-h3:after,
+h3:where(:not(.wp-block-post-title)):after,
 .sub-section-title:after,
 .site-footer-title:after {
 	content: ".";
@@ -31,13 +31,13 @@ h3:after,
 	border-bottom: 1px solid var(--vk-color-primary);
 }
 
-h4 {
+h4:where(:not(.wp-block-post-title)) {
     padding: 0.5em;
     background-color: var(--vk-color-border-hr);
     border-radius: var(--vk-size-radius);
 }
 
-h5 {
+h5:where(:not(.wp-block-post-title)) {
     padding-bottom:0.5em;
     border-bottom:1px solid var(--vk-color-border-hr)
 }
