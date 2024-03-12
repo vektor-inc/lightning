@@ -37,7 +37,7 @@ https://www.vektor-inc.co.jp/inquiry/
 
 
 == Changelog ==
-
+[ G3 ][ Design Bug Fix ][ OriginIII ] Fixed margin-bottom of vk_button does not work if vk_button is adjacent within an element of .is-layout-flow or .is-layout-constrained.
 [ G3 ][ Design Bug Fix ][ OriginIII ] Fixed the issue where the OriginIII title design was incorrectly applied to the post title block.
 
 v15.20.1
