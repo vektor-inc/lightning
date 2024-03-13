@@ -58,7 +58,7 @@
 body .container .is-layout-flow > * + *,
 body .is-layout-constrained > * + * {
 	margin-block-start: unset;
-	&:where(:not(:is(h1,h2,h3,h4,h5,h6))){
+	&:where(:not(:is(h1,h2,h3,h4,h5,h6,.vk_button))){ //vk_buttonが隣接した時、2個目以降のmargin-bottomが効かなくなるので.vk_buttonを追加
 		margin-block-end: unset;
 	}
 }
