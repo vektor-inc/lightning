@@ -38,6 +38,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 / G2 ] Allow using CSS level 4 viewport-relative units
+
 v15.20.2
 [ G3 ][ Design Bug Fix ][ OriginIII ] Fixed margin-bottom of vk_button does not work if vk_button is adjacent within an element of .is-layout-flow or .is-layout-constrained.
 [ G3 ][ Design Bug Fix ][ OriginIII ] Fixed the issue where the OriginIII title design was incorrectly applied to the post title block.
