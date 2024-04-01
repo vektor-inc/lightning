@@ -39,7 +39,35 @@ function lightning_theme_setup() {
 	// Block Editor line height @since WordPress 5.5.
 	add_theme_support( 'custom-line-height' );
 	// Block Editor custom unit @since WordPress 5.5.
-	add_theme_support( 'custom-units' );
+	add_theme_support(
+		'custom-units',
+		'px',
+		'%',
+		'vw',
+		'vh',
+		'em',
+		'rem',
+		'svw',
+		'lvw',
+		'dvw',
+		'svh',
+		'lvh',
+		'dvh',
+		'svi',
+		'lvi',
+		'dvi',
+		'svb',
+		'lvb',
+		'dvb',
+		'vmin',
+		'svmin',
+		'lvmin',
+		'dvmin',
+		'vmax',
+		'svmax',
+		'lvmax',
+		'dvmax'
+	);
 	// Block Editor custom unit @since WordPress 5.8.
 	add_theme_support( 'custom-spacing' );
 
