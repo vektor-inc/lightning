@@ -88,6 +88,9 @@
 		"background": {
 			"backgroundImage": true,
 			"backgroundSize": true
+		},
+		"dimensions": {
+			"aspectRatio": true
 		}
 	}
 }
