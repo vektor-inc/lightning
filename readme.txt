@@ -38,6 +38,7 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ 6.5 ] Attend to backgroundSize
 [ G3 / G2 ] Allow using CSS level 4 viewport-relative units
 
 v15.20.2
