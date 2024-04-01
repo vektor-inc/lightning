@@ -21,29 +21,29 @@ function lightning_debug_active() {
 // add_action( 'lightning_header_append', 'lightning_debug_active' );
 
 /*
-  Theme setup
-  Load JS
-  Load CSS
-  Load Theme Customizer additions.
-  Load Custom template tags for this theme.
-  Load widgets
-  Load designskin manager
-  Load tga(Plugin install)
-  Load Front PR Blocks
-  WidgetArea initiate
-  Year Artchive list 'year' and count insert to inner </a>
-  Category list 'count insert to inner </a>
-  Global navigation add cptions
-  headfix enable
-  Tag Cloud _ Change font size
-  HOME _ Default content hidden
-  Move jQuery to footer
-  disable_tgm_notification_except_admin
-  Add defer first aid
-  */
+	Theme setup
+	Load JS
+	Load CSS
+	Load Theme Customizer additions.
+	Load Custom template tags for this theme.
+	Load widgets
+	Load designskin manager
+	Load tga(Plugin install)
+	Load Front PR Blocks
+	WidgetArea initiate
+	Year Artchive list 'year' and count insert to inner </a>
+	Category list 'count insert to inner </a>
+	Global navigation add cptions
+	headfix enable
+	Tag Cloud _ Change font size
+	HOME _ Default content hidden
+	Move jQuery to footer
+	disable_tgm_notification_except_admin
+	Add defer first aid
+ */
 
 /*
-  Theme setup
+	Theme setup
 /*-------------------------------------------*/
 add_action( 'after_setup_theme', 'lightning_theme_setup' );
 function lightning_theme_setup() {
@@ -112,18 +112,18 @@ function lightning_theme_setup() {
 
 	load_theme_textdomain( 'lightning', get_template_directory() . '/languages' );
 
-	// Set content width 	(Auto set up to media max with.).
+	// Set content width    (Auto set up to media max with.).
 	if ( ! isset( $content_width ) ) {
 		$content_width = 1140;
 	}
 
 	/*
-	  Add theme support for selective refresh for widgets.
+		Add theme support for selective refresh for widgets.
 	/*-------------------------------------------*/
 	add_theme_support( 'customize-selective-refresh-widgets' );
 
 	/*
-	  Option init
+		Option init
 	/*-------------------------------------------*/
 	/*
 	Save default option first time.
@@ -134,11 +134,10 @@ function lightning_theme_setup() {
 		add_option( 'lightning_theme_options', $theme_options_default );
 		$lightning_theme_options = $theme_options_default;
 	}
-
 }
 
 /*
-  Load JS
+	Load JS
 /*-------------------------------------------*/
 
 add_action( 'wp_enqueue_scripts', 'lightning_addJs' );
@@ -165,7 +164,7 @@ function lightning_commentJs() {
 }
 
 /*
-  Load CSS
+	Load CSS
 /*-------------------------------------------*/
 add_action( 'after_setup_theme', 'lightning_load_css_action' );
 function lightning_load_css_action() {
@@ -181,14 +180,14 @@ function lightning_theme_style() {
 }
 
 /*
-  Load Editor CSS
+	Load Editor CSS
 /*-------------------------------------------*/
 add_action( 'admin_enqueue_scripts', 'lightning_load_common_editor_css' );
 function lightning_load_common_editor_css() {
 	/*
-	 Notice : Use url then if you use local environment https has error that bring to get css error and don't refrected */
+	Notice : Use url then if you use local environment https has error that bring to get css error and don't refrected */
 	/*
-	 Notice : add_editor_style() is only one args. */
+	Notice : add_editor_style() is only one args. */
 	/* add_editor_style is for Classic Editor Only. */
 	global $post;
 	if ( ! function_exists( 'use_block_editor_for_post' ) || ! use_block_editor_for_post( $post ) ) {
@@ -213,62 +212,62 @@ function lightning_load_common_editor_css_to_gutenberg() {
 }
 
 
-require dirname( __FILE__ ) . '/functions-compatible.php';
+require __DIR__ . '/functions-compatible.php';
 
 
 /*
-  Load Custom template tags for this theme.
+	Load Custom template tags for this theme.
 /*-------------------------------------------*/
-require dirname( __FILE__ ) . '/inc/template-tags.php';
-require dirname( __FILE__ ) . '/inc/template-tags-old.php';
-require dirname( __FILE__ ) . '/inc/vk-helpers/config.php';
+require __DIR__ . '/inc/template-tags.php';
+require __DIR__ . '/inc/template-tags-old.php';
+require __DIR__ . '/inc/vk-helpers/config.php';
 
 /*
-  Load Theme Customizer additions.
+	Load Theme Customizer additions.
 /*-------------------------------------------*/
-require dirname( __FILE__ ) . '/inc/customize/customize-design.php';
-require dirname( __FILE__ ) . '/inc/customize/customize-top-slide.php';
-require dirname( __FILE__ ) . '/inc/customize/customize-functions.php';
+require __DIR__ . '/inc/customize/customize-design.php';
+require __DIR__ . '/inc/customize/customize-top-slide.php';
+require __DIR__ . '/inc/customize/customize-functions.php';
 
 /*
-  Load allow customize modules
+	Load allow customize modules
 /*-------------------------------------------*/
-require dirname( __FILE__ ) . '/inc/vk-mobile-nav/vk-mobile-nav-config.php';
+require __DIR__ . '/inc/vk-mobile-nav/vk-mobile-nav-config.php';
 
 /*
-  Load modules
+	Load modules
 /*-------------------------------------------*/
-require dirname( __FILE__ ) . '/inc/package-manager.php';
-require dirname( __FILE__ ) . '/inc/class-design-manager.php';
+require __DIR__ . '/inc/package-manager.php';
+require __DIR__ . '/inc/class-design-manager.php';
 // require dirname( __FILE__ ) . '/inc/font-awesome/font-awesome-config.php';
-require dirname( __FILE__ ) . '/inc/term-color/term-color-config.php';
-require dirname( __FILE__ ) . '/inc/vk-components/vk-components-config.php';
-require dirname( __FILE__ ) . '/inc/template-redirect.php';
-require dirname( __FILE__ ) . '/inc/layout-controller/layout-controller.php';
-require dirname( __FILE__ ) . '/inc/vk-footer-customize/vk-footer-customize-config.php';
-require dirname( __FILE__ ) . '/inc/vk-css-optimize/config.php';
+require __DIR__ . '/inc/term-color/term-color-config.php';
+require __DIR__ . '/inc/vk-components/vk-components-config.php';
+require __DIR__ . '/inc/template-redirect.php';
+require __DIR__ . '/inc/layout-controller/layout-controller.php';
+require __DIR__ . '/inc/vk-footer-customize/vk-footer-customize-config.php';
+require __DIR__ . '/inc/vk-css-optimize/config.php';
 
-require dirname( __FILE__ ) . '/inc/starter-content.php';
+require __DIR__ . '/inc/starter-content.php';
 
 /*
-  Plugin support
+	Plugin support
 /*
 -------------------------------------------*/
 // Load woocommerce modules.
 if ( class_exists( 'woocommerce' ) ) {
-	require dirname( __FILE__ ) . '/plugin-support/woocommerce/functions-woo.php';
+	require __DIR__ . '/plugin-support/woocommerce/functions-woo.php';
 }
 // Load polylang modules
 require_once ABSPATH . 'wp-admin/includes/plugin.php';
 if ( is_plugin_active( 'polylang/polylang.php' ) ) {
-	require dirname( __FILE__ ) . '/plugin-support/polylang/functions-polylang.php';
+	require __DIR__ . '/plugin-support/polylang/functions-polylang.php';
 }
 if ( is_plugin_active( 'bbpress/bbpress.php' ) ) {
-	require dirname( __FILE__ ) . '/plugin-support/bbpress/functions-bbpress.php';
+	require __DIR__ . '/plugin-support/bbpress/functions-bbpress.php';
 }
 
 /*
-  WidgetArea initiate
+	WidgetArea initiate
 /*-------------------------------------------*/
 if ( ! function_exists( 'lightning_widgets_init' ) ) {
 	function lightning_widgets_init() {
@@ -394,7 +393,7 @@ if ( ! function_exists( 'lightning_widgets_init' ) ) {
 					'after_title'   => '</h1>',
 				)
 			);
-			$i++;
+			++$i;
 		}
 
 		// LP widget area.
@@ -429,7 +428,7 @@ if ( ! function_exists( 'lightning_widgets_init' ) ) {
 add_action( 'widgets_init', 'lightning_widgets_init' );
 
 /*
-  Year Artchive list 'year' and count insert to inner </a>
+	Year Artchive list 'year' and count insert to inner </a>
 /*-------------------------------------------*/
 function lightning_archives_link( $html ) {
 	return preg_replace( '@</a>(.+?)</li>@', '\1</a></li>', $html );
@@ -437,7 +436,7 @@ function lightning_archives_link( $html ) {
 add_filter( 'get_archives_link', 'lightning_archives_link' );
 
 /*
-  Category list count insert to inner </a>
+	Category list count insert to inner </a>
 /*-------------------------------------------*/
 function lightning_list_categories( $output, $args ) {
 	$output = preg_replace( '/<\/a>\s*\((\d+)\)/', ' ($1)</a>', $output );
@@ -446,7 +445,7 @@ function lightning_list_categories( $output, $args ) {
 add_filter( 'wp_list_categories', 'lightning_list_categories', 10, 2 );
 
 /*
-  Global navigation add cptions
+	Global navigation add cptions
 /*-------------------------------------------*/
 class description_walker extends Walker_Nav_Menu {
 	function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
@@ -485,7 +484,7 @@ class description_walker extends Walker_Nav_Menu {
 }
 
 /*
-  headfix enable
+	headfix enable
 /*-------------------------------------------*/
 add_filter( 'body_class', 'lightning_body_class' );
 function lightning_body_class( $class ) {
@@ -509,7 +508,7 @@ function lightning_headfix_disabel(){
 */
 
 /*
-  Tag Cloud _ Change font size
+	Tag Cloud _ Change font size
 /*-------------------------------------------*/
 function lightning_tag_cloud_filter( $args ) {
 	$args['smallest'] = 10;
@@ -519,7 +518,7 @@ function lightning_tag_cloud_filter( $args ) {
 add_filter( 'widget_tag_cloud_args', 'lightning_tag_cloud_filter' );
 
 /*
-  HOME _ Default content hidden
+	HOME _ Default content hidden
 /*-------------------------------------------*/
 add_filter( 'is_lightning_home_content_display', 'lightning_home_content_hidden' );
 function lightning_home_content_hidden( $flag ) {
@@ -531,7 +530,7 @@ function lightning_home_content_hidden( $flag ) {
 }
 
 /*
-  disable_tgm_notification_except_admin
+	disable_tgm_notification_except_admin
 /*-------------------------------------------*/
 add_action( 'admin_head', 'lightning_disable_tgm_notification_except_admin' );
 function lightning_disable_tgm_notification_except_admin() {
@@ -545,7 +544,7 @@ function lightning_disable_tgm_notification_except_admin() {
 }
 
 /*
-  embed card
+	embed card
 /*-------------------------------------------*/
 remove_action( 'embed_footer', 'print_embed_sharing_dialog' );
 
