@@ -38,6 +38,7 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ Design Bug Fix ][ OriginIII ]Fixed text-decoration-color color for parent elements with `has-black-background-color` class or elements with `has-text-color` class.
 [ G3 / G2 ] Allow using CSS level 4 viewport-relative units
 
 v15.20.2
