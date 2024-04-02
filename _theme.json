@@ -86,7 +86,11 @@
 			}
 		},
 		"background": {
-			"backgroundImage": true
+			"backgroundImage": true,
+			"backgroundSize": true
+		},
+		"dimensions": {
+			"aspectRatio": true
 		}
 	}
 }
