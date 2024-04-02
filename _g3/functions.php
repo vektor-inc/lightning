@@ -9,7 +9,7 @@ $theme_opt = wp_get_theme( get_template() );
 
 define( 'LIGHTNING_THEME_VERSION', $theme_opt->Version ); // phpcs:ignore
 
-require_once dirname( dirname( __FILE__ ) ) . '/vendor/autoload.php';
+require_once dirname( __DIR__ ) . '/vendor/autoload.php';
 
 /*********************************************
  * Set up theme
@@ -144,24 +144,24 @@ function lightning_theme_setup() {
 }
 add_action( 'after_setup_theme', 'lightning_theme_setup' );
 
-require dirname( __FILE__ ) . '/inc/vk-helpers/config.php';
-require dirname( __FILE__ ) . '/inc/class-lightning-design-manager.php';
-require dirname( __FILE__ ) . '/inc/class-vk-description-walker.php';
-require dirname( __FILE__ ) . '/inc/template-tags.php';
-require dirname( __FILE__ ) . '/inc/customize/customize-design.php';
-require dirname( __FILE__ ) . '/inc/vk-color-palette-manager/config.php';
-require dirname( __FILE__ ) . '/inc/layout-controller/layout-controller.php';
-require dirname( __FILE__ ) . '/inc/vk-components/config.php';
-require dirname( __FILE__ ) . '/inc/vk-mobile-nav/config.php';
-require dirname( __FILE__ ) . '/inc/widget-area.php';
-require dirname( __FILE__ ) . '/inc/term-color/config.php';
-require dirname( __FILE__ ) . '/inc/vk-css-optimize/config.php';
-require dirname( __FILE__ ) . '/inc/vk-swiper/config.php';
-require dirname( __FILE__ ) . '/inc/ltg-g3-slider/config.php';
-require dirname( __FILE__ ) . '/inc/vk-wp-oembed-blog-card/config.php';
-require dirname( __FILE__ ) . '/inc/vk-breadcrumb/config.php'; // fall back alias.
+require __DIR__ . '/inc/vk-helpers/config.php';
+require __DIR__ . '/inc/class-lightning-design-manager.php';
+require __DIR__ . '/inc/class-vk-description-walker.php';
+require __DIR__ . '/inc/template-tags.php';
+require __DIR__ . '/inc/customize/customize-design.php';
+require __DIR__ . '/inc/vk-color-palette-manager/config.php';
+require __DIR__ . '/inc/layout-controller/layout-controller.php';
+require __DIR__ . '/inc/vk-components/config.php';
+require __DIR__ . '/inc/vk-mobile-nav/config.php';
+require __DIR__ . '/inc/widget-area.php';
+require __DIR__ . '/inc/term-color/config.php';
+require __DIR__ . '/inc/vk-css-optimize/config.php';
+require __DIR__ . '/inc/vk-swiper/config.php';
+require __DIR__ . '/inc/ltg-g3-slider/config.php';
+require __DIR__ . '/inc/vk-wp-oembed-blog-card/config.php';
+require __DIR__ . '/inc/vk-breadcrumb/config.php'; // fall back alias.
 
-require dirname( __FILE__ ) . '/inc/starter-content.php';
+require __DIR__ . '/inc/starter-content.php';
 
 /*********************************************
  * Load CSS
@@ -364,20 +364,20 @@ add_action( 'embed_head', 'lightning_embed_styles' );
  */
 // Load woocommerce modules.
 if ( class_exists( 'woocommerce' ) ) {
-	require dirname( __FILE__ ) . '/plugin-support/woocommerce/functions-woo.php';
+	require __DIR__ . '/plugin-support/woocommerce/functions-woo.php';
 }
 // Load polylang modules.
 require_once ABSPATH . 'wp-admin/includes/plugin.php';
 if ( is_plugin_active( 'polylang/polylang.php' ) ) {
-	require dirname( __FILE__ ) . '/plugin-support/polylang/functions-polylang.php';
+	require __DIR__ . '/plugin-support/polylang/functions-polylang.php';
 }
 if ( is_plugin_active( 'bbpress/bbpress.php' ) ) {
-	require dirname( __FILE__ ) . '/plugin-support/bbpress/functions-bbpress.php';
+	require __DIR__ . '/plugin-support/bbpress/functions-bbpress.php';
 }
 // Load the-events-calendar modules.
 if ( is_plugin_active( 'the-events-calendar/the-events-calendar.php' ) ) {
 	// ※ If File name change to "functions-the-event-calendar.php" that fail to load.
-	require dirname( __FILE__ ) . '/plugin-support/the-events-calendar/functions-events-calendar.php';
+	require __DIR__ . '/plugin-support/the-events-calendar/functions-events-calendar.php';
 }
 
 /**
@@ -425,7 +425,7 @@ function Lightning_get_descriptions( $target = '' ) {
 		'attachment-side-widget-area' => __( 'This widget area appears on the Media page only.', 'lightning' ),
 	);
 
-	return $descriptions[$target];
+	return $descriptions[ $target ];
 }
 
 /**
@@ -436,13 +436,13 @@ function Lightning_get_descriptions( $target = '' ) {
  * @param string $post_type : post type.
  * @return void
  */
-function  Lightning_customize_widget_area_alert( $post_type = 'post' ) {
-	if ( is_customize_preview()) {
+function Lightning_customize_widget_area_alert( $post_type = 'post' ) {
+	if ( is_customize_preview() ) {
 		$sidebar_description = Lightning_get_descriptions( $post_type . '-side-widget-area' );
-		$return = '<div class="alert alert-warning widget-area-description">';
-		$return .= '<p class="mb-2">' . $sidebar_description . '</p>';
-		$return .= '<p>* ' . __( 'This message is displayed only on the customization screen. It will not be displayed on the general public screen.', 'lightning' ) . '</p>';
-		$return .= '</div>';
+		$return              = '<div class="alert alert-warning widget-area-description">';
+		$return             .= '<p class="mb-2">' . $sidebar_description . '</p>';
+		$return             .= '<p>* ' . __( 'This message is displayed only on the customization screen. It will not be displayed on the general public screen.', 'lightning' ) . '</p>';
+		$return             .= '</div>';
 		echo wp_kses_post( $return );
 	}
 }
