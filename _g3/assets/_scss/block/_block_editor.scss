@@ -1,4 +1,9 @@
 // editor only
+
+.editor-post-title { // Attend to 6.5 with theme.json
+	margin-left:auto;
+	margin-right:auto;
+}
 .edit-post-visual-editor .editor-styles-wrapper {
 	.wp-block-table {
 		thead {

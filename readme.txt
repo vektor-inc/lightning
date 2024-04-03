@@ -1,15 +1,14 @@
 === Lightning ===
-Lightning WordPress theme, Copyright (C) 2015-2023 Vektor,Inc.
+Lightning WordPress theme, Copyright (C) 2015-2024 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
 Tested up to: 6.5
-Stable tag: 15.21.0
+Stable tag: 15.21.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 Lightning is a very simple theme.
-Official site : https://lightning.vektor-inc.co.jp/en
-Sample site : https://demo.lightning.nagoya/
+Official site : https://lightning.vektor-inc.co.jp/
 
 === Tags ===
 white, red, blue, black, green, orange, purple, two-columns, right-sidebar, one-columns, responsive, custom-colors, custom-menu, editor-style,theme-options
@@ -37,6 +36,9 @@ https://www.vektor-inc.co.jp/inquiry/
 
 
 == Changelog ==
+
+v15.21.1
+[ G3 with theme.json ] Fixed the alignment issue of the title in the post editing screen.
 
 v15.21.0
 [ G3 ][ 6.5 ] Attend to aspectRatio
