@@ -38,6 +38,10 @@ a {
 			text-decoration: none;
 		}
 	}
+	// `has-black-background-color` クラスを持つ親要素、または `has-text-color` クラスを持つ要素の場合
+    .has-black-background-color &, .has-text-color & {
+		text-decoration-color: currentColor;
+	}
 }
 
 p {

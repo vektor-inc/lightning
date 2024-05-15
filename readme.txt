@@ -37,6 +37,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ Design Bug Fix ][ OriginIII ]Fixed text-decoration-color color for parent elements with `has-black-background-color` class or elements with `has-text-color` class.
+
 v15.21.1
 [ G3 with theme.json ] Fixed the alignment issue of the title in the post editing screen.
 

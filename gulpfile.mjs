@@ -1,18 +1,18 @@
-const gulp = require('gulp')
-
-const replace = require('gulp-replace')
-
+import gulp from 'gulp';
+import replace from 'gulp-replace';
 // ファイルリネーム（.min作成用）
-const rename = require('gulp-rename')
-
+import rename from 'gulp-rename';
 // エラーでも監視を続行させる
-const plumber = require('gulp-plumber')
-const sass = require('gulp-sass')(require('sass'));
-const autoprefixer = require('gulp-autoprefixer')
-const cleanCss = require('gulp-clean-css')
-const cmq = require('gulp-merge-media-queries')
-var sourcemaps = require('gulp-sourcemaps');
-const aliases = require('gulp-style-aliases')
+import plumber from 'gulp-plumber';
+import sassModule from 'gulp-sass';
+import autoprefixer from 'gulp-autoprefixer';
+import cleanCss from 'gulp-clean-css';
+import cmq from 'gulp-merge-media-queries';
+import sourcemaps from 'gulp-sourcemaps';
+import aliases from 'gulp-style-aliases';
+import nodeSass from 'sass';
+
+const sass = sassModule(nodeSass);
 
 let error_stop = true
 
