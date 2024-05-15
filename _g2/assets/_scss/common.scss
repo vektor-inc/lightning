@@ -193,3 +193,22 @@ iframe {
 	font-weight: 500;
 }
 /*  ヘッダーロゴの文字の太さを統一 終了  */
+
+/*-------------------------------------------*/
+/*	gMenu
+/*  ※ foundation 部分のテーマ側での上書き用
+/*-------------------------------------------*/
+// タブキー操作対応
+.device-pc .gMenu li {
+	&:focus-within {
+		> .sub-menu {
+			opacity: 1;
+			max-height: 80vh;
+			overflow-y: auto;
+			a:focus-within {
+				color:#fff;
+				background-color: var(--vk-color-primary-vivid);
+			}
+		}
+	}
+}
