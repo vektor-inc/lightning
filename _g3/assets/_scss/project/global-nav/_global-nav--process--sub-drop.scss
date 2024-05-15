@@ -27,16 +27,11 @@
 	.device-pc & {
 		&:focus-within,
 		&:hover {
-			> .sub-menu {
+			> .sub-menu, // 2 layers
+			li:focus-within > .sub-menu { // 3 layers after
 				opacity: 1;
 				max-height: 80vh;
 				overflow-y: auto;
-			}
-		}
-		&:focus-within {
-			> .sub-menu li.menu-item-has-children:focus-within > .sub-menu {
-				max-height: 80vh;
-				opacity: 1;
 			}
 		}
 	}
