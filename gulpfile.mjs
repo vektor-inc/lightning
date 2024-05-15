@@ -324,37 +324,4 @@ gulp.task('sass',  gulp.series( 'sass_g2', 'sass_g3' ));
 
 // copy dist ////////////////////////////////////////////////
 
-/* 実際には階層指定はあんまり効いてなくて拡張子だけでコピーされてる */
-gulp.task('dist', function (done) {
-	const files = gulp.src(
-	  [
-		"./LICENSE",
-		"./*theme.json",
-		"./**/*.php",
-		"./**/*.txt",
-		"./**/*.css",
-		"./**/*.png",
-		"./**/*.jpg",
-		"./inc/**",
-		"./languages/**",
-		"./vendor/**",
-		"./_g2/inc/**",
-		"./_g2/assets/**",
-		"./_g2/library/**",
-		"./_g3/inc/**",
-		"./_g3/assets/**",
-		"!./_g2/assets/css/map/**",
-		"!./_g3/node_modules/**/*.*",
-		"!./_g3/assets/css/map/**",
-		"!./.vscode/**",
-		"!./bin/**",
-		"!./dist/**",
-		"!./node_modules/**/*.*",
-		"!./tests/**",
-	  ], {
-		base: './'
-	  }
-	)
-	files.pipe(gulp.dest("dist/lightning"));
-	done();
-  });
+// change to copy-files.js
