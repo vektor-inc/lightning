@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: 14.x
+          node-version: 18.x
 
       - run: cp _g2/assets/js/lightning.min.js lightning.min.js.before
       - run: cp _g2/assets/css/common.css common.css.before
@@ -72,7 +72,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: 14.x
+          node-version: 18.x
       - name: Cache multiple paths
         uses: actions/cache@v2
         with:
