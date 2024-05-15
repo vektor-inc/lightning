@@ -37,6 +37,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ Design Bug Fix ][ OriginIII ]Fixed text-decoration-color color for parent elements with `has-black-background-color` class or elements with `has-text-color` class.
+
 v15.21.1
 [ G3 with theme.json ] Fixed the alignment issue of the title in the post editing screen.
 
@@ -44,7 +46,6 @@ v15.21.0
 [ G3 ][ 6.5 ] Attend to aspectRatio
 [ G3 ][ 6.5 ] Attend to backgroundSize
 [ G3 / G2 ] Allow using CSS level 4 viewport-relative units
-[ G3 ][ Design Bug Fix ][ OriginIII ]Fixed text-decoration-color color for parent elements with `has-black-background-color` class or elements with `has-text-color` class.
 
 v15.20.2
 [ G3 ][ Design Bug Fix ][ OriginIII ] Fixed margin-bottom of vk_button does not work if vk_button is adjacent within an element of .is-layout-flow or .is-layout-constrained.
