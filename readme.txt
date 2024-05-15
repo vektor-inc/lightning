@@ -37,6 +37,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 / G2 ][ Specification Change ] Support navigation operations using the Tab key.
+
 v15.21.1
 [ G3 with theme.json ] Fixed the alignment issue of the title in the post editing screen.
 
