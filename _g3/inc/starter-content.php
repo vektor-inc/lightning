@@ -13,11 +13,9 @@ function lightning_add_starter_content() {
 				'post_content' => join(
 					'',
 					array(
-						'<!-- wp:columns -->
-						<div class="wp-block-columns">
-						<!-- wp:column -->
-						<div class="wp-block-column"><!-- wp:image {"sizeSlug":"full","linkDestination":"none"} -->
-						<figure class="wp-block-image size-full"><img src="' . esc_url( get_template_directory_uri() ) . '/assets/images/sample-image-gray.png" alt="" /></figure>
+						'<!-- wp:columns {"style":{"spacing":{"blockGap":{"top":"var:preset|spacing|50","left":"var:preset|spacing|50"},"margin":{"bottom":"var:preset|spacing|60"}}}} -->
+						<div class="wp-block-columns" style="margin-bottom:var(--wp--preset--spacing--60)"><!-- wp:column -->
+						<div class="wp-block-column"><img src="' . esc_url( get_template_directory_uri() ) . '/assets/images/sample-image-gray.png" alt="" /></figure>
 						<!-- /wp:image -->
 						
 						<!-- wp:heading {"level":5,"style":{"spacing":{"margin":{"top":"1.5rem","bottom":"1rem"}}}} -->
@@ -29,8 +27,8 @@ function lightning_add_starter_content() {
 						<!-- /wp:paragraph -->
 						
 						<!-- wp:buttons -->
-						<div class="wp-block-buttons"><!-- wp:button {"style":{"spacing":{"padding":{"top":"0.3em","bottom":"0.3em","left":"1em","right":"1em"}}},"className":"is-style-outline","fontSize":"small"} -->
-						<div class="wp-block-button has-custom-font-size is-style-outline has-small-font-size"><a class="wp-block-button__link" href="" style="padding-top:0.3em;padding-right:1em;padding-bottom:0.3em;padding-left:1em">' . esc_html__( 'Read more', 'lightning' ) . '</a></div>
+						<div class="wp-block-buttons"><!-- wp:button {"style":{"spacing":{"padding":{"top":"0.3em","bottom":"0.3em","left":"1em","right":"1em"}},"border":{"radius":"0px"}},"className":"is-style-outline","fontSize":"small"} -->
+						<div class="wp-block-button has-custom-font-size is-style-outline has-small-font-size"><a class="wp-block-button__link wp-element-button" href="" style="border-radius:0px;padding-top:0.3em;padding-right:1em;padding-bottom:0.3em;padding-left:1em">' . esc_html__( 'Read more', 'lightning' ) . '</a></div>
 						<!-- /wp:button --></div>
 						<!-- /wp:buttons -->
 						
@@ -53,32 +51,8 @@ function lightning_add_starter_content() {
 						<!-- /wp:paragraph -->
 						
 						<!-- wp:buttons -->
-						<div class="wp-block-buttons"><!-- wp:button {"style":{"spacing":{"padding":{"top":"0.3em","bottom":"0.3em","left":"1em","right":"1em"}}},"className":"is-style-outline","fontSize":"small"} -->
-						<div class="wp-block-button has-custom-font-size is-style-outline has-small-font-size"><a class="wp-block-button__link" href="" style="padding-top:0.3em;padding-right:1em;padding-bottom:0.3em;padding-left:1em">' . esc_html__( 'Read more', 'lightning' ) . '</a></div>
-						<!-- /wp:button --></div>
-						<!-- /wp:buttons -->
-						
-						<!-- wp:spacer {"height":30} -->
-						<div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
-						<!-- /wp:spacer --></div>
-						<!-- /wp:column -->
-					
-						<!-- wp:column -->
-						<div class="wp-block-column"><!-- wp:image {"sizeSlug":"full","linkDestination":"none"} -->
-						<figure class="wp-block-image size-full"><img src="' . esc_url( get_template_directory_uri() ) . '/assets/images/sample-image-gray.png" alt="" /></figure>
-						<!-- /wp:image -->
-						
-						<!-- wp:heading {"level":5,"style":{"spacing":{"margin":{"top":"1.5rem","bottom":"1rem"}}}} -->
-						<h5 id="vk-blocks" style="margin-top:1.5rem;margin-bottom:1rem">' . esc_html__( 'Title Text', 'lightning' ) . '</h5>
-						<!-- /wp:heading -->
-						
-						<!-- wp:paragraph -->
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-						<!-- /wp:paragraph -->
-						
-						<!-- wp:buttons -->
-						<div class="wp-block-buttons"><!-- wp:button {"style":{"spacing":{"padding":{"top":"0.3em","bottom":"0.3em","left":"1em","right":"1em"}}},"className":"is-style-outline","fontSize":"small"} -->
-						<div class="wp-block-button has-custom-font-size is-style-outline has-small-font-size"><a class="wp-block-button__link" href="" style="padding-top:0.3em;padding-right:1em;padding-bottom:0.3em;padding-left:1em">' . esc_html__( 'Read more', 'lightning' ) . '</a></div>
+						<div class="wp-block-buttons"><!-- wp:button {"style":{"spacing":{"padding":{"top":"0.3em","bottom":"0.3em","left":"1em","right":"1em"}},"border":{"radius":"0px"}},"className":"is-style-outline","fontSize":"small"} -->
+						<div class="wp-block-button has-custom-font-size is-style-outline has-small-font-size"><a class="wp-block-button__link wp-element-button" href="" style="border-radius:0px;padding-top:0.3em;padding-right:1em;padding-bottom:0.3em;padding-left:1em">' . esc_html__( 'Read more', 'lightning' ) . '</a></div>
 						<!-- /wp:button --></div>
 						<!-- /wp:buttons -->
 						
@@ -101,8 +75,32 @@ function lightning_add_starter_content() {
 						<!-- /wp:paragraph -->
 						
 						<!-- wp:buttons -->
-						<div class="wp-block-buttons"><!-- wp:button {"style":{"spacing":{"padding":{"top":"0.3em","bottom":"0.3em","left":"1em","right":"1em"}}},"className":"is-style-outline","fontSize":"small"} -->
-						<div class="wp-block-button has-custom-font-size is-style-outline has-small-font-size"><a class="wp-block-button__link" href="" style="padding-top:0.3em;padding-right:1em;padding-bottom:0.3em;padding-left:1em">' . esc_html__( 'Read more', 'lightning' ) . '</a></div>
+						<div class="wp-block-buttons"><!-- wp:button {"style":{"spacing":{"padding":{"top":"0.3em","bottom":"0.3em","left":"1em","right":"1em"}},"border":{"radius":"0px"}},"className":"is-style-outline","fontSize":"small"} -->
+						<div class="wp-block-button has-custom-font-size is-style-outline has-small-font-size"><a class="wp-block-button__link wp-element-button" href="" style="border-radius:0px;padding-top:0.3em;padding-right:1em;padding-bottom:0.3em;padding-left:1em">' . esc_html__( 'Read more', 'lightning' ) . '</a></div>
+						<!-- /wp:button --></div>
+						<!-- /wp:buttons -->
+						
+						<!-- wp:spacer {"height":30} -->
+						<div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
+						<!-- /wp:spacer --></div>
+						<!-- /wp:column -->
+					
+						<!-- wp:column -->
+						<div class="wp-block-column"><!-- wp:image {"sizeSlug":"full","linkDestination":"none"} -->
+						<figure class="wp-block-image size-full"><img src="' . esc_url( get_template_directory_uri() ) . '/assets/images/sample-image-gray.png" alt="" /></figure>
+						<!-- /wp:image -->
+						
+						<!-- wp:heading {"level":5,"style":{"spacing":{"margin":{"top":"1.5rem","bottom":"1rem"}}}} -->
+						<h5 id="vk-blocks" style="margin-top:1.5rem;margin-bottom:1rem">' . esc_html__( 'Title Text', 'lightning' ) . '</h5>
+						<!-- /wp:heading -->
+						
+						<!-- wp:paragraph -->
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+						<!-- /wp:paragraph -->
+						
+						<!-- wp:buttons -->
+						<div class="wp-block-buttons"><!-- wp:button {"style":{"spacing":{"padding":{"top":"0.3em","bottom":"0.3em","left":"1em","right":"1em"}},"border":{"radius":"0px"}},"className":"is-style-outline","fontSize":"small"} -->
+						<div class="wp-block-button has-custom-font-size is-style-outline has-small-font-size"><a class="wp-block-button__link wp-element-button" href="" style="border-radius:0px;padding-top:0.3em;padding-right:1em;padding-bottom:0.3em;padding-left:1em">' . esc_html__( 'Read more', 'lightning' ) . '</a></div>
 						<!-- /wp:button --></div>
 						<!-- /wp:buttons -->
 						
@@ -113,13 +111,11 @@ function lightning_add_starter_content() {
 						</div>
 						<!-- /wp:columns -->
 						
-						<!-- wp:cover {"customOverlayColor":"#f3f3f3","minHeight":250,"contentPosition":"center center","align":"full"} -->
-						<div class="wp-block-cover alignfull has-background-dim" style="background-color:#f3f3f3;min-height:250px"><div class="wp-block-cover__inner-container"><!-- wp:spacer {"height":40} -->
-						<div style="height:40px" aria-hidden="true" class="wp-block-spacer"></div>
-						<!-- /wp:spacer -->
+						<!-- wp:cover {"customOverlayColor":"#f3f3f3","isUserOverlayColor":true,"minHeight":250,"contentPosition":"center center","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"className":"is-light"} -->
+						<div class="wp-block-cover alignfull is-light" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60);min-height:250px"><span aria-hidden="true" class="wp-block-cover__background has-background-dim-100 has-background-dim" style="background-color:#f3f3f3"></span><div class="wp-block-cover__inner-container">
 						
-						<!-- wp:columns {"verticalAlignment":"center"} -->
-						<div class="wp-block-columns are-vertically-aligned-center"><!-- wp:column {"verticalAlignment":"center","width":"33.33%"} -->
+						<!-- wp:columns {"verticalAlignment":"center","style":{"spacing":{"padding":{"top":"0","bottom":"0"},"blockGap":{"top":"var:preset|spacing|50","left":"var:preset|spacing|50"}}}} -->
+						<div class="wp-block-columns are-vertically-aligned-center" style="padding-top:0;padding-bottom:0"><!-- wp:column {"verticalAlignment":"center","width":"33.33%"} -->
 						<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:33.33%">
 						<!-- wp:image {"align":"center"} -->
 						<div class="wp-block-image"><figure class="aligncenter"><img src="' . esc_url( get_template_directory_uri() ) . '/assets/images/logo_Lightning.png" alt=""/></figure></div>
@@ -224,7 +220,7 @@ function lightning_add_starter_content() {
 			'page_on_front'              => '{{front}}',
 			'page_for_posts'             => '{{blog}}',
 			'lightning_theme_options'    => array(
-				'layout' => array(
+				'layout'     => array(
 					'front-page' => 'col-one-no-subsection',
 				),
 				'theme_json' => true,
