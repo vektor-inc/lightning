@@ -1,13 +1,5 @@
 @charset "utf-8";
 
-/**** CAUTION ************************
-
-If you want to modify this file,
-If this file included in plugin that, you don't modify this file.
-Original file path is themes/lightning/design-skin/foundation/ that, please modify original files.
-
-*************************************/
-
 /*-------------------------------------------*/
 /*	第二階層マウスホバー展開処理
 /*-------------------------------------------*/
@@ -33,11 +25,14 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 	}
 
 	.device-pc & {
-
-		&:hover > .sub-menu {
-			opacity: 1;
-			max-height: 80vh;
-			overflow-y: auto;
+		&:focus-within,
+		&:hover {
+			> .sub-menu, // 2 layers
+			li:focus-within > .sub-menu { // 3 layers after
+				opacity: 1;
+				max-height: 80vh;
+				overflow-y: auto;
+			}
 		}
 	}
 

@@ -108,6 +108,7 @@
 					padding: $menu_padding_vertical $menu_padding_horizontal;
 					border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 					display: block;
+					&:focus-within,
 					&:hover {
 						background-color: var(--vk-color-primary-vivid);
 					}
