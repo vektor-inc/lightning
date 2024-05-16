@@ -28,8 +28,8 @@ function lightning_add_starter_content() {
 						<!-- /wp:paragraph -->
 						
 						<!-- wp:buttons -->
-						<div class="wp-block-buttons"><!-- wp:button {"style":{"spacing":{"padding":{"top":"0.3em","bottom":"0.3em","left":"1em","right":"1em"}},"border":{"radius":"0px"}},"className":"is-style-outline","fontSize":"small"} -->
-						<div class="wp-block-button has-custom-font-size is-style-outline has-small-font-size"><a class="wp-block-button__link wp-element-button" href="" style="border-radius:0px;padding-top:0.3em;padding-right:1em;padding-bottom:0.3em;padding-left:1em">Read more</a></div>
+						<div class="wp-block-buttons"><!-- wp:button {"style":{"spacing":{"padding":{"top":"0.5em","bottom":"0.5em","left":"1em","right":"1em"}},"border":{"radius":"0px"}},"className":"is-style-outline","fontSize":"small"} -->
+						<div class="wp-block-button has-custom-font-size is-style-outline has-small-font-size"><a class="wp-block-button__link wp-element-button" href="" style="border-radius:0px;padding-top:0.5em;padding-right:1em;padding-bottom:0.5em;padding-left:1em">Read more</a></div>
 						<!-- /wp:button --></div>
 						<!-- /wp:buttons --></div>
 						<!-- /wp:column -->
@@ -48,8 +48,8 @@ function lightning_add_starter_content() {
 						<!-- /wp:paragraph -->
 						
 						<!-- wp:buttons -->
-						<div class="wp-block-buttons"><!-- wp:button {"style":{"spacing":{"padding":{"top":"0.3em","bottom":"0.3em","left":"1em","right":"1em"}},"border":{"radius":"0px"}},"className":"is-style-outline","fontSize":"small"} -->
-						<div class="wp-block-button has-custom-font-size is-style-outline has-small-font-size"><a class="wp-block-button__link wp-element-button" href="" style="border-radius:0px;padding-top:0.3em;padding-right:1em;padding-bottom:0.3em;padding-left:1em">Read more</a></div>
+						<div class="wp-block-buttons"><!-- wp:button {"style":{"spacing":{"padding":{"top":"0.5em","bottom":"0.5em","left":"1em","right":"1em"}},"border":{"radius":"0px"}},"className":"is-style-outline","fontSize":"small"} -->
+						<div class="wp-block-button has-custom-font-size is-style-outline has-small-font-size"><a class="wp-block-button__link wp-element-button" href="" style="border-radius:0px;padding-top:0.5em;padding-right:1em;padding-bottom:0.5em;padding-left:1em">Read more</a></div>
 						<!-- /wp:button --></div>
 						<!-- /wp:buttons --></div>
 						<!-- /wp:column -->
@@ -68,8 +68,8 @@ function lightning_add_starter_content() {
 						<!-- /wp:paragraph -->
 						
 						<!-- wp:buttons -->
-						<div class="wp-block-buttons"><!-- wp:button {"style":{"spacing":{"padding":{"top":"0.3em","bottom":"0.3em","left":"1em","right":"1em"}},"border":{"radius":"0px"}},"className":"is-style-outline","fontSize":"small"} -->
-						<div class="wp-block-button has-custom-font-size is-style-outline has-small-font-size"><a class="wp-block-button__link wp-element-button" href="" style="border-radius:0px;padding-top:0.3em;padding-right:1em;padding-bottom:0.3em;padding-left:1em">Read more</a></div>
+						<div class="wp-block-buttons"><!-- wp:button {"style":{"spacing":{"padding":{"top":"0.5em","bottom":"0.5em","left":"1em","right":"1em"}},"border":{"radius":"0px"}},"className":"is-style-outline","fontSize":"small"} -->
+						<div class="wp-block-button has-custom-font-size is-style-outline has-small-font-size"><a class="wp-block-button__link wp-element-button" href="" style="border-radius:0px;padding-top:0.5em;padding-right:1em;padding-bottom:0.5em;padding-left:1em">Read more</a></div>
 						<!-- /wp:button --></div>
 						<!-- /wp:buttons --></div>
 						<!-- /wp:column -->
@@ -88,8 +88,8 @@ function lightning_add_starter_content() {
 						<!-- /wp:paragraph -->
 						
 						<!-- wp:buttons -->
-						<div class="wp-block-buttons"><!-- wp:button {"style":{"spacing":{"padding":{"top":"0.3em","bottom":"0.3em","left":"1em","right":"1em"}},"border":{"radius":"0px"}},"className":"is-style-outline","fontSize":"small"} -->
-						<div class="wp-block-button has-custom-font-size is-style-outline has-small-font-size"><a class="wp-block-button__link wp-element-button" href="" style="border-radius:0px;padding-top:0.3em;padding-right:1em;padding-bottom:0.3em;padding-left:1em">Read more</a></div>
+						<div class="wp-block-buttons"><!-- wp:button {"style":{"spacing":{"padding":{"top":"0.5em","bottom":"0.5em","left":"1em","right":"1em"}},"border":{"radius":"0px"}},"className":"is-style-outline","fontSize":"small"} -->
+						<div class="wp-block-button has-custom-font-size is-style-outline has-small-font-size"><a class="wp-block-button__link wp-element-button" href="" style="border-radius:0px;padding-top:0.5em;padding-right:1em;padding-bottom:0.5em;padding-left:1em">Read more</a></div>
 						<!-- /wp:button --></div>
 						<!-- /wp:buttons --></div>
 						<!-- /wp:column --></div>
