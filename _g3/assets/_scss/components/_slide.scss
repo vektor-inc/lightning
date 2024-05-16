@@ -59,36 +59,20 @@
 		&::after,&::before{
 			content: none;
 		}
-		@media (min-width: $md-min) {
-			font-size: 24px;
-		}
-		@media (min-width: $lg-min) {
-			font-size: 28px;
-		}
-		@media (min-width: $xl-min) {
-			font-size: 32px;
-		}
+		font-size:2dvw;
+		font-size:clamp(24px,2dvw,32px);
 	}
 	&-text-caption {
 		margin-bottom: 0;
-		font-size:12px;
-		@media (min-width: $sm-min) {
-		}
-		@media (min-width: $lg-min) {
-			font-size:1.125rem;
-		}
-		@media (min-width: $xl-min) {
-			font-size:1.250rem;
-		}
+		font-size:clamp(14px,1.4dvw,18px);
+		line-height: 1.6;
 	}
 	&-text-title + &-text-caption {
-		margin-top: 0.7em;
+		margin-top: 0.5rem;
+		margin-bottom: 1rem;
 	}
 	.btn {
-		margin-top: 1em;
-		@media (max-width: $sm-max) {
-			font-size:12px;
-		}
+		font-size:clamp(14px,1.3dvw,18px);
 	}
 	picture {
 		width: 100%;
@@ -101,14 +85,9 @@
 	}	
 	// .slide-text-set を含めると 現状カスタマイザからの色指定ががインラインで上書きが効かなくなる
 	.btn-ghost {
-		// font-size: 16px;
-		// margin-top: 1.5em;
-		padding: 0.5em 2.2em;
+		padding: 0.4em 2em 0.4em;
 		color: var(--vk-color-text-body);
 		border: 1px solid var(--vk-color-text-body);
-		@media (min-width: $md-min) {
-			// font-size: 18px;
-		}
 		&:hover{
 			border-color: var(--vk-color-primary);
 			background-color: var(--vk-color-primary);
