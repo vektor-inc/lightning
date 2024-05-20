@@ -16,9 +16,9 @@
 		"watch:style": "gulp watch",
 		"composer:install:win": "wp-env run composer \"composer install\"",
 		"composer:install:mac": "wp-env run composer 'composer install'",
-		"phpunit": "composer install && wp-env run phpunit 'phpunit -c /var/www/html/wp-content/themes/lightning/phpunit.g3.xml --verbose'",
-		"phpunit:g2": "composer install && wp-env run phpunit 'phpunit -c /var/www/html/wp-content/themes/lightning/phpunit.g2.xml --verbose'",
-		"phpunit:root": "composer install && wp-env run phpunit 'phpunit -c /var/www/html/wp-content/themes/lightning/phpunit.root.xml --verbose'",
+		"phpunit": "composer install && wp-env run --env-cwd='wp-content/themes/lightning' tests-cli vendor/bin/phpunit -c phpunit.g3.xml --testdox",
+		"phpunit:g2": "composer install && wp-env run --env-cwd='wp-content/themes/lightning' tests-cli vendor/bin/phpunit -c phpunit.g2.xml --testdox",
+		"phpunit:root": "composer install && wp-env run --env-cwd='wp-content/themes/lightning' tests-cli vendor/bin/phpunit -c phpunit.root.xml --testdox",
 		"phpunit:win": "wp-env run phpunit \"phpunit -c /var/www/html/wp-content/themes/lightning/phpunit.g3.xml --verbose\""
 	},
 	"repository": {
