@@ -1,3 +1,4 @@
+@import 'custom-functions'; // bootstrap4 の abs() がビルド時にエラーにならないように上書き
 @import "@bootstrap/functions";
 @import "bootstrap_variables";
 @import "@bootstrap/mixins";

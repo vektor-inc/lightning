@@ -1,0 +1,4 @@
+@function abs($number) {
+	@return if($number < 0, -$number, $number);
+  }
+  

@@ -5,6 +5,8 @@
 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)	* Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
 */
 
+@import 'custom-functions';  // bootstrap4 の abs() がビルド時にエラーにならないように上書き
+
 @import "@bootstrap/functions";
 @import "variables";
 @import "@bootstrap/mixins";
