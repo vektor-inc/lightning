@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: 18.x
+          node-version: 20.x
 
       - run: cp _g2/assets/js/lightning.min.js lightning.min.js.before
       - run: cp _g2/assets/css/common.css common.css.before
@@ -72,7 +72,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: 18.x
+          node-version: 20.x
       - name: Cache multiple paths
         uses: actions/cache@v2
         with:
@@ -87,18 +87,18 @@ jobs:
       - name: wp-env start
         run: ./node_modules/@wordpress/env/bin/wp-env start
       - name: install composer
-        run: ./node_modules/@wordpress/env/bin/wp-env run composer 'composer install'
+        run: ./node_modules/@wordpress/env/bin/wp-env run cli --env-cwd=wp-content/themes/lightning composer install
       - name: Change file permission
         run: |
           umask
           sudo chmod -R 777 ./
           sudo chmod -R 777 ~/wp-env
       - name: php unit test root
-        run: ./node_modules/@wordpress/env/bin/wp-env run phpunit 'phpunit -c /var/www/html/wp-content/themes/lightning/phpunit.root.xml --verbose'
+        run: ./node_modules/@wordpress/env/bin/wp-env run --env-cwd='wp-content/themes/lightning' tests-cli vendor/bin/phpunit -c phpunit.root.xml --testdox
       - name: php unit test G2
-        run: ./node_modules/@wordpress/env/bin/wp-env run phpunit 'phpunit -c /var/www/html/wp-content/themes/lightning/phpunit.g2.xml --verbose'
+        run: ./node_modules/@wordpress/env/bin/wp-env run --env-cwd='wp-content/themes/lightning' tests-cli vendor/bin/phpunit -c phpunit.g2.xml --testdox
       - name: php unit test G3
-        run: ./node_modules/@wordpress/env/bin/wp-env run phpunit 'phpunit -c /var/www/html/wp-content/themes/lightning/phpunit.g3.xml --verbose'
+        run: ./node_modules/@wordpress/env/bin/wp-env run --env-cwd='wp-content/themes/lightning' tests-cli vendor/bin/phpunit -c phpunit.g3.xml --testdox
       - name: Install dependencies ////////////////////////
         run: npm ci
       - name: Install Playwright Browsers

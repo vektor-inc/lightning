@@ -1,0 +1,5 @@
+ // bootstrap4 の abs() がビルド時にエラーにならないように上書き
+@function abs($number) {
+	@return if($number < 0, -$number, $number);
+  }
+  
