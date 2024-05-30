@@ -75,12 +75,12 @@ kbd {
 
 	&:focus:not(pre) > code[data-rich-text-format-boundary],
 	&:focus > kbd[data-rich-text-format-boundary] {
-		background-color: var(--vk-color-bg-accent);
+		background-color: var(--vk-color-bg-accent) !important; //!important to override inline styles
 	}
 }
 
 kbd {
-	border-bottom-width: 3px;
+	border-bottom-width: 3px !important; //!important to override inline styles
 }
 
 /* カラム（水平）で点線と余白ができる */
