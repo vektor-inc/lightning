@@ -66,7 +66,7 @@ kbd {
 	margin: 0 0.4em;
 	padding: 0.2em 0.4em !important; //!important to override inline styles
 	align-items: center;
-	background-color: var(--vk-color-bg-accent) !important; //!important to override inline styles
+	background-color: var(--vk-color-accent-bg) !important; //!important to override inline styles
 	border: 1px solid var(--vk-color-border-hr) !important; //!important to override inline styles
 	border-radius: 2px !important; //!important to override inline styles
 	color: var(--vk-color-text-body) !important; //!important to override inline styles
@@ -75,7 +75,7 @@ kbd {
 
 	&:focus:not(pre) > code[data-rich-text-format-boundary],
 	&:focus > kbd[data-rich-text-format-boundary] {
-		background-color: var(--vk-color-bg-accent) !important; //!important to override inline styles
+		background-color: var(--vk-color-accent-bg) !important; //!important to override inline styles
 	}
 }
 
