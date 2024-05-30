@@ -60,6 +60,7 @@ entry-body
 }
 
 /* Inline Code */
+/* Inline Code */
 :not(pre) > code,
 kbd {
 	display: inline-flex;
@@ -72,13 +73,11 @@ kbd {
 	color: var(--vk-color-text-body) !important;
 	font-size: 0.9em !important;
 	line-height: 1.1;
+}
 
-	&:focus {
-		&:not(pre) > code[data-rich-text-format-boundary],
-		> kbd[data-rich-text-format-boundary] {
-			background-color: var(--vk-color-accent-bg) !important;
-		}
-	}
+:not(pre) > code[data-rich-text-format-boundary]:focus,
+kbd[data-rich-text-format-boundary]:focus {
+	background-color: var(--vk-color-accent-bg) !important;
 }
 
 kbd {
