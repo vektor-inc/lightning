@@ -19,11 +19,11 @@ kbd {
 	margin: 0 0.4em;
 	padding: 0.2em 0.4em;
 	align-items: center;
-	background-color: var(--vk-color-bg-accent);
-	border: 1px solid var(--vk-color-border-hr);
-	border-radius: 2px;
-	color: var(--vk-color-text-body);
-	font-size: 0.9em;
+	background-color: var(--vk-color-bg-accent) !important; //!importantを入れないと上書きされる
+	border: 1px solid var(--vk-color-border-hr) !important; //!importantを入れないと上書きされる
+	border-radius: 2px !important; //!importantを入れないと上書きされる
+	color: var(--vk-color-text-body) !important; //!importantを入れないと上書きされる
+	font-size: 0.9em !important; //!importantを入れないと上書きされる
 	line-height: 1.1;
 
 	&:focus:not(pre) > code[data-rich-text-format-boundary],
@@ -33,5 +33,5 @@ kbd {
 }
 
 kbd {
-	border-bottom-width: 3px;
+	border-bottom-width: 3px !important; //!importantを入れないと上書きされる
 }
