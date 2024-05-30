@@ -379,25 +379,27 @@ hr.wp-block-separator {
 /*-------------------------------------------*/
 /*  Inline Code
 /*-------------------------------------------*/
-:not(pre)>code,
+:not(pre) > code,
 kbd {
 	display: inline-flex;
 	margin: 0 0.4em;
-	padding: 0.2em 0.4em;
+	padding: 0.2em 0.4em !important;
 	align-items: center;
-	background-color: var(--vk-color-accent-bg);
-	border: 1px solid var(--vk-color-border-hr);
-	border-radius: 2px;
-	color: var(--vk-color-text-body);
-	font-size: 0.9em;
+	background-color: var(--vk-color-accent-bg) !important;
+	border: 1px solid var(--vk-color-border-hr) !important;
+	border-radius: 2px !important;
+	color: var(--vk-color-text-body) !important;
+	font-size: 0.9em !important;
 	line-height: 1.1;
 
-	:focus:not(pre)>code[data-rich-text-format-boundary],
-	:focus>kbd[data-rich-text-format-boundary] {
-		background-color: var(--vk-color-accent-bg);
+	&:focus {
+		&:not(pre) > code[data-rich-text-format-boundary],
+		> kbd[data-rich-text-format-boundary] {
+			background-color: var(--vk-color-accent-bg) !important;
+		}
 	}
 }
 
 kbd {
-	border-bottom-width: 3px;
+	border-bottom-width: 3px !important;
 }
