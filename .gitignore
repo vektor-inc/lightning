@@ -15,3 +15,9 @@ thumbs.db
 /playwright-report/
 /playwright/.cache/
 .phpunit.result.cache
+
+/_g3/assets/css/
+/_g3/assets/js/main.js
+/_g3/assets/js/main.js.map
+/_g2/assets/css/
+/_g2/assets/js/
