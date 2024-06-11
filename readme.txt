@@ -37,6 +37,9 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v15.23.1
+[ G3 / G2 ][ Bug fix ] Addressed an issue where the mobile navigation did not open on older iOS versions.
+
 v15.23.0
 [ G3 ][ Specification Change ] Change default radius to 4px from 5px
 [ G3 ][ Specification Change ] Minor design adjustments to the slide component.

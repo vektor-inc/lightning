@@ -29,6 +29,11 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 
 	require get_parent_theme_file_path( '/inc/vk-mobile-nav/package/class-vk-mobile-nav.php' );
 
-	remove_action( 'wp_enqueue_scripts', array( 'Vk_Mobile_Nav', 'add_script' ) );
+	// vk-mobile-nav.js はもともと main.js に結合していたので、個別に読み込まないように remove していたが、
+	// Safari 16 でモバイルナビが開かないため、再度個別に読み込むように 15.23.1 で変更（コメントアウト）
+	// Originally, vk-mobile-nav.js was integrated into main.js and removed to avoid loading it individually. 
+	// However, since the mobile navigation didn't open on Safari 16, it was changed in version 15.23.1 to load individually again (commented out).
+	// remove_action( 'wp_enqueue_scripts', array( 'Vk_Mobile_Nav', 'add_script' ) );
+
 	remove_action( 'wp_enqueue_scripts', array( 'Vk_Mobile_Nav', 'add_css' ) );
 }
