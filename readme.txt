@@ -37,6 +37,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+test
+
 v15.23.0
 [ G3 ][ Specification Change ] Change default radius to 4px from 5px
 [ G3 ][ Specification Change ] Minor design adjustments to the slide component.
