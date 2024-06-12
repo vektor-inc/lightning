@@ -106,13 +106,11 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 			echo '<div class="vk-mobile-nav vk-mobile-nav-' . esc_attr( $option['slide_type'] ) . '" id="vk-mobile-nav">';
 			if ( is_active_sidebar( 'vk-mobile-nav-upper' ) ) {
 				dynamic_sidebar( 'vk-mobile-nav-upper' );
-			} else {
-				if ( current_user_can( 'edit_theme_options' ) ) {
+			} elseif ( current_user_can( 'edit_theme_options' ) ) {
 					echo '<div class="veu_adminEdit alert alert-info">';
 					echo '<p>' . sprintf( __( 'This is the widget area.<br>You can set widget item from [ <a href="%s">Appearance > Customize</a> ] Page -> "Widgets" panel -> "Mobile Nav Upper" Panel.', 'lightning' ), admin_url( 'customize.php' ) ) . '</p>';
 					echo '<p>' . __( '* This message is displayed only to users with editing authority.', 'lightning' ) . '</p>';
 					echo '</div>';
-				}
 			}
 
 			$menu_vk_mobile = wp_nav_menu(
@@ -140,31 +138,27 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 				echo $menu_vk_mobile;
 			} elseif ( $menu_theme_default ) {
 				echo $menu_theme_default;
-			} else {
-				if ( current_user_can( 'edit_theme_options' ) ) {
+			} elseif ( current_user_can( 'edit_theme_options' ) ) {
 					echo '<div class="veu_adminEdit alert alert-danger">';
 					echo '<p>' . sprintf( __( 'Menu is not set.<br>Please set menu from [ <a href="%s">Appearance > Customize</a> ] Page -> "Menus" panel -> Menu Locations "Mobile Navigation".', 'lightning' ), admin_url( 'customize.php' ) ) . '</p>';
 					echo '<p>' . __( '* This message is displayed only to users with editing authority.', 'lightning' ) . '</p>';
 					echo '</div>';
-				}
 			}
 
 			if ( is_active_sidebar( 'vk-mobile-nav-bottom' ) ) {
 				dynamic_sidebar( 'vk-mobile-nav-bottom' );
-			} else {
-				if ( current_user_can( 'edit_theme_options' ) ) {
+			} elseif ( current_user_can( 'edit_theme_options' ) ) {
 					echo '<div class="veu_adminEdit alert alert-info">';
 					echo '<p>' . sprintf( __( 'This is the widget area.<br>You can set widget item from [ <a href="%s">Appearance > Customize</a> ] Page -> "Widgets" panel -> "Mobile Nav Bottom" Panel.', 'lightning' ), admin_url( 'customize.php' ) ) . '</p>';
 					echo '<p>' . __( '* This message is displayed only to users with editing authority.', 'lightning' ) . '</p>';
 					echo '</div>';
-				}
 			}
 
 			echo '</div>';
 		}
 
 		/*
-		  Load js & CSS
+			Load js & CSS
 		/*-------------------------------------------*/
 
 		public static function add_script() {
@@ -217,7 +211,7 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 		}
 
 		/*
-		  Customizer
+			Customizer
 		/*-------------------------------------------*/
 
 		public function customize_register( $wp_customize ) {
@@ -294,7 +288,7 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 			);
 
 			/*
-			  Add Edit Customize Link Btn
+				Add Edit Customize Link Btn
 			/*-------------------------------------------*/
 			$wp_customize->selective_refresh->add_partial(
 				'vk_mobile_nav_options[position]',
@@ -303,13 +297,7 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 					'render_callback' => '',
 				)
 			);
-
 		} // function customize_register( $wp_customize ) {
-
-
-
-
-
 	} // class Vk_Mobile_Nav
 
 	// Store in global variable so that hook in class can be removed
