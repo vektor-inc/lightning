@@ -6,7 +6,7 @@ on:
       - master
 jobs:
   buid_check:
-    name: build test
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -16,11 +16,8 @@ jobs:
 
       - run: npm install -D
 
-      - name: build Javascript
-        run: npm run build:script
-
-      - name: build Common StyleSheet
-        run: npx gulp sass
+      - name: build
+        run: npm run build
 
   php_unit:
     name: php unittest
