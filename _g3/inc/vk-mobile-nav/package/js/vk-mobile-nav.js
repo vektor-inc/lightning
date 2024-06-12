@@ -33,6 +33,7 @@ If you want to change this file that, you have to change original file.
 		/*-------------------------------------*/
 		// メニューを閉じる
 		function vk_mobile_nav_close(target){
+			
 			let menuButton = document.getElementById('vk-mobile-nav-menu-btn');
 			if (menuButton) {
 				// ※ fix nav の方を押される事もある
