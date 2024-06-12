@@ -1,13 +1,29 @@
-name: PHPUnit Test
+name: Build Check
 
 on:
   pull_request:
     branches:
       - master
-      - develop
 jobs:
+  buid_check:
+    name: build test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 20.x
+
+      - run: npm install -D
+
+      - name: build Javascript
+        run: npm run build:script
+
+      - name: build Common StyleSheet
+        run: npx gulp sass
+
   php_unit:
-    name: PHPUnit Test
+    name: php unittest
     runs-on: ubuntu-latest
     strategy:
       matrix:
