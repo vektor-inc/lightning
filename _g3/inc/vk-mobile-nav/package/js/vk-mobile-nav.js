@@ -1,7 +1,9 @@
 /*
+#vk-mobile-nav-menu-btn : メニューの開閉ボタン
 .vk-mobile-nav-menu-btn : メニューの開閉ボタン
 .menu-open : メニューが開いている時に .vk-mobile-nav-menu-btn に追加で付与されるクラス
 
+#vk-mobile-nav : メニュー本体
 .vk-mobile-nav : メニュー本体
 .vk-mobile-nav-open : メニューが開いている時に .vk-mobile-nav に追加で付与されるクラス
 
@@ -33,6 +35,39 @@ VkMobileNav.addDeviceClass = function() {
 	document.body.classList.add(deviceClass);
 }
 
+// メニューを開く
+VkMobileNav.openMenu = function() {
+
+	// メニューボタンに .menu-open クラスを付与
+	const menuBtn = document.getElementById('vk-mobile-nav-menu-btn');
+	if (menuBtn) {
+		menuBtn.classList.add('menu-open');
+	}
+
+	// メニューに .vk-mobile-nav-open クラスを付与
+	const menu = document.getElementById('vk-mobile-nav');
+	if ( menu ){
+		menu.classList.add('vk-mobile-nav-open');
+	}
+
+}
+
+// メニューを閉じる
+VkMobileNav.closeMenu = function() {
+
+	// メニューボタンから .menu-open クラスを削除
+	const menuBtn = document.getElementById('vk-mobile-nav-menu-btn');
+	if (menuBtn) {
+		// ※ fix nav の方を押される事もある
+		menuBtn.classList.remove('menu-open');
+	}
+
+	// メニューから .vk-mobile-nav-open クラスを削除
+	const menu = document.getElementById('vk-mobile-nav');
+	if ( menu ){
+		menu.classList.remove('vk-mobile-nav-open');
+	}
+}
 
 
 // HTML要素の読み込みが完了してから実行
@@ -45,4 +80,24 @@ window.addEventListener('DOMContentLoaded', () => {
     };
 
     init();
+
+	/*
+	モバイル固定ナビ利用時にアイコンフォントのタグを押されてしまうので
+	addEventListener('click', (e) => からの e.target.classList などで取得しても
+	fontawesome のクラス名が返ってきて誤動作してしまうため、buttn に一旦格納
+	*/
+	let button = document.getElementById('vk-mobile-nav-menu-btn');
+	if (button) {
+		// ボタンがクリックされた時の処理
+		button.addEventListener('click', () => {
+			// メニューボタンと本体のクラスを切り替える
+			if( button.classList.contains('menu-open') ){
+				// 開いている場合 → 閉じる
+				VkMobileNav.closeMenu();
+			}else{
+				// 閉じている場合 → 開く
+				VkMobileNav.openMenu();
+			}
+		})
+	}
 });
