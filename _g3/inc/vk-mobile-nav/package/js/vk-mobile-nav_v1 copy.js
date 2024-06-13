@@ -119,13 +119,13 @@ If you want to change this file that, you have to change original file.
 			}
 		}
 
-		function vk_menu_acc_clear() {
-			removeClass('ul.vk-menu-acc', 'vk-menu-acc-active')
-			removeClass('ul.vk-menu-acc li', 'acc-parent-open')
-			action('ul.vk-menu-acc li .acc-btn', (elm) => elm.remove())
-			removeClass('ul.vk-menu-acc li .acc-child-close', 'acc-child-close')
-			removeClass('ul.vk-menu-acc li .acc-child-open', 'acc-child-open')
-		}
+		// function vk_menu_acc_clear() {
+		// 	removeClass('ul.vk-menu-acc', 'vk-menu-acc-active')
+		// 	removeClass('ul.vk-menu-acc li', 'acc-parent-open')
+		// 	action('ul.vk-menu-acc li .acc-btn', (elm) => elm.remove())
+		// 	removeClass('ul.vk-menu-acc li .acc-child-close', 'acc-child-close')
+		// 	removeClass('ul.vk-menu-acc li .acc-child-open', 'acc-child-open')
+		// }
 
 		function vk_menu_acc_init() {
 			// アクティブクラスを付与

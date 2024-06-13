@@ -20,6 +20,10 @@
 (function() {
     var VkMobileNav = {};
 
+	/*-------------------------------------*/
+	/*  Functions
+	/*-------------------------------------*/
+
 	// モバイルデバイスの判定
 	VkMobileNav.isMobileDevice = function() {
 		return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
@@ -65,7 +69,9 @@
 		}
 	}
 
-
+	/*-------------------------------------*/
+	/*  Run Functions
+	/*-------------------------------------*/
 	// HTML要素の読み込みが完了してから実行
 	window.addEventListener('DOMContentLoaded', () => {
 
@@ -85,9 +91,7 @@
 			}
 		};
 
-        if (!init()) {
-            return;
-        }
+		init();
 
 		// メニュー開閉ボタンがクリックされた時の処理 //////////////////////////////////////
 		/*
@@ -127,5 +131,61 @@
 				}
 			})
 		})
+
 	});
+
+	/*-------------------------------------*/
+	/*  sub item accordion
+	/*-------------------------------------*/
+	// 子階層のアコーディオンを有効にする
+	VkMobileNav.initAcc = function() {
+
+		// 子階層をアコーディオンにするメニュー（ul.vk-menu-acc）に対して、.vk-menu-acc-active クラスを付与
+		const accMenus = document.querySelectorAll('ul.vk-menu-acc');
+
+		// サブメニュー展開用のボタン要素 subMenuButton を span タグで定義して .acc-btn , .acc-btn-open クラスを付与
+		const subMenuButton = document.createElement('span');
+		subMenuButton.classList.add('acc-btn', 'acc-btn-open');
+		
+		// ul.vk-menu-acc ul.sub-menu がある場合（子階層をアコーディオンにするメニューの中に子階層がある場合）
+		accMenus.forEach((elm) => {
+			// ul.vk-menu-acc に .vk-menu-acc-active クラスを付与
+			elm.classList.add('vk-menu-acc-active');
+			// ul.vk-menu-acc ul.sub-menu の前に subMenuButton を追加
+			elm.querySelectorAll('ul.sub-menu').forEach((subMenu) => {
+				subMenu.before(subMenuButton.cloneNode(true));
+				// 該当の ul.sub-menu に acc-child-close クラスを付与
+				subMenu.classList.add('acc-child-close');
+			});
+		});
+	}
+
+	// 子階層のアコーディオンクラスをリセット
+	VkMobileNav.resetAccordion = function() {
+		const accMenus = document.querySelectorAll('ul.vk-menu-acc');
+		accMenus.forEach((elm) => {
+			elm.classList.remove('vk-menu-acc-active');
+		});
+
+		const accLis = document.querySelectorAll('ul.vk-menu-acc li');
+		accLis.forEach((elm) => {
+			elm.classList.remove('acc-parent-open');
+		});
+
+		const accChildClose = document.querySelectorAll('ul.vk-menu-acc li .acc-child-close');
+		accChildClose.forEach((elm) => {
+			elm.classList.remove('acc-child-close');
+		});
+
+		const accChildOpen = document.querySelectorAll('ul.vk-menu-acc li .acc-child-open');
+		accChildOpen.forEach((elm) => {
+			elm.classList.remove('acc-child-open');
+		});
+
+	}
+
+	window.addEventListener('DOMContentLoaded', () => {
+		VkMobileNav.initAcc();
+	});
+
 })();
