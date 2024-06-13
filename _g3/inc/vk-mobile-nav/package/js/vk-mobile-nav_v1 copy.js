@@ -65,22 +65,22 @@ If you want to change this file that, you have to change original file.
 			// 	})
 			// }
 
-			action('.vk-mobile-nav li > a', (elm) => {
-				elm.addEventListener('click', (e) => {
-					let me = e.target
-					let href = me.getAttribute('href')
+			// action('.vk-mobile-nav li > a', (elm) => {
+			// 	elm.addEventListener('click', (e) => {
+			// 		let me = e.target
+			// 		let href = me.getAttribute('href')
 
-					// クリックされたリンク先がページ内リンクかどうか
-					if(href.indexOf('#' == 0)) {
-						vk_mobile_nav_close('.vk-mobile-nav-menu-btn');
-					}else{
-						// 閉じない
-						// ページ内リンク以外で閉じるとモバイルSafariにおいて
-						// 閉じる動作の途中で画面遷移時に画面を停止させられるため
-						// ページ内リンク以外では閉じないようにする
-					}
-				})
-			})
+			// 		// クリックされたリンク先がページ内リンクかどうか
+			// 		if(href.indexOf('#' == 0)) {
+			// 			vk_mobile_nav_close('.vk-mobile-nav-menu-btn');
+			// 		}else{
+			// 			// 閉じない
+			// 			// ページ内リンク以外で閉じるとモバイルSafariにおいて
+			// 			// 閉じる動作の途中で画面遷移時に画面を停止させられるため
+			// 			// ページ内リンク以外では閉じないようにする
+			// 		}
+			// 	})
+			// })
 		}
 
 		// モバイルナビの実行

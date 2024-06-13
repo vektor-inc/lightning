@@ -85,16 +85,18 @@
 			}
 		};
 
-		init();
+        if (!init()) {
+            return;
+        }
 
+		// メニュー開閉ボタンがクリックされた時の処理 //////////////////////////////////////
 		/*
 		モバイル固定ナビ利用時にアイコンフォントのタグを押されてしまうので
 		addEventListener('click', (e) => からの e.target.classList などで取得しても
-		fontawesome のクラス名が返ってきて誤動作してしまうため、buttn に一旦格納
+		fontawesome のクラス名が返ってきて誤動作してしまうため、buttn に一旦格納している
 		*/
 		let button = document.getElementById('vk-mobile-nav-menu-btn');
 		if (button) {
-			// ボタンがクリックされた時の処理
 			button.addEventListener('click', () => {
 				// メニューボタンと本体のクラスを切り替える
 				if( button.classList.contains('menu-open') ){
@@ -106,5 +108,24 @@
 				}
 			})
 		}
+
+		// ナビゲーションリンクがクリックされた時の処理 //////////////////////////////////////
+		const navLinks = document.querySelectorAll('.vk-mobile-nav li > a');
+		navLinks.forEach((link) => {
+			link.addEventListener('click', (e) => {
+				let me = e.target
+				let href = me.getAttribute('href')
+
+				// クリックされたリンク先がページ内リンクかどうか
+				if(href.indexOf('#' == 0)) {
+					// ページ内リンクの場合はメニューを閉じる
+					VkMobileNav.closeMenu();
+				}else{
+					// ページ内リンク以外で閉じるとモバイルSafariにおいて
+					// 閉じる動作の途中で画面遷移時に画面を停止させられるため
+					// ページ内リンク以外では閉じないようにする
+				}
+			})
+		})
 	});
 })();
