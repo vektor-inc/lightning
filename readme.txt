@@ -37,6 +37,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ Specification Change ] Fix minimum font size for slider on mobile.
+
 v15.23.0
 [ G3 ][ Specification Change ] Change default radius to 4px from 5px
 [ G3 ][ Specification Change ] Minor design adjustments to the slide component.

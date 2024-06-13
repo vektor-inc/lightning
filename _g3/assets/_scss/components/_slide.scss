@@ -60,19 +60,19 @@
 			content: none;
 		}
 		font-size:2dvw;
-		font-size:clamp(24px,2dvw,32px);
+		font-size:clamp(16px,3dvw,32px);
 	}
 	&-text-caption {
 		margin-bottom: 0;
-		font-size:clamp(14px,1.4dvw,18px);
-		line-height: 1.6;
+		font-size:clamp(12px,2dvw,18px);
+		line-height: 1.5;
 	}
 	&-text-title + &-text-caption {
 		margin-top: 0.5rem;
 		margin-bottom: 1rem;
 	}
 	.btn {
-		font-size:clamp(14px,1.3dvw,18px);
+		font-size:clamp(12px,1.8dvw,16px);
 	}
 	picture {
 		width: 100%;
