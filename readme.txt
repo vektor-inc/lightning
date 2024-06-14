@@ -37,6 +37,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+
+[ G3 / G2 ][ Design Tuning ] Add styles to inline kbd block.
 [ G3 / G2 ][ Bug fix ] Addressed an issue where the mobile navigation did not open on older iOS versions.
 
 v15.23.1
