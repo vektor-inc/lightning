@@ -9,7 +9,7 @@ module.exports = {
     './_g2/assets/_js/_header_fixed.js',
     './_g2/assets/_js/_sidebar-fixed.js',
     './_g2/assets/_js/_vk-prlx.min.js',
-    // './_g2/inc/vk-mobile-nav/package/js/vk-mobile-nav.js',
+    './_g2/inc/vk-mobile-nav/package/js/vk-mobile-nav.js',
   ],
   output: {
     path: path.resolve(__dirname, '_g2/assets/js'),
