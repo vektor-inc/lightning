@@ -138,7 +138,7 @@
 	/*  sub item accordion
 	/*-------------------------------------*/
 	// 子階層のアコーディオンを有効にする
-	VkMobileNav.initAcc = function() {
+	VkMobileNav.runAcc = function() {
 
 		// 子階層をアコーディオンにするメニュー（ul.vk-menu-acc）に対して、.vk-menu-acc-active クラスを付与
 		const accMenus = document.querySelectorAll('ul.vk-menu-acc');
@@ -218,7 +218,8 @@
 	}
 
 	window.addEventListener('DOMContentLoaded', () => {
-		VkMobileNav.initAcc();
+		// アコーディオンを有効にする
+		VkMobileNav.runAcc();
 	});
 
 })();
