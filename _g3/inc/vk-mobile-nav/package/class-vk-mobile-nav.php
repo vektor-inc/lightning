@@ -8,7 +8,7 @@ https://github.com/vektor-inc/vektor-wp-libraries
 if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 	class Vk_Mobile_Nav {
 
-		public static $version = '0.2.0';
+		public static $version = '0.3.0';
 
 		public function __construct() {
 			/* Can not call get_called_class() on PHP5.2 */
@@ -163,7 +163,7 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 
 		public static function add_script() {
 			global $library_url;
-			wp_register_script( 'vk-mobile-nav-js', $library_url . '/js/vk-mobile-nav.js', array(), self::$version );
+			wp_register_script( 'vk-mobile-nav-js', $library_url . '/js/vk-mobile-nav.min.js', array(), self::$version );
 			wp_enqueue_script( 'vk-mobile-nav-js' );
 			wp_enqueue_style( 'vk-mobile-nav-css', $library_url . '/css/vk-mobile-nav-bright.css', array(), self::$version, 'all' );
 		}

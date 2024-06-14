@@ -1,4 +1,19 @@
+/* ************************************* */
+
+/* **** Caution **** */
+
 /*
+This original file is following place.
+https://github.com/vektor-inc/vektor-wp-libraries
+If you want to change this file that, you have to change original file.
+*/
+
+/* ************************************* */
+
+/*
+
+@version 0.3.0
+
 #vk-mobile-nav-menu-btn : メニューの開閉ボタン
 .vk-mobile-nav-menu-btn : メニューの開閉ボタン
 .menu-open : メニューが開いている時に .vk-mobile-nav-menu-btn に追加で付与されるクラス
