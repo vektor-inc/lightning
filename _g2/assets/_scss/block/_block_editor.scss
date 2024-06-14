@@ -1,5 +1,11 @@
 // editor only
 .edit-post-visual-editor .editor-styles-wrapper {
+	kbd {
+		background-color: var(--vk-color-accent-bg);
+		border: 1px solid var(--vk-color-border-hr);
+		color: var(--vk-color-text-body);
+		border-bottom-width: 3px;
+	}	
 	.wp-block-table {
 		thead {
 			border:none;
