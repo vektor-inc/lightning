@@ -127,47 +127,47 @@ If you want to change this file that, you have to change original file.
 		// 	removeClass('ul.vk-menu-acc li .acc-child-open', 'acc-child-open')
 		// }
 
-		function vk_menu_acc_init() {
-			// アクティブクラスを付与
-			// addClass('ul.vk-menu-acc', 'vk-menu-acc-active')
+		// function vk_menu_acc_init() {
+		// 	// アクティブクラスを付与
+		// 	// addClass('ul.vk-menu-acc', 'vk-menu-acc-active')
 
-			action('ul.vk-menu-acc ul.sub-menu', (elm) => {
-				// let button = document.createElement('span')
-				// button.classList.add('acc-btn','acc-btn-open')
-				button.addEventListener('click', acc_click_action)
+		// 	action('ul.vk-menu-acc ul.sub-menu', (elm) => {
+		// 		// let button = document.createElement('span')
+		// 		// button.classList.add('acc-btn','acc-btn-open')
+		// 		// button.addEventListener('click', acc_click_action)
 
-				// elm.parentNode.insertBefore(button, elm)
-				// elm.classList.add('acc-child-close')
-			})
-		}
+		// 		// elm.parentNode.insertBefore(button, elm)
+		// 		// elm.classList.add('acc-child-close')
+		// 	})
+		// }
 
-		function acc_click_action(event) {
-			let self = event.target,
-			parent = self.parentNode,
-			next = self.nextSibling
+		// function acc_click_action(event) {
+		// 	let self = event.target,
+		// 	parent = self.parentNode,
+		// 	next = self.nextSibling
 
-			if (self.classList.contains('acc-btn-open')) {
-				// 親である li に open クラス追加
-				parent.classList.add('acc-parent-open')
-				self.classList.remove('acc-btn-open')
-				self.classList.add('acc-btn-close')
+		// 	if (self.classList.contains('acc-btn-open')) {
+		// 		// 親である li に open クラス追加
+		// 		parent.classList.add('acc-parent-open')
+		// 		self.classList.remove('acc-btn-open')
+		// 		self.classList.add('acc-btn-close')
 
-				next.classList.remove('acc-child-close')
-				next.classList.add('acc-child-open')
-			}else{
-				// 閉じるボタンがクリックされたら
+		// 		next.classList.remove('acc-child-close')
+		// 		next.classList.add('acc-child-open')
+		// 	}else{
+		// 		// 閉じるボタンがクリックされたら
 
-				// 親である li から open クラス除去
-				parent.classList.remove('acc-parent-open')
-				// クリックされた閉じるボタンから close クラスを除去して open クラス追加
-				self.classList.remove('acc-btn-close')
-				self.classList.add('acc-btn-open')
-				// $(self).removeClass('acc-btn-close').addClass('acc-btn-open');
-				// 下階層となる ul 要素から open クラスを除去して close クラス追加
-				next.classList.remove('acc-child-open')
-				next.classList.add('acc-child-close')
-			}
-		}
+		// 		// 親である li から open クラス除去
+		// 		parent.classList.remove('acc-parent-open')
+		// 		// クリックされた閉じるボタンから close クラスを除去して open クラス追加
+		// 		self.classList.remove('acc-btn-close')
+		// 		self.classList.add('acc-btn-open')
+		// 		// $(self).removeClass('acc-btn-close').addClass('acc-btn-open');
+		// 		// 下階層となる ul 要素から open クラスを除去して close クラス追加
+		// 		next.classList.remove('acc-child-open')
+		// 		next.classList.add('acc-child-close')
+		// 	}
+		// }
 
 		function vk_menu_acc_resize() {
 			let timer = false,
