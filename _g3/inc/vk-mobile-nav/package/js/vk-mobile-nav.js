@@ -151,13 +151,46 @@
 		accMenus.forEach((elm) => {
 			// ul.vk-menu-acc に .vk-menu-acc-active クラスを付与
 			elm.classList.add('vk-menu-acc-active');
-			// ul.vk-menu-acc ul.sub-menu の前に subMenuButton を追加
+			// ul.vk-menu-acc ul.sub-menu をループ処理
 			elm.querySelectorAll('ul.sub-menu').forEach((subMenu) => {
+				// ul.vk-menu-acc ul.sub-menu の前に subMenuButton を追加
 				subMenu.before(subMenuButton.cloneNode(true));
 				// 該当の ul.sub-menu に acc-child-close クラスを付与
 				subMenu.classList.add('acc-child-close');
+				// 追加した subMenuButton（.acc-btn） がクリックされたら VkMobileNav.accAction に .acc と subMenu の要素を渡して実行
+				subMenu.previousElementSibling.addEventListener('click', () => {
+					VkMobileNav.accAction(subMenu);
+				});
+
 			});
 		});
+	}
+
+	// 子階層のアコーディオン開閉ボタンがクリックされた時の処理
+	VkMobileNav.accAction = function(subMenu) {
+		// subMenu の前要素の .acc-btn を取得して accBtn に格納
+		const accBtn = subMenu.previousElementSibling;
+
+		// subMenu が acc-child-close クラスを持っている場合
+		if (subMenu.classList.contains('acc-child-close')) {
+			// subMenu に acc-child-open クラスを付与
+			subMenu.classList.remove('acc-child-close');
+			subMenu.classList.add('acc-child-open');
+			accBtn.classList.remove('acc-btn-open');
+			accBtn.classList.add('acc-btn-close');
+			// subMenu の親要素の li 要素に .acc-parent-open クラスを付与
+			subMenu.parentNode.classList.remove('acc-parent-close');
+			subMenu.parentNode.classList.add('acc-parent-open');
+		} else {
+			// subMenu に acc-child-close クラスを付与
+			subMenu.classList.remove('acc-child-open');
+			subMenu.classList.add('acc-child-close');
+			accBtn.classList.remove('acc-btn-close');
+			accBtn.classList.add('acc-btn-open');
+			// subMenu の親要素の li 要素に .acc-parent-open クラスを付与
+			subMenu.parentNode.classList.remove('acc-parent-open');
+			subMenu.parentNode.classList.add('acc-parent-close');
+		}
 	}
 
 	// 子階層のアコーディオンクラスをリセット

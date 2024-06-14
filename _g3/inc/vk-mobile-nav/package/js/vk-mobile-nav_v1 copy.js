@@ -129,15 +129,15 @@ If you want to change this file that, you have to change original file.
 
 		function vk_menu_acc_init() {
 			// アクティブクラスを付与
-			addClass('ul.vk-menu-acc', 'vk-menu-acc-active')
+			// addClass('ul.vk-menu-acc', 'vk-menu-acc-active')
 
 			action('ul.vk-menu-acc ul.sub-menu', (elm) => {
-				let button = document.createElement('span')
-				button.classList.add('acc-btn','acc-btn-open')
+				// let button = document.createElement('span')
+				// button.classList.add('acc-btn','acc-btn-open')
 				button.addEventListener('click', acc_click_action)
 
-				elm.parentNode.insertBefore(button, elm)
-				elm.classList.add('acc-child-close')
+				// elm.parentNode.insertBefore(button, elm)
+				// elm.classList.add('acc-child-close')
 			})
 		}
 
