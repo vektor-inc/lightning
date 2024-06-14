@@ -2,7 +2,7 @@
 Lightning WordPress theme, Copyright (C) 2015-2024 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
 Tested up to: 6.5
-Stable tag: 15.23.0
+Stable tag: 15.23.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -39,6 +39,9 @@ https://www.vektor-inc.co.jp/inquiry/
 
 [ G3 / G2 ][ Design Tuning ] Add styles to inline kbd block.
 [ G3 ][ Specification Change ] Fix minimum font size for slider on mobile.
+
+v15.23.1
+[ G3 ][ Design Bug Fix ] Fix minimum font size for slider on mobile.
 
 v15.23.0
 [ G3 ][ Specification Change ] Change default radius to 4px from 5px
