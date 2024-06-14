@@ -37,6 +37,9 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 / G2 ][ Design Tuning ] Add styles to inline kbd block.
+[ G3 ][ Specification Change ] Fix minimum font size for slider on mobile.
+
 v15.23.1
 [ G3 ][ Design Bug Fix ] Fix minimum font size for slider on mobile.
 
