@@ -175,13 +175,37 @@ function lightning_get_theme_options() {
  */
 function lightning_get_print_headlogo() {
 	$options = get_option( 'lightning_theme_options' );
+	$max_height_pc = ! empty( $options['logo_max_height_pc'] ) ? absint( $options['logo_max_height_pc'] ) : '';
+	$max_height_mobile = ! empty( $options['logo_max_height_mobile'] ) ? absint( $options['logo_max_height_mobile'] ) : '';
+
+	$style_pc = '';
+	$style_mobile = '';
+	if ( $max_height_pc ) {
+		$style_pc = 'max-height:' . $max_height_pc . 'px;';
+	}
+	if ( $max_height_mobile ) {
+		$style_mobile = 'max-height:' . $max_height_mobile . 'px;';
+	}
+
+	$style = '';
+	if ( ! empty( $style_pc ) || ! empty( $style_mobile ) ) {
+		$style = '<style>';
+		if ( ! empty( $style_pc ) ) {
+			$style .= '@media (min-width: 992px) { .site-header-logo img { ' . esc_attr( $style_pc ) . ' } }';
+		}
+		if ( ! empty( $style_mobile ) ) {
+			$style .= '@media (max-width: 991px) { .site-header-logo img { ' . esc_attr( $style_mobile ) . ' } }';
+		}
+		$style .= '</style>';
+	}
+
 	if ( ! empty( $options['head_logo'] ) ) {
 		$head_logo = apply_filters( 'lightning_head_logo_image_url', $options['head_logo'] );
 		if ( $head_logo ) {
-			return '<img src="' . esc_url( $head_logo ) . '" alt="' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '" />';
+			return $style . '<img src="' . esc_url( $head_logo ) . '" alt="' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '" />';
 		}
 	}
-	return get_bloginfo( 'name', 'display' );
+	return $style . get_bloginfo( 'name', 'display' );
 }
 
 /**
@@ -332,8 +356,7 @@ function lightning_get_entry_meta( $options = array() ) {
 			$html .= '<span class="entry-meta-item entry-meta-item-updated">
 			<i class="fas fa-history"></i>
 			<span class="screen-reader-text">' . __( 'Last updated', 'lightning' ) . ' : </span>
-			<span class="updated">' . get_the_modified_date( '' ) . '</span>
-			</span>';
+			<span class="updated">' . get_the_modified_date( '' ) . '</span>';
 		}
 
 		if ( $option['author_name'] || $option['author_image'] ) {

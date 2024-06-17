@@ -65,6 +65,58 @@ function lightning_customize_register_design( $wp_customize ) {
 		)
 	);
 
+	// ロゴの最大の高さ(PC)の設定とコントロール
+	$wp_customize->add_setting(
+		'lightning_theme_options[logo_max_height_pc]',
+		array(
+			'default'           => '',
+			'type'              => 'option',
+			'capability'        => 'edit_theme_options',
+			'sanitize_callback' => 'absint', // 数値をサニタイズ
+		)
+	);
+	$wp_customize->add_control(
+		'logo_max_height_pc',
+		array(
+			'label'    => __( 'Logo max height (PC)', 'lightning' ),
+			'section'  => 'lightning_design',
+			'settings' => 'lightning_theme_options[logo_max_height_pc]',
+			'type'     => 'number',
+			'priority' => 502,
+			'input_attrs' => array(
+				'min' => 0,
+				'step' => 1,
+				'suffix' => 'px', // px単位
+			),
+		)
+	);
+
+	// ロゴの最大の高さ(モバイル)の設定とコントロール
+	$wp_customize->add_setting(
+		'lightning_theme_options[logo_max_height_mobile]',
+		array(
+			'default'           => '',
+			'type'              => 'option',
+			'capability'        => 'edit_theme_options',
+			'sanitize_callback' => 'absint', // 数値をサニタイズ
+		)
+	);
+	$wp_customize->add_control(
+		'logo_max_height_mobile',
+		array(
+			'label'    => __( 'Logo max height (Mobile)', 'lightning' ),
+			'section'  => 'lightning_design',
+			'settings' => 'lightning_theme_options[logo_max_height_mobile]',
+			'type'     => 'number',
+			'priority' => 503,
+			'input_attrs' => array(
+				'min' => 0,
+				'step' => 1,
+				'suffix' => 'px', // px単位
+			),
+		)
+	);
+
 	/*********************************************
 	 * Color Setting
 	 */
