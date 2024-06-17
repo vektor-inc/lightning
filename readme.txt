@@ -37,6 +37,7 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ Add function ] Add max height setteing for header logo.
 [ G3 / G2 ][ Design Tuning ] Add styles to inline kbd block.
 [ G3 ][ Specification Change ] Fix minimum font size for slider on mobile.
 
