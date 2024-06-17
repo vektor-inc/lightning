@@ -356,7 +356,8 @@ function lightning_get_entry_meta( $options = array() ) {
 			$html .= '<span class="entry-meta-item entry-meta-item-updated">
 			<i class="fas fa-history"></i>
 			<span class="screen-reader-text">' . __( 'Last updated', 'lightning' ) . ' : </span>
-			<span class="updated">' . get_the_modified_date( '' ) . '</span>';
+			<span class="updated">' . get_the_modified_date( '' ) . '</span>
+			</span>';
 		}
 
 		if ( $option['author_name'] || $option['author_image'] ) {
