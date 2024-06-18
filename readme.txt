@@ -2,7 +2,7 @@
 Lightning WordPress theme, Copyright (C) 2015-2024 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
 Tested up to: 6.5
-Stable tag: 15.23.2
+Stable tag: 15.24.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,7 +38,11 @@ https://www.vektor-inc.co.jp/inquiry/
 == Changelog ==
 
 [ G3 ][ Add function ] Add max height setteing for header logo.
+
+v15.24.0
 [ G3 / G2 ][ Design Tuning ] Add styles to inline kbd block.
+
+v15.23.2
 [ G3 / G2 ][ Bug fix ] Addressed an issue where the mobile navigation did not open on older iOS versions.
 
 v15.23.1
