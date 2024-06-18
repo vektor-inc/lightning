@@ -30,5 +30,6 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 	require get_parent_theme_file_path( '/inc/vk-mobile-nav/package/class-vk-mobile-nav.php' );
 
 	remove_action( 'wp_enqueue_scripts', array( 'Vk_Mobile_Nav', 'add_script' ) );
+
 	remove_action( 'wp_enqueue_scripts', array( 'Vk_Mobile_Nav', 'add_css' ) );
 }
