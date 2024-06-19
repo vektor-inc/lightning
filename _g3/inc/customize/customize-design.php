@@ -1,6 +1,6 @@
 <?php
 /*
-  customize_register
+	customize_register
 /*-------------------------------------------*/
 add_action( 'customize_register', 'lightning_customize_register_design' );
 function lightning_customize_register_design( $wp_customize ) {
@@ -65,6 +65,58 @@ function lightning_customize_register_design( $wp_customize ) {
 		)
 	);
 
+	// Logo max height (PC)
+	$wp_customize->add_setting(
+		'lightning_theme_options[logo_max_height_pc]',
+		array(
+			'default'           => '',
+			'type'              => 'option',
+			'capability'        => 'edit_theme_options',
+			'sanitize_callback' => 'absint',
+		)
+	);
+	$wp_customize->add_control(
+		new VK_Custom_Text_Control(
+			$wp_customize,
+			'logo_max_height_pc',
+			array(
+				'label'       => __( 'Logo max height [ PC ]', 'lightning' ),
+				'section'     => 'lightning_design',
+				'settings'    => 'lightning_theme_options[logo_max_height_pc]',
+				'type'        => 'number',
+				'priority'    => 502,
+				'description' => '',
+				'input_after' => 'px',
+			)
+		)
+	);
+
+	// Logo max height (Mobile)
+	$wp_customize->add_setting(
+		'lightning_theme_options[logo_max_height_mobile]',
+		array(
+			'default'           => '',
+			'type'              => 'option',
+			'capability'        => 'edit_theme_options',
+			'sanitize_callback' => 'absint',
+		)
+	);
+	$wp_customize->add_control(
+		new VK_Custom_Text_Control(
+			$wp_customize,
+			'logo_max_height_mobile',
+			array(
+				'label'       => __( 'Logo max height [ Mobile ]', 'lightning' ),
+				'section'     => 'lightning_design',
+				'settings'    => 'lightning_theme_options[logo_max_height_mobile]',
+				'type'        => 'number',
+				'priority'    => 503,
+				'description' => '',
+				'input_after' => 'px',
+			)
+		)
+	);
+
 	/*********************************************
 	 * Color Setting
 	 */
@@ -112,7 +164,6 @@ function lightning_customize_register_design( $wp_customize ) {
 			)
 		)
 	);
-
 }
 
 /**
@@ -138,6 +189,18 @@ function lightning_get_common_inline_css() {
 		--g_nav_sub_acc_icon_close_url: url(' . get_template_directory_uri() . '/inc/vk-mobile-nav/package/images/vk-menu-close-white.svg);
 	}
 	';
+
+	// Logo max height
+	$max_height_pc     = ! empty( $options['logo_max_height_pc'] ) ? absint( $options['logo_max_height_pc'] ) : '';
+	$max_height_mobile = ! empty( $options['logo_max_height_mobile'] ) ? absint( $options['logo_max_height_mobile'] ) : '';
+
+	if ( $max_height_pc ) {
+		$dynamic_css .= '@media (min-width: 992px) { .site-header-logo img { max-height: ' . $max_height_pc . 'px; } }';
+	}
+	if ( $max_height_mobile ) {
+		$dynamic_css .= '@media (max-width: 991px) { .site-header-logo img { max-height: ' . $max_height_mobile . 'px; } }';
+	}
+
 	// delete before after space.
 	$dynamic_css = trim( $dynamic_css );
 	// convert tab and br to space.

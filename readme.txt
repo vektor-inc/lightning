@@ -37,6 +37,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ Add function ] Add max height setteing for header logo.
+
 v15.24.0
 [ G3 / G2 ][ Design Tuning ] Add styles to inline kbd block.
 
