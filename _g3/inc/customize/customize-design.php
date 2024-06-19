@@ -1,6 +1,6 @@
 <?php
 /*
-  customize_register
+	customize_register
 /*-------------------------------------------*/
 add_action( 'customize_register', 'lightning_customize_register_design' );
 function lightning_customize_register_design( $wp_customize ) {
@@ -76,18 +76,18 @@ function lightning_customize_register_design( $wp_customize ) {
 		)
 	);
 	$wp_customize->add_control(
-		'logo_max_height_pc',
-		array(
-			'label'    => __( 'Logo max height [PC]', 'lightning' ),
-			'section'  => 'lightning_design',
-			'settings' => 'lightning_theme_options[logo_max_height_pc]',
-			'type'     => 'number',
-			'priority' => 502,
-			'input_attrs' => array(
-				'min' => 0,
-				'step' => 1,
-				'suffix' => 'px',
-			),
+		new VK_Custom_Text_Control(
+			$wp_customize,
+			'logo_max_height_pc',
+			array(
+				'label'       => __( 'Logo max height [ PC ]', 'lightning' ),
+				'section'     => 'lightning_design',
+				'settings'    => 'lightning_theme_options[logo_max_height_pc]',
+				'type'        => 'number',
+				'priority'    => 502,
+				'description' => '',
+				'input_after' => 'px',
+			)
 		)
 	);
 
@@ -102,18 +102,18 @@ function lightning_customize_register_design( $wp_customize ) {
 		)
 	);
 	$wp_customize->add_control(
-		'logo_max_height_mobile',
-		array(
-			'label'    => __( 'Logo max height [Mobile]', 'lightning' ),
-			'section'  => 'lightning_design',
-			'settings' => 'lightning_theme_options[logo_max_height_mobile]',
-			'type'     => 'number',
-			'priority' => 503,
-			'input_attrs' => array(
-				'min' => 0,
-				'step' => 1,
-				'suffix' => 'px',
-			),
+		new VK_Custom_Text_Control(
+			$wp_customize,
+			'logo_max_height_mobile',
+			array(
+				'label'       => __( 'Logo max height [ Mobile ]', 'lightning' ),
+				'section'     => 'lightning_design',
+				'settings'    => 'lightning_theme_options[logo_max_height_mobile]',
+				'type'        => 'number',
+				'priority'    => 503,
+				'description' => '',
+				'input_after' => 'px',
+			)
 		)
 	);
 
@@ -164,7 +164,6 @@ function lightning_customize_register_design( $wp_customize ) {
 			)
 		)
 	);
-
 }
 
 /**
@@ -192,7 +191,7 @@ function lightning_get_common_inline_css() {
 	';
 
 	// Logo max height
-	$max_height_pc = ! empty( $options['logo_max_height_pc'] ) ? absint( $options['logo_max_height_pc'] ) : '';
+	$max_height_pc     = ! empty( $options['logo_max_height_pc'] ) ? absint( $options['logo_max_height_pc'] ) : '';
 	$max_height_mobile = ! empty( $options['logo_max_height_mobile'] ) ? absint( $options['logo_max_height_mobile'] ) : '';
 
 	if ( $max_height_pc ) {
