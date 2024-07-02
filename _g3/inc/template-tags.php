@@ -251,7 +251,6 @@ function lightning_the_footer_copyight() {
 	// Powered.
 	$lightning_footer_powered = __( '<p>Powered by <a href="https://wordpress.org/">WordPress</a> &amp; <a href="https://wordpress.org/themes/lightning/" target="_blank" title="Free WordPress Theme Lightning"> Lightning Theme</a> by Vektor,Inc. technology.</p>', 'lightning' );
 	echo wp_kses_post( apply_filters( 'lightning_footerPoweredCustom', $lightning_footer_powered ) );
-
 }
 
 /**
@@ -317,9 +316,9 @@ function lightning_get_entry_meta( $options = array() ) {
 	);
 
 	$option = apply_filters( 'lightning_get_entry_meta_options', wp_parse_args( $options, $defaults ) );
-
+	$html   = '';
 	if ( $option['published'] || $option['updated'] || $option['author_name'] || $option['author_image'] ) {
-		$html = '<div class="' . $option['class_outer'] . '">';
+		$html .= '<div class="' . $option['class_outer'] . '">';
 
 		if ( $option['published'] ) {
 			$html .= '<span class="entry-meta-item entry-meta-item-date">
