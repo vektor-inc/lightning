@@ -37,6 +37,7 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 / G2 ][ Design Bug Fix ] Fix outline background of button style in WP6.6.
 [ G3 / G2 ][ Editor Design Bug Fix ] Supports wide slider item widths.
 
 v15.25.1
