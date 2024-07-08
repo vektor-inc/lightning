@@ -107,6 +107,7 @@ div[data-align=full]
 		}
 	}
 	& > .wp-block[data-align=wide],
+	& > .wp-block.alignwide,
 	& > div[data-align=wide]{
 		width:var(--vk-width-editor-wide);
 		max-width:var(--vk-width-editor-wide);
@@ -120,6 +121,10 @@ div[data-align=full]
 			width:var(--vk-width-editor-wide);
 			margin-left:auto;
 			margin-right:auto;
+		}
+		// vk_slider_item
+		.vk_slider_item {
+			max-width: var(--vk-width-editor-wide);
 		}
 	}
 	// __inner-container

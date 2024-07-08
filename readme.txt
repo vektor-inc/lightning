@@ -37,6 +37,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 / G2 ][ Editor Design Bug Fix ] Supports wide slider item widths.
+
 v15.25.1
 [ G3 ][ Bug fix ] Fix PHP warning
 

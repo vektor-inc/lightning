@@ -207,6 +207,10 @@ html .edit-post-visual-editor :where(.editor-styles-wrapper) .block-editor-block
 			margin-left:auto !important;
 			margin-right:auto !important;
 		}
+		// vk_slider_item
+		.vk_slider_item {
+			max-width: var(--vk-width-editor-wide);
+		}
 	}
 
 	// __inner-container
@@ -222,6 +226,7 @@ html .edit-post-visual-editor :where(.editor-styles-wrapper) .block-editor-block
 			margin-right:auto;
 		}
 	}
+	
 	.vk_outer-width-full {
 		&:not(:is(.vk_outer-paddingLR-zero,.vk_outer-paddingLR-use)) {
 			.vk_outer_container {
