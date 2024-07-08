@@ -22,10 +22,11 @@
 		}
 		// 6.6 editor-styles のbutton__linkを打ち消し
 		&.is-style-outline .wp-block-button__link{
-			color: inherit;			
+			color: inherit;		
 		}
 		.wp-block-button__link{
 			border-radius: var(--vk-size-radius);
+			font-size: 1rem;
 		}
 	} 
 }
