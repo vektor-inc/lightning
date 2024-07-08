@@ -1,12 +1,30 @@
 // editor only
 // 本文部分はcontainerのpaddingの中なので、編集エリアのコンテナ幅には左右の padding:15px は持たせない
-:root{
-	--vk-width-editor-container-body:calc(100vw * 0.8);
+body{
 	--vk-width-container-padding:15px;
-	--vk-width-editor-sidebar:280px;
-	--vk-width-editor-leftmenu:160px;
-	--vk-width-editor-leftmenu-folded:36px;
+	--vk-width-editor-sidebar:1px; // 本当は 0 にしたいが、0 にすると calc で計算されなくなるので小さい数字を入れている
+	--vk-width-editor-leftmenu:1px; // 本当は 0 にしたいが、0 にすると calc で計算されなくなるので小さい数字を入れている
+	--vk-width-editor-full:calc( 100vw - var(--vk-width-editor-sidebar) - var(--vk-width-editor-leftmenu) );
+	--vk-width-editor-container-body: calc( var(--vk-width-editor-full) * 0.8 );
+	--vk-width-editor-wide: calc( var(--vk-width-editor-container-body) + ( var(--vk-width-editor-full) - var(--vk-width-editor-container-body) ) / 2 );
 }
+
+// フルスクリーンモードの場合
+body.is-fullscreen-mode {
+	--vk-width-editor-leftmenu:1px;;
+}
+// フルスクリーンモードじゃない場合
+body:where(:not(.is-fullscreen-mode)) {
+	--vk-width-editor-leftmenu:160px;
+	&.auto-fold.folded {
+		--vk-width-editor-leftmenu:36px;
+	}
+}
+body .edit-post-layout.is-sidebar-opened, // WP6.5.5まで
+body:has(.editor-sidebar) {
+	--vk-width-editor-sidebar:280px;
+}
+
 .alignfull,
 .alignwide {
 	div[class*="__inner-container"]{
@@ -16,12 +34,6 @@
 .editor-styles-wrapper {
 	padding: 0;
 }
-
-// Begin Cope with 6.1 Group Block ( If 6.4 Release, Delete this code. )
-.editor-styles-wrapper .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
-	--wp--style--global--content-size:var(--vk-width-editor-container-body);
-}
-// End Cope width 6.1 Group Block
 
 .container {
 	padding:0;
@@ -47,55 +59,6 @@
 	max-width:var(--vk-width-editor-container-body);
 	margin-left:auto;
 	margin-right:auto;
-}
-
-// 左管理メニュー非表示 / 右サイドバー非表示
-body.is-fullscreen-mode .edit-post-layout:not(.is-sidebar-opened), // WP6.5.5まで
-body.is-fullscreen-mode .edit-post-layout:has(.interface-navigable-region) { // WP6.6用	
-	--vk-width-editor-full:100vw;
-	--vk-width-editor-container-body:calc( var(--vk-width-editor-container) - var(--vk-width-container-padding) * 2 );
-	--vk-width-editor-wide:calc( var(--vk-width-editor-container-body) + ( 100vw - var(--vk-width-editor-container-body) ) / 2 );
-	--vk-width-editor-wide-nega-margin:calc( ( var(--vk-width-editor-container-body) - 100vw ) / 4 );
-}
-// 左管理メニュー非表示 / 右サイドバー表示
-body.is-fullscreen-mode .edit-post-layout.is-sidebar-opened, // WP6.5.5まで
-body.is-fullscreen-mode .edit-post-layout:has(.interface-interface-skeleton__sidebar) { // WP6.6用
-	--vk-width-editor-full:calc( 100vw - 280px );
-	--vk-width-editor-wide:calc( 100vw - 280px - ( ( 100vw - 280px ) * ( 1 - 0.8 ) / 2 ) );
-	--vk-width-editor-container-body:calc(  ( 100vw - 280px ) * 0.8 - 30px );
-}
-
-// 左管理メニュー表示（ 展開 ） / 右サイドバー展開
-body:not(.is-fullscreen-mode) .edit-post-layout.is-sidebar-opened, // WP6.5.5まで
-body:not(.is-fullscreen-mode) .edit-post-layout:has(.interface-interface-skeleton__sidebar) { // WP6.6用
-	--vk-width-editor-container:calc( var(--vk-width-container) - var(--vk-width-editor-leftmenu) - var(--vk-width-editor-sidebar) );
-	--vk-width-editor-container-body:calc(  ( 100vw - 280px - 160px ) * 0.8 - 30px );
-	--vk-width-editor-full:calc( 100vw - var(--vk-width-editor-leftmenu) - var(--vk-width-editor-sidebar) );
-	--vk-width-editor-wide:calc( var( --vk-width-editor-container-body ) + ( 100vw - var( --vk-width-editor-container-body ) - var(--vk-width-editor-leftmenu) - var(--vk-width-editor-sidebar) ) / 2 );
-}
-// 左管理メニュー表示（ 展開 ） / 右サイドバー非表示
-body:not(.is-fullscreen-mode) .edit-post-layout:not(.is-sidebar-opened), // WP6.5.5まで
-body:not(.is-fullscreen-mode) .edit-post-layout { // WP6.6用
-	--vk-width-editor-container:calc( var(--vk-width-container) - var(--vk-width-editor-leftmenu) );
-	--vk-width-editor-container-body:calc(  ( 100vw - 160px ) * 0.8 - 30px );
-	--vk-width-editor-full:calc( 100vw - var(--vk-width-editor-leftmenu) );
-	--vk-width-editor-wide:calc( var( --vk-width-editor-container-body ) + ( 100vw - var( --vk-width-editor-container-body ) - var(--vk-width-editor-leftmenu) ) / 2 );
-}
-
-// 左管理メニュー表示（ 縮小 ） / 右サイドバー非表示
-body.folded:not(.is-fullscreen-mode) .edit-post-layout:not(.is-sidebar-opened), // WP6.5.5まで
-body.folded:not(.is-fullscreen-mode) .edit-post-layout { // WP6.6用
-	--vk-width-editor-container:calc( var(--vk-width-container) - var(--vk-width-editor-leftmenu-folded) );
-	--vk-width-editor-full:calc( 100vw - var(--vk-width-editor-leftmenu-folded) );
-	--vk-width-editor-wide:calc( var( --vk-width-editor-container-body ) + ( 100vw - var( --vk-width-editor-container-body ) - var(--vk-width-editor-leftmenu-folded) ) / 2 );
-}
-// 左管理メニュー表示（ 縮小 ） / 右サイドバー展開
-body:is(.folded, .auto-fold ):not(.is-fullscreen-mode) .edit-post-layout.is-sidebar-opened, // WP6.5.5まで
-body:is(.folded, .auto-fold ):not(.is-fullscreen-mode) .edit-post-layout:has(.interface-interface-skeleton__sidebar) { // WP6.6用
-	--vk-width-editor-container:calc( var(--vk-width-container) - var(--vk-width-editor-leftmenu-folded) - var(--vk-width-editor-sidebar) );
-	--vk-width-editor-container-body:calc(  ( 100vw - var(--vk-width-editor-sidebar) ) * 0.8 - 30px );
-	--vk-width-editor-full:calc( 100vw - var(--vk-width-editor-leftmenu-folded) - var(--vk-width-editor-sidebar) );
-	--vk-width-editor-wide:calc( var( --vk-width-editor-container-body ) + ( 100vw - var( --vk-width-editor-container-body ) - var(--vk-width-editor-leftmenu-folded) - var(--vk-width-editor-sidebar) ) / 2 );
 }
 
 .wp-block.editor-post-title {
