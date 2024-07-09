@@ -22,10 +22,13 @@ body:where(:not(.is-fullscreen-mode)) {
 }
 
 // In case the right sidebar is open
-body .edit-post-layout.is-sidebar-opened, // WP6.5.5まで
+body:has(.is-sidebar-opened), // WP6.5.5まで
 body:has(.editor-sidebar) // after WP6.6
 {
 	--vk-width-editor-sidebar:280px;
+	p {
+		color: red !important;
+	}
 }
 
 // In case the block list view is open
