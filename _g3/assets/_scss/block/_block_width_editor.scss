@@ -1,12 +1,18 @@
+/**
+Editor width control
+*/
+
 // editor only
-// 本文部分はcontainerのpaddingの中なので、編集エリアのコンテナ幅には左右の padding:15px は持たせない
+
+//////////////////////////////////////////////////////////////
+/// Variable Setting
+//////////////////////////////////////////////////////////////
 body{
-	--vk-width-container-padding:15px;
 	--vk-width-editor-sidebar:0px; // Be aware that calc cannot calculate if there is no unit.
 	--vk-width-editor-leftmenu:0px; // Be aware that calc cannot calculate if there is no unit.
 	--vk-width-editor-list-view-sidebar:0px; // Be aware that calc cannot calculate if there is no unit.
 	// full
-	--vk-width-editor-full:calc( 100vw - var(--vk-width-editor-sidebar) - var(--vk-width-editor-leftmenu) - var(--vk-width-editor-list-view-sidebar) );
+	--vk-width-editor-full:calc( 100svw - var(--vk-width-editor-sidebar) - var(--vk-width-editor-leftmenu) - var(--vk-width-editor-list-view-sidebar) );
 	// body
 	--vk-width-editor-container-body: calc( var(--vk-width-editor-full) * 0.8 );
 	// wide
@@ -16,7 +22,7 @@ body{
 //  In case the left sidebar is open ( not full screen mode )
 body:where(:not(.is-fullscreen-mode)) {
 	--vk-width-editor-leftmenu:160px;
-	&.auto-fold.folded {
+	&.folded {
 		--vk-width-editor-leftmenu:36px;
 	}
 }
@@ -26,9 +32,6 @@ body:has(.is-sidebar-opened), // WP6.5.5まで
 body:has(.editor-sidebar) // after WP6.6
 {
 	--vk-width-editor-sidebar:280px;
-	p {
-		color: red !important;
-	}
 }
 
 // In case the block list view is open
@@ -36,6 +39,50 @@ body:has(.interface-interface-skeleton__secondary-sidebar) {
 	--vk-width-editor-list-view-sidebar:350px;
 }
 
+// タブレット / モバイル の場合はサイドパネルの幅を0にする
+body.block-editor-iframe__body.editor-styles-wrapper{
+	--vk-width-editor-sidebar:0px;
+	--vk-width-editor-leftmenu:0px;
+	--vk-width-editor-list-view-sidebar:0px;
+	// div:is(
+	// 	[data-align="full"], 
+	// 	.alignfull,
+	// 	.wp-block-vk-blocks-outer.vk_outer.vk_outer-width-full.vk_outer-paddingLR-zero
+	// 	) {
+	// 	width: var(--vk-width-editor-full);
+	// 	max-width: var(--vk-width-editor-full);
+	// }
+	// div[data-align="wide"] {
+	// 	width: var(--vk-width-editor-wide);
+	// 	max-width: var(--vk-width-editor-wide);
+	// }
+	// :is(.is-root-container,.is-layout-constrained) {
+	// 	& > div:is(
+	// 		[data-align="full"], 
+	// 		.alignfull,
+	// 		.wp-block-vk-blocks-outer.vk_outer.vk_outer-width-full.vk_outer-paddingLR-zero
+	// 	) {
+	// 		margin-left:calc( ( var(--vk-width-editor-container-body) - var(--vk-width-editor-full) ) / 2 ) !important;
+	// 	}
+	// 	& > div:is(
+	// 		[data-align="wide"], 
+	// 		.alignwide
+	// 	) {
+	// 		margin-left:calc( ( var(--vk-width-editor-container-body) - var(--vk-width-editor-full) ) / 4 ) !important;
+	// 	}
+	// }
+}
+
+//////////////////////////////////////////////////////////////
+/// .is-layout-constrained の幅の制御
+//////////////////////////////////////////////////////////////
+
+.is-layout-constrained {
+	max-width:var(--vk-width-editor-container-body);
+	margin-left: auto !important;
+	margin-right:auto !important;
+	border:1px solid #ff0000;
+}
 .alignfull,
 .alignwide {
 	div[class*="__inner-container"]{
@@ -76,12 +123,20 @@ body:has(.interface-interface-skeleton__secondary-sidebar) {
 	max-width:var(--vk-width-editor-container-body);
 }
 
+[data-align=full] {
+	width:var(--vk-width-editor-full)
+}
+[data-align=wide] {
+	width:var(--vk-width-editor-wide)
+}
+
+
 /**
 * 	normal block
 * 	.is-root-container > .wp-blockを公開画面のコンテナとして考える
 */
 .editor-styles-wrapper .is-root-container {
-	.wp-block {
+	.wp-block:where(:not( [data-align=full] )) {
 		max-width:var(--vk-width-editor-container-body);
 	}
 	> .wp-block {
@@ -240,10 +295,9 @@ html .edit-post-visual-editor :where(.editor-styles-wrapper) .block-editor-block
 		}
 		&.vk_outer-paddingLR-zero{
 			:is(.wp-block[data-align=full],.wp-block[data-align=wide] ){
-				margin-left:0;
-				margin-right:0;
-				width: 100%;
-				max-width: 100%;
+				// Outer Padding が 0 の場合は中の要素のマイナスオフセットは不要なので中央揃えに上書きする
+				margin-left:auto;
+				margin-right:auto;
 			}
 		}
 	}
