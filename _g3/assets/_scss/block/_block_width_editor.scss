@@ -2,27 +2,35 @@
 // 本文部分はcontainerのpaddingの中なので、編集エリアのコンテナ幅には左右の padding:15px は持たせない
 body{
 	--vk-width-container-padding:15px;
-	--vk-width-editor-sidebar:1px; // 本当は 0 にしたいが、0 にすると calc で計算されなくなるので小さい数字を入れている
-	--vk-width-editor-leftmenu:1px; // 本当は 0 にしたいが、0 にすると calc で計算されなくなるので小さい数字を入れている
-	--vk-width-editor-full:calc( 100vw - var(--vk-width-editor-sidebar) - var(--vk-width-editor-leftmenu) );
+	--vk-width-editor-sidebar:0px; // Be aware that calc cannot calculate if there is no unit.
+	--vk-width-editor-leftmenu:0px; // Be aware that calc cannot calculate if there is no unit.
+	--vk-width-editor-list-view-sidebar:0px; // Be aware that calc cannot calculate if there is no unit.
+	// full
+	--vk-width-editor-full:calc( 100vw - var(--vk-width-editor-sidebar) - var(--vk-width-editor-leftmenu) - var(--vk-width-editor-list-view-sidebar) );
+	// body
 	--vk-width-editor-container-body: calc( var(--vk-width-editor-full) * 0.8 );
+	// wide
 	--vk-width-editor-wide: calc( var(--vk-width-editor-container-body) + ( var(--vk-width-editor-full) - var(--vk-width-editor-container-body) ) / 2 );
 }
 
-// フルスクリーンモードの場合
-body.is-fullscreen-mode {
-	--vk-width-editor-leftmenu:1px;;
-}
-// フルスクリーンモードじゃない場合
+//  In case the left sidebar is open ( not full screen mode )
 body:where(:not(.is-fullscreen-mode)) {
 	--vk-width-editor-leftmenu:160px;
 	&.auto-fold.folded {
 		--vk-width-editor-leftmenu:36px;
 	}
 }
+
+// In case the right sidebar is open
 body .edit-post-layout.is-sidebar-opened, // WP6.5.5まで
-body:has(.editor-sidebar) {
+body:has(.editor-sidebar) // after WP6.6
+{
 	--vk-width-editor-sidebar:280px;
+}
+
+// In case the block list view is open
+body:has(.interface-interface-skeleton__secondary-sidebar) {
+	--vk-width-editor-list-view-sidebar:350px;
 }
 
 .alignfull,
