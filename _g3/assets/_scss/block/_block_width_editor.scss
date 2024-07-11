@@ -49,34 +49,37 @@ body.block-editor-iframe__body.editor-styles-wrapper{
 	--vk-width-editor-list-view-sidebar:0px;
 	// --vk-width-container: var(--vk-width-editor-container-body);
 	div:is(
+		[data-align="full"], 
+		.alignfull,
+		.wp-block-vk-blocks-outer.vk_outer.vk_outer-width-full.vk_outer-paddingLR-zero
+	) {
+		width: var(--vk-width-full);
+		max-width: var(--vk-width-full);
+	}
+	div:is(
+		[data-align="wide"],
+		.alignwide
+	) {
+		width: var(--vk-width-editor-wide);
+		max-width: var(--vk-width-editor-wide);
+	}
+	:is(
+		.is-root-container,
+		.is-layout-constrained
+	) {
+		& > div:is(
 			[data-align="full"], 
 			.alignfull,
 			.wp-block-vk-blocks-outer.vk_outer.vk_outer-width-full.vk_outer-paddingLR-zero
 		) {
-			width: var(--vk-width-full);
-			max-width: var(--vk-width-full);
+			margin-left:calc( ( var(--vk-width-editor-container-body) - var(--vk-width-full) ) / 2 ) !important;
 		}
-	div:is(
-			[data-align="wide"],
+		& > div:is(
+			[data-align="wide"], 
 			.alignwide
 		) {
-			width: var(--vk-width-editor-wide);
-			max-width: var(--vk-width-editor-wide);
+			margin-left:calc( ( var(--vk-width-editor-container-body) - var(--vk-width-full) ) / 4 ) !important;
 		}
-	:is(.is-root-container,.is-layout-constrained) {
-		& > div:is(
-				[data-align="full"], 
-				.alignfull,
-				.wp-block-vk-blocks-outer.vk_outer.vk_outer-width-full.vk_outer-paddingLR-zero
-			) {
-				margin-left:calc( ( var(--vk-width-editor-container-body) - var(--vk-width-full) ) / 2 ) !important;
-			}
-		& > div:is(
-				[data-align="wide"], 
-				.alignwide
-			) {
-				margin-left:calc( ( var(--vk-width-editor-container-body) - var(--vk-width-full) ) / 4 ) !important;
-			}
 	}
 }
 
@@ -141,7 +144,6 @@ body.block-editor-iframe__body.editor-styles-wrapper{
 	}
 }
 
-
 // .is-layout-constrained {
 // 	margin-left: auto !important;
 // 	margin-right:auto !important;
@@ -157,14 +159,6 @@ body.block-editor-iframe__body.editor-styles-wrapper{
 	margin-right:auto;
 }
 
-/**
-* 	normal block
-* 	.is-root-container > .wp-blockを公開画面のコンテナとして考える
-*/
-html :where(.wp-block) {
-	// theme.json がない場合（？）に classic.css が 850px を指定してくるので上書きする
-	max-width: unset;
-}
 .editor-styles-wrapper .is-root-container {
 	> .wp-block {
 		// 6.0 / theme.json あり / Evergreen のオフセット背景の時に左によってしまうため
@@ -193,7 +187,7 @@ html :where(.wp-block) {
 //////////////////////////////////////////////////////////////
 // overwright classic.css
 //////////////////////////////////////////////////////////////
-html :where(.editor-styles-wrapper) .block-editor-block-list__layout.is-root-container>.wp-block[data-align=full]  {
-	// margin-left: calc( ( var(--vk-width-editor-container-body) - var(--vk-width-full) ) / 2 );
-	// margin-right: calc( ( var(--vk-width-editor-container-body) - var(--vk-width-full) ) / 2 );
+html :where(.wp-block) {
+	// theme.json がない場合（？）に classic.css が 850px を指定してくるので上書きする
+	max-width: unset;
 }
