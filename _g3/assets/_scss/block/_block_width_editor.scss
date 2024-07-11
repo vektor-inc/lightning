@@ -13,6 +13,8 @@ body{
 	--vk-width-full:calc( 100svw - var(--vk-width-editor-sidebar) - var(--vk-width-editor-leftmenu) - var(--vk-width-editor-list-view-sidebar) );
 	// body
 	--vk-width-editor-container-body: calc( var(--vk-width-full) * 0.8 );
+	--vk-width-contaner: var(--vk-width-editor-container-body);
+	// --wp--style--global--content-size
 	// wide
 	--vk-width-editor-wide: calc( var(--vk-width-editor-container-body) + ( var(--vk-width-full) - var(--vk-width-editor-container-body) ) / 2 );
 }
@@ -84,39 +86,66 @@ body.block-editor-iframe__body.editor-styles-wrapper{
 
 [data-align=full] {
 	&,
-	& > div { // 編集画面で data-align の内側に div が追加されてしまうため、内側の div にも指定しないと幅指定が効かない
+	& > div:where(:not(.is-layout-constrained)) { // 編集画面で data-align の内側に div が追加されてしまうため、内側の div にも指定しないと幅指定が効かない
 		width:var(--vk-width-full);
 	}
 	div {
-		max-width:var(--vk-width-full)
+		max-width:var(--vk-width-full);
 	}
 }
+
 [data-align=wide] {
-	&,
+	html &,
 	& > div {
-		width:var(--vk-width-editor-wide)
+		width:var(--vk-width-editor-wide);
+		max-width:var(--vk-width-editor-wide);
 	}
-	div {
-		max-width:var(--vk-width-editor-wide)
+	div:where(:not(.is-layout-constrained)) {
+		max-width:var(--vk-width-editor-wide);
 	}
 }
 
 //////////////////////////////////////////////////////////////
 /// .is-layout-constrained の幅の制御
 //////////////////////////////////////////////////////////////
-
-.is-root-container,
-.is-layout-constrained,
-:is(.alignfull,.alignwide,[data-align=full],[data-align=wide] ) div[class*="__inner-container"] {
-	max-width:var(--vk-width-editor-container-body);
-	margin-left:auto;
-	margin-right:auto;
+.editor-styles-wrapper {
+	:is(
+		.is-root-container,
+		.is-layout-constrained,
+		:is(
+			.alignfull,
+			.alignwide,
+			[data-align=full],
+			[data-align=wide]
+		) > div[class*="__inner-container"]
+	) {
+		max-width:var(--vk-width-editor-container-body);
+		margin-left:auto;
+		margin-right:auto;
+		// 通常幅の中の全幅
+		& > :is( 
+			.alignfull, 
+			[data-align=full] 
+		) {
+			margin-left: calc( ( var(--vk-width-editor-container-body) - var(--vk-width-full) ) / 2 ) !important;
+			margin-right: calc( ( var(--vk-width-editor-container-body) - var(--vk-width-full) ) / 2 ) !important;
+		}
+		// 通常幅の中の幅広
+		& > :is( 
+			.alignwide, 
+			[data-align=wide] 
+		) {
+			margin-left: calc( ( var(--vk-width-editor-container-body) - var(--vk-width-full) ) / 4 ) !important;
+			margin-right: calc( ( var(--vk-width-editor-container-body) - var(--vk-width-full) ) / 4 ) !important;
+		}
+	}
 }
 
-.is-layout-constrained {
-	margin-left: auto !important;
-	margin-right:auto !important;
-}
+
+// .is-layout-constrained {
+// 	margin-left: auto !important;
+// 	margin-right:auto !important;
+// }
 .wp-block.editor-post-title {
 	max-width:var(--vk-width-editor-container-body);
 }
@@ -161,149 +190,10 @@ html :where(.wp-block) {
 	}
 }
 
-/*****
-
-Editor div structure
-
-* Image Block 
-************************************
-
-.wp-block[data-align=full]
-
-* Gallery Block ( full and wide is same ) 
-************************************
-
-div[data-align=full]
-	.wp-block[data-align=full]
-		figure.alignfull
-
-* Cover
-************************************
-.wp-block[data-align=full]
-	.wp-block-cover
-		div[class*="__inner-container"]
-*/
-
-html .edit-post-visual-editor :where(.editor-styles-wrapper) .block-editor-block-list__layout.is-root-container{
-
-	// Outer Element : Full /////////////////////////////////////////////////////////////
-	:is( 
-			.wp-block[data-align=full], 
-			.wp-block.alignfull, 
-			div[data-align=full], 
-			.vk_outer-width-full:where(:not(.vk_outer-paddingLR-zero,.vk_outer-paddingLR-use))
-		) {
-		width:var(--vk-width-full);
-		max-width:var(--vk-width-full);
-
-		// ! important をつけると vk_outer-paddingLR-use の中に全幅要素を配置した時 編集画面で表示が崩れる
-		margin-left: calc( var(--vk-width-editor-container-body) / 2 - var(--vk-width-full) / 2 );
-		margin-right: calc( var(--vk-width-editor-container-body) / 2 - var(--vk-width-full) / 2 );
-
-		// Outer ブロックの内側の余白機能は独特なので除外してインナー要素の全幅や幅広のネガティブマージンを指定する
-		&:where(:not(.vk_outer-paddingLR-zero,.vk_outer-paddingLR-use)){
-			:is( .wp-block[data-align=full], .wp-block.alignfull, div[data-align=full], .vk_outer-width-full ) {
-				// ! important をつけないと コアが 
-				// .editor-styles-wrapper .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
-				// 		max-width: var(--wp--style--global--content-size);
-				// 		margin-left: auto !important;
-				// 		margin-right: auto !important;
-				// }
-				// をつけてくるので負けるためつけている
-				margin-left: calc( var(--vk-width-editor-container-body) / 2 - var(--vk-width-full) / 2 ) !important;
-				margin-right: calc( var(--vk-width-editor-container-body) / 2 - var(--vk-width-full) / 2 ) !important;
-			}
-			:is( .wp-block[data-align=wide], .wp-block.alignwide, div[data-align=wide], .vk_outer-width-wide ) {
-				// ! important をつけないと コアが 
-				// .editor-styles-wrapper .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
-				// 		max-width: var(--wp--style--global--content-size);
-				// 		margin-left: auto !important;
-				// 		margin-right: auto !important;
-				// }
-				// をつけてくるので負けるためつけている
-				margin-left: calc( ( var(--vk-width-editor-container-body) - var(--vk-width-full) ) / 4 ) !important;
-				margin-right: calc( ( var(--vk-width-editor-container-body) - var(--vk-width-full) ) / 4 ) !important;
-			}
-		}
-	}
-
-	// 通常サイズの中に幅広対策
-	:is(.wp-block-cover,.wp-block-group):not(.alignfull,.alignwide){
-		& > .is-layout-constrained [data-align=full] {
-			margin-left: calc( var(--vk-width-editor-container-body) / 2 - var(--vk-width-full) / 2 ) !important;
-			margin-right: calc( var(--vk-width-editor-container-body) / 2 - var(--vk-width-full) / 2 ) !important;
-		}
-		& > .is-layout-constrained [data-align=wide] {
-			margin-left: calc( ( var(--vk-width-editor-container-body) - var(--vk-width-full) ) / 4 ) !important;
-			margin-right: calc( ( var(--vk-width-editor-container-body) - var(--vk-width-full) ) / 4 ) !important;
-		}
-	}
-
-	// Outer Element : Wide /////////////////////////////////////////////////////////////
-	:is( 
-		.wp-block[data-align=wide], 
-		.wp-block.alignwide, 
-		div[data-align=wide] 
-	){
-		width:var(--vk-width-editor-wide);
-		max-width:var(--vk-width-editor-wide); // max-width も指定しておかないと上書きできない
-		// ! important をつけると vk_outer-paddingLR-use の中に全幅要素を配置した時 編集画面で表示が崩れる
-		margin-left: calc( ( var(--vk-width-editor-container-body) - var(--vk-width-full) ) / 4 );
-		margin-right: calc( ( var(--vk-width-editor-container-body) - var(--vk-width-full) ) / 4 );
-		.wp-block[data-align=wide]{
-			margin-left: calc( ( var(--vk-width-editor-container-body) - var(--vk-width-full) ) / 4 );
-			margin-right: calc( ( var(--vk-width-editor-container-body) - var(--vk-width-full) ) / 4 );
-		}
-		.alignwide{
-			// width:var(--vk-width-editor-wide);
-			margin-left:auto !important;
-			margin-right:auto !important;
-		}
-		// vk_slider_item
-		.vk_slider_item {
-			max-width: var(--vk-width-editor-wide);
-		}
-	}
-
-	.vk_outer-width-full {
-		&:not(:is(.vk_outer-paddingLR-zero,.vk_outer-paddingLR-use)) {
-			.vk_outer_container {
-				// max が 1140px 指定だったりするので広げる
-				max-width:var(--vk-width-editor-container-body);
-				padding-left:0;
-				padding-right:0;
-			}
-			.block-editor-inner-blocks{
-				max-width:var(--vk-width-editor-container-body);
-			}
-		}
-		// Outer固有の微妙な余白（左右それぞれ4em付与される）使用
-		&.vk_outer-paddingLR-use{
-			.vk_outer_container{
-				--vk-width-editor-container-body:calc( var(--vk-width-full) -  8em );
-			}
-			:is(.wp-block[data-align=full] ){
-				width: auto;
-				margin-left: calc(50% - var(--vk-width-full)/2);
-				margin-right: calc(50% - var(--vk-width-full)/2);
-				max-width: var(--vk-width-full);
-			}
-			:is(.wp-block[data-align=wide] ){
-				--vk-width-editor-wide : calc(var(--vk-width-editor-full) - 4em );
-				width:calc(var(--vk-width-editor-full) - 2em );
-				margin-left:-2em;
-				margin-right:-2em;
-			}
-		}
-		&.vk_outer-paddingLR-zero{
-			:is(
-				.wp-block[data-align=full],
-				.wp-block[data-align=wide] 
-			){
-				// Outer Padding が 0 の場合は中の要素のマイナスオフセットは不要なので中央揃えに上書きする
-				margin-left:auto;
-				margin-right:auto;
-			}
-		}
-	}
+//////////////////////////////////////////////////////////////
+// overwright classic.css
+//////////////////////////////////////////////////////////////
+html :where(.editor-styles-wrapper) .block-editor-block-list__layout.is-root-container>.wp-block[data-align=full]  {
+	// margin-left: calc( ( var(--vk-width-editor-container-body) - var(--vk-width-full) ) / 2 );
+	// margin-right: calc( ( var(--vk-width-editor-container-body) - var(--vk-width-full) ) / 2 );
 }
