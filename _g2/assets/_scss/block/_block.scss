@@ -145,6 +145,11 @@ body .wp-block-image figure {
 		// コアのカラーパレットのCSSが !important 付けてくるのでやむなく !important
 		color:#fff !important;
 	}
+	&.is-style-outline {
+		& > .wp-block-button__link{
+			background-color:transparent; // 6.6で コアのデフォルトスタイルが負けるようになり、背景色がついてしまうので追加
+		}
+	}
 }
 .wp-block-button__link {
 	padding-top: calc( 0.5em + 1px );
