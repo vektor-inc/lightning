@@ -16,6 +16,23 @@
 	}
 }
 
+// 6.1 コアのボタンにデフォルトでテーマの色が当たらない対応打ち消し
+.editor-styles-wrapper .wp-block-buttons {
+	:where(.wp-block-button){
+		&:not(.is-style-outline) .wp-block-button__link{
+			background-color: var(--vk-color-primary);
+		}
+		// 6.6 editor-styles のbutton__linkを打ち消し
+		&.is-style-outline .wp-block-button__link{
+			color: inherit;	
+		}
+		.wp-block-button__link{
+			border-radius: var(--vk-size-radius);
+			font-size: 1rem;
+		}
+	} 
+}
+
 .wp-block-search .wp-block-search__button{
     background-color: var(--vk-color-primary);
 }
