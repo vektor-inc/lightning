@@ -78,7 +78,32 @@
 			"style": true,
 			"width": true
 		},
-		"blocks": {
+		"typography": {
+			"fluid": false,
+			"fontSizes": [
+				{
+					"name": "Small",
+					"slug": "small",
+					"size": "14px"
+				},
+				{
+					"name": "Regular",
+					"slug": "regular",
+					"size": "16px"
+				},
+				{
+					"name": "Large",
+					"slug": "large",
+					"size": "24px"
+				},
+				{
+					"name": "Huge",
+					"slug": "huge",
+					"size": "36px"
+				}
+			]
+		},
+		"blocks": {	
 			"core/group": {
 				"spacing": {
 					"padding": true
