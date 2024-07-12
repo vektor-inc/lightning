@@ -67,6 +67,7 @@ body.block-editor-iframe__body.editor-styles-wrapper{
 		.is-root-container,
 		.is-layout-constrained
 	) {
+		--vk-width-container: var(--vk-width-editor-container-body);
 		& > div:is(
 			[data-align="full"], 
 			.alignfull,
