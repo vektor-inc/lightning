@@ -99,6 +99,9 @@ body.block-editor-iframe__body.editor-styles-wrapper{
 }
 
 [data-align=wide] {
+	margin-left:auto;
+	margin-right:auto;
+	width:var(--vk-width-editor-wide);
 	html &,
 	& > div {
 		width:var(--vk-width-editor-wide);
@@ -126,6 +129,7 @@ body.block-editor-iframe__body.editor-styles-wrapper{
 		max-width:var(--vk-width-editor-container-body);
 		margin-left:auto;
 		margin-right:auto;
+		--vk-width-container: var(--vk-width-editor-container-body);
 		// 通常幅の中の全幅
 		& > :is( 
 			.alignfull, 
@@ -135,10 +139,13 @@ body.block-editor-iframe__body.editor-styles-wrapper{
 			margin-right: calc( ( var(--vk-width-editor-container-body) - var(--vk-width-full) ) / 2 ) !important;
 		}
 		// 通常幅の中の幅広
+		// 標準だと通常幅の中の幅広や全幅は強制的に通常幅にされるので、されるので、上書き
 		& > :is( 
 			.alignwide, 
 			[data-align=wide] 
 		) {
+			width: var(--vk-width-editor-wide);
+			max-width: var(--vk-width-editor-wide);
 			margin-left: calc( ( var(--vk-width-editor-container-body) - var(--vk-width-full) ) / 4 ) !important;
 			margin-right: calc( ( var(--vk-width-editor-container-body) - var(--vk-width-full) ) / 4 ) !important;
 		}
