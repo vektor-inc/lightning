@@ -112,10 +112,6 @@ body.block-editor-iframe__body.editor-styles-wrapper{
 	}
 }
 
-:is( .alignfull, .alignwide, [data-align=full], [data-align=wide] ) div[class*=__inner-container] {
-    max-width: var(--vk-width-editor-container-body);
-}
-
 //////////////////////////////////////////////////////////////
 /// .is-layout-constrained の幅の制御
 //////////////////////////////////////////////////////////////
