@@ -14,7 +14,7 @@ body{
 	// body
 	--vk-width-editor-container-body: calc( var(--vk-width-full) * 0.8 );
 	--vk-width-contaner: var(--vk-width-editor-container-body);
-	// --wp--style--global--content-size
+	--wp--style--global--content-size: var(--vk-width-editor-container-body);
 	// wide
 	--vk-width-editor-wide: calc( var(--vk-width-editor-container-body) + ( var(--vk-width-full) - var(--vk-width-editor-container-body) ) / 2 );
 }
@@ -124,7 +124,7 @@ body.block-editor-iframe__body.editor-styles-wrapper{
 			.alignwide,
 			[data-align=full],
 			[data-align=wide]
-		) > div[class*="__inner-container"]
+		) div[class*="__inner-container"]
 	) {
 		max-width:var(--vk-width-editor-container-body);
 		margin-left:auto;
