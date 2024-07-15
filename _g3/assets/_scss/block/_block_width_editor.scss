@@ -112,14 +112,16 @@ body.block-editor-iframe__body.editor-styles-wrapper{
 	}
 }
 
-:is( .alignfull, .alignwide ) div[class*=__inner-container] {
-    max-width: var(--vk-width-editor-container-body);
-}
-
 //////////////////////////////////////////////////////////////
 /// .is-layout-constrained の幅の制御
 //////////////////////////////////////////////////////////////
 .editor-styles-wrapper {
+	.is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
+		// for theme.json non-active
+		max-width:var(--vk-width-editor-container-body);
+		// for theme.json active
+		--wp--style--global--content-size: var(--vk-width-editor-container-body);
+	}
 	:is(
 		.is-root-container,
 		.is-layout-constrained,
