@@ -112,6 +112,11 @@ body.block-editor-iframe__body.editor-styles-wrapper{
 	}
 }
 
+// overwright max-width: calc(var(--vk-width-container) - var(--vk-width-container-padding)* 2);
+:is( .alignfull, .alignwide ) div[class*=__inner-container] {
+    max-width: var(--vk-width-editor-container-body);
+}
+
 //////////////////////////////////////////////////////////////
 /// .is-layout-constrained の幅の制御
 //////////////////////////////////////////////////////////////
