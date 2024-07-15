@@ -205,3 +205,8 @@ html :where(.wp-block) {
 	// theme.json がない場合（？）に classic.css が 850px を指定してくるので上書きする
 	max-width: unset;
 }
+
+// 旧 Bootstrap 用 padding リセット
+:is( .alignfull, .alignwide, [data-align=full], [data-align=wide] ) div[class*=__inner-container] {
+    --vk-width-container-padding: 0px;
+}
