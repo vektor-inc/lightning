@@ -84,22 +84,22 @@
 				{
 					"name": "Small",
 					"slug": "small",
-					"size": "14px"
+					"size": "0.875rem"
 				},
 				{
 					"name": "Regular",
 					"slug": "regular",
-					"size": "16px"
+					"size": "1rem"
 				},
 				{
 					"name": "Large",
 					"slug": "large",
-					"size": "24px"
+					"size": "1.5rem"
 				},
 				{
 					"name": "Huge",
 					"slug": "huge",
-					"size": "36px"
+					"size": "2.25rem"
 				}
 			]
 		},
