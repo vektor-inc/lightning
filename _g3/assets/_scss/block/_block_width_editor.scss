@@ -39,49 +39,12 @@ body:has(.interface-interface-skeleton__secondary-sidebar) {
 	--vk-width-editor-list-view-sidebar:350px;
 }
 
-//////////////////////////////////////////////////////////////
-/// モバイル / タブレット専用補正
-//////////////////////////////////////////////////////////////
+/// モバイル / タブレット iframe 用補正 //////////////////////////
 body.block-editor-iframe__body.editor-styles-wrapper{
 	// タブレット / モバイル の場合はサイドパネルの幅の変数の値を0にする
 	--vk-width-editor-sidebar:0px;
 	--vk-width-editor-leftmenu:0px;
 	--vk-width-editor-list-view-sidebar:0px;
-	// --vk-width-container: var(--vk-width-editor-container-body);
-	// div:is(
-	// 	[data-align="full"], 
-	// 	.alignfull,
-	// 	.wp-block-vk-blocks-outer.vk_outer.vk_outer-width-full.vk_outer-paddingLR-zero
-	// ) {
-	// 	width: var(--vk-width-full);
-	// 	max-width: var(--vk-width-full);
-	// }
-	// div:is(
-	// 	[data-align="wide"],
-	// 	.alignwide
-	// ) {
-	// 	width: var(--vk-width-editor-wide);
-	// 	max-width: var(--vk-width-editor-wide);
-	// }
-	// :is(
-	// 	.is-root-container,
-	// 	.is-layout-constrained
-	// ) {
-	// 	--vk-width-container: var(--vk-width-editor-container-body);
-	// 	& > div:is(
-	// 		[data-align="full"], 
-	// 		.alignfull,
-	// 		.wp-block-vk-blocks-outer.vk_outer.vk_outer-width-full.vk_outer-paddingLR-zero
-	// 	) {
-	// 		margin-left:calc( ( var(--vk-width-editor-container-body) - var(--vk-width-full) ) / 2 ) !important;
-	// 	}
-	// 	& > div:is(
-	// 		[data-align="wide"], 
-	// 		.alignwide
-	// 	) {
-	// 		margin-left:calc( ( var(--vk-width-editor-container-body) - var(--vk-width-full) ) / 4 ) !important;
-	// 	}
-	// }
 }
 
 //////////////////////////////////////////////////////////////
@@ -133,7 +96,7 @@ body.block-editor-iframe__body.editor-styles-wrapper{
 		margin-left:auto;
 		margin-right:auto;
 		--vk-width-container: var(--vk-width-editor-container-body);
-		// 通常幅の中の全幅
+		// 通常幅の中の全幅 /////////////////////////////////
 		& > :is( 
 			.alignfull, 
 			[data-align=full] 
@@ -141,7 +104,7 @@ body.block-editor-iframe__body.editor-styles-wrapper{
 			margin-left: calc( ( var(--vk-width-editor-container-body) - var(--vk-width-full) ) / 2 ) !important;
 			margin-right: calc( ( var(--vk-width-editor-container-body) - var(--vk-width-full) ) / 2 ) !important;
 		}
-		// 通常幅の中の幅広
+		// 通常幅の中の幅広 //////////////////////////////////
 		// 標準だと通常幅の中の幅広や全幅は強制的に通常幅にされるので、されるので、上書き
 		& > :is( 
 			.alignwide, 
