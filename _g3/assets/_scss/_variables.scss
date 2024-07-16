@@ -38,6 +38,13 @@ $containter-padding:15px;
     --vk-width-container : 100svw;
 
     --vk-width-container-padding : 15px;
+
+	/**
+	* @since 15.26
+	* --vk-width-full : 編集画面は全幅が 100svw ではないため、変更できるように --vk-width-full を使用する
+	*/
+	--vk-width-full : 100svw;
+
 	--vk-width-col-2-main : 66.6%;
     // サイドバーがjsでfixedにすると、ストレートな幅指定だと基準がウィンドウになってしまうため、コンテナ基準にしている
 	--vk-width-col-2-sub: calc( var(--vk-width-container) * 0.27 );
