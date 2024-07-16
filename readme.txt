@@ -1,8 +1,8 @@
 === Lightning ===
 Lightning WordPress theme, Copyright (C) 2015-2024 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
-Tested up to: 6.5
-Stable tag: 15.25.1
+Tested up to: 6.6
+Stable tag: 15.26.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,8 +37,9 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v15.26.0
 [ G3 / G2 ][ Design Bug Fix ] Fix outline background of button style in WP6.6.
-[ G3 ][ Editor Design Bug Fix ] Add editor width setting for WP6.6.
+[ G3 ][ Specification Change ] Refactoring the width handling of the edit screen
 [ G3 / G2 ][ Editor Design Bug Fix ] Supports wide slider item width.
 
 v15.25.1
