@@ -48,40 +48,40 @@ body.block-editor-iframe__body.editor-styles-wrapper{
 	--vk-width-editor-leftmenu:0px;
 	--vk-width-editor-list-view-sidebar:0px;
 	// --vk-width-container: var(--vk-width-editor-container-body);
-	div:is(
-		[data-align="full"], 
-		.alignfull,
-		.wp-block-vk-blocks-outer.vk_outer.vk_outer-width-full.vk_outer-paddingLR-zero
-	) {
-		width: var(--vk-width-full);
-		max-width: var(--vk-width-full);
-	}
-	div:is(
-		[data-align="wide"],
-		.alignwide
-	) {
-		width: var(--vk-width-editor-wide);
-		max-width: var(--vk-width-editor-wide);
-	}
-	:is(
-		.is-root-container,
-		.is-layout-constrained
-	) {
-		--vk-width-container: var(--vk-width-editor-container-body);
-		& > div:is(
-			[data-align="full"], 
-			.alignfull,
-			.wp-block-vk-blocks-outer.vk_outer.vk_outer-width-full.vk_outer-paddingLR-zero
-		) {
-			margin-left:calc( ( var(--vk-width-editor-container-body) - var(--vk-width-full) ) / 2 ) !important;
-		}
-		& > div:is(
-			[data-align="wide"], 
-			.alignwide
-		) {
-			margin-left:calc( ( var(--vk-width-editor-container-body) - var(--vk-width-full) ) / 4 ) !important;
-		}
-	}
+	// div:is(
+	// 	[data-align="full"], 
+	// 	.alignfull,
+	// 	.wp-block-vk-blocks-outer.vk_outer.vk_outer-width-full.vk_outer-paddingLR-zero
+	// ) {
+	// 	width: var(--vk-width-full);
+	// 	max-width: var(--vk-width-full);
+	// }
+	// div:is(
+	// 	[data-align="wide"],
+	// 	.alignwide
+	// ) {
+	// 	width: var(--vk-width-editor-wide);
+	// 	max-width: var(--vk-width-editor-wide);
+	// }
+	// :is(
+	// 	.is-root-container,
+	// 	.is-layout-constrained
+	// ) {
+	// 	--vk-width-container: var(--vk-width-editor-container-body);
+	// 	& > div:is(
+	// 		[data-align="full"], 
+	// 		.alignfull,
+	// 		.wp-block-vk-blocks-outer.vk_outer.vk_outer-width-full.vk_outer-paddingLR-zero
+	// 	) {
+	// 		margin-left:calc( ( var(--vk-width-editor-container-body) - var(--vk-width-full) ) / 2 ) !important;
+	// 	}
+	// 	& > div:is(
+	// 		[data-align="wide"], 
+	// 		.alignwide
+	// 	) {
+	// 		margin-left:calc( ( var(--vk-width-editor-container-body) - var(--vk-width-full) ) / 4 ) !important;
+	// 	}
+	// }
 }
 
 //////////////////////////////////////////////////////////////
@@ -90,11 +90,8 @@ body.block-editor-iframe__body.editor-styles-wrapper{
 
 [data-align=full] {
 	&,
-	& > div:where(:not(.is-layout-constrained)) { // 編集画面で data-align の内側に div が追加されてしまうため、内側の div にも指定しないと幅指定が効かない
+	& > div:where(:not(.is-layout-constrained)) { // 編集画面で data-align の内側に div が追加されてしまうため、内側の div にも全幅指定しないと全幅が効かない
 		width:var(--vk-width-full);
-	}
-	div {
-		max-width:var(--vk-width-full);
 	}
 }
 
