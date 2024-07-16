@@ -12,11 +12,11 @@ body{
 	// full
 	--vk-width-full:calc( 100svw - var(--vk-width-editor-sidebar) - var(--vk-width-editor-leftmenu) - var(--vk-width-editor-list-view-sidebar) );
 	// body
-	--vk-width-editor-container-body: calc( var(--vk-width-full) * 0.8 );
-	--vk-width-contaner: var(--vk-width-editor-container-body);
-	--wp--style--global--content-size: var(--vk-width-editor-container-body);
+	--vk-width-editor-container: calc( var(--vk-width-full) * 0.8 );
+	--vk-width-contaner: var(--vk-width-editor-container);
+	--wp--style--global--content-size: var(--vk-width-editor-container);
 	// wide
-	--vk-width-editor-wide: calc( var(--vk-width-editor-container-body) + ( var(--vk-width-full) - var(--vk-width-editor-container-body) ) / 2 );
+	--vk-width-wide: calc( var(--vk-width-editor-container) + ( var(--vk-width-full) - var(--vk-width-editor-container) ) / 2 );
 }
 
 //  In case the left sidebar is open ( not full screen mode )
@@ -61,14 +61,14 @@ body.block-editor-iframe__body.editor-styles-wrapper{
 [data-align=wide] {
 	margin-left:auto;
 	margin-right:auto;
-	width:var(--vk-width-editor-wide);
+	width:var(--vk-width-wide);
 	html &,
 	& > div {
-		width:var(--vk-width-editor-wide);
-		max-width:var(--vk-width-editor-wide);
+		width:var(--vk-width-wide);
+		max-width:var(--vk-width-wide);
 	}
 	div:where(:not(.is-layout-constrained)) {
-		max-width:var(--vk-width-editor-wide);
+		max-width:var(--vk-width-wide);
 	}
 }
 
@@ -78,9 +78,9 @@ body.block-editor-iframe__body.editor-styles-wrapper{
 .editor-styles-wrapper {
 	.is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
 		// for theme.json non-active
-		max-width:var(--vk-width-editor-container-body);
+		max-width:var(--vk-width-editor-container);
 		// for theme.json active
-		--wp--style--global--content-size: var(--vk-width-editor-container-body);
+		--wp--style--global--content-size: var(--vk-width-editor-container);
 	}
 	:is(
 		.is-root-container,
@@ -92,17 +92,17 @@ body.block-editor-iframe__body.editor-styles-wrapper{
 			[data-align=wide]
 		) div[class*="__inner-container"]
 	) {
-		max-width:var(--vk-width-editor-container-body);
+		max-width:var(--vk-width-editor-container);
 		margin-left:auto;
 		margin-right:auto;
-		--vk-width-container: var(--vk-width-editor-container-body);
+		--vk-width-container: var(--vk-width-editor-container);
 		// 通常幅の中の全幅 /////////////////////////////////
 		& > :is( 
 			.alignfull, 
 			[data-align=full] 
 		) {
-			margin-left: calc( ( var(--vk-width-editor-container-body) - var(--vk-width-full) ) / 2 ) !important;
-			margin-right: calc( ( var(--vk-width-editor-container-body) - var(--vk-width-full) ) / 2 ) !important;
+			margin-left: calc( ( var(--vk-width-editor-container) - var(--vk-width-full) ) / 2 ) !important;
+			margin-right: calc( ( var(--vk-width-editor-container) - var(--vk-width-full) ) / 2 ) !important;
 		}
 		// 通常幅の中の幅広 //////////////////////////////////
 		// 標準だと通常幅の中の幅広や全幅は強制的に通常幅にされるので、されるので、上書き
@@ -110,10 +110,10 @@ body.block-editor-iframe__body.editor-styles-wrapper{
 			.alignwide, 
 			[data-align=wide] 
 		) {
-			width: var(--vk-width-editor-wide);
-			max-width: var(--vk-width-editor-wide);
-			margin-left: calc( ( var(--vk-width-editor-container-body) - var(--vk-width-full) ) / 4 ) !important;
-			margin-right: calc( ( var(--vk-width-editor-container-body) - var(--vk-width-full) ) / 4 ) !important;
+			width: var(--vk-width-wide);
+			max-width: var(--vk-width-wide);
+			margin-left: calc( ( var(--vk-width-editor-container) - var(--vk-width-full) ) / 4 ) !important;
+			margin-right: calc( ( var(--vk-width-editor-container) - var(--vk-width-full) ) / 4 ) !important;
 		}
 	}
 	.is-root-container {
@@ -126,30 +126,30 @@ body.block-editor-iframe__body.editor-styles-wrapper{
 }
 
 .wp-block.editor-post-title {
-	max-width:var(--vk-width-editor-container-body);
+	max-width:var(--vk-width-editor-container);
 }
 .edit-post-visual-editor__content-area .editor-styles-wrapper .edit-post-visual-editor__post-title-wrapper > *, 
 .edit-post-visual-editor__content-area .editor-styles-wrapper .block-editor-block-list__layout.is-root-container > * {
-	width:var(--vk-width-editor-container-body);
-	max-width:var(--vk-width-editor-container-body);
+	width:var(--vk-width-editor-container);
+	max-width:var(--vk-width-editor-container);
 	margin-left:auto;
 	margin-right:auto;
 }
 
 .container {
 	padding:0;
-	max-width:var(--vk-width-editor-container-body);
+	max-width:var(--vk-width-editor-container);
 	@media (min-width: 576px) {
-		max-width:var(--vk-width-editor-container-body);
+		max-width:var(--vk-width-editor-container);
 	}
 	@media (min-width: 768px) {
-		max-width:var(--vk-width-editor-container-body);
+		max-width:var(--vk-width-editor-container);
 	}
 	@media (min-width: 992px){
-		max-width:var(--vk-width-editor-container-body);
+		max-width:var(--vk-width-editor-container);
 	}
 	@media (min-width: 1200px) {
-		max-width:var(--vk-width-editor-container-body);
+		max-width:var(--vk-width-editor-container);
 	}
 }
 
