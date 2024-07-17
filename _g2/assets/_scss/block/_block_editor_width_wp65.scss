@@ -1,16 +1,16 @@
 // editor only
 
+.editor-styles-wrapper {
+	color:red !important;
+	background-color: aqua !important;
+}
+
 :root{
 	--vk-width-editor-container:calc(100vw * 0.8);
 	--vk-width-container-padding:15px;
 	--vk-width-editor-sidebar:280px;
 	--vk-width-editor-leftmenu:160px;
 	--vk-width-editor-leftmenu-folded:36px;
-}
-
-.editor-styles-wrapper {
-	color:red !important;
-	background-color: aqua !important;
 }
 
 // 左管理メニュー非表示 / 右サイドバー非表示

@@ -6,6 +6,11 @@ max-width でコントロールする。
 
 */
 
+.editor-styles-wrapper {
+	color:blue !important;
+	background-color: aqua !important;
+}
+
 //////////////////////////////////////////////////////////////
 /// Variable Setting
 //////////////////////////////////////////////////////////////
@@ -134,9 +139,4 @@ html :where(.wp-block) {
 			margin-right:auto;
 		}
 	}
-}
-
-.editor-styles-wrapper {
-	color:blue !important;
-	background-color: aqua !important;
 }
