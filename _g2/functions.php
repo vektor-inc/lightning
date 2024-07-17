@@ -209,6 +209,7 @@ use to wp_add_inline_style()
 add_action( 'enqueue_block_editor_assets', 'lightning_load_common_editor_css_to_gutenberg' );
 function lightning_load_common_editor_css_to_gutenberg() {
 
+	$wp_version = get_bloginfo( 'version' );
 	if ( version_compare( $wp_version, '6.6', '>=' ) ) {
 		// WordPress over 6.6
 		$common_editor_css_url = get_template_directory_uri() . '/assets/css/common_editor.css';
