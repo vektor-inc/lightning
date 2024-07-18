@@ -1,15 +1,6 @@
 /**
 Editor width control
-
-ネガティブマージンは入れ子でのコントロールが難しいので、
-max-width でコントロールする。
-
 */
-
-.editor-styles-wrapper {
-	color:blue !important;
-	background-color: aqua !important;
-}
 
 //////////////////////////////////////////////////////////////
 /// Variable Setting
@@ -161,12 +152,14 @@ html :where(.wp-block) {
 			margin-right:auto;
 		}
 	}
+
+	// 6.6 以降は !important 不要 / 6.5 までは必要
 	.is-layout-constrained > [data-align=full] {
-		margin-left:calc( ( var(--vk-width-editor-container) - var(--vk-width-full) ) / 2 );
-		margin-right:calc( ( var(--vk-width-editor-container) - var(--vk-width-full) ) / 2 );
+		margin-left:calc( ( var(--vk-width-editor-container) - var(--vk-width-full) ) / 2 ) !important;
+		margin-right:calc( ( var(--vk-width-editor-container) - var(--vk-width-full) ) / 2 ) !important;
 	}
 	.is-layout-constrained > [data-align=wide] {
-		margin-left:calc( ( var(--vk-width-editor-container) - var(--vk-width-full) ) / 4 );
-		margin-right:calc( ( var(--vk-width-editor-container) - var(--vk-width-full) ) / 4 );
+		margin-left:calc( ( var(--vk-width-editor-container) - var(--vk-width-full) ) / 4 ) !important;
+		margin-right:calc( ( var(--vk-width-editor-container) - var(--vk-width-full) ) / 4 ) !important;
 	}
 }

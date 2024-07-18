@@ -191,14 +191,7 @@ function lightning_load_common_editor_css() {
 	/* add_editor_style is for Classic Editor Only. */
 	global $post;
 	if ( ! function_exists( 'use_block_editor_for_post' ) || ! use_block_editor_for_post( $post ) ) {
-		$wp_version = get_bloginfo( 'version' );
-		if ( version_compare( $wp_version, '6.6', '>=' ) ) {
-			// WordPress over 6.6
-			add_editor_style( 'assets/css/common_editor.css' );
-		} else {
-			// WordPress under 6.5
-			add_editor_style( 'assets/css/common_editor_wp65.css' );
-		}
+		add_editor_style( 'assets/css/common_editor.css' );
 	}
 }
 
@@ -209,19 +202,10 @@ use to wp_add_inline_style()
 add_action( 'enqueue_block_editor_assets', 'lightning_load_common_editor_css_to_gutenberg' );
 function lightning_load_common_editor_css_to_gutenberg() {
 
-	$wp_version = get_bloginfo( 'version' );
-	if ( version_compare( $wp_version, '6.6', '>=' ) ) {
-		// WordPress over 6.6
-		$common_editor_css_url = get_template_directory_uri() . '/assets/css/common_editor.css';
-	} else {
-		// WordPress under 6.5
-		$common_editor_css_url = get_template_directory_uri() . '/assets/css/common_editor_wp65.css';
-	}
-
 	wp_enqueue_style(
 		'lightning-common-editor-gutenberg',
 		// If not full path that can't load in editor screen
-		$common_editor_css_url,
+		get_template_directory_uri() . '/assets/css/common_editor.css',
 		array( 'wp-edit-blocks' ),
 		LIGHTNING_THEME_VERSION
 	);
