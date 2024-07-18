@@ -93,8 +93,14 @@ html :where(.wp-block) {
 	[data-align=full]{
 		max-width:var(--vk-width-full);
 	}
+	.is-layout-constrained > [data-align=full]{
+		max-width:var(--vk-width-full);
+	}
 	.alignwide,
 	[data-align=wide]{
+		max-width:var(--vk-width-wide);
+	}
+	.is-layout-constrained > [data-align=wide]{
 		max-width:var(--vk-width-wide);
 	}
 	// 旧 Bootstrap 用 padding リセット
