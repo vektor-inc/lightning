@@ -1,4 +1,5 @@
 .editor-styles-wrapper{
+	padding:0;
 	ul,
 	ol,
 	dl,
@@ -18,6 +19,11 @@
 
 html :where(.editor-styles-wrapper){
 	font-family: var(--vk-font-family);
+}
+
+html :where(.wp-block) {
+	margin-top:0;
+	margin-bottom:0;
 }
 
 .interface-interface-skeleton__secondary-sidebar{
