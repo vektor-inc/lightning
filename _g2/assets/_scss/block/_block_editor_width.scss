@@ -88,19 +88,26 @@ html :where(.wp-block) {
 			max-width:var(--vk-width-editor-container);
 		}
 	}
-	.alignfull,
-	.alignfull.vk_slider,
-	[data-align=full]{
+	.is-layout-constrained {
+		max-width:var(--vk-width-editor-container);
+		margin-left:auto;
+		margin-right:auto;
+	}
+	:is(
+		.alignfull,
+		.alignfull.vk_slider,
+		[data-align=full],
+		.is-layout-constrained > [data-align=full]
+	){
+		width:var(--vk-width-full);
 		max-width:var(--vk-width-full);
 	}
-	.is-layout-constrained > [data-align=full]{
-		max-width:var(--vk-width-full);
-	}
-	.alignwide,
-	[data-align=wide]{
-		max-width:var(--vk-width-wide);
-	}
-	.is-layout-constrained > [data-align=wide]{
+	:is(
+		.alignwide,
+		[data-align=wide],
+		.is-layout-constrained > [data-align=wide]
+	){
+		width:var(--vk-width-wide);
 		max-width:var(--vk-width-wide);
 	}
 	// 旧 Bootstrap 用 padding リセット
@@ -153,5 +160,13 @@ html :where(.wp-block) {
 			margin-left:auto;
 			margin-right:auto;
 		}
+	}
+	.is-layout-constrained > [data-align=full] {
+		margin-left:calc( ( var(--vk-width-editor-container) - var(--vk-width-full) ) / 2 );
+		margin-right:calc( ( var(--vk-width-editor-container) - var(--vk-width-full) ) / 2 );
+	}
+	.is-layout-constrained > [data-align=wide] {
+		margin-left:calc( ( var(--vk-width-editor-container) - var(--vk-width-full) ) / 4 );
+		margin-right:calc( ( var(--vk-width-editor-container) - var(--vk-width-full) ) / 4 );
 	}
 }
