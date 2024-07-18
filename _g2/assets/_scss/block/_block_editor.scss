@@ -1,4 +1,9 @@
 // editor only
+.editor-styles-wrapper {
+	.editor-post-title {
+		margin-bottom:1em;
+	}
+}
 .edit-post-visual-editor .editor-styles-wrapper {
 	kbd {
 		background-color: var(--vk-color-accent-bg);
