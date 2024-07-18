@@ -107,16 +107,25 @@ html :where(.wp-block) {
 :is(
 	.editor-styles-wrapper,
 	.components-tab-panel__tab-content 
-) .vk_outer-width-full:is(
+) {
+	.vk_outer-width-full:is(
 		.vk_outer-paddingLR-use,
-		.vk_outer-paddingLR-zero
-	) .wp-block:where(:not( 
-	.alignfull, 
-	.alignwide, 
-	[data-align="wide"], 
-	[data-align="full"] 
-	)) .is-layout-constrained {
-	--vk-width-container:var(--vk-width-editor-container);
+		.vk_outer-paddingLR-zero,
+		.vk_outer-paddingLR-none
+	) {
+		.wp-block:where(:not( 
+			.alignfull, 
+			.alignwide, 
+			[data-align="wide"], 
+			[data-align="full"] 
+			)) .is-layout-constrained {
+				--vk-width-container:var(--vk-width-editor-container);
+			}
+			.alignwide,
+			[data-align="wide"] {
+				--vk-width-container:var(--vk-width-editor-container);
+			}
+	}
 }
 
 //////////////////////////////////////////////////////////////
