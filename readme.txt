@@ -37,6 +37,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G2 ][ Specification Change ][ 6.6 ] Refactoring the width handling of the edit screen
+
 v15.26.1
 [ G3 with theme.json ][ Specification Change ] add fontSizes preset on theme.json.
 
