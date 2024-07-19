@@ -354,6 +354,9 @@ body .wp-block-image figure {
 hr.wp-block-separator {
 	border-color: var(--vk-color-border-hr);
 	border-bottom:none;
+	&:not(.is-style-dots){
+		border-top-width:1px;
+	}
 }
 
 /*-------------------------------------------*/

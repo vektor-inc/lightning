@@ -347,6 +347,16 @@ body .wp-block-image figure {
 		margin-bottom: 0;
 	}
 }
+/*-------------------------------------------*/
+/*  hr block
+/*-------------------------------------------*/
+hr.wp-block-separator {
+	border-color: var(--vk-color-border-hr);
+	border-bottom:none;
+	&:not(.is-style-dots){
+		border-top-width:1px;
+	}
+}
 
 /*-------------------------------------------*/
 /*  cover block
