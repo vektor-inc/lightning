@@ -101,6 +101,12 @@ html :where(.wp-block) {
 		width:var(--vk-width-wide);
 		max-width:var(--vk-width-wide);
 	}
+	// 画像ブロックの幅指定（公開画面側が100%指定しているので上書き）
+	.is-root-container > .wp-block-image {
+		max-width:var(--vk-width-editor-container);
+		margin-left:auto;
+		margin-right:auto;
+	}
 	// 旧 Bootstrap 用 padding リセット
 	:is( .alignfull, .alignwide ) div[class*=__inner-container] {
 		--vk-width-container:var(--vk-width-editor-container);
