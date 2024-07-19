@@ -145,6 +145,11 @@ body .wp-block-image figure {
 		// コアのカラーパレットのCSSが !important 付けてくるのでやむなく !important
 		color:#fff !important;
 	}
+	&.is-style-outline {
+		& > .wp-block-button__link{
+			background-color:transparent; // 6.6で コアのデフォルトスタイルが負けるようになり、背景色がついてしまうので追加
+		}
+	}
 }
 .wp-block-button__link {
 	padding-top: calc( 0.5em + 1px );
@@ -347,10 +352,9 @@ body .wp-block-image figure {
 /*  cover block
 /*-------------------------------------------*/
 // WP6.3からwp-block-cover にoverflow: clip; がついて、中に幅広・全幅ブロックを設置しても見切れてしまうようになったため追加
-.wp-block-cover:has( * > :is( .alignwide , .alignfull )){
+.wp-block-cover:has( .alignwide , .alignfull, [data-align=wide], [data-align=full]){
 	overflow: visible;
 }
-
 /*-------------------------------------------*/
 /*  image Block
 /*-------------------------------------------*/

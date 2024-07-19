@@ -12,6 +12,9 @@
 	font-size : 36px;
 }
 
+.block-editor-block-list__layout{
+	box-sizing: border-box;
+}
 
 /* カラム（水平）で点線と余白ができる */
 .vk_post .row {
@@ -126,12 +129,15 @@ body .wp-block-image figure {
 		border-radius: var(--vk-size-radius);
 	}
 	&.is-style-outline {
-		& > .wp-block-button__link:hover {
-			// コアのカラーパレットのCSSが !important 付けてくるのでやむなく !important
-			filter: brightness(1) saturate(1);
-			color:#fff !important;
-			border-color: var(--vk-color-primary-vivid);
-			background-color: var(--vk-color-primary-vivid) !important;
+		& > .wp-block-button__link{
+			background-color:transparent; // 6.6で コアのデフォルトスタイルが負けるようになり、背景色がついてしまうので追加
+			&:hover {
+				// コアのカラーパレットのCSSが !important 付けてくるのでやむなく !important
+				filter: brightness(1) saturate(1);
+				color:#fff !important;
+				border-color: var(--vk-color-primary-vivid);
+				background-color: var(--vk-color-primary-vivid) !important;
+			}
 		}
 	}
 }

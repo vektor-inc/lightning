@@ -25,10 +25,10 @@ entry-body
 	.wp-block-cover-image,
 	.wp-block-cover
 	) {
-		width:auto; /* Don't use 100vw!! cope with windows */
+		width:auto; /* Don't use 100svw!! cope with windows */
 		margin-left: calc(50% - 50vw);
 		margin-right: calc(50% - 50vw);
-		max-width: 100vw;
+		max-width: var(--vk-width-full);
 	}
 }
 .alignwide {
@@ -41,17 +41,17 @@ entry-body
 	) {
 		// --vk-width-container != 100% なので注意
 		// Lightningの幅広 = コンテナの「表示エリア（100%）	」 + 左右余白分の丁度半分
-		width: calc( 100% + ( 100vw - 100% ) / 2 );
-		margin-left: calc( ( 100% - 100vw ) / 4 );
-		margin-right: calc( ( 100% - 100vw ) / 4 );
-		max-width: 100vw;
+		width: calc( 100% + ( var(--vk-width-full) - 100% ) / 2 );
+		margin-left: calc( ( 100% - var(--vk-width-full) ) / 4 );
+		margin-right: calc( ( 100% - var(--vk-width-full) ) / 4 );
+		max-width: var(--vk-width-full);
 	}
 }
 // 通常サイズの中に幅広対策
 :is(.wp-block-cover,.wp-block-group):not(.alignfull,.alignwide){
 	& > .is-layout-constrained > .alignwide {
-		margin-left: calc( ( 100% - 100vw ) / 4 ) !important;
-		margin-right: calc( ( 100% - 100vw ) / 4 ) !important;
+		margin-left: calc( ( 100% - var(--vk-width-full) ) / 4 ) !important;
+		margin-right: calc( ( 100% - var(--vk-width-full) ) / 4 ) !important;
 	}
 }
 
@@ -64,8 +64,8 @@ entry-body
 // を入れられて幅広にならないので打ち消し処理
 body :where(.alignfull,.alignwide):where(:not(.vk_outer-paddingLR-zero)) .is-layout-constrained {
 	& > .alignwide {
-		margin-left: calc( ( 100% - 100vw ) / 4 ) !important;
-		margin-right: calc( ( 100% - 100vw ) / 4 ) !important;
+		margin-left: calc( ( 100% - var(--vk-width-full) ) / 4 ) !important;
+		margin-right: calc( ( 100% - var(--vk-width-full) ) / 4 ) !important;
 	}
 }
 
