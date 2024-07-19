@@ -352,10 +352,9 @@ body .wp-block-image figure {
 /*  cover block
 /*-------------------------------------------*/
 // WP6.3からwp-block-cover にoverflow: clip; がついて、中に幅広・全幅ブロックを設置しても見切れてしまうようになったため追加
-.wp-block-cover:has( * > :is( .alignwide , .alignfull )){
+.wp-block-cover:has( .alignwide , .alignfull, [data-align=wide], [data-align=full]){
 	overflow: visible;
 }
-
 /*-------------------------------------------*/
 /*  image Block
 /*-------------------------------------------*/
