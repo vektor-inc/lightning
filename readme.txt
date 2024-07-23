@@ -37,6 +37,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 / G2 ][ Design Bug Fix ] Fix the background url of the submenu icon to a CSS variable.
+
 v15.26.2
 [ G2 ][ Specification Change ][ 6.6 ] Refactoring the width handling of the edit screen
 
