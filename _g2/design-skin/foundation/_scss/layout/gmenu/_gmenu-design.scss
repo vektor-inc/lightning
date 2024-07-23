@@ -32,6 +32,7 @@ $menu_padding_horizontal: 1.2em;
 	a {
 		color: $g_nav_font_color;
 		height: 100%;
+		text-decoration: none;
 	}
 	a:hover,
 	a:active,
@@ -39,7 +40,6 @@ $menu_padding_horizontal: 1.2em;
 		background-color: $g_nav_bg_hover_color;
 		transition: background-color 0.4s;
 		color: $g_nav_font_color;
-		text-decoration: none;
 	}
 	li {
 		margin: 0;
