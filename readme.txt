@@ -37,6 +37,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ Specification Change ] Update VK Components.
+
 [ G2 ][ Design Bug Fix ] Fix 'a tag' style for global menu in WP 6.6.
 v15.26.2
 [ G2 ][ Specification Change ][ 6.6 ] Refactoring the width handling of the edit screen
