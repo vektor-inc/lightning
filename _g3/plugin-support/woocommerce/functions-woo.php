@@ -15,7 +15,7 @@ function lightning_add_woocommerce_support() {
 }
 add_action( 'after_setup_theme', 'lightning_add_woocommerce_support' );
 
-require_once dirname( __FILE__ ) . '/customize.php';
+require_once __DIR__ . '/customize.php';
 
 /**
  * Load WooCommerce CSS
@@ -88,6 +88,5 @@ function lightning_widgets_init_product() {
 			'after_title'   => '</h4>',
 		)
 	);
-
 }
 add_action( 'widgets_init', 'lightning_widgets_init_product' );
