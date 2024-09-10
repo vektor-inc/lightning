@@ -37,7 +37,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
-[ Specification Change ] Update VK Components.
+[ G3 ][ Bug fix ] Fixed an issue where the WooCommerce CSS file failed to load on the edit screen when using WooCommerce.
+[ Other ] Update VK Component Posts.
 
 [ G2 ][ Design Bug Fix ] Fix 'a tag' style for global menu in WP 6.6.
 v15.26.2
