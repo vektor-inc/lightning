@@ -36,7 +36,7 @@ https://www.vektor-inc.co.jp/inquiry/
 
 
 == Changelog ==
-[ G3 ][ Design Bug Fix ] Fixed padding of recent entries widget li to none
+[ G3 / G2 ][ Design Bug Fix ] Fixed padding of recent entries widget li to none
 
 v15.26.3
 [ G3 ][ Bug fix ] Fixed an issue where the WooCommerce CSS file failed to load on the edit screen when using WooCommerce.
