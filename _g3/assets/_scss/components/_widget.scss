@@ -110,7 +110,10 @@
         display:block; overflow:hidden;
         font-size:var(--vk-size-text-xs);
     }
-    li{
-        padding: unset;
-    }
+	footer &{
+		li {
+			padding-top:.7rem;
+			padding-bottom:.7rem;
+		}
+	}
 }
