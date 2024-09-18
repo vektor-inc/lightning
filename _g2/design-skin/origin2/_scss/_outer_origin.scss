@@ -113,3 +113,14 @@ footer.siteFooter .widget .tagcloud a {
 	border: 1px solid rgba(0, 0, 0, 0.1);
 	background-color: rgba(255, 255, 255, 0.8);
 }
+
+/*-------------------------------------------*/
+/*      .wp-block-latest-posts Reset css
+/*-------------------------------------------*/
+.widget_recent_entries .wp-block-latest-posts li{
+	padding:unset;
+	border-bottom: unset;
+	&>a{
+		margin-bottom: 0;
+	}
+}
