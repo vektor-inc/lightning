@@ -2,7 +2,7 @@
 Lightning WordPress theme, Copyright (C) 2015-2024 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
 Tested up to: 6.6
-Stable tag: 15.26.2
+Stable tag: 15.26.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,9 +37,14 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
-[ Specification Change ] Update VK Components.
+v15.26.4
+[ G3 / G2 ][ Design Bug Fix ] Fixed padding of recent entries widget li to none
 
+v15.26.3
+[ G3 ][ Bug fix ] Fixed an issue where the WooCommerce CSS file failed to load on the edit screen when using WooCommerce.
 [ G2 ][ Design Bug Fix ] Fix 'a tag' style for global menu in WP 6.6.
+[ Other ] Update VK Component Posts.
+
 v15.26.2
 [ G2 ][ Specification Change ][ 6.6 ] Refactoring the width handling of the edit screen
 

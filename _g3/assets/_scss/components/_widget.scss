@@ -17,9 +17,8 @@
     }
     li {
         margin-top:0.8em;
-        margin-top:0.8em;
     }
-    &:last-child(){
+    &:last-child{
         margin-bottom:0;
     }
 }
@@ -111,4 +110,10 @@
         display:block; overflow:hidden;
         font-size:var(--vk-size-text-xs);
     }
+	footer &{
+		li {
+			padding-top:.7rem;
+			padding-bottom:.7rem;
+		}
+	}
 }

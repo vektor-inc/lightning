@@ -200,6 +200,12 @@ body .wp-block-image figure {
 			border-bottom: none;
 		}
 	}
+	&.wp-block-latest-posts__list {
+		padding-left:0;
+		li {
+			margin:0;
+		}
+	}
 	li {
 		margin: 0;
 		padding: 1rem 0;
@@ -208,9 +214,11 @@ body .wp-block-image figure {
 			color: var(--vk-color-text-body);
 			text-decoration: none;
 			display:block; overflow:hidden;
-			margin-bottom:var(--vk-margin-meta);
 			&:hover{
 				text-decoration: underline;
+			}
+			&:where(:not(:last-child)) {
+				margin-bottom:var(--vk-margin-meta);
 			}
 		}
 		&:after {
