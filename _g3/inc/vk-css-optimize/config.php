@@ -68,7 +68,7 @@ function lightning_css_tree_shaking_js_added_class( $jsaddlist ) {
 	);
 	$jsaddlist      = array_merge( $jsaddlist, $exclude_classes_array );
 
-	return $$jsaddlist;
+	return $jsaddlist;
 }
 add_filter( 'css_tree_shaking_js_added_class', 'lightning_css_tree_shaking_js_added_class' );
 
