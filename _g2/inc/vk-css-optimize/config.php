@@ -33,9 +33,9 @@ add_filter( 'vk_css_tree_shaking_handles', 'lightning_css_tree_shaking_handles' 
 /**
  * CSS Tree Shaking Exclude
  *
- * @param array $inidata CSS Tree Shaking Exclude Paramator.
+ * @param array $jsaddlist CSS Tree Shaking Exclude Paramator.
  */
-function lightning_css_tree_shaking_exclude_class( $inidata ) {
+function lightning_css_tree_shaking_exclude_class( $jsaddlist ) {
 	$exclude_classes_array = array(
 		'customize-partial-edit-shortcut',
 		'vk_post',
@@ -64,9 +64,9 @@ function lightning_css_tree_shaking_exclude_class( $inidata ) {
 		'vk_post-col-xl-2',
 		'vk_post-btn-display',
 	);
-	$inidata['class']      = array_merge( $inidata['class'], $exclude_classes_array );
+	$jsaddlist      = array_merge( $jsaddlist, $exclude_classes_array );
 
-	return $inidata;
+	return $jsaddlist;
 }
 add_filter( 'css_tree_shaking_exclude', 'lightning_css_tree_shaking_exclude_class' );
 
