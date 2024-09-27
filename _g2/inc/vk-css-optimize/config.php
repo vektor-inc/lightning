@@ -68,7 +68,7 @@ function lightning_css_tree_shaking_exclude_class( $jsaddlist ) {
 
 	return $jsaddlist;
 }
-add_filter( 'css_tree_shaking_exclude', 'lightning_css_tree_shaking_exclude_class' );
+add_filter( 'css_tree_shaking_js_added_class', 'lightning_css_tree_shaking_exclude_class' );
 
 
 function lightning_css_optimize_options_default( $vk_css_optimize_options_default ) {
