@@ -183,12 +183,11 @@ function lightning_common_style() {
 	if ( ! $options || ( ! empty( $options['theme_json'] ) ) ) {
 		// theme_json = true.
 		$style = get_template_directory_uri() . '/assets/css/style-theme-json.css';
-		wp_enqueue_style( 'lightning-common-style', $style, array(), LIGHTNING_THEME_VERSION );
 	} else {
 		// theme_json = false.
 		$style = get_template_directory_uri() . '/assets/css/style.css';
-		wp_enqueue_style( 'lightning-common-style', $style, array(), LIGHTNING_THEME_VERSION );
 	}
+	wp_enqueue_style( 'lightning-common-style', $style, array(), LIGHTNING_THEME_VERSION );
 }
 
 /**
