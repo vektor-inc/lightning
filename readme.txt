@@ -37,6 +37,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ Bug fix ] Fixed an issue where the layout was unexpectedly altered because the CSS from theme.json was prioritized over VK Blocks.
+
 v15.26.4
 [ G3 / G2 ][ Design Bug Fix ] Fixed padding of recent entries widget li to none
 
