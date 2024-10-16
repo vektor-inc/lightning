@@ -169,7 +169,7 @@ require __DIR__ . '/inc/starter-content.php';
 function lightning_load_css_action() {
 	add_action( 'wp_enqueue_scripts', 'lightning_common_style' );
 	add_action( 'wp_enqueue_scripts', 'lightning_theme_style' );
-	add_action( 'wp_enqueue_scripts', 'enqueue_vk_blocks_after_theme');
+	add_action( 'wp_enqueue_scripts', 'vk_blocks_styles_after_lightning');
 }
 add_action( 'after_setup_theme', 'lightning_load_css_action' );
 
@@ -205,7 +205,7 @@ function lightning_theme_style() {
  *
  * @return void
  */
-function enqueue_vk_blocks_after_theme() {
+function vk_blocks_styles_after_lightning() {
 
 	if ( defined( 'VK_BLOCKS_DIR_URL' ) ) {
 
