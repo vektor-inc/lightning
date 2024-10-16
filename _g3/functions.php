@@ -169,6 +169,7 @@ require __DIR__ . '/inc/starter-content.php';
 function lightning_load_css_action() {
 	add_action( 'wp_enqueue_scripts', 'lightning_common_style' );
 	add_action( 'wp_enqueue_scripts', 'lightning_theme_style' );
+	add_action( 'wp_enqueue_scripts', 'enqueue_vk_blocks_after_theme');
 }
 add_action( 'after_setup_theme', 'lightning_load_css_action' );
 
@@ -182,11 +183,12 @@ function lightning_common_style() {
 	if ( ! $options || ( ! empty( $options['theme_json'] ) ) ) {
 		// theme_json = true.
 		$style = get_template_directory_uri() . '/assets/css/style-theme-json.css';
+		wp_enqueue_style( 'lightning-common-style', $style, array(), LIGHTNING_THEME_VERSION );
 	} else {
 		// theme_json = false.
 		$style = get_template_directory_uri() . '/assets/css/style.css';
+		wp_enqueue_style( 'lightning-common-style', $style, array(), LIGHTNING_THEME_VERSION );
 	}
-	wp_enqueue_style( 'lightning-common-style', $style, array(), LIGHTNING_THEME_VERSION );
 }
 
 /**
@@ -196,6 +198,22 @@ function lightning_common_style() {
  */
 function lightning_theme_style() {
 	wp_enqueue_style( 'lightning-theme-style', get_stylesheet_uri(), array(), LIGHTNING_THEME_VERSION );
+}
+
+/**
+ * Change the order of vk-blocks CSS to load after the theme's CSS
+ * テーマのCSSが読み込まれた後に vk-blocks のCSSを読み込む処理
+ *
+ * @return void
+ */
+function enqueue_vk_blocks_after_theme() {
+	// vk-blocks-build-css が既に読み込まれている場合は一旦デキュー
+	if ( wp_style_is( 'vk-blocks-build-css', 'enqueued' ) ) {
+		wp_dequeue_style( 'vk-blocks-build-css' );
+	}
+
+	// テーマのCSSが読み込まれた後に vk-blocks のCSSを再度エンキュー
+	wp_enqueue_style( 'vk-blocks-build-css', VK_BLOCKS_DIR_URL . 'build/block-build.css', array( 'lightning-common-style', 'vk-swiper-style' ), VK_BLOCKS_VERSION );
 }
 
 /*********************************************
