@@ -207,13 +207,17 @@ function lightning_theme_style() {
  * @return void
  */
 function enqueue_vk_blocks_after_theme() {
-	// vk-blocks-build-css が既に読み込まれている場合は一旦デキュー
-	if ( wp_style_is( 'vk-blocks-build-css', 'enqueued' ) ) {
-		wp_dequeue_style( 'vk-blocks-build-css' );
-	}
 
-	// テーマのCSSが読み込まれた後に vk-blocks のCSSを再度エンキュー
-	wp_enqueue_style( 'vk-blocks-build-css', VK_BLOCKS_DIR_URL . 'build/block-build.css', array( 'lightning-common-style', 'vk-swiper-style' ), VK_BLOCKS_VERSION );
+	if ( defined( 'VK_BLOCKS_DIR_URL' ) ) {
+
+		if ( wp_style_is( 'vk-blocks-build-css', 'enqueued' ) ) {
+			wp_dequeue_style( 'vk-blocks-build-css' );
+		}
+
+		wp_enqueue_style( 'vk-blocks-build-css', VK_BLOCKS_DIR_URL . 'build/block-build.css', array( 'lightning-common-style', 'vk-swiper-style' ), VK_BLOCKS_VERSION );
+	} else {
+		return;
+	}
 }
 
 /*********************************************
