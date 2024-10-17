@@ -52,7 +52,7 @@ $color_font_default: #333;
 }
 
 .vk-menu-acc .acc-btn {
-	border: 1px solid var(--vk-menu-acc-btn-border-color);
+	border: 1px solid $color_font_default;
 	background: var(--vk-menu-acc-icon-open-black-bg-src) center 50% no-repeat;
 }
 .vk-menu-acc .acc-btn-close {

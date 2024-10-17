@@ -28,7 +28,7 @@
 		height: 28px;
 		border: 1px solid $color_font_default;
 		border-radius: 2px;
-		background: url("../images/vk-menu-acc-icon-open-white.svg") center 50%
+		background: var(--vk-menu-acc-icon-open-white-bg-src) center 50%
 			no-repeat;
 		background-size: 28px 28px;
 		cursor: pointer;
@@ -45,7 +45,7 @@
 	}
 	.acc-btn-close {
 		// transform: rotate(180deg);
-		background: url("../images/vk-menu-btn-close.svg") center 50% no-repeat;
+		background: var(--vk-menu-acc-icon-close-white-bg-src) center 50% no-repeat;
 	}
 	ul.sub-menu {
 		max-height: 0;

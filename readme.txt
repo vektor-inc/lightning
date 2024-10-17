@@ -37,6 +37,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 / G2 ][ Design Bug Fix ] Fix an isshe where mobile nav dropdown icon link error ( update vk mobile nav 0.3.2 )
+
 v15.26.4
 [ G3 / G2 ][ Design Bug Fix ] Fixed padding of recent entries widget li to none
 
