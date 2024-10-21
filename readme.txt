@@ -37,7 +37,7 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
-[ G3 ][ Bug fix ] Fixed an issue where styles were incorrectly applied to specific block elements.
+[ G3 ][ Design Bug Fix ] Fixed an issue where styles were incorrectly applied to horizontal elements in the core Group block.
 
 v15.26.5
 [ G3 / G2 ][ Design Bug Fix ] Fix an isshe where mobile nav dropdown icon link error ( update vk mobile nav 0.3.2 )
