@@ -37,6 +37,7 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ Design Bug Fix ] Fixed an issue where styles were incorrectly applied to horizontal elements in the core Group block.
 [ G3 / G2 ][ Specification Change ] Add filter vk_post_taxonomies_html ( Update VK Components 1.6.1 )
 
 v15.26.5
