@@ -3,7 +3,7 @@
  * VK Components Posts
  *
  * @package VK Component
- * @version 1.6.0
+ * @version 1.6.1
  *
  * *********************** CAUTION ***********************
  * The original of this file is located at:
@@ -136,14 +136,12 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 			$loop_outer_class_post_types = array();
 			if ( ! isset( $wp_query->query['post_type'] ) ) {
 				$loop_outer_class_post_types[] = 'vk_posts-postType-post';
-			} else {
-				if ( is_array( $wp_query->query['post_type'] ) ) {
-					foreach ( $wp_query->query['post_type'] as $key => $value ) {
-						$loop_outer_class_post_types[] = 'vk_posts-postType-' . $value;
-					}
-				} else {
-					$loop_outer_class_post_types[] = 'vk_posts-postType-' . $wp_query->query['post_type'];
+			} elseif ( is_array( $wp_query->query['post_type'] ) ) {
+				foreach ( $wp_query->query['post_type'] as $key => $value ) {
+					$loop_outer_class_post_types[] = 'vk_posts-postType-' . $value;
 				}
+			} else {
+				$loop_outer_class_post_types[] = 'vk_posts-postType-' . $wp_query->query['post_type'];
 			}
 
 			$loop_outer_class_post_types[] = 'vk_posts-layout-' . $options['layout'];
@@ -207,7 +205,7 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				$vk_posts_loop_item_count = 0;
 
 				while ( $wp_query->have_posts() ) {
-					$vk_posts_loop_item_count++;
+					++$vk_posts_loop_item_count;
 
 					$wp_query->the_post();
 					global $post;
@@ -716,12 +714,16 @@ if ( ! class_exists( 'VK_Component_Posts' ) ) {
 				}
 				if ( $taxonomies ) {
 					$html .= '<div class="vk_post_taxonomies">';
+
+					// 各タクソノミーの処理
+					$taxonomies_html = '';
 					foreach ( $taxonomies as $key => $value ) {
-						$html .= '<dl class="vk_post_taxonomy vk_post_taxonomy-' . $key . '">' . $value . '</dl>';
+						$taxonomies_html .= '<dl class="vk_post_taxonomy vk_post_taxonomy-' . $key . '">' . $value . '</dl>';
 					} // foreach
+
+					$html .= apply_filters( 'vk_post_taxonomies_html', $taxonomies_html );
 					$html .= '</div>';
 				}
-				
 			}
 
 			$html .= apply_filters( 'vk_post_taxonomies_after', '' );
