@@ -14,7 +14,7 @@ figure{
 p,
 ul,
 ol,
-dl,
+dl:where(:not(.vk_post_taxonomy)), // editorで 投稿リストブロックの vk_post_taxonomy にmarginがついてしまうため除外
 blockquote,
 iframe {
 	margin-bottom:var(--vk-margin-element-bottom);
