@@ -177,6 +177,9 @@ $xxl-min: 1400px;
 	a:hover {
 		text-decoration: none;
 	}
+	&_body {
+		box-sizing: border-box;
+	}
 	&_imgOuter {
 		position: relative;
 		&_singleTermLabel {
