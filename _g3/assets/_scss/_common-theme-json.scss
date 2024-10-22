@@ -83,7 +83,7 @@ body .container :is( .is-layout-flow, .is-layout-constrained ) {
 	p,
 	ul,
 	ol,
-	dl,
+	dl:where(:not(.vk_post_taxonomy)), // vk_post_taxonomy は除外
 	blockquote,
 	iframe {
 		&:where(:not(:last-child)){
