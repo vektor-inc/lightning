@@ -37,6 +37,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 / G2 ][ Bug fix ] fix unit control width on editor.
+
 v15.27.0
 [ G3 / G2 ][ Specification Change ] Add filter vk_post_taxonomies_html ( Update VK Components 1.6.1 )
 [ G3 ][ Design Bug Fix ] Fixed an issue where styles were incorrectly applied to horizontal elements in the core Group block.
