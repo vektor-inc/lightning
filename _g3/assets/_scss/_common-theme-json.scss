@@ -114,7 +114,7 @@ div[class*=wp-container-] > * + * {
 //     margin-block-end: 0;
 // }
 .wp-block-column,
-.wp-block-group {
+.wp-block-group:where(:not(.is-layout-flex)) { // 6.0 で追加された is-layout-flex は除外
 	&[class*=wp-container-] > :is( p,ul,ol,dl ) {
 		margin-block-start:unset;
 		margin-block-end:var(--vk-margin-element-bottom);

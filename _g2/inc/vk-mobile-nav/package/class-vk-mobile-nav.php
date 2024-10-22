@@ -90,7 +90,7 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 				$btn_additional_class = ' position-right';
 			}
 
-			$menu_btn_text = apply_filters( 'vk_mobile_nav_menu_btn_text', __( 'MENU', 'vk-mobile-nav' ) );
+			$menu_btn_text = apply_filters( 'vk_mobile_nav_menu_btn_text', __( 'MENU', 'lightning' ) );
 			$menu_btn      = '<div id="vk-mobile-nav-menu-btn" class="vk-mobile-nav-menu-btn' . $btn_additional_class . '">' . $menu_btn_text . '</div>';
 
 			if ( class_exists( 'Vk_Mobile_Fix_Nav' ) ) {
