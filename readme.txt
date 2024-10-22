@@ -37,6 +37,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ Bug fix ] Fixed an issue where the button overflowed in the Media Layout of the VK Post List block on the editing screen ( Update VK Components 1.6.2 )
+
 v15.27.0
 [ G3 / G2 ][ Specification Change ] Add filter vk_post_taxonomies_html ( Update VK Components 1.6.1 )
 [ G3 ][ Design Bug Fix ] Fixed an issue where styles were incorrectly applied to horizontal elements in the core Group block.
