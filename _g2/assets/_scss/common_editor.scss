@@ -10,17 +10,17 @@
 @import "common-editor";
 
 // 単位選択のプルダウン WP6.0調整上書き
-// 長い単位に対応
 .components-unit-control__select {
 	margin-bottom:0;
-	padding-left: 0 !important;
-	padding-right: 0 !important;
-	margin-right: 4px !important;
 }
-
 // 長い単位に対応
-.components-input-control__input {
-	padding: 0 4px 0 8px !important;
+.components-base-control .components-input-control__container select.components-unit-control__select {
+	max-width: 38px;
+	padding-left:0;
+	padding-right:0;
+}
+.components-base-control .components-input-control__container input.components-input-control__input {
+	padding-left:8px;
 }
 
 // URL入力欄のフォーム WP6.0調整上書き
