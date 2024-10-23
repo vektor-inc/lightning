@@ -13,6 +13,15 @@
 .components-unit-control__select {
 	margin-bottom:0;
 }
+// 長い単位に対応
+.components-base-control .components-input-control__container select.components-unit-control__select {
+	max-width: 38px;
+	padding-left:0;
+	padding-right:0;
+}
+.components-base-control .components-input-control__container input.components-input-control__input {
+	padding-left:8px;
+}
 
 // URL入力欄のフォーム WP6.0調整上書き
 input[type="text"].block-editor-media-placeholder__url-input-field{
