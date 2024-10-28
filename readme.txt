@@ -37,6 +37,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ Editor Design Bug Fix ] Fixed a bug in the design of the editor when the slider was set to alignfull and the outer was set to alignfull.
+
 v15.27.1
 [ G3 / G2 ][ Bug fix ] fix unit control width on editor.
 [ G3 / G2 ][ Bug fix ] Fixed an issue where the button overflowed in the Media Layout of the VK Post List block on the editing screen ( Update VK Components 1.6.2 )
