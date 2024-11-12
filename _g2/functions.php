@@ -134,6 +134,11 @@ function lightning_theme_setup() {
 		add_option( 'lightning_theme_options', $theme_options_default );
 		$lightning_theme_options = $theme_options_default;
 	}
+
+	if ( is_customize_preview() ) {
+		require __DIR__ . '/inc/starter-content.php';
+		add_theme_support( 'starter-content', lightning_add_starter_content() );
+	}
 }
 
 /*
@@ -246,8 +251,6 @@ require __DIR__ . '/inc/template-redirect.php';
 require __DIR__ . '/inc/layout-controller/layout-controller.php';
 require __DIR__ . '/inc/vk-footer-customize/vk-footer-customize-config.php';
 require __DIR__ . '/inc/vk-css-optimize/config.php';
-
-require __DIR__ . '/inc/starter-content.php';
 
 /*
 	Plugin support
