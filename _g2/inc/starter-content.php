@@ -1,8 +1,4 @@
 <?php
-add_action( 'after_setup_theme', 'lightning_add_starter_content' );
-if ( is_customize_preview() ) {
-	add_theme_support( 'starter-content', lightning_add_starter_content() );
-}
 function lightning_add_starter_content() {
 	$starter_content = array(
 		'posts'     => array(

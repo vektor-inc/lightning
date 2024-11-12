@@ -141,6 +141,12 @@ function lightning_theme_setup() {
 		$content_width = 1140;
 	}
 	load_theme_textdomain( 'lightning', get_template_directory() . '/languages' );
+
+	if ( is_customize_preview() ) {
+		require __DIR__ . '/inc/starter-content.php';
+		add_theme_support( 'starter-content', lightning_add_starter_content() );
+	}
+
 }
 add_action( 'after_setup_theme', 'lightning_theme_setup' );
 
@@ -161,7 +167,6 @@ require __DIR__ . '/inc/ltg-g3-slider/config.php';
 require __DIR__ . '/inc/vk-wp-oembed-blog-card/config.php';
 require __DIR__ . '/inc/vk-breadcrumb/config.php'; // fall back alias.
 
-require __DIR__ . '/inc/starter-content.php';
 
 /*********************************************
  * Load CSS
