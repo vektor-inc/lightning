@@ -1,13 +1,12 @@
 <?php
+/**
+ * Package Manager
+ *
+ * @package vektor-inc/lightning
+ */
 
-/*-------------------------------------------*/
-/*	Load Package
-/*-------------------------------------------*/
-/*	customize_register
-/*-------------------------------------------*/
-
-/*-------------------------------------------*/
-/*	Load Package
+/*
+	Load Package
 /*-------------------------------------------*/
 add_action( 'after_setup_theme', 'Lightning_load_packages' );
 function Lightning_load_packages() {
