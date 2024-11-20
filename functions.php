@@ -5,7 +5,7 @@ define( 'LIG_G2_DIR', '_g2' );
 
 define( 'LIG_DEBUG', false );
 
-require_once dirname( __FILE__ ) . '/vendor/autoload.php';
+require_once __DIR__ . '/vendor/autoload.php';
 
 if ( true === LIG_DEBUG ) {
 	function lightning_debug_mode() {
@@ -60,7 +60,7 @@ function lightning_is_g3() {
 	return apply_filters( 'lightning_is_g3', $return );
 }
 
-require dirname( __FILE__ ) . '/inc/class-ltg-template-redirect.php';
+require __DIR__ . '/inc/class-ltg-template-redirect.php';
 
 /**
  * 最終的に各Gディレクトリに移動
@@ -149,25 +149,24 @@ if ( ! function_exists( 'lightning_get_template_part' ) ) {
 				break;
 			}
 		}
-
 	}
 }
 
 if ( lightning_is_g3() ) {
-	require dirname( __FILE__ ) . '/' . LIG_G3_DIR . '/functions.php';
+	require __DIR__ . '/' . LIG_G3_DIR . '/functions.php';
 } else {
-	require dirname( __FILE__ ) . '/' . LIG_G2_DIR . '/functions.php';
+	require __DIR__ . '/' . LIG_G2_DIR . '/functions.php';
 }
 
-require dirname( __FILE__ ) . '/inc/customize-basic.php';
-require dirname( __FILE__ ) . '/inc/tgm-plugin-activation/tgm-config.php';
-require dirname( __FILE__ ) . '/inc/vk-old-options-notice/vk-old-options-notice-config.php';
-require dirname( __FILE__ ) . '/inc/admin-mail-checker.php';
-require dirname( __FILE__ ) . '/inc/functions-compatible.php';
-require dirname( __FILE__ ) . '/inc/font-awesome/font-awesome-config.php';
-require dirname( __FILE__ ) . '/inc/old-page-template.php';
+require __DIR__ . '/inc/customize-basic.php';
+require __DIR__ . '/inc/tgm-plugin-activation/tgm-config.php';
+require __DIR__ . '/inc/vk-old-options-notice/vk-old-options-notice-config.php';
+require __DIR__ . '/inc/admin-mail-checker.php';
+require __DIR__ . '/inc/functions-compatible.php';
+require __DIR__ . '/inc/font-awesome/font-awesome-config.php';
+require __DIR__ . '/inc/old-page-template.php';
 
-require dirname( __FILE__ ) . '/inc/class-ltg-theme-json-activator.php';
+require __DIR__ . '/inc/class-ltg-theme-json-activator.php';
 new LTG_Theme_Json_Activator();
 
 /**
@@ -204,12 +203,10 @@ function lightning_change_generation( $old_value, $value, $option ) {
 			$new_skin = esc_attr( $options[ 'previous_skin_' . $value ] );
 
 			// 前のスキンが保存されていない場合
-		} else {
-			if ( 'g3' === $value ) {
+		} elseif ( 'g3' === $value ) {
 				$new_skin = 'origin3';
-			} else {
-				$new_skin = 'origin2';
-			}
+		} else {
+			$new_skin = 'origin2';
 		}
 		update_option( 'lightning_design_skin', $new_skin );
 	}

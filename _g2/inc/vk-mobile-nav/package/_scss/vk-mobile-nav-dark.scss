@@ -8,12 +8,12 @@ $color_font_default: rgba(255, 255, 255, 0.8);
 
 .vk-mobile-nav-menu-btn {
 	border-color: $color_font_default;
-	background: url("../images/vk-menu-close-white.svg") center 50% no-repeat
+	background: var(--vk-menu-acc-icon-close-white-bg-src) center 50% no-repeat
 		rgba(0, 0, 0, 0.8);
 }
 .vk-mobile-nav-menu-btn.menu-open {
 	border-color: $color_font_default;
-	background: url("../images/vk-menu-close-white.svg") center 50% no-repeat
+	background: var(--vk-menu-acc-icon-close-white-bg-src) center 50% no-repeat
 		rgba(0, 0, 0, 0.8);
 }
 
@@ -41,9 +41,10 @@ $color_font_default: rgba(255, 255, 255, 0.8);
 
 .vk-menu-acc .acc-btn {
 	border: 1px solid $color_font_default;
-	background: url("../images/vk-menu-acc-icon-open-white.svg") center 50%
+	background: var(--vk-menu-acc-icon-open-white-bg-src) center 50%
 		no-repeat;
 }
 .vk-menu-acc .acc-btn-close {
-	background: url("../images/vk-menu-close-white.svg") center 50% no-repeat;
+	background: var(--vk-menu-acc-icon-close-white-bg-src) center 50%
+		no-repeat;
 }

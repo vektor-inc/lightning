@@ -116,6 +116,16 @@ body.block-editor-iframe__body.editor-styles-wrapper{
 			margin-right: calc( ( var(--vk-width-editor-container) - var(--vk-width-full) ) / 4 ) !important;
 		}
 	}
+	//Outer全幅用
+	.is-root-container, //カラムにはインナーコンテナがないため、カラムブロックがルートコンテナの場合にOuter全幅で崩れるため追加
+	.is-layout-constrained {// Outer全幅の場合に .vk_slider_item.is-layout-constrained の中でずれてしまうため追加
+		.wp-block-vk-blocks-outer.vk_outer{
+			&.vk_outer-width-full{ 
+				margin-left: calc(50% - var(--vk-width-full) / 2);
+				margin-right: calc(50% - var(--vk-width-full) / 2);
+			}
+		}
+	}
 	.is-root-container {
 		> .wp-block {
 			// 6.0 / theme.json あり / Evergreen のオフセット背景の時に左によってしまうため

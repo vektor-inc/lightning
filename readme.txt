@@ -1,8 +1,8 @@
 === Lightning ===
 Lightning WordPress theme, Copyright (C) 2015-2024 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
-Tested up to: 6.6
-Stable tag: 15.26.4
+Tested up to: 6.7
+Stable tag: 15.27.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -36,6 +36,21 @@ https://www.vektor-inc.co.jp/inquiry/
 
 
 == Changelog ==
+
+v15.27.2
+[ G3 ][ Editor Design Bug Fix ] Fixed a bug in the design of the editor when the slider was set to alignfull and the outer was set to alignfull.
+[ G3 / G2 ][ Bug fix ] Fixed a translation-related notice that occurred in version 6.7.
+
+v15.27.1
+[ G3 / G2 ][ Bug fix ] fix unit control width on editor.
+[ G3 / G2 ][ Bug fix ] Fixed an issue where the button overflowed in the Media Layout of the VK Post List block on the editing screen ( Update VK Components 1.6.2 )
+
+v15.27.0
+[ G3 / G2 ][ Specification Change ] Add filter vk_post_taxonomies_html ( Update VK Components 1.6.1 )
+[ G3 ][ Design Bug Fix ] Fixed an issue where styles were incorrectly applied to horizontal elements in the core Group block.
+
+v15.26.5
+[ G3 / G2 ][ Design Bug Fix ] Fix an isshe where mobile nav dropdown icon link error ( update vk mobile nav 0.3.2 )
 
 v15.26.4
 [ G3 / G2 ][ Design Bug Fix ] Fixed padding of recent entries widget li to none

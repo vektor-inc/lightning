@@ -8,7 +8,7 @@ https://github.com/vektor-inc/vektor-wp-libraries
 if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 	class Vk_Mobile_Nav {
 
-		public static $version = '0.3.0';
+		public static $version = '0.3.2';
 
 		public function __construct() {
 			/* Can not call get_called_class() on PHP5.2 */
@@ -90,7 +90,7 @@ if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 				$btn_additional_class = ' position-right';
 			}
 
-			$menu_btn_text = apply_filters( 'vk_mobile_nav_menu_btn_text', __( 'MENU', 'vk-mobile-nav' ) );
+			$menu_btn_text = apply_filters( 'vk_mobile_nav_menu_btn_text', __( 'MENU', 'lightning' ) );
 			$menu_btn      = '<div id="vk-mobile-nav-menu-btn" class="vk-mobile-nav-menu-btn' . $btn_additional_class . '">' . $menu_btn_text . '</div>';
 
 			if ( class_exists( 'Vk_Mobile_Fix_Nav' ) ) {
