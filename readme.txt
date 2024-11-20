@@ -37,6 +37,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 / G2 ][ Specification Change ] Added support for the "Writing Mode" option in Typography settings for WordPress 6.7.
+
 v15.27.2
 [ G3 ][ Editor Design Bug Fix ] Fixed a bug in the design of the editor when the slider was set to alignfull and the outer was set to alignfull.
 [ G3 / G2 ][ Bug fix ] Fixed a translation-related notice that occurred in version 6.7.
