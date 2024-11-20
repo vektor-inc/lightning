@@ -37,6 +37,7 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+v15.28.0
 [ G3 / G2 ][ Specification Change ] Added support for the "Writing Mode" option in Typography settings for WordPress 6.7.
 
 v15.27.2
