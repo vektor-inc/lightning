@@ -60,7 +60,7 @@
 		"node": "20.13.1"
 	},
 	"dependencies": {
-		"bootstrap": "^4.6.2",
+		"bootstrap": "^5.0.0",
 		"fs-extra": "^11.2.0",
 		"glob": "^10.3.15",
 		"is-mobile": "^4.0.0"
