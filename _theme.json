@@ -80,6 +80,7 @@
 		},
 		"typography": {
 			"fluid": false,
+			"writingMode": true,
 			"fontSizes": [
 				{
 					"name": "Small",
