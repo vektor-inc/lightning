@@ -45,6 +45,10 @@ https://github.com/vektor-inc/vektor-wp-libraries
 			color:#fff;
 		}
 	}
+	// WordPress 6.7.1 が contain-intrinsic-size: 3000px 1500px を出力するようになたのでリセット
+	img:is([sizes="auto" i], [sizes^="auto," i]) {
+		contain-intrinsic-size: revert ;
+	}
 }
 
 /*-------------------------------------------*/

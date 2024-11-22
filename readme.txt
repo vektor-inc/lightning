@@ -37,6 +37,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 / G2 ][ Bug fix ] Since WordPress 6.7.1 started outputting contain-intrinsic-size: 3000px 1500px, add a reset for this in .card.
+
 v15.28.0
 [ G3 / G2 ][ Specification Change ] Added support for the "Writing Mode" option in Typography settings for WordPress 6.7.
 
