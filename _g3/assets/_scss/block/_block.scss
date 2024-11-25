@@ -90,12 +90,6 @@ body .wp-block-image figure {
 		margin-left: 0;
 		margin-bottom: 0.5em;
 	}
-	&:not(.is-style-vk-image-shadow) {
-		img {
-			// block にしないと枠線スタイルで画像下部に意図しない余白ができてしまう
-			display: block;
-		}
-	}
 }
 
 /*-------------------------------------------*/
