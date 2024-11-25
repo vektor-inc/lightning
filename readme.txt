@@ -37,6 +37,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 / G2 ][ Design Bug Fix ] Fixed a gap below the image with a link applied.
+
 v15.28.1
 [ G3 / G2 ][ Bug fix ] Since WordPress 6.7.1 started outputting contain-intrinsic-size: 3000px 1500px, add a reset for this in .card.
 
