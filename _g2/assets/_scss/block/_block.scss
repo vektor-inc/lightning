@@ -112,10 +112,15 @@ kbd {
 body .wp-block-image figure {
 	margin-bottom:1em;
 }
-.wp-block-image img {
-	height:auto;
-	// block にしないと枠線スタイルで画像下部に意図しない余白ができてしまう
-	display: block;
+
+// Addressing the image ratio issue in WordPress 6.3
+.wp-block-image {
+	img {
+		height:auto;
+	}
+	img:not([style*='object-fit']) {
+		height: auto !important; // !important to override inline styles.
+	}
 }
 
 /*-------------------------------------------*/
@@ -354,13 +359,4 @@ body .wp-block-image figure {
 // WP6.3からwp-block-cover にoverflow: clip; がついて、中に幅広・全幅ブロックを設置しても見切れてしまうようになったため追加
 .wp-block-cover:has( .alignwide , .alignfull, [data-align=wide], [data-align=full]){
 	overflow: visible;
-}
-/*-------------------------------------------*/
-/*  image Block
-/*-------------------------------------------*/
-// Addressing the image ratio issue in WordPress 6.3
-.wp-block-image {
-	img:not([style*='object-fit']) {
-		height: auto !important; // !important to override inline styles.
-	}
 }

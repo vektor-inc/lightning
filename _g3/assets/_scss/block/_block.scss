@@ -68,8 +68,10 @@ body .wp-block-image figure {
 .wp-block-image {
 	img {
 		height:auto;
-		// block にしないと枠線スタイルで画像下部に意図しない余白ができてしまう
-		display: block;
+	}
+	// Addressing the image ratio issue in WordPress 6.3
+	img:not([style*='object-fit']) {
+		height: auto !important; // !important to override inline styles.
 	}
 	// theme.json 有りの場合
 	&.aligncenter {
@@ -370,16 +372,6 @@ hr.wp-block-separator {
 // WP6.3からwp-block-cover にoverflow: clip; がついて、中に幅広・全幅ブロックを設置しても見切れてしまうようになったため追加
 .wp-block-cover:has( * > :is( .alignwide , .alignfull )){
 	overflow: visible;
-}
-
-/*-------------------------------------------*/
-/*  image Block
-/*-------------------------------------------*/
-// Addressing the image ratio issue in WordPress 6.3
-.wp-block-image {
-	img:not([style*='object-fit']) {
-		height: auto !important; // !important to override inline styles.
-	}
 }
 
 /*-------------------------------------------*/
