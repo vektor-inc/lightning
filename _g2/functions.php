@@ -150,7 +150,6 @@ function lightning_theme_setup() {
 		Load modules
 	/*-------------------------------------------*/
 	require __DIR__ . '/inc/package-manager.php';
-	require __DIR__ . '/inc/class-design-manager.php';
 	require __DIR__ . '/inc/term-color/term-color-config.php';
 	require __DIR__ . '/inc/vk-components/vk-components-config.php';
 	require __DIR__ . '/inc/template-redirect.php';
