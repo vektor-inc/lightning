@@ -37,6 +37,8 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G2 ][ Specification Change ] Change load module priority
+
 v15.28.2
 [ G3 / G2 ][ Design Bug Fix ] Fixed a gap below the image with a link applied.
 

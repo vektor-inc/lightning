@@ -8,7 +8,7 @@
 /*
 	Load Package
 /*-------------------------------------------*/
-add_action( 'after_setup_theme', 'Lightning_load_packages' );
+add_action( 'after_setup_theme', 'Lightning_load_packages', 11 );
 function Lightning_load_packages() {
 	$options  = get_option( 'lightning_theme_options' );
 	$packages = lightning_old_packages_array();

@@ -1,4 +1,8 @@
 <?php
+// 無料版の _g2/functions.php と Lightning Pro (G2) の functions.php と基本的には同期している。
+// 無料版の Lightning では autoload.php は Lightning/functions.php で読み込んでいるが、
+// Lightning Pro では読み込まれていないため、無料版では重複読み込みになるがPro版のためにここでも読み込む
+require_once get_template_directory() . '/vendor/autoload.php';
 
 $theme_opt = wp_get_theme( get_template() );
 
@@ -45,7 +49,10 @@ function lightning_debug_active() {
 /*
 	Theme setup
 /*-------------------------------------------*/
-add_action( 'after_setup_theme', 'lightning_theme_setup' );
+
+/**
+ * Lightning theme setup( after_setup_theme )
+ */
 function lightning_theme_setup() {
 
 	global $content_width;
@@ -122,6 +129,38 @@ function lightning_theme_setup() {
 	/*-------------------------------------------*/
 	add_theme_support( 'customize-selective-refresh-widgets' );
 
+	require __DIR__ . '/functions-compatible.php';
+
+	/*
+		Load Custom template tags for this theme.
+	/*-------------------------------------------*/
+	require __DIR__ . '/inc/template-tags.php';
+	require __DIR__ . '/inc/template-tags-old.php';
+	require __DIR__ . '/inc/vk-helpers/config.php';
+
+	/*
+		Load Theme Customizer additions.
+	/*-------------------------------------------*/
+	require __DIR__ . '/inc/customize/customize-design.php';
+	require __DIR__ . '/inc/customize/customize-top-slide.php';
+	require __DIR__ . '/inc/customize/customize-functions.php';
+
+	/*
+		Load allow customize modules
+	/*-------------------------------------------*/
+	require __DIR__ . '/inc/vk-mobile-nav/vk-mobile-nav-config.php';
+
+	/*
+		Load modules
+	/*-------------------------------------------*/
+	require __DIR__ . '/inc/package-manager.php';
+	require __DIR__ . '/inc/term-color/term-color-config.php';
+	require __DIR__ . '/inc/vk-components/vk-components-config.php';
+	require __DIR__ . '/inc/template-redirect.php';
+	require __DIR__ . '/inc/layout-controller/layout-controller.php';
+	require __DIR__ . '/inc/vk-footer-customize/vk-footer-customize-config.php';
+	require __DIR__ . '/inc/vk-css-optimize/config.php';
+
 	/*
 		Option init
 	/*-------------------------------------------*/
@@ -140,6 +179,14 @@ function lightning_theme_setup() {
 		add_theme_support( 'starter-content', lightning_add_starter_content() );
 	}
 }
+add_action( 'after_setup_theme', 'lightning_theme_setup' );
+
+/*
+	Load Setup Files ( out of after_setup_theme )
+/*-------------------------------------------*/
+
+// * Be cautious, as translation may stop working if you place it before add_action( 'after_setup_theme', 'lightning_theme_setup' ).
+require __DIR__ . '/inc/class-design-manager.php';
 
 /*
 	Load JS
@@ -215,42 +262,6 @@ function lightning_load_common_editor_css_to_gutenberg() {
 		LIGHTNING_THEME_VERSION
 	);
 }
-
-
-require __DIR__ . '/functions-compatible.php';
-
-
-/*
-	Load Custom template tags for this theme.
-/*-------------------------------------------*/
-require __DIR__ . '/inc/template-tags.php';
-require __DIR__ . '/inc/template-tags-old.php';
-require __DIR__ . '/inc/vk-helpers/config.php';
-
-/*
-	Load Theme Customizer additions.
-/*-------------------------------------------*/
-require __DIR__ . '/inc/customize/customize-design.php';
-require __DIR__ . '/inc/customize/customize-top-slide.php';
-require __DIR__ . '/inc/customize/customize-functions.php';
-
-/*
-	Load allow customize modules
-/*-------------------------------------------*/
-require __DIR__ . '/inc/vk-mobile-nav/vk-mobile-nav-config.php';
-
-/*
-	Load modules
-/*-------------------------------------------*/
-require __DIR__ . '/inc/package-manager.php';
-require __DIR__ . '/inc/class-design-manager.php';
-// require dirname( __FILE__ ) . '/inc/font-awesome/font-awesome-config.php';
-require __DIR__ . '/inc/term-color/term-color-config.php';
-require __DIR__ . '/inc/vk-components/vk-components-config.php';
-require __DIR__ . '/inc/template-redirect.php';
-require __DIR__ . '/inc/layout-controller/layout-controller.php';
-require __DIR__ . '/inc/vk-footer-customize/vk-footer-customize-config.php';
-require __DIR__ . '/inc/vk-css-optimize/config.php';
 
 /*
 	Plugin support
