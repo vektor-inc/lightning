@@ -45,7 +45,10 @@ function lightning_debug_active() {
 /*
 	Theme setup
 /*-------------------------------------------*/
-add_action( 'after_setup_theme', 'lightning_theme_setup' );
+
+/**
+ * Lightning theme setup( after_setup_theme )
+ */
 function lightning_theme_setup() {
 
 	global $content_width;
@@ -173,6 +176,14 @@ function lightning_theme_setup() {
 		add_theme_support( 'starter-content', lightning_add_starter_content() );
 	}
 }
+add_action( 'after_setup_theme', 'lightning_theme_setup' );
+
+/*
+	Load Setup Files ( out of after_setup_theme )
+/*-------------------------------------------*/
+
+// * Be cautious, as translation may stop working if you place it before add_action( 'after_setup_theme', 'lightning_theme_setup' ).
+require __DIR__ . '/inc/class-design-manager.php';
 
 /*
 	Load JS
