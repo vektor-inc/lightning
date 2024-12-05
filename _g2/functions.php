@@ -1,4 +1,8 @@
 <?php
+// 無料版の _g2/functions.php と Lightning Pro (G2) の functions.php と基本的には同期している。
+// 無料版の Lightning では autoload.php は Lightning/functions.php で読み込んでいるが、
+// Lightning Pro では読み込まれていないため、無料版では重複読み込みになるがPro版のためにここでも読み込む
+require_once get_template_directory() . '/vendor/autoload.php';
 
 $theme_opt = wp_get_theme( get_template() );
 
