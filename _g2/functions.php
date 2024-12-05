@@ -180,6 +180,7 @@ add_action( 'after_setup_theme', 'lightning_theme_setup' );
 /*
 	Load Setup Files ( out of after_setup_theme )
 /*-------------------------------------------*/
+
 // * Be cautious, as translation may stop working if you place it before add_action( 'after_setup_theme', 'lightning_theme_setup' ).
 require __DIR__ . '/inc/class-design-manager.php';
 
