@@ -356,10 +356,12 @@ function lightning_get_entry_meta( $options = array() ) {
 
 				if ( $option['author_image'] ) {
 					// VK Post Author Display の画像を取得.
-					$profile_image_id                 = get_the_author_meta( 'user_profile_image' );
-					$vk_post_author_display_image_src = wp_get_attachment_image_src( $profile_image_id, 'thumbnail' );
+					$profile_image_id = get_the_author_meta( 'user_profile_image' );
+					if ( $profile_image_id ) {
+						$vk_post_author_display_image_src = wp_get_attachment_image_src( $profile_image_id, 'thumbnail' );
+					}
 					// 画像がメディアライブラリ側で削除されたりもするため、 is_array で判定.
-					if ( is_array( $vk_post_author_display_image_src ) ) {
+					if ( isset( $vk_post_author_display_image_src ) && is_array( $vk_post_author_display_image_src ) ) {
 						$profile_image = '<img src="' . $vk_post_author_display_image_src[0] . '" alt="' . esc_attr( $author ) . '" />';
 					} else {
 						// プロフィール画像がない場合は Gravatar.
