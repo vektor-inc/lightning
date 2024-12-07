@@ -37,6 +37,7 @@ https://www.vektor-inc.co.jp/inquiry/
 
 == Changelog ==
 
+[ G3 ][ Bug fix ] Fix profile image warning
 [ G2 ][ Specification Change ] Change load module priority
 
 v15.28.2

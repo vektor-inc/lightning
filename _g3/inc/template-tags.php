@@ -355,18 +355,24 @@ function lightning_get_entry_meta( $options = array() ) {
 				<span class="vcard author" itemprop="author">';
 
 				if ( $option['author_image'] ) {
-					$html .= '<span class="entry-meta-item-author-image">';
-
 					// VK Post Author Display の画像を取得.
 					$profile_image_id = get_the_author_meta( 'user_profile_image' );
 					if ( $profile_image_id ) {
-						$profile_image_src = wp_get_attachment_image_src( $profile_image_id, 'thumbnail' );
-						$html             .= '<img src="' . $profile_image_src[0] . '" alt="' . esc_attr( $author ) . '" />';
+						$vk_post_author_display_image_src = wp_get_attachment_image_src( $profile_image_id, 'thumbnail' );
+					}
+					// 画像がメディアライブラリ側で削除されたりもするため、 is_array で判定.
+					if ( isset( $vk_post_author_display_image_src ) && is_array( $vk_post_author_display_image_src ) ) {
+						$profile_image = '<img src="' . $vk_post_author_display_image_src[0] . '" alt="' . esc_attr( $author ) . '" />';
 					} else {
-						$html .= get_avatar( get_the_author_meta( 'email' ), 30 );
+						// プロフィール画像がない場合は Gravatar.
+						$profile_image = get_avatar( get_the_author_meta( 'email' ), 30 );
 					}
 
-					$html .= '</span>';
+					if ( $profile_image ) {
+						$html .= '<span class="entry-meta-item-author-image">';
+						$html .= $profile_image;
+						$html .= '</span>';
+					}
 				}
 
 				if ( $option['author_name'] ) {
