@@ -1,6 +1,7 @@
 @charset "utf-8";
 @import "variables";
-@import "../../inc/vk-components/package/_scss/vk-components.scss";
+// VK Components is no using image that using sass is no probrem.
+@import "../../../vendor/vektor-inc/vk-component/src/assets/scss/vk-components.scss";
 @import "block/block";
 @import "block/block_editor";
 @import "block/block_editor_width";

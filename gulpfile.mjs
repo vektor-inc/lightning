@@ -25,13 +25,6 @@ function src(list) {
 }
 
 gulp.task('text-domain', function (done) {
-	// vk-components
-	gulp.src(['./_g2/inc/vk-components/package/*.php'])
-		.pipe(replace(', \'vk_components_textdomain\'', ', \'lightning\''))
-		.pipe(gulp.dest('./_g2/inc/vk-components/package/'));
-	gulp.src(['./_g3/inc/vk-components/package/*.php'])
-		.pipe(replace(', \'vk_components_textdomain\'', ', \'lightning\''))
-		.pipe(gulp.dest('./_g3/inc/vk-components/package/'));
 	// vk-mobile-nav
 	gulp.src(['./_g2/inc/vk-mobile-nav/package/*.php'])
 		.pipe(replace('vk_mobile_nav_textdomain', 'lightning'))
@@ -59,7 +52,7 @@ gulp.task('sass_common_g2', function (done) {
       sass({
         includePaths: [
           './_g2/assets/scss',
-          './_g2/inc/vk-components/package/_scss'
+          './vendor/vektor-inc/vk-component/src/assets/scss'
         ]
       }
     ))
@@ -173,7 +166,7 @@ gulp.task('dist_foundation', function (done) {
 // Watch
 gulp.task('watch_g2', function (done) {
   error_stop = false
-  gulp.watch(['./_g2/assets/_scss/**','./_g2/inc/vk-mobile-nav/package/css/**','./_g2/inc/vk-components/**/*.css'] );
+  gulp.watch(['./_g2/assets/_scss/**','./_g2/inc/vk-mobile-nav/package/css/**','/vendor/vektor-inc/vk-component/**/*.css'] );
   gulp.watch(['./_g2/plugin-support/woocommerce/_scss/**'], gulp.series('sass_woo_g2'));
   gulp.watch(['./_g2/plugin-support/bbpress/_scss/**'], gulp.series('sass_bbpress_g2'));
   gulp.watch(['./_g2//library/bootstrap-4/scss/**.scss'], gulp.series('sass_bs4_g2'));
@@ -272,7 +265,7 @@ gulp.task('sass_common_g3', function (done) {
   // Watch
 gulp.task('watch_g3', function (done) {
 	error_stop = false
-	gulp.watch(['./_g3/assets/_scss/**','./_g3/inc/vk-mobile-nav/package/css/**','./_g3/inc/vk-components/**/*.css'], gulp.series('sass_g3'));
+	gulp.watch(['./_g3/assets/_scss/**','./_g3/inc/vk-mobile-nav/package/css/**','/vendor/vektor-inc/vk-component/**/*.css'], gulp.series('sass_g3'));
 	gulp.watch(['./_g3/design-skin/origin3/_scss/**'], gulp.series('sass_skin_g3'));
 	gulp.watch(['./_g3/plugin-support/woocommerce/_scss/**'], gulp.series('sass_woo_g3'));
 	gulp.watch(['./_g3/plugin-support/bbpress/_scss/**'], gulp.series('sass_bbpress_g3'));
@@ -282,12 +275,12 @@ gulp.task('watch_g3', function (done) {
 
 gulp.task('watch', function (done) {
 	error_stop = false
-	gulp.watch(['./_g2/assets/_scss/**','./_g2/inc/vk-mobile-nav/package/css/**','./_g2/inc/vk-components/**/*.css'] );
+	gulp.watch(['./_g2/assets/_scss/**','./_g2/inc/vk-mobile-nav/package/css/**','/vendor/vektor-inc/vk-component/**/*.css'] );
 	gulp.watch(['./_g2/plugin-support/woocommerce/_scss/**'], gulp.series('sass_woo_g2'));
 	gulp.watch(['./_g2/plugin-support/bbpress/_scss/**'], gulp.series('sass_bbpress_g2'));
 	gulp.watch(['./_g2//library/bootstrap-4/scss/**.scss'], gulp.series('sass_bs4_g2'));
 	gulp.watch(['./_g2/design-skin/origin/_scss/**/*.scss'], gulp.series('sass_skin_g1'));
-	gulp.watch(['./_g3/assets/_scss/**','./_g3/inc/vk-mobile-nav/package/css/**','./_g3/inc/vk-components/**/*.css'], gulp.series('sass_common_g3'));
+	gulp.watch(['./_g3/assets/_scss/**','./_g3/inc/vk-mobile-nav/package/css/**','/vendor/vektor-inc/vk-component/**/*.css'], gulp.series('sass_common_g3'));
 	gulp.watch(['./_g3/design-skin/origin3/_scss/**'], gulp.series('sass_skin_g3'));
 	gulp.watch(['./_g3/plugin-support/woocommerce/_scss/**'], gulp.series('sass_woo_g3'));
 	gulp.watch(['./_g3/plugin-support/bbpress/_scss/**'], gulp.series('sass_bbpress_g3'));
