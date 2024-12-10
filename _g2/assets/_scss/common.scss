@@ -2,7 +2,7 @@
 @import "variables";
 @import "../../inc/vk-mobile-nav/package/_scss/vk-mobile-nav-bright.scss";
 // VK Components is no using image that using sass is no probrem.
-@import "../../inc/vk-components/package/_scss/vk-components.scss";
+@import "../../../vendor/vektor-inc/vk-component/src/assets/scss/vk-components.scss";
 @import "block/block";
 @import "vk_compo_overwrite";
 @import "veu_overwrite";
