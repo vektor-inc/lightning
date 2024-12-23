@@ -5,7 +5,7 @@
  * @package VK_Component_Button
  *
  */
-
+use VektorInc\VK_Component\VK_Component_Button;
 /**
  * Sample test case.
  */

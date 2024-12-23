@@ -157,7 +157,6 @@ require __DIR__ . '/inc/template-tags.php';
 require __DIR__ . '/inc/customize/customize-design.php';
 require __DIR__ . '/inc/vk-color-palette-manager/config.php';
 require __DIR__ . '/inc/layout-controller/layout-controller.php';
-require __DIR__ . '/inc/vk-components/config.php';
 require __DIR__ . '/inc/vk-mobile-nav/config.php';
 require __DIR__ . '/inc/widget-area.php';
 require __DIR__ . '/inc/term-color/config.php';

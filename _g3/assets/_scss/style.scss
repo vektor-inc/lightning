@@ -8,7 +8,8 @@
 @import "../../../node_modules/bootstrap/scss/card";
 @import "../../../node_modules/bootstrap/scss/alert";
 @import "../../../node_modules/bootstrap/scss/media";
-@import "../../inc/vk-components/package/_scss/vk-components.scss";
+// VK Components is no using image that using sass is no probrem.
+@import "../../../vendor/vektor-inc/vk-component/src/assets/scss/vk-components.scss";
 @import "variables";
 @import "common";
 @import "utils";
