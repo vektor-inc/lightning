@@ -34,6 +34,7 @@ The theme built by Vektor,Inc.
 vk-develop@vektor-inc.co.jp
 
 == Changelog ==
+[ G3 ][ Design Bug Fix ] Add .vk_gridcolcard_item to the :not selector to prevent items in .vk_gridcolcard in .alignfull and .alignwide from being affected by centering when theme.json is enabled.
 
 v15.29.0
 [ G2 ][ Specification Change ] Change load module priority ( cope with WordPress 6.7 translation )
