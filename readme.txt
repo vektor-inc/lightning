@@ -2,7 +2,7 @@
 Lightning WordPress theme, Copyright (C) 2015-2024 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
 Tested up to: 6.7
-Stable tag: 15.29.0
+Stable tag: 15.29.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,6 +34,8 @@ The theme built by Vektor,Inc.
 vk-develop@vektor-inc.co.jp
 
 == Changelog ==
+
+v15.29.1
 [ G3 ][ Design Bug Fix ] Add .vk_gridcolcard_item to the :not selector to prevent items in .vk_gridcolcard in .alignfull and .alignwide from being affected by centering when theme.json is enabled.
 
 v15.29.0
