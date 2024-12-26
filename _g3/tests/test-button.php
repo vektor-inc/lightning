@@ -6,6 +6,8 @@
  *
  */
 use VektorInc\VK_Component\VK_Component_Button;
+VK_Component_Button::init();
+
 /**
  * Sample test case.
  */

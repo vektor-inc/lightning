@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "32aa7baaa45cde03e5d61e3cc6f7ba95",
+    "content-hash": "7fb08d776c4d1c0dabda744133f6253e",
     "packages": [
         {
             "name": "vektor-inc/font-awesome-versions",
@@ -197,16 +197,16 @@
         },
         {
             "name": "vektor-inc/vk-component",
-            "version": "0.0.17",
+            "version": "0.0.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vektor-inc/vk-components.git",
-                "reference": "370ded0e47b3eba7ebd7c786e411b7ec976be0f0"
+                "reference": "a779655d9fe55d3866eb99d43b654c6ef9c16171"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vektor-inc/vk-components/zipball/370ded0e47b3eba7ebd7c786e411b7ec976be0f0",
-                "reference": "370ded0e47b3eba7ebd7c786e411b7ec976be0f0",
+                "url": "https://api.github.com/repos/vektor-inc/vk-components/zipball/a779655d9fe55d3866eb99d43b654c6ef9c16171",
+                "reference": "a779655d9fe55d3866eb99d43b654c6ef9c16171",
                 "shasum": ""
             },
             "require": {
@@ -235,9 +235,9 @@
             "description": "Vektor Component",
             "support": {
                 "issues": "https://github.com/vektor-inc/vk-components/issues",
-                "source": "https://github.com/vektor-inc/vk-components/tree/0.0.17"
+                "source": "https://github.com/vektor-inc/vk-components/tree/0.0.18"
             },
-            "time": "2024-12-06T01:33:38+00:00"
+            "time": "2024-12-26T00:59:47+00:00"
         },
         {
             "name": "vektor-inc/vk-css-optimize",

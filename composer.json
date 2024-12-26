@@ -13,7 +13,7 @@
 		"vektor-inc/vk-breadcrumb": "^0.2.5",
 		"vektor-inc/vk-css-optimize": "^0.2.2",
 		"vektor-inc/tgm-plugin-activation": "^2.6",
-		"vektor-inc/vk-component": "^0.0.17"
+		"vektor-inc/vk-component": "^0.0.18"
 	},
 	"require-dev": {
 		"doctrine/instantiator": "1.5.0",

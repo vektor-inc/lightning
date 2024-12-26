@@ -5,6 +5,7 @@
  * @package Lightning G3
  */
 use VektorInc\VK_Component\VK_Component_Mini_Contents;
+VK_Component_Mini_Contents::init();
 
 if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 	/**

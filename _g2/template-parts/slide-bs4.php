@@ -1,5 +1,6 @@
 <?php
 use VektorInc\VK_Component\VK_Component_Mini_Contents;
+VK_Component_Mini_Contents::init();
 
 if ( apply_filters( 'lightning_default_slide_display', true ) ) {
 
