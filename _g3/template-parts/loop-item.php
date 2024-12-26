@@ -6,7 +6,7 @@
  */
 
 use VektorInc\VK_Component\VK_Component_Posts;
-VK_Component_Posts::init();
+
 
 $options = array(
 	// card, card-noborder, card-intext, card-horizontal , media, postListText.

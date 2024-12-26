@@ -160,6 +160,7 @@ require __DIR__ . '/inc/layout-controller/layout-controller.php';
 require __DIR__ . '/inc/vk-mobile-nav/config.php';
 require __DIR__ . '/inc/widget-area.php';
 require __DIR__ . '/inc/term-color/config.php';
+require __DIR__ . '/inc/vk-component/config.php';
 require __DIR__ . '/inc/vk-css-optimize/config.php';
 require __DIR__ . '/inc/vk-swiper/config.php';
 require __DIR__ . '/inc/ltg-g3-slider/config.php';

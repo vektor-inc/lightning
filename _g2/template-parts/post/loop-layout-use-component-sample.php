@@ -1,6 +1,6 @@
 <?php
 use VektorInc\VK_Component\VK_Component_Posts;
-VK_Component_Posts::init();
+
 
 $options = array(
 	'layout'                     => 'card-horizontal', // card , card-horizontal , media

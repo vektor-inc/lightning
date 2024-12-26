@@ -6,7 +6,7 @@
  */
 
 use VektorInc\VK_Component\VK_Component_Posts;
-VK_Component_Posts::init();
+
 
 global $bootstrap;
 $in_same_term   = apply_filters( 'lightning_prev_next_post_in_same_term', false );
