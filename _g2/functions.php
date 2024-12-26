@@ -155,7 +155,7 @@ function lightning_theme_setup() {
 	/*-------------------------------------------*/
 	require __DIR__ . '/inc/package-manager.php';
 	require __DIR__ . '/inc/term-color/term-color-config.php';
-	require __DIR__ . '/inc/vk-components/vk-components-config.php';
+	require __DIR__ . '/inc/vk-component/config.php';
 	require __DIR__ . '/inc/template-redirect.php';
 	require __DIR__ . '/inc/layout-controller/layout-controller.php';
 	require __DIR__ . '/inc/vk-footer-customize/vk-footer-customize-config.php';

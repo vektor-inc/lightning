@@ -5,6 +5,9 @@
  * @package lightning
  */
 
+use VektorInc\VK_Component\VK_Component_Posts;
+
+
 $options = array(
 	// card, card-noborder, card-intext, card-horizontal , media, postListText.
 	'layout'                     => 'media',

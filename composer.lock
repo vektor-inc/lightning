@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4d804a3311aae2dd50c6b9dcfe643767",
+    "content-hash": "7fb08d776c4d1c0dabda744133f6253e",
     "packages": [
         {
             "name": "vektor-inc/font-awesome-versions",
@@ -196,6 +196,50 @@
             "time": "2021-12-02T17:00:03+00:00"
         },
         {
+            "name": "vektor-inc/vk-component",
+            "version": "0.0.18",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vektor-inc/vk-components.git",
+                "reference": "a779655d9fe55d3866eb99d43b654c6ef9c16171"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vektor-inc/vk-components/zipball/a779655d9fe55d3866eb99d43b654c6ef9c16171",
+                "reference": "a779655d9fe55d3866eb99d43b654c6ef9c16171",
+                "shasum": ""
+            },
+            "require": {
+                "vektor-inc/vk-term-color": "^0.7.1"
+            },
+            "require-dev": {
+                "wp-phpunit/wp-phpunit": "^6.7",
+                "yoast/phpunit-polyfills": "^3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "VektorInc\\VK_Component\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Vektor,Inc.",
+                    "email": "kurudrive@gmail.com"
+                }
+            ],
+            "description": "Vektor Component",
+            "support": {
+                "issues": "https://github.com/vektor-inc/vk-components/issues",
+                "source": "https://github.com/vektor-inc/vk-components/tree/0.0.18"
+            },
+            "time": "2024-12-26T00:59:47+00:00"
+        },
+        {
             "name": "vektor-inc/vk-css-optimize",
             "version": "0.2.2",
             "source": {
@@ -313,6 +357,47 @@
                 "source": "https://github.com/vektor-inc/vk-swiper/tree/0.3.4"
             },
             "time": "2023-10-26T05:44:44+00:00"
+        },
+        {
+            "name": "vektor-inc/vk-term-color",
+            "version": "0.7.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vektor-inc/vk-term-color.git",
+                "reference": "032a2d21af115845ef82b6ceb6d19096b51b32a5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vektor-inc/vk-term-color/zipball/032a2d21af115845ef82b6ceb6d19096b51b32a5",
+                "reference": "032a2d21af115845ef82b6ceb6d19096b51b32a5",
+                "shasum": ""
+            },
+            "require-dev": {
+                "wp-phpunit/wp-phpunit": "^5.4",
+                "yoast/phpunit-polyfills": "^1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "VektorInc\\VK_Term_Color\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Vektor,Inc.",
+                    "email": "kurudrive@gmail.com"
+                }
+            ],
+            "description": "VK Term Color",
+            "support": {
+                "issues": "https://github.com/vektor-inc/vk-term-color/issues",
+                "source": "https://github.com/vektor-inc/vk-term-color/tree/0.7.1"
+            },
+            "time": "2023-12-12T23:51:14+00:00"
         }
     ],
     "packages-dev": [
@@ -2341,5 +2426,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }

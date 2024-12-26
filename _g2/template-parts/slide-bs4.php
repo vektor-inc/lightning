@@ -1,4 +1,7 @@
 <?php
+use VektorInc\VK_Component\VK_Component_Mini_Contents;
+
+
 if ( apply_filters( 'lightning_default_slide_display', true ) ) {
 
 	$lightning_theme_options = lightning_get_theme_options();

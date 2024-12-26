@@ -13,6 +13,9 @@
  * @package vektor-inc/lightning
  */
 
+use VektorInc\VK_Component\VK_Component_Posts;
+
+
  if ( function_exists( 'Lightning_customize_widget_area_alert' )) {
 	Lightning_customize_widget_area_alert( 'post' );
  }

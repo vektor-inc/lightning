@@ -1,4 +1,13 @@
 <?php
+/**
+ * The template part for displaying next/prev post
+ *
+ * @package Lightning
+ */
+
+use VektorInc\VK_Component\VK_Component_Posts;
+
+
 global $bootstrap;
 $in_same_term   = apply_filters( 'lightning_prev_next_post_in_same_term', false );
 $excluded_terms = apply_filters( 'lightning_prev_next_post_excluded_terms', '' );

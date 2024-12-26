@@ -35,6 +35,8 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ Other ] Load vk-component from composer.
+
 v15.29.1
 [ G3 ][ Design Bug Fix ] Add .vk_gridcolcard_item to the :not selector to prevent items in .vk_gridcolcard in .alignfull and .alignwide from being affected by centering when theme.json is enabled.
 
