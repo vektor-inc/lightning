@@ -23,7 +23,18 @@ body{
 body:where(:not(.is-fullscreen-mode)) {
 	--vk-width-editor-leftmenu:160px;
 	&.folded {
+		// 手動で畳まれば場合
+		// manual folded
+		// 単位を指定しないと calc が計算できないので注意
 		--vk-width-editor-leftmenu:36px;
+	}
+	&.auto-fold {
+		@media ( max-width: 960px ) {
+			--vk-width-editor-leftmenu:36px;
+		}
+		@media ( max-width: 782px ) {
+			--vk-width-editor-leftmenu:0px;
+		}
 	}
 }
 

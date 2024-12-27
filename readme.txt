@@ -35,6 +35,8 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ G3 ][ Bug fix ] Fix block width on editor with narrow screen.
+
 v15.29.2
 [ Specification Change ] Load vk-component from composer.
 
