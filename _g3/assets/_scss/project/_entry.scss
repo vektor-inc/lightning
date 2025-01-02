@@ -71,7 +71,7 @@
 			display: inline-block;
             padding: 0;
             margin-right:0.8em;
-			color: $color_font_default;
+			color: var(--vk-color-text-body);
 		}
 	}
 } // .entry-meta-dataList

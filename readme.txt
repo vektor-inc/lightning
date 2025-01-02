@@ -35,6 +35,8 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ Bug fix ][ G3 ] Fix prev next design on post page.
+
 v15.29.2
 [ Specification Change ] Load vk-component from composer.
 
