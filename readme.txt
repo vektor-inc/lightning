@@ -35,6 +35,8 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ G3 ][ Design Bug Fix ] Prevented child elements from expanding to full width in `.is-layout-flex` parent containers using a `:not` selector.
+
 v15.29.3
 [ Bug fix ][ G3 ] Fix prev next design on post page.
 
