@@ -3,7 +3,7 @@
  */
 
  // まず .is-root-container でメインエリアを定義している
-:is( .alignfull, .alignwide ) {
+:is( .alignfull, .alignwide ):where(:not(.is-layout-flex)) {
 	 // theme.json があると __inner-container の div は出力されなくなってしまうので max-width にコンテンツ幅を指定
 	 // .alert は投稿リストブロックで投稿がない時に出力されるため追加。本当は div にかける方が適切と思われるが、影響範囲が大きそうなので一旦 .alert のみで様子見
 	 & > :is( 
