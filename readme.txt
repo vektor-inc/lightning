@@ -38,7 +38,8 @@ vk-develop@vektor-inc.co.jp
 v15.29.4
 [ G3 ][ Design Bug Fix ] Excluded child elements from expanding to full content width when the parent has the `.is-layout-flex` class by adding a `:not` selector.
 [ G3 ][ Bug fix ] Fix block width on editor with narrow screen.
-[ G3 / G2 ] Update VK Mobile Nav 0.3.3
+[ G3 / G2 ][ Specification Change ] Update VK Mobile Nav 0.3.3
+[ G3 / G2 ][ Specification Change ] Update VK Components 1.6.5
 
 v15.29.3
 [ Bug fix ][ G3 ] Fix prev next design on post page.
