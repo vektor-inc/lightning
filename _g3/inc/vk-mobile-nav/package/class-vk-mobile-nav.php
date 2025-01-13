@@ -8,12 +8,13 @@ https://github.com/vektor-inc/vektor-wp-libraries
 if ( ! class_exists( 'Vk_Mobile_Nav' ) ) {
 	class Vk_Mobile_Nav {
 
-		public static $version = '0.3.2';
+		public static $version = '0.3.3';
 
 		public function __construct() {
 			/* Can not call get_called_class() on PHP5.2 */
 			if ( function_exists( 'get_called_class' ) ) {
-				add_action( 'after_setup_theme', array( get_called_class(), 'setup_menu' ) );
+				// 11 指定がないと Lightning G2系などテーマによってカスタマイザーで選択できない場合がある
+				add_action( 'after_setup_theme', array( get_called_class(), 'setup_menu' ), 11 );
 				add_action( 'widgets_init', array( get_called_class(), 'setup_widget' ) );
 				$vk_mobile_nav_html_hook_point = apply_filters( 'vk_mobile_nav_html_hook_point', 'wp_footer' );
 				add_action( $vk_mobile_nav_html_hook_point, array( get_called_class(), 'menu_set_html' ) );
