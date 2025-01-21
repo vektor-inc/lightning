@@ -108,7 +108,11 @@ body.block-editor-iframe__body.editor-styles-wrapper{
 		margin-right:auto;
 		--vk-width-container: var(--vk-width-editor-container);
 		// 通常幅の中の全幅 /////////////////////////////////
-		& > :is( 
+
+		// & > :is(  // ← もともと > つきだったが、固定表示ブロックの中に全幅などをいれると表示が崩れるために > なしに変更
+		// 2025.4月以降まで問題が出ていなければ、このコメントアウトを削除
+
+		& :is( 
 			.alignfull, 
 			[data-align=full] 
 		) {
@@ -117,7 +121,11 @@ body.block-editor-iframe__body.editor-styles-wrapper{
 		}
 		// 通常幅の中の幅広 //////////////////////////////////
 		// 標準だと通常幅の中の幅広や全幅は強制的に通常幅にされるので、されるので、上書き
-		& > :is( 
+
+		// & > :is(  // ← もともと > つきだったが、固定表示ブロックの中に全幅などをいれると表示が崩れるために > なしに変更
+		// 2025.4月以降まで問題が出ていなければ、このコメントアウトを削除
+
+		& :is( 
 			.alignwide, 
 			[data-align=wide] 
 		) {
