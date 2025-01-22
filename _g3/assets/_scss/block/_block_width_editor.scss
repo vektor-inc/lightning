@@ -190,6 +190,11 @@ html :where(.wp-block) {
 	// theme.json がない場合（？）に classic.css が 850px を指定してくるので上書きする
 	max-width: unset;
 }
+// theme.json 無効時に classic.css が -8px つけてくるので打ち消し
+html :where(.editor-styles-wrapper) .block-editor-block-list__layout.is-root-container>.wp-block[data-align=full] {
+	margin-left:0;
+	margin-right:0;
+}
 
 // 旧 Bootstrap 用 padding リセット
 :is( .alignfull, .alignwide, [data-align=full], [data-align=wide] ) div[class*=__inner-container] {
