@@ -100,6 +100,7 @@ body.block-editor-iframe__body.editor-styles-wrapper{
 	:is(
 		.is-root-container,
 		.is-layout-constrained,
+		.is-layout-flow,
 		:is(
 			.alignfull,
 			.alignwide,
@@ -112,7 +113,11 @@ body.block-editor-iframe__body.editor-styles-wrapper{
 		margin-right:auto;
 		--vk-width-container: var(--vk-width-editor-container);
 		// 通常幅の中の全幅 /////////////////////////////////
-		& > :is( 
+
+		// & > :is(  // ← もともと > つきだったが、固定表示ブロックの中に全幅などをいれると表示が崩れるために > なしに変更
+		// 2025.4月以降まで問題が出ていなければ、このコメントアウトを削除
+
+		& :is( 
 			.alignfull, 
 			[data-align=full] 
 		) {
@@ -121,7 +126,11 @@ body.block-editor-iframe__body.editor-styles-wrapper{
 		}
 		// 通常幅の中の幅広 //////////////////////////////////
 		// 標準だと通常幅の中の幅広や全幅は強制的に通常幅にされるので、されるので、上書き
-		& > :is( 
+
+		// & > :is(  // ← もともと > つきだったが、固定表示ブロックの中に全幅などをいれると表示が崩れるために > なしに変更
+		// 2025.4月以降まで問題が出ていなければ、このコメントアウトを削除
+
+		& :is( 
 			.alignwide, 
 			[data-align=wide] 
 		) {
@@ -133,9 +142,9 @@ body.block-editor-iframe__body.editor-styles-wrapper{
 	}
 	//Outer全幅用
 	.is-root-container, //カラムにはインナーコンテナがないため、カラムブロックがルートコンテナの場合にOuter全幅で崩れるため追加
-	.is-layout-constrained {// Outer全幅の場合に .vk_slider_item.is-layout-constrained の中でずれてしまうため追加
+	:is( .is-layout-constrained ) {// Outer全幅の場合に .vk_slider_item.is-layout-constrained の中でずれてしまうため追加
 		.wp-block-vk-blocks-outer.vk_outer{
-			&.vk_outer-width-full{ 
+			&.vk_outer-width-full{
 				margin-left: calc(50% - var(--vk-width-full) / 2);
 				margin-right: calc(50% - var(--vk-width-full) / 2);
 			}
@@ -184,6 +193,11 @@ body.block-editor-iframe__body.editor-styles-wrapper{
 html :where(.wp-block) {
 	// theme.json がない場合（？）に classic.css が 850px を指定してくるので上書きする
 	max-width: unset;
+}
+// theme.json 無効時に classic.css が -8px つけてくるので打ち消し
+html :where(.editor-styles-wrapper) .block-editor-block-list__layout.is-root-container>.wp-block[data-align=full] {
+	margin-left:0;
+	margin-right:0;
 }
 
 // 旧 Bootstrap 用 padding リセット
