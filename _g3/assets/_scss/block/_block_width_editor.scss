@@ -87,7 +87,11 @@ body.block-editor-iframe__body.editor-styles-wrapper{
 /// .is-layout-constrained の幅の制御
 //////////////////////////////////////////////////////////////
 .editor-styles-wrapper {
-	.is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
+	.is-layout-constrained > :where(
+		:not(.alignleft)
+		:not(.alignright)
+		:not(.alignfull)
+		) {
 		// for theme.json non-active
 		max-width:var(--vk-width-editor-container);
 		// for theme.json active
@@ -183,6 +187,11 @@ html :where(.wp-block) {
 }
 
 // 旧 Bootstrap 用 padding リセット
-:is( .alignfull, .alignwide, [data-align=full], [data-align=wide] ) div[class*=__inner-container] {
+:is( 
+	.alignfull, 
+	.alignwide, 
+	[data-align=full], 
+	[data-align=wide] 
+	) div[class*=__inner-container] {
     --vk-width-container-padding: 0px;
 }
