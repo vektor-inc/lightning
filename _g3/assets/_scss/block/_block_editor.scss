@@ -71,12 +71,16 @@
 .editor-styles-wrapper .is-layout-flow > * + *:is([class*="wp-block"],[class*="vk_"]) {
 	margin-block-start: 0;
 }
+// コアに :root :where(.editor-styles-wrapper) :where(.is-layout-constrained)>* { margin-block-start: 24px; } つけられるので打ち消し
+:root .editor-styles-wrapper :where(.is-layout-constrained)>* {
+	margin-block-start: 0;
+}
 /*
  theme.json 有効にすると 
  .editor-styles-wrapper .is-layout-flow > * { margin-block-end:0; } 
  つけられるので .common に記載と同じ指定で打ち消し
  */
-.editor-styles-wrapper .is-layout-flow > *{
+.editor-styles-wrapper *{
 	&:is(
 		.wp-block-table,
 		p,
@@ -85,7 +89,7 @@
 		dl,
 		blockquote,
 		iframe
-		) {
+		):not(:last-child){
 		margin-block-end:var(--vk-margin-element-bottom);
 	}
 	&:is( h1,h2,h3,h4,h5,h6 ) {
