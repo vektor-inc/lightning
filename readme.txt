@@ -36,6 +36,7 @@ vk-develop@vektor-inc.co.jp
 == Changelog ==
 
 [ G3 ][ Bug fix ] Adjusting the unintentional vertical margins between blocks in the editor
+[ G3 / G2 ] Cope with plugin Booking Package 
 
 v15.29.4
 [ G3 ][ Design Bug Fix ] Excluded child elements from expanding to full content width when the parent has the `.is-layout-flex` class by adding a `:not` selector.

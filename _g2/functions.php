@@ -279,6 +279,9 @@ if ( is_plugin_active( 'polylang/polylang.php' ) ) {
 if ( is_plugin_active( 'bbpress/bbpress.php' ) ) {
 	require __DIR__ . '/plugin-support/bbpress/functions-bbpress.php';
 }
+if ( is_plugin_active( 'booking-package/index.php' ) ) {
+	require __DIR__ . '/plugin-support/booking-package/functions-booking-package.php';
+}
 
 /*
 	WidgetArea initiate

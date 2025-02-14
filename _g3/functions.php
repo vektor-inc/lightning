@@ -146,7 +146,6 @@ function lightning_theme_setup() {
 		require __DIR__ . '/inc/starter-content.php';
 		add_theme_support( 'starter-content', lightning_add_starter_content() );
 	}
-
 }
 add_action( 'after_setup_theme', 'lightning_theme_setup' );
 
@@ -383,6 +382,9 @@ if ( is_plugin_active( 'bbpress/bbpress.php' ) ) {
 if ( is_plugin_active( 'the-events-calendar/the-events-calendar.php' ) ) {
 	// ※ If File name change to "functions-the-event-calendar.php" that fail to load.
 	require __DIR__ . '/plugin-support/the-events-calendar/functions-events-calendar.php';
+}
+if ( is_plugin_active( 'booking-package/index.php' ) ) {
+	require __DIR__ . '/plugin-support/booking-package/functions-booking-package.php';
 }
 
 /**
