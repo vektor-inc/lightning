@@ -68,11 +68,13 @@
 }
 
 // theme.json 有効にすると .editor-styles-wrapper .is-layout-flow > * + * { margin-block-start: 24px; } つけられるので打ち消し
-.editor-styles-wrapper .is-layout-flow > * + *:is([class*="wp-block"],[class*="vk_"]) {
+// Outerでラップすると余白が消えるので not 指定追加
+.editor-styles-wrapper .is-layout-flow:not( .wp-block-vk-blocks-outer-is-layout-flow ) > * + *:is([class*="wp-block"],[class*="vk_"]) {
 	margin-block-start: 0;
 }
 // コアに :root :where(.editor-styles-wrapper) :where(.is-layout-constrained)>* { margin-block-start: 24px; } つけられるので打ち消し
-:root .editor-styles-wrapper :where(.is-layout-constrained)>* {
+// グループでラップすると余白が消えるので not 指定追加
+:root .editor-styles-wrapper :where(.is-layout-constrained):not( .wp-block-group__inner-container ) >* {
 	margin-block-start: 0;
 }
 /*
