@@ -19,6 +19,7 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 		public function __construct() {
 			add_action( 'customize_register', array( __CLASS__, 'register_customize' ) );
 			add_action( 'wp_enqueue_scripts', array( __CLASS__, 'add_slide_script' ) );
+			add_action( 'wp_head', array( __CLASS__, 'preload_first_slide_image' ), 1 );
 		}
 
 		/**
@@ -750,7 +751,10 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 							$slide_html .= '<source media="(max-width: 767px)" srcset="' . esc_attr( $options[ 'top_slide_image_mobile_' . $i ] ) . '">';
 						}
 
-						$slide_html .= '<img src="' . esc_attr( $options[ 'top_slide_image_' . $i ] ) . '" alt="' . esc_attr( $slide_alt ) . '" class="ltg-slide-item-img">';
+						// Add preload attribute for the first slide image.
+						$preload_attr = ( $i === 1 ) ? ' fetchpriority="high"' : '';
+
+						$slide_html .= '<img src="' . esc_attr( $options[ 'top_slide_image_' . $i ] ) . '" alt="' . esc_attr( $slide_alt ) . '" class="ltg-slide-item-img"' . $preload_attr . '>';
 						$slide_html .= '</picture>';
 
 						// ltg-slide-cover.
@@ -841,6 +845,26 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 			}
 
 			return $slide_html;
+		}
+
+		/**
+		 * Preload first slide image
+		 */
+		public static function preload_first_slide_image() {
+			$options = get_option( 'lightning_theme_options' );
+			$default = function_exists( 'lightning_g3_slider_default_options' ) ? lightning_g3_slider_default_options() : array();
+			$options = wp_parse_args( $options, $default );
+
+			$pc_image     = ! empty( $options['top_slide_image_1'] ) ? esc_url( $options['top_slide_image_1'] ) : '';
+			$mobile_image = ! empty( $options['top_slide_image_mobile_1'] ) ? esc_url( $options['top_slide_image_mobile_1'] ) : '';
+
+			if ( $pc_image === $mobile_image || ( $pc_image && ! $mobile_image ) || ( ! $pc_image && $mobile_image ) ) {
+				$img = $pc_image ? $pc_image : $mobile_image;
+				echo '<link rel="preload" as="image" href="' . $img . '" fetchpriority="high" />';
+			} else {
+				echo '<link rel="preload" as="image" href="' . $mobile_image . '" media="(max-width: 767px)" fetchpriority="high" />';
+				echo '<link rel="preload" as="image" href="' . $pc_image . '" media="(min-width: 768px)" fetchpriority="high" />';
+			}			
 		}
 	}
 	new LTG_G3_Slider();
