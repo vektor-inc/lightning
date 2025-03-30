@@ -35,6 +35,7 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ G3 ][ Bug fix ] Fix an issue where the layout breaks when nesting certain blocks and setting them to full width on the edit screen.
 [ G3 ][ Bug fix ] Adjusting the unintentional vertical margins between blocks in the editor
 [ G3 / G2 ] Cope with plugin Booking Package 
 
