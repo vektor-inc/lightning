@@ -35,6 +35,7 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ G2 ][ Bug fix ] Fix mobile navi error on widget scrren.
 [ G3 ][ Bug fix ] Adjusting the unintentional vertical margins between blocks in the editor
 [ G3 / G2 ] Cope with plugin Booking Package 
 

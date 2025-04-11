@@ -201,6 +201,9 @@ function lightning_addJs() {
 	if ( 'widgets.php' === $pagenow ) {
 		return;
 	}
+	if ( 'index.php' === $pagenow && false !== strpos( $_SERVER['REQUEST_URI'], 'rest_route' ) ) {
+		return;
+	}
 	wp_register_script( 'lightning-js', get_template_directory_uri() . '/assets/js/lightning.min.js', array(), LIGHTNING_THEME_VERSION, true );
 	wp_localize_script( 'lightning-js', 'lightningOpt', apply_filters( 'lightning_localize_options', array() ) );
 	// jsのjQuery依存はもう無いが、一応追加しておく.
