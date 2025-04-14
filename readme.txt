@@ -35,6 +35,8 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ G3 / G2 ][ Bug fix ] Fix a PHP error that occurs when accessing a URL for a non-existent term.
+
 v15.29.5
 [ G3 ][ Bug Fix ] Fix an issue where an unintended margin appears in the navigation block when it is placed inside a .container.
 [ G3 ][ Bug fix ] Adjusting the unintentional vertical margins between blocks in the editor
