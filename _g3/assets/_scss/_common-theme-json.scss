@@ -82,7 +82,7 @@ body :is( .is-layout-flow, .is-layout-constrained ) > *:is(h1,h2,h3,h4,h5,h6 ) {
 body .container :is( .is-layout-flow, .is-layout-constrained ) {
 	.wp-block-table,
 	p,
-	ul,
+	ul:where(:not([class*="wp-block-navigation"])),
 	ol,
 	dl,
 	blockquote,
