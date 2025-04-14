@@ -91,8 +91,13 @@ if ( ! class_exists( 'VK_Helpers' ) ) {
 				}
 			} elseif ( is_tax() ) {
 				// Case of tax archive and no posts
-				$taxonomy               = get_queried_object()->taxonomy;
-				$post_type_info['slug'] = get_taxonomy( $taxonomy )->object_type[0];
+				// 存在しないタームのURLにアクセスされで普通に get_queried_object()->taxonomy を走らせるとエラーになるため
+				if ( ! empty( get_queried_object()->taxonomy ) ){
+					$taxonomy               = get_queried_object()->taxonomy;
+					$post_type_info['slug'] = get_taxonomy( $taxonomy )->object_type[0];
+				} else {
+					$post_type_info['slug'] = '404';
+				}
 			} else {
 				// This is necessary that when no posts.
 				$post_type_info['slug'] = 'post';
