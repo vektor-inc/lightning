@@ -35,6 +35,7 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ G3 ][ Bug Fix ] Fix an issue where an unintended margin appears in the navigation block when it is placed inside a .container.
 [ G3 ][ Bug fix ] Adjusting the unintentional vertical margins between blocks in the editor
 [ G3 / G2 ] Cope with plugin Booking Package 
 
