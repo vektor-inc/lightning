@@ -1,3 +1,5 @@
+!!! Github Actions Test !!!
+
 === Lightning ===
 Lightning WordPress theme, Copyright (C) 2015-2025 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
