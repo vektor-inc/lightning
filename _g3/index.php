@@ -20,7 +20,15 @@ do_action( 'lightning_site_header_after', 'lightning_site_header_after' );
 <?php
 if ( is_front_page() ) {
 	if ( apply_filters( 'lightning_default_slide_display', true ) ) {
-		LTG_G3_Slider::display_html();
+		// LTG_G3_Slider クラスが存在する場合のみスライダーを表示
+		// ※ ごくごく稀に LTG_G3_Slider クラスが存在しない場合があるため
+		if ( class_exists( 'LTG_G3_Slider' ) ) {
+			// スライダーのHTMLを出力（staticメソッド display_html を呼び出し）
+			LTG_G3_Slider::display_html();
+		} else {
+			// クラスが存在しない場合デバッグ用コメント
+			echo '<!-- LTG_G3_Slider class not found -->';
+		}
 	}
 }
 ?>
