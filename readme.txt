@@ -35,6 +35,8 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ G3 ][ Design bug fix ] Fixed the missing top border on the first post in the archive view.
+
 v15.29.7
 [ G3 ][ Bug fix ] Fix LTG_G3_Slider call in index.php: add class_exists check and change render() to display_html().
 
