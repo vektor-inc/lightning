@@ -63,7 +63,7 @@
             @media (min-width: $sm-min) {
                 padding: 1.5rem 0;
                 &:first-child {
-                    border-top: var(--vk-color-border-hr);
+                    border-top: 1px solid var(--vk-color-border-hr);
                 }
                 .media-img {
                     margin-right: 1.4rem;

@@ -35,6 +35,7 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ G3 ][ Design bug fix ] Fixed the missing top border on the first post in the archive view.
 [ G3 / G2 ][ Bug fix ] Fixed an issue where the site became G2 if a post was saved before saving the customizer settings on a new site.
 
 v15.29.7
