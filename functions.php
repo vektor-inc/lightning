@@ -48,7 +48,7 @@ function lightning_is_g3() {
 			update_option( 'lightning_theme_generation', 'g3' );
 			$return = true;
 		} elseif ( empty( $options ) ) {
-			// 後から Lightning をインストールした場合
+			// 後から Lightning をインストールした場合は G3 にする
 			// （新規サイトではない && lightning_theme_options が存在しない）
 			update_option( 'lightning_theme_generation', 'g3' );
 			$return = true;
