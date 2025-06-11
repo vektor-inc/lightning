@@ -28,7 +28,8 @@ if ( true === LIG_DEBUG ) {
 function lightning_is_g3() {
 
 	$return = true;
-	$g      = get_option( 'lightning_theme_generation' );
+	$g       = get_option( 'lightning_theme_generation' );
+	$options = get_option( 'lightning_theme_options' );
 
 	if ( '1' === get_option( 'fresh_site' ) ) {
 		// 新規サイトの場合はG3に指定.
@@ -46,8 +47,13 @@ function lightning_is_g3() {
 		} elseif ( 'origin3' === $skin ) {
 			update_option( 'lightning_theme_generation', 'g3' );
 			$return = true;
+		} elseif ( empty( $options ) ) {
+			// 後から Lightning をインストールした場合は G3 にする
+			// （新規サイトではない && lightning_theme_options が存在しない）
+			update_option( 'lightning_theme_generation', 'g3' );
+			$return = true;
 		} else {
-			// これ以外は旧ユーザーの可能性が高いのでG2.
+			// これ以外は旧ユーザー（Lightning Pro）の可能性が高いのでG2.
 			update_option( 'lightning_theme_generation', 'g2' );
 			$return = false;
 		}

@@ -35,6 +35,8 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ G3 / G2 ][ Bug fix ] Fix an issue where the Generation setting would default to G2 when installed on an existing site.
+
 v15.29.8
 [ G3 ][ Design bug fix ] Fixed the missing top border on the first post in the archive view.
 [ G3 / G2 ][ Bug fix ] Fixed an issue where the site became G2 if a post was saved before saving the customizer settings on a new site.

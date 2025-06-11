@@ -81,6 +81,16 @@ class Lightning_Is_G3_Test extends WP_UnitTestCase {
 				),
 				'expected' => false,
 			),
+			array(
+				'name'    => 'Not fresh && lightning_theme_options : null => G3',
+				'options' => array(
+					'fresh_site' => '0',
+					'lightning_design_skin'      => null,
+					'lightning_theme_generation' => null,
+					'lightning_theme_options' => null,
+				),
+				'expected' => true,
+			),
 		);
 
 		print PHP_EOL;
@@ -94,6 +104,7 @@ class Lightning_Is_G3_Test extends WP_UnitTestCase {
 			delete_option( 'fresh_site' );
 			delete_option( 'lightning_theme_generation' );
 			delete_option( 'lightning_design_skin' );
+			delete_option( 'lightning_theme_options' );
 
 			// テストのループ中に保存した option 値がキャッシュされて誤動作するので強制的に一度クリアする
 			wp_cache_flush();
