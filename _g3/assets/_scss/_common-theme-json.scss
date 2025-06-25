@@ -27,9 +27,10 @@
 			.is-content-justification-right,
 			.is-content-justification-left
 			)) {
-			max-width: calc( var(--vk-width-container) - var(--vk-width-container-padding) * 2 );
-			margin-left:auto;
-			margin-right:auto;
+			// 	border:1px solid #ff00ff;
+			// max-width: calc( var(--vk-width-container) - var(--vk-width-container-padding) * 2 );
+			// margin-left:auto;
+			// margin-right:auto;
 		}
 	 }
  }

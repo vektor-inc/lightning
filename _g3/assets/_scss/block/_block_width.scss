@@ -8,12 +8,18 @@ entry-body
 		wp-block-cover__inner-container
 */
 
+.is-layout-constrained > *:where(:not(.alignfull, .alignwide )) {
+		max-width: var(--vk-width-container-body);
+		margin-left:auto;
+		margin-right:auto;
+}
+
 .alignfull,
 .alignwide {
 	div[class*="__inner-container"]{
-		max-width: calc( var(--vk-width-container) - var(--vk-width-container-padding) * 2 );
-		margin-left:auto;
-		margin-right:auto;
+		// max-width: calc( var(--vk-width-container) - var(--vk-width-container-padding) * 2 );
+		// margin-left:auto;
+		// margin-right:auto;
 	}
 }
 .alignfull {
@@ -41,10 +47,10 @@ entry-body
 	) {
 		// --vk-width-container != 100% なので注意
 		// Lightningの幅広 = コンテナの「表示エリア（100%）	」 + 左右余白分の丁度半分
-		width: calc( 100% + ( var(--vk-width-full) - 100% ) / 2 );
-		margin-left: calc( ( 100% - var(--vk-width-full) ) / 4 );
-		margin-right: calc( ( 100% - var(--vk-width-full) ) / 4 );
-		max-width: var(--vk-width-full);
+		width: var(--vk-width-wide);
+		margin-left: calc( ( var(--vk-width-container-body) - var(--vk-width-full) ) / 4 );
+		margin-right: calc( ( var(--vk-width-container-body) - var(--vk-width-full) ) / 4 );
+		max-width: var(--vk-width-wide);
 	}
 }
 // 通常サイズの中に幅広対策
