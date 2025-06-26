@@ -753,12 +753,12 @@ v14.2.1
 
 v14.2.0
 [ G3 ][ other ] add args of do_action name
-[ G3 ][ Btg fix ] Fix WooCommerce css on edit screen
+[ G3 ][ Bug fix ] Fix WooCommerce css on edit screen
 
 v14.1.9
 [ G3 ][ Bug fix ] Fix global nav not refrect under case of mobile nav not specificed
-[ G3 ][ Btg fix ] Fix can't click too many menu item
-[ G3 ][ Btg fix ] Fix WooCommerce Btn color not refrect
+[ G3 ][ Bug fix ] Fix can't click too many menu item
+[ G3 ][ Bug fix ] Fix WooCommerce Btn color not refrect
 
 v14.1.8
 [ Bug fix ] Fix Header Navigation Padding
