@@ -35,6 +35,8 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ G3 ][ Other ] CSS Optimize ( Resolve Sass mixed-decls warnings )
+
 v15.29.9
 [ G3 / G2 ][ Bug fix ] Fix an issue where the Generation setting would default to G2 when installed on an existing site.
 
