@@ -35,6 +35,8 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ G3 ][ Other ] CSS Optimize ( Resolve Sass mixed-decls warnings )
+
 v15.29.9
 [ G3 / G2 ][ Bug fix ] Fix an issue where the Generation setting would default to G2 when installed on an existing site.
 
@@ -214,7 +216,7 @@ v15.12.1
 
 v15.12.0
 [ G3 ][ Add function ] Add search result widget area
-[ G3 ][ Bugfix ] fix editor width
+[ G3 ][ Bug fix ] fix editor width
 
 v15.11.0
 Update Font Awesome 6.4.2 ( Supports the icon font of X )
@@ -229,14 +231,14 @@ v15.10.4
 [ G3 / G2 ][ Bug fix ] Addressing the image ratio issue in WordPress 6.3.
 
 v15.10.3
-[ G3 ][ Bugfix ] Fixed a bug where the margin-top of the header site title differed slightly between the home page and other pages when no header logo image was specified.
+[ G3 ][ Bug fix ] Fixed a bug where the margin-top of the header site title differed slightly between the home page and other pages when no header logo image was specified.
 
 v15.10.2
-[ G3 ][ Bugfix ] Fix lightning_get_entry_meta function.
+[ G3 ][ Bug fix ] Fix lightning_get_entry_meta function.
 
 v15.10.1
 [ G3 ][ Improvement ] Improvement to hide the fixed header when clicking on an anchor link URL from another page.
-[ G3 ][ Bugfix ] Fix lightning_get_entry_meta function.
+[ G3 ][ Bug fix ] Fix lightning_get_entry_meta function.
 
 v15.10.0
 [ G3 (no-theme.json) ] Support link color and border ( WordPress 6.3 ).
@@ -298,7 +300,7 @@ v15.7.0
 
 v15.6.0
 [ G3 / G2 ][ Update ] VK mobile Nav ( add filter vk_mobile_nav_menu_btn_text )
-[ G3 / G2 ][ Update / Bugfix ] CSS Optimize ( Cope with PHP 8.1 warning )
+[ G3 / G2 ][ Update / Bug fix ] CSS Optimize ( Cope with PHP 8.1 warning )
 
 v15.5.1
 [ G3 / G2 ] Tree Shaking Update 2.2.0
@@ -753,12 +755,12 @@ v14.2.1
 
 v14.2.0
 [ G3 ][ other ] add args of do_action name
-[ G3 ][ Btg fix ] Fix WooCommerce css on edit screen
+[ G3 ][ Bug fix ] Fix WooCommerce css on edit screen
 
 v14.1.9
 [ G3 ][ Bug fix ] Fix global nav not refrect under case of mobile nav not specificed
-[ G3 ][ Btg fix ] Fix can't click too many menu item
-[ G3 ][ Btg fix ] Fix WooCommerce Btn color not refrect
+[ G3 ][ Bug fix ] Fix can't click too many menu item
+[ G3 ][ Bug fix ] Fix WooCommerce Btn color not refrect
 
 v14.1.8
 [ Bug fix ] Fix Header Navigation Padding
@@ -1189,7 +1191,7 @@ v9.5.0
 * skip release at free version
 
 v9.4.1
-* [ Bugfix ] Fixed bug that gives arise from no custom taxonomy / term.
+* [ Bug fix ] Fixed bug that gives arise from no custom taxonomy / term.
 
 v9.4.0
 * [ Specification Change ] vk component posts update ( cope with post list layout text )
@@ -1304,7 +1306,7 @@ v2.2.0
 * [ bug fix ][ home slide ] Empty tag has been output when there is no image #73
 
 v2.1.0
-* [ Specification change ] [ Slide ] In mobile mode, change to hide the edges of the image.
+* [ Specification change ][ Slide ] In mobile mode, change to hide the edges of the image.
 
 v2.0.0
 * [ Specification change ] Header logo position and menu position

@@ -17,14 +17,14 @@ p.wp-embed-heading {
 		padding: 15px;
 	}
 	&-featured-image {
-		@media screen and (min-width: 481px) {
-			width: 25%;
-		}
 		float: right;
 		position: relative;
 		margin-left: 1em;
 		width: 40%;
 		overflow: hidden;
+		@media screen and (min-width: 481px) {
+			width: 25%;
+		}
 	}
 	&-site-icon {
 		height: 20px;

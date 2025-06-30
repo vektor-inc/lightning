@@ -95,9 +95,9 @@
 	}
 	.swiper-button-prev:after,
 	.swiper-button-next:after {
+		font-size: 1.5em;
 		@media (max-width: $xs-max) {
 			display: none;
 		}
-		font-size: 1.5em;
 	}
 }
