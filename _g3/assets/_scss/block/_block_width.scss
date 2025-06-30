@@ -66,6 +66,24 @@ body :where(.alignfull,.alignwide):where(:not(.vk_outer-paddingLR-zero)) .is-lay
 	& > .alignwide {
 		margin-left: calc( ( 100% - var(--vk-width-full) ) / 4 ) !important;
 		margin-right: calc( ( 100% - var(--vk-width-full) ) / 4 ) !important;
+		// ネストされた .alignwide が親のはみ出しを起こさないように制御
+		& > .alignwide {
+			width: 100%;
+			max-width: 100%;
+			// 親の .alignwide に !important がついているため、こちらも !important を付けて上書き
+			margin-left: 0 !important; 
+			margin-right: 0 !important;
+		}
+	}
+	& > .alignfull {
+		margin-left: calc(50% - 50vw);
+		margin-right: calc(50% - 50vw);
+		// ネストされた .alignwide が左によらないように中央寄席せ制御
+		& > .alignwide {
+			// 親の .alignwide に !important がついているため、こちらも !important を付けて上書き
+			margin-left: auto !important; 
+			margin-right: auto !important;
+		}
 	}
 }
 
