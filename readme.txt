@@ -35,6 +35,7 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ G3 ][ Design bug fix ] Fix an issue where nested alignwide blocks overflow from their parent blocks in full-width covers.
 [ G3 ][ Other ] CSS Optimize ( Resolve Sass mixed-decls warnings )
 
 v15.29.9
