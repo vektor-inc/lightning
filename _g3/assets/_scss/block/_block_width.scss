@@ -30,17 +30,25 @@ entry-body
 		margin-left: auto;
 		margin-right: auto;
 	}
+}
 
-	// vk_outer_container の padding が標準の場合はマイナスオフセット
-	.vk_outer-paddingLR-none .vk_outer_container > &,
-	// コンテンツ直下の場合はマイナスオフセットする
-	.entry-body > &,
-	// 通常幅（全幅や幅広以外）の中の場合はマイナスオフセットする
-	*:where(:not(.alignfull,.alignwide)) > div[class*="__inner-container"] > &{
+// 幅広・全幅でマイナスオフセットが必要なケース *********************** */
+
+// コンテンツ直下の場合
+.entry-body,
+// 通常幅（全幅や幅広以外）の中の場合
+*:where(:not(.alignfull,.alignwide)) > div[class*="__inner-container"],
+// vk_outer_container の padding が標準の場合
+.vk_outer-paddingLR-none .vk_outer_container {
+	& > .alignwide {
 		// --vk-width-container != 100% なので注意
 		// Lightningの幅広 = コンテナの「表示エリア（100%）	」 + 左右余白分の丁度半分
 		margin-left: calc( ( var(--vk-width-container-body) - var(--vk-width-full) ) / 4 );
 		margin-right: calc( ( var(--vk-width-container-body) - var(--vk-width-full) ) / 4 );
+	}
+	& > .alignfull {
+		margin-left: calc(50% - 50vw);
+		margin-right: calc(50% - 50vw);
 	}
 }
 
