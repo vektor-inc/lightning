@@ -52,20 +52,6 @@ entry-body
 	}
 }
 
-// 全幅カバーの中に幅広ブロックを入れた時に、コアのCSSに
-// body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
-//     max-width: var(--wp--style--global--content-size);
-//     margin-left: auto !important;
-//     margin-right: auto !important;
-// }
-// を入れられて幅広にならないので打ち消し処理
-// body :where(.alignfull,.alignwide):where(:not(.vk_outer-paddingLR-zero)) .is-layout-constrained {
-// 	& > * > .alignwide {
-// 		// margin-left: calc( ( 100% - var(--vk-width-full) ) / 4 ) !important;
-// 		// margin-right: calc( ( 100% - var(--vk-width-full) ) / 4 ) !important;
-// 	}
-// }
-
 .main-section--col--two,
 .sub-section--col--two {
 	.alignfull,
