@@ -34,23 +34,21 @@ entry-body
 
 // 幅広・全幅でマイナスオフセットが必要なケース *********************** */
 
-.main-section:where(:not( .main-section--col--two,.sub-section--col--two )) {
-	// コンテンツ直下の場合
-	.entry-body,
-	// 通常幅（全幅や幅広以外）の中の場合
-	*:where(:not(.alignfull,.alignwide)) > div[class*="__inner-container"],
-	// vk_outer_container の padding が標準の場合
-	.vk_outer-paddingLR-none .vk_outer_container {
-		& > .alignwide {
-			// --vk-width-container != 100% なので注意
-			// Lightningの幅広 = コンテナの「表示エリア（100%）	」 + 左右余白分の丁度半分
-			margin-left: calc( ( var(--vk-width-container-body) - var(--vk-width-full) ) / 4 );
-			margin-right: calc( ( var(--vk-width-container-body) - var(--vk-width-full) ) / 4 );
-		}
-		& > .alignfull {
-			margin-left: calc(50% - 50vw);
-			margin-right: calc(50% - 50vw);
-		}
+// コンテンツ直下の場合
+.entry-body,
+// 通常幅（全幅や幅広以外）の中の場合
+*:where(:not(.alignfull,.alignwide)) > div[class*="__inner-container"],
+// vk_outer_container の padding が標準の場合
+.vk_outer-paddingLR-none .vk_outer_container {
+	& > .alignwide {
+		// --vk-width-container != 100% なので注意
+		// Lightningの幅広 = コンテナの「表示エリア（100%）	」 + 左右余白分の丁度半分
+		margin-left: calc( ( var(--vk-width-container-body) - var(--vk-width-full) ) / 4 );
+		margin-right: calc( ( var(--vk-width-container-body) - var(--vk-width-full) ) / 4 );
+	}
+	& > .alignfull {
+		margin-left: calc(50% - 50vw);
+		margin-right: calc(50% - 50vw);
 	}
 }
 
