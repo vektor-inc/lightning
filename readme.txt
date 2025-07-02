@@ -35,6 +35,7 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+v15.29.10
 [ G3 ][ Bug fix ] Readjust the layout width in CSS
 [ G3 ][ Other ] CSS Optimize ( Resolve Sass mixed-decls warnings )
 
