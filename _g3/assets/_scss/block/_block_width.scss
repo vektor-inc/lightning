@@ -61,8 +61,7 @@ entry-body
 		padding-left:0;
 		padding-right:0;
 	}
-	.alignfull,
-	.alignwide {
+	:is( .alignfull, .alignwide ) {
 		margin-left:0;
 		margin-right:0;
 		max-width: 100%;
@@ -70,6 +69,13 @@ entry-body
 			// Default block style overwrite
 			max-width: 100%;
 		}
+	}
+	// _common-theme-json.scss の上書き
+	// ※ _common-theme-json.scss の指定側で .main-section--col--two,.sub-section--col--two を除外した指定にすると、
+	// main-section 以外での指定が効かなくなるため、仕方ないので上書き打ち消し
+	:where(:not(.alignfull,.alignwide))>.is-layout-constrained:where(:not(.alignfull,.alignwide))> :is( .alignfull, .alignwide ) {
+		margin-left:0 !important;
+		margin-right:0 !important;
 	}
 	&.main-section--base--on,
 	&.sub-section--base--on {
