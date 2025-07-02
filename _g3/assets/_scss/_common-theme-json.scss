@@ -2,37 +2,24 @@
  * Cope with theme.json
  */
 
- // まず .is-root-container でメインエリアを定義している
-:is( .alignfull, .alignwide ):where(:not(.is-layout-flex)) {
-	 // theme.json があると __inner-container の div は出力されなくなってしまうので max-width にコンテンツ幅を指定
-	 // .alert は投稿リストブロックで投稿がない時に出力されるため追加。本当は div にかける方が適切と思われるが、影響範囲が大きそうなので一旦 .alert のみで様子見
-	 & > :is( 
-		div[class*="wp-container-"],
-		div[class*="wp-block-"], 
-		div[class*="vk_"],
-		.alert,
-		:where(:is(h1,h2,h3,h4,h5,h6)) 
-		){
-		&:where(:not(
-			.alignfull,
-			.alignwide,
-			.wp-block-cover__background,
-			.wp-block-cover__image-background,
-			.wp-block-column,
-			.vk_outer,
-			.vk_slider_wrapper,
-			.vk_gridcolcard_item,
-			.swiper-wrapper,
-			.swiper-pagination,
-			.is-content-justification-right,
-			.is-content-justification-left
-			)) {
-			max-width: calc( var(--vk-width-container) - var(--vk-width-container-padding) * 2 );
-			margin-left:auto;
-			margin-right:auto;
-		}
-	 }
- }
+// 通常幅のカバーでコンテンツ幅を利用する中に幅広を入れられた場合 ****************/
+
+// コアのCSSが
+// .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
+//     max-width: var(--wp--style--global--content-size);
+//     margin-left: auto !important;
+//     margin-right: auto !important;
+// }
+// を入れてくる。
+// これはコアは標準で全幅だが、Lightning はコンテンツ幅が前提なのでマイナスオフセットしなくてはいけないので上書きする。
+
+// 通常幅の中の要素の時（ 通常幅 > .is-layout-constrained > .alignwide ）にマイナスオフセットする必要があるが、
+// カバーブロックでは第一階層の alignfull, alignwide に直接 .is-layout-constrained がついてしまうので、
+// alignfull, alignwide を除外している
+*:where(:not(.alignfull,.alignwide)) > .is-layout-constrained:where(:not(.alignfull,.alignwide)) > .alignwide {
+		margin-left: calc( ( 100% - var(--vk-width-full) ) / 4 ) !important;
+		margin-right: calc( ( 100% - var(--vk-width-full) ) / 4 ) !important;
+}
 
  // theme.json を追加すると a:where(:not(.wp-element-button)){ text-decoration: underline; } が追加されるため打ち消し
  a{
