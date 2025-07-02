@@ -61,6 +61,7 @@ entry-body
 		padding-left:0;
 		padding-right:0;
 	}
+	.is-layout-constrained > :is( .alignfull, .alignwide ),
 	:is( .alignfull, .alignwide ) {
 		margin-left:0;
 		margin-right:0;
