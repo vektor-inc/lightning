@@ -1,8 +1,10 @@
-/** DOM example
-
-entry-body
-	wp-block-cover
-		wp-block-cover__inner-container
+/** 
+ * @file _block-width.scss
+ * @description ブロックの幅調整
+ *
+ * コンテンツ幅指定 ( is-layout-constrained / is-layout-flow 切り替え ) 対応用CSS
+ * ** Work in Progress **
+ *
 */
 
 .is-layout-constrained > *:where(:not(.alignfull, .alignwide )) {

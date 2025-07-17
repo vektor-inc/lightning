@@ -1,5 +1,13 @@
-/** DOM example
+/** 
+ * @file _block-width.scss
+ * @description ブロックの幅調整
+ *
+ * コンテンツ幅指定 ( is-layout-constrained / is-layout-flow 切り替え ) 非対応用CSS
+ * あくまで本文欄などは外側でコンテンツ幅指定されている前提
+ *
+*/
 
+/*
 インナーブロックは全幅か幅広の時のみ指定
 そうでないと container-padding が余分についてしまう
 
