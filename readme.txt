@@ -35,6 +35,11 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ G3 ][ Specification Change ] Change CSS file structure
+
+v15.29.11
+[ G3 ][ Bug fix ] Roll back 15.29.9 layout system
+
 v15.29.10
 [ G3 ][ Bug fix ] Fix layout issues with wide and full-width blocks when using a two-column site layout.
 [ G3 ][ Bug fix ] Readjust the layout width in CSS

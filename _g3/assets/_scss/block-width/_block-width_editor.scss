@@ -66,7 +66,6 @@ body.block-editor-iframe__body.editor-styles-wrapper{
 	&,
 	& > div:where(:not(.is-layout-constrained)) { // 編集画面で data-align の内側に div が追加されてしまうため、内側の div にも全幅指定しないと全幅が効かない
 		width:var(--vk-width-full);
-		max-width:var(--vk-width-full);
 	}
 }
 
@@ -79,6 +78,9 @@ body.block-editor-iframe__body.editor-styles-wrapper{
 		width:var(--vk-width-wide);
 		max-width:var(--vk-width-wide);
 	}
+	div:where(:not(.is-layout-constrained)) {
+		max-width:var(--vk-width-wide);
+	}
 }
 
 //////////////////////////////////////////////////////////////
@@ -89,8 +91,6 @@ body.block-editor-iframe__body.editor-styles-wrapper{
 		:not(.alignleft)
 		:not(.alignright)
 		:not(.alignfull)
-		:not([data-align=wide])
-		:not([data-align=full])
 		) {
 		// for theme.json non-active
 		max-width:var(--vk-width-editor-container);

@@ -1,8 +1,10 @@
-/** DOM example
-
-entry-body
-	wp-block-cover
-		wp-block-cover__inner-container
+/** 
+ * @file _block-width.scss
+ * @description ブロックの幅調整
+ *
+ * コンテンツ幅指定 ( is-layout-constrained / is-layout-flow 切り替え ) 対応用CSS
+ * ** Work in Progress **
+ *
 */
 
 .is-layout-constrained > *:where(:not(.alignfull, .alignwide )) {
@@ -14,12 +16,15 @@ entry-body
 .alignfull {
 	width:auto; /* Don't use 100svw!! cope with windows */
 	max-width: var(--vk-width-full);
-	margin-left: calc(50% - 50vw);
-	margin-right: calc(50% - 50vw);
+	// マイナスオフセットはここでは指定しない
+	// Don't specify negative offset here
 }
+
 .alignwide {
 	width: var(--vk-width-wide);
 	max-width: var(--vk-width-wide);
+	// マイナスオフセットはここでは指定しない
+	// Don't specify negative offset here
 
 	// .is-layout-constrained 直下の場合はまだコンテンツ幅の要素の中に入ってないのでマイナスオフセットしない
 	.is-layout-constrained > &,
