@@ -12,10 +12,11 @@
 @import "../../../vendor/vektor-inc/vk-component/src/assets/scss/vk-components.scss";
 @import "variables";
 
+@import "block-width/block-width";
+@import "block-width/block-width_editor";
+
 @import "utils";
-@import "block/block_width";
 @import "block/block";
-@import "block/block_width_editor";
 @import "block/block_editor";
 
 @import "components/nav";
