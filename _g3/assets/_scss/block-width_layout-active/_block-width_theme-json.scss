@@ -1,0 +1,22 @@
+/**
+ * Cope with theme.json
+ */
+
+// 通常幅のカバーでコンテンツ幅を利用する中に幅広を入れられた場合 ****************/
+
+// コアのCSSが
+// .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
+//     max-width: var(--wp--style--global--content-size);
+//     margin-left: auto !important;
+//     margin-right: auto !important;
+// }
+// を入れてくる。
+// これはコアは標準で全幅だが、Lightning はコンテンツ幅が前提なのでマイナスオフセットしなくてはいけないので上書きする。
+
+// 通常幅の中の要素の時（ 通常幅 > .is-layout-constrained > .alignwide ）にマイナスオフセットする必要があるが、
+// カバーブロックでは第一階層の alignfull, alignwide に直接 .is-layout-constrained がついてしまうので、
+// alignfull, alignwide を除外している
+*:where(:not(.alignfull,.alignwide)) > .is-layout-constrained:where(:not(.alignfull,.alignwide)) > .alignwide {
+		margin-left: calc( ( 100% - var(--vk-width-full) ) / 4 ) !important;
+		margin-right: calc( ( 100% - var(--vk-width-full) ) / 4 ) !important;
+}

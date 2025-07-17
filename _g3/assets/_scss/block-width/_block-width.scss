@@ -1,0 +1,101 @@
+/** DOM example
+
+インナーブロックは全幅か幅広の時のみ指定
+そうでないと container-padding が余分についてしまう
+
+entry-body
+	wp-block-cover
+		wp-block-cover__inner-container
+*/
+
+.alignfull,
+.alignwide {
+	div[class*="__inner-container"]{
+		max-width: calc( var(--vk-width-container) - var(--vk-width-container-padding) * 2 );
+		margin-left:auto;
+		margin-right:auto;
+	}
+}
+.alignfull {
+	&,
+	&:is(
+	.swiper-container,
+	.vk_slider,
+	.wp-block-image,
+	.wp-block-cover-image,
+	.wp-block-cover
+	) {
+		width:auto; /* Don't use 100svw!! cope with windows */
+		margin-left: calc(50% - 50vw);
+		margin-right: calc(50% - 50vw);
+		max-width: var(--vk-width-full);
+	}
+}
+.alignwide {
+	&,
+	&:is(
+	.vk_slider,
+	.wp-block-image,
+	.wp-block-cover-image,
+	.wp-block-cover
+	) {
+		// --vk-width-container != 100% なので注意
+		// Lightningの幅広 = コンテナの「表示エリア（100%）	」 + 左右余白分の丁度半分
+		width: calc( 100% + ( var(--vk-width-full) - 100% ) / 2 );
+		margin-left: calc( ( 100% - var(--vk-width-full) ) / 4 );
+		margin-right: calc( ( 100% - var(--vk-width-full) ) / 4 );
+		max-width: var(--vk-width-full);
+	}
+}
+// 通常サイズの中に幅広対策
+:is(.wp-block-cover,.wp-block-group):not(.alignfull,.alignwide){
+	& > .is-layout-constrained > .alignwide {
+		margin-left: calc( ( 100% - var(--vk-width-full) ) / 4 ) !important;
+		margin-right: calc( ( 100% - var(--vk-width-full) ) / 4 ) !important;
+	}
+}
+
+// 全幅カバーの中に幅広ブロックを入れた時に、コアのCSSに
+// body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
+//     max-width: var(--wp--style--global--content-size);
+//     margin-left: auto !important;
+//     margin-right: auto !important;
+// }
+// を入れられて幅広にならないので打ち消し処理
+body :where(.alignfull,.alignwide):where(:not(.vk_outer-paddingLR-zero)) .is-layout-constrained {
+	& > .alignwide {
+		margin-left: calc( ( 100% - var(--vk-width-full) ) / 4 ) !important;
+		margin-right: calc( ( 100% - var(--vk-width-full) ) / 4 ) !important;
+	}
+}
+
+.main-section--col--two,
+.sub-section--col--two {
+	.alignfull,
+	.alignwide {
+		margin-left:0;
+		margin-right:0;
+		max-width: 100%;
+		&.wp-block-image {
+			// Default block style overwrite
+			max-width: 100%;
+		}
+	}
+	&.main-section--base--on,
+	&.sub-section--base--on {
+		.alignwide {
+			padding-left: 0;
+			padding-right: 0;
+			margin-left: calc( var(--vk-width-base-padding) / -2 );
+			margin-right: calc( var(--vk-width-base-padding) / -2 );
+			max-width:calc( 100% + var(--vk-width-base-padding) );
+			width:calc( 100% + var(--vk-width-base-padding) );
+		}
+		.alignfull {
+			padding-left: 0;
+			padding-right: 0;
+			max-width:calc( 100% + var(--vk-width-base-padding) * 2 );
+			width:calc( 100% + var(--vk-width-base-padding) * 2 );
+		}
+	}
+}
