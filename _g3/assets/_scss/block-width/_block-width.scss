@@ -48,13 +48,7 @@ entry-body
 	}
 }
 // 通常サイズの中に幅広対策
-:is(.wp-block-cover,.wp-block-group):not(.alignfull,.alignwide){
-	& > .is-layout-constrained > .alignwide {
-		margin-left: calc( ( 100% - var(--vk-width-full) ) / 4 ) !important;
-		margin-right: calc( ( 100% - var(--vk-width-full) ) / 4 ) !important;
-	}
-}
-
+:is(.wp-block-cover,.wp-block-group):not(.alignfull,.alignwide),
 // 全幅カバーの中に幅広ブロックを入れた時に、コアのCSSに
 // body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
 //     max-width: var(--wp--style--global--content-size);
@@ -62,10 +56,14 @@ entry-body
 //     margin-right: auto !important;
 // }
 // を入れられて幅広にならないので打ち消し処理
-body :where(.alignfull,.alignwide):where(:not(.vk_outer-paddingLR-zero)) .is-layout-constrained {
-	& > .alignwide {
+body :where(.alignfull,.alignwide):where(:not(.vk_outer-paddingLR-zero)) {
+	& > .is-layout-constrained > .alignwide {
 		margin-left: calc( ( 100% - var(--vk-width-full) ) / 4 ) !important;
 		margin-right: calc( ( 100% - var(--vk-width-full) ) / 4 ) !important;
+	}
+	& > .is-layout-constrained > .alignfull {
+		margin-left: calc( ( 100% - var(--vk-width-full) ) / 2 ) !important;
+		margin-right: calc( ( 100% - var(--vk-width-full) ) / 2 ) !important;
 	}
 }
 
