@@ -35,6 +35,8 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ G2 ][ Bug fix ] Fix an issue where Bootstrap CSS is not loaded in the iframe of the block editor on the edit screen.
+
 v15.30.0
 [ G3 ][ Specification Change ] Change CSS file structure
 
