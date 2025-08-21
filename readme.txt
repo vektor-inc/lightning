@@ -2,7 +2,7 @@
 Lightning WordPress theme, Copyright (C) 2015-2025 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
 Tested up to: 6.8
-Stable tag: 15.30.0
+Stable tag: 15.30.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -35,6 +35,7 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+v15.30.1
 [ G3 ][ Bug fix ] Fix an issue where embedding posts from the same site into each other causes the blog card process to enter an infinite loop, resulting in a memory overflow error.
 [ G2 ][ Bug fix ] Fix an issue where Bootstrap CSS is not loaded in the iframe of the block editor on the edit screen.
 
