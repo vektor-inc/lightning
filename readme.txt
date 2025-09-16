@@ -36,6 +36,7 @@ vk-develop@vektor-inc.co.jp
 == Changelog ==
 
 [ Bug fix ] Fix link to FontAwesome icon list to correctly point to the free icons page.
+[ G2 ][ Bug fix ] Fix mobile navi error on widget scrren.
 
 v15.30.1
 [ G3 ][ Bug fix ] Fix an issue where embedding posts from the same site into each other causes the blog card process to enter an infinite loop, resulting in a memory overflow error.
