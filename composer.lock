@@ -4,26 +4,27 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2fb23d38d055f91696000b17301e81dc",
+    "content-hash": "4c9a4a13068d08a8dcba0b4c12a119ed",
     "packages": [
         {
             "name": "vektor-inc/font-awesome-versions",
-            "version": "0.5.0",
+            "version": "0.6.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vektor-inc/font-awesome-versions.git",
-                "reference": "5cf8705fd59082b78cea65ab26f9e8bcd8bde57b"
+                "reference": "2f839c995c88d9f862841547450d500565b80212"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vektor-inc/font-awesome-versions/zipball/5cf8705fd59082b78cea65ab26f9e8bcd8bde57b",
-                "reference": "5cf8705fd59082b78cea65ab26f9e8bcd8bde57b",
+                "url": "https://api.github.com/repos/vektor-inc/font-awesome-versions/zipball/2f839c995c88d9f862841547450d500565b80212",
+                "reference": "2f839c995c88d9f862841547450d500565b80212",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.6.0"
             },
             "require-dev": {
+                "doctrine/instantiator": "^1.5",
                 "wp-phpunit/wp-phpunit": "^5.4",
                 "yoast/phpunit-polyfills": "^1.0"
             },
@@ -46,9 +47,9 @@
             "description": "Font Awesome",
             "support": {
                 "issues": "https://github.com/vektor-inc/font-awesome-versions/issues",
-                "source": "https://github.com/vektor-inc/font-awesome-versions/tree/0.5.0"
+                "source": "https://github.com/vektor-inc/font-awesome-versions/tree/0.6.3"
             },
-            "time": "2023-09-11T07:47:45+00:00"
+            "time": "2025-09-16T10:03:40+00:00"
         },
         {
             "name": "vektor-inc/tgm-plugin-activation",
