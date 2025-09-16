@@ -1,4 +1,3 @@
-
 .has-small-font-size {
 	font-size : var(--vk-size-text-sm); /* 14px */
 }
@@ -22,7 +21,9 @@
 }
 
 .wp-block-image {
-	max-width: 100%;
+	&:where(:not(.alignfull,.alignwide)) {
+		max-width: 100%;
+	}
 	/* 編集画面専用 */
 	.components-resizable-box__container {
 		max-width: 100%;
@@ -152,10 +153,10 @@ body .wp-block-image figure {
 	// コアによって table の外の figure タグ（ .wp-block-table ）にされるため、
 	// th や td にCSSで指定すると、編集画面での指定が効かなくなる。
 	// その都合上 figure.wp-block-table に指定している。
+	border-color:var(--vk-color-border-hr);
 	&:where(:not([class*="font-size"])){
 		font-size:var(--vk-size-text-sm);
 	}
-	border-color:var(--vk-color-border-hr);
 	:is( 
 	table,
 	thead,

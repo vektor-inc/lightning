@@ -1,0 +1,236 @@
+/**
+Editor width control
+*/
+
+//////////////////////////////////////////////////////////////
+/// Variable Setting
+//////////////////////////////////////////////////////////////
+body{
+	--vk-width-editor-sidebar:0px; // Be aware that calc cannot calculate if there is no unit.
+	--vk-width-editor-leftmenu:0px; // Be aware that calc cannot calculate if there is no unit.
+	--vk-width-editor-list-view-sidebar:0px; // Be aware that calc cannot calculate if there is no unit.
+	// full
+	--vk-width-full:calc( 100svw - var(--vk-width-editor-sidebar) - var(--vk-width-editor-leftmenu) - var(--vk-width-editor-list-view-sidebar) );
+	// body
+	--vk-width-editor-container: calc( var(--vk-width-full) * 0.8 );
+	--vk-width-contaner: var(--vk-width-editor-container);
+	--wp--style--global--content-size: var(--vk-width-editor-container);
+	// wide
+	--vk-width-wide: calc( var(--vk-width-editor-container) + ( var(--vk-width-full) - var(--vk-width-editor-container) ) / 2 );
+	--wp--style--global--wide-size: var(--vk-width-wide);
+}
+
+//  In case the left sidebar is open ( not full screen mode )
+body:where(:not(.is-fullscreen-mode)) {
+	--vk-width-editor-leftmenu:160px;
+	&.folded {
+		// 手動で畳まれば場合
+		// manual folded
+		// 単位を指定しないと calc が計算できないので注意
+		--vk-width-editor-leftmenu:36px;
+	}
+	&.auto-fold {
+		@media ( max-width: 960px ) {
+			--vk-width-editor-leftmenu:36px;
+		}
+		@media ( max-width: 782px ) {
+			--vk-width-editor-leftmenu:0px;
+		}
+	}
+}
+
+// In case the right sidebar is open
+body:has(.is-sidebar-opened), // until WP6.5.5
+body:has(.editor-sidebar) // after WP6.6
+{
+	--vk-width-editor-sidebar:280px;
+}
+
+// In case the block list view is open
+body:has(.interface-interface-skeleton__secondary-sidebar) {
+	--vk-width-editor-list-view-sidebar:350px;
+}
+
+/// mobile / tablet iframe adjustment //////////////////////////
+body.block-editor-iframe__body.editor-styles-wrapper{
+	// タブレット / モバイル の場合はサイドパネルの幅の変数の値を0にする
+	--vk-width-editor-sidebar:0px;
+	--vk-width-editor-leftmenu:0px;
+	--vk-width-editor-list-view-sidebar:0px;
+}
+
+//////////////////////////////////////////////////////////////
+/// full & wide
+//////////////////////////////////////////////////////////////
+
+[data-align=full] {
+	&,
+	& > div:where(:not(.is-layout-constrained)) { // 編集画面で data-align の内側に div が追加されてしまうため、内側の div にも全幅指定しないと全幅が効かない
+		width:var(--vk-width-full);
+		max-width:var(--vk-width-full);
+	}
+}
+
+// theme.json の幅指定上書き（ 編集画面はサイドバーの状況で処理がかわるため ）
+.block-editor-block-list__layout.is-root-container > .alignwide,
+[data-align=wide] {
+	// margin-left:auto;
+	// margin-right:auto;
+	width:var(--vk-width-wide);
+	html &,
+	& > div {
+		width:var(--vk-width-wide);
+		max-width:var(--vk-width-wide);
+	}
+}
+
+.editor-styles-wrapper {
+	.is-root-container {
+		// 6.0 / theme.json あり / Evergreen のオフセット背景の時に左によってしまうため
+		margin-left:auto;
+		margin-right:auto;
+		// for theme.json non-active
+		max-width:var(--vk-width-editor-container);
+		// for theme.json active
+		--wp--style--global--content-size: var(--vk-width-editor-container);
+	}
+}
+
+//////////////////////////////////////////////////////////////
+/// .is-layout-constrained の幅の制御
+//////////////////////////////////////////////////////////////
+.editor-styles-wrapper {
+	.is-layout-constrained > :where(
+		:not(.alignleft)
+		:not(.alignright)
+		:not(.alignfull)
+		:not([data-align=wide])
+		:not([data-align=full])
+		) {
+		// for theme.json non-active
+		max-width:var(--vk-width-editor-container);
+		// for theme.json active
+		--wp--style--global--content-size: var(--vk-width-editor-container);
+	}
+	:is(
+		.is-root-container,
+		.is-layout-constrained,
+		:is(
+			.alignfull,
+			.alignwide,
+			[data-align=full],
+			[data-align=wide]
+		) div[class*="__inner-container"]
+	) {
+		// max-width:var(--vk-width-editor-container);
+		// // margin-left:auto;
+		// // margin-right:auto;
+		// --vk-width-container: var(--vk-width-editor-container);
+		// 通常幅の中の全幅 /////////////////////////////////
+		& > :is( 
+			.alignfull, 
+			[data-align=full] 
+		) {
+			// margin-left: calc( ( var(--vk-width-editor-container) - var(--vk-width-full) ) / 2 ) !important;
+			// margin-right: calc( ( var(--vk-width-editor-container) - var(--vk-width-full) ) / 2 ) !important;
+		}
+		// 通常幅の中の幅広 //////////////////////////////////
+		// 標準だと通常幅の中の幅広や全幅は強制的に通常幅にされるので、されるので、上書き
+		& > :is( 
+			.alignwide, 
+			[data-align=wide] 
+		) {
+			// width: var(--vk-width-wide);
+			// max-width: var(--vk-width-wide);
+			// margin-left: calc( ( var(--vk-width-editor-container) - var(--vk-width-full) ) / 4 ) !important;
+			// margin-right: calc( ( var(--vk-width-editor-container) - var(--vk-width-full) ) / 4 ) !important;
+		}
+	}
+	//Outer全幅用
+	.is-root-container, //カラムにはインナーコンテナがないため、カラムブロックがルートコンテナの場合にOuter全幅で崩れるため追加
+	.is-layout-constrained {// Outer全幅の場合に .vk_slider_item.is-layout-constrained の中でずれてしまうため追加
+		.wp-block-vk-blocks-outer.vk_outer{
+			&.vk_outer-width-full{ 
+				// margin-left: calc(50% - var(--vk-width-full) / 2);
+				// margin-right: calc(50% - var(--vk-width-full) / 2);
+			}
+		}
+	}
+	.is-root-container {
+		> .wp-block {
+			// 6.0 / theme.json あり / Evergreen のオフセット背景の時に左によってしまうため
+			// margin-left:auto;
+			// margin-right:auto;
+		}
+	}
+}
+
+//////////////////////////////////////////////////////////////
+/// マイナスオフセットするケース
+//////////////////////////////////////////////////////////////
+.editor-styles-wrapper {
+	:is( 
+		.is-root-container,
+		.is-layout-constrained
+	 ) {
+		& > :is( .alignwide, [data-align=wide] ) {
+			margin-left: calc( ( var(--vk-width-editor-container) - var(--vk-width-full) ) / 4 ) !important;
+			margin-right: calc( ( var(--vk-width-editor-container) - var(--vk-width-full) ) / 4 ) !important;
+		}
+		& > :is( .alignfull, [data-align=full] ) {
+			margin-left: calc( ( var(--vk-width-editor-container) - var(--vk-width-full) ) / 2 ) !important;
+			margin-right: calc( ( var(--vk-width-editor-container) - var(--vk-width-full) ) / 2 ) !important;
+		}
+	}
+}
+
+// .edit-post-visual-editor__content-area .editor-styles-wrapper .edit-post-visual-editor__post-title-wrapper > *, 
+// .edit-post-visual-editor__content-area .editor-styles-wrapper .block-editor-block-list__layout.is-root-container > * {
+// 	width:var(--vk-width-editor-container);
+// 	max-width:var(--vk-width-editor-container);
+// 	margin-left:auto;
+// 	margin-right:auto;
+// }
+
+//////////////////////////////////////////////////////////////
+/// その他
+//////////////////////////////////////////////////////////////
+
+.wp-block.editor-post-title {
+	max-width:var(--vk-width-editor-container);
+}
+
+.container {
+	padding:0;
+	max-width:var(--vk-width-editor-container);
+	@media (min-width: 576px) {
+		max-width:var(--vk-width-editor-container);
+	}
+	@media (min-width: 768px) {
+		max-width:var(--vk-width-editor-container);
+	}
+	@media (min-width: 992px){
+		max-width:var(--vk-width-editor-container);
+	}
+	@media (min-width: 1200px) {
+		max-width:var(--vk-width-editor-container);
+	}
+}
+
+//////////////////////////////////////////////////////////////
+// overwright classic.css
+//////////////////////////////////////////////////////////////
+html :where(.wp-block) {
+	// theme.json がない場合（？）に classic.css が 850px を指定してくるので上書きする
+	max-width: unset;
+}
+
+// 旧 Bootstrap 用 padding リセット
+:is( 
+	.alignfull, 
+	.alignwide, 
+	[data-align=full], 
+	[data-align=wide] 
+	) div[class*=__inner-container] {
+    --vk-width-container-padding: 0px;
+}

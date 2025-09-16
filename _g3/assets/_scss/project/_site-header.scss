@@ -106,14 +106,14 @@ $logo_bottom_margin:1rem;
 /*	.site-header-sub
 /*-------------------------------------------*/
 .site-header-sub {
+	margin-top:$logo_top_margin;
+	margin-bottom:$logo_bottom_margin;
+	float: right;
+	display: flex;
+	padding-left:2em;
 	@media (max-width: 991px) {
 		display: none;
 	}
-    margin-top:$logo_top_margin;
-    margin-bottom:$logo_bottom_margin;
-	float: right;
-	display: flex;
-    padding-left:2em;
 	.contact-txt {
 		line-height: 1.3em;
 		text-align: left;

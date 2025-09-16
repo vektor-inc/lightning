@@ -1,48 +1,45 @@
-name: Deploy to WordPress.org
+name: Release on Tag
+
 on:
   push:
     tags:
-    - "[0-9]+.[0-9]+.[0-9]+"
-
-env:
-  dist_name: Lightning
+      - '[0-9]+.[0-9]+.[0-9]+'
 
 jobs:
   release:
-    name: release
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v1
-      with:
-        node-version: 20.x
-    - name: Install NPM Scripts
-      run: npm install
-    - name: install Composer dependencies
-      run: composer install
-    - name: Build
-      run: npm run build
-    - run: bash bin/dist
-    - run: echo "DIST_VERSION=$(echo ${{ github.ref }} | sed -E 's/^refs\/tags\/v?(.*)$/\1/')" >> $GITHUB_ENV
-    - run: test -e dist/${{ env.dist_name }}.zip
-    - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: ${{ github.ref }}
-        release_name: Release ${{ github.ref }}
-        draft: false
-        prerelease: false
-    - run : test -e dist/${{ env.dist_name }}.zip
-    - name: Upload Release Asset
-      id: upload-release-asset
-      uses: actions/upload-release-asset@v1.0.1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./dist/${{ env.dist_name }}.zip
-        asset_name: ${{ env.dist_name }}.zip
-        asset_content_type: application/zip
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build dist
+        run: npm run dist
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./dist/lightning.zip
+          asset_name: lightning.zip
+          asset_content_type: application/zip
