@@ -55,6 +55,10 @@
 
 @import "customize-shortcut";
 
+html {
+	scroll-padding-top:calc( var(--wp-admin--admin-bar--height) + 60px );
+}
+
 html,
 body {
 	font-family :  var(--wp--preset--font-family--system-font);

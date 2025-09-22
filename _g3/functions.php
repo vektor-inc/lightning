@@ -285,18 +285,6 @@ function lightning_global_nav_fix( $options ) {
 add_filter( 'lightning_localize_options', 'lightning_global_nav_fix', 10, 1 );
 
 /**
- * Adjustment page link scroll position for admin bar
- * ページ内リンクの管理バー分補正
- *
- * @return void
- */
-function lightning_add_scroll_adjustment_css() {
-	$dynamic_css = 'html{scroll-padding-top:var(--vk-size-admin-bar);}';
-	wp_add_inline_style( 'lightning-common-style', $dynamic_css );
-}
-add_action( 'wp_enqueue_scripts', 'lightning_add_scroll_adjustment_css', 11 );
-
-/**
  * ページ内リンクの場合は識別クラスを出力
  * Add class to anchor link
  *
