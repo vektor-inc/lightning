@@ -55,6 +55,10 @@
 
 @import "customize-shortcut";
 
+html {
+	scroll-padding-top:calc( var(--vk-size-admin-bar) + 60px );
+}
+
 html,
 body {
 	font-family :  var(--wp--preset--font-family--system-font);

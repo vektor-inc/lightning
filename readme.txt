@@ -35,6 +35,8 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ Bug fix ] Fix an issue where page anchor links are hidden behind a fixed header.
+
 v15.30.2
 [ Bug fix ] Fix link to FontAwesome icon list to correctly point to the free icons page.
 [ G2 ][ Bug fix ] Fix mobile navi error on widget scrren.
