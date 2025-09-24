@@ -15,3 +15,22 @@ thumbs.db
 /playwright-report/
 /playwright/.cache/
 .phpunit.result.cache
+
+# for AI Agents
+**/.serena
+**/.github/copilot-instructions.md
+**/.github/instructions/
+**/.claude/memories
+**/.cursor/rules
+**/.gemini/memories/
+**/.mcp.json
+!.rulesync/.mcp.json
+**/.cursor/mcp.json
+**/.vscode/mcp.json
+**/.codex/mcp-config.json
+**/.gemini/settings.json
+**/AGENTS.md
+**/CLAUDE.md
+**/GEMINI.md
+
+
