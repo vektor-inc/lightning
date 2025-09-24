@@ -1,10 +1,10 @@
 language: "ja-JP"
 path_filters:
-  - "!dist/**"
-  - "!vendor/**"
-  - "!node_modules/**"
-  - "!*.min.js"
-  - "!*.min.css"
+  - "!**/dist/**"
+  - "!**/vendor/**"
+  - "!**/node_modules/**"
+  - "!**/*.min.js"
+  - "!**/*.min.css"
 reviews:
   profile: "chill"
   high_level_summary: true
