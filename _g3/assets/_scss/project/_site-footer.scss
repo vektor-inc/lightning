@@ -28,7 +28,7 @@
         }
     }
 }
-// モバイル固定ナビ有効時に
+// モバイル固定ナビ有効時にフッターの下部に余白を追加
 @media ( max-width: $md-max ) {
 	.mobile-fix-nav_enable :is(
 		.site-footer,
