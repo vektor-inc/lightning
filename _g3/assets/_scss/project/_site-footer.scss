@@ -4,11 +4,6 @@
     font-size:var(--vk-size-text-sm);
     content-visibility:auto;
     contain-intrinsic-size: 370px; // 仮の高さ370pxでレイアウトを確保
-    .mobile-fix-nav_enable :is(&,block-site-footer) {
-        @media ( max-width: $md-max ) {
-            padding-bottom:var(--vk-mobile-fix-nav-height,70px);
-        }
-    }
     &-content {
         position: relative; // これがないとカスタマイズショートカットの位置調整が効かない
         padding-top: var(--vk-margin-section-bottom);
