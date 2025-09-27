@@ -4,9 +4,9 @@
     font-size:var(--vk-size-text-sm);
     content-visibility:auto;
     contain-intrinsic-size: 370px; // 仮の高さ370pxでレイアウトを確保
-    .mobile-fix-nav_enable & {
+    .mobile-fix-nav_enable :is(&,block-site-footer) {
         @media ( max-width: $md-max ) {
-            padding-bottom:70px;
+            padding-bottom:var(--vk-mobile-fix-nav-height,70px);
         }
     }
     &-content {
@@ -31,5 +31,14 @@
             margin:0.5rem;
             font-size:var(--vk-size-text-xs);
         }
+    }
+}
+// モバイル固定ナビ有効時に
+@media ( max-width: $md-max ) {
+	.mobile-fix-nav_enable :is(
+		.site-footer,
+		.block-site-footer
+		) {
+        padding-bottom:var(--vk-mobile-fix-nav-height,70px);
     }
 }
