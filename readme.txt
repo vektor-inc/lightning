@@ -35,6 +35,7 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ G3 ][ Bug fix ] Fixed an issue where the footer was obscured by the mobile fixed navigation when using Block Template Parts and Mobile Fixed Nav together in the G3 Pro Unit
 [ G3 ][ Bug fix ] Remove unintended spacing in the Query Loop post template in the editor
 
 v15.30.3
