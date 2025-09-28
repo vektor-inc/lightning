@@ -27,6 +27,10 @@
 	@import "common";
 	@import "common-theme-json";
 	font-family :  var(--wp--preset--font-family--system-font);
+	// 編集画面でコアのスタイルが margin: calc(1rem * 0.8) 0; をつけてきて余分な余白ができるので打ち消し
+	:is( ul, ol ):where(.wp-block-post-template) li {
+		margin:0;
+	}
 }
 
 @import "common-editor";

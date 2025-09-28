@@ -35,6 +35,8 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ G3 ][ Bug fix ] Remove unintended spacing in the Query Loop post template in the editor
+
 v15.30.3
 [ G3 ][ Bug fix ] Fix an issue where page anchor links are hidden behind a fixed header.
 
