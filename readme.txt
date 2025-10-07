@@ -35,6 +35,7 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+v15.31.0
 [ G3 ][ Other ] Cope with content half width column ( VK Blocks )
 
 v15.30.4
