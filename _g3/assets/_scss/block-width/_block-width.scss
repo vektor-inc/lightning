@@ -16,6 +16,9 @@ entry-body
 		wp-block-cover__inner-container
 */
 
+// 1カラムの時だけ全幅や幅広を有効に指定したいが、
+// モバイル時には１カラムになるので、2カラムでも一旦幅広・全幅指定する。
+
 .alignfull,
 .alignwide {
 	div[class*="__inner-container"]{
