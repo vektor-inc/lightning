@@ -143,8 +143,9 @@ body.block-editor-iframe__body.editor-styles-wrapper{
 	// // Outer全幅の場合に .vk_slider_item.is-layout-constrained の中でずれてしまうため .is-layout-constrained 追加
 	:is( 
 		.is-root-container,
-		.is-layout-constrained 
-	) {
+		.is-layout-constrained
+	),
+	.vk_slider_item_container div[class*="__inner-container"] {
 		// 通常幅の中の全幅 /////////////////////////////////
 		& > :is( 
 			.alignfull, 
