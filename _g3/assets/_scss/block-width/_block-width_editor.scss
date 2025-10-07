@@ -195,3 +195,19 @@ html :where(.wp-block) {
 	) div[class*=__inner-container] {
     --vk-width-container-padding: 0px;
 }
+
+//////////////////////////////////////////////////////////////
+/// Cope with content width half ( VK Blocks )
+//////////////////////////////////////////////////////////////
+@media (min-width: 782px) {
+	.editor-styles-wrapper {
+		:where(:not(.is-vk-row-reverse)) > :first-child.is-vk-content-width-half,
+		:where(.is-vk-row-reverse) > :nth-child(2).is-vk-content-width-half {
+			padding-left:calc( ( 100% - var(--vk-width-editor-container) ) / 2 ) !important;
+		}
+		:where(:not(.is-vk-row-reverse)) > :nth-child(2).is-vk-content-width-half,
+		:where(.is-vk-row-reverse) > :first-child.is-vk-content-width-half {
+			padding-right:calc( ( 100% - var(--vk-width-editor-container) ) / 2 ) !important;
+		}
+	}
+}
