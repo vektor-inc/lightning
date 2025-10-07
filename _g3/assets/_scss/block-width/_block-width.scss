@@ -68,11 +68,11 @@ entry-body
 // }
 // を入れられて幅広にならないので打ち消し処理
 body :where(.alignfull,.alignwide):where(:not(.vk_outer-paddingLR-zero)) {
-	& > .is-layout-constrained > :where(.alignwide) {
+	& > .is-layout-constrained > .alignwide {
 		margin-left: calc( ( 100% - var(--vk-width-full) ) / 4 ) !important;
 		margin-right: calc( ( 100% - var(--vk-width-full) ) / 4 ) !important;
 	}
-	& > .is-layout-constrained > :where(.alignfull) {
+	& > .is-layout-constrained > .alignfull {
 		margin-left: calc( ( 100% - var(--vk-width-full) ) / 2 ) !important;
 		margin-right: calc( ( 100% - var(--vk-width-full) ) / 2 ) !important;
 	}
