@@ -59,7 +59,7 @@ entry-body
 	}
 }
 // 通常サイズの中に幅広対策
-:is(.wp-block-cover,.wp-block-group):not(.alignfull,.alignwide),
+:where(:is(.wp-block-cover,.wp-block-group):not(.alignfull,.alignwide)),
 // 全幅カバーの中に幅広ブロックを入れた時に、コアのCSSに
 // body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
 //     max-width: var(--wp--style--global--content-size);
@@ -68,11 +68,11 @@ entry-body
 // }
 // を入れられて幅広にならないので打ち消し処理
 body :where(.alignfull,.alignwide):where(:not(.vk_outer-paddingLR-zero)) {
-	& > .is-layout-constrained > .alignwide {
+	& > .is-layout-constrained > :where(.alignwide) {
 		margin-left: calc( ( 100% - var(--vk-width-full) ) / 4 ) !important;
 		margin-right: calc( ( 100% - var(--vk-width-full) ) / 4 ) !important;
 	}
-	& > .is-layout-constrained > .alignfull {
+	& > .is-layout-constrained > :where(.alignfull) {
 		margin-left: calc( ( 100% - var(--vk-width-full) ) / 2 ) !important;
 		margin-right: calc( ( 100% - var(--vk-width-full) ) / 2 ) !important;
 	}
@@ -82,9 +82,11 @@ body :where(.alignfull,.alignwide):where(:not(.vk_outer-paddingLR-zero)) {
 .sub-section--col--two {
 	.alignfull,
 	.alignwide {
-		margin-left:0;
-		margin-right:0;
+		--wp--style--global--wide-size:100%;
+		--wp--style--global--full-size:100%;
 		max-width: 100%;
+		margin-left:0 !important;
+		margin-right:0 !important;
 		&.wp-block-image {
 			// Default block style overwrite
 			max-width: 100%;
