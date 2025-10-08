@@ -16,6 +16,9 @@ entry-body
 		wp-block-cover__inner-container
 */
 
+// 1カラムの時だけ全幅や幅広を有効に指定したいが、
+// モバイル時には１カラムになるので、2カラムでも一旦幅広・全幅指定する。
+
 .alignfull,
 .alignwide {
 	div[class*="__inner-container"]{
@@ -56,7 +59,7 @@ entry-body
 	}
 }
 // 通常サイズの中に幅広対策
-:is(.wp-block-cover,.wp-block-group):not(.alignfull,.alignwide),
+:where(:is(.wp-block-cover,.wp-block-group):not(.alignfull,.alignwide)),
 // 全幅カバーの中に幅広ブロックを入れた時に、コアのCSSに
 // body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
 //     max-width: var(--wp--style--global--content-size);
@@ -74,18 +77,25 @@ body :where(.alignfull,.alignwide):where(:not(.vk_outer-paddingLR-zero)) {
 		margin-right: calc( ( 100% - var(--vk-width-full) ) / 2 ) !important;
 	}
 }
-
-.main-section--col--two,
-.sub-section--col--two {
+// body がないと ↑ に負ける（↑もbodyがないとコアに負ける）
+@media (min-width: 992px) { // モバイル１カラムでは2カラムにならないので、２カラム時のみ制御（モバイルでは全幅/幅広が効く）
+body .main-section--col--two,
+body .sub-section--col--two {
 	.alignfull,
 	.alignwide {
-		margin-left:0;
-		margin-right:0;
+		--wp--style--global--wide-size:100%;
+		--wp--style--global--full-size:100%;
 		max-width: 100%;
+		margin-left:0 !important;
+		margin-right:0 !important;
 		&.wp-block-image {
 			// Default block style overwrite
 			max-width: 100%;
 		}
+	}
+	.vk_outer-width-full.vk_outer-paddingLR-none {
+		padding-left:0;
+		padding-right:0;
 	}
 	&.main-section--base--on,
 	&.sub-section--base--on {
@@ -104,4 +114,5 @@ body :where(.alignfull,.alignwide):where(:not(.vk_outer-paddingLR-zero)) {
 			width:calc( 100% + var(--vk-width-base-padding) * 2 );
 		}
 	}
+}
 }

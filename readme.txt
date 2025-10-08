@@ -35,6 +35,8 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ G3 ][ Bug fix ] Fix the layout issue with full-width and wide-width elements when using the two-column layout mode.
+
 v15.31.0
 [ G3 ][ Other ] Cope with content half width column ( VK Blocks )
 
