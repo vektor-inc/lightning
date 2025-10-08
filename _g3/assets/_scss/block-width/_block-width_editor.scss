@@ -113,16 +113,6 @@ body.block-editor-iframe__body.editor-styles-wrapper{
 		margin-left:auto;
 		margin-right:auto;
 		--vk-width-container: var(--vk-width-editor-container);
-
-		// 通常幅の中の幅広 //////////////////////////////////
-		// 標準だと通常幅の中の幅広や全幅は強制的に通常幅にされるので、されるので、上書き
-		// & > :is( 
-		// 	.alignwide, 
-		// 	[data-align=wide] 
-		// ) {
-		// 	width: var(--vk-width-wide);
-		// 	max-width: var(--vk-width-wide);
-		// }
 	}
 
 	.is-root-container {
