@@ -13,7 +13,7 @@ body{
 	--vk-width-full:calc( 100svw - var(--vk-width-editor-sidebar) - var(--vk-width-editor-leftmenu) - var(--vk-width-editor-list-view-sidebar) );
 	// body
 	--vk-width-editor-container: calc( var(--vk-width-full) * 0.8 );
-	--vk-width-contaner: var(--vk-width-editor-container);
+	--vk-width-container: var(--vk-width-editor-container);
 	--wp--style--global--content-size: var(--vk-width-editor-container);
 	// wide
 	--vk-width-wide: calc( var(--vk-width-editor-container) + ( var(--vk-width-full) - var(--vk-width-editor-container) ) / 2 );
