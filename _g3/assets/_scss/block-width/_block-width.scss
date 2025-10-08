@@ -77,9 +77,10 @@ body :where(.alignfull,.alignwide):where(:not(.vk_outer-paddingLR-zero)) {
 		margin-right: calc( ( 100% - var(--vk-width-full) ) / 2 ) !important;
 	}
 }
-
-.main-section--col--two,
-.sub-section--col--two {
+// body がないと ↑ に負ける（↑もbodyがないとコアに負ける）
+@media (min-width: 992px) { // モバイル１カラムでは2カラムにならないので、２カラム時のみ制御（モバイルでは全幅/幅広が効く）
+body .main-section--col--two,
+body .sub-section--col--two {
 	.alignfull,
 	.alignwide {
 		--wp--style--global--wide-size:100%;
@@ -91,6 +92,10 @@ body :where(.alignfull,.alignwide):where(:not(.vk_outer-paddingLR-zero)) {
 			// Default block style overwrite
 			max-width: 100%;
 		}
+	}
+	.vk_outer-width-full.vk_outer-paddingLR-none {
+		padding-left:0;
+		padding-right:0;
 	}
 	&.main-section--base--on,
 	&.sub-section--base--on {
@@ -109,4 +114,5 @@ body :where(.alignfull,.alignwide):where(:not(.vk_outer-paddingLR-zero)) {
 			width:calc( 100% + var(--vk-width-base-padding) * 2 );
 		}
 	}
+}
 }
