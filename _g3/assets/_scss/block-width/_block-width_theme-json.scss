@@ -1,5 +1,7 @@
 /**
  * Cope with theme.json
+ *
+ * theme.json があると __inner-container の div は出力されなくなってしまう
  */
 
  // まず .is-root-container でメインエリアを定義している
@@ -33,3 +35,14 @@
 		}
 	 }
  }
+ // コアが .alignwide に対して margin auto !important を入れてくるので上書き。
+ // （通常幅グループの中に幅広を入れると右に寄ってしまうのを補正）
+ // グループブロックに padding をつけられた場合はコアが該当ブロックに対して padding 分を引いた値でマイナスオフセットなどしてくるが、処理しきれないためサポートしない
+ .is-layout-constrained:where(:not(.alignfull):not(.alignwide)) > .alignwide{
+	margin-left: calc( ( var(--vk-width-container-body) - var(--vk-width-full) ) / 4 ) !important;
+	margin-right: calc( ( var(--vk-width-container-body) - var(--vk-width-full) ) / 4 ) !important;
+}
+ .is-layout-constrained:where(:not(.alignfull):not(.alignwide)) > .alignfull{
+	margin-left: calc( ( var(--vk-width-container-body) - var(--vk-width-full) ) / 2 ) !important;
+	margin-right: calc( ( var(--vk-width-container-body) - var(--vk-width-full) ) / 2 ) !important;
+}
