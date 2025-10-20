@@ -36,6 +36,7 @@ vk-develop@vektor-inc.co.jp
 == Changelog ==
 
 [ G3 ][ Bug fix ] Fix PHP Warning on the BuddyPress / bbPress Profile Page.
+[ G3 ][ Bug fix ] Fix the PHP security issue on the bbPress Profile Page.
 [ G3 ][ Other ] Delete unnecessary code.
 
 v15.32.0
