@@ -2,7 +2,7 @@
 Lightning WordPress theme, Copyright (C) 2015-2025 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
 Tested up to: 6.8
-Stable tag: 15.32.0
+Stable tag: 15.32.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -35,6 +35,7 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+v15.32.1
 [ G3 ][ Bug fix ] Fix PHP Warning on the BuddyPress / bbPress Profile Page.
 [ G3 ][ Bug fix ] Fix the PHP security issue on the bbPress Profile Page.
 [ G3 ][ Other ] Delete unnecessary code.
