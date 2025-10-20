@@ -82,11 +82,6 @@ function lightning_bbp_breadcrumb_array( $array ) {
 		global $wp_query;
 		if ( isset( $wp_query->query['bbp_user'] ) && ! empty( $wp_query->query['bbp_user'] ) ) {
 			$users = get_users( array( 'search' => $wp_query->query['bbp_user'] ) );
-			foreach ( $users as $user ) {
-				if ( $user->data->user_login === $wp_query->query['bbp_user'] ) {
-					$display_name = $user->data->display_name;
-				}
-			}
 			$array[] = array(
 				'name'  => lightning_get_the_bbp_display_name(),
 				'id'    => '',
