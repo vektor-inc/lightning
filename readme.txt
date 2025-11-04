@@ -35,6 +35,8 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ G3 ][ Design bug fix ] Fixed header layout shift when scrolled.
+
 v15.32.1
 [ G3 ][ Bug fix ] Fix PHP Warning on the BuddyPress / bbPress Profile Page.
 [ G3 ][ Bug fix ] Fix the PHP security issue on the bbPress Profile Page.
