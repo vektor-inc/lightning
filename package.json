@@ -62,7 +62,7 @@
 	"dependencies": {
 		"bootstrap": "^4.6.2",
 		"fs-extra": "^11.2.0",
-		"glob": "^10.3.15",
+		"glob": "^11.1.0",
 		"is-mobile": "^4.0.0"
 	}
 }
