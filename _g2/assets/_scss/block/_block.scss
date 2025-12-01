@@ -18,6 +18,7 @@ entry-body
 }
 .alignfull {
 	&,
+	div[class*=__inner-container].is-layout-constrained > &,
 	&.vk_slider,
 	&.wp-block-image,
 	&.wp-block-cover-image,
