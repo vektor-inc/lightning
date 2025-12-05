@@ -41,21 +41,14 @@
             position: fixed;
             top: 0px;
             left: 0;
-
-            /* 
-            100vwはWindowsでスクロールバーも含んで横スクロールバーが出てしまうので極力使用しない
-            が、結局 calc(50% - 50vw); でも出てしまうので、bodyで overflow-x:hidden; している。
-            */
-            width:100vw;
+            width:100%; // position: fixed によりビューポート基準になるため 100% で全幅表示（100vw はスクロールバー幅を含むため使用しない）
             max-width:100vw;
-
             min-height: unset;
             box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
 
             animation: header_drop 0.5s ease-out 0s 1 alternate none running;
-            //グローバルナビスクロール時のレイアウト 固定 ロゴ&ナビ回り込みと
-            //グローバルナビスクロール時のレイアウト 固定 ロゴ&ナビ回り込み全幅 
-            //width100%を上書き用　メニューに画像を入れた時に画像の幅が無くなるため追加
+            // スクロール時レイアウト（固定）でロゴ画像が広がらないよう width:auto を指定
+            // ※ グローバルナビ「ロゴ＆ナビ回り込み」および「全幅」レイアウト用
             .site-header-container--scrolled--logo-and-nav-container .site-header-logo,
             .site-header-container--scrolled--logo-and-nav-full .site-header-logo{
                 width: auto;

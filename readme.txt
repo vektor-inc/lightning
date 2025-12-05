@@ -35,6 +35,7 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ G3 ][ Bug fix ] Fixed header layout shift when scrolled.
 [ G3 ][ Bug fix ] Fixed a memory overflow error caused by an infinite loop under certain conditions.
 
 v15.32.2
