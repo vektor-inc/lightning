@@ -35,6 +35,8 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ G3 ][ Bug fix ] Fixed a memory overflow error caused by an infinite loop under certain conditions.
+
 v15.32.2
 [ G2 ][ Bug fix ] Fixed an issue where full-width elements inside a content-width block were not displaying as full width.
 
