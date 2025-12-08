@@ -35,6 +35,8 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ G3 ] Adjust the display of the Contact Form 7 block in the editor
+
 v15.32.3
 [ G3 ][ Bug fix ] Fixed header layout shift when scrolled.
 [ G3 ][ Bug fix ] Fixed a memory overflow error caused by an infinite loop under certain conditions.

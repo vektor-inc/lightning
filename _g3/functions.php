@@ -374,6 +374,9 @@ if ( is_plugin_active( 'the-events-calendar/the-events-calendar.php' ) ) {
 if ( is_plugin_active( 'booking-package/index.php' ) ) {
 	require __DIR__ . '/plugin-support/booking-package/functions-booking-package.php';
 }
+if ( is_plugin_active( 'contact-form-7/wp-contact-form-7.php' ) ) {
+	require __DIR__ . '/plugin-support/contact-form-7/functions-contact-form-7.php';
+}
 
 /**
  * Disable_tgm_notification_except_admin
