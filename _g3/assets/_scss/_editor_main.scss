@@ -1,0 +1,37 @@
+@import 'custom-functions'; // bootstrap4 の abs() がビルド時にエラーにならないように上書き
+@import "../../../node_modules/bootstrap/scss/functions";
+@import "bootstrap_variables";
+@import "../../../node_modules/bootstrap/scss/mixins";
+@import "../../../node_modules/bootstrap/scss/utilities";
+@import "../../../node_modules/bootstrap/scss/grid";
+@import "../../../node_modules/bootstrap/scss/buttons";
+@import "../../../node_modules/bootstrap/scss/card";
+@import "../../../node_modules/bootstrap/scss/alert";
+@import "../../../node_modules/bootstrap/scss/media";
+// VK Components is no using image that using sass is no probrem.
+@import "../../../vendor/vektor-inc/vk-component/src/assets/scss/vk-components.scss";
+@import "variables";
+
+@import "utils";
+@import "block/block";
+@import "block/block_editor";
+
+@import "components/nav";
+@import "components/searchform";
+@import "overwrite/vk-components";
+@import "overwrite/button";
+@import "overwrite/swiper";
+@import "project/pagenation";
+
+.editor-styles-wrapper {
+	@import "common";
+	@import "common-theme-json";
+	font-family :  var(--wp--preset--font-family--system-font);
+	// 編集画面でコアのスタイルが margin: calc(1rem * 0.8) 0; をつけてきて余分な余白ができるので打ち消し
+	:is( ul, ol ):where(.wp-block-post-template) li {
+		margin:0;
+	}
+}
+
+@import "common-editor";
+@import "editor-meta-fields";

@@ -3,12 +3,7 @@
     display:block; overflow:hidden;
     font-size:var(--vk-size-text-sm);
     content-visibility:auto;
-    contain-intrinsic-size: 370px;
-    .mobile-fix-nav_enable & {
-        @media ( max-width: $md-max ) {
-            padding-bottom:70px;
-        }
-    }
+    contain-intrinsic-size: 370px; // 仮の高さ370pxでレイアウトを確保
     &-content {
         position: relative; // これがないとカスタマイズショートカットの位置調整が効かない
         padding-top: var(--vk-margin-section-bottom);
@@ -31,5 +26,14 @@
             margin:0.5rem;
             font-size:var(--vk-size-text-xs);
         }
+    }
+}
+// モバイル固定ナビ有効時にフッターの下部に余白を追加
+@media ( max-width: $md-max ) {
+	.mobile-fix-nav_enable :is(
+		.site-footer,
+		.block-site-footer
+		) {
+        padding-bottom:var(--vk-mobile-fix-nav-height,70px);
     }
 }

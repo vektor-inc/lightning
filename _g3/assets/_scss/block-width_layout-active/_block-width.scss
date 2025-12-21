@@ -1,0 +1,101 @@
+/** 
+ * @file _block-width.scss
+ * @description ブロックの幅調整
+ *
+ * コンテンツ幅指定 ( is-layout-constrained / is-layout-flow 切り替え ) 対応用CSS
+ * ** Work in Progress **
+ *
+*/
+
+.is-layout-constrained > *:where(:not(.alignfull, .alignwide )) {
+		max-width: var(--vk-width-container-body);
+		margin-left:auto;
+		margin-right:auto;
+}
+
+.alignfull {
+	width:auto; /* Don't use 100svw!! cope with windows */
+	max-width: var(--vk-width-full);
+	// マイナスオフセットはここでは指定しない
+	// Don't specify negative offset here
+}
+
+.alignwide {
+	width: var(--vk-width-wide);
+	max-width: var(--vk-width-wide);
+	// マイナスオフセットはここでは指定しない
+	// Don't specify negative offset here
+
+	// .is-layout-constrained 直下の場合はまだコンテンツ幅の要素の中に入ってないのでマイナスオフセットしない
+	.is-layout-constrained > &,
+	// 全幅や幅広の中でもコンテンツ幅指定がない場合はマイナスオフセットしない
+	:is(.alignfull,.alignwide) > .is-layout-flow > &,
+	// Outer の中の余白なし
+	.vk_outer-paddingLR-zero .vk_outer_container > & {
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+// 幅広・全幅でマイナスオフセットが必要なケース *********************** */
+
+// コンテンツ直下の場合
+.entry-body,
+// 通常幅（全幅や幅広以外）の中の場合
+*:where(:not(.alignfull,.alignwide)) > div[class*="__inner-container"],
+// vk_outer_container の padding が標準の場合
+.vk_outer-paddingLR-none .vk_outer_container {
+	& > .alignwide {
+		// --vk-width-container != 100% なので注意
+		// Lightningの幅広 = コンテナの「表示エリア（100%）	」 + 左右余白分の丁度半分
+		margin-left: calc( ( var(--vk-width-container-body) - var(--vk-width-full) ) / 4 );
+		margin-right: calc( ( var(--vk-width-container-body) - var(--vk-width-full) ) / 4 );
+	}
+	& > .alignfull {
+		margin-left: calc(50% - 50vw);
+		margin-right: calc(50% - 50vw);
+	}
+}
+
+// 2カラムの時 *********************** */
+.main-section--col--two,
+.sub-section--col--two {
+	.vk_outer-width-full.vk_outer-paddingLR-none{
+		padding-left:0;
+		padding-right:0;
+	}
+	.is-layout-constrained > :is( .alignfull, .alignwide ),
+	:is( .alignfull, .alignwide ) {
+		margin-left:0;
+		margin-right:0;
+		max-width: 100%;
+		&.wp-block-image {
+			// Default block style overwrite
+			max-width: 100%;
+		}
+	}
+	// _common-theme-json.scss の上書き
+	// ※ _common-theme-json.scss の指定側で .main-section--col--two,.sub-section--col--two を除外した指定にすると、
+	// main-section 以外での指定が効かなくなるため、仕方ないので上書き打ち消し
+	:where(:not(.alignfull,.alignwide))>.is-layout-constrained:where(:not(.alignfull,.alignwide))> :is( .alignfull, .alignwide ) {
+		margin-left:0 !important;
+		margin-right:0 !important;
+	}
+	&.main-section--base--on,
+	&.sub-section--base--on {
+		.alignwide {
+			padding-left: 0;
+			padding-right: 0;
+			margin-left: calc( var(--vk-width-base-padding) / -2 );
+			margin-right: calc( var(--vk-width-base-padding) / -2 );
+			max-width:calc( 100% + var(--vk-width-base-padding) );
+			width:calc( 100% + var(--vk-width-base-padding) );
+		}
+		.alignfull {
+			padding-left: 0;
+			padding-right: 0;
+			max-width:calc( 100% + var(--vk-width-base-padding) * 2 );
+			width:calc( 100% + var(--vk-width-base-padding) * 2 );
+		}
+	}
+}

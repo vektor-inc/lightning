@@ -1,82 +1,123 @@
 <?php
 /**
- * Class Lightning_Is_G3_Test test
+ * Lightning_Is_G3_Test
  *
- * @package Lightning_Is_G3_Test
- *
- * cd /app
- * bash setup-phpunit.sh
- * source ~/.bashrc
- * cd $(wp theme path --dir lightning)
- * phpunit
+ * @package vektor-inc/lightning
  */
 
 /**
- * Sample test case.
+ * Class Lightning_Is_G3_Test
  */
 class Lightning_Is_G3_Test extends WP_UnitTestCase {
 
-	function test_lightning_is_g3() {
+	public function test_lightning_is_g3() {
 		$test_array = array(
 			array(
-				'lightning_theme_options'    => null,
-				'lightning_theme_generation' => null,
-				'correct'                    => true,
+				'name'    => '新規サイト => G3',
+				'options' => array(
+					'fresh_site' => '1',
+				),
+				'expected' => true,
+			),
+			// Generation 指定あり
+			array(
+				'name'    => 'theme_generation : g3 => G3',
+				'options' => array(
+					'fresh_site' => '0',
+					'lightning_theme_generation' => 'g3',
+				),
+				'expected' => true,
 			),
 			array(
-				'lightning_theme_options'    => null,
-				'lightning_theme_generation' => 'g3',
-				'correct'                    => true,
+				'name'    => 'スキンが Origin2 でも G3 指定優先',
+				'options' => array(
+					'fresh_site' => '0',
+					'lightning_theme_generation' => 'g3',
+					'lightning_design_skin'      => 'origin2',
+				),
+				'expected' => true,
 			),
 			array(
-				'lightning_theme_options'    => null,
-				'lightning_theme_generation' => 'g2',
-				'correct'                    => false,
+				'name'    => 'theme_generation : g2 => G2',
+				'options' => array(
+					'fresh_site' => '0',
+					'lightning_theme_generation' => 'g2',
+				),
+				'expected' => false,
 			),
 			array(
-				'lightning_design_skin'      => 'origin2',
-				'lightning_theme_generation' => null,
-				'correct'                    => false,
+				'name'    => 'スキンが Origin3 でも G2 指定優先',
+				'options' => array(
+					'fresh_site' => '0',
+					'lightning_theme_generation' => 'g2',
+					'lightning_design_skin'      => 'origin3',
+				),
+				'expected' => false,
+			),
+			// Generation 未指定
+			array(
+				'name'    => 'lightning_design_skin : origin3 / theme_generation : null => G3',
+				'options' => array(
+					'fresh_site' => '0',
+					'lightning_design_skin'      => 'origin3',
+					'lightning_theme_generation' => null,
+				),
+				'expected' => true,
 			),
 			array(
-				'lightning_design_skin'      => 'origin3',
-				'lightning_theme_generation' => null,
-				'correct'                    => true,
+				'name'    => 'lightning_design_skin : origin2 => G2',
+				'options' => array(
+					'fresh_site' => '0',
+					'lightning_design_skin'      => 'origin2',
+				),
+				'expected' => false,
 			),
 			array(
-				'lightning_theme_options'    => array( 'theme_json' => true ),
-				'lightning_theme_generation' => null,
-				'correct'                    => true,
+				'name'    => 'lightning_design_skin : origin2 / theme_generation : null => G2',
+				'options' => array(
+					'fresh_site' => '0',
+					'lightning_design_skin'      => 'origin2',
+					'lightning_theme_generation' => null,
+				),
+				'expected' => false,
+			),
+			array(
+				'name'    => 'Not fresh && lightning_theme_options : null => G3',
+				'options' => array(
+					'fresh_site' => '0',
+					'lightning_design_skin'      => null,
+					'lightning_theme_generation' => null,
+					'lightning_theme_options' => null,
+				),
+				'expected' => true,
 			),
 		);
+
 		print PHP_EOL;
 		print '------------------------------------' . PHP_EOL;
 		print 'lightning_is_g3()' . PHP_EOL;
 		print '------------------------------------' . PHP_EOL;
 
-		foreach ( $test_array as $key => $value ) {
+		foreach ( $test_array as $value ) {
 
-			delete_option( 'lightning_theme_options' );
+			// 初期化
+			delete_option( 'fresh_site' );
 			delete_option( 'lightning_theme_generation' );
 			delete_option( 'lightning_design_skin' );
+			delete_option( 'lightning_theme_options' );
 
-			if ( ! empty( $value['lightning_theme_options'] ) ) {
-				update_option( 'lightning_theme_options', $value['lightning_theme_options'] );
+			// テストのループ中に保存した option 値がキャッシュされて誤動作するので強制的に一度クリアする
+			wp_cache_flush();
+
+			if ( isset( $value['options'] ) && is_array( $value['options'] ) ) {
+				foreach ( $value['options'] as $option_name => $option_value ) {
+					update_option( $option_name, $option_value );
+				}
 			}
 
-			if ( ! empty( $value['lightning_theme_generation'] ) ) {
-				update_option( 'lightning_theme_generation', $value['lightning_theme_generation'] );
-			}
+			$actual = lightning_is_g3();
+			$this->assertEquals( $value['expected'], $actual, $value['name'] );
 
-			if ( ! empty( $value['lightning_design_skin'] ) ) {
-				update_option( 'lightning_design_skin', $value['lightning_design_skin'] );
-			}
-
-			$result = lightning_is_g3();
-			print 'return  :' . $result . PHP_EOL;
-			print 'correct :' . $value['correct'] . PHP_EOL;
-			$this->assertEquals( $value['correct'], $result );
 		}
 	}
-
 }

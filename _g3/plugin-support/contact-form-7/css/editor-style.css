@@ -1,0 +1,14 @@
+.editor-styles-wrapper .wp-block-contact-form-7-contact-form-selector {
+	input[type=text].components-combobox-control__input {
+		border:none;
+		padding:0;
+		margin:0;
+	}
+	ul {
+		padding-left:0;
+		margin:0;
+	}
+	li {
+		margin:0;
+	}
+}

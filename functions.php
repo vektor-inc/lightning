@@ -28,31 +28,32 @@ if ( true === LIG_DEBUG ) {
 function lightning_is_g3() {
 
 	$return = true;
-	$g      = get_option( 'lightning_theme_generation' );
-	if ( 'g3' === $g ) {
+	$g       = get_option( 'lightning_theme_generation' );
+	$options = get_option( 'lightning_theme_options' );
+
+	if ( '1' === get_option( 'fresh_site' ) ) {
+		// 新規サイトの場合はG3に指定.
+		update_option( 'lightning_theme_generation', 'g3' );
+		$return = true;
+	} else if ( 'g3' === $g ) {
 		$return = true;
 	} elseif ( 'g2' === $g ) {
 		$return = false;
 	} else {
 		$skin    = get_option( 'lightning_design_skin' );
-		$options = get_option( 'lightning_theme_options' );
 		if ( 'origin2' === $skin ) {
+			update_option( 'lightning_theme_generation', 'g2' );
 			$return = false;
-			// テストで呼び出される前にテーマのロード段階で一度呼ばれるために、
-			// これがあると g2 が保存されて g3 のテストが通らなくなるためコメントアウト
-			// update_option( 'lightning_theme_generation', 'g2' ); .
 		} elseif ( 'origin3' === $skin ) {
-			$return = true;
 			update_option( 'lightning_theme_generation', 'g3' );
-
-		} elseif ( get_option( 'fresh_site' ) ) {
-			// 新規サイトの場合はG3に指定.
 			$return = true;
-			// テストで呼び出される前にテーマのロード段階で一度呼ばれるために、
-			// これがあると g3 が保存されて g2 のテストが通らなくなるためコメントアウト
-			// update_option( 'lightning_theme_generation', 'g3' ); .
+		} elseif ( empty( $options ) ) {
+			// 後から Lightning をインストールした場合は G3 にする
+			// （新規サイトではない && lightning_theme_options が存在しない）
+			update_option( 'lightning_theme_generation', 'g3' );
+			$return = true;
 		} else {
-			// これ以外は従来ユーザーの可能性が高いのでG2.
+			// これ以外は旧ユーザー（Lightning Pro）の可能性が高いのでG2.
 			update_option( 'lightning_theme_generation', 'g2' );
 			$return = false;
 		}

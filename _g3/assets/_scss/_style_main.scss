@@ -1,0 +1,101 @@
+@import 'custom-functions'; // bootstrap4 の abs() がビルド時にエラーにならないように上書き
+@import "../../../node_modules/bootstrap/scss/functions";
+@import "bootstrap_variables";
+@import "../../../node_modules/bootstrap/scss/mixins";
+@import "../../../node_modules/bootstrap/scss/utilities";
+@import "../../../node_modules/bootstrap/scss/grid";
+@import "../../../node_modules/bootstrap/scss/buttons";
+@import "../../../node_modules/bootstrap/scss/card";
+@import "../../../node_modules/bootstrap/scss/alert";
+@import "../../../node_modules/bootstrap/scss/media";
+// VK Components is no using image that using sass is no probrem.
+@import "../../../vendor/vektor-inc/vk-component/src/assets/scss/vk-components.scss";
+@import "variables";
+@import "common";
+@import "utils";
+@import "print";
+
+@import "block/block.scss";
+
+@import "components/nav";
+@import "components/searchform";
+@import "components/calendar";
+
+@import "overwrite/vk-components";
+@import "overwrite/button";
+@import "overwrite/veu_contact";
+@import "overwrite/veu_related_post";
+@import "overwrite/veu_pagetop";
+@import "overwrite/card";
+@import "overwrite/download_manager";
+@import "overwrite/swiper";
+
+/* Outer */
+
+@import "layout/layout";
+@import "layout/layout_base";
+@import "components/widget";
+@import "components/page-link";
+@import "components/tagcloud";
+@import "components/slide";
+@import "project/global-nav/global-nav";
+@import "project/site-header";
+@import "project/site-header--scrolled";
+@import "project/page-header";
+@import "project/breadcrumb";
+@import "project/entry";
+@import "project/comment";
+@import "project/next-prev";
+@import "project/pagenation";
+@import "project/sub-section";
+@import "project/site-footer";
+@import "project/footer-nav";
+@import "../../inc/vk-mobile-nav/package/_scss/vk-mobile-nav-bright.scss";
+@import "overwrite/vk-mobile-nav";
+
+@import "customize-shortcut";
+
+html {
+	scroll-padding-top:calc( var(--wp-admin--admin-bar--height) + 60px );
+}
+
+html,
+body {
+	font-family :  var(--wp--preset--font-family--system-font);
+}
+
+// Cope with safari bug
+.swiper-slide {
+    transform: translate3d(0, 0, 0);
+}
+
+*, ::before,::after{
+	box-sizing: border-box;
+}
+html,
+body {
+	// overflow-x: hidden; がないとWindowsで 100vw がスクロールを含むので全幅で横スクロールが表示されてしまうため
+	// overflow-x: hidden; で回避しているが極力 100vw は使わない方が望ましい
+	// overflow-x: hidden; をつけると編集画面のブロックのツールバーの位置が変動するバグが以前あった。2021年7月で問題なければこの行のコメントは削除可
+	overflow-x: hidden; 
+}
+html,
+body {
+	font-size: var(--vk-size-text);
+	color:var(--vk-color-text-body);
+	padding: 0;
+	margin:0;
+	-ms-word-wrap: break-word;
+	word-wrap: break-word;
+	// word-break: keep-all;
+	// line-break: strict;
+	// overflow-wrap: break-word;
+	background-color: #fff; // カスタマイザでデフォルト#ffffffにしてもリセットしないと効かないため
+}
+
+@media (max-width: $md-max) {
+	html,
+	body {
+		font-size: calc( var(--vk-size-text) * 0.875 );
+	}
+}

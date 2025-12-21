@@ -1,0 +1,16 @@
+language: "ja-JP"
+reviews:
+  profile: "chill"
+  high_level_summary: true
+  path_filters:
+    - "!**/dist/**"
+    - "!**/vendor/**"
+    - "!**/node_modules/**"
+    - "!**/*.min.js"
+    - "!**/*.min.css"
+  auto_review:
+    enabled: true
+    drafts: false
+    base_branches:
+      - master
+    auto_incremental_review: false

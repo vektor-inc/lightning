@@ -16,9 +16,9 @@
 		"watch:style": "gulp watch",
 		"composer:install:win": "wp-env run composer \"composer install\"",
 		"composer:install:mac": "wp-env run composer 'composer install'",
-		"phpunit": "composer install && wp-env run --env-cwd='wp-content/themes/lightning' tests-cli vendor/bin/phpunit -c phpunit.g3.xml --testdox",
-		"phpunit:g2": "composer install && wp-env run --env-cwd='wp-content/themes/lightning' tests-cli vendor/bin/phpunit -c phpunit.g2.xml --testdox",
-		"phpunit:root": "composer install && wp-env run --env-cwd='wp-content/themes/lightning' tests-cli vendor/bin/phpunit -c phpunit.root.xml --testdox",
+		"phpunit": "composer install && wp-env run --env-cwd='wp-content/themes/lightning' tests-cli vendor/bin/phpunit -c phpunit.g3.xml",
+		"phpunit:g2": "composer install && wp-env run --env-cwd='wp-content/themes/lightning' tests-cli vendor/bin/phpunit -c phpunit.g2.xml",
+		"phpunit:root": "composer install && wp-env run --env-cwd='wp-content/themes/lightning' tests-cli vendor/bin/phpunit -c phpunit.root.xml",
 		"phpunit:win": "wp-env run phpunit \"phpunit -c /var/www/html/wp-content/themes/lightning/phpunit.g3.xml --verbose\""
 	},
 	"repository": {
@@ -34,8 +34,8 @@
 	"devDependencies": {
 		"@babel/core": "^7.24.5",
 		"@babel/preset-env": "^7.24.5",
-		"@playwright/test": "^1.44.0",
-		"@wordpress/env": "^9.10.0",
+		"@playwright/test": "^1.56.1",
+		"@wordpress/env": "^10.30.0",
 		"babel-loader": "^9.1.3",
 		"gulp": "^5.0.0",
 		"gulp-autoprefixer": "^9.0.0",
@@ -62,7 +62,7 @@
 	"dependencies": {
 		"bootstrap": "^4.6.2",
 		"fs-extra": "^11.2.0",
-		"glob": "^10.3.15",
+		"glob": "^10.5.0",
 		"is-mobile": "^4.0.0"
 	}
 }

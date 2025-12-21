@@ -1,0 +1,48 @@
+/**
+ * Cope with theme.json
+ *
+ * theme.json があると __inner-container の div は出力されなくなってしまう
+ */
+
+ // まず .is-root-container でメインエリアを定義している
+:is( .alignfull, .alignwide ):where(:not(.is-layout-flex)) {
+	 // theme.json があると __inner-container の div は出力されなくなってしまうので max-width にコンテンツ幅を指定
+	 // .alert は投稿リストブロックで投稿がない時に出力されるため追加。本当は div にかける方が適切と思われるが、影響範囲が大きそうなので一旦 .alert のみで様子見
+	 & > :is( 
+		div[class*="wp-container-"],
+		div[class*="wp-block-"], 
+		div[class*="vk_"],
+		.alert,
+		:where(:is(h1,h2,h3,h4,h5,h6)) 
+		){
+		&:where(:not(
+			.alignfull,
+			.alignwide,
+			.wp-block-cover__background,
+			.wp-block-cover__image-background,
+			.wp-block-column,
+			.vk_outer,
+			.vk_slider_wrapper,
+			.vk_gridcolcard_item,
+			.swiper-wrapper,
+			.swiper-pagination,
+			.is-content-justification-right,
+			.is-content-justification-left
+			)) {
+			max-width: calc( var(--vk-width-container) - var(--vk-width-container-padding) * 2 );
+			margin-left:auto;
+			margin-right:auto;
+		}
+	 }
+ }
+ // コアが .alignwide に対して margin auto !important を入れてくるので上書き。
+ // （通常幅グループの中に幅広を入れると右に寄ってしまうのを補正）
+ // グループブロックに padding をつけられた場合はコアが該当ブロックに対して padding 分を引いた値でマイナスオフセットなどしてくるが、処理しきれないためサポートしない
+ .is-layout-constrained:where(:not(.alignfull):not(.alignwide)) > .alignwide{
+	margin-left: calc( ( var(--vk-width-container-body) - var(--vk-width-full) ) / 4 ) !important;
+	margin-right: calc( ( var(--vk-width-container-body) - var(--vk-width-full) ) / 4 ) !important;
+}
+ .is-layout-constrained:where(:not(.alignfull):not(.alignwide)) > .alignfull{
+	margin-left: calc( ( var(--vk-width-container-body) - var(--vk-width-full) ) / 2 ) !important;
+	margin-right: calc( ( var(--vk-width-container-body) - var(--vk-width-full) ) / 2 ) !important;
+}

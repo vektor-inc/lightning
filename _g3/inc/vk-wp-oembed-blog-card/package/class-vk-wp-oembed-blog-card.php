@@ -121,7 +121,22 @@ if ( ! class_exists( 'VK_WP_Oembed_Blog_Card' ) ) {
 			$blog_card_data['url']         = get_permalink( $post_id );
 			$blog_card_data['title']       = get_the_title( $post_id );
 			$blog_card_data['thumbnail']   = get_the_post_thumbnail_url( $post_id, 'large' );
-			$blog_card_data['description'] = get_the_excerpt( $post_id );
+
+			// 抜粋情報の取得 ////////
+			// Get post excerpt ////
+			// get_the_excerpt() は記事AとBが互いに埋め込んだ場合に無限ループになるので使わない。
+			// get_the_excerpt() is not used to avoid infinite loops when posts A and B embed each other.
+			$post    = get_post( $post_id );
+			$excerpt = $post->post_excerpt;
+			// 抜粋が空の場合は本文から取得
+			if ( empty( $excerpt ) && ! empty( $post->post_content ) ) {
+				$content        = wp_strip_all_tags( strip_shortcodes( $post->post_content ) );
+				$content        = preg_replace( '/https?:\/\/[^\s]+/', '', $content );
+				$excerpt_length = apply_filters( 'vk_wp_oembed_blog_card_excerpt_length', 240 );
+				$excerpt        = wp_trim_words( $content, $excerpt_length, '...' );
+			}
+
+			$blog_card_data['description'] = $excerpt;
 			$blog_card_data['favicon']     = get_site_icon_url( 32 );
 			$blog_card_data['site_name']   = get_bloginfo( 'name', 'display' );
 			$blog_card_data['domain']      = home_url();

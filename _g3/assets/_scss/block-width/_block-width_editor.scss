@@ -78,7 +78,7 @@ body.block-editor-iframe__body.editor-styles-wrapper{
 		width:var(--vk-width-wide);
 		max-width:var(--vk-width-wide);
 	}
-	div:where(:not(.is-layout-constrained)) {
+	& > div:where(:not(.is-layout-constrained):not([data-align=full])) {
 		max-width:var(--vk-width-wide);
 	}
 }
@@ -91,6 +91,8 @@ body.block-editor-iframe__body.editor-styles-wrapper{
 		:not(.alignleft)
 		:not(.alignright)
 		:not(.alignfull)
+		:not([data-align=full])
+		:not([data-align=wide])
 		) {
 		// for theme.json non-active
 		max-width:var(--vk-width-editor-container);
@@ -111,13 +113,38 @@ body.block-editor-iframe__body.editor-styles-wrapper{
 		margin-left:auto;
 		margin-right:auto;
 		--vk-width-container: var(--vk-width-editor-container);
+	}
+
+	.is-root-container {
+		> .wp-block {
+			// 6.0 / theme.json あり / Evergreen のオフセット背景の時に左によってしまうため
+			margin-left:auto;
+			margin-right:auto;
+		}
+	}
+}
+
+//////////////////////////////////////////////////////////////
+/// マイナスオフセットが必要なケース
+//////////////////////////////////////////////////////////////
+.editor-styles-wrapper {
+	//Outer全幅用
+	//カラムにはインナーコンテナがないため、カラムブロックがルートコンテナの場合にOuter全幅で崩れるため .is-root-container 追加
+	// // Outer全幅の場合に .vk_slider_item.is-layout-constrained の中でずれてしまうため .is-layout-constrained 追加
+	:is( 
+		.is-root-container,
+		.is-layout-constrained
+	),
+	:where(.vk_outer-paddingLR-zero) :where(.vk_outer_container) :where(.block-editor-block-list__layout),
+	.vk_slider_item_container div[class*="__inner-container"] {
 		// 通常幅の中の全幅 /////////////////////////////////
 		& > :is( 
 			.alignfull, 
 			[data-align=full] 
 		) {
-			margin-left: calc( ( var(--vk-width-editor-container) - var(--vk-width-full) ) / 2 ) !important;
-			margin-right: calc( ( var(--vk-width-editor-container) - var(--vk-width-full) ) / 2 ) !important;
+			// コンテナにpadding指定がある場合があるため --vk-width-editor-container ではなく 100% を使用する
+			margin-left: calc( ( 100% - var(--vk-width-full) ) / 2 ) !important;
+			margin-right: calc( ( 100% - var(--vk-width-full) ) / 2 ) !important;
 		}
 		// 通常幅の中の幅広 //////////////////////////////////
 		// 標準だと通常幅の中の幅広や全幅は強制的に通常幅にされるので、されるので、上書き
@@ -125,27 +152,13 @@ body.block-editor-iframe__body.editor-styles-wrapper{
 			.alignwide, 
 			[data-align=wide] 
 		) {
-			width: var(--vk-width-wide);
-			max-width: var(--vk-width-wide);
-			margin-left: calc( ( var(--vk-width-editor-container) - var(--vk-width-full) ) / 4 ) !important;
-			margin-right: calc( ( var(--vk-width-editor-container) - var(--vk-width-full) ) / 4 ) !important;
+			margin-left: calc( ( 100% - var(--vk-width-full) ) / 4 ) !important;
+			margin-right: calc( ( 100% - var(--vk-width-full) ) / 4 ) !important;
 		}
-	}
-	//Outer全幅用
-	.is-root-container, //カラムにはインナーコンテナがないため、カラムブロックがルートコンテナの場合にOuter全幅で崩れるため追加
-	.is-layout-constrained {// Outer全幅の場合に .vk_slider_item.is-layout-constrained の中でずれてしまうため追加
-		.wp-block-vk-blocks-outer.vk_outer{
-			&.vk_outer-width-full{ 
-				margin-left: calc(50% - var(--vk-width-full) / 2);
-				margin-right: calc(50% - var(--vk-width-full) / 2);
-			}
-		}
-	}
-	.is-root-container {
-		> .wp-block {
-			// 6.0 / theme.json あり / Evergreen のオフセット背景の時に左によってしまうため
-			margin-left:auto;
-			margin-right:auto;
+
+		.wp-block-vk-blocks-outer.vk_outer.vk_outer-width-full{ 
+			margin-left: calc(50% - var(--vk-width-full) / 2);
+			margin-right: calc(50% - var(--vk-width-full) / 2);
 		}
 	}
 }
@@ -194,4 +207,20 @@ html :where(.wp-block) {
 	[data-align=wide] 
 	) div[class*=__inner-container] {
     --vk-width-container-padding: 0px;
+}
+
+//////////////////////////////////////////////////////////////
+/// Cope with content width half ( VK Blocks )
+//////////////////////////////////////////////////////////////
+@media (min-width: 782px) {
+	.editor-styles-wrapper {
+		:where(:not(.is-vk-row-reverse)) > :first-child.is-vk-content-width-half,
+		:where(.is-vk-row-reverse) > :nth-child(2).is-vk-content-width-half {
+			padding-left:calc( ( 100% - var(--vk-width-editor-container) ) / 2 ) !important;
+		}
+		:where(:not(.is-vk-row-reverse)) > :nth-child(2).is-vk-content-width-half,
+		:where(.is-vk-row-reverse) > :first-child.is-vk-content-width-half {
+			padding-right:calc( ( 100% - var(--vk-width-editor-container) ) / 2 ) !important;
+		}
+	}
 }
