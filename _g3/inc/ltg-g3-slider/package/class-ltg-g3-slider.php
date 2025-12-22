@@ -858,12 +858,18 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 			$pc_image     = ! empty( $options['top_slide_image_1'] ) ? esc_url( $options['top_slide_image_1'] ) : '';
 			$mobile_image = ! empty( $options['top_slide_image_mobile_1'] ) ? esc_url( $options['top_slide_image_mobile_1'] ) : '';
 
-			if ( $pc_image === $mobile_image || ( $pc_image && ! $mobile_image ) || ( ! $pc_image && $mobile_image ) ) {
+			if ( ( $pc_image && $pc_image === $mobile_image ) || ( $pc_image && ! $mobile_image ) || ( ! $pc_image && $mobile_image ) ) {
 				$img = $pc_image ? $pc_image : $mobile_image;
-				echo '<link rel="preload" as="image" href="' . $img . '" fetchpriority="high" />';
+				if ( $img ) {
+					echo '<link rel="preload" as="image" href="' . esc_attr( $img ) . '" fetchpriority="high" />';
+				}
 			} else {
-				echo '<link rel="preload" as="image" href="' . $mobile_image . '" media="(max-width: 767px)" fetchpriority="high" />';
-				echo '<link rel="preload" as="image" href="' . $pc_image . '" media="(min-width: 768px)" fetchpriority="high" />';
+				if ( $mobile_image ) {
+					echo '<link rel="preload" as="image" href="' . esc_attr( $mobile_image ) . '" media="(max-width: 767px)" fetchpriority="high" />';
+				}
+				if ( $pc_image ) {
+					echo '<link rel="preload" as="image" href="' . esc_attr( $pc_image ) . '" media="(min-width: 768px)" fetchpriority="high" />';
+				}
 			}			
 		}
 	}
