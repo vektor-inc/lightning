@@ -855,6 +855,11 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 			$default = function_exists( 'lightning_g3_slider_default_options' ) ? lightning_g3_slider_default_options() : array();
 			$options = wp_parse_args( $options, $default );
 
+			// Early return if slider is hidden
+			if ( 'hide' === $options['top_slide_display'] ) {
+				return;
+			}
+
 			$pc_image     = ! empty( $options['top_slide_image_1'] ) ? esc_url( $options['top_slide_image_1'] ) : '';
 			$mobile_image = ! empty( $options['top_slide_image_mobile_1'] ) ? esc_url( $options['top_slide_image_mobile_1'] ) : '';
 
@@ -870,7 +875,7 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 				if ( $pc_image ) {
 					echo '<link rel="preload" as="image" href="' . esc_attr( $pc_image ) . '" media="(min-width: 768px)" fetchpriority="high" />';
 				}
-			}			
+			}
 		}
 	}
 	new LTG_G3_Slider();
