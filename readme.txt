@@ -35,6 +35,8 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ G3 ][ Add function ] Add preload for first slide image to improve LCP
+
 v15.32.4
 [ G3 ] Adjust the display of the Contact Form 7 block in the editor
 
