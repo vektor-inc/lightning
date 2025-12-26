@@ -35,6 +35,8 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ G3/G2 ] Update Font Awesome versions 6.3 -> 7.0
+
 v15.32.4
 [ G3 ] Adjust the display of the Contact Form 7 block in the editor
 
