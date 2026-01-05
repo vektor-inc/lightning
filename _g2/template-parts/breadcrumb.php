@@ -42,7 +42,7 @@ if ( ! function_exists( 'lightning_bread_crumb' ) ) {
 
 		$breadcrumb_html .= '<li id="panHome"' . $microdata_li . '>';
 		$breadcrumb_html .= '<a' . $microdata_li_a . ' href="' . home_url( '/' ) . '">';
-		$breadcrumb_html .= '<span' . $microdata_li_a_span . '><i class="fa fa-home"></i> HOME</span>';
+		$breadcrumb_html .= '<span' . $microdata_li_a_span . '><i class="fa-solid fa-house"></i> HOME</span>';
 		$breadcrumb_html .= '</a>';
 		++$position;
 		$breadcrumb_html .= '<meta itemprop="position" content="' . $position . '" />';
