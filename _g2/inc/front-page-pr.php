@@ -237,7 +237,7 @@ function lightning_front_pr_blocks_add() {
 					$icon_html = '<i class="' . esc_attr( $fa . $options[ 'front_pr_icon_' . $i ] ) . ' font_icon prBlock_icon"></i>';
 				}
 				echo '<div class="prBlock_icon_outer">';
-				echo $icon_html;
+				echo wp_kses_post( $icon_html );
 				echo '</div>';
 			}
 
