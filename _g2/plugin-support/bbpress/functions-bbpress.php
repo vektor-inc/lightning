@@ -59,7 +59,7 @@ add_filter(
 					'sep'            => '',
 					'crumb_before'   => '<li' . $microdata_li . '><span>',
 					'crumb_after'    => '</span></li>',
-					'home_text'      => '<i class="fa fa-home"></i> HOME',
+					'home_text'      => '<i class="fa-solid fa-house"></i> HOME',
 					'current_before' => '',
 					'current_after'  => '',
 				);
@@ -114,7 +114,7 @@ function lightning_bbp_breadcrumb( $breadcrumb_html ) {
 		// Home
 		$breadcrumb_html .= '<li id="panHome"' . $microdata_li . '>';
 		$breadcrumb_html .= '<a' . $microdata_li_a . ' href="' . home_url( '/' ) . '">';
-		$breadcrumb_html .= '<span' . $microdata_li_a_span . '><i class="fa fa-home"></i> HOME</span>';
+		$breadcrumb_html .= '<span' . $microdata_li_a_span . '><i class="fa-solid fa-house"></i> HOME</span>';
 		$breadcrumb_html .= '</a>';
 		$breadcrumb_html .= '</li>';
 

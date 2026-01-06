@@ -189,8 +189,8 @@ if ( apply_filters( 'lightning_default_slide_display', true ) ) {
 	</div><!-- [ /.carousel-inner ] -->
 
 		<?php if ( $top_slide_count >= 2 ) : ?>
-	<a class="left carousel-control" href="#top__fullcarousel" data-slide="prev"><i class="icon-prev fa fa-angle-left"></i></a>
-	<a class="right carousel-control" href="#top__fullcarousel" data-slide="next"><i class="icon-next fa fa-angle-right"></i></a>
+	<a class="left carousel-control" href="#top__fullcarousel" data-slide="prev"><i class="icon-prev fa-solid fa-angle-left"></i></a>
+	<a class="right carousel-control" href="#top__fullcarousel" data-slide="next"><i class="icon-next fa-solid fa-angle-right"></i></a>
 	<?php endif; ?>
 
 	</div><!-- [ /#top__fullcarousel ] -->

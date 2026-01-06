@@ -1,7 +1,6 @@
 <?php
 
 use VektorInc\VK_Font_Awesome_Versions\VkFontAwesomeVersions;
-
 /*
   customize_register
 /*-------------------------------------------*/
@@ -60,7 +59,7 @@ function lightning_front_pr_blocks_customize_register( $wp_customize ) {
 				'default'           => $front_pr_default['icon'][ $i ],
 				'type'              => 'option',
 				'capability'        => 'edit_theme_options',
-				'sanitize_callback' => 'sanitize_text_field',
+				'sanitize_callback' => 'wp_kses_post',
 			)
 		);
 		$wp_customize->add_setting(
@@ -94,7 +93,7 @@ function lightning_front_pr_blocks_customize_register( $wp_customize ) {
 		$priority ++;
 
 		$description = '';
-		if ( class_exists( 'VkFontAwesomeVersions' ) ) {
+		if ( class_exists( VkFontAwesomeVersions::class ) ) {
 			$description = VkFontAwesomeVersions::ex_and_link();
 		}
 
@@ -172,9 +171,9 @@ add_action( 'wp_enqueue_scripts', 'lightning_front_pr_blocks_styles' );
 function lighting_front_pr_default_array() {
 	$front_pr_default = array(
 		'icon'    => array(
-			1 => 'fas fa-check',
-			2 => 'fas fa-cogs',
-			3 => 'far fa-file-alt',
+			1 => 'fa-solid fa-check',
+			2 => 'fa-solid fa-gears',
+			3 => 'fa-regular fa-file-lines',
 		),
 		'title'   => array(
 			1 => __( 'For all purposes', 'lightning' ),
@@ -208,7 +207,7 @@ function lightning_front_pr_blocks_add() {
 		echo '<div class="prBlocks prBlocks-default row">';
 
 		$fa = '';
-		if ( class_exists( 'VkFontAwesomeVersions' ) ) {
+		if ( class_exists( VkFontAwesomeVersions::class ) ) {
 			$fa = VkFontAwesomeVersions::print_fa();
 		}
 
@@ -231,8 +230,14 @@ function lightning_front_pr_blocks_add() {
 
 			if ( $options[ 'front_pr_icon_' . $i ] ) {
 				// echo '<div class="prBlock_icon" style="background-color:'.esc_attr( $options['color_key'] ).'">';
+				$icon_html = '';
+				if ( class_exists( VkFontAwesomeVersions::class ) ) {
+					$icon_html = VkFontAwesomeVersions::get_icon_tag( $options[ 'front_pr_icon_' . $i ], 'font_icon prBlock_icon' );
+				} else {
+					$icon_html = '<i class="' . esc_attr( $fa . $options[ 'front_pr_icon_' . $i ] ) . ' font_icon prBlock_icon"></i>';
+				}
 				echo '<div class="prBlock_icon_outer">';
-				echo '<i class="' . $fa . $options[ 'front_pr_icon_' . $i ] . ' font_icon prBlock_icon"></i>';
+				echo wp_kses_post( $icon_html );
 				echo '</div>';
 			}
 

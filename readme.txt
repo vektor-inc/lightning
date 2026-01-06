@@ -35,6 +35,8 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ G3/G2 ] Compatible for Font Awesome 7.0
+
 v15.33.0
 [ G3/G2 ] Update Font Awesome versions 6.3 -> 7.0
 

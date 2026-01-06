@@ -322,14 +322,14 @@ function lightning_get_entry_meta( $options = array() ) {
 
 		if ( $option['published'] ) {
 			$html .= '<span class="entry-meta-item entry-meta-item-date">
-			<i class="far fa-calendar-alt"></i>
+			<i class="fa-solid fa-calendar-days"></i>
 			<span class="published">' . esc_html( get_the_date() ) . '</span>
 			</span>';
 		}
 
 		if ( $option['updated'] ) {
 			$html .= '<span class="entry-meta-item entry-meta-item-updated">
-			<i class="fas fa-history"></i>
+			<i class="fa-solid fa-clock-rotate-left"></i>
 			<span class="screen-reader-text">' . __( 'Last updated', 'lightning' ) . ' : </span>
 			<span class="updated">' . get_the_modified_date( '' ) . '</span>
 			</span>';
