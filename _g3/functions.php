@@ -319,7 +319,7 @@ function lightning_comment_js() {
 add_action( 'wp_enqueue_scripts', 'lightning_comment_js' );
 
 /**
- * Year Artchive list 'year' and count insert to inner </a>
+ * Year Archive list 'year' and count insert to inner </a>
  *
  * @param string $html link html.
  * @return string $html added string html
