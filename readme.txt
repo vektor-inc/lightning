@@ -35,6 +35,8 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ G3 ][ Add function ] Add preload for first slide image to improve LCP
+
 v15.33.1
 [ G3/G2 ] Compatible for Font Awesome 7.0
 
