@@ -18,15 +18,6 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 			display: none;
 		}
 	} //.device-pc
-
-	// PC (hover可能) のフォールバック
-	// CDNキャッシュ等で body の device 判定が誤っても、PCでは第一階層の展開ボタンを非表示にする
-	@media ( min-width: $lg-min ) and ( hover: hover ) and ( pointer: fine ),
-		( min-width: $lg-min ) and ( any-hover: hover ) and ( any-pointer: fine ) {
-		& > li > .acc-btn {
-			display: none;
-		}
-	}
 	&.vk-menu-acc {
 		.sub-menu {
 			.acc-btn {
@@ -43,17 +34,14 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 			background-image: var(--g_nav_main_acc_icon_close_url);
 		}
 	}
-	@media ( min-width: $lg-min ) and ( hover: none ),
-		( min-width: $lg-min ) and ( any-hover: none ) {
-		.device-mobile & {
-			.acc-btn {
-				width: 20px;
-				height: 20px;
-				right: 6px;
-				top: 12px;
-			}
-		} //.device-mobile
-	}
+	.device-mobile & {
+		.acc-btn {
+			width: 20px;
+			height: 20px;
+			right: 6px;
+			top: 12px;
+		}
+	} //.device-mobile
 	.sub-menu {
 		.acc-btn {
 			background-image: var(--g_nav_sub_acc_icon_open_url);
