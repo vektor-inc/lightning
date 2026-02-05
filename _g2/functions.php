@@ -35,7 +35,7 @@ function lightning_debug_active() {
 	Load tga(Plugin install)
 	Load Front PR Blocks
 	WidgetArea initiate
-	Year Artchive list 'year' and count insert to inner </a>
+	Year Archive list 'year' and count insert to inner </a>
 	Category list 'count insert to inner </a>
 	Global navigation add cptions
 	headfix enable
@@ -448,7 +448,7 @@ if ( ! function_exists( 'lightning_widgets_init' ) ) {
 add_action( 'widgets_init', 'lightning_widgets_init' );
 
 /*
-	Year Artchive list 'year' and count insert to inner </a>
+	Year Archive list 'year' and count insert to inner </a>
 /*-------------------------------------------*/
 function lightning_archives_link( $html ) {
 	return preg_replace( '@</a>(.+?)</li>@', '\1</a></li>', $html );

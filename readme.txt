@@ -1,8 +1,8 @@
 === Lightning ===
-Lightning WordPress theme, Copyright (C) 2015-2025 Vektor,Inc.
+Lightning WordPress theme, Copyright (C) 2015-2026 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
 Tested up to: 6.9
-Stable tag: 15.32.4
+Stable tag: 15.33.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -36,6 +36,12 @@ vk-develop@vektor-inc.co.jp
 == Changelog ==
 
 [ G3 ][ Add function ] Add preload for first slide image to improve LCP
+
+v15.33.1
+[ G3/G2 ] Compatible for Font Awesome 7.0
+
+v15.33.0
+[ G3/G2 ] Update Font Awesome versions 6.3 -> 7.0
 
 v15.32.4
 [ G3 ] Adjust the display of the Contact Form 7 block in the editor
