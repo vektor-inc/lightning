@@ -201,9 +201,6 @@ class Lightning_Design_Manager {
 		if ( ! is_admin() ) {
 			return;
 		}
-		if ( function_exists( 'wp_should_load_block_editor_scripts_and_styles' ) && ! wp_should_load_block_editor_scripts_and_styles() ) {
-			return;
-		}
 
 		// カスタマイズ画面でも読み込んでしまうので抹殺.
 		if ( is_customize_preview() ) {

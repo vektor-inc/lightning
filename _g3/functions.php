@@ -226,9 +226,6 @@ function lightning_load_common_editor_css_to_gutenberg() {
 	if ( ! is_admin() ) {
 		return;
 	}
-	if ( function_exists( 'wp_should_load_block_editor_scripts_and_styles' ) && ! wp_should_load_block_editor_scripts_and_styles() ) {
-		return;
-	}
 	wp_enqueue_style(
 		'lightning-common-editor-gutenberg',
 		// If not full path that can't load in editor screen.

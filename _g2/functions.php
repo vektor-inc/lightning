@@ -256,12 +256,8 @@ use to wp_add_inline_style()
 */
 add_action( 'enqueue_block_assets', 'lightning_load_common_editor_css_to_gutenberg' );
 function lightning_load_common_editor_css_to_gutenberg() {
-
 	// enqueue_block_assets はフロントでも動くため、ブロックエディタでのみ読み込む.
 	if ( ! is_admin() ) {
-		return;
-	}
-	if ( function_exists( 'wp_should_load_block_editor_scripts_and_styles' ) && ! wp_should_load_block_editor_scripts_and_styles() ) {
 		return;
 	}
 

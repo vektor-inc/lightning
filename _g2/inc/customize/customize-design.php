@@ -561,9 +561,6 @@ function lightning_add_common_dynamic_css_to_editor() {
 	if ( ! is_admin() ) {
 		return;
 	}
-	if ( function_exists( 'wp_should_load_block_editor_scripts_and_styles' ) && ! wp_should_load_block_editor_scripts_and_styles() ) {
-		return;
-	}
 	$dynamic_css = lightning_get_common_inline_css();
 	wp_add_inline_style( 'lightning-common-editor-gutenberg', $dynamic_css );
 }
