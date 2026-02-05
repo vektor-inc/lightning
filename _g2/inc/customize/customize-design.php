@@ -557,10 +557,17 @@ function lightning_add_common_dynamic_css() {
 add_action( 'wp_enqueue_scripts', 'lightning_add_common_dynamic_css', 11 );
 
 function lightning_add_common_dynamic_css_to_editor() {
+	// enqueue_block_assets はフロントでも動くため、ブロックエディタでのみ読み込む.
+	if ( ! is_admin() ) {
+		return;
+	}
+	if ( function_exists( 'wp_should_load_block_editor_scripts_and_styles' ) && ! wp_should_load_block_editor_scripts_and_styles() ) {
+		return;
+	}
 	$dynamic_css = lightning_get_common_inline_css();
 	wp_add_inline_style( 'lightning-common-editor-gutenberg', $dynamic_css );
 }
-add_action( 'enqueue_block_editor_assets', 'lightning_add_common_dynamic_css_to_editor', 11 );
+add_action( 'enqueue_block_assets', 'lightning_add_common_dynamic_css_to_editor', 11 );
 
 /*
   編集ショートカットボタンの位置調整（ウィジェットのショートカットボタンと重なってしまうため）

@@ -36,16 +36,33 @@
 		}
 	}
 
-
-	.device-mobile & {
-		& > .sub-menu.acc-child-close {
-			opacity: 0;
-			max-height: 0;
+	// PC (hover可能) のフォールバック
+	// CDNキャッシュ等で body の device 判定が誤っても、PCではホバー展開を優先する
+	@media ( min-width: $lg-min ) and ( hover: hover ) and ( pointer: fine ),
+		( min-width: $lg-min ) and ( any-hover: hover ) and ( any-pointer: fine ) {
+		&:focus-within,
+		&:hover {
+			> .sub-menu, // 2 layers
+			li:focus-within > .sub-menu { // 3 layers after
+				opacity: 1;
+				max-height: 80vh;
+				overflow-y: auto;
+			}
 		}
-		& > .sub-menu.acc-child-open {
-			opacity: 1;
-			max-height: 80vh;
-			overflow-y: auto;
+	}
+
+	@media ( min-width: $lg-min ) and ( hover: none ),
+		( min-width: $lg-min ) and ( any-hover: none ) {
+		.device-mobile & {
+			& > .sub-menu.acc-child-close {
+				opacity: 0;
+				max-height: 0;
+			}
+			& > .sub-menu.acc-child-open {
+				opacity: 1;
+				max-height: 80vh;
+				overflow-y: auto;
+			}
 		}
 	}
 }
