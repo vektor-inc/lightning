@@ -28,15 +28,15 @@ class Lightning_Design_Manager {
 		Caution
 		add_editor_style はテーマ外（スキンプラグインなど）の https 以外のcss読み込みが効かない
 		add_editor_style は .editor-styles-wrapper を付与するので詳細が高くなってしまう
-		-> 編集画面のcssは全部 enqueue_block_editor_assets で処理する.
+		-> iframe 化されたブロックエディタでは enqueue_block_assets で処理する.
 		*/
 
 		// 読み込み順の 11 指定は共通CSSより後に読み込まれるようにするため.
-		add_action( 'enqueue_block_editor_assets', array( __CLASS__, 'load_skin_gutenberg_css' ), 11 );
+		add_action( 'enqueue_block_assets', array( __CLASS__, 'load_skin_gutenberg_css' ), 11 );
 
 		/**
-		 * 編集画面において enqueue_block_editor_assets は上部で add_editor_style は下部で読み込まれる
-		 * -> 両方書くと enqueue_block_editor_assets で定義した CSS に wp_add_inline_style で引っ掛けても効かない
+		 * 編集画面において enqueue_block_assets/enqueue_block_editor_assets は上部で add_editor_style は下部で読み込まれる
+		 * -> 両方書くと wp_add_inline_style で引っ掛けても効かないケースがある
 		 */
 		// add_editor_style は Classic Editor 専用に.
 		// ※ 5.9 では enqueue_block_editor_assets より後に読み込まれる.
@@ -197,6 +197,10 @@ class Lightning_Design_Manager {
 	 * @return void
 	 */
 	public static function load_skin_gutenberg_css() {
+		// enqueue_block_assets はフロントでも動くため、ブロックエディタでのみ読み込む.
+		if ( ! is_admin() ) {
+			return;
+		}
 
 		// カスタマイズ画面でも読み込んでしまうので抹殺.
 		if ( is_customize_preview() ) {

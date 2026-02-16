@@ -35,6 +35,8 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ G3/G2 ][ Specification Change ] Changed editor CSS loading hook from enqueue_block_editor_assets to enqueue_block_assets
+
 v15.33.1
 [ G3/G2 ] Compatible for Font Awesome 7.0
 
