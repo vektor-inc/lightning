@@ -222,6 +222,10 @@ add_action( 'admin_enqueue_scripts', 'lightning_load_common_editor_css' );
  * @return void
  */
 function lightning_load_common_editor_css_to_gutenberg() {
+	// enqueue_block_assets はフロントでも動くため、ブロックエディタでのみ読み込む.
+	if ( ! is_admin() ) {
+		return;
+	}
 	wp_enqueue_style(
 		'lightning-common-editor-gutenberg',
 		// If not full path that can't load in editor screen.
@@ -246,7 +250,7 @@ function lightning_load_common_editor_css_to_gutenberg() {
 		);
 	}
 }
-add_action( 'enqueue_block_editor_assets', 'lightning_load_common_editor_css_to_gutenberg' );
+add_action( 'enqueue_block_assets', 'lightning_load_common_editor_css_to_gutenberg' );
 
 /**
  * Load JavaScript
@@ -315,7 +319,7 @@ function lightning_comment_js() {
 add_action( 'wp_enqueue_scripts', 'lightning_comment_js' );
 
 /**
- * Year Artchive list 'year' and count insert to inner </a>
+ * Year Archive list 'year' and count insert to inner </a>
  *
  * @param string $html link html.
  * @return string $html added string html
@@ -373,6 +377,9 @@ if ( is_plugin_active( 'the-events-calendar/the-events-calendar.php' ) ) {
 }
 if ( is_plugin_active( 'booking-package/index.php' ) ) {
 	require __DIR__ . '/plugin-support/booking-package/functions-booking-package.php';
+}
+if ( is_plugin_active( 'contact-form-7/wp-contact-form-7.php' ) ) {
+	require __DIR__ . '/plugin-support/contact-form-7/functions-contact-form-7.php';
 }
 
 /**

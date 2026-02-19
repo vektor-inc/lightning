@@ -35,7 +35,7 @@ function lightning_debug_active() {
 	Load tga(Plugin install)
 	Load Front PR Blocks
 	WidgetArea initiate
-	Year Artchive list 'year' and count insert to inner </a>
+	Year Archive list 'year' and count insert to inner </a>
 	Category list 'count insert to inner </a>
 	Global navigation add cptions
 	headfix enable
@@ -254,8 +254,12 @@ function lightning_load_common_editor_css() {
 Already add_editor_style() is used but reload css by wp_enqueue_style() reason is
 use to wp_add_inline_style()
 */
-add_action( 'enqueue_block_editor_assets', 'lightning_load_common_editor_css_to_gutenberg' );
+add_action( 'enqueue_block_assets', 'lightning_load_common_editor_css_to_gutenberg' );
 function lightning_load_common_editor_css_to_gutenberg() {
+	// enqueue_block_assets はフロントでも動くため、ブロックエディタでのみ読み込む.
+	if ( ! is_admin() ) {
+		return;
+	}
 
 	wp_enqueue_style(
 		'lightning-common-editor-gutenberg',
@@ -448,7 +452,7 @@ if ( ! function_exists( 'lightning_widgets_init' ) ) {
 add_action( 'widgets_init', 'lightning_widgets_init' );
 
 /*
-	Year Artchive list 'year' and count insert to inner </a>
+	Year Archive list 'year' and count insert to inner </a>
 /*-------------------------------------------*/
 function lightning_archives_link( $html ) {
 	return preg_replace( '@</a>(.+?)</li>@', '\1</a></li>', $html );
