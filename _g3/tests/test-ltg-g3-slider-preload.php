@@ -15,9 +15,19 @@ class LTG_G3_Slider_Preload_Test extends WP_UnitTestCase {
 	private static $front_page_id;
 
 	/**
+	 * Original option values to restore after tests.
+	 *
+	 * @var array
+	 */
+	private static $original_options = array();
+
+	/**
 	 * Set up test fixtures.
 	 */
 	public static function wpSetUpBeforeClass( $factory ) {
+		self::$original_options['show_on_front'] = get_option( 'show_on_front', false );
+		self::$original_options['page_on_front'] = get_option( 'page_on_front', false );
+
 		self::$front_page_id = $factory->post->create(
 			array(
 				'post_type'   => 'page',
@@ -30,11 +40,16 @@ class LTG_G3_Slider_Preload_Test extends WP_UnitTestCase {
 	}
 
 	/**
-	 * Clean up class-level options after all tests in this class.
+	 * Restore original options after all tests in this class.
 	 */
 	public static function wpTearDownAfterClass() {
-		delete_option( 'show_on_front' );
-		delete_option( 'page_on_front' );
+		foreach ( array( 'show_on_front', 'page_on_front' ) as $key ) {
+			if ( false === self::$original_options[ $key ] ) {
+				delete_option( $key );
+			} else {
+				update_option( $key, self::$original_options[ $key ] );
+			}
+		}
 		wp_cache_flush();
 	}
 
@@ -221,6 +236,39 @@ class LTG_G3_Slider_Preload_Test extends WP_UnitTestCase {
 		LTG_G3_Slider::preload_first_slide_image();
 		$output = ob_get_clean();
 		print PHP_EOL . 'Hidden slider output: "' . trim( $output ) . '"' . PHP_EOL;
+		$this->assertEmpty( $output );
+	}
+
+	/**
+	 * Test preload_first_slide_image() outputs nothing when lightning_default_slide_display filter is false.
+	 */
+	public function test_preload_not_output_when_slide_display_filter_false() {
+
+		print PHP_EOL;
+		print '------------------------------------' . PHP_EOL;
+		print 'LTG_G3_Slider::preload_first_slide_image() with lightning_default_slide_display false' . PHP_EOL;
+		print '------------------------------------' . PHP_EOL;
+
+		$this->go_to( home_url( '/' ) );
+
+		$this->set_slider_options(
+			array(
+				'top_slide_image_1' => 'http://example.com/pc.jpg',
+			)
+		);
+
+		$filter_callback = function () {
+			return false;
+		};
+		add_filter( 'lightning_default_slide_display', $filter_callback );
+
+		ob_start();
+		LTG_G3_Slider::preload_first_slide_image();
+		$output = ob_get_clean();
+
+		remove_filter( 'lightning_default_slide_display', $filter_callback );
+
+		print PHP_EOL . 'Filter false output: "' . trim( $output ) . '"' . PHP_EOL;
 		$this->assertEmpty( $output );
 	}
 
