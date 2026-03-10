@@ -751,7 +751,7 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 							$slide_html .= '<source media="(max-width: 767px)" srcset="' . esc_attr( $options[ 'top_slide_image_mobile_' . $i ] ) . '">';
 						}
 
-						// Add preload attribute for the first slide image.
+						// Add fetchpriority attribute for the first slide image (LCP optimization).
 						$preload_attr = ( $i === 1 ) ? ' fetchpriority="high"' : '';
 
 						$slide_html .= '<img src="' . esc_attr( $options[ 'top_slide_image_' . $i ] ) . '" alt="' . esc_attr( $slide_alt ) . '" class="ltg-slide-item-img"' . $preload_attr . '>';
