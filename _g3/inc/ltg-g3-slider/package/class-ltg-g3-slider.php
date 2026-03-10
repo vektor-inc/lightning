@@ -851,29 +851,36 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 		 * Preload first slide image
 		 */
 		public static function preload_first_slide_image() {
+			// Only preload on pages where the slider is displayed.
+			if ( ! is_front_page() ) {
+				return;
+			}
+
+			if ( ! apply_filters( 'lightning_default_slide_display', true ) ) {
+				return;
+			}
+
 			$options = get_option( 'lightning_theme_options' );
 			$default = function_exists( 'lightning_g3_slider_default_options' ) ? lightning_g3_slider_default_options() : array();
 			$options = wp_parse_args( $options, $default );
 
-			// Early return if slider is hidden
-			if ( 'hide' === $options['top_slide_display'] ) {
+			if ( 'display' !== $options['top_slide_display'] ) {
 				return;
 			}
 
 			$pc_image     = ! empty( $options['top_slide_image_1'] ) ? esc_url( $options['top_slide_image_1'] ) : '';
 			$mobile_image = ! empty( $options['top_slide_image_mobile_1'] ) ? esc_url( $options['top_slide_image_mobile_1'] ) : '';
 
-			if ( ( $pc_image && $pc_image === $mobile_image ) || ( $pc_image && ! $mobile_image ) || ( ! $pc_image && $mobile_image ) ) {
-				$img = $pc_image ? $pc_image : $mobile_image;
-				if ( $img ) {
-					echo '<link rel="preload" as="image" href="' . esc_attr( $img ) . '" fetchpriority="high" />';
+			// If both images are the same, or only one is set, preload without media query.
+			if ( ! $mobile_image || $pc_image === $mobile_image ) {
+				if ( $pc_image ) {
+					echo '<link rel="preload" as="image" href="' . esc_url( $pc_image ) . '" fetchpriority="high" />' . "\n";
 				}
 			} else {
-				if ( $mobile_image ) {
-					echo '<link rel="preload" as="image" href="' . esc_attr( $mobile_image ) . '" media="(max-width: 767px)" fetchpriority="high" />';
-				}
+				// PC and mobile images differ: preload each with appropriate media query.
+				echo '<link rel="preload" as="image" href="' . esc_url( $mobile_image ) . '" media="(max-width: 767px)" fetchpriority="high" />' . "\n";
 				if ( $pc_image ) {
-					echo '<link rel="preload" as="image" href="' . esc_attr( $pc_image ) . '" media="(min-width: 768px)" fetchpriority="high" />';
+					echo '<link rel="preload" as="image" href="' . esc_url( $pc_image ) . '" media="(min-width: 768px)" fetchpriority="high" />' . "\n";
 				}
 			}
 		}
