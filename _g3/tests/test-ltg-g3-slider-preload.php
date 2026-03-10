@@ -30,6 +30,15 @@ class LTG_G3_Slider_Preload_Test extends WP_UnitTestCase {
 	}
 
 	/**
+	 * Clean up class-level options after all tests in this class.
+	 */
+	public static function wpTearDownAfterClass() {
+		delete_option( 'show_on_front' );
+		delete_option( 'page_on_front' );
+		wp_cache_flush();
+	}
+
+	/**
 	 * Clean up after each test.
 	 */
 	public function tearDown(): void {
