@@ -67,6 +67,25 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 		}
 
 		/**
+		 * Get the index of the first non-empty slide.
+		 *
+		 * @return int|false The 1-based index of the first slide with an image, or false if none.
+		 */
+		public static function get_first_slide_index() {
+			$slide_count_max = self::slide_count_max();
+			$options         = get_option( 'lightning_theme_options' );
+			$default         = lightning_g3_slider_default_options();
+			$options         = wp_parse_args( $options, $default );
+
+			for ( $i = 1; $i <= $slide_count_max; $i++ ) {
+				if ( ! empty( $options[ 'top_slide_image_' . $i ] ) ) {
+					return $i;
+				}
+			}
+			return false;
+		}
+
+		/**
 		 * IS Slide Outer Link
 		 *
 		 * @param int $i Slide Count.
@@ -709,7 +728,8 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 			$options       = wp_parse_args( $options, $default );
 			$slider_prefix = esc_html( $options['top_slide_prefix'] );
 
-			$slide_html = '';
+			$slide_html        = '';
+			$first_slide_index = self::get_first_slide_index();
 
 			if ( $slide_count ) {
 
@@ -752,7 +772,7 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 						}
 
 						// Add fetchpriority attribute for the first slide image (LCP optimization).
-						$preload_attr = ( $i === 1 ) ? ' fetchpriority="high"' : '';
+						$preload_attr = ( $i === $first_slide_index ) ? ' fetchpriority="high"' : '';
 
 						$slide_html .= '<img src="' . esc_attr( $options[ 'top_slide_image_' . $i ] ) . '" alt="' . esc_attr( $slide_alt ) . '" class="ltg-slide-item-img"' . $preload_attr . '>';
 						$slide_html .= '</picture>';
@@ -868,8 +888,13 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 				return;
 			}
 
-			$pc_image     = ! empty( $options['top_slide_image_1'] ) ? esc_url( $options['top_slide_image_1'] ) : '';
-			$mobile_image = ! empty( $options['top_slide_image_mobile_1'] ) ? esc_url( $options['top_slide_image_mobile_1'] ) : '';
+			$first_slide_index = self::get_first_slide_index();
+			if ( ! $first_slide_index ) {
+				return;
+			}
+
+			$pc_image     = ! empty( $options[ 'top_slide_image_' . $first_slide_index ] ) ? esc_url( $options[ 'top_slide_image_' . $first_slide_index ] ) : '';
+			$mobile_image = ! empty( $options[ 'top_slide_image_mobile_' . $first_slide_index ] ) ? esc_url( $options[ 'top_slide_image_mobile_' . $first_slide_index ] ) : '';
 
 			// If both images are the same, or only one is set, preload without media query.
 			if ( ! $mobile_image || $pc_image === $mobile_image ) {
