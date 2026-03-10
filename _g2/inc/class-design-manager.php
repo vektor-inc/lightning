@@ -27,7 +27,7 @@ class Lightning_Design_Manager {
 
 		add_action( 'customize_register', array( __CLASS__, 'customize_register' ) );
 
-		add_action( 'enqueue_block_editor_assets', array( __CLASS__, 'load_skin_gutenberg_css' ) );
+		add_action( 'enqueue_block_assets', array( __CLASS__, 'load_skin_gutenberg_css' ) );
 
 	}
 
@@ -232,6 +232,10 @@ class Lightning_Design_Manager {
 	 * @return void
 	 */
 	public static function load_skin_gutenberg_css() {
+		// enqueue_block_assets はフロントでも動くため、ブロックエディタでのみ読み込む.
+		if ( ! is_admin() ) {
+			return;
+		}
 
 		// カスタマイズ画面でも読み込んでしまうので抹殺.
 		if ( is_customize_preview() ) {

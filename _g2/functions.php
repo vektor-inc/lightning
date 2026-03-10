@@ -254,8 +254,12 @@ function lightning_load_common_editor_css() {
 Already add_editor_style() is used but reload css by wp_enqueue_style() reason is
 use to wp_add_inline_style()
 */
-add_action( 'enqueue_block_editor_assets', 'lightning_load_common_editor_css_to_gutenberg' );
+add_action( 'enqueue_block_assets', 'lightning_load_common_editor_css_to_gutenberg' );
 function lightning_load_common_editor_css_to_gutenberg() {
+	// enqueue_block_assets はフロントでも動くため、ブロックエディタでのみ読み込む.
+	if ( ! is_admin() ) {
+		return;
+	}
 
 	wp_enqueue_style(
 		'lightning-common-editor-gutenberg',
