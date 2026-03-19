@@ -38,6 +38,7 @@ vk-develop@vektor-inc.co.jp
 v15.34.0
 [ G3 ][ Add function ] Add preload for first slide image to improve LCP
 [ G3/G2 ][ Specification Change ] Changed editor CSS loading hook from enqueue_block_editor_assets to enqueue_block_assets
+[ Other ] Update Font Awesome versions 7.0 -> 7.2
 
 v15.33.1
 [ G3/G2 ] Compatible for Font Awesome 7.0
