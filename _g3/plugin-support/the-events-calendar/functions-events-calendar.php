@@ -11,8 +11,7 @@ use VektorInc\VK_Helpers\VkHelpers;
  * Load header
  */
 function lightning_g3_tec_load_header() {
-	$vk_helpers     = new VkHelpers();
-	$post_type_info = $vk_helpers->get_post_type_info();
+	$post_type_info = VkHelpers::get_post_type_info();
 	if ( 'tribe_events' === $post_type_info['slug'] ) {
 		lightning_get_template_part( 'template-parts/site-header' );
 	}
@@ -23,8 +22,7 @@ add_action( 'wp_body_open', 'lightning_g3_tec_load_header' );
  * Load footer
  */
 function lightning_g3_tec_load_footer() {
-	$vk_helpers     = new VkHelpers();
-	$post_type_info = $vk_helpers->get_post_type_info();
+	$post_type_info = VkHelpers::get_post_type_info();
 	if ( 'tribe_events' === $post_type_info['slug'] ) {
 		lightning_get_template_part( 'template-parts/site-footer' );
 	}
