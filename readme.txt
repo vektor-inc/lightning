@@ -35,6 +35,8 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ Bug fix ][ G3 ] Fix Fatal Error when The Events Calendar plugin is active caused by VkHelpers constructor becoming private in vk-helpers 0.2.1
+
 v15.34.0
 [ G3 ][ Add function ] Add preload for first slide image to improve LCP
 [ G3/G2 ][ Specification Change ] Changed editor CSS loading hook from enqueue_block_editor_assets to enqueue_block_assets
