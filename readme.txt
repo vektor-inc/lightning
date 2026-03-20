@@ -35,6 +35,8 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ G3 ][ 不具合修正 ] The Events Calendar プラグイン有効時に vk-helpers 0.2.1 の private コンストラクタ変更により Fatal Error が発生する不具合を修正
+
 v15.34.0
 [ G3 ][ Add function ] Add preload for first slide image to improve LCP
 [ G3/G2 ][ Specification Change ] Changed editor CSS loading hook from enqueue_block_editor_assets to enqueue_block_assets
