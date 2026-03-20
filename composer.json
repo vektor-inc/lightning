@@ -7,12 +7,12 @@
 		}
 	],
 	"require": {
-		"vektor-inc/vk-swiper": "^0.3.4",
-		"vektor-inc/font-awesome-versions": "0.7.0",
-		"vektor-inc/vk-color-palette-manager": "^0.0.15",
-		"vektor-inc/vk-breadcrumb": "^0.2.5",
-		"vektor-inc/vk-css-optimize": "^0.2.2",
-		"vektor-inc/tgm-plugin-activation": "^2.6",
+		"vektor-inc/vk-swiper": "^0.3.5",
+		"vektor-inc/font-awesome-versions": "0.7.2",
+		"vektor-inc/vk-color-palette-manager": "^0.4.0",
+		"vektor-inc/vk-breadcrumb": "^0.2.8",
+		"vektor-inc/vk-css-optimize": "^0.2.5",
+		"vektor-inc/tgm-plugin-activation": "^2.6.2",
 		"vektor-inc/vk-component": "^1.6.5"
 	},
 	"require-dev": {
