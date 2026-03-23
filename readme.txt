@@ -34,7 +34,7 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
-[ G2 ][ 不具合修正 ] Font Awesome 7 使用時に WooCommerce のカートボタンのアイコンが文字化けする不具合を修正
+[ G2 ][ Design Bug Fix ] Fix WooCommerce cart button icon display issue when Font Awesome 7 is used
 
 v15.34.1
 [ G3 ][ Bug fix ] Fix Fatal Error when The Events Calendar plugin is active due to VkHelpers constructor becoming private in vk-helpers 0.2.1
