@@ -2,7 +2,6 @@
 Lightning WordPress theme, Copyright (C) 2015-2026 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
 Tested up to: 6.9
-Stable tag: 15.33.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -35,7 +34,10 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
-[ G3 ][ 不具合修正 ] The Events Calendar プラグイン有効時に vk-helpers 0.2.1 の private コンストラクタ変更により Fatal Error が発生する不具合を修正
+[ G2 ][ Design Bug Fix ] Fix WooCommerce cart button icon display issue when Font Awesome 7 is used
+
+v15.34.1
+[ G3 ][ Bug fix ] Fix Fatal Error when The Events Calendar plugin is active due to VkHelpers constructor becoming private in vk-helpers 0.2.1
 
 v15.34.0
 [ G3 ][ Add function ] Add preload for first slide image to improve LCP
