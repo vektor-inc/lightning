@@ -2,7 +2,6 @@
 Lightning WordPress theme, Copyright (C) 2015-2026 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
 Tested up to: 6.9
-Stable tag: 15.33.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -35,7 +34,16 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ G2 ][ Bug fix ] Fix an issue where global navigation background color, hover color, and separator were not correctly inherited due to a typo in SCSS variables (inhelit → inherit)
+[ G2 ][ Design Bug Fix ] Fix WooCommerce cart button icon display issue when Font Awesome 7 is used
+
+v15.34.1
+[ G3 ][ Bug fix ] Fix Fatal Error when The Events Calendar plugin is active due to VkHelpers constructor becoming private in vk-helpers 0.2.1
+
+v15.34.0
+[ G3 ][ Add function ] Add preload for first slide image to improve LCP
 [ G3/G2 ][ Specification Change ] Changed editor CSS loading hook from enqueue_block_editor_assets to enqueue_block_assets
+[ Other ] Update Font Awesome versions 7.0 -> 7.2
 
 v15.33.1
 [ G3/G2 ] Compatible for Font Awesome 7.0
