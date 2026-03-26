@@ -34,6 +34,7 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ G2 ][ Bug fix ] Fix an issue where global navigation background color, hover color, and separator were not correctly inherited due to a typo in SCSS variables (inhelit → inherit)
 [ G2 ][ Design Bug Fix ] Fix WooCommerce cart button icon display issue when Font Awesome 7 is used
 
 v15.34.1
