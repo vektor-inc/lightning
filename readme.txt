@@ -35,6 +35,7 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ G3/G2 ][ WordPress 7.0 ] Add __back_compat_meta_box flag to layout controller meta box for Real-Time Collaboration compatibility
 [ G2 ][ Bug fix ] Fix an issue where global navigation background color, hover color, and separator were not correctly inherited due to a typo in SCSS variables (inhelit → inherit)
 [ G2 ][ Design Bug Fix ] Fix WooCommerce cart button icon display issue when Font Awesome 7 is used
 

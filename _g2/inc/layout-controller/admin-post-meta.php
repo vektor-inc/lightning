@@ -18,7 +18,9 @@ function lightning_add_design_meta_box() {
 			__( 'Lightning design setting', 'lightning' ),
 			'lightning_design_setting_meta_fields',
 			$post_type,
-			'side'
+			'side',
+			'default',
+			array( '__back_compat_meta_box' => true )
 		);
 	}
 }
