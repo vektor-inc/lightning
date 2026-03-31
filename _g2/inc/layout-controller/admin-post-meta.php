@@ -20,7 +20,7 @@ function lightning_add_design_meta_box() {
 			$post_type,
 			'side',
 			'default',
-			array( '__back_compat_meta_box' => true )
+			array( '__back_compat_meta_box' => false )
 		);
 	}
 }
