@@ -105,6 +105,25 @@ function lightning_design_setting_meta_fields() {
 }
 
 /*
+	Enqueue block editor panel script
+/*-------------------------------------------*/
+add_action( 'enqueue_block_editor_assets', 'lightning_g3_enqueue_design_setting_panel' );
+
+function lightning_g3_enqueue_design_setting_panel() {
+	$script_path = get_parent_theme_file_path( '/assets/js/design-setting-panel.js' );
+	if ( ! file_exists( $script_path ) ) {
+		return;
+	}
+	wp_enqueue_script(
+		'lightning-design-setting-panel',
+		get_parent_theme_file_uri( '/assets/js/design-setting-panel.js' ),
+		array( 'wp-plugins', 'wp-edit-post', 'wp-element', 'wp-components', 'wp-data', 'wp-core-data', 'wp-i18n' ),
+		filemtime( $script_path ),
+		true
+	);
+}
+
+/*
 	Save meta
 /*-------------------------------------------*/
 add_action( 'save_post', 'lightning_design_setting_save' );
