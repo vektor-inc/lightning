@@ -1,79 +1,49 @@
-/**
- * Lightning G3 - Design Setting Panel
- * ブロックエディタ用サイドバーパネル（G3）
- *
- * Replaces the legacy add_meta_box() with PluginDocumentSettingPanel.
- * レガシーなadd_meta_box()をPluginDocumentSettingPanelに置き換える。
- */
+var registerPlugin = wp.plugins.registerPlugin;
+var PluginDocumentSettingPanel = wp.editPost.PluginDocumentSettingPanel;
+var SelectControl = wp.components.SelectControl;
+var CheckboxControl = wp.components.CheckboxControl;
+var useSelect = wp.data.useSelect;
+var useEntityProp = wp.coreData.useEntityProp;
+var createElement = wp.element.createElement;
+var Fragment = wp.element.Fragment;
+var i18n = window.lightningPanelI18n || {};
 
-const { registerPlugin } = wp.plugins;
-const { PluginDocumentSettingPanel } = wp.editPost;
-const { SelectControl, CheckboxControl } = wp.components;
-const { useSelect } = wp.data;
-const { useEntityProp } = wp.coreData;
-const { createElement, Fragment } = wp.element;
-const { __ } = wp.i18n;
-
-const LightningDesignSettingPanel = () => {
-	const postType = useSelect(
-		( select ) => select( 'core/editor' ).getCurrentPostType(),
-		[]
-	);
-
-	const [ meta, setMeta ] = useEntityProp( 'postType', postType, 'meta' );
-
-	const designSetting = meta && meta._lightning_design_setting
-		? meta._lightning_design_setting
-		: {};
-
-	const layout = designSetting.layout || 'default';
-	const siteBodyPadding = designSetting.site_body_padding === 'true';
-
-	const updateDesignSetting = ( key, value ) => {
-		setMeta( {
-			...meta,
-			_lightning_design_setting: {
-				...designSetting,
-				[ key ]: value,
-			},
-		} );
+var LightningDesignSettingPanel = function() {
+	var postType = useSelect(function(select) {
+		return select('core/editor').getCurrentPostType();
+	}, []);
+	var result = useEntityProp('postType', postType, 'meta');
+	var meta = result[0];
+	var setMeta = result[1];
+	var ds = meta && meta._lightning_design_setting ? meta._lightning_design_setting : {};
+	var layout = ds.layout || 'default';
+	var siteBodyPadding = ds.site_body_padding === 'true';
+	var update = function(key, value) {
+		var ns = Object.assign({}, ds);
+		ns[key] = value;
+		var nm = Object.assign({}, meta);
+		nm._lightning_design_setting = ns;
+		setMeta(nm);
 	};
-
-	const layoutOptions = [
-		{ label: __( 'Use common settings', 'lightning' ), value: 'default' },
-		{ label: __( '2 column', 'lightning' ), value: 'col-two' },
-		{ label: __( '1 column', 'lightning' ), value: 'col-one-no-subsection' },
-		{ label: __( '1 column (with sidebar element)', 'lightning' ), value: 'col-one' },
-	];
-
-	return createElement(
-		PluginDocumentSettingPanel,
-		{
-			name: 'lightning-design-setting',
-			title: __( 'Lightning design setting', 'lightning' ),
-			className: 'lightning-design-setting-panel',
-		},
-		createElement( Fragment, null,
-			createElement( SelectControl, {
-				label: __( 'Layout setting', 'lightning' ),
-				value: layout,
-				options: layoutOptions,
-				onChange: ( value ) => updateDesignSetting( 'layout', value ),
-			} ),
-			createElement( 'h4', { style: { marginTop: '16px', marginBottom: '8px' } },
-				__( 'Padding and margin setting', 'lightning' )
-			),
-			createElement( CheckboxControl, {
-				label: __( 'Delete site-body padding', 'lightning' ),
-				checked: siteBodyPadding,
-				onChange: ( checked ) =>
-					updateDesignSetting( 'site_body_padding', checked ? 'true' : '' ),
-			} )
-		)
+	return createElement(PluginDocumentSettingPanel,
+		{name: 'lightning-design-setting', title: i18n.panelTitle || 'Lightning design setting'},
+		createElement(SelectControl, {
+			label: i18n.layoutSetting || 'Layout setting',
+			value: layout,
+			options: [
+				{label: i18n.useCommon || 'Use common settings', value: 'default'},
+				{label: i18n.col2 || '2 column', value: 'col-two'},
+				{label: i18n.col1 || '1 column', value: 'col-one-no-subsection'},
+				{label: i18n.col1Sidebar || '1 column (with sidebar element)', value: 'col-one'},
+			],
+			onChange: function(v) { update('layout', v); },
+		}),
+		createElement('h4', {style: {marginTop: '16px', marginBottom: '8px'}}, i18n.paddingMargin || 'Padding and margin setting'),
+		createElement(CheckboxControl, {
+			label: i18n.deletePadding || 'Delete site-body padding',
+			checked: siteBodyPadding,
+			onChange: function(c) { update('site_body_padding', c ? 'true' : ''); },
+		})
 	);
 };
-
-registerPlugin( 'lightning-design-setting-panel', {
-	render: LightningDesignSettingPanel,
-	icon: 'admin-settings',
-} );
+registerPlugin('lightning-design-setting-panel', {render: LightningDesignSettingPanel, icon: 'admin-settings'});

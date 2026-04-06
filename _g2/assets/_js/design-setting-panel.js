@@ -1,96 +1,62 @@
-/**
- * Lightning G2 - Design Setting Panel
- * ブロックエディタ用サイドバーパネル（G2）
- *
- * Replaces the legacy add_meta_box() with PluginDocumentSettingPanel.
- * レガシーなadd_meta_box()をPluginDocumentSettingPanelに置き換える。
- */
+var registerPlugin = wp.plugins.registerPlugin;
+var PluginDocumentSettingPanel = wp.editPost.PluginDocumentSettingPanel;
+var SelectControl = wp.components.SelectControl;
+var CheckboxControl = wp.components.CheckboxControl;
+var useSelect = wp.data.useSelect;
+var useEntityProp = wp.coreData.useEntityProp;
+var createElement = wp.element.createElement;
+var Fragment = wp.element.Fragment;
+var i18n = window.lightningPanelI18n || {};
 
-const { registerPlugin } = wp.plugins;
-const { PluginDocumentSettingPanel } = wp.editPost;
-const { SelectControl, CheckboxControl } = wp.components;
-const { useSelect } = wp.data;
-const { useEntityProp } = wp.coreData;
-const { createElement, Fragment } = wp.element;
-const { __ } = wp.i18n;
-
-const LightningDesignSettingPanel = () => {
-	const postType = useSelect(
-		( select ) => select( 'core/editor' ).getCurrentPostType(),
-		[]
-	);
-
-	const [ meta, setMeta ] = useEntityProp( 'postType', postType, 'meta' );
-
-	const designSetting = meta && meta._lightning_design_setting
-		? meta._lightning_design_setting
-		: {};
-
-	const layout = designSetting.layout || 'default';
-	const hiddenPageHeader = designSetting.hidden_page_header === 'true';
-	const hiddenBreadcrumb = designSetting.hidden_breadcrumb === 'true';
-	const siteContentPadding = designSetting.siteContent_padding === 'true';
-
-	const updateDesignSetting = ( key, value ) => {
-		setMeta( {
-			...meta,
-			_lightning_design_setting: {
-				...designSetting,
-				[ key ]: value,
-			},
-		} );
+var LightningDesignSettingPanel = function() {
+	var postType = useSelect(function(select) {
+		return select('core/editor').getCurrentPostType();
+	}, []);
+	var result = useEntityProp('postType', postType, 'meta');
+	var meta = result[0];
+	var setMeta = result[1];
+	var ds = meta && meta._lightning_design_setting ? meta._lightning_design_setting : {};
+	var layout = ds.layout || 'default';
+	var hiddenPageHeader = ds.hidden_page_header === 'true';
+	var hiddenBreadcrumb = ds.hidden_breadcrumb === 'true';
+	var siteContentPadding = ds.siteContent_padding === 'true';
+	var update = function(key, value) {
+		var ns = Object.assign({}, ds);
+		ns[key] = value;
+		var nm = Object.assign({}, meta);
+		nm._lightning_design_setting = ns;
+		setMeta(nm);
 	};
-
-	const layoutOptions = [
-		{ label: __( 'Use common settings', 'lightning' ), value: 'default' },
-		{ label: __( '2 column', 'lightning' ), value: 'col-two' },
-		{ label: __( '1 column', 'lightning' ), value: 'col-one-no-subsection' },
-		{ label: __( '1 column (with sidebar element)', 'lightning' ), value: 'col-one' },
-	];
-
-	return createElement(
-		PluginDocumentSettingPanel,
-		{
-			name: 'lightning-design-setting',
-			title: __( 'Lightning design setting', 'lightning' ),
-			className: 'lightning-design-setting-panel',
-		},
-		createElement( Fragment, null,
-			createElement( SelectControl, {
-				label: __( 'Layout setting', 'lightning' ),
-				value: layout,
-				options: layoutOptions,
-				onChange: ( value ) => updateDesignSetting( 'layout', value ),
-			} ),
-			createElement( 'h4', { style: { marginTop: '16px', marginBottom: '8px' } },
-				__( 'Page Header and Breadcrumb', 'lightning' )
-			),
-			createElement( CheckboxControl, {
-				label: __( "Don't display Page Header", 'lightning' ),
-				checked: hiddenPageHeader,
-				onChange: ( checked ) =>
-					updateDesignSetting( 'hidden_page_header', checked ? 'true' : '' ),
-			} ),
-			createElement( CheckboxControl, {
-				label: __( "Don't display Breadcrumb", 'lightning' ),
-				checked: hiddenBreadcrumb,
-				onChange: ( checked ) =>
-					updateDesignSetting( 'hidden_breadcrumb', checked ? 'true' : '' ),
-			} ),
-			createElement( 'h4', { style: { marginTop: '16px', marginBottom: '8px' } },
-				__( 'Padding and margin setting', 'lightning' )
-			),
-			createElement( CheckboxControl, {
-				label: __( 'Delete siteContent padding', 'lightning' ),
-				checked: siteContentPadding,
-				onChange: ( checked ) =>
-					updateDesignSetting( 'siteContent_padding', checked ? 'true' : '' ),
-			} )
-		)
+	return createElement(PluginDocumentSettingPanel,
+		{name: 'lightning-design-setting', title: i18n.panelTitle || 'Lightning design setting'},
+		createElement(SelectControl, {
+			label: i18n.layoutSetting || 'Layout setting',
+			value: layout,
+			options: [
+				{label: i18n.useCommon || 'Use common settings', value: 'default'},
+				{label: i18n.col2 || '2 column', value: 'col-two'},
+				{label: i18n.col1 || '1 column', value: 'col-one-no-subsection'},
+				{label: i18n.col1Sidebar || '1 column (with sidebar element)', value: 'col-one'},
+			],
+			onChange: function(v) { update('layout', v); },
+		}),
+		createElement('h4', {style: {marginTop: '16px', marginBottom: '8px'}}, i18n.pageHeaderBread || 'Page Header and Breadcrumb'),
+		createElement(CheckboxControl, {
+			label: i18n.noPageHeader || "Don't display Page Header",
+			checked: hiddenPageHeader,
+			onChange: function(c) { update('hidden_page_header', c ? 'true' : ''); },
+		}),
+		createElement(CheckboxControl, {
+			label: i18n.noBreadcrumb || "Don't display Breadcrumb",
+			checked: hiddenBreadcrumb,
+			onChange: function(c) { update('hidden_breadcrumb', c ? 'true' : ''); },
+		}),
+		createElement('h4', {style: {marginTop: '16px', marginBottom: '8px'}}, i18n.paddingMargin || 'Padding and margin setting'),
+		createElement(CheckboxControl, {
+			label: i18n.deletePadding || 'Delete siteContent padding',
+			checked: siteContentPadding,
+			onChange: function(c) { update('siteContent_padding', c ? 'true' : ''); },
+		})
 	);
 };
-
-registerPlugin( 'lightning-design-setting-panel', {
-	render: LightningDesignSettingPanel,
-	icon: 'admin-settings',
-} );
+registerPlugin('lightning-design-setting-panel', {render: LightningDesignSettingPanel, icon: 'admin-settings'});

@@ -136,6 +136,19 @@ function lightning_g2_enqueue_design_setting_panel() {
 		filemtime( $script_path ),
 		true
 	);
+	wp_localize_script( 'lightning-design-setting-panel', 'lightningPanelI18n', array(
+		'panelTitle'        => __( 'Lightning design setting', 'lightning' ),
+		'layoutSetting'     => __( 'Layout setting', 'lightning' ),
+		'useCommon'         => __( 'Use common settings', 'lightning' ),
+		'col2'              => __( '2 column', 'lightning' ),
+		'col1'              => __( '1 column', 'lightning' ),
+		'col1Sidebar'       => __( '1 column (with sidebar element)', 'lightning' ),
+		'pageHeaderBread'   => __( 'Page Header and Breadcrumb', 'lightning' ),
+		'noPageHeader'      => __( "Don't display Page Header", 'lightning' ),
+		'noBreadcrumb'      => __( "Don't display Breadcrumb", 'lightning' ),
+		'paddingMargin'     => __( 'Padding and margin setting', 'lightning' ),
+		'deletePadding'     => __( 'Delete siteContent padding', 'lightning' ),
+	) );
 }
 
 /*
