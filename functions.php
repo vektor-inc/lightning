@@ -166,6 +166,7 @@ require __DIR__ . '/inc/admin-mail-checker.php';
 require __DIR__ . '/inc/functions-compatible.php';
 require __DIR__ . '/inc/font-awesome/font-awesome-config.php';
 require __DIR__ . '/inc/old-page-template.php';
+require __DIR__ . '/inc/block-editor-panels/enqueue.php';
 
 require __DIR__ . '/inc/class-ltg-theme-json-activator.php';
 new LTG_Theme_Json_Activator();
