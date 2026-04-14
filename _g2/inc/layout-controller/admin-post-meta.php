@@ -132,7 +132,7 @@ function lightning_g2_enqueue_design_setting_panel() {
 	wp_enqueue_script(
 		'lightning-design-setting-panel',
 		get_parent_theme_file_uri( '/assets/js/design-setting-panel.js' ),
-		array( 'wp-plugins', 'wp-edit-post', 'wp-element', 'wp-components', 'wp-data', 'wp-core-data', 'wp-i18n' ),
+		array( 'wp-plugins', 'wp-editor', 'wp-element', 'wp-components', 'wp-data', 'wp-core-data', 'wp-i18n' ),
 		filemtime( $script_path ),
 		true
 	);

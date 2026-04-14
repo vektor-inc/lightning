@@ -1,5 +1,5 @@
 var registerPlugin = wp.plugins.registerPlugin;
-var PluginDocumentSettingPanel = wp.editPost.PluginDocumentSettingPanel;
+var PluginDocumentSettingPanel = wp.editor.PluginDocumentSettingPanel;
 var SelectControl = wp.components.SelectControl;
 var CheckboxControl = wp.components.CheckboxControl;
 var useSelect = wp.data.useSelect;
