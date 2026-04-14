@@ -110,6 +110,10 @@ function lightning_design_setting_meta_fields() {
 add_action( 'enqueue_block_editor_assets', 'lightning_g3_enqueue_design_setting_panel' );
 
 function lightning_g3_enqueue_design_setting_panel() {
+	$screen = get_current_screen();
+	if ( ! $screen || ! $screen->is_block_editor || empty( $screen->post_type ) ) {
+		return;
+	}
 	$script_path = get_parent_theme_file_path( '/assets/js/design-setting-panel.js' );
 	if ( ! file_exists( $script_path ) ) {
 		return;
