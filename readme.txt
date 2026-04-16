@@ -35,8 +35,7 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
-[ G2 ][ Bug fix ] Fix an issue where global navigation background color, hover color, and separator were not correctly inherited due to a typo in SCSS variables (inhelit → inherit)
-[ G2 ][ Design Bug Fix ] Fix WooCommerce cart button icon display issue when Font Awesome 7 is used
+[ G3/G2 ][ Specification change ] Migrate meta box to block editor native sidebar panel for WordPress 7.0 RTC (Real-Time Collaboration) compatibility.
 
 v15.34.1
 [ G3 ][ Bug fix ] Fix Fatal Error when The Events Calendar plugin is active due to VkHelpers constructor becoming private in vk-helpers 0.2.1

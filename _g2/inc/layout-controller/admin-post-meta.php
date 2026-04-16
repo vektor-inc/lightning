@@ -18,7 +18,9 @@ function lightning_add_design_meta_box() {
 			__( 'Lightning design setting', 'lightning' ),
 			'lightning_design_setting_meta_fields',
 			$post_type,
-			'side'
+			'side',
+			'default',
+			array( '__back_compat_meta_box' => true )
 		);
 	}
 }
@@ -115,6 +117,42 @@ function lightning_design_setting_meta_fields() {
 
 	do_action( 'lightning_design_setting_meta_fields' );
 
+}
+
+/*
+	Enqueue block editor panel script
+/*-------------------------------------------*/
+add_action( 'enqueue_block_editor_assets', 'lightning_g2_enqueue_design_setting_panel' );
+
+function lightning_g2_enqueue_design_setting_panel() {
+	$screen = get_current_screen();
+	if ( ! $screen || ! $screen->is_block_editor || empty( $screen->post_type ) ) {
+		return;
+	}
+	$script_path = get_parent_theme_file_path( '/assets/js/design-setting-panel.js' );
+	if ( ! file_exists( $script_path ) ) {
+		return;
+	}
+	wp_enqueue_script(
+		'lightning-design-setting-panel',
+		get_parent_theme_file_uri( '/assets/js/design-setting-panel.js' ),
+		array( 'wp-plugins', 'wp-editor', 'wp-element', 'wp-components', 'wp-data', 'wp-core-data', 'wp-i18n' ),
+		filemtime( $script_path ),
+		true
+	);
+	wp_localize_script( 'lightning-design-setting-panel', 'lightningPanelI18n', array(
+		'panelTitle'        => __( 'Lightning design setting', 'lightning' ),
+		'layoutSetting'     => __( 'Layout setting', 'lightning' ),
+		'useCommon'         => __( 'Use common settings', 'lightning' ),
+		'col2'              => __( '2 column', 'lightning' ),
+		'col1'              => __( '1 column', 'lightning' ),
+		'col1Sidebar'       => __( '1 column (with sidebar element)', 'lightning' ),
+		'pageHeaderBread'   => __( 'Page Header and Breadcrumb', 'lightning' ),
+		'noPageHeader'      => __( "Don't display Page Header", 'lightning' ),
+		'noBreadcrumb'      => __( "Don't display Breadcrumb", 'lightning' ),
+		'paddingMargin'     => __( 'Padding and margin setting', 'lightning' ),
+		'deletePadding'     => __( 'Delete siteContent padding', 'lightning' ),
+	) );
 }
 
 /*
