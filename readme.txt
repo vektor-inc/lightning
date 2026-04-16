@@ -35,6 +35,7 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ G3/G2 ][ Bug fix ] Fix block editor save failure on posts with legacy design settings saved by plugins or older versions.
 [ G3/G2 ][ Specification change ] Migrate meta box to block editor native sidebar panel for WordPress 7.0 RTC (Real-Time Collaboration) compatibility.
 
 v15.34.1
