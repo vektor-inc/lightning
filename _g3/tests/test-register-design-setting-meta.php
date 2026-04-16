@@ -20,16 +20,17 @@ class RegisterDesignSettingMetaTest extends WP_UnitTestCase {
 
 		// テスト用の固定ページを作成する。
 		// Create a test page.
-		$post_id = $this->factory->post->create(
+		$post_id = self::factory()->post->create(
 			array(
 				'post_type'   => 'page',
 				'post_status' => 'publish',
 			)
 		);
 
-		// 管理者ユーザーでログインする（REST メタ更新には権限が必要）。
-		// Log in as admin (REST meta update requires capability).
-		wp_set_current_user( 1 );
+		// テスト用の管理者ユーザーを作成してログインする（REST メタ更新には権限が必要）。
+		// Create an admin test user and log in (REST meta update requires capability).
+		$admin_id = self::factory()->user->create( array( 'role' => 'administrator' ) );
+		wp_set_current_user( $admin_id );
 
 		$test_cases = array(
 			// 正常系: G3 スキーマ内のキーのみ。
