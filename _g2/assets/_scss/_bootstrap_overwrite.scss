@@ -4,6 +4,13 @@ select.form-control {
 	padding-left:0.75em;
 }
 
+// Bootstrap の `line-height: inherit` により Gutenberg ツールバー
+// (.components-toolbar-group) の line-height: 0 を継承し、
+// VK Blocks 余白設定UIのボタン内テキストが重なる問題を修正
+button {
+	line-height: normal;
+}
+
 // VKボタンブロック 標準色primaryの場合のfocus時のbox-shadow
 .btn-primary:focus,
 .btn-primary:not(:disabled):not(.disabled):active:focus,
