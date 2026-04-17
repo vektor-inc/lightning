@@ -35,6 +35,7 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ G3/G2 ][ Bug fix ] Fix block editor save failure on posts with legacy design settings saved by plugins or older versions.
 [ G3/G2 ][ Specification change ] Migrate meta box to block editor native sidebar panel for WordPress 7.0 RTC (Real-Time Collaboration) compatibility.
 [ G2 ][ Bug fix ] Fix an issue where global navigation background color, hover color, and separator were not correctly inherited due to a typo in SCSS variables (inhelit → inherit)
 [ G2 ][ Design Bug Fix ] Fix text overlap in VK Blocks block margin UI buttons caused by Bootstrap's line-height: inherit inheriting line-height: 0 from the Gutenberg editor toolbar
