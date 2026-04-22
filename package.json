@@ -9,7 +9,7 @@
 		"build:g2panel": "webpack --config webpack.g2panel.js",
 		"build:g3panel": "webpack --config webpack.g3panel.js",
 		"build:sass": "npx gulp sass",
-		"dist": "npm run build && rimraf ./vendor/ && rimraf ./dist/ && composer install --optimize-autoloader --prefer-dist --no-dev && node copy-files.js && rimraf ./dist/lightning/_g2/tests/ && rimraf ./dist/lightning/_g3/tests/ && cd dist && zip -r lightning.zip lightning",
+		"dist": "rimraf ./dist/ && rimraf ./vendor/ && npm run build && composer install --optimize-autoloader --prefer-dist --no-dev && node copy-files.js && rimraf ./dist/lightning/_g2/tests/ && rimraf ./dist/lightning/_g3/tests/ && cd dist && zip -r lightning.zip lightning",
 		"build:script": "webpack --config webpack.g2prod.js && webpack --config webpack.g3prod.js",
 		"build:text-domain": "gulp text-domain",
 		"watch:script": "webpack --config webpack.g3dev.js --watch",
@@ -18,10 +18,12 @@
 		"watch:style": "gulp watch",
 		"composer:install:win": "wp-env run composer \"composer install\"",
 		"composer:install:mac": "wp-env run composer 'composer install'",
-		"phpunit": "composer install && wp-env run --env-cwd='wp-content/themes/lightning' tests-cli vendor/bin/phpunit -c phpunit.g3.xml",
-		"phpunit:g2": "composer install && wp-env run --env-cwd='wp-content/themes/lightning' tests-cli vendor/bin/phpunit -c phpunit.g2.xml",
-		"phpunit:root": "composer install && wp-env run --env-cwd='wp-content/themes/lightning' tests-cli vendor/bin/phpunit -c phpunit.root.xml",
-		"phpunit:win": "wp-env run phpunit \"phpunit -c /var/www/html/wp-content/themes/lightning/phpunit.g3.xml --verbose\""
+		"phpunit": "npm run phpunit:root && npm run phpunit:g2 && npm run phpunit:g3",
+		"phpunit:root": "wp-env run --env-cwd='wp-content/themes/lightning' tests-cli vendor/bin/phpunit -c phpunit.root.xml",
+		"phpunit:g2": "wp-env run --env-cwd='wp-content/themes/lightning' tests-cli vendor/bin/phpunit -c phpunit.g2.xml",
+		"phpunit:g3": "wp-env run --env-cwd='wp-content/themes/lightning' tests-cli vendor/bin/phpunit -c phpunit.g3.xml",
+		"phpunit:win": "wp-env run phpunit \"phpunit -c /var/www/html/wp-content/themes/lightning/phpunit.g3.xml --verbose\"",
+		"e2e": "npx playwright test --project=chromium"
 	},
 	"repository": {
 		"type": "git",

@@ -1,0 +1,160 @@
+name: Release on Tag
+on:
+    push:
+        tags:
+            - '[0-9]+.[0-9]+.[0-9]+'
+env:
+    theme_name: lightning
+jobs:
+    smoke_test:
+        name: Smoke Test
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20.x
+                  cache: npm
+            - name: Setup PHP
+              uses: shivammathur/setup-php@v2
+              with:
+                  php-version: 8.1
+            - name: Get Composer cache directory
+              id: composer-cache
+              run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+            - name: Cache Composer dependencies
+              uses: actions/cache@v4
+              with:
+                  path: ${{ steps.composer-cache.outputs.dir }}
+                  key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+                  restore-keys: ${{ runner.os }}-composer-
+            - name: Install NPM Scripts
+              run: npm install
+            - name: Create dist
+              run: npm run dist
+            - name: Upload dist artifact
+              uses: actions/upload-artifact@v4
+              with:
+                  name: dist
+                  path: dist/
+            - name: Setup wp-env override for dist
+              run: |
+                  echo '{"themes":["./dist/${{ env.theme_name }}"]}' > .wp-env.override.json
+            - name: Start wp-env
+              run: |
+                  for n in 1 2 3; do npx wp-env start --update && break || [ "$n" -lt 3 ] || exit 1; done
+            - name: Smoke test
+              # vektor-inc/wp-actions main as of 2026-03-18
+              uses: vektor-inc/wp-actions/smoke-test@90f5a231bc956543bf235f36be4928d57af2edab
+
+    php_unit:
+        name: PHP Unit Test
+        runs-on: ubuntu-latest
+        needs: [smoke_test]
+        steps:
+            - uses: actions/checkout@v4
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20.x
+                  cache: npm
+            - name: Setup PHP
+              uses: shivammathur/setup-php@v2
+              with:
+                  php-version: 8.1
+            - name: Get Composer cache directory
+              id: composer-cache
+              run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+            - name: Cache Composer dependencies
+              uses: actions/cache@v4
+              with:
+                  path: ${{ steps.composer-cache.outputs.dir }}
+                  key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+                  restore-keys: ${{ runner.os }}-composer-
+            - name: Install NPM Scripts
+              run: npm install
+            - name: Install Composer Packages
+              run: composer install
+            - name: Download dist artifact
+              uses: actions/download-artifact@v4
+              with:
+                  name: dist
+                  path: dist/
+            - name: Copy test dependencies into dist for phpunit
+              run: |
+                  rm -rf dist/${{ env.theme_name }}/vendor
+                  cp -rL vendor dist/${{ env.theme_name }}/vendor
+                  for f in phpunit.root.xml phpunit.g2.xml phpunit.g3.xml; do
+                      [ -f "$f" ] && cp "$f" "dist/${{ env.theme_name }}/$f" || true
+                  done
+                  [ -d tests ] && cp -r tests "dist/${{ env.theme_name }}/tests" || true
+                  [ -d _g2/tests ] && mkdir -p "dist/${{ env.theme_name }}/_g2" && cp -r _g2/tests "dist/${{ env.theme_name }}/_g2/tests" || true
+                  [ -d _g3/tests ] && mkdir -p "dist/${{ env.theme_name }}/_g3" && cp -r _g3/tests "dist/${{ env.theme_name }}/_g3/tests" || true
+            - name: Setup wp-env override for dist
+              run: |
+                  echo '{"themes":["./dist/${{ env.theme_name }}"]}' > .wp-env.override.json
+            - name: Start wp-env
+              run: |
+                  for n in 1 2 3; do npx wp-env start --update && break || [ "$n" -lt 3 ] || exit 1; done
+            - name: Run PHP Unit Test
+              run: npm run phpunit
+
+    e2e:
+        name: E2E Test (Playwright)
+        timeout-minutes: 60
+        runs-on: ubuntu-latest
+        needs: [smoke_test]
+        steps:
+            - uses: actions/checkout@v4
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20.x
+                  cache: npm
+            - name: Setup PHP
+              uses: shivammathur/setup-php@v2
+              with:
+                  php-version: 8.1
+            - name: Install NPM Scripts
+              run: npm install
+            - name: Download dist artifact
+              uses: actions/download-artifact@v4
+              with:
+                  name: dist
+                  path: dist/
+            - name: Setup wp-env override for dist
+              run: |
+                  echo '{"themes":["./dist/${{ env.theme_name }}"]}' > .wp-env.override.json
+            - name: Start wp-env
+              run: |
+                  for n in 1 2 3; do npx wp-env start --update && break || [ "$n" -lt 3 ] || exit 1; done
+            - name: Install Playwright Browsers
+              run: npx playwright install --with-deps chromium
+            - name: Run Playwright
+              run: npm run e2e
+            - uses: actions/upload-artifact@v4
+              if: always()
+              with:
+                  name: playwright-report
+                  path: playwright-report/
+                  retention-days: 30
+
+    release:
+        name: GitHub Release
+        runs-on: ubuntu-latest
+        needs: [smoke_test, php_unit, e2e]
+        permissions:
+            contents: write
+        steps:
+            - name: Download dist artifact
+              uses: actions/download-artifact@v4
+              with:
+                  name: dist
+                  path: dist/
+            - name: Create Release
+              # softprops/action-gh-release v2.6.1 / v2
+              uses: softprops/action-gh-release@153bb8e04406b158c6c84fc1615b65b24149a1fe
+              with:
+                  generate_release_notes: true
+                  files: dist/${{ env.theme_name }}.zip
