@@ -89,6 +89,8 @@ jobs:
                       [ -f "$f" ] && cp "$f" "dist/${{ env.theme_name }}/$f" || true
                   done
                   [ -d tests ] && cp -r tests "dist/${{ env.theme_name }}/tests" || true
+                  [ -d _g2/tests ] && mkdir -p "dist/${{ env.theme_name }}/_g2" && cp -r _g2/tests "dist/${{ env.theme_name }}/_g2/tests" || true
+                  [ -d _g3/tests ] && mkdir -p "dist/${{ env.theme_name }}/_g3" && cp -r _g3/tests "dist/${{ env.theme_name }}/_g3/tests" || true
             - name: Setup wp-env override for dist
               run: |
                   echo '{"themes":["./dist/${{ env.theme_name }}"]}' > .wp-env.override.json
