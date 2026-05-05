@@ -153,14 +153,6 @@ select {
 	-webkit-appearance: none;
 	appearance: none;
 }
-// appearance: none で消えたネイティブ矢印を SVG で復元（multiple / size 指定時はリストボックス表示なので除外）
-select:not([multiple]):not([size]) {
-	background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23333' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
-	background-repeat: no-repeat;
-	background-position: right 1em center;
-	background-size: 0.75em 0.5em;
-	padding-right: 2.5em;
-}
 /* / Reset iOS Style */
 
 input[type=text],
@@ -185,6 +177,15 @@ textarea {
 }
 input[type=file] {
 	margin:0.5rem 0;
+}
+// appearance: none で消えたネイティブ矢印を SVG で復元（multiple / size 指定時はリストボックス表示なので除外）
+// 汎用テーマのためユーザーカスタマイズを打ち消さないよう :where() で詳細度を上げない
+select:where(:not([multiple]):not([size])) {
+	background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23333' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: right 1em center;
+	background-size: 0.75em 0.5em;
+	padding-right: 2.5em;
 }
 input[type=submit]{
 	font-size: 1rem;
