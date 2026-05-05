@@ -35,6 +35,8 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ G3 ][ Bug fix ] Restore the native dropdown arrow on select element that disappeared after `appearance: none` was applied for iOS form rendering (#1322)
+
 v15.35.0
 [ G3/G2 ][ Bug fix ] Fix block editor save failure on posts with legacy design settings saved by plugins or older versions.
 [ G3/G2 ][ Specification change ] Migrate meta box to block editor native sidebar panel for WordPress 7.0 RTC (Real-Time Collaboration) compatibility.
