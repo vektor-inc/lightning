@@ -2,7 +2,7 @@
 Lightning WordPress theme, Copyright (C) 2015-2026 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
 Tested up to: 6.9
-Stable tag: 15.35.0
+Stable tag: 15.35.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -35,6 +35,7 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+v15.35.1
 [ G3 ][ Bug fix ] Restore the native dropdown arrow on select element that disappeared after `appearance: none` was applied for iOS form rendering (#1322)
 
 v15.35.0
