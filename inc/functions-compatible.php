@@ -139,16 +139,19 @@ add_action( 'lightning_site_body_append', 'lightning_g3_site_body_append_spell_m
 /*-------------------------------------------*/
 add_filter( 'lightning_localize_options', 'lightning_header_scrool_typo_compatible', PHP_INT_MAX, 1 );
 /**
- * Sync legacy "header_scrool" (typo) option key into "header_scroll".
+ * Backward compatibility for the renamed option key `header_scrool` -> `header_scroll`.
+ * Legacy key wins when both keys are present (preserves the intent of code using the legacy key).
  *
  * 旧タイポキー header_scrool で値が指定されていた場合、新しい正規キー header_scroll に
  * 同じ値をコピーして、フロントエンドの JS から正しく参照できるようにする。
- * フィルタチェーンの最終段で実行されるよう優先度を PHP_INT_MAX に設定している。
- *
  * 正規キーは header_scroll、header_scrool は後方互換用のレガシーキー。
+ *
  * 旧キーと新キー両方が指定された場合は、旧キーを使ったユーザーが意図的に
  * 値を上書きしたケースを尊重するため「旧キー後勝ち」とする
  * （Lightning Pro PR #358 と同じ判断）。
+ *
+ * Priority is PHP_INT_MAX so this runs after design-skin defaults (priority 10) and user filters
+ * (typically priority 11), ensuring the legacy key value wins as the final state.
  *
  * @param array $options Localized options for the lightning-js script.
  * @return array Modified options with header_scroll synchronized from header_scrool when applicable.
