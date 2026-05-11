@@ -129,3 +129,44 @@ function lightning_g3_site_body_append_spell_miss_compatibility() {
 	do_action( 'lightning_site_body_apepend', 'lightning_site_body_apepend' );
 }
 add_action( 'lightning_site_body_append', 'lightning_g3_site_body_append_spell_miss_compatibility' );
+
+/*
+  Backward compatibility for header scroll option key
+  ※ Lightning（G2/G3）の内部キーはタイポの `header_scrool` のままになっている。
+  ※ Lightning Pro 側では `header_scroll` にリネーム済みのため、Pro で覚えた正スペル
+  ※ `header_scroll` を Lightning に書いても効かない非対称が存在していた。
+  ※ そこで `lightning_localize_options` フィルタの最終段で新キー `header_scroll` の値を
+  ※ 旧キー `header_scrool` にコピーし、ユーザーがどちらのスペルでも書けるようにする。
+  ※ Pro #358 と同じ目的だが、Lightning では同期方向が逆（新キー → 旧キー）となる点に注意。
+/*-------------------------------------------*/
+add_filter( 'lightning_localize_options', 'lightning_header_scrool_typo_compatible', PHP_INT_MAX, 1 );
+/**
+ * Sync the correctly-spelled "header_scroll" option key into the legacy "header_scrool" key.
+ *
+ * Lightning の内部キーはタイポの `header_scrool` が正規キーとして扱われており、
+ * JS 側（lightning.min.js）もこのキー名を参照している。一方、ユーザーが Pro 側で
+ * リネーム後の正スペル `header_scroll` を覚えている場合に Lightning でも同じ書き方
+ * ができるよう、新キー `header_scroll` が設定されていれば旧キー `header_scrool` に
+ * その値をコピーする。フィルタチェーンの最終段で実行されるよう priority を
+ * PHP_INT_MAX に設定している。
+ *
+ * 正規キーは内部的には `header_scrool`（タイポ）、`header_scroll` は外部公開向けの
+ * 正スペルキーとして扱う。両方のキーが同時に指定された場合は、ユーザーが意図して
+ * 書いた可能性が高い「新キー（正スペル）」を後勝ちとする。
+ *
+ * @param array $options Localized options passed to the lightning-js script.
+ * @return array Modified options with header_scrool synchronized from header_scroll when applicable.
+ */
+function lightning_header_scrool_typo_compatible( $options ) {
+	// 配列でない場合はそのまま返す（防御的チェック）。
+	if ( ! is_array( $options ) ) {
+		return $options;
+	}
+	// 新キー（正スペル）`header_scroll` が指定されている場合のみ、
+	// 旧キー（内部レガシー）`header_scrool` にその値をコピーする。
+	// 旧キー単独で指定されている場合は従来通り旧キーがそのまま使われるため、何もしない。
+	if ( array_key_exists( 'header_scroll', $options ) ) {
+		$options['header_scrool'] = $options['header_scroll'];
+	}
+	return $options;
+}
