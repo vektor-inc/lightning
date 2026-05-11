@@ -17,10 +17,10 @@
     window.addEventListener('scroll', bodyClass, false)
     window.addEventListener('DOMContentLoaded', bodyClass, false)
 
-    if(lightningOpt.header_scrool){
+    if(lightningOpt.header_scroll){
         let body_class_timer = false;
         let body_class_lock = false;
-        let header_scrool_func = ()=>{
+        let header_scroll_func = ()=>{
             if(!body_class_lock && window.pageYOffset > 160){
                 document.body.classList.add('header_scrolled')
             }else{
@@ -30,13 +30,13 @@
 
         let remove_header = (e) => {
             document.body.classList.remove('header_scrolled')
-            window.removeEventListener('scroll', header_scrool_func)
+            window.removeEventListener('scroll', header_scroll_func)
             if (body_class_timer !== false) {
                 clearTimeout(body_class_timer)
             }
             body_class_lock = true
             body_class_timer = setTimeout(()=>{
-                window.addEventListener('scroll', header_scrool_func, true)
+                window.addEventListener('scroll', header_scroll_func, true)
                 body_class_lock = false
             }, 2000);
         }
@@ -55,8 +55,8 @@
             )
         });
 
-        window.addEventListener('scroll', header_scrool_func, true)
-        window.addEventListener('DOMContentLoaded', header_scrool_func, false)
+        window.addEventListener('scroll', header_scroll_func, true)
+        window.addEventListener('DOMContentLoaded', header_scroll_func, false)
     }
 
     /*----------------------------------------------------------*/

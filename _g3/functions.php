@@ -282,7 +282,7 @@ add_action( 'wp_enqueue_scripts', 'lightning_add_script' );
  * @return array $options
  */
 function lightning_global_nav_fix( $options ) {
-	$options['header_scrool']            = true;
+	$options['header_scroll']            = true;
 	$options['add_header_offset_margin'] = true;
 	return $options;
 }

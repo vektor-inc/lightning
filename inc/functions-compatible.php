@@ -129,3 +129,42 @@ function lightning_g3_site_body_append_spell_miss_compatibility() {
 	do_action( 'lightning_site_body_apepend', 'lightning_site_body_apepend' );
 }
 add_action( 'lightning_site_body_append', 'lightning_g3_site_body_append_spell_miss_compatibility' );
+
+/*
+  Backward compatibility for typo option key "header_scrool"
+  ※ かつてオプションキー名が「header_scrool」（タイポ）から「header_scroll」（正スペル）に修正されたため、
+  ※ 旧キー「header_scrool」を使った既存のフィルタ追加コードでもヘッダー固定の解除が
+  ※ 従来通り効くように、最終段で旧キーの値を新キーへコピーして互換性を維持する。
+  ※ Lightning Pro PR #358 と同じ方向（旧キー → 新キー）の同期。
+/*-------------------------------------------*/
+add_filter( 'lightning_localize_options', 'lightning_header_scrool_typo_compatible', PHP_INT_MAX, 1 );
+/**
+ * Backward compatibility for the renamed option key `header_scrool` -> `header_scroll`.
+ * Legacy key wins when both keys are present (preserves the intent of code using the legacy key).
+ *
+ * 旧タイポキー header_scrool で値が指定されていた場合、新しい正規キー header_scroll に
+ * 同じ値をコピーして、フロントエンドの JS から正しく参照できるようにする。
+ * 正規キーは header_scroll、header_scrool は後方互換用のレガシーキー。
+ *
+ * 旧キーと新キー両方が指定された場合は、旧キーを使ったユーザーが意図的に
+ * 値を上書きしたケースを尊重するため「旧キー後勝ち」とする
+ * （Lightning Pro PR #358 と同じ判断）。
+ *
+ * Priority is PHP_INT_MAX so this runs after design-skin defaults (priority 10) and user filters
+ * (typically priority 11), ensuring the legacy key value wins as the final state.
+ *
+ * @param array $options Localized options for the lightning-js script.
+ * @return array Modified options with header_scroll synchronized from header_scrool when applicable.
+ */
+function lightning_header_scrool_typo_compatible( $options ) {
+	// オプションが配列でない場合はそのまま返す（防御的チェック）。
+	if ( ! is_array( $options ) ) {
+		return $options;
+	}
+	// 旧タイポキー header_scrool が設定されている場合のみ、新キー header_scroll に値をコピーする。
+	// 旧キーを書いたユーザーの意図を尊重するため、旧キーと新キー両方が指定されていても旧キーで上書きする。
+	if ( array_key_exists( 'header_scrool', $options ) ) {
+		$options['header_scroll'] = $options['header_scrool'];
+	}
+	return $options;
+}
