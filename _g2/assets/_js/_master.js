@@ -36,7 +36,7 @@
             }
             body_class_lock = true
             body_class_timer = setTimeout(()=>{
-                window.addEventListener('scroll', header_scroll_func, true)
+                window.addEventListener('scroll', header_scroll_func, false)
                 body_class_lock = false
             }, 2000);
         }

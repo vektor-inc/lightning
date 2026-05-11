@@ -35,6 +35,7 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ G2/G3 ][ Bug Fix ] Fix scroll listener being left attached after in-page anchor clicks because `addEventListener` re-registered `header_scroll_func` with `capture: true` while `removeEventListener` used `capture: false`, causing the `header_scrolled` class to behave inconsistently
 [ G2/G3 ][ Bug Fix ] Added backward compatibility hook to keep user code using the legacy `header_scrool` key working after renaming the internal option key from `header_scrool` to `header_scroll` for the `lightning_localize_options` filter. Note: JavaScript code that directly references `lightningOpt.header_scrool` will need to be updated to `lightningOpt.header_scroll`.
 
 v15.35.1
