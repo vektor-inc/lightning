@@ -55,7 +55,7 @@
             )
         });
 
-        window.addEventListener('scroll', header_scroll_func, true)
+        window.addEventListener('scroll', header_scroll_func, false)
         window.addEventListener('DOMContentLoaded', header_scroll_func, false)
     }
 
