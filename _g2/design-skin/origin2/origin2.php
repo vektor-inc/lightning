@@ -78,7 +78,7 @@ dt { border-left-color:' . $color_key . '; }
 
 add_filter( 'lightning_localize_options', 'lightning_origin2_add_js_option', 10, 1 );
 function lightning_origin2_add_js_option( $options ) {
-	$options['header_scrool'] = true;
+	$options['header_scroll'] = true;
 	return $options;
 }
 

@@ -29,7 +29,7 @@
     // ヘッダー要素がない場合の判別
     const siteHeader = document.getElementById('site-header');
 
-    if( lightningOpt.header_scrool && siteHeader ){
+    if( lightningOpt.header_scroll && siteHeader ){
 
         // ヘッダーの元の高さを取得
         const siteHeaderContainerHeight = document.getElementById('site-header').offsetHeight;
@@ -38,7 +38,7 @@
         let body_class_lock = false;
 
 		// ヘッダースクロール時に実行される処理
-		let header_scrool_func = ()=>{
+		let header_scroll_func = ()=>{
 
 			// サイトヘッダーの要素を取得
 			let siteHeader = document.getElementById('site-header');
@@ -68,13 +68,13 @@
 		// ページ内で#で始まるページ内リンク（ドメイン名を含まない）をクリックされた場合にスクロール識別クラスを削除する
         let remove_header = (e) => {
             document.body.classList.remove('header_scrolled')
-            window.removeEventListener('scroll', header_scrool_func)
+            window.removeEventListener('scroll', header_scroll_func)
             if (body_class_timer !== false) {
                 clearTimeout(body_class_timer)
             }
             body_class_lock = true
             body_class_timer = setTimeout(()=>{
-                window.addEventListener('scroll', header_scrool_func, true)
+                window.addEventListener('scroll', header_scroll_func, true)
                 body_class_lock = false
             }, 2000);
 		}
@@ -122,14 +122,14 @@
 		document.addEventListener('DOMContentLoaded', () => {
 			if (location.hash) {
 				// URLに#が含まれる場合、scrollイベントリスナーを一時的に無効化
-				window.removeEventListener('scroll', header_scrool_func, false);
+				window.removeEventListener('scroll', header_scroll_func, false);
 
 				// 一定時間後に再度イベントリスナーを有効化
 				setTimeout(() => {
-					window.addEventListener('scroll', header_scrool_func, false);
+					window.addEventListener('scroll', header_scroll_func, false);
 				}, 500); // 例として500ms後に再度イベントリスナーを有効化する
 			} else {
-				window.addEventListener('scroll', header_scrool_func, false)
+				window.addEventListener('scroll', header_scroll_func, false)
 			}
 		});
 

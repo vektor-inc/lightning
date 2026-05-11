@@ -35,6 +35,8 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ G2/G3 ][ Bug Fix ] Fixed the typo `header_scrool` option key for the `lightning_localize_options` filter to the correct spelling `header_scroll`, and added a backward compatibility hook so existing customization code using the legacy `header_scrool` key continues to work without modification.
+
 v15.35.1
 [ G3 ][ Bug fix ] Restore the native dropdown arrow on select element that disappeared after `appearance: none` was applied for iOS form rendering (#1322)
 
