@@ -34,25 +34,37 @@ const G3_MASTER = path.resolve(__dirname, '../../_g3/assets/_js/_master.js');
 
 test.describe('PR #1332: header_scroll_func capture フラグ修正', () => {
 	test.describe('静的検証: ソースコード', () => {
+		// remove_header 関数のブロックを抽出する正規表現
+		// - 宣言種別は `let` / `const` 両方を許容（将来のリファクタ耐性）
+		// - `}, 2000);` までを lazy マッチして setTimeout のネスト分も含める
+		const REMOVE_HEADER_BLOCK_RE = /\b(?:let|const)\s+remove_header\b[\s\S]*?\},\s*2000\);/;
+
 		test('G2 _master.js の remove_header 内 setTimeout で capture: false で再登録されている', async () => {
 			const code = fs.readFileSync(G2_MASTER, 'utf-8');
 
-			// remove_header 関数のブロックを取得（setTimeout のネスト分も含めるため `}, 2000);` まで読む）
 			// 修正前は addEventListener('scroll', header_scroll_func, true) だったのを false に変更している
-			const removeHeaderBlock = code.match(/let remove_header[\s\S]*?\}, 2000\);/);
+			const removeHeaderBlock = code.match(REMOVE_HEADER_BLOCK_RE);
 			expect(removeHeaderBlock).toBeTruthy();
-			expect(removeHeaderBlock[0]).toContain("addEventListener('scroll', header_scroll_func, false)");
-			expect(removeHeaderBlock[0]).not.toContain("addEventListener('scroll', header_scroll_func, true)");
+			// 空白差分・クォート差分を許容しつつ capture: false で再登録されていることを確認
+			expect(removeHeaderBlock[0]).toMatch(
+				/addEventListener\(\s*['"]scroll['"]\s*,\s*header_scroll_func\s*,\s*false\s*\)/
+			);
+			expect(removeHeaderBlock[0]).not.toMatch(
+				/addEventListener\(\s*['"]scroll['"]\s*,\s*header_scroll_func\s*,\s*true\s*\)/
+			);
 		});
 
 		test('G3 _master.js の remove_header 内 setTimeout で capture: false で再登録されている', async () => {
 			const code = fs.readFileSync(G3_MASTER, 'utf-8');
 
-			// remove_header 関数のブロックを取得（setTimeout のネスト分も含めるため `}, 2000);` まで読む）
-			const removeHeaderBlock = code.match(/let remove_header[\s\S]*?\}, 2000\);/);
+			const removeHeaderBlock = code.match(REMOVE_HEADER_BLOCK_RE);
 			expect(removeHeaderBlock).toBeTruthy();
-			expect(removeHeaderBlock[0]).toContain("addEventListener('scroll', header_scroll_func, false)");
-			expect(removeHeaderBlock[0]).not.toContain("addEventListener('scroll', header_scroll_func, true)");
+			expect(removeHeaderBlock[0]).toMatch(
+				/addEventListener\(\s*['"]scroll['"]\s*,\s*header_scroll_func\s*,\s*false\s*\)/
+			);
+			expect(removeHeaderBlock[0]).not.toMatch(
+				/addEventListener\(\s*['"]scroll['"]\s*,\s*header_scroll_func\s*,\s*true\s*\)/
+			);
 		});
 
 		test('G2 / G3 の remove_header 内 removeEventListener も capture フラグなし（=false 相当）になっている', async () => {
@@ -61,9 +73,16 @@ test.describe('PR #1332: header_scroll_func capture フラグ修正', () => {
 			const g2 = fs.readFileSync(G2_MASTER, 'utf-8');
 			const g3 = fs.readFileSync(G3_MASTER, 'utf-8');
 
+			// remove_header ブロック内に限定して removeEventListener の呼び出しを検証
+			// （ファイル全体に対するマッチだと remove_header 外の同名呼び出しでも PASS してしまうため）
+			const g2Block = g2.match(REMOVE_HEADER_BLOCK_RE);
+			const g3Block = g3.match(REMOVE_HEADER_BLOCK_RE);
+			expect(g2Block).toBeTruthy();
+			expect(g3Block).toBeTruthy();
+
 			// 第3引数なしの removeEventListener が remove_header 内にあること（=暗黙の false）
-			expect(g2).toMatch(/window\.removeEventListener\('scroll', header_scroll_func\)/);
-			expect(g3).toMatch(/window\.removeEventListener\('scroll', header_scroll_func\)/);
+			expect(g2Block[0]).toMatch(/window\.removeEventListener\(\s*['"]scroll['"]\s*,\s*header_scroll_func\s*\)/);
+			expect(g3Block[0]).toMatch(/window\.removeEventListener\(\s*['"]scroll['"]\s*,\s*header_scroll_func\s*\)/);
 		});
 	});
 
