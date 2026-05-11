@@ -132,16 +132,19 @@ class Lightning_Header_Scrool_Typo_Compatible_Test extends WP_UnitTestCase {
 		};
 		add_filter( 'lightning_localize_options', $user_filter, 11, 1 );
 
-		// 実際のフィルタを発火させる。
-		$result = apply_filters( 'lightning_localize_options', array() );
+		try {
+			// 実際のフィルタを発火させる。
+			$result = apply_filters( 'lightning_localize_options', array() );
 
-		// 後方互換 hook により、最終的に旧キー header_scrool が false に上書きされていることを確認する。
-		$this->assertArrayHasKey( 'header_scrool', $result, 'header_scrool キーが結果に含まれること' );
-		$this->assertFalse( $result['header_scrool'], 'issue #1326 シナリオで旧キー header_scrool が新キー header_scroll の値 false で後勝ち上書きされる' );
-		$this->assertFalse( $result['header_scroll'], '新キー header_scroll は false のまま維持される' );
-
-		// 後処理: 追加したフィルタを削除する（他テストへの副作用防止）。
-		remove_filter( 'lightning_localize_options', $design_skin_filter, 10 );
-		remove_filter( 'lightning_localize_options', $user_filter, 11 );
+			// 後方互換 hook により、最終的に旧キー header_scrool が false に上書きされていることを確認する。
+			$this->assertArrayHasKey( 'header_scrool', $result, 'header_scrool キーが結果に含まれること' );
+			$this->assertFalse( $result['header_scrool'], 'issue #1326 シナリオで旧キー header_scrool が新キー header_scroll の値 false で後勝ち上書きされる' );
+			$this->assertFalse( $result['header_scroll'], '新キー header_scroll は false のまま維持される' );
+		} finally {
+			// 後処理: 追加したフィルタを削除する（他テストへの副作用防止）。
+			// アサーション失敗で例外が出ても remove_filter を確実に実行する。
+			remove_filter( 'lightning_localize_options', $design_skin_filter, 10 );
+			remove_filter( 'lightning_localize_options', $user_filter, 11 );
+		}
 	}
 }
