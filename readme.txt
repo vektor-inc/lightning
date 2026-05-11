@@ -2,7 +2,7 @@
 Lightning WordPress theme, Copyright (C) 2015-2026 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
 Tested up to: 6.9
-Stable tag: 15.35.1
+Stable tag: 15.35.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -35,6 +35,7 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+v15.35.2
 [ G2 ][ Bug Fix ] Fix initial `scroll` listener registered with `capture: true` not being removed by `remove_header` because `removeEventListener` used `capture: false`, leaving duplicated `scroll` listeners attached after in-page anchor clicks (#1333)
 [ G2/G3 ][ Bug Fix ] Fix scroll listener being left attached after in-page anchor clicks because `addEventListener` re-registered `header_scroll_func` with `capture: true` while `removeEventListener` used `capture: false`, causing the `header_scrolled` class to behave inconsistently
 [ G2/G3 ][ Bug Fix ] Added backward compatibility hook to keep user code using the legacy `header_scrool` key working after renaming the internal option key from `header_scrool` to `header_scroll` for the `lightning_localize_options` filter. Note: JavaScript code that directly references `lightningOpt.header_scrool` will need to be updated to `lightningOpt.header_scroll`.
