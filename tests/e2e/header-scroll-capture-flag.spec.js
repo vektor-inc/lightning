@@ -135,23 +135,25 @@ test.describe('PR #1332: header_scroll_func capture フラグ修正', () => {
 
 			// 一度スクロールを発生させて handler が呼ばれる事を確認
 			await page.evaluate(() => window.scrollTo(0, 100));
-			await page.waitForTimeout(50);
+			// 固定 sleep ではなく __callCount が増えるまでポーリング待機する（フレーク耐性向上）
+			await page.waitForFunction(() => window.__callCount > 0);
 			const countBeforeRemove = await page.evaluate(() => window.__callCount);
 			expect(countBeforeRemove).toBeGreaterThan(0);
 
 			// removeEventListener を呼ぶ（capture: false 側）→ 修正前は無音失敗
 			await page.evaluate(() => window.__removeIt());
 
-			// もう一度スクロール
-			const callCountAfterRemove = await page.evaluate(() => {
-				window.__callCount = 0; // リセット
+			// もう一度スクロール（カウンタはリセットしてから発火）
+			await page.evaluate(() => {
+				window.__callCount = 0;
 				window.scrollTo(0, 200);
-				return new Promise((resolve) => {
-					setTimeout(() => resolve(window.__callCount), 100);
-				});
 			});
 
-			// 修正前の挙動: remove に失敗してリスナーが残るので呼ばれる
+			// 修正前の挙動: remove に失敗してリスナーが残っているはずなので、
+			// __callCount が増えるのを固定 sleep ではなくポーリングで待つ。
+			// もしリスナーが残っていなければ waitForFunction がタイムアウトしてテスト失敗となる。
+			await page.waitForFunction(() => window.__callCount > 0);
+			const callCountAfterRemove = await page.evaluate(() => window.__callCount);
 			expect(callCountAfterRemove).toBeGreaterThan(0);
 		});
 
@@ -161,19 +163,25 @@ test.describe('PR #1332: header_scroll_func capture フラグ修正', () => {
 
 			// スクロールで handler が呼ばれる事を確認
 			await page.evaluate(() => window.scrollTo(0, 100));
-			await page.waitForTimeout(50);
+			// 固定 sleep ではなく __callCount が増えるまでポーリング待機する
+			await page.waitForFunction(() => window.__callCount > 0);
 			const countBeforeRemove = await page.evaluate(() => window.__callCount);
 			expect(countBeforeRemove).toBeGreaterThan(0);
 
 			// removeEventListener を呼ぶ（capture: false 側、登録側も capture: false）→ 成功
 			await page.evaluate(() => window.__removeIt());
 
-			// もう一度スクロール
+			// もう一度スクロール（カウンタはリセットしてから発火）。
+			// 「増えない」ことを確認するケースは、ポーリングだけでは「まだ未到達」と区別が付かないため、
+			// scroll イベントの dispatch / 反映が確実に終わるまで requestAnimationFrame を 2 フレーム待つ。
 			const callCountAfterRemove = await page.evaluate(() => {
-				window.__callCount = 0; // リセット
+				window.__callCount = 0;
 				window.scrollTo(0, 200);
 				return new Promise((resolve) => {
-					setTimeout(() => resolve(window.__callCount), 100);
+					// 2 RAF 待ってからカウンタを評価する（scroll イベントが処理されるまで待機）
+					requestAnimationFrame(() => {
+						requestAnimationFrame(() => resolve(window.__callCount));
+					});
 				});
 			});
 
@@ -186,13 +194,19 @@ test.describe('PR #1332: header_scroll_func capture フラグ修正', () => {
 
 			// 一度 remove
 			await page.evaluate(() => window.__removeIt());
-			// scroll しても呼ばれないこと
-			await page.evaluate(() => {
+
+			// scroll しても呼ばれないことを確認。
+			// 「増えない」ことの確認は固定 sleep ではなく 2 RAF 待ちで scroll イベント処理を flush する。
+			const countAfterRemove = await page.evaluate(() => {
 				window.__callCount = 0;
 				window.scrollTo(0, 100);
+				return new Promise((resolve) => {
+					requestAnimationFrame(() => {
+						requestAnimationFrame(() => resolve(window.__callCount));
+					});
+				});
 			});
-			await page.waitForTimeout(50);
-			expect(await page.evaluate(() => window.__callCount)).toBe(0);
+			expect(countAfterRemove).toBe(0);
 
 			// PR 修正後と等価な capture: false 再登録
 			await page.evaluate(() => window.__reAddIt());
@@ -202,7 +216,8 @@ test.describe('PR #1332: header_scroll_func capture フラグ修正', () => {
 				window.__callCount = 0;
 				window.scrollTo(0, 200);
 			});
-			await page.waitForTimeout(50);
+			// 固定 sleep ではなく __callCount が増えるまでポーリング待機する
+			await page.waitForFunction(() => window.__callCount > 0);
 			expect(await page.evaluate(() => window.__callCount)).toBeGreaterThan(0);
 		});
 
@@ -218,10 +233,20 @@ test.describe('PR #1332: header_scroll_func capture フラグ修正', () => {
 				window.__callCount = 0;
 				window.scrollTo(0, 100);
 			});
-			await page.waitForTimeout(50);
+
+			// 固定 sleep ではなく __callCount が 1 以上になるまでポーリング待機する。
+			// 重複登録があれば 2 以上に増えてしまうため、その後 2 RAF 待って
+			// scroll イベントが完全に処理されたタイミングで最終値を評価する。
+			await page.waitForFunction(() => window.__callCount >= 1);
+			const count = await page.evaluate(() => {
+				return new Promise((resolve) => {
+					requestAnimationFrame(() => {
+						requestAnimationFrame(() => resolve(window.__callCount));
+					});
+				});
+			});
 
 			// 重複登録されていれば 2 以上になるが、PR 修正後は 1 のみ
-			const count = await page.evaluate(() => window.__callCount);
 			expect(count).toBe(1);
 		});
 	});
