@@ -381,6 +381,9 @@ if ( is_plugin_active( 'booking-package/index.php' ) ) {
 if ( is_plugin_active( 'contact-form-7/wp-contact-form-7.php' ) ) {
 	require __DIR__ . '/plugin-support/contact-form-7/functions-contact-form-7.php';
 }
+if ( is_plugin_active( 'snow-monkey-forms/snow-monkey-forms.php' ) ) {
+	require __DIR__ . '/plugin-support/snow-monkey-forms/functions-snow-monkey-forms.php';
+}
 
 /**
  * Disable_tgm_notification_except_admin
