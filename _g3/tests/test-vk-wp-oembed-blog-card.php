@@ -21,8 +21,57 @@
 class BlogCardTest extends WP_UnitTestCase {
 
 	/**
+	 * テスト前処理: vektor-inc.co.jp への HTTP リクエストを失敗固定するモックを登録
+	 *
+	 * CI 環境から外部 OGP サイトへ接続できるかどうかで `oembed_html` / `maybe_make_link`
+	 * の出力が変動し、テストが flaky 化していた。
+	 * `pre_http_request` で `WP_Error` を返すことで、常に「OGP 取得失敗時の
+	 * URL のみフォールバック表示」ケースを検証できるようにする。
+	 *
+	 * 期待値生成側（`apply_filters( 'the_content', ... )` 内部の oEmbed discovery）にも
+	 * 同じモックを効かせる必要があるため、`set_up` 段階でフィルタを登録している。
+	 */
+	public function set_up() {
+		parent::set_up();
+		add_filter( 'pre_http_request', array( $this, 'mock_http_fail' ), 10, 3 );
+	}
+
+	/**
+	 * テスト後処理: モック用フィルタを解除する
+	 */
+	public function tear_down() {
+		remove_filter( 'pre_http_request', array( $this, 'mock_http_fail' ), 10 );
+		parent::tear_down();
+	}
+
+	/**
+	 * vektor-inc.co.jp 宛ての HTTP リクエストを失敗として固定するためのモック
+	 *
+	 * `pre_http_request` フィルタは false 以外を返すと実際の HTTP 通信を行わずに
+	 * その値を結果として使う仕様。
+	 * vektor-inc.co.jp ドメインのリクエストのみ `WP_Error` を返して失敗扱いとし、
+	 * YouTube oEmbed や内部リンクなどはそのまま通すために `$pre` を返す。
+	 *
+	 * @param false|array|WP_Error $pre  既存の pre_http_request の戻り値（通常 false）
+	 * @param array                $args HTTP リクエストの引数
+	 * @param string               $url  リクエスト先 URL
+	 * @return false|array|WP_Error vektor-inc.co.jp なら WP_Error、それ以外は $pre をそのまま返す
+	 */
+	public function mock_http_fail( $pre, $args, $url ) {
+		// vektor-inc.co.jp 宛てのリクエストのみ失敗扱いに固定する
+		if ( false !== strpos( $url, 'vektor-inc.co.jp' ) ) {
+			return new \WP_Error( 'http_request_failed', 'mocked' );
+		}
+		// それ以外のドメインは通常通り処理させる
+		return $pre;
+	}
+
+	/**
 	 * oembed_html 内部リンク、WordPressで作られたサイトのテスト
 	 * cache は 管理画面URLを貼り付けた時に自動で変換される文字列
+	 *
+	 * vektor-inc.co.jp の OGP 取得は `mock_http_fail` で失敗固定しているため、
+	 * 期待値（`correct`）も実出力もフォールバック HTML（URL のみのリンク）となる。
 	 */
 	function test_vk_get_post_data_blog_card() {
 		// Create test post
