@@ -1,0 +1,5 @@
+// Snow Monkey Forms の select コントロールはプラグイン独自の toggle 矢印を持つため、
+// テーマ側の background-image 矢印を無効化する
+.smf-form .smf-select-control__control {
+	background-image: none;
+}

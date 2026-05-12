@@ -35,6 +35,8 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ G3 ][ Bug Fix ] Fix double arrow display in Snow Monkey Forms select box caused by Lightning's SVG background-image arrow conflicting with Snow Monkey Forms' own toggle arrow
+
 v15.35.2
 [ G2 ][ Bug Fix ] Fix initial `scroll` listener registered with `capture: true` not being removed by `remove_header` because `removeEventListener` used `capture: false`, leaving duplicated `scroll` listeners attached after in-page anchor clicks (#1333)
 [ G2/G3 ][ Bug Fix ] Fix scroll listener being left attached after in-page anchor clicks because `addEventListener` re-registered `header_scroll_func` with `capture: true` while `removeEventListener` used `capture: false`, causing the `header_scrolled` class to behave inconsistently

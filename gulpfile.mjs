@@ -286,6 +286,17 @@ gulp.task('sass_common_g3', function (done) {
 		  .pipe(gulp.dest('./_g3/plugin-support/booking-package/css/'))
 	  });
 
+	gulp.task('sass_snow_monkey_forms_g3', function (done) {
+		return src(['./_g3/plugin-support/snow-monkey-forms/_scss/**.scss'])
+		  .pipe(sass())
+		  .pipe(cmq({
+			log: true
+		  }))
+		  .pipe(autoprefixer())
+		  .pipe(cleanCss())
+		  .pipe(gulp.dest('./_g3/plugin-support/snow-monkey-forms/css/'))
+	  });
+
   // Watch
 gulp.task('watch_g3', function (done) {
 	error_stop = false
@@ -295,6 +306,7 @@ gulp.task('watch_g3', function (done) {
 	gulp.watch(['./_g3/plugin-support/bbpress/_scss/**'], gulp.series('sass_bbpress_g3'));
 	gulp.watch(['./_g3/plugin-support/the-events-calendar/_scss/**'], gulp.series('sass_the_event_calendar_g3'));
 	gulp.watch(['./_g3/plugin-support/booking-package/_scss/**'], gulp.series('sass_booking_package_g3'));
+	gulp.watch(['./_g3/plugin-support/snow-monkey-forms/_scss/**'], gulp.series('sass_snow_monkey_forms_g3'));
 	done();
 });
 
@@ -311,12 +323,13 @@ gulp.task('watch', function (done) {
 	gulp.watch(['./_g3/plugin-support/bbpress/_scss/**'], gulp.series('sass_bbpress_g3'));
 	gulp.watch(['./_g3/plugin-support/the-events-calendar/_scss/**'], gulp.series('sass_the_event_calendar_g3'));
 	gulp.watch(['./_g3/plugin-support/booking-package/_scss/**'], gulp.series('sass_booking_package_g3'));
+	gulp.watch(['./_g3/plugin-support/snow-monkey-forms/_scss/**'], gulp.series('sass_snow_monkey_forms_g3'));
 	done();
-});	
-  
+});
+
 gulp.task('default',  gulp.series( 'watch'));
 // _g3/assets/_scss/style-theme-json.sass が _g3/assets/css/を読み込んでいるため２回まわしている.
-gulp.task('sass_g3',  gulp.series( 'sass_common_g3', 'sass_common_g3', 'sass_skin_g3', 'sass_woo_g3', 'sass_bbpress_g3', 'sass_the_event_calendar_g3', 'sass_booking_package_g3' ));
+gulp.task('sass_g3',  gulp.series( 'sass_common_g3', 'sass_common_g3', 'sass_skin_g3', 'sass_woo_g3', 'sass_bbpress_g3', 'sass_the_event_calendar_g3', 'sass_booking_package_g3', 'sass_snow_monkey_forms_g3' ));
 gulp.task('dist_g3',  gulp.series( 'text-domain', 'sass_g3' ));
 
 gulp.task('sass',  gulp.series( 'sass_g2', 'sass_g3' ));
