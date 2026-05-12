@@ -88,6 +88,37 @@ test.describe('PR #1332: header_scroll_func capture フラグ修正', () => {
 
 	test.describe('挙動検証: capture フラグ不一致 vs 一致でのリスナー解除挙動', () => {
 		/**
+		 * 共通ヘルパー: requestAnimationFrame を 2 フレーム待ってから window.__callCount を返す。
+		 *
+		 * - 「scroll しても増えないこと」を確認するケースでは、ポーリングだけでは
+		 *   「まだ未到達」と「本当に増えない」が区別できないので、scroll イベントの
+		 *   dispatch / 反映が確実に終わるタイミングまで 2 RAF 待ってから値を読む必要がある。
+		 * - scrollY を指定した場合: __callCount をリセットして window.scrollTo(0, scrollY) を発火し、
+		 *   2 RAF 後の __callCount を返す。
+		 * - scrollY を省略した場合: scroll は発火せず、その時点から 2 RAF 待った後の __callCount を返す
+		 *   （事前に scroll + waitForFunction で 1 回呼ばれていることを確認しておいた値を flush するための用途）。
+		 *
+		 * @param {import('@playwright/test').Page} page Playwright の page インスタンス
+		 * @param {number|null} scrollY スクロール先 Y 座標。null を渡すと scroll は発火しない
+		 * @returns {Promise<number>} 2 RAF 待機後の window.__callCount
+		 */
+		async function getCallCountAfterTwoRaf(page, scrollY = null) {
+			return page.evaluate((y) => {
+				// scrollY が指定されていればカウンタをリセットして scroll を発火する
+				if (y !== null) {
+					window.__callCount = 0;
+					window.scrollTo(0, y);
+				}
+				// 2 RAF 待ってから __callCount を返す（scroll イベントの処理が確実に終わるまで待機）
+				return new Promise((resolve) => {
+					requestAnimationFrame(() => {
+						requestAnimationFrame(() => resolve(window.__callCount));
+					});
+				});
+			}, scrollY);
+		}
+
+		/**
 		 * 修正前の挙動を再現する HTML（PR 修正前と同じ捕捉フラグ不一致）
 		 * addEventListener('scroll', fn, true) ＋ removeEventListener('scroll', fn) の組み合わせ
 		 * → removeEventListener は capture: false を見るので、対象が無く無音失敗する。
@@ -173,17 +204,8 @@ test.describe('PR #1332: header_scroll_func capture フラグ修正', () => {
 
 			// もう一度スクロール（カウンタはリセットしてから発火）。
 			// 「増えない」ことを確認するケースは、ポーリングだけでは「まだ未到達」と区別が付かないため、
-			// scroll イベントの dispatch / 反映が確実に終わるまで requestAnimationFrame を 2 フレーム待つ。
-			const callCountAfterRemove = await page.evaluate(() => {
-				window.__callCount = 0;
-				window.scrollTo(0, 200);
-				return new Promise((resolve) => {
-					// 2 RAF 待ってからカウンタを評価する（scroll イベントが処理されるまで待機）
-					requestAnimationFrame(() => {
-						requestAnimationFrame(() => resolve(window.__callCount));
-					});
-				});
-			});
+			// ヘルパー経由で scroll → 2 RAF 待機 → __callCount を取得する。
+			const callCountAfterRemove = await getCallCountAfterTwoRaf(page, 200);
 
 			// 修正後の挙動: remove に成功してリスナーが消えるので呼ばれない
 			expect(callCountAfterRemove).toBe(0);
@@ -197,15 +219,7 @@ test.describe('PR #1332: header_scroll_func capture フラグ修正', () => {
 
 			// scroll しても呼ばれないことを確認。
 			// 「増えない」ことの確認は固定 sleep ではなく 2 RAF 待ちで scroll イベント処理を flush する。
-			const countAfterRemove = await page.evaluate(() => {
-				window.__callCount = 0;
-				window.scrollTo(0, 100);
-				return new Promise((resolve) => {
-					requestAnimationFrame(() => {
-						requestAnimationFrame(() => resolve(window.__callCount));
-					});
-				});
-			});
+			const countAfterRemove = await getCallCountAfterTwoRaf(page, 100);
 			expect(countAfterRemove).toBe(0);
 
 			// PR 修正後と等価な capture: false 再登録
@@ -237,14 +251,10 @@ test.describe('PR #1332: header_scroll_func capture フラグ修正', () => {
 			// 固定 sleep ではなく __callCount が 1 以上になるまでポーリング待機する。
 			// 重複登録があれば 2 以上に増えてしまうため、その後 2 RAF 待って
 			// scroll イベントが完全に処理されたタイミングで最終値を評価する。
+			// scroll はすでに発火済みなのでヘルパーには scrollY を渡さず、
+			// 2 RAF 待ちのみ実行して flush 後の __callCount を取得する。
 			await page.waitForFunction(() => window.__callCount >= 1);
-			const count = await page.evaluate(() => {
-				return new Promise((resolve) => {
-					requestAnimationFrame(() => {
-						requestAnimationFrame(() => resolve(window.__callCount));
-					});
-				});
-			});
+			const count = await getCallCountAfterTwoRaf(page);
 
 			// 重複登録されていれば 2 以上になるが、PR 修正後は 1 のみ
 			expect(count).toBe(1);
