@@ -21,6 +21,19 @@
 class BlogCardTest extends WP_UnitTestCase {
 
 	/**
+	 * `the_content` に対する `wpautop` フィルタが set_up 時点で
+	 * 登録されていたかどうかを記憶するフラグ。
+	 *
+	 * 各テストは検証時に `remove_filter( 'the_content', 'wpautop' )` →
+	 * 末尾で `add_filter( 'the_content', 'wpautop' )` を呼ぶ運用だが、
+	 * アサーション失敗で途中 abort した場合に復元が漏れ、後続テストに
+	 * 影響することを防ぐため tear_down で確実に復元する。
+	 *
+	 * @var bool
+	 */
+	private $had_wpautop = false;
+
+	/**
 	 * テスト前処理: vektor-inc.co.jp への HTTP リクエストを失敗固定するモックを登録
 	 *
 	 * CI 環境から外部 OGP サイトへ接続できるかどうかで `oembed_html` / `maybe_make_link`
@@ -30,16 +43,30 @@ class BlogCardTest extends WP_UnitTestCase {
 	 *
 	 * 期待値生成側（`apply_filters( 'the_content', ... )` 内部の oEmbed discovery）にも
 	 * 同じモックを効かせる必要があるため、`set_up` 段階でフィルタを登録している。
+	 *
+	 * あわせて、`the_content` に対する `wpautop` フィルタの登録状態を記憶しておく。
+	 * 各テストは検証ロジックの直前で `remove_filter` し、末尾で `add_filter` で
+	 * 戻す運用だが、テストが途中で失敗した場合は復元が漏れる。
+	 * tear_down 側で「元々あったのに今ない」場合のみ復元することで、
+	 * 後続テストへの汚染を防ぐ。
 	 */
 	public function set_up() {
 		parent::set_up();
 		add_filter( 'pre_http_request', array( $this, 'mock_http_fail' ), 10, 3 );
+		$this->had_wpautop = false !== has_filter( 'the_content', 'wpautop' );
 	}
 
 	/**
-	 * テスト後処理: モック用フィルタを解除する
+	 * テスト後処理: モック用フィルタを解除し、`wpautop` の状態を必要なら復元する
+	 *
+	 * 通常はテスト本体側で `add_filter( 'the_content', 'wpautop' )` を戻しているが、
+	 * アサーション失敗等で途中終了した場合に備えて、set_up 時点で登録されていた
+	 * 場合のみ ここで再登録して状態を揃える。
 	 */
 	public function tear_down() {
+		if ( $this->had_wpautop && false === has_filter( 'the_content', 'wpautop' ) ) {
+			add_filter( 'the_content', 'wpautop' );
+		}
 		remove_filter( 'pre_http_request', array( $this, 'mock_http_fail' ), 10 );
 		parent::tear_down();
 	}
@@ -58,8 +85,11 @@ class BlogCardTest extends WP_UnitTestCase {
 	 * @return false|array|WP_Error vektor-inc.co.jp なら WP_Error、それ以外は $pre をそのまま返す
 	 */
 	public function mock_http_fail( $pre, $args, $url ) {
-		// vektor-inc.co.jp 宛てのリクエストのみ失敗扱いに固定する
-		if ( false !== strpos( $url, 'vektor-inc.co.jp' ) ) {
+		// クエリ文字列やパスに 'vektor-inc.co.jp' が含まれているケースで誤反応しないよう、
+		// `wp_parse_url` で host を厳密に取り出してマッチングする。
+		// 末尾一致＋直前が `.` であれば許可することでサブドメイン（例: blog.vektor-inc.co.jp）も拾う。
+		$host = wp_parse_url( $url, PHP_URL_HOST );
+		if ( is_string( $host ) && preg_match( '/(^|\.)vektor-inc\.co\.jp$/i', $host ) ) {
 			return new \WP_Error( 'http_request_failed', 'mocked' );
 		}
 		// それ以外のドメインは通常通り処理させる
