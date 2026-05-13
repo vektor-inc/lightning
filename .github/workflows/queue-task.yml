@@ -1,0 +1,54 @@
+# このファイルを各リポジトリの .github/workflows/queue-task.yml としてコピーしてください
+#
+# 使い方:
+#   issue に 'task-queue' ラベルを付けると vektor-inc/task-queue に自動でissueが作成されます
+#
+# 必要なシークレット:
+#   TASK_QUEUE_TOKEN: task-queue リポジトリへの書き込み権限がある PAT
+#     → https://github.com/settings/tokens で生成（repo スコープ）
+#     → リポジトリの Settings > Secrets > Actions に追加
+#
+# オプションラベル（issue に付けると task-queue issue にも反映）:
+#   parallel    → 並列実行（デフォルトは sequential）
+#   priority:high / priority:medium / priority:low
+
+name: Queue task
+
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  queue:
+    # 'task-queue' ラベルが付いたときだけ実行
+    if: github.event.label.name == 'task-queue'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dispatch to task-queue
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.TASK_QUEUE_TOKEN }}
+          script: |
+            const issue  = context.payload.issue;
+            const repo   = context.payload.repository;
+            const labels = issue.labels.map(l => l.name);
+
+            // parallel ラベルがあれば parallel、なければ sequential
+            const execType = labels.includes('parallel') ? 'parallel' : 'sequential';
+
+            // priority ラベルがあれば引き継ぐ
+            const priority = labels.find(l => l.startsWith('priority:')) || null;
+
+            // task-queue リポジトリに repository_dispatch を送る
+            await github.rest.repos.createDispatchEvent({
+              owner: 'vektor-inc',
+              repo:  'task-queue',
+              event_type: 'queue-task',
+              client_payload: {
+                issue_url:   issue.html_url,
+                issue_title: `[${repo.name}] ${issue.title}`,
+                exec_type:   execType,
+                priority:    priority,
+              },
+            });
+            console.log(`✅ task-queue にディスパッチしました: ${issue.html_url}`);
