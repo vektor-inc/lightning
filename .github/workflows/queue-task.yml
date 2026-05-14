@@ -21,7 +21,7 @@ jobs:
             const execType = labels.includes('parallel') ? 'parallel' : 'sequential';
             const priority = labels.find(l => l.startsWith('priority:')) || null;
 
-            const taskLabels = ['status:pending', execType];
+            const taskLabels = ['status:awaiting-approval', execType];
             if (priority) taskLabels.push(priority);
 
             // 重複チェック
