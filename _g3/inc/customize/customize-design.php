@@ -174,9 +174,10 @@ function lightning_customize_register_design( $wp_customize ) {
 function lightning_get_common_inline_css() {
 	$options         = lightning_get_theme_options();
 	$color_key       = ! empty( $options['color_key'] ) ? esc_html( $options['color_key'] ) : '#337ab7';
-	$vk_helpers      = new VK_Helpers();
-	$color_key_dark  = $vk_helpers->color_auto_modifi( $color_key, 0.8 );
-	$color_key_vivid = $vk_helpers->color_auto_modifi( $color_key, 1.1 );
+	// vk-helpers 0.3.0 では VkHelpers::__construct() が private のためインスタンス化せず static で呼び出す。
+	// vk-helpers 0.3.0 makes VkHelpers::__construct() private, so call methods statically.
+	$color_key_dark  = VK_Helpers::color_auto_modifi( $color_key, 0.8 );
+	$color_key_vivid = VK_Helpers::color_auto_modifi( $color_key, 1.1 );
 	$dynamic_css     = '
 	/* Lightning */
 	:root {

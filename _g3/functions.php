@@ -149,7 +149,14 @@ function lightning_theme_setup() {
 }
 add_action( 'after_setup_theme', 'lightning_theme_setup' );
 
-require __DIR__ . '/inc/vk-helpers/config.php';
+// vk-helpers は composer 経由で取り込み済み。
+// グローバル名 VK_Helpers を VektorInc\VK_Helpers\VkHelpers のエイリアスとして用意する。
+// 旧バージョンのプラグイン等が VK_Helpers を直接定義していた場合は何もしない（先勝ち回避）。
+// The vk-helpers package is loaded via Composer.
+// Expose the global VK_Helpers as an alias of VektorInc\VK_Helpers\VkHelpers.
+if ( ! class_exists( 'VK_Helpers', false ) && class_exists( 'VektorInc\\VK_Helpers\\VkHelpers' ) ) {
+	class_alias( 'VektorInc\\VK_Helpers\\VkHelpers', 'VK_Helpers' );
+}
 require __DIR__ . '/inc/class-lightning-design-manager.php';
 require __DIR__ . '/inc/class-vk-description-walker.php';
 require __DIR__ . '/inc/template-tags.php';

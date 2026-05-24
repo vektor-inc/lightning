@@ -409,8 +409,9 @@ function lightning_print_css_common() {
 	$color_key      = $colors['color_key'];
 	$color_key_dark = $colors['color_key_dark'];
 
-	$vk_helpers      = new VK_Helpers();
-	$color_key_vivid = $vk_helpers->color_auto_modifi( $color_key, 1.1 );
+	// vk-helpers 0.3.0 では VkHelpers::__construct() が private のためインスタンス化せず static で呼び出す。
+	// vk-helpers 0.3.0 makes VkHelpers::__construct() private, so call methods statically.
+	$color_key_vivid = VK_Helpers::color_auto_modifi( $color_key, 1.1 );
 
 	if ( ! empty( $options['color_key'] ) || ! empty( $options['color_key_dark'] ) ) {
 
