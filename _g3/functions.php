@@ -150,12 +150,21 @@ function lightning_theme_setup() {
 add_action( 'after_setup_theme', 'lightning_theme_setup' );
 
 // vk-helpers は composer 経由で取り込み済み。
-// グローバル名 VK_Helpers を VektorInc\VK_Helpers\VkHelpers のエイリアスとして用意する。
-// 旧バージョンのプラグイン等が VK_Helpers を直接定義していた場合は何もしない（先勝ち回避）。
+// グローバル名 VK_Helpers を VkHelpers の子クラスとして宣言する。
+// vk-helpers 0.3.0 では VkHelpers::__construct() が private のため、
+// 旧プラグイン（例: lightning-g3-pro-unit の header-trans モジュール）が
+// 残している `new VK_Helpers()` 呼び出しが Fatal Error にならないように、
+// 空の public constructor を持つ shim を提供する。
+// static メソッドは親クラス VkHelpers から継承される。
 // The vk-helpers package is loaded via Composer.
-// Expose the global VK_Helpers as an alias of VektorInc\VK_Helpers\VkHelpers.
+// Declare the global VK_Helpers as a subclass of VkHelpers with a public
+// no-op constructor, so legacy `new VK_Helpers()` calls keep working.
 if ( ! class_exists( 'VK_Helpers', false ) && class_exists( 'VektorInc\\VK_Helpers\\VkHelpers' ) ) {
-	class_alias( 'VektorInc\\VK_Helpers\\VkHelpers', 'VK_Helpers' );
+	// phpcs:disable Generic.Files.OneObjectStructurePerFile.MultipleFound, Squiz.Commenting.ClassComment.Missing
+	class VK_Helpers extends \VektorInc\VK_Helpers\VkHelpers {
+		public function __construct() {}
+	}
+	// phpcs:enable Generic.Files.OneObjectStructurePerFile.MultipleFound, Squiz.Commenting.ClassComment.Missing
 }
 require __DIR__ . '/inc/class-lightning-design-manager.php';
 require __DIR__ . '/inc/class-vk-description-walker.php';
