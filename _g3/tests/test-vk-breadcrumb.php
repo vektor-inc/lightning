@@ -134,7 +134,7 @@ class VKBreadCrumbTest extends WP_UnitTestCase {
 						'id'    => '',
 						'url'   => home_url(),
 						'class' => 'breadcrumb-list__item--home',
-						'icon'  => 'fas fa-fw fa-home',
+						'icon'  => 'fa-solid fa-fw fa-house',
 					),
 					array(
 						'name'  => __( 'Not found', 'lightning' ),
@@ -154,7 +154,7 @@ class VKBreadCrumbTest extends WP_UnitTestCase {
 						'id'    => '',
 						'url'   => home_url(),
 						'class' => 'breadcrumb-list__item--home',
-						'icon'  => 'fas fa-fw fa-home',
+						'icon'  => 'fa-solid fa-fw fa-house',
 					),
 					array(
 						'name'  => __( 'Search Results', 'lightning' ),
@@ -175,7 +175,7 @@ class VKBreadCrumbTest extends WP_UnitTestCase {
 						'id'    => '',
 						'url'   => home_url(),
 						'class' => 'breadcrumb-list__item--home',
-						'icon'  => 'fas fa-fw fa-home',
+						'icon'  => 'fa-solid fa-fw fa-house',
 					),
 					array(
 						'name'  => sprintf( __( 'Search Results for : %s', 'lightning' ), 'aaa' ),
@@ -197,7 +197,7 @@ class VKBreadCrumbTest extends WP_UnitTestCase {
 						'id'    => '',
 						'url'   => home_url(),
 						'class' => 'breadcrumb-list__item--home',
-						'icon'  => 'fas fa-fw fa-home',
+						'icon'  => 'fa-solid fa-fw fa-house',
 					),
 					array(
 						'name'  => 'parent_page',
@@ -224,7 +224,7 @@ class VKBreadCrumbTest extends WP_UnitTestCase {
 						'id'    => '',
 						'url'   => home_url(),
 						'class' => 'breadcrumb-list__item--home',
-						'icon'  => 'fas fa-fw fa-home',
+						'icon'  => 'fa-solid fa-fw fa-house',
 					),
 					array(
 						'name'  => 'parent_page',
@@ -251,7 +251,7 @@ class VKBreadCrumbTest extends WP_UnitTestCase {
 						'id'    => '',
 						'url'   => home_url(),
 						'class' => 'breadcrumb-list__item--home',
-						'icon'  => 'fas fa-fw fa-home',
+						'icon'  => 'fa-solid fa-fw fa-house',
 					),
 					array(
 						'name'  => 'parent_page',
@@ -280,7 +280,7 @@ class VKBreadCrumbTest extends WP_UnitTestCase {
 						'id'    => '',
 						'url'   => home_url(),
 						'class' => 'breadcrumb-list__item--home',
-						'icon'  => 'fas fa-fw fa-home',
+						'icon'  => 'fa-solid fa-fw fa-house',
 					),
 					array(
 						'name'  => 'parent_page',
@@ -312,7 +312,7 @@ class VKBreadCrumbTest extends WP_UnitTestCase {
 						'id'    => '',
 						'url'   => home_url(),
 						'class' => 'breadcrumb-list__item--home',
-						'icon'  => 'fas fa-fw fa-home',
+						'icon'  => 'fa-solid fa-fw fa-house',
 					),
 					array(
 						'name'  => 'parent_category',
@@ -344,7 +344,7 @@ class VKBreadCrumbTest extends WP_UnitTestCase {
 						'id'    => '',
 						'url'   => home_url(),
 						'class' => 'breadcrumb-list__item--home',
-						'icon'  => 'fas fa-fw fa-home',
+						'icon'  => 'fa-solid fa-fw fa-house',
 					),
 					array(
 						'name'  => 'parent_category',
@@ -385,7 +385,7 @@ class VKBreadCrumbTest extends WP_UnitTestCase {
 						'id'    => '',
 						'url'   => home_url(),
 						'class' => 'breadcrumb-list__item--home',
-						'icon'  => 'fas fa-fw fa-home',
+						'icon'  => 'fa-solid fa-fw fa-house',
 					),
 					array(
 						'name'  => 'post_top',
@@ -412,7 +412,7 @@ class VKBreadCrumbTest extends WP_UnitTestCase {
 						'id'    => '',
 						'url'   => home_url(),
 						'class' => 'breadcrumb-list__item--home',
-						'icon'  => 'fas fa-fw fa-home',
+						'icon'  => 'fa-solid fa-fw fa-house',
 					),
 					array(
 						'name'  => 'post_top',
@@ -453,7 +453,7 @@ class VKBreadCrumbTest extends WP_UnitTestCase {
 						'id'    => '',
 						'url'   => home_url(),
 						'class' => 'breadcrumb-list__item--home',
-						'icon'  => 'fas fa-fw fa-home',
+						'icon'  => 'fa-solid fa-fw fa-house',
 					),
 					array(
 						'name'  => 'post_top',
@@ -487,7 +487,7 @@ class VKBreadCrumbTest extends WP_UnitTestCase {
 						'id'    => '',
 						'url'   => home_url(),
 						'class' => 'breadcrumb-list__item--home',
-						'icon'  => 'fas fa-fw fa-home',
+						'icon'  => 'fa-solid fa-fw fa-house',
 					),
 					array(
 						'name'  => 'post_top',
@@ -519,7 +519,7 @@ class VKBreadCrumbTest extends WP_UnitTestCase {
 						'id'    => '',
 						'url'   => home_url(),
 						'class' => 'breadcrumb-list__item--home',
-						'icon'  => 'fas fa-fw fa-home',
+						'icon'  => 'fa-solid fa-fw fa-house',
 					),
 					array(
 						'name'  => date( 'Y' ),
@@ -541,7 +541,7 @@ class VKBreadCrumbTest extends WP_UnitTestCase {
 						'id'    => '',
 						'url'   => home_url(),
 						'class' => 'breadcrumb-list__item--home',
-						'icon'  => 'fas fa-fw fa-home',
+						'icon'  => 'fa-solid fa-fw fa-house',
 					),
 					array(
 						'name'  => 'Event',
@@ -563,7 +563,7 @@ class VKBreadCrumbTest extends WP_UnitTestCase {
 						'id'    => '',
 						'url'   => home_url(),
 						'class' => 'breadcrumb-list__item--home',
-						'icon'  => 'fas fa-fw fa-home',
+						'icon'  => 'fa-solid fa-fw fa-house',
 					),
 					array(
 						'name'  => 'Event',
@@ -592,7 +592,7 @@ class VKBreadCrumbTest extends WP_UnitTestCase {
 						'id'    => '',
 						'url'   => home_url(),
 						'class' => 'breadcrumb-list__item--home',
-						'icon'  => 'fas fa-fw fa-home',
+						'icon'  => 'fa-solid fa-fw fa-house',
 					),
 					array(
 						'name'  => 'Event',
@@ -621,7 +621,7 @@ class VKBreadCrumbTest extends WP_UnitTestCase {
 						'id'    => '',
 						'url'   => home_url(),
 						'class' => 'breadcrumb-list__item--home',
-						'icon'  => 'fas fa-fw fa-home',
+						'icon'  => 'fa-solid fa-fw fa-house',
 					),
 					array(
 						'name'  => 'Event',
