@@ -2,7 +2,7 @@
 Lightning WordPress theme, Copyright (C) 2015-2026 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
 Tested up to: 6.9
-Stable tag: 15.35.3
+Stable tag: 15.35.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,6 +34,9 @@ The theme built by Vektor,Inc.
 vk-develop@vektor-inc.co.jp
 
 == Changelog ==
+
+v15.35.4
+[ G2/G3 ][ Specification Change ] Remove in-repo copies of vk-helpers classes and load vektor-inc/vk-helpers ^0.3.0 via composer. Resolves interference with plugins that depend on vk-helpers 0.3.0+ (e.g. VK All in One Expansion Unit) where `input_type` / `input_attrs` / `label_tag` were ignored due to Lightning's older bundled classes winning class declaration. (#1343)
 
 v15.35.3
 [ G3 ][ Bug Fix ] Fix double arrow display in Snow Monkey Forms select box caused by Lightning's SVG background-image arrow conflicting with Snow Monkey Forms' own toggle arrow
