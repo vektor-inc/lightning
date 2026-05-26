@@ -35,6 +35,8 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ G2/G3 ][ Specification Change ] Migrate vk-helpers from bundled copy to composer-managed vektor-inc/vk-helpers ^0.3.0, resolving interference with plugins that require vk-helpers 0.3.0+. (#1343)
+
 v15.35.3
 [ G3 ][ Bug Fix ] Fix double arrow display in Snow Monkey Forms select box caused by Lightning's SVG background-image arrow conflicting with Snow Monkey Forms' own toggle arrow
 

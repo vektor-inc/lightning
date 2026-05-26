@@ -136,7 +136,6 @@ function lightning_theme_setup() {
 	/*-------------------------------------------*/
 	require __DIR__ . '/inc/template-tags.php';
 	require __DIR__ . '/inc/template-tags-old.php';
-	require __DIR__ . '/inc/vk-helpers/config.php';
 
 	/*
 		Load Theme Customizer additions.
@@ -180,6 +179,58 @@ function lightning_theme_setup() {
 	}
 }
 add_action( 'after_setup_theme', 'lightning_theme_setup' );
+
+// vk-helpers は composer 経由で取り込み済み。
+// グローバル名 VK_Helpers を VkHelpers の子クラスとして宣言する。
+// vk-helpers 0.3.0 では VkHelpers::__construct() が private のため、
+// 旧プラグイン（例: lightning-g3-pro-unit の header-trans モジュール）が
+// 残している `new VK_Helpers()` 呼び出しが Fatal Error にならないように、
+// 空の public constructor を持つ shim を提供する。
+// 旧 in-repo の add_customize_class() を直接呼んでいた独自コードも、
+// no-op で安全に動作するように残しておく（vk-helpers 0.3.0 では
+// customize_register フックで自動登録されるため処理本体は不要）。
+// static メソッドは親クラス VkHelpers から継承される。
+// after_setup_theme フックより前にロードされる third-party コードが
+// `new VK_Helpers()` を呼ぶケースに備え、トップレベル（functions.php
+// 読み込み即時）で宣言する（_g3/functions.php と同じパターン）。
+// The vk-helpers package is loaded via Composer.
+// Declare the global VK_Helpers as a subclass of VkHelpers with a public
+// no-op constructor, so legacy `new VK_Helpers()` calls keep working.
+// Declared at top level (not inside after_setup_theme) so it is available
+// to third-party code that loads earlier than the theme setup hook.
+if ( ! class_exists( 'VK_Helpers', false ) && class_exists( 'VektorInc\\VK_Helpers\\VkHelpers' ) ) {
+	// phpcs:disable Generic.Files.OneObjectStructurePerFile.MultipleFound, Squiz.Commenting.ClassComment.Missing
+	class VK_Helpers extends \VektorInc\VK_Helpers\VkHelpers {
+		public function __construct() {}
+
+		/**
+		 * No-op shim for the removed `VK_Helpers::add_customize_class()`.
+		 * 旧 in-repo の VK_Helpers にあった add_customize_class() の no-op shim。
+		 *
+		 * In vk-helpers 0.3.0 the VK_Custom_*_Control classes are auto-registered
+		 * via the `customize_register` hook (priority 0) at autoload time, so the
+		 * explicit `add_customize_class()` call from the legacy API is no longer
+		 * required. Keep an empty method here purely so that third-party code
+		 * still calling `VK_Helpers::add_customize_class( $wp_customize )` does
+		 * not fatal.
+		 *
+		 * vk-helpers 0.3.0 では VK_Custom_*_Control クラスは autoload 時に
+		 * customize_register フック（priority 0）で自動登録されるため、
+		 * 旧 API の add_customize_class() 呼び出しは不要。サードパーティの
+		 * 独自コードが `VK_Helpers::add_customize_class( $wp_customize )` を
+		 * 直接呼んでも Fatal にならないよう、空メソッドだけ残しておく。
+		 *
+		 * @param \WP_Customize_Manager $wp_customize Unused.
+		 * @return void
+		 */
+		public static function add_customize_class( $wp_customize ) {
+			// intentionally empty: customize_register is now handled by vendor.
+			// customize_register は vendor 側で処理されるためここでは何もしない。
+			unset( $wp_customize );
+		}
+	}
+	// phpcs:enable Generic.Files.OneObjectStructurePerFile.MultipleFound, Squiz.Commenting.ClassComment.Missing
+}
 
 /*
 	Load Setup Files ( out of after_setup_theme )
