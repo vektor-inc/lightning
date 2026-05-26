@@ -35,9 +35,7 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
-[ G2/G3 ][ Specification Change ] Migrate vk-helpers from in-repo copy to composer-managed vektor-inc/vk-helpers ^0.3.0, fixing interference with plugins that require vk-helpers 0.3.0+. (#1343)
-[ G2/G3 ][ Specification Change ] Update vektor-inc/vk-breadcrumb from 0.2.8 to 0.2.9. Breadcrumb home icon class changes from `fas fa-fw fa-home` to `fa-solid fa-fw fa-house`.
-[ G2/G3 ][ Bug Fix ] Preserve backward compatibility for legacy `new VK_Helpers()` and `VK_Helpers::add_customize_class()` calls against vk-helpers 0.3.0.
+[ G2/G3 ][ Specification Change ] Migrate vk-helpers from bundled copy to composer-managed vektor-inc/vk-helpers ^0.3.0, resolving interference with plugins that require vk-helpers 0.3.0+. (#1343)
 
 v15.35.3
 [ G3 ][ Bug Fix ] Fix double arrow display in Snow Monkey Forms select box caused by Lightning's SVG background-image arrow conflicting with Snow Monkey Forms' own toggle arrow
