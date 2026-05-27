@@ -57,6 +57,9 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 			&:hover {
 				background-color: var(--vk-color-primary-vivid);
 			}
+			&:has(.sub-menu li:hover) {
+				background-color: transparent;
+			}
 		}
 		li.menu-item-has-children > a {
 			border-bottom: none;
