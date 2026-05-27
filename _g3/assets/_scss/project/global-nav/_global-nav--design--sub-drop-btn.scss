@@ -54,10 +54,12 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 			display: grid;
 			grid-template-columns: 1fr auto;
 			border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-			&:hover {
+			&:hover,
+			&:focus-within {
 				background-color: var(--vk-color-primary-vivid);
 			}
-			&:has(li:hover) {
+			&:has(li:hover),
+			&:has(li:focus-within) {
 				background-color: transparent;
 			}
 		}
