@@ -124,8 +124,7 @@ $menu_padding_horizontal: 1.2em;
 				}
 			}
 			&.menu-item-has-children > a {
-				padding: $menu_padding_vertical 3.5em $menu_padding_vertical
-					$menu_padding_horizontal;
+				padding: $menu_padding_vertical $menu_padding_horizontal;
 			}
 			@media (min-width: $lg-min) {
 				ul.sub-menu li {
