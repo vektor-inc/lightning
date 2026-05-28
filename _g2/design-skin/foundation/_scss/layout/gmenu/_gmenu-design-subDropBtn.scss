@@ -50,31 +50,5 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 				background-image: var(--g_nav_sub_acc_icon_close_url);
 			}
 		}
-		li.menu-item-has-children {
-			display: grid;
-			grid-template-columns: 1fr;
-			border-bottom: $g_nav_sub_separator;
-		}
-		li.menu-item-has-children > a {
-			grid-row: 1;
-			border-bottom: none;
-			padding-right: calc(#{$menu_padding_horizontal} + 28px + 0.5em);
-		}
-		li.menu-item-has-children > ul.sub-menu li:last-child > a {
-			border-bottom: none;
-		}
-		li.menu-item-has-children > ul.sub-menu {
-			border-top: $g_nav_sub_separator;
-			background-color: $g_nav_sub_bg_color;
-		}
-		li.menu-item-has-children > .acc-btn {
-			grid-row: 1;
-			position: relative;
-			top: auto;
-			right: auto;
-			justify-self: end;
-			align-self: center;
-			margin: 0 $menu_padding_horizontal 0 0;
-		}
 	}
 }
