@@ -35,7 +35,7 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
-[ G2/G3 ][ Design Bug Fix ] Fix global nav sub-menu acc-btn not vertically centered when item title wraps to multiple lines, and fix hover background and border-bottom not spanning full row (#724)
+[ G3 ][ Design Bug Fix ] Fix global nav sub-menu acc-btn not vertically centered when item title wraps to multiple lines, and fix hover background and border-bottom not spanning full row (#724)
 
 v15.36.0
 [ G2/G3 ][ Specification Change ] Migrate vk-helpers from bundled copy to composer-managed vektor-inc/vk-helpers ^0.3.0, resolving interference with plugins that require vk-helpers 0.3.0+. (#1343)
