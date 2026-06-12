@@ -133,15 +133,13 @@ ul.gMenu {
 } // ul.gMenu
 
 .gMenu_name { font-weight: normal; }
-.gMenu_description,
-.wp-block-navigation-item__description { display:block; overflow:hidden;font-size:10px; line-height: 14px; }
+.gMenu_description { display:block; overflow:hidden;font-size:10px; line-height: 14px; }
 
 @media (max-width: 991px){
   .gMenu_outer { overflow:scroll;display: none; height: 20em;}
   .gMenu_outer.itemOpen { display: block; }
   .gMenu_outer.itemClose { display: none; }
-  .gMenu_description,
-  .wp-block-navigation-item__description { display: none; }
+  .gMenu_description { display: none; }
   ul.gMenu { margin-bottom:0;
     a:hover,
     a:active,
@@ -153,8 +151,7 @@ ul.gMenu {
 .gMenu_outer.itemOpen,
 .gMenu_outer.itemClose { display: block; }
 .gMenu_name { text-align: center;display: block; }
-.gMenu_description,
-.wp-block-navigation-item__description { text-align: center; }
+.gMenu_description { text-align: center; }
 ul.gMenu {
   & >li { position: relative;float:left;
     & > a { border-bottom:none; }
@@ -589,4 +586,15 @@ p.no-comments { background-color: #f3f3f3;border:1px solid #e5e5e5; text-align: 
 
 @media screen and (max-width:992px){
 .prBlock{ margin-bottom: 1.5em; }
+}
+
+/*-------------------------------------------*/
+/* Navigation Block Description
+/*-------------------------------------------*/
+.wp-block-navigation-item__description {
+    display:block;
+    overflow:hidden;
+    font-size:10px;
+    line-height: 14px;
+    text-align: center;
 }
