@@ -591,10 +591,13 @@ p.no-comments { background-color: #f3f3f3;border:1px solid #e5e5e5; text-align: 
 /*-------------------------------------------*/
 /* Navigation Block Description
 /*-------------------------------------------*/
-.wp-block-navigation-item__description {
-    display:block;
-    overflow:hidden;
-    font-size:10px;
-    line-height: 14px;
-    text-align: center;
+.wp-block-navigation {
+    .wp-block-navigation-item__description {
+        display: block;
+        overflow: hidden;
+        font-size: 10px;
+        line-height: 14px;
+        opacity: 0.6;
+        text-align: center;
+    }
 }
