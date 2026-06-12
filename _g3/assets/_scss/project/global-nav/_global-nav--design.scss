@@ -66,8 +66,7 @@
 				*/
 				white-space: nowrap;
 			}
-			.global-nav-description,
-			.wp-block-navigation-item__description {
+			.global-nav-description {
 				display: block;
 				overflow: hidden;
 				font-size: 10px;
@@ -130,4 +129,17 @@
 			}
 		}
 	}
+}
+
+/*-------------------------------------------*/
+/* Navigation Block Description
+/*-------------------------------------------*/
+.wp-block-navigation-item__description {
+	display: block;
+	overflow: hidden;
+	font-size: 10px;
+	line-height: 14px;
+	opacity: 0.6;
+	text-align: center;
+	white-space: nowrap;
 }

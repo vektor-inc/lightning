@@ -70,8 +70,7 @@ $menu_padding_horizontal: 1.2em;
 			*/
 			white-space: nowrap;
 		}
-		.gMenu_description,
-		.wp-block-navigation-item__description {
+		.gMenu_description {
 			display: block;
 			overflow: hidden;
 			font-size: 10px;
@@ -141,4 +140,16 @@ $menu_padding_horizontal: 1.2em;
 
 		}
 	}
+}
+
+/*-------------------------------------------*/
+/* Navigation Block Description
+/*-------------------------------------------*/
+.wp-block-navigation-item__description {
+	display: block;
+	overflow: hidden;
+	font-size: 10px;
+	line-height: 14px;
+	opacity: 0.6;
+	text-align: center;
 }
