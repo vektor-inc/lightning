@@ -70,7 +70,8 @@ $menu_padding_horizontal: 1.2em;
 			*/
 			white-space: nowrap;
 		}
-		.gMenu_description {
+		.gMenu_description,
+		.wp-block-navigation-item__description {
 			display: block;
 			overflow: hidden;
 			font-size: 10px;
