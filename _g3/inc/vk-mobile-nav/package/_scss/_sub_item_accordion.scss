@@ -14,11 +14,24 @@
 	li {
 		position: relative;
 		margin-bottom: 0;
-		&.menu-item-has-children{
-			& > a {
-				padding-right:3em;
-			}
-		}
+	}
+	// 子階層を持つ項目は grid 化し、タイトルと開閉ボタンを横並びにする。
+	// タイトルが複数行に折り返しても開閉ボタンが縦中央に保たれるようにするため。
+	li.menu-item-has-children {
+		display: grid;
+		grid-template-columns: 1fr auto;
+	}
+	li.menu-item-has-children > .acc-btn {
+		// 絶対配置をやめて grid の 2 列目に配置し、縦中央に揃える。
+		position: relative;
+		top: auto;
+		right: auto;
+		align-self: center;
+		margin: 0 8px 0 0.5em;
+	}
+	li.menu-item-has-children > ul.sub-menu {
+		// サブメニューは全幅で次の行に配置する。
+		grid-column: 1 / -1;
 	}
 	.acc-btn {
 		position: absolute;

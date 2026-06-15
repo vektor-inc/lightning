@@ -36,6 +36,7 @@ vk-develop@vektor-inc.co.jp
 == Changelog ==
 
 [ G3 ][ Design Bug Fix ] Fix global nav sub-menu acc-btn to be vertically centered when item title wraps to multiple lines (#724)
+[ G3 ][ Design Bug Fix ] Fix mobile menu sub-item toggle button shifting to the top when the item title wraps to multiple lines (#1347)
 
 v15.36.0
 [ G2/G3 ][ Specification Change ] Migrate vk-helpers from bundled copy to composer-managed vektor-inc/vk-helpers ^0.3.0, resolving interference with plugins that require vk-helpers 0.3.0+. (#1343)
