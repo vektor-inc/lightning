@@ -154,4 +154,8 @@ nav.wp-block-navigation.vk-navigation-show-description {
 		opacity: 0.6;
 		text-align: center;
 	}
+	&.is-vertical .wp-block-navigation-item__description,
+	.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item__description {
+		text-align: start;
+	}
 }
