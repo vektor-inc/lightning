@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8c2826f64d07265b28aef599842b7537",
+    "content-hash": "c6f247484354cc68ae8c1e152d135900",
     "packages": [
         {
             "name": "vektor-inc/font-awesome-versions",
@@ -205,20 +205,23 @@
         },
         {
             "name": "vektor-inc/vk-component",
-            "version": "1.6.5",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vektor-inc/vk-components.git",
-                "reference": "a40838c62957501db9bf250ca9b67a021c4b33d5"
+                "reference": "85e8a42ceeb54549a5844b0e7dd32c808294cf9d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vektor-inc/vk-components/zipball/a40838c62957501db9bf250ca9b67a021c4b33d5",
-                "reference": "a40838c62957501db9bf250ca9b67a021c4b33d5",
+                "url": "https://api.github.com/repos/vektor-inc/vk-components/zipball/85e8a42ceeb54549a5844b0e7dd32c808294cf9d",
+                "reference": "85e8a42ceeb54549a5844b0e7dd32c808294cf9d",
                 "shasum": ""
             },
             "require": {
                 "vektor-inc/vk-term-color": "^0.7.1"
+            },
+            "conflict": {
+                "phpunit/phpunit": ">=10"
             },
             "require-dev": {
                 "wp-phpunit/wp-phpunit": "^6.7",
@@ -243,9 +246,9 @@
             "description": "Vektor Component",
             "support": {
                 "issues": "https://github.com/vektor-inc/vk-components/issues",
-                "source": "https://github.com/vektor-inc/vk-components/tree/1.6.5"
+                "source": "https://github.com/vektor-inc/vk-components/tree/1.7.0"
             },
-            "time": "2025-01-01T02:17:35+00:00"
+            "time": "2026-06-22T03:36:12+00:00"
         },
         {
             "name": "vektor-inc/vk-css-optimize",
@@ -2517,5 +2520,5 @@
     "prefer-lowest": false,
     "platform": {},
     "platform-dev": {},
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.9.0"
 }
