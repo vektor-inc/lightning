@@ -45,6 +45,7 @@ $post_loop = new WP_Query(
 			'display_image_overlay_term' => true,
 			'display_excerpt'            => false,
 			'display_date'               => true,
+			'display_modified'           => false,
 			'display_new'                => true,
 			'display_btn'                => false,
 			'image_default_url'          => false,
