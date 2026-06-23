@@ -31,6 +31,9 @@ class VK_Component_Posts_Display_Modified_Test extends WP_UnitTestCase {
 				'post_content' => 'content',
 			)
 		);
+		// 投稿が正常に作成されたことを確認（0 や WP_Error でないこと）.
+		$this->assertIsInt( $post_id );
+		$this->assertGreaterThan( 0, $post_id );
 		$post = get_post( $post_id );
 
 		// 各レイアウト共通の基本オプション（テンプレートの指定に合わせた最小構成）.
@@ -98,21 +101,12 @@ class VK_Component_Posts_Display_Modified_Test extends WP_UnitTestCase {
 			),
 		);
 
-		print PHP_EOL;
-		print '★★★★★-------------------------------' . PHP_EOL;
-		print 'VK_Component_Posts::get_view() display_modified' . PHP_EOL;
-		print '------------------------------------' . PHP_EOL;
-
 		foreach ( $test_array as $case ) {
 			// 基本オプションにケース固有のオプションをマージ.
 			$options = array_merge( $base_options, $case['options'] );
 
 			// 描画結果のHTMLを取得（the_view ではなく get_view で生のHTMLを取得）.
 			$actual = VK_Component_Posts::get_view( $post, $options );
-
-			print PHP_EOL;
-			print $case['test_condition_name'] . PHP_EOL;
-			print 'return  :' . $actual . PHP_EOL;
 
 			// マーカー毎に、含まれる／含まれないを検証.
 			foreach ( $case['assertions'] as $marker => $should_contain ) {
