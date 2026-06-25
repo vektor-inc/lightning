@@ -13,7 +13,7 @@
 		"vektor-inc/vk-breadcrumb": "^0.2.8",
 		"vektor-inc/vk-css-optimize": "^0.2.5",
 		"vektor-inc/tgm-plugin-activation": "^2.6.2",
-		"vektor-inc/vk-component": "^1.6.5",
+		"vektor-inc/vk-component": "^1.7.0",
 		"vektor-inc/vk-helpers": "^0.3.0"
 	},
 	"require-dev": {

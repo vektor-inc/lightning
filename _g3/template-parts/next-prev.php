@@ -24,6 +24,7 @@ if ( $post_previous || $post_next ) {
 		'display_excerpt'            => false,
 		'display_title'               => false,
 		'display_date'               => true,
+		'display_modified'           => false,
 		'display_btn'                => false,
 		'image_default_url'          => get_template_directory_uri() . '/assets/images/no-image.png',
 		'overlay'                    => '',

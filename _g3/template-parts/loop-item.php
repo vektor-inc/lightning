@@ -15,6 +15,7 @@ $options = array(
 	'display_image_overlay_term' => true,
 	'display_excerpt'            => true,
 	'display_date'               => true,
+	'display_modified'           => false,
 	'display_new'                => true,
 	'display_taxonomies'         => false,
 	'display_btn'                => true,
