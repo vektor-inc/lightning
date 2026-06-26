@@ -37,6 +37,8 @@ vk-develop@vektor-inc.co.jp
 
 [ Spec Change ] Update vektor-inc/vk-component from 1.6.5 to 1.7.0
 
+[ Spec Change ] Update vektor-inc/font-awesome-versions from 0.7.2 to 0.7.4
+
 [ G3 ][ Design Bug Fix ] Fix global nav sub-menu acc-btn to be vertically centered when item title wraps to multiple lines (#724)
 
 v15.36.0
