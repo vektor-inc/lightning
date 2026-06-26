@@ -8,7 +8,7 @@
 	],
 	"require": {
 		"vektor-inc/vk-swiper": "^0.3.5",
-		"vektor-inc/font-awesome-versions": "0.7.3",
+		"vektor-inc/font-awesome-versions": "^0.7.4",
 		"vektor-inc/vk-color-palette-manager": "^0.4.0",
 		"vektor-inc/vk-breadcrumb": "^0.2.8",
 		"vektor-inc/vk-css-optimize": "^0.2.5",
