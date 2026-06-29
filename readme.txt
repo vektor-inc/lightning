@@ -35,8 +35,6 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
-[ G2 ][ Bug Fix ] Fix PHP 8.0+ warning logged when adding Content Area Posts Widget for the first time before saving
-
 v15.37.1
 [ Other ] Change theme screenshot
 
