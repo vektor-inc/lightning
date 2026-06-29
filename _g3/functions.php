@@ -344,7 +344,7 @@ add_filter( 'lightning_localize_options', 'lightning_global_nav_fix', 10, 1 );
  * @return array $classes : class list.
  */
 function lightning_add_anchor_nav_class( $classes, $item ) {
-	if ( strpos( $item->url, '#' ) !== false ) {
+	if ( ! empty( $item->url ) && strpos( $item->url, '#' ) !== false ) {
 		$classes[] = 'menu-item-anchor';
 	}
 	return $classes;
