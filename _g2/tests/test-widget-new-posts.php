@@ -45,12 +45,14 @@ class WidgetNewPostsTest extends WP_UnitTestCase {
 		);
 
 		// 空の $instance で form() を呼び出す（ウィジェット初回追加時と同等の状況）
+		// finally でクリーンアップを保証し、例外発生時も後続テストへの影響を防ぐ
 		ob_start();
-		$this->widget->form( array() );
-		ob_end_clean();
-
-		// エラーハンドラーを元に戻す
-		restore_error_handler();
+		try {
+			$this->widget->form( array() );
+		} finally {
+			ob_end_clean();
+			restore_error_handler();
+		}
 
 		// E_WARNING が発生していないことを確認する
 		$this->assertFalse( $warning_occurred, '空の $instance で form() を呼び出した際に E_WARNING が発生した' );
