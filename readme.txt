@@ -35,6 +35,8 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ Bug Fix ] Fixed PHP 8.1 deprecated warning caused by passing null to strpos() when nav menu item URL is null
+
 v15.37.1
 [ Other ] Change theme screenshot
 
