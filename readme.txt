@@ -35,6 +35,8 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ Spec Change ] Update vektor-inc/font-awesome-versions from 0.7.4 to 0.7.5
+
 v15.37.1
 [ Other ] Change theme screenshot
 
