@@ -36,6 +36,7 @@ vk-develop@vektor-inc.co.jp
 == Changelog ==
 
 [ G2 ][ Bug Fix ] Fix undefined array key warning logged on PHP 8 or later when saving the Full Wide Title widget with the text shadow checkbox unchecked
+[ G2 ][ Bug Fix ] Fix undefined array key warning logged on PHP 8 or later when displaying the Full Wide Title widget in the block-based widget editor preview
 
 v15.37.1
 [ Other ] Change theme screenshot
