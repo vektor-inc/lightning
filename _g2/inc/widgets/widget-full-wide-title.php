@@ -169,7 +169,7 @@ class LTG_Theme_Full_Wide_Title extends WP_Widget {
 		$instance['title_font_color']   = sanitize_hex_color( $new_instance['title_font_color'] );
 		$instance['title']              = wp_kses_post( $new_instance['title'] );
 		$instance['text']               = wp_kses_post( $new_instance['text'] );
-		$instance['title_shadow_use']   = ( $new_instance['title_shadow_use'] ) ? true : false;
+		$instance['title_shadow_use']   = ( ! empty( $new_instance['title_shadow_use'] ) ) ? true : false;
 		$instance['title_shadow_color'] = sanitize_hex_color( $new_instance['title_shadow_color'] );
 		$instance['margin_top']         = esc_attr( $new_instance['margin_top'] );
 		$instance['margin_bottom']      = esc_attr( $new_instance['margin_bottom'] );
