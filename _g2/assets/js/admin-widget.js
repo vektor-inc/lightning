@@ -1,8 +1,8 @@
 /* global jQuery, wp */
 /**
- * 背景画像登録処理
+ * Open the media library and set the selected image as background. / 背景画像登録処理
  *
- * @param {HTMLElement} e ボタン要素
+ * @param {HTMLElement} e Button element. / ボタン要素
  */
 window.vk_title_bg_image_addiditional = function( e ) {
 	var d = jQuery( e ).parent().children( '._display' );
@@ -18,9 +18,9 @@ window.vk_title_bg_image_addiditional = function( e ) {
 };
 
 /**
- * 背景画像削除処理
+ * Remove the background image. / 背景画像削除処理
  *
- * @param {HTMLElement} e ボタン要素
+ * @param {HTMLElement} e Button element. / ボタン要素
  */
 window.vk_title_bg_image_delete = function( e ) {
 	var d = jQuery( e ).parent().children( '._display' );
