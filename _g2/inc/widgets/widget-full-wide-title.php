@@ -251,7 +251,9 @@ class LTG_Theme_Full_Wide_Title extends WP_Widget {
 			$widget_outer_style .= 'margin-bottom:0px;background-repeat:no-repeat;';
 		}
 
-		if ( $widget_outer_style ) {
+		// ブロック版ウィジェット編集画面のプレビューでは widget_id が $args に含まれず渡ってくるため、
+		// 未設定の場合はインラインCSSの出力をスキップして PHP の Undefined array key 警告を防ぐ。
+		if ( $widget_outer_style && ! empty( $args['widget_id'] ) ) {
 			$dynamic_css = '#' . $args['widget_id'] . '.widget {' . $widget_outer_style . '}';
 			// $dynamic_css = trim( $dynamic_css );
 			// // convert tab and br to space
