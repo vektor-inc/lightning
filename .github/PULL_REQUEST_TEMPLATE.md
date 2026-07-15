@@ -1,6 +1,6 @@
 ## 関連Issue
 <!-- 関連するIssueやチケットがあればリンクを貼ってください -->
-- 関連Issue: #[issue番号]
+- 関連Issue: https://github.com/vektor-inc/lightning/issues/[issue番号]
 
 
 ## 変更の目的・理由
