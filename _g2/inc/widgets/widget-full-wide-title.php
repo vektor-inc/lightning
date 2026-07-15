@@ -265,7 +265,7 @@ function ltg_full_wide_title_admin_enqueue( $hook ) {
 	wp_enqueue_media();
 	wp_enqueue_script(
 		'ltg-widget-image-admin',
-		get_template_directory_uri() . '/_g2/assets/js/admin-widget.js',
+		get_template_directory_uri() . '/assets/js/admin-widget.js',
 		array( 'jquery' ),
 		'1.0.0',
 		true
