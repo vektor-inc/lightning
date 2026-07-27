@@ -30,6 +30,11 @@ entry-body
 .alignfull {
 	&,
 	&:is(
+	// Swiper renamed .swiper-container to .swiper in v8.
+	// .swiper-container is kept for markup that still outputs the legacy class name.
+	// Swiper は v8 で .swiper-container を .swiper にリネームした。
+	// 旧クラス名を出力し続けているマークアップのため .swiper-container も残している。
+	.swiper,
 	.swiper-container,
 	.vk_slider,
 	.wp-block-image,

@@ -38,6 +38,8 @@ vk-develop@vektor-inc.co.jp
 [ G2 ][ Bug Fix ] Fix image set/delete buttons in the Full Wide Title widget not opening the media library in the block-based widget editor
 
 [ Spec Change ] Update vektor-inc/font-awesome-versions from 0.7.4 to 0.7.5
+[ G3 ][ Spec Change ] Update vektor-inc/vk-swiper from 0.3.6 to 0.4.0, updating the bundled Swiper from 11.2.10 to 14.0.6
+[ G3 ][ Spec Change ] Update the top page slider arrow CSS for Swiper v12 and later, where the arrow is an injected SVG (.swiper-navigation-icon) instead of the ::after icon font. Custom CSS targeting .swiper-button-prev:after / .swiper-button-next:after needs to be updated
 [ G2 ][ Bug Fix ] Fix undefined array key warning logged on PHP 8 or later when saving the Full Wide Title widget with the text shadow checkbox unchecked
 [ G2 ][ Bug Fix ] Fix undefined array key warning logged on PHP 8 or later when displaying the Full Wide Title widget in the block-based widget editor preview
 
