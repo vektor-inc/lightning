@@ -94,32 +94,20 @@
 		}
 	}
 
-	/* Navigation arrows
-	   ========================================================================== */
-
-	// Since Swiper v12 the arrow is an SVG element (.swiper-navigation-icon) injected by JS,
-	// instead of the ::after icon font (font-family: swiper-icons) used up to v11.
-	// The old `:after { font-size: 1.5em }` therefore has no target anymore.
-	// The swiper-icons glyph bounding box was exactly 1em tall (512/512 units per em),
-	// so the former arrow height was 1.5em. The injected SVG has a viewBox ratio of 11:20,
-	// almost identical to the glyph ratio (0.527em wide per 1em tall), so fixing the height
-	// to the same 1.5em and letting the width follow the aspect ratio keeps the previous look.
-	// Swiper v12 以降、矢印は v11 までの ::after のアイコンフォント（font-family: swiper-icons）ではなく、
-	// JS が注入する SVG 要素（.swiper-navigation-icon）になった。
-	// そのため従来の `:after { font-size: 1.5em }` は対象が存在せず効かない。
-	// swiper-icons のグリフは字面の高さが丁度 1em（512/512 units per em）だったため、
-	// 以前の矢印の高さは 1.5em だった。注入される SVG は viewBox 比が 11:20 で、
-	// グリフの比率（高さ 1em に対して幅 0.527em）とほぼ同じなので、
-	// 高さを同じ 1.5em に固定して幅を比率に従わせれば従来の見た目を維持できる。
-	.swiper-navigation-icon {
-		height: 1.5em;
-		width: auto;
+	// 矢印は v11 まではアイコンフォントのグリフ、v12 以降は JS が注入する SVG。
+	// 他プラグインが先に v11 を読み込む場合があるため両方に同じ高さ（1.5em）を指定する。
+	.swiper-button-prev,
+	.swiper-button-next {
+		&::after {
+			font-size: 1.5em;
+		}
+		.swiper-navigation-icon {
+			height: 1.5em;
+			width: auto;
+		}
 	}
 
-	// Hide the arrows on small screens. Up to v11 this was applied to the ::after glyph,
-	// but the glyph no longer exists, so hide the button itself instead.
-	// 小さい画面では矢印を非表示にする。v11 までは ::after のグリフに指定していたが、
-	// グリフ自体が無くなったのでボタン側を非表示にする。
+	// グリフが無くなった v12 以降でも効くよう、非表示はボタン自体に指定する。
 	@media (max-width: $xs-max) {
 		.swiper-button-prev,
 		.swiper-button-next {
