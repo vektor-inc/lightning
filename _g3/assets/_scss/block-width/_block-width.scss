@@ -27,6 +27,8 @@ entry-body
 		margin-right:auto;
 	}
 }
+// 下の :is() は詳細度を上げて他の指定に負けないようにするためのリストで、
+// マッチ自体は直前の & （.alignfull 単体）が担っている。
 // Swiper は v8 で .swiper-container を .swiper にリネームしたが、
 // 旧クラス名を出力し続けているマークアップのため .swiper-container も残す。
 .alignfull {
