@@ -12,6 +12,13 @@
  * @package vektor-inc/lightning
  */
 
+// このファイルはリリース zip の tests/ にも同梱され、公開サイト上で URL から
+// 直接叩ける位置に置かれる。読み込むだけでファイル操作を登録するため、
+// CLI（PHPUnit）以外では何もせずに終了する.
+if ( 'cli' !== PHP_SAPI && 'phpdbg' !== PHP_SAPI ) {
+	return;
+}
+
 if ( ! function_exists( 'ltg_test_guard_theme_json_file_name' ) ) {
 	/**
 	 * theme.json のファイル名をテスト開始前の状態へ戻すガードを登録する
@@ -52,6 +59,14 @@ if ( ! function_exists( 'ltg_test_guard_theme_json_file_name' ) ) {
 					$current_path = $theme_dir . '/' . $file_name;
 					if ( is_readable( $current_path ) ) {
 						rename( $current_path, $original_path );
+
+						// 無言で直すと、別ルートで再発しても誰も気付けなくなる。
+						// 実際に復元したときだけ警告を出す（正常系では何も出ない）.
+						fwrite(
+							STDERR,
+							PHP_EOL . '[theme-json-guard] ' . $file_name . ' を ' . $original_file_name . ' に戻しました。'
+								. 'テスト中に theme.json のファイル名が変わっています。' . PHP_EOL
+						);
 						return;
 					}
 				}

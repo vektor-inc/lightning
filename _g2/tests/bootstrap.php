@@ -3,7 +3,7 @@
 require_once dirname( dirname( dirname( __FILE__ ) ) ) . '/vendor/autoload.php';
 
 // テスト実行で theme.json のファイル名が変わったまま残らないようにする.
-require_once dirname( dirname( dirname( __FILE__ ) ) ) . '/tests/theme-json-guard.php';
+require_once dirname( __DIR__, 2 ) . '/tests/theme-json-guard.php';
 
 // If we're running in WP's build directory, ensure that WP knows that, too.
 if ( 'build' === getenv( 'LOCAL_DIR' ) ) {
