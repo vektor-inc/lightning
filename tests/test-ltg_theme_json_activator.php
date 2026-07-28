@@ -19,15 +19,6 @@ class LTG_Theme_Json_Activator_Test extends WP_UnitTestCase {
 	private static $original_theme_json_file_name = '';
 
 	/**
-	 * テストの過程で存在し得る theme.json 系ファイルの名前
-	 * リポジトリが追跡しているのは theme.json だが、
-	 * 無効化状態では _theme.json 、ファイル無し状態のテストでは no_theme.json になる
-	 *
-	 * @var string[]
-	 */
-	private static $theme_json_file_names = array( 'theme.json', '_theme.json', 'no_theme.json' );
-
-	/**
 	 * テストクラス実行前にファイル名の初期状態を記録する
 	 *
 	 * @return void
@@ -53,15 +44,14 @@ class LTG_Theme_Json_Activator_Test extends WP_UnitTestCase {
 	/**
 	 * 現在存在している theme.json 系ファイルの名前を取得する
 	 *
+	 * ファイル名の一覧と検出・復元のアルゴリズムは tests/theme-json-guard.php に
+	 * 一本化してある。ここで再実装すると、ファイル名を変えたときに片方だけ直して
+	 * 乖離するため、必ず委譲すること。
+	 *
 	 * @return string : 見つかったファイル名。見つからない場合は空文字.
 	 */
 	private static function detect_theme_json_file_name() {
-		foreach ( self::$theme_json_file_names as $file_name ) {
-			if ( is_readable( get_template_directory() . '/' . $file_name ) ) {
-				return $file_name;
-			}
-		}
-		return '';
+		return ltg_test_detect_theme_json_file_name( get_template_directory() );
 	}
 
 	/**
@@ -70,23 +60,7 @@ class LTG_Theme_Json_Activator_Test extends WP_UnitTestCase {
 	 * @return void
 	 */
 	private static function restore_theme_json() {
-		// 初期状態が記録できていない場合は何もしない（誤ってリネームしないため）.
-		if ( '' === self::$original_theme_json_file_name ) {
-			return;
-		}
-
-		$original_path = get_template_directory() . '/' . self::$original_theme_json_file_name;
-
-		// すでに初期状態なら何もしない.
-		if ( is_readable( $original_path ) ) {
-			return;
-		}
-
-		// 現在のファイル名を探して初期状態のファイル名に戻す.
-		$current_file_name = self::detect_theme_json_file_name();
-		if ( '' !== $current_file_name ) {
-			rename( get_template_directory() . '/' . $current_file_name, $original_path );
-		}
+		ltg_test_restore_theme_json_file_name( get_template_directory(), self::$original_theme_json_file_name );
 	}
 
 	/**
