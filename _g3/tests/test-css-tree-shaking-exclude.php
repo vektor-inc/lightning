@@ -18,18 +18,37 @@ use VektorInc\VK_CSS_Optimize\CSS_tree_shaking;
 class CSS_Tree_Shaking_Exclude_Test extends WP_UnitTestCase {
 
 	/**
+	 * class-css-tree-shaking.php の相対パス.
+	 *
+	 * PSR-4 のファイル命名規則に沿っていないため composer のオートロードでは
+	 * 読み込まれない。ライブラリ側のファイル配置に依存するため、存在しない場合は
+	 * fatal にせずスキップする。
+	 *
+	 * @var string
+	 */
+	const TREE_SHAKING_FILE = '/../../vendor/vektor-inc/vk-css-optimize/src/class-css-tree-shaking.php';
+
+	/**
+	 * ビルド済み CSS の格納ディレクトリ.
+	 *
+	 * @var string
+	 */
+	const BUILT_CSS_DIR = '/../assets/css/';
+
+	/**
 	 * Lightning のスライダーが出力するマークアップ相当の最小 HTML.
 	 *
-	 * class-ltg-g3-slider.php の get_slide_html() が出力する構造に合わせている。
+	 * class-ltg-g3-slider.php の get_slide_html() が出力する構造に合わせている
+	 * （swiper が 2 つ並ぶのは 1 つ目が接頭辞と結合されるための実装どおりの姿）。
 	 * swiper-navigation-icon は JS が後から注入するクラスのため、
 	 * サーバー出力を模した以下の HTML には意図的に含めていない。
 	 *
 	 * @var string
 	 */
 	const SLIDER_HTML = '<html><body>'
-		. '<div class="swiper swiper-container ltg-slide">'
+		. '<div class="swiper swiper swiper-container ltg-slide">'
 		. '<div class="swiper-wrapper ltg-slide-inner">'
-		. '<div class="swiper-slide item"></div>'
+		. '<div class="swiper-slide item-1"></div>'
 		. '</div>'
 		. '<div class="swiper-pagination swiper-pagination-white"></div>'
 		. '<div class="ltg-slide-button-next swiper-button-next swiper-button-white"></div>'
@@ -38,21 +57,33 @@ class CSS_Tree_Shaking_Exclude_Test extends WP_UnitTestCase {
 		. '</body></html>';
 
 	/**
+	 * スライダーを出力していないページ相当の HTML.
+	 *
+	 * 除外登録は「そのクラスを無条件に残す」のではなく
+	 * 「そのクラスだけは HTML に無くても許容する」という指定のため、
+	 * 祖先セレクタが HTML に無ければルールは削除される。
+	 *
+	 * @var string
+	 */
+	const NO_SLIDER_HTML = '<html><body>'
+		. '<div class="site-body"><main class="entry-content"></main></div>'
+		. '</body></html>';
+
+	/**
 	 * ツリーシェイキング対象となる CSS（simple_minify 済み相当）.
+	 *
+	 * 矢印スタイルと SP 非表示指定は、_g3/assets/css/style.css の実際のビルド出力を
+	 * そのまま持ってきている（矢印スタイルはカンマ結合形で出力される）。
 	 *
 	 * @var string
 	 */
 	const SLIDER_CSS = '.ltg-slide .swiper-button-next::after{font-size:1.5em}'
-		. '.ltg-slide .swiper-button-next .swiper-navigation-icon{height:1.5em;width:auto}'
-		. '.ltg-slide .swiper-button-prev .swiper-navigation-icon{height:1.5em;width:auto}'
+		. '.ltg-slide .swiper-button-next .swiper-navigation-icon,.ltg-slide .swiper-button-prev .swiper-navigation-icon{height:1.5em;width:auto}'
+		. '@media (max-width:575.98px){.ltg-slide .swiper-button-next,.ltg-slide .swiper-button-prev{display:none}}'
 		. '.ltg-slide .ltg-slide-not-in-html{color:red}';
 
 	/**
 	 * テストの前処理.
-	 *
-	 * class-css-tree-shaking.php は PSR-4 のファイル命名規則に沿っていないため
-	 * composer のオートロードでは読み込まれず、VkCssOptimize 内で必要になった時に
-	 * require_once される。テストからは直接使うためここで読み込んでおく。
 	 *
 	 * @return void
 	 */
@@ -60,8 +91,28 @@ class CSS_Tree_Shaking_Exclude_Test extends WP_UnitTestCase {
 		parent::set_up();
 
 		if ( ! class_exists( CSS_tree_shaking::class ) ) {
-			require_once __DIR__ . '/../../vendor/vektor-inc/vk-css-optimize/src/class-css-tree-shaking.php';
+			$file = __DIR__ . self::TREE_SHAKING_FILE;
+			if ( ! file_exists( $file ) ) {
+				$this->markTestSkipped( 'vk-css-optimize の class-css-tree-shaking.php が見つからないためスキップします : ' . $file );
+			}
+			require_once $file;
 		}
+
+		// 他テストの解析結果を持ち込まないよう無条件にリセットする.
+		$this->reset_tree_shaking_cache();
+	}
+
+	/**
+	 * テストの後処理.
+	 *
+	 * extended_minify() が例外を投げた場合ループ内のリセットが実行されず
+	 * static が汚染されたまま残るため、ここでも無条件にリセットする.
+	 *
+	 * @return void
+	 */
+	public function tear_down() {
+		$this->reset_tree_shaking_cache();
+		parent::tear_down();
 	}
 
 	/**
@@ -74,6 +125,9 @@ class CSS_Tree_Shaking_Exclude_Test extends WP_UnitTestCase {
 	 * @return void
 	 */
 	private function reset_tree_shaking_cache() {
+		if ( ! class_exists( CSS_tree_shaking::class ) ) {
+			return;
+		}
 		$property = new ReflectionProperty( CSS_tree_shaking::class, 'cmplist' );
 		$property->setAccessible( true );
 		$property->setValue( null, null );
@@ -139,6 +193,71 @@ class CSS_Tree_Shaking_Exclude_Test extends WP_UnitTestCase {
 	}
 
 	/**
+	 * ビルド済み CSS に矢印アイコンのルールが存在するかのテスト.
+	 *
+	 * 除外登録だけをテストしていると _slide.scss の
+	 * .swiper-navigation-icon ルール自体が消された場合に検知できないため、
+	 * ビルド成果物にルールが実在することをここで担保する。
+	 *
+	 * @return void
+	 */
+	public function test_built_css_has_swiper_navigation_icon() {
+
+		print PHP_EOL;
+		print '------------------------------------' . PHP_EOL;
+		print 'built css ( swiper-navigation-icon )' . PHP_EOL;
+		print '------------------------------------' . PHP_EOL;
+
+		// テストの配列.
+		// expected は「そのファイルに矢印アイコンのルールが存在するか」を示す.
+		$test_cases = array(
+			array(
+				'test_condition_name' => 'style.css に矢印アイコンの高さ指定が存在する => 存在する',
+				'conditions'          => array( 'file_name' => 'style.css' ),
+				'expected'            => true,
+			),
+			array(
+				'test_condition_name' => 'style_layout-active.css に矢印アイコンの高さ指定が存在する => 存在する',
+				'conditions'          => array( 'file_name' => 'style_layout-active.css' ),
+				'expected'            => true,
+			),
+			array(
+				'test_condition_name' => 'style-theme-json.css に矢印アイコンの高さ指定が存在する => 存在する',
+				'conditions'          => array( 'file_name' => 'style-theme-json.css' ),
+				'expected'            => true,
+			),
+		);
+
+		// .ltg-slide 配下の .swiper-navigation-icon に height が指定されたルールにマッチさせる.
+		$pattern = '/\.ltg-slide[^{}]*\.swiper-navigation-icon[^{}]*\{[^{}]*height:\s*1\.5em/';
+
+		$tested = 0;
+
+		foreach ( $test_cases as $case ) {
+
+			$file = __DIR__ . self::BUILT_CSS_DIR . $case['conditions']['file_name'];
+
+			// ビルド済み CSS が無い環境ではスキップする.
+			if ( ! file_exists( $file ) ) {
+				print $case['conditions']['file_name'] . ' : not built ( skip )' . PHP_EOL;
+				continue;
+			}
+
+			$css    = file_get_contents( $file ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+			$result = (bool) preg_match( $pattern, $css );
+
+			print $case['conditions']['file_name'] . ' : ' . var_export( $result, true ) . ' / correct = ' . var_export( $case['expected'], true ) . PHP_EOL;
+			$this->assertSame( $case['expected'], $result, $case['test_condition_name'] );
+
+			++$tested;
+		}
+
+		if ( ! $tested ) {
+			$this->markTestSkipped( 'ビルド済み CSS が存在しないためスキップします : ' . __DIR__ . self::BUILT_CSS_DIR );
+		}
+	}
+
+	/**
 	 * 実際にツリーシェイキングを通した際にスライダー矢印のスタイルが残るかのテスト.
 	 *
 	 * 同梱の vk-css-optimize はツリーシェイキングを強制無効化しているが、
@@ -153,27 +272,49 @@ class CSS_Tree_Shaking_Exclude_Test extends WP_UnitTestCase {
 		print 'CSS_tree_shaking::extended_minify() ( swiper-navigation-icon )' . PHP_EOL;
 		print '------------------------------------' . PHP_EOL;
 
+		$icon_rule  = '.ltg-slide .swiper-button-next .swiper-navigation-icon,.ltg-slide .swiper-button-prev .swiper-navigation-icon{height:1.5em;width:auto}';
+		$media_rule = '.ltg-slide .swiper-button-next,.ltg-slide .swiper-button-prev{display:none}';
+
 		// テストの配列.
 		// expected は「そのルールがシェイキング後に残るか」を CSS ルール単位で示す.
 		$test_cases = array(
 			array(
-				'test_condition_name' => '除外フィルタが有効な場合 => JS 注入クラスの矢印スタイルが残る',
-				'conditions'          => array( 'exclude_filter' => true ),
+				'test_condition_name' => '除外フィルタが有効でスライダーが出力されている場合 => JS 注入クラスの矢印スタイルが残る',
+				'conditions'          => array(
+					'exclude_filter' => true,
+					'html'           => self::SLIDER_HTML,
+				),
 				'expected'            => array(
-					'.ltg-slide .swiper-button-next .swiper-navigation-icon{height:1.5em;width:auto}' => true,
-					'.ltg-slide .swiper-button-prev .swiper-navigation-icon{height:1.5em;width:auto}' => true,
-					'.ltg-slide .swiper-button-next::after{font-size:1.5em}'                          => true,
-					'.ltg-slide .ltg-slide-not-in-html{color:red}'                                    => false,
+					$icon_rule  => true,
+					$media_rule => true,
+					'.ltg-slide .swiper-button-next::after{font-size:1.5em}' => true,
+					'.ltg-slide .ltg-slide-not-in-html{color:red}' => false,
+				),
+			),
+			array(
+				'test_condition_name' => '除外フィルタが有効でもスライダーが出力されていない場合 => 祖先セレクタが無いので矢印スタイルは削除される',
+				'conditions'          => array(
+					'exclude_filter' => true,
+					'html'           => self::NO_SLIDER_HTML,
+				),
+				'expected'            => array(
+					$icon_rule  => false,
+					$media_rule => false,
+					'.ltg-slide .swiper-button-next::after{font-size:1.5em}' => false,
+					'.ltg-slide .ltg-slide-not-in-html{color:red}' => false,
 				),
 			),
 			array(
 				'test_condition_name' => '除外フィルタを解除した場合（陰性の対照） => JS 注入クラスの矢印スタイルが削除される',
-				'conditions'          => array( 'exclude_filter' => false ),
+				'conditions'          => array(
+					'exclude_filter' => false,
+					'html'           => self::SLIDER_HTML,
+				),
 				'expected'            => array(
-					'.ltg-slide .swiper-button-next .swiper-navigation-icon{height:1.5em;width:auto}' => false,
-					'.ltg-slide .swiper-button-prev .swiper-navigation-icon{height:1.5em;width:auto}' => false,
-					'.ltg-slide .swiper-button-next::after{font-size:1.5em}'                          => true,
-					'.ltg-slide .ltg-slide-not-in-html{color:red}'                                    => false,
+					$icon_rule  => false,
+					$media_rule => true,
+					'.ltg-slide .swiper-button-next::after{font-size:1.5em}' => true,
+					'.ltg-slide .ltg-slide-not-in-html{color:red}' => false,
 				),
 			),
 		);
@@ -189,7 +330,7 @@ class CSS_Tree_Shaking_Exclude_Test extends WP_UnitTestCase {
 			$this->reset_tree_shaking_cache();
 
 			// ツリーシェイキング実行.
-			$actual = CSS_tree_shaking::extended_minify( self::SLIDER_CSS, self::SLIDER_HTML );
+			$actual = CSS_tree_shaking::extended_minify( self::SLIDER_CSS, $case['conditions']['html'] );
 
 			// 除外フィルタを元に戻す.
 			if ( ! $case['conditions']['exclude_filter'] ) {
