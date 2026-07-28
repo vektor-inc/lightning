@@ -39,7 +39,7 @@ vk-develop@vektor-inc.co.jp
 
 [ Spec Change ] Update vektor-inc/font-awesome-versions from 0.7.4 to 0.7.5
 [ G3 ][ Spec Change ] Update vektor-inc/vk-swiper from 0.3.6 to 0.4.0, updating the bundled Swiper from 11.2.10 to 14.0.6. The slider arrow button box changes from 27x44px to 44x44px and its default side offset from 10px to 4px
-[ G3 ][ Spec Change ] Change the top page slider arrow to the SVG injected by Swiper v12 and later. Custom CSS targeting .swiper-button-prev:after / .swiper-button-next:after should target .swiper-navigation-icon instead, and size it with height rather than font-size
+[ G3 ][ Spec Change ] Change the top page slider arrow to the SVG injected by Swiper v12 and later. Custom CSS for .swiper-button-prev:after / .swiper-button-next:after still applies when Swiper 11 is loaded by another plugin, so keep it and add rules for .swiper-button-prev .swiper-navigation-icon / .swiper-button-next .swiper-navigation-icon, sized with height and width: auto instead of font-size
 [ G3 ][ Spec Change ] Hide the top page slider arrow buttons themselves on screens narrower than 576px, where only the arrow glyph used to be hidden
 [ G2 ][ Bug Fix ] Fix undefined array key warning logged on PHP 8 or later when saving the Full Wide Title widget with the text shadow checkbox unchecked
 [ G2 ][ Bug Fix ] Fix undefined array key warning logged on PHP 8 or later when displaying the Full Wide Title widget in the block-based widget editor preview
