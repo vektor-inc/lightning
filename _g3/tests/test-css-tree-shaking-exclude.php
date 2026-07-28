@@ -234,7 +234,6 @@ class CSS_Tree_Shaking_Exclude_Test extends WP_UnitTestCase {
 		$tested = 0;
 
 		foreach ( $test_cases as $case ) {
-
 			$file = __DIR__ . self::BUILT_CSS_DIR . $case['conditions']['file_name'];
 
 			// ビルド済み CSS が無い環境ではスキップする.

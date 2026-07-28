@@ -32,12 +32,14 @@
 	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
 		<properties>
 			<!-- グローバルに定義する関数・クラス・変数の接頭辞.
-				 lightning は lightning_* / Lightning_*、ltg は ltg_* / LTG_* を対象とする（大文字小文字は区別されない）. -->
+				 lightning_ は lightning_* / Lightning_*、ltg_ は ltg_* / LTG_* を対象とする（大文字小文字は区別されない）. -->
 			<property name="prefixes" type="array">
-				<element value="lightning"/>
+				<element value="lightning_"/>
 				<element value="ltg_"/>
 			</property>
 		</properties>
+		<!-- テストクラス・テストメソッドは PHPUnit の命名規約に従うため対象外とする. -->
+		<exclude-pattern>/tests/</exclude-pattern>
 	</rule>
 	<rule ref="WordPress.WP.I18n">
 		<properties>
@@ -68,15 +70,14 @@
 		<severity>0</severity>
 	</rule>
 
-	<!-- テストコードでは、失敗時の診断のために出力系の関数を使うため対象外とする. -->
-	<rule ref="WordPress.Security.EscapeOutput">
+	<!-- テストコードでは、失敗時の診断のために出力系の関数を使うため対象外とする.
+		 なお /tests/ は部分一致のため、tests/ ・ _g2/tests/ ・ _g3/tests/ の 3 箇所すべてに効く.
+		 例外メッセージのエスケープ（ExceptionNotEscaped）は診断出力とは別なので、対象外にするのは
+		 OutputNotEscaped だけに絞る. -->
+	<rule ref="WordPress.Security.EscapeOutput.OutputNotEscaped">
 		<exclude-pattern>/tests/</exclude-pattern>
 	</rule>
 	<rule ref="WordPress.PHP.DevelopmentFunctions">
-		<exclude-pattern>/tests/</exclude-pattern>
-	</rule>
-	<!-- テストクラス・テストメソッドは PHPUnit の命名規約に従うため接頭辞の対象外とする. -->
-	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
 		<exclude-pattern>/tests/</exclude-pattern>
 	</rule>
 </ruleset>
