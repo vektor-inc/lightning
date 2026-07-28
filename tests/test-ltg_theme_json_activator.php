@@ -144,7 +144,6 @@ class LTG_Theme_Json_Activator_Test extends WP_UnitTestCase {
 		print '------------------------------------' . PHP_EOL;
 
 		foreach ( $test_array as $key => $value ) {
-
 			if ( ! empty( $value['lightning_theme_options'] ) ) {
 				update_option( 'lightning_theme_options', $value['lightning_theme_options'] );
 			} else {
@@ -250,7 +249,6 @@ class LTG_Theme_Json_Activator_Test extends WP_UnitTestCase {
 
 			$actual = is_readable( get_template_directory() . '/' . $value['expacted'] );
 			$this->assertTrue( $actual );
-
 		}
 		// 後片付けは tear_down() の restore_theme_json() が行う.
 	}
