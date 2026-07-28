@@ -12,6 +12,9 @@
 
 use VektorInc\VK_CSS_Optimize\CSS_tree_shaking;
 
+/**
+ * Class CSS_Tree_Shaking_Exclude_Test
+ */
 class CSS_Tree_Shaking_Exclude_Test extends WP_UnitTestCase {
 
 	/**

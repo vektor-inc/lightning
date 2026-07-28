@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<ruleset name="WordPress Coding Standards based custom ruleset for your plugin">
-	<description>Generally-applicable sniffs for WordPress plugins.</description>
+<ruleset name="Lightning">
+	<description>WordPress コーディング規約をベースにした Lightning 用のルールセット。</description>
 
 	<!-- What to scan -->
 	<file>.</file>
@@ -18,30 +18,65 @@
 
 	<!-- Rules: Check PHP version compatibility -->
 	<!-- https://github.com/PHPCompatibility/PHPCompatibility#sniffing-your-code-for-compatibility-with-specific-php-versions -->
-	<config name="testVersion" value="5.6-"/>
+	<!-- style.css の Requires PHP に合わせる. -->
+	<config name="testVersion" value="7.4-"/>
 	<!-- https://github.com/PHPCompatibility/PHPCompatibilityWP -->
 	<rule ref="PHPCompatibilityWP"/>
 
 	<!-- Rules: WordPress Coding Standards -->
 	<!-- https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards -->
 	<!-- https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/wiki/Customizable-sniff-properties -->
-	<config name="minimum_supported_wp_version" value="4.6"/>
+	<!-- style.css の Requires at least に合わせる. -->
+	<config name="minimum_supported_wp_version" value="6.5"/>
 	<rule ref="WordPress"/>
 	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
 		<properties>
-			<!-- Value: replace the function, class, and variable prefixes used. Separate multiple prefixes with a comma. -->
-			<property name="prefixes" type="array" value="my-plugin"/>
+			<!-- グローバルに定義する関数・クラス・変数の接頭辞.
+				 lightning は lightning_* / Lightning_*、ltg は ltg_* / LTG_* を対象とする（大文字小文字は区別されない）. -->
+			<property name="prefixes" type="array">
+				<element value="lightning"/>
+				<element value="ltg_"/>
+			</property>
 		</properties>
 	</rule>
 	<rule ref="WordPress.WP.I18n">
 		<properties>
-			<!-- Value: replace the text domain used. -->
-			<property name="text_domain" type="array" value="my-plugin"/>
+			<!-- style.css の Text Domain に合わせる. -->
+			<property name="text_domain" type="array">
+				<element value="lightning"/>
+			</property>
 		</properties>
 	</rule>
 	<rule ref="WordPress.WhiteSpace.ControlStructureSpacing">
 		<properties>
 			<property name="blank_line_check" value="true"/>
 		</properties>
+	</rule>
+
+	<!-- コメントは日本語で書く方針のため、英文を前提とした「大文字で始めること」の検査は無効化する.
+		 日本語には大文字小文字の区別が無く、原理的に満たせないため. -->
+	<rule ref="Generic.Commenting.DocComment.ShortNotCapital">
+		<severity>0</severity>
+	</rule>
+	<rule ref="Generic.Commenting.DocComment.LongNotCapital">
+		<severity>0</severity>
+	</rule>
+	<rule ref="Squiz.Commenting.BlockComment.NoCapital">
+		<severity>0</severity>
+	</rule>
+	<rule ref="Squiz.Commenting.InlineComment.NotCapital">
+		<severity>0</severity>
+	</rule>
+
+	<!-- テストコードでは、失敗時の診断のために出力系の関数を使うため対象外とする. -->
+	<rule ref="WordPress.Security.EscapeOutput">
+		<exclude-pattern>/tests/</exclude-pattern>
+	</rule>
+	<rule ref="WordPress.PHP.DevelopmentFunctions">
+		<exclude-pattern>/tests/</exclude-pattern>
+	</rule>
+	<!-- テストクラス・テストメソッドは PHPUnit の命名規約に従うため接頭辞の対象外とする. -->
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<exclude-pattern>/tests/</exclude-pattern>
 	</rule>
 </ruleset>
