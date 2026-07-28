@@ -109,7 +109,8 @@ class CSS_Tree_Shaking_Exclude_Test extends WP_UnitTestCase {
 		$this->reset_tree_shaking_cache();
 
 		// 陰性の対照で外したまま後続テストへ漏れないよう、重複登録を避けつつ戻す.
-		if ( ! has_filter( 'css_tree_shaking_exclude', 'lightning_css_tree_shaking_exclude_class' ) ) {
+		// has_filter() は優先度 0 で登録されていると 0 を返すため、真偽ではなく false と比較する.
+		if ( false === has_filter( 'css_tree_shaking_exclude', 'lightning_css_tree_shaking_exclude_class' ) ) {
 			add_filter( 'css_tree_shaking_exclude', 'lightning_css_tree_shaking_exclude_class' );
 		}
 
@@ -134,6 +135,11 @@ class CSS_Tree_Shaking_Exclude_Test extends WP_UnitTestCase {
 			$this->markTestSkipped( 'vk-css-optimize の class-css-tree-shaking.php が見つからないためスキップします : ' . $file );
 		}
 		require_once $file;
+
+		// ファイルはあるが名前空間やクラス名が変わっている場合、fatal にせずスキップする.
+		if ( ! class_exists( CSS_tree_shaking::class, false ) ) {
+			$this->markTestSkipped( '読み込みましたが CSS_tree_shaking が定義されていないためスキップします : ' . $file );
+		}
 	}
 
 	/**
@@ -170,6 +176,13 @@ class CSS_Tree_Shaking_Exclude_Test extends WP_UnitTestCase {
 					}
 				}
 				++$end;
+			}
+
+			// 対応する閉じ波括弧を見つけられなかった場合、ここで採用すると
+			// メディアクエリの外側まで抽出してしまい、外にある display:none で
+			// 判定が通ってしまう（黙って false pass する）。採用せず捨てる.
+			if ( 0 !== $depth ) {
+				continue;
 			}
 
 			$result .= substr( $css, $start, $end - $start );
@@ -301,11 +314,9 @@ class CSS_Tree_Shaking_Exclude_Test extends WP_UnitTestCase {
 
 		// テストの配列.
 		// expected は「そのファイルに各ルールが存在するか」をルール単位で示す.
-		$expected_all_exists = array(
-			'v12以降のSVG矢印の高さ ( .swiper-navigation-icon { height: 1.5em } )' => true,
-			'v11フォールバックの矢印サイズ ( ::after { font-size: 1.5em } )' => true,
-			'SP幅での矢印非表示 ( @media (max-width:575.98px) の display: none )' => true,
-		);
+		// キーを手で並べ直すと $rule_patterns とズレて Undefined array key になるため、
+		// ルール名は $rule_patterns から生成する.
+		$expected_all_exists = array_fill_keys( array_keys( $rule_patterns ), true );
 
 		$test_cases = array(
 			array(
