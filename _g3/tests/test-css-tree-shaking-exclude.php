@@ -182,6 +182,9 @@ class CSS_Tree_Shaking_Exclude_Test extends WP_UnitTestCase {
 			// メディアクエリの外側まで抽出してしまい、外にある display:none で
 			// 判定が通ってしまう（黙って false pass する）。採用せず捨てる.
 			if ( 0 !== $depth ) {
+				// 無言で捨てると、落ちた原因が「指定が無い」なのか
+				// 「波括弧を追えなかった」なのか区別できなくなるため記録する.
+				print '  ! 波括弧の対応が取れないメディアクエリを検証対象から除外しました ( offset : ' . $match[1] . ' )' . PHP_EOL;
 				continue;
 			}
 
@@ -317,6 +320,11 @@ class CSS_Tree_Shaking_Exclude_Test extends WP_UnitTestCase {
 		// キーを手で並べ直すと $rule_patterns とズレて Undefined array key になるため、
 		// ルール名は $rule_patterns から生成する.
 		$expected_all_exists = array_fill_keys( array_keys( $rule_patterns ), true );
+
+		// ただし生成にすると、$rule_patterns からルールを消したときに期待値も
+		// 一緒に消えてしまい、検証対象が減ったことに気付けないまま PASS する。
+		// 検証すべきルール数をここで固定しておく.
+		$this->assertCount( 3, $rule_patterns, '検証対象のルールが 3 つ揃っている ( v12以降のSVG / v11の::after / SP非表示 )' );
 
 		$test_cases = array(
 			array(
