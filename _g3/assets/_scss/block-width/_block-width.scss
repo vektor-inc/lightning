@@ -27,11 +27,11 @@ entry-body
 		margin-right:auto;
 	}
 }
-// 下の :is() は詳細度を上げて他の指定に負けないようにするためのリストで、
-// マッチ自体は直前の & （.alignfull 単体）が担っている。
-// Swiper は v8 で .swiper-container を .swiper にリネームしたが、
-// 旧クラス名を出力し続けているマークアップのため .swiper-container も残す。
 .alignfull {
+	// & だけで全ての .alignfull にマッチするため、:is() 側は同じ宣言を詳細度 (0,2,0) で重ねる役割になっている。
+	// css.md の方針どおり :where() で包んで詳細度を下げる対応は、既存レイアウトへの影響が大きいため #1383 で別途検討する。
+	// Swiper は v8 で .swiper-container を .swiper にリネームしたが、
+	// Lightning 自身のスライダーを含め旧クラス名を出力し続けているマークアップがあるため .swiper-container も残す。
 	&,
 	&:is(
 	.swiper,
