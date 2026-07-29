@@ -93,10 +93,27 @@
 			background-color: var(--vk-color-primary);
 		}
 	}
-	.swiper-button-prev:after,
-	.swiper-button-next:after {
-		font-size: 1.5em;
-		@media (max-width: $xs-max) {
+
+	/* ナビゲーション矢印
+	   ========================================================================== */
+
+	// 矢印は v11 まではアイコンフォントのグリフ、v12 以降は JS が注入する SVG。
+	// 他プラグインが先に v11 を読み込む場合があるため両方に同じ高さ（1.5em）を指定する。
+	.swiper-button-prev,
+	.swiper-button-next {
+		&::after {
+			font-size: 1.5em;
+		}
+		.swiper-navigation-icon {
+			height: 1.5em;
+			width: auto;
+		}
+	}
+
+	// グリフが無くなった v12 以降でも効くよう、非表示はボタン自体に指定する。
+	@media (max-width: $xs-max) {
+		.swiper-button-prev,
+		.swiper-button-next {
 			display: none;
 		}
 	}
