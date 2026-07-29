@@ -8,7 +8,7 @@
 	convertWarningsToExceptions="true"
 	>
 	<testsuites>
-		<testsuite>
+		<testsuite name="test-targets">
 			<directory prefix="test-" suffix=".php">./vendor/vektor-inc/vk-wp-unit-test-tools/src/tests/</directory>
 			<directory prefix="test-" suffix=".php">./_g3/tests/</directory>
 		</testsuite>
