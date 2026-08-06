@@ -66,12 +66,15 @@
 	<rule ref="Squiz.Commenting.BlockComment.NoCapital">
 		<severity>0</severity>
 	</rule>
-	<rule ref="Squiz.Commenting.InlineComment.NotCapital">
-		<severity>0</severity>
-	</rule>
+	<!-- Squiz.Commenting.InlineComment.NotCapital は WordPress-Docs の ruleset が
+		 既に exclude しているため、ここで無効化しても検出件数は変わらない。
+		 二重に書くと「効いている」と誤解されるので指定しない. -->
 
 	<!-- テストコードでは、失敗時の診断のために出力系の関数を使うため対象外とする.
-		 なお /tests/ は部分一致のため、tests/ ・ _g2/tests/ ・ _g3/tests/ の 3 箇所すべてに効く.
+		 なお exclude-pattern はファイルの絶対パスに対する非アンカーの正規表現として当たるため、
+		 /tests/ はリポジトリ内の tests/ ・ _g2/tests/ ・ _g3/tests/ の 3 箇所すべてに効く。
+		 チェックアウト先の親ディレクトリ名に tests が含まれる場合はリポジトリ全体が除外されるので、
+		 そのような場所には配置しないこと.
 		 例外メッセージのエスケープ（ExceptionNotEscaped）は診断出力とは別なので、対象外にするのは
 		 OutputNotEscaped だけに絞る. -->
 	<rule ref="WordPress.Security.EscapeOutput.OutputNotEscaped">
