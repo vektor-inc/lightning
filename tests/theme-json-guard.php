@@ -12,9 +12,9 @@
  * @package vektor-inc/lightning
  */
 
-// このファイルはリリース zip の tests/ にも同梱され、公開サイト上で URL から
-// 直接叩ける位置に置かれる。読み込むだけでファイル操作を登録するため、
-// CLI（PHPUnit）以外では何もせずに終了する.
+// 読み込むだけでファイル操作を登録するため、CLI（PHPUnit）以外では何もせずに終了する。
+// 現状 tests/ は copy-files.js の excludedPaths でリリース zip から除外されており
+// 公開サイトに置かれることはないが、除外設定が変わった場合の保険として残す.
 if ( 'cli' !== PHP_SAPI && 'phpdbg' !== PHP_SAPI ) {
 	return;
 }
@@ -81,7 +81,11 @@ if ( ! function_exists( 'ltg_test_restore_theme_json_file_name' ) ) {
 			return '';
 		}
 
-		rename( $theme_dir . '/' . $current_file_name, $original_path );
+		// リネームに失敗した場合に戻す前のファイル名を返すと、実際には戻せていないのに
+		// 「戻しました」と警告が出て事実と食い違うため、成功したときだけ返す.
+		if ( ! rename( $theme_dir . '/' . $current_file_name, $original_path ) ) {
+			return '';
+		}
 		return $current_file_name;
 	}
 }
