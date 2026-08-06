@@ -83,7 +83,16 @@ if ( ! function_exists( 'ltg_test_restore_theme_json_file_name' ) ) {
 
 		// リネームに失敗した場合に戻す前のファイル名を返すと、実際には戻せていないのに
 		// 「戻しました」と警告が出て事実と食い違うため、成功したときだけ返す.
+		// ただし無言で返すと復元できていないことに誰も気付けないため、
+		// 失敗したこと自体は STDERR に出す（戻せていない＝最も危険な状態のため）.
 		if ( ! rename( $theme_dir . '/' . $current_file_name, $original_path ) ) {
+			if ( defined( 'STDERR' ) ) {
+				fwrite(
+					STDERR,
+					PHP_EOL . '[theme-json-guard] ' . $current_file_name . ' を ' . $original_file_name
+						. ' に戻せませんでした。リポジトリの状態が変わったままなので手動で戻してください。' . PHP_EOL
+				);
+			}
 			return '';
 		}
 		return $current_file_name;
