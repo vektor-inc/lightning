@@ -98,22 +98,25 @@
 	   ========================================================================== */
 
 	// 矢印は v11 まではアイコンフォントのグリフ、v12 以降は JS が注入する SVG。
-	// 他プラグインが先に v11 を読み込む場合があるため両方に同じ高さ（1.5em）を指定する。
+	// 他プラグインが先に v11 を読み込む場合があるため、どちらの描画方式にも同じ寸法を指定する。
+	// 寸法は .ltg-slide 側の変数に持たせ、追加 CSS からの上書きが 1 箇所で
+	// 新旧どちらの描画方式にも効くようにする（別々に書かせると片方だけ変わる）。
+	// & で包んでいるのは、ネストされたルールの後に宣言を置くと Sass が
+	// mixed-decls の警告を出すため。
+	& {
+		--ltg-slide-navigation-size: 1.5em;
+	}
 	.swiper-button-prev,
 	.swiper-button-next {
 		&::after {
-			font-size: 1.5em;
+			font-size: var(--ltg-slide-navigation-size);
 		}
 		.swiper-navigation-icon {
-			height: 1.5em;
+			height: var(--ltg-slide-navigation-size);
 			width: auto;
 		}
-	}
-
-	// グリフが無くなった v12 以降でも効くよう、非表示はボタン自体に指定する。
-	@media (max-width: $xs-max) {
-		.swiper-button-prev,
-		.swiper-button-next {
+		// グリフが無くなった v12 以降でも効くよう、非表示はボタン自体に指定する。
+		@media (max-width: $xs-max) {
 			display: none;
 		}
 	}

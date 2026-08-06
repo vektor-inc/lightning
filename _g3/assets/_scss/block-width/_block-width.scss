@@ -30,11 +30,12 @@ entry-body
 .alignfull {
 	// & だけで全ての .alignfull にマッチするため、:is() 側は同じ宣言を詳細度 (0,2,0) で重ねる役割になっている。
 	// css.md の方針どおり :where() で包んで詳細度を下げる対応は、既存レイアウトへの影響が大きいため #1383 で別途検討する。
-	// Swiper は v8 で .swiper-container を .swiper にリネームしたが、
-	// Lightning 自身のスライダーを含め旧クラス名を出力し続けているマークアップがあるため .swiper-container も残す。
+	// Swiper は v8 で .swiper-container を .swiper にリネームしたが、Lightning 自身のスライダーは
+	// 旧クラス名も併せて出力し続けているため、ここは .swiper-container のままで足りる。
+	// 現行名 .swiper を足す案は、alignfull と swiper を同一要素に持つマークアップが見つからず、
+	// 詳細度だけ上げて利用者の .swiper への上書きを打ち消す副作用が残るため採用しない。
 	&,
 	&:is(
-	.swiper,
 	.swiper-container,
 	.vk_slider,
 	.wp-block-image,
