@@ -72,8 +72,11 @@ class CSS_Tree_Shaking_Exclude_Test extends WP_UnitTestCase {
 	/**
 	 * ツリーシェイキング対象となる CSS（simple_minify 済み相当）.
 	 *
-	 * 矢印スタイルと SP 非表示指定は、_g3/assets/css/style.css の実際のビルド出力を
-	 * そのまま持ってきている（矢印スタイルはカンマ結合形で出力される）。
+	 * ここで検証したいのは「セレクタがシェイキングで残るか消えるか」だけなので、
+	 * ビルド出力そのものではなく、構造だけを写した固定の fixture として持つ
+	 * （宣言の値をビルド出力に追随させる必要は無い。ビルド出力にルールが実在するかは
+	 * test_built_css_has_swiper_navigation_icon() が別途担保している）。
+	 * セレクタの形（矢印スタイルがカンマ結合で出力される点）はビルド出力に合わせている。
 	 *
 	 * @var string
 	 */
@@ -278,12 +281,14 @@ class CSS_Tree_Shaking_Exclude_Test extends WP_UnitTestCase {
 	 * 消された場合に検知できないため、ビルド成果物にルールが
 	 * 実在することをここで担保する。
 	 *
-	 * 本 PR の仕様変更の核は以下の 3 つで、どれか 1 つでも欠けると
-	 * 矢印の表示が壊れるため、3 つすべてを検証する。
+	 * 本 PR の仕様変更の核は以下の 4 つで、どれか 1 つでも欠けると
+	 * 矢印の表示が壊れるため、4 つすべてを検証する。
 	 *
 	 * 1. .swiper-navigation-icon の height ( Swiper v12 以降の SVG 矢印 )
 	 * 2. ::after の font-size ( Swiper v11 のアイコンフォント矢印のフォールバック )
 	 * 3. SP 幅での矢印非表示 ( ボタン自体に display: none )
+	 * 4. --ltg-slide-arrow-size の既定値の定義
+	 *    ( 1・2 は変数を参照しているだけなので、定義が消えると寸法が効かなくなる )
 	 *
 	 * @return void
 	 */
@@ -297,21 +302,26 @@ class CSS_Tree_Shaking_Exclude_Test extends WP_UnitTestCase {
 		// 検証するルールの定義（キーは expected 配列のキーと対応する）.
 		// scope が 'sp_media' のものは @media (max-width:575.98px) の中身のみを対象にする.
 		//
-		// 注意 : パターン中の 1.5em は _g3/assets/_scss/components/_slide.scss の
-		// 指定値と二重管理になっている。SCSS 側の値を変更した場合は
-		// このパターンの数値も合わせて修正すること（修正しないとテストが落ちる）.
+		// 矢印の寸法は _slide.scss で --ltg-slide-arrow-size に集約されているため、
+		// 具体的な数値ではなく変数名で照合する。数値で照合すると、追加 CSS からの
+		// 上書きを 1 箇所で効かせるという仕様が壊れてもテストが気付けないうえ、
+		// 既定値を変えるたびにテストの修正が必要になるため.
 		$rule_patterns = array(
-			'v12以降のSVG矢印の高さ ( .swiper-navigation-icon { height: 1.5em } )' => array(
+			'v12以降のSVG矢印の高さ ( .swiper-navigation-icon { height: var(--ltg-slide-arrow-size) } )' => array(
 				'scope'   => 'all',
-				'pattern' => '/\.ltg-slide[^{}]*\.swiper-navigation-icon[^{}]*\{[^{}]*height:\s*1\.5em/',
+				'pattern' => '/\.ltg-slide[^{}]*\.swiper-navigation-icon[^{}]*\{[^{}]*height:\s*var\(\s*--ltg-slide-arrow-size\s*\)/',
 			),
-			'v11フォールバックの矢印サイズ ( ::after { font-size: 1.5em } )' => array(
+			'v11フォールバックの矢印サイズ ( ::after { font-size: var(--ltg-slide-arrow-size) } )' => array(
 				'scope'   => 'all',
-				'pattern' => '/\.ltg-slide[^{}]*\.swiper-button-(?:next|prev)::after[^{}]*\{[^{}]*font-size:\s*1\.5em/',
+				'pattern' => '/\.ltg-slide[^{}]*\.swiper-button-(?:next|prev)::after[^{}]*\{[^{}]*font-size:\s*var\(\s*--ltg-slide-arrow-size\s*\)/',
 			),
 			'SP幅での矢印非表示 ( @media (max-width:575.98px) の display: none )' => array(
 				'scope'   => 'sp_media',
 				'pattern' => '/\.ltg-slide[^{}]*\.swiper-button-(?:next|prev)[^{}]*\{[^{}]*display:\s*none/',
+			),
+			'矢印サイズ変数の既定値 ( .ltg-slide { --ltg-slide-arrow-size } )' => array(
+				'scope'   => 'all',
+				'pattern' => '/\.ltg-slide[^{}]*\{[^{}]*--ltg-slide-arrow-size:\s*[^;}]+/',
 			),
 		);
 
@@ -324,36 +334,33 @@ class CSS_Tree_Shaking_Exclude_Test extends WP_UnitTestCase {
 		// ただし生成にすると、$rule_patterns からルールを消したときに期待値も
 		// 一緒に消えてしまい、検証対象が減ったことに気付けないまま PASS する。
 		// 検証すべきルール数をここで固定しておく.
-		$this->assertCount( 3, $rule_patterns, '検証対象のルールが 3 つ揃っている ( v12以降のSVG / v11の::after / SP非表示 )' );
+		$this->assertCount( 4, $rule_patterns, '検証対象のルールが 4 つ揃っている ( v12以降のSVG / v11の::after / SP非表示 / 矢印サイズ変数 )' );
 
 		$test_cases = array(
 			array(
-				'test_condition_name' => 'style.css にスライダー矢印の指定が存在する => 3 つとも存在する',
+				'test_condition_name' => 'style.css にスライダー矢印の指定が存在する => 4 つとも存在する',
 				'conditions'          => array( 'file_name' => 'style.css' ),
 				'expected'            => $expected_all_exists,
 			),
 			array(
-				'test_condition_name' => 'style_layout-active.css にスライダー矢印の指定が存在する => 3 つとも存在する',
+				'test_condition_name' => 'style_layout-active.css にスライダー矢印の指定が存在する => 4 つとも存在する',
 				'conditions'          => array( 'file_name' => 'style_layout-active.css' ),
 				'expected'            => $expected_all_exists,
 			),
 			array(
-				'test_condition_name' => 'style-theme-json.css にスライダー矢印の指定が存在する => 3 つとも存在する',
+				'test_condition_name' => 'style-theme-json.css にスライダー矢印の指定が存在する => 4 つとも存在する',
 				'conditions'          => array( 'file_name' => 'style-theme-json.css' ),
 				'expected'            => $expected_all_exists,
 			),
 		);
 
-		$tested = 0;
-
 		foreach ( $test_cases as $case ) {
 			$file = __DIR__ . self::BUILT_CSS_DIR . $case['conditions']['file_name'];
 
-			// ビルド済み CSS が無い環境ではスキップする.
-			if ( ! file_exists( $file ) ) {
-				print $case['conditions']['file_name'] . ' : not built ( skip )' . PHP_EOL;
-				continue;
-			}
+			// この 3 ファイルは git 管理下で常に存在する。無い場合はビルド成果物の
+			// 欠落そのものが異常なので、黙ってスキップせず失敗させる
+			// （スキップにすると検証対象が減ったことに気付けないまま緑になる）.
+			$this->assertFileExists( $file, 'ビルド済み CSS が存在する : ' . $case['conditions']['file_name'] );
 
 			$css = file_get_contents( $file ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
 
@@ -372,11 +379,6 @@ class CSS_Tree_Shaking_Exclude_Test extends WP_UnitTestCase {
 				$this->assertSame( $should_exist, $result, $case['test_condition_name'] . ' / ' . $rule_name );
 			}
 
-			++$tested;
-		}
-
-		if ( ! $tested ) {
-			$this->markTestSkipped( 'ビルド済み CSS が存在しないためスキップします : ' . __DIR__ . self::BUILT_CSS_DIR );
 		}
 	}
 
@@ -481,6 +483,17 @@ class CSS_Tree_Shaking_Exclude_Test extends WP_UnitTestCase {
 				} else {
 					$this->assertStringNotContainsString( $rule, $actual, $case['test_condition_name'] . ' / 削除されるべきルール : ' . $rule );
 				}
+			}
+
+			// 上の判定はルール全文の一致で見ているため、カンマで結合された
+			// セレクタの片側だけが残った場合（例 : prev 側だけ削除された）を検出できない。
+			// 矢印アイコンのルールが消えるべきケースでは、クラス名単体でも確認する.
+			if ( false === $case['expected'][ $icon_rule ] ) {
+				$this->assertStringNotContainsString(
+					'swiper-navigation-icon',
+					$actual,
+					$case['test_condition_name'] . ' / 矢印アイコンのセレクタが片側も残っていない'
+				);
 			}
 		}
 	}
