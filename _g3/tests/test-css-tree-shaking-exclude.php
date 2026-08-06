@@ -151,6 +151,12 @@ class CSS_Tree_Shaking_Exclude_Test extends WP_UnitTestCase {
 	 * ビルド済み CSS は 1 行に minify されており、単純な正規表現では
 	 * メディアクエリの内側かどうかを判定できないため、波括弧を数えて切り出す.
 	 *
+	 * 前提 : 波括弧はネストの深さの計算にのみ使い、文字列リテラル・url() ・
+	 * コメントの中にある波括弧は区別していない。現在のビルド出力には
+	 * content: "}" のような指定が無いため問題にならないが、将来 SP 用の
+	 * メディアクエリ内にそうした指定が入った場合は深さの計算が狂うため、
+	 * ここを字句解析に置き換える必要がある.
+	 *
 	 * @param string $css 対象の CSS 文字列.
 	 * @return string マッチしたメディアクエリ内の CSS を連結した文字列.
 	 */
@@ -159,6 +165,9 @@ class CSS_Tree_Shaking_Exclude_Test extends WP_UnitTestCase {
 
 		// メディアクエリの開始位置をすべて拾う.
 		if ( ! preg_match_all( '/@media\s*\(\s*max-width:\s*575\.98px\s*\)\s*\{/', $css, $matches, PREG_OFFSET_CAPTURE ) ) {
+			// 無言で空を返すと、後続の判定が落ちたときに「指定が無い」のか
+			// 「ブレークポイントが変わって拾えていない」のか区別できないため記録する.
+			print '  ! SP 用メディアクエリ ( max-width:575.98px ) が見つかりませんでした' . PHP_EOL;
 			return $result;
 		}
 
