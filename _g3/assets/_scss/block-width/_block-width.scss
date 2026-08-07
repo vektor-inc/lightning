@@ -38,6 +38,9 @@ entry-body
 //
 // 注意: リストを消して安全な理由は「& が既に全ての .alignfull / .alignwide に
 // マッチするので冗長」であって、「リストのクラスが誰にもマッチしないから」ではない。
+// 実際、リストにあった .vk_slider / .swiper-container は .swiper と同一要素に付くため、
+// 詳細度を下げると .swiper の指定に負ける。これは下の「スライダーだけ (0,2,0) を
+// 維持する例外」で個別に手当てしてある。
 // 実際に alignfull と同一要素に付くマークアップは存在する。VK Blocks の旧スライダーの
 // 保存済みマークアップは `swiper swiper-container vk_slider … alignfull` を同一要素に
 // 出力する（vk-blocks-pro の blocks/slider/deprecated/save/*）。
@@ -64,6 +67,41 @@ entry-body
 .alignwide {
 	// --vk-width-container != 100% なので注意
 	// Lightningの幅広 = コンテナの「表示エリア（100%）	」 + 左右余白分の丁度半分
+	width: calc( 100% + ( var(--vk-width-full) - 100% ) / 2 );
+	margin-left: calc( ( 100% - var(--vk-width-full) ) / 4 );
+	margin-right: calc( ( 100% - var(--vk-width-full) ) / 4 );
+	max-width: var(--vk-width-full);
+}
+// スライダーだけ詳細度 (0,2,0) を維持する例外
+// -----------------------------------------------------------------------------
+// vk-swiper-style（swiper-bundle.min.css）はテーマ CSS より後に読み込まれ、
+// 同詳細度の .swiper{margin-left:auto;margin-right:auto} がソース順で勝つ。
+// そのため上の (0,1,0) だけにすると、スライダーの全幅は中央寄せに戻されて
+// コンテンツ幅まで縮み、幅広は中央寄せが崩れて右端がビューポート端に張り付く。
+//
+// VK Blocks のスライダーは swiper と vk_slider を「同一要素」に出力する
+// （現行 slider/save.js、旧保存形式は swiper swiper-container vk_slider …）。
+// つまり .vk_slider / .swiper-container を残せば .swiper を持つ要素を拾えるので、
+// リストに .swiper 自体は入れない（.alignfull.swiper 単体の挙動を変えないため。
+// 入れない判断の経緯は #1389 を参照）。
+//
+// 副作用: 利用者が素朴な .alignfull{} / .alignwide{} を書いても、
+// スライダーだけは (0,2,0) に負けて上書きできない。
+// その場合は .alignfull.vk_slider{} のようにクラスを 2 つ書けば上書きできる
+// （!important は不要）。
+.alignfull:is(
+.swiper-container,
+.vk_slider
+) {
+	width:auto; /* Don't use 100svw!! cope with windows */
+	margin-left: calc(50% - 50vw);
+	margin-right: calc(50% - 50vw);
+	max-width: var(--vk-width-full);
+}
+.alignwide:is(
+.swiper-container,
+.vk_slider
+) {
 	width: calc( 100% + ( var(--vk-width-full) - 100% ) / 2 );
 	margin-left: calc( ( 100% - var(--vk-width-full) ) / 4 );
 	margin-right: calc( ( 100% - var(--vk-width-full) ) / 4 );
