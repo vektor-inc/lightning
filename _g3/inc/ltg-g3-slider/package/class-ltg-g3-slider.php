@@ -175,7 +175,13 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 			);
 
 			$paras = wp_parse_args( $paras, $default );
-			$json  = wp_json_encode( $paras );
+
+			/*
+			 * この JSON はインラインスクリプトとしてページに出力されるため、
+			 * 翻訳文に含まれうる < > を JSON_HEX_TAG で < / > にエスケープする。
+			 * JS 側の文字列としての解釈は同一で、セレクタ等の既定値に < > は含まれないため挙動は変わらない。
+			 */
+			$json = wp_json_encode( $paras, JSON_HEX_TAG );
 			return $json;
 		}
 
