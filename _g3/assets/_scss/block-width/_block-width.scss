@@ -41,8 +41,8 @@ entry-body
 // 実際に alignfull と同一要素に付くマークアップは存在する。VK Blocks の旧スライダーの
 // 保存済みマークアップは `swiper swiper-container vk_slider … alignfull` を同一要素に
 // 出力する（vk-blocks-pro の blocks/slider/deprecated/save/*）。
-// Lightning 自身のスライダーの出力は swiper / ltg-slide 系で alignfull は持たない
-// （class-ltg-g3-slider.php）。
+// 一方 Lightning 自身のスライダーの出力は `{prefix}swiper swiper swiper-container ltg-slide` で
+// alignfull は持たない（class-ltg-g3-slider.php）。
 //
 // 詳細度を下げた結果、_layout_base.scss の
 // .main-section--base--on / .sub-section--base--on 配下の指定 (0,2,0) に負けるようになった。
