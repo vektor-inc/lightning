@@ -129,9 +129,12 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 		/**
 		 * Swiper Paramater
 		 *
-		 * @param string $paras paramater.
+		 * 既定値と引数をマージした Swiper の初期化パラメータを配列で返す.
+		 *
+		 * @param array|string $paras paramater.
+		 * @return array Swiper の初期化パラメータ.
 		 */
-		public static function swiper_paras_json( $paras = '' ) {
+		public static function swiper_paras( $paras = '' ) {
 
 			$default = array(
 				'slidesPerView' => 1,
@@ -150,9 +153,58 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 				),
 			);
 
-			$paras = wp_parse_args( $paras, $default );
-			$json  = wp_json_encode( $paras );
-			return $json;
+			return wp_parse_args( $paras, $default );
+		}
+
+		/**
+		 * Swiper Paramater
+		 *
+		 * @param array|string $paras paramater.
+		 * @return string Swiper の初期化パラメータの JSON 文字列.
+		 */
+		public static function swiper_paras_json( $paras = '' ) {
+			return wp_json_encode( self::swiper_paras( $paras ) );
+		}
+
+		/**
+		 * 自動再生の停止・再生ボタンを出力するかどうか
+		 *
+		 * 「表示しない」という設定は用意せず、開発者が明示的に外す場合のみフィルターで無効化できるようにしている.
+		 *
+		 * @return bool 出力する場合は true.
+		 */
+		public static function is_autoplay_toggle_display() {
+			return (bool) apply_filters( 'lightning_top_slide_autoplay_toggle_display', true );
+		}
+
+		/**
+		 * 自動再生の停止・再生ボタンの HTML を返す
+		 *
+		 * 「停止用」「再生用」の2セットを両方 DOM に置き、hidden の付け外しで切り替える.
+		 * アクセシブルネームは .screen-reader-text から取得されるため aria-label は付けない.
+		 * ボタン自体は hidden で出力し、初期化 JS が状態を確定させてから表示する.
+		 *
+		 * @return string ボタンの HTML. 出力しない場合は空文字.
+		 */
+		public static function get_autoplay_toggle_html() {
+
+			if ( ! self::is_autoplay_toggle_display() ) {
+				return '';
+			}
+
+			// グリフは「現在の状態」ではなく「押したら起こること」を示す（動画プレイヤーと同じ規約）.
+			$html  = '<button type="button" class="ltg-slide-autoplay-toggle" hidden>';
+			$html .= '<span class="ltg-slide-autoplay-toggle-stop">';
+			$html .= '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 4h4v16H6zm8 0h4v16h-4z" /></svg>';
+			$html .= '<span class="screen-reader-text">' . esc_html__( 'Stop automatic slide show', 'lightning' ) . '</span>';
+			$html .= '</span>';
+			$html .= '<span class="ltg-slide-autoplay-toggle-start" hidden>';
+			$html .= '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 4l13 8-13 8z" /></svg>';
+			$html .= '<span class="screen-reader-text">' . esc_html__( 'Start automatic slide show', 'lightning' ) . '</span>';
+			$html .= '</span>';
+			$html .= '</button>';
+
+			return $html;
 		}
 
 		/**
@@ -671,11 +723,14 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 
 		/**
 		 * Add Sweier Setting
+		 *
+		 * Swiper の初期化は独立した JS ファイルに任せ、ここでは設定値を渡すだけにする.
+		 * 一時停止ボタンの制御・prefers-reduced-motion の判定が必要なため、
+		 * 以前のようにインラインスクリプトの文字列連結では扱いきれない.
 		 */
 		public static function add_slide_script() {
 
-			$slide_count_max = self::slide_count_max();
-			$slide_count     = self::slide_count();
+			$slide_count = self::slide_count();
 
 			$options = get_option( 'lightning_theme_options' );
 
@@ -693,26 +748,43 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 			if ( empty( $options['top_slide_time'] ) ) {
 				$paras['autoplay']['delay'] = 4000;
 			} else {
-				$paras['autoplay']['delay'] = esc_attr( $options['top_slide_time'] );
+				$paras['autoplay']['delay'] = intval( $options['top_slide_time'] );
 			}
 
 			if ( empty( $options['top_slide_effect'] ) ) {
 				$paras['effect'] = 'slide';
 			} else {
-				$paras['effect'] = esc_attr( $options['top_slide_effect'] );
+				$paras['effect'] = sanitize_text_field( $options['top_slide_effect'] );
 			}
 
 			if ( ! empty( $options['top_slide_speed'] ) ) {
 				$paras['speed'] = intval( $options['top_slide_speed'] );
 			}
 
-			$swiper_paras = self::swiper_paras_json( $paras );
-
 			$slider_prefix = esc_html( $options['top_slide_prefix'] );
 
-			$tag = 'var ' . $slider_prefix . 'swiper = new Swiper(\'.' . $slider_prefix . 'swiper\', ' . $swiper_paras . ');';
+			wp_register_script(
+				'ltg-g3-slider',
+				get_template_directory_uri() . '/inc/ltg-g3-slider/package/js/ltg-g3-slider.js',
+				array( 'vk-swiper-script' ),
+				LIGHTNING_THEME_VERSION,
+				true
+			);
 
-			wp_add_inline_script( 'vk-swiper-script', $tag, 'after' );
+			wp_localize_script(
+				'ltg-g3-slider',
+				'ltgG3SliderOpt',
+				array(
+					// スライダーのセレクタ.
+					'selector' => '.' . $slider_prefix . 'swiper',
+					// 旧実装が公開していたグローバル変数名（後方互換のため維持）.
+					'instance' => $slider_prefix . 'swiper',
+					// Swiper の初期化パラメータ.
+					'params'   => self::swiper_paras( $paras ),
+				)
+			);
+
+			wp_enqueue_script( 'ltg-g3-slider' );
 		}
 
 		/**
@@ -735,6 +807,16 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 
 				// class 名の swiper が２つ記載してあるように見えるが一つ目は $slider_prefix と結合される.
 				$slide_html .= '<div class="' . $slider_prefix . 'swiper swiper swiper-container ltg-slide">';
+
+				/*
+				 * 自動再生の停止・再生ボタン.
+				 * 止める手段は止めたい対象より前に置きたいので .swiper-wrapper より先に出力する.
+				 * 矢印・ドットと同じ「2枚以上」の条件に揃える（1枚だと loop = false で視覚的な動きが起きないため）.
+				 */
+				if ( $slide_count >= 2 ) {
+					$slide_html .= self::get_autoplay_toggle_html();
+				}
+
 				$slide_html .= '<div class="swiper-wrapper ltg-slide-inner">';
 
 				// Why end point is $slide_count_max that not $slide_count, image exist 1,2,5.

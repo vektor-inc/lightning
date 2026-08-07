@@ -100,4 +100,48 @@
 			display: none;
 		}
 	}
+
+	// 自動再生の停止・再生ボタン
+	// -----------------------------------------------------------------------------
+	// 自動再生はモバイルでも動くため、矢印のようにモバイルで非表示にはしない。
+	// グリフは #fff 固定（--swiper-navigation-color を借りると運営者が黒指定した時に黒地の黒になる）。
+	&-autoplay-toggle {
+		position: absolute;
+		right: var(--swiper-navigation-sides-offset, 10px);
+		bottom: 0;
+		// スライド全体が <a> で包まれる場合にリンクへ埋もれないようにする。
+		// .swiper-pagination は幅100%・z-index: 10 の帯で、DOM 順があとなので
+		// 同値だとボタンの当たり判定を奪われる。そのため 1 つ上に置く。
+		z-index: 11;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: var(--swiper-navigation-size, 44px);
+		height: var(--swiper-navigation-size, 44px);
+		padding: 0;
+		border: none;
+		border-radius: 50%;
+		// どんな画像の上でも白いグリフとのコントラストを 4.5:1 以上に保てる濃度
+		background-color: rgb(0 0 0 / 0.55);
+		cursor: pointer;
+		// display: flex が [hidden] の display: none に勝ってしまうので明示する
+		&[hidden] {
+			display: none;
+		}
+		svg {
+			display: block;
+			width: 18px;
+			height: 18px;
+			fill: #fff;
+		}
+		&:hover,
+		&:focus-visible {
+			background-color: rgb(0 0 0 / 0.75);
+		}
+		// 白い画像の上でリングが消えないよう、輪郭を円の内側に描く
+		&:focus-visible {
+			outline: 2px solid #fff;
+			outline-offset: -4px;
+		}
+	}
 }
