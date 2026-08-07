@@ -160,8 +160,9 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 				 * 大半は矢印・ページ送り・各スライドの aria-label だが、
 				 * firstSlideMessage / lastSlideMessage はラベルではなくライブリージョンへの通知として読み上げられる
 				 * （無効になった矢印には aria-disabled="true" が付く）。
-				 * この2件が読み上げられる場面はほぼ無いが、
-				 * Swiper 側の通知分岐はループ有無で保証されていないため指定しておく。
+				 * この2件は矢印にキーボードでフォーカスして Enter / Space を押したときに実際に読み上げられる。
+				 * Swiper 側の通知分岐にループ有無のガードが無いため、ループ再生中でも読み上げられる。
+				 * 指定を消すと英語のまま読み上げられるため、消さないこと。
 				 * slideLabelMessage の Swiper 既定値は '{{index}} / {{slidesLength}}'（記号のみで意味を持たないため原文を改めている）。
 				 */
 				'a11y'          => array(
@@ -180,7 +181,8 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 
 			/*
 			 * この JSON はインラインスクリプトとしてページに出力されるため、
-			 * 翻訳文に含まれうる < > を JSON_HEX_TAG で < / > にエスケープする。
+			 * 翻訳文に含まれうる < > を JSON_HEX_TAG で Unicode エスケープ形式に変換する
+			 * （< は \u003C、> は \u003E となり、生の記号は JSON に残らない）。
 			 * JS 側の文字列としての解釈は同一で、セレクタ等の既定値に < > は含まれないため挙動は変わらない。
 			 */
 			$json = wp_json_encode( $paras, JSON_HEX_TAG );
