@@ -35,7 +35,7 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
-[ G3 ][ Spec Change ] Lower the CSS specificity of the full width / wide width styles so a plain .alignfull / .alignwide selector can override them
+[ G3 ][ Spec Change ] Lower the CSS specificity of the full width / wide width styles so a plain .alignfull / .alignwide selector can override them, except for sliders which keep the previous specificity
 [ G3 ][ Spec Change ] With Section Base Setting (Use section base) enabled, full width and wide width blocks such as covers and images now both stop at the edge of the section base box instead of the viewport, which renders them at the same width, in one column layouts or under 992px
 [ G2 ][ Bug Fix ] Fix image set/delete buttons in the Full Wide Title widget not opening the media library in the block-based widget editor
 [ G3 ][ Bug Fix ] Fix the full width VK Blocks outer block sticking out unevenly on both sides in a two column sidebar with Section Base Setting enabled

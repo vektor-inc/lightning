@@ -27,6 +27,25 @@ entry-body
 		margin-right:auto;
 	}
 }
+// 全幅 / 幅広 の宣言
+// -----------------------------------------------------------------------------
+// 下の 2 か所（詳細度 (0,1,0) の素の指定と、スライダー用に (0,2,0) を維持する例外）で
+// まったく同じ宣言を使うため mixin にしてある。値を変えるときはここだけを直すこと。
+@mixin ltg-alignfull-width {
+	width:auto; /* Don't use 100svw!! cope with windows */
+	margin-left: calc(50% - 50vw);
+	margin-right: calc(50% - 50vw);
+	max-width: var(--vk-width-full);
+}
+@mixin ltg-alignwide-width {
+	// --vk-width-container != 100% なので注意
+	// Lightningの幅広 = コンテナの「表示エリア（100%）	」 + 左右余白分の丁度半分
+	width: calc( 100% + ( var(--vk-width-full) - 100% ) / 2 );
+	margin-left: calc( ( 100% - var(--vk-width-full) ) / 4 );
+	margin-right: calc( ( 100% - var(--vk-width-full) ) / 4 );
+	max-width: var(--vk-width-full);
+}
+
 // 全幅 / 幅広 の詳細度について（.alignfull / .alignwide 共通）
 // -----------------------------------------------------------------------------
 // 以前はここに `&,` と `&:is( .swiper-container, .vk_slider, .wp-block-image,
@@ -38,12 +57,11 @@ entry-body
 //
 // 注意: リストを消して安全な理由は「& が既に全ての .alignfull / .alignwide に
 // マッチするので冗長」であって、「リストのクラスが誰にもマッチしないから」ではない。
-// 実際、リストにあった .vk_slider / .swiper-container は .swiper と同一要素に付くため、
-// 詳細度を下げると .swiper の指定に負ける。これは下の「スライダーだけ (0,2,0) を
-// 維持する例外」で個別に手当てしてある。
-// 実際に alignfull と同一要素に付くマークアップは存在する。VK Blocks の旧スライダーの
-// 保存済みマークアップは `swiper swiper-container vk_slider … alignfull` を同一要素に
-// 出力する（vk-blocks-pro の blocks/slider/deprecated/save/*）。
+// リストにあった .vk_slider / .swiper-container は .swiper と「同一要素」に付くため、
+// 詳細度を下げると .swiper 側の指定に負ける。VK Blocks のスライダーは現行の保存形式で
+// `swiper vk_slider … alignfull`、旧保存形式で `swiper swiper-container vk_slider … alignfull`
+// を出力する（vk-blocks-pro の blocks/slider/save.js と deprecated/save/*）。
+// これは下の「スライダーだけ (0,2,0) を維持する例外」で個別に手当てしてある。
 // 一方 Lightning 自身のスライダーの出力は `{prefix}swiper swiper swiper-container ltg-slide` で
 // alignfull は持たない（class-ltg-g3-slider.php）。
 //
@@ -59,18 +77,10 @@ entry-body
 // また max-width: var(--vk-width-full) は layout_base 側に max-width が無いため
 // 引き続き (0,1,0) から適用され続けるが、width が calc(100% + p * 2) になるので実質不活性。
 .alignfull {
-	width:auto; /* Don't use 100svw!! cope with windows */
-	margin-left: calc(50% - 50vw);
-	margin-right: calc(50% - 50vw);
-	max-width: var(--vk-width-full);
+	@include ltg-alignfull-width;
 }
 .alignwide {
-	// --vk-width-container != 100% なので注意
-	// Lightningの幅広 = コンテナの「表示エリア（100%）	」 + 左右余白分の丁度半分
-	width: calc( 100% + ( var(--vk-width-full) - 100% ) / 2 );
-	margin-left: calc( ( 100% - var(--vk-width-full) ) / 4 );
-	margin-right: calc( ( 100% - var(--vk-width-full) ) / 4 );
-	max-width: var(--vk-width-full);
+	@include ltg-alignwide-width;
 }
 // スライダーだけ詳細度 (0,2,0) を維持する例外
 // -----------------------------------------------------------------------------
@@ -85,27 +95,31 @@ entry-body
 // リストに .swiper 自体は入れない（.alignfull.swiper 単体の挙動を変えないため。
 // 入れない判断の経緯は #1389 を参照）。
 //
+// クラスの役割分担: 耐久性は .vk_slider（VK Blocks 自身の意味クラス）が担い、
+// .swiper-container は旧保存形式の救済。Swiper 側のクラス名変更に影響されない形。
+// Lightning 自身のスライダーから swiper-container を外す変更（#1393）が進んでいるが、
+// そちらは alignfull を持たないため、この例外は #1393 に依存していない。
+//
 // 副作用: 利用者が素朴な .alignfull{} / .alignwide{} を書いても、
 // スライダーだけは (0,2,0) に負けて上書きできない。
 // その場合は .alignfull.vk_slider{} のようにクラスを 2 つ書けば上書きできる
 // （!important は不要）。
+//
+// ⚠️ この :is() は css.md の「:is() は :where(:is()) で包む」に対する意図的な例外。
+// :where() で包むと (0,1,0) に落ちて上の素の指定と同じになり、.swiper に負けて
+// スライダーの全幅・幅広が崩れる（#1383 で実際に起きた回帰）。
+// ルール準拠のつもりで :where() を足さないこと。
 .alignfull:is(
 .swiper-container,
 .vk_slider
 ) {
-	width:auto; /* Don't use 100svw!! cope with windows */
-	margin-left: calc(50% - 50vw);
-	margin-right: calc(50% - 50vw);
-	max-width: var(--vk-width-full);
+	@include ltg-alignfull-width;
 }
 .alignwide:is(
 .swiper-container,
 .vk_slider
 ) {
-	width: calc( 100% + ( var(--vk-width-full) - 100% ) / 2 );
-	margin-left: calc( ( 100% - var(--vk-width-full) ) / 4 );
-	margin-right: calc( ( 100% - var(--vk-width-full) ) / 4 );
-	max-width: var(--vk-width-full);
+	@include ltg-alignwide-width;
 }
 // 通常サイズの中に幅広対策
 :where(:is(.wp-block-cover,.wp-block-group):not(.alignfull,.alignwide)),
