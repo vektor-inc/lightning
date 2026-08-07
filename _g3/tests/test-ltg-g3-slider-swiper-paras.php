@@ -85,13 +85,10 @@ class LTG_G3_Slider_Swiper_Paras_Test extends WP_UnitTestCase {
 				'gettext'             => array(
 					'Next slide' => 'Next</script>slide',
 				),
-				'expected_a11y'       => array(
-					'prevSlideMessage'        => 'Previous slide',
-					'nextSlideMessage'        => 'Next</script>slide',
-					'firstSlideMessage'       => 'This is the first slide',
-					'lastSlideMessage'        => 'This is the last slide',
-					'paginationBulletMessage' => 'Go to slide {{index}}',
-					'slideLabelMessage'       => 'Slide {{index}} of {{slidesLength}}',
+				// 既定値のうち 1 件だけが差し替わることを示すため、全件の再掲ではなく array_merge で表す。
+				'expected_a11y'       => array_merge(
+					self::$default_a11y,
+					array( 'nextSlideMessage' => 'Next</script>slide' )
 				),
 			),
 		);

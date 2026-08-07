@@ -135,7 +135,7 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 		 * その既定値の中身が丸ごと置き換わる点に注意（部分的な上書きにはならない）。
 		 *
 		 * @param array|string $paras 上書きしたい Swiper のパラメータ。
-		 * @return string Swiper に渡すパラメータの JSON 文字列。
+		 * @return string|false Swiper に渡すパラメータの JSON 文字列。JSON 化に失敗した場合は false。
 		 */
 		public static function swiper_paras_json( $paras = '' ) {
 
@@ -155,10 +155,13 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 					'prevEl' => '.swiper-button-prev',
 				),
 				/*
-				 * Swiper の a11y モジュールがスクリーンリーダー用に付与する aria-label を翻訳可能にする。
+				 * Swiper の a11y モジュールがスクリーンリーダー向けに出力する文字列を翻訳可能にする。
 				 * 指定しない場合は Swiper 側の英語既定値がそのまま読み上げられる。
-				 * firstSlideMessage / lastSlideMessage は現状ループ再生が常に有効なため読み上げられないが、
-				 * 将来ループをオフにできるようにした際の英語読み上げを防ぐため、あらかじめ指定しておく。
+				 * 大半は矢印・ページ送り・各スライドの aria-label だが、
+				 * firstSlideMessage / lastSlideMessage はラベルではなくライブリージョンへの通知として読み上げられる
+				 * （無効になった矢印には aria-disabled="true" が付く）。
+				 * この2件が読み上げられる場面はほぼ無いが、
+				 * Swiper 側の通知分岐はループ有無で保証されていないため指定しておく。
 				 * slideLabelMessage の Swiper 既定値は '{{index}} / {{slidesLength}}'（記号のみで意味を持たないため原文を改めている）。
 				 */
 				'a11y'          => array(
