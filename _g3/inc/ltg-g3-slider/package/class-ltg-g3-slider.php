@@ -761,7 +761,12 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 				$paras['speed'] = intval( $options['top_slide_speed'] );
 			}
 
-			$slider_prefix = esc_html( $options['top_slide_prefix'] );
+			/*
+			 * 値の実体は CSS クラス名の一部なので、クラス名として使える文字だけに限定する.
+			 * wp_localize_script() に渡した値は WP_Scripts::localize() が
+			 * html_entity_decode() に通すため、HTML エスケープでは意味がない.
+			 */
+			$slider_prefix = sanitize_html_class( $options['top_slide_prefix'] );
 
 			wp_register_script(
 				'ltg-g3-slider',
@@ -798,7 +803,8 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 			$options       = get_option( 'lightning_theme_options' );
 			$default       = lightning_g3_slider_default_options();
 			$options       = wp_parse_args( $options, $default );
-			$slider_prefix = esc_html( $options['top_slide_prefix'] );
+			// JS 側へ渡すセレクタと同じ処理にして、クラス名とセレクタが食い違わないようにする.
+			$slider_prefix = sanitize_html_class( $options['top_slide_prefix'] );
 
 			$slide_html        = '';
 			$first_slide_index = self::get_first_slide_index();
