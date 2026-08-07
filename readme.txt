@@ -35,9 +35,10 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
-[ Spec Change ] Lower the CSS specificity of the full width / wide width styles so they can be overridden without !important
-[ Spec Change ] Full width / wide width covers, images and sliders placed in a section background now bleed to the edge of the background box instead of the viewport
+[ G3 ][ Spec Change ] Lower the CSS specificity of the full width / wide width styles so a plain .alignfull / .alignwide selector can override them
+[ G3 ][ Spec Change ] With Section Base Setting (Use section base) enabled, full width / wide width covers, images and sliders now bleed to the edge of the section base box instead of the viewport, in one column layouts or under 992px
 [ G2 ][ Bug Fix ] Fix image set/delete buttons in the Full Wide Title widget not opening the media library in the block-based widget editor
+[ G3 ][ Bug Fix ] Fix invalid CSS that made full width / wide width blocks in a two column sidebar with section base use the wrong negative margin
 
 [ Spec Change ] Update vektor-inc/font-awesome-versions from 0.7.4 to 0.7.5
 [ G2 ][ Bug Fix ] Fix undefined array key warning logged on PHP 8 or later when saving the Full Wide Title widget with the text shadow checkbox unchecked

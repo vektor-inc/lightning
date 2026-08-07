@@ -29,51 +29,45 @@ entry-body
 }
 // 全幅 / 幅広 の詳細度について（.alignfull / .alignwide 共通）
 // -----------------------------------------------------------------------------
-// 先頭の & だけで全ての .alignfull / .alignwide にマッチするため、続くリストは
-// マッチを増やすためのものではない。以前は :where() なしの :is() を使い、
-// 列挙したブロックに対してだけ詳細度を (0,2,0) に上げる形になっていた。
-// 大量配布テーマで詳細度を上げるとユーザーの素朴な上書きを打ち消して !important を
-// 強いるため、:where() で包んで (0,1,0) に下げてある（詳細度は先頭の & と同じ）。
-// そのためリスト自体は現在マッチ結果を変えない。過去にどのブロックを対象にしていたかの
-// 記録として残しているだけなので、消す/整理するのは別途判断すること。
+// 以前はここに `&,` と `&:is( .swiper-container, .vk_slider, .wp-block-image,
+// .wp-block-cover-image, .wp-block-cover )` を並べ（.alignwide は .swiper-container なし）、
+// 列挙したブロックにだけ詳細度 (0,2,0) を効かせていた。大量配布テーマで詳細度を
+// 上げるとユーザーの素朴な上書きを打ち消すため、css.md の方針に従って (0,1,0) に下げた。
+// 下げるとリスト側は先頭の & と詳細度もマッチ結果も完全に一致して冗長になるので、
+// セレクタは & 相当（.alignfull / .alignwide 単体）の 1 つに統合した。
+//
+// 注意: リストを消して安全な理由は「& が既に全ての .alignfull / .alignwide に
+// マッチするので冗長」であって、「リストのクラスが誰にもマッチしないから」ではない。
+// 実際に alignfull と同一要素に付くマークアップは存在する。VK Blocks の旧スライダーの
+// 保存済みマークアップは `swiper swiper-container vk_slider … alignfull` を同一要素に
+// 出力する（vk-blocks-pro の blocks/slider/deprecated/save/*）。
+// Lightning 自身のスライダーの出力は swiper / ltg-slide 系で alignfull は持たない
+// （class-ltg-g3-slider.php）。
 //
 // 詳細度を下げた結果、_layout_base.scss の
-// .main-section--base--on / .sub-section--base--on 配下の全幅・幅広指定 (0,2,0) に
-// 負けるようになった。セクション背景の中ではブロック種別を問わず、
-// ビューポート全幅ではなく背景ボックスの端までの飛び出しになる
-// （base--on 内のカバー・画像は _layout_base.scss 側が width や padding まで
-// 指定して制御する前提で書かれているため、そちらに委ねる）。
+// .main-section--base--on / .sub-section--base--on 配下の指定 (0,2,0) に負けるようになった。
+// セクション背景（カスタマイザー > デザイン > Section Base Setting）が ON のとき、
+// 全幅・幅広はブロック種別を問わず、ビューポート全幅ではなく背景ボックスの端までになる
+// （base--on 内のカバー・画像は _layout_base.scss 側が width や padding まで指定して
+// 制御する前提で書かれているため、そちらに委ねる）。
+// 影響するのは 1カラム（または 992px 未満）かつセクション背景 ON の場合だけ。
+// 2カラム × 992px 以上は、このファイル後半の @media 内の指定が !important で
+// マージンを 0 にしているため以前から箱基準で、この変更でも変わらない。
+// また max-width: var(--vk-width-full) は layout_base 側に max-width が無いため
+// 引き続き (0,1,0) から適用され続けるが、width が calc(100% + p * 2) になるので実質不活性。
 .alignfull {
-	&,
-	&:where(:is(
-	.swiper-container,
-	.vk_slider,
-	.wp-block-image,
-	.wp-block-cover-image,
-	.wp-block-cover
-	)) {
-		width:auto; /* Don't use 100svw!! cope with windows */
-		margin-left: calc(50% - 50vw);
-		margin-right: calc(50% - 50vw);
-		max-width: var(--vk-width-full);
-	}
+	width:auto; /* Don't use 100svw!! cope with windows */
+	margin-left: calc(50% - 50vw);
+	margin-right: calc(50% - 50vw);
+	max-width: var(--vk-width-full);
 }
 .alignwide {
-	// 詳細度の考え方は上の .alignfull と同じ（:where() で (0,1,0) に統一）。
-	&,
-	&:where(:is(
-	.vk_slider,
-	.wp-block-image,
-	.wp-block-cover-image,
-	.wp-block-cover
-	)) {
-		// --vk-width-container != 100% なので注意
-		// Lightningの幅広 = コンテナの「表示エリア（100%）	」 + 左右余白分の丁度半分
-		width: calc( 100% + ( var(--vk-width-full) - 100% ) / 2 );
-		margin-left: calc( ( 100% - var(--vk-width-full) ) / 4 );
-		margin-right: calc( ( 100% - var(--vk-width-full) ) / 4 );
-		max-width: var(--vk-width-full);
-	}
+	// --vk-width-container != 100% なので注意
+	// Lightningの幅広 = コンテナの「表示エリア（100%）	」 + 左右余白分の丁度半分
+	width: calc( 100% + ( var(--vk-width-full) - 100% ) / 2 );
+	margin-left: calc( ( 100% - var(--vk-width-full) ) / 4 );
+	margin-right: calc( ( 100% - var(--vk-width-full) ) / 4 );
+	max-width: var(--vk-width-full);
 }
 // 通常サイズの中に幅広対策
 :where(:is(.wp-block-cover,.wp-block-group):not(.alignfull,.alignwide)),
