@@ -6,6 +6,11 @@
 			"email": "info@vektor-inc.co.jp"
 		}
 	],
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	},
 	"require": {
 		"vektor-inc/vk-swiper": "^0.3.5",
 		"vektor-inc/font-awesome-versions": "^0.7.5",
@@ -18,7 +23,10 @@
 	},
 	"require-dev": {
 		"doctrine/instantiator": "1.5.0",
-		"squizlabs/php_codesniffer": "*",
+		"squizlabs/php_codesniffer": "^3.13.6",
+		"dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+		"phpcompatibility/phpcompatibility-wp": "^2.1",
+		"wp-coding-standards/wpcs": "^3.4.1",
 		"vektor-inc/vk-wp-unit-test-tools": "^0.11.0",
 		"sirbrillig/phpcs-variable-analysis": "^2.8",
 		"wp-phpunit/wp-phpunit": "^5.4",
