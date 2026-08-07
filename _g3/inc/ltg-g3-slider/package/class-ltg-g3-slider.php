@@ -716,7 +716,13 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 		}
 
 		/**
-		 * Get Slide HTML
+		 * トップページスライダーの HTML を組み立てて返す.
+		 *
+		 * カスタマイザーの設定値からスライド画像・テキスト・リンクを読み取り、
+		 * Swiper 用のマークアップ（.swiper / .swiper-wrapper / .swiper-slide）を生成する.
+		 * スライドが2枚以上ある場合のみページネーションと矢印を出力する.
+		 *
+		 * @return string スライダーの HTML. 表示できるスライドが1枚もない場合は空文字列.
 		 */
 		public static function get_slide_html() {
 			// count top slide.
@@ -734,7 +740,8 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 			if ( $slide_count ) {
 
 				// class 名の swiper が２つ記載してあるように見えるが一つ目は $slider_prefix と結合される.
-				$slide_html .= '<div class="' . $slider_prefix . 'swiper swiper swiper-container ltg-slide">';
+				// swiper-container は Swiper v8 で .swiper にリネームされて廃止されたため出力しない.
+				$slide_html .= '<div class="' . $slider_prefix . 'swiper swiper ltg-slide">';
 				$slide_html .= '<div class="swiper-wrapper ltg-slide-inner">';
 
 				// Why end point is $slide_count_max that not $slide_count, image exist 1,2,5.
@@ -854,13 +861,15 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 				$slide_html .= '</div><!-- [ /.swiper-wrapper ] -->';
 				if ( $slide_count >= 2 ) {
 					// Add Pagination.
-					$slide_html .= '<div class="swiper-pagination swiper-pagination-white"></div>';
+					// swiper-pagination-white は Swiper 6 世代で CSS 変数に置き換えられて廃止されたため出力しない.
+					$slide_html .= '<div class="swiper-pagination"></div>';
 					// Add Arrows.
-					$slide_html .= '<div class="ltg-slide-button-next swiper-button-next swiper-button-white"></div>';
-					$slide_html .= '<div class="ltg-slide-button-prev swiper-button-prev swiper-button-white"></div>';
+					// swiper-button-white も同様に廃止済みのため出力しない.
+					$slide_html .= '<div class="ltg-slide-button-next swiper-button-next"></div>';
+					$slide_html .= '<div class="ltg-slide-button-prev swiper-button-prev"></div>';
 				}
 
-				$slide_html .= '</div><!-- [ /.swiper-container ] -->';
+				$slide_html .= '</div><!-- [ /.ltg-slide ] -->';
 
 			}
 
