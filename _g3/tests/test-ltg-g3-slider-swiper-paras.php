@@ -1,6 +1,9 @@
 <?php
 /**
- * Test for LTG_G3_Slider::swiper_paras_json()
+ * LTG_G3_Slider::swiper_paras_json() のテスト
+ *
+ * スライダーに渡す設定 JSON のうち、スクリーンリーダー向けの a11y メッセージが
+ * 意図どおり出力されるかを検証する。
  *
  * @package vektor-inc/lightning
  */
@@ -36,7 +39,13 @@ class LTG_G3_Slider_Swiper_Paras_Test extends WP_UnitTestCase {
 	private const NO_ARGS = '__no_args__';
 
 	/**
-	 * Test swiper_paras_json()
+	 * swiper_paras_json() が返す JSON の a11y メッセージを検証する。
+	 *
+	 * 4 ケースで以下を確認する。
+	 * - a11y の 6 件が既定値のまま、定義順どおりに出力されること
+	 * - 呼び出し側が a11y 以外のキーを渡しても a11y の既定値が消えないこと
+	 * - a11y を部分的に渡すと wp_parse_args() の浅いマージで丸ごと置き換わること
+	 * - 翻訳文に < > が混入しても JSON_HEX_TAG でエスケープされ、生の < > が JSON に現れないこと
 	 */
 	public function test_swiper_paras_json() {
 
