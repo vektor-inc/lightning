@@ -788,7 +788,7 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 						$cover_style = self::slide_cover_style( $i );
 
 						if ( $cover_style ) {
-							$cover_style = ( $cover_style ) ? ' style="' . $cover_style . '"' : '';
+							$cover_style = ( $cover_style ) ? ' style="' . esc_attr( $cover_style ) . '"' : '';
 							$slide_html .= '<div class="ltg-slide-cover"' . $cover_style . '></div>';
 						}
 
