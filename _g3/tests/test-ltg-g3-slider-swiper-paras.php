@@ -19,8 +19,10 @@ class LTG_G3_Slider_Swiper_Paras_Test extends WP_UnitTestCase {
 	private static $default_a11y = array(
 		'prevSlideMessage'        => 'Previous slide',
 		'nextSlideMessage'        => 'Next slide',
+		'firstSlideMessage'       => 'This is the first slide',
+		'lastSlideMessage'        => 'This is the last slide',
 		'paginationBulletMessage' => 'Go to slide {{index}}',
-		'slideLabelMessage'       => '{{index}} / {{slidesLength}}',
+		'slideLabelMessage'       => 'Slide {{index}} of {{slidesLength}}',
 	);
 
 	/**
@@ -45,8 +47,8 @@ class LTG_G3_Slider_Swiper_Paras_Test extends WP_UnitTestCase {
 
 		$test_cases = array(
 			array(
-				// 正常系: 既定値だけで a11y の 4 件が揃うこと（キーの順序も含めて検証）。
-				'test_condition_name' => '引数なしの場合 => a11y に 4 件の読み上げ用メッセージが既定値のまま入る',
+				// 正常系: 既定値だけで a11y の 6 件が揃うこと（キーの順序も含めて検証）。
+				'test_condition_name' => '引数なしの場合 => a11y に 6 件の読み上げ用メッセージが既定値のまま入る',
 				'paras'               => self::NO_ARGS,
 				'gettext'             => array(),
 				'expected_a11y'       => self::$default_a11y,
@@ -86,8 +88,10 @@ class LTG_G3_Slider_Swiper_Paras_Test extends WP_UnitTestCase {
 				'expected_a11y'       => array(
 					'prevSlideMessage'        => 'Previous slide',
 					'nextSlideMessage'        => 'Next</script>slide',
+					'firstSlideMessage'       => 'This is the first slide',
+					'lastSlideMessage'        => 'This is the last slide',
 					'paginationBulletMessage' => 'Go to slide {{index}}',
-					'slideLabelMessage'       => '{{index}} / {{slidesLength}}',
+					'slideLabelMessage'       => 'Slide {{index}} of {{slidesLength}}',
 				),
 			),
 		);

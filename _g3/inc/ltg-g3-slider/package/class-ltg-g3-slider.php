@@ -156,21 +156,20 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 				),
 				/*
 				 * Swiper の a11y モジュールがスクリーンリーダー用に付与する aria-label を翻訳可能にする。
-				 * 指定しない場合は Swiper 側の英語既定値（Previous slide 等）がそのまま読み上げられる。
-				 *
-				 * firstSlideMessage / lastSlideMessage は意図的に含めていない。
-				 * このスライダーは矢印を出力する条件とループ再生が有効になる条件が一致しており
-				 * （矢印の出力は get_slide_html() の $slide_count >= 2、ループ無効化は add_slide_script() の $slide_count < 2）、
-				 * 常にループ再生されるため先頭・末尾スライドの状態に入らず、この2件は読み上げられない。
-				 * 将来ループ再生を選択式（オフにできる）にした場合は、この2件の追加が必要になる。
+				 * 指定しない場合は Swiper 側の英語既定値がそのまま読み上げられる。
+				 * firstSlideMessage / lastSlideMessage は現状ループ再生が常に有効なため読み上げられないが、
+				 * 将来ループをオフにできるようにした際の英語読み上げを防ぐため、あらかじめ指定しておく。
+				 * slideLabelMessage の Swiper 既定値は '{{index}} / {{slidesLength}}'（記号のみで意味を持たないため原文を改めている）。
 				 */
 				'a11y'          => array(
 					'prevSlideMessage'        => __( 'Previous slide', 'lightning' ),
 					'nextSlideMessage'        => __( 'Next slide', 'lightning' ),
-					/* translators: {{index}} は Swiper が実行時にスライド番号へ置換するプレースホルダのため、翻訳文にもそのまま残してください。 */
+					'firstSlideMessage'       => __( 'This is the first slide', 'lightning' ),
+					'lastSlideMessage'        => __( 'This is the last slide', 'lightning' ),
+					/* translators: {{index}} is a placeholder Swiper replaces with the slide number at runtime. Keep it unchanged, and use it only once. */
 					'paginationBulletMessage' => __( 'Go to slide {{index}}', 'lightning' ),
-					/* translators: {{index}} はスライド番号、{{slidesLength}} は総スライド数へ Swiper が実行時に置換するプレースホルダのため、翻訳文にもそのまま残してください。 */
-					'slideLabelMessage'       => __( '{{index}} / {{slidesLength}}', 'lightning' ),
+					/* translators: {{index}} is replaced with the current slide number and {{slidesLength}} with the total number of slides at runtime. Keep both unchanged, and use each only once. Word order may be changed freely. */
+					'slideLabelMessage'       => __( 'Slide {{index}} of {{slidesLength}}', 'lightning' ),
 				),
 			);
 
