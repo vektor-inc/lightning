@@ -740,7 +740,7 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 			if ( $slide_count ) {
 
 				// class 名の swiper が２つ記載してあるように見えるが一つ目は $slider_prefix と結合される.
-				// swiper-container は Swiper v8 で .swiper にリネームされて廃止されたため出力しない.
+				// swiper-container は Swiper v8 で .swiper にリネームされ、同梱の Swiper 14.0.6 にも定義がないため出力しない.
 				$slide_html .= '<div class="' . $slider_prefix . 'swiper swiper ltg-slide">';
 				$slide_html .= '<div class="swiper-wrapper ltg-slide-inner">';
 
@@ -861,10 +861,11 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 				$slide_html .= '</div><!-- [ /.swiper-wrapper ] -->';
 				if ( $slide_count >= 2 ) {
 					// Add Pagination.
-					// swiper-pagination-white は Swiper 6 世代で CSS 変数に置き換えられて廃止されたため出力しない.
-					$slide_html .= '<div class="swiper-pagination"></div>';
+					// swiper-pagination-white は Swiper 6 世代で CSS 変数に置き換えられ、同梱の Swiper 14.0.6 にも定義がないため出力しない.
+					// ltg-slide-pagination は矢印・ラッパーと同様に、Swiper のバージョンに左右されないテーマ管理下のクラスとして付与する.
+					$slide_html .= '<div class="ltg-slide-pagination swiper-pagination"></div>';
 					// Add Arrows.
-					// swiper-button-white も同様に廃止済みのため出力しない.
+					// swiper-button-white も同様に、同梱の Swiper 14.0.6 に定義がないため出力しない.
 					$slide_html .= '<div class="ltg-slide-button-next swiper-button-next"></div>';
 					$slide_html .= '<div class="ltg-slide-button-prev swiper-button-prev"></div>';
 				}

@@ -9,29 +9,12 @@
  * @package vektor-inc/lightning
  */
 
+require_once __DIR__ . '/trait-ltg-g3-slider-options.php';
+
 class LTG_G3_Slider_Markup_Test extends WP_UnitTestCase {
 
-	/**
-	 * テスト終了ごとにスライダーのオプションを削除する.
-	 */
-	public function tearDown(): void {
-		delete_option( 'lightning_theme_options' );
-		wp_cache_flush();
-		parent::tearDown();
-	}
-
-	/**
-	 * スライダーのオプションを既定値にマージして保存する.
-	 *
-	 * @param array $overrides 既定値に上書きするオプション.
-	 * @return void
-	 */
-	private function set_slider_options( $overrides = array() ) {
-		$defaults = lightning_g3_slider_default_options();
-		$options  = array_merge( $defaults, $overrides );
-		update_option( 'lightning_theme_options', $options );
-		wp_cache_flush();
-	}
+	// スライダーのオプション設定・後片付けは他のスライダーテストと共通のため trait を利用する.
+	use LTG_G3_Slider_Options_Trait;
 
 	/**
 	 * LTG_G3_Slider::get_slide_html() のテスト.
@@ -60,12 +43,18 @@ class LTG_G3_Slider_Markup_Test extends WP_UnitTestCase {
 				),
 				'expected'            => array(
 					// 出力されていなければならない文字列.
+					// コンテナだけは class 属性の完全一致で見る（接頭辞の結合構造を守るため、
+					// 部分一致だと接頭辞付きか素の swiper のどちらかが消えても通ってしまう）.
 					'contains'     => array(
 						'class="lightning_swiper swiper ltg-slide"',
 						'class="swiper-wrapper ltg-slide-inner"',
-						'class="swiper-pagination"',
-						'class="ltg-slide-button-next swiper-button-next"',
-						'class="ltg-slide-button-prev swiper-button-prev"',
+						// ページネーション・矢印は個別クラスの部分一致で確認する.
+						'ltg-slide-pagination',
+						'swiper-pagination',
+						'ltg-slide-button-next',
+						'swiper-button-next',
+						'ltg-slide-button-prev',
+						'swiper-button-prev',
 					),
 					// 出力されていてはいけない文字列.
 					'not_contains' => $dead_classes,
@@ -85,20 +74,23 @@ class LTG_G3_Slider_Markup_Test extends WP_UnitTestCase {
 						'class="lightning_swiper swiper ltg-slide"',
 						'class="swiper-wrapper ltg-slide-inner"',
 					),
-					'not_contains' => array(
-						'swiper-container',
-						'swiper-pagination-white',
-						'swiper-button-white',
+					'not_contains' => array_merge(
+						$dead_classes,
 						// 1枚のときはページネーション・矢印自体を出力しない仕様.
-						'swiper-pagination',
-						'swiper-button-next',
-						'swiper-button-prev',
+						array(
+							'ltg-slide-pagination',
+							'swiper-pagination',
+							'ltg-slide-button-next',
+							'swiper-button-next',
+							'ltg-slide-button-prev',
+							'swiper-button-prev',
+						)
 					),
 					'is_empty'     => false,
 				),
 			),
 			array(
-				'test_condition_name' => '接頭辞を変更した場合 => 接頭辞付きクラスは残り swiper-container は出力されない',
+				'test_condition_name' => '接頭辞を変更した場合 => 接頭辞付きクラスは残り廃止クラスは出力されない',
 				'conditions'          => array(
 					'options' => array(
 						'top_slide_prefix' => 'my_prefix_',
@@ -109,6 +101,25 @@ class LTG_G3_Slider_Markup_Test extends WP_UnitTestCase {
 						'class="my_prefix_swiper swiper ltg-slide"',
 					),
 					'not_contains' => $dead_classes,
+					'is_empty'     => false,
+				),
+			),
+			array(
+				'test_condition_name' => '接頭辞に二重引用符が含まれる場合（境界値） => エスケープされて class 属性が壊れない',
+				'conditions'          => array(
+					'options' => array(
+						'top_slide_prefix' => 'a"b_',
+					),
+				),
+				'expected'            => array(
+					'contains'     => array(
+						'class="a&quot;b_swiper swiper ltg-slide"',
+					),
+					'not_contains' => array_merge(
+						$dead_classes,
+						// 生の二重引用符が属性値に混入していないこと.
+						array( 'class="a"b_swiper' )
+					),
 					'is_empty'     => false,
 				),
 			),

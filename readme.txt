@@ -38,7 +38,7 @@ vk-develop@vektor-inc.co.jp
 [ G2 ][ Bug Fix ] Fix image set/delete buttons in the Full Wide Title widget not opening the media library in the block-based widget editor
 
 [ Spec Change ] Update vektor-inc/font-awesome-versions from 0.7.4 to 0.7.5
-[ G3 ][ Spec Change ] Stop outputting swiper-container, swiper-pagination-white and swiper-button-white on the top page slider. Additional CSS targeting them stops applying - use .swiper, .swiper-pagination or .swiper-button-next / .swiper-button-prev instead
+[ G3 ][ Spec Change ] Remove swiper-container, swiper-pagination-white and swiper-button-white from the top page slider, and add ltg-slide-pagination. Use the ltg-slide-* classes on the same elements in Additional CSS instead
 [ G2 ][ Bug Fix ] Fix undefined array key warning logged on PHP 8 or later when saving the Full Wide Title widget with the text shadow checkbox unchecked
 [ G2 ][ Bug Fix ] Fix undefined array key warning logged on PHP 8 or later when displaying the Full Wide Title widget in the block-based widget editor preview
 

@@ -5,7 +5,12 @@
  * @package vektor-inc/lightning
  */
 
+require_once __DIR__ . '/trait-ltg-g3-slider-options.php';
+
 class LTG_G3_Slider_Preload_Test extends WP_UnitTestCase {
+
+	// スライダーのオプション設定・後片付けは他のスライダーテストと共通のため trait を利用する.
+	use LTG_G3_Slider_Options_Trait;
 
 	/**
 	 * Front page ID
@@ -50,27 +55,6 @@ class LTG_G3_Slider_Preload_Test extends WP_UnitTestCase {
 				update_option( $key, self::$original_options[ $key ] );
 			}
 		}
-		wp_cache_flush();
-	}
-
-	/**
-	 * Clean up after each test.
-	 */
-	public function tearDown(): void {
-		delete_option( 'lightning_theme_options' );
-		wp_cache_flush();
-		parent::tearDown();
-	}
-
-	/**
-	 * Helper to set slider options.
-	 *
-	 * @param array $overrides Options to merge with defaults.
-	 */
-	private function set_slider_options( $overrides = array() ) {
-		$defaults = lightning_g3_slider_default_options();
-		$options  = array_merge( $defaults, $overrides );
-		update_option( 'lightning_theme_options', $options );
 		wp_cache_flush();
 	}
 
