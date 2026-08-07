@@ -59,13 +59,34 @@ global $vk_advansed_slider_prefix;
 $vk_advansed_slider_prefix = 'Lightning ';
 
 /**
- * Adjustment swiper navigation allow color
- * Swiper のナビゲーションが青色になってしまうので上書き指定
+ * Swiper の矢印・ページネーションの色調整
+ *
+ * Swiper は色を指定しないと矢印が既定の青色になるため、白に上書きする。
+ * 矢印の色は以前からサイト全体（:root）に指定しているため、範囲を変えずに維持する。
+ *
+ * ページネーションは対象をトップページのスライダー（.ltg-slide）に限定する。
+ * 白くする指定を :root に置くとサイト全体の Swiper に及び、色を指定していない
+ * 他のスライダー（VK Blocks など）のドットまで既定の青から白に変わってしまい、
+ * 白背景のページでは見づらくなる。この関数の目的と無関係な副作用になるため範囲を絞る。
+ * カスタムプロパティは継承するので、.ltg-slide に置けば配下のドットに効く。
+ *
+ * --swiper-pagination-color はアクティブなドット（.swiper-pagination-bullet-active）と
+ * プログレスバーの塗り（.swiper-pagination-progressbar-fill）の色になる。
+ * 非アクティブなドットは別の変数（--swiper-pagination-bullet-inactive-color / -opacity）
+ * で描画されるため、こちらも合わせて白にする。ドットはクリックで移動できる操作子
+ * （pagination.clickable）なので、現在位置だけでなく全ドットが判別できる必要がある。
+ * 既定の不透明度 20% では影まで薄まって明るい画像でも暗い画像でも判別できないため、
+ * 半透明をやめて 1（不透明）にする。半透明では中間調の背景で 3:1 を割るのを避けられない。
+ * 現在位置は不透明度差ではなく形の差で示す（components/_slide.scss を参照）。
+ *
+ * 明るい画像の上でも白が判別できるようにする影は overwrite/_swiper.scss で指定している。
  *
  * @since vk swiper composer version
  * @return void
  */
 function lightning_add_swiper_adjustment_css() {
-	wp_add_inline_style( 'lightning-common-style', ':root{--swiper-navigation-color: #fff;}' );
+	$css  = ':root{--swiper-navigation-color: #fff;}';
+	$css .= '.ltg-slide{--swiper-pagination-color: #fff;--swiper-pagination-bullet-inactive-color: #fff;--swiper-pagination-bullet-inactive-opacity: 1;}';
+	wp_add_inline_style( 'lightning-common-style', $css );
 }
 add_action( 'wp_enqueue_scripts', 'lightning_add_swiper_adjustment_css', 11 );
