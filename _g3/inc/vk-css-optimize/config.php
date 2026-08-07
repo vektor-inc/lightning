@@ -43,6 +43,14 @@ function lightning_css_tree_shaking_exclude_class( $inidata ) {
 		// Swiper v12 以降がスライダー初期化時に注入する矢印 SVG のクラス.
 		// サーバー出力の HTML には存在しないため、除外しないとツリーシェイキングで矢印のスタイルが削除される.
 		'swiper-navigation-icon',
+		// Swiper がスライダー初期化時に生成するページネーションのドットのクラス.
+		// サーバー出力の HTML はドットを含まない空の .swiper-pagination だけなので、
+		// 除外しないとツリーシェイキングでドットのスタイルが削除される.
+		// -active は現在位置を示すピルの指定で、ドットは全て同じ白・同じ形にしてあり
+		// 現在位置の手がかりが形だけのため、消えると現在どのスライドかが判別できなくなる.
+		// 無印は幅が変わるときのトランジションの指定で、消えると変化が一段跳びになる.
+		'swiper-pagination-bullet',
+		'swiper-pagination-bullet-active',
 		'vk_post',
 		'card',
 		'card-noborder',
