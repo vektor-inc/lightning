@@ -105,19 +105,31 @@
 	// -----------------------------------------------------------------------------
 	// 自動再生はモバイルでも動くため、矢印のようにモバイルで非表示にはしない。
 	// グリフは #fff 固定（--swiper-navigation-color を借りると運営者が黒指定した時に黒地の黒になる）。
+	// 箱の寸法は Swiper の --swiper-navigation-size を借りずに自前で持つ。
+	// あちらは「矢印グリフの寸法」で、矢印ボタンの箱はそこから calc で導出される別物のため、
+	// 借りると運営者が矢印を縮めた時にグリフだけが箱からはみ出す。
+	// & で包んでいるのは、ネストされたルールの後に宣言を置くと Sass が
+	// mixed-decls の警告を出すため。
+	& {
+		// 44px は WCAG 2.5.5（AAA）のターゲットサイズも満たす寸法。
+		--ltg-slide-autoplay-toggle-size: 44px;
+	}
 	&-autoplay-toggle {
 		position: absolute;
-		right: var(--swiper-navigation-sides-offset, 10px);
-		bottom: 0;
-		// スライド全体が <a> で包まれる場合にリンクへ埋もれないようにする。
+		// 右と下で同じ値を使い、角から等距離に置く。
+		// フォールバックは Swiper 自身の各ルールが使っている値に合わせる（Swiper 12 以降は 4px）。
+		right: var(--swiper-navigation-sides-offset, 4px);
+		bottom: var(--swiper-navigation-sides-offset, 4px);
 		// .swiper-pagination は幅100%・z-index: 10 の帯で、DOM 順があとなので
 		// 同値だとボタンの当たり判定を奪われる。そのため 1 つ上に置く。
 		z-index: 11;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		width: var(--swiper-navigation-size, 44px);
-		height: var(--swiper-navigation-size, 44px);
+		width: var(--ltg-slide-autoplay-toggle-size);
+		height: var(--ltg-slide-autoplay-toggle-size);
+		// グリフは箱に対する比率で導出し、箱を縮めてもはみ出さないようにする（44px の箱で 18px）。
+		font-size: calc(var(--ltg-slide-autoplay-toggle-size) / 44 * 18);
 		padding: 0;
 		border: none;
 		border-radius: 50%;
@@ -130,8 +142,8 @@
 		}
 		svg {
 			display: block;
-			width: 18px;
-			height: 18px;
+			width: 1em;
+			height: 1em;
 			fill: #fff;
 		}
 		&:hover,

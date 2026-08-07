@@ -184,6 +184,11 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 		 * アクセシブルネームは .screen-reader-text から取得されるため aria-label は付けない.
 		 * ボタン自体は hidden で出力し、初期化 JS が状態を確定させてから表示する.
 		 *
+		 * swiper-no-swiping は Swiper の noSwipingClass の既定値.
+		 * ボタンは swiper.el の内側にあるため、これが無いとボタンを押したまま指が少し動いた時に
+		 * スワイプ操作として拾われる（JS の stopPropagation は click にしか効かず、
+		 * Swiper がドラッグ判定に使う pointerdown / touchstart は止められない）.
+		 *
 		 * @return string ボタンの HTML. 出力しない場合は空文字.
 		 */
 		public static function get_autoplay_toggle_html() {
@@ -193,7 +198,7 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 			}
 
 			// グリフは「現在の状態」ではなく「押したら起こること」を示す（動画プレイヤーと同じ規約）.
-			$html  = '<button type="button" class="ltg-slide-autoplay-toggle" hidden>';
+			$html  = '<button type="button" class="ltg-slide-autoplay-toggle swiper-no-swiping" hidden>';
 			$html .= '<span class="ltg-slide-autoplay-toggle-stop">';
 			$html .= '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 4h4v16H6zm8 0h4v16h-4z" /></svg>';
 			$html .= '<span class="screen-reader-text">' . esc_html__( 'Stop automatic slide show', 'lightning' ) . '</span>';
@@ -745,11 +750,17 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 				$paras['loop'] = false;
 			}
 
-			if ( empty( $options['top_slide_time'] ) ) {
-				$paras['autoplay']['delay'] = 4000;
-			} else {
-				$paras['autoplay']['delay'] = intval( $options['top_slide_time'] );
+			/*
+			 * autoplay の待ち時間.
+			 * 未設定のほか 0 以下も既定値に戻す。カスタマイザの入力欄は is_numeric しか見ないため
+			 * 負数を保存できてしまい、delay に 0 以下が渡ると setTimeout が即時発火して
+			 * スライドが止められない速度で流れ続ける（塞ぎたい 2.2.2 を自分で踏むことになる）.
+			 */
+			$slide_time = intval( $options['top_slide_time'] );
+			if ( $slide_time <= 0 ) {
+				$slide_time = 4000;
 			}
+			$paras['autoplay']['delay'] = $slide_time;
 
 			if ( empty( $options['top_slide_effect'] ) ) {
 				$paras['effect'] = 'slide';

@@ -67,14 +67,20 @@
 
 	/*
 	 * autoplay の開始・停止をボタンに反映する。
-	 * これを購読しないと、スワイプなどで自動再生が止まったあともボタンが
-	 * 「停止」と嘘の表示を続けることになる。
+	 * ボタンから以外の経路（disableOnInteraction を有効にした場合の操作による停止など）で
+	 * 自動再生が止まったときも、これでボタンの表示が追随する。
 	 *
 	 * autoplayPause / autoplayResume は購読しない。
-	 * Swiper はスライドが切り替わるたびに（内部の待ち合わせのために）
+	 * Swiper はスライドが切り替わるたびに（内部のトランジション待ち合わせのために）
 	 * autoplayPause → autoplayResume を発火するため、購読すると
 	 * 自動再生中なのに切り替えの間だけ「再生」表示になってちらつく。
-	 * autoplay.paused も同じ理由で判定に使わない。
+	 * これらは内部のゲートであって閲覧者から見た再生状態ではないので、
+	 * ボタンが表すべきは autoplay.running。autoplay.paused も判定に使わない。
+	 *
+	 * ただし pauseOnMouseEnter を有効にした場合は、マウスを載せている間
+	 * 「自動再生中の表示のまま実際には止まっている」状態になる。
+	 * その値を有効化するときは autoplayPause / autoplayResume の扱いを再設計すること
+	 * （既定は false なので現状は実害なし）。
 	 */
 	swiper.on( 'autoplayStart', function () {
 		syncToggle( true );
@@ -85,8 +91,10 @@
 
 	toggle.addEventListener( 'click', function ( event ) {
 		/*
-		 * リンク付きスライドではスライド全体が <a> で包まれるため、
-		 * ボタンのクリックがリンク遷移に化けないよう伝播を止める。
+		 * ボタンは swiper.el の内側にあるため、クリックが Swiper 側の
+		 * クリック処理に拾われないよう伝播を止める。
+		 * ドラッグ判定は pointerdown / touchstart なのでここでは止められない。
+		 * そちらはボタンに付けた swiper-no-swiping クラス（noSwipingClass の既定値）で防ぐ。
 		 */
 		event.preventDefault();
 		event.stopPropagation();
@@ -101,8 +109,10 @@
 
 	/*
 	 * 最後にボタンを表示する。
-	 * これにより「ボタンが見えている ⇔ 自動再生が生きている」が常に成り立ち、
-	 * JS が動かなかった環境で死んだボタンが表示されることもない。
+	 * これにより「ボタンが見えている ⇒ JS が生きていて操作が効く」が保証される。
+	 * 逆向きは成り立たない（prefers-reduced-motion の環境ではボタンが見えていて停止中）。
+	 * ここまでの途中で例外が出た場合はこの行に到達しないので、
+	 * 押しても何も起きない死んだボタンが表示されることはない。
 	 */
 	toggle.hidden = false;
 } )();
