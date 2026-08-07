@@ -14,6 +14,15 @@ $prefix_customize_panel = lightning_get_prefix_customize_panel();
 /**
  * Register tree shaking css handles
  *
+ * ここに handle を足したら、_g3/tests/test-css-tree-shaking-exclude-pagination.php の
+ * SHAKEN_CSS_FILES にも、その handle が読み込む CSS ファイルを足すこと。
+ * テストはシェイキング対象のファイルを走査して、実行時に生成されるクラスの除外漏れを
+ * 検出している。追加したファイルを載せ忘れると、そのファイルだけ検査されないまま
+ * テストは緑のままになる（対象が減ったことに気付けない）。
+ *
+ * handle と生成ファイルの対応は enqueue のコードを読まないと取れないため、
+ * テスト側からの自動導出はしていない。
+ *
  * @param array $vk_css_tree_shaking_handles : recieve array.
  * @return array $vk_css_tree_shaking_handles : return modefied array.
  */
