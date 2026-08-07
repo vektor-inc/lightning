@@ -35,6 +35,8 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ Spec Change ] Lower the CSS specificity of the full width / wide width styles so they can be overridden without !important
+[ Spec Change ] Full width / wide width covers, images and sliders placed in a section background now bleed to the edge of the background box instead of the viewport
 [ G2 ][ Bug Fix ] Fix image set/delete buttons in the Full Wide Title widget not opening the media library in the block-based widget editor
 
 [ Spec Change ] Update vektor-inc/font-awesome-versions from 0.7.4 to 0.7.5

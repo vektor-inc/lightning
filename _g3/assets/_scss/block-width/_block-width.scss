@@ -27,15 +27,31 @@ entry-body
 		margin-right:auto;
 	}
 }
+// 全幅 / 幅広 の詳細度について（.alignfull / .alignwide 共通）
+// -----------------------------------------------------------------------------
+// 先頭の & だけで全ての .alignfull / .alignwide にマッチするため、続くリストは
+// マッチを増やすためのものではない。以前は :where() なしの :is() を使い、
+// 列挙したブロックに対してだけ詳細度を (0,2,0) に上げる形になっていた。
+// 大量配布テーマで詳細度を上げるとユーザーの素朴な上書きを打ち消して !important を
+// 強いるため、:where() で包んで (0,1,0) に下げてある（詳細度は先頭の & と同じ）。
+// そのためリスト自体は現在マッチ結果を変えない。過去にどのブロックを対象にしていたかの
+// 記録として残しているだけなので、消す/整理するのは別途判断すること。
+//
+// 詳細度を下げた結果、_layout_base.scss の
+// .main-section--base--on / .sub-section--base--on 配下の全幅・幅広指定 (0,2,0) に
+// 負けるようになった。セクション背景の中ではブロック種別を問わず、
+// ビューポート全幅ではなく背景ボックスの端までの飛び出しになる
+// （base--on 内のカバー・画像は _layout_base.scss 側が width や padding まで
+// 指定して制御する前提で書かれているため、そちらに委ねる）。
 .alignfull {
 	&,
-	&:is(
+	&:where(:is(
 	.swiper-container,
 	.vk_slider,
 	.wp-block-image,
 	.wp-block-cover-image,
 	.wp-block-cover
-	) {
+	)) {
 		width:auto; /* Don't use 100svw!! cope with windows */
 		margin-left: calc(50% - 50vw);
 		margin-right: calc(50% - 50vw);
@@ -43,13 +59,14 @@ entry-body
 	}
 }
 .alignwide {
+	// 詳細度の考え方は上の .alignfull と同じ（:where() で (0,1,0) に統一）。
 	&,
-	&:is(
+	&:where(:is(
 	.vk_slider,
 	.wp-block-image,
 	.wp-block-cover-image,
 	.wp-block-cover
-	) {
+	)) {
 		// --vk-width-container != 100% なので注意
 		// Lightningの幅広 = コンテナの「表示エリア（100%）	」 + 左右余白分の丁度半分
 		width: calc( 100% + ( var(--vk-width-full) - 100% ) / 2 );
