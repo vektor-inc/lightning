@@ -106,8 +106,11 @@
 	// 自動再生はモバイルでも動くため、矢印のようにモバイルで非表示にはしない。
 	// グリフは #fff 固定（--swiper-navigation-color を借りると運営者が黒指定した時に黒地の黒になる）。
 	// 箱の寸法は Swiper の --swiper-navigation-size を借りずに自前で持つ。
-	// あちらは「矢印グリフの寸法」で、矢印ボタンの箱はそこから calc で導出される別物のため、
-	// 借りると運営者が矢印を縮めた時にグリフだけが箱からはみ出す。
+	// あちらが何を指すかは Swiper のバージョンで変わるため。
+	//   Swiper 11 : ::after の font-size（＝矢印グリフの寸法）。矢印ボタンの箱は
+	//               width: calc(var(--swiper-navigation-size) / 44 * 27) / height: 同値 で 27x44。
+	//   Swiper 12 / 14 : width と height の両方が同値（＝矢印ボタンの箱そのもの）で 44x44。
+	// つまり借りると、Swiper を更新した瞬間にこのボタンの寸法の意味が変わってしまう。
 	// & で包んでいるのは、ネストされたルールの後に宣言を置くと Sass が
 	// mixed-decls の警告を出すため。
 	& {
@@ -117,7 +120,10 @@
 	&-autoplay-toggle {
 		position: absolute;
 		// 右と下で同じ値を使い、角から等距離に置く。
-		// フォールバックは Swiper 自身の各ルールが使っている値に合わせる（Swiper 12 以降は 4px）。
+		// Swiper はこの変数を定義せず各ルールでフォールバックしているだけなので、
+		// フォールバック値は Swiper 側と揃える必要がある。この値も版で違い、
+		// Swiper 11 は 10px・Swiper 12 以降は 4px。ここは 12 以降に合わせている。
+		// ずれると矢印との右端が揃わなくなるため、Swiper を戻す・上げる時は追随させる。
 		right: var(--swiper-navigation-sides-offset, 4px);
 		bottom: var(--swiper-navigation-sides-offset, 4px);
 		// .swiper-pagination は幅100%・z-index: 10 の帯で、DOM 順があとなので
