@@ -129,7 +129,13 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 		/**
 		 * Swiper Paramater
 		 *
-		 * @param string $paras paramater.
+		 * 既定値と引数を wp_parse_args() でマージして JSON 文字列にして返す。
+		 * wp_parse_args() のマージは第一階層のみの浅いマージのため、
+		 * 引数側で 'a11y' や 'autoplay' などの入れ子キーを指定した場合は
+		 * その既定値の中身が丸ごと置き換わる点に注意（部分的な上書きにはならない）。
+		 *
+		 * @param array|string $paras 上書きしたい Swiper のパラメータ。
+		 * @return string Swiper に渡すパラメータの JSON 文字列。
 		 */
 		public static function swiper_paras_json( $paras = '' ) {
 
@@ -147,6 +153,24 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 				'navigation'    => array(
 					'nextEl' => '.swiper-button-next',
 					'prevEl' => '.swiper-button-prev',
+				),
+				/*
+				 * Swiper の a11y モジュールがスクリーンリーダー用に付与する aria-label を翻訳可能にする。
+				 * 指定しない場合は Swiper 側の英語既定値（Previous slide 等）がそのまま読み上げられる。
+				 *
+				 * firstSlideMessage / lastSlideMessage は意図的に含めていない。
+				 * このスライダーは矢印を出力する条件とループ再生が有効になる条件が一致しており
+				 * （矢印の出力は get_slide_html() の $slide_count >= 2、ループ無効化は add_slide_script() の $slide_count < 2）、
+				 * 常にループ再生されるため先頭・末尾スライドの状態に入らず、この2件は読み上げられない。
+				 * 将来ループ再生を選択式（オフにできる）にした場合は、この2件の追加が必要になる。
+				 */
+				'a11y'          => array(
+					'prevSlideMessage'        => __( 'Previous slide', 'lightning' ),
+					'nextSlideMessage'        => __( 'Next slide', 'lightning' ),
+					/* translators: {{index}} は Swiper が実行時にスライド番号へ置換するプレースホルダのため、翻訳文にもそのまま残してください。 */
+					'paginationBulletMessage' => __( 'Go to slide {{index}}', 'lightning' ),
+					/* translators: {{index}} はスライド番号、{{slidesLength}} は総スライド数へ Swiper が実行時に置換するプレースホルダのため、翻訳文にもそのまま残してください。 */
+					'slideLabelMessage'       => __( '{{index}} / {{slidesLength}}', 'lightning' ),
 				),
 			);
 
