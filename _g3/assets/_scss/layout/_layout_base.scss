@@ -80,5 +80,13 @@
 		width: calc( 100% + var(--vk-width-base-padding-side) * 2 );
 		margin-left: calc( var(--vk-width-base-padding-side) * -1 );
 		margin-right: calc( var(--vk-width-base-padding-side) * -1 );
+		&.wp-block-image {
+			// 値は上の width と同じだが、詳細度 (0,4,0) を作るために必要なので消さないこと。
+			// _block-width.scss の @media (min-width:992px) 内にある
+			// body .sub-section--col--two.sub-section--base--on .alignfull (0,3,1) に
+			// 親の (0,3,0) では負け、width が --vk-width-base-padding 基準に戻ってしまうため、
+			// このネストで勝たせている。
+			width: calc( 100% + var(--vk-width-base-padding-side) * 2 );
+		}
 	}
 }
