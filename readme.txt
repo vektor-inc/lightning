@@ -38,6 +38,7 @@ vk-develop@vektor-inc.co.jp
 [ G2 ][ Bug Fix ] Fix image set/delete buttons in the Full Wide Title widget not opening the media library in the block-based widget editor
 
 [ Spec Change ] Update vektor-inc/font-awesome-versions from 0.7.4 to 0.7.5
+[ G2/G3 ][ Spec Change ] Unify SCSS breakpoint variables as maximum values (576 / 768 / 992 / 1200 / 1400px) and rewrite media queries with range syntax
 [ G2 ][ Bug Fix ] Fix undefined array key warning logged on PHP 8 or later when saving the Full Wide Title widget with the text shadow checkbox unchecked
 [ G2 ][ Bug Fix ] Fix undefined array key warning logged on PHP 8 or later when displaying the Full Wide Title widget in the block-based widget editor preview
 

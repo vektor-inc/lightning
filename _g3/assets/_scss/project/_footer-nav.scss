@@ -4,7 +4,7 @@
     li {
         padding :0 1.5em;
     }
-	@media ( min-width: $md-min ){
+	@media ( $sm-max < width ){
 		&-list--align {
 			&--center{
 				text-align: center;
@@ -14,7 +14,7 @@
 			}
 		}
 	}
-    @media ( max-width: $sm-max ){
+    @media ( width <= $sm-max ){
         padding:0;
         &-list{
             li {

@@ -26,7 +26,7 @@
 	}
 }
 
-@media (max-width: 767px) {
+@media ( width <= $sm-max ) {
 	.footerMenu {
 		border-top: var(--color-footer-border,#ccc);;
 		border-bottom: var(--color-footer-border,#ccc);;
@@ -47,8 +47,8 @@
 			border-bottom: none;
 		}
 	}
-} // @media (max-width: 767px){
-@media (min-width: 768px) {
+} // @media ( width <= $sm-max ){
+@media ( $sm-max < width ) {
 	.footerMenu {
 		ul {
 			margin: 12px 0 10px;

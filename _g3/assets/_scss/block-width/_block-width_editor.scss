@@ -29,10 +29,10 @@ body:where(:not(.is-fullscreen-mode)) {
 		--vk-width-editor-leftmenu:36px;
 	}
 	&.auto-fold {
-		@media ( max-width: 960px ) {
+		@media ( width <= 960px ) {
 			--vk-width-editor-leftmenu:36px;
 		}
-		@media ( max-width: 782px ) {
+		@media ( width <= 782px ) {
 			--vk-width-editor-leftmenu:0px;
 		}
 	}
@@ -177,16 +177,16 @@ body.block-editor-iframe__body.editor-styles-wrapper{
 .container {
 	padding:0;
 	max-width:var(--vk-width-editor-container);
-	@media (min-width: 576px) {
+	@media ( $xs-max < width ) {
 		max-width:var(--vk-width-editor-container);
 	}
-	@media (min-width: 768px) {
+	@media ( $sm-max < width ) {
 		max-width:var(--vk-width-editor-container);
 	}
-	@media (min-width: 992px){
+	@media ( $md-max < width ){
 		max-width:var(--vk-width-editor-container);
 	}
-	@media (min-width: 1200px) {
+	@media ( $lg-max < width ) {
 		max-width:var(--vk-width-editor-container);
 	}
 }
@@ -212,7 +212,7 @@ html :where(.wp-block) {
 //////////////////////////////////////////////////////////////
 /// Cope with content width half ( VK Blocks )
 //////////////////////////////////////////////////////////////
-@media (min-width: 782px) {
+@media ( width >= 782px ) {
 	.editor-styles-wrapper {
 		:where(:not(.is-vk-row-reverse)) > :first-child.is-vk-content-width-half,
 		:where(.is-vk-row-reverse) > :nth-child(2).is-vk-content-width-half {

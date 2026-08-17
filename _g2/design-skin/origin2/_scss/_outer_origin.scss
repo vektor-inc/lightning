@@ -22,7 +22,7 @@ $border_horizontal: 1px solid rgba(0, 0, 0, 0.15);
 	}
 }
 
-@media (max-width: 991px) {
+@media ( width <= $md-max ) {
 	.headerTop {
 		.headerTop .headerTop_tel_wrap {
 			color: #464646;
@@ -40,7 +40,7 @@ $border_horizontal: 1px solid rgba(0, 0, 0, 0.15);
 
 	// ul.gMenu { border-top:$border_horizontal }
 	// ul.gMenu a { border-bottom:$border_horizontal; }
-} // @media (max-width: 991px){
+} // @media ( width <= $md-max ){
 
 /*-------------------------------------------*/
 /* .page-header

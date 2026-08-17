@@ -1,4 +1,4 @@
-@media ( min-width: $lg-min ){
+@media ( $md-max < width ){
     body:not(.header_scrolled) .global-nav--layout--float-right {
         display: flex;
         justify-content: flex-end;

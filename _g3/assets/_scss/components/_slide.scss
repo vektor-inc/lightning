@@ -96,7 +96,7 @@
 	.swiper-button-prev:after,
 	.swiper-button-next:after {
 		font-size: 1.5em;
-		@media (max-width: $xs-max) {
+		@media ( width <= $xs-max ) {
 			display: none;
 		}
 	}
