@@ -28,6 +28,17 @@ entry-body
 	}
 }
 .alignfull {
+	// & だけで全ての .alignfull にマッチするため、:is() 側は同じ宣言を詳細度 (0,2,0) で重ねる役割になっている。
+	// css.md の方針どおり :where() で包んで詳細度を下げる対応は、既存レイアウトへの影響が大きいため #1383 で別途検討する。
+	// .swiper-container は _g2 期のマークアップ向けの既存エントリ。Lightning の現行スライダーは
+	// alignfull を持たない（class-ltg-g3-slider.php の出力は swiper / swiper-container / ltg-slide のみ）
+	// ため、このリストには依存していない。
+	// Swiper が v8 でリネームした現行名 .swiper は、alignfull と swiper を同一要素に持つ
+	// マークアップが存在しないため入れていない。
+	// もし将来そのマークアップが出た場合、必要になる理由は詳細度を上げたいからではなく、
+	// vk-swiper-style が lightning-common-style より後に読み込まれ、同詳細度の
+	// .swiper{margin-left:auto;margin-right:auto} がソース順で .alignfull に勝つため。
+	// その場合は #1383 の :where() 化と同じ土俵（詳細度とソース順の整理）で判断する。
 	&,
 	&:is(
 	.swiper-container,
