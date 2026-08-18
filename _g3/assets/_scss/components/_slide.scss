@@ -93,9 +93,34 @@
 			background-color: var(--vk-color-primary);
 		}
 	}
-	.swiper-button-prev:after,
-	.swiper-button-next:after {
-		font-size: 1.5em;
+
+	/* ナビゲーション矢印
+	   ========================================================================== */
+
+	// 矢印は v11 まではアイコンフォントのグリフ、v12 以降は JS が注入する SVG。
+	// 他プラグインが先に v11 を読み込む場合があるため、どちらの描画方式にも同じ寸法を指定する。
+	// 寸法は .ltg-slide 側の変数に持たせ、追加 CSS からの上書きが 1 箇所で
+	// 新旧どちらの描画方式にも効くようにする（別々に書かせると片方だけ変わる）。
+	// 変数名は Swiper 自身の --swiper-navigation-size（矢印ボタンの箱の寸法）と
+	// 紛らわしくならないよう arrow とし、矢印そのものの寸法だと分かるようにする。
+	// em はトークン置換のため利用先で解決され、::after は親（ボタン）の font-size 基準、
+	// .swiper-navigation-icon は自身がボタンから継承した font-size 基準になる。
+	// どちらもボタンの font-size が基準で一致するため、新旧の描画方式で寸法がずれない。
+	// & で包んでいるのは、ネストされたルールの後に宣言を置くと Sass が
+	// mixed-decls の警告を出すため。
+	& {
+		--ltg-slide-arrow-size: 1.5em;
+	}
+	.swiper-button-prev,
+	.swiper-button-next {
+		&::after {
+			font-size: var(--ltg-slide-arrow-size);
+		}
+		.swiper-navigation-icon {
+			height: var(--ltg-slide-arrow-size);
+			width: auto;
+		}
+		// グリフが無くなった v12 以降でも効くよう、非表示はボタン自体に指定する。
 		@media (max-width: $xs-max) {
 			display: none;
 		}

@@ -40,6 +40,9 @@ function lightning_css_tree_shaking_exclude_class( $inidata ) {
 	$exclude_classes_array = array(
 		'customize-partial-edit-shortcut',
 		'customize-partial-edit-shortcuts-shown',
+		// Swiper v12 以降がスライダー初期化時に注入する矢印 SVG のクラス.
+		// サーバー出力の HTML には存在しないため、除外しないとツリーシェイキングで矢印のスタイルが削除される.
+		'swiper-navigation-icon',
 		'vk_post',
 		'card',
 		'card-noborder',
