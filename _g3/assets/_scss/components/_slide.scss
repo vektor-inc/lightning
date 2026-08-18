@@ -125,4 +125,66 @@
 			display: none;
 		}
 	}
+
+	// 自動再生の停止・再生ボタン
+	// -----------------------------------------------------------------------------
+	// 自動再生はモバイルでも動くため、矢印のようにモバイルで非表示にはしない。
+	// グリフは #fff 固定（--swiper-navigation-color を借りると運営者が黒指定した時に黒地の黒になる）。
+	// 箱の寸法は Swiper の --swiper-navigation-size を借りずに自前で持つ。
+	// あちらが何を指すかは Swiper のバージョンで変わるため。
+	//   Swiper 11 : ::after の font-size（＝矢印グリフの寸法）。矢印ボタンの箱は
+	//               width: calc(var(--swiper-navigation-size) / 44 * 27) / height: 同値 で 27x44。
+	//   Swiper 12 / 14 : width と height の両方が同値（＝矢印ボタンの箱そのもの）で 44x44。
+	// つまり借りると、Swiper を更新した瞬間にこのボタンの寸法の意味が変わってしまう。
+	// & で包んでいるのは、ネストされたルールの後に宣言を置くと Sass が
+	// mixed-decls の警告を出すため。
+	& {
+		// 44px は WCAG 2.5.5（AAA）のターゲットサイズも満たす寸法。
+		--ltg-slide-autoplay-toggle-size: 44px;
+	}
+	&-autoplay-toggle {
+		position: absolute;
+		// 右と下で同じ値を使い、角から等距離に置く。
+		// Swiper はこの変数を定義せず各ルールでフォールバックしているだけなので、
+		// フォールバック値は Swiper 側と揃える必要がある。この値も版で違い、
+		// Swiper 11 は 10px・Swiper 12 以降は 4px。ここは 12 以降に合わせている。
+		// ずれると矢印との右端が揃わなくなるため、Swiper を戻す・上げる時は追随させる。
+		right: var(--swiper-navigation-sides-offset, 4px);
+		bottom: var(--swiper-navigation-sides-offset, 4px);
+		// .swiper-pagination は幅100%・z-index: 10 の帯で、DOM 順があとなので
+		// 同値だとボタンの当たり判定を奪われる。そのため 1 つ上に置く。
+		z-index: 11;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: var(--ltg-slide-autoplay-toggle-size);
+		height: var(--ltg-slide-autoplay-toggle-size);
+		// グリフは箱に対する比率で導出し、箱を縮めてもはみ出さないようにする（44px の箱で 18px）。
+		font-size: calc(var(--ltg-slide-autoplay-toggle-size) / 44 * 18);
+		padding: 0;
+		border: none;
+		border-radius: 50%;
+		// どんな画像の上でも白いグリフとのコントラストを 4.5:1 以上に保てる濃度
+		background-color: rgb(0 0 0 / 0.55);
+		cursor: pointer;
+		// display: flex が [hidden] の display: none に勝ってしまうので明示する
+		&[hidden] {
+			display: none;
+		}
+		svg {
+			display: block;
+			width: 1em;
+			height: 1em;
+			fill: #fff;
+		}
+		&:hover,
+		&:focus-visible {
+			background-color: rgb(0 0 0 / 0.75);
+		}
+		// 白い画像の上でリングが消えないよう、輪郭を円の内側に描く
+		&:focus-visible {
+			outline: 2px solid #fff;
+			outline-offset: -4px;
+		}
+	}
 }

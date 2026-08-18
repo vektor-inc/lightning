@@ -35,12 +35,13 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
-[ G2 ][ Bug Fix ] Fix image set/delete buttons in the Full Wide Title widget not opening the media library in the block-based widget editor
-
+[ G3 ][ New Feature ] Add a button to stop and start the automatic slide show of the home page slider (WCAG 2.1 Success Criterion 2.2.2). To hide it, use the lightning_top_slide_autoplay_toggle_display filter
 [ Spec Change ] Update vektor-inc/font-awesome-versions from 0.7.4 to 0.7.5
+[ G3 ][ Spec Change ] Show the home page slider with its automatic slide show stopped when the OS "reduce motion" setting is enabled. Visitors can start it with the button
 [ G3 ][ Spec Change ] Update vektor-inc/vk-swiper from 0.3.6 to 0.4.0, updating the bundled Swiper from 11.2.10 to 14.0.6, which gives the slider arrow a larger tap target
 [ G3 ][ Spec Change ] Change the top page slider arrow to the SVG injected by Swiper v12 and later. To resize it in Additional CSS, set .ltg-slide { --ltg-slide-arrow-size: 3em } - this one property sizes both the new SVG and the older glyph, and selector-based rules keep working
 [ G3 ][ Spec Change ] Hide the top page slider arrow buttons themselves on screens narrower than 576px, where only the arrow glyph used to be hidden. If you overrode the glyph to keep the arrows on mobile, target the buttons instead of :after
+[ G2 ][ Bug Fix ] Fix image set/delete buttons in the Full Wide Title widget not opening the media library in the block-based widget editor
 [ G2 ][ Bug Fix ] Fix undefined array key warning logged on PHP 8 or later when saving the Full Wide Title widget with the text shadow checkbox unchecked
 [ G2 ][ Bug Fix ] Fix undefined array key warning logged on PHP 8 or later when displaying the Full Wide Title widget in the block-based widget editor preview
 
