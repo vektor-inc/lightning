@@ -124,6 +124,26 @@ class LTG_G3_Slider_Markup_Test extends WP_UnitTestCase {
 				),
 			),
 			array(
+				'test_condition_name' => 'カバー色に二重引用符が含まれる場合（境界値） => エスケープされて style 属性が壊れない',
+				'conditions'          => array(
+					'options' => array(
+						'top_slide_cover_color_1'   => 'red;" data-unsafe="1',
+						'top_slide_cover_opacity_1' => '50',
+					),
+				),
+				'expected'            => array(
+					'contains'     => array(
+						'<div class="ltg-slide-cover" style="background-color:red;&quot; data-unsafe=&quot;1;opacity:0.5"></div>',
+					),
+					'not_contains' => array_merge(
+						$dead_classes,
+						// 生の二重引用符が style 属性に混入して別属性になっていないこと.
+						array( 'data-unsafe="1"' )
+					),
+					'is_empty'     => false,
+				),
+			),
+			array(
 				'test_condition_name' => 'スライド画像が1枚もない場合（境界値） => 空文字列',
 				'conditions'          => array(
 					'options' => array(
