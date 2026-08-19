@@ -70,23 +70,23 @@
 		padding-right:var(--vk-width-base-padding);
 	}
 }
+// サイドバーは左右パディングが --vk-width-base-padding-side と狭いため、
+// 全幅・幅広は上のルールの --vk-width-base-padding 基準ではなく -side 基準にする。
+// （margin は `- var(...)` と書かれていたが -var(...) は不正な CSS で宣言ごと破棄されていた）
+//
+// 担当範囲: .vk_outer-width-full の全幅と、992px 未満の全ブロック。
+// .alignfull / .alignwide の 992px 以上は、_block-width.scss の
+// @media (min-width:992px) 内にある body 付きの指定 (0,3,1) と
+// margin-left/right:0 !important に、この詳細度 (0,3,0) では勝てない。
+// そちらに同じ意図の -side 基準の指定を置いてあるので、ここでは扱わない。
+// なお 992px 未満は -side が --vk-width-base-padding と同値になるため、
+// この指定は実質 .vk_outer-width-full 向けとして働く。
 .sub-section--base--on.sub-section--col--two {
 	.vk_outer-width-full,
 	.alignfull,
 	.alignwide {
-		// margin だけ -side にすると width は上のルールの --vk-width-base-padding 基準のまま残り、
-		// 左右のはみ出しが非対称になるため width も -side 基準に揃える。
-		// （margin は `- var(...)` と書かれていたが -var(...) は不正な CSS で宣言ごと破棄されていた）
 		width: calc( 100% + var(--vk-width-base-padding-side) * 2 );
 		margin-left: calc( var(--vk-width-base-padding-side) * -1 );
 		margin-right: calc( var(--vk-width-base-padding-side) * -1 );
-		&.wp-block-image {
-			// 値は上の width と同じだが、詳細度 (0,4,0) を作るために必要なので消さないこと。
-			// _block-width.scss の @media (min-width:992px) 内にある
-			// body .sub-section--col--two.sub-section--base--on .alignfull (0,3,1) に
-			// 親の (0,3,0) では負け、width が --vk-width-base-padding 基準に戻ってしまうため、
-			// このネストで勝たせている。
-			width: calc( 100% + var(--vk-width-base-padding-side) * 2 );
-		}
 	}
 }
