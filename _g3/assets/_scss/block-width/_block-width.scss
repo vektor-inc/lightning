@@ -61,7 +61,7 @@ entry-body
 // 詳細度を下げると .swiper 側の指定に負ける。VK Blocks のスライダーは現行の保存形式で
 // `swiper vk_slider … alignfull`、旧保存形式で `swiper swiper-container vk_slider … alignfull`
 // を出力する（vk-blocks-pro の blocks/slider/save.js と deprecated/save/*）。
-// これは下の「スライダーだけ (0,2,0) を維持する例外」で個別に手当てしてある。
+// これは下の「スライダーだけ詳細度 (0,2,0) を維持する」で個別に手当てしてある。
 // 一方 Lightning 自身のスライダーの出力は `{prefix}swiper swiper swiper-container ltg-slide` で
 // alignfull は持たない（class-ltg-g3-slider.php）。
 //
@@ -82,12 +82,20 @@ entry-body
 .alignwide {
 	@include ltg-alignwide-width;
 }
-// スライダーだけ詳細度 (0,2,0) を維持する例外
+// スライダーだけ詳細度 (0,2,0) を維持する
 // -----------------------------------------------------------------------------
-// vk-swiper-style（swiper-bundle.min.css）はテーマ CSS より後に読み込まれ、
-// 同詳細度の .swiper{margin-left:auto;margin-right:auto} がソース順で勝つ。
-// そのため上の (0,1,0) だけにすると、スライダーの全幅は中央寄せに戻されて
-// コンテンツ幅まで縮み、幅広は中央寄せが崩れて右端がビューポート端に張り付く。
+// スライダーは .alignfull / .alignwide と「同一要素」に .swiper を持つため、
+// .swiper{margin-left:auto;margin-right:auto} と同詳細度 (0,1,0) で並ぶ。
+// 同詳細度はソース順の後勝ちで決まり、読み込み順はプラグインの構成や
+// enqueue のタイミングで変わりうる。読み込み順に左右されず確実に勝たせるため、
+// ここだけ (0,2,0) を維持する。
+// 上の (0,1,0) だけにすると、スライダーの全幅は中央寄せに戻されてコンテンツ幅まで縮み、
+// 幅広は中央寄せが崩れて右端がビューポート端に張り付く（#1383 で実際に起きた回帰）。
+//
+// 実際に勝っているスタイルシートのハンドルは未特定のため書かない。
+// swiper-bundle.min.css に上記の宣言はあるが、vk-swiper-style は
+// lightning-common-style より先に登録・出力されるため、それ単独では説明が付かない。
+// 推測でハンドル名を書くと、後から読んだ人が根拠を確かめて例外を消しかねない。
 //
 // VK Blocks のスライダーは swiper と vk_slider を「同一要素」に出力する
 // （現行 slider/save.js、旧保存形式は swiper swiper-container vk_slider …）。
@@ -97,18 +105,18 @@ entry-body
 //
 // クラスの役割分担: 耐久性は .vk_slider（VK Blocks 自身の意味クラス）が担い、
 // .swiper-container は旧保存形式の救済。Swiper 側のクラス名変更に影響されない形。
-// Lightning 自身のスライダーから swiper-container を外す変更（#1393）が進んでいるが、
-// そちらは alignfull を持たないため、この例外は #1393 に依存していない。
+// Lightning 自身のスライダーは swiper-container を出力し続ける（#1403 で除去しない方針が確定）。
+// ただしその出力は alignfull を持たないため、いずれにせよこの指定の対象外。
 //
 // 副作用: 利用者が素朴な .alignfull{} / .alignwide{} を書いても、
 // スライダーだけは (0,2,0) に負けて上書きできない。
 // その場合は .alignfull.vk_slider{} のようにクラスを 2 つ書けば上書きできる
 // （!important は不要）。
 //
-// ⚠️ この :is() は css.md の「:is() は :where(:is()) で包む」に対する意図的な例外。
-// :where() で包むと (0,1,0) に落ちて上の素の指定と同じになり、.swiper に負けて
-// スライダーの全幅・幅広が崩れる（#1383 で実際に起きた回帰）。
-// ルール準拠のつもりで :where() を足さないこと。
+// ⚠️ この :is() は :where() で包まないこと。
+// スライダーは .swiper 側の同詳細度指定に読み込み順を問わず勝つ必要があるため、
+// ここだけ (0,2,0) を維持している。:where() で包むと (0,1,0) に落ちて上の素の指定と
+// 同じになり、順序次第でスライダーの全幅・幅広が崩れる。
 .alignfull:is(
 .swiper-container,
 .vk_slider
@@ -184,7 +192,19 @@ body .sub-section--col--two {
 	// （_layout_base.scss の .sub-section--base--on を参照）。
 	// 上の共通指定は --vk-width-base-padding 基準の幅なので、サイドバーでは
 	// 全幅・幅広ブロックが箱の左端に届かないまま右へはみ出してしまう。
-	// -side 基準に揃えて、箱の左右の端ぴったりに収める。
+	// -side 基準に揃え直す。
+	//
+	// 全幅と幅広は、このファイル前半（.alignfull / .alignwide の素の指定）と
+	// メインカラム側（#1402）が確立している型をサイドバーでも維持する。
+	// p = --vk-width-base-padding-side として、
+	//   .alignfull … 幅 100% + p * 2 / 左右マージン -p     → 箱の端ぴったり
+	//   .alignwide … 幅 100% + p     / 左右マージン -p / 2 → 箱の中で中央寄せ
+	// まとめて -p にすると幅広が全幅と同じ描画になり、ブロックツールバーの
+	// 「幅広 / 全幅」の切り替えがサイドバーでだけ見た目に反映されなくなる。
+	// なお幅広は width / max-width も -side 基準に揃える必要がある。
+	// マージンだけ -p / 2 にすると、上の共通指定の
+	// width: calc( 100% + var(--vk-width-base-padding) )（2.4rem 基準）が残り、
+	// 幅とマージンの基準がずれて左右非対称になる。
 	//
 	// _layout_base.scss にも同じ意図の
 	// .sub-section--base--on.sub-section--col--two の指定があるが、詳細度 (0,3,0) では
@@ -198,8 +218,13 @@ body .sub-section--col--two {
 	// body .is-layout-constrained > :where(...) { margin-left:auto !important }
 	// を打ち消すために外せない。
 	&.sub-section--base--on {
-		.alignfull,
 		.alignwide {
+			margin-left: calc( var(--vk-width-base-padding-side) / -2 ) !important;
+			margin-right: calc( var(--vk-width-base-padding-side) / -2 ) !important;
+			max-width:calc( 100% + var(--vk-width-base-padding-side) );
+			width:calc( 100% + var(--vk-width-base-padding-side) );
+		}
+		.alignfull {
 			margin-left: calc( var(--vk-width-base-padding-side) * -1 ) !important;
 			margin-right: calc( var(--vk-width-base-padding-side) * -1 ) !important;
 			max-width:calc( 100% + var(--vk-width-base-padding-side) * 2 );
