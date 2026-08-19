@@ -36,7 +36,7 @@ vk-develop@vektor-inc.co.jp
 == Changelog ==
 
 [ G3 ][ Spec Change ] Make the home page slider navigation and pagination aria-labels translatable
-[ G3 ][ Spec Change ] Lower the CSS specificity of the full-width / wide-width styles so a plain .alignfull / .alignwide selector can override them, except for sliders which keep the previous specificity
+[ G3 ][ Spec Change ] Lower the CSS specificity of the full-width / wide-width styles so a plain .alignfull / .alignwide selector can override them without !important. Sliders and, with Section Base Setting (Use section base) enabled, the margin and width inside the section base box still need one extra class, such as .alignfull.vk_slider or .main-section--base--on .alignfull
 [ G3 ][ Spec Change ] With Section Base Setting (Use section base) enabled, full-width / wide-width covers and images now stop at the section base box edge, not the viewport (one column or under 992px). Sliders keep bleeding to the viewport
 [ G2 ][ Bug Fix ] Fix image set/delete buttons in the Full Wide Title widget not opening the media library in the block-based widget editor
 [ G3 ][ Design Bug Fix ] Fix full-width blocks placed directly in a two-column sidebar not fitting the section base box with Section Base Setting (Use section base) enabled on screens 992px and wider, where they missed its left edge and stuck out to the right. If you offset them with custom CSS, remove that offset
