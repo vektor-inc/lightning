@@ -35,6 +35,7 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ G3 ][ Spec Change ] Make the home page slider navigation and pagination aria-labels translatable
 [ G3 ][ Spec Change ] Lower the CSS specificity of the full width / wide width styles so a plain .alignfull / .alignwide selector can override them, except for sliders which keep the previous specificity
 [ G3 ][ Spec Change ] With Section Base Setting enabled, full width / wide width covers and images now stop at the section base box edge, not the viewport (one column or under 992px). Sliders keep bleeding to the viewport
 [ G2 ][ Bug Fix ] Fix image set/delete buttons in the Full Wide Title widget not opening the media library in the block-based widget editor
