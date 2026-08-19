@@ -34,12 +34,13 @@ class BlogCardTest extends WP_UnitTestCase {
 	private $had_wpautop = false;
 
 	/**
-	 * テスト前処理: vektor-inc.co.jp への HTTP リクエストを失敗固定するモックを登録
+	 * テスト前処理: 外部サイトへの HTTP リクエストを固定レスポンスに差し替えるモックを登録
 	 *
-	 * CI 環境から外部 OGP サイトへ接続できるかどうかで `oembed_html` / `maybe_make_link`
+	 * CI 環境から外部 OGP サイトへ接続できるかどうか、および接続できた場合でも
+	 * 1リクエスト毎にレスポンスが変わり得ることで `oembed_html` / `maybe_make_link`
 	 * の出力が変動し、テストが flaky 化していた。
-	 * `pre_http_request` で `WP_Error` を返すことで、常に「OGP 取得失敗時の
-	 * URL のみフォールバック表示」ケースを検証できるようにする。
+	 * `pre_http_request` でドメイン毎の固定レスポンスを返すことで、
+	 * 実通信なしで各ケースの検証経路を安定させる。
 	 *
 	 * 期待値生成側（`apply_filters( 'the_content', ... )` 内部の oEmbed discovery）にも
 	 * 同じモックを効かせる必要があるため、`set_up` 段階でフィルタを登録している。
@@ -52,7 +53,7 @@ class BlogCardTest extends WP_UnitTestCase {
 	 */
 	public function set_up() {
 		parent::set_up();
-		add_filter( 'pre_http_request', array( $this, 'mock_http_fail' ), 10, 3 );
+		add_filter( 'pre_http_request', array( $this, 'mock_http_request' ), 10, 3 );
 		$this->had_wpautop = false !== has_filter( 'the_content', 'wpautop' );
 	}
 
@@ -67,40 +68,126 @@ class BlogCardTest extends WP_UnitTestCase {
 		if ( $this->had_wpautop && false === has_filter( 'the_content', 'wpautop' ) ) {
 			add_filter( 'the_content', 'wpautop' );
 		}
-		remove_filter( 'pre_http_request', array( $this, 'mock_http_fail' ), 10 );
+		remove_filter( 'pre_http_request', array( $this, 'mock_http_request' ), 10 );
 		parent::tear_down();
 	}
 
 	/**
-	 * vektor-inc.co.jp 宛ての HTTP リクエストを失敗として固定するためのモック
+	 * 外部サイト宛ての HTTP リクエストをドメイン毎の固定レスポンスに差し替えるモック
 	 *
 	 * `pre_http_request` フィルタは false 以外を返すと実際の HTTP 通信を行わずに
 	 * その値を結果として使う仕様。
-	 * vektor-inc.co.jp ドメインのリクエストのみ `WP_Error` を返して失敗扱いとし、
-	 * YouTube oEmbed や内部リンクなどはそのまま通すために `$pre` を返す。
+	 * これを利用して、テストが依存する外部ドメインについてのみ固定値を返し、
+	 * それ以外（サイト内リンクや YouTube oEmbed など）はそのまま通すために `$pre` を返す。
 	 *
-	 * @param false|array|WP_Error $pre  既存の pre_http_request の戻り値（通常 false）
-	 * @param array                $args HTTP リクエストの引数
-	 * @param string               $url  リクエスト先 URL
-	 * @return false|array|WP_Error vektor-inc.co.jp なら WP_Error、それ以外は $pre をそのまま返す
+	 * ドメイン毎の固定内容は以下の通りで、各テストケースが検証したい経路を維持している。
+	 *
+	 * - vektor-inc.co.jp    : `WP_Error`（取得失敗 => URL のみのフォールバック表示）
+	 * - whitehouse.gov      : `WP_Error`（外部からの接続を拒否しているサイトの想定）
+	 * - github.com          : 200 + UTF-8 の OGP 入り HTML（ブログカード生成経路）
+	 * - abehiroshi.la.coocan.jp : 200 + Shift_JIS の HTML（`encode()` の文字コード変換）
+	 *
+	 * 返す配列は `wp_remote_get()` の戻り値と同じ形にしておく必要がある
+	 * （`VK_WP_Oembed_Blog_Card::vk_get_blog_card()` が
+	 * `$response['response']['code']` と `$response['body']` を参照するため）。
+	 *
+	 * @param false|array|WP_Error $pre  既存の pre_http_request の戻り値（通常 false）.
+	 * @param array                $args HTTP リクエストの引数.
+	 * @param string               $url  リクエスト先 URL.
+	 * @return false|array|WP_Error 対象ドメインなら固定レスポンス、それ以外は $pre をそのまま返す
 	 */
-	public function mock_http_fail( $pre, $args, $url ) {
-		// クエリ文字列やパスに 'vektor-inc.co.jp' が含まれているケースで誤反応しないよう、
-		// `wp_parse_url` で host を厳密に取り出してマッチングする。
-		// 末尾一致＋直前が `.` であれば許可することでサブドメイン（例: blog.vektor-inc.co.jp）も拾う。
+	public function mock_http_request( $pre, $args, $url ) {
+		// クエリ文字列やパスにドメイン名が含まれているケースで誤反応しないよう、
+		// `wp_parse_url` で host を厳密に取り出してマッチングする.
 		$host = wp_parse_url( $url, PHP_URL_HOST );
-		if ( is_string( $host ) && preg_match( '/(^|\.)vektor-inc\.co\.jp$/i', $host ) ) {
-			return new \WP_Error( 'http_request_failed', 'mocked' );
+		if ( ! is_string( $host ) ) {
+			return $pre;
 		}
-		// それ以外のドメインは通常通り処理させる
+
+		// 取得失敗（WP_Error）を返すドメイン
+		// vektor-inc.co.jp は test_vk_get_post_data_blog_card() 用、
+		// whitehouse.gov は「外部からの接続を拒否しているサイト」のケース用.
+		$error_domains = array( 'vektor-inc.co.jp', 'whitehouse.gov' );
+		foreach ( $error_domains as $domain ) {
+			if ( $this->is_matched_host( $host, $domain ) ) {
+				return new \WP_Error( 'http_request_failed', 'mocked' );
+			}
+		}
+
+		// WordPress で作られていないサイトのブログカード生成用の固定 HTML（UTF-8）
+		// oEmbed discovery に拾われて経路が変わらないよう、
+		// `application/json+oembed` の link 要素はあえて含めていない.
+		if ( $this->is_matched_host( $host, 'github.com' ) ) {
+			$body = '<!DOCTYPE html><html lang="en"><head>'
+				. '<meta charset="utf-8">'
+				. '<title>GitHub - vektor-inc/lightning: Lightning is a WordPress theme.</title>'
+				. '<meta property="og:description" content="Lightning is a WordPress theme.">'
+				. '<meta property="og:image" content="https://github.com/vektor-inc/lightning/og-image.png">'
+				. '<meta property="og:site_name" content="GitHub">'
+				. '<link rel="icon" href="https://github.com/favicon.ico">'
+				. '</head><body></body></html>';
+			return $this->get_mock_response( $body );
+		}
+
+		// HTML の文字コードが UTF-8 でないサイト用の固定 HTML
+		// `VK_WP_Oembed_Blog_Card::encode()` による文字コード変換を検証するため、
+		// 日本語を含む HTML を Shift_JIS に変換して返す.
+		if ( $this->is_matched_host( $host, 'abehiroshi.la.coocan.jp' ) ) {
+			$body = '<!DOCTYPE html><html lang="ja"><head>'
+				. '<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">'
+				. '<title>阿部寛のホームページ</title>'
+				. '<meta property="og:description" content="阿部寛の公式ホームページです。">'
+				. '<meta property="og:site_name" content="阿部寛のホームページ">'
+				. '</head><body></body></html>';
+			// mb_convert_encoding が無い環境では変換できないため UTF-8 のまま返す.
+			if ( function_exists( 'mb_convert_encoding' ) ) {
+				$body = mb_convert_encoding( $body, 'SJIS', 'UTF-8' );
+			}
+			return $this->get_mock_response( $body );
+		}
+
+		// それ以外のドメインは通常通り処理させる.
 		return $pre;
+	}
+
+	/**
+	 * host が対象ドメイン（サブドメイン含む）に一致するか判定する
+	 *
+	 * 完全一致に加えて、末尾一致かつ直前が `.` の場合も一致とみなすことで
+	 * サブドメイン（例: www.vektor-inc.co.jp）も拾う。
+	 *
+	 * @param string $host   `wp_parse_url()` で取り出した host.
+	 * @param string $domain 判定対象のドメイン（例: vektor-inc.co.jp）.
+	 * @return bool 一致すれば true。
+	 */
+	private function is_matched_host( $host, $domain ) {
+		return (bool) preg_match( '/(^|\.)' . preg_quote( $domain, '/' ) . '$/i', $host );
+	}
+
+	/**
+	 * `wp_remote_get()` の戻り値と同じ形の、ステータス 200 の固定レスポンスを組み立てる
+	 *
+	 * @param string $body レスポンスボディとして返す HTML.
+	 * @return array wp_remote_get() 互換のレスポンス配列。
+	 */
+	private function get_mock_response( $body ) {
+		return array(
+			'headers'  => array(),
+			'body'     => $body,
+			'response' => array(
+				'code'    => 200,
+				'message' => 'OK',
+			),
+			'cookies'  => array(),
+			'filename' => null,
+		);
 	}
 
 	/**
 	 * oembed_html 内部リンク、WordPressで作られたサイトのテスト
 	 * cache は 管理画面URLを貼り付けた時に自動で変換される文字列
 	 *
-	 * vektor-inc.co.jp の OGP 取得は `mock_http_fail` で失敗固定しているため、
+	 * vektor-inc.co.jp の OGP 取得は `mock_http_request` で失敗固定しているため、
 	 * 期待値（`correct`）も実出力もフォールバック HTML（URL のみのリンク）となる。
 	 */
 	function test_vk_get_post_data_blog_card() {
@@ -156,6 +243,9 @@ class BlogCardTest extends WP_UnitTestCase {
 
 	/**
 	 * embed_maybe_make_link 外部リンクのテスト
+	 *
+	 * 各 URL のレスポンスは `mock_http_request` で固定しているため、
+	 * 外部サイトの状態に依存せず、期待値（`correct`）と実出力が同じ経路を通る。
 	 */
 	function test_vk_get_blog_card() {
 		// the_contentのフィルターフックで自動に入るpタグを削除
