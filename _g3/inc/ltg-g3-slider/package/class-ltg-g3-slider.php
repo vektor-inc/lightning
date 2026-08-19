@@ -129,7 +129,13 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 		/**
 		 * Swiper Paramater
 		 *
-		 * @param string $paras paramater.
+		 * 既定値と引数を wp_parse_args() でマージして JSON 文字列にして返す。
+		 * wp_parse_args() のマージは第一階層のみの浅いマージのため、
+		 * 引数側で 'a11y' や 'autoplay' などの入れ子キーを指定した場合は
+		 * その既定値の中身が丸ごと置き換わる点に注意（部分的な上書きにはならない）。
+		 *
+		 * @param array|string $paras 上書きしたい Swiper のパラメータ。
+		 * @return string|false Swiper に渡すパラメータの JSON 文字列。JSON 化に失敗した場合は false。
 		 */
 		public static function swiper_paras_json( $paras = '' ) {
 
@@ -148,10 +154,38 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 					'nextEl' => '.swiper-button-next',
 					'prevEl' => '.swiper-button-prev',
 				),
+				/*
+				 * Swiper の a11y モジュールがスクリーンリーダー向けに出力する文字列を翻訳可能にする。
+				 * 指定しない場合は Swiper 側の英語既定値がそのまま読み上げられる。
+				 * 大半は矢印・ページ送り・各スライドの aria-label だが、
+				 * firstSlideMessage / lastSlideMessage はラベルではなくライブリージョンへの通知として読み上げられる
+				 * （無効になった矢印には aria-disabled="true" が付く）。
+				 * この2件は矢印にキーボードでフォーカスして Enter / Space を押したときに実際に読み上げられる。
+				 * Swiper 側の通知分岐にループ有無のガードが無いため、ループ再生中でも読み上げられる。
+				 * 指定を消すと英語のまま読み上げられるため、消さないこと。
+				 * slideLabelMessage の Swiper 既定値は '{{index}} / {{slidesLength}}'（記号のみで意味を持たないため原文を改めている）。
+				 */
+				'a11y'          => array(
+					'prevSlideMessage'        => __( 'Previous slide', 'lightning' ),
+					'nextSlideMessage'        => __( 'Next slide', 'lightning' ),
+					'firstSlideMessage'       => __( 'This is the first slide', 'lightning' ),
+					'lastSlideMessage'        => __( 'This is the last slide', 'lightning' ),
+					/* translators: {{index}} is a placeholder Swiper replaces with the slide number at runtime. Keep it unchanged, and use it only once. */
+					'paginationBulletMessage' => __( 'Go to slide {{index}}', 'lightning' ),
+					/* translators: {{index}} is replaced with the current slide number and {{slidesLength}} with the total number of slides at runtime. Keep both unchanged, and use each only once. Word order may be changed freely. */
+					'slideLabelMessage'       => __( 'Slide {{index}} of {{slidesLength}}', 'lightning' ),
+				),
 			);
 
 			$paras = wp_parse_args( $paras, $default );
-			$json  = wp_json_encode( $paras );
+
+			/*
+			 * この JSON はインラインスクリプトとしてページに出力されるため、
+			 * 翻訳文に含まれうる < > を JSON_HEX_TAG で Unicode エスケープ形式に変換する
+			 * （< は \u003C、> は \u003E となり、生の記号は JSON に残らない）。
+			 * JS 側の文字列としての解釈は同一で、セレクタ等の既定値に < > は含まれないため挙動は変わらない。
+			 */
+			$json = wp_json_encode( $paras, JSON_HEX_TAG );
 			return $json;
 		}
 
