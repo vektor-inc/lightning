@@ -130,7 +130,9 @@ class BlogCardTest extends WP_UnitTestCase {
 		$github_html = '<!DOCTYPE html><html lang="en"><head>'
 			. '<meta charset="utf-8">'
 			. '<title>GitHub - vektor-inc/lightning: Lightning is a WordPress theme.</title>'
-			. '<meta property="og:description" content="Lightning is a WordPress theme.">'
+			// `<title>` と同じ文言にすると、description が出力されなくても
+			// タイトル側の検証だけでアサーションが通ってしまうため、別の文言にしている.
+			. '<meta property="og:description" content="Lightning is a very simple theme for business sites.">'
 			. '<meta property="og:image" content="https://github.com/vektor-inc/lightning/og-image.png">'
 			. '<meta property="og:site_name" content="GitHub">'
 			. '<link rel="icon" href="https://github.com/favicon.ico">'
@@ -304,8 +306,9 @@ class BlogCardTest extends WP_UnitTestCase {
 				'contains'            => array(
 					'class="blog-card"',
 					'>test</a>',
-					'content',
 				),
+				// 抜粋が説明文の要素として出力されていること（3文字の一般語の単独包含では弱いため要素ごと固定する）.
+				'matches'             => array( '/<p class="blog-card-text">\s*content\s*<\/p>/' ),
 				'not_contains'        => array( 'vk-wp-oembed-blog-card-url-template' ),
 			),
 			// WordPressで作られたサイト トップページ.
@@ -366,10 +369,21 @@ class BlogCardTest extends WP_UnitTestCase {
 	 * 外部サイトの状態に依存せず結果が決まる.
 	 */
 	public function test_vk_get_blog_card() {
+		// mbstring が無い環境では `get_mock_http_map()` が Shift_JIS のモックを作れず、
+		// 実装側の `encode()` も即 return するため、文字コード変換のケース自体が成立しない.
+		// 下の事前アサートが必ず失敗してしまうので、その環境ではテストごとスキップする.
+		if ( ! function_exists( 'mb_convert_encoding' ) ) {
+			$this->markTestSkipped( 'mbstring が無い環境では encode() の文字コード変換を検証できないためスキップする' );
+		}
+
 		// 文字コード変換のケースが形骸化しないよう、モックが本当に Shift_JIS
 		// （UTF-8 としては不正なバイト列）を返していることを先に確認する.
 		// UTF-8 のまま返すと `encode()` が実質的に何もしない状態になり、変換の検証にならない.
 		$sjis_response = $this->mock_http_request( false, array(), 'http://abehiroshi.la.coocan.jp/' );
+		$this->assertIsArray(
+			$sjis_response,
+			'abehiroshi.la.coocan.jp のモックがレスポンス配列を返していない（WP_Error 等に変わっていないか確認すること）'
+		);
 		$this->assertFalse(
 			mb_check_encoding( $sjis_response['body'], 'UTF-8' ),
 			'abehiroshi.la.coocan.jp のモックが UTF-8 を返しており、encode() の文字コード変換が検証されない'
@@ -386,12 +400,15 @@ class BlogCardTest extends WP_UnitTestCase {
 				'contains'            => array(
 					'class="blog-card"',
 					'>GitHub - vektor-inc/lightning: Lightning is a WordPress theme.</a>',
-					'Lightning is a WordPress theme.',
 					'https://github.com/vektor-inc/lightning/og-image.png',
 					'https://github.com/favicon.ico',
 				),
-				// og:site_name がサイト名として出力されていること（ドメイン名へのフォールバックではないこと）.
-				'matches'             => array( '/blog-card-site-title.*?>\s*GitHub\s*<\/a>/s' ),
+				'matches'             => array(
+					// og:description が説明文の要素として出力されていること.
+					'/<p class="blog-card-text">\s*Lightning is a very simple theme for business sites\.\s*<\/p>/',
+					// og:site_name がサイト名として出力されていること（ドメイン名へのフォールバックではないこと）.
+					'/blog-card-site-title.*?>\s*GitHub\s*<\/a>/s',
+				),
 				'not_contains'        => array( 'vk-wp-oembed-blog-card-url-template' ),
 			),
 			// 外部からの接続を拒否しているサイト（403）.
@@ -415,7 +432,13 @@ class BlogCardTest extends WP_UnitTestCase {
 					'>阿部寛のホームページ</a>',
 					'阿部寛の公式ホームページです。',
 				),
-				'not_contains'        => array( 'vk-wp-oembed-blog-card-url-template' ),
+				'not_contains'        => array(
+					'vk-wp-oembed-blog-card-url-template',
+					// og:image を持たないサイトなので、空のサムネイル枠が出力されないこと.
+					'blog-card-image-outer',
+					// favicon も持たないサイトなので、空の img 要素が出力されないこと.
+					'width="16"',
+				),
 			),
 		);
 		foreach ( $test_array as $key => $value ) {
