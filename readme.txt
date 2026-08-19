@@ -35,11 +35,15 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ G3 ][ Spec Change ] Make the home page slider navigation and pagination aria-labels translatable
 [ G2 ][ Bug Fix ] Fix image set/delete buttons in the Full Wide Title widget not opening the media library in the block-based widget editor
 
 [ Spec Change ] Update vektor-inc/font-awesome-versions from 0.7.4 to 0.7.5
 [ Spec Change ] Update vektor-inc/vk-component from 1.7.0 to 1.7.2
 [ G2/G3 ][ Spec Change ] Unify SCSS breakpoint variables as maximum values (576 / 768 / 992 / 1200 / 1400px) and rewrite media queries with range syntax
+[ G3 ][ Spec Change ] Update vektor-inc/vk-swiper from 0.3.6 to 0.4.0, updating the bundled Swiper from 11.2.10 to 14.0.6, which gives the slider arrow a larger tap target
+[ G3 ][ Spec Change ] Change the top page slider arrow to the SVG injected by Swiper v12 and later. To resize it in Additional CSS, set .ltg-slide { --ltg-slide-arrow-size: 3em } - this one property sizes both the new SVG and the older glyph, and selector-based rules keep working
+[ G3 ][ Spec Change ] Hide the top page slider arrow buttons themselves on screens narrower than 576px, where only the arrow glyph used to be hidden. If you overrode the glyph to keep the arrows on mobile, target the buttons instead of :after
 [ G2 ][ Bug Fix ] Fix undefined array key warning logged on PHP 8 or later when saving the Full Wide Title widget with the text shadow checkbox unchecked
 [ G2 ][ Bug Fix ] Fix undefined array key warning logged on PHP 8 or later when displaying the Full Wide Title widget in the block-based widget editor preview
 
