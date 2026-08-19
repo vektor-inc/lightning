@@ -110,8 +110,11 @@ body .sub-section--col--two {
 	}
 	&.main-section--base--on,
 	&.sub-section--base--on {
-		// マージンは冒頭の margin-left:0 !important に負けるため、
-		// ここでは指定せず下の専用ブロック（!important 付き）に集約している。
+		// メインカラム分のマージンは、冒頭の margin-left:0 !important に負けるため
+		// ここでは指定せず、下の &.main-section--base--on ブロック（!important 付き）に
+		// 集約している。集約しているのはメインカラム分だけであることに注意。
+		// サイドバー側（.sub-section--base--on）のマージンは #1396 のスコープで、
+		// ここでは従来どおり冒頭の margin-left:0 !important が効いたままになる。
 		.alignwide {
 			padding-left: 0;
 			padding-right: 0;
