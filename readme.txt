@@ -36,10 +36,10 @@ vk-develop@vektor-inc.co.jp
 == Changelog ==
 
 [ G3 ][ Spec Change ] Make the home page slider navigation and pagination aria-labels translatable
-[ G3 ][ Spec Change ] Lower the CSS specificity of the full width / wide width styles so a plain .alignfull / .alignwide selector can override them, except for sliders which keep the previous specificity
-[ G3 ][ Spec Change ] With Section Base Setting enabled, full width / wide width covers and images now stop at the section base box edge, not the viewport (one column or under 992px). Sliders keep bleeding to the viewport
+[ G3 ][ Spec Change ] Lower the CSS specificity of the full-width / wide-width styles so a plain .alignfull / .alignwide selector can override them, except for sliders which keep the previous specificity
+[ G3 ][ Spec Change ] With Section Base Setting enabled, full-width / wide-width covers and images now stop at the section base box edge, not the viewport (one column or under 992px). Sliders keep bleeding to the viewport
 [ G2 ][ Bug Fix ] Fix image set/delete buttons in the Full Wide Title widget not opening the media library in the block-based widget editor
-[ G3 ][ Bug Fix ] Fix full width and wide width blocks not fitting the section base box in a two column sidebar with Section Base Setting enabled, where they were sized with the wider top and bottom padding and stuck out to the right
+[ G3 ][ Bug Fix ] Fix full-width and wide-width blocks not fitting the section base box in a two-column sidebar with Section Base Setting enabled, where they were sized with the wider top and bottom padding and stuck out to the right
 
 [ Spec Change ] Update vektor-inc/font-awesome-versions from 0.7.4 to 0.7.5
 [ G3 ][ Spec Change ] Update vektor-inc/vk-swiper from 0.3.6 to 0.4.0, updating the bundled Swiper from 11.2.10 to 14.0.6, which gives the slider arrow a larger tap target
