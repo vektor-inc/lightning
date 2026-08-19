@@ -80,7 +80,17 @@
 // margin-left/right:0 !important に、この詳細度 (0,3,0) では勝てない。
 // そちらに同じ意図の -side 基準の指定を置いてあるので、ここでは扱わない。
 // なお 992px 未満は -side が --vk-width-base-padding と同値になるため、
-// この指定は実質 .vk_outer-width-full 向けとして働く。
+// 値の上では上のルールと変わらず、実質 .vk_outer-width-full 向けとして働く。
+//
+// ただし 992px 未満では _block-width.scss の @media (min-width:992px) が効かないため、
+// .alignfull / .alignwide にもこの指定が及び、詳細度 (0,3,0) で最終的に効く
+// （上の (0,2,0) のルールにも、_block-width.scss の素の指定 (0,1,0) にも勝つ）。
+// つまり 992px 未満では幅広も width:100% + p * 2 / margin:-p の「全幅」の形になり、
+// 全幅と同じく箱の端に寄る（p = --vk-width-base-padding-side）。
+// _block-width.scss にある幅広専用の形（width:100% + p / margin:-p / 2 の中央寄せ）は
+// 992px 以上でしか効かない。
+// この 992px を境にした幅広の型の違いは master からの既存挙動。ここで揃えようとすると
+// 素のグループを含む全ブロックの1カラム挙動が動くため、意図して手を付けていない。
 .sub-section--base--on.sub-section--col--two {
 	.vk_outer-width-full,
 	.alignfull,
