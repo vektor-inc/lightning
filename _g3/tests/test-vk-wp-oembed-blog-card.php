@@ -307,7 +307,7 @@ class BlogCardTest extends WP_UnitTestCase {
 					'class="blog-card"',
 					'>test</a>',
 				),
-				// 抜粋が説明文の要素として出力されていること（3文字の一般語の単独包含では弱いため要素ごと固定する）.
+				// 抜粋が説明文の要素として出力されていること（一般的な語の単独包含では弱いため要素ごと固定する）.
 				'matches'             => array( '/<p class="blog-card-text">\s*content\s*<\/p>/' ),
 				'not_contains'        => array( 'vk-wp-oembed-blog-card-url-template' ),
 			),
