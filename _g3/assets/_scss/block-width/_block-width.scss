@@ -110,11 +110,11 @@ body .sub-section--col--two {
 	}
 	&.main-section--base--on,
 	&.sub-section--base--on {
+		// マージンは冒頭の margin-left:0 !important に負けるため、
+		// ここでは指定せず下の専用ブロック（!important 付き）に集約している。
 		.alignwide {
 			padding-left: 0;
 			padding-right: 0;
-			margin-left: calc( var(--vk-width-base-padding) / -2 );
-			margin-right: calc( var(--vk-width-base-padding) / -2 );
 			max-width:calc( 100% + var(--vk-width-base-padding) );
 			width:calc( 100% + var(--vk-width-base-padding) );
 		}
@@ -127,10 +127,10 @@ body .sub-section--col--two {
 	}
 	// メインカラムのセクション背景内で、全幅・幅広を箱の端に合わせる
 	// -----------------------------------------------------------------------------
-	// 上の共通指定が書いている負のマージンは、このファイル冒頭の
-	// body .main-section--col--two .alignfull { margin-left:0 !important } (0,2,1) に
-	// 打ち消されてしまい効いていない（幅だけ広がってマージンが 0 のまま残るため、
-	// 全幅・幅広が箱の左端に届かず、右側だけ箱からはみ出す）。
+	// このファイル冒頭の
+	// body .main-section--col--two .alignfull { margin-left:0 !important } (0,2,1) が
+	// マージンを 0 に固定してしまうため、上の共通指定で幅だけ広げても
+	// マージンが 0 のまま残り、全幅・幅広が箱の左端に届かず右側だけ箱からはみ出す。
 	// ここは (0,3,1) なので、同じ !important 同士なら詳細度でこちらが勝つ。
 	//
 	// .main-section--base--on のパディングは上下左右とも --vk-width-base-padding。
@@ -138,6 +138,7 @@ body .sub-section--col--two {
 	//   .alignfull … 幅 W + p * 2 / 左右マージン -p     → パディングボックスの端ぴったり
 	//   .alignwide … 幅 W + p     / 左右マージン -p / 2 → 箱の中で中央寄せのまま
 	// 幅は上の共通指定（同じ (0,3,1)）がそのまま有効なので、ここではマージンだけを指定する。
+	// （幅は共通ブロック、マージンはここ、と 1 箇所ずつに分担している）
 	//
 	// ⚠️ margin の !important は意図的（css.md の原則禁止に対する例外）。
 	// 打ち消したい冒頭の margin-left:0 が !important 付きで、そちらの !important も
