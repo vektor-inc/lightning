@@ -174,7 +174,19 @@ body.block-editor-iframe__body.editor-styles-wrapper{
 	margin-right:auto;
 }
 
-.container {
+//////////////////////////////////////////////////////////////
+// .container 
+//////////////////////////////////////////////////////////////
+
+/* 
+.container は基本的にはブロックなどからは出力されず、
+__inner-container などに対して幅指定が行われているので本来不要である。
+しかしながら旧来のユーザーがカスタムHTMLなどで使っている可能性も考慮して一応残している。
+ただし、.container だけにすると、圧縮時に bootstrap CSSの方が後に出力されてサイズ指定に負けるため、
+.editor-styles-wrapper でラップしている。
+*/ 
+
+.editor-styles-wrapper .container {
 	padding:0;
 	max-width:var(--vk-width-editor-container);
 	@media ( $xs-max < width ) {
