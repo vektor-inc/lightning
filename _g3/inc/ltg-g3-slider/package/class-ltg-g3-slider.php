@@ -767,6 +767,24 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 
 			if ( $slide_count ) {
 
+				/*
+				 * [ Deprecated Swiper class names / Swiper 非推奨クラス一覧 — DO NOT REMOVE from output ]
+				 *
+				 * The following classes no longer exist in the bundled Swiper itself,
+				 * but end users are likely to target them in their custom CSS,
+				 * so they are intentionally kept in the markup for backward compatibility.
+				 * Removing them will silently break users' customizations.
+				 *
+				 * 以下のクラスは同梱の Swiper 本体にはすでに定義が存在しない非推奨クラスだが、
+				 * 利用者が追加 CSS のセレクタとして使用している可能性が高いため、
+				 * 後方互換を目的として意図的に出力を維持している。
+				 * 出力から除去すると利用者のカスタマイズが予告なく効かなくなるため、安易に除去しないこと。
+				 *
+				 * - swiper-container        : renamed to .swiper in Swiper v8 / Swiper v8 で .swiper にリネーム
+				 * - swiper-pagination-white : replaced by CSS variables since Swiper 6 / Swiper 6 世代で CSS 変数方式に置換
+				 * - swiper-button-white     : replaced by CSS variables since Swiper 6 / Swiper 6 世代で CSS 変数方式に置換
+				 */
+
 				// class 名の swiper が２つ記載してあるように見えるが一つ目は $slider_prefix と結合される.
 				$slide_html .= '<div class="' . $slider_prefix . 'swiper swiper swiper-container ltg-slide">';
 				$slide_html .= '<div class="swiper-wrapper ltg-slide-inner">';
@@ -888,8 +906,12 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 				$slide_html .= '</div><!-- [ /.swiper-wrapper ] -->';
 				if ( $slide_count >= 2 ) {
 					// Add Pagination.
+					// swiper-pagination-white is deprecated but kept for backward compatibility. See the note above the container markup.
+					// swiper-pagination-white は非推奨だが後方互換のため維持。コンテナ出力前のコメントを参照.
 					$slide_html .= '<div class="swiper-pagination swiper-pagination-white"></div>';
 					// Add Arrows.
+					// swiper-button-white is deprecated but kept for backward compatibility. See the note above the container markup.
+					// swiper-button-white は非推奨だが後方互換のため維持。コンテナ出力前のコメントを参照.
 					$slide_html .= '<div class="ltg-slide-button-next swiper-button-next swiper-button-white"></div>';
 					$slide_html .= '<div class="ltg-slide-button-prev swiper-button-prev swiper-button-white"></div>';
 				}
