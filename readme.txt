@@ -42,8 +42,10 @@ vk-develop@vektor-inc.co.jp
 [ G3 ][ Spec Change ] Update vektor-inc/vk-swiper from 0.3.6 to 0.4.0, updating the bundled Swiper from 11.2.10 to 14.0.6, which gives the slider arrow a larger tap target
 [ G3 ][ Spec Change ] Change the top page slider arrow to the SVG injected by Swiper v12 and later. To resize it in Additional CSS, set .ltg-slide { --ltg-slide-arrow-size: 3em } - this one property sizes both the new SVG and the older glyph, and selector-based rules keep working
 [ G3 ][ Spec Change ] Hide the top page slider arrow buttons themselves on screens narrower than 576px, where only the arrow glyph used to be hidden. If you overrode the glyph to keep the arrows on mobile, target the buttons instead of :after
+[ G3 ][ Spec Change ] Change the top page slider pagination dots to white so that they match the arrows, instead of the Swiper default blue active dot and faint black inactive dots. The current slide is now shown as a wider pill rather than by opacity
 [ G2 ][ Bug Fix ] Fix undefined array key warning logged on PHP 8 or later when saving the Full Wide Title widget with the text shadow checkbox unchecked
 [ G2 ][ Bug Fix ] Fix undefined array key warning logged on PHP 8 or later when displaying the Full Wide Title widget in the block-based widget editor preview
+[ G3 ][ Design Bug Fix ] Fix the white slider arrows and pagination dots blending into bright slide images and becoming hard to see, by adding a shadow around them. To remove it, add :root { --ltg-swiper-control-shadow: none } in Additional CSS
 
 v15.37.1
 [ Other ] Change theme screenshot

@@ -14,6 +14,15 @@ $prefix_customize_panel = lightning_get_prefix_customize_panel();
 /**
  * Register tree shaking css handles
  *
+ * ここに handle を足したら、_g3/tests/test-css-tree-shaking-exclude-pagination.php の
+ * SHAKEN_CSS_FILES にも、その handle が読み込む CSS ファイルを足すこと。
+ * テストはシェイキング対象のファイルを走査して、実行時に生成されるクラスの除外漏れを
+ * 検出している。追加したファイルを載せ忘れると、そのファイルだけ検査されないまま
+ * テストは緑のままになる（対象が減ったことに気付けない）。
+ *
+ * handle と生成ファイルの対応は enqueue のコードを読まないと取れないため、
+ * テスト側からの自動導出はしていない。
+ *
  * @param array $vk_css_tree_shaking_handles : recieve array.
  * @return array $vk_css_tree_shaking_handles : return modefied array.
  */
@@ -43,6 +52,14 @@ function lightning_css_tree_shaking_exclude_class( $inidata ) {
 		// Swiper v12 以降がスライダー初期化時に注入する矢印 SVG のクラス.
 		// サーバー出力の HTML には存在しないため、除外しないとツリーシェイキングで矢印のスタイルが削除される.
 		'swiper-navigation-icon',
+		// Swiper がスライダー初期化時に生成するページネーションのドットのクラス.
+		// サーバー出力の HTML はドットを含まない空の .swiper-pagination だけなので、
+		// 除外しないとツリーシェイキングでドットのスタイルが削除される.
+		// -active は現在位置を示すピルの指定で、ドットは全て同じ白・同じ形にしてあり
+		// 現在位置の手がかりが形だけのため、消えると現在どのスライドかが判別できなくなる.
+		// 無印は幅が変わるときのトランジションの指定で、消えると変化が一段跳びになる.
+		'swiper-pagination-bullet',
+		'swiper-pagination-bullet-active',
 		'vk_post',
 		'card',
 		'card-noborder',
