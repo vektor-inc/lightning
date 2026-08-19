@@ -129,7 +129,13 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 		/**
 		 * Swiper Paramater
 		 *
-		 * @param string $paras paramater.
+		 * 既定値と引数を wp_parse_args() でマージして JSON 文字列にして返す。
+		 * wp_parse_args() のマージは第一階層のみの浅いマージのため、
+		 * 引数側で 'a11y' や 'autoplay' などの入れ子キーを指定した場合は
+		 * その既定値の中身が丸ごと置き換わる点に注意（部分的な上書きにはならない）。
+		 *
+		 * @param array|string $paras 上書きしたい Swiper のパラメータ。
+		 * @return string|false Swiper に渡すパラメータの JSON 文字列。JSON 化に失敗した場合は false。
 		 */
 		public static function swiper_paras_json( $paras = '' ) {
 
@@ -148,10 +154,38 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 					'nextEl' => '.swiper-button-next',
 					'prevEl' => '.swiper-button-prev',
 				),
+				/*
+				 * Swiper の a11y モジュールがスクリーンリーダー向けに出力する文字列を翻訳可能にする。
+				 * 指定しない場合は Swiper 側の英語既定値がそのまま読み上げられる。
+				 * 大半は矢印・ページ送り・各スライドの aria-label だが、
+				 * firstSlideMessage / lastSlideMessage はラベルではなくライブリージョンへの通知として読み上げられる
+				 * （無効になった矢印には aria-disabled="true" が付く）。
+				 * この2件は矢印にキーボードでフォーカスして Enter / Space を押したときに実際に読み上げられる。
+				 * Swiper 側の通知分岐にループ有無のガードが無いため、ループ再生中でも読み上げられる。
+				 * 指定を消すと英語のまま読み上げられるため、消さないこと。
+				 * slideLabelMessage の Swiper 既定値は '{{index}} / {{slidesLength}}'（記号のみで意味を持たないため原文を改めている）。
+				 */
+				'a11y'          => array(
+					'prevSlideMessage'        => __( 'Previous slide', 'lightning' ),
+					'nextSlideMessage'        => __( 'Next slide', 'lightning' ),
+					'firstSlideMessage'       => __( 'This is the first slide', 'lightning' ),
+					'lastSlideMessage'        => __( 'This is the last slide', 'lightning' ),
+					/* translators: {{index}} is a placeholder Swiper replaces with the slide number at runtime. Keep it unchanged, and use it only once. */
+					'paginationBulletMessage' => __( 'Go to slide {{index}}', 'lightning' ),
+					/* translators: {{index}} is replaced with the current slide number and {{slidesLength}} with the total number of slides at runtime. Keep both unchanged, and use each only once. Word order may be changed freely. */
+					'slideLabelMessage'       => __( 'Slide {{index}} of {{slidesLength}}', 'lightning' ),
+				),
 			);
 
 			$paras = wp_parse_args( $paras, $default );
-			$json  = wp_json_encode( $paras );
+
+			/*
+			 * この JSON はインラインスクリプトとしてページに出力されるため、
+			 * 翻訳文に含まれうる < > を JSON_HEX_TAG で Unicode エスケープ形式に変換する
+			 * （< は \u003C、> は \u003E となり、生の記号は JSON に残らない）。
+			 * JS 側の文字列としての解釈は同一で、セレクタ等の既定値に < > は含まれないため挙動は変わらない。
+			 */
+			$json = wp_json_encode( $paras, JSON_HEX_TAG );
 			return $json;
 		}
 
@@ -733,6 +767,24 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 
 			if ( $slide_count ) {
 
+				/*
+				 * [ Deprecated Swiper class names / Swiper 非推奨クラス一覧 — DO NOT REMOVE from output ]
+				 *
+				 * The following classes no longer exist in the bundled Swiper itself,
+				 * but end users are likely to target them in their custom CSS,
+				 * so they are intentionally kept in the markup for backward compatibility.
+				 * Removing them will silently break users' customizations.
+				 *
+				 * 以下のクラスは同梱の Swiper 本体にはすでに定義が存在しない非推奨クラスだが、
+				 * 利用者が追加 CSS のセレクタとして使用している可能性が高いため、
+				 * 後方互換を目的として意図的に出力を維持している。
+				 * 出力から除去すると利用者のカスタマイズが予告なく効かなくなるため、安易に除去しないこと。
+				 *
+				 * - swiper-container        : renamed to .swiper in Swiper v8 / Swiper v8 で .swiper にリネーム
+				 * - swiper-pagination-white : replaced by CSS variables since Swiper 6 / Swiper 6 世代で CSS 変数方式に置換
+				 * - swiper-button-white     : replaced by CSS variables since Swiper 6 / Swiper 6 世代で CSS 変数方式に置換
+				 */
+
 				// class 名の swiper が２つ記載してあるように見えるが一つ目は $slider_prefix と結合される.
 				$slide_html .= '<div class="' . $slider_prefix . 'swiper swiper swiper-container ltg-slide">';
 				$slide_html .= '<div class="swiper-wrapper ltg-slide-inner">';
@@ -854,8 +906,12 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 				$slide_html .= '</div><!-- [ /.swiper-wrapper ] -->';
 				if ( $slide_count >= 2 ) {
 					// Add Pagination.
+					// swiper-pagination-white is deprecated but kept for backward compatibility. See the note above the container markup.
+					// swiper-pagination-white は非推奨だが後方互換のため維持。コンテナ出力前のコメントを参照.
 					$slide_html .= '<div class="swiper-pagination swiper-pagination-white"></div>';
 					// Add Arrows.
+					// swiper-button-white is deprecated but kept for backward compatibility. See the note above the container markup.
+					// swiper-button-white は非推奨だが後方互換のため維持。コンテナ出力前のコメントを参照.
 					$slide_html .= '<div class="ltg-slide-button-next swiper-button-next swiper-button-white"></div>';
 					$slide_html .= '<div class="ltg-slide-button-prev swiper-button-prev swiper-button-white"></div>';
 				}

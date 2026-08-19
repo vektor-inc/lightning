@@ -35,6 +35,7 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ G3 ][ Spec Change ] Make the home page slider navigation and pagination aria-labels translatable
 [ G2 ][ Bug Fix ] Fix image set/delete buttons in the Full Wide Title widget not opening the media library in the block-based widget editor
 
 [ Spec Change ] Update vektor-inc/font-awesome-versions from 0.7.4 to 0.7.5
