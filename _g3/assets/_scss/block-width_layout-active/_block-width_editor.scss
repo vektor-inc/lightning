@@ -200,7 +200,7 @@ body.block-editor-iframe__body.editor-styles-wrapper{
 	max-width:var(--vk-width-editor-container);
 }
 
-.container {
+.editor-styles-wrapper .container {
 	padding:0;
 	max-width:var(--vk-width-editor-container);
 	@media ( $xs-max < width ) {
