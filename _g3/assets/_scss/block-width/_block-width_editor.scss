@@ -147,8 +147,13 @@ body.block-editor-iframe__body.editor-styles-wrapper{
 			margin-right: calc( ( 100% - var(--vk-width-full) ) / 2 ) !important;
 		}
 		// 通常幅の中の幅広 //////////////////////////////////
-		// 標準だと通常幅の中の幅広や全幅は強制的に通常幅にされるので、されるので、上書き
-		& > :is( 
+		// 標準だと通常幅の中の幅広や全幅は強制的に通常幅にされるので、されるので、マイナスオフセット上書き
+		// 親が .is-layout-flow は除外するが... 
+		// ルートの .is-root-container は .is-layout-flow がついていようがマッチさせる
+		&:is(
+			:not(.is-layout-flow),  
+			.is-root-container 
+			) > :is( 
 			.alignwide, 
 			[data-align=wide] 
 		) {
