@@ -146,7 +146,7 @@ class CSS_Tree_Shaking_Exclude_Test extends WP_UnitTestCase {
 	}
 
 	/**
-	 * CSS から SP 用メディアクエリ（max-width:575.98px）の中身だけを抜き出す.
+	 * CSS から SP 用メディアクエリ（width<=576px）の中身だけを抜き出す.
 	 *
 	 * ビルド済み CSS は 1 行に minify されており、単純な正規表現では
 	 * メディアクエリの内側かどうかを判定できないため、波括弧を数えて切り出す.
@@ -164,10 +164,10 @@ class CSS_Tree_Shaking_Exclude_Test extends WP_UnitTestCase {
 		$result = '';
 
 		// メディアクエリの開始位置をすべて拾う.
-		if ( ! preg_match_all( '/@media\s*\(\s*max-width:\s*575\.98px\s*\)\s*\{/', $css, $matches, PREG_OFFSET_CAPTURE ) ) {
+		if ( ! preg_match_all( '/@media\s*\(\s*width\s*<=\s*576px\s*\)\s*\{/', $css, $matches, PREG_OFFSET_CAPTURE ) ) {
 			// 無言で空を返すと、後続の判定が落ちたときに「指定が無い」のか
 			// 「ブレークポイントが変わって拾えていない」のか区別できないため記録する.
-			print '  ! SP 用メディアクエリ ( max-width:575.98px ) が見つかりませんでした' . PHP_EOL;
+			print '  ! SP 用メディアクエリ ( width<=576px ) が見つかりませんでした' . PHP_EOL;
 			return $result;
 		}
 
@@ -309,7 +309,7 @@ class CSS_Tree_Shaking_Exclude_Test extends WP_UnitTestCase {
 		print '------------------------------------' . PHP_EOL;
 
 		// 検証するルールの定義（キーは expected 配列のキーと対応する）.
-		// scope が 'sp_media' のものは @media (max-width:575.98px) の中身のみを対象にする.
+		// scope が 'sp_media' のものは @media (width<=576px) の中身のみを対象にする.
 		//
 		// 矢印の寸法は _slide.scss で --ltg-slide-arrow-size に集約されているため、
 		// 具体的な数値ではなく変数名で照合する。数値で照合すると、追加 CSS からの
@@ -324,7 +324,7 @@ class CSS_Tree_Shaking_Exclude_Test extends WP_UnitTestCase {
 				'scope'   => 'all',
 				'pattern' => '/\.ltg-slide[^{}]*\.swiper-button-(?:next|prev)::after[^{}]*\{[^{}]*font-size:\s*var\(\s*--ltg-slide-arrow-size\s*\)/',
 			),
-			'SP幅での矢印非表示 ( @media (max-width:575.98px) の display: none )' => array(
+			'SP幅での矢印非表示 ( @media (width<=576px) の display: none )' => array(
 				'scope'   => 'sp_media',
 				'pattern' => '/\.ltg-slide[^{}]*\.swiper-button-(?:next|prev)[^{}]*\{[^{}]*display:\s*none/',
 			),

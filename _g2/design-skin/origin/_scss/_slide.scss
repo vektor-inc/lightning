@@ -31,8 +31,8 @@
 	margin:0;
 	background: none;
 	font-size:3vw;
-	@media (min-width: 768px){ font-size:2.5vw; }
-	// @media (min-width: 992px){ font-size:2.2vw;	}
+	@media ( $sm-max < width ){ font-size:2.5vw; }
+	// @media ( $md-max < width ){ font-size:2.2vw;	}
 	&:before,
 	&:after {
 		display: none;
@@ -42,17 +42,17 @@
 	margin-top:0.6em;
 	font-size:10px;
 	line-height: 1.5;
-	@media ( min-width: 576px){ font-size:12px;line-height: 1.7; }
-	@media ( min-width: 768px){ margin-top:1.2em; }
-	@media ( min-width: 992px){ font-size:1.3vw; }
+	@media ( $xs-max < width ){ font-size:12px;line-height: 1.7; }
+	@media ( $sm-max < width ){ margin-top:1.2em; }
+	@media ( $md-max < width ){ font-size:1.3vw; }
 }
 .slide .btn-ghost {
 	margin-top:0.8em;
 	padding: 0.4em 2em;
 	font-size:1.7vw;
 	transition: background-color 1s,border-color 0.5s;
-	@media ( min-width: 768px){ margin-top:1.3em; }
-	@media ( min-width: 992px){ font-size:1.3vw; }
+	@media ( $sm-max < width ){ margin-top:1.3em; }
+	@media ( $md-max < width ){ font-size:1.3vw; }
 }
 .slide .item picture .customize-partial-edit-shortcut{
 	position: absolute;

@@ -93,7 +93,7 @@ body {
 	background-color: #fff; // カスタマイザでデフォルト#ffffffにしてもリセットしないと効かないため
 }
 
-@media (max-width: $md-max) {
+@media ( width <= $md-max ) {
 	html,
 	body {
 		font-size: calc( var(--vk-size-text) * 0.875 );

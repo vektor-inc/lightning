@@ -21,13 +21,13 @@ Don't add position to .site-header to be scroll fixed
 
 .site-body{
 	padding: 2rem 0 2rem;
-	@media (min-width: $md-min) {
+	@media ( $sm-max < width ) {
 		padding: 2.5rem 0 2.5rem;
 	}
-	@media (min-width: $lg-min) {
+	@media ( $md-max < width ) {
 		padding: 3rem 0 3.5rem;
 	}
-	@media (min-width: $xl-min) {
+	@media ( $lg-max < width ) {
 		padding: 3.5rem 0 4rem;
 	}
 	&.site-body--padding-vertical--off,
@@ -46,13 +46,13 @@ Don't add position to .site-header to be scroll fixed
 	& > div:last-child {
 		margin-bottom: 0;
 	}
-	@media (max-width: $md-max) {
+	@media ( width <= $md-max ) {
 		width: 100%;
 		flex-basis: unset;
 	}
 }
 
-@media (min-width: $lg-min) {
+@media ( $md-max < width ) {
 	.main-section--col--two {
 		width: var(--vk-width-col-2-main);
 		float: left;
@@ -87,7 +87,7 @@ main-section だけにしているのはサブセクションが下に配置さ�
 	&--margin-bottom--on {
 		margin-bottom: 3rem;
 	}
-	@media (max-width: $md-max) {
+	@media ( width <= $md-max ) {
 		margin-bottom: 2rem;
 	}
 	&.main-section--margin-vertical--off {

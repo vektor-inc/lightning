@@ -1,14 +1,15 @@
-$xs-max: 575.98px;
-$sm-max: 767.98px;
-$md-max: 991.98px;
-$lg-max: 1199.98px;
-$xl-max: 1399.98px;
+// ブレークポイント
+// -----------------------------------------------------------------------------
+// 各変数はその画面区分の「最大値」。上限側は width <= 、下限側は $変数 < で比較する。
+// 例) スマホ: ( width <= $xs-max ) / タブレット: ( $xs-max < width <= $md-max ) / PC: ( $md-max < width )
+$xs-max: 576px;
+$sm-max: 768px;
+$md-max: 992px;
+$lg-max: 1200px;
+$xl-max: 1400px;
 
-$sm-min: 576px;
-$md-min: 768px;
-$lg-min: 992px;
-$xl-min: 1200px;
-$xxl-min: 1400px;
+/* コアのカラムブロックのブレイクポイント */
+$wp-col-min: 782px;
 
 $containter-padding:15px;
 
@@ -74,22 +75,22 @@ $containter-padding:15px;
     --vk-line-height: 1.7em;
     --vk-line-height-low: 1.4em;
 }
-@media (min-width: $sm-min) {
+@media ( $xs-max < width ) {
     :root{
         --vk-width-container : 540px;
     }
 }
-@media (min-width: $md-min) {
+@media ( $sm-max < width ) {
     :root{
         --vk-width-container : 720px;
     }
 }
-@media (min-width: $lg-min) {
+@media ( $md-max < width ) {
     :root{
         --vk-width-container : 960px;
     }
 }
-@media (min-width: $xl-min) {
+@media ( $lg-max < width ) {
     :root{
         --vk-width-container : 1140px;
     }
@@ -101,7 +102,7 @@ $containter-padding:15px;
     --vk-size-admin-bar : 46px;
 	--wp--preset--font-family--system-font: 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
 }
-@media (min-width: 783px) {
+@media ( width >= 783px ) {
     :root{
         --vk-size-admin-bar : 32px;
     }

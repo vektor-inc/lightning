@@ -48,7 +48,7 @@ $color_key : #337ab7;
 /*-------------------------------------------*/
 
 // Not allowed Theme check
-// @media screen and (max-width: 600px){
+// @media screen and ( width <= 600px ){
 // #wpadminbar { position: fixed; }
 // }
 html, body { overflow-x: hidden; }
@@ -71,14 +71,14 @@ input.form-control.input_widthAuto { width: auto; }
 /*-------------------------------------------*/
 /* .navSection
 /*-------------------------------------------*/
-@media (max-width: 991px){
+@media ( width <= $md-max ){
   .menuBtn { position:absolute;top:0; z-index: 2000;margin:8px; padding:4px 8px;
     &.btn-default { border-color: #999;color:#999; }
     &.btn-default:hover { border-color: #fff;color:#fff; }
     &.menuBtn_right { right:0px; }
   }
-} // @media (max-width: 991px){
-@media (min-width: 992px){
+} // @media ( width <= $md-max ){
+@media ( $md-max < width ){
   .menuBtn,
   .navSection,
   .navSection .searchform { display: none; }
@@ -98,18 +98,18 @@ input.form-control.input_widthAuto { width: auto; }
   img { max-height: 40px;display: block; }
 }
 
-@media (max-width: 991px){
-.navbar-header { float:none; } /* (max-width: 991px) の外に出すと初期設定のfloat:leftに負ける */
+@media ( width <= $md-max ){
+.navbar-header { float:none; } /* ( width <= $md-max ) の外に出すと初期設定のfloat:leftに負ける */
 .navbar-brand { float:inherit; text-align: center;padding:0 45px; }
 .navbar-brand img { display: block ; margin:0 auto; }
 }
-@media (min-width: 992px){
+@media ( $md-max < width ){
 .siteHeader .container { padding-top:20px;padding-bottom:18px; }
 .navbar > .container .navbar-brand,
 .navbar > .container-fluid .navbar-brand { margin-left:0; }
 .navbar-header { float:left; }
 .navbar-brand img { max-height: 50px; }
-} // @media (min-width: 992px) {
+} // @media ( $md-max < width ) {
 
 /*-------------------------------------------*/
 /* nav
@@ -135,7 +135,7 @@ ul.gMenu {
 .gMenu_name { font-weight: normal; }
 .gMenu_description { display:block; overflow:hidden;font-size:10px; line-height: 14px; }
 
-@media (max-width: 991px){
+@media ( width <= $md-max ){
   .gMenu_outer { overflow:scroll;display: none; height: 20em;}
   .gMenu_outer.itemOpen { display: block; }
   .gMenu_outer.itemClose { display: none; }
@@ -147,7 +147,7 @@ ul.gMenu {
   }
 
 }
-@media (min-width: 992px){
+@media ( $md-max < width ){
 .gMenu_outer.itemOpen,
 .gMenu_outer.itemClose { display: block; }
 .gMenu_name { text-align: center;display: block; }
@@ -179,7 +179,7 @@ ul.gMenu > li > ul.sub-menu { display:none;position: absolute;z-index: 1000;left
 }
 ul.gMenu > li:hover > ul.sub-menu { display: block; }
 ul.gMenu > li li:hover > ul.sub-menu { display: block; }
-} // @media (min-width: 992px){
+} // @media ( $md-max < width ){
 
 /*-------------------------------------------*/
 /* .page-header
@@ -187,7 +187,7 @@ ul.gMenu > li li:hover > ul.sub-menu { display: block; }
 .page-header { margin-top:0;margin-bottom:0;padding-bottom:0; }
 .page-header_pageTitle,
 h1.page-header_pageTitle:first-child { margin:15px 0 10px;font-size:22px;line-height: 1.1; }
-@media (min-width: 992px){
+@media ( $md-max < width ){
   .page-header_pageTitle,
   h1.page-header_pageTitle:first-child { margin:30px 0 25px;font-size:32px; }
 }
@@ -243,18 +243,18 @@ h1.entry-title { font-size:32px; }
 .entry-body::after { content: "";clear: both;display: block; }
 .page .entry-body {padding-top:0; }
 
-@media (max-width: 767px){
+@media ( width <= $sm-max ){
 .entry-meta {
   .entry-meta_items_term { float:none;display: block;margin-top:0.5em; }
 }
 h1.entry-title { font-size:26px; }
-}// @media (max-width: 767px){
-@media (min-width: 768px){
+}// @media ( width <= $sm-max ){
+@media ( $sm-max < width ){
 .mainSection .widget { margin-bottom:35px; }
   .entry-meta_items { font-size:14px; }
   .entry-body,
   .widget .entry-body { padding:2em 0 2.5em; }
-} // @media (min-width: 768px){
+} // @media ( $sm-max < width ){
 
 
 
@@ -315,19 +315,19 @@ h1.entry-title { font-size:26px; }
     a.media-body_excerpt { color:$color_font_default; }
   }
 }
-@media (max-width: 767px){
+@media ( width <= $sm-max ){
 .media {
   .postList_thumbnail { padding-right:20px; }
   .media-body {
     .media-heading { font-size:1.2em;line-height:1.3em; margin-bottom:0.5em; }
     } // .media-body
   } // .media
-} // @media (max-width: 767px){
-@media (max-width: 500px){
+} // @media ( width <= $sm-max ){
+@media ( width <= 500px ){
 .media {
   .postList_thumbnail { width:100px; }
   } // .media
-} // @media (max-width: 767px){
+} // @media ( width <= 500 ){
 
 /*-------------------------------------------*/
 /* .pagination
@@ -362,7 +362,7 @@ ul.page-numbers { margin:0;padding: 0;
 .pager li { margin-bottom:10px;display: inline-block;
   & > a { border-radius:0;padding:7px 15px 5px; }
 }
-// @media (max-width: 767px){
+// @media ( width <= $sm-max ){
 .pager li { display: block; overflow:hidden;float:none;
   a { display:block; overflow:hidden;float:none;width: 100%; text-align: left; }
   &.previous a:before{ content:"«";margin-right:0.8em; }
@@ -470,8 +470,8 @@ ul.page-numbers { margin:0;padding: 0;
 }
 .widget_ltg_adv_full_wide_title_title, .widget_ltg_full_wide_title_title {
   font-size:2.4rem;
-  @media ( min-width: 768px ){ font-size:2.8rem; }
-  @media ( min-width: 1200px ){ font-size:3.2rem; }
+  @media ( $sm-max < width ){ font-size:2.8rem; }
+  @media ( $lg-max < width ){ font-size:3.2rem; }
   padding:0;
   margin-bottom: 0.3em;
   line-height: 1.4em;
@@ -506,7 +506,7 @@ footer {
     p { font-size:12px;margin:0 15px 5px; }
   }
 }
-@media (max-width: 767px){
+@media ( width <= $sm-max ){
 footer {
   .footerMenu {
     .container { padding-left:0; padding-right:0; }
@@ -514,8 +514,8 @@ footer {
     li:last-child  { border-bottom:none; }
   }
 }
-}// @media (max-width: 767px){
-@media (min-width: 768px){
+}// @media ( width <= $sm-max ){
+@media ( $sm-max < width ){
 footer {
   .footerMenu {
     ul { margin:10px 0; }
@@ -584,6 +584,6 @@ p.no-comments { background-color: #f3f3f3;border:1px solid #e5e5e5; text-align: 
 }
 .prBlock_summary{ margin-bottom: 0.5em; text-align: center; font-size: 14px; line-height: 1.6em; }
 
-@media screen and (max-width:992px){
+@media screen and ( width <= $md-max ){
 .prBlock{ margin-bottom: 1.5em; }
 }

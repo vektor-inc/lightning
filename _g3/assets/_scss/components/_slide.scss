@@ -121,7 +121,7 @@
 			width: auto;
 		}
 		// グリフが無くなった v12 以降でも効くよう、非表示はボタン自体に指定する。
-		@media (max-width: $xs-max) {
+		@media ( width <= $xs-max ) {
 			display: none;
 		}
 	}

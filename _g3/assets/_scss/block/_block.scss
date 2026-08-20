@@ -258,7 +258,7 @@ body .wp-block-image figure {
 	}
 }
 
-@media (max-width: 600px){
+@media ( width <= 600px ){
 	.wp-block-media-text {
 		&.is-stacked-on-mobile{
 			.wp-block-media-text__content {

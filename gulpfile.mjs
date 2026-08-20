@@ -7,7 +7,8 @@ import plumber from 'gulp-plumber';
 import sassModule from 'gulp-sass';
 import autoprefixer from 'gulp-autoprefixer';
 import cleanCss from 'gulp-clean-css';
-import cmq from 'gulp-merge-media-queries';
+import postcss from 'gulp-postcss';
+import sortMediaQueries from 'postcss-sort-media-queries';
 import sourcemaps from 'gulp-sourcemaps';
 import aliases from 'gulp-style-aliases';
 import nodeSass from 'sass';
@@ -56,11 +57,7 @@ gulp.task('sass_common_g2', function (done) {
         ]
       }
     ))
-    .pipe(cmq(
-      {
-        log: true
-      }
-    ))
+    .pipe(postcss([sortMediaQueries()]))
     .pipe(autoprefixer())
     .pipe(cleanCss())
     .pipe(gulp.dest('./_g2/assets/css'))
@@ -73,11 +70,7 @@ gulp.task('sass_bs4_g2', function (done) {
       "@bootstrap": "./node_modules/bootstrap/scss"
     }))
     .pipe(sass())
-    .pipe(cmq(
-      {
-        log: true
-      }
-    ))
+    .pipe(postcss([sortMediaQueries()]))
     .pipe(autoprefixer())
     .pipe(cleanCss())
     .pipe(rename(
@@ -93,9 +86,7 @@ gulp.task('sass_bs4_g2', function (done) {
 gulp.task('sass_skin_g1', function (done) {
   src(['_g2/design-skin/origin/_scss/**/*.scss'])
     .pipe(sass())
-    .pipe(cmq({
-      log: true
-    }))
+    .pipe(postcss([sortMediaQueries()]))
     .pipe(autoprefixer())
     .pipe(cleanCss())
     .pipe(gulp.dest('./_g2/design-skin/origin/css'))
@@ -106,11 +97,7 @@ gulp.task('sass_skin_g1', function (done) {
 gulp.task('sass_skin_g2', function (done) {
   src(['_g2/design-skin/origin2/_scss/**/*.scss'])
     .pipe(sass())
-    .pipe(cmq(
-      {
-        log: true
-      }
-    ))
+    .pipe(postcss([sortMediaQueries()]))
     .pipe(autoprefixer())
     .pipe(cleanCss())
     .pipe(gulp.dest('./_g2/design-skin/origin2/css'))
@@ -121,9 +108,7 @@ gulp.task('sass_skin_g2', function (done) {
 gulp.task('sass_woo_g2', function (done) {
   return src(['./_g2/plugin-support/woocommerce/_scss/**.scss'])
     .pipe(sass())
-    .pipe(cmq({
-      log: true
-    }))
+    .pipe(postcss([sortMediaQueries()]))
     .pipe(autoprefixer())
     .pipe(cleanCss())
     .pipe(gulp.dest('./_g2/plugin-support/woocommerce/css/'))
@@ -133,9 +118,7 @@ gulp.task('sass_woo_g2', function (done) {
 gulp.task('sass_booking_package_g2', function (done) {
 	return src(['./_g2/plugin-support/booking-package/_scss/**.scss'])
 	  .pipe(sass())
-	  .pipe(cmq({
-		log: true
-	  }))
+	  .pipe(postcss([sortMediaQueries()]))
 	  .pipe(autoprefixer())
 	  .pipe(cleanCss())
 	  .pipe(gulp.dest('./_g2/plugin-support/booking-package/css/'))
@@ -145,9 +128,7 @@ gulp.task('sass_booking_package_g2', function (done) {
 gulp.task('sass_bbpress_g2', function (done) {
 	return src(['./_g2/plugin-support/bbpress/_scss/**.scss'])
 	  .pipe(sass())
-	  .pipe(cmq({
-		log: true
-	  }))
+	  .pipe(postcss([sortMediaQueries()]))
 	  .pipe(autoprefixer())
 	  .pipe(cleanCss())
 	  .pipe(gulp.dest('./_g2/plugin-support/bbpress/css/'))
@@ -156,9 +137,7 @@ gulp.task('sass_bbpress_g2', function (done) {
 gulp.task('sass_bbpress_g3', function (done) {
 return src(['./_g3/plugin-support/bbpress/_scss/**.scss'])
 	.pipe(sass())
-	.pipe(cmq({
-	log: true
-	}))
+	.pipe(postcss([sortMediaQueries()]))
 	.pipe(autoprefixer())
 	.pipe(cleanCss())
 	.pipe(gulp.dest('./_g3/plugin-support/bbpress/css/'));
@@ -207,11 +186,7 @@ gulp.task('sass_common_g3', function (done) {
 	  }
 	))
 	  .pipe(sourcemaps.init())
-	  .pipe(cmq(
-		{
-		  log: true
-		}
-	  ))
+	  .pipe(postcss([sortMediaQueries()]))
 	  .pipe(autoprefixer())
 	  .pipe(cleanCss())
 	  .pipe(gulp.dest('./_g3/assets/css'))
@@ -231,11 +206,7 @@ gulp.task('sass_common_g3', function (done) {
 	  }
 	))
 	  .pipe(sourcemaps.init())
-	  .pipe(cmq(
-		{
-		  log: true
-		}
-	  ))
+	  .pipe(postcss([sortMediaQueries()]))
 	  .pipe(autoprefixer())
 	  .pipe(cleanCss())
 	  .pipe(gulp.dest('./_g3/design-skin/origin3/css'))
@@ -245,9 +216,7 @@ gulp.task('sass_common_g3', function (done) {
   gulp.task('sass_woo_g3', function (done) {
 	return src(['./_g3/plugin-support/woocommerce/_scss/**.scss'])
 	  .pipe(sass())
-	  .pipe(cmq({
-		log: true
-	  }))
+	  .pipe(postcss([sortMediaQueries()]))
 	  .pipe(autoprefixer())
 	  .pipe(cleanCss())
 	  .pipe(gulp.dest('./_g3/plugin-support/woocommerce/css/'))
@@ -256,9 +225,7 @@ gulp.task('sass_common_g3', function (done) {
   gulp.task('sass_bbpress_g3', function (done) {
 	  return src(['./_g3/plugin-support/bbpress/_scss/**.scss'])
 		.pipe(sass())
-		.pipe(cmq({
-		  log: true
-		}))
+		.pipe(postcss([sortMediaQueries()]))
 		.pipe(autoprefixer())
 		.pipe(cleanCss())
 		.pipe(gulp.dest('./_g3/plugin-support/bbpress/css/'))
@@ -267,9 +234,7 @@ gulp.task('sass_common_g3', function (done) {
 	gulp.task('sass_the_event_calendar_g3', function (done) {
 		return src(['./_g3/plugin-support/the-events-calendar/_scss/**.scss'])
 		  .pipe(sass())
-		  .pipe(cmq({
-			log: true
-		  }))
+		  .pipe(postcss([sortMediaQueries()]))
 		  .pipe(autoprefixer())
 		  .pipe(cleanCss())
 		  .pipe(gulp.dest('./_g3/plugin-support/the-events-calendar/css/'))
@@ -278,9 +243,7 @@ gulp.task('sass_common_g3', function (done) {
 	gulp.task('sass_booking_package_g3', function (done) {
 		return src(['./_g3/plugin-support/booking-package/_scss/**.scss'])
 		  .pipe(sass())
-		  .pipe(cmq({
-			log: true
-		  }))
+		  .pipe(postcss([sortMediaQueries()]))
 		  .pipe(autoprefixer())
 		  .pipe(cleanCss())
 		  .pipe(gulp.dest('./_g3/plugin-support/booking-package/css/'))
@@ -289,9 +252,7 @@ gulp.task('sass_common_g3', function (done) {
 	gulp.task('sass_snow_monkey_forms_g3', function (done) {
 		return src(['./_g3/plugin-support/snow-monkey-forms/_scss/**.scss'])
 		  .pipe(sass())
-		  .pipe(cmq({
-			log: true
-		  }))
+		  .pipe(postcss([sortMediaQueries()]))
 		  .pipe(autoprefixer())
 		  .pipe(cleanCss())
 		  .pipe(gulp.dest('./_g3/plugin-support/snow-monkey-forms/css/'))

@@ -3,17 +3,17 @@
 :root {
 	--vk-width-base-padding:1.4rem;
 	--vk-width-base-padding-side : var(--vk-width-base-padding);
-	@media (min-width: $sm-min) {
+	@media ( $xs-max < width ) {
 		--vk-width-base-padding:1.7rem;
 	}
-	@media (min-width: $md-min) {
+	@media ( $sm-max < width ) {
 		--vk-width-base-padding:2rem;
 	}
-	@media (min-width: $lg-min) {
+	@media ( $md-max < width ) {
 		--vk-width-base-padding:2.4rem;
 		--vk-width-base-padding-side:1.7rem;
 	}
-	@media (min-width: $xl-min) {
+	@media ( $lg-max < width ) {
 		--vk-width-base-padding-side:2rem;
 	}
 }
@@ -22,7 +22,7 @@
 /* siteContent
 /*-------------------------------------------*/
 .site-body.site-body--base--on {
-	@media (min-width: $md-min) {
+	@media ( $sm-max < width ) {
 		padding: 2rem 0 3.5rem;
 	}
 	.home & {

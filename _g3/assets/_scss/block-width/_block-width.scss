@@ -89,7 +89,7 @@ body :where(.alignfull,.alignwide):where(:not(.vk_outer-paddingLR-zero)) {
 	}
 }
 // body がないと ↑ に負ける（↑もbodyがないとコアに負ける）
-@media (min-width: 992px) { // モバイル１カラムでは2カラムにならないので、２カラム時のみ制御（モバイルでは全幅/幅広が効く）
+@media ( $md-max < width ) { // モバイル１カラムでは2カラムにならないので、２カラム時のみ制御（モバイルでは全幅/幅広が効く）
 body .main-section--col--two,
 body .sub-section--col--two {
 	.alignfull,

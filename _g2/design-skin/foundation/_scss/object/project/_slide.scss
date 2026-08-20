@@ -20,7 +20,7 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 	margin-top: 0;
 	bottom: 0;
 
-	@media (max-width: $sm-max) {
+	@media ( width <= $sm-max ) {
 		display: none;
 	}
 }
@@ -90,11 +90,11 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 	// display:inline; だと、キャプションがない時にボタンが見出しの横にそのまま表示されてしまうので block 指定に変更
 	display: block;
 	
-	@media (min-width: 768px) {
+	@media ( $sm-max < width ) {
 		font-size: calc( 1.313rem + 0.7vw );
 	}
 
-	// @media (min-width: 992px){ font-size:2.2vw;	}
+	// @media ( $md-max < width ){ font-size:2.2vw;	}
 	&:before,
 	&:after {
 		display: none;
@@ -106,16 +106,16 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 	font-size: 11px;
 	line-height: 1.5;
 
-	@media (min-width: 576px) {
+	@media ( $xs-max < width ) {
 		font-size: 12px;
 		line-height: 1.7;
 	}
 
-	@media (min-width: 768px) {
+	@media ( $sm-max < width ) {
 		margin-top: 1.2em;
 	}
 
-	@media (min-width: 992px) {
+	@media ( $md-max < width ) {
 		font-size: 1.3vw;
 	}
 }
@@ -126,11 +126,11 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 	font-size: 1.7vw;
 	transition: background-color 1s, border-color 0.5s;
 
-	@media (min-width: 768px) {
+	@media ( $sm-max < width ) {
 		margin-top: 1.3em;
 	}
 
-	@media (min-width: 992px) {
+	@media ( $md-max < width ) {
 		font-size: 1.3vw;
 	}
 }

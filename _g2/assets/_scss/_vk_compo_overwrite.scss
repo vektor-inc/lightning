@@ -6,7 +6,7 @@
 .mainSection > .vk_posts,
 .entry-body > .vk_posts{
     & > .vk_post-col-sm-12 {
-        @media (min-width: $sm-min) {
+        @media ( $xs-max < width ) {
             .vk_post_title {
                 font-size: 16px;
             }
@@ -16,7 +16,7 @@
         }
     }
     & > .vk_post-col-md-12 {
-        @media (min-width: $md-min) {
+        @media ( $sm-max < width ) {
             .vk_post_title {
                 font-size: 18px;
             }
@@ -26,7 +26,7 @@
         }
     }
     & > .vk_post-col-lg-12 {
-        @media (min-width: $lg-min) {
+        @media ( $md-max < width ) {
             .vk_post_title {
                 font-size: 18px;
             }
@@ -36,7 +36,7 @@
         }
     }
     & > .vk_post-col-xl-12 {
-        @media (min-width: $xl-min) {
+        @media ( $lg-max < width ) {
             .vk_post_title {
                 font-size: 21px;
             }
@@ -46,7 +46,7 @@
         }
     }
     & > .vk_post-col-xxl-12 {
-        @media (min-width: $xxl-min) {
+        @media ( $xl-max < width ) {
             .vk_post_title {
                 font-size: 26px;
             }
@@ -57,7 +57,7 @@
     }
     & > .media {
         &.vk_post-col-sm-12 {
-            @media (min-width: $sm-min) {
+            @media ( $xs-max < width ) {
                 padding: 1.5rem 0;
                 &:first-child {
                     border-top: $border_primary;
@@ -68,7 +68,7 @@
             }
         }
         &.vk_post-col-lg-12 {
-            @media (min-width: $lg-min) {
+            @media ( $md-max < width ) {
                 padding: 1.8rem 0;
                 .media-img {
                     margin-right: 1.8rem;
