@@ -224,7 +224,7 @@ html :where(.wp-block) {
 //////////////////////////////////////////////////////////////
 /// Cope with content width half ( VK Blocks )
 //////////////////////////////////////////////////////////////
-@media ( width >= 782px ) {
+@media ( $wp-col-min <= width ) {
 	.editor-styles-wrapper {
 		:where(:not(.is-vk-row-reverse)) > :first-child.is-vk-content-width-half,
 		:where(.is-vk-row-reverse) > :nth-child(2).is-vk-content-width-half {

@@ -72,6 +72,10 @@
 			"contentSize": "calc( var(--vk-width-container) - var(--vk-width-container-padding) * 2 )",
 			"wideSize": "calc( var(--vk-width-container) - var(--vk-width-container-padding) * 2 + ( 100vw - ( var(--vk-width-container) - var(--vk-width-container-padding) * 2 ) ) / 2 )"
 		},
+		"viewport": {
+			"mobile": "576px",
+			"tablet": "992px"
+		},
 		"border": {
 			"color": true,
 			"radius": true,

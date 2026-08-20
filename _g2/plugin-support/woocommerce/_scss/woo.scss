@@ -1,5 +1,7 @@
 @charset "utf-8";
 
+@import "../../../assets/_scss/variables";
+
 /*-------------------------------------------*/
 /*	Product common
 /*-------------------------------------------*/
@@ -274,7 +276,7 @@ div[class*="wp-block-product"] {
 	}
 }
 
-@media ( width <= 768px ) {
+@media ( width <= $sm-max ) {
 	.woocommerce {
 		ul.products[class*="columns-"] {
 			margin-left: -2%;
@@ -298,7 +300,7 @@ div[class*="wp-block-product"] {
 		box-sizing: border-box;
 		padding: 0 10px 15px;
 
-		@media ( 576px < width ) {
+		@media ( $xs-max < width ) {
 			padding: 0 15px 2em;
 		}
 		line-height: inherit;
@@ -340,15 +342,15 @@ div[class*="wp-block-product"] {
 		margin-right: -15px;
 
 		li {
-			@media ( 576px < width ) {
+			@media ( $xs-max < width ) {
 				width: 33.3%;
 			}
 
-			@media ( 992px < width ) {
+			@media ( $md-max < width ) {
 				width: 25%;
 			}
 
-			@media ( 1200px < width ) {
+			@media ( $lg-max < width ) {
 				width: 20%;
 			}
 		}
@@ -391,7 +393,7 @@ div[class*="wp-block-product"] {
 		border-bottom: 1px dotted #ccc;
 		padding-bottom: 0.5rem;
 
-		@media ( 992px < width ) {
+		@media ( $md-max < width ) {
 			font-size: 28px;
 		}
 	}
@@ -640,7 +642,7 @@ tr.cart-discount td {
 		padding: 0;
 		font-size: 14px;
 
-		@media ( 768px < width ) {
+		@media ( $sm-max < width ) {
 			margin-right: 3em;
 		}
 		border-top: 1px solid #e5e5e5;
@@ -783,11 +785,11 @@ tr.cart-discount td {
 .woocommerce .col2-set .col-2,
 .woocommerce-page .col2-set .col-1,
 .woocommerce-page .col2-set .col-2 {
-	@media ( width <= 768px ) {
+	@media ( width <= $sm-max ) {
 		width: 100%;
 		max-width: 100%;
 	}
-	@media ( 768px < width ) {
+	@media ( $sm-max < width ) {
 		width: 48%;
 		max-width: 48%;
 	}
