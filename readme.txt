@@ -37,7 +37,6 @@ vk-develop@vektor-inc.co.jp
 
 [ G3 ][ Spec Change ] Make the home page slider navigation and pagination aria-labels translatable
 [ G2 ][ Bug Fix ] Fix image set/delete buttons in the Full Wide Title widget not opening the media library in the block-based widget editor
-
 [ Spec Change ] Update vektor-inc/font-awesome-versions from 0.7.4 to 0.7.5
 [ Spec Change ] Update vektor-inc/vk-component from 1.7.0 to 1.7.2
 [ G2/G3 ][ Spec Change ] Unify SCSS breakpoint variables as maximum values (576 / 768 / 992 / 1200 / 1400px) and rewrite media queries with range syntax
