@@ -27,7 +27,7 @@ entry-body
 		margin-right:auto;
 	}
 }
-.alignfull {
+.alignfull:where(:not( [class*="section--base--on"] .alignfull )) {
 	// & だけで全ての .alignfull にマッチするため、:is() 側は同じ宣言を詳細度 (0,2,0) で重ねる役割になっている。
 	// css.md の方針どおり :where() で包んで詳細度を下げる対応は、既存レイアウトへの影響が大きいため #1383 で別途検討する。
 	// .swiper-container は _g2 期のマークアップ向けの既存エントリ。Lightning の現行スライダーは
@@ -53,7 +53,7 @@ entry-body
 		max-width: var(--vk-width-full);
 	}
 }
-.alignwide {
+.alignwide:where(:not( [class*="section--base--on"] .alignwide )) {
 	&,
 	&:is(
 	.vk_slider,
@@ -79,11 +79,11 @@ entry-body
 // }
 // を入れられて幅広にならないので打ち消し処理
 body :where(.alignfull,.alignwide):where(:not(.vk_outer-paddingLR-zero)) {
-	& > .is-layout-constrained > .alignwide {
+	& > .is-layout-constrained > .alignwide:where(:not( [class*="section--base--on"] .alignwide )) {
 		margin-left: calc( ( 100% - var(--vk-width-full) ) / 4 ) !important;
 		margin-right: calc( ( 100% - var(--vk-width-full) ) / 4 ) !important;
 	}
-	& > .is-layout-constrained > .alignfull {
+	& > .is-layout-constrained > .alignfull:where(:not( [class*="section--base--on"] .alignfull )) {
 		margin-left: calc( ( 100% - var(--vk-width-full) ) / 2 ) !important;
 		margin-right: calc( ( 100% - var(--vk-width-full) ) / 2 ) !important;
 	}
@@ -92,8 +92,8 @@ body :where(.alignfull,.alignwide):where(:not(.vk_outer-paddingLR-zero)) {
 @media ( $md-max < width ) { // モバイル１カラムでは2カラムにならないので、２カラム時のみ制御（モバイルでは全幅/幅広が効く）
 body .main-section--col--two,
 body .sub-section--col--two {
-	.alignfull,
-	.alignwide {
+	.alignfull:where(:not( [class*="section--base--on"] .alignfull ) ),
+	.alignwide:where(:not( [class*="section--base--on"] .alignwide ) ) {
 		--wp--style--global--wide-size:100%;
 		--wp--style--global--full-size:100%;
 		max-width: 100%;
@@ -107,23 +107,6 @@ body .sub-section--col--two {
 	.vk_outer-width-full.vk_outer-paddingLR-none {
 		padding-left:0;
 		padding-right:0;
-	}
-	&.main-section--base--on,
-	&.sub-section--base--on {
-		.alignwide {
-			padding-left: 0;
-			padding-right: 0;
-			margin-left: calc( var(--vk-width-base-padding) / -2 );
-			margin-right: calc( var(--vk-width-base-padding) / -2 );
-			max-width:calc( 100% + var(--vk-width-base-padding) );
-			width:calc( 100% + var(--vk-width-base-padding) );
-		}
-		.alignfull {
-			padding-left: 0;
-			padding-right: 0;
-			max-width:calc( 100% + var(--vk-width-base-padding) * 2 );
-			width:calc( 100% + var(--vk-width-base-padding) * 2 );
-		}
 	}
 }
 }

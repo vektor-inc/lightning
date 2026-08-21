@@ -6,7 +6,10 @@ import rename from 'gulp-rename';
 import plumber from 'gulp-plumber';
 import sassModule from 'gulp-sass';
 import autoprefixer from 'gulp-autoprefixer';
-import cleanCss from 'gulp-clean-css';
+import CleanCSS from 'clean-css';
+import through from 'through2';
+import applySourceMap from 'vinyl-sourcemaps-apply';
+import path from 'path';
 import postcss from 'gulp-postcss';
 import sortMediaQueries from 'postcss-sort-media-queries';
 import sourcemaps from 'gulp-sourcemaps';
@@ -16,6 +19,57 @@ import nodeSass from 'sass';
 const sass = sassModule(nodeSass);
 
 let error_stop = true
+
+// gulp-clean-css is pinned to clean-css@4.2.3, which has a bug that strips the
+// descendant combinator (space) inside :not() selectors, so this replaces it
+// with a custom gulp plugin that calls clean-css@5 directly.
+// gulp-clean-css は clean-css@4.2.3 に固定されており、
+// :not() 内の子孫結合子（半角スペース）を誤って除去するバグがあるため、
+// clean-css@5 を直接叩く自前の gulp プラグインに置き換えている。
+// https://github.com/vektor-inc/Lightning/pull/1401
+function cleanCss(options) {
+  return through.obj(function (file, enc, cb) {
+    const _options = Object.assign({}, options || {});
+
+    if (file.isNull()) {
+      return cb(null, file);
+    }
+    if (file.isStream()) {
+      this.emit('error', new Error('cleanCss: Streaming not supported!'));
+      return cb(null, file);
+    }
+
+    if (file.sourceMap) {
+      _options.sourceMap = JSON.parse(JSON.stringify(file.sourceMap));
+    }
+
+    const content = {
+      [file.path]: { styles: file.contents ? file.contents.toString() : '' }
+    };
+    if (!_options.rebaseTo && _options.rebase !== false) {
+      _options.rebaseTo = path.dirname(file.path);
+    }
+
+    new CleanCSS(_options).minify(content, (errors, css) => {
+      if (errors) {
+        return cb(errors.join(' '));
+      }
+
+      file.contents = Buffer.from(css.styles);
+
+      if (css.sourceMap) {
+        const iMap = JSON.parse(css.sourceMap);
+        const oMap = Object.assign({}, iMap, {
+          file: path.relative(file.base, file.path),
+          sources: iMap.sources.map(mapSrc => path.relative(file.base, mapSrc))
+        });
+        applySourceMap(file, oMap);
+      }
+
+      cb(null, file);
+    });
+  });
+}
 
 function src(list) {
   if(error_stop) {

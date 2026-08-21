@@ -37,7 +37,6 @@ vk-develop@vektor-inc.co.jp
 
 [ G3 ][ Spec Change ] Make the home page slider navigation and pagination aria-labels translatable
 [ G2 ][ Bug Fix ] Fix image set/delete buttons in the Full Wide Title widget not opening the media library in the block-based widget editor
-
 [ Spec Change ] Update vektor-inc/font-awesome-versions from 0.7.4 to 0.7.5
 [ Spec Change ] Update vektor-inc/vk-component from 1.7.0 to 1.7.2
 [ G2/G3 ][ Spec Change ] Unify SCSS breakpoint variables as maximum values (576 / 768 / 992 / 1200 / 1400px) and rewrite media queries with range syntax
@@ -46,6 +45,7 @@ vk-develop@vektor-inc.co.jp
 [ G3 ][ Spec Change ] Hide the top page slider arrow buttons themselves on screens narrower than 576px, where only the arrow glyph used to be hidden. If you overrode the glyph to keep the arrows on mobile, target the buttons instead of :after
 [ G2 ][ Bug Fix ] Fix undefined array key warning logged on PHP 8 or later when saving the Full Wide Title widget with the text shadow checkbox unchecked
 [ G2 ][ Bug Fix ] Fix undefined array key warning logged on PHP 8 or later when displaying the Full Wide Title widget in the block-based widget editor preview
+[ G3 ][ Bug Fix ] Fix a CSS build bug that dropped the descendant combinator inside :not() selectors, causing wide/full-width blocks nested inside a background-colored section to lose their margin override and misalign
 
 v15.37.1
 [ Other ] Change theme screenshot
