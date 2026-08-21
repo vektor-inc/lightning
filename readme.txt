@@ -46,6 +46,7 @@ vk-develop@vektor-inc.co.jp
 [ G3 ][ Spec Change ] Hide the top page slider arrow buttons themselves on screens narrower than 576px, where only the arrow glyph used to be hidden. If you overrode the glyph to keep the arrows on mobile, target the buttons instead of :after
 [ G2 ][ Bug Fix ] Fix undefined array key warning logged on PHP 8 or later when saving the Full Wide Title widget with the text shadow checkbox unchecked
 [ G2 ][ Bug Fix ] Fix undefined array key warning logged on PHP 8 or later when displaying the Full Wide Title widget in the block-based widget editor preview
+[ G3 ][ Bug Fix ] Fix a CSS build bug that dropped the descendant combinator inside :not() selectors, causing wide/full-width blocks nested inside a background-colored section to lose their margin override and misalign
 
 v15.37.1
 [ Other ] Change theme screenshot
