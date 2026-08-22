@@ -46,6 +46,7 @@ vk-develop@vektor-inc.co.jp
 [ G2 ][ Bug Fix ] Fix undefined array key warning logged on PHP 8 or later when saving the Full Wide Title widget with the text shadow checkbox unchecked
 [ G2 ][ Bug Fix ] Fix undefined array key warning logged on PHP 8 or later when displaying the Full Wide Title widget in the block-based widget editor preview
 [ G3 ][ Bug Fix ] Fix a CSS build bug that dropped the descendant combinator inside :not() selectors, causing wide/full-width blocks nested inside a background-colored section to lose their margin override and misalign
+[ G3 ][ Bug Fix ] Remove the legacy 0.5em block-gap fallback on .wp-block-gallery, which now conflicts with WordPress core's native block-gap control and breaks the gallery block's spacing
 
 v15.37.1
 [ Other ] Change theme screenshot
