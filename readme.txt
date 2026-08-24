@@ -35,6 +35,8 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ G2/G3 ][ Bug Fix ] Fix woo.css re-declaring the default key color after the customizer's dynamic CSS, which made the key color setting have no effect on WooCommerce pages
+
 v15.38.0
 [ G3 ][ Spec Change ] Make the home page slider navigation and pagination aria-labels translatable
 [ Spec Change ] Update vektor-inc/font-awesome-versions from 0.7.4 to 0.7.5

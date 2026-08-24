@@ -1,15 +1,5 @@
-// ブレークポイント
-// -----------------------------------------------------------------------------
-// 各変数はその画面区分の「最大値」。上限側は width <= 、下限側は $変数 < で比較する。
-// 例) スマホ: ( width <= $xs-max ) / タブレット: ( $xs-max < width <= $md-max ) / PC: ( $md-max < width )
-$xs-max: 576px;
-$sm-max: 768px;
-$md-max: 992px;
-$lg-max: 1200px;
-$xl-max: 1400px;
-
-/* コアのカラムブロックのブレイクポイント */
-$wp-col-min: 782px;
+// ブレークポイント（SCSS 変数のみ）
+@import "variables_breakpoint";
 
 $containter-padding:15px;
 

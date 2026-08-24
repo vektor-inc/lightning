@@ -1,6 +1,8 @@
 @charset "utf-8";
 
-@import "../../../assets/_scss/variables";
+// キーカラー等の :root を出力しないよう、ブレイクポイント変数のみ読み込む
+// woo.css は共通CSSより後に読み込まれるため、:root を出力するとカスタマイザーの動的CSSを上書きしてしまう
+@import "../../../assets/_scss/variables_breakpoint";
 
 /*-------------------------------------------*/
 /*	Product common
