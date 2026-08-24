@@ -2,7 +2,7 @@
 Lightning WordPress theme, Copyright (C) 2015-2026 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
 Tested up to: 6.9
-Stable tag: 15.38.0
+Stable tag: 15.38.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -35,6 +35,7 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+v15.38.1
 [ G2/G3 ][ Bug Fix ] Fix woo.css re-declaring the default key color after the customizer's dynamic CSS, which made the key color setting have no effect on WooCommerce pages
 
 v15.38.0
