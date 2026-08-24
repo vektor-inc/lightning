@@ -35,6 +35,9 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ Bug Fix ] Update vektor-inc/font-awesome-versions from 0.7.5 to 0.7.6, fixing Font Awesome icons not displaying in some server environments (e.g. AWS Bitnami)
+[ G3 ][ Bug Fix ] Update vektor-inc/vk-swiper from 0.4.0 to 0.4.1, fixing the slider not working in some server environments (e.g. AWS Bitnami)
+
 v15.38.1
 [ G2/G3 ][ Bug Fix ] Fix woo.css re-declaring the default key color after the customizer's dynamic CSS, which made the key color setting have no effect on WooCommerce pages
 
