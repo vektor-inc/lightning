@@ -1,5 +1,6 @@
 @charset "utf-8";
 @import "../../design-skin/foundation/_scss/variables";
+// Pro 版と無料版では vk-vomponent の階層が違うので注意
 @import "../../../vendor/vektor-inc/vk-component/src/assets/scss/variables.scss";
 
 // メインセクション直下の投稿リストで1カラムの時だけ文字を大きくする
