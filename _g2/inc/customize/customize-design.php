@@ -475,7 +475,7 @@ function lightning_print_css_common() {
 
 	if ( empty( $skin_info['bootstrap'] ) ) {
 		if ( isset( $options['sidebar_position'] ) && $options['sidebar_position'] === 'left' ) {
-			$dynamic_css .= '@media (min-width: 992px) { .siteContent .subSection { float:left;margin-left:0; } .siteContent .mainSection { float:right; } }';
+			$dynamic_css .= '@media ( 992px < width ) { .siteContent .subSection { float:left;margin-left:0; } .siteContent .mainSection { float:right; } }';
 		}
 	}
 

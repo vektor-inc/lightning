@@ -820,7 +820,7 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 
 						// If Mobile Image exist.
 						if ( ! empty( $options[ 'top_slide_image_mobile_' . $i ] ) ) {
-							$slide_html .= '<source media="(max-width: 767px)" srcset="' . esc_attr( $options[ 'top_slide_image_mobile_' . $i ] ) . '">';
+							$slide_html .= '<source media="(width <= 768px)" srcset="' . esc_attr( $options[ 'top_slide_image_mobile_' . $i ] ) . '">';
 						}
 
 						// Add fetchpriority attribute for the first slide image (LCP optimization).
@@ -959,9 +959,9 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 				}
 			} else {
 				// PC and mobile images differ: preload each with appropriate media query.
-				echo '<link rel="preload" as="image" href="' . esc_url( $mobile_image ) . '" media="(max-width: 767px)" fetchpriority="high" />' . "\n";
+				echo '<link rel="preload" as="image" href="' . esc_url( $mobile_image ) . '" media="(width <= 768px)" fetchpriority="high" />' . "\n";
 				if ( $pc_image ) {
-					echo '<link rel="preload" as="image" href="' . esc_url( $pc_image ) . '" media="(min-width: 768px)" fetchpriority="high" />' . "\n";
+					echo '<link rel="preload" as="image" href="' . esc_url( $pc_image ) . '" media="(768px < width)" fetchpriority="high" />' . "\n";
 				}
 			}
 		}
