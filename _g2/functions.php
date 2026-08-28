@@ -132,11 +132,6 @@ function lightning_theme_setup() {
 	require __DIR__ . '/functions-compatible.php';
 
 	/*
-		Load breakpoints.
-	/*-------------------------------------------*/
-	require __DIR__ . '/inc/breakpoint.php';
-
-	/*
 		Load Custom template tags for this theme.
 	/*-------------------------------------------*/
 	require __DIR__ . '/inc/template-tags.php';

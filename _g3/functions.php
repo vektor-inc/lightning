@@ -195,7 +195,6 @@ if ( ! class_exists( 'VK_Helpers', false ) && class_exists( 'VektorInc\\VK_Helpe
 	}
 	// phpcs:enable Generic.Files.OneObjectStructurePerFile.MultipleFound, Squiz.Commenting.ClassComment.Missing
 }
-require __DIR__ . '/inc/breakpoint.php';
 require __DIR__ . '/inc/class-lightning-design-manager.php';
 require __DIR__ . '/inc/class-vk-description-walker.php';
 require __DIR__ . '/inc/template-tags.php';
