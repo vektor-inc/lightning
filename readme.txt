@@ -35,6 +35,8 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ G2 ][ Other ] Import only the breakpoint variables in the origin skin SCSS, so its compiled CSS no longer re-declares the theme default custom properties (key color etc.) after the common stylesheet
+
 v15.38.3
 [ G2/G3 ][ Other ] Replace the media query sorting in the CSS build with an in-house PostCSS plugin, so the compiled CSS always outputs media queries in a stable min-ascending / max-descending / print order
 

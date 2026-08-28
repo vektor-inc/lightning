@@ -1,5 +1,7 @@
 @charset "utf-8";
-@import "../../../assets/_scss/variables";
+// キーカラー等の :root を出力しないよう、ブレイクポイント変数のみ読み込む
+// スキンCSSは共通CSSより後に読み込まれるため、:root を出力すると初期値を再定義してしまう
+@import "../../../assets/_scss/variables_breakpoint";
 @import "bootstrap.min";
 @import "common";
 @import "common_origin";
