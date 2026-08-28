@@ -35,6 +35,8 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ G2/G3 ][ New Feature ] Add lightning_get_breakpoint() / lightning_the_breakpoint() and the lightning_breakpoints filter, so the responsive breakpoints are defined in one place and can be overridden
+
 [ G2/G3 ][ Bug Fix ] Convert the media queries emitted from PHP (customizer dynamic CSS, design skins, slider image sources) to range syntax, so that 992px / 768px are treated as the narrower side there too and no longer disagree with the stylesheets
 
 [ G2 ][ Other ] Import only the breakpoint variables in the origin skin SCSS, so its compiled CSS no longer re-declares the theme default custom properties (key color etc.) after the common stylesheet

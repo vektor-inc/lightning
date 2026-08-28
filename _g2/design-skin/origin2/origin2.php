@@ -17,18 +17,18 @@ function lightning_print_css_origin() {
 
 	// Global Menu //////////////////
 	$dynamic_css .= '
-	@media ( 768px < width ){
+	@media ( ' . lightning_get_breakpoint( 'sm-max' ) . ' < width ){
 		.gMenu > li:before,
 		.gMenu > li.menu-item-has-children::after { border-bottom-color:' . $color_key_dark . ' }
 		.gMenu li li { background-color:' . $color_key_dark . ' }
 		.gMenu li li a:hover { background-color:' . $color_key . '; }
-	} /* @media ( 768px < width ) */';
+	} /* @media ( sm-max < width ) */';
 	if ( ! empty( $options['color_header_bg'] ) ) {
 		$color_header_bg = esc_html( $options['color_header_bg'] );
 		if ( lightning_check_color_mode( $color_header_bg ) == 'dark' ) {
 			// Dark Color ///////////////////
 			$dynamic_css .= '
-		@media ( 768px < width ){
+		@media ( ' . lightning_get_breakpoint( 'sm-max' ) . ' < width ){
 			ul.gMenu > li > a:after { border-bottom-color: rgba(255,255,255,0.9 );}
 		}';
 		} else {
