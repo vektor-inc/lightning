@@ -35,6 +35,8 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ G2/G3 ][ Other ] Replace the media query sorting in the CSS build with an in-house PostCSS plugin, so the compiled CSS always outputs media queries in a stable min-ascending / max-descending / print order
+
 v15.38.2
 [ Bug Fix ] Update vektor-inc/font-awesome-versions from 0.7.5 to 0.7.6, fixing Font Awesome icons not displaying in some server environments (e.g. AWS Bitnami)
 [ G3 ][ Bug Fix ] Update vektor-inc/vk-swiper from 0.4.0 to 0.4.1, fixing the slider not working in some server environments (e.g. AWS Bitnami)
