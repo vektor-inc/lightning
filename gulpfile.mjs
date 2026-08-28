@@ -10,8 +10,9 @@ import CleanCSS from 'clean-css';
 import through from 'through2';
 import applySourceMap from 'vinyl-sourcemaps-apply';
 import path from 'path';
-import postcss from 'gulp-postcss';
-import sortMediaQueries from 'postcss-sort-media-queries';
+// メディアクエリの統合・並べ替え
+import postcss from 'postcss';
+import { Transform } from 'stream';
 import sourcemaps from 'gulp-sourcemaps';
 import aliases from 'gulp-style-aliases';
 import nodeSass from 'sass';
@@ -19,6 +20,98 @@ import nodeSass from 'sass';
 const sass = sassModule(nodeSass);
 
 let error_stop = true
+
+// メディアクエリの並び順グループ。数値が小さいほどファイルの先頭側に出力する
+const MQ_GROUP = { other: 0, all: 1, minWidth: 2, minHeight: 3, maxWidth: 4, maxHeight: 5, print: 6 };
+
+// メディアクエリを「下限を持つもの」「上限を持つもの」などに分類し、並べ替え用の値を返す。
+// `min-width` / `max-width` に加えて `768px < width` / `width <= 768px` のような範囲構文も判定する。
+function classifyMediaQuery(params) {
+	const lower = params.match(/min-width\s*:\s*([\d.]+)px/) ||
+		params.match(/([\d.]+)px\s*<=?\s*width/) ||
+		params.match(/width\s*>=?\s*([\d.]+)px/);
+	if (lower) {
+		return { group: MQ_GROUP.minWidth, value: parseFloat(lower[1]), descending: false };
+	}
+	const upper = params.match(/max-width\s*:\s*([\d.]+)px/) ||
+		params.match(/width\s*<=?\s*([\d.]+)px/) ||
+		params.match(/([\d.]+)px\s*>=?\s*width/);
+	if (upper) {
+		return { group: MQ_GROUP.maxWidth, value: parseFloat(upper[1]), descending: true };
+	}
+	const minHeight = params.match(/min-height\s*:\s*([\d.]+)px/);
+	if (minHeight) {
+		return { group: MQ_GROUP.minHeight, value: parseFloat(minHeight[1]), descending: false };
+	}
+	const maxHeight = params.match(/max-height\s*:\s*([\d.]+)px/);
+	if (maxHeight) {
+		return { group: MQ_GROUP.maxHeight, value: parseFloat(maxHeight[1]), descending: true };
+	}
+	if (/print/.test(params)) {
+		return { group: MQ_GROUP.print, value: 0, descending: false };
+	}
+	if (/all/.test(params)) {
+		return { group: MQ_GROUP.all, value: 0, descending: false };
+	}
+	return { group: MQ_GROUP.other, value: 0, descending: false };
+}
+
+// 同じ条件のメディアクエリを1つにまとめ、下限指定は小さい順・上限指定は大きい順に並べ替える PostCSS プラグイン
+function sortMediaQueries() {
+	return {
+		postcssPlugin: 'lightning-sort-media-queries',
+		OnceExit: function (root, helpers) {
+			const merged = new Map();
+			root.each(function (node) {
+				if (node.type !== 'atrule' || node.name !== 'media') {
+					return;
+				}
+				if (!merged.has(node.params)) {
+					merged.set(node.params, new helpers.AtRule({ name: node.name, params: node.params, source: node.source }));
+				}
+				node.each(function (child) {
+					merged.get(node.params).append(child.clone());
+				});
+				node.remove();
+			});
+			const entries = [...merged.keys()].map(function (params, index) {
+				const info = classifyMediaQuery(params);
+				info.params = params;
+				info.index = index;
+				return info;
+			});
+			entries.sort(function (a, b) {
+				if (a.group !== b.group) {
+					return a.group - b.group;
+				}
+				if (a.value !== b.value) {
+					return a.descending ? b.value - a.value : a.value - b.value;
+				}
+				return a.index - b.index;
+			});
+			entries.forEach(function (entry) {
+				root.append(merged.get(entry.params));
+			});
+		},
+	};
+}
+sortMediaQueries.postcss = true;
+
+// 上記プラグインを gulp のストリームに適用する
+function mergeMediaQueries() {
+	return new Transform({
+		objectMode: true,
+		transform: function (file, enc, cb) {
+			postcss([sortMediaQueries()])
+				.process(file.contents.toString(), { from: undefined })
+				.then(function (result) {
+					file.contents = Buffer.from(result.css);
+					cb(null, file);
+				})
+				.catch(cb);
+		},
+	});
+}
 
 // gulp-clean-css is pinned to clean-css@4.2.3, which has a bug that strips the
 // descendant combinator (space) inside :not() selectors, so this replaces it
@@ -111,7 +204,7 @@ gulp.task('sass_common_g2', function (done) {
         ]
       }
     ))
-    .pipe(postcss([sortMediaQueries()]))
+    .pipe(mergeMediaQueries())
     .pipe(autoprefixer())
     .pipe(cleanCss())
     .pipe(gulp.dest('./_g2/assets/css'))
@@ -124,7 +217,7 @@ gulp.task('sass_bs4_g2', function (done) {
       "@bootstrap": "./node_modules/bootstrap/scss"
     }))
     .pipe(sass())
-    .pipe(postcss([sortMediaQueries()]))
+    .pipe(mergeMediaQueries())
     .pipe(autoprefixer())
     .pipe(cleanCss())
     .pipe(rename(
@@ -140,7 +233,7 @@ gulp.task('sass_bs4_g2', function (done) {
 gulp.task('sass_skin_g1', function (done) {
   src(['_g2/design-skin/origin/_scss/**/*.scss'])
     .pipe(sass())
-    .pipe(postcss([sortMediaQueries()]))
+    .pipe(mergeMediaQueries())
     .pipe(autoprefixer())
     .pipe(cleanCss())
     .pipe(gulp.dest('./_g2/design-skin/origin/css'))
@@ -151,7 +244,7 @@ gulp.task('sass_skin_g1', function (done) {
 gulp.task('sass_skin_g2', function (done) {
   src(['_g2/design-skin/origin2/_scss/**/*.scss'])
     .pipe(sass())
-    .pipe(postcss([sortMediaQueries()]))
+    .pipe(mergeMediaQueries())
     .pipe(autoprefixer())
     .pipe(cleanCss())
     .pipe(gulp.dest('./_g2/design-skin/origin2/css'))
@@ -162,7 +255,7 @@ gulp.task('sass_skin_g2', function (done) {
 gulp.task('sass_woo_g2', function (done) {
   return src(['./_g2/plugin-support/woocommerce/_scss/**.scss'])
     .pipe(sass())
-    .pipe(postcss([sortMediaQueries()]))
+    .pipe(mergeMediaQueries())
     .pipe(autoprefixer())
     .pipe(cleanCss())
     .pipe(gulp.dest('./_g2/plugin-support/woocommerce/css/'))
@@ -172,7 +265,7 @@ gulp.task('sass_woo_g2', function (done) {
 gulp.task('sass_booking_package_g2', function (done) {
 	return src(['./_g2/plugin-support/booking-package/_scss/**.scss'])
 	  .pipe(sass())
-	  .pipe(postcss([sortMediaQueries()]))
+	  .pipe(mergeMediaQueries())
 	  .pipe(autoprefixer())
 	  .pipe(cleanCss())
 	  .pipe(gulp.dest('./_g2/plugin-support/booking-package/css/'))
@@ -182,7 +275,7 @@ gulp.task('sass_booking_package_g2', function (done) {
 gulp.task('sass_bbpress_g2', function (done) {
 	return src(['./_g2/plugin-support/bbpress/_scss/**.scss'])
 	  .pipe(sass())
-	  .pipe(postcss([sortMediaQueries()]))
+	  .pipe(mergeMediaQueries())
 	  .pipe(autoprefixer())
 	  .pipe(cleanCss())
 	  .pipe(gulp.dest('./_g2/plugin-support/bbpress/css/'))
@@ -191,7 +284,7 @@ gulp.task('sass_bbpress_g2', function (done) {
 gulp.task('sass_bbpress_g3', function (done) {
 return src(['./_g3/plugin-support/bbpress/_scss/**.scss'])
 	.pipe(sass())
-	.pipe(postcss([sortMediaQueries()]))
+	.pipe(mergeMediaQueries())
 	.pipe(autoprefixer())
 	.pipe(cleanCss())
 	.pipe(gulp.dest('./_g3/plugin-support/bbpress/css/'));
@@ -240,7 +333,7 @@ gulp.task('sass_common_g3', function (done) {
 	  }
 	))
 	  .pipe(sourcemaps.init())
-	  .pipe(postcss([sortMediaQueries()]))
+	  .pipe(mergeMediaQueries())
 	  .pipe(autoprefixer())
 	  .pipe(cleanCss())
 	  .pipe(gulp.dest('./_g3/assets/css'))
@@ -260,7 +353,7 @@ gulp.task('sass_common_g3', function (done) {
 	  }
 	))
 	  .pipe(sourcemaps.init())
-	  .pipe(postcss([sortMediaQueries()]))
+	  .pipe(mergeMediaQueries())
 	  .pipe(autoprefixer())
 	  .pipe(cleanCss())
 	  .pipe(gulp.dest('./_g3/design-skin/origin3/css'))
@@ -270,7 +363,7 @@ gulp.task('sass_common_g3', function (done) {
   gulp.task('sass_woo_g3', function (done) {
 	return src(['./_g3/plugin-support/woocommerce/_scss/**.scss'])
 	  .pipe(sass())
-	  .pipe(postcss([sortMediaQueries()]))
+	  .pipe(mergeMediaQueries())
 	  .pipe(autoprefixer())
 	  .pipe(cleanCss())
 	  .pipe(gulp.dest('./_g3/plugin-support/woocommerce/css/'))
@@ -279,7 +372,7 @@ gulp.task('sass_common_g3', function (done) {
   gulp.task('sass_bbpress_g3', function (done) {
 	  return src(['./_g3/plugin-support/bbpress/_scss/**.scss'])
 		.pipe(sass())
-		.pipe(postcss([sortMediaQueries()]))
+		.pipe(mergeMediaQueries())
 		.pipe(autoprefixer())
 		.pipe(cleanCss())
 		.pipe(gulp.dest('./_g3/plugin-support/bbpress/css/'))
@@ -288,7 +381,7 @@ gulp.task('sass_common_g3', function (done) {
 	gulp.task('sass_the_event_calendar_g3', function (done) {
 		return src(['./_g3/plugin-support/the-events-calendar/_scss/**.scss'])
 		  .pipe(sass())
-		  .pipe(postcss([sortMediaQueries()]))
+		  .pipe(mergeMediaQueries())
 		  .pipe(autoprefixer())
 		  .pipe(cleanCss())
 		  .pipe(gulp.dest('./_g3/plugin-support/the-events-calendar/css/'))
@@ -297,7 +390,7 @@ gulp.task('sass_common_g3', function (done) {
 	gulp.task('sass_booking_package_g3', function (done) {
 		return src(['./_g3/plugin-support/booking-package/_scss/**.scss'])
 		  .pipe(sass())
-		  .pipe(postcss([sortMediaQueries()]))
+		  .pipe(mergeMediaQueries())
 		  .pipe(autoprefixer())
 		  .pipe(cleanCss())
 		  .pipe(gulp.dest('./_g3/plugin-support/booking-package/css/'))
@@ -306,7 +399,7 @@ gulp.task('sass_common_g3', function (done) {
 	gulp.task('sass_snow_monkey_forms_g3', function (done) {
 		return src(['./_g3/plugin-support/snow-monkey-forms/_scss/**.scss'])
 		  .pipe(sass())
-		  .pipe(postcss([sortMediaQueries()]))
+		  .pipe(mergeMediaQueries())
 		  .pipe(autoprefixer())
 		  .pipe(cleanCss())
 		  .pipe(gulp.dest('./_g3/plugin-support/snow-monkey-forms/css/'))
