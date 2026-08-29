@@ -29,7 +29,7 @@ footer { border-top-color:' . $color_key . '; }
 dt { border-left-color:' . $color_key . '; }
 @media ( ' . $breakpoint_sm . ' < width ){
   ul.gMenu > li > a:after { border-bottom-color: ' . $color_key . ' ; }
-}
+}';
 
 	if ( ! empty( $options['color_header_bg'] ) ) {
 		$color_header_bg = esc_html( $options['color_header_bg'] );

@@ -23,7 +23,7 @@ function lightning_print_css_origin() {
 		.gMenu > li.menu-item-has-children::after { border-bottom-color:' . $color_key_dark . ' }
 		.gMenu li li { background-color:' . $color_key_dark . ' }
 		.gMenu li li a:hover { background-color:' . $color_key . '; }
-	}
+	}';
 	if ( ! empty( $options['color_header_bg'] ) ) {
 		$color_header_bg = esc_html( $options['color_header_bg'] );
 		if ( lightning_check_color_mode( $color_header_bg ) == 'dark' ) {
