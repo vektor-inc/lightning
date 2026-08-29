@@ -2,7 +2,7 @@
 Lightning WordPress theme, Copyright (C) 2015-2026 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
 Tested up to: 6.9
-Stable tag: 15.38.3
+Stable tag: 15.39.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -35,12 +35,10 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+v15.39.0
 [ G2/G3 ][ New Feature ] Add lightning_get_breakpoint() / lightning_the_breakpoint() and the lightning_breakpoints filter, so the responsive breakpoints are defined in one place and can be overridden
-
 [ G2/G3 ][ Bug Fix ] Convert the media queries emitted from PHP (customizer dynamic CSS, design skins, slider image sources) to range syntax, so that 992px / 768px are treated as the narrower side there too and no longer disagree with the stylesheets
-
 [ G2/G3 ][ Bug Fix ] Rewrite the mobile menu button media query left in the old syntax with range syntax, fixing G2 showing neither the global navigation nor the menu button at exactly 992px wide
-
 [ G2 ][ Other ] Import only the breakpoint variables in the origin skin SCSS, so its compiled CSS no longer re-declares the theme default custom properties (key color etc.) after the common stylesheet
 
 v15.38.3
