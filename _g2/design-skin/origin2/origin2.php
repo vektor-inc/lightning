@@ -11,13 +11,14 @@ function lightning_print_css_origin() {
 	$colors 		= lightning_get_colors();
 	$color_key		= $colors['color_key'];
 	$color_key_dark = $colors['color_key_dark'];
+	$breakpoint_sm  = esc_html( lightning_get_breakpoint( 'sm-max' ) );
 
 	// Text Color ///////////////////
 	$dynamic_css = '.media .media-body .media-heading a:hover { color:' . $color_key . ';  }';
 
 	// Global Menu //////////////////
 	$dynamic_css .= '
-	@media ( ' . lightning_get_breakpoint( 'sm-max' ) . ' < width ){
+	@media ( ' . $breakpoint_sm . ' < width ){
 		.gMenu > li:before,
 		.gMenu > li.menu-item-has-children::after { border-bottom-color:' . $color_key_dark . ' }
 		.gMenu li li { background-color:' . $color_key_dark . ' }
@@ -28,7 +29,7 @@ function lightning_print_css_origin() {
 		if ( lightning_check_color_mode( $color_header_bg ) == 'dark' ) {
 			// Dark Color ///////////////////
 			$dynamic_css .= '
-		@media ( ' . lightning_get_breakpoint( 'sm-max' ) . ' < width ){
+		@media ( ' . $breakpoint_sm . ' < width ){
 			ul.gMenu > li > a:after { border-bottom-color: rgba(255,255,255,0.9 );}
 		}';
 		} else {

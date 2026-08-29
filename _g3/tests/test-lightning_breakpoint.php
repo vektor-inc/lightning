@@ -210,6 +210,16 @@ class LightningBreakpointTest extends WP_UnitTestCase {
 				'expected'            => '1100px',
 			),
 			array(
+				'test_condition_name' => 'フィルターが HTML 属性を壊す値を返した場合 => エスケープして出力する',
+				'conditions'          => array(
+					'key'              => 'lg-max',
+					'filter_overrides' => array(
+						'lg-max' => '1200px" onload="alert(1)',
+					),
+				),
+				'expected'            => '1200px&quot; onload=&quot;alert(1)',
+			),
+			array(
 				'test_condition_name' => '未定義のキー foo-max の場合 => 何も出力しない',
 				'conditions'          => array(
 					'key'              => 'foo-max',

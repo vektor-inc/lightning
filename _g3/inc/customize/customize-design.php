@@ -196,10 +196,10 @@ function lightning_get_common_inline_css() {
 	$max_height_mobile = ! empty( $options['logo_max_height_mobile'] ) ? absint( $options['logo_max_height_mobile'] ) : '';
 
 	if ( $max_height_pc ) {
-		$dynamic_css .= '@media ( ' . lightning_get_breakpoint( 'md-max' ) . ' < width ) { .site-header-logo img { max-height: ' . $max_height_pc . 'px; } }';
+		$dynamic_css .= '@media ( ' . esc_html( lightning_get_breakpoint( 'md-max' ) ) . ' < width ) { .site-header-logo img { max-height: ' . $max_height_pc . 'px; } }';
 	}
 	if ( $max_height_mobile ) {
-		$dynamic_css .= '@media ( width <= ' . lightning_get_breakpoint( 'md-max' ) . ' ) { .site-header-logo img { max-height: ' . $max_height_mobile . 'px; } }';
+		$dynamic_css .= '@media ( width <= ' . esc_html( lightning_get_breakpoint( 'md-max' ) ) . ' ) { .site-header-logo img { max-height: ' . $max_height_mobile . 'px; } }';
 	}
 
 	// delete before after space.

@@ -8,6 +8,7 @@ function lightning_print_css_origin() {
 
 	$color_key      = ! empty( $options['color_key'] ) ? esc_html( $options['color_key'] ) : '#337ab7';
 	$color_key_dark = ! empty( $options['color_key_dark'] ) ? esc_html( $options['color_key_dark'] ) : '#2e6da4';
+	$breakpoint_sm  = esc_html( lightning_get_breakpoint( 'sm-max' ) );
 
 	$dynamic_css    = '
 a { color:' . $color_key_dark . ' ; }
@@ -26,7 +27,7 @@ ul.page-numbers li span.page-numbers.current,
 .pager li > a:hover { background-color:' . $color_key . ';color:#fff;}
 footer { border-top-color:' . $color_key . '; }
 dt { border-left-color:' . $color_key . '; }
-@media ( ' . lightning_get_breakpoint( 'sm-max' ) . ' < width ){
+@media ( ' . $breakpoint_sm . ' < width ){
   ul.gMenu > li > a:after { border-bottom-color: ' . $color_key . ' ; }
 }
 
@@ -35,7 +36,7 @@ dt { border-left-color:' . $color_key . '; }
 		if ( lightning_check_color_mode( $color_header_bg ) == 'dark' ) {
 			// Dark Color ///////////////////
 			$dynamic_css .= '
-		@media ( ' . lightning_get_breakpoint( 'sm-max' ) . ' < width ){
+		@media ( ' . $breakpoint_sm . ' < width ){
 			ul.gMenu > li > a:after { border-bottom-color: rgba(255,255,255,0.9 );}
 		}';
 		} else {

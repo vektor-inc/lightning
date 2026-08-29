@@ -820,7 +820,7 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 
 						// If Mobile Image exist.
 						if ( ! empty( $options[ 'top_slide_image_mobile_' . $i ] ) ) {
-							$slide_html .= '<source media="(width <= ' . lightning_get_breakpoint( 'sm-max' ) . ')" srcset="' . esc_attr( $options[ 'top_slide_image_mobile_' . $i ] ) . '">';
+							$slide_html .= '<source media="(width <= ' . esc_attr( lightning_get_breakpoint( 'sm-max' ) ) . ')" srcset="' . esc_attr( $options[ 'top_slide_image_mobile_' . $i ] ) . '">';
 						}
 
 						// Add fetchpriority attribute for the first slide image (LCP optimization).
@@ -959,9 +959,9 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 				}
 			} else {
 				// PC and mobile images differ: preload each with appropriate media query.
-				echo '<link rel="preload" as="image" href="' . esc_url( $mobile_image ) . '" media="(width <= ' . lightning_get_breakpoint( 'sm-max' ) . ')" fetchpriority="high" />' . "\n";
+				echo '<link rel="preload" as="image" href="' . esc_url( $mobile_image ) . '" media="(width <= ' . esc_attr( lightning_get_breakpoint( 'sm-max' ) ) . ')" fetchpriority="high" />' . "\n";
 				if ( $pc_image ) {
-					echo '<link rel="preload" as="image" href="' . esc_url( $pc_image ) . '" media="(' . lightning_get_breakpoint( 'sm-max' ) . ' < width)" fetchpriority="high" />' . "\n";
+					echo '<link rel="preload" as="image" href="' . esc_url( $pc_image ) . '" media="(' . esc_attr( lightning_get_breakpoint( 'sm-max' ) ) . ' < width)" fetchpriority="high" />' . "\n";
 				}
 			}
 		}

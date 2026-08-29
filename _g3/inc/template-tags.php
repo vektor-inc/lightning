@@ -57,6 +57,9 @@ if ( ! function_exists( 'lightning_get_breakpoint' ) ) {
 	/**
 	 * ブレイクポイントの値を返す
 	 *
+	 * 値は lightning_breakpoints フィルターで差し替えられるため、
+	 * 出力するときは CSS なら esc_html()、HTML 属性なら esc_attr() でエスケープすること。
+	 *
 	 * @param string $key xs-max / sm-max / md-max / lg-max / xl-max.
 	 * @return string 単位付きの値（例: '768px'）。未定義のキーの場合は空文字.
 	 */
@@ -82,11 +85,15 @@ if ( ! function_exists( 'lightning_the_breakpoint' ) ) {
 	/**
 	 * ブレイクポイントの値を出力する
 	 *
+	 * <source media="..."> のように HTML 属性の中で使うため esc_attr() でエスケープする。
+	 * lightning_get_breakpoint() の値は lightning_breakpoints フィルターで差し替えられるため、
+	 * 出力側で必ずエスケープすること。
+	 *
 	 * @param string $key xs-max / sm-max / md-max / lg-max / xl-max.
 	 * @return void
 	 */
 	function lightning_the_breakpoint( $key ) {
-		echo esc_html( lightning_get_breakpoint( $key ) );
+		echo esc_attr( lightning_get_breakpoint( $key ) );
 	}
 }
 
