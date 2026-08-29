@@ -12,7 +12,7 @@ $manu_btn_margin: 5px;
 
 body.device-pc {
 	// PCで画面が広い時に非表示
-	@media (min-width: 992px) {
+	@media ( 992px < width ) {
 		.vk-mobile-nav-menu-btn {
 			display: none;
 		}
@@ -26,13 +26,13 @@ body.device-pc {
 .admin-bar {
 	.vk-mobile-nav-menu-btn {
 		top: calc(#{$admin_bar_height_pc} + #{$manu_btn_margin});
-		@media (max-width: 782px) {
+		@media ( width <= 782px ) {
 			top: calc(#{$admin_bar_height_mobile} + #{$manu_btn_margin});
 		}
 	}
 	.vk-mobile-nav {
 		top: $admin_bar_height_pc;
-		@media (max-width: 782px) {
+		@media ( width <= 782px ) {
 			top: $admin_bar_height_mobile;
 		}
 	}
@@ -134,7 +134,7 @@ $margin-section-bottom: 1.5em;
 		top: 0;
 		.admin-bar & {
 			top: $admin_bar_height_pc;
-			@media screen and (max-width: 782px) {
+			@media screen and ( width <= 782px ) {
 				top: $admin_bar_height_mobile;
 			}
 		}
