@@ -35,6 +35,8 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ G3 ][ Design Bug Fix ] Rewrite the blog card media query left in the old syntax with range syntax, so the blog card no longer switches to the image-beside-text layout at exactly 576px wide while the rest of the theme treats that width as mobile
+
 v15.39.0
 [ G2/G3 ][ New Feature ] Add lightning_get_breakpoint() / lightning_the_breakpoint() and the lightning_breakpoints filter, so the responsive breakpoints are defined in one place and can be overridden
 [ G2/G3 ][ Bug Fix ] Convert the media queries emitted from PHP (customizer dynamic CSS, design skins, slider image sources) to range syntax, so that 992px / 768px are treated as the narrower side there too and no longer disagree with the stylesheets
