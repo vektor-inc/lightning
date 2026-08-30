@@ -1,4 +1,10 @@
 @charset "utf-8";
+
+// 編集画面向けのビルドであることを示すフラグ
+// common.scss 側は `!default` 付きで false を定義しているため、ここで先に true を
+// 定義しておくと上書きされず、フロント側限定のスタイルを編集画面から除外できる
+$vk-is-editor: true;
+
 @import "variables";
 // VK Components is no using image that using sass is no probrem.
 @import "../../../vendor/vektor-inc/vk-component/src/assets/scss/vk-components.scss";

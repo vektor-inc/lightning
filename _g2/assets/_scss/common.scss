@@ -8,9 +8,26 @@
 @import "veu_overwrite";
 @import "bootstrap_overwrite";
 
+// 編集画面向けのビルドかどうか
+// common_editor.scss が先に true を定義しているため、編集画面向けビルドでは true になる
+$vk-is-editor: false !default;
+
 :root {
 	--color-key-default: #337ab7;
 	--color-key-dark-default: #2e6da4;
+}
+
+/*-------------------------------------------*/
+/*	Bootstrap container
+/*-------------------------------------------*/
+// .container の横幅は同梱している Bootstrap 4 が min-width（境界値を広い側に含める）で
+// 切り替えるため、range 構文（境界値は狭い側）へ統一したテーマ本体と境界値ちょうどでずれる。
+// 数値を再掲すると再び分岐するため、テーマ本体と同じ変数を参照させて一本化する。
+// 編集画面では --vk-width-container が作業領域の幅に差し替わるため、フロント側に限定する。
+@if not $vk-is-editor {
+	.container {
+		max-width: var( --vk-width-container );
+	}
 }
 
 /*-------------------------------------------*/
