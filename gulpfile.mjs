@@ -27,6 +27,12 @@ const MQ_GROUP = { other: 0, all: 1, minWidth: 2, minHeight: 3, maxWidth: 4, max
 // メディアクエリを「下限を持つもの」「上限を持つもの」などに分類し、並べ替え用の値を返す。
 // `min-width` / `max-width` に加えて `768px < width` / `width <= 768px` のような範囲構文も判定する。
 function classifyMediaQuery(params) {
+	// `width: 768px` のように 1px 幅だけを狙ったもの。
+	// 同じ値の `min-width: 768px` を打ち消す用途なので、その直後に並べる（exact フラグ）。
+	const exact = params.match(/\(\s*width\s*:\s*([\d.]+)px\s*\)/);
+	if (exact) {
+		return { group: MQ_GROUP.minWidth, value: parseFloat(exact[1]), descending: false, exact: true };
+	}
 	const lower = params.match(/min-width\s*:\s*([\d.]+)px/) ||
 		params.match(/([\d.]+)px\s*<=?\s*width/) ||
 		params.match(/width\s*>=?\s*([\d.]+)px/);
@@ -86,6 +92,10 @@ function sortMediaQueries() {
 				}
 				if (a.value !== b.value) {
 					return a.descending ? b.value - a.value : a.value - b.value;
+				}
+				// 同じ値なら範囲を持つほう（min-width 等）を先に、1px 幅だけを狙ったものを後に置く
+				if (!!a.exact !== !!b.exact) {
+					return a.exact ? 1 : -1;
 				}
 				return a.index - b.index;
 			});
