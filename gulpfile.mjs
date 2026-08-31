@@ -226,7 +226,7 @@ gulp.task('sass_bs4_g2', function (done) {
       }
     ))
     .pipe(gulp.dest('./_g2/library/bootstrap-4/css/'))
-    // .pipe(gulp.dest('../lightning-pro/library/bootstrap-4/css/'));
+    .pipe(gulp.dest('../lightning-pro/library/bootstrap-4/css/'));
   done();
 });
 
