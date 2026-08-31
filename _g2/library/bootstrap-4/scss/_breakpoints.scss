@@ -1,0 +1,92 @@
+// =============================================================================
+// ブレイクポイントの境界値の扱いをテーマ本体へ揃える
+// =============================================================================
+// vektor-inc/multi-repo-tasks#41
+//
+// Bootstrap 4 のレスポンシブ指定は min-width / max-width、つまり境界値を広い側に
+// 含める形で切り替わる。一方テーマ本体は vektor-inc/lightning#1401 で range 構文
+// （境界値は狭い側に含める）へ統一済みのため、画面幅が 576 / 768 / 992 / 1200px
+// ちょうどのときだけ両者が反対側を採用し、同じ画面の中で切り替わり方がずれる。
+//
+// Bootstrap のレスポンシブ指定はすべて mixins/_breakpoints.scss の
+// media-breakpoint-up() / -down() / -only() / -between() を通って出力されるため、
+// この 4 つを range 構文で上書きすれば、段組み（.col-md-*）だけでなく表示切替
+// （.d-md-none）・ナビ（.navbar-expand-md）・余白（.mt-md-3）まで一括で揃う。
+//
+// @bootstrap/mixins より後に読み込むこと（同名 mixin は後の定義が有効になる）。
+// 引数・分岐は Bootstrap 4.6.2 の同名 mixin と同じで、出力するメディアクエリの
+// 記法だけを差し替えている。
+// -----------------------------------------------------------------------------
+// 境界値を狭い側に含めるため、上限側は `width <= 境界値`、下限側は `境界値 < width`
+// で比較する。Bootstrap 本来の breakpoint-max()（次の境界値 - 0.02px）は
+// 境界値を広い側に含める前提の値なので使わず、次の境界値をそのまま上限に使う。
+
+// 次の区分の境界値。最大の区分では null。
+@function breakpoint-upper($name, $breakpoints: $grid-breakpoints) {
+	$next: breakpoint-next($name, $breakpoints);
+	@return if($next, breakpoint-min($next, $breakpoints), null);
+}
+
+// 指定した区分より広いとき（境界値は含めない）
+@mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
+	$min: breakpoint-min($name, $breakpoints);
+	@if $min {
+		@media ( #{$min} < width ) {
+			@content;
+		}
+	} @else {
+		@content;
+	}
+}
+
+// 指定した区分まで（境界値を含む）
+@mixin media-breakpoint-down($name, $breakpoints: $grid-breakpoints) {
+	$max: breakpoint-upper($name, $breakpoints);
+	@if $max {
+		@media ( width <= #{$max} ) {
+			@content;
+		}
+	} @else {
+		@content;
+	}
+}
+
+// 下限の区分より広く、上限の区分まで
+@mixin media-breakpoint-between($lower, $upper, $breakpoints: $grid-breakpoints) {
+	$min: breakpoint-min($lower, $breakpoints);
+	$max: breakpoint-upper($upper, $breakpoints);
+
+	@if $min != null and $max != null {
+		@media ( #{$min} < width <= #{$max} ) {
+			@content;
+		}
+	} @else if $max == null {
+		@include media-breakpoint-up($lower, $breakpoints) {
+			@content;
+		}
+	} @else if $min == null {
+		@include media-breakpoint-down($upper, $breakpoints) {
+			@content;
+		}
+	}
+}
+
+// 指定した区分のときだけ
+@mixin media-breakpoint-only($name, $breakpoints: $grid-breakpoints) {
+	$min: breakpoint-min($name, $breakpoints);
+	$max: breakpoint-upper($name, $breakpoints);
+
+	@if $min != null and $max != null {
+		@media ( #{$min} < width <= #{$max} ) {
+			@content;
+		}
+	} @else if $max == null {
+		@include media-breakpoint-up($name, $breakpoints) {
+			@content;
+		}
+	} @else if $min == null {
+		@include media-breakpoint-down($name, $breakpoints) {
+			@content;
+		}
+	}
+}

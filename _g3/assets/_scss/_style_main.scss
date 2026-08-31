@@ -2,6 +2,7 @@
 @import "../../../node_modules/bootstrap/scss/functions";
 @import "bootstrap_variables";
 @import "../../../node_modules/bootstrap/scss/mixins";
+@import "breakpoints";  // メディアクエリを range 構文へ揃える（multi-repo-tasks#41）
 @import "../../../node_modules/bootstrap/scss/utilities";
 @import "../../../node_modules/bootstrap/scss/grid";
 @import "../../../node_modules/bootstrap/scss/buttons";
