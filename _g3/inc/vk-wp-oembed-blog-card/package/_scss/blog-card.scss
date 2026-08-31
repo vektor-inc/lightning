@@ -1,4 +1,5 @@
-$sm-min: 576px;
+// ブレイクポイントはその区分に含まれる最大値。576px ちょうどは狭い側（モバイル）に含める。
+$xs-max: 576px;
 .blog-card {
     border:1px solid var(--vk-color-border);
     border-radius: var(--vk-size-radius);
@@ -10,13 +11,13 @@ $sm-min: 576px;
         padding:1.5rem;
     }
     &-image-outer {
-        @media( min-width: $sm-min ){
+        @media( $xs-max < width ){
             width:calc( 100% / 3 );
         }
     }
     &-body-outer {
         padding-top: 0;
-        @media( min-width: $sm-min ){
+        @media( $xs-max < width ){
             padding:1.5rem;
             width:calc( 100% / 3 * 2 );
         }

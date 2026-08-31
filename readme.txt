@@ -35,6 +35,8 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ G3 ][ Design Bug Fix ] Rewrite the blog card media query left in the old syntax with range syntax, so the blog card no longer switches to the image-beside-text layout at exactly 576px wide while the rest of the theme treats that width as mobile
+
 v15.39.1
 [ G2/G3 ][ Bug Fix ] Fix the bundled Bootstrap 4 responsive classes (.col-md-*, .d-md-none, .navbar-expand-md, spacing utilities and so on) switching one step earlier than the rest of the theme at exactly 576 / 768 / 992 / 1200px, by rewriting the Bootstrap breakpoint mixins to range syntax
 
