@@ -211,8 +211,8 @@ gulp.task('sass_common_g2', function (done) {
   done()
 });
 
-gulp.task('sass_bs4_g2', function (done) {
-  src(['./_g2/library/bootstrap-4/scss/**.scss'])
+gulp.task('sass_bs4_g2', function () {
+  return src(['./_g2/library/bootstrap-4/scss/**.scss'])
     .pipe(aliases({
       "@bootstrap": "./node_modules/bootstrap/scss"
     }))
@@ -226,8 +226,7 @@ gulp.task('sass_bs4_g2', function (done) {
       }
     ))
     .pipe(gulp.dest('./_g2/library/bootstrap-4/css/'))
-    // .pipe(gulp.dest('../lightning-pro/library/bootstrap-4/css/'));
-  done();
+    .pipe(gulp.dest('../lightning-pro/library/bootstrap-4/css/'));
 });
 
 gulp.task('sass_skin_g1', function (done) {
