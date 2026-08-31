@@ -11,13 +11,13 @@
 @import "@bootstrap/functions";
 @import "variables";
 @import "@bootstrap/mixins";
+@import "breakpoints";  // メディアクエリを range 構文へ揃える（multi-repo-tasks#41）
 @import "@bootstrap/root";
 @import "@bootstrap/reboot";
 @import "@bootstrap/type";
 @import "@bootstrap/images";
 @import "@bootstrap/code";
 @import "@bootstrap/grid";
-@import "grid-breakpoint-boundary";  // 段組みクラスの境界値ちょうどのズレを打ち消す（multi-repo-tasks#41）
 @import "@bootstrap/tables";
 @import "@bootstrap/forms";
 @import "@bootstrap/buttons";

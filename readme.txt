@@ -35,7 +35,7 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
-[ G2 ][ Bug Fix ] Fix Bootstrap grid classes such as .col-md-6 switching to a multi-column layout one step earlier than the rest of the theme at exactly 576 / 768 / 992 / 1200px, which left the footer widget area and the front page PR blocks out of step with the surrounding layout
+[ G2 ][ Bug Fix ] Fix the bundled Bootstrap 4 responsive classes (.col-md-*, .d-md-none, .navbar-expand-md, spacing utilities and so on) switching one step earlier than the rest of the theme at exactly 576 / 768 / 992 / 1200px, by rewriting the Bootstrap breakpoint mixins to range syntax
 
 v15.39.0
 [ G2/G3 ][ New Feature ] Add lightning_get_breakpoint() / lightning_the_breakpoint() and the lightning_breakpoints filter, so the responsive breakpoints are defined in one place and can be overridden
