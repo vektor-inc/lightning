@@ -187,22 +187,24 @@ select:where(:not([multiple]):not([size])) {
 	background-size: 0.75em 0.5em;
 	padding-right: 2.5em;
 }
+// 詳細度を (0,1,1) に保ち、プラグインとユーザーのスタイルを両立させるため form だけを :where() で包む
+// セレクター全体を :where() で包むとプラグイン側のクラス指定 (0,1,0) に負け、form を素で残すと (0,1,2) になりユーザーの button[type=submit] {} を打ち消す
 input[type=submit],
-:where(form) button[type="submit"]:where(:not(.btn, .button)) {
+:where(form) button[type=submit]:where(:not(.btn, .button)) {
 	font-size: 1rem;
 	border:1px solid var(--vk-color-primary-dark);
 	background-color:var(--vk-color-primary);
 	color:#fff;
 	padding: 0.5em 2em;
 	border-radius: var(--vk-size-radius);
-	&:not(:disabled):hover { //ボタンが無効時は除外
+	&:where(:not(:disabled)):hover { //ボタンが無効時は除外
 		color:#fff;
 		cursor: pointer;
 		background-color:var(--vk-color-primary-dark);
 	}
-}
-:where(form) button[type="submit"]:where(:not(.btn, .button)):disabled {
-	cursor: not-allowed;
+	&:disabled {
+		cursor: not-allowed;
+	}
 }
 table {
 	border-collapse: collapse;
