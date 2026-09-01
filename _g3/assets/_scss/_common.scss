@@ -187,7 +187,8 @@ select:where(:not([multiple]):not([size])) {
 	background-size: 0.75em 0.5em;
 	padding-right: 2.5em;
 }
-input[type=submit]{
+input[type=submit],
+:where(form) button[type="submit"]:where(:not(.btn, .button)) {
 	font-size: 1rem;
 	border:1px solid var(--vk-color-primary-dark);
 	background-color:var(--vk-color-primary);
@@ -199,6 +200,9 @@ input[type=submit]{
 		cursor: pointer;
 		background-color:var(--vk-color-primary-dark);
 	}
+}
+:where(form) button[type="submit"]:where(:not(.btn, .button)):disabled {
+	cursor: not-allowed;
 }
 table {
 	border-collapse: collapse;
