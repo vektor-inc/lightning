@@ -36,7 +36,7 @@ vk-develop@vektor-inc.co.jp
 == Changelog ==
 
 [ G2 ][ Spec Change ] Widen the horizontal padding of buttons and input fields to match Lightning Pro, on sites using a bs4 design skin such as Origin II
-[ G3 ][ Spec Change ] Style <button type="submit"> elements inside forms like input[type="submit"], so submit and back buttons output by form plugins such as Snow Monkey Forms no longer use unstyled browser defaults; buttons with .btn or .button classes remain unchanged
+[ G3 ][ Spec Change ] Style submit buttons written as button elements inside forms like input[type="submit"], so submit and back buttons output by form plugins such as Snow Monkey Forms no longer use browser default styles. Disabled submit buttons now show a not-allowed cursor.
 
 [ G3 ][ Design Bug Fix ] Rewrite the blog card media query left in the old syntax with range syntax, so the blog card no longer switches to the image-beside-text layout at exactly 576px wide while the rest of the theme treats that width as mobile
 
