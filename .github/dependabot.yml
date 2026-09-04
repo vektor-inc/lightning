@@ -1,0 +1,80 @@
+# Dependabot の設定
+#
+# 依存関係の更新 PR を毎週作成する。開発依存（ビルド・テスト用）の minor / patch 更新は
+# 1 本の PR にまとめ、dependabot-auto-merge ワークフローで CI 通過後に自動マージする。
+# 本番依存（配布物に含まれるライブラリ）と major 更新はグループに入らず個別の PR になり、
+# 人が確認する。
+version: 2
+
+updates:
+  # ---------------------------------------------------------------------------
+  # npm
+  # ---------------------------------------------------------------------------
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: monday
+      time: "09:00"
+      timezone: Asia/Tokyo
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: build
+      prefix-development: build
+      include: scope
+    groups:
+      npm-development:
+        applies-to: version-updates
+        dependency-type: development
+        update-types:
+          - minor
+          - patch
+
+  # ---------------------------------------------------------------------------
+  # Composer
+  # 開発依存（phpcs / PHPUnit 用）は配布物に含まれないため、まとめて自動マージ対象にする。
+  # 本番依存（vendor/ に入って配布されるもの）は changelog への記載が必要なため、
+  # グループに入れず個別の PR にする。
+  # ---------------------------------------------------------------------------
+  - package-ecosystem: composer
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: monday
+      time: "09:00"
+      timezone: Asia/Tokyo
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: build
+      prefix-development: build
+      include: scope
+    groups:
+      composer-development:
+        applies-to: version-updates
+        dependency-type: development
+        update-types:
+          - minor
+          - patch
+
+  # ---------------------------------------------------------------------------
+  # GitHub Actions
+  # ---------------------------------------------------------------------------
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: monday
+      time: "09:00"
+      timezone: Asia/Tokyo
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: build
+      include: scope
+    groups:
+      github-actions:
+        applies-to: version-updates
+        patterns:
+          - "*"
+        update-types:
+          - minor
+          - patch
