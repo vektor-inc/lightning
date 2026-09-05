@@ -56,7 +56,7 @@ while ( $post_loop->have_posts() ) :
 <nav class="localNav">
 <h1 class="subSection-title"><?php _e( 'Category', 'lightning' ); ?></h1>
 <ul>
-	<?php wp_list_categories( 'title_li=' ); ?>
+	<?php wp_list_categories( array( 'title_li' => '' ) ); ?>
 </ul>
 </nav>
 </aside>
