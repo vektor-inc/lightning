@@ -6,20 +6,27 @@ on:
       - master
       - develop
     types: [opened, reopened, labeled, synchronize]
+
+# 同じ PR に対する run は 1 つだけ残し、古い run は取り消す。
+# Dependabot は PR 作成直後に dependencies / php などのラベルを次々付け、
+# そのたびに run が作られるため、取り消さないと同じ内容を何度もテストしてしまう。
+concurrency:
+  group: php-unit-test-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
 jobs:
   php_unit:
     name: php unittest
     # Dependabot の PR は run-ci ラベル無しでも実行する。
     # dependabot-auto-merge-complete.yml がこの結果を見てマージするため。
     #
-    # ただし labeled のときは動かさない。Dependabot は PR を作った直後に
-    # dependencies / php などのラベルを次々付けるため、そのたびに
-    # CI が起動して同じ内容を何度もテストしてしまう。
-    # 人が run-ci ラベルを付けた場合は上の条件で拾われる。
+    # labeled のときも除外しない。master の必須ステータスチェック「php unittest (7.4)」は
+    # このワークフローの最新の run で判定されるため、Dependabot がラベルを付けたときの run を
+    # skip にすると、成功した run があっても最新 run に該当ジョブが無く「待機中」のまま
+    # マージできなくなる。重複起動は上の concurrency で古い run を取り消して抑える。
     if: >-
       contains(github.event.pull_request.labels.*.name, 'run-ci') ||
-      (github.event.pull_request.user.login == 'dependabot[bot]' &&
-       github.event.action != 'labeled')
+      github.event.pull_request.user.login == 'dependabot[bot]'
     runs-on: ubuntu-latest
     strategy:
       matrix:
