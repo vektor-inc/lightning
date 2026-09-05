@@ -2,7 +2,7 @@
 Lightning WordPress theme, Copyright (C) 2015-2026 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
 Tested up to: 6.9
-Stable tag: 15.39.1
+Stable tag: 15.40.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -35,10 +35,11 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+v15.40.0
 [ G2 ][ Spec Change ] Widen the horizontal padding of buttons and input fields to match Lightning Pro, on sites using a bs4 design skin such as Origin II
 [ G3 ][ Spec Change ] Style submit buttons written as button elements inside forms like input[type="submit"], so submit and back buttons output by form plugins such as Snow Monkey Forms no longer use browser default styles. Disabled submit buttons now show a not-allowed cursor.
-
 [ G3 ][ Design Bug Fix ] Rewrite the blog card media query left in the old syntax with range syntax, so the blog card no longer switches to the image-beside-text layout at exactly 576px wide while the rest of the theme treats that width as mobile
+[ G2/G3 ][ Other ] Rewrite the wp_list_pages() / wp_list_categories() calls in the sidebar page and category list templates to use array arguments instead of query strings, with no change to the output
 
 v15.39.1
 [ G2/G3 ][ Bug Fix ] Fix the bundled Bootstrap 4 responsive classes (.col-md-*, .d-md-none, .navbar-expand-md, spacing utilities and so on) switching one step earlier than the rest of the theme at exactly 576 / 768 / 992 / 1200px, by rewriting the Bootstrap breakpoint mixins to range syntax
