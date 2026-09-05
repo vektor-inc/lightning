@@ -1,0 +1,123 @@
+# Dependabot の PR が自動マージしてよい内容かを判定し、該当すればラベルを付ける。
+# 実際のマージは CI 完了後に dependabot-auto-merge-complete.yml が行う。
+#
+# 判定を「PR が開いた時点」、マージを「CI が終わった時点」に分けているのは、
+# gh pr merge --auto が必須ステータスチェックの無いブランチでは CI の完了を待たず
+# その場でマージしてしまうため。
+name: Dependabot auto-merge
+
+on:
+  pull_request:
+    branches:
+      - master
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  judge:
+    if: github.event.pull_request.user.login == 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dependabot のメタデータを取得
+        id: meta
+        uses: dependabot/fetch-metadata@25dd0e34f4fe68f24cc83900b1fe3fe149efef98 # v3.1.0
+
+      - name: 自動マージの可否を判定
+        id: judge
+        env:
+          DEP_TYPE: ${{ steps.meta.outputs.dependency-type }}
+          UPDATE_TYPE: ${{ steps.meta.outputs.update-type }}
+          DEP_GROUP: ${{ steps.meta.outputs.dependency-group }}
+          DEP_NAMES: ${{ steps.meta.outputs.dependency-names }}
+          ECOSYSTEM: ${{ steps.meta.outputs.package-ecosystem }}
+        run: |
+          set -euo pipefail
+
+          ok=false
+          reason="判定条件のいずれにも当てはまらないため"
+
+          if [ -n "$DEP_GROUP" ]; then
+            # グループ更新。dependabot.yml 側で minor / patch に限定しているグループのみ許可する
+            case "$DEP_GROUP" in
+              npm-development|composer-development|github-actions)
+                ok=true
+                reason="グループ ${DEP_GROUP} は minor / patch のみを含む設定のため"
+                ;;
+              *)
+                reason="グループ ${DEP_GROUP} は自動マージの対象に登録されていないため"
+                ;;
+            esac
+          elif [ -n "$UPDATE_TYPE" ]; then
+            # 単一パッケージの更新。依存の種類と更新レベルで判定する
+            level="${UPDATE_TYPE#version-update:semver-}"
+            case "$DEP_TYPE" in
+              direct:development)
+                if [ "$level" = "minor" ] || [ "$level" = "patch" ]; then
+                  ok=true
+                  reason="開発依存の ${level} 更新のため"
+                else
+                  reason="開発依存だが ${level} 更新のため"
+                fi
+                ;;
+              indirect)
+                # Composer の推移的依存は vendor/ に入って配布されるうえ、
+                # fetch-metadata では本番依存から到達したものか判別できないため人が確認する。
+                if [ "$ECOSYSTEM" = "composer" ]; then
+                  reason="Composer の推移的依存は配布物に含まれ、依存元を判別できないため"
+                elif [ "$level" = "minor" ] || [ "$level" = "patch" ]; then
+                  ok=true
+                  reason="推移的依存の ${level} 更新のため"
+                else
+                  reason="推移的依存だが ${level} 更新のため"
+                fi
+                ;;
+              direct:production)
+                if [ "$ECOSYSTEM" = "github-actions" ]; then
+                  # GitHub Actions は配布物に含まれないが、fetch-metadata は
+                  # direct:production を返すためここに来る。判断は開発依存と同じでよい。
+                  if [ "$level" = "minor" ] || [ "$level" = "patch" ]; then
+                    ok=true
+                    reason="GitHub Actions の ${level} 更新のため"
+                  else
+                    reason="GitHub Actions だが ${level} 更新のため"
+                  fi
+                else
+                  # Font Awesome や Swiper など配布物に含まれるライブラリは
+                  # changelog への記載が必要なので人が確認する
+                  reason="配布物に含まれるライブラリの更新は changelog への記載が必要なため"
+                fi
+                ;;
+              *)
+                reason="依存の種類が判定できないため（dependency-type: ${DEP_TYPE:-空}）"
+                ;;
+            esac
+          else
+            # 複数パッケージをまとめた PR では update-type が取得できず、
+            # major 更新が混ざっていても見分けられないため人が確認する。
+            reason="複数パッケージをまとめた PR で更新レベルが判定できないため"
+          fi
+
+          echo "対象パッケージ: ${DEP_NAMES}"
+          echo "dependency-type: ${DEP_TYPE:-（なし）} / update-type: ${UPDATE_TYPE:-（なし）} / group: ${DEP_GROUP:-（なし）}"
+          echo "自動マージ: ${ok}（${reason}）"
+          echo "ok=${ok}" >> "$GITHUB_OUTPUT"
+
+      - name: 自動マージ対象のラベルを付ける
+        if: steps.judge.outputs.ok == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          set -euo pipefail
+          gh label create dependabot-auto-merge \
+            --repo "$REPO" \
+            --color 0e8a16 \
+            --description "CI 通過後に自動マージする Dependabot の PR" \
+            2>/dev/null || true
+          # gh pr edit --add-label は組織スコープ不足で失敗することがあるため REST API を使う
+          gh api "repos/${REPO}/issues/${PR_NUMBER}/labels" \
+            -X POST -f "labels[]=dependabot-auto-merge" --silent

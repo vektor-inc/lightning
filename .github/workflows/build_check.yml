@@ -9,7 +9,17 @@ on:
 jobs:
   php_unit:
     name: php unittest
-    if: contains(github.event.pull_request.labels.*.name, 'run-ci')
+    # Dependabot の PR は run-ci ラベル無しでも実行する。
+    # dependabot-auto-merge-complete.yml がこの結果を見てマージするため。
+    #
+    # ただし labeled のときは動かさない。Dependabot は PR を作った直後に
+    # dependencies / php などのラベルを次々付けるため、そのたびに
+    # CI が起動して同じ内容を何度もテストしてしまう。
+    # 人が run-ci ラベルを付けた場合は上の条件で拾われる。
+    if: >-
+      contains(github.event.pull_request.labels.*.name, 'run-ci') ||
+      (github.event.pull_request.user.login == 'dependabot[bot]' &&
+       github.event.action != 'labeled')
     runs-on: ubuntu-latest
     strategy:
       matrix:
