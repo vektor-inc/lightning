@@ -20,6 +20,13 @@ const filesToCopy = [
   "./_g3/assets/**",
 ];
 
+// macOS の Finder が作るファイル。配布物に混ざると WordPress.org へのアップロードで弾かれる。
+// glob は dot ファイルを列挙しないため excludedPaths では止まらず、ディレクトリごとコピーする
+// fs.copy 側の filter で除外する。
+const excludedFileNames = [".DS_Store", "._.DS_Store"];
+
+const copyFilter = (src) => !excludedFileNames.includes(path.basename(src));
+
 const excludedPaths = [
   "./_g2/assets/css/map/**",
   "./_g3/node_modules/**/*.*",
@@ -42,7 +49,7 @@ async function copyFiles() {
       const files = glob.sync(file, { ignore: excludedPaths });
       for (const src of files) {
         const dest = path.join(destination, path.relative('.', src));
-        await fs.copy(src, dest);
+        await fs.copy(src, dest, { filter: copyFilter });
         console.log(`Copied ${src} to ${dest}`);
       }
     }
