@@ -30,7 +30,7 @@
 		"dealerdirect/phpcodesniffer-composer-installer": "^1.0",
 		"phpcompatibility/phpcompatibility-wp": "^2.1",
 		"wp-coding-standards/wpcs": "^3.4.1",
-		"vektor-inc/vk-wp-unit-test-tools": "^0.11.0",
+		"vektor-inc/vk-wp-unit-test-tools": "^0.12.0",
 		"sirbrillig/phpcs-variable-analysis": "^2.8",
 		"wp-phpunit/wp-phpunit": "^5.4",
 		"yoast/phpunit-polyfills": "^1.0"

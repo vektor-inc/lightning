@@ -71,7 +71,7 @@ endwhile;
 <aside class="widget widget_link_list">
 <h4 class="sub-section-title"><?php _e( 'Category', 'lightning' ); ?></h4>
 <ul>
-	<?php wp_list_categories( 'title_li=' ); ?>
+	<?php wp_list_categories( array( 'title_li' => '' ) ); ?>
 </ul>
 </aside>
 
