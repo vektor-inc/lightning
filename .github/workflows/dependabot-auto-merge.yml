@@ -55,12 +55,10 @@ jobs:
             level="${UPDATE_TYPE#version-update:semver-}"
             case "$DEP_TYPE" in
               direct:development)
-                if [ "$level" = "minor" ] || [ "$level" = "patch" ]; then
-                  ok=true
-                  reason="開発依存の ${level} 更新のため"
-                else
-                  reason="開発依存だが ${level} 更新のため"
-                fi
+                # 開発依存（ビルド・テスト用）は配布物に含まれず、壊れていればゲート CI で
+                # 検出できるため、major 更新も含めて自動マージする。
+                ok=true
+                reason="開発依存の ${level} 更新のため（配布物に含まれないため major も対象）"
                 ;;
               indirect)
                 # Composer の推移的依存は vendor/ に入って配布されるうえ、
