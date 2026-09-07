@@ -35,6 +35,8 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ Spec Change ] Raise the minimum required WordPress version from 6.5 to 6.6, because the Lightning design setting panel in the block editor sidebar does not appear on WordPress 6.5
+
 v15.40.0
 [ G2 ][ Spec Change ] Widen the horizontal padding of buttons and input fields to match Lightning Pro, on sites using a bs4 design skin such as Origin II
 [ G3 ][ Spec Change ] Style submit buttons written as button elements inside forms like input[type="submit"], so submit and back buttons output by form plugins such as Snow Monkey Forms no longer use browser default styles. Disabled submit buttons now show a not-allowed cursor.
