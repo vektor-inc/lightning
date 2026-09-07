@@ -37,6 +37,7 @@ vk-develop@vektor-inc.co.jp
 
 [ Spec Change ] Raise the minimum required WordPress version from 6.5 to 6.6, because the Lightning design setting panel in the block editor sidebar does not appear on WordPress 6.5
 [ G2/G3 ][ Design Bug Fix ] Restore the spacing between the layout, page header/breadcrumb, and padding groups in the Lightning design setting panel (block editor sidebar) that was lost on WordPress 7.0
+[ G2 ][ Design Bug Fix ] Fix the block editor's skin CSS leaking into the admin screen as a whole and overriding the base font size, causing the "Collapse menu" button label at the bottom of the admin sidebar to wrap
 
 v15.40.0
 [ G2 ][ Spec Change ] Widen the horizontal padding of buttons and input fields to match Lightning Pro, on sites using a bs4 design skin such as Origin II
