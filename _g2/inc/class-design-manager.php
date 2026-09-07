@@ -491,6 +491,22 @@ class Lightning_Design_Manager {
 	 * この関数が追加する CSS は管理画面本体の <body class="wp-admin"> には構造的に
 	 * 到達しない。
 	 *
+	 * なお _g2/functions.php の lightning_load_common_editor_css_to_gutenberg() は、
+	 * 引き続き enqueue_block_assets 経由で assets/css/common_editor.css を管理画面本体にも
+	 * 出し続けているが、これは意図した状態である。同 CSS の裸の body { ... } 規則は
+	 * --vk-width-editor-sidebar 等のカスタムプロパティ定義のみで、font-size・font-family は
+	 * 一切持たない（唯一の font-family 指定は html :where(.editor-styles-wrapper){...} と
+	 * 既にスコープされている）ことを確認済みで、この不具合は再発しない。
+	 *
+	 * 非 iframe のブロックエディター画面（widgets.php、カスタマイザー内のブロックウィジェット
+	 * 編集、旧来型メタボックスを持つプラグイン有効時に非 iframe へフォールバックした投稿編集画面
+	 * 等）では、WordPress コアが html セレクタを .editor-styles-wrapper へ書き換えるため、
+	 * rem の基準がフロントと異なる。rem 指定の見出し等（例: .h2,.mainSection-title,h2
+	 * { font-size: 1.75rem }）はフロントと違うサイズで表示される。widgets.php は
+	 * add_root_font_size_for_block_editor() で対処済み（詳細は同メソッドのコメントを参照）。
+	 * カスタマイザー内のブロックウィジェット編集と、非 iframe にフォールバックした投稿編集画面は
+	 * 対象外（未対応）で、この差は既知の制約として残っている。
+	 *
 	 * 旧実装にあった is_customize_preview() での早期リターンは、この方式には引き継いでいない。
 	 * 旧実装（enqueue_block_assets + wp_enqueue_style()）はカスタマイザー内で発火すると
 	 * 管理画面本体にも <link> が漏れるため、is_customize_preview() で個別に塞ぐ必要があった。
@@ -527,6 +543,11 @@ class Lightning_Design_Manager {
 	 * なる。get_parent_theme_file_path フィルターは /_g2 の付与に対応しているため、
 	 * サーバーパスの組み立てには get_template_directory() ではなく
 	 * get_parent_theme_file_path() を使う。
+	 *
+	 * この方式では CSS がブラウザキャッシュの効く <link> ではなく、編集画面ごとに
+	 * ブロックエディター設定へ埋め込まれる（bs4 系（origin2）で bootstrap.min.css 153,670
+	 * バイト＋ editor.css 5,453 バイトの合計約 159KB、gzip 前の実測値）。
+	 * エディター本文へ正しくスコープすることの構造的な対価として許容している。
 	 *
 	 * @param array                        $editor_settings      ブロックエディター設定.
 	 * @param WP_Block_Editor_Context|null $block_editor_context ブロックエディターのコンテキスト（未使用）.

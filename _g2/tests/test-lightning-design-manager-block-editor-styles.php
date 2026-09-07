@@ -192,6 +192,14 @@ class LightningDesignManagerBlockEditorStylesTest extends WP_UnitTestCase {
 	 * `$editor_settings['styles'] = array(...)` のような代入に書き換えられると、
 	 * 既存のエントリが丸ごと消えてしまう（エディターのスタイルが全滅する）。
 	 * それを検出するため、入力に既存エントリを含め、加工後も残っていることを検証する。
+	 *
+	 * bootstrap.min.css（1件目）が読めることの検証は、_g2 のパス解決の非対称
+	 * （get_template_directory_uri() は template_directory_uri フィルターで自動的に
+	 * /_g2 が付与されるが、get_template_directory() は付与されない）を実質的に固定する
+	 * 回帰テストを兼ねている。add_skin_css_to_block_editor_settings() の実装を
+	 * get_parent_theme_file_path() から get_template_directory() へ戻すと、bootstrap.min.css
+	 * が _g2 の無い誤ったパスで読めなくなり、theme エントリが1件（editor.css のみ）に
+	 * 減って本テストの assertCount(2, ...) が落ちる。
 	 */
 	public function test_add_skin_css_to_block_editor_settings_adds_bootstrap_and_skin_css_in_order() {
 		update_option( 'lightning_design_skin', 'origin2' );
@@ -215,7 +223,9 @@ class LightningDesignManagerBlockEditorStylesTest extends WP_UnitTestCase {
 		$this->assertCount(
 			2,
 			$theme_entries,
-			'bs4 系スキンでは bootstrap.min.css とスキンの editor.css の2件が styles に追加される必要があります。'
+			'bs4 系スキンでは bootstrap.min.css とスキンの editor.css の2件が styles に追加される必要があります。' .
+			'1件しか無い場合、_g2 では template_directory フィルターが無いため get_template_directory() では' .
+			'/_g2 が付与されずに bootstrap.min.css が読めていない可能性があります（get_parent_theme_file_path() を使う必要があります）。'
 		);
 
 		// 1件目（bootstrap.min.css）は baseURL を持たない（自テーマのサーバーパスを直接読むため）。
@@ -345,10 +355,10 @@ class LightningDesignManagerBlockEditorStylesTest extends WP_UnitTestCase {
 		$dir_with_space = WP_CONTENT_DIR . '/lightning test ' . wp_generate_password( 6, false );
 		mkdir( $dir_with_space ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_mkdir
 		$this->temp_paths[] = $dir_with_space;
-		$file_with_space     = $dir_with_space . '/editor-gutenberg.css';
+		$file_with_space = $dir_with_space . '/editor-gutenberg.css';
 		file_put_contents( $file_with_space, '.ltg-space-marker{color:blue}' ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fwrite
 		$this->temp_paths[] = $file_with_space;
-		$url_with_space      = content_url( '/' . rawurlencode( basename( $dir_with_space ) ) . '/editor-gutenberg.css' );
+		$url_with_space = content_url( '/' . rawurlencode( basename( $dir_with_space ) ) . '/editor-gutenberg.css' );
 
 		// ケース2: 日本語のファイル名（パーセントエンコードされた URL）.
 		$dir_ja = WP_CONTENT_DIR . '/lightning-test-' . wp_generate_password( 8, false );
@@ -357,7 +367,7 @@ class LightningDesignManagerBlockEditorStylesTest extends WP_UnitTestCase {
 		$file_ja = $dir_ja . '/エディタ.css';
 		file_put_contents( $file_ja, '.ltg-ja-marker{color:orange}' ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fwrite
 		$this->temp_paths[] = $file_ja;
-		$url_ja  = content_url( '/' . basename( $dir_ja ) . '/' . rawurlencode( 'エディタ.css' ) );
+		$url_ja = content_url( '/' . basename( $dir_ja ) . '/' . rawurlencode( 'エディタ.css' ) );
 
 		// ケース3: '../' によるパストラバーサル（非エンコード）。WP_CONTENT_DIR から見て
 		// ABSPATH . 'wp-load.php'（標準構成で確実に存在する）を狙う。
