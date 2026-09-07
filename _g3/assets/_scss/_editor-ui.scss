@@ -1,0 +1,103 @@
+// エディタ／管理画面 UI（操作パネル類）の補正を置く。編集キャンバスの中身（common.scss の補正）は _common-editor.scss へ。
+// G3 には common.scss がキャンバス内（.editor-styles-wrapper 配下）でしか読み込まれず UI 側へ漏れないため、
+// G2 の block/_block_editor.scss のような「打ち消し」ではなく、UI の補正専用にこのファイルを置いている。
+.interface-interface-skeleton__secondary-sidebar{
+	table {
+		border:none;
+		th,td {
+			border:none;
+			padding:reset;
+		}
+	}
+}
+// 見出しデザインのリセット ////////////////
+// メディアアップロードのポップアップなど
+.editor-post-publish-panel,
+.components-tab-panel__tab-content,
+.media-modal {
+	h2 {
+		border:none;
+		padding:unset;
+	}
+}
+// テーブルデザインのリセット
+table.CalendarMonth_table td {
+    padding: 0;
+    border:none;
+}
+
+//common.scssで編集画面のCSSが打ち消されるので以下追加
+.interface-interface-skeleton__sidebar{
+    font-size: 13px;
+}
+.components-datetime__time-field-day-input[type=number],
+.components-datetime__time-field-hours-input[type=number],
+.components-datetime__time-field-minutes-input[type=number] {
+    width: 35px;
+}
+// カスタマイズ画面にまで公開の input が適用されて padding が余計についてしまうので調整
+.wp-full-overlay-sidebar-content {
+    input[type=date], input[type=email], input[type=number], input[type=tel], input[type=text], input[type=url], select, textarea {
+        padding:.2em .5em;
+    }
+}
+
+// 単位選択のプルダウン WP6.0調整上書き
+.components-unit-control__select {
+	margin-bottom:0;
+}
+// 長い単位に対応
+.components-base-control .components-input-control__container select.components-unit-control__select {
+	max-width: 38px;
+	padding-left:0;
+	padding-right:0;
+}
+.components-base-control .components-input-control__container input.components-input-control__input {
+	padding-left:8px;
+}
+
+// URL入力欄のフォーム WP6.0調整上書き
+input[type="text"].block-editor-media-placeholder__url-input-field{
+	width:unset;
+	margin:0;
+	border-radius: unset;
+	padding: 0.5em;
+}
+
+// フルスクリーンモードじゃない場合、「メニューを閉じる」の文字が大きくなるので補正
+#adminmenu{
+	.collapse-button-label {
+		font-size:14px;
+	}
+}
+
+/* ==========================================================================
+   Lightning デザイン設定パネルの余白
+   ========================================================================== */
+
+// WP 7.0 で SelectControl / CheckboxControl など BaseControl 系コンポーネントが既定で持っていた
+// margin-bottom が廃止され、このパネルの項目間の余白が失われたため、Lightning 側で明示的に管理する。
+// サイドバー幅は狭いため、他プラグインのパネルへ影響しないよう .lightning-design-setting-panel 配下に限定する。
+// G2 では打ち消し元の隣（_g2/assets/_scss/block/_block_editor.scss）に置いているが、G3 にはエディタ UI の
+// 打ち消し・補正専用ファイルとしてこの _editor-ui.scss を置いているため、ここに置いている。
+.lightning-design-setting-panel {
+
+	// h4 は直下グループのラベル: 直上（グループ間）は広く、直下の最初のコントロール（グループ内）は狭く
+	// G2 側に .components-panel h3,h4{margin-top:1em;margin-bottom:.5em}（詳細度 0,1,1）が既存で存在し負けるため、
+	// クラス2つで詳細度 0,2,0 を確保する（子孫結合子で自身を再指定）。G3 は現状競合しないが値をG2と揃える
+	.lightning-design-setting-panel__group-title {
+		margin-top: 24px;
+		margin-bottom: 8px;
+	}
+
+	// 現行のG2/G3構成では先頭コントロールが常にSelectControlのため、このルールは一致しない（デッドルール）。
+	// レイアウト設定グループの削除・順序入替で見出しが先頭に来た場合に備えた保険として残す。
+	.components-panel__body-title + .lightning-design-setting-panel__group-title {
+		margin-top: 0;
+	}
+
+	// 同じグループ内でチェックボックスが複数並ぶ場合、選択肢どうしの間隔を明示指定する
+	.components-checkbox-control + .components-checkbox-control {
+		margin-top: 12px;
+	}
+}
