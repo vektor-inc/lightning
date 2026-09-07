@@ -1,3 +1,5 @@
+// エディタ UI（操作パネル類）の補正のみを置く。編集領域の中身は block/_block_editor.scss へ。
+// G2 の同名ファイルとは役割が逆（G2 は編集領域の中身のみ）なので、慣習をそのまま持ち込まないこと。
 .interface-interface-skeleton__secondary-sidebar{
 	table {
 		border:none;

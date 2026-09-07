@@ -1,3 +1,6 @@
+// 編集領域（.editor-styles-wrapper / .wp-block）の中身に対する補正のみを置く。
+// エディタ UI（操作パネル類）の打ち消しは block/_block_editor.scss へ。
+// G3 の同名ファイルとは役割が逆（G3 はエディタ UI 側のみ）なので、慣習をそのまま持ち込まないこと。
 .editor-styles-wrapper{
 	padding:0;
 	ul,

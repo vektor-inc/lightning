@@ -97,7 +97,8 @@
 	}
 }
 
-// 直前の theme.json 由来 margin-block-end 打ち消しに margin-bottom で負けないよう後方に配置。_common-editor.scss から移動
+// 詳細度 0,0,1 と極端に低く、この CSS 内で .wp-block に効く margin 系ルールはすべてクラスを含むため、
+// ファイル内のどこへ置いても勝敗は変わらない。theme.json / コア側の低詳細度ルールを打ち消すための保険。_common-editor.scss から移動
 html :where(.wp-block) {
 	margin-top:0;
 	margin-bottom:0;
