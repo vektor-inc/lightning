@@ -97,6 +97,12 @@
 	}
 }
 
+// 直前の theme.json 由来 margin-block-end 打ち消しに margin-bottom で負けないよう後方に配置。_common-editor.scss から移動
+html :where(.wp-block) {
+	margin-top:0;
+	margin-bottom:0;
+}
+
 // WP6.3からwp-block-cover にoverflow: clip; がついて、中に幅広・全幅ブロックを設置しても見切れてしまうようになったため追加
 .wp-block-cover:has( * > :is( div [ data-align = wide ]), div [ data-align = full ]){
 	overflow: visible;

@@ -104,11 +104,39 @@ bodyなど除外してcssを生成するより編集関連のCSSを上書きし�
 	}
 }
 
+// 見出しデザインのリセット ////////////////
+// 直前の .components-panel / .interface-complementary-area / .edit-post-meta-boxes-area の打ち消しと
+// 同じ目的（メインの CSS がエディタ UI 側に漏れてくるのを打ち消し）のため、_common-editor.scss から移動
+.interface-interface-skeleton__secondary-sidebar{
+	table {
+		border:none;
+		th,td {
+			border:none;
+			padding:reset;
+		}
+	}
+}
+// メディアアップロードのポップアップなど
+.editor-post-publish-panel,
+.components-tab-panel__tab-content,
+.media-modal {
+	h2 {
+		border:none;
+		padding:unset;
+	}
+}
+
 table.CalendarMonth_table{
 	th,td {
 		padding: 3px;
 		border-bottom:none;
 	}
+}
+// テーブルデザインのリセット
+// 直前の CalendarMonth テーブルの打ち消しに詳細度で並ぶため、後方に配置して負けないようにする。_common-editor.scss から移動
+table.CalendarMonth_table td {
+    padding: 0;
+    border:none;
 }
 
 // WP6.3からwp-block-cover にoverflow: clip; がついて、中に幅広・全幅ブロックを設置しても見切れてしまうようになったため追加
