@@ -80,6 +80,8 @@ html :where(.wp-block) {
 // WP 7.0 で SelectControl / CheckboxControl など BaseControl 系コンポーネントが既定で持っていた
 // margin-bottom が廃止され、このパネルの項目間の余白が失われたため、Lightning 側で明示的に管理する。
 // サイドバー幅は狭いため、他プラグインのパネルへ影響しないよう .lightning-design-setting-panel 配下に限定する。
+// G2 では打ち消し元の隣（_g2/assets/_scss/block/_block_editor.scss）に置いているが、G3 には打ち消し元となる
+// h3, h4 の margin-top:1em 指定が無いため、このファイルに置いている。
 .lightning-design-setting-panel {
 
 	// h4 は直下グループのラベル: 直上（グループ間）は広く、直下の最初のコントロール（グループ内）は狭く

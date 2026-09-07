@@ -77,11 +77,10 @@ bodyなど除外してcssを生成するより編集関連のCSSを上書きし�
    Lightning デザイン設定パネルの余白
    ========================================================================== */
 
-// 直前の .components-panel, .interface-complementary-area, .edit-post-meta-boxes-area の
-// 打ち消し（h3, h4 に margin-top:1em; margin-bottom:0.5em を指定、詳細度 0,1,1）に対し、
+// 直前の .components-panel / .interface-complementary-area / .edit-post-meta-boxes-area の
+// 打ち消しが、h3・h4 に margin-top:1em; margin-bottom:0.5em を指定している（詳細度 0,1,1）。
 // WP 7.0 で SelectControl / CheckboxControl など BaseControl 系コンポーネントが既定で持っていた
-// margin-bottom が廃止され、上の margin-top:1em がそのまま出てしまい、このパネルの項目間の
-// 余白が失われたため、Lightning 側で明示的に管理する。
+// margin-bottom が廃止され、このパネルの項目間の余白が失われたため、Lightning 側で明示的に管理する。
 // サイドバー幅は狭いため、他プラグインのパネルへ影響しないよう .lightning-design-setting-panel 配下に限定する。
 .lightning-design-setting-panel {
 
