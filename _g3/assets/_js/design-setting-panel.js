@@ -39,7 +39,7 @@ var LightningDesignSettingPanel = function() {
 			onChange: function(v) { update('layout', v); },
 			__nextHasNoMarginBottom: true,
 		}),
-		createElement('h4', null, i18n.paddingMargin || 'Padding and margin setting'),
+		createElement('h4', {className: 'lightning-design-setting-panel__group-title'}, i18n.paddingMargin || 'Padding and margin setting'),
 		createElement(CheckboxControl, {
 			label: i18n.deletePadding || 'Delete site-body padding',
 			checked: siteBodyPadding,

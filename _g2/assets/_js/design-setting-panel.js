@@ -41,7 +41,7 @@ var LightningDesignSettingPanel = function() {
 			onChange: function(v) { update('layout', v); },
 			__nextHasNoMarginBottom: true,
 		}),
-		createElement('h4', null, i18n.pageHeaderBread || 'Page Header and Breadcrumb'),
+		createElement('h4', {className: 'lightning-design-setting-panel__group-title'}, i18n.pageHeaderBread || 'Page Header and Breadcrumb'),
 		createElement(CheckboxControl, {
 			label: i18n.noPageHeader || "Don't display Page Header",
 			checked: hiddenPageHeader,
@@ -54,7 +54,7 @@ var LightningDesignSettingPanel = function() {
 			onChange: function(c) { update('hidden_breadcrumb', c ? 'true' : ''); },
 			__nextHasNoMarginBottom: true,
 		}),
-		createElement('h4', null, i18n.paddingMargin || 'Padding and margin setting'),
+		createElement('h4', {className: 'lightning-design-setting-panel__group-title'}, i18n.paddingMargin || 'Padding and margin setting'),
 		createElement(CheckboxControl, {
 			label: i18n.deletePadding || 'Delete siteContent padding',
 			checked: siteContentPadding,
