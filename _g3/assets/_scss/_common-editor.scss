@@ -72,3 +72,31 @@ html :where(.wp-block) {
 	margin-top:0;
 	margin-bottom:0;
 }
+
+/* ==========================================================================
+   Lightning design setting panel
+   Lightning デザイン設定パネルの余白
+   ========================================================================== */
+
+// WP 7.0 で SelectControl / CheckboxControl など BaseControl 系コンポーネントが既定で持っていた
+// margin-bottom が廃止され、このパネルの項目間の余白が失われたため、Lightning 側で明示的に管理する。
+// サイドバー幅は狭いため、他プラグインのパネルへ影響しないよう .lightning-design-setting-panel 配下に限定する。
+// WP 7.0 removed the default margin-bottom that BaseControl-based components (SelectControl /
+// CheckboxControl) used to carry, which collapsed the spacing between this panel's fields.
+// Lightning manages the spacing explicitly instead, scoped under .lightning-design-setting-panel
+// so other plugins' sidebar panels are not affected.
+.lightning-design-setting-panel {
+
+	// h4 は直下グループのラベル: 直上（グループ間）は広く、直下の最初のコントロール（グループ内）は狭く
+	// h4 labels the group directly below it: wide margin above (between groups), narrow margin below (within the group)
+	h4 {
+		margin-top: 24px;
+		margin-bottom: 8px;
+	}
+
+	// 同じグループ内でチェックボックスが複数並ぶ場合、選択肢どうしの間隔を明示指定する
+	// When multiple checkboxes belong to the same group, add explicit spacing between the options
+	.components-checkbox-control + .components-checkbox-control {
+		margin-top: 12px;
+	}
+}

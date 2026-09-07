@@ -28,7 +28,7 @@ var LightningDesignSettingPanel = function() {
 		setMeta(nm);
 	};
 	return createElement(PluginDocumentSettingPanel,
-		{name: 'lightning-design-setting', title: i18n.panelTitle || 'Lightning design setting'},
+		{name: 'lightning-design-setting', className: 'lightning-design-setting-panel', title: i18n.panelTitle || 'Lightning design setting'},
 		createElement(SelectControl, {
 			label: i18n.layoutSetting || 'Layout setting',
 			value: layout,
@@ -39,23 +39,27 @@ var LightningDesignSettingPanel = function() {
 				{label: i18n.col1Sidebar || '1 column (with sidebar element)', value: 'col-one'},
 			],
 			onChange: function(v) { update('layout', v); },
+			__nextHasNoMarginBottom: true,
 		}),
-		createElement('h4', {style: {marginTop: '16px', marginBottom: '8px'}}, i18n.pageHeaderBread || 'Page Header and Breadcrumb'),
+		createElement('h4', null, i18n.pageHeaderBread || 'Page Header and Breadcrumb'),
 		createElement(CheckboxControl, {
 			label: i18n.noPageHeader || "Don't display Page Header",
 			checked: hiddenPageHeader,
 			onChange: function(c) { update('hidden_page_header', c ? 'true' : ''); },
+			__nextHasNoMarginBottom: true,
 		}),
 		createElement(CheckboxControl, {
 			label: i18n.noBreadcrumb || "Don't display Breadcrumb",
 			checked: hiddenBreadcrumb,
 			onChange: function(c) { update('hidden_breadcrumb', c ? 'true' : ''); },
+			__nextHasNoMarginBottom: true,
 		}),
-		createElement('h4', {style: {marginTop: '16px', marginBottom: '8px'}}, i18n.paddingMargin || 'Padding and margin setting'),
+		createElement('h4', null, i18n.paddingMargin || 'Padding and margin setting'),
 		createElement(CheckboxControl, {
 			label: i18n.deletePadding || 'Delete siteContent padding',
 			checked: siteContentPadding,
 			onChange: function(c) { update('siteContent_padding', c ? 'true' : ''); },
+			__nextHasNoMarginBottom: true,
 		})
 	);
 };
