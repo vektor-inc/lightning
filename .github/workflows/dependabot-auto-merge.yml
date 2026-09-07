@@ -33,6 +33,10 @@ jobs:
           DEP_GROUP: ${{ steps.meta.outputs.dependency-group }}
           DEP_NAMES: ${{ steps.meta.outputs.dependency-names }}
           ECOSYSTEM: ${{ steps.meta.outputs.package-ecosystem }}
+          # devDependencies に書かれているが、ビルド結果が配布物（配布する zip）に入るパッケージ。
+          # 利用者の環境で動くため changelog への記載が必要で、更新レベルを問わず人が確認する。
+          # パッケージ名を空白区切りで列挙する。
+          BUNDLED_PACKAGES: ""
         run: |
           set -euo pipefail
 
@@ -55,11 +59,24 @@ jobs:
             level="${UPDATE_TYPE#version-update:semver-}"
             case "$DEP_TYPE" in
               direct:development)
-                if [ "$level" = "minor" ] || [ "$level" = "patch" ]; then
-                  ok=true
-                  reason="開発依存の ${level} 更新のため"
+                # 開発依存（ビルド・テスト用）は配布物に含まれず、壊れていればゲート CI で
+                # 検出できるため、major 更新も含めて自動マージする。
+                # ただし BUNDLED_PACKAGES に列挙したパッケージはビルド結果が配布物に入るため人が確認する。
+                bundled=""
+                IFS=',' read -ra names <<< "$DEP_NAMES"
+                for name in "${names[@]}"; do
+                  name="${name// /}"
+                  for b in $BUNDLED_PACKAGES; do
+                    if [ "$name" = "$b" ]; then
+                      bundled="$name"
+                    fi
+                  done
+                done
+                if [ -n "$bundled" ]; then
+                  reason="${bundled} は devDependencies だがビルド結果が配布物に含まれ、changelog への記載が必要なため"
                 else
-                  reason="開発依存だが ${level} 更新のため"
+                  ok=true
+                  reason="開発依存の ${level} 更新のため（配布物に含まれないため major も対象）"
                 fi
                 ;;
               indirect)
