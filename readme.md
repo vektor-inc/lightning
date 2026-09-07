@@ -72,7 +72,7 @@ $ docker-compose run wp
 ```
 
 ### UnitTest on wp-env
-※ クローン先のディレクトリ名は `lightning`（小文字）にしてください。wp-env はディレクトリ名でテーマをコンテナ内にマウントするため、`Lightning` など大文字を含む名前だと `--env-cwd=wp-content/themes/lightning` が指すパスが存在せずコマンドが失敗します。
+※ クローン先のディレクトリ名は `lightning`（小文字）にしてください。wp-env はディレクトリ名でテーマをコンテナ内にマウントするため、`Lightning` のように大文字を含む名前や `lightning-dev` のような別名など、`lightning` 以外の名前だと `--env-cwd=wp-content/themes/lightning` が指すパスが存在せずコマンドが失敗します。
 
 1. あらかじめ Docker をインストールしておきます。
 2. 下記を実行して npm scripts をインストールします。
@@ -100,7 +100,7 @@ $ docker-compose run wp
 
 ```
 npm install
-wp-env start
+npx wp-env start
 ```
 
 からの
