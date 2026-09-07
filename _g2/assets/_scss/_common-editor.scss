@@ -68,7 +68,8 @@ table.CalendarMonth_table td {
 		margin-bottom: 8px;
 	}
 
-	// 見出しがパネル内の先頭要素に来た場合、パネル枠との間に余分な余白を乗せない
+	// 現行のG2/G3構成では先頭コントロールが常にSelectControlのため、このルールは一致しない（デッドルール）。
+	// レイアウト設定グループの削除・順序入替で見出しが先頭に来た場合に備えた保険として残す。
 	.components-panel__body-title + .lightning-design-setting-panel__group-title {
 		margin-top: 0;
 	}
