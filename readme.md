@@ -79,15 +79,11 @@ $ docker-compose run wp
 3. あらかじめ、wp-env を起動しておきます。
 	```wp-env start```
 4. 下記を実行して composer 関連のファイルをインストールします。
-	- Windows の場合
-	```npm run composer:install:win```
-	- Mac の場合
-	```npm run composer:install:mac```
+	```npm run composer:install```
+	（`npm run composer:install:win` / `npm run composer:install:mac` も同じ内容を実行するエイリアスです。OS を問わずどちらを使っても構いません）
 5. 下記を実行して Unit Test を開始します。
-	- Windows の場合
-	```npm run phpunit:win```
-	- Mac の場合
 	```npm run phpunit```
+	（`npm run phpunit:win` / `npm run phpunit:mac` も同じ内容を実行するエイリアスです。OS を問わずどちらを使っても構いません）
 
 
 ---
