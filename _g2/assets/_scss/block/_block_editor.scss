@@ -72,6 +72,38 @@ bodyなど除外してcssを生成するより編集関連のCSSを上書きし�
     }
 
 }
+
+/* ==========================================================================
+   Lightning デザイン設定パネルの余白
+   ========================================================================== */
+
+// 直前の .components-panel / .interface-complementary-area / .edit-post-meta-boxes-area の
+// 打ち消しが、h3・h4 に margin-top:1em; margin-bottom:0.5em を指定している（詳細度 0,1,1）。
+// WP 7.0 で SelectControl / CheckboxControl など BaseControl 系コンポーネントが既定で持っていた
+// margin-bottom が廃止され、このパネルの項目間の余白が失われたため、Lightning 側で明示的に管理する。
+// サイドバー幅は狭いため、他プラグインのパネルへ影響しないよう .lightning-design-setting-panel 配下に限定する。
+.lightning-design-setting-panel {
+
+	// h4 は直下グループのラベル: 直上（グループ間）は広く、直下の最初のコントロール（グループ内）は狭く
+	// 直前の h3, h4 の打ち消し（詳細度 0,1,1）に負けないよう、
+	// クラス2つで詳細度 0,2,0 を確保する（子孫結合子で自身を再指定）
+	.lightning-design-setting-panel__group-title {
+		margin-top: 24px;
+		margin-bottom: 8px;
+	}
+
+	// 現行のG2/G3構成では先頭コントロールが常にSelectControlのため、このルールは一致しない（デッドルール）。
+	// レイアウト設定グループの削除・順序入替で見出しが先頭に来た場合に備えた保険として残す。
+	.components-panel__body-title + .lightning-design-setting-panel__group-title {
+		margin-top: 0;
+	}
+
+	// 同じグループ内でチェックボックスが複数並ぶ場合、選択肢どうしの間隔を明示指定する
+	.components-checkbox-control + .components-checkbox-control {
+		margin-top: 12px;
+	}
+}
+
 table.CalendarMonth_table{
 	th,td {
 		padding: 3px;
