@@ -114,7 +114,7 @@ jobs:
                   path: dist/
             - name: Create Release
               # softprops/action-gh-release v2.6.1 / v2
-              uses: softprops/action-gh-release@153bb8e04406b158c6c84fc1615b65b24149a1fe
+              uses: softprops/action-gh-release@efb35369e0ad2afab669f228072c1b0d510eae64
               with:
                   generate_release_notes: true
                   files: dist/${{ env.theme_name }}.zip
