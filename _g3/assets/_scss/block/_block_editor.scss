@@ -97,8 +97,9 @@
 	}
 }
 
-// 詳細度 0,0,1 と極端に低く、この CSS 内で .wp-block に効く margin 系ルールはすべてクラスを含むため、
-// ファイル内のどこへ置いても勝敗は変わらない。theme.json / コア側の低詳細度ルールを打ち消すための保険。_common-editor.scss から移動
+// 詳細度 0,0,1 と極端に低く、この CSS 内で .wp-block に効く margin 系ルールは、すべてクラスを含むか、
+// 同値（nav{margin:0} 等）でも同じ 0 を指定しているため、ファイル内のどこへ置いても勝敗は変わらない。
+// theme.json / コア側の低詳細度ルールを打ち消すための保険。_common-editor.scss から移動
 html :where(.wp-block) {
 	margin-top:0;
 	margin-bottom:0;
