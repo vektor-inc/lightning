@@ -101,3 +101,58 @@ input[type="text"].block-editor-media-placeholder__url-input-field{
 		margin-top: 12px;
 	}
 }
+
+// .lightning-design-setting-panel は Lightning 自身のデザイン設定パネル専用のクラスで、見た目の意味も
+// 密結合している。上の既存ルールには手を入れず、別に汎用クラス .lightning-editor-panel を用意し、
+// 連携プラグイン（Lightning G3 Pro Unit 等）のパネルへも同じ余白の値をテーマ側から配れるようにする。
+// パネル要素へ両クラスを併記（`lightning-design-setting-panel lightning-editor-panel`）しても、
+// 既存ルールはクラス2つ（詳細度 0,2,0）で下の汎用ルール（詳細度 0,1,0）より優先されるため、
+// Lightning 自身のパネルの見た目は変わらない。
+//
+// 段階は上と同じ 8px（グループ内・従属関係にあるペア）/ 12px（選択肢どうし）/
+// 24px（グループ境界。見出しを挟まない、独立した設定項目どうしの区切りにもこの値を使う）の3段階のみ。
+//
+// ★マージン相殺への対処: 隣接要素の余白は詳細度で勝った側ではなく上下マージンの大きい方に相殺されるため、
+// 8px / 12px / 24px の実際の値はすべて「後続要素の margin-top」側に統一する。
+// 上の .lightning-design-setting-panel__group-title（h4）は margin-bottom: 8px を自身に持つが、
+// 「見出し⇄直下の最初のコントロール」を汎用側も 8px の margin-top に揃えているため、
+// max(8px, 8px) = 8px のまま変わらない（24px 側に広がらない）。
+// あわせて見出し自身の margin-bottom は 0 にリセットする。連携プラグイン側の見出しが wp-admin 標準の
+// h4{margin:1.33em 0}（約17px）など Lightning が管理していない margin-bottom を持ったままだと、
+// その値と後続要素の margin-top:8px が相殺され 8px より広がってしまうため、汎用クラス側で 0 に統一し、
+// 8px という値そのものは常に margin-top 側だけが持つようにする。
+//
+// 補足文（help テキスト）についての定義: コントロールとそれに従属する補足文の間隔も 8px の対象と定義する。
+// ただし Lightning 自身のパネルには補足文を使っている箇所が現状無く、実物の HTML 構造が無い状態で
+// セレクタを書いても検証できないため、今回はセレクタを追加しない（定義のみ明記）。
+.lightning-editor-panel {
+
+	// 既定値: 直下の子要素どうしの区切りはグループ境界（24px）。
+	// 見出しを挟まない、独立した設定項目どうしの区切りにもこの値を使う。
+	> * + * {
+		margin-top: 24px;
+	}
+
+	// パネルの見出しボタン（.components-panel__body-title）の直後は、パネル自体の余白の管轄外のため
+	// 上の既定値（24px）を打ち消す。詳細度はクラス2つ（0,2,0）で既定値（0,1,0）に勝つ。
+	> .components-panel__body-title + * {
+		margin-top: 0;
+	}
+
+	// 見出し（グループ内ラベル）自身の margin-bottom は 0 に固定する。理由は上の★コメントを参照。
+	> :where(h2, h3, h4, h5, h6) {
+		margin-bottom: 0;
+	}
+
+	// 見出し（グループ内ラベル）⇄ 直下の最初のコントロールは従属関係にあるペアのため 8px へ狭める。
+	// Lightning 固有のクラス名（__group-title）に依存せず、見出しタグ（h2〜h6）で汎用的に判定する。
+	> :where(h2, h3, h4, h5, h6) + * {
+		margin-top: 8px;
+	}
+
+	// 同じグループ内で選択肢（チェックボックス等）が複数並ぶ場合、選択肢どうしの間隔は 12px へ狭める。
+	// 詳細度はクラス3つ（0,3,0）で上の見出し規則・既定値のどちらにも勝つ。
+	> .components-checkbox-control + .components-checkbox-control {
+		margin-top: 12px;
+	}
+}
