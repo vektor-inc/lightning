@@ -2,7 +2,7 @@
 Lightning WordPress theme, Copyright (C) 2015-2026 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
 Tested up to: 6.9
-Stable tag: 15.41.0
+Stable tag: 15.42.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -35,6 +35,7 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+v15.42.0
 [ G2/G3 ][ New Feature ] Add a general-purpose .lightning-editor-panel class that supplies the 8px / 12px / 24px spacing steps to block editor sidebar panels, so linked plugins can apply the same spacing as Lightning's own panel without redefining the values
 
 v15.41.0
