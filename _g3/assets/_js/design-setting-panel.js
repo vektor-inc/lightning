@@ -26,7 +26,7 @@ var LightningDesignSettingPanel = function() {
 		setMeta(nm);
 	};
 	return createElement(PluginDocumentSettingPanel,
-		{name: 'lightning-design-setting', className: 'lightning-design-setting-panel', title: i18n.panelTitle || 'Lightning design setting'},
+		{name: 'lightning-design-setting', className: 'lightning-design-setting-panel lightning-editor-panel', title: i18n.panelTitle || 'Lightning design setting'},
 		createElement(SelectControl, {
 			label: i18n.layoutSetting || 'Layout setting',
 			value: layout,

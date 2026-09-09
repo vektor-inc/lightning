@@ -35,6 +35,8 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+[ G2/G3 ][ New Feature ] Add a general-purpose .lightning-editor-panel class that supplies the 8px / 12px / 24px spacing steps to block editor sidebar panels, so linked plugins can apply the same spacing as Lightning's own panel without redefining the values
+
 v15.41.0
 [ Spec Change ] Raise the minimum required WordPress version from 6.5 to 6.6, because the Lightning design setting panel in the block editor sidebar does not appear on WordPress 6.5
 [ G2/G3 ][ Design Bug Fix ] Restore the spacing between the layout, page header/breadcrumb, and padding groups in the Lightning design setting panel (block editor sidebar) that was lost on WordPress 7.0
