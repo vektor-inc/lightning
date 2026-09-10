@@ -1,0 +1,98 @@
+# dependabot-auto-merge.yml が「自動マージ対象」と判定した PR を、CI 完了後にマージする。
+#
+# workflow_run はデフォルトブランチにあるこのファイルが使われるため、
+# Dependabot のブランチ側を書き換えてもマージ処理は変わらない。
+name: Dependabot auto-merge complete
+
+on:
+  workflow_run:
+    workflows:
+      - "PHP Unit Test"
+    types:
+      - completed
+
+permissions:
+  contents: write
+  pull-requests: write
+  actions: read
+
+jobs:
+  merge:
+    if: >-
+      github.event.workflow_run.event == 'pull_request' &&
+      github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 対象の PR をマージ
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          HEAD_BRANCH: ${{ github.event.workflow_run.head_branch }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+          RUN_ID: ${{ github.event.workflow_run.id }}
+        run: |
+          set -euo pipefail
+
+          # CI のジョブがすべて実際に成功したかを確かめる。
+          # run 全体の結論は「一部のジョブが skip、残りが成功」でも success になるため、
+          # 条件付きで skip されたジョブがあるとテストを実行していない PR がマージされうる。
+          # ジョブが 1 つも無い run（すべて skip）もここで弾く。
+          jobs_json=$(gh api "repos/${REPO}/actions/runs/${RUN_ID}/jobs?per_page=100")
+          job_count=$(echo "$jobs_json" | jq '.jobs | length')
+          not_success=$(echo "$jobs_json" \
+            | jq -r '[.jobs[] | select(.conclusion != "success") | "\(.name)=\(.conclusion)"] | join(", ")')
+          if [ "$job_count" = "0" ] || [ -n "$not_success" ]; then
+            echo "CI のジョブが成功していないため終了する（jobs: ${job_count} / 未成功: ${not_success:-なし}）"
+            exit 0
+          fi
+
+          pr=$(gh pr list \
+            --repo "$REPO" \
+            --head "$HEAD_BRANCH" \
+            --state open \
+            --json number,headRefOid,labels,author \
+            --jq '.[0]')
+
+          if [ -z "$pr" ] || [ "$pr" = "null" ]; then
+            echo "ブランチ ${HEAD_BRANCH} に対応する open な PR が無いため終了する"
+            exit 0
+          fi
+
+          number=$(echo "$pr" | jq -r '.number')
+          author=$(echo "$pr" | jq -r '.author.login')
+          head_oid=$(echo "$pr" | jq -r '.headRefOid')
+          labeled=$(echo "$pr" | jq -r '[.labels[].name] | index("dependabot-auto-merge") != null')
+
+          if [ "$author" != "app/dependabot" ] && [ "$author" != "dependabot[bot]" ]; then
+            echo "#${number} は Dependabot の PR ではないため終了する（author: ${author}）"
+            exit 0
+          fi
+
+          if [ "$labeled" != "true" ]; then
+            echo "#${number} に dependabot-auto-merge ラベルが無いため終了する"
+            exit 0
+          fi
+
+          # CI が走った時点と PR の先頭コミットがずれている場合は、
+          # 新しいコミットに対する CI の完了を待つ
+          if [ "$head_oid" != "$HEAD_SHA" ]; then
+            echo "#${number} の先頭コミットが CI 実行時から変わっているため終了する"
+            echo "  CI: ${HEAD_SHA} / PR: ${head_oid}"
+            exit 0
+          fi
+
+          # base ブランチが動いているとマージが弾かれることがあるため数回試す。
+          # ここで失敗しても Dependabot が rebase すると CI が再実行され、
+          # この workflow がもう一度呼ばれるので取りこぼしにはならない。
+          for attempt in 1 2 3; do
+            if gh pr merge "$number" --repo "$REPO" --squash --delete-branch \
+              --match-head-commit "$HEAD_SHA"; then
+              echo "#${number} をマージした"
+              exit 0
+            fi
+            echo "マージに失敗した（${attempt} 回目）。20 秒後に再試行する"
+            sleep 20
+          done
+
+          echo "#${number} のマージに失敗した。Dependabot の rebase 後に再試行される"
+          exit 1

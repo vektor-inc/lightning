@@ -7,13 +7,13 @@
 p.wp-embed-heading {
 	font-size: 1.25em;
 	font-weight: 500;
-	@media screen and (max-width: 480px) {
+	@media screen and ( width <= 480px ) {
 		font-size: 1.1em;
 	}
 }
 
 .wp-embed {
-	@media screen and (max-width: 480px) {
+	@media screen and ( width <= 480px ) {
 		padding: 15px;
 	}
 	&-featured-image {
@@ -22,7 +22,7 @@ p.wp-embed-heading {
 		margin-left: 1em;
 		width: 40%;
 		overflow: hidden;
-		@media screen and (min-width: 481px) {
+		@media screen and ( width >= 481px ) {
 			width: 25%;
 		}
 	}
@@ -39,7 +39,7 @@ p.wp-embed-heading {
 		}
 	}
 	&-excerpt {
-		@media screen and (max-width: 1024px) {
+		@media screen and ( width <= 1024px ) {
 			overflow: auto;
 			display: -webkit-box;
 			-webkit-box-orient: vertical;

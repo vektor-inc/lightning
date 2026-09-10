@@ -25,7 +25,7 @@
 	}
 }
 .sub-section--col--two{
-	@media ( min-width: $lg-min ) and ( max-width: $lg-max ) {
+	@media ( $md-max < width <= $lg-max ) {
 		.veu_contact {
 			.contact_frame{
 				padding:1.1rem 1rem;

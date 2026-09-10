@@ -2,7 +2,7 @@
 Lightning WordPress theme, Copyright (C) 2015-2026 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
 Tested up to: 6.9
-Stable tag: 15.37.1
+Stable tag: 15.42.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -35,17 +35,55 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
-[ G3 ][ Spec Change ] Make the home page slider navigation and pagination aria-labels translatable
-[ G2 ][ Bug Fix ] Fix image set/delete buttons in the Full Wide Title widget not opening the media library in the block-based widget editor
+[ G3 ][ Spec Change ] Change the top page slider pagination dots to white so that they match the arrows, instead of the Swiper default blue active dot and faint black inactive dots. The current slide is now shown as a wider pill rather than by opacity
+[ G3 ][ Design Bug Fix ] Fix the white slider arrows and pagination dots blending into bright slide images and becoming hard to see, by adding a shadow around them. To remove it, add :root { --ltg-swiper-control-shadow: none } in Additional CSS
 
+v15.42.0
+[ G2/G3 ][ New Feature ] Add a general-purpose .lightning-editor-panel class that supplies the 8px / 12px / 24px spacing steps to block editor sidebar panels, so linked plugins can apply the same spacing as Lightning's own panel without redefining the values
+
+v15.41.0
+[ Spec Change ] Raise the minimum required WordPress version from 6.5 to 6.6, because the Lightning design setting panel in the block editor sidebar does not appear on WordPress 6.5
+[ G2/G3 ][ Design Bug Fix ] Restore the spacing between the layout, page header/breadcrumb, and padding groups in the Lightning design setting panel (block editor sidebar) that was lost on WordPress 7.0
+[ G2 ][ Design Bug Fix ] Fix the block editor's skin CSS leaking into the admin screen as a whole and overriding the base font size, causing the "Collapse menu" button label at the bottom of the admin sidebar to wrap
+
+v15.40.0
+[ G2 ][ Spec Change ] Widen the horizontal padding of buttons and input fields to match Lightning Pro, on sites using a bs4 design skin such as Origin II
+[ G3 ][ Spec Change ] Style submit buttons written as button elements inside forms like input[type="submit"], so submit and back buttons output by form plugins such as Snow Monkey Forms no longer use browser default styles. Disabled submit buttons now show a not-allowed cursor.
+[ G3 ][ Design Bug Fix ] Rewrite the blog card media query left in the old syntax with range syntax, so the blog card no longer switches to the image-beside-text layout at exactly 576px wide while the rest of the theme treats that width as mobile
+[ G2/G3 ][ Other ] Rewrite the wp_list_pages() / wp_list_categories() calls in the sidebar page and category list templates to use array arguments instead of query strings, with no change to the output
+
+v15.39.1
+[ G2/G3 ][ Bug Fix ] Fix the bundled Bootstrap 4 responsive classes (.col-md-*, .d-md-none, .navbar-expand-md, spacing utilities and so on) switching one step earlier than the rest of the theme at exactly 576 / 768 / 992 / 1200px, by rewriting the Bootstrap breakpoint mixins to range syntax
+
+v15.39.0
+[ G2/G3 ][ New Feature ] Add lightning_get_breakpoint() / lightning_the_breakpoint() and the lightning_breakpoints filter, so the responsive breakpoints are defined in one place and can be overridden
+[ G2/G3 ][ Bug Fix ] Convert the media queries emitted from PHP (customizer dynamic CSS, design skins, slider image sources) to range syntax, so that 992px / 768px are treated as the narrower side there too and no longer disagree with the stylesheets
+[ G2/G3 ][ Bug Fix ] Rewrite the mobile menu button media query left in the old syntax with range syntax, fixing G2 showing neither the global navigation nor the menu button at exactly 992px wide
+[ G2 ][ Other ] Import only the breakpoint variables in the origin skin SCSS, so its compiled CSS no longer re-declares the theme default custom properties (key color etc.) after the common stylesheet
+
+v15.38.3
+[ G2/G3 ][ Other ] Replace the media query sorting in the CSS build with an in-house PostCSS plugin, so the compiled CSS always outputs media queries in a stable min-ascending / max-descending / print order
+
+v15.38.2
+[ Bug Fix ] Update vektor-inc/font-awesome-versions from 0.7.5 to 0.7.6, fixing Font Awesome icons not displaying in some server environments (e.g. AWS Bitnami)
+[ G3 ][ Bug Fix ] Update vektor-inc/vk-swiper from 0.4.0 to 0.4.1, fixing the slider not working in some server environments (e.g. AWS Bitnami)
+
+v15.38.1
+[ G2/G3 ][ Bug Fix ] Fix woo.css re-declaring the default key color after the customizer's dynamic CSS, which made the key color setting have no effect on WooCommerce pages
+
+v15.38.0
+[ G3 ][ Spec Change ] Make the home page slider navigation and pagination aria-labels translatable
 [ Spec Change ] Update vektor-inc/font-awesome-versions from 0.7.4 to 0.7.5
+[ Spec Change ] Update vektor-inc/vk-component from 1.7.0 to 1.7.2
+[ G2/G3 ][ Spec Change ] Unify SCSS breakpoint variables as maximum values (576 / 768 / 992 / 1200 / 1400px) and rewrite media queries with range syntax
 [ G3 ][ Spec Change ] Update vektor-inc/vk-swiper from 0.3.6 to 0.4.0, updating the bundled Swiper from 11.2.10 to 14.0.6, which gives the slider arrow a larger tap target
 [ G3 ][ Spec Change ] Change the top page slider arrow to the SVG injected by Swiper v12 and later. To resize it in Additional CSS, set .ltg-slide { --ltg-slide-arrow-size: 3em } - this one property sizes both the new SVG and the older glyph, and selector-based rules keep working
 [ G3 ][ Spec Change ] Hide the top page slider arrow buttons themselves on screens narrower than 576px, where only the arrow glyph used to be hidden. If you overrode the glyph to keep the arrows on mobile, target the buttons instead of :after
-[ G3 ][ Spec Change ] Change the top page slider pagination dots to white so that they match the arrows, instead of the Swiper default blue active dot and faint black inactive dots. The current slide is now shown as a wider pill rather than by opacity
+[ G2 ][ Bug Fix ] Fix image set/delete buttons in the Full Wide Title widget not opening the media library in the block-based widget editor
 [ G2 ][ Bug Fix ] Fix undefined array key warning logged on PHP 8 or later when saving the Full Wide Title widget with the text shadow checkbox unchecked
 [ G2 ][ Bug Fix ] Fix undefined array key warning logged on PHP 8 or later when displaying the Full Wide Title widget in the block-based widget editor preview
-[ G3 ][ Design Bug Fix ] Fix the white slider arrows and pagination dots blending into bright slide images and becoming hard to see, by adding a shadow around them. To remove it, add :root { --ltg-swiper-control-shadow: none } in Additional CSS
+[ G3 ][ Bug Fix ] Fix a CSS build bug that dropped the descendant combinator inside :not() selectors, causing wide/full-width blocks nested inside a background-colored section to lose their margin override and misalign
+[ G3 ][ Bug Fix ] Remove the legacy 0.5em block-gap fallback on .wp-block-gallery, which now conflicts with WordPress core's native block-gap control and breaks the gallery block's spacing
 
 v15.37.1
 [ Other ] Change theme screenshot

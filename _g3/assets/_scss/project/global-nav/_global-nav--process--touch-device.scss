@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-@media (min-width: $lg-min) {
+@media ( $md-max < width ) {
 	body.device-mobile .vk-mobile-nav-menu-btn {
 		display: none;
 	}
@@ -28,7 +28,7 @@
 				// flex-direction: column; // 縦書きレイアウトで崩れるためコメントアウト
 
 				// PC端末時は下階層展開ボタンを表示しないので左右余白小さめ
-				@media ( min-width: $lg-min ) { // media指定がないと vk-menu-acc 指定の余白に負けるため指定
+				@media ( $md-max < width ) { // media指定がないと vk-menu-acc 指定の余白に負けるため指定
 					padding: $menu_padding_vertical 1.5em;
 				}
 

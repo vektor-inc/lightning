@@ -27,7 +27,7 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 	アニメーションで0の位置に移動する。
 */
 
-@media (min-width: $lg-min) {
+@media ( $md-max < width ) {
 	.gMenu_outer {
 		top: -54px;
 		transition: top 1s;
@@ -64,7 +64,7 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 			nav {
 				display: block; /* Cope with setted table-sell such a OriginII  */
 				width: $lg-container;
-				@media (min-width: $xl-min) {
+				@media ( $lg-max < width ) {
 					width: $xl-container;
 				}
 				margin-left: auto;

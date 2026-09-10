@@ -16,7 +16,7 @@ $menu_padding_vertical: 14px;
 $menu_padding_horizontal: 1.2em;
 
 .gMenu_outer {
-	@media (max-width: $md-max) {
+	@media ( width <= $md-max ) {
 		display: none;
 	}
 	// position: relative; をここで指定してしまうと、スクロール時にすっと下がるモーションが付けられない
@@ -127,7 +127,7 @@ $menu_padding_horizontal: 1.2em;
 				padding: $menu_padding_vertical 3.5em $menu_padding_vertical
 					$menu_padding_horizontal;
 			}
-			@media (min-width: $lg-min) {
+			@media ( $md-max < width ) {
 				ul.sub-menu li {
 					a{ 
 						padding-left: 2.2em;

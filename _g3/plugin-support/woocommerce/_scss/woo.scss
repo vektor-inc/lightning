@@ -1,5 +1,9 @@
 @charset "utf-8";
 
+// キーカラー等の :root を出力しないよう、ブレイクポイント変数のみ読み込む
+// woo.css は共通CSSより後に読み込まれるため、:root を出力するとカスタマイザーの動的CSSを上書きしてしまう
+@import "../../../assets/_scss/variables_breakpoint";
+
 /*-------------------------------------------*/
 /*	Product common
 /*-------------------------------------------*/
@@ -58,12 +62,6 @@ $color-key-dark-default: #2e6da4;
 		border: 1px solid #ced4da;
 		border-radius: 0.25rem;
 		padding: 0.375rem 0.8rem;
-	}
-}
-
-.woocommerce-product-search {
-	button[type="submit"] {
-		background-color: var(--vk-color-primary, $color-key-default);
 	}
 }
 
@@ -268,7 +266,7 @@ div[class*="wp-block-product"] {
 	}
 }
 
-@media (max-width: 768px) {
+@media ( width <= $sm-max ) {
 	.woocommerce {
 		ul.products[class*="columns-"] {
 			margin-left: -2%;
@@ -292,7 +290,7 @@ div[class*="wp-block-product"] {
 		box-sizing: border-box;
 		padding: 0 10px 15px;
 
-		@media (min-width: 576px) {
+		@media ( $xs-max < width ) {
 			padding: 0 15px 2em;
 		}
 		line-height: inherit;
@@ -334,15 +332,15 @@ div[class*="wp-block-product"] {
 		margin-right: -15px;
 
 		li {
-			@media (min-width: 576px) {
+			@media ( $xs-max < width ) {
 				width: 33.3%;
 			}
 
-			@media (min-width: 992px) {
+			@media ( $md-max < width ) {
 				width: 25%;
 			}
 
-			@media (min-width: 1200px) {
+			@media ( $lg-max < width ) {
 				width: 20%;
 			}
 		}
@@ -385,7 +383,7 @@ div[class*="wp-block-product"] {
 		border-bottom: 1px dotted #ccc;
 		padding-bottom: 0.5rem;
 
-		@media (min-width: 992px) {
+		@media ( $md-max < width ) {
 			font-size: 28px;
 		}
 	}
@@ -634,7 +632,7 @@ tr.cart-discount td {
 		padding: 0;
 		font-size: 14px;
 
-		@media (min-width: 768px) {
+		@media ( $sm-max < width ) {
 			margin-right: 3em;
 		}
 		border-top: 1px solid #e5e5e5;
@@ -777,11 +775,11 @@ tr.cart-discount td {
 .woocommerce .col2-set .col-2,
 .woocommerce-page .col2-set .col-1,
 .woocommerce-page .col2-set .col-2 {
-	@media (max-width: 767.98px) {
+	@media ( width <= $sm-max ) {
 		width: 100%;
 		max-width: 100%;
 	}
-	@media (min-width: 768px) {
+	@media ( $sm-max < width ) {
 		width: 48%;
 		max-width: 48%;
 	}

@@ -11,7 +11,7 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 /*-------------------------------------------*/
 /*	.siteHeadContainer
 /*-------------------------------------------*/
-@media (min-width: $lg-min) {
+@media ( $md-max < width ) {
 	.siteHeadContainer.container {
 		width: 100%;
 		max-width: unset;
@@ -25,12 +25,12 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 	}
 }
 
-@media (min-width: $lg-min) {
+@media ( $md-max < width ) {
 	.siteHeadContainer.container .navbar-header {
 		width: $lg-container;
 	}
 }
-@media (min-width: $xl-min) {
+@media ( $lg-max < width ) {
 	.siteHeadContainer.container .navbar-header {
 		width: $xl-container;
 	}
@@ -42,10 +42,10 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 		margin: 0 auto;
 		padding-left: 15px;
 		padding-right: 15px;
-		@media (min-width: $lg-min) {
+		@media ( $md-max < width ) {
 			width: $lg-container;
 		}
-		@media (min-width: $xl-min) {
+		@media ( $lg-max < width ) {
 			width: $xl-container;
 		}
 	}

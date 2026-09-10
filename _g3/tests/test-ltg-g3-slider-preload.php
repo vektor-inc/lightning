@@ -179,9 +179,9 @@ class LTG_G3_Slider_Preload_Test extends WP_UnitTestCase {
 		$output = ob_get_clean();
 		print 'PC != Mobile: ' . trim( $output ) . PHP_EOL;
 		$this->assertStringContainsString( 'href="http://example.com/mobile.jpg"', $output );
-		$this->assertStringContainsString( 'media="(max-width: 767px)"', $output );
+		$this->assertStringContainsString( 'media="(width <= 768px)"', $output );
 		$this->assertStringContainsString( 'href="http://example.com/pc.jpg"', $output );
-		$this->assertStringContainsString( 'media="(min-width: 768px)"', $output );
+		$this->assertStringContainsString( 'media="(768px < width)"', $output );
 	}
 
 	/**

@@ -13,7 +13,7 @@
     .vk_post_imgOuter:before{
         padding-top:50%;
     }
-    @media ( min-width: $md-max ) {
+    @media ( $md-max < width ) {
         .vk_post.card{
             margin-bottom:0;
         } 

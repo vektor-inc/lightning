@@ -72,22 +72,19 @@ $ docker-compose run wp
 ```
 
 ### UnitTest on wp-env
+※ クローン先のディレクトリ名は `lightning`（小文字）にしてください。wp-env はディレクトリ名でテーマをコンテナ内にマウントするため、`Lightning` のように大文字を含む名前や `lightning-dev` のような別名など、`lightning` 以外の名前だと `--env-cwd=wp-content/themes/lightning` が指すパスが存在せずコマンドが失敗します。
+
 1. あらかじめ Docker をインストールしておきます。
 2. 下記を実行して npm scripts をインストールします。
 	```npm install```
-	```npm install -g @wordpress/env```
 3. あらかじめ、wp-env を起動しておきます。
-	```wp-env start```
+	```npx wp-env start```
 4. 下記を実行して composer 関連のファイルをインストールします。
-	- Windows の場合
-	```npm run composer:install:win```
-	- Mac の場合
-	```npm run composer:install:mac```
+	```npm run composer:install```
+	（`npm run composer:install:win` / `npm run composer:install:mac` も同じ内容を実行するエイリアスです。OS を問わずどれを使っても構いません）
 5. 下記を実行して Unit Test を開始します。
-	- Windows の場合
-	```npm run phpunit:win```
-	- Mac の場合
 	```npm run phpunit```
+	（`npm run phpunit:win` / `npm run phpunit:mac` も同じ内容を実行するエイリアスです。OS を問わずどれを使っても構いません）
 
 
 ---
@@ -103,7 +100,7 @@ $ docker-compose run wp
 
 ```
 npm install
-wp-env start
+npx wp-env start
 ```
 
 からの

@@ -74,7 +74,7 @@ if ( apply_filters( 'lightning_default_slide_display', true ) ) {
 					// If Mobile Image exist
 					if ( ! empty( $lightning_theme_options[ 'top_slide_image_mobile_' . $i ] ) ) :
 						?>
-						  <source media="(max-width: 767px)" srcset="<?php echo esc_attr( $lightning_theme_options[ 'top_slide_image_mobile_' . $i ] ); ?>">
+						  <source media="(width <= <?php lightning_the_breakpoint( 'sm-max' ); ?>)" srcset="<?php echo esc_attr( $lightning_theme_options[ 'top_slide_image_mobile_' . $i ] ); ?>">
 					<?php endif; ?>
 					  <img src="<?php echo esc_attr( $lightning_theme_options[ 'top_slide_image_' . $i ] ); ?>" alt="<?php echo esc_attr( $top_slide_alt ); ?>" class="slide-item-img d-block w-100">
 					</picture>

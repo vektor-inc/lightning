@@ -46,7 +46,7 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 /*-------------------------------------------*/
 
 // Not allowed Theme check
-// @media screen and (max-width: 600px){
+// @media screen and ( width <= 600px ){
 // #wpadminbar { position: fixed; }
 // }
 html,
@@ -108,7 +108,7 @@ input.form-control.input_widthAuto {
 /*-------------------------------------------*/
 /* .navSection
 /*-------------------------------------------*/
-// @media (max-width: $md-max) {
+// @media ( width <= $md-max ) {
 // 	.menuBtn {
 // 		position: absolute;
 // 		top: 0;
@@ -130,8 +130,8 @@ input.form-control.input_widthAuto {
 // 			right: 0px;
 // 		}
 // 	}
-// } // @media (max-width: 991px){
-// @media (min-width: $lg-min) {
+// } // @media ( width <= $md-max ){
+// @media ( $md-max < width ) {
 // 	.menuBtn,
 // 	.navSection,
 // 	.navSection .searchform {
@@ -158,7 +158,7 @@ h1.page-header_pageTitle:first-child {
 	line-height: 1.1;
 }
 
-// @media (min-width: 992px){
+// @media ( $md-max < width ){
 //   .page-header_pageTitle,
 //   h1.page-header_pageTitle:first-child { font-size:2rem; }
 // }
@@ -234,7 +234,7 @@ h1.entry-title {
 
 .entry-header {
 	margin-bottom: 1.5rem;
-	@media (min-width: $lg-min) {
+	@media ( $md-max < width ) {
 		margin-bottom: 2.2rem;
 	}
 	position: relative;
@@ -328,7 +328,7 @@ h1.entry-title {
 	display: block;
 }
 
-@media (max-width: $sm-max) {
+@media ( width <= $sm-max ) {
 	.entry-meta {
 		.entry-meta_items_term {
 			float: none;
@@ -340,8 +340,8 @@ h1.entry-title {
 	h1.entry-title {
 		font-size: 26px;
 	}
-} // @media (max-width: 767px){
-@media (min-width: $md-min) {
+} // @media ( width <= $sm-max ){
+@media ( $sm-max < width ) {
 	.mainSection .widget {
 		margin-bottom: 35px;
 	}
@@ -350,7 +350,7 @@ h1.entry-title {
 	// .widget .entry-body {
 	//     margin-bottom: 2em;
 	// }
-} // @media (min-width: 768px){
+} // @media ( $sm-max < width ){
 
 /*      .entry-footer
 /*-------------------------------------------*/
@@ -484,7 +484,7 @@ h1.entry-title {
 		overflow: hidden;
 	}
 }
-@media (max-width: 767px) {
+@media ( width <= $sm-max ) {
 	.media {
 		.postList_thumbnail {
 			padding-right: 20px;
@@ -497,14 +497,14 @@ h1.entry-title {
 			}
 		} // .media-body
 	} // .media
-} // @media (max-width: 767px){
-@media (max-width: 500px) {
+} // @media ( width <= $sm-max ){
+@media ( width <= 500px ) {
 	.media {
 		.postList_thumbnail {
 			width: 100px;
 		}
 	} // .media
-} // @media (max-width: 767px){
+} // @media ( width <= $sm-max ){
 
 /*-------------------------------------------*/
 /* .pagination
@@ -672,7 +672,7 @@ ul.page-numbers {
 	}
 }
 
-// @media (max-width: 767px){
+// @media ( width <= $sm-max ){
 .pager li {
 	display: block;
 	overflow: hidden;
@@ -883,11 +883,11 @@ ul.page-numbers {
 	margin-bottom: 0;
 	padding-top: 2em;
 	padding-bottom: 2em;
-	@media (min-width: $lg-min) {
+	@media ( $md-max < width ) {
 		padding-top: 2.5em;
 		padding-bottom: 2.5em;
 	}
-	@media (min-width: $xl-min) {
+	@media ( $lg-max < width ) {
 		padding-top: 3em;
 		padding-bottom: 3em;
 	}
@@ -1091,7 +1091,7 @@ p.no-comments {
 	line-height: 1.6em;
 }
 
-@media screen and (max-width: $xs-max) {
+@media screen and ( width <= $xs-max ) {
 	.prBlock {
 		margin-bottom: 1.5em;
 	}

@@ -155,7 +155,7 @@ iframe {
 		border: none;
 	}
 }
-@media (max-width: 575.98px) {
+@media ( width <= $xs-max ) {
 	.w3eden {
 		.media {
 			display: block !important;
