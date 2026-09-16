@@ -142,7 +142,26 @@
 	// :where() で包まないのは、読み込み順に依存させず詳細度で確実に勝たせるため。
 	// Swiper 側と同値の (0,1,0) まで落とすと、どちらが先に出力されるかで結果が変わる。
 	// .ltg-slide への限定は目的上そもそも必要で、(0,2,0) はその帰結。
+	//
+	// 塗りとサイズをカスタムプロパティの指定（ltg-g3-slider/config.php）だけに頼らず、
+	// ここで実際のプロパティとして当て直している。VK Blocks Pro が
+	// `.swiper-pagination-bullet`（詳細度 (0,1,0)・`.vk_slider` に限定していない）へ
+	// `background-color` `width` `height` `border-radius` `opacity` を直接指定しており、
+	// ページ内のすべての Swiper のドットに効くため。
+	// カスタムプロパティは Swiper 自身のルール（同じ (0,1,0)）の中でしか読まれず、
+	// そのルールは後から読み込まれる VK Blocks Pro 側にソース順で負ける。結果、
+	// Lightning 側が値を指定しても塗りと形が VK Blocks Pro のもの（灰色の横長バー）になり、
+	// アクティブなドットだけが非アクティブより細い中途半端な見た目になっていた。
+	//
+	// 値そのものはカスタムプロパティから読んでいるので、指定の出どころは config.php のまま
+	// 1 か所に保たれる。ここで増やしているのは「どの詳細度で当てるか」だけ。
 	.swiper-pagination-bullet {
+		width: var(--swiper-pagination-bullet-width, var(--swiper-pagination-bullet-size, 8px));
+		height: var(--swiper-pagination-bullet-height, var(--swiper-pagination-bullet-size, 8px));
+		border-radius: 50%;
+		background-color: var(--swiper-pagination-bullet-inactive-color, #fff);
+		opacity: var(--swiper-pagination-bullet-inactive-opacity, 1);
+
 		// アクティブなドットは常に 1 個なので列の総幅は変わらず、切り替わるときに動くのは
 		// 入れ替わる 2 個の境界だけ（縮む側の右端と伸びる側の左端が 14px ずつ）。
 		// それでも 0ms だと一段跳びのガタつきに見えるため、幅の変化を補間して
@@ -156,6 +175,8 @@
 		&-active {
 			width: calc(var(--swiper-pagination-bullet-width, var(--swiper-pagination-bullet-size, 8px)) * 2.75);
 			border-radius: calc(var(--swiper-pagination-bullet-height, var(--swiper-pagination-bullet-size, 8px)) / 2);
+			background-color: var(--swiper-pagination-color, #fff);
+			opacity: 1;
 		}
 	}
 }
