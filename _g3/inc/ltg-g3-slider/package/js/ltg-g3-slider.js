@@ -27,10 +27,30 @@
 		window[ opt.instance ] = swiper;
 	}
 
+	// autoplay モジュールが無い場合は、停止も状態の同期もできないのでここで終了.
+	if ( ! swiper.autoplay ) {
+		return;
+	}
+
+	/*
+	 * OS の「動きを減らす」設定が有効な環境では、自動再生を止めた状態で表示する。
+	 * 判定は初期状態のみで、OS 設定の途中変更には追従しない
+	 * （閲覧者がボタンで再生を選んだあとに OS 設定で覆すのは明示操作の上書きになるため）。
+	 *
+	 * ボタンの有無より前に判定する。OS の設定は閲覧者の意思表示なので、
+	 * サイト側がフィルターでボタンを外していても尊重する必要がある。
+	 * ボタンが無ければ再生に戻す手段も無くなるが、矢印とページネーションは
+	 * ボタンとは無関係に出力されるため、閲覧者は手動で全スライドを見られる。
+	 * この判定をボタンの early return より後ろに移動しないこと。
+	 */
+	if ( window.matchMedia && window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches ) {
+		swiper.autoplay.stop();
+	}
+
 	var toggle = sliderEl.querySelector( '.ltg-slide-autoplay-toggle' );
 
-	// ボタンが無い（スライド1枚・フィルターで無効化）場合や autoplay モジュールが無い場合はここで終了.
-	if ( ! toggle || ! swiper.autoplay ) {
+	// ボタンが無い（スライド1枚・フィルターで無効化）場合は、以降のボタン制御は不要.
+	if ( ! toggle ) {
 		return;
 	}
 
@@ -51,15 +71,6 @@
 	function syncToggle( isPlaying ) {
 		stopSet.hidden  = ! isPlaying;
 		startSet.hidden = isPlaying;
-	}
-
-	/*
-	 * OS の「動きを減らす」設定が有効な環境では、自動再生を止めた状態で表示する。
-	 * 判定は初期状態のみで、OS 設定の途中変更には追従しない
-	 * （閲覧者がボタンで再生を選んだあとに OS 設定で覆すのは明示操作の上書きになるため）。
-	 */
-	if ( window.matchMedia && window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches ) {
-		swiper.autoplay.stop();
 	}
 
 	// ボタンを表示する前に状態を確定させる（表示後に化けるちらつきを防ぐ）.
