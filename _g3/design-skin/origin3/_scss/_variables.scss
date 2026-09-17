@@ -1,9 +1,9 @@
-$xs-max: 575.98px;
-$sm-max: 767.98px;
-$md-max: 991.98px;
-$lg-max: 1199.98px;
-
-$sm-min: 576px;
-$md-min: 768px;
-$lg-min: 992px;
-$xl-min: 1200px;
+// ブレークポイント
+// -----------------------------------------------------------------------------
+// 各変数はその画面区分の「最大値」。上限側は width <= 、下限側は $変数 < で比較する。
+// 例) スマホ: ( width <= $xs-max ) / タブレット: ( $xs-max < width <= $md-max ) / PC: ( $md-max < width )
+$xs-max: 576px;
+$sm-max: 768px;
+$md-max: 992px;
+$lg-max: 1200px;
+$xl-max: 1400px;

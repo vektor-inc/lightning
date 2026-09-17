@@ -11,6 +11,7 @@
 @import "@bootstrap/functions";
 @import "variables";
 @import "@bootstrap/mixins";
+@import "breakpoints";  // メディアクエリを range 構文へ揃える（multi-repo-tasks#41）
 @import "@bootstrap/root";
 @import "@bootstrap/reboot";
 @import "@bootstrap/type";

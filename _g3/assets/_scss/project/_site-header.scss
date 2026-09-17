@@ -17,7 +17,7 @@ $logo_bottom_margin:1rem;
         //  display:block; 
         //  overflow:hidden;
         // }
-        @media ( max-width: $md-max ){
+        @media ( width <= $md-max ){
             /* 
             margin-top にするとヘッダー背景に着色した場合にヘッダーの上に余白が貫通してしまう
             ※ 親要素に overflow:hidden; を指定すれば突き抜けないが、
@@ -30,7 +30,7 @@ $logo_bottom_margin:1rem;
                 max-height:50px;
             }
         } 
-        @media ( min-width: $lg-min ){
+        @media ( $md-max < width ){
             text-align: left;
             /* 
             margin-top にするとヘッダー背景に着色した場合にヘッダーの上に余白が貫通してしまう
@@ -55,7 +55,7 @@ $logo_bottom_margin:1rem;
     }
     // モバイルの時にヘッダーの高さを正しく検出しない対策
     &-container{
-        @media (max-width: $md-max) {
+        @media ( width <= $md-max ) {
             display: block;
             overflow: hidden;
         }
@@ -68,14 +68,14 @@ $logo_bottom_margin:1rem;
 		margin-left:auto;
 		margin-right:auto;
 	}
-    @media ( min-width: $lg-min ){
+    @media ( $md-max < width ){
         .site-header-logo {
             text-align: center;
         }
     }
 }
 .site-header--layout--nav-float {
-    @media ( min-width: $lg-min ){
+    @media ( $md-max < width ){
         .site-header-container {
             display: flex;
             flex-direction: row;
@@ -95,7 +95,7 @@ $logo_bottom_margin:1rem;
 }
 
 .site-header--layout--sub-active {
-    @media ( min-width: $lg-min ){
+    @media ( $md-max < width ){
         .site-header-logo {
             float:left;
         }
@@ -111,7 +111,7 @@ $logo_bottom_margin:1rem;
 	float: right;
 	display: flex;
 	padding-left:2em;
-	@media (max-width: 991px) {
+	@media ( width <= $md-max ) {
 		display: none;
 	}
 	.contact-txt {

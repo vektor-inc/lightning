@@ -46,10 +46,10 @@
 	}
 }
 
-@media (max-width: $md-max) {
+@media ( width <= $md-max ) {
 	.navbar-header {
 		float: none;
-	} /* (max-width: $md-max) の外に出すと初期設定のfloat:leftに負ける */
+	} /* ( width <= $md-max ) の外に出すと初期設定のfloat:leftに負ける */
 	.siteHeader_logo {
 		font-size: 1.6rem;
 		float: inherit;
@@ -65,7 +65,7 @@
 	}
 }
 
-@media (min-width: 992px) {
+@media ( $md-max < width ) {
 	.siteHeader .container {
 		padding-top: 16px;
 		padding-bottom: 14px;
@@ -74,4 +74,4 @@
 	.siteHeader_logo img {
 		max-height: 50px;
 	}
-} // @media (min-width: 992px) {
+} // @media ( $md-max < width ) {

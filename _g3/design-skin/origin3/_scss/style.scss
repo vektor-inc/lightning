@@ -28,7 +28,7 @@ body {
 }
 .footer-nav {
     border-bottom:1px solid var(--vk-color-border-hr);
-    @media ( max-width: $sm-max ){
+    @media ( width <= $sm-max ){
         border-bottom:none;
     }
 }
@@ -39,7 +39,7 @@ body {
     li {
         border-right:1px solid var(--vk-color-border);
     }
-    @media ( max-width: $sm-max ){
+    @media ( width <= $sm-max ){
 		li:first-child{
         	border-left:none;
 		}

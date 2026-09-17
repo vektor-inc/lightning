@@ -8,7 +8,7 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 
 *************************************/
 
-@media (max-width: $lg-max) {
+@media ( width <= $lg-max ) {
 	.siteHeader_logo {
 		width: 100%;
 		text-align: center;
@@ -31,7 +31,7 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 	}
 }
 
-@media (min-width: $xl-min) {
+@media ( $lg-max < width ) {
 	.siteHeader_logo {
 		float: left;
 	}

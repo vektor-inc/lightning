@@ -21,13 +21,13 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 /*-------------------------------------------*/
 .siteContent {
 	padding: 2rem 0 2rem;
-	@media (min-width: $md-min) {
+	@media ( $sm-max < width ) {
 		padding: 2.5rem 0 2.5rem;
 	}
-	@media (min-width: $lg-min) {
+	@media ( $md-max < width ) {
 		padding: 3rem 0 3.5rem;
 	}
-	@media (min-width: $xl-min) {
+	@media ( $lg-max < width ) {
 		padding: 3.5rem 0 4rem;
 	}
 	.page-template-page-lp-builder &,
@@ -60,13 +60,13 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 	& > div:last-child {
 		margin-bottom: 0;
 	}
-	@media (max-width: $md-max) {
+	@media ( width <= $md-max ) {
 		width: 100%;
 		flex-basis: unset;
 	}
 }
 
-@media (min-width: $lg-min) {
+@media ( $md-max < width ) {
 	.mainSection-col-two {
 		width: 66.66667%;
 		float: left;
@@ -101,7 +101,7 @@ mainSection だけにしているのはサブセクションが下に配置さ�
 	&-marginBottom-on {
 		margin-bottom: 3rem;
 	}
-	@media (max-width: $md-max) {
+	@media ( width <= $md-max ) {
 		margin-bottom: 2rem;
 	}
 	&.mainSection-marginVertical-off {

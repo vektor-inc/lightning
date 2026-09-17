@@ -5,7 +5,7 @@
 /*-------------------------------------------*/
 
 .global-nav {
-	@media (max-width: $md-max) {
+	@media ( width <= $md-max ) {
 		display: none;
 	}
 	// width:100%があるとスクロール時に 中央揃えにならない
@@ -116,7 +116,7 @@
 				&.menu-item-has-children > a {
 					padding: $menu_padding_vertical $menu_padding_horizontal;
 				}
-				@media (min-width: $lg-min) {
+				@media ( $md-max < width ) {
 					ul.sub-menu li {
 						a{ 
 							padding-left: 2.2em;

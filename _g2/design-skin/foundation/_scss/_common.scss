@@ -33,7 +33,7 @@ body {
 	font-size: 14px;
 }
 
-@media (min-width: $lg-min) {
+@media ( $md-max < width ) {
 	html,
 	body {
 		font-size: 16px;
@@ -61,7 +61,7 @@ img {
 
 p {
 	line-height: 1.7;
-	@media (min-width: $md-min) {
+	@media ( $sm-max < width ) {
 		line-height: 1.9;
 	}
 	margin-bottom: $margin_bottom;

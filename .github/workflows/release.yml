@@ -10,9 +10,9 @@ jobs:
         name: Smoke Test
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v4
+            - uses: actions/checkout@v7
             - name: Setup Node.js
-              uses: actions/setup-node@v4
+              uses: actions/setup-node@v7
               with:
                   node-version: 20.x
                   cache: npm
@@ -34,7 +34,7 @@ jobs:
             - name: Create dist
               run: npm run dist
             - name: Upload dist artifact
-              uses: actions/upload-artifact@v4
+              uses: actions/upload-artifact@v7
               with:
                   name: dist
                   path: dist/
@@ -53,9 +53,9 @@ jobs:
         runs-on: ubuntu-latest
         needs: [smoke_test]
         steps:
-            - uses: actions/checkout@v4
+            - uses: actions/checkout@v7
             - name: Setup Node.js
-              uses: actions/setup-node@v4
+              uses: actions/setup-node@v7
               with:
                   node-version: 20.x
                   cache: npm
@@ -77,7 +77,7 @@ jobs:
             - name: Install Composer Packages
               run: composer install
             - name: Download dist artifact
-              uses: actions/download-artifact@v4
+              uses: actions/download-artifact@v8
               with:
                   name: dist
                   path: dist/
@@ -108,13 +108,13 @@ jobs:
             contents: write
         steps:
             - name: Download dist artifact
-              uses: actions/download-artifact@v4
+              uses: actions/download-artifact@v8
               with:
                   name: dist
                   path: dist/
             - name: Create Release
               # softprops/action-gh-release v2.6.1 / v2
-              uses: softprops/action-gh-release@153bb8e04406b158c6c84fc1615b65b24149a1fe
+              uses: softprops/action-gh-release@efb35369e0ad2afab669f228072c1b0d510eae64
               with:
                   generate_release_notes: true
                   files: dist/${{ env.theme_name }}.zip

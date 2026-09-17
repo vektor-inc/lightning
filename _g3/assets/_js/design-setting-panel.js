@@ -26,7 +26,7 @@ var LightningDesignSettingPanel = function() {
 		setMeta(nm);
 	};
 	return createElement(PluginDocumentSettingPanel,
-		{name: 'lightning-design-setting', title: i18n.panelTitle || 'Lightning design setting'},
+		{name: 'lightning-design-setting', className: 'lightning-design-setting-panel lightning-editor-panel', title: i18n.panelTitle || 'Lightning design setting'},
 		createElement(SelectControl, {
 			label: i18n.layoutSetting || 'Layout setting',
 			value: layout,
@@ -37,12 +37,14 @@ var LightningDesignSettingPanel = function() {
 				{label: i18n.col1Sidebar || '1 column (with sidebar element)', value: 'col-one'},
 			],
 			onChange: function(v) { update('layout', v); },
+			__nextHasNoMarginBottom: true,
 		}),
-		createElement('h4', {style: {marginTop: '16px', marginBottom: '8px'}}, i18n.paddingMargin || 'Padding and margin setting'),
+		createElement('h4', {className: 'lightning-design-setting-panel__group-title'}, i18n.paddingMargin || 'Padding and margin setting'),
 		createElement(CheckboxControl, {
 			label: i18n.deletePadding || 'Delete site-body padding',
 			checked: siteBodyPadding,
 			onChange: function(c) { update('site_body_padding', c ? 'true' : ''); },
+			__nextHasNoMarginBottom: true,
 		})
 	);
 };

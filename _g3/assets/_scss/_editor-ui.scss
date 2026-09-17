@@ -1,0 +1,215 @@
+// エディタ／管理画面 UI（操作パネル類）の補正を置く。編集キャンバスの中身（common.scss の補正）は _common-editor.scss へ。
+// G3 には common.scss がキャンバス内（.editor-styles-wrapper 配下）でしか読み込まれず UI 側へ漏れないため、
+// G2 の block/_block_editor.scss のような「打ち消し」ではなく、UI の補正専用にこのファイルを置いている。
+.interface-interface-skeleton__secondary-sidebar{
+	table {
+		border:none;
+		th,td {
+			border:none;
+			padding:reset;
+		}
+	}
+}
+// 見出しデザインのリセット ////////////////
+// メディアアップロードのポップアップなど
+.editor-post-publish-panel,
+.components-tab-panel__tab-content,
+.media-modal {
+	h2 {
+		border:none;
+		padding:unset;
+	}
+}
+// テーブルデザインのリセット
+table.CalendarMonth_table td {
+    padding: 0;
+    border:none;
+}
+
+//common.scssで編集画面のCSSが打ち消されるので以下追加
+.interface-interface-skeleton__sidebar{
+    font-size: 13px;
+}
+.components-datetime__time-field-day-input[type=number],
+.components-datetime__time-field-hours-input[type=number],
+.components-datetime__time-field-minutes-input[type=number] {
+    width: 35px;
+}
+// カスタマイズ画面にまで公開の input が適用されて padding が余計についてしまうので調整
+.wp-full-overlay-sidebar-content {
+    input[type=date], input[type=email], input[type=number], input[type=tel], input[type=text], input[type=url], select, textarea {
+        padding:.2em .5em;
+    }
+}
+
+// 単位選択のプルダウン WP6.0調整上書き
+.components-unit-control__select {
+	margin-bottom:0;
+}
+// 長い単位に対応
+.components-base-control .components-input-control__container select.components-unit-control__select {
+	max-width: 38px;
+	padding-left:0;
+	padding-right:0;
+}
+.components-base-control .components-input-control__container input.components-input-control__input {
+	padding-left:8px;
+}
+
+// URL入力欄のフォーム WP6.0調整上書き
+input[type="text"].block-editor-media-placeholder__url-input-field{
+	width:unset;
+	margin:0;
+	border-radius: unset;
+	padding: 0.5em;
+}
+
+// フルスクリーンモードじゃない場合、「メニューを閉じる」の文字が大きくなるので補正
+#adminmenu{
+	.collapse-button-label {
+		font-size:14px;
+	}
+}
+
+/* ==========================================================================
+   Lightning デザイン設定パネルの余白
+   ========================================================================== */
+
+// WP 7.0 で SelectControl / CheckboxControl など BaseControl 系コンポーネントが既定で持っていた
+// margin-bottom が廃止され、このパネルの項目間の余白が失われたため、Lightning 側で明示的に管理する。
+// サイドバー幅は狭いため、他プラグインのパネルへ影響しないよう .lightning-design-setting-panel 配下に限定する。
+// G2 では打ち消し元の隣（_g2/assets/_scss/block/_block_editor.scss）に置いているが、G3 にはエディタ UI の
+// 打ち消し・補正専用ファイルとしてこの _editor-ui.scss を置いているため、ここに置いている。
+.lightning-design-setting-panel {
+
+	// h4 は直下グループのラベル: 直上（グループ間）は広く、直下の最初のコントロール（グループ内）は狭く
+	// G2 側に .components-panel h3,h4{margin-top:1em;margin-bottom:.5em}（詳細度 0,1,1）が既存で存在し負けるため、
+	// クラス2つで詳細度 0,2,0 を確保する（子孫結合子で自身を再指定）。G3 は現状競合しないが値をG2と揃える
+	.lightning-design-setting-panel__group-title {
+		margin-top: 24px;
+		margin-bottom: 8px;
+	}
+
+	// 現行のG2/G3構成では先頭コントロールが常にSelectControlのため、このルールは一致しない（デッドルール）。
+	// レイアウト設定グループの削除・順序入替で見出しが先頭に来た場合に備えた保険として残す。
+	.components-panel__body-title + .lightning-design-setting-panel__group-title {
+		margin-top: 0;
+	}
+
+	// 同じグループ内でチェックボックスが複数並ぶ場合、選択肢どうしの間隔を明示指定する
+	.components-checkbox-control + .components-checkbox-control {
+		margin-top: 12px;
+	}
+}
+
+/* ==========================================================================
+   エディターパネル共通の余白（連携プラグイン向け）
+   ========================================================================== */
+
+// .lightning-design-setting-panel は Lightning 自身のデザイン設定パネル専用のクラスで、見た目の意味も
+// 密結合している。上の既存ルールには手を入れず、別に汎用クラス .lightning-editor-panel を用意し、
+// 連携プラグイン（Lightning G3 Pro Unit 等）のパネルへも同じ余白の値をテーマ側から配れるようにする。
+// この汎用クラスを付けたパネルは、見出しの下余白を含めて Lightning 側が管理する契約になる。
+// プラグイン側で個別に margin を足す逃げ道は無い（足すとここでのマージン相殺の前提が崩れる）。
+//
+// 段階は上と同じ 8px（グループ内・従属関係にあるペア）/ 12px（選択肢どうし）/
+// 24px（グループ境界。見出しを挟まない、独立した設定項目どうしの区切りにもこの値を使う）の3段階のみ。
+//
+// ★詳細度について: セレクタは `.lightning-editor-panel.lightning-editor-panel` とクラスを2つ重ねて
+// 詳細度 (0,2,0) を確保している。G2 側には `.components-panel h3,h4{margin-top:1em;margin-bottom:.5em}`
+// （詳細度 0,1,1。_block_editor.scss 冒頭の打ち消し）が既存で存在し、汎用クラス側が (0,1,0) のままだと
+// これに負けて、汎用クラスだけを付けた他プラグインの見出しが 24px ではなく 1em（14px）、
+// margin-bottom も 0 ではなく .5em（7px）のまま残ってしまう。G3 にはこの打ち消しが無いため素の (0,1,0)
+// でも問題ないが、G2/G3 で同じ SCSS を保ち同じ結果にするため、両方とも (0,2,0) に揃えている。
+//
+// ★マージン相殺への対処: 隣接要素の余白は詳細度で勝った側ではなく上下マージンの大きい方に相殺されるため、
+// 8px / 12px / 24px の実際の値はすべて「後続要素の margin-top」側に統一する。あわせて見出し自身の
+// margin-bottom は 0 にリセットする。連携プラグイン側の見出しが wp-admin 標準の h4{margin:1.33em 0}
+// （約17px）など Lightning が管理していない margin-bottom を持ったままだと、その値と後続要素の
+// margin-top:8px が相殺され 8px より広がってしまうため、汎用クラス側で 0 に統一し、8px という値
+// そのものは常に margin-top 側だけが持つようにする。
+//
+// 上の .lightning-design-setting-panel__group-title（h4）に対しては、この詳細度統一の副作用で
+// 次の2種類の関係が生まれる。詳細度がタイになった場合は SCSS のソース順で後に書かれた方（このブロック）
+// が勝つ。
+//   - margin-top（24px）: 既存側も汎用側も同じ 24px のため、どちらが勝っても見た目は変わらない
+//   - margin-bottom: 既存側は 8px を指定しているが、詳細度がタイのため後勝ちで汎用側の 0 が実際には
+//     採用される。これは意図した挙動で、8px という値は下の「見出し⇄直下の最初のコントロール」ルールが
+//     後続要素の margin-top 側で保証するため、見出し自身の margin-bottom が 0 になっても
+//     max(0, 8px) = 8px のまま変わらない
+//
+// ★宣言順への依存（壊れやすい点）: 下の「既定値（24px）」ルールと「見出し⇄直下の最初のコントロール
+// （8px）」ルールは、どちらも詳細度が (0,2,0) で同一のため、SCSS 内でのソース順（後に書かれた方が勝つ）
+// だけで 8px を優先させている。同様に「パネルの見出しボタン直後（0）」ルールも既定値とは別の対象
+// （見出しボタン自身ではなく、その直後の要素）に対する詳細度 (0,3,0) の上書きだが、これも既定値より
+// 後に書く前提で成立している。このブロック内の宣言順を入れ替えたり、間に別の詳細度 (0,2,0) のルールを
+// 挟んだりすると、8px 側が既定値の 24px に負けて静かに壊れる。変更時はこの順序を保つこと。
+// この宣言順への依存は CSS の圧縮設定にも依存する。gulpfile.mjs の cleanCss() は引数なしの呼び出しで
+// 圧縮の既定レベル（level 1）になっており、level 1 はルールの並べ替え・統合を行わないため現状は安全
+// だが、level を上げるとルールが統合・移動されうるため、このソース順に依存した設計が壊れる。
+
+// ★入れ子パネルへの影響: 詳細度を (0,2,0) へ上げた副作用として、上の既定値ルール（> * + *）は
+// WordPress コア側の「パネルどうしが隣り合うときに境界線を重ねて詰める指定」
+// （.components-panel__body + .components-panel__body { margin-top: -1px }、詳細度 0,2,0）と
+// 詳細度が同点になった。Lightning の CSS はコアより後に読まれるため Lightning 側が勝つ。つまり、
+// 汎用クラスを付けたパネルの直下にさらにパネル（.components-panel__body）を入れ子にした場合、
+// コア本来の詰め表示（-1px）が効かず 24px になる。Lightning 自身のパネルは入れ子にしていないため
+// 現状は影響ないが、直下の子にパネルを入れ子にする場合はこの点に注意すること。
+//
+// 補足文（help テキスト）についての定義: コントロールとそれに従属する補足文の間隔も 8px の対象と定義する。
+// ただし Lightning 自身のパネルには補足文を使っている箇所が現状無く、実物の HTML 構造が無い状態で
+// セレクタを書いても検証できないため、今回はセレクタを追加しない（定義のみ明記）。
+.lightning-editor-panel.lightning-editor-panel {
+
+	// 既定値: 直下の子要素どうしの区切りはグループ境界（24px）。
+	// 見出しを挟まない、独立した設定項目どうしの区切りにもこの値を使う。
+	> * + * {
+		margin-top: 24px;
+	}
+
+	// パネルの見出しボタン（.components-panel__body-title）の直後は、パネル自体の余白の管轄外のため
+	// 上の既定値（24px）を打ち消す。パネル見出しは h2 のため、下の「見出し⇄直下の最初のコントロール
+	// （8px）」ルールのセレクタ（h2〜h6 + *）にも一致しており、このルールはその 8px も同時に打ち消して
+	// いる。つまりこのルールは既定値の 24px と、下の見出しルールの 8px の両方を打ち消している
+	// （このルールを外したり弱めたりすると、パネルタイトル直下が静かに 8px になる）。
+	// クラス3つ（0,3,0）で既定値（0,2,0）に確実に勝つ。
+	> .components-panel__body-title + * {
+		margin-top: 0;
+	}
+
+	// 見出し（グループ内ラベル）自身の margin-bottom は 0 に固定する。理由は上の★コメントを参照。
+	// ただし Gutenberg のパネル見出し本体（<h2 class="components-panel__body-title">）は除外する。
+	// 除外しないと、WP コア側の .components-panel__body > .components-panel__body-title（詳細度
+	// 0,2,0）と詳細度が完全に同点になり、どちらが勝つかがスタイルシートの読み込み順という不確実な
+	// 要因に左右されてしまう（パネルタイトル自体の余白を意図せず潰しかねない）。:where() で包んで
+	// 除外自体の詳細度は 0 のまま保つ。
+	> :where(h2, h3, h4, h5, h6):where(:not(.components-panel__body-title)) {
+		margin-bottom: 0;
+	}
+
+	// 見出し（グループ内ラベル）⇄ 直下の最初のコントロールは従属関係にあるペアのため 8px へ狭める。
+	// Lightning 固有のクラス名（__group-title）に依存せず、見出しタグ（h2〜h6）で汎用的に判定する。
+	// 詳細度は既定値と同じ (0,2,0)。宣言順で後勝ちさせている点は上の★コメントを参照。
+	> :where(h2, h3, h4, h5, h6) + * {
+		margin-top: 8px;
+	}
+
+	// 同じグループ内でチェックボックスが複数並ぶ場合、選択肢どうしの間隔は 12px へ狭める。
+	// ToggleControl（オン/オフの切り替えスイッチ）は選択肢の並びではなく独立した設定項目として扱うため、
+	// ここに含めない（既定の 24px のまま）。含めるとトグル単体の項目が「選択肢の一部」に見えてしまうため。
+	// RadioControl も同じ理由で対象に含めない。WordPress の RadioControl は選択肢の配列を1つの
+	// コンポーネントへまとめて渡す設計で、1つの .components-radio-control の中に選択肢
+	// （.components-radio-control__option）が複数入る。つまり隣り合う2つの .components-radio-control は
+	// 「選択肢どうし」ではなく独立した2つの設定項目であり、ToggleControl と同じ「1コントロール＝
+	// 1設定項目」に該当する。本当に選択肢どうしを対象にするなら .components-radio-control__option
+	// どうしを対象にする必要があるが、それはパネル直下ではなくコンポーネント内部へ踏み込むことになり、
+	// Lightning にも Pro Unit にも実例が無く検証できない。補足文（help テキスト）のセレクタを
+	// 見送ったのと同じ理屈で、今回はセレクタを追加しない。
+	// なお「12px = チェックボックス・ラジオの選択肢どうし」という定義自体はこの issue が確定させたもの
+	// のため変えない。ここで見送っているのはセレクタの実装のみで、実物の構造で検証できるようになった
+	// タイミングで .components-radio-control__option 側のセレクタを追加する余地を残す。
+	// 詳細度はクラス4つ（0,4,0）で上の見出し規則・既定値のどちらにも確実に勝つ。
+	> .components-checkbox-control + .components-checkbox-control {
+		margin-top: 12px;
+	}
+}

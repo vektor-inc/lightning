@@ -66,16 +66,16 @@ html :where(.wp-block) {
 	.container {
 		padding:0;
 		max-width:var(--vk-width-editor-container);
-		@media (min-width: 576px) {
+		@media ( $xs-max < width ) {
 			max-width:var(--vk-width-editor-container);
 		}
-		@media (min-width: 768px) {
+		@media ( $sm-max < width ) {
 			max-width:var(--vk-width-editor-container);
 		}
-		@media (min-width: 992px){
+		@media ( $md-max < width ){
 			max-width:var(--vk-width-editor-container);
 		}
-		@media (min-width: 1200px) {
+		@media ( $lg-max < width ) {
 			max-width:var(--vk-width-editor-container);
 		}
 	}

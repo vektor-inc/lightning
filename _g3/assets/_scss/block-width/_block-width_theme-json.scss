@@ -38,11 +38,11 @@
  // コアが .alignwide に対して margin auto !important を入れてくるので上書き。
  // （通常幅グループの中に幅広を入れると右に寄ってしまうのを補正）
  // グループブロックに padding をつけられた場合はコアが該当ブロックに対して padding 分を引いた値でマイナスオフセットなどしてくるが、処理しきれないためサポートしない
- .is-layout-constrained:where(:not(.alignfull):not(.alignwide)) > .alignwide{
+ .is-layout-constrained:where(:not(.alignfull):not(.alignwide)) > .alignwide:where(:not( [class*="section--base--on"] .alignwide )){
 	margin-left: calc( ( var(--vk-width-container-body) - var(--vk-width-full) ) / 4 ) !important;
 	margin-right: calc( ( var(--vk-width-container-body) - var(--vk-width-full) ) / 4 ) !important;
 }
- .is-layout-constrained:where(:not(.alignfull):not(.alignwide)) > .alignfull{
+ .is-layout-constrained:where(:not(.alignfull):not(.alignwide)) > .alignfull:where(:not( [class*="section--base--on"] .alignfull )){
 	margin-left: calc( ( var(--vk-width-container-body) - var(--vk-width-full) ) / 2 ) !important;
 	margin-right: calc( ( var(--vk-width-container-body) - var(--vk-width-full) ) / 2 ) !important;
 }

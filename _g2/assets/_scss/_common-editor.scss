@@ -1,3 +1,6 @@
+// 編集領域（.editor-styles-wrapper / .wp-block）の中身に対する補正のみを置く。
+// エディタ UI（操作パネル類）の指定は書かない。G2 は common.scss をトップレベルで読み込むため
+// 打ち消しが必要で block/_block_editor.scss に置いている（G3 は _editor-ui.scss）。
 .editor-styles-wrapper{
 	padding:0;
 	ul,
@@ -24,29 +27,4 @@ html :where(.editor-styles-wrapper){
 html :where(.wp-block) {
 	margin-top:0;
 	margin-bottom:0;
-}
-
-.interface-interface-skeleton__secondary-sidebar{
-	table {
-		border:none;
-		th,td {
-			border:none;
-			padding:reset;
-		}
-	}
-}
-// 見出しデザインのリセット ////////////////
-// メディアアップロードのポップアップなど
-.editor-post-publish-panel,
-.components-tab-panel__tab-content,
-.media-modal {
-	h2 {
-		border:none;
-		padding:unset;
-	}
-}
-// テーブルデザインのリセット
-table.CalendarMonth_table td { 
-    padding: 0; 
-    border:none;
 }

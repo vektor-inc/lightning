@@ -26,7 +26,13 @@ if ( $post->ancestors ) {
 }
 
 if ( $ancestor_post_id ) {
-	$children = wp_list_pages( 'title_li=&child_of=' . $ancestor_post_id . '&echo=0' );
+	$children = wp_list_pages(
+		array(
+			'title_li' => '',
+			'child_of' => $ancestor_post_id,
+			'echo'     => false,
+		)
+	);
 	if ( $children ) { ?>
 			<aside class="widget widget_link_list">
 			<h4 class="sub-section-title"><a href="<?php echo esc_url( get_permalink( $ancestor_post_id ) ); ?>"><?php echo get_the_title( $ancestor_post_id ); ?></a></h4>

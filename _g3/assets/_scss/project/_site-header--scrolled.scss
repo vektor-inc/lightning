@@ -34,7 +34,7 @@
     .site-header {
         background-color: var(--vk-color-header-bg);
     }
-    @media (min-width: $lg-min) {
+    @media ( $md-max < width ) {
         .site-header {
             clear: both;
             z-index: 1000;
@@ -62,7 +62,7 @@
         }
     }
     &.admin-bar .site-header {
-        @media (min-width: $lg-min) {
+        @media ( $md-max < width ) {
             animation: header_drop_admin 0.5s ease-out 0s 1 alternate none running;
         }
 	}
