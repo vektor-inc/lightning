@@ -199,12 +199,30 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 		/**
 		 * 自動再生の停止・再生ボタンを出力するかどうか
 		 *
-		 * 「表示しない」という設定は用意せず、開発者が明示的に外す場合のみフィルターで無効化できるようにしている.
+		 * カスタマイザーの設定値を優先し、保存されていない場合は
+		 * lightning_top_slide_autoplay_toggle_default() の判定（新規サイトは表示・
+		 * 既存サイトは非表示）を既定値として使う.
+		 * 最後にフィルターを通し、開発者が設定値に関わらず上書きできるようにしている.
+		 *
+		 * 既定値をここでも解決しているのは、カスタマイザーは変更した設定だけを保存するため、
+		 * 運営者が一度もこの設定を触っていないサイトではキー自体が存在しないため.
 		 *
 		 * @return bool 出力する場合は true.
 		 */
 		public static function is_autoplay_toggle_display() {
-			return (bool) apply_filters( 'lightning_top_slide_autoplay_toggle_display', true );
+
+			// 既定値とマージする前の生データを見る（マージ後は未保存でもキーが存在してしまうため）.
+			$options = get_option( 'lightning_theme_options' );
+
+			if ( is_array( $options ) && array_key_exists( 'top_slide_autoplay_toggle_display', $options ) ) {
+				// 運営者が保存した設定値.
+				$display = ! empty( $options['top_slide_autoplay_toggle_display'] );
+			} else {
+				// 未保存の場合はサイトの状態から既定値を決める.
+				$display = lightning_top_slide_autoplay_toggle_default();
+			}
+
+			return (bool) apply_filters( 'lightning_top_slide_autoplay_toggle_display', $display );
 		}
 
 		/**
@@ -367,6 +385,29 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 						'description' => '',
 						'input_after' => __( 'millisecond', 'lightning' ),
 					)
+				)
+			);
+
+			// 自動再生の停止・再生ボタンの表示.
+			$wp_customize->add_setting(
+				'lightning_theme_options[top_slide_autoplay_toggle_display]',
+				array(
+					// 新規サイトは表示・既存サイトは非表示（既存サイトの見た目を変えないため）.
+					'default'           => lightning_top_slide_autoplay_toggle_default(),
+					'type'              => 'option',
+					'capability'        => 'edit_theme_options',
+					'sanitize_callback' => array( 'VK_Helpers', 'sanitize_checkbox' ),
+				)
+			);
+
+			$wp_customize->add_control(
+				'lightning_theme_options[top_slide_autoplay_toggle_display]',
+				array(
+					'label'       => __( 'Display the button to stop and start the automatic slide show', 'lightning' ),
+					'description' => __( 'This button is required to meet WCAG 2.1 Success Criterion 2.2.2 (Pause, Stop, Hide).', 'lightning' ) . '<br>' . __( 'If you hide it, visitors have no way to stop the slides.', 'lightning' ),
+					'section'     => 'ltg_g3_slider',
+					'settings'    => 'lightning_theme_options[top_slide_autoplay_toggle_display]',
+					'type'        => 'checkbox',
 				)
 			);
 

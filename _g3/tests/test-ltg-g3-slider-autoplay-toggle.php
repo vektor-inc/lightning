@@ -3,6 +3,7 @@
  * LTG_G3_Slider の自動再生の停止・再生ボタンのテスト
  *
  * スライド枚数（0 / 1 / 2 枚）ごとのマークアップ出力、
+ * カスタマイザー設定と既定値（新規サイト / 既存サイト）の出し分け、
  * lightning_top_slide_autoplay_toggle_display フィルターでの非表示、
  * および JS へ渡す設定値（enqueue と localize のペイロード）を検証する.
  *
@@ -19,6 +20,8 @@ class LTG_G3_Slider_Autoplay_Toggle_Test extends WP_UnitTestCase {
 	 */
 	public function tearDown(): void {
 		delete_option( 'lightning_theme_options' );
+		// 新規サイト / 既存サイトの判定結果は一度保存すると固定されるので必ず消す.
+		delete_option( 'lightning_top_slide_autoplay_toggle_default' );
 		// localize したデータは登録が残っていると次のケースに追記されるため必ず解除する.
 		wp_dequeue_script( 'ltg-g3-slider' );
 		wp_deregister_script( 'ltg-g3-slider' );
@@ -33,7 +36,15 @@ class LTG_G3_Slider_Autoplay_Toggle_Test extends WP_UnitTestCase {
 	 */
 	private function set_slider_options( $overrides = array() ) {
 		$defaults = lightning_g3_slider_default_options();
-		$options  = array_merge( $defaults, $overrides );
+
+		/*
+		 * ボタンの表示設定を明示的に保存する.
+		 * 保存しないと「スライドショーを設定済み＝既存サイト」と判定されて既定が非表示になり、
+		 * スライド枚数や localize の内容を見たいテストがボタンの既定値の影響を受けてしまう.
+		 */
+		$defaults['top_slide_autoplay_toggle_display'] = true;
+
+		$options = array_merge( $defaults, $overrides );
 		update_option( 'lightning_theme_options', $options );
 		wp_cache_flush();
 	}
@@ -240,7 +251,124 @@ class LTG_G3_Slider_Autoplay_Toggle_Test extends WP_UnitTestCase {
 	}
 
 	/**
-	 * LTG_G3_Slider::is_autoplay_toggle_display() がフィルターを反映するか
+	 * lightning_top_slide_autoplay_toggle_default() が新規サイトと既存サイトで既定値を出し分けるか
+	 *
+	 * 既にスライドショーを設定しているサイトでは、更新した途端にボタンが現れると
+	 * 運営者が意図しないデザイン変更になるため既定を非表示にする.
+	 * 判定は lightning_theme_options の生データに top_slide_ で始まるキーがあるかで行う.
+	 *
+	 * @return void
+	 */
+	public function test_lightning_top_slide_autoplay_toggle_default() {
+
+		print PHP_EOL;
+		print '------------------------------------' . PHP_EOL;
+		print 'lightning_top_slide_autoplay_toggle_default()' . PHP_EOL;
+		print '------------------------------------' . PHP_EOL;
+
+		// テストの配列（保存されているオプションの生データと、既定値の期待値）.
+		$test_cases = array(
+			array(
+				'test_condition_name' => 'オプションが保存されていない場合 => 新規サイトなので表示',
+				'conditions'          => array( 'options' => null ),
+				'expected'            => true,
+			),
+			array(
+				'test_condition_name' => 'オプションが空配列の場合 => 新規サイトなので表示',
+				'conditions'          => array( 'options' => array() ),
+				'expected'            => true,
+			),
+			array(
+				'test_condition_name' => 'スライドショー以外の設定だけが保存されている場合 => 新規サイト扱いで表示',
+				'conditions'          => array(
+					'options' => array(
+						'layout'          => 'one-column',
+						'header_gnav_use' => true,
+					),
+				),
+				'expected'            => true,
+			),
+			array(
+				'test_condition_name' => 'スライド画像が保存されている場合 => 既存サイトなので非表示',
+				'conditions'          => array(
+					'options' => array( 'top_slide_image_1' => 'http://example.com/slide1.jpg' ),
+				),
+				'expected'            => false,
+			),
+			array(
+				// 単一のキーで判定すると、そのキーだけ未変更のサイトを新規サイトと誤判定する.
+				// top_slide_time を含まない組み合わせでも既存サイトと判定できることを確認する.
+				'test_condition_name' => 'スライドショーの別のキーだけが保存されている場合 => 既存サイトなので非表示',
+				'conditions'          => array(
+					'options' => array( 'top_slide_effect' => 'fade' ),
+				),
+				'expected'            => false,
+			),
+			array(
+				// 自分自身の設定キーを判定に含めると、運営者が「表示する」で保存した瞬間に
+				// 既存サイトと判定されてしまうため、このキーは判定から除外している.
+				'test_condition_name' => 'このボタンの設定だけが保存されている場合 => 判定に含めないので表示',
+				'conditions'          => array(
+					'options' => array( 'top_slide_autoplay_toggle_display' => true ),
+				),
+				'expected'            => true,
+			),
+		);
+
+		foreach ( $test_cases as $case ) {
+
+			// 前のケースで保存された判定結果を消してから判定させる.
+			delete_option( 'lightning_top_slide_autoplay_toggle_default' );
+			delete_option( 'lightning_theme_options' );
+
+			if ( null !== $case['conditions']['options'] ) {
+				update_option( 'lightning_theme_options', $case['conditions']['options'] );
+			}
+			wp_cache_flush();
+
+			$actual = lightning_top_slide_autoplay_toggle_default();
+
+			print PHP_EOL . $case['test_condition_name'] . ' : actual = ' . var_export( $actual, true ) . PHP_EOL;
+
+			$this->assertSame( $case['expected'], $actual, $case['test_condition_name'] );
+		}
+	}
+
+	/**
+	 * lightning_top_slide_autoplay_toggle_default() の判定結果が後から反転しないか
+	 *
+	 * 新規サイトが初めてスライドを設定すると top_slide_ のキーが保存されるため、
+	 * 都度判定する実装だと運営者が何も操作していないのに既定値が表示から非表示へ変わり、
+	 * 表示されていたボタンが消えてしまう. 判定結果を保存して固定していることを確認する.
+	 *
+	 * @return void
+	 */
+	public function test_lightning_top_slide_autoplay_toggle_default_is_fixed() {
+
+		print PHP_EOL;
+		print '------------------------------------' . PHP_EOL;
+		print 'lightning_top_slide_autoplay_toggle_default() の固定' . PHP_EOL;
+		print '------------------------------------' . PHP_EOL;
+
+		delete_option( 'lightning_top_slide_autoplay_toggle_default' );
+		delete_option( 'lightning_theme_options' );
+		wp_cache_flush();
+
+		// 新規サイトとして判定させる.
+		$this->assertTrue( lightning_top_slide_autoplay_toggle_default(), '新規サイトなので表示' );
+
+		// 判定結果が保存されている.
+		$this->assertSame( '1', get_option( 'lightning_top_slide_autoplay_toggle_default' ), '判定結果が保存されている' );
+
+		// そのあとスライドショーを設定しても既定値は変わらない.
+		update_option( 'lightning_theme_options', array( 'top_slide_image_1' => 'http://example.com/slide1.jpg' ) );
+		wp_cache_flush();
+
+		$this->assertTrue( lightning_top_slide_autoplay_toggle_default(), 'スライドを設定しても既定値は反転しない' );
+	}
+
+	/**
+	 * LTG_G3_Slider::is_autoplay_toggle_display() が設定値とフィルターを反映するか
 	 *
 	 * @return void
 	 */
@@ -251,35 +379,73 @@ class LTG_G3_Slider_Autoplay_Toggle_Test extends WP_UnitTestCase {
 		print 'LTG_G3_Slider::is_autoplay_toggle_display()' . PHP_EOL;
 		print '------------------------------------' . PHP_EOL;
 
-		// テストの配列（フィルターの戻り値と、ボタンを出力するかの期待値）.
-		$test_cases = array(
-			array(
-				'test_condition_name' => 'フィルター未指定の場合 => 既定で表示する',
-				'conditions'          => array( 'filter_return' => null ),
-				'expected'            => true,
-			),
-			array(
-				'test_condition_name' => 'フィルターが true を返す場合 => 表示する',
-				'conditions'          => array( 'filter_return' => true ),
-				'expected'            => true,
-			),
-			array(
-				'test_condition_name' => 'フィルターが false を返す場合 => 表示しない',
-				'conditions'          => array( 'filter_return' => false ),
-				'expected'            => false,
-			),
+		// スライドが2枚あること（ボタンが出る条件）は全ケース共通.
+		$slides = array(
+			'top_slide_image_1' => 'http://example.com/slide1.jpg',
+			'top_slide_image_2' => 'http://example.com/slide2.jpg',
+			'top_slide_image_3' => '',
 		);
 
-		// スライド2枚（ボタンが出る条件）を設定.
-		$this->set_slider_options(
+		// テストの配列（保存されている設定値・フィルターの戻り値と、ボタンを出力するかの期待値）.
+		$test_cases = array(
 			array(
-				'top_slide_image_1' => 'http://example.com/slide1.jpg',
-				'top_slide_image_2' => 'http://example.com/slide2.jpg',
-				'top_slide_image_3' => '',
-			)
+				'test_condition_name' => '設定が未保存でスライドショーも未設定の場合 => 新規サイトの既定で表示する',
+				'conditions'          => array(
+					'options'       => array(),
+					'filter_return' => null,
+				),
+				'expected'            => true,
+			),
+			array(
+				'test_condition_name' => '設定が未保存でスライドショーが設定済みの場合 => 既存サイトの既定で表示しない',
+				'conditions'          => array(
+					'options'       => $slides,
+					'filter_return' => null,
+				),
+				'expected'            => false,
+			),
+			array(
+				'test_condition_name' => 'カスタマイザーで表示するを保存した場合 => 表示する',
+				'conditions'          => array(
+					'options'       => array_merge( $slides, array( 'top_slide_autoplay_toggle_display' => true ) ),
+					'filter_return' => null,
+				),
+				'expected'            => true,
+			),
+			array(
+				'test_condition_name' => 'カスタマイザーで表示しないを保存した場合 => 表示しない',
+				'conditions'          => array(
+					'options'       => array_merge( $slides, array( 'top_slide_autoplay_toggle_display' => false ) ),
+					'filter_return' => null,
+				),
+				'expected'            => false,
+			),
+			array(
+				'test_condition_name' => 'カスタマイザーは表示するがフィルターが false を返す場合 => フィルターが優先されて表示しない',
+				'conditions'          => array(
+					'options'       => array_merge( $slides, array( 'top_slide_autoplay_toggle_display' => true ) ),
+					'filter_return' => false,
+				),
+				'expected'            => false,
+			),
+			array(
+				'test_condition_name' => 'カスタマイザーは表示しないがフィルターが true を返す場合 => フィルターが優先されて表示する',
+				'conditions'          => array(
+					'options'       => array_merge( $slides, array( 'top_slide_autoplay_toggle_display' => false ) ),
+					'filter_return' => true,
+				),
+				'expected'            => true,
+			),
 		);
 
 		foreach ( $test_cases as $case ) {
+
+			// 前のケースの判定結果を持ち越さない.
+			delete_option( 'lightning_top_slide_autoplay_toggle_default' );
+
+			// 未保存のキーを判定させるため、既定値とマージせずそのまま保存する.
+			update_option( 'lightning_theme_options', $case['conditions']['options'] );
+			wp_cache_flush();
 
 			$filter_callback = null;
 
@@ -293,9 +459,12 @@ class LTG_G3_Slider_Autoplay_Toggle_Test extends WP_UnitTestCase {
 
 			$actual = LTG_G3_Slider::is_autoplay_toggle_display();
 
-			// フィルターが有効な間にマークアップ側も確認する.
-			$html             = LTG_G3_Slider::get_slide_html();
-			$actual_in_markup = false !== strpos( $html, 'class="ltg-slide-autoplay-toggle' );
+			// フィルターが有効な間にマークアップ側も確認する（スライドが2枚あるケースのみ）.
+			$actual_in_markup = null;
+			if ( ! empty( $case['conditions']['options']['top_slide_image_2'] ) ) {
+				$html             = LTG_G3_Slider::get_slide_html();
+				$actual_in_markup = false !== strpos( $html, 'class="ltg-slide-autoplay-toggle' );
+			}
 
 			if ( $filter_callback ) {
 				remove_filter( 'lightning_top_slide_autoplay_toggle_display', $filter_callback );
@@ -304,7 +473,80 @@ class LTG_G3_Slider_Autoplay_Toggle_Test extends WP_UnitTestCase {
 			print PHP_EOL . $case['test_condition_name'] . ' : actual = ' . var_export( $actual, true ) . PHP_EOL;
 
 			$this->assertSame( $case['expected'], $actual, $case['test_condition_name'] );
-			$this->assertSame( $case['expected'], $actual_in_markup, $case['test_condition_name'] . '（マークアップ）' );
+
+			if ( null !== $actual_in_markup ) {
+				$this->assertSame( $case['expected'], $actual_in_markup, $case['test_condition_name'] . '（マークアップ）' );
+			}
+		}
+	}
+
+	/**
+	 * LTG_G3_Slider::register_customize() がボタンの表示設定を登録するか
+	 *
+	 * カスタマイザーの既定値にサイトの状態による出し分けが反映されることも確認する.
+	 *
+	 * @return void
+	 */
+	public function test_register_customize_autoplay_toggle() {
+
+		print PHP_EOL;
+		print '------------------------------------' . PHP_EOL;
+		print 'LTG_G3_Slider::register_customize()' . PHP_EOL;
+		print '------------------------------------' . PHP_EOL;
+
+		require_once ABSPATH . WPINC . '/class-wp-customize-manager.php';
+		/*
+		 * WP_Customize_Control はカスタマイザー画面でのみ読み込まれるクラスで、
+		 * これが無いとテーマ側のカスタムコントロールが宣言されない.
+		 * カスタムコントロールは customize_register の中で遅延宣言される作りなので、
+		 * 基底クラスを読み込んだうえで宣言用の関数を直接呼んでおく.
+		 */
+		require_once ABSPATH . WPINC . '/class-wp-customize-control.php';
+		vk_helpers_register_custom_text_control();
+		vk_helpers_register_custom_html_control();
+
+		// テストの配列（保存されているオプションの生データと、カスタマイザーの既定値の期待値）.
+		$test_cases = array(
+			array(
+				'test_condition_name' => '新規サイトの場合 => カスタマイザーの既定値が表示になる',
+				'conditions'          => array( 'options' => array() ),
+				'expected'            => true,
+			),
+			array(
+				'test_condition_name' => '既存サイトの場合 => カスタマイザーの既定値が非表示になる',
+				'conditions'          => array(
+					'options' => array( 'top_slide_image_1' => 'http://example.com/slide1.jpg' ),
+				),
+				'expected'            => false,
+			),
+		);
+
+		foreach ( $test_cases as $case ) {
+
+			// 前のケースの判定結果を持ち越さない.
+			delete_option( 'lightning_top_slide_autoplay_toggle_default' );
+			update_option( 'lightning_theme_options', $case['conditions']['options'] );
+			wp_cache_flush();
+
+			$wp_customize = new WP_Customize_Manager();
+			LTG_G3_Slider::register_customize( $wp_customize );
+
+			$setting = $wp_customize->get_setting( 'lightning_theme_options[top_slide_autoplay_toggle_display]' );
+
+			// 設定が登録されている.
+			$this->assertNotEmpty( $setting, $case['test_condition_name'] . '（設定が登録されている）' );
+
+			$actual = (bool) $setting->default;
+
+			print PHP_EOL . $case['test_condition_name'] . ' : actual = ' . var_export( $actual, true ) . PHP_EOL;
+
+			$this->assertSame( $case['expected'], $actual, $case['test_condition_name'] );
+
+			// コントロールも登録されている.
+			$control = $wp_customize->get_control( 'lightning_theme_options[top_slide_autoplay_toggle_display]' );
+			$this->assertNotEmpty( $control, $case['test_condition_name'] . '（コントロールが登録されている）' );
+			$this->assertSame( 'checkbox', $control->type, $case['test_condition_name'] . '（チェックボックスで表示する）' );
+			$this->assertSame( 'ltg_g3_slider', $control->section, $case['test_condition_name'] . '（スライドショーのセクションに置く）' );
 		}
 	}
 
