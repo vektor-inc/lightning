@@ -126,6 +126,88 @@
 		}
 	}
 
+	// 自動再生の停止・再生ボタン
+	// -----------------------------------------------------------------------------
+	// 自動再生はモバイルでも動くため、矢印のようにモバイルで非表示にはしない。
+	// グリフは #fff 固定（--swiper-navigation-color を借りると運営者が黒指定した時に黒地の黒になる）。
+	// 箱の寸法は Swiper の --swiper-navigation-size を借りずに自前で持つ。
+	// あちらが何を指すかは Swiper のバージョンで変わるため。
+	//   Swiper 11 : ::after の font-size（＝矢印グリフの寸法）。矢印ボタンの箱は
+	//               width: calc(var(--swiper-navigation-size) / 44 * 27) / height: 同値 で 27x44。
+	//   Swiper 12 / 14 : width と height の両方が同値（＝矢印ボタンの箱そのもの）で 44x44。
+	// つまり借りると、Swiper を更新した瞬間にこのボタンの寸法の意味が変わってしまう。
+	// & で包んでいるのは、ネストされたルールの後に宣言を置くと Sass が
+	// mixed-decls の警告を出すため。
+	& {
+		// 44px は WCAG 2.5.5（AAA）のターゲットサイズも満たす寸法。
+		// これは当たり判定の箱の寸法で、塗りの円はこれより一回り小さく描く（下記）。
+		--ltg-slide-autoplay-toggle-size: 44px;
+		// 塗りの円を当たり判定の箱より内側に描くための余白。
+		// 矢印は 44px の箱の中央に 13px 程度の細い線を描いているだけなので、
+		// 箱の右端が一致していても、塗りつぶしの円を箱いっぱいに描くと
+		// このボタンだけが矢印より右下へ飛び出して見える。
+		// 箱は 44px のまま縮めずに塗りだけを内側へ寄せ、見た目の位置を矢印へ近づける。
+		// 中心は元から矢印と一致しているため、縮めるほど見かけの差は小さくなる。
+		// 完全に一致させるには円の直径を矢印の線幅（13px 程度）まで縮める必要があり、
+		// それではグリフが読めなくなるため、操作子として成立する範囲で寄せている。
+		// 矢印の寸法変数（--ltg-slide-arrow-size）に連動させないのは、
+		// あちらが em で利用先ごとに解決される値で、px の余白として使えないため。
+		--ltg-slide-autoplay-toggle-inset: 5px;
+	}
+	&-autoplay-toggle {
+		position: absolute;
+		// 右と下で同じ値を使い、角から等距離に置く。
+		// Swiper はこの変数を定義せず各ルールでフォールバックしているだけなので、
+		// フォールバック値は Swiper 側と揃える必要がある。この値も版で違い、
+		// Swiper 11 は 10px・Swiper 12 以降は 4px。ここは 12 以降に合わせている。
+		// ずれると矢印との右端が揃わなくなるため、Swiper を戻す・上げる時は追随させる。
+		right: var(--swiper-navigation-sides-offset, 4px);
+		bottom: var(--swiper-navigation-sides-offset, 4px);
+		// .swiper-pagination は幅100%・z-index: 10 の帯で、DOM 順があとなので
+		// 同値だとボタンの当たり判定を奪われる。そのため 1 つ上に置く。
+		z-index: 11;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: var(--ltg-slide-autoplay-toggle-size);
+		height: var(--ltg-slide-autoplay-toggle-size);
+		// グリフは箱に対する比率で導出し、箱を縮めてもはみ出さないようにする（44px の箱で 18px）。
+		font-size: calc(var(--ltg-slide-autoplay-toggle-size) / 44 * 18);
+		// padding で塗りを内側へ寄せる。
+		// border-box なので当たり判定の箱は 44px のまま変わらず、
+		// background-clip: content-box で塗りだけが padding の分だけ小さくなる。
+		// border-radius は境界の箱に対する指定だが、content-box へ切り抜く際に
+		// 角丸も padding の分だけ縮むため、塗りは一回り小さい正円になる。
+		padding: var(--ltg-slide-autoplay-toggle-inset);
+		border: none;
+		border-radius: 50%;
+		// どんな画像の上でも白いグリフとのコントラストを 4.5:1 以上に保てる濃度
+		background-color: rgb(0 0 0 / 0.55);
+		background-clip: content-box;
+		cursor: pointer;
+		// display: flex が [hidden] の display: none に勝ってしまうので明示する
+		&[hidden] {
+			display: none;
+		}
+		svg {
+			display: block;
+			width: 1em;
+			height: 1em;
+			fill: #fff;
+		}
+		&:hover,
+		&:focus-visible {
+			background-color: rgb(0 0 0 / 0.75);
+		}
+		// 白い画像の上でリングが消えないよう、輪郭を円の内側に描く。
+		// outline は当たり判定の箱に対して描かれるため、塗りを内側へ寄せた分も
+		// 合わせて引かないと、リングが円の外側の透明な領域に浮いてしまう。
+		&:focus-visible {
+			outline: 2px solid #fff;
+			outline-offset: calc(-1 * (var(--ltg-slide-autoplay-toggle-inset) + 4px));
+		}
+	}
+
 	/* ページネーション
 	   ========================================================================== */
 

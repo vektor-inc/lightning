@@ -55,6 +55,60 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 	require_once dirname( __FILE__ ) . '/package/class-ltg-g3-slider.php';
 }
 
+/**
+ * 自動再生の停止・再生ボタンを既定で表示するかどうかを返す
+ *
+ * 既にスライドショーを設定して運用しているサイトでは、テーマを更新した途端に
+ * スライダーの右下へボタンが現れると、運営者が意図しないデザイン変更になる。
+ * そのため既存サイトは既定で非表示、新規サイトは既定で表示にする。
+ *
+ * 新旧の判定は lightning_theme_options の生データ（既定値とマージする前）を見て、
+ * top_slide_ で始まるキーが1つでも保存されていれば「既存サイト」とする。
+ * 単一のキーだけで判定すると、そのキーだけ未変更で他のキーを変更しているサイトを
+ * 新規サイトと誤判定するため、いずれかのキーの存在で判定する。
+ * 自分自身の設定キーは、保存された時点で判定が反転してしまうため対象から除く。
+ *
+ * 判定した結果は専用のオプションへ一度だけ保存し、以降はそれを返す。
+ * 新規サイトが最初にスライドを設定すると top_slide_ のキーが保存されるため、
+ * 都度判定する実装だと「新規サイト＝表示」から「既存サイト＝非表示」へ
+ * 運営者が何も操作していないのに反転し、表示されていたボタンが消えてしまう。
+ *
+ * @return bool 既定で表示する場合は true.
+ */
+function lightning_top_slide_autoplay_toggle_default() {
+
+	// 判定済みの場合は保存済みの結果を使う（あとから反転させないため）.
+	$saved = get_option( 'lightning_top_slide_autoplay_toggle_default', null );
+	if ( null !== $saved ) {
+		return (bool) $saved;
+	}
+
+	// 既定値とマージする前の生データを見る（マージ後はキーが必ず存在してしまうため）.
+	$options = get_option( 'lightning_theme_options' );
+
+	// 新規サイト（スライドショーの設定が1つも保存されていない）を既定にする.
+	$display = true;
+
+	if ( is_array( $options ) ) {
+		foreach ( array_keys( $options ) as $key ) {
+			// 自分自身の設定キーは判定に含めない.
+			if ( 'top_slide_autoplay_toggle_display' === $key ) {
+				continue;
+			}
+			if ( 0 === strpos( $key, 'top_slide_' ) ) {
+				// 既存サイトなので既定は非表示.
+				$display = false;
+				break;
+			}
+		}
+	}
+
+	// 判定結果を固定する.
+	update_option( 'lightning_top_slide_autoplay_toggle_default', $display ? '1' : '0' );
+
+	return $display;
+}
+
 global $vk_advansed_slider_prefix;
 $vk_advansed_slider_prefix = 'Lightning ';
 
