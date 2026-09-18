@@ -404,7 +404,7 @@ if ( ! class_exists( 'LTG_G3_Slider' ) ) {
 				'lightning_theme_options[top_slide_autoplay_toggle_display]',
 				array(
 					'label'       => __( 'Display the button to stop and start the automatic slide show', 'lightning' ),
-					'description' => __( 'This button is required to meet WCAG 2.1 Success Criterion 2.2.2 (Pause, Stop, Hide).', 'lightning' ) . '<br>' . __( 'If you hide it, visitors have no way to stop the slides.', 'lightning' ),
+					'description' => __( 'Keep this enabled to meet WCAG 2.1 Success Criterion 2.2.2 (Pause, Stop, Hide), which requires giving visitors a way to pause or stop automatically moving content.', 'lightning' ),
 					'section'     => 'ltg_g3_slider',
 					'settings'    => 'lightning_theme_options[top_slide_autoplay_toggle_display]',
 					'type'        => 'checkbox',
