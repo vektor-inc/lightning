@@ -63,7 +63,7 @@
 		"vinyl-sourcemaps-apply": "^0.2.1",
 		"webpack": "^5.110.3",
 		"webpack-cli": "^7.2.3",
-		"webpack-merge": "^5.10.0"
+		"webpack-merge": "^6.0.1"
 	},
 	"volta": {
 		"node": "20.13.1"
