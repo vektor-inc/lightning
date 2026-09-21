@@ -38,7 +38,7 @@
 	},
 	"homepage": "https://lightning.vektor-inc.co.jp/en/",
 	"devDependencies": {
-		"@babel/core": "^7.29.6",
+		"@babel/core": "^8.0.5",
 		"@babel/preset-env": "^7.29.7",
 		"@playwright/test": "^1.63.0",
 		"@wordpress/env": "^11.15.0",
