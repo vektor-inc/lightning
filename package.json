@@ -58,7 +58,7 @@
 		"postcss": "^8.5.28",
 		"rimraf": "^6.1.3",
 		"run-sequence": "^2.2.1",
-		"sass": "1.105.0",
+		"sass": "1.105.1",
 		"through2": "^5.0.11",
 		"vinyl-sourcemaps-apply": "^0.2.1",
 		"webpack": "^5.111.1",
