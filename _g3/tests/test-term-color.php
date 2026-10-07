@@ -22,6 +22,9 @@ class TermColorSanitizeTest extends WP_UnitTestCase {
 			// 属性からの脱出を狙った値も、末尾が16進数に見えるだけでは許可しないことを確認する.
 			array( '" onmouseover="alert(1)//aaa', '' ),
 			array( '#ff0000ff', '' ),
+			// PCRE の $ は末尾の改行の直前にもマッチするため、末尾に改行を付けた値が
+			// サニタイズを素通りしていた。現在は拒否されることを確認する.
+			array( "abc\n", '' ),
 		);
 
 		foreach ( $cases as [ $input, $expected ] ) {

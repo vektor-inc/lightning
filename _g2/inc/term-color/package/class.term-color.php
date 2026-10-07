@@ -30,7 +30,7 @@ if ( ! class_exists( 'Vk_term_color' ) ) {
 				return '';
 			}
 			$color = ltrim( $color, '#' );
-			return preg_match( '/^([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/', $color ) ? $color : '';
+			return preg_match( '/^([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})\z/', $color ) ? $color : '';
 		}
 
 		/*
