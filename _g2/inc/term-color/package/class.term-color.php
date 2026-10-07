@@ -16,7 +16,7 @@ if ( ! class_exists( 'Vk_term_color' ) ) {
 
 		function term_meta_color() {
 
-			register_meta( 'term', 'term_color', array( $this, 'sanitize_hex' ) );
+			register_meta( 'term', 'term_color', array( 'sanitize_callback' => array( $this, 'sanitize_hex' ) ) );
 		}
 
 		/*

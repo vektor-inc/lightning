@@ -49,7 +49,7 @@ if ( ! class_exists( 'Vk_term_color' ) ) {
 		 * @return void
 		 */
 		public static function term_meta_color() {
-			register_meta( 'term', 'term_color', array( __CLASS__, 'sanitize_hex' ) );
+			register_meta( 'term', 'term_color', array( 'sanitize_callback' => array( __CLASS__, 'sanitize_hex' ) ) );
 		}
 
 		/**
