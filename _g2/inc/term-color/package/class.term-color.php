@@ -60,7 +60,7 @@ if ( ! class_exists( 'Vk_term_color' ) ) {
 			<th scope="row" valign="top"><label for="term_color"><?php _e( 'Color', 'lightning' ); ?></label></th>
 				<td>
 				<?php wp_nonce_field( basename( __FILE__ ), 'term_color_nonce' ); ?>
-					<input type="text" name="term_color" id="term_color" class="term_color" value="<?php echo $term_color; ?>">
+					<input type="text" name="term_color" id="term_color" class="term_color" value="<?php echo esc_attr( $term_color ); ?>">
 				</td>
 			</tr>
 			<?php
@@ -208,7 +208,7 @@ if ( ! class_exists( 'Vk_term_color' ) ) {
 				$term_name  = esc_html( $terms[0]->name );
 				$term_url   = esc_url( get_term_link( $terms[0]->term_id, $taxonomy ) );
 				$term_color = self::get_term_color( $terms[0]->term_id );
-				$term_color = ( $term_color ) ? ' style="color:#fff;background-color:' . $term_color . '"' : '';
+				$term_color = ( $term_color ) ? ' style="color:#fff;background-color:' . esc_attr( $term_color ) . '"' : '';
 
 				if ( $args['link'] ) {
 					$single_term_with_color .= '<a' . $outer_class . $term_color . ' href="' . esc_url( $term_url ) . '">';

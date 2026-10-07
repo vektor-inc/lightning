@@ -47,7 +47,7 @@ if ( $taxonomies ) :
 	$term_color = '';
 	if ( class_exists( 'Vk_term_color' ) ) {
 			$term_color = Vk_term_color::get_term_color( $terms[0]->term_id );
-			$term_color = ( $term_color ) ? ' style="background-color:' . $term_color . ';border:none;"' : '';
+			$term_color = ( $term_color ) ? ' style="background-color:' . esc_attr( $term_color ) . ';border:none;"' : '';
 	}
 	echo '<span class="entry-meta_items entry-meta_items_term"><a href="' . $term_url . '" class="btn btn-xs btn-primary entry-meta_items_term_button"' . $term_color . '>' . $term_name . '</a></span>';
 	endif;
