@@ -39,6 +39,7 @@ vk-develop@vektor-inc.co.jp
 [ G3 ][ Spec Change ] Show the home page slider with its automatic slide show stopped when the OS "reduce motion" setting is enabled. Visitors can start it with the button when it is displayed
 [ G3 ][ Spec Change ] Change the top page slider pagination dots to white so that they match the arrows, instead of the Swiper default blue active dot and faint black inactive dots. The current slide is now shown as a wider pill rather than by opacity
 [ G3 ][ Design Bug Fix ] Fix the white slider arrows and pagination dots blending into bright slide images and becoming hard to see, by adding a shadow around them. To remove it, add :root { --ltg-swiper-control-shadow: none } in Additional CSS
+[ G2/G3 ][ Security Fix ] Strengthen validation of category/tag color codes. Invalid 3/6-digit hex values now fall back to the default color instead of being saved as-is, and the validation is now actually applied on save
 
 v15.42.0
 [ G2/G3 ][ New Feature ] Add a general-purpose .lightning-editor-panel class that supplies the 8px / 12px / 24px spacing steps to block editor sidebar panels, so linked plugins can apply the same spacing as Lightning's own panel without redefining the values

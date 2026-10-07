@@ -13,7 +13,17 @@ if ( ! class_exists( 'Vk_term_color' ) ) {
 		 * Construct
 		 */
 		public function __construct() {
-			add_action( 'init', array( $this, 'term_meta_color' ) );
+			/*
+			  このファイルは init 実行中に読み込まれる（term-color-config.php 側の
+			  add_action( 'init', ... ) 経由）ため、ここで同じ init へ add_action しても
+			  今回の init では実行されない。did_action( 'init' ) で分岐し、その場合は
+			  その場で実行する。
+			*/
+			if ( did_action( 'init' ) ) {
+				self::term_meta_color();
+			} else {
+				add_action( 'init', array( __CLASS__, 'term_meta_color' ) );
+			}
 			add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 
 			/********************************************
@@ -50,8 +60,12 @@ if ( ! class_exists( 'Vk_term_color' ) ) {
 		 */
 		public static function sanitize_hex( $color ) {
 			// sanitize_hex_color() は undefined function くらう.
+			// 配列などの非文字列値を ltrim() に渡す前に弾き、型エラーを防ぐ.
+			if ( ! is_string( $color ) ) {
+				return '';
+			}
 			$color = ltrim( $color, '#' );
-			return preg_match( '/([A-Fa-f0-9]{3}){1,2}$/', $color ) ? $color : '';
+			return preg_match( '/^([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/', $color ) ? $color : '';
 		}
 
 		/**
