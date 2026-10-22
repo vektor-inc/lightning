@@ -9,17 +9,17 @@ npx playwright test --project=chromium --trace on はローカルで試すとお
 
 test('CSS Optimize', async ({ page }) => {
 	// ログイン処理
-	await page.goto('http://localhost:8889/wp-login.php');
+	await page.goto('/wp-login.php');
 	await page.getByLabel('Username or Email Address').click();
 	await page.getByLabel('Username or Email Address').fill('admin');
 	await page.getByLabel('Password', { exact: true }).click();
 	await page.getByLabel('Password', { exact: true }).fill('password');
-	await page.getByText('Remember Me').click();
+	await page.getByLabel('Remember Me').check();
 	await page.getByRole('button', { name: 'Log In' }).click();
 
 	// Lightning を有効化
 	await page.getByRole('link', { name: 'Appearance' }).click();
-	await expect(page).toHaveURL('http://localhost:8889/wp-admin/themes.php');
+	await expect(page).toHaveURL(/\/wp-admin\/themes\.php$/);
 
 	// カスタマイズ画面に移動
 	await page.getByRole('navigation', { name: 'Main menu' }).getByRole('link', { name: 'Customize' }).click();
@@ -43,7 +43,7 @@ test('CSS Optimize', async ({ page }) => {
 	await page.waitForTimeout(1000);
 
 	// 公開画面に移動
-	await page.goto('http://localhost:8889/');
+	await page.goto('/');
 
 	// ※ Tree Shakingが効いていない場合は style#lightning-common-style-css 自体が存在しないため、それをテスト対象としている
 	// **************** type="text/css" が存在することを確認
@@ -57,7 +57,7 @@ test('CSS Optimize', async ({ page }) => {
 
 	// テスト前の状態に戻す ///////////////////////////////////////
 	// カスタマイズ画面に戻る
-	await page.goto('http://localhost:8889/wp-admin/customize.php');
+	await page.goto('/wp-admin/customize.php');
 	await page.getByRole('heading', { name: 'Lightning CSS Optimize ( Speed up ) Settings Press return or enter to open this section ' }).click();
 	// Tree Shaking を無効化
 	await page.getByRole('combobox', { name: 'Tree shaking activation settings' }).selectOption('');
@@ -70,7 +70,7 @@ test('CSS Optimize', async ({ page }) => {
 
 	// G2 ///////////////////////////////////////
 	// カスタマイズ画面に移動
-	await page.goto('http://localhost:8889/wp-admin/customize.php');
+	await page.goto('/wp-admin/customize.php');
 	// CSS最適化パネルを開く
 	await page.getByRole('heading', { name: 'Lightning Function Settings Press return or enter to open this section ' }).click();
 	await page.locator('[id="_customize-input-lightning_theme_generation"]').selectOption('g2');
@@ -83,7 +83,7 @@ test('CSS Optimize', async ({ page }) => {
 	await page.waitForTimeout(1000);
 
 	// 公開画面に移動
-	await page.goto('http://localhost:8889/');
+	await page.goto('/');
 
 	// ※ Tree Shakingが効いていない場合は style#lightning-common-style-css 自体が存在しないため、それをテスト対象としている
 	// **************** type="text/css" が存在することを確認
@@ -97,7 +97,7 @@ test('CSS Optimize', async ({ page }) => {
 
 	// テスト前の状態に戻す ///////////////////////////////////////
 	// カスタマイズ画面に戻る
-	await page.goto('http://localhost:8889/wp-admin/customize.php');
+	await page.goto('/wp-admin/customize.php');
 	await page.getByRole('heading', { name: 'Lightning CSS Optimize ( Speed up ) Settings Press return or enter to open this section ' }).click();
 	// Tree Shaking を無効化
 	await page.getByRole('combobox', { name: 'Tree shaking activation settings' }).selectOption('');
@@ -107,7 +107,7 @@ test('CSS Optimize', async ({ page }) => {
 	await page.getByRole('button', { name: 'Publish' }).filter({ hasText: 'Publish' }).click();
 
 	// G3 に戻す ///////////////////////////////////////
-	await page.goto('http://localhost:8889/wp-admin/customize.php');
+	await page.goto('/wp-admin/customize.php');
 	await page.getByRole('heading', { name: 'Lightning Function Settings Press return or enter to open this section ' }).click();
 	await page.locator('[id="_customize-input-lightning_theme_generation"]').selectOption('g3');
 	await page.getByRole('button', { name: 'Publish' }).filter({ hasText: 'Publish' }).click();
