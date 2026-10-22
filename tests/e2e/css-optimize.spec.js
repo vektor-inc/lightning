@@ -17,6 +17,8 @@ async function publishIfChanged(page) {
 	const publishButton = page.locator('#save');
 	if (await publishButton.isEnabled()) {
 		await publishButton.click();
+		// 保存が完了すると公開ボタンが disabled（Published）に戻るので、それまで待つ
+		await expect(publishButton).toBeDisabled();
 	}
 }
 
