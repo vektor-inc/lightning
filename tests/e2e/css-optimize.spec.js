@@ -43,6 +43,7 @@ test('CSS Optimize', async ({ page }) => {
 
 	// Tree Shaking の設定欄が表示されないこと（vk-css-optimize の Tree Shaking は Lightning では使わない）
 	await expect(page.getByRole('combobox', { name: 'Tree shaking activation settings' })).toHaveCount(0);
+	await expect(page.getByRole('textbox', { name: 'Exclude class of Tree shaking' })).toHaveCount(0);
 
 	// Preload を有効化
 	await page.getByRole('combobox', { name: 'Preload CSS activation settings' }).selectOption('active');
@@ -83,6 +84,7 @@ test('CSS Optimize', async ({ page }) => {
 	await page.getByRole('link', { name: 'Reload the page' }).click();
 	await page.getByRole('button', { name: 'Lightning CSS Optimize ( Speed up ) Settings', exact: true }).click();
 	await expect(page.getByRole('combobox', { name: 'Tree shaking activation settings' })).toHaveCount(0);
+	await expect(page.getByRole('textbox', { name: 'Exclude class of Tree shaking' })).toHaveCount(0);
 	await page.getByRole('combobox', { name: 'Preload CSS activation settings' }).selectOption('active');
 	await publishIfChanged(page);
 	await page.waitForTimeout(1000);

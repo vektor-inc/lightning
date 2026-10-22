@@ -36,8 +36,8 @@ add_action( 'customize_register', 'lightning_css_optimize_remove_tree_shaking_co
 /**
  * CSS Optimize option default
  *
- * @param array $vk_css_optimize_options_default : recieve array.
- * @return array $vk_css_optimize_options_default : return modefied array.
+ * @param array $vk_css_optimize_options_default : receive array.
+ * @return array $vk_css_optimize_options_default : return modified array.
  */
 function lightning_css_optimize_options_default( $vk_css_optimize_options_default ) {
 	$vk_css_optimize_options_default = array(
