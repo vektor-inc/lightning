@@ -7,6 +7,19 @@ npx playwright test --project=chromium --trace on はローカルで試すとお
 直せる人は直せるタイミングで対応いただけると助かります。
 */
 
+/**
+ * 公開ボタンを押す。
+ * 設定値が変わっていない（既に目的の値になっている）場合、公開ボタンは disabled（Published 表示）になり
+ * クリックできずタイムアウトするため、押せるときだけ押す。
+ * @param {import('@playwright/test').Page} page
+ */
+async function publishIfChanged(page) {
+	const publishButton = page.locator('#save');
+	if (await publishButton.isEnabled()) {
+		await publishButton.click();
+	}
+}
+
 test('CSS Optimize', async ({ page }) => {
 	// ログイン処理
 	await page.goto('/wp-login.php');
@@ -24,7 +37,7 @@ test('CSS Optimize', async ({ page }) => {
 	// カスタマイズ画面に移動
 	await page.getByRole('navigation', { name: 'Main menu' }).getByRole('link', { name: 'Customize' }).click();
 	// CSS最適化パネルを開く
-	await page.getByRole('heading', { name: 'Lightning CSS Optimize ( Speed up ) Settings Press return or enter to open this section ' }).click();
+	await page.getByRole('button', { name: 'Lightning CSS Optimize ( Speed up ) Settings', exact: true }).click();
 
 	// _customize-input-vk_css_optimize_options[tree_shaking] が active なら処理しない
 	// #save が disabled なら処理しない
@@ -37,7 +50,7 @@ test('CSS Optimize', async ({ page }) => {
 	await page.getByRole('combobox', { name: 'Preload CSS activation settings' }).selectOption('active');
 
 	// 公開ボタンをクリック
-	await page.getByRole('button', { name: 'Publish' }).filter({ hasText: 'Publish' }).click();
+	await publishIfChanged(page);
 
 	// 保存が完了するまで時間稼ぎ
 	await page.waitForTimeout(1000);
@@ -58,13 +71,13 @@ test('CSS Optimize', async ({ page }) => {
 	// テスト前の状態に戻す ///////////////////////////////////////
 	// カスタマイズ画面に戻る
 	await page.goto('/wp-admin/customize.php');
-	await page.getByRole('heading', { name: 'Lightning CSS Optimize ( Speed up ) Settings Press return or enter to open this section ' }).click();
+	await page.getByRole('button', { name: 'Lightning CSS Optimize ( Speed up ) Settings', exact: true }).click();
 	// Tree Shaking を無効化
 	await page.getByRole('combobox', { name: 'Tree shaking activation settings' }).selectOption('');
 	// Preload を無効化
 	await page.getByRole('combobox', { name: 'Preload CSS activation settings' }).selectOption('');
 	// 公開ボタンをクリック
-	await page.getByRole('button', { name: 'Publish' }).filter({ hasText: 'Publish' }).click();
+	await publishIfChanged(page);
 	// 保存が完了するまで時間稼ぎ
 	await page.waitForTimeout(1000);
 
@@ -72,14 +85,14 @@ test('CSS Optimize', async ({ page }) => {
 	// カスタマイズ画面に移動
 	await page.goto('/wp-admin/customize.php');
 	// CSS最適化パネルを開く
-	await page.getByRole('heading', { name: 'Lightning Function Settings Press return or enter to open this section ' }).click();
+	await page.getByRole('button', { name: 'Lightning Function Settings', exact: true }).click();
 	await page.locator('[id="_customize-input-lightning_theme_generation"]').selectOption('g2');
-	await page.getByRole('button', { name: 'Publish' }).filter({ hasText: 'Publish' }).click();
+	await publishIfChanged(page);
 	await page.getByRole('link', { name: 'Reload the page' }).click();
-	await page.getByRole('heading', { name: 'Lightning CSS Optimize ( Speed up ) Settings Press return or enter to open this section ' }).click();
+	await page.getByRole('button', { name: 'Lightning CSS Optimize ( Speed up ) Settings', exact: true }).click();
 	await page.getByRole('combobox', { name: 'Tree shaking activation settings' }).selectOption('active');
 	await page.getByRole('combobox', { name: 'Preload CSS activation settings' }).selectOption('active');
-	await page.getByRole('button', { name: 'Publish' }).filter({ hasText: 'Publish' }).click();
+	await publishIfChanged(page);
 	await page.waitForTimeout(1000);
 
 	// 公開画面に移動
@@ -98,18 +111,18 @@ test('CSS Optimize', async ({ page }) => {
 	// テスト前の状態に戻す ///////////////////////////////////////
 	// カスタマイズ画面に戻る
 	await page.goto('/wp-admin/customize.php');
-	await page.getByRole('heading', { name: 'Lightning CSS Optimize ( Speed up ) Settings Press return or enter to open this section ' }).click();
+	await page.getByRole('button', { name: 'Lightning CSS Optimize ( Speed up ) Settings', exact: true }).click();
 	// Tree Shaking を無効化
 	await page.getByRole('combobox', { name: 'Tree shaking activation settings' }).selectOption('');
 	// Preload を無効化
 	await page.getByRole('combobox', { name: 'Preload CSS activation settings' }).selectOption('');
 	// 公開ボタンをクリック
-	await page.getByRole('button', { name: 'Publish' }).filter({ hasText: 'Publish' }).click();
+	await publishIfChanged(page);
 
 	// G3 に戻す ///////////////////////////////////////
 	await page.goto('/wp-admin/customize.php');
-	await page.getByRole('heading', { name: 'Lightning Function Settings Press return or enter to open this section ' }).click();
+	await page.getByRole('button', { name: 'Lightning Function Settings', exact: true }).click();
 	await page.locator('[id="_customize-input-lightning_theme_generation"]').selectOption('g3');
-	await page.getByRole('button', { name: 'Publish' }).filter({ hasText: 'Publish' }).click();
+	await publishIfChanged(page);
 
 });
