@@ -39,6 +39,7 @@ vk-develop@vektor-inc.co.jp
 [ G3 ][ Spec Change ] Show the home page slider with its automatic slide show stopped when the OS "reduce motion" setting is enabled. Visitors can start it with the button when it is displayed
 [ G3 ][ Spec Change ] Change the top page slider pagination dots to white so that they match the arrows, instead of the Swiper default blue active dot and faint black inactive dots. The current slide is now shown as a wider pill rather than by opacity
 [ G2/G3 ][ Spec Change ] Update vektor-inc/vk-term-color from 0.7.1 to 0.7.4, fixing category/tag label text in post list cards and sliders staying white and hard to read when a bright label color is set
+[ G2/G3 ][ Spec Change ] Remove the Tree shaking settings from Customizer > Lightning CSS Optimize ( Speed up ) Settings, since Tree shaking has not been working since vk-css-optimize 0.2.5. The Preload CSS settings are kept
 [ G3 ][ Design Bug Fix ] Fix the white slider arrows and pagination dots blending into bright slide images and becoming hard to see, by adding a shadow around them. To remove it, add :root { --ltg-swiper-control-shadow: none } in Additional CSS
 [ G2/G3 ][ Security Fix ] Strengthen validation of category/tag color codes. Invalid 3/6-digit hex values now fall back to the default color instead of being saved as-is, and the validation is now actually applied on save. The color value is also properly escaped wherever it is displayed
 

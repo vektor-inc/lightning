@@ -1,80 +1,47 @@
 <?php
 /**
- * VK CSS Tree Shaking Config
+ * VK CSS Optimize Config
  *
  * @package vektor-inc/lightning
  */
 
- use VektorInc\VK_CSS_Optimize\VkCssOptimize;
- new VkCssOptimize();
+use VektorInc\VK_CSS_Optimize\VkCssOptimize;
+new VkCssOptimize();
 
 global $prefix_customize_panel;
 $prefix_customize_panel = lightning_get_prefix_customize_panel();
 
 /**
- * Register tree shaking css handles
+ * Remove the Tree Shaking controls from the Customizer.
  *
- * @param array $vk_css_tree_shaking_handles : recieve array.
- * @return array $vk_css_tree_shaking_handles : return modefied array.
+ * Tree Shaking は使わない方針のため、ライブラリが登録した設定欄を外す。
+ * ライブラリの customize_register（優先度 10）より後に実行する必要があるため、優先度を 20 にしている。
+ * Preload の見出し・設定欄は残す。
+ *
+ * @param WP_Customize_Manager $wp_customize Customizer manager.
  */
-function lightning_css_tree_shaking_handles( $vk_css_tree_shaking_handles ) {
-	$vk_css_tree_shaking_handles = array_merge(
-		$vk_css_tree_shaking_handles,
-		array(
-			'bootstrap-4-style',
-			'lightning-common-style',
-			'lightning-design-style',
-		)
+function lightning_css_optimize_remove_tree_shaking_controls( $wp_customize ) {
+	$tree_shaking_ids = array(
+		'tree_shaking_title',
+		'vk_css_optimize_options[tree_shaking]',
+		'vk_css_optimize_options[tree_shaking_class_exclude]',
 	);
-	return $vk_css_tree_shaking_handles;
+	foreach ( $tree_shaking_ids as $tree_shaking_id ) {
+		$wp_customize->remove_control( $tree_shaking_id );
+		$wp_customize->remove_setting( $tree_shaking_id );
+	}
 }
-add_filter( 'vk_css_tree_shaking_handles', 'lightning_css_tree_shaking_handles' );
+add_action( 'customize_register', 'lightning_css_optimize_remove_tree_shaking_controls', 20 );
 
 /**
- * CSS Tree Shaking Exclude
+ * CSS Optimize option default
  *
- * @param array $inidata CSS Tree Shaking Exclude Paramator.
+ * @param array $vk_css_optimize_options_default : recieve array.
+ * @return array $vk_css_optimize_options_default : return modefied array.
  */
-function lightning_css_tree_shaking_exclude_class( $inidata ) {
-	$exclude_classes_array = array(
-		'customize-partial-edit-shortcut',
-		'vk_post',
-		'card',
-		'card-noborder',
-		'card-imageRound',
-		'vk_post-col-xs-12',
-		'vk_post-col-xs-6',
-		'vk_post-col-xs-4',
-		'vk_post-col-xs-3',
-		'vk_post-col-xs-2',
-		'vk_post-col-sm-12',
-		'vk_post-col-sm-6',
-		'vk_post-col-sm-4',
-		'vk_post-col-sm-3',
-		'vk_post-col-sm-2',
-		'vk_post-col-lg-12',
-		'vk_post-col-lg-6',
-		'vk_post-col-lg-4',
-		'vk_post-col-lg-3',
-		'vk_post-col-lg-2',
-		'vk_post-col-xl-12',
-		'vk_post-col-xl-6',
-		'vk_post-col-xl-4',
-		'vk_post-col-xl-3',
-		'vk_post-col-xl-2',
-		'vk_post-btn-display',
-	);
-	$inidata['class']      = array_merge( $inidata['class'], $exclude_classes_array );
-
-	return $inidata;
-}
-add_filter( 'css_tree_shaking_exclude', 'lightning_css_tree_shaking_exclude_class' );
-
-
 function lightning_css_optimize_options_default( $vk_css_optimize_options_default ) {
 	$vk_css_optimize_options_default = array(
-		'tree_shaking'	=> 'active',
-		'preload' 		=> '',
+		'preload' => '',
 	);
 	return $vk_css_optimize_options_default;
 }

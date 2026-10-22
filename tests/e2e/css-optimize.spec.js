@@ -41,12 +41,8 @@ test('CSS Optimize', async ({ page }) => {
 	// CSS最適化パネルを開く
 	await page.getByRole('button', { name: 'Lightning CSS Optimize ( Speed up ) Settings', exact: true }).click();
 
-	// _customize-input-vk_css_optimize_options[tree_shaking] が active なら処理しない
-	// #save が disabled なら処理しない
-	// というようにしたいが、現状では成功していないため、代替で一旦 何もしない を選択されるようにしている
-
-	// Tree Shaking を有効化
-	await page.getByRole('combobox', { name: 'Tree shaking activation settings' }).selectOption('active');
+	// Tree Shaking の設定欄が表示されないこと（vk-css-optimize の Tree Shaking は Lightning では使わない）
+	await expect(page.getByRole('combobox', { name: 'Tree shaking activation settings' })).toHaveCount(0);
 
 	// Preload を有効化
 	await page.getByRole('combobox', { name: 'Preload CSS activation settings' }).selectOption('active');
@@ -60,10 +56,6 @@ test('CSS Optimize', async ({ page }) => {
 	// 公開画面に移動
 	await page.goto('/');
 
-	// ※ Tree Shakingが効いていない場合は style#lightning-common-style-css 自体が存在しないため、それをテスト対象としている
-	// **************** type="text/css" が存在することを確認
-	await expect(page.locator('style#lightning-common-style-css')).toHaveAttribute('type', 'text/css');
-
 	// **************** #lightning-theme-style-css-preload が動作することを確認（ toHaveAttribute はここでは重要ではない ）
     // 実際のブラウザでは Preload 処理は問題なく rel が preload に変更して出力されるが、
 	// Playwrite のブラウザ上では何故か rel=preload に切り替わらない。
@@ -74,8 +66,6 @@ test('CSS Optimize', async ({ page }) => {
 	// カスタマイズ画面に戻る
 	await page.goto('/wp-admin/customize.php');
 	await page.getByRole('button', { name: 'Lightning CSS Optimize ( Speed up ) Settings', exact: true }).click();
-	// Tree Shaking を無効化
-	await page.getByRole('combobox', { name: 'Tree shaking activation settings' }).selectOption('');
 	// Preload を無効化
 	await page.getByRole('combobox', { name: 'Preload CSS activation settings' }).selectOption('');
 	// 公開ボタンをクリック
@@ -92,17 +82,13 @@ test('CSS Optimize', async ({ page }) => {
 	await publishIfChanged(page);
 	await page.getByRole('link', { name: 'Reload the page' }).click();
 	await page.getByRole('button', { name: 'Lightning CSS Optimize ( Speed up ) Settings', exact: true }).click();
-	await page.getByRole('combobox', { name: 'Tree shaking activation settings' }).selectOption('active');
+	await expect(page.getByRole('combobox', { name: 'Tree shaking activation settings' })).toHaveCount(0);
 	await page.getByRole('combobox', { name: 'Preload CSS activation settings' }).selectOption('active');
 	await publishIfChanged(page);
 	await page.waitForTimeout(1000);
 
 	// 公開画面に移動
 	await page.goto('/');
-
-	// ※ Tree Shakingが効いていない場合は style#lightning-common-style-css 自体が存在しないため、それをテスト対象としている
-	// **************** type="text/css" が存在することを確認
-	await expect(page.locator('style#lightning-common-style-css')).toHaveAttribute('type', 'text/css');
 
 	// **************** #lightning-theme-style-css-preload が動作することを確認（ toHaveAttribute はここでは重要ではない ）
     // 実際のブラウザでは Preload 処理は問題なく rel が preload に変更して出力されるが、
@@ -114,8 +100,6 @@ test('CSS Optimize', async ({ page }) => {
 	// カスタマイズ画面に戻る
 	await page.goto('/wp-admin/customize.php');
 	await page.getByRole('button', { name: 'Lightning CSS Optimize ( Speed up ) Settings', exact: true }).click();
-	// Tree Shaking を無効化
-	await page.getByRole('combobox', { name: 'Tree shaking activation settings' }).selectOption('');
 	// Preload を無効化
 	await page.getByRole('combobox', { name: 'Preload CSS activation settings' }).selectOption('');
 	// 公開ボタンをクリック
