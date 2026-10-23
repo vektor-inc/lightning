@@ -65,9 +65,6 @@
 		"webpack-cli": "^7.2.3",
 		"webpack-merge": "^6.0.1"
 	},
-	"volta": {
-		"node": "24.22.1"
-	},
 	"dependencies": {
 		"bootstrap": "^4.6.2",
 		"fs-extra": "^11.4.0",
