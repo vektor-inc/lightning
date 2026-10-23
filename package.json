@@ -72,6 +72,6 @@
 		"bootstrap": "^4.6.2",
 		"fs-extra": "^11.4.0",
 		"glob": "^10.5.0",
-		"is-mobile": "^4.0.0"
+		"is-mobile": "^5.0.0"
 	}
 }
