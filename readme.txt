@@ -36,11 +36,12 @@ vk-develop@vektor-inc.co.jp
 == Changelog ==
 
 [ G3 ][ New Feature ] Add a button to stop and start the automatic slide show of the home page slider (WCAG 2.1 Success Criterion 2.2.2). It can be turned on and off in Customizer > Lightning Home page slide show. Sites that already have the slide show configured keep it hidden by default so that their design does not change, while new sites show it by default. It can also be controlled with the lightning_top_slide_autoplay_toggle_display filter
+[ G2/G3 ][ New Feature ] Allow blocks such as the Group block to be set to "Sticky" in the Position setting so that they stay in view while scrolling ( sites with theme.json enabled )
 [ G3 ][ Spec Change ] Show the home page slider with its automatic slide show stopped when the OS "reduce motion" setting is enabled. Visitors can start it with the button when it is displayed
 [ G3 ][ Spec Change ] Change the top page slider pagination dots to white so that they match the arrows, instead of the Swiper default blue active dot and faint black inactive dots. The current slide is now shown as a wider pill rather than by opacity
 [ G2/G3 ][ Spec Change ] Update vektor-inc/vk-term-color from 0.7.1 to 0.7.4, fixing category/tag label text in post list cards and sliders staying white and hard to read when a bright label color is set
 [ G2/G3 ][ Spec Change ] Remove the Tree shaking settings from Customizer > Lightning CSS Optimize ( Speed up ) Settings. Tree shaking has already been disabled and the settings had no effect, so your site's display does not change. The Preload CSS settings are kept
-[ G2/G3 ][ Spec Change ] Allow blocks such as the Group block to be set to "Sticky" in the Position setting so that they stay in view while scrolling ( sites with theme.json enabled )
+[ G2/G3 ][ Spec Change ] Change overflow-x on the body element from hidden to clip, so that position: sticky written in your own CSS now takes effect as well
 [ G3 ][ Design Bug Fix ] Fix the white slider arrows and pagination dots blending into bright slide images and becoming hard to see, by adding a shadow around them. To remove it, add :root { --ltg-swiper-control-shadow: none } in Additional CSS
 [ G2/G3 ][ Security Fix ] Strengthen validation of category/tag color codes. Invalid 3/6-digit hex values now fall back to the default color instead of being saved as-is, and the validation is now actually applied on save. The color value is also properly escaped wherever it is displayed
 

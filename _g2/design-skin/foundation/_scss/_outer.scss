@@ -49,10 +49,21 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 // @media screen and ( width <= 600px ){
 // #wpadminbar { position: fixed; }
 // }
-// overflow-x: hidden; は html にだけ付ける。body にも付けると body がスクロールの枠になり、position: sticky が画面のスクロールで効かなくなる
+// overflow-x: hidden; は html にだけ付ける。body にも hidden を付けると body がスクロールの枠になり、position: sticky が画面のスクロールで効かなくなる
 // Windows で 100vw がスクロールバーを含み、全幅で横スクロールバーが出てしまうのを防ぐ役目は html の指定が担う
 html {
 	overflow-x: hidden;
+}
+// body は overflow-x: clip にする。何も付けないと、スマホで画面幅を超える要素があるときに横にずらせてしまうため
+// clip はスクロールの枠を作らないので、position: sticky は止まらず、はみ出した部分だけが切り取られる
+body {
+	overflow-x: clip;
+}
+// clip に未対応のブラウザ（Safari 15 以前など）は、従来どおり body も hidden にして、スマホで横にずれないようにする
+@supports not (overflow-x: clip) {
+	body {
+		overflow-x: hidden;
+	}
 }
 
 .sectionBox {

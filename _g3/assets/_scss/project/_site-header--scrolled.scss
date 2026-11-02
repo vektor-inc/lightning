@@ -71,8 +71,10 @@
 // top は利用者が決めた値なので上書きせず、コアが top に足している変数にヘッダーの高さを足す
 // --vk-header-fixed-height は master.js が header_scrolled を付けた時と resize で更新する（JS が動かない時は 0px）
 // スマホ幅ではヘッダーが固定されないため、PC 幅だけに限定する
+// :where() で詳細度を (0,1,0) に抑える。コアの html :where(.is-position-sticky)（0,0,1）には勝てる。
+// 利用者が追加 CSS で .is-position-sticky に同じ変数を書いたときは、同じ詳細度になりソース順（後に読み込まれる追加 CSS）で利用者側が勝てる
 @media ( $md-max < width ) {
-	.header_scrolled .is-position-sticky {
+	:where(.header_scrolled) .is-position-sticky {
 		--wp-admin--admin-bar--position-offset: calc( var(--wp-admin--admin-bar--height, 0px) + var(--vk-header-fixed-height, 0px) );
 	}
 }
