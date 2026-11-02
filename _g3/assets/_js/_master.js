@@ -60,13 +60,15 @@
 				let is_newly_scrolled = ! document.body.classList.contains('header_scrolled');
 				// ヘッダースクロール識別用のclass追加
 				document.body.classList.add('header_scrolled')
+				if(lightningOpt.add_header_offset_margin){
+					// コンテナ部分をfixedにするので、ガクンとならないように、ヘッダーの次の要素にヘッダーの高さ分余白を追加する
+					siteHeaderNext.style.marginTop = siteHeaderContainerHeight + "px";
+				}
 				if( is_newly_scrolled ){
 					// 固定になった後のヘッダーの高さを取得する
+					// 余白を入れる前に高さを読むと、レイアウトが中途半端な状態（ヘッダーは固定で場所が空いたが余白がまだ無い）で確定し、
+					// ブラウザがスクロール位置を補正してスクロールが押し戻されるため、余白を入れたあとに読む
 					set_header_fixed_height();
-				}
-				if(lightningOpt.add_header_offset_margin){
-					// コンテナ部分をfixedにするので、ガクンとならないように、ヘッダーの次の要素にヘッダーの高さ分余白を追加する 
-					siteHeaderNext.style.marginTop = siteHeaderContainerHeight + "px";
 				}
 			} else {
 				// ヘッダースクロール識別用のclass削除
