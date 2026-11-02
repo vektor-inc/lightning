@@ -121,6 +121,9 @@
 		},
 		"dimensions": {
 			"aspectRatio": true
+		},
+		"position": {
+			"sticky": true
 		}
 	}
 }

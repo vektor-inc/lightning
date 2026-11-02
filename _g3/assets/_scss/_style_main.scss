@@ -73,12 +73,10 @@ body {
 *, ::before,::after{
 	box-sizing: border-box;
 }
-html,
-body {
-	// overflow-x: hidden; がないとWindowsで 100vw がスクロールを含むので全幅で横スクロールが表示されてしまうため
-	// overflow-x: hidden; で回避しているが極力 100vw は使わない方が望ましい
-	// overflow-x: hidden; をつけると編集画面のブロックのツールバーの位置が変動するバグが以前あった。2021年7月で問題なければこの行のコメントは削除可
-	overflow-x: hidden; 
+// overflow-x: hidden; は html にだけ付ける。body にも付けると body がスクロールの枠になり、position: sticky が画面のスクロールで効かなくなる
+// Windows で 100vw がスクロールバーを含み、全幅で横スクロールバーが出てしまうのを防ぐ役目は html の指定が担う（極力 100vw は使わない方が望ましい）
+html {
+	overflow-x: hidden;
 }
 html,
 body {

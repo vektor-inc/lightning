@@ -49,8 +49,9 @@ Original file path is themes/lightning/design-skin/foundation/ that, please modi
 // @media screen and ( width <= 600px ){
 // #wpadminbar { position: fixed; }
 // }
-html,
-body {
+// overflow-x: hidden; は html にだけ付ける。body にも付けると body がスクロールの枠になり、position: sticky が画面のスクロールで効かなくなる
+// Windows で 100vw がスクロールバーを含み、全幅で横スクロールバーが出てしまうのを防ぐ役目は html の指定が担う
+html {
 	overflow-x: hidden;
 }
 
