@@ -37,6 +37,42 @@
         let body_class_timer = false;
         let body_class_lock = false;
 
+		// 固定されたヘッダーの高さを CSS 変数 --vk-header-fixed-height に入れる処理
+		// 位置: 張り付き（sticky）のブロックを、固定ヘッダーの下に位置させるために使う
+		let set_header_fixed_height = ()=>{
+			let siteHeader = document.getElementById('site-header');
+			// ヘッダー要素が取得できない場合は何もしない（CSS 側の 0px のまま）
+			if( ! siteHeader ) return;
+			document.documentElement.style.setProperty('--vk-header-fixed-height', siteHeader.offsetHeight + 'px');
+		}
+
+		// 固定中にヘッダーの高さが変わった時（メニュー画像の遅延読み込みなど）に、CSS 変数を更新するための監視
+		let header_height_observer = null;
+
+		// ヘッダーの高さの監視を始める（固定中だけ監視する）
+		let start_header_height_observe = ()=>{
+			// ResizeObserver が使えない環境では何もしない（resize の時だけ高さを取得し直す）
+			if( typeof ResizeObserver === 'undefined' ) return;
+			// すでに監視中の場合は二重に observe しない
+			if( header_height_observer ) return;
+			let siteHeader = document.getElementById('site-header');
+			if( ! siteHeader ) return;
+			header_height_observer = new ResizeObserver(()=>{
+				// header_scrolled が外れている間は高さを読まない
+				if( ! document.body.classList.contains('header_scrolled') ) return;
+				set_header_fixed_height();
+			});
+			// offsetHeight と同じ border-box の高さの変化を監視する
+			header_height_observer.observe(siteHeader, { box: 'border-box' });
+		}
+
+		// ヘッダーの高さの監視をやめる（header_scrolled が外れる所で必ず呼ぶ）
+		let stop_header_height_observe = ()=>{
+			if( ! header_height_observer ) return;
+			header_height_observer.disconnect();
+			header_height_observer = null;
+		}
+
 		// ヘッダースクロール時に実行される処理
 		let header_scroll_func = ()=>{
 
@@ -47,15 +83,26 @@
 
 			// ボディのクラスがロックされていない場合、かつスクロール量がサイトヘッダーの高さを超えた場合
 			if( ! body_class_lock && window.scrollY > siteHeaderContainerHeight ){
+				// header_scrolled を新たに付ける時だけ判定する（スクロールのたびにヘッダーの高さを読まないため）
+				let is_newly_scrolled = ! document.body.classList.contains('header_scrolled');
 				// ヘッダースクロール識別用のclass追加
 				document.body.classList.add('header_scrolled')
 				if(lightningOpt.add_header_offset_margin){
-					// コンテナ部分をfixedにするので、ガクンとならないように、ヘッダーの次の要素にヘッダーの高さ分余白を追加する 
+					// コンテナ部分をfixedにするので、ガクンとならないように、ヘッダーの次の要素にヘッダーの高さ分余白を追加する
 					siteHeaderNext.style.marginTop = siteHeaderContainerHeight + "px";
+				}
+				if( is_newly_scrolled ){
+					// 固定になった後のヘッダーの高さを取得する
+					// 余白を入れる前に高さを読むと、レイアウトが中途半端な状態（ヘッダーは固定で場所が空いたが余白がまだ無い）で確定し、
+					// ブラウザがスクロール位置を補正してスクロールが押し戻されるため、余白を入れたあとに読む
+					set_header_fixed_height();
+					// 固定中にヘッダーの高さが変わっても追従できるように、高さの監視を始める
+					start_header_height_observe();
 				}
 			} else {
 				// ヘッダースクロール識別用のclass削除
 				document.body.classList.remove('header_scrolled')
+				stop_header_height_observe();
 				if(lightningOpt.add_header_offset_margin){
 					// ヘッダーの次の要素の余白を削除する
 					siteHeaderNext.style.marginTop = null;
@@ -63,11 +110,19 @@
 			}
 		}
 
+		// ウィンドウ幅が変わるとヘッダーの高さも変わるため、固定中は高さを取得し直す
+		window.addEventListener('resize', () => {
+			if( document.body.classList.contains('header_scrolled') ){
+				set_header_fixed_height();
+			}
+		}, false);
+
 		// ページ内リンクの場合に固定ヘッダーが被ってしまうのでスクロール識別クラスを削除する //////////////////////////
 
 		// ページ内で#で始まるページ内リンク（ドメイン名を含まない）をクリックされた場合にスクロール識別クラスを削除する
         let remove_header = (e) => {
             document.body.classList.remove('header_scrolled')
+            stop_header_height_observe();
             window.removeEventListener('scroll', header_scroll_func)
             if (body_class_timer !== false) {
                 clearTimeout(body_class_timer)
