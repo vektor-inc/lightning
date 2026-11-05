@@ -44,6 +44,7 @@ vk-develop@vektor-inc.co.jp
 [ G3 ][ Design Bug Fix ] Fix the white slider arrows and pagination dots blending into bright slide images and becoming hard to see, by adding a shadow around them. To remove it, add :root { --ltg-swiper-control-shadow: none } in Additional CSS
 [ G2/G3 ][ Security Fix ] Strengthen validation of category/tag color codes. Invalid 3/6-digit hex values now fall back to the default color instead of being saved as-is, and the validation is now actually applied on save. The color value is also properly escaped wherever it is displayed
 [ G2/G3 ][ Security Fix ] Add a permission check and input sanitization when saving the Lightning design setting (layout etc.), and sanitize the category/tag color input when saving
+[ G2/G3 ][ Security Fix ] Add a permission check when saving the category/tag color, so that only users who can edit the term can change it
 
 v15.42.0
 [ G2/G3 ][ New Feature ] Add a general-purpose .lightning-editor-panel class that supplies the 8px / 12px / 24px spacing steps to block editor sidebar panels, so linked plugins can apply the same spacing as Lightning's own panel without redefining the values
