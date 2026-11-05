@@ -40,8 +40,10 @@ vk-develop@vektor-inc.co.jp
 [ G3 ][ Spec Change ] Change the top page slider pagination dots to white so that they match the arrows, instead of the Swiper default blue active dot and faint black inactive dots. The current slide is now shown as a wider pill rather than by opacity
 [ G2/G3 ][ Spec Change ] Update vektor-inc/vk-term-color from 0.7.1 to 0.7.4, fixing category/tag label text in post list cards and sliders staying white and hard to read when a bright label color is set
 [ G2/G3 ][ Spec Change ] Remove the Tree shaking settings from Customizer > Lightning CSS Optimize ( Speed up ) Settings. Tree shaking has already been disabled and the settings had no effect, so your site's display does not change. The Preload CSS settings are kept
+[ G2/G3 ][ Bug Fix ] Fix changes to the Lightning design setting (layout etc.) in the classic editor sometimes not being saved, for example when the post edit screen had been left open for a while before saving
 [ G3 ][ Design Bug Fix ] Fix the white slider arrows and pagination dots blending into bright slide images and becoming hard to see, by adding a shadow around them. To remove it, add :root { --ltg-swiper-control-shadow: none } in Additional CSS
 [ G2/G3 ][ Security Fix ] Strengthen validation of category/tag color codes. Invalid 3/6-digit hex values now fall back to the default color instead of being saved as-is, and the validation is now actually applied on save. The color value is also properly escaped wherever it is displayed
+[ G2/G3 ][ Security Fix ] Add a permission check and input sanitization when saving the Lightning design setting (layout etc.), and sanitize the category/tag color input when saving
 
 v15.42.0
 [ G2/G3 ][ New Feature ] Add a general-purpose .lightning-editor-panel class that supplies the 8px / 12px / 24px spacing steps to block editor sidebar panels, so linked plugins can apply the same spacing as Lightning's own panel without redefining the values
