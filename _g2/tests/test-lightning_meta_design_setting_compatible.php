@@ -251,5 +251,4 @@ class LightningMetaDesiginSettingCompatibleTest extends WP_UnitTestCase {
 		$_POST = array();
 		wp_set_current_user( 0 );
 	}
-
 }

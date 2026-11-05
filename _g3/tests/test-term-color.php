@@ -102,11 +102,13 @@ class TermColorSanitizeTest extends WP_UnitTestCase {
 		);
 
 		foreach ( $test_cases as $case ) {
+			// ターム作成時にも create_category 経由で save_term_meta_color() が走るため、前のケースの $_POST を先に空にする.
+			$_POST = array();
+
 			$term_id = self::factory()->term->create( array( 'taxonomy' => 'category' ) );
 			update_term_meta( $term_id, 'term_color', '#00ff00' );
 
 			// WordPress が $_POST に付けるスラッシュを再現する.
-			$_POST = array();
 			if ( $case['nonce'] ) {
 				$_POST['term_color_nonce'] = wp_create_nonce( 'class.term-color.php' );
 			}
