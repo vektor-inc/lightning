@@ -41,7 +41,9 @@ function lightning_design_setting_meta_fields() {
 	echo '<div class="lightning_design_setting_meta_fields">';
 
 	// CSRF対策の設定（フォームにhiddenフィールドとして追加するためのnonceを「'noncename__lightning_desigin」として設定）
-	wp_nonce_field( wp_create_nonce( __FILE__ ), 'noncename__lightning_desigin' );
+	// アクション名は lightning_design_setting_save() の wp_verify_nonce() と同じ固定文字列にすること。
+	// 時刻で変わる値をアクション名にすると、発行から 12 時間の区切りを跨いだ保存が通らなくなる.
+	wp_nonce_field( 'lightning_design_setting', 'noncename__lightning_desigin' );
 
 	global $post;
 
@@ -142,29 +144,81 @@ function lightning_g3_enqueue_design_setting_panel() {
 /*-------------------------------------------*/
 add_action( 'save_post', 'lightning_design_setting_save' );
 
+/**
+ * 投稿ごとのデザイン設定の入力値を整形する
+ *
+ * REST API 側のスキーマ（register-meta.php）と同じく、各項目の値は文字列として扱う。
+ * キーと値を sanitize_text_field() で整形し、入れ子の配列など文字列にできない値は捨てる。
+ *
+ * @param mixed $setting フォームから送信されたデザイン設定（スラッシュ除去済み）.
+ * @return array 整形後のデザイン設定. 配列以外が渡された場合は空の配列.
+ */
+function lightning_sanitize_design_setting( $setting ) {
+	$sanitized = array();
+
+	if ( ! is_array( $setting ) ) {
+		return $sanitized;
+	}
+
+	foreach ( $setting as $key => $value ) {
+		// 入れ子の配列など文字列にできない値は保存しない.
+		if ( ! is_scalar( $value ) ) {
+			continue;
+		}
+
+		$key = sanitize_text_field( (string) $key );
+		if ( '' === $key ) {
+			continue;
+		}
+
+		$sanitized[ $key ] = sanitize_text_field( (string) $value );
+	}
+
+	return $sanitized;
+}
+
+/**
+ * 投稿ごとのデザイン設定をクラシックエディターの保存時に保存する
+ *
+ * ブロックエディターからの保存は REST API 経由（register-meta.php）で行われるため、
+ * この関数は nonce が送信されず何もしない。
+ *
+ * @param int $post_id 保存対象の投稿 ID.
+ * @return void
+ */
 function lightning_design_setting_save( $post_id ) {
 
-	// // Recieve nonce ( CSRF )
-	$noncename__lightning_desigin = isset( $_POST['noncename__lightning_desigin'] ) ? $_POST['noncename__lightning_desigin'] : null;
-
-	if ( ! wp_verify_nonce( $noncename__lightning_desigin, wp_create_nonce( __FILE__ ) ) ) {
-		return $post_id;
+	// nonce の確認（CSRF 対策）。アクション名はフォーム側の wp_nonce_field() と同じ固定文字列にすること.
+	$nonce = isset( $_POST['noncename__lightning_desigin'] ) ? sanitize_text_field( wp_unslash( $_POST['noncename__lightning_desigin'] ) ) : '';
+	if ( ! wp_verify_nonce( $nonce, 'lightning_design_setting' ) ) {
+		return;
 	}
 
 	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
-		return $post_id; }
-
-	$field       = '_lightning_design_setting';
-	$field_value = ( isset( $_POST[ $field ] ) ) ? $_POST[ $field ] : '';
-
-	if ( get_post_meta( $post_id, $field ) == '' ) {
-		add_post_meta( $post_id, $field, $field_value, true );
-
-	} elseif ( $field_value == '' ) {
-		delete_post_meta( $post_id, $field, get_post_meta( $post_id, $field, true ) );
-
-	} else {
-		update_post_meta( $post_id, $field, $field_value );
+		return;
 	}
 
+	// 権限の確認（この投稿を編集できるユーザーだけが保存できる）.
+	if ( ! current_user_can( 'edit_post', $post_id ) ) {
+		return;
+	}
+
+	$field = '_lightning_design_setting';
+
+	// フィールドが送信されていない場合は設定を削除する.
+	if ( ! isset( $_POST[ $field ] ) ) {
+		delete_post_meta( $post_id, $field );
+		return;
+	}
+
+	// フォームからは配列で送信される。配列以外は不正な入力として保存しない.
+	if ( ! is_array( $_POST[ $field ] ) ) {
+		return;
+	}
+
+	// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- lightning_sanitize_design_setting() で整形している.
+	$field_value = lightning_sanitize_design_setting( wp_unslash( $_POST[ $field ] ) );
+
+	// update_post_meta() はスラッシュ付きの値を期待するため、wp_slash() で渡す.
+	update_post_meta( $post_id, $field, wp_slash( $field_value ) );
 }
