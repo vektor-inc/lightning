@@ -115,13 +115,15 @@ if ( ! class_exists( 'Vk_term_color' ) ) {
 		public static function save_term_meta_color( $term_id ) {
 
 			// verify the nonce --- remove if you don't care.
-			if ( ! isset( $_POST['term_color_nonce'] ) || ! wp_verify_nonce( $_POST['term_color_nonce'], basename( __FILE__ ) ) ) {
+			if ( ! isset( $_POST['term_color_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['term_color_nonce'] ) ), basename( __FILE__ ) ) ) {
 				return;
 			}
 
 			if ( isset( $_POST['term_color'] ) ) {
 				$now_value = get_term_meta( $term_id, 'term_color', true );
-				$new_value = esc_html( wp_unslash( $_POST['term_color'] ) );
+				// 配列など文字列以外が送信されても警告を出さず空文字にする（esc_html() は配列で警告が出る）.
+				// 16進数以外の値は register_meta() の sanitize_callback（sanitize_hex）が保存時に空文字へ落とす.
+				$new_value = sanitize_text_field( wp_unslash( $_POST['term_color'] ) );
 				if ( $now_value !== $new_value ) {
 					update_term_meta( $term_id, 'term_color', $new_value );
 				} else {
