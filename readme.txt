@@ -2,7 +2,7 @@
 Lightning WordPress theme, Copyright (C) 2015-2026 Vektor,Inc.
 Lightning WordPress theme is licensed under the GPL.
 Tested up to: 6.9
-Stable tag: 15.42.0
+Stable tag: 15.43.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -35,6 +35,7 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
+v15.43.0
 [ G3 ][ New Feature ] Add a button to stop and start the automatic slide show of the home page slider (WCAG 2.1 Success Criterion 2.2.2). It can be turned on and off in Customizer > Lightning Home page slide show. Sites that already have the slide show configured keep it hidden by default so that their design does not change, while new sites show it by default. It can also be controlled with the lightning_top_slide_autoplay_toggle_display filter
 [ G3 ][ Spec Change ] Show the home page slider with its automatic slide show stopped when the OS "reduce motion" setting is enabled. Visitors can start it with the button when it is displayed
 [ G3 ][ Spec Change ] Change the top page slider pagination dots to white so that they match the arrows, instead of the Swiper default blue active dot and faint black inactive dots. The current slide is now shown as a wider pill rather than by opacity
