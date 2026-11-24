@@ -124,16 +124,16 @@
         },
         {
             "name": "vektor-inc/vk-breadcrumb",
-            "version": "0.2.9",
+            "version": "0.2.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vektor-inc/vk-breadcrumb.git",
-                "reference": "6771166e7b298697685c52ea69c0f02c9333cc29"
+                "reference": "b5d2054e179e709b4afd9d618f0c36436b5575e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vektor-inc/vk-breadcrumb/zipball/6771166e7b298697685c52ea69c0f02c9333cc29",
-                "reference": "6771166e7b298697685c52ea69c0f02c9333cc29",
+                "url": "https://api.github.com/repos/vektor-inc/vk-breadcrumb/zipball/b5d2054e179e709b4afd9d618f0c36436b5575e9",
+                "reference": "b5d2054e179e709b4afd9d618f0c36436b5575e9",
                 "shasum": ""
             },
             "require": {
@@ -162,9 +162,9 @@
             "description": "WordPress Bread Crumb Class",
             "support": {
                 "issues": "https://github.com/vektor-inc/vk-breadcrumb/issues",
-                "source": "https://github.com/vektor-inc/vk-breadcrumb/tree/0.2.9"
+                "source": "https://github.com/vektor-inc/vk-breadcrumb/tree/0.2.10"
             },
-            "time": "2026-05-23T09:20:29+00:00"
+            "time": "2026-11-24T02:43:54+00:00"
         },
         {
             "name": "vektor-inc/vk-color-palette-manager",
