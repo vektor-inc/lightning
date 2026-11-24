@@ -26,6 +26,11 @@ if ( ! class_exists( 'VK_Old_Options_Notice' ) ) {
 		const VERSION = '0.1.0';
 
 		/**
+		 * データベース更新を実行するときの nonce アクション名.
+		 */
+		const UPDATE_NONCE_ACTION = 'lightning_old_options_update';
+
+		/**
 		 * Option Judgment
 		 *
 		 * @param srting $arg jugge or update.
@@ -112,21 +117,39 @@ if ( ! class_exists( 'VK_Old_Options_Notice' ) ) {
 		public static function display_old_options_notice() {
 			global $pagenow;
 			global $vk_update_link;
-			if ( 'index.php' === $pagenow ) {
-				if ( self::option_judgment( 'judge' ) ) {
-					echo wp_kses_post( '<div class="notice notice-warning"><p><strong>Lightning : </strong> ' . __( 'Because old option is exists, you need to update database', 'lightning' ) . ' <a href="?' . $vk_update_link . '" class="button button-primary">' . __( 'Update database', 'lightning' ) . '</a></p></div>' );
-				}
+			if ( 'index.php' !== $pagenow || ! current_user_can( 'manage_options' ) ) {
+				return;
 			}
+			if ( ! self::option_judgment( 'judge' ) ) {
+				return;
+			}
+
+			$update_url = wp_nonce_url(
+				add_query_arg( $vk_update_link, '1', admin_url( 'index.php' ) ),
+				self::UPDATE_NONCE_ACTION
+			);
+			echo wp_kses_post( '<div class="notice notice-warning"><p><strong>Lightning : </strong> ' . __( 'Because old option is exists, you need to update database', 'lightning' ) . ' <a href="' . esc_url( $update_url ) . '" class="button button-primary">' . __( 'Update database', 'lightning' ) . '</a></p></div>' );
 		}
 
 		/**
-		 * Launch Update Options
+		 * データベース更新を実行する.
+		 *
+		 * サイト管理者で、ダッシュボードのボタンに付いた nonce が一致するときだけ実行する.
 		 */
 		public static function launch_update_options() {
 			global $vk_update_link;
-			if ( isset( $_GET[ $vk_update_link ] ) ) {
-				self::option_judgment( 'update' );
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- 値は使わず、権限確認のあと check_admin_referer() で検証する.
+			if ( ! isset( $_GET[ $vk_update_link ] ) ) {
+				return;
 			}
+
+			if ( ! current_user_can( 'manage_options' ) ) {
+				return;
+			}
+
+			check_admin_referer( self::UPDATE_NONCE_ACTION );
+
+			self::option_judgment( 'update' );
 		}
 	}
 	new VK_Old_Options_Notice();

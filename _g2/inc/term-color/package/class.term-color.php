@@ -69,18 +69,27 @@ if ( ! class_exists( 'Vk_term_color' ) ) {
 		/*
 		  カラーの保存処理
 		/*-------------------------------------------*/
-		// Save extra taxonomy fields callback function.
+		// nonce とタームの編集権限を確認したうえで、送信された色を整形して保存する.
 		function save_term_meta_color( $term_id ) {
 
-			// verify the nonce --- remove if you don't care
-			if ( ! isset( $_POST['term_color_nonce'] ) || ! wp_verify_nonce( $_POST['term_color_nonce'], basename( __FILE__ ) ) ) {
+			// nonce の確認.
+			if ( ! isset( $_POST['term_color_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['term_color_nonce'] ) ), basename( __FILE__ ) ) ) {
+				return;
+			}
+
+			// 権限の確認（このタームを編集できる利用者だけが保存できる）.
+			// get_term_color_taxonomies() が返すタクソノミーごとに必要な capability が異なるため、
+			// タクソノミーに依存しない edit_term メタ capability で判定する.
+			if ( ! current_user_can( 'edit_term', $term_id ) ) {
 				return;
 			}
 
 			if ( isset( $_POST['term_color'] ) ) {
 				$now_value = get_term_meta( $term_id, 'term_color', true );
-				$new_value = $_POST['term_color'];
-				if ( $now_value != $new_value ) {
+				// 配列など文字列以外が送信されても警告を出さず空文字にする（esc_html() は配列で警告が出る）.
+				// 16進数以外の値は register_meta() の sanitize_callback（sanitize_hex）が保存時に空文字へ落とす.
+				$new_value = sanitize_text_field( wp_unslash( $_POST['term_color'] ) );
+				if ( $now_value !== $new_value ) {
 					update_term_meta( $term_id, 'term_color', $new_value );
 				} else {
 					add_term_meta( $term_id, 'term_color', $new_value );
