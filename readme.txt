@@ -35,7 +35,7 @@ vk-develop@vektor-inc.co.jp
 
 == Changelog ==
 
-[ G2/G3 ][ Bug Fix ] Update vektor-inc/vk-breadcrumb from 0.2.9 to 0.2.10, fixing "&" being shown as `&amp;` in the breadcrumb structured data (JSON-LD)
+[ G2/G3 ][ Spec Change ] Update vektor-inc/vk-breadcrumb from 0.2.9 to 0.2.10, wrapping the breadcrumb in a `nav` element with `aria-current="page"` on the current item (adds a `nav` to the HTML), and fixing "&" being output as `&amp;` in the breadcrumb structured data (JSON-LD)
 
 v15.43.0
 [ G3 ][ New Feature ] Add a button to stop and start the automatic slide show of the home page slider (WCAG 2.1 Success Criterion 2.2.2). It can be turned on and off in Customizer > Lightning Home page slide show. Sites that already have the slide show configured keep it hidden by default so that their design does not change, while new sites show it by default. It can also be controlled with the lightning_top_slide_autoplay_toggle_display filter
