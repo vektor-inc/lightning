@@ -18,6 +18,7 @@
   Archive title
   lightning_is_layout_onecolumn
   lightning_check_color_mode
+  lightning_breadcrumb_add_aria_current()
 /*-------------------------------------------*/
 
 /*
@@ -570,4 +571,32 @@ function lightning_get_colors(){
 		$colors['color_key']		= VK_Helpers::color_auto_modifi( $colors['color_key_dark'], 1.15 );
 	}
 	return $colors;
+}
+
+// 子テーマなどで差し替えられるよう、lightning_bread_crumb() と同じく function_exists で囲む.
+if ( ! function_exists( 'lightning_breadcrumb_add_aria_current' ) ) {
+	/**
+	 * パンくずの最後の項目（今表示しているページ）の li に aria-current="page" を付ける.
+	 *
+	 * 最後に来る項目は表示中のページの種類で変わるため、組み立て後の HTML を走査して最後の li を探す.
+	 * すでに aria-current が付いている場合は値を page に置き換える（重ねて付かない）.
+	 *
+	 * @param string $html パンくずの HTML.
+	 * @return string 最後の li に aria-current="page" を付けた HTML。li が無い場合と、空文字・文字列以外の場合は受け取った値をそのまま返す.
+	 */
+	function lightning_breadcrumb_add_aria_current( $html ) {
+		if ( ! is_string( $html ) || '' === $html ) {
+			return $html;
+		}
+
+		// 最後の li の位置を覚えておき、走査し終えてからその li に戻って属性を付ける.
+		$tag_processor = new WP_HTML_Tag_Processor( $html );
+		while ( $tag_processor->next_tag( 'li' ) ) {
+			$tag_processor->set_bookmark( 'last_list_item' );
+		}
+		if ( $tag_processor->has_bookmark( 'last_list_item' ) && $tag_processor->seek( 'last_list_item' ) ) {
+			$tag_processor->set_attribute( 'aria-current', 'page' );
+		}
+		return $tag_processor->get_updated_html();
+	}
 }

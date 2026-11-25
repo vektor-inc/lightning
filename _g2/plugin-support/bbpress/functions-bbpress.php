@@ -30,6 +30,15 @@ add_action( 'wp_enqueue_scripts', 'lightning_bbp_load_css' );
 /*-------------------------------------------*/
 add_filter(
 	'lightning_panListHtml',
+	/**
+	 * トピックページ（bbPress）のパンくずを作り直す.
+	 *
+	 * テーマのパンくずと同じく、リスト全体を nav で囲み、最後の項目（今表示しているページ）の li に aria-current="page" を付ける.
+	 * トピック以外のページでは、受け取った HTML をそのまま返す.
+	 *
+	 * @param string $panListHtml テーマが組み立てたパンくずの HTML.
+	 * @return string パンくずの HTML.
+	 */
 	function( $panListHtml ) {
 		if ( function_exists( 'bbp_get_forum_post_type' ) ) {
 			$postType = lightning_get_post_type();
@@ -40,13 +49,16 @@ add_filter(
 				/*-------------------------------------------*/
 				$microdata_li = ' itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"';
 
+				// テーマのパンくず（template-parts/breadcrumb.php）と同じく、.breadSection の内側で nav で囲む.
 				$before_html = '<!-- [ .breadSection ] -->
 <div class="section breadSection">
 <div class="container">
 <div class="row">
+<nav aria-label="' . esc_attr__( 'Breadcrumb', 'lightning' ) . '">
 <ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList">';
 
 				$after_html = '</ol>
+</nav>
 </div>
 </div>
 </div>
@@ -64,6 +76,7 @@ add_filter(
 					'current_after'  => '',
 				);
 				$panListHtml = bbp_get_breadcrumb( $args );
+				$panListHtml = lightning_breadcrumb_add_aria_current( $panListHtml );
 			}
 		}
 		return $panListHtml;
@@ -93,7 +106,13 @@ function lightning_bbp_page_header_title( $page_title ) {
 add_filter( 'lightning_pageTitCustom', 'lightning_bbp_page_header_title' );
 
 /**
- * ユーザープロフィールページのパンくず
+ * ユーザープロフィールページ（bbPress）のパンくずを作り直す.
+ *
+ * テーマのパンくずと同じく、リスト全体を nav で囲み、最後の項目（今表示しているページ）の li に aria-current="page" を付ける.
+ * ユーザープロフィール以外のページでは、受け取った HTML をそのまま返す.
+ *
+ * @param string $breadcrumb_html テーマが組み立てたパンくずの HTML.
+ * @return string パンくずの HTML.
  */
 function lightning_bbp_breadcrumb( $breadcrumb_html ) {
 	// Microdata
@@ -109,6 +128,8 @@ function lightning_bbp_breadcrumb( $breadcrumb_html ) {
 		$breadcrumb_html .= '<div class="section breadSection">';
 		$breadcrumb_html .= '<div class="container">';
 		$breadcrumb_html .= '<div class="row">';
+		// テーマのパンくず（template-parts/breadcrumb.php）と同じく、.breadSection の内側で nav で囲む.
+		$breadcrumb_html .= '<nav aria-label="' . esc_attr__( 'Breadcrumb', 'lightning' ) . '">';
 		$breadcrumb_html .= '<ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList">';
 
 		// Home
@@ -125,10 +146,14 @@ function lightning_bbp_breadcrumb( $breadcrumb_html ) {
 
 		// パンくず終了
 		$breadcrumb_html .= '</ol>';
+		$breadcrumb_html .= '</nav>';
 		$breadcrumb_html .= '</div>';
 		$breadcrumb_html .= '</div>';
 		$breadcrumb_html .= '</div>';
 		$breadcrumb_html .= '<!-- [ /.breadSection ] -->';
+
+		// 最後の項目（ユーザー名）の li に aria-current="page" を付ける.
+		$breadcrumb_html = lightning_breadcrumb_add_aria_current( $breadcrumb_html );
 	}
 	return $breadcrumb_html;
 }

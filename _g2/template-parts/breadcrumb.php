@@ -7,9 +7,13 @@
 
 if ( ! function_exists( 'lightning_bread_crumb' ) ) {
 	/**
-	 * Lightning Bread Crumb G2
+	 * パンくずの HTML を組み立てて返す（G2）.
 	 *
-	 * @return string html
+	 * 表示中のページの種類に応じて項目を並べ、リスト全体を nav で囲み、
+	 * 最後の項目（今表示しているページ）の li に aria-current="page" を付ける.
+	 * 戻り値は出力用に安全化していないため、表示側で wp_kses() を通すこと.
+	 *
+	 * @return string パンくずの HTML.
 	 */
 	function lightning_bread_crumb() {
 		global $wp_query;
@@ -38,6 +42,9 @@ if ( ! function_exists( 'lightning_bread_crumb' ) ) {
 		$breadcrumb_html .= '<div class="section breadSection">';
 		$breadcrumb_html .= '<div class="container">';
 		$breadcrumb_html .= '<div class="row">';
+		// 読み上げソフトでナビゲーション領域として扱えるよう、リストを nav で囲む.
+		// nav は .breadSection の内側に置く。外側に置くと、パンくずを隠したときに中身のない nav だけが残るため.
+		$breadcrumb_html .= '<nav aria-label="' . esc_attr__( 'Breadcrumb', 'lightning' ) . '">';
 		$breadcrumb_html .= '<ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">';
 
 		$breadcrumb_html .= '<li id="panHome"' . $microdata_li . '>';
@@ -240,10 +247,15 @@ if ( ! function_exists( 'lightning_bread_crumb' ) ) {
 			$breadcrumb_html .= '</li>';
 		}
 		$breadcrumb_html .= '</ol>';
+		$breadcrumb_html .= '</nav>';
 		$breadcrumb_html .= '</div>';
 		$breadcrumb_html .= '</div>';
 		$breadcrumb_html .= '</div>';
 		$breadcrumb_html .= '<!-- [ /.breadSection ] -->';
+
+		// 最後の項目（今表示しているページ）の li に aria-current="page" を付ける.
+		$breadcrumb_html = lightning_breadcrumb_add_aria_current( $breadcrumb_html );
+
 		// // delete before after space
 		// $dynamic_css = trim( $dynamic_css );
 		// convert tab and br to space
@@ -256,7 +268,13 @@ if ( ! function_exists( 'lightning_bread_crumb' ) ) {
 
 $breadcrumb_html = lightning_bread_crumb();
 
-$allowed_html    = array(
+$allowed_html = array(
+	// パンくずを囲む nav と、その名前（aria-label）が取り除かれないよう許可する.
+	'nav'  => array(
+		'id'         => array(),
+		'class'      => array(),
+		'aria-label' => array(),
+	),
 	'div'  => array(
 		'id'        => array(),
 		'class'     => array(),
@@ -272,11 +290,13 @@ $allowed_html    = array(
 		'itemtype'  => array(),
 	),
 	'li'   => array(
-		'id'        => array(),
-		'class'     => array(),
-		'itemprop'  => array(),
-		'itemscope' => array(),
-		'itemtype'  => array(),
+		'id'           => array(),
+		'class'        => array(),
+		'itemprop'     => array(),
+		'itemscope'    => array(),
+		'itemtype'     => array(),
+		// 今表示しているページを示す aria-current が取り除かれないよう許可する.
+		'aria-current' => array(),
 	),
 	'a'    => array(
 		'id'       => array(),
