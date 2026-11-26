@@ -20,7 +20,11 @@ test('G3 keeps synced full and wide blocks inside the editor canvas', async ({ p
 			return createBlock('core/block', { ref: pattern.id });
 		};
 		const inner = await savePattern('Nested inner', [paragraph('Nested inner paragraph')]);
-		const constrainedFull = await savePattern('Constrained full', [group('full', 'Constrained synced full group')]);
+		const constrainedFull = await savePattern('Constrained full', [
+			group('full', 'Constrained synced full group', [paragraph('Constrained synced full group'), inner]),
+			paragraph('Constrained synced ordinary paragraph'),
+			createBlock('core/image', { url: 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=', alt: 'Constrained synced ordinary image' }),
+		]);
 		const constrainedWide = await savePattern('Constrained wide', [group('wide', 'Constrained synced wide group')]);
 		const blocks = [
 			paragraph('Reference ordinary paragraph'),
@@ -40,7 +44,7 @@ test('G3 keeps synced full and wide blocks inside the editor canvas', async ({ p
 	});
 	await page.goto(`/wp-admin/post.php?post=${postId}&action=edit`);
 	const frame = page.frameLocator('iframe[name="editor-canvas"]');
-	await expect(frame.locator('[data-type="core/block"]')).toHaveCount(10);
+	await expect(frame.locator('[data-type="core/block"]')).toHaveCount(11);
 	await expect(frame.locator('[data-type="core/block"] [data-type="core/group"]')).toHaveCount(6);
 
 	// iframe 内の実寸とクラスを記録し、通常幅への影響も確認する。
@@ -63,7 +67,14 @@ test('G3 keeps synced full and wide blocks inside the editor canvas', async ({ p
 			})),
 			constrained: (() => {
 				const outer = [...wrapper.querySelectorAll('[data-type="core/block"]')].find((element) => element.textContent?.includes('Constrained synced full group'));
-				return outer && { className: outer.className, outer: rect(outer), child: rect(outer.querySelector('[data-align="full"]')) };
+				return outer && {
+					className: outer.className,
+					outer: rect(outer),
+					child: rect(outer.querySelector('[data-align="full"]')),
+					paragraph: rect([...outer.querySelectorAll('[data-type="core/paragraph"]')].find((element) => element.textContent?.includes('Constrained synced ordinary paragraph'))),
+					image: rect(outer.querySelector('[data-type="core/image"]')),
+					nested: rect([...outer.querySelectorAll('[data-type="core/block"]')].find((element) => element.textContent?.includes('Nested inner paragraph'))),
+				};
 			})(),
 			constrainedWide: (() => {
 				const outer = [...wrapper.querySelectorAll('[data-type="core/block"]')].find((element) => element.textContent?.includes('Constrained synced wide group'));
@@ -75,6 +86,13 @@ test('G3 keeps synced full and wide blocks inside the editor canvas', async ({ p
 	const [full, wide, ordinary, mixed, nestedFull, nestedDirect] = measurements.patterns;
 	const close = (actual, expected) => expect(Math.abs(actual - expected)).toBeLessThanOrEqual(1);
 	const centered = (rect) => close(rect.left + rect.right, measurements.canvas.left + measurements.canvas.right);
+	for (const pattern of measurements.patterns) {
+		expect(pattern.className).not.toContain('alignfull');
+	}
+	for (const pattern of [measurements.constrained, measurements.constrainedWide]) {
+		expect(pattern.className).toContain('alignfull');
+		expect(pattern.className).toContain('is-layout-constrained');
+	}
 
 	close(full.children[0].rect.left, measurements.canvas.left);
 	close(full.children[0].rect.right, measurements.canvas.right);
@@ -92,6 +110,10 @@ test('G3 keeps synced full and wide blocks inside the editor canvas', async ({ p
 	close(nestedDirect.outer.width, measurements.ordinary.width);
 	close(measurements.constrained.child.left, measurements.canvas.left);
 	close(measurements.constrained.child.right, measurements.canvas.right);
+	for (const item of [measurements.constrained.paragraph, measurements.constrained.image, measurements.constrained.nested]) {
+		close(item.left, measurements.ordinary.left);
+		close(item.width, measurements.ordinary.width);
+	}
 	expect(measurements.constrainedWide.child.width).toBeGreaterThan(measurements.ordinary.width);
 	centered(measurements.constrainedWide.child);
 	close(measurements.ordinaryFull.left, measurements.canvas.left);

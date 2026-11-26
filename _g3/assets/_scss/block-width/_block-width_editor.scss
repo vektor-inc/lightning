@@ -177,12 +177,17 @@ body.block-editor-iframe__body.editor-styles-wrapper{
 		}
 	}
 	[data-type="core/block"].is-layout-constrained:where(.alignfull) {
-		// 外枠自体が左へ移動済みのときは、内側の重複補正を打ち消す。
+		// 全幅の子だけを補正すると、通常幅の子が左へずれたままになる。
+		width: var(--vk-width-full) !important;
+		max-width: var(--vk-width-full) !important;
 		& > [data-align=full] {
 			width: var(--vk-width-full);
 			max-width: var(--vk-width-full);
-			margin-left: 0 !important;
-			margin-right: 0 !important;
+		}
+		// theme.json 無効時、画像だけ左マージンが 0 になり本文幅から外れる。
+		& > [data-type="core/image"]:where(:not(.alignfull):not(.alignwide)) {
+			margin-left: auto !important;
+			margin-right: auto !important;
 		}
 		& > [data-align=wide] {
 			margin-left: calc( ( var(--vk-width-full) - var(--vk-width-wide) ) / 2 ) !important;
