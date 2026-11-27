@@ -82,7 +82,6 @@ test('G3 keeps synced full and wide blocks inside the editor canvas', async ({ p
 			})(),
 		};
 	});
-	console.log('SYNCED_WIDTH_MEASUREMENTS', JSON.stringify(measurements));
 	const [full, wide, ordinary, mixed, nestedFull, nestedDirect] = measurements.patterns;
 	const close = (actual, expected) => expect(Math.abs(actual - expected)).toBeLessThanOrEqual(1);
 	const centered = (rect) => close(rect.left + rect.right, measurements.canvas.left + measurements.canvas.right);
