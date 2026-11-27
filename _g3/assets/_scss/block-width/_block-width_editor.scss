@@ -162,6 +162,40 @@ body.block-editor-iframe__body.editor-styles-wrapper{
 	}
 }
 
+/* 同期パターンの外枠を挟む全幅・幅広の補正
+   ========================================================================== */
+.editor-styles-wrapper {
+	[data-type="core/block"]:where(:not(.alignfull):not(.alignwide)) {
+		// 外枠に配置クラスがない場合、内側だけを広げて右端が見切れるのを防ぐ。
+		& > [data-align=full] {
+			margin-left: calc( ( 100% - var(--vk-width-full) ) / 2 ) !important;
+			margin-right: calc( ( 100% - var(--vk-width-full) ) / 2 ) !important;
+		}
+		& > [data-align=wide] {
+			margin-left: calc( ( 100% - var(--vk-width-full) ) / 4 ) !important;
+			margin-right: calc( ( 100% - var(--vk-width-full) ) / 4 ) !important;
+		}
+	}
+	[data-type="core/block"].is-layout-constrained:where(.alignfull) {
+		// 全幅の子だけを補正すると、通常幅の子が左へずれたままになる。
+		width: var(--vk-width-full) !important;
+		max-width: var(--vk-width-full) !important;
+		& > [data-align=full] {
+			width: var(--vk-width-full);
+			max-width: var(--vk-width-full);
+		}
+		// theme.json 無効時、画像だけ左マージンが 0 になり本文幅から外れる。
+		& > [data-type="core/image"]:where(:not(.alignfull):not(.alignwide)) {
+			margin-left: auto !important;
+			margin-right: auto !important;
+		}
+		& > [data-align=wide] {
+			margin-left: calc( ( var(--vk-width-full) - var(--vk-width-wide) ) / 2 ) !important;
+			margin-right: calc( ( var(--vk-width-full) - var(--vk-width-wide) ) / 2 ) !important;
+		}
+	}
+}
+
 .wp-block.editor-post-title {
 	max-width:var(--vk-width-editor-container);
 }

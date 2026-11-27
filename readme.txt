@@ -38,6 +38,7 @@ vk-develop@vektor-inc.co.jp
 [ G2/G3 ][ Spec Change ] Update vektor-inc/vk-breadcrumb from 0.2.9 to 0.2.11, wrapping the breadcrumb in a `nav` element with `aria-current="page"` on the current item (adds a `nav` to the HTML), and fixing "&" being output as `&amp;` in the breadcrumb structured data (JSON-LD)
 [ G2 ][ Spec Change ] Let screen reader users jump directly to the breadcrumb as a navigation area, and tell them which page they are currently on
 [ G2 ][ Spec Change ] Sites that rewrite the breadcrumb HTML with the lightning_panListHtml filter should check the breadcrumb display after updating, because the breadcrumb is now wrapped in a nav element and its last item has aria-current
+[ G3 ][ Design Bug Fix ] Fix full- and wide-aligned blocks inside synced patterns being shifted sideways and cut off in the block editor
 
 v15.43.0
 [ G3 ][ New Feature ] Add a button to stop and start the automatic slide show of the home page slider (WCAG 2.1 Success Criterion 2.2.2). It can be turned on and off in Customizer > Lightning Home page slide show. Sites that already have the slide show configured keep it hidden by default so that their design does not change, while new sites show it by default. It can also be controlled with the lightning_top_slide_autoplay_toggle_display filter
